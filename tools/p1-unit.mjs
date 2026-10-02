@@ -137,5 +137,24 @@ t('correct order is full credit', full.credit === 1 && full.failed === null);
 const buried = DW.order.score(orderItem, ['weil', 'ich', 'heute', 'habe', 'keine', 'Zeit']);
 t('verb buried in the Mittelfeld fails level 1', buried.credit === 0 && buried.failed === 1);
 
+/* V2 counts constituents: a two-token Vorfeld puts the finite verb third by
+   word count and still second by position. Before this rule, the correct
+   order of «Die Straße wird repariert.» scored 0. */
+const twoTokenVorfeld = {
+  tokens: ['Die', 'Straße', 'wird', 'repariert.'], correct: ['Die', 'Straße', 'wird', 'repariert.'],
+  clause: 'main', finite: 'wird', rightBracket: ['repariert.'],
+  fields: { vorfeld: ['Die', 'Straße'], lsk: ['wird'], mittelfeld: [], rsk: ['repariert.'], nachfeld: [] }
+};
+t('a two-token Vorfeld scores its own correct order as full credit', DW.order.score(twoTokenVorfeld, twoTokenVorfeld.correct).credit === 1);
+t('verb-final in a main clause still fails level 1', DW.order.score(twoTokenVorfeld, ['Die', 'Straße', 'repariert.', 'wird']).failed === 1);
+t('verb-first in a main clause fails level 1', DW.order.score(twoTokenVorfeld, ['Wird', 'Die', 'Straße', 'repariert.'].map(x => x === 'Wird' ? 'wird' : x)).failed === 1);
+const nachfeld = {
+  tokens: ['Ich', 'habe', 'vor,', 'umzuziehen.'], correct: ['Ich', 'habe', 'vor,', 'umzuziehen.'],
+  clause: 'main', finite: 'habe', rightBracket: ['vor,'],
+  fields: { vorfeld: ['Ich'], lsk: ['habe'], mittelfeld: [], rsk: ['vor,'], nachfeld: ['umzuziehen.'] }
+};
+t('a right bracket followed by a Nachfeld is full credit', DW.order.score(nachfeld, nachfeld.correct).credit === 1);
+t('Nachfeld before the right bracket loses the field level, not the verb level', DW.order.score(nachfeld, ['Ich', 'habe', 'umzuziehen.', 'vor,']).failed === 3);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

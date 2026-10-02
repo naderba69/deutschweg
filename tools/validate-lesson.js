@@ -186,14 +186,14 @@ if (declared.length) {
   declared.every(it => carried.has(it.de))
     ? ok('every declared word appears in a Wortschatz step')
     : bad('declared words never shown: ' + declared.filter(it => !carried.has(it.de)).map(it => it.de).join(', '));
-} else if (['A0', 'A1'].includes(L.level) && !VOCAB_EXEMPT.has(L.id)) {
-  /* A level being ported is declared pending in DECISIONS-PENDING.md. The backlog
-     is counted and printed; the moment a level leaves that list, its lessons must
-     carry a word list or the build fails. */
-  if (PENDING_VOCAB_LEVELS.has(L.level)) warningOnly(L.id + ' has no word list yet (' + L.level + ' is mid-port)');
-  else bad('a ' + L.level + ' lesson without a word list is not shipped');
 } else if (VOCAB_EXEMPT.has(L.id)) {
   warn(L.id + ' carries no word list yet (declared exception, see DECISIONS-PENDING.md)');
+} else {
+  /* A level being ported is declared pending in DECISIONS-PENDING.md. The backlog
+     is counted and printed; the moment a level leaves that list, its lessons must
+     carry a word list or the build fails. This applies to every level. */
+  if (PENDING_VOCAB_LEVELS.has(L.level)) warningOnly(L.id + ' has no word list yet (' + L.level + ' is mid-port)');
+  else bad('a ' + L.level + ' lesson without a word list is not shipped');
 }
 vocabBad.length === 0 ? ok(`Wortschatz steps carry ${vocabSteps.length ? vocabSteps[0].wortschatz.length + '–4' : '2–4'} words each, with form and example`)
                       : bad('Wortschatz defects: ' + vocabBad.join(', '));
@@ -202,9 +202,33 @@ vocabBad.length === 0 ? ok(`Wortschatz steps carry ${vocabSteps.length ? vocabSt
 const used = new Set(S.map(s => (s.type === 'sprechen' ? 'sprechen' : (s.type === 'hoeren' ? 'hoeren' : (s.frage ? s.frage.art : null)))).filter(Boolean));
 const missingForms = FORMS.filter(f => !used.has(f));
 used.forEach(f => formsUsed.add(f));
-if (['A0', 'A1'].includes(L.level) && declared.length) {
+if (declared.length) {
+  /* Any lesson that carries a word list is a ported lesson, whatever its level. */
   missingForms.length <= 2 ? ok('forms used: ' + [...used].join(' · '))
                            : bad('lesson never uses: ' + missingForms.join(', '));
+}
+
+/* 17b. an order exercise must give full credit to its own correct answer; a
+   sentence whose correct order scores below 1 is a broken measurement. */
+{
+  const orderSteps = S.filter(s => s.frage && s.frage.art === 'wortstellung');
+  const broken = orderSteps.filter(s => {
+    const f = s.frage;
+    const toks = f.correct || [];
+    if (!toks.length || !f.finite || toks.indexOf(f.finite) < 0) return true;
+    if (new Set(toks).size !== toks.length) return true;
+    const vf = ((f.fields || {}).vorfeld || []).length;
+    const fin = toks.indexOf(f.finite);
+    if ((f.clause || 'main') === 'main') return !(fin === 1 || (vf > 0 && fin === vf));
+    return fin !== toks.length - 1;
+  });
+  if (orderSteps.length) {
+    broken.length === 0 ? ok('every order exercise scores its own answer as correct')
+                        : bad('order exercise cannot score its own answer: ' + broken.map(s => s.id + ' «' + (s.frage.correct || []).join(' ') + '»').join(', '));
+  }
+  const placeholder = orderSteps.filter(s => !s.frage.frage || s.frage.frage === 'rtb' || !/[\u0600-\u06FF]/.test(s.frage.frage));
+  placeholder.length === 0 ? ok('order exercises carry a real Arabic task line')
+                           : bad('order exercise without a task line: ' + placeholder.map(s => s.id).join(', '));
 }
 
 /* 18. a memory aid repeated in another lesson is not a memory aid */

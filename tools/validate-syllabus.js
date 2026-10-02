@@ -104,21 +104,46 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
   const cat = {};
   new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
   const floors = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
-  const have = {}, declaredN = {}, ported = {};
+  const have = {}, declaredN = {}, ported = {}, rowsN = {}, shippedDeclared = {};
+  const portedIds = new Set();
+  const seenWords = {};
   Object.keys(cat.DW_LESSONS || {}).forEach(id => {
     const L = cat.DW_LESSONS[id];
     const wl = L.wortschatz || [];
     have[L.level] = (have[L.level] || 0) + wl.length;
-    if (wl.length) ported[L.level] = (ported[L.level] || 0) + 1;
+    if (wl.length) { ported[L.level] = (ported[L.level] || 0) + 1; portedIds.add(id); }
     if (wl.length && wl.length < (floors[L.level] || 12)) bad('word list below the floor in ' + id);
+    /* a word counted twice inside one level is counted once here, and flagged */
+    seenWords[L.level] = seenWords[L.level] || new Map();
+    wl.forEach(it => {
+      if (seenWords[L.level].has(it.de)) bad('headword counted twice in ' + L.level + ': ' + it.de + ' (' + seenWords[L.level].get(it.de) + ', ' + id + ')');
+      else seenWords[L.level].set(it.de, id);
+    });
   });
-  lessons.forEach(l => { declaredN[l.level] = (declaredN[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
+  lessons.forEach(l => {
+    const rec = (l.words && l.words.receptive) || 0;
+    declaredN[l.level] = (declaredN[l.level] || 0) + rec;
+    rowsN[l.level] = (rowsN[l.level] || 0) + 1;
+    if (portedIds.has(l.id)) {
+      shippedDeclared[l.level] = (shippedDeclared[l.level] || 0) + rec;
+      /* a ported row must carry at least 80% of its own declaration */
+      const wl = (cat.DW_LESSONS[l.id].wortschatz || []).length;
+      if (rec && wl < Math.round(0.8 * rec)) bad(l.id + ' carries ' + wl + ' words against a row declaration of ' + rec);
+    }
+  });
   console.log('  — lexical coverage (authored items vs the map declaration) —');
   Object.keys(declaredN).forEach(level => {
-    const h = have[level] || 0, d = declaredN[level] || 0;
+    const h = have[level] || 0, d = declaredN[level] || 0, sd = shippedDeclared[level] || 0;
     const ratio = d ? h / d : 0;
-    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' + (ported[level] || 0) + ' lessons ported');
-    if (ratio > 0 && ratio < 0.8) bad(level + ' lexical coverage ' + Math.round(ratio * 100) + '% is below the 80% gate once started');
+    const shipped = sd ? h / sd : 0;
+    const p = ported[level] || 0, r = rowsN[level] || 0;
+    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' + p + '/' + r + ' lessons ported' +
+      (p ? ' · shipped rows ' + Math.round(shipped * 100) + '%' : '') + (ratio >= 0.8 ? ' · delivered' : ' · not delivered'));
+    /* Unit-by-unit production: what is shipped must be honest to its rows at
+       every push, and a level is only delivered when the whole of it reaches
+       80%. A finished level below 80% fails. */
+    if (p && shipped < 0.8) bad(level + ' shipped rows at ' + Math.round(shipped * 100) + '% are below the 80% gate');
+    if (p && p === r && ratio < 0.8) bad(level + ' is fully ported but its coverage ' + Math.round(ratio * 100) + '% is below the 80% gate');
   });
   (have.A0 || 0) >= Math.round(0.8 * (declaredN.A0 || 0))
     ? ok('A0 lexical coverage meets the 80% gate')

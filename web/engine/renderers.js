@@ -50,8 +50,13 @@
     const finIdx = given.indexOf(finite);
     const levels = [];
     let l1 = false;
-    if (clause === 'main') l1 = finIdx === 1;
-    else l1 = finIdx === given.length - 1 || finIdx === 2;
+    if (clause === 'main') {
+      /* V2 counts constituents, not words: after a declared Vorfeld of n
+         tokens ("Die Straße", "Obwohl es regnet,") the finite verb sits at n.
+         A one-token Vorfeld keeps the old rule. */
+      const vf = (fields.vorfeld || []).length;
+      l1 = finIdx === 1 || (vf > 0 && finIdx === vf);
+    } else l1 = finIdx === given.length - 1 || finIdx === 2;
     levels.push({ id: 1, name: 'موضع الفعل', pass: l1 });
     if (!l1) {
       return {
@@ -67,7 +72,12 @@
     } else {
       const rb = item.rightBracket || [];
       if (rb.length) {
-        l2 = given.slice(given.length - rb.length).join(' ') === rb.join(' ');
+        /* A Nachfeld (a trailing weil-clause, an infinitive clause) may follow
+           the right bracket. Strip those tokens from the end before comparing. */
+        const nf = fields.nachfeld || [];
+        let end = given.length;
+        while (end > 0 && nf.indexOf(given[end - 1]) >= 0) end -= 1;
+        l2 = given.slice(Math.max(0, end - rb.length), end).join(' ') === rb.join(' ');
         l2msg = 'القوس الأيمن ليس في آخر الجملة. الجزء غير المصرّف يبقى في النهاية.';
       }
     }

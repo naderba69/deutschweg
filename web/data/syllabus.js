@@ -173,9 +173,14 @@
     push(id, 'A2', r[0], r[1], r[2], i === 29 ? 26 : 26, i === 29 ? 4 : 13, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
+  /* B1 rows declare 24 receptive items each (decision 11 in DECISIONS-PENDING.md):
+     the lesson body carries 20 authored words — five Wortschatz steps × four
+     words, the §8.3 ceiling — and the remaining budget of the §13.1 B1 band is
+     assigned to the B1 reading texts, which are not authored and not counted.
+     The earlier uniform 40 was a placeholder, not a number from a Goethe list. */
   B1.forEach((r, i) => {
     const id = 'b1-u' + (Math.floor(i / 8) + 1) + '-l' + ((i % 8) + 1);
-    push(id, 'B1', r[0], r[1], r[2], 40, 17, r[3], r[4], 'lesson', prev, 'authored');
+    push(id, 'B1', r[0], r[1], r[2], 24, 17, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
   B2.forEach((r, i) => {

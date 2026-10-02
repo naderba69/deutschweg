@@ -11,11 +11,31 @@ node tools/validate-lesson.js web/data/a0-u1-l1.js
 
 Exit code is non-zero on any hard failure — so it can gate a commit.
 
+Also (P3.2): a lesson that carries a word list must use at least six of the
+eight forms, no memory trick may repeat verbatim across lessons, and every
+word-order exercise must score its own correct answer as full credit and
+carry a real Arabic task line.
+
 ## `validate-syllabus.js`
 
 Checks the map before any further lesson is authored: unique ids, acyclic
 prerequisites, counts inside §13, and that the composer refuses an unmet
 prerequisite and an unauthored row.
+
+Lexical coverage gate (P3.2): per level it prints `authored / declared` (the
+level's coverage; *delivered* at ≥ 80%) and `shipped rows` (authored against
+what the ported rows declare; must be ≥ 80% at every push). A ported row must
+carry ≥ 80% of its own declaration, a headword may not be counted twice in a
+level, and a fully ported level below 80% fails.
+
+## `compile-units.js`
+
+Builds `web/data/catalog.js` from `specs-*.js` plus the lexical layer in
+`vocab-*.js` (one file per production unit). A vocab row carries 12–20 items
+`[headword, plural/forms, gloss, example, typical error, why, family, blank?]`,
+three tricks, and — from B1 — two annotated order sentences
+(`'Vorfeld | finite | Mittelfeld | rechte Klammer | Nachfeld'`, or
+`{ satz: 'weil | ich müde | bin.', clause: 'sub' }`) and a writing prompt.
 
 ```
 node tools/validate-syllabus.js
