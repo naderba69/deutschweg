@@ -30,7 +30,7 @@ fs.readdirSync(__dirname).filter(f => /^vocab-.*\.js$/.test(f)).sort().forEach(f
     VOCAB[id] = part[id];
   });
 });
-const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 20 }; /* B2: a workshop glossary of 20, decision 18 */
 /* A headword counted twice inside one level would inflate the coverage number.
    The map is honest only if 800 means 800 different words. */
 const headwordsByLevel = {};
@@ -912,7 +912,7 @@ const report = Object.keys(declared).map(level => {
     level, items: have, declared: want, ratio: want ? have / want : 0,
     lessons: rows[level] || 0, ported: ported[level] || 0,
     shippedDeclared: sd, shippedRatio: sd ? have / sd : 0,
-    delivered: want > 0 && have / want >= 0.8
+    delivered: level !== 'B2' && want > 0 && have / want >= 0.8 /* B2 workshops are never 'delivered' by their glossary (decision 18) */
   };
 });
 report.forEach(r => {

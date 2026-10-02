@@ -18,7 +18,7 @@ let fileHard = 0;
 
 /* P3.2 — the lexical layer and the forms. These are cross-lesson checks: a trick
    that is repeated verbatim in every lesson is a slogan, not a memory aid. */
-const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 20 }; /* B2: a workshop glossary of 20, decision 18 */
 /* The hand-written opening lesson predates the lexical layer. It stays the one
    declared exception until it is ported, and the exception is printed, not hidden. */
 const VOCAB_EXEMPT = new Set(['a0-u1-l1']);

@@ -103,7 +103,11 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
 {
   const cat = {};
   new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
-  const floors = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+  const floors = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 20 };
+  /* B2 rows are workshops (decision 18): the 90 receptive items a row declares are
+     the workshop's text exposure, the authored list is a glossary of 20. The
+     80% lexical gate is not applied to B2; it is printed and never delivered. */
+  const WORKSHOP = new Set(['B2']);
   const have = {}, declaredN = {}, ported = {}, rowsN = {}, shippedDeclared = {};
   const portedIds = new Set();
   const seenWords = {};
@@ -128,7 +132,7 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
       shippedDeclared[l.level] = (shippedDeclared[l.level] || 0) + rec;
       /* a ported row must carry at least 80% of its own declaration */
       const wl = (cat.DW_LESSONS[l.id].wortschatz || []).length;
-      if (rec && wl < Math.round(0.8 * rec)) bad(l.id + ' carries ' + wl + ' words against a row declaration of ' + rec);
+      if (l.level !== 'B2' && rec && wl < Math.round(0.8 * rec)) bad(l.id + ' carries ' + wl + ' words against a row declaration of ' + rec);
     }
   });
   console.log('  — lexical coverage (authored items vs the map declaration) —');
@@ -142,6 +146,7 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
     /* Unit-by-unit production: what is shipped must be honest to its rows at
        every push, and a level is only delivered when the whole of it reaches
        80%. A finished level below 80% fails. */
+    if (WORKSHOP.has(level)) { if (p) console.log('    ' + level + ': workshop glossary — the lexical gate is not applied (decision 18); not delivered'); return; }
     if (p && shipped < 0.8) bad(level + ' shipped rows at ' + Math.round(shipped * 100) + '% are below the 80% gate');
     if (p && p === r && ratio < 0.8) bad(level + ' is fully ported but its coverage ' + Math.round(ratio * 100) + '% is below the 80% gate');
   });
