@@ -705,5 +705,234 @@ module.exports = {
       { trick: 'الاعتذار عن شيء بـ für', wie: 'Ich entschuldige mich für die Verspätung.', warum: 'العربية تربط السبب بـ «عن»، والألمانية بـ für + النصب؛ الحرف يتبع المعنى الألماني لا الترجمة.', anchor: 'Ich entschuldige mich für die Verspätung.' },
       { trick: 'ظرف الرفض لا يزحزح الفعل', wie: 'Morgen habe ich keine Zeit · leider habe ich keine Zeit.', warum: 'في جملة الرفض يبقى الفعل ثانيًا، والعربية تبدأ بالفاعل فتُنتج «Morgen ich habe».', anchor: 'Morgen habe ich keine Zeit.' }
     ]
+  },
+
+  /* ---------------------------------------------------------------- l1 ---- */
+  /* Theme: living. The room is described with two pieces of furniture, an
+     adjective after ein and the fixed frame es gibt. Every position word here
+     is a fixed place, so Dativ is not a rule to recall but the default the
+     learner sees three times before it is named. */
+  'a1-u4-l1': {
+    items: [
+      ['der Balkon', 'die Balkone', 'الشرفة', 'Wir trinken Kaffee auf dem Balkon.', 'Wir trinken Kaffee auf der Balkon.', 'der Balkon مذكر، والموضع الثابت Dativ: auf dem Balkon.', 'kasus', 'Balkon'],
+      ['das Erdgeschoss', 'die Erdgeschosse', 'الطابق الأرضي', 'Ich wohne im Erdgeschoss.', 'Ich wohne in Erdgeschoss.', 'im = in + dem؛ الأداة لا تُحذف مع الطابق.', 'präposition', 'Erdgeschoss'],
+      ['der Aufzug', 'die Aufzüge', 'المصعد', 'Der Aufzug ist kaputt.', 'Der Aufzug ist gebrochen.', 'kaputt للآلة العاطلة؛ gebrochen للعظم المكسور، والعربية تقول «مكسور» للاثنين.', 'falser-freund', 'Aufzug'],
+      ['die Miete', 'die Mieten', 'الإيجار', 'Die Miete ist hoch.', 'Die Miete ist teuer.', 'الإيجار يُوصف بـ hoch؛ teuer للسلعة التي تُشترى، والعربية تستعمل «غالي» للحالتين.', 'falser-freund', 'Miete'],
+      ['die Nebenkosten', '—', 'التكاليف الإضافية', 'Die Nebenkosten zahlen wir extra.', 'Die Nebenkosten zahlen wir mit Geld extra.', 'الكلمة جمع بنفسها وتكفي؛ إضافة «مال» ترجمة زائدة من العربية.', 'lexik-kollokation', 'Nebenkosten'],
+      ['das Wohnzimmer', 'die Wohnzimmer', 'غرفة الجلوس', 'Das Wohnzimmer ist groß.', 'Das Wohnzimmer ist große.', 'بعد ist تبقى الصفة بلا نهاية؛ النهاية تأتي أمام الاسم وحده.', 'deklination', 'Wohnzimmer'],
+      ['das Schlafzimmer', 'die Schlafzimmer', 'غرفة النوم', 'Im Schlafzimmer steht ein Bett.', 'In Schlafzimmer steht ein Bett.', 'das Schlafzimmer محايد: im = in + dem.', 'präposition', 'Schlafzimmer'],
+      ['das Badezimmer', 'die Badezimmer', 'الحمّام', 'Das Badezimmer ist klein, aber hell.', 'Das Badezimmer ist klein, aber helle.', 'الصفة بعد aber تعود إلى ist فتبقى بلا نهاية.', 'deklination', 'Badezimmer'],
+      ['der Schreibtisch', 'die Schreibtische', 'مكتب الكتابة', 'Auf dem Schreibtisch liegt ein Heft.', 'Auf der Schreibtisch liegt ein Heft.', 'المركّب يأخذ جنس كلمته الأخيرة: der Tisch ← der Schreibtisch، وفي Dativ dem.', 'genus', 'Schreibtisch'],
+      ['das Regal', 'die Regale', 'الرف', 'Im Regal stehen viele Bücher.', 'In Regal stehen viele Bücher.', 'das Regal محايد: im Regal.', 'präposition', 'Regal'],
+      ['der Teppich', 'die Teppiche', 'السجادة', 'Der Teppich liegt vor dem Sofa.', 'Der Teppich liegt vor das Sofa.', 'الموضع الثابت Dativ: vor dem Sofa.', 'kasus', 'Teppich'],
+      ['die Heizung', 'die Heizungen', 'التدفئة', 'Die Heizung funktioniert nicht.', 'Die Heizung arbeitet nicht.', 'الآلة التي تعمل funktioniert؛ arbeiten للإنسان، والعربية تقول «لا تعمل» للاثنين.', 'falser-freund', 'Heizung'],
+      ['die Steckdose', 'die Steckdosen', 'المقبس', 'Die Steckdose ist hinter dem Regal.', 'Die Steckdose ist hinter das Regal.', 'الموضع الثابت Dativ: hinter dem Regal.', 'kasus', 'Steckdose'],
+      ['der Vorhang', 'die Vorhänge', 'الستارة', 'Der Vorhang hängt am Fenster.', 'Der Vorhang hängt an das Fenster.', 'الموضع الثابت am Fenster؛ an das Fenster للحركة.', 'kasus', 'Vorhang'],
+      ['die Treppe', 'die Treppen', 'السلّم', 'Die Treppe ist steil.', 'Die Treppe ist hoch.', 'للدرج الذي يصعب صعوده steil؛ hoch للارتفاع، والعربية تقول «عالي».', 'falser-freund', 'Treppe'],
+      ['die Adresse', 'die Adressen', 'العنوان', 'Wie ist deine Adresse?', 'Wie ist dein Adresse?', 'die Adresse مؤنث: deine، والعربية لا تُظهر المؤنث في «عنوانك».', 'genus', 'Adresse'],
+      ['der Quadratmeter', 'die Quadratmeter', 'المتر المربع', 'Die Wohnung hat 60 Quadratmeter.', 'Die Wohnung hat 60 Quadratmetern.', 'بعد العدد تبقى الوحدة بلا نون: 60 Quadratmeter.', 'deklination', 'Quadratmeter'],
+      ['es gibt', '—', 'يوجد', 'Es gibt einen Balkon.', 'Es gibt ein Balkon.', 'فاعل es gibt الحقيقي يأتي في النصب: einen Balkon.', 'kasus', 'gibt'],
+      ['die Möbel', '—', 'الأثاث', 'Die Möbel sind neu.', 'Die Möbel ist neu.', 'die Möbel جمع في ألمانية اليوم، والفعل يكون جمعًا.', 'konjugation', 'Möbel'],
+      ['gemütlich', 'gemütlicher · am gemütlichsten', 'مريح الجو', 'Das Wohnzimmer ist gemütlich.', 'Das Wohnzimmer ist bequem.', 'bequem للجسم والملابس، وgemütlich لجوّ المكان؛ العربية تستعمل «مريح» للاثنين.', 'falser-freund', 'gemütlich'],
+      ['ruhig', 'ruhiger · am ruhigsten', 'هادئ', 'Die Straße ist ruhig.', 'Die Straße ist still.', 'ruhig للهدوء المسموع؛ still للصمت التام، و«شارع هادئ» = ruhig.', 'falser-freund', 'ruhig'],
+      ['hell', 'heller · am hellsten', 'مضيء', 'Ein helles Zimmer ist teuer.', 'Ein hell Zimmer ist teuer.', 'بعد ein في المحايد تأخذ الصفة es: ein helles Zimmer.', 'deklination', 'helles'],
+      ['dunkel', 'dunkler · am dunkelsten', 'معتم', 'Das Bad ist dunkel.', 'Das Bad ist dunkle.', 'بعد ist تبقى الصفة بلا نهاية: dunkel.', 'deklination', 'dunkel'],
+      ['der Vermieter', 'die Vermieter', 'المالك المؤجّر', 'Der Vermieter kommt morgen.', 'Der Mieter kommt morgen.', 'der Vermieter يؤجّر وder Mieter يستأجر؛ العربية تستعمل «المالك» للحالتين فيلتبس الأمر.', 'falser-freund', 'Vermieter']
+    ],
+    tricks: [
+      { trick: 'الصفة بعد ein تشير إلى الاسم القادم', wie: 'ein helles Zimmer · ein neues Regal · eine kleine Küche', warum: 'العربية تضع الصفة عارية («غرفة مضيئة»)، فأول ما يُنسى نهاية الصفة بعد ein؛ هذه النهاية تشير إلى جنس الاسم الذي سيأتي.', anchor: 'Ein helles Zimmer ist teuer.' },
+      { trick: 'es gibt بوابة نصب', wie: 'Es gibt einen Balkon · Es gibt ein Regal · Es gibt keine Treppe', warum: '«يوجد» في العربية لا تُظهر إعرابًا؛ الألمانية تُظهره على المذكر: einen، فيُحفظ es gibt كبوابة نصب جاهزة.', anchor: 'Es gibt einen Balkon.' },
+      { trick: 'الطابق له اسم لا رقم', wie: 'im Erdgeschoss · im ersten Stock · im dritten Stock', warum: 'العربية تعدّ الطوابق من الصفر تقريبًا، والألمانية لها Erdgeschoss ثم أول طابق؛ والاسم الأول أكثرها استعمالًا في العناوين.', anchor: 'Ich wohne im Erdgeschoss.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l2 ---- */
+  /* Theme: at the doctor. The pain frame is taught as a skeleton (Dativ person
+     + tut/tun + body part + weh), because the Arabic learner builds it from
+     "my head hurts" and puts the body part first. */
+  'a1-u4-l2': {
+    items: [
+      ['der Arzt', 'die Ärzte', 'الطبيب', 'Ich gehe zum Arzt.', 'Ich gehe zu der Arzt.', 'zu + dem = zum؛ الفصل «zu der» غير مستعمل هنا.', 'präposition', 'Arzt'],
+      ['die Ärztin', 'die Ärztinnen', 'الطبيبة', 'Die Ärztin hat heute Sprechstunde.', 'Die Ärztin hat heute Termin.', 'Sprechstunde هي ساعة استقبال الطبيب؛ Termin موعد يحصل عليه المريض عنده.', 'falser-freund', 'Ärztin'],
+      ['die Praxis', 'die Praxen', 'العيادة', 'Die Praxis ist am Marktplatz.', 'Die Praxis ist auf dem Marktplatz.', 'العيادة تقع في ساحة: am Marktplatz؛ auf للمكان المفتوح.', 'präposition', 'Praxis'],
+      ['die Sprechstunde', 'die Sprechstunden', 'ساعة الاستقبال', 'Die Sprechstunde beginnt um neun.', 'Die Sprechstunde beginnt in neun.', 'للساعة المحددة um؛ in للمدة أو المستقبل.', 'präposition', 'Sprechstunde'],
+      ['der Schmerz', 'die Schmerzen', 'الألم', 'Ich habe starke Schmerzen.', 'Ich habe große Schmerzen.', 'الألم القوي stark؛ groß للحجم، والعربية تقول «ألم كبير».', 'falser-freund', 'Schmerzen'],
+      ['das Fieber', '—', 'الحمّى', 'Ich habe Fieber.', 'Ich habe die Fieber.', 'das Fieber لا يأخذ أداة في هذا التعبير الثابت، والعربية تعرّفه دائمًا.', 'register', 'Fieber'],
+      ['der Husten', '—', 'الكحّة', 'Ich habe Husten und Schnupfen.', 'Ich habe husten.', 'الاسم der Husten بحرف كبير؛ husten فعل، والخلط يقلب الجملة.', 'orthographie', 'Husten'],
+      ['die Erkältung', 'die Erkältungen', 'الزكام', 'Ich habe eine Erkältung.', 'Ich habe ein Erkältung.', 'die Erkältung مؤنث: eine.', 'genus', 'Erkältung'],
+      ['der Hals', 'die Hälse', 'الحلق · الرقبة', 'Mein Hals tut weh.', 'Mein Hals ist Schmerz.', 'الألم يُقال بـ tut weh؛ Schmerz اسم لا يصلح مع ist.', 'lexik-kollokation', 'Hals'],
+      ['der Kopf', 'die Köpfe', 'الرأس', 'Mir tut der Kopf weh.', 'Ich habe Schmerz im Kopf.', 'التعبير الألماني يبدأ بصاحب الألم في Dativ ثم tut + العضو + weh، لا بـ haben.', 'lexik-kollokation', 'Kopf'],
+      ['der Bauch', 'die Bäuche', 'البطن', 'Mir tut der Bauch weh.', 'Mein Bauch ist weh.', 'wehtun فعل منفصل: tut … weh، ولا تُستعمل weh وحدها.', 'konjugation', 'Bauch'],
+      ['der Rücken', 'die Rücken', 'الظهر', 'Mir tut der Rücken weh.', 'Ich habe weh in dem Rücken.', 'الألم من tut weh مع صاحبه في Dativ، لا من haben وحرف جر.', 'lexik-kollokation', 'Rücken'],
+      ['der Arm', 'die Arme', 'الذراع', 'Ich kann den Arm nicht bewegen.', 'Ich kann der Arm nicht bewegen.', 'المفعول المذكر في النصب: den Arm.', 'kasus', 'Arm'],
+      ['das Bein', 'die Beine', 'الساق', 'Mir tun die Beine weh.', 'Mir tut die Beine weh.', 'الفاعل جمع فيكون الفعل tun لا tut.', 'konjugation', 'Beine'],
+      ['die Nase', 'die Nasen', 'الأنف', 'Die Nase ist verstopft.', 'Die Nase ist geschlossen.', 'verstopft للأنف المسدود؛ geschlossen للباب المغلق.', 'falser-freund', 'Nase'],
+      ['krank', 'kränker · am kränksten', 'مريض', 'Ich bin krank.', 'Ich habe krank.', 'krank صفة مع sein؛ haben للملكية.', 'lexik-kollokation', 'krank'],
+      ['gesund', 'gesünder · am gesündesten', 'معافى', 'Bald bin ich wieder gesund.', 'Bald habe ich wieder gesund.', 'الصفة مع sein لا haben.', 'lexik-kollokation', 'gesund'],
+      ['wehtun', 'tut weh · tat weh · hat wehgetan', 'يؤلم', 'Der Kopf tut weh.', 'Der Kopf tut Schmerz.', 'wehtun مركّب من tut + weh، ولا يُستبدل weh باسم.', 'konjugation', 'weh'],
+      ['die Tablette', 'die Tabletten', 'القرص الدوائي', 'Nehmen Sie zwei Tabletten täglich.', 'Essen Sie zwei Tabletten täglich.', 'الدواء يُؤخذ nehmen؛ essen للطعام، والعربية تقول «يأخذ» للدواء و«يأكل» للطعام.', 'falser-freund', 'Tabletten'],
+      ['das Rezept', 'die Rezepte', 'الوصفة الطبية', 'Der Arzt schreibt ein Rezept.', 'Der Arzt schreibt ein Rezept für Medikamente kaufen.', 'das Rezept تحمل الأمر بالدواء وحدها؛ جملة الغرض بعدها زائدة من العربية.', 'lexik-kollokation', 'Rezept'],
+      ['die Medizin', 'die Medizinen', 'الدواء', 'Die Medizin hilft schnell.', 'Die Medizin arbeitet schnell.', 'الدواء hilft؛ arbeiten للإنسان.', 'falser-freund', 'Medizin'],
+      ['sich ausruhen', 'ruht sich aus · ruhte sich aus · hat sich ausgeruht', 'يستريح', 'Du musst dich ausruhen.', 'Du musst ausruhen dich.', 'بعد müssen يبقى المصدر في الآخر، والضمير الانعكاسي يلتصق به فلا يتقدّم.', 'wortstellung', 'ausruhen'],
+      ['das Krankenhaus', 'die Krankenhäuser', 'المستشفى', 'Er liegt im Krankenhaus.', 'Er liegt in Krankenhaus.', 'das Krankenhaus محايد: im = in + dem.', 'präposition', 'Krankenhaus'],
+      ['die Grippe', 'die Grippen', 'الإنفلونزا', 'Sie hat die Grippe.', 'Sie hat Grippe mit Kälte.', 'die Grippe وحدها تكفي؛ «زكام بارد» ترجمة حرفية.', 'falser-freund', 'Grippe']
+    ],
+    tricks: [
+      { trick: 'الألم يبدأ بصاحبه لا بالعضو', wie: 'Mir tut der Kopf weh · Mir tut der Bauch weh · Mir tut der Rücken weh', warum: 'العربية تبدأ بالعضو («رأسي يؤلمني»)؛ الألم في الألمانية يبدأ بمن يشعر به في Dativ، ثم العضو فاعلًا، ثم weh في الآخر.', anchor: 'Mir tut der Kopf weh.' },
+      { trick: 'الجمع يحوّل tut إلى tun', wie: 'Mir tut der Kopf weh · Mir tun die Beine weh', warum: 'الفعل يتبع العضو لا الشخص: عضو مفرد ← tut، أعضاء جمع ← tun. العربية لا تُظهر هذا لأن الفعل واحد فيها.', anchor: 'Mir tun die Beine weh.' },
+      { trick: 'krank وgesund صفتان مع sein', wie: 'Ich bin krank · Ich bin wieder gesund', warum: 'العربية تقول «عندي مرض»، فتُنتج Ich habe krank؛ الصفة الألمانية تحتاج sein، وhaben لا تعمل مع حالة الجسد.', anchor: 'Ich bin krank.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l3 ---- */
+  /* Theme: directions. The form is the Sie-imperative (verb first, Sie after),
+     and Dativ after bis zu / gegenüber, because those are the two places an
+     Arabic learner's sentence breaks while giving a route. */
+  'a1-u4-l3': {
+    items: [
+      ['geradeaus', '—', 'إلى الأمام مباشرة', 'Gehen Sie geradeaus.', 'Gehen Sie gerade.', 'الطريق المستقيم geradeaus في كلمة واحدة؛ gerade تعني «حالًا» أو «تحديدًا».', 'falser-freund', 'geradeaus'],
+      ['links', '—', 'يسارًا', 'Dann links.', 'Dann die linke Seite.', 'الاتجاه ظرف: links؛ linke Seite هي الجهة اليسرى نفسها لا الاتجاه.', 'lexik-kollokation', 'links'],
+      ['rechts', '—', 'يمينًا', 'Biegen Sie rechts ab.', 'Biegen Sie nach rechts Seite ab.', 'rechts وحدها ظرف اتجاه ولا تحتاج Seite.', 'lexik-kollokation', 'rechts'],
+      ['abbiegen', 'biegt ab · bog ab · ist abgebogen', 'ينعطف', 'Sie müssen an der Ampel abbiegen.', 'Sie müssen an der Ampel biegen.', 'abbiegen فعل منفصل؛ حذف البادئة يترك biegen «يثني» بدل «ينعطف».', 'konjugation', 'abbiegen'],
+      ['die Straße', 'die Straßen', 'الشارع', 'Die Straße ist lang.', 'Die Straße ist lange.', 'بعد ist تبقى الصفة بلا نهاية.', 'deklination', 'Straße'],
+      ['die Ampel', 'die Ampeln', 'إشارة المرور', 'Bis zur Ampel, dann rechts.', 'Bis die Ampel, dann rechts.', 'bis تحتاج حرف جر معها: bis zur Ampel؛ «حتى» في العربية تتصل بالاسم مباشرة.', 'präposition', 'Ampel'],
+      ['die Kreuzung', 'die Kreuzungen', 'التقاطع', 'An der Kreuzung gehen Sie links.', 'In der Kreuzung gehen Sie links.', 'الموضع عند التقاطع an؛ in تعني داخله.', 'präposition', 'Kreuzung'],
+      ['die Ecke', 'die Ecken', 'الناصية', 'Die Bank ist an der Ecke.', 'Die Bank ist in der Ecke.', 'ناصية الشارع an der Ecke؛ in der Ecke داخل زاوية غرفة.', 'falser-freund', 'Ecke'],
+      ['gegenüber', '—', 'مقابل', 'Die Post ist dem Kino gegenüber.', 'Die Post ist gegenüber von das Kino.', 'gegenüber يجرّ Dativ ويمكن أن يأتي بعد الاسم: dem Kino gegenüber.', 'kasus', 'gegenüber'],
+      ['bis', '—', 'حتى', 'Gehen Sie bis zum Platz.', 'Gehen Sie bis der Platz.', 'bis + zu + Dativ: bis zum Platz.', 'präposition', 'bis'],
+      ['die Haltestelle', 'die Haltestellen', 'الموقف', 'Die Haltestelle ist vorne.', 'Die Haltestelle ist vorne Platz.', 'الموقف اسم واحد ولا يحتاج كلمة «مكان» بعده.', 'lexik-kollokation', 'Haltestelle'],
+      ['die Brücke', 'die Brücken', 'الجسر', 'Über die Brücke und dann rechts.', 'Auf der Brücke und dann rechts.', 'العبور über + النصب؛ auf للوقوف فوقها.', 'präposition', 'Brücke'],
+      ['der Weg', 'die Wege', 'الطريق · المسار', 'Der Weg ist kurz.', 'Der Weg ist klein.', 'الطريق القصير kurz؛ klein للحجم الصغير.', 'falser-freund', 'Weg'],
+      ['zu Fuß', '—', 'على القدمين', 'Ich gehe zu Fuß.', 'Ich gehe mit Fuß.', 'التعبير الثابت zu Fuß لا يتغيّر ولا يقبل mit.', 'lexik-kollokation', 'Fuß'],
+      ['die Mitte', 'die Mitten', 'الوسط', 'In der Mitte ist ein Brunnen.', 'In die Mitte ist ein Brunnen.', 'الموضع الثابت Dativ: in der Mitte.', 'kasus', 'Mitte'],
+      ['sich verlaufen', 'verläuft sich · verlief sich · hat sich verlaufen', 'يضلّ الطريق', 'Ich habe mich verlaufen.', 'Ich habe verlaufen.', 'verlaufen تحتاج الضمير الانعكاسي mich في هذا المعنى.', 'kasus', 'verlaufen'],
+      ['weit', 'weiter · am weitesten', 'بعيد', 'Ist es weit von hier?', 'Ist es fern von hier?', 'في الكلام اليومي weit للمسافة؛ fern تبقى للنصوص الرسمية والشعر.', 'register', 'weit'],
+      ['nah', 'näher · am nächsten', 'قريب', 'Der Bahnhof ist ganz nah.', 'Der Bahnhof ist ganz kurz.', 'nah للمسافة؛ kurz للزمن والطول.', 'falser-freund', 'nah'],
+      ['der Eingang', 'die Eingänge', 'المدخل', 'Der Eingang ist rechts.', 'Der Eingang ist rechte Seite.', 'الموضع يُقال rechts بلا Seite.', 'lexik-kollokation', 'Eingang'],
+      ['der Ausgang', 'die Ausgänge', 'المخرج', 'Nehmen Sie den Ausgang links.', 'Nehmen Sie der Ausgang links.', 'المفعول المذكر: den Ausgang.', 'kasus', 'Ausgang'],
+      ['erste', 'erste · zweite · dritte', 'الأول', 'Nehmen Sie die erste Straße.', 'Nehmen Sie die ein Straße.', 'الترتيب يُبنى بعد الأداة: die erste Straße؛ ein ليست ترتيبًا.', 'deklination', 'erste'],
+      ['der Meter', 'die Meter', 'المتر', 'Es sind noch 200 Meter.', 'Es sind noch 200 Metern.', 'بعد العدد تبقى الوحدة بلا نون.', 'deklination', 'Meter'],
+      ['der Verkehr', '—', 'المرور', 'Der Verkehr ist stark.', 'Der Verkehr ist groß.', 'المرور الكثيف stark؛ groß للحجم.', 'falser-freund', 'Verkehr'],
+      ['die Autobahn', 'die Autobahnen', 'الطريق السريع', 'Wir fahren auf die Autobahn.', 'Die Autobahn fährt schnell.', 'الطريق لا يتحرك بنفسه؛ نحن ندخله بـ auf + النصب.', 'lexik-kollokation', 'Autobahn']
+    ],
+    tricks: [
+      { trick: 'الأمر للغريب يأخذ Sie بعد الفعل', wie: 'Gehen Sie geradeaus · Biegen Sie links ab · Nehmen Sie die erste Straße', warum: 'العربية تُخاطب الغريب بصيغة الجماعة أو بالمصدر؛ الألمانية تُبقي Sie، والفعل يبدأ الجملة في الأمر فتُقرأ كتعليمة لا كخبر.', anchor: 'Gehen Sie geradeaus.' },
+      { trick: 'bis يحتاج zu في الطريق', wie: 'bis zum Bahnhof · bis zur Ampel · bis zur Ecke', warum: '«حتى» في العربية تلتصق بالاسم مباشرة، فتُنتج Bis die Ampel؛ الألمانية تُمرّر معنى الانتهاء عبر zu + Dativ.', anchor: 'Bis zur Ampel, dann rechts.' },
+      { trick: 'gegenüber يجوز بعد الاسم', wie: 'Die Post ist dem Kino gegenüber', warum: 'العربية تضع «مقابل» قبل الاسم دائمًا؛ الألمانية تقبل الاثنين، والصيغة الشائعة في الشرح تضع gegenüber بعد الاسم فيُسمع المعنى من آخره.', anchor: 'Die Post ist dem Kino gegenüber.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l4 ---- */
+  /* Theme: a short message. The register is the grammar here: the greeting and
+     the closing must agree with du or Sie, and getting that wrong is the
+     error that costs most in A1 Schreiben. */
+  'a1-u4-l4': {
+    items: [
+      ['die Nachricht', 'die Nachrichten', 'الرسالة', 'Ich schreibe eine Nachricht.', 'Ich schreibe ein Nachricht.', 'die Nachricht مؤنث: eine.', 'genus', 'Nachricht'],
+      ['die Anrede', 'die Anreden', 'التحية الافتتاحية', 'Die Anrede steht am Anfang.', 'Die Anrede steht im Ende.', '«في النهاية» am Ende لا im Ende.', 'präposition', 'Anrede'],
+      ['der Gruß', 'die Grüße', 'التحية الختامية', 'Viele Grüße aus Sousse.', 'Vielen Grüße aus Sousse.', 'الختام الثابت Viele Grüße بلا نون.', 'deklination', 'Grüße'],
+      ['Liebe Anna,', '—', 'عزيزتي آنا،', 'Liebe Anna, wie geht es dir?', 'Sehr geehrte Anna, wie geht es dir?', 'الصديقة تُنادى بـ Liebe؛ Sehr geehrte للرسمي وحده.', 'register', 'Liebe'],
+      ['Sehr geehrte Frau Weber,', '—', 'حضرة السيدة فيبر،', 'Sehr geehrte Frau Weber, ich schreibe Ihnen.', 'Liebe Frau Weber, ich schreibe Ihnen.', 'المقام الرسمي يأخذ Sehr geehrte، ولا يتحوّل إلى Liebe إلا بعلاقة شخصية.', 'register', 'geehrte'],
+      ['der Betreff', 'die Betreffe', 'موضوع الرسالة', 'Der Betreff steht oben.', 'Der Titel steht oben.', 'Betreff لسطر الموضوع؛ Titel لعنوان كتاب أو فيلم.', 'falser-freund', 'Betreff'],
+      ['die Unterschrift', 'die Unterschriften', 'التوقيع', 'Der Brief braucht eine Unterschrift.', 'Der Brief braucht ein Unterschrift.', 'die Unterschrift مؤنث: eine.', 'genus', 'Unterschrift'],
+      ['antworten', 'antwortet · antwortete · hat geantwortet', 'يجيب', 'Ich antworte dir morgen.', 'Ich antworte dich morgen.', 'antworten تطلب Dativ: dir.', 'kasus', 'antworte'],
+      ['warten auf', 'wartet auf · wartete auf · hat gewartet', 'ينتظر', 'Ich warte auf deine Antwort.', 'Ich warte für deine Antwort.', 'warten على شيء بـ auf؛ für للسبب، فلا تُنقل «على» حرفيًا.', 'präposition', 'warte'],
+      ['hoffen', 'hofft · hoffte · hat gehofft', 'يأمل', 'Ich hoffe, du kommst.', 'Ich hoffe dass du kommst ohne Komma.', 'الجملة بعد hoffe تُفصل بفاصلة، والفعل يبقى في موضعه.', 'wortstellung', 'hoffe'],
+      ['zum Glück', '—', 'لحسن الحظ', 'Zum Glück ist es nicht weit.', 'Zu das Glück ist es nicht weit.', 'التعبير الثابت zum Glück = zu + dem.', 'präposition', 'Glück'],
+      ['schade', '—', 'يا للأسف', 'Schade, dass du nicht kommst.', 'Es ist schade für du nicht kommst.', 'schade تعبير ثابت يتبعه dass، ولا يحتاج für.', 'lexik-kollokation', 'schade'],
+      ['hoffentlich', '—', 'كما آمل', 'Hoffentlich geht es dir besser.', 'Ich hoffe hoffentlich geht es dir besser.', 'hoffentlich تحمل الأمل وحدها؛ جمعها مع hoffe تكرار.', 'register', 'hoffentlich'],
+      ['bis bald', '—', 'إلى لقاء قريب', 'Bis bald und viele Grüße.', 'Bis später bald.', 'التعبير إما bis bald أو bis später، ولا يُدمجان.', 'lexik-kollokation', 'bald'],
+      ['alles Gute', '—', 'كل التمنيات الطيبة', 'Alles Gute zum Geburtstag!', 'Alle gute zum Geburtstag!', 'التعبير الثابت alles Gute بنهاية e.', 'deklination', 'Gute'],
+      ['Gute Besserung', '—', 'شفاءً عاجلًا', 'Gute Besserung, Anna!', 'Guten Besserung, Anna!', 'die Besserung مؤنث داخليًا فيأتي الوصف Gute بلا نون.', 'deklination', 'Gute'],
+      ['Herzlichen Glückwunsch', '—', 'تهانينا القلبية', 'Herzlichen Glückwunsch zum Examen!', 'Herzliche Glückwunsch zum Examen!', 'التعبير الثابت في النصب: Herzlichen Glückwunsch.', 'kasus', 'Herzlichen'],
+      ['die Einladung', 'die Einladungen', 'الدعوة', 'Danke für die Einladung.', 'Danke für den Einladung.', 'die Einladung مؤنث: die، وفي النصب تبقى die.', 'kasus', 'Einladung'],
+      ['danken', 'dankt · dankte · hat gedankt', 'يشكر', 'Ich danke dir für die Hilfe.', 'Ich danke dich für die Hilfe.', 'danken تطلب Dativ: dir؛ «شكر» في العربية تنصب.', 'kasus', 'danke'],
+      ['die Bitte', 'die Bitten', 'الطلب · الرجاء', 'Eine Bitte: Ruf mich an.', 'Ein Bitte: Ruf mich an.', 'die Bitte مؤنث: eine.', 'genus', 'Bitte'],
+      ['der Brief', 'die Briefe', 'الرسالة الورقية', 'Ich schreibe einen Brief.', 'Ich schreibe ein Brief.', 'der Brief مذكر، وفي النصب einen.', 'kasus', 'Brief'],
+      ['die E-Mail', 'die E-Mails', 'البريد الإلكتروني', 'Ich schreibe eine E-Mail.', 'Ich schreibe ein E-Mail.', 'die E-Mail مؤنث ولو كانت دخيلة.', 'genus', 'E-Mail'],
+      ['kurz', 'kürzer · am kürzesten', 'قصير', 'Schreib mir kurz.', 'Schreib mir klein.', 'kurz للطول والزمن؛ klein للحجم.', 'falser-freund', 'kurz'],
+      ['die Zeile', 'die Zeilen', 'السطر', 'Schreibe drei Zeilen.', 'Schreibe drei Linien.', 'die Zeile لسطر الكتابة؛ die Linie لخط الرسم.', 'falser-freund', 'Zeilen']
+    ],
+    tricks: [
+      { trick: 'التحية تتبع القرب', wie: 'Liebe Anna · Sehr geehrte Frau Weber', warum: 'العربية تستعمل «عزيزي» في الرسمي أيضًا؛ الألمانية تفصل: Liebe للأصدقاء وSehr geehrte للجهات، والخطأ في هذا يكلّف في ورقة الكتابة.', anchor: 'Liebe Anna, wie geht es dir?' },
+      { trick: 'الضمير يتبع التحية لا العكس', wie: 'Liebe Anna, kannst du … · Sehr geehrte Frau Weber, können Sie …', warum: 'من يكتب du يستمر بـ du في الطلب والختام، ومن يكتب Sie يستمر بـ Sie؛ التنقّل بينهما داخل رسالة واحدة خطأ مقام لا خطأ نحوي.', anchor: 'Kannst du morgen kommen?' },
+      { trick: 'للختام درجتان لا واحدة', wie: 'Viele Grüße · Mit freundlichen Grüßen', warum: 'العربية تختم بـ «مع تحياتي» في كل المقامات؛ الألمانية تحتفظ بالصيغة الرسمية كاملة لمن لا تعرفه، والأخف للأصدقاء.', anchor: 'Viele Grüße, Sara.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l5 ---- */
+  /* Theme: repairing four A1 errors, then the tools for repairing them. The
+     lesson is not a summary: each item is a pair (wrong form / mechanism), so
+     the learner leaves with a checklist rather than with a feeling. */
+  'a1-u4-l5': {
+    items: [
+      ['der Fehler', 'die Fehler', 'الخطأ', 'Dieser Fehler kommt oft.', 'Dieser Fehler kommt viel.', 'الخطأ المتكرر kommt oft؛ viel للكمية.', 'falser-freund', 'Fehler'],
+      ['den', '—', 'أداة النصب للمذكر', 'Ich sehe den Mann.', 'Ich sehe der Mann.', 'المفعول المذكر في النصب den؛ der للفاعل وحده.', 'kasus', 'den'],
+      ['alt', 'älter · am ältesten', 'عمر', 'Ich bin zwanzig Jahre alt.', 'Ich habe zwanzig Jahre alt.', 'العمر مع sein؛ وفي الكلام السريع يكفي Ich bin zwanzig.', 'lexik-kollokation', 'alt'],
+      ['dann', '—', 'ثم', 'Dann lerne ich.', 'Dann ich lerne.', 'بعد dann يبقى الفعل في الموضع الثاني وينتقل الفاعل بعده.', 'wortstellung', 'dann'],
+      ['weil', '—', 'لأنّ', 'Ich bleibe zu Hause, weil ich krank bin.', 'Ich bleibe zu Hause, weil ich bin krank.', 'weil ترسل الفعل المصرّف إلى آخر الجملة الفرعية.', 'wortstellung', 'weil'],
+      ['denn', '—', 'لأنّ (والفعل ثانيًا)', 'Ich bleibe zu Hause, denn ich bin krank.', 'Ich bleibe zu Hause, denn ich krank bin.', 'denn لا تغيّر الترتيب: الفعل يبقى ثانيًا بعدها.', 'wortstellung', 'denn'],
+      ['aber', '—', 'لكن', 'Ich bin müde, aber ich lerne.', 'Ich bin müde, aber lerne ich.', 'aber حرف ربط لا يزحزح الفعل؛ الجملة بعده خبرية عادية.', 'wortstellung', 'aber'],
+      ['oder', '—', 'أو', 'Kommst du mit oder bleibst du hier?', 'Kommst du mit oder du bleibst hier?', 'في السؤال الثاني بعد oder يبقى ترتيب السؤال: الفعل أولًا.', 'wortstellung', 'oder'],
+      ['wenn', '—', 'إذا · عندما', 'Wenn es regnet, bleibe ich zu Hause.', 'Wenn es regnet, ich bleibe zu Hause.', 'الشرط يبدأ بـ wenn والفعل في آخره، وبعد الفاصلة يبدأ الجواب بالفعل.', 'wortstellung', 'wenn'],
+      ['dass', '—', 'أنّ', 'Ich glaube, dass du recht hast.', 'Ich glaube, dass du hast recht.', 'dass ترسل الفعل المصرّف إلى الآخر.', 'wortstellung', 'dass'],
+      ['mit dem Bus', '—', 'بالحافلة', 'Ich fahre mit dem Bus.', 'Ich fahre mit der Bus.', 'der Bus مذكر، وفي Dativ بعد mit: dem Bus.', 'kasus', 'Bus'],
+      ['der Satz', 'die Sätze', 'الجملة', 'Der Satz ist richtig.', 'Die Satz ist richtig.', 'der Satz مذكر: der.', 'genus', 'Satz'],
+      ['besser', 'gut · besser · am besten', 'أفضل', 'Heute geht es mir besser.', 'Heute geht es mir mehr gut.', 'المقارنة تُبنى على الصفة نفسها؛ mehr لا تتقدّم على الصفة.', 'deklination', 'besser'],
+      ['am besten', '—', 'الأفضل', 'Am besten lernst du morgens.', 'Am besten du lernst morgens.', 'بعد am besten يبقى الفعل ثانيًا.', 'wortstellung', 'besten'],
+      ['mehr', 'viel · mehr · am meisten', 'أكثر', 'Ich brauche mehr Zeit.', 'Ich brauche mehr Zeiten.', 'mehr لا تجمع الاسم بعدها: mehr Zeit.', 'deklination', 'mehr'],
+      ['richtig', '—', 'صحيح', 'Die Antwort ist richtig.', 'Die Antwort ist wahr.', 'richtig للجواب الصحيح؛ wahr للحقيقة الصادقة.', 'falser-freund', 'richtig'],
+      ['falsch', '—', 'خطأ', 'Der Satz ist falsch.', 'Der Satz ist falsche.', 'بعد ist تبقى الصفة بلا نهاية.', 'deklination', 'falsch'],
+      ['korrigieren', 'korrigiert · korrigierte · hat korrigiert', 'يصحّح', 'Ich korrigiere meinen Satz.', 'Ich korrigiere mein Satz.', 'المفعول المذكر في النصب: meinen Satz.', 'kasus', 'korrigiere'],
+      ['die Regel', 'die Regeln', 'القاعدة', 'Diese Regel gilt immer.', 'Diese Regel arbeitet immer.', 'القاعدة «تسري» gilt؛ arbeiten للإنسان.', 'falser-freund', 'Regel'],
+      ['die Ausnahme', 'die Ausnahmen', 'الاستثناء', 'Das ist eine Ausnahme.', 'Das ist ein Ausnahme.', 'die Ausnahme مؤنث: eine.', 'genus', 'Ausnahme'],
+      ['wiederholen', 'wiederholt · wiederholte · hat wiederholt', 'يكرّر', 'Ich wiederhole die Regel.', 'Ich wiederhole mich die Regel.', 'wiederholen مع مفعول لا تحتاج mich؛ mich تجعلها «أعيد كلامي».', 'kasus', 'wiederhole'],
+      ['üben', 'übt · übte · hat geübt', 'يتدرّب', 'Ich übe jeden Tag.', 'Ich übe jeden Tag mich.', 'üben لا تحتاج ضميرًا؛ «أتدرّب» في العربية فعل لازم.', 'kasus', 'übe'],
+      ['das Beispiel', 'die Beispiele', 'المثال', 'Lies das Beispiel zuerst.', 'Lies der Beispiel zuerst.', 'das Beispiel محايد، وفي النصب يبقى das.', 'kasus', 'Beispiel'],
+      ['sich merken', 'merkt sich · merkte sich · hat sich gemerkt', 'يحفظ في الذهن', 'Ich merke mir die Regel.', 'Ich merke die Regel mich.', 'الضمير هنا في Dativ (mir) ويأتي بعد الفعل مباشرة.', 'kasus', 'merke']
+    ],
+    tricks: [
+      { trick: 'بعد weil وdass يسافر الفعل إلى الآخر', wie: 'weil ich krank bin · dass du recht hast', warum: 'العربية تبدأ الجملة الفرعية بالفعل أو بالاسم ولا تُظهر الفرق؛ الألمانية تعرف الجملة الفرعية بموضع فعلها الأخير، فالموضع هو العلامة.', anchor: 'Ich bleibe zu Hause, weil ich krank bin.' },
+      { trick: 'denn لا تزحزح شيئًا', wie: 'denn ich bin krank · weil ich krank bin', warum: 'المعنى واحد والترتيب مختلف؛ من يحفظ weil بموضعها يستطيع أن يقرأ denn من موضع فعلها الثاني.', anchor: 'Ich bleibe zu Hause, denn ich bin krank.' },
+      { trick: 'المقارنة تبدأ من الصفة', wie: 'gut · besser · am besten', warum: 'العربية تقول «أكثر جودة» فتنتج mehr gut؛ الألمانية تُبنى المقارنة من الصفة نفسها، وأشهرها تُحفظ ككلمة واحدة.', anchor: 'Heute geht es mir besser.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l6 ---- */
+  /* Theme: the shape of A1 and its strategy. The items are the words of the
+     exam paper itself, and the three tricks are the three facts that change
+     how the learner uses time in the room. */
+  'a1-u4-l6': {
+    items: [
+      ['der Teil', 'die Teile', 'القسم', 'Jeder Teil hat seine eigene Zeit.', 'Jeder Teil hat seine eigenes Zeit.', 'der Teil مذكر: seine eigene Zeit.', 'deklination', 'Teil'],
+      ['das Hören', '—', 'قسم الاستماع', 'Das Hören steht am Anfang.', 'Der Hören steht am Anfang.', 'das Hören محايد: das.', 'genus', 'Hören'],
+      ['das Lesen', '—', 'قسم القراءة', 'Beim Lesen liest du zuerst die Aufgaben.', 'Im Lesen liest du zuerst die Aufgaben.', 'المهارة التي تُمارَس beim Lesen؛ im للداخل.', 'präposition', 'Lesen'],
+      ['das Schreiben', '—', 'قسم الكتابة', 'Das Schreiben dauert 20 Minuten.', 'Das Schreiben hat 20 Minuten.', 'المدة تُقال dauern؛ haben للامتلاك.', 'lexik-kollokation', 'Schreiben'],
+      ['das Sprechen', '—', 'قسم المحادثة', 'Im Sprechen stellst du dich vor.', 'Im Sprechen du stellst dich vor.', 'بعد الظرف يبقى الفعل ثانيًا.', 'wortstellung', 'Sprechen'],
+      ['die Anweisung', 'die Anweisungen', 'التعليمة', 'Lies die Anweisung genau.', 'Lies die Anweisung gut.', 'genau للتفصيل الدقيق؛ gut للحُسن.', 'falser-freund', 'Anweisung'],
+      ['die Punktzahl', 'die Punktzahlen', 'عدد النقاط', 'Die Punktzahl steht am Ende.', 'Die Punktzahl steht im Ende.', '«في النهاية» am Ende لا im Ende.', 'präposition', 'Punktzahl'],
+      ['bestehen', 'besteht · bestand · hat bestanden', 'ينجح', 'Ich bestehe die Prüfung.', 'Ich bestehe in der Prüfung.', 'bestehen تأخذ المفعول مباشرة بلا حرف جر.', 'präposition', 'bestehe'],
+      ['die Note', 'die Noten', 'الدرجة', 'Meine Note ist zwei.', 'Mein Note ist zwei.', 'die Note مؤنث: meine.', 'genus', 'Note'],
+      ['ankreuzen', 'kreuzt an · kreuzte an · hat angekreuzt', 'يؤشّر في المربع', 'Du musst die richtige Antwort ankreuzen.', 'Du musst die richtige Antwort kreuzt an.', 'بعد müssen يبقى المصدر، والفعل المنفصل يبقى موصولًا في الآخر.', 'konjugation', 'ankreuzen'],
+      ['ergänzen', 'ergänzt · ergänzte · hat ergänzt', 'يُكمل الفراغ', 'Ergänze die Lücke.', 'Mache die Lücke.', '«أكمل الفراغ» ergänzen؛ machen عامة لا تحمل معنى الإكمال.', 'lexik-kollokation', 'Ergänze'],
+      ['zuordnen', 'ordnet zu · ordnete zu · hat zugeordnet', 'يُطابق بين شيئين', 'Du musst die Sätze den Bildern zuordnen.', 'Du musst die Sätze den Bildern ordnen.', 'ordnen «يرتّب»؛ zuordnen «يطابق»، وحذف zu يغيّر معنى المهمة.', 'konjugation', 'zuordnen'],
+      ['die Lücke', 'die Lücken', 'الفراغ', 'In jeder Lücke steht ein Wort.', 'In jeder Lücke steht ein Wörter.', 'بعد ein يبقى الاسم مفردًا: ein Wort.', 'deklination', 'Lücke'],
+      ['der Text', 'die Texte', 'النص', 'Lies den Text zweimal.', 'Lies der Text zweimal.', 'المفعول المذكر في النصب: den Text.', 'kasus', 'Text'],
+      ['das Formular', 'die Formulare', 'الاستمارة', 'Das Formular ist kurz.', 'Der Formular ist kurz.', 'das Formular محايد: das.', 'genus', 'Formular'],
+      ['ausfüllen', 'füllt aus · füllte aus · hat ausgefüllt', 'يملأ الاستمارة', 'Du musst das Formular ausfüllen.', 'Du musst das Formular füllst aus.', 'بعد müssen يبقى المصدر في الآخر مع بادئته.', 'konjugation', 'ausfüllen'],
+      ['die Zahl', 'die Zahlen', 'الرقم', 'Schreibe die Zahl in Worten.', 'Schreibe die Nummer in Worten.', 'die Zahl رقم حسابي؛ die Nummer معرّف أو ترتيب.', 'falser-freund', 'Zahl'],
+      ['buchstabieren', 'buchstabiert · buchstabierte · hat buchstabiert', 'يتهجّى', 'Sie müssen Ihren Namen buchstabieren.', 'Sie müssen Ihren Namen schreiben Buchstaben.', 'التهجئة فعل واحد buchstabieren، و«كتابة الحروف» ترجمة حرفية.', 'lexik-kollokation', 'buchstabieren'],
+      ['die Aussprache', '—', 'النطق', 'Achte auf die Aussprache.', 'Höre die Aussprache an.', '«انتبه إلى» achten auf + النصب؛ hören an ليست فعلًا قائمًا هنا.', 'präposition', 'Aussprache'],
+      ['laut', 'lauter · am lautesten', 'بصوت عالٍ', 'Lies bitte laut.', 'Lies bitte hoch.', 'laut للصوت؛ hoch للارتفاع.', 'falser-freund', 'laut'],
+      ['die Reihenfolge', 'die Reihenfolgen', 'الترتيب المتتالي', 'Die Reihenfolge ist wichtig.', 'Die Reihe ist wichtig.', 'Reihenfolge ترتيب متتالٍ؛ Reihe صفّ أو سلسلة.', 'falser-freund', 'Reihenfolge'],
+      ['der Bleistift', 'die Bleistifte', 'قلم الرصاص', 'Nimm einen Bleistift mit.', 'Nimm ein Bleistift mit.', 'der Bleistift مذكر، وفي النصب einen.', 'kasus', 'Bleistift'],
+      ['das Wörterbuch', 'die Wörterbücher', 'القاموس', 'Das Wörterbuch hilft beim Lesen.', 'Die Wörterbuch hilft beim Lesen.', 'das Wörterbuch محايد: das.', 'genus', 'Wörterbuch'],
+      ['der Kurs', 'die Kurse', 'الدورة', 'Der Kurs endet im Juni.', 'Der Kurs endet in Juni.', 'الشهر يأخذ im: im Juni.', 'präposition', 'Kurs']
+    ],
+    tricks: [
+      { trick: 'لا تعويض بين الأقسام', wie: 'Ein starkes Schreiben rettet das Hören nicht', warum: 'العربية تنقل خبرة «المجموع يجبر الكسر»؛ ورقة A1 تحتفظ لكل قسم بدرجته وقاعدة النجاح فيه، فيُوزَّع الجهد بدل المراهنة على قسم واحد.', anchor: 'Ein Teil rettet den anderen nicht.' },
+      { trick: 'الاستماع يُسمع بعدد محدّد', wie: 'Hören hat seine eigene Zeit · nicht dreimal immer', warum: 'من يفترض إعادة غير موجودة يؤجّل الفهم إلى المرة الثانية، ثم لا يجدها؛ معرفة النظام قبل الدخول توفّر القسم كله.', anchor: 'Hören hat seine eigene Zeit.' },
+      { trick: 'التهجئة تُمتحن داخل التحدث', wie: 'Buchstabieren gehört zum Sprechen', warum: 'كثيرون يعدّون التهجئة زينة؛ هي بند يُنطق فيه الاسم حرفًا حرفًا، وتُدرَّب مع الكلام لا بعده.', anchor: 'Buchstabieren gehört zum Sprechen.' }
+    ]
   }
 };

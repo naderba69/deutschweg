@@ -32,7 +32,8 @@ const A0 = ['a0-u1-l2', 'a0-u1-l3', 'a0-u1-l4', 'a0-u1-l5', 'a0-u1-l6'];
 const A1_1 = ['a1-u1-l1', 'a1-u1-l2', 'a1-u1-l3', 'a1-u1-l4', 'a1-u1-l5', 'a1-u1-l6'];
 const A1_2 = ['a1-u2-l1', 'a1-u2-l2', 'a1-u2-l3', 'a1-u2-l4', 'a1-u2-l5', 'a1-u2-l6'];
 const A1_3 = ['a1-u3-l1', 'a1-u3-l2', 'a1-u3-l3', 'a1-u3-l4', 'a1-u3-l5', 'a1-u3-l6'];
-const A1_ALL = A1_1.concat(A1_2, A1_3);
+const A1_4 = ['a1-u4-l1', 'a1-u4-l2', 'a1-u4-l3', 'a1-u4-l4', 'a1-u4-l5', 'a1-u4-l6'];
+const A1_ALL = A1_1.concat(A1_2, A1_3, A1_4);
 const FORMS = ['mcq', 'cloze', 'matching', 'hoeren', 'sprechen', 'flashcard', 'wortstellung', 'schreiben'];
 
 console.log('\n— P3.2 lexical layer —\n');
@@ -101,11 +102,11 @@ console.log('\n— P3.2 lexical layer —\n');
     }
     lesson.schritte.forEach(s => { if (s.merkhilfe) a1Tricks.push(s.merkhilfe.trick); });
   });
-  t('A1 units 1–3: every ported lesson carries ≥14 complete words', fieldsOk);
-  t('A1 units 1–3: every lesson keeps 24–36 steps', stepOk);
-  t('A1 units 1–3: Wortschatz steps carry 2–4 words each', groupOk);
-  t('A1 units 1–3: every word-order item puts the finite verb in position 2', finiteOk);
-  t('A1 units 1–3: 54 tricks, all distinct', a1Tricks.length === 54 && new Set(a1Tricks).size === 54);
+  t('A1 units 1–4: every ported lesson carries ≥14 complete words', fieldsOk);
+  t('A1 units 1–4: every lesson keeps 24–36 steps', stepOk);
+  t('A1 units 1–4: Wortschatz steps carry 2–4 words each', groupOk);
+  t('A1 units 1–4: every word-order item puts the finite verb in position 2', finiteOk);
+  t('A1 units 1–4: 72 tricks, all distinct', a1Tricks.length === 72 && new Set(a1Tricks).size === 72);
   /* the headline grammar of each unit must actually appear in its word list */
   const has = (id, re) => (L[id].wortschatz || []).some(it => re.test(it.de + ' ' + it.ex));
   t('unit 2 teaches möchte and will', has('a1-u2-l1', /möchte/) && has('a1-u2-l1', /will/));
@@ -120,6 +121,16 @@ console.log('\n— P3.2 lexical layer —\n');
   t('unit 3 refuses an appointment with a fixed frame', has('a1-u3-l6', /Wie wäre es mit/) && has('a1-u3-l6', /entschuldige mich für/));
   t('unit 3 keeps the separable prefix inside a routine', has('a1-u3-l3', /stehe um halb sieben auf|ziehe mich an|gehe um acht los/));
   t('unit 3 states both states that take sein', has('a1-u3-l1', /bin satt/) && has('a1-u3-l1', /bin hungrig/));
+  t('unit 4 turns es gibt into an accusative door', has('a1-u4-l1', /Es gibt einen Balkon/));
+  t('unit 4 gives the pain frame with its Dativ owner', has('a1-u4-l2', /Mir tut der Kopf weh/));
+  t('unit 4 keeps the two directions apart', has('a1-u4-l2', /wehtun|weh/) && has('a1-u4-l2', /tut weh/) && has('a1-u4-l2', /tun die Beine weh/));
+  t('unit 4 gives the route in the Sie-imperative', has('a1-u4-l3', /Gehen Sie geradeaus/) && has('a1-u4-l3', /Bis zur Ampel/));
+  t('unit 4 keeps bis inside zu + Dativ', has('a1-u4-l3', /bis zum Platz/) && has('a1-u4-l3', /dem Kino gegenüber/));
+  t('unit 4 separates the two registers of a message', has('a1-u4-l4', /Liebe Anna/) && has('a1-u4-l4', /Sehr geehrte Frau Weber/));
+  t('unit 4 repairs the four declared A1 errors', has('a1-u4-l5', /Ich sehe den Mann/) && has('a1-u4-l5', /weil ich krank bin/) && has('a1-u4-l5', /Dann lerne ich/) && has('a1-u4-l5', /Ich bin zwanzig/));
+  t('unit 4 names the four parts each with its own time', has('a1-u4-l6', /Jeder Teil hat seine eigene Zeit/));
+  t('unit 4 states the no-compensation rule in its Merkhilfe', /rettet den anderen nicht/.test(JSON.stringify(L['a1-u4-l6'])));
+  t('unit 4 puts spelling inside speaking and names it a test item', has('a1-u4-l6', /buchstabieren/) && /Buchstabieren gehört zum Sprechen/.test(JSON.stringify(L['a1-u4-l6'])));
 
   const a0Tricks = [];
   A0.forEach(id => L[id].schritte.forEach(s => { if (s.merkhilfe) a0Tricks.push(s.merkhilfe.trick); }));
@@ -153,8 +164,38 @@ console.log('\n— P3.2 lexical layer —\n');
   const cov = win.DW_COVERAGE || [];
   const a1 = cov.find(c => c.level === 'A1');
   const ported = A1_ALL.filter(id => (L[id].wortschatz || []).length >= 14).length;
-  t('A1 coverage is published and honestly mid-port (' + ported + ' lessons, ' + a1.items + '/' + a1.declared + ' = ' +
-    Math.round(a1.ratio * 100) + '%)', a1 && a1.items === 432 && a1.ratio >= 0.66 && a1.ratio < 0.8);
+  t('A1 coverage is published: every row ported and above the delivery gate (' + ported + ' lessons, ' + a1.items + '/' + a1.declared + ' = ' +
+    Math.round(a1.ratio * 100) + '%)', a1 && a1.items === 576 && a1.ratio >= 0.8 && ported === 24);
+}
+
+/* ---------- every A1 lesson opens in the app with its own word table ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const order = win.DW_SYLLABUS.lessons.map(l => l.id);
+  const S = win.DW.session.S;
+  let opened = 0, tables = 0, cards = 0;
+  const free = id => order.slice(0, order.indexOf(id)).map(x => ({ lessonId: x, state: 'completed' }));
+  const caps = id => order.slice(0, order.indexOf(id))
+    .map(x => ({ id: 'cap.' + x + '.core', evidence: 'E1', lastActive: '2026-10-02', history: [] }))
+    .concat([{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: '2026-10-02', history: [] }]);
+  A1_ALL.forEach(id => {
+    const steps = L[id].schritte;
+    const idx = steps.findIndex(s => s.frage && s.frage.art === 'flashcard');
+    if (idx < 0) return;
+    S.progress = free(id); S.capabilities = caps(id); S.srs = { cards: [] };
+    win.go('lesson');
+    const p = { lessonId: id, state: 'in_progress', completedSteps: steps.slice(0, idx).map(s => s.id), lastStepId: steps[idx].id };
+    S.progress = free(id).concat([p]);
+    win.go('lesson');
+    const rows = [...win.document.querySelectorAll('.vocab-row')];
+    if (rows.length && rows.length === (steps[idx].wortschatz || []).length) tables++;
+    clickText(win, 'أعرف');
+    if ((S.srs.cards || []).some(c => c.level === 'A1' && c.de === steps[idx].frage.de)) cards++;
+    opened++;
+  });
+  t('all 24 A1 lessons open in the app, each with its own word table (' + opened + '/' + tables + ')', opened === 24 && tables === 24);
+  t('and each lesson queues its own word at level A1 (' + cards + '/24)', cards === 24);
 }
 
 /* ---------- an A1 lesson runs in the DOM with its word table ---------- */
