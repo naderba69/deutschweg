@@ -61,16 +61,27 @@ function el(tag, cls, txt) { const n = document.createElement(tag); if (cls) n.c
 function toast(msg) { const t = $('#toast'); if (!t) return; t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3200); }
 DW.toast = toast;
 
-const LESSON_ID = 'a0-u1-l1';
-function lesson() { return window.DW_LESSONS[LESSON_ID]; }
+let forcedLessonId = null;
+function lessonId() {
+  if (forcedLessonId && window.DW_LESSONS && window.DW_LESSONS[forcedLessonId]) return forcedLessonId;
+  const lessons = window.DW_LESSONS || {};
+  if (window.DW_SYLLABUS && typeof window.DW_SYLLABUS.next === 'function') {
+    const nxt = window.DW_SYLLABUS.next(S);
+    if (nxt && !nxt.blocked && nxt.status === 'authored' && lessons[nxt.id]) return nxt.id;
+    const open = (S.progress || []).find(p => p.state !== 'completed' && lessons[p.lessonId]);
+    if (open) return open.lessonId;
+  }
+  return lessons['a0-u1-l1'] ? 'a0-u1-l1' : (Object.keys(lessons)[0] || 'a0-u1-l1');
+}
+function lesson() { return window.DW_LESSONS[lessonId()]; }
 function steps() { return lesson().schritte; }
 function prog() {
-  let p = S.progress.find(x => x.lessonId === LESSON_ID);
-  if (!p) { p = { lessonId: LESSON_ID, lastStepId: steps()[0].id, completedSteps: [], state: 'in_progress' }; S.progress.push(p); }
+  let p = S.progress.find(x => x.lessonId === lessonId());
+  if (!p) { p = { lessonId: lessonId(), lastStepId: steps()[0].id, completedSteps: [], state: 'in_progress' }; S.progress.push(p); }
   return p;
 }
 function stepIndexById(id) { const i = steps().findIndex(s => s.id === id); return i < 0 ? 0 : i; }
-function capIdOf(st) { return (st.frage && st.frage.ziel) || st.ziel || ('cap.' + LESSON_ID + '.' + st.id); }
+function capIdOf(st) { return (st.frage && st.frage.ziel) || st.ziel || ('cap.' + lessonId() + '.' + st.id); }
 
 function exportDue() {
   const ref = S.stats.lastExport || S.stats.startedAt;
@@ -87,7 +98,7 @@ let timers = [];
 function clearTimers() { timers.forEach(clearInterval); timers.forEach(clearTimeout); timers = []; }
 function go(name) {
   clearTimers();
-  if (name === 'home') renderHome();
+  if (name === 'home') { forcedLessonId = null; renderHome(); }
   else if (name === 'lesson') renderLesson();
   else if (name === 'ledger') DW.practice.openLedger($('#view'));
   else if (name === 'attack') DW.practice.openAttack($('#view'));
@@ -102,6 +113,10 @@ function go(name) {
   else if (name === 'week') renderWeek();
   else if (name === 'pause') renderPause();
   else if (name === 'activation') renderActivation();
+  else if (name === 'reading') renderReading();
+  else if (name === 'generate') renderGenerate();
+  else if (name === 'chunks') renderChunks();
+  else if (name === 'exam') renderExam();
 }
 DW.go = go;
 
@@ -129,13 +144,15 @@ function renderHome() {
   const card = el('div', 'card');
   card.appendChild(el('div', 'kicker', 'درس اليوم'));
   card.appendChild(el('div', 'lesson-title', lesson().title.ar));
-  card.appendChild(el('div', 'meta', 'A0 · ' + lesson().minutes + ' دقيقة · ' + total + ' خطوة'));
+  card.appendChild(el('div', 'meta', (lesson().level || 'A0') + ' · ' + lesson().minutes + ' دقيقة · ' + total + ' خطوة'));
   if (p.state === 'completed') card.appendChild(el('div', 'meta', 'أُنجز هذا الدرس. إعادته ليست تقدّمًا.'));
   if (started) {
     const cur = steps()[stepIndexById(p.lastStepId)];
     card.appendChild(el('div', 'context', 'توقّفت عند الخطوة ' + (stepIndexById(p.lastStepId) + 1) + ' من ' + total + ' — ' + (cur.recap || '')));
   } else {
-    card.appendChild(el('div', 'context', 'أوّل جلسة: الصوت أوّلًا، ثم التحية. التالي لا يتحرك قبل الإجابة.'));
+    card.appendChild(el('div', 'context', lessonId() === 'a0-u1-l1'
+      ? 'أوّل جلسة: الصوت أوّلًا، ثم التحية. التالي لا يتحرك قبل الإجابة.'
+      : 'التالي لا يتحرك قبل الإجابة. هذا هو الدرس الذي تسمح به الخريطة.'));
   }
   const b = el('button', 'primary', started ? 'تابع من حيث توقّفت' : 'ابدأ الدرس');
   b.type = 'button';
@@ -186,7 +203,11 @@ function renderHome() {
     ['المحفظة', 'portfolio'],
     ['المؤشرات', 'indicators'],
     ['خريطة القدرات', 'map'],
-    ['توزيع الأسبوع', 'week']
+    ['توزيع الأسبوع', 'week'],
+    ['قراءة', 'reading'],
+    ['مولّد', 'generate'],
+    ['قوالب', 'chunks'],
+    ['الامتحان', 'exam']
   ].forEach(([label, name]) => {
     const g = el('button', 'ghost', label);
     g.type = 'button';
@@ -544,7 +565,7 @@ function markAnswered(st, given, wasAssisted, correct) {
   const p = prog();
   if (st.phase === 'Check') {
     S.checkLog = (S.checkLog || []).filter(c => c.stepId !== st.id);
-    S.checkLog.push({ stepId: st.id, lessonId: LESSON_ID, correct: correct !== false, assisted: !!wasAssisted, at: new Date().toISOString() });
+    S.checkLog.push({ stepId: st.id, lessonId: lessonId(), correct: correct !== false, assisted: !!wasAssisted, at: new Date().toISOString() });
   }
   if (st.phase === 'Check' || correct !== false) {
     if (!p.completedSteps.includes(st.id)) p.completedSteps.push(st.id);
@@ -559,10 +580,10 @@ function saveRecording(st, r) {
   const id = 'rec_' + Date.now();
   S.portfolio.recordings.push({
     id, date: DW.today(), seconds: r.seconds || 0, where: r.where || 'manual',
-    capability: capIdOf(st), lesson: LESSON_ID, step: st.id, score: r.score, silence: !!r.silence
+    capability: capIdOf(st), lesson: lessonId(), step: st.id, score: r.score, silence: !!r.silence
   });
   if (r.blob) {
-    DW.storage.mediaPut({ id, blob: r.blob, date: DW.today(), capability: capIdOf(st), seconds: r.seconds || 0, lesson: LESSON_ID, step: st.id }).catch(e => {
+    DW.storage.mediaPut({ id, blob: r.blob, date: DW.today(), capability: capIdOf(st), seconds: r.seconds || 0, lesson: lessonId(), step: st.id }).catch(e => {
       S.stats.mediaError = 'تعذّر حفظ الصوت: ' + e.message;
       toast('تعذّر حفظ الصوت. الحالة النصية سليمة. ' + e.message);
     });
@@ -595,12 +616,13 @@ function renderLessonEnd() {
   const v = $('#view');
   v.innerHTML = '';
   const card = el('div', 'card');
-  const log = (S.checkLog || []).filter(c => c.lessonId === LESSON_ID);
+  const log = (S.checkLog || []).filter(c => c.lessonId === lessonId());
   const total = log.length;
   const clean = log.filter(c => c.correct && !c.assisted).length;
   const score = total ? Math.round(clean / total * 100) : 100;
+  if (score >= 80) DW.caps.write('cap.' + lessonId() + '.core', 'E1', false, lesson().title.ar, 'grammar');
   card.appendChild(el('div', 'kicker', 'أُنجز الدرس'));
-  card.appendChild(el('div', 'lesson-title', 'أنهيت درس اليوم الأول.'));
+  card.appendChild(el('div', 'lesson-title', lessonId() === 'a0-u1-l1' ? 'أنهيت درس اليوم الأول.' : 'أنهيت: ' + lesson().title.ar));
   card.appendChild(el('div', 'meta', 'الفحص: ' + clean + '/' + total + ' بلا مساعدة ⇒ ' + score + '% (المطلوب 80%)'));
   card.appendChild(el('div', 'meta', 'أخطاء مسجّلة: ' + S.errorLedger.length + ' · تسجيلات: ' + S.portfolio.recordings.length));
   if (total && score < 80) {
@@ -608,15 +630,17 @@ function renderLessonEnd() {
     warnBox.appendChild(el('div', 'kicker', 'ما نفعله الآن'));
     warnBox.appendChild(el('div', null, 'لا نُعيد الدرس من البداية. نعود إلى الأساسيات التي بُني عليها الفحص فقط: الخطوات 5 إلى 12 (الأصوات والتحيات).'));
     card.appendChild(warnBox);
-    const b = el('button', 'primary', 'أعِد الأساسيات (الخطوة 5)');
+    const b = el('button', 'primary', lessonId() === 'a0-u1-l1' ? 'أعِد الأساسيات (الخطوة 5)' : 'أعِد الأساسيات');
     b.type = 'button';
     b.onclick = () => {
       const pr = prog();
+      const backTo = lessonId() === 'a0-u1-l1' ? 5 : 4;
+      const backUntil = lessonId() === 'a0-u1-l1' ? 12 : 11;
       pr.completedSteps = pr.completedSteps.filter(id => {
         const n = parseInt(id.slice(1), 10);
-        return !(n >= 5 && n <= 12);
+        return !(n >= backTo && n <= backUntil);
       });
-      pr.lastStepId = 's05';
+      pr.lastStepId = lessonId() === 'a0-u1-l1' ? 's05' : 's04';
       pr.state = 'in_progress';
       save();
       renderLesson();
@@ -839,10 +863,15 @@ function renderToday(mode) {
   save();
 }
 function openBlock(b) {
+  if (b.type === 'lesson-step') {
+    if (b.lessonId && window.DW_LESSONS && window.DW_LESSONS[b.lessonId]) forcedLessonId = b.lessonId;
+    go('lesson');
+    return;
+  }
   const map = {
     speaking: 'portfolio', srs: 'srs', 'review-error': 'attack', 'drill-3s': 'drill',
-    grammar: 'drill', 'lesson-step': 'lesson', writing: 'write', pronunciation: 'drill',
-    activation: 'activation'
+    grammar: 'drill', writing: 'write', pronunciation: 'drill',
+    activation: 'activation', reading: 'reading', chunks: 'chunks'
   };
   if (map[b.type]) { go(map[b.type]); return; }
   const v = screenBack(b.track);
@@ -983,6 +1012,144 @@ function renderPause() {
     };
     v.appendChild(b);
   });
+}
+
+function renderReading() {
+  const v = screenBack('قراءة موسّعة');
+  v.appendChild(el('div', 'reason', 'لا قاموس في هذه الشاشة. إن احتجت قاموسًا، النص ليس لهذه الجلسة. لا تقدير ذاتي يدخل R4.'));
+  const lib = window.DW_LIBRARY;
+  if (!lib) { v.appendChild(el('div', 'meta', 'المكتبة غير محمّلة.')); return; }
+  const items = []
+    .concat(lib.A1 || [])
+    .concat(lib.A2 || [])
+    .concat((lib.B1 && lib.B1.texts) || [])
+    .concat((lib.B2 && lib.B2.articles) || []);
+  if (lib.B2 && lib.B2.novel) {
+    v.appendChild(el('h2', 'section', lib.B2.novel.title));
+    v.appendChild(el('div', 'meta', lib.B2.novel.note));
+    lib.B2.novel.chapters.forEach(ch => {
+      const card = el('div', 'card small');
+      card.appendChild(el('div', 'kicker', 'فصل ' + ch.n + ' · ' + ch.title));
+      const body = el('div', 'zeigt');
+      body.setAttribute('dir', 'ltr');
+      body.textContent = ch.body;
+      card.appendChild(body);
+      v.appendChild(card);
+    });
+  }
+  items.forEach(item => {
+    const card = el('div', 'card small');
+    card.appendChild(el('div', 'kicker', item.level + ' · ' + item.words + ' كلمة'));
+    card.appendChild(el('div', null, item.title));
+    const body = el('div', 'zeigt');
+    body.setAttribute('dir', 'ltr');
+    body.textContent = item.body;
+    card.appendChild(body);
+    v.appendChild(card);
+  });
+}
+function renderGenerate() {
+  const v = screenBack('مولّد');
+  const bank = window.DW_SENTENCES || [];
+  v.appendChild(el('div', 'reason', 'كل نسخة لها مفتاح وتفسير ورابط قدرة. النسخة لا تدّعي أن البنك كامل.'));
+  if (!bank.length || !DW.generator) { v.appendChild(el('div', 'meta', 'البنك غير محمّل.')); return; }
+  S.exam = S.exam || {};
+  const item = DW.generator.instance(bank, S.exam.genIndex || 0);
+  if (!item) { v.appendChild(el('div', 'meta', 'لا نسخة بلا مفتاح.')); return; }
+  const line = el('div', 'zeigt');
+  line.setAttribute('dir', 'ltr');
+  line.textContent = item.prompt;
+  v.appendChild(line);
+  v.appendChild(el('div', 'meta', item.capabilityId));
+  const input = el('input');
+  input.type = 'text';
+  input.setAttribute('dir', 'ltr');
+  v.appendChild(input);
+  const b = el('button', 'ghost', 'افحص');
+  b.type = 'button';
+  b.onclick = () => {
+    const ok = String(input.value || '').trim() === item.key;
+    v.appendChild(el('div', ok ? 'layer good' : 'layer bad', ok ? item.rationale : 'المفتاح: ' + item.key + ' — ' + item.rationale));
+    if (!ok) DW.ledger.log({ wrong: input.value || '—', right: item.key, family: 'lexik-kollokation', source: 'generator' });
+    S.exam.genIndex = (S.exam.genIndex || 0) + 1;
+    save();
+  };
+  v.appendChild(b);
+}
+function renderChunks() {
+  const v = screenBack('قوالب');
+  const chunks = (window.DW_SYLLABUS && DW_SYLLABUS.chunks && DW_SYLLABUS.chunks.A1) || [];
+  v.appendChild(el('div', 'reason', 'حفر زمني. الإجابة خارج الوقت خطأ. هذا لا يلوّن R6 ولا يدّعي صندوقًا.'));
+  if (!chunks.length) { v.appendChild(el('div', 'meta', 'لا قوالب.')); return; }
+  S.exam = S.exam || {};
+  const item = chunks[(S.exam.chunkIndex || 0) % chunks.length];
+  v.appendChild(el('div', null, item.ar));
+  const input = el('input');
+  input.type = 'text';
+  input.setAttribute('dir', 'ltr');
+  v.appendChild(input);
+  let expired = false;
+  const timer = setTimeout(() => { expired = true; v.appendChild(el('div', 'meta', 'انتهى الوقت. الإجابة الآن لا تُحتسب.')); }, 12000);
+  timers.push(timer);
+  const b = el('button', 'ghost', 'سجّل');
+  b.type = 'button';
+  b.onclick = () => {
+    clearTimeout(timer);
+    const match = String(input.value || '').trim() === item.de;
+    const counted = match && !expired;
+    S.chunksLog = S.chunksLog || [];
+    S.chunksLog.push({ de: item.de, counted: counted, at: new Date().toISOString() });
+    S.exam.chunkIndex = (S.exam.chunkIndex || 0) + 1;
+    save();
+    v.appendChild(el('div', counted ? 'layer good' : 'layer bad', counted ? 'داخل الوقت.' : 'لا يُحتسب. المفتاح: ' + item.de));
+  };
+  v.appendChild(b);
+}
+function renderExam() {
+  const v = screenBack('الامتحان');
+  const gate = DW.exam.readiness(S);
+  const taper = DW.exam.taper(99);
+  v.appendChild(el('div', 'reason', 'لا درجة رسمية. لا تعويض بين الأقسام. «كنت سأعرف» لا يُحتسب.'));
+  v.appendChild(el('div', 'meta', gate.reason + ' دين حيّ: ' + gate.debt + '. إتقان موثّق: ' + gate.masteryCount + ' / 6.'));
+  v.appendChild(el('div', 'meta', taper.reason));
+  const cmp = DW.exam.compareRecordings(S.portfolio && S.portfolio.recordings);
+  v.appendChild(el('div', 'meta', cmp.reason));
+  DW.exam.MOCKS.forEach(m => {
+    v.appendChild(el('div', 'meta', 'محاكاة ' + m.n + ' · شهر ' + m.month + ' · ' + m.purpose));
+  });
+  const axes = [
+    ['اكتمال المحتوى', 'inhalt'],
+    ['بناء النص', 'aufbau'],
+    ['التعبير', 'ausdruck'],
+    ['الصحة اللغوية', 'korrektheit']
+  ];
+  const scores = {};
+  axes.forEach(pair => {
+    const row = el('div', 'row');
+    row.appendChild(el('span', null, pair[0]));
+    [0, 1, 2, 3].forEach(n => {
+      const b = el('button', 'ghost', String(n));
+      b.type = 'button';
+      b.onclick = () => { scores[pair[1]] = n; };
+      row.appendChild(b);
+    });
+    v.appendChild(row);
+  });
+  const scoreBtn = el('button', 'ghost', 'احسب مهمة الكتابة');
+  scoreBtn.type = 'button';
+  scoreBtn.onclick = () => {
+    const out = DW.exam.schreibenTask(axes.map(pair => ({ id: pair[1], score: scores[pair[1]] || 0 })));
+    v.appendChild(el('div', out.zeroed ? 'layer bad' : 'layer good', out.reason + ' ' + out.score));
+  };
+  v.appendChild(scoreBtn);
+  const set = el('button', 'ghost', S.settings.targetExam === 'telc-b2' ? 'الهدف الآن telc' : 'الهدف الآن Goethe');
+  set.type = 'button';
+  set.onclick = () => {
+    S.settings.targetExam = S.settings.targetExam === 'telc-b2' ? 'goethe-b2' : 'telc-b2';
+    save();
+    renderExam();
+  };
+  v.appendChild(set);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

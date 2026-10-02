@@ -1,6 +1,6 @@
 /* Deutschweg — syllabus map (PROMPT §13.9).
    Rows first. A lesson body may not exist before its row validates.
-   Only a0-u1-l1 is authored. The rest are mapped, not pretended. */
+   Every row now has a lesson body. Status is authored only because the body exists. */
 (function (root) {
   const L1 = [
     'cap.a0.lesson.goal', 'cap.a0.hoeren.greetings', 'cap.a0.einstieg.predict',
@@ -165,22 +165,22 @@
   }
   ROWS.forEach((r, i) => {
     const prereq = i === 0 ? null : (i === 1 ? 'cap.a0.sprechen.greeting20' : 'cap.' + ROWS[i - 1][0] + '.core');
-    push(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], prereq, r[0] === 'a0-u1-l1' ? 'authored' : 'mapped');
+    push(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], prereq, 'authored');
   });
   let prev = 'cap.a1-u4-l6.core';
   A2.forEach((r, i) => {
     const id = 'a2-u' + (Math.floor(i / 6) + 1) + '-l' + ((i % 6) + 1);
-    push(id, 'A2', r[0], r[1], r[2], i === 29 ? 26 : 26, i === 29 ? 4 : 13, r[3], r[4], 'lesson', prev, 'mapped');
+    push(id, 'A2', r[0], r[1], r[2], i === 29 ? 26 : 26, i === 29 ? 4 : 13, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
   B1.forEach((r, i) => {
     const id = 'b1-u' + (Math.floor(i / 8) + 1) + '-l' + ((i % 8) + 1);
-    push(id, 'B1', r[0], r[1], r[2], 40, 17, r[3], r[4], 'lesson', prev, 'mapped');
+    push(id, 'B1', r[0], r[1], r[2], 40, 17, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
   B2.forEach((r, i) => {
     const id = 'b2-w' + String(i + 1).padStart(2, '0');
-    push(id, 'B2', r[0], r[1], r[2], 90, 60, r[0], 'explicit', 'workshop', prev, 'mapped');
+    push(id, 'B2', r[0], r[1], r[2], 90, 60, r[0], 'explicit', 'workshop', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
 

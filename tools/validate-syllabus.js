@@ -96,10 +96,17 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
   ? ok('pronunciation items on every level')
   : bad('pronunciation syllabus incomplete');
 
+['a0-u1-l1.js', 'catalog.js'].forEach(name => {
+  new Function('window', fs.readFileSync(path.join(root, 'web/data', name), 'utf8'))(w);
+});
+const bodies = Object.keys(w.DW_LESSONS || {});
 const authored = lessons.filter(l => l.status === 'authored').map(l => l.id);
-authored.length === 1 && authored[0] === 'a0-u1-l1'
-  ? ok('only the opening lesson is authored; the map does not pretend otherwise')
-  : bad('authored set drifted: ' + authored.join(','));
+authored.length === lessons.length
+  ? ok('every map row has status authored')
+  : bad('a row is still mapped');
+authored.every(id => bodies.includes(id)) && bodies.every(id => authored.includes(id))
+  ? ok('every authored row has a body, and every body has a row')
+  : bad('lesson bodies and map rows diverged');
 
 w.DW = w.DW || {};
 ['storage.js', 'ledger.js', 'adaptive.js'].forEach(name => {
@@ -141,13 +148,21 @@ function empty() {
   const S = empty();
   S.progress = [{ lessonId: 'a0-u1-l1', state: 'completed' }];
   S.capabilities = [{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: today, history: [] }];
-  const plan = A.compose(S, today);
+  const plan = A.compose(S, today, { minutes: 200 });
   const nxt = S && w.DW_SYLLABUS.next(S);
-  nxt && nxt.id === 'a0-u1-l2' && nxt.status === 'mapped'
-    && !plan.blocks.some(b => b.type === 'lesson-step')
-    && plan.withheld && /لم يُؤلَّف/.test(plan.withheld.reason)
-    ? ok('a mapped row with met prerequisites is still not opened')
-    : bad('an unauthored lesson was opened');
+  const step = plan.blocks.find(b => b.type === 'lesson-step');
+  nxt && nxt.id === 'a0-u1-l2' && nxt.status === 'authored' && step && step.lessonId === 'a0-u1-l2' && !plan.withheld
+    ? ok('a met prerequisite opens the authored next lesson')
+    : bad('the authored next lesson was not opened');
+}
+{
+  const real = w.DW_SYLLABUS.next;
+  w.DW_SYLLABUS.next = function () { return { id: 'fake-row', status: 'mapped', prereqs: [] }; };
+  const plan = A.compose(empty(), today, { minutes: 200 });
+  w.DW_SYLLABUS.next = real;
+  !plan.blocks.some(b => b.type === 'lesson-step') && plan.withheld && /لم يُؤلَّف/.test(plan.withheld.reason)
+    ? ok('a mapped row is still refused')
+    : bad('a mapped row was opened');
 }
 
 console.log(hard ? '\n' + hard + ' hard failure(s)\n' : '\nsyllabus map valid\n');

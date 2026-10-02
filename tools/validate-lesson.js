@@ -10,17 +10,27 @@ global.window = {};
 try { new Function('window', fs.readFileSync(path, 'utf8'))(global.window); }
 catch (e) { fail('cannot evaluate lesson file: ' + e.message); }
 
-const id = Object.keys(global.window.DW_LESSONS)[0];
-const L = global.window.DW_LESSONS[id];
+function fail(m){ console.error(m); process.exit(1); }
+const ids = Object.keys(global.window.DW_LESSONS || {});
+if (!ids.length) fail('no lessons in ' + path);
+const lessonCount = ids.length;
+let fileHard = 0;
+ids.forEach(lessonKey => {
+  validateOne(global.window.DW_LESSONS[lessonKey]);
+});
+console.log(lessonCount > 1 ? '\n' + lessonCount + ' lessons, ' + fileHard + ' hard failure(s)\n' : '');
+process.exit(fileHard ? 1 : 0);
+
+function validateOne(L) {
 const S = L.schritte;
 
 let hard = 0, soft = 0;
-const ok = m => console.log('  ✓ ' + m);
+const ok = m => { if (lessonCount === 1) console.log('  ✓ ' + m); };
 const bad = m => { hard++; console.log('  ✗ ' + m); };
 const warn = m => { soft++; console.log('  ! ' + m); };
 function fail(m){ console.error(m); process.exit(1); }
 
-console.log(`\nLesson ${L.id} — ${L.title.ar}\n`);
+if (lessonCount === 1) console.log(`\nLesson ${L.id} — ${L.title.ar}\n`);
 
 /* 1. step count 24–36 */
 (S.length >= 24 && S.length <= 36)
@@ -136,5 +146,7 @@ S.some(s => s.phase === 'Check' && /80/.test(s.erklaerung + JSON.stringify(s.fra
 const nonGerman = S.filter(s => s.zeigt && /[\u0600-\u06FF]/.test(s.zeigt.de));
 nonGerman.length === 0 ? ok('all "zeigt" lines are German') : bad('Arabic found in zeigt: ' + nonGerman.map(s=>s.id).join(', '));
 
-console.log(`\n${hard} hard failure(s), ${soft} warning(s)\n`);
-process.exit(hard ? 1 : 0);
+if (hard) fileHard += hard;
+if (lessonCount === 1) console.log(`\n${hard} hard failure(s), ${soft} warning(s)\n`);
+else if (hard) console.log(L.id + ': ' + hard + ' hard failure(s)');
+}
