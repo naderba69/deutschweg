@@ -191,7 +191,7 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
   new Function('window', fs.readFileSync(path.join(root, 'web/data/library.js'), 'utf8'))(lib);
   const library = lib.DW_LIBRARY || {};
   ['A1', 'A2', 'B1'].forEach(level => {
-    const texts = Array.isArray(library[level]) ? library[level] : [];
+    const texts = Array.isArray(library[level]) ? library[level] : ((library[level] && library[level].texts) || []);
     if (!texts.length) return;
     const vocab = known(level);
     if (!vocab.size) return;
