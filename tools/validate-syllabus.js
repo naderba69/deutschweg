@@ -161,6 +161,21 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
   const order = ['A0', 'A1', 'A2', 'B1', 'B2'];
   const strip = t => String(t).toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
   const formsByLevel = {};
+  /* the hand-written opening lesson has no word list; its German lines count as A0 forms */
+  {
+    const first = {};
+    new Function('window', fs.readFileSync(path.join(root, 'web/data/a0-u1-l1.js'), 'utf8'))(first);
+    const L1 = (first.DW_LESSONS || {})['a0-u1-l1'];
+    const set = formsByLevel.A0 = new Set();
+    const skip = new Set(['id', 'type', 'phase', 'art', 'ziel', 'prereq', 'familie', 'direction']);
+    const walk = o => {
+      if (!o) return;
+      if (typeof o === 'string') { if (!/[\u0600-\u06FF]/.test(o)) o.split(/\s+/).map(strip).filter(Boolean).forEach(x => set.add(x)); return; }
+      if (Array.isArray(o)) return o.forEach(walk);
+      if (typeof o === 'object') Object.keys(o).forEach(k => { if (!skip.has(k)) walk(o[k]); });
+    };
+    if (L1) walk(L1.schritte);
+  }
   Object.values(cat.DW_LESSONS || {}).forEach(L => {
     const set = formsByLevel[L.level] = formsByLevel[L.level] || new Set();
     (L.wortschatz || []).forEach(it => {
