@@ -150,6 +150,48 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
     : bad('A0 lexical coverage below the gate');
 }
 
+/* Reading texts against the authored word lists (R4 readiness, PRODUCTION.md):
+   a text is extensive reading only at ~98% known words. The known forms of a
+   level are every surface form shown in the lessons up to that level —
+   headwords, form columns and example sentences. Printed, not gated: the
+   number is a measurement for the owner, not a claim. */
+{
+  const cat = {};
+  new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
+  const order = ['A0', 'A1', 'A2', 'B1', 'B2'];
+  const strip = t => String(t).toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+  const formsByLevel = {};
+  Object.values(cat.DW_LESSONS || {}).forEach(L => {
+    const set = formsByLevel[L.level] = formsByLevel[L.level] || new Set();
+    (L.wortschatz || []).forEach(it => {
+      [it.de, it.pl, it.ex].forEach(f => String(f || '').split(/\s+/).map(strip).filter(Boolean).forEach(w => set.add(w)));
+    });
+  });
+  const known = level => {
+    const out = new Set();
+    order.slice(0, order.indexOf(level) + 1).forEach(l => (formsByLevel[l] || new Set()).forEach(w => out.add(w)));
+    return out;
+  };
+  const lib = {};
+  new Function('window', fs.readFileSync(path.join(root, 'web/data/library.js'), 'utf8'))(lib);
+  const library = lib.DW_LIBRARY || {};
+  ['A1', 'A2', 'B1'].forEach(level => {
+    const texts = Array.isArray(library[level]) ? library[level] : [];
+    if (!texts.length) return;
+    const vocab = known(level);
+    if (!vocab.size) return;
+    let tok = 0, hit = 0; const low = [];
+    texts.forEach(t => {
+      const words = String(t.body || '').split(/\s+/).map(strip).filter(x => x && !/^\d+$/.test(x));
+      const h = words.filter(x => vocab.has(x)).length;
+      tok += words.length; hit += h;
+      if (words.length && h / words.length < 0.98) low.push(t.id + ' ' + Math.round(100 * h / words.length) + '%');
+    });
+    console.log('    reading ' + level + ': ' + texts.length + ' texts · known-form coverage ' + (tok ? Math.round(100 * hit / tok) : 0) + '%' +
+      (low.length ? ' · below 98%: ' + low.join(', ') : ' · all texts at or above 98%'));
+  });
+}
+
 ['a0-u1-l1.js', 'catalog.js'].forEach(name => {
   new Function('window', fs.readFileSync(path.join(root, 'web/data', name), 'utf8'))(w);
 });

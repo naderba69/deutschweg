@@ -395,7 +395,7 @@ module.exports = [
       ['das Urteil am Schluss', 'الحكم في الآخر', 'الحكم في الأول يُغلق القراءة', 'das Urteil steht in der ersten Zeile', 'الحكم أخيرًا']
     ],
     [
-      ['Zuerst beide Seiten.', 'أولًا الجانبان', 'Ich urteile zuerst', 'الجانبان قبل الحكم', 'Zuerst'],
+      ['Zuerst beide Seiten.', 'أولًا الجانبان', 'Ich urteile zuerst', 'الجانبان قبل الحكم', 'beide'],
       ['Nicht beide Seiten sind gleich stark.', 'الجانبان ليسا بنفس القوة', 'Beide Seiten sind immer gleich', 'القوة تُسمّى', 'stark'],
       ['Jede Seite braucht ein Beispiel.', 'كل جانب يحتاج مثالًا', 'Pro ist gut, Kontra ist schlecht', 'المثال يسند', 'Beispiel'],
       ['Das Urteil steht am Schluss.', 'الحكم في الآخر', 'Das Urteil steht in der ersten Zeile', 'الحكم أخيرًا', 'Schluss']

@@ -27,7 +27,9 @@ Lexical coverage gate (P3.2): per level it prints `authored / declared` (the
 level's coverage; *delivered* at ≥ 80%) and `shipped rows` (authored against
 what the ported rows declare; must be ≥ 80% at every push). A ported row must
 carry ≥ 80% of its own declaration, a headword may not be counted twice in a
-level, and a fully ported level below 80% fails.
+level, and a fully ported level below 80% fails. It also prints, per level,
+the known-form coverage of the reading texts in `web/data/library.js`
+(surface forms seen in the authored lists; a proxy for the 98% rule, not a gate).
 
 ## `compile-units.js`
 
