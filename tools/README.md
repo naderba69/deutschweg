@@ -25,3 +25,35 @@ Covers: next disabled until answered · a wrong answer does not advance ·
 the simplification ladder order · the lesson completes · errors reach the ledger
 with a family · capabilities are written as E1/E1a · the full schema is present ·
 resume · and T15 (a check below 80% returns to step 5, never to step 1).
+
+## `p1-unit.mjs`
+No DOM. The 30-pattern checker (including clean sentences that must not fire),
+the ledger promote / retire / merge rules, and the wortstellung partial-credit
+scorer.
+
+```
+node tools/p1-unit.mjs
+```
+
+## `p1-tests.mjs`
+Black-box P1 acceptance in jsdom: the eight renderers, specific explanations,
+hören triage, silence scoring, the writing checklist and its 30-pattern limit,
+ledger promotion and retirement, Attack now, the 3-second drill including real
+timeouts, SRS anti-cheat / cap / independent directions, and rejection of an
+exercise with no `ziel`.
+
+```
+node tools/p1-tests.mjs
+```
+
+The measure-timeout case waits on a real 3-second clock. The file exits non-zero
+on any failure.
+
+## `p2-unit.mjs`
+No DOM. Decay, activation, the six indicators, the composer, the allocator,
+gates, pause, card reschedule, and the 6-week rotation.
+
+## `p2-tests.mjs`
+The learner-facing surfaces: a reason on every block, the 15-minute session,
+tappable indicator sources, the capability map without a completion percentage,
+and the scaled 8-hour calendar.

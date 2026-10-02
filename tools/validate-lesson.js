@@ -49,9 +49,12 @@ new Set(ids).size === ids.length ? ok('step ids unique') : bad('duplicate step i
 S.forEach((s,i) => { if (s.naechste && s.naechste !== ids[i+1]) warn(`${s.id}: naechste does not point to the next step`); });
 
 /* 5. every question has a target capability id (ziel) */
-const noZiel = S.filter(s => s.frage && !s.frage.ziel).length;
-if (noZiel === 0) ok('every question carries a ziel');
-else warn(`${noZiel} question(s) have no explicit ziel (P0 assigns cap.<lesson>.<step> at runtime)`);
+const noZiel = S.filter(s => s.frage && !s.frage.ziel);
+if (noZiel.length === 0) ok('every question carries a ziel');
+else bad('question without ziel rejected: ' + noZiel.map(s => s.id).join(', '));
+const checkNoPrereq = S.filter(s => s.phase === 'Check' && s.frage && !s.frage.prereq);
+checkNoPrereq.length === 0 ? ok('every check carries a prereq')
+                           : bad('check without prereq: ' + checkNoPrereq.map(s => s.id).join(', '));
 
 /* 6. hints.
    Rule: mandatory on teaching, vocabulary, application and exercise steps.

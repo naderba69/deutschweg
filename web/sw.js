@@ -1,6 +1,13 @@
 /* Deutschweg — offline cache. First load needs network; every load after is offline. */
-const CACHE = 'deutschweg-v1';
-const ASSETS = ['./', 'index.html', 'styles.css', 'app.js', 'data/a0-u1-l1.js', 'manifest.webmanifest', 'icon.svg'];
+const CACHE = 'deutschweg-v4';
+const ASSETS = [
+  './', 'index.html', 'styles.css', 'app.js',
+  'engine/storage.js', 'engine/ledger.js', 'engine/checker.js',
+  'engine/renderers.js', 'engine/practice.js', 'engine/adaptive.js',
+  'data/bank.js', 'data/a0-u1-l1.js',
+  'audio/wasser.mp3',
+  'manifest.webmanifest', 'icon.svg'
+];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));

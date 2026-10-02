@@ -538,6 +538,7 @@ window.DW_LESSONS = {
   /* ---------- 24. PRODUKTION ---------- */
   {
     id: "s24", phase: "Produktion", type: "sprechen",
+    ziel: "cap.a0.sprechen.greeting20",
     zeigt: { de: "🎙 Sprich 20 Sekunden: Begrüßung + dein Name + eine Frage." },
     erklaerung: "سجّل 20 ثانية: تحية حسب وقتك الآن، ثم اسمك، ثم سؤال للطرف الآخر. هذا أوّل تسجيل في محفظتك.",
     recap: "تسجيل 20 ثانية: تحية واسم وسؤال",
@@ -561,6 +562,7 @@ window.DW_LESSONS = {
     recap: "فحص 1: كلمة Zeit",
     frage: {
       ziel: "cap.a0.aussprache.zeit",
+      prereq: "cap.a0.aussprache.w_v_z",
       art: "mcq",
       frage: "كيف تُنطق Zeit؟",
       optionen: [ { id: "a", text: "«تسايت»" }, { id: "b", text: "«زايت»" }, { id: "c", text: "«زيت»" } ],
@@ -580,6 +582,7 @@ window.DW_LESSONS = {
     recap: "فحص 2: Gute ____",
     frage: {
       ziel: "cap.a0.wortschatz.gute_nacht",
+      prereq: "cap.a0.wortschatz.guten_morgen",
       art: "cloze",
       frage: "أكمل: ____ Nacht!",
       antworten: ["Gute"],
@@ -594,6 +597,7 @@ window.DW_LESSONS = {
     recap: "فحص 3: ie الطويلة",
     frage: {
       ziel: "cap.a0.aussprache.ie_long",
+      prereq: "cap.a0.aussprache.ei_ie",
       art: "mcq",
       frage: "أي كلمة فيها ie تُنطق «إي» طويلة؟",
       optionen: [ { id: "a", text: "die" }, { id: "b", text: "dein" } ],
@@ -612,6 +616,7 @@ window.DW_LESSONS = {
     recap: "فحص 4: التحيات وأوقاتها",
     frage: {
       ziel: "cap.a0.wortschatz.greetings_map",
+      prereq: "cap.a0.wortschatz.farewell_register",
       art: "matching",
       frage: "صِل التحية بوقتها.",
       paare: [
