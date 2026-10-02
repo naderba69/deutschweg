@@ -31,9 +31,9 @@ level, and a fully ported level below 80% fails.
 ## `compile-units.js`
 
 Builds `web/data/catalog.js` from `specs-*.js` plus the lexical layer in
-`vocab-*.js` (one file per production unit). A vocab row carries 12–20 items
+`vocab-*.js` (one file per production unit: `vocab-a0a1.js` for A0, `vocab-a1-02.js` … for A1, `vocab-b1-11.js` … for B1). A vocab row carries 12–20 items
 `[headword, plural/forms, gloss, example, typical error, why, family, blank?]`,
-three tricks, and — from B1 — two annotated order sentences
+three tricks, and — from A1 — two annotated order sentences
 (`'Vorfeld | finite | Mittelfeld | rechte Klammer | Nachfeld'`, or
 `{ satz: 'weil | ich müde | bin.', clause: 'sub' }`) and a writing prompt.
 

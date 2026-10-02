@@ -190,13 +190,15 @@ console.log('\n— P3.2 lexical layer —\n');
   t('the miss is explained in Arabic', /الجواب والمثال|نسيان/.test(win.document.body.textContent));
 }
 
-/* ---------- every ported B1 lesson, through the real DOM ---------- */
-{
+/* ---------- every ported A1 and B1 lesson, through the real DOM ----------
+   Authored levels declare two order sentences and a writing task per row;
+   the writing floor is 30 words at A1 (Start Deutsch 1 Teil 2) and 50 at B1. */
+[['A1', 30], ['B1', 50]].forEach(([LEVEL, MIN_WORDS]) => {
   const { window: win0 } = boot();
-  const ported = Object.values(win0.DW_LESSONS).filter(l => l.level === 'B1' && l.wortschatz && l.wortschatz.length).map(l => l.id);
+  const ported = Object.values(win0.DW_LESSONS).filter(l => l.level === LEVEL && l.wortschatz && l.wortschatz.length).map(l => l.id);
   if (ported.length) {
     const sizes = ported.map(id => win0.DW_LESSONS[id].wortschatz.length);
-    t('B1 ported rows carry 20 words each: ' + ported.length + ' rows', sizes.every(n => n === 20));
+    t(LEVEL + ' ported rows carry 20 words each: ' + ported.length + ' rows', sizes.every(n => n === 20));
     let orderN = 0, orderBad = [], writeBad = [], cardBad = [];
     ported.forEach(id => {
       const { window: win } = boot();
@@ -229,19 +231,19 @@ console.log('\n— P3.2 lexical layer —\n');
       const wi = steps.findIndex(s => s.frage && s.frage.art === 'schreiben');
       showStep(wi);
       const body = win.document.body.textContent;
-      if (!(win.document.querySelector('textarea.write') && /الحد الأدنى/.test(body) && body.indexOf(steps[wi].frage.promptDe.slice(0, 20)) >= 0 && steps[wi].frage.minWords >= 50)) writeBad.push(id);
+      if (!(win.document.querySelector('textarea.write') && /الحد الأدنى/.test(body) && body.indexOf(steps[wi].frage.promptDe.slice(0, 20)) >= 0 && steps[wi].frage.minWords >= MIN_WORDS)) writeBad.push(id);
       const fi = steps.findIndex(s => s.wortschatz && s.frage && s.frage.art === 'flashcard');
       showStep(fi);
       const rows = win.document.querySelectorAll('.vocab-row').length;
       clickText(win, 'أعرف');
       const card = (win.DW.session.S.srs.cards || []).find(c => c.de === steps[fi].frage.de);
-      if (!(rows === steps[fi].wortschatz.length && card && card.level === 'B1')) cardBad.push(id);
+      if (!(rows === steps[fi].wortschatz.length && card && card.level === LEVEL)) cardBad.push(id);
     });
-    t('B1: every authored order sentence is judged correct in the DOM (' + orderN + ' exercises)', orderN === ported.length * 2 && !orderBad.length, orderBad.join(', '));
-    t('B1: the writing step shows the German scaffold and a 50-word floor', !writeBad.length, writeBad.join(', '));
-    t('B1: the word table and the review card carry the level', !cardBad.length, cardBad.join(', '));
+    t(LEVEL + ': every authored order sentence is judged correct in the DOM (' + orderN + ' exercises)', orderN === ported.length * 2 && !orderBad.length, orderBad.join(', '));
+    t(LEVEL + ': the writing step shows the German scaffold and a ' + MIN_WORDS + '-word floor', !writeBad.length, writeBad.join(', '));
+    t(LEVEL + ': the word table and the review card carry the level', !cardBad.length, cardBad.join(', '));
   }
-}
+});
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
