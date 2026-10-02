@@ -29,6 +29,9 @@ function clickText(win, text) {
 }
 
 const A0 = ['a0-u1-l2', 'a0-u1-l3', 'a0-u1-l4', 'a0-u1-l5', 'a0-u1-l6'];
+const A1_1 = ['a1-u1-l1', 'a1-u1-l2', 'a1-u1-l3', 'a1-u1-l4', 'a1-u1-l5', 'a1-u1-l6'];
+const A1_2 = ['a1-u2-l1', 'a1-u2-l2', 'a1-u2-l3', 'a1-u2-l4', 'a1-u2-l5', 'a1-u2-l6'];
+const A1_ALL = A1_1.concat(A1_2);
 const FORMS = ['mcq', 'cloze', 'matching', 'hoeren', 'sprechen', 'flashcard', 'wortstellung', 'schreiben'];
 
 console.log('\n— P3.2 lexical layer —\n');
@@ -70,11 +73,11 @@ console.log('\n— P3.2 lexical layer —\n');
   t('step cards built for the flashcard steps: ' + cardKeys.length, cardKeys.length >= 5 && Object.values(cards).every(v => v[0].de && v[0].ar && v[0].level));
 }
 
-/* ---------- A1, unit 1: the port used the same gate the map promises ---------- */
+/* ---------- A1 units 1–2: the port used the same gate the map promises ---------- */
 {
   const { window: win } = boot();
   const L = win.DW_LESSONS;
-  const A1 = ['a1-u1-l1', 'a1-u1-l2', 'a1-u1-l3', 'a1-u1-l4', 'a1-u1-l5', 'a1-u1-l6'];
+  const A1 = A1_ALL;
   let fieldsOk = true, stepOk = true, groupOk = true, finiteOk = true, trickOk = true;
   const a1Tricks = [];
   A1.forEach(id => {
@@ -88,14 +91,28 @@ console.log('\n— P3.2 lexical layer —\n');
     if (lesson.schritte.length < 24 || lesson.schritte.length > 36) stepOk = false;
     vsteps.forEach(s => { if (s.wortschatz.length < 2 || s.wortschatz.length > 4) groupOk = false; });
     const order = lesson.schritte.find(s => s.frage && s.frage.art === 'wortstellung');
-    if (!order || order.frage.correct.indexOf(order.frage.finite) !== 1) finiteOk = false;
+    /* the finite verb stands right after the Vorfeld — one token or more */
+    if (!order) finiteOk = false;
+    else {
+      const f = order.frage;
+      const vf = (f.fields && f.fields.vorfeld) || [];
+      if (f.correct.indexOf(f.finite) !== vf.length) finiteOk = false;
+    }
     lesson.schritte.forEach(s => { if (s.merkhilfe) a1Tricks.push(s.merkhilfe.trick); });
   });
-  t('A1 unit 1: every ported lesson carries ≥14 complete words', fieldsOk);
-  t('A1 unit 1: every lesson keeps 24–36 steps', stepOk);
-  t('A1 unit 1: Wortschatz steps carry 2–4 words each', groupOk);
-  t('A1 unit 1: every word-order item puts the finite verb in position 2', finiteOk);
-  t('A1 unit 1: 18 tricks, all distinct', a1Tricks.length === 18 && new Set(a1Tricks).size === 18);
+  t('A1 units 1–2: every ported lesson carries ≥14 complete words', fieldsOk);
+  t('A1 units 1–2: every lesson keeps 24–36 steps', stepOk);
+  t('A1 units 1–2: Wortschatz steps carry 2–4 words each', groupOk);
+  t('A1 units 1–2: every word-order item puts the finite verb in position 2', finiteOk);
+  t('A1 units 1–2: 36 tricks, all distinct', a1Tricks.length === 36 && new Set(a1Tricks).size === 36);
+  /* the headline grammar of each unit must actually appear in its word list */
+  const has = (id, re) => (L[id].wortschatz || []).some(it => re.test(it.de + ' ' + it.ex));
+  t('unit 2 teaches möchte and will', has('a1-u2-l1', /möchte/) && has('a1-u2-l1', /will/));
+  t('unit 2 separates a prefix in the sentence it shows', has('a1-u2-l2', /stehe .*auf|rufe .*an|kaufe .*ein|fängt .*an/));
+  t('unit 2 states the halb trap', has('a1-u2-l3', /halb vier/));
+  t('unit 2 separates um, am and im', has('a1-u2-l4', /um neun/) && has('a1-u2-l4', /am Montag/) && has('a1-u2-l4', /Im Mai/));
+  t('unit 2 fixes the case after a place preposition', has('a1-u2-l5', /auf dem Tisch/) && has('a1-u2-l5', /an der Wand/));
+  t('unit 2 shows five plurals with an umlaut', ['Mütter', 'Bücher', 'Häuser', 'Stühle', 'Städte'].every(p => has('a1-u2-l6', new RegExp(p))));
 
   const a0Tricks = [];
   A0.forEach(id => L[id].schritte.forEach(s => { if (s.merkhilfe) a0Tricks.push(s.merkhilfe.trick); }));
@@ -105,10 +122,32 @@ console.log('\n— P3.2 lexical layer —\n');
   t('the A1 tricks are tied to a German form, not to a slogan',
     a1Tricks.every(x => x.length > 6) && trickOk);
 
+  /* the engine's own scorer must accept every shipped sentence, and reject a
+     broken one: the level-1 rule reads the declared Vorfeld, not token index 1 */
+  const scorer = win.DW.order && win.DW.order.score;
+  const wrongs = [], rejects = [];
+  let scored = 0;
+  Object.keys(win.DW_LESSONS).forEach(lid => {
+    const lesson = win.DW_LESSONS[lid];
+    lesson.schritte.forEach(st => {
+      const f = st.frage;
+      if (!f || f.art !== 'wortstellung' || !f.correct) return;
+      scored++;
+      const good = scorer(f, f.correct.slice());
+      if (good.credit !== 1) wrongs.push(lid + ':' + st.id + ' (“' + f.correct.join(' ') + '” → credit ' + good.credit + ')');
+      const broken = f.correct.slice();
+      broken.push(broken.shift());
+      if (scorer(f, broken).credit === 1) rejects.push(lid + ':' + st.id);
+    });
+  });
+  t('the word-order scorer accepts all ' + scored + ' shipped sentences' + (wrongs.length ? ' — rejected: ' + wrongs.slice(0, 4).join(' · ') : ''), wrongs.length === 0);
+  t('and it still refuses a rotated sentence', rejects.length === 0);
+
   const cov = win.DW_COVERAGE || [];
   const a1 = cov.find(c => c.level === 'A1');
-  t('A1 coverage is published and honestly mid-port: ' + a1.items + '/' + a1.declared + ' (' + Math.round(a1.ratio * 100) + '%)',
-    a1 && a1.items === 144 && a1.ratio < 0.8);
+  const ported = A1_ALL.filter(id => (L[id].wortschatz || []).length >= 14).length;
+  t('A1 coverage is published and honestly mid-port (' + ported + ' lessons, ' + a1.items + '/' + a1.declared + ' = ' +
+    Math.round(a1.ratio * 100) + '%)', a1 && a1.items === 288 && a1.ratio >= 0.44 && a1.ratio < 0.8);
 }
 
 /* ---------- an A1 lesson runs in the DOM with its word table ---------- */
