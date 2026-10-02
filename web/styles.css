@@ -216,3 +216,16 @@ details.card summary{cursor:pointer; font-weight:700}
 @media (prefers-reduced-motion: reduce){
   .mitem.bad{animation:none}
 }
+
+/* P3.2 — the word table of a Wortschatz step. Words in sentences, never a bare list. */
+.vocab { margin: 10px 0; border-top: 1px solid #e2e8f0; }
+.vocab-row { padding: 8px 0; border-bottom: 1px solid #eef2f7; }
+.vocab-head { display: flex; align-items: center; gap: 8px; }
+.vocab-de { font-weight: 600; direction: ltr; unicode-bidi: isolate; }
+.vocab-ar { color: #334155; margin-top: 2px; }
+.vocab-say { padding: 2px 8px; }
+.vocab-toggle { margin-top: 4px; }
+.vocab-body { margin-top: 6px; padding: 8px; background: #f8fafc; border-radius: 8px; }
+.vocab-ex { direction: ltr; unicode-bidi: isolate; }
+.vocab-err { direction: ltr; unicode-bidi: isolate; color: #b91c1c; margin-top: 4px; }
+.vocab-why { color: #334155; margin-top: 4px; }
