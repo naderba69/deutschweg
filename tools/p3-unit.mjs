@@ -9,7 +9,7 @@ const FILES = [
   'engine/practice.js', 'engine/adaptive.js', 'engine/tracks.js', 'engine/exam.js',
   'engine/generator.js', 'data/inventory.js', 'data/chunks.js', 'data/syllabus.js',
   'data/bank.js', 'data/a0-u1-l1.js', 'data/catalog.js', 'data/library.js',
-  'data/comprehension.js', 'data/ladder.js', 'app.js'
+  'data/comprehension.js', 'data/dialogues.js', 'data/ladder.js', 'app.js'
 ];
 const html = fs.readFileSync(ROOT + '/web/index.html', 'utf8').replace(/<script src="[^"]+"><\/script>/g, '');
 function boot() {

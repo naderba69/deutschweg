@@ -1080,7 +1080,7 @@ function renderPause() {
 function readingNodes() {
   const lib = window.DW_LIBRARY || {};
   const novel = lib.B2 && lib.B2.novel ? lib.B2.novel.chapters.map(ch => Object.assign({ novel: true }, ch)) : [];
-  return [].concat(lib.A1 || [], lib.A2 || [], (lib.B1 && lib.B1.texts) || [], (lib.B2 && lib.B2.articles) || [], novel);
+  return [].concat(lib.A1 || [], lib.A2 || [], (lib.B1 && lib.B1.texts) || [], (lib.B2 && lib.B2.articles) || [], novel, lib.dialogues || []);
 }
 function openReading(item) {
   const v = screenBack('قراءة موسّعة');
@@ -1088,6 +1088,7 @@ function openReading(item) {
   const started = Date.now();
   const body = el('div', 'zeigt');
   body.setAttribute('dir', 'ltr');
+  if (item.dialog) body.style.whiteSpace = 'pre-line';
   body.textContent = item.body;
   v.appendChild(body);
   const picked = {};
@@ -1122,7 +1123,7 @@ function renderReading() {
   const nodes = readingNodes().filter(item => item.questions && item.questions.length >= 2);
   if (!nodes.length || !DW.tracks) { v.appendChild(el('div', 'meta', 'لا نص بسؤالين. لا قياس.')); return; }
   nodes.forEach(item => {
-    const b = el('button', 'ghost', (item.level || 'B2') + ' · ' + item.title);
+    const b = el('button', 'ghost', (item.level || 'B2') + ' · ' + (item.dialog ? 'حوار بعد ' + item.after + ' · ' : '') + item.title);
     b.type = 'button';
     b.onclick = () => openReading(item);
     v.appendChild(b);

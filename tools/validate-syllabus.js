@@ -190,6 +190,31 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
   const lib = {};
   new Function('window', fs.readFileSync(path.join(root, 'web/data/library.js'), 'utf8'))(lib);
   const library = lib.DW_LIBRARY || {};
+  /* dialogues: forms known up to the lesson they follow, in map order */
+  {
+    const dl = {};
+    new Function('window', fs.readFileSync(path.join(root, 'web/data/dialogues.js'), 'utf8'))(dl);
+    const dialogues = dl.DW_DIALOGUES || [];
+    const mapOrder = lessons.map(l => l.id);
+    const upTo = id => {
+      const v = new Set(formsByLevel.A0 || []);
+      mapOrder.slice(0, mapOrder.indexOf(id) + 1).forEach(lid => {
+        const L = cat.DW_LESSONS[lid];
+        ((L && L.wortschatz) || []).forEach(it => [it.de, it.pl, it.ex].forEach(f => String(f || '').split(/\s+/).map(strip).filter(Boolean).forEach(w => v.add(w))));
+      });
+      return v;
+    };
+    const low = []; let tok = 0, hit = 0;
+    dialogues.forEach(d => {
+      const v = upTo(d.after);
+      const words = d.lines.map(l => l[1]).join(' ').split(/\s+/).map(strip).filter(x => x && !/^\d+$/.test(x));
+      const h = words.filter(x => v.has(x)).length;
+      tok += words.length; hit += h;
+      if (words.length && h / words.length < 0.98) low.push(d.id + ' ' + Math.round(100 * h / words.length) + '%');
+      if (!(d.questions && d.questions.length >= 2)) low.push(d.id + ' needs two questions');
+    });
+    if (dialogues.length) console.log('    dialogues: ' + dialogues.length + ' · known-form coverage up to their lesson ' + Math.round(100 * hit / tok) + '%' + (low.length ? ' · below 98%: ' + low.join(', ') : ' · all at or above 98%'));
+  }
   ['A1', 'A2', 'B1'].forEach(level => {
     const texts = Array.isArray(library[level]) ? library[level] : ((library[level] && library[level].texts) || []);
     if (!texts.length) return;
