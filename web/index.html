@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<title>Deutschweg — أداتك الدراسية</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <span class="dot"></span>
+    <span>Deutschweg</span>
+  </div>
+  <div class="tag">A0 → B2</div>
+</header>
+
+<main id="view"></main>
+
+<footer class="foot">
+  <span id="offline-note">يعمل دون إنترنت · بياناتك على جهازك وحده</span>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="file" accept="application/json" hidden>
+
+<script src="data/a0-u1-l1.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
