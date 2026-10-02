@@ -49,7 +49,7 @@ module.exports = {
       ['mitkommen', 'kommt mit · kam mit · ist mitgekommen', 'يأتي معه', 'Kommst du mit?', 'Mitkommst du?', 'في السؤال: Kommst du mit?', 'wortstellung', 'mit'],
       ['ausgehen', 'geht aus · ging aus · ist ausgegangen', 'يخرج للسهر', 'Wir gehen am Samstag aus.', 'Wir ausgehen am Samstag.', 'منفصل: gehen … aus.', 'wortstellung', 'aus'],
       ['anziehen', 'zieht an · zog an · hat angezogen', 'يرتدي', 'Ich ziehe eine Jacke an.', 'Ich anziehe eine Jacke.', 'منفصل: ziehe … an.', 'wortstellung', 'ziehe'],
-      ['mitbringen', 'bringt mit · brachte mit · hat mitgebracht', 'يُحضر معه', 'Ich bringe Kuchen mit.', 'Ich bringe Kuchen.', 'mitbringen: السابقة mit في الآخر، وبلاها يتغيّر المعنى.', 'wortstellung', 'bringe'],
+      ['mitbringen', 'bringt mit · brachte mit · hat mitgebracht', 'يُحضر معه', 'Ich bringe Kuchen mit.', 'Ich mitbringe Kuchen.', 'منفصل: bringe … mit؛ السابقة في الآخر.', 'wortstellung', 'bringe'],
       ['zurückkommen', 'kommt zurück · kam zurück · ist zurückgekommen', 'يعود', 'Wann kommst du zurück?', 'Wann zurückkommst du?', 'منفصل: kommst … zurück.', 'wortstellung', 'zurück'],
       ['aufmachen', 'macht auf · machte auf · hat aufgemacht', 'يفتح', 'Mach bitte das Fenster auf.', 'Aufmach bitte das Fenster.', 'الأمر: Mach … auf.', 'wortstellung', 'Mach'],
       ['zumachen', 'macht zu · machte zu · hat zugemacht', 'يغلق', 'Ich mache die Tür zu.', 'Ich mache die Tür.', 'zumachen: zu في الآخر، وبلاها معنى آخر.', 'wortstellung', 'zu'],
