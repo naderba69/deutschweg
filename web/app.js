@@ -59,6 +59,102 @@ DW.speak = speak;
 const $ = (s, r = document) => r.querySelector(s);
 function el(tag, cls, txt) { const n = document.createElement(tag); if (cls) n.className = cls; if (txt !== undefined) n.textContent = txt; return n; }
 function toast(msg) { const t = $('#toast'); if (!t) return; t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3200); }
+
+/* ---------------- design shell (dirB: dark, one decision per screen) ---------------- */
+const TRACK_UI = {
+  grammar: { ar: 'القواعد', ic: 'ic-book' },
+  pronunciation: { ar: 'النطق', ic: 'ic-mic' },
+  srs: { ar: 'بطاقات', ic: 'ic-cards' },
+  chunks: { ar: 'قوالب', ic: 'ic-plus' },
+  reading: { ar: 'قراءة', ic: 'ic-book' },
+  listening: { ar: 'سماع', ic: 'ic-ear' },
+  writing: { ar: 'كتابة', ic: 'ic-pen' },
+  speaking: { ar: 'تحدّث', ic: 'ic-mic' },
+  foundations: { ar: 'أساسيات', ic: 'ic-shield' },
+  lesson: { ar: 'درس', ic: 'ic-book' },
+  task: { ar: 'مهمة', ic: 'ic-flag' }
+};
+const TAB_UI = [
+  ['home', 'اليوم', 'ic-home'],
+  ['map', 'الخريطة', 'ic-map'],
+  ['train', 'تدريب', 'ic-train'],
+  ['indicators', 'المؤشرات', 'ic-chart'],
+  ['profile', 'الملف', 'ic-user']
+];
+function icon(name, cls) {
+  const NS = 'http://www.w3.org/2000/svg';
+  const s = document.createElementNS(NS, 'svg');
+  if (cls) s.setAttribute('class', cls);
+  const u = document.createElementNS(NS, 'use');
+  u.setAttribute('href', '#' + name);
+  u.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + name);
+  s.appendChild(u);
+  return s;
+}
+function buildTabbar() {
+  const bar = $('#tabbar');
+  if (!bar) return;
+  bar.innerHTML = '';
+  TAB_UI.forEach(([id, label, ic]) => {
+    const b = el('button', '', label);
+    b.type = 'button';
+    b.dataset.tab = id;
+    b.insertBefore(icon(ic), b.firstChild);
+    b.onclick = () => go(id);
+    bar.appendChild(b);
+  });
+}
+function setTab(id) {
+  [...document.querySelectorAll('#tabbar button')].forEach(b => b.classList.toggle('on', b.dataset.tab === id));
+}
+/* every number stays one tap from its source, whatever the surface */
+function toggleSource(anchor, text) {
+  const nxt = anchor.nextSibling;
+  if (nxt && nxt.classList && nxt.classList.contains('src-box')) { nxt.remove(); return; }
+  anchor.after(el('div', 'layer src-box', text));
+}
+function dailyTarget() {
+  const hours = (S.learner && S.learner.weeklyHours) || 10;
+  const n = DW.adaptive && DW.adaptive.sessionCount ? DW.adaptive.sessionCount(hours) : 6;
+  return Math.max(15, Math.round((hours * 60) / n));
+}
+function greetingLine() {
+  const name = ((S.learner && S.learner.name) || '').trim();
+  const h = DW.now().getHours();
+  const part = h < 11 ? 'صباح الخير' : (h < 17 ? 'نهارك سعيد' : 'مساء الخير');
+  return (name ? part + ' يا ' + name : part) + ' 👋';
+}
+function longDateAr(iso) {
+  try {
+    return new Intl.DateTimeFormat('ar-TN', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(iso + 'T09:00:00'));
+  } catch (e) { return iso; }
+}
+function sectionHead(title, actionLabel, action) {
+  const s = el('div', 'sec');
+  s.appendChild(el('h3', null, title));
+  if (actionLabel) {
+    const b = el('button', 'link', actionLabel);
+    b.type = 'button';
+    b.onclick = action;
+    s.appendChild(b);
+  }
+  return s;
+}
+function rowButton(iconName, label, sub, fn) {
+  const b = el('button', 'r-btn');
+  b.type = 'button';
+  const ic = el('div', 'r-ic');
+  ic.appendChild(icon(iconName));
+  b.appendChild(ic);
+  const col = el('div');
+  col.appendChild(el('span', null, label));
+  if (sub) col.appendChild(el('span', 'r-sub', sub));
+  b.appendChild(col);
+  const go_ = el('span', 'r-go', '‹');
+  b.appendChild(go_);
+  b.onclick = fn;
+  return b;
+}
 DW.toast = toast;
 
 let forcedLessonId = null;
@@ -98,7 +194,11 @@ let timers = [];
 function clearTimers() { timers.forEach(clearInterval); timers.forEach(clearTimeout); timers = []; }
 function go(name) {
   clearTimers();
+  const TAB_OF = { home: 'home', map: 'map', train: 'train', indicators: 'indicators', profile: 'profile' };
+  if (TAB_OF[name]) setTab(TAB_OF[name]);
   if (name === 'home') { forcedLessonId = null; renderHome(); }
+  else if (name === 'train') renderTrain();
+  else if (name === 'profile') renderProfile();
   else if (name === 'lesson') renderLesson();
   else if (name === 'ledger') DW.practice.openLedger($('#view'));
   else if (name === 'attack') DW.practice.openAttack($('#view'));
@@ -122,57 +222,107 @@ DW.go = go;
 
 function renderHome() {
   clearTimers();
+  setTab('home');
   const v = $('#view');
   v.innerHTML = '';
-  v.appendChild(el('h1', null, 'اليوم'));
+  const today = DW.today();
+  const plan = DW.adaptive ? DW.adaptive.compose(S, today) : null;
+  const planned = plan ? plan.minutes : 0;
+  const target = dailyTarget();
 
-  if (exportDue()) {
-    const ban = el('div', 'card small');
-    ban.appendChild(el('div', 'kicker', 'نسخ احتياطي'));
-    ban.appendChild(el('div', null, 'مرّ أسبوع على آخر نسخة. التصدير معروض الآن، ولا يُنزَّل بصمت.'));
-    const ex = el('button', 'ghost', 'تصدير ملف الحالة');
-    ex.type = 'button';
-    ex.onclick = doExport;
-    ban.appendChild(ex);
-    v.appendChild(ban);
-  }
+  /* --- the day: date, greeting, and the length of the session the engine set --- */
+  const head = el('div', 'day-head');
+  const hl = el('div');
+  hl.appendChild(el('div', 'day-date', longDateAr(today)));
+  hl.appendChild(el('div', 'day-greet', greetingLine()));
+  hl.appendChild(el('div', 'day-title', 'اليوم'));
+  head.appendChild(hl);
+  const chip = el('button', 'chip', planned + ' د');
+  chip.type = 'button';
+  chip.onclick = () => toggleSource(chip, 'مدة جلسة اليوم = مجموع دقائق الكتل التي اختارها adaptive.compose. الحصة اليومية = weeklyHours × 60 ÷ عدد الجلسات (' + (DW.adaptive.sessionCount ? DW.adaptive.sessionCount((S.learner && S.learner.weeklyHours) || 10) : 6) + '). المصدر: خطة اليوم.');
+  head.appendChild(chip);
+  v.appendChild(head);
 
+  /* --- the goal: planned minutes against the learner's own daily share --- */
+  const goal = el('div', 'card goal');
+  const gt = el('div', 'goal-top');
+  gt.appendChild(el('div', 'goal-label', 'هدف اليوم'));
+  gt.appendChild(el('div', 'goal-num', planned + ' من ' + target + ' د'));
+  goal.appendChild(gt);
+  const bar = el('div', 'bar');
+  const fill = el('i', 'fill');
+  fill.style.width = Math.min(100, Math.round((planned / target) * 100)) + '%';
+  bar.appendChild(fill);
+  goal.appendChild(bar);
+  goal.appendChild(sourceBtn('من أين هذا الرقم؟', 'المخطَّط ' + planned + ' دقيقة من كتل اليوم، والحصة اليومية ' + target + ' دقيقة = (weeklyHours ' + ((S.learner && S.learner.weeklyHours) || 10) + ' × 60) ÷ ' + (DW.adaptive.sessionCount ? DW.adaptive.sessionCount((S.learner && S.learner.weeklyHours) || 10) : 6) + ' جلسات. المصدر: adaptive.compose + learner.weeklyHours.'));
+  v.appendChild(goal);
+
+  /* --- the one action of the day: the lesson the map allows --- */
   const p = prog();
   const done = p.completedSteps.length;
   const total = steps().length;
+  /* progress means progress: a finished lesson still offers the way back into it,
+     and the line under it says plainly that repeating it is not advancement */
   const started = done > 0;
-  const card = el('div', 'card');
-  card.appendChild(el('div', 'kicker', 'درس اليوم'));
-  card.appendChild(el('div', 'lesson-title', lesson().title.ar));
-  card.appendChild(el('div', 'meta', (lesson().level || 'A0') + ' · ' + lesson().minutes + ' دقيقة · ' + total + ' خطوة'));
-  if (p.state === 'completed') card.appendChild(el('div', 'meta', 'أُنجز هذا الدرس. إعادته ليست تقدّمًا.'));
+  const finished = p.state === 'completed';
+  const hero = el('div', 'hero');
+  const hic = el('div', 'hero-ic');
+  hic.appendChild(icon('ic-book'));
+  hero.appendChild(hic);
+  hero.appendChild(el('div', 'hero-kicker', 'درس اليوم · ' + (lesson().level || 'A0')));
+  hero.appendChild(el('h2', null, lesson().title.ar));
+  if (lesson().title.de) hero.appendChild(el('div', 'hero-sub', lesson().title.de));
+  hero.appendChild(el('div', 'hero-meta', (lesson().minutes || 70) + ' دقيقة · ' + total + ' خطوة'));
+  const sb = el('div', 'stepbar');
+  const sbi = el('i');
+  sbi.style.width = Math.round((done / total) * 100) + '%';
+  sb.appendChild(sbi);
+  hero.appendChild(sb);
   if (started) {
     const cur = steps()[stepIndexById(p.lastStepId)];
-    card.appendChild(el('div', 'context', 'توقّفت عند الخطوة ' + (stepIndexById(p.lastStepId) + 1) + ' من ' + total + ' — ' + (cur.recap || '')));
+    hero.appendChild(el('div', 'context', 'توقّفت عند الخطوة ' + (stepIndexById(p.lastStepId) + 1) + ' من ' + total + ' — ' + (cur.recap || '')));
+  } else if (finished) {
+    hero.appendChild(el('div', 'context', 'أُنجز هذا الدرس. إعادته ليست تقدّمًا.'));
   } else {
-    card.appendChild(el('div', 'context', lessonId() === 'a0-u1-l1'
+    hero.appendChild(el('div', 'context', lessonId() === 'a0-u1-l1'
       ? 'أوّل جلسة: الصوت أوّلًا، ثم التحية. التالي لا يتحرك قبل الإجابة.'
       : 'التالي لا يتحرك قبل الإجابة. هذا هو الدرس الذي تسمح به الخريطة.'));
   }
   const b = el('button', 'primary', started ? 'تابع من حيث توقّفت' : 'ابدأ الدرس');
   b.type = 'button';
   b.onclick = () => { $('#view').dataset.ctx = ''; renderLesson(); };
-  card.appendChild(b);
-  if (S.gaps && S.gaps.stopped) card.appendChild(el('div', 'context resume', DW.adaptive.resumeLine(S.gaps.stopped)));
-  v.appendChild(card);
+  hero.appendChild(b);
+  if (S.gaps && S.gaps.stopped) hero.appendChild(el('div', 'context resume', DW.adaptive.resumeLine(S.gaps.stopped)));
+  v.appendChild(hero);
 
-  if (DW.adaptive) {
-    const todayCard = el('div', 'card small');
-    todayCard.appendChild(el('div', 'kicker', 'جلسة اليوم'));
-    const plan = DW.adaptive.compose(S, DW.today());
-    todayCard.appendChild(sourceBtn(plan.blocks.length + ' كتل · ' + plan.minutes + ' دقيقة', 'عدد الكتل ومجموع دقائقها من adaptive.compose. كل كتلة تحمل سببًا في شاشة الجلسة. المصدر: جلسة اليوم.'));
-    const openToday = el('button', 'ghost', 'جلسة اليوم');
-    openToday.type = 'button';
-    openToday.onclick = () => go('today');
-    todayCard.appendChild(openToday);
-    v.appendChild(todayCard);
+  /* --- the rest of the session: every block with its reason --- */
+  if (plan) {
+    const rest = plan.blocks.filter(x => x.type !== 'lesson-step');
+    v.appendChild(sectionHead('بقية الجلسة', 'جلسة اليوم', () => go('today')));
+    const grid = el('div', 'grid2');
+    rest.forEach(bl => {
+      const ui = TRACK_UI[bl.track] || { ar: bl.track, ic: 'ic-bolt' };
+      const t = el('button', 'tile');
+      t.type = 'button';
+      const top = el('div', 'tile-top');
+      const tic = el('div', 'tile-ic');
+      tic.appendChild(icon(ui.ic));
+      top.appendChild(tic);
+      const col = el('div');
+      col.appendChild(el('div', 'tile-name', ui.ar));
+      col.appendChild(el('div', 'tile-min', bl.minutes + ' د'));
+      top.appendChild(col);
+      t.appendChild(top);
+      t.appendChild(el('div', 'reason', bl.reason));
+      t.onclick = () => openBlock(bl);
+      grid.appendChild(t);
+    });
+    v.appendChild(grid);
+    if (plan.withheld) v.appendChild(el('div', 'reason', plan.withheld.reason));
+    if (plan.taper) v.appendChild(el('div', 'layer warn', plan.taper));
   }
 
+  /* --- what the tool suggests next, with the reason it suggests it --- */
   const live = S.errorLedger.filter(e => e.status === 'live').length;
   const watched = S.errorLedger.filter(e => e.status === 'watched').length;
   const due = dueCardCount();
@@ -181,45 +331,27 @@ function renderHome() {
   if (live) { rec = 'attack'; why = 'دين حيّ: ' + live + '. الهجوم يسبق المحتوى الجديد.'; }
   else if (due) { rec = 'srs'; why = 'بطاقات مستحقّة: ' + due + '. السقف 30 حتى لا تبتلع الجلسة.'; }
   else if (S.stats.workshopDone) { rec = 'drill'; why = 'قياس التلقائية بعد تمرين، لا قبله.'; }
-
   const recCard = el('div', 'card small recommend');
   recCard.appendChild(el('div', 'kicker', 'تقترح الأداة'));
   recCard.appendChild(el('div', 'reason', why));
-  const rb = el('button', 'ghost', { attack: 'هجوم الآن', srs: 'بطاقات المراجعة', workshop: 'ورشة الأشكال', drill: 'تدريب الثلاث ثوانٍ' }[rec]);
+  const rb = el('button', 'primary', { attack: 'هجوم الآن', srs: 'بطاقات المراجعة', workshop: 'ورشة الأشكال', drill: 'تدريب الثلاث ثوانٍ' }[rec]);
   rb.type = 'button';
   rb.onclick = () => go(rec);
   recCard.appendChild(rb);
   v.appendChild(recCard);
 
-  const tools = el('div', 'card small');
-  tools.appendChild(el('div', 'kicker', 'أدوات التصحيح'));
-  const row = el('div', 'row');
-  [
-    ['دفتر الأخطاء', 'ledger'],
-    ['بطاقات المراجعة', 'srs'],
-    ['تدريب الثلاث ثوانٍ', 'drill'],
-    ['كتابة', 'write'],
-    ['ورشة الأشكال', 'workshop'],
-    ['المحفظة', 'portfolio'],
-    ['المؤشرات', 'indicators'],
-    ['خريطة القدرات', 'map'],
-    ['توزيع الأسبوع', 'week'],
-    ['قراءة', 'reading'],
-    ['سماع', 'listening'],
-    ['مولّد', 'generate'],
-    ['قوالب', 'chunks'],
-    ['الامتحان', 'exam']
-  ].forEach(([label, name]) => {
-    const g = el('button', 'ghost', label);
-    g.type = 'button';
-    g.onclick = () => go(name);
-    row.appendChild(g);
-  });
-  tools.appendChild(row);
-  v.appendChild(tools);
+  if (exportDue()) {
+    const ban = el('div', 'card small');
+    ban.appendChild(el('div', 'kicker', 'نسخ احتياطي'));
+    ban.appendChild(el('div', 'meta', 'مرّ أسبوع على آخر نسخة. التصدير معروض الآن، ولا يُنزَّل بصمت.'));
+    const ex = el('button', 'ghost', 'تصدير ملف الحالة');
+    ex.type = 'button';
+    ex.onclick = doExport;
+    ban.appendChild(ex);
+    v.appendChild(ban);
+  }
 
   const stc = el('div', 'card small');
-  stc.appendChild(el('div', 'kicker', 'حالة الأدوات'));
   const src = el('button', 'src', 'دين حيّ R1: ' + live + ' · تحت المراقبة: ' + watched);
   src.type = 'button';
   src.onclick = () => {
@@ -229,8 +361,63 @@ function renderHome() {
   stc.appendChild(src);
   stc.appendChild(sourceBtn('قدرات مسجّلة: ' + S.capabilities.length + ' · تسجيلات: ' + S.portfolio.recordings.length, 'عدد capabilities[] وعدد portfolio.recordings. ليست نسبة إتمام. المصدر: الحالتان في deutschweg_v2.'));
   v.appendChild(stc);
+  save();
+}
 
-  const bak = el('div', 'card small');
+/* ---------------- training hub ---------------- */
+function renderTrain() {
+  clearTimers();
+  const v = $('#view');
+  v.innerHTML = '';
+  v.appendChild(el('h1', null, 'تدريب'));
+  v.appendChild(el('div', 'reason', 'كل ما يُصلح خطأً أو يثبّت كلمة. الأداة تختار الترتيب، وأنت تختار الكتلة.'));
+  const live = S.errorLedger.filter(e => e.status === 'live').length;
+  const due = dueCardCount();
+  const rows = el('div', 'rows');
+  rows.appendChild(rowButton('ic-bolt', 'هجوم الآن', live ? 'دين حيّ: ' + live + '. الأكثر تكرارًا أوّلًا.' : 'لا دين حيّ الآن.', () => go('attack')));
+  rows.appendChild(rowButton('ic-cards', 'بطاقات المراجعة', due ? 'مستحقّة: ' + due + ' · السقف 30' : 'لا بطاقة مستحقّة اليوم.', () => go('srs')));
+  rows.appendChild(rowButton('ic-book', 'دفتر الأخطاء', 'دين لا أرشيف: مراقبة ← حيّ ← متقاعد.', () => go('ledger')));
+  rows.appendChild(rowButton('ic-clock', 'تدريب الثلاث ثوانٍ', 'تمرين بلا مؤقّت ثم قياس. المهلة خطأ حقيقي.', () => go('drill')));
+  rows.appendChild(rowButton('ic-pen', 'كتابة', 'خمس نقاط تعدّها أنت، وفحص يسمّي حدّه.', () => go('write')));
+  rows.appendChild(rowButton('ic-train', 'ورشة الأشكال', 'الأشكال الثمانية على جهازك.', () => go('workshop')));
+  rows.appendChild(rowButton('ic-book', 'قراءة', 'نصّان وسؤالان. لا تقدير ذاتي يدخل R4.', () => go('reading')));
+  rows.appendChild(rowButton('ic-ear', 'سماع', 'أصوات من مكتبة المستوى. لا نصّ قبل الجواب.', () => go('listening')));
+  rows.appendChild(rowButton('ic-plus', 'قوالب', 'عبارات جاهزة تُنتج لا تُعرف فقط.', () => go('chunks')));
+  rows.appendChild(rowButton('ic-bolt', 'مولّد', 'بنك الجمل: من 500 إلى 800 جملة.', () => go('generate')));
+  v.appendChild(rows);
+}
+
+/* ---------------- profile: portfolio, plan, backup, settings ---------------- */
+function renderProfile() {
+  clearTimers();
+  const v = $('#view');
+  v.innerHTML = '';
+  v.appendChild(el('h1', null, 'الملف'));
+
+  const nameCard = el('div', 'card');
+  nameCard.appendChild(el('div', 'kicker', 'الاسم'));
+  const nameRow = el('div', 'row');
+  const inp = el('input', 'inp');
+  inp.type = 'text';
+  inp.placeholder = 'اكتب اسمك، يظهر في التحية';
+  inp.value = (S.learner && S.learner.name) || '';
+  const saveName = el('button', 'ghost', 'احفظ');
+  saveName.type = 'button';
+  saveName.onclick = () => { S.learner.name = inp.value.trim(); save(); toast('حُفظ الاسم.'); renderProfile(); };
+  nameRow.appendChild(inp);
+  nameRow.appendChild(saveName);
+  nameCard.appendChild(nameRow);
+  nameCard.appendChild(el('div', 'meta', 'يُخزَّن على جهازك وحده. لا حساب ولا خادم.'));
+  v.appendChild(nameCard);
+
+  const rows = el('div', 'rows');
+  rows.appendChild(rowButton('ic-user', 'المحفظة', 'تسجيلاتك ونصوصك: أقدم مقابل أحدث.', () => go('portfolio')));
+  rows.appendChild(rowButton('ic-cal', 'توزيع الأسبوع', 'الحدود والساعات والقرار الأسبوعي.', () => go('week')));
+  rows.appendChild(rowButton('ic-medal', 'الامتحان', 'المحاكاكات وبوابة الجاهزية.', () => go('exam')));
+  rows.appendChild(rowButton('ic-clock', 'الوقفة المعلنة', 'حتى 3 أسابيع، والساعة تتجمّد.', () => go('pause')));
+  v.appendChild(rows);
+
+  const bak = el('div', 'card');
   bak.appendChild(el('div', 'kicker', 'النسخ الاحتياطي'));
   const brow = el('div', 'row');
   const ex = el('button', 'ghost', 'تصدير ملف الحالة');
@@ -246,6 +433,12 @@ function renderHome() {
   bak.appendChild(brow);
   bak.appendChild(el('div', 'meta', 'التصدير حالة JSON. النسخة الكاملة حالة وصوت، بلا ضغط خارجي. الاستيراد يدمج ولا يستبدل.'));
   v.appendChild(bak);
+
+  const stc = el('div', 'card small');
+  stc.appendChild(el('div', 'kicker', 'حالة الأدوات'));
+  stc.appendChild(sourceBtn('قدرات مسجّلة: ' + S.capabilities.length + ' · تسجيلات: ' + S.portfolio.recordings.length, 'عدد capabilities[] وعدد portfolio.recordings. ليست نسبة إتمام. المصدر: الحالتان في deutschweg_v2.'));
+  stc.appendChild(el('div', 'meta', 'يعمل دون إنترنت · بياناتك على جهازك وحده'));
+  v.appendChild(stc);
 }
 
 /* ---------------- lesson ---------------- */
@@ -1535,6 +1728,7 @@ document.addEventListener('DOMContentLoaded', () => {
   booted = true;
   const f = $('#file');
   if (f) f.onchange = e => { if (e.target.files[0]) importFile(e.target.files[0]); };
+  buildTabbar();
   renderHome();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
