@@ -115,6 +115,20 @@ S.forEach(s => {
 fbMissing.length === 0 ? ok('immediate explanation present on every answer path')
                        : bad('missing feedback: ' + fbMissing.join(', '));
 
+/* 7b. a cloze that names a near-miss form must not accept that very form:
+   the bare headword of an inflected blank (bequem for bequeme) is the error
+   the row warns against, so it cannot also be a right answer. */
+{
+  const selfMiss = [];
+  S.forEach(s => {
+    const f = s.frage; if (!f || f.art !== 'cloze' || !f.nearMiss) return;
+    const keys = Object.keys(f.nearMiss).map(k => k.toLowerCase());
+    if ((f.antworten || []).some(a => keys.includes(String(a).toLowerCase()))) selfMiss.push(s.id);
+  });
+  selfMiss.length === 0 ? ok('no cloze accepts its own near-miss form')
+                        : bad('cloze accepts its near-miss form: ' + selfMiss.join(', '));
+}
+
 /* 8. diagnostic distractors on every wrong mcq option */
 let noFam = [];
 S.forEach(s => {

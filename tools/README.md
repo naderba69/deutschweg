@@ -14,7 +14,8 @@ Exit code is non-zero on any hard failure — so it can gate a commit.
 Also (P3.2): a lesson that carries a word list must use at least six of the
 eight forms, no memory trick may repeat verbatim across lessons, and every
 word-order exercise must score its own correct answer as full credit and
-carry a real Arabic task line.
+carry a real Arabic task line. A cloze that names a near-miss form must not
+accept that form as an answer (the compiler's `clozeAnswers` drops it).
 
 ## `validate-syllabus.js`
 

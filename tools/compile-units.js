@@ -327,6 +327,20 @@ function nearKeyFor(it) {
   return cands[0] || String(it.err).split(/\s+/).slice(-2)[0];
 }
 
+/* The accepted answers of a cloze: the surface form, the declared blank and the
+   headword — minus anything that is the lesson's own typical error. Without
+   this an inflected blank (bequeme) would accept the bare headword (bequem),
+   which is exactly the form the row warns against. */
+function clozeAnswers(it, b) {
+  const miss = nearKeyFor(it).toLowerCase();
+  const out = [];
+  [b.answer, it.blank, it.de].forEach(a => {
+    if (!a || a.toLowerCase() === miss && a.toLowerCase() !== b.answer.toLowerCase()) return;
+    if (!out.some(x => x.toLowerCase() === a.toLowerCase())) out.push(a);
+  });
+  return out;
+}
+
 function blankOut(sentence, core) {
   /* Unicode-aware boundaries: \b is ASCII-only and would miss Österreich. */
   const esc = core.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -554,7 +568,7 @@ function lessonOfVocab(spec, vocabRow) {
         hinweise: ['اقرأ الجملة كاملة قبل الاختيار.', anchor.why],
         frage: {
           ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الفراغ بالكلمة الصحيحة من المجموعة.',
-          zeigt: b.shown, antworten: [b.answer, anchor.blank, anchor.de],
+          zeigt: b.shown, antworten: clozeAnswers(anchor, b),
           nearMiss: { [nearKeyFor(anchor)]: anchor.why }, nearFamily: anchor.fam,
           feedback: { correct: anchor.why }
         }
@@ -658,7 +672,7 @@ function lessonOfVocab(spec, vocabRow) {
       frage: {
         ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الجملة بالكلمة الصحيحة.',
         zeigt: b.shown,
-        antworten: [b.answer, drillItem.blank, drillItem.de],
+        antworten: clozeAnswers(drillItem, b),
         nearMiss: { [nearKeyFor(drillItem)]: drillItem.why }, nearFamily: drillItem.fam,
         feedback: { correct: drillItem.why }
       }
@@ -790,7 +804,7 @@ function lessonOfVocab(spec, vocabRow) {
         recap: 'فحص ' + (i + 1),
         frage: {
           ziel: cap(n + 1), prereq: src.prereq, art: 'cloze', frage: 'أكمل الفراغ بلا مساعدة.',
-          zeigt: b.shown, antworten: [b.answer, src.cloze.blank, src.cloze.de],
+          zeigt: b.shown, antworten: clozeAnswers(src.cloze, b),
           nearMiss: { [nearKeyFor(src.cloze)]: src.cloze.why }, nearFamily: src.cloze.fam,
           feedback: { correct: src.cloze.why }
         }
