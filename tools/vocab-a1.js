@@ -475,5 +475,235 @@ module.exports = {
       { trick: 'الحركة الداخلية تُحفظ مع الجمع', wie: 'Mutter ← Mütter · Apfel ← Äpfel · Stadt ← Städte · Buch ← Bücher.', warum: 'من نسي الحركة أنتج كلمة قريبة لكن غير صحيحة؛ والحركة لا تُستنتج من المفرد فتُحفظ ملتصقة بالجمع.', anchor: 'die Mütter' },
       { trick: '-chen يثبّت الجمع', wie: 'das Mädchen ← die Mädchen · das Brötchen ← die Brötchen.', warum: 'لاحقة التصغير تُلزم الاسم المحايد وتُبقي الجمع بلا تغيير؛ فكل اسم بهذه اللاحقة يُعفى من اللبنات الخمس.', anchor: 'die Mädchen' }
     ]
+  },
+
+  /* ============================ UNIT 3 — a1-u3-l1…l6 ======================== */
+
+  /* ---------------------------------------------------------------- l1 ---- */
+  /* Theme: food. The list is what a learner orders with, plus the two states
+     German carries with sein (hungrig / satt) and the cutlery set, which is
+     three genders on one table. */
+  'a1-u3-l1': {
+    items: [
+      ['das Gericht', 'die Gerichte', 'الطبق (الأكلة)', 'Das Gericht ist heute Suppe.', 'Der Gericht ist heute Suppe.', 'das Gericht محايد؛ الجنس لا يُنقل من «الطبق».', 'genus', 'Gericht'],
+      ['die Vorspeise', 'die Vorspeisen', 'المقبلات', 'Als Vorspeise nehme ich Salat.', 'Als Vorspeise ich nehme Salat.', 'بعد المكوّن الأول يبقى الفعل ثانيًا.', 'wortstellung', 'Vorspeise'],
+      ['die Pizza', 'die Pizzas', 'البيتزا', 'Ich bestelle eine Pizza.', 'Ich bestelle ein Pizza.', 'die Pizza مؤنث: eine.', 'genus', 'Pizza'],
+      ['der Salat', 'die Salate', 'السلطة', 'Der Salat ist frisch.', 'Die Salat ist frisch.', 'der Salat مذكر.', 'genus', 'Salat'],
+      ['das Hähnchen', 'die Hähnchen', 'الدجاج', 'Ich nehme das Hähnchen.', 'Ich nehme der Hähnchen.', 'das Hähnchen محايد.', 'genus', 'Hähnchen'],
+      ['das Fleisch', '—', 'اللحم', 'Ich esse kein Fleisch.', 'Ich esse nicht Fleisch.', 'الاسم النكرة يُنفى بـ kein لا بـ nicht.', 'lexik-kollokation', 'Fleisch'],
+      ['die Nudeln', '—', 'المعكرونة', 'Die Nudeln sind fertig.', 'Die Nudeln ist fertig.', 'Nudeln جمع فقط، والفعل جمع.', 'plural', 'Nudeln'],
+      ['der Kellner', 'die Kellner', 'النادل', 'Der Kellner bringt das Wasser.', 'Der Kellner bringt das Wasser ihm.', 'المفعول المعرّف يكفي؛ الضمير المكرر زائد.', 'wortstellung', 'Kellner'],
+      ['schmecken', 'schmeckt · schmeckte · hat geschmeckt', 'يكون طعمه', 'Die Suppe schmeckt gut.', 'Die Suppe schmeckst gut.', 'الفاعل مفرد غائب: schmeckt بلا st.', 'konjugation', 'schmeckt'],
+      ['lecker', '—', 'لذيذ', 'Der Kuchen ist lecker.', 'Der Kuchen ist ein lecker.', 'الصفة في الخبر تأتي بلا أداة.', 'deklination', 'lecker'],
+      ['satt', '—', 'شبعان', 'Ich bin satt.', 'Ich habe satt.', 'الشبع حالة تُحمَل بـ sein لا haben.', 'lexik-kollokation', 'satt'],
+      ['hungrig', '—', 'جوعان', 'Ich bin hungrig.', 'Ich habe hungrig.', 'الجوع حالة بـ sein.', 'lexik-kollokation', 'hungrig'],
+      ['das Mittagessen', 'die Mittagessen', 'الغداء', 'Das Mittagessen ist um zwölf.', 'Das Mittagessen ist in zwölf.', 'الساعة مع um.', 'präposition', 'Mittagessen'],
+      ['das Abendessen', 'die Abendessen', 'العشاء', 'Das Abendessen ist fertig.', 'Der Abendessen ist fertig.', 'das Abendessen محايد، والتركيب كلمة واحدة.', 'genus', 'Abendessen'],
+      ['kochen', 'kocht · kochte · hat gekocht', 'يطبخ', 'Ich koche heute Abend.', 'Ich koche in heute Abend.', 'الظرف بلا حرف جر.', 'präposition', 'koche'],
+      ['probieren', 'probiert · probierte · hat probiert', 'يتذوّق', 'Möchten Sie die Suppe probieren?', 'Möchten Sie die Suppe probierst?', 'بعد möchten يبقى المصدر.', 'konjugation', 'probieren'],
+      ['die Tasse', 'die Tassen', 'الفنجان', 'Eine Tasse Kaffee, bitte.', 'Ein Tasse Kaffee, bitte.', 'die Tasse مؤنث: eine.', 'genus', 'Tasse'],
+      ['das Glas', 'die Gläser', 'الكأس', 'Ein Glas Wasser, bitte.', 'Eine Glas Wasser, bitte.', 'das Glas محايد: ein؛ والجمع Gläser بحركة.', 'genus', 'Glas'],
+      ['der Teller', 'die Teller', 'الطبق (الإناء)', 'Der Teller ist heiß.', 'Die Teller ist heiß.', 'der Teller مذكر؛ والمفرد والجمع متشابهان في الكتابة.', 'genus', 'Teller'],
+      ['die Gabel', 'die Gabeln', 'الشوكة', 'Die Gabel liegt links.', 'Der Gabel liegt links.', 'die Gabel مؤنث.', 'genus', 'Gabel'],
+      ['das Messer', 'die Messer', 'السكين', 'Das Messer ist scharf.', 'Der Messer ist scharf.', 'das Messer محايد.', 'genus', 'Messer'],
+      ['der Löffel', 'die Löffel', 'الملعقة', 'Ich brauche einen Löffel.', 'Ich brauche ein Löffel.', 'der Löffel مذكر في النصب: einen.', 'kasus', 'Löffel'],
+      ['das Salz', '—', 'الملح', 'Gib mir bitte das Salz.', 'Gib mir bitte der Salz.', 'das Salz يبقى das في النصب.', 'kasus', 'Salz'],
+      ['der Saft', 'die Säfte', 'العصير', 'Ein Saft, bitte.', 'Eine Saft, bitte.', 'der Saft مذكر: ein، والجمع Säfte بحركة.', 'plural', 'Saft']
+    ],
+    tricks: [
+      { trick: 'النادل يسأل بالمقلوب', wie: 'Möchten Sie bestellen? · Möchten Sie probieren?', warum: 'صيغة الأدب تبدأ بالفعل ثم Sie؛ العربية تبدأ بالفاعل، فحفظ القالب هو ما يجعل الرد مؤدّبًا من أول مرة.', anchor: 'Möchten Sie die Suppe probieren?' },
+      { trick: 'sein للجوع والشبع', wie: 'Ich bin hungrig · ich bin satt: لا «ich habe».', warum: 'العربية تقول «عندي جوع» و«شبعت»، فيترجمها المتعلم بـ haben؛ والألمانية تعتبرهما حالة تُحمَل بـ sein مثل المرض.', anchor: 'Ich bin satt.' },
+      { trick: 'طقم المائدة بثلاث أدوات', wie: 'der Löffel · das Messer · die Gabel: ثلاثة أجيال على طبق واحد.', warum: 'لا رابط بين شكل الشيء وجنسه، وحفظ الطقم الواحد معًا أسهل من حفظ كل كلمة وحدها، وهو يُستعمل كل يوم.', anchor: 'der Löffel' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l2 ---- */
+  /* Theme: shopping. Prices, quantities and paying. The list pairs each noun
+     with the frame it lives in (an der Kasse, mit der Karte, ein Kilo Tomaten)
+     because that is where the case is decided. */
+  'a1-u3-l2': {
+    items: [
+      ['kosten', 'kostet · kostete · hat gekostet', 'يكلّف', 'Was kostet das?', 'Was kostet es das?', 'الفاعل das يكفي؛ تكرار الضمير خطأ من العربية.', 'wortstellung', 'kostet'],
+      ['das Sonderangebot', 'die Sonderangebote', 'العرض الخاص', 'Heute ist das Sonderangebot.', 'Heute ist der Sonderangebot.', 'das Angebot محايد، والتركيب كلمة واحدة بلا فراغ.', 'orthographie', 'Sonderangebot'],
+      ['der Preis', 'die Preise', 'السعر', 'Der Preis ist hoch.', 'Der Preis ist teuer.', 'السعر يرتفع (hoch) والسلعة تُكلّف (teuer).', 'lexik-kollokation', 'Preis'],
+      ['teuer', 'teurer · am teuersten', 'غالي', 'Das Auto ist zu teuer.', 'Das Auto ist zu teuer Preis.', 'الصفة تكفي في الخبر بلا اسم بعدها.', 'deklination', 'teuer'],
+      ['billig', 'billiger · am billigsten', 'رخيص', 'Das Brot ist billig.', 'Das Brot ist billig Preis.', 'الصفة لا تحتاج «Preis» بعدها.', 'deklination', 'billig'],
+      ['günstig', '—', 'بسعر مناسب', 'Der Kurs ist günstig.', 'Der Kurs ist gunstig.', 'ü جزء من الكلمة؛ بلا نقطتين تصير كلمة غير قائمة.', 'orthographie', 'günstig'],
+      ['die Kasse', 'die Kassen', 'الصندوق (الدفع)', 'Bitte zahlen Sie an der Kasse.', 'Bitte zahlen Sie in der Kasse.', 'الدفع عند الصندوق an der Kasse.', 'präposition', 'Kasse'],
+      ['bezahlen', 'bezahlt · bezahlte · hat bezahlt', 'يدفع', 'Ich bezahle mit Karte.', 'Ich bezahle mit die Karte.', 'mit تحكم Dativ: der Karte.', 'kasus', 'bezahle'],
+      ['die Karte', 'die Karten', 'البطاقة', 'Ich bezahle mit der Karte.', 'Ich bezahle mit die Karte.', 'بعد mit يأتي Dativ دائمًا: der Karte.', 'kasus', 'Karte'],
+      ['das Kleingeld', '—', 'النقود المعدنية', 'Hast du Kleingeld?', 'Hast du klein Geld?', 'الكلمة مركّبة: Klein + Geld كلمة واحدة.', 'orthographie', 'Kleingeld'],
+      ['der Euro', 'die Euro', 'اليورو', 'Das kostet fünf Euro.', 'Das kostet fünf Euros.', 'Euro لا تُجمع بـ s في الألمانية المعيارية.', 'plural', 'Euro'],
+      ['die Tüte', 'die Tüten', 'الكيس', 'Eine Tüte, bitte.', 'Ein Tüte, bitte.', 'die Tüte مؤنث: eine.', 'genus', 'Tüte'],
+      ['das Kilo', 'die Kilos', 'الكيلوغرام', 'Ein Kilo Tomaten, bitte.', 'Eine Kilo Tomaten, bitte.', 'das Kilo محايد: ein.', 'genus', 'Kilo'],
+      ['das Pfund', 'die Pfund', 'الرطل (500 غرام)', 'Ein Pfund Kaffee, bitte.', 'Ein Pfund Kaffees, bitte.', 'المقدار مع الاسم غير المعدود بلا إضافة.', 'plural', 'Pfund'],
+      ['die Flasche', 'die Flaschen', 'القنينة', 'Zwei Flaschen Wasser, bitte.', 'Zwei Flasche Wasser, bitte.', 'العدد فوق واحد يطلب الجمع: Flaschen.', 'plural', 'Flaschen'],
+      ['die Dose', 'die Dosen', 'المعلّبة', 'Ich kaufe eine Dose Thunfisch.', 'Ich kaufe ein Dose Thunfisch.', 'die Dose مؤنث: eine.', 'genus', 'Dose'],
+      ['das Stück', 'die Stücke', 'القطعة', 'Ein Stück Käse, bitte.', 'Ein Stuck Käse, bitte.', 'ü جزء من الكلمة؛ إسقاطها يترك كلمة غير صحيحة.', 'orthographie', 'Stück'],
+      ['der Käse', '—', 'الجبن', 'Der Käse ist frisch.', 'Das Käse ist frisch.', 'der Käse مذكر.', 'genus', 'Käse'],
+      ['das Obst', '—', 'الفواكه', 'Ich kaufe Obst.', 'Ich kaufe ein Obst.', 'das Obst جمعي يُستعمل بلا أداة هنا.', 'lexik-kollokation', 'Obst'],
+      ['das Gemüse', '—', 'الخضر', 'Gemüse ist gesund.', 'Gemüse sind gesund.', 'das Gemüse مفرد جمعي، فيأخذ الفعل مفردًا.', 'konjugation', 'Gemüse'],
+      ['die Tomate', 'die Tomaten', 'الطماطم', 'Die Tomaten sind rot.', 'Die Tomate sind rot.', 'الفاعل جمع، فيأتي الفعل جمعًا.', 'plural', 'Tomaten'],
+      ['der Apfel', 'die Äpfel', 'التفاحة', 'Ich nehme drei Äpfel.', 'Ich nehme drei Apfel.', 'الجمع Äpfel بحركة، والعدد فوق واحد يطلبه.', 'plural', 'Äpfel'],
+      ['die Quittung', 'die Quittungen', 'الوصل', 'Möchten Sie eine Quittung?', 'Möchten Sie ein Quittung?', 'die Quittung مؤنث، وكل ما ينتهي بـ -ung مؤنث.', 'genus', 'Quittung'],
+      ['öffnen', 'öffnet · öffnete · hat geöffnet', 'يفتح', 'Ich öffne die Flasche.', 'Ich öffne die Flasche auf.', 'öffnen تأخذ المفعول مباشرة؛ auf مع aufmachen.', 'falser-freund', 'öffne']
+    ],
+    tricks: [
+      { trick: 'السعر hoch والسلعة teuer', wie: 'Der Preis ist hoch · das Auto ist teuer.', warum: 'العربية تقول «غالي» للسعر والسلعة معًا؛ الألمانية تفصل: السعر يرتفع، والسلعة تُكلّف.', anchor: 'Der Preis ist hoch.' },
+      { trick: 'mit يجرّ دائمًا', wie: 'mit der Karte · mit dem Bus · mit dem Freund.', warum: 'mit من الحروف التي تحكم Dativ بلا استثناء، وهي أول ما يُختبر في الملء؛ حفظ الحرف مع حالته يمنع الخطأ قبل وقوعه.', anchor: 'Ich bezahle mit der Karte.' },
+      { trick: 'المقدار ثم الاسم بلا أداة', wie: 'ein Kilo Tomaten · ein Pfund Kaffee · eine Flasche Wasser.', warum: 'العربية تربط المعدود بالمعدود إليه بلا أداة، والألمانية تفعل مثلها هنا؛ فإضافة أداة («ein Kilo der Tomaten») تبدو ثقيلة في المتجر.', anchor: 'Ein Kilo Tomaten, bitte.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l3 ---- */
+  /* Theme: the day. The routine verbs carry the separable prefix that unit 2
+     taught, now inside a real schedule, with the reflexive pronoun sitting
+     between the verb and its prefix. */
+  'a1-u3-l3': {
+    items: [
+      ['aufwachen', 'wacht auf · wachte auf · ist aufgewacht', 'يستيقظ (من النوم)', 'Ich wache um sechs auf.', 'Ich aufwache um sechs.', 'البادئة auf في آخر الجملة.', 'wortstellung', 'wache'],
+      ['duschen', 'duscht · duschte · hat geduscht', 'يستحمّ', 'Ich dusche jeden Morgen.', 'Ich mich dusche jeden Morgen.', 'duschen بلا ضمير انعكاسي في هذا الاستعمال.', 'konjugation', 'dusche'],
+      ['sich waschen', 'wäscht sich · wusch sich · hat sich gewaschen', 'يغسل (نفسه)', 'Ich wasche mich.', 'Ich wasche mir.', 'الغسل الكامل يطلب النصب: mich لا mir.', 'kasus', 'wasche'],
+      ['sich anziehen', 'zieht sich an · zog sich an · hat sich angezogen', 'يلبس ثيابه', 'Ich ziehe mich an.', 'Ich anziehe mich.', 'الفعل الانعكاسي المنفصل: الفعل ثانيًا، الضمير بعده، an في الآخر.', 'wortstellung', 'ziehe'],
+      ['losgehen', 'geht los · ging los · ist losgegangen', 'ينطلق', 'Ich gehe um acht los.', 'Ich losgehe um acht.', 'los في آخر الجملة.', 'wortstellung', 'gehe'],
+      ['die Zähne putzen', 'putzt die Zähne · putzte die Zähne', 'ينظّف أسنانه', 'Ich putze die Zähne.', 'Ich putze mich die Zähne.', 'الفعل المتعدّي لا يحتاج ضميرًا مكررًا.', 'kasus', 'putze'],
+      ['die Arbeit beginnen', 'beginnt die Arbeit · begann die Arbeit', 'يبدأ العمل', 'Ich beginne die Arbeit um neun.', 'Ich beginne die Arbeit in neun.', 'الساعة مع um.', 'präposition', 'beginne'],
+      ['mittags', '—', 'ظهرًا', 'Mittags esse ich zu Hause.', 'In mittags esse ich zu Hause.', 'الظرف بلا حرف جر.', 'präposition', 'mittags'],
+      ['nachmittags', '—', 'بعد الظهر', 'Nachmittags lerne ich Deutsch.', 'Nachmittags ich lerne Deutsch.', 'بعد الظرف يبقى الفعل ثانيًا.', 'wortstellung', 'nachmittags'],
+      ['zu Abend essen', 'isst zu Abend · aß zu Abend', 'يتعشّى', 'Ich esse um acht zu Abend.', 'Ich esse zu Abend um acht.', 'الظرف الزمني قبل «zu Abend» في الترتيب الشائع.', 'wortstellung', 'Abend'],
+      ['schlafen gehen', 'geht schlafen · ging schlafen', 'يذهب لينام', 'Ich gehe um elf schlafen.', 'Ich gehe schlafen um elf.', 'الظرف قبل schlafen في الموضع الأخير.', 'wortstellung', 'schlafen'],
+      ['der Alltag', '—', 'اليومي · الروتين', 'Mein Alltag ist ruhig.', 'Meine Alltag ist ruhig.', 'der Alltag مذكر: mein.', 'genus', 'Alltag'],
+      ['das Wochenende', 'die Wochenenden', 'نهاية الأسبوع', 'Am Wochenende schlafe ich lange.', 'Im Wochenende schlafe ich lange.', 'am Wochenende صيغة ثابتة.', 'präposition', 'Wochenende'],
+      ['unter der Woche', '—', 'خلال أيام العمل', 'Unter der Woche arbeite ich viel.', 'In der Woche unter arbeite ich viel.', '«خلال الأسبوع» تُقال unter der Woche.', 'lexik-kollokation', 'Woche'],
+      ['vorbereiten', 'bereitet vor · bereitete vor · hat vorbereitet', 'يُحضّر', 'Ich bereite das Frühstück vor.', 'Ich vorbereite das Frühstück.', 'vor في آخر الجملة.', 'wortstellung', 'bereite'],
+      ['früh', 'früher · am frühesten', 'مبكّر', 'Ich stehe früh auf.', 'Ich stehe auf früh.', 'البادئة auf تبقى آخر الجملة.', 'wortstellung', 'früh'],
+      ['müde', '—', 'متعب', 'Am Abend bin ich müde.', 'Am Abend ich bin müde.', 'بعد الظرف يبقى الفعل ثانيًا.', 'wortstellung', 'müde'],
+      ['der Zahn', 'die Zähne', 'السنّ', 'Der Zahn tut weh.', 'Die Zahn tut weh.', 'der Zahn مذكر، والجمع Zähne بحركة.', 'genus', 'Zahn'],
+      ['sauber', '—', 'نظيف', 'Die Küche ist sauber.', 'Die Küche ist sauber machen.', 'الصفة تكفي؛ لا فعل بعدها.', 'deklination', 'sauber'],
+      ['die Routine', 'die Routinen', 'الروتين', 'Meine Routine beginnt um sechs.', 'Mein Routine beginnt um sechs.', 'die Routine مؤنث: meine.', 'genus', 'Routine'],
+      ['halb sieben', '—', 'السادسة والنصف', 'Ich stehe um halb sieben auf.', 'Ich stehe um halb sechs auf.', 'halb sieben = 6:30، إلى الساعة القادمة.', 'falser-freund', 'halb'],
+      ['rechtzeitig', '—', 'في الوقت المناسب', 'Ich komme rechtzeitig an.', 'Ich komme rechtzeitig an zu Hause.', 'ankommen تكفي؛ البادئة an في آخر الجملة.', 'wortstellung', 'rechtzeitig'],
+      ['klingeln', 'klingelt · klingelte · hat geklingelt', 'يرنّ', 'Der Wecker klingelt um sechs.', 'Der Wecker klingelt in sechs.', 'الساعة مع um.', 'präposition', 'klingelt'],
+      ['die Liste', 'die Listen', 'القائمة', 'Ich schreibe eine Liste.', 'Ich schreibe ein Liste.', 'die Liste مؤنث: eine.', 'genus', 'Liste']
+    ],
+    tricks: [
+      { trick: 'الظرف أولًا والفعل ثانيًا', wie: 'Mittags esse ich · Nachmittags lerne ich: الظرف في الموضع الأول، الفعل يتبعه، الفاعل ثالثًا.', warum: 'العربية تقول «ظهرًا آكل» بالترتيب نفسه، لكن المتعلم يقدّم الفاعل عند إطالة الجملة؛ القاعدة تُقفل الموضع.', anchor: 'Nachmittags lerne ich Deutsch.' },
+      { trick: 'الضمير الانعكاسي بين الفعل والبادئة', wie: 'Ich ziehe mich an · ich wasche mich.', warum: 'ثلاثة عناصر في مكان ضيق: الفعل، ثم الضمير، ثم البادئة في الآخر؛ ترتيبها ثابت ولا يُترك للسمع.', anchor: 'Ich ziehe mich an.' },
+      { trick: 'البادئة تفرّق بين فعلين متقاربين', wie: 'aufwachen (من النوم) · aufstehen (من السرير) · losgehen (ينطلق).', warum: 'العربية تُفرّق بالسياق، والألمانية تعلّق الفرق بالبادئة؛ فحفظ الفعل ببادئته هو حفظ الفعل نفسه.', anchor: 'Ich wache um sechs auf.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l4 ---- */
+  /* Theme: the past with haben. Instead of a rule list, the list is the past
+     participles the learner will actually need, each inside its own sentence,
+     plus the particles (schon, noch nicht, nie) whose position makes the
+     bracket hold. */
+  'a1-u3-l4': {
+    items: [
+      ['gearbeitet', '—', 'عملتُ', 'Ich habe gestern gearbeitet.', 'Ich habe gestern arbeiten.', 'الماضي مع haben يحتاج اسم المفعول لا المصدر.', 'konjugation', 'gearbeitet'],
+      ['gelernt', '—', 'تعلّمتُ', 'Ich habe viel gelernt.', 'Ich habe viel lernen.', 'نفس القاعدة: اسم المفعول في الآخر.', 'konjugation', 'gelernt'],
+      ['gespielt', '—', 'لعبتُ', 'Wir haben Fußball gespielt.', 'Wir haben Fußball spielen.', 'اسم المفعول لا المصدر.', 'konjugation', 'gespielt'],
+      ['gekauft', '—', 'اشتريتُ', 'Ich habe Brot gekauft.', 'Ich habe Brot kaufen.', 'اسم المفعول في الآخر.', 'konjugation', 'gekauft'],
+      ['gemacht', '—', 'فعلتُ', 'Was hast du gestern gemacht?', 'Was hast du gestern machen?', 'في السؤال يبقى اسم المفعول في الآخر أيضًا.', 'konjugation', 'gemacht'],
+      ['gegessen', 'isst · aß', 'أكلتُ', 'Ich habe Pizza gegessen.', 'Ich habe Pizza essen.', 'اسم المفعول gegessen، وفعله شاذ.', 'konjugation', 'gegessen'],
+      ['getrunken', '—', 'شربتُ', 'Ich habe Tee getrunken.', 'Ich habe Tee trinken.', 'اسم المفعول getrunken.', 'konjugation', 'getrunken'],
+      ['gesehen', '—', 'رأيتُ', 'Ich habe den Film gesehen.', 'Ich habe den Film sehen.', 'اسم المفعول gesehen.', 'konjugation', 'gesehen'],
+      ['geschrieben', '—', 'كتبتُ', 'Ich habe eine Nachricht geschrieben.', 'Ich habe eine Nachricht schreiben.', 'اسم المفعول geschrieben.', 'konjugation', 'geschrieben'],
+      ['gelesen', '—', 'قرأتُ', 'Ich habe das Buch gelesen.', 'Ich habe das Buch lesen.', 'اسم المفعول gelesen.', 'konjugation', 'gelesen'],
+      ['gesprochen', '—', 'تكلّمتُ', 'Ich habe mit dem Lehrer gesprochen.', 'Ich habe mit dem Lehrer sprechen.', 'اسم المفعول؛ وsprechen تطلب mit + Dativ.', 'konjugation', 'gesprochen'],
+      ['genommen', '—', 'أخذتُ', 'Ich habe den Bus genommen.', 'Ich habe den Bus nehmen.', 'اسم المفعول genommen.', 'konjugation', 'genommen'],
+      ['gehört', '—', 'سمعتُ', 'Ich habe Musik gehört.', 'Ich habe Musik hören.', 'اسم المفعول gehört.', 'konjugation', 'gehört'],
+      ['gesucht', '—', 'بحثتُ', 'Ich habe meinen Schlüssel gesucht.', 'Ich habe meinen Schlüssel suchen.', 'اسم المفعول gesucht؛ والمفعول في النصب meinen.', 'konjugation', 'gesucht'],
+      ['gefunden', '—', 'وجدتُ', 'Ich habe den Schlüssel gefunden.', 'Ich habe den Schlüssel finden.', 'اسم المفعول gefunden.', 'konjugation', 'gefunden'],
+      ['gestern', '—', 'أمس', 'Gestern habe ich gearbeitet.', 'Gestern ich habe gearbeitet.', 'إذا تقدّم الظرف يبقى الفعل المساعد ثانيًا.', 'wortstellung', 'gestern'],
+      ['vorgestern', '—', 'أول أمس', 'Vorgestern war ich krank.', 'Vorgestern ich war krank.', 'الفعل ثانيًا بعد الظرف.', 'wortstellung', 'vorgestern'],
+      ['letzte Woche', '—', 'الأسبوع الماضي', 'Letzte Woche habe ich viel gelernt.', 'Letzte Woche ich habe viel gelernt.', 'الفعل ثانيًا ولو طال المكوّن الأول.', 'wortstellung', 'Woche'],
+      ['letztes Jahr', '—', 'السنة الماضية', 'Letztes Jahr war ich in Berlin.', 'Letzte Jahr war ich in Berlin.', 'das Jahr محايد: letztes Jahr.', 'deklination', 'Jahr'],
+      ['schon', '—', 'بالفعل · سبق أن', 'Ich habe schon gegessen.', 'Ich habe gegessen schon.', 'schon تأتي قبل اسم المفعول لا بعده.', 'wortstellung', 'schon'],
+      ['noch nicht', '—', 'لم بعد', 'Ich habe noch nicht gegessen.', 'Ich habe gegessen noch nicht.', 'الترتيب: noch nicht قبل اسم المفعول.', 'wortstellung', 'nicht'],
+      ['nie', '—', 'أبدًا', 'Ich habe nie geraucht.', 'Ich habe geraucht nie.', 'ظرف النفي يأتي قبل اسم المفعول.', 'wortstellung', 'nie'],
+      ['die Woche', 'die Wochen', 'الأسبوع', 'Diese Woche war lang.', 'Diese Woche waren lang.', 'الفاعل مفرد: war.', 'konjugation', 'Woche'],
+      ['gestern Abend', '—', 'البارحة مساءً', 'Gestern Abend habe ich gekocht.', 'Gestern Abend ich habe gekocht.', 'الفعل ثانيًا ولو تعدّد الظرف.', 'wortstellung', 'Abend']
+    ],
+    tricks: [
+      { trick: 'القوس: haben ثانيًا واسم المفعول أخيرًا', wie: 'Ich habe gestern gearbeitet: المساعد في الموضع الثاني واسم المفعول في الآخر.', warum: 'العربية تصرّف الماضي بكلمة واحدة، والألمانية تبني الزمن من قطعتين تفصل بينهما الجملة كلها؛ هذا أكبر تغيير بنيوي في A1.', anchor: 'Ich habe gestern gearbeitet.' },
+      { trick: 'ge في الأول وt في الآخر', wie: 'gearbeitet · gelernt · gekauft · gemacht: قالب الأفعال المنتظمة.', warum: 'لبنة واحدة (ge + الجذر + t) تولّد ما لم يُحفظ؛ ومن حفظ الأفعال كلمة واحدة ضاع عليه القالب.', anchor: 'Ich habe Brot gekauft.' },
+      { trick: 'schon وnoch nicht قبل اسم المفعول', wie: 'Ich habe schon gegessen · ich habe noch nicht gegessen · ich habe nie geraucht.', warum: 'العربية تضع «بالفعل» و«بعد» آخر الجملة، والألمانية تُلزمهما قبل اسم المفعول؛ تقديمهما يفكّ القوس.', anchor: 'Ich habe schon gegessen.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l5 ---- */
+  /* Theme: the past with sein. The list is movement and change of state, plus
+     the travel nouns and the two-direction pair nach Hause / zu Hause. */
+  'a1-u3-l5': {
+    items: [
+      ['gegangen', '—', 'ذهبتُ', 'Ich bin nach Hause gegangen.', 'Ich habe nach Hause gegangen.', 'الحركة تأخذ sein لا haben.', 'konjugation', 'gegangen'],
+      ['gefahren', '—', 'سافرتُ', 'Wir sind nach Tunis gefahren.', 'Wir haben nach Tunis gefahren.', 'fahren فعل حركة يأخذ sein.', 'konjugation', 'gefahren'],
+      ['gekommen', '—', 'جئتُ', 'Sie ist spät gekommen.', 'Sie hat spät gekommen.', 'kommen تأخذ sein.', 'konjugation', 'gekommen'],
+      ['geflogen', '—', 'طرتُ', 'Ich bin nach Berlin geflogen.', 'Ich habe nach Berlin geflogen.', 'fliegen فعل حركة يأخذ sein.', 'konjugation', 'geflogen'],
+      ['gereist', '—', 'سافرت (رحلة)', 'Wir sind viel gereist.', 'Wir haben viel gereist.', 'reisen تأخذ sein.', 'konjugation', 'gereist'],
+      ['aufgestanden', '—', 'استيقظتُ', 'Ich bin früh aufgestanden.', 'Ich habe früh aufgestanden.', 'aufstehen فعل حركة يأخذ sein.', 'konjugation', 'aufgestanden'],
+      ['eingestiegen', '—', 'صعدتُ (إلى الباص)', 'Ich bin in den Bus eingestiegen.', 'Ich habe in den Bus eingestiegen.', 'einsteigen تأخذ sein.', 'konjugation', 'eingestiegen'],
+      ['ausgestiegen', '—', 'نزلتُ', 'Wir sind hier ausgestiegen.', 'Wir haben hier ausgestiegen.', 'aussteigen تأخذ sein.', 'konjugation', 'ausgestiegen'],
+      ['geblieben', '—', 'بقيتُ', 'Ich bin zu Hause geblieben.', 'Ich habe zu Hause geblieben.', 'bleiben تغيّر موضع وإن لم تظهر حركة، ومع ذلك تأخذ sein.', 'konjugation', 'geblieben'],
+      ['geworden', '—', 'أصبحتُ', 'Er ist Arzt geworden.', 'Er hat Arzt geworden.', 'werden تأخذ sein، والمهنة بلا أداة هنا.', 'konjugation', 'geworden'],
+      ['gefallen', '—', 'أعجبه', 'Der Film hat mir gefallen.', 'Der Film hat mich gefallen.', 'gefallen تطلب Dativ: mir لا mich.', 'kasus', 'gefallen'],
+      ['passiert', '—', 'حدث', 'Was ist passiert?', 'Was hat passiert?', 'passieren تأخذ sein.', 'konjugation', 'passiert'],
+      ['die Reise', 'die Reisen', 'الرحلة', 'Die Reise war lang.', 'Der Reise war lang.', 'die Reise مؤنث.', 'genus', 'Reise'],
+      ['der Zug', 'die Züge', 'القطار', 'Der Zug fährt um acht.', 'Der Zug fahrt um acht.', 'مع الغائب: fährt لا fahrt.', 'konjugation', 'Zug'],
+      ['das Flugzeug', 'die Flugzeuge', 'الطائرة', 'Das Flugzeug ist gelandet.', 'Das Flugzeug ist landen.', 'في الماضي يأتي اسم المفعول gelandet.', 'konjugation', 'Flugzeug'],
+      ['der Bahnhof', 'die Bahnhöfe', 'محطة القطار', 'Wir treffen uns am Bahnhof.', 'Wir treffen uns in Bahnhof.', 'المحطة an + dem = am Bahnhof.', 'präposition', 'Bahnhof'],
+      ['der Flughafen', 'die Flughäfen', 'المطار', 'Ich fahre zum Flughafen.', 'Ich fahre in der Flughafen.', 'zu + dem = zum مع المطار.', 'präposition', 'Flughafen'],
+      ['abfahren', 'fährt ab · fuhr ab · ist abgefahren', 'ينطلق (القطار)', 'Der Zug fährt um acht ab.', 'Der Zug abfährt um acht.', 'البادئة ab في الآخر.', 'wortstellung', 'fährt'],
+      ['ankommen', 'kommt an · kam an · ist angekommen', 'يصل', 'Wann kommt der Zug an?', 'Wann ankommt der Zug?', 'في السؤال يبقى الفعل المصرّف أولًا وan في الآخر.', 'wortstellung', 'kommt'],
+      ['die Fahrt', 'die Fahrten', 'الرحلة (بالسيارة أو القطار)', 'Die Fahrt dauert zwei Stunden.', 'Die Fahrt dauert zwei Uhren.', 'المدة بالساعات (Stunden) لا بالـ Uhren.', 'lexik-kollokation', 'Fahrt'],
+      ['unterwegs', '—', 'في الطريق', 'Ich bin unterwegs.', 'Ich bin in unterwegs.', 'الظرف قائم بذاته بلا حرف جر.', 'präposition', 'unterwegs'],
+      ['nach Hause', '—', 'إلى البيت', 'Ich gehe nach Hause.', 'Ich gehe zu Hause.', 'الحركة إلى البيت nach Hause، والوجود فيها zu Hause.', 'lexik-kollokation', 'Hause'],
+      ['zu Hause', '—', 'في البيت', 'Ich bleibe zu Hause.', 'Ich bleibe nach Hause.', 'البقاء في البيت zu Hause؛ nach للحركة.', 'lexik-kollokation', 'Hause'],
+      ['die Richtung', 'die Richtungen', 'الاتجاه', 'Die Richtung stimmt.', 'Der Richtung stimmt.', 'die Richtung مؤنث.', 'genus', 'Richtung']
+    ],
+    tricks: [
+      { trick: 'sein للحركة وتغيّر الحال', wie: 'gegangen · gefahren · gekommen · geworden: كلها مع sein.', warum: 'العربية لا تُفرّق، والاختيار بين haben وsein هو الخطأ الأول في الماضي؛ القاعدة: حركة من نقطة إلى نقطة، أو تحوّل حال ← sein.', anchor: 'Ich bin nach Hause gegangen.' },
+      { trick: 'الوجهة أم السكون', wie: 'Ich gehe nach Hause · ich bleibe zu Hause.', warum: 'العربية تقول «البيت» في الحالتين، وأداة واحدة تفصل حركةً من سكون؛ الخلط يقلب المعنى لا الأسلوب.', anchor: 'Ich gehe nach Hause.' },
+      { trick: 'البادئة تبقى في الآخر في الماضي أيضًا', wie: 'Ich bin früh aufgestanden · der Zug ist um acht abgefahren.', warum: 'الفصل لا يسقط في الماضي: المساعد يحلّ في الموضع الثاني، وتبقى البادئة مع ge في الآخر.', anchor: 'Ich bin früh aufgestanden.' }
+    ]
+  },
+
+  /* ---------------------------------------------------------------- l6 ---- */
+  /* Theme: appointments. Suggesting, accepting, declining — the frames that
+     make a learner able to make a date in German without translating Arabic
+     politeness word for word. */
+  'a1-u3-l6': {
+    items: [
+      ['die Verabredung', 'die Verabredungen', 'الموعد (بين شخصين)', 'Ich habe eine Verabredung.', 'Ich habe ein Verabredung.', 'die Verabredung مؤنث: eine.', 'genus', 'Verabredung'],
+      ['treffen', 'trifft · traf · hat getroffen', 'يلتقي بـ', 'Wir treffen uns um acht.', 'Wir treffen um acht.', 'الالتقاء ببعضنا يحتاج الضمير الانعكاسي: uns.', 'kasus', 'treffen'],
+      ['sich freuen', 'freut sich · freute sich', 'يفرح', 'Ich freue mich auf den Kurs.', 'Ich freue mich für den Kurs.', 'الترقّب المستقبلي مع auf + النصب: auf den Kurs.', 'präposition', 'freue'],
+      ['passen', 'passt · passte · hat gepasst', 'يناسب', 'Passt dir der Montag?', 'Passt du der Montag?', 'passen تطلب Dativ للشخص: dir لا du.', 'kasus', 'Passt'],
+      ['der Vorschlag', 'die Vorschläge', 'الاقتراح', 'Das ist ein guter Vorschlag.', 'Das ist ein gut Vorschlag.', 'الصفة قبل الاسم تأخذ نهاية: guter Vorschlag.', 'deklination', 'Vorschlag'],
+      ['vorschlagen', 'schlägt vor · schlug vor · hat vorgeschlagen', 'يقترح', 'Ich schlage acht Uhr vor.', 'Ich vorschlage acht Uhr.', 'vor في آخر الجملة.', 'wortstellung', 'schlage'],
+      ['Wie wäre es mit ...?', '—', 'ما رأيك بـ ...؟', 'Wie wäre es mit Freitag?', 'Wie ist mit Freitag du?', 'صيغة الاقتراح الثابتة: Wie wäre es mit + Dativ.', 'register', 'Freitag'],
+      ['Hast du Zeit?', '—', 'هل عندك وقت؟', 'Hast du am Freitag Zeit?', 'Hast du Zeit am Freitag du?', 'في السؤال يبقى الفعل أولًا، والظرف بعد المفعول.', 'wortstellung', 'Zeit'],
+      ['Es tut mir leid', '—', 'آسف', 'Es tut mir leid, ich kann nicht.', 'Es ist mir leid tut.', 'الصيغة ثابتة بهذا الترتيب ولا تُخلط بفعل آخر.', 'register', 'leid'],
+      ['leider', '—', 'للأسف', 'Leider habe ich keine Zeit.', 'Leider ich habe keine Zeit.', 'بعد الظرف يبقى الفعل ثانيًا.', 'wortstellung', 'leider'],
+      ['vielleicht', '—', 'ربّما', 'Vielleicht klappt es nächste Woche.', 'Vielleicht es klappt nächste Woche.', 'الفعل ثانيًا بعد الظرف.', 'wortstellung', 'vielleicht'],
+      ['nächste Woche', '—', 'الأسبوع القادم', 'Nächste Woche habe ich Zeit.', 'Nächsten Woche habe ich Zeit.', 'die Woche مؤنث: nächste Woche.', 'deklination', 'Woche'],
+      ['wann', '—', 'متى', 'Wann hast du Zeit?', 'Wann du hast Zeit?', 'بعد أداة السؤال يأتي الفعل مباشرة.', 'wortstellung', 'wann'],
+      ['das Kino', 'die Kinos', 'السينما', 'Wir gehen ins Kino.', 'Wir gehen in Kino.', 'in + das = ins Kino.', 'präposition', 'Kino'],
+      ['ins Restaurant gehen', 'geht ins Restaurant · ging ins Restaurant', 'يذهب إلى المطعم', 'Wir gehen ins Restaurant.', 'Wir gehen in Restaurant.', 'ins = in + das، والأداة لا تُحذف.', 'präposition', 'Restaurant'],
+      ['das Café', 'die Cafés', 'المقهى', 'Wir treffen uns im Café.', 'Wir treffen uns in Café.', 'das Café محايد: im = in + dem.', 'präposition', 'Café'],
+      ['absagen', 'sagt ab · sagte ab · hat abgesagt', 'يُلغي', 'Ich muss den Termin absagen.', 'Ich muss den Termin absage.', 'بعد müssen يبقى المصدر: absagen.', 'konjugation', 'absagen'],
+      ['verschieben', 'verschiebt · verschob · hat verschoben', 'يؤجّل', 'Können wir das verschieben?', 'Können wir das verschiebst?', 'بعد können يبقى المصدر.', 'konjugation', 'verschieben'],
+      ['bestätigen', 'bestätigt · bestätigte · hat bestätigt', 'يؤكّد', 'Ich bestätige den Termin.', 'Ich bestätige den Termin zu.', 'bestätigen تأخذ المفعول مباشرة بلا حرف جر.', 'präposition', 'bestätige'],
+      ['die Uhrzeit', 'die Uhrzeiten', 'التوقيت', 'Welche Uhrzeit passt dir?', 'Welche Uhrzeit passt du?', 'passen تطلب Dativ: dir.', 'kasus', 'Uhrzeit'],
+      ['morgen', '—', 'غدًا', 'Morgen habe ich keine Zeit.', 'Morgen ich habe keine Zeit.', 'بعد الظرف يبقى الفعل ثانيًا.', 'wortstellung', 'morgen'],
+      ['übermorgen', '—', 'بعد غد', 'Übermorgen passt es besser.', 'Übermorgen es passt besser.', 'الفعل ثانيًا بعد الظرف.', 'wortstellung', 'übermorgen'],
+      ['frei', '—', 'متفرّغ', 'Am Freitag bin ich frei.', 'Am Freitag ich bin frei.', 'بعد الظرف يبقى الفعل ثانيًا.', 'wortstellung', 'frei'],
+      ['sich entschuldigen', 'entschuldigt sich · entschuldigte sich', 'يعتذر', 'Ich entschuldige mich für die Verspätung.', 'Ich entschuldige für die Verspätung.', 'entschuldigen تحتاج الضمير الانعكاسي mich.', 'kasus', 'entschuldige']
+    ],
+    tricks: [
+      { trick: 'الاقتراح له قالب جاهز', wie: 'Wie wäre es mit Freitag? · Hast du am Freitag Zeit?', warum: 'العربية تقترح بجملة فعلية («ما رأيك أن نلتقي»)، والألمانية تقترح باسم أو سؤال مباشر؛ القالب المحفوظ يجعل الاقتراح مؤدّبًا من أول مرة.', anchor: 'Wie wäre es mit Freitag?' },
+      { trick: 'الاعتذار عن شيء بـ für', wie: 'Ich entschuldige mich für die Verspätung.', warum: 'العربية تربط السبب بـ «عن»، والألمانية بـ für + النصب؛ الحرف يتبع المعنى الألماني لا الترجمة.', anchor: 'Ich entschuldige mich für die Verspätung.' },
+      { trick: 'ظرف الرفض لا يزحزح الفعل', wie: 'Morgen habe ich keine Zeit · leider habe ich keine Zeit.', warum: 'في جملة الرفض يبقى الفعل ثانيًا، والعربية تبدأ بالفاعل فتُنتج «Morgen ich habe».', anchor: 'Morgen habe ich keine Zeit.' }
+    ]
   }
 };

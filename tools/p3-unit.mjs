@@ -31,7 +31,8 @@ function clickText(win, text) {
 const A0 = ['a0-u1-l2', 'a0-u1-l3', 'a0-u1-l4', 'a0-u1-l5', 'a0-u1-l6'];
 const A1_1 = ['a1-u1-l1', 'a1-u1-l2', 'a1-u1-l3', 'a1-u1-l4', 'a1-u1-l5', 'a1-u1-l6'];
 const A1_2 = ['a1-u2-l1', 'a1-u2-l2', 'a1-u2-l3', 'a1-u2-l4', 'a1-u2-l5', 'a1-u2-l6'];
-const A1_ALL = A1_1.concat(A1_2);
+const A1_3 = ['a1-u3-l1', 'a1-u3-l2', 'a1-u3-l3', 'a1-u3-l4', 'a1-u3-l5', 'a1-u3-l6'];
+const A1_ALL = A1_1.concat(A1_2, A1_3);
 const FORMS = ['mcq', 'cloze', 'matching', 'hoeren', 'sprechen', 'flashcard', 'wortstellung', 'schreiben'];
 
 console.log('\n— P3.2 lexical layer —\n');
@@ -100,11 +101,11 @@ console.log('\n— P3.2 lexical layer —\n');
     }
     lesson.schritte.forEach(s => { if (s.merkhilfe) a1Tricks.push(s.merkhilfe.trick); });
   });
-  t('A1 units 1–2: every ported lesson carries ≥14 complete words', fieldsOk);
-  t('A1 units 1–2: every lesson keeps 24–36 steps', stepOk);
-  t('A1 units 1–2: Wortschatz steps carry 2–4 words each', groupOk);
-  t('A1 units 1–2: every word-order item puts the finite verb in position 2', finiteOk);
-  t('A1 units 1–2: 36 tricks, all distinct', a1Tricks.length === 36 && new Set(a1Tricks).size === 36);
+  t('A1 units 1–3: every ported lesson carries ≥14 complete words', fieldsOk);
+  t('A1 units 1–3: every lesson keeps 24–36 steps', stepOk);
+  t('A1 units 1–3: Wortschatz steps carry 2–4 words each', groupOk);
+  t('A1 units 1–3: every word-order item puts the finite verb in position 2', finiteOk);
+  t('A1 units 1–3: 54 tricks, all distinct', a1Tricks.length === 54 && new Set(a1Tricks).size === 54);
   /* the headline grammar of each unit must actually appear in its word list */
   const has = (id, re) => (L[id].wortschatz || []).some(it => re.test(it.de + ' ' + it.ex));
   t('unit 2 teaches möchte and will', has('a1-u2-l1', /möchte/) && has('a1-u2-l1', /will/));
@@ -113,6 +114,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('unit 2 separates um, am and im', has('a1-u2-l4', /um neun/) && has('a1-u2-l4', /am Montag/) && has('a1-u2-l4', /Im Mai/));
   t('unit 2 fixes the case after a place preposition', has('a1-u2-l5', /auf dem Tisch/) && has('a1-u2-l5', /an der Wand/));
   t('unit 2 shows five plurals with an umlaut', ['Mütter', 'Bücher', 'Häuser', 'Stühle', 'Städte'].every(p => has('a1-u2-l6', new RegExp(p))));
+  t('unit 3 pairs the Perfekt bracket (haben) with a participle', has('a1-u3-l4', /habe .*gearbeitet/));
+  t('unit 3 pairs the Perfekt bracket (sein) with a participle', has('a1-u3-l5', /bin .*gegangen/));
+  t('unit 3 names both directions of home', has('a1-u3-l5', /nach Hause/) && has('a1-u3-l5', /zu Hause/));
+  t('unit 3 refuses an appointment with a fixed frame', has('a1-u3-l6', /Wie wäre es mit/) && has('a1-u3-l6', /entschuldige mich für/));
+  t('unit 3 keeps the separable prefix inside a routine', has('a1-u3-l3', /stehe um halb sieben auf|ziehe mich an|gehe um acht los/));
+  t('unit 3 states both states that take sein', has('a1-u3-l1', /bin satt/) && has('a1-u3-l1', /bin hungrig/));
 
   const a0Tricks = [];
   A0.forEach(id => L[id].schritte.forEach(s => { if (s.merkhilfe) a0Tricks.push(s.merkhilfe.trick); }));
@@ -147,7 +154,7 @@ console.log('\n— P3.2 lexical layer —\n');
   const a1 = cov.find(c => c.level === 'A1');
   const ported = A1_ALL.filter(id => (L[id].wortschatz || []).length >= 14).length;
   t('A1 coverage is published and honestly mid-port (' + ported + ' lessons, ' + a1.items + '/' + a1.declared + ' = ' +
-    Math.round(a1.ratio * 100) + '%)', a1 && a1.items === 288 && a1.ratio >= 0.44 && a1.ratio < 0.8);
+    Math.round(a1.ratio * 100) + '%)', a1 && a1.items === 432 && a1.ratio >= 0.66 && a1.ratio < 0.8);
 }
 
 /* ---------- an A1 lesson runs in the DOM with its word table ---------- */
