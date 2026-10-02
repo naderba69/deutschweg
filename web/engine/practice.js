@@ -478,7 +478,7 @@
       const id = 'card_' + raw.de;
       if (st.srs.cards.some(c => c.id === id)) return;
       st.srs.cards.push({
-        id, de: raw.de, ar: raw.ar, example: raw.example || '', chunk: !!raw.chunk, level: 'A0',
+        id, de: raw.de, ar: raw.ar, example: raw.example || '', chunk: !!raw.chunk, level: raw.level || 'A0',
         addedOn: DW.today(),
         receptive: { box: 0, due: DW.plusDays(1), reviews: 0 },
         productive: { box: 0, due: DW.plusDays(2), reviews: 0 },

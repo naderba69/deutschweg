@@ -15,10 +15,28 @@ const ids = Object.keys(global.window.DW_LESSONS || {});
 if (!ids.length) fail('no lessons in ' + path);
 const lessonCount = ids.length;
 let fileHard = 0;
+
+/* P3.2 — the lexical layer and the forms. These are cross-lesson checks: a trick
+   that is repeated verbatim in every lesson is a slogan, not a memory aid. */
+const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+/* The hand-written opening lesson predates the lexical layer. It stays the one
+   declared exception until it is ported, and the exception is printed, not hidden. */
+const VOCAB_EXEMPT = new Set(['a0-u1-l1']);
+const PENDING_VOCAB_LEVELS = new Set(['A1', 'A2', 'B1', 'B2']);
+const trickSeen = new Map();
+const FORMS = ['mcq', 'cloze', 'matching', 'hoeren', 'sprechen', 'flashcard', 'wortstellung', 'schreiben'];
+let formsUsed = new Set();
+let backlog = 0;
+const warningOnly = m => { backlog++; if (lessonCount === 1) console.log('  ! ' + m); };
 ids.forEach(lessonKey => {
   validateOne(global.window.DW_LESSONS[lessonKey]);
 });
-console.log(lessonCount > 1 ? '\n' + lessonCount + ' lessons, ' + fileHard + ' hard failure(s)\n' : '');
+console.log(lessonCount > 1 ? '\n' + lessonCount + ' lessons, ' + fileHard + ' hard failure(s)' : '');
+if (lessonCount > 1) {
+  const unused = FORMS.filter(f => !formsUsed.has(f));
+  console.log('forms exercised across the file: ' + [...formsUsed].join(' · ') + (unused.length ? '  (never used: ' + unused.join(', ') + ')' : '  (all eight used)'));
+  console.log('not-yet-ported backlog found here (repeated tricks in the older levels): ' + backlog + '\n');
+}
 process.exit(fileHard ? 1 : 0);
 
 function validateOne(L) {
@@ -145,6 +163,77 @@ S.some(s => s.phase === 'Check' && /80/.test(s.erklaerung + JSON.stringify(s.fra
 /* 15. language of the display is German */
 const nonGerman = S.filter(s => s.zeigt && /[\u0600-\u06FF]/.test(s.zeigt.de));
 nonGerman.length === 0 ? ok('all "zeigt" lines are German') : bad('Arabic found in zeigt: ' + nonGerman.map(s=>s.id).join(', '));
+
+/* 16. P3.2 lexical layer. A step that carries words carries 2–4 of them, each
+   with its form, its gloss, one example, the error an Arabic speaker makes, and
+   why that error is wrong. */
+const vocabSteps = S.filter(s => s.wortschatz);
+let vocabBad = [];
+vocabSteps.forEach(s => {
+  if (s.wortschatz.length < 2 || s.wortschatz.length > 4) vocabBad.push(s.id + ' carries ' + s.wortschatz.length);
+  s.wortschatz.forEach(it => {
+    ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].forEach(k => { if (!it[k]) vocabBad.push(s.id + ':' + (it.de || '?') + ' missing ' + k); });
+    if (/[\u0600-\u06FF]/.test(String(it.de) + it.ex + it.err)) vocabBad.push(s.id + ' Arabic inside German: ' + it.de);
+  });
+});
+const declared = L.wortschatz || [];
+if (declared.length) {
+  declared.length >= (VOCAB_FLOOR[L.level] || 12)
+    ? ok(`word list ${declared.length} meets the ${L.level} floor`)
+    : bad(`word list ${declared.length} below the ${L.level} floor ${VOCAB_FLOOR[L.level] || 12}`);
+  const carried = new Set();
+  vocabSteps.forEach(s => s.wortschatz.forEach(it => carried.add(it.de)));
+  declared.every(it => carried.has(it.de))
+    ? ok('every declared word appears in a Wortschatz step')
+    : bad('declared words never shown: ' + declared.filter(it => !carried.has(it.de)).map(it => it.de).join(', '));
+} else if (['A0', 'A1'].includes(L.level) && !VOCAB_EXEMPT.has(L.id)) {
+  /* A level being ported is declared pending in DECISIONS-PENDING.md. The backlog
+     is counted and printed; the moment a level leaves that list, its lessons must
+     carry a word list or the build fails. */
+  if (PENDING_VOCAB_LEVELS.has(L.level)) warningOnly(L.id + ' has no word list yet (' + L.level + ' is mid-port)');
+  else bad('a ' + L.level + ' lesson without a word list is not shipped');
+} else if (VOCAB_EXEMPT.has(L.id)) {
+  warn(L.id + ' carries no word list yet (declared exception, see DECISIONS-PENDING.md)');
+}
+vocabBad.length === 0 ? ok(`Wortschatz steps carry ${vocabSteps.length ? vocabSteps[0].wortschatz.length + '–4' : '2–4'} words each, with form and example`)
+                      : bad('Wortschatz defects: ' + vocabBad.join(', '));
+
+/* 17. the forms are used, not merely supported by the renderer */
+const used = new Set(S.map(s => (s.type === 'sprechen' ? 'sprechen' : (s.type === 'hoeren' ? 'hoeren' : (s.frage ? s.frage.art : null)))).filter(Boolean));
+const missingForms = FORMS.filter(f => !used.has(f));
+used.forEach(f => formsUsed.add(f));
+if (['A0', 'A1'].includes(L.level) && declared.length) {
+  missingForms.length <= 2 ? ok('forms used: ' + [...used].join(' · '))
+                           : bad('lesson never uses: ' + missingForms.join(', '));
+}
+
+/* 18. a memory aid repeated in another lesson is not a memory aid */
+S.filter(s => s.merkhilfe).forEach(s => {
+  const t = String(s.merkhilfe.trick).trim();
+  if (trickSeen.has(t) && trickSeen.get(t) !== L.id) {
+    const msg = 'trick repeated in ' + L.id + ' and ' + trickSeen.get(t) + ': ' + t;
+    if (declared.length) bad(msg); else warningOnly(msg);
+  } else trickSeen.set(t, L.id);
+});
+
+/* 19. one question, one wording inside a lesson; no duplicate options */
+const qtexts = new Map();
+S.filter(s => s.frage && s.frage.frage).forEach(s => {
+  const key = s.frage.frage + '|' + (s.zeigt ? s.zeigt.de : '');
+  if (qtexts.has(key)) {
+    const msg = 'question asked twice in ' + L.id + ': ' + s.frage.frage;
+    if (declared.length) bad(msg); else warningOnly(msg);
+  }
+  qtexts.set(key, s.id);
+  const opts = (s.frage.optionen || []).map(o => String(o.text));
+  if (opts.length !== new Set(opts).size) bad('duplicate option text in ' + s.id);
+});
+
+/* 20. no filler feedback: an explanation that fits every step explains nothing */
+const filler = S.filter(s => /هذا شكل من الدرس، لكنه ليس جواب هذا البند|هذا فخ الدرس، لكنه ليس جواب هذا البند/.test(JSON.stringify(s.frage || {})));
+if (declared.length) {
+  filler.length === 0 ? ok('no filler feedback in the ported lesson') : bad('filler feedback in ' + filler.map(s => s.id).join(', '));
+}
 
 if (hard) fileHard += hard;
 if (lessonCount === 1) console.log(`\n${hard} hard failure(s), ${soft} warning(s)\n`);

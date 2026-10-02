@@ -96,6 +96,35 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
   ? ok('pronunciation items on every level')
   : bad('pronunciation syllabus incomplete');
 
+/* P3.2 coverage gate. The map row declares how many receptive items a level
+   promises; the authored word lists are what exists. A level that has started
+   the lexical layer must reach 80% of its own declaration. A level at 0% is
+   either not started (printed) or a listed exception. */
+{
+  const cat = {};
+  new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
+  const floors = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+  const have = {}, declaredN = {}, ported = {};
+  Object.keys(cat.DW_LESSONS || {}).forEach(id => {
+    const L = cat.DW_LESSONS[id];
+    const wl = L.wortschatz || [];
+    have[L.level] = (have[L.level] || 0) + wl.length;
+    if (wl.length) ported[L.level] = (ported[L.level] || 0) + 1;
+    if (wl.length && wl.length < (floors[L.level] || 12)) bad('word list below the floor in ' + id);
+  });
+  lessons.forEach(l => { declaredN[l.level] = (declaredN[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
+  console.log('  — lexical coverage (authored items vs the map declaration) —');
+  Object.keys(declaredN).forEach(level => {
+    const h = have[level] || 0, d = declaredN[level] || 0;
+    const ratio = d ? h / d : 0;
+    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' + (ported[level] || 0) + ' lessons ported');
+    if (ratio > 0 && ratio < 0.8) bad(level + ' lexical coverage ' + Math.round(ratio * 100) + '% is below the 80% gate once started');
+  });
+  (have.A0 || 0) >= Math.round(0.8 * (declaredN.A0 || 0))
+    ? ok('A0 lexical coverage meets the 80% gate')
+    : bad('A0 lexical coverage below the gate');
+}
+
 ['a0-u1-l1.js', 'catalog.js'].forEach(name => {
   new Function('window', fs.readFileSync(path.join(root, 'web/data', name), 'utf8'))(w);
 });

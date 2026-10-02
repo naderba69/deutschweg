@@ -281,6 +281,10 @@ function exerciseFromStep(st) {
   const art = st.type === 'hoeren' ? 'hoeren' : f.art;
   return {
     art, stable: true,
+    /* the forms that were never used in a lesson before P3.2 */
+    de: f.de, ar: f.ar, example: f.example, direction: f.direction, note: f.note,
+    tokens: f.tokens, correct: f.correct, finite: f.finite, fields: f.fields, clause: f.clause, rightBracket: f.rightBracket,
+    prompt: f.prompt, promptDe: f.promptDe, points: f.points, minWords: f.minWords,
     ziel: f.ziel,
     familie: (f.misconceptionFamilies && Object.values(f.misconceptionFamilies)[0]) || 'lexik-kollokation',
     frage: f.frage,
@@ -299,6 +303,50 @@ function exerciseFromStep(st) {
     highlight: st.highlight || (Array.isArray(st.audio) && st.audio.length === 1 ? st.audio[0] : null),
     hideTranscript: art === 'hoeren' && st.phase !== 'Anwenden'
   };
+}
+
+function vocabTable(items) {
+  /* The word list of the step: word with its article, plural, Arabic gloss,
+     one example, and the error an Arabic speaker usually makes. Never a bare list. */
+  const box = el('div', 'vocab');
+  box.appendChild(el('div', 'kicker', 'كلمات الخطوة (' + items.length + ')'));
+  items.forEach(it => {
+    const row = el('div', 'vocab-row');
+    const head = el('div', 'vocab-head');
+    const de = el('span', 'vocab-de');
+    de.setAttribute('dir', 'ltr');
+    de.textContent = it.de + (it.pl && it.pl !== '—' ? ' · ' + it.pl : '');
+    head.appendChild(de);
+    const sp = el('button', 'ghost vocab-say', '🔊');
+    sp.type = 'button';
+    sp.setAttribute('aria-label', 'اسمع ' + it.de);
+    sp.onclick = () => speak([it.de]);
+    head.appendChild(sp);
+    row.appendChild(head);
+    row.appendChild(el('div', 'vocab-ar', it.ar));
+    const more = el('button', 'link vocab-toggle', 'مثال والخطأ الشائع');
+    more.type = 'button';
+    let open = false;
+    const body = el('div', 'vocab-body');
+    const ex = el('div', 'vocab-ex', it.ex);
+    ex.setAttribute('dir', 'ltr');
+    body.appendChild(ex);
+    const err = el('div', 'vocab-err');
+    err.setAttribute('dir', 'ltr');
+    err.textContent = '✗ ' + it.err;
+    body.appendChild(err);
+    body.appendChild(el('div', 'vocab-why', it.why));
+    body.style.display = 'none';
+    more.onclick = () => {
+      open = !open;
+      body.style.display = open ? '' : 'none';
+      more.textContent = open ? 'أخفِ المثال' : 'مثال والخطأ الشائع';
+    };
+    row.appendChild(more);
+    row.appendChild(body);
+    box.appendChild(row);
+  });
+  return box;
 }
 
 function drawStep() {
@@ -339,6 +387,13 @@ function drawStep() {
     ab.onclick = () => speak(st.audio);
     card.appendChild(ab);
   }
+  if (st.frage && st.frage.zeigt) {
+    const qde = el('div', 'zeigt');
+    qde.setAttribute('dir', 'ltr');
+    qde.textContent = st.frage.zeigt;
+    card.appendChild(qde);
+  }
+  if (st.wortschatz && st.wortschatz.length) card.appendChild(vocabTable(st.wortschatz));
   if (st.erklaerung) card.appendChild(el('p', 'erklaerung', st.erklaerung));
 
   const simpleWrap = el('div', 'simple');
@@ -488,6 +543,7 @@ function handleResult(st, r) {
   else escStreak = 0;
   if (escStreak >= 3) armNext = true;
   if (DW.BANK.STEP_CARDS[st.id]) DW.practice.introduce(DW.BANK.STEP_CARDS[st.id]);
+  else if (window.DW_STEP_CARDS && window.DW_STEP_CARDS[lessonId() + ':' + st.id]) DW.practice.introduce(window.DW_STEP_CARDS[lessonId() + ':' + st.id]);
 }
 
 function injectRemedial(st) {
