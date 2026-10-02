@@ -117,7 +117,7 @@ node tools/validate-syllabus.js
 ```bash
 npm test              # 252 فحصًا: 71 + 50 + 19 + 40 (P3.2) + 14 + 45 + 13
 node tools/validate-lesson.js web/data/catalog.js   # 119 درسًا، 0 فشل صلب، 52 لافتة backlog للأشكال القديمة
-node tools/validate-syllabus.js                     # التغطية: A0 83% · A1 83% (مسلَّم، الوحدات 2–5) · A2 32% (الوحدتان 6–7) · B1 80% (مسلَّم عند البوابة بعد القرار 15، الوحدات 11–17) · B2 0%
+node tools/validate-syllabus.js                     # التغطية: A0 83% · A1 83% (مسلَّم، الوحدات 2–5) · A2 48% (الوحدات 6–8) · B1 80% (مسلَّم عند البوابة بعد القرار 15، الوحدات 11–17) · B2 0%
 ```
 
 ## ما لا يتغيّر بعد هذا الجرد
