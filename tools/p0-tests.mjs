@@ -1,16 +1,25 @@
 import { JSDOM } from 'jsdom';
 import fs from 'fs';
 
+const ROOT = '/home/user/deutschweg';
+const FILES = [
+  'engine/storage.js', 'engine/ledger.js', 'engine/checker.js', 'engine/renderers.js',
+  'engine/practice.js', 'engine/adaptive.js', 'data/bank.js', 'data/a0-u1-l1.js', 'app.js'
+];
+function boot(dom, state) {
+  if (state) dom.window.localStorage.setItem('deutschweg_v2', JSON.stringify(state));
+  FILES.forEach(f => dom.window.eval(fs.readFileSync(ROOT + '/web/' + f, 'utf8')));
+  dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+}
+
 /* --- load the lesson data in Node for expected answers (black-box test) --- */
-const w = {}; new Function('window', fs.readFileSync('/home/user/deutschweg/web/data/a0-u1-l1.js','utf8'))(w);
+const w = {}; new Function('window', fs.readFileSync(ROOT + '/web/data/a0-u1-l1.js','utf8'))(w);
 const STEPS = w.DW_LESSONS['a0-u1-l1'].schritte;
 
-const html = fs.readFileSync('/home/user/deutschweg/web/index.html','utf8').replace(/<script src="[^"]+"><\/script>/g,'');
+const html = fs.readFileSync(ROOT + '/web/index.html','utf8').replace(/<script src="[^"]+"><\/script>/g,'');
 const dom = new JSDOM(html, { runScripts:'outside-only', url:'https://localhost/', pretendToBeVisual:true });
 const { window } = dom;
-window.eval(fs.readFileSync('/home/user/deutschweg/web/data/a0-u1-l1.js','utf8'));
-window.eval(fs.readFileSync('/home/user/deutschweg/web/app.js','utf8'));
-window.document.dispatchEvent(new window.Event('DOMContentLoaded'));
+boot(dom);
 
 const $ = s => window.document.querySelector(s);
 const state = () => JSON.parse(window.localStorage.getItem('deutschweg_v2') || '{}');
@@ -100,10 +109,7 @@ st2.checkLog = [{stepId:'s26',lessonId:'a0-u1-l1',correct:false,assisted:false},
                 {stepId:'s29',lessonId:'a0-u1-l1',correct:true, assisted:true}];
 st2.progress = [{lessonId:'a0-u1-l1', lastStepId:'s30', completedSteps:STEPS.map(s=>s.id), state:'completed'}];
 const dom2 = new JSDOM(html, { runScripts:'outside-only', url:'https://localhost/', pretendToBeVisual:true });
-dom2.window.localStorage.setItem('deutschweg_v2', JSON.stringify(st2));
-dom2.window.eval(fs.readFileSync('/home/user/deutschweg/web/data/a0-u1-l1.js','utf8'));
-dom2.window.eval(fs.readFileSync('/home/user/deutschweg/web/app.js','utf8'));
-dom2.window.document.dispatchEvent(new dom2.window.Event('DOMContentLoaded'));
+boot(dom2, st2);
 const $2 = s => dom2.window.document.querySelector(s);
 $2('#view button.primary').click();                                    // continue
 for (let k=0;k<60;k++){ const nb=$2('#next'); if(nb && !nb.disabled){ nb.click(); } else { const b=[...dom2.window.document.querySelectorAll('button.primary')].find(x=>x.textContent==='فهمت، تابع')||$2('.ok-btn'); if(b){if(b.disabled)b.disabled=false;b.click();} else break; } 
