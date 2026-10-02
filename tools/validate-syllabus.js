@@ -109,7 +109,7 @@ authored.every(id => bodies.includes(id)) && bodies.every(id => authored.include
   : bad('lesson bodies and map rows diverged');
 
 w.DW = w.DW || {};
-['storage.js', 'ledger.js', 'adaptive.js'].forEach(name => {
+['storage.js', 'ledger.js', 'exam.js', 'adaptive.js'].forEach(name => {
   new Function('window', fs.readFileSync(path.join(root, 'web/engine', name), 'utf8'))(w);
 });
 const A = w.DW.adaptive;
@@ -163,6 +163,16 @@ function empty() {
   !plan.blocks.some(b => b.type === 'lesson-step') && plan.withheld && /لم يُؤلَّف/.test(plan.withheld.reason)
     ? ok('a mapped row is still refused')
     : bad('a mapped row was opened');
+}
+{
+  const S = empty();
+  S.progress = [{ lessonId: 'a0-u1-l1', state: 'completed' }];
+  S.capabilities = [{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: today, history: [] }];
+  S.settings.examDate = '2026-10-10';
+  const plan = A.compose(S, today, { minutes: 200 });
+  !plan.blocks.some(b => b.type === 'lesson-step') && plan.taper
+    ? ok('taper withholds new grammar')
+    : bad('taper still opened a lesson');
 }
 
 console.log(hard ? '\n' + hard + ' hard failure(s)\n' : '\nsyllabus map valid\n');

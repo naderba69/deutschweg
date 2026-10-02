@@ -205,6 +205,7 @@ function renderHome() {
     ['خريطة القدرات', 'map'],
     ['توزيع الأسبوع', 'week'],
     ['قراءة', 'reading'],
+    ['سماع', 'listening'],
     ['مولّد', 'generate'],
     ['قوالب', 'chunks'],
     ['الامتحان', 'exam']
@@ -700,10 +701,15 @@ function renderPortfolio() {
   if (S.stats.mediaError) v.appendChild(el('div', 'layer bad', S.stats.mediaError + ' الحالة النصية سليمة.'));
   const recs = S.portfolio.recordings || [];
   if (!recs.length) v.appendChild(el('div', 'card', 'لا تسجيل بعد. أول تسجيل هو نقطة البداية، لا امتحان.'));
-  if (recs.length >= 2) {
-    const oldest = recs.slice().sort((a, b) => String(a.date).localeCompare(String(b.date)))[0];
-    const newest = recs.slice().sort((a, b) => String(a.date).localeCompare(String(b.date))).pop();
-    v.appendChild(el('div', 'meta', 'أقدم: ' + oldest.date + ' · أحدث: ' + newest.date + '. قارنهما، لا تقارن نفسك بغيرك.'));
+  if (recs.length >= 2 && DW.exam) {
+    const cmp = DW.exam.compareRecordings(recs);
+    v.appendChild(el('div', 'meta', cmp.reason + (cmp.ready ? ' أقدم: ' + cmp.oldest.date + ' · أحدث: ' + cmp.newest.date + '.' : '')));
+  }
+  if (DW.exam) {
+    const evidence = DW.exam.masteryEvidence(S);
+    DW.exam.MASTERY.forEach(id => {
+      v.appendChild(el('div', 'meta', id + ': ' + (evidence[id] ? 'شاهد مطابق' : 'لا شاهد بعد. لا زر «أنجزت».')));
+    });
   }
   recs.slice().reverse().forEach(r => {
     const card = el('div', 'card small');
@@ -855,6 +861,7 @@ function renderToday(mode) {
     v.appendChild(card);
   });
   if (plan.withheld) v.appendChild(el('div', 'reason', plan.withheld.reason));
+  if (plan.taper) v.appendChild(el('div', 'layer warn', plan.taper));
   if (mode === 'short') v.appendChild(el('div', 'meta', 'أُجّل الباقي بلا عقوبة. الجلسة القصيرة نجاح.'));
   const short = el('button', 'ghost', '15 دقيقة فقط');
   short.type = 'button';
@@ -871,17 +878,17 @@ function openBlock(b) {
   const map = {
     speaking: 'portfolio', srs: 'srs', 'review-error': 'attack', 'drill-3s': 'drill',
     grammar: 'drill', writing: 'write', pronunciation: 'drill',
-    activation: 'activation', reading: 'reading', chunks: 'chunks'
+    activation: 'activation', reading: 'reading', listening: 'listening', chunks: 'chunks'
   };
   if (map[b.type]) { go(map[b.type]); return; }
   const v = screenBack(b.track);
   v.appendChild(el('div', 'reason', b.reason));
   if (b.track === 'reading' || b.track === 'listening') {
-    v.appendChild(el('div', 'meta', 'لا نص ولا سلّم سماع في البنك بعد. R4 وR5 يبقيان غير مقيسين. لن أقبل تقديرًا ذاتيًا وأجعله رقمًا.'));
+    v.appendChild(el('div', 'meta', 'هذه الحصة لها شاشة. لا تقدير ذاتي يدخل R4 أو R5.'));
   } else if (b.track === 'chunks') {
     const n = (window.DW_SYLLABUS && DW_SYLLABUS.chunks && DW_SYLLABUS.chunks.A1) ? DW_SYLLABUS.chunks.A1.length : 0;
     v.appendChild(el('div', 'meta', n
-      ? 'الخريطة فيها ' + n + ' قالبًا للمستوى A1. الحفر الزمني ليس هذه الشريحة. لا درجة مختلقة.'
+      ? 'الخريطة فيها ' + n + ' قالبًا. الحفر الزمني لا يلوّن R6.'
       : 'مئة قالب لكل مستوى لم تُؤلَّف بعد. لا تمرين مختلق، ولا دليل مختلق.'));
   } else {
     v.appendChild(el('div', 'meta', 'هذه الحصة محجوزة للحد الأسبوعي. لا علامة يدوية.'));
@@ -1014,38 +1021,142 @@ function renderPause() {
   });
 }
 
+function readingNodes() {
+  const lib = window.DW_LIBRARY || {};
+  const novel = lib.B2 && lib.B2.novel ? lib.B2.novel.chapters.map(ch => Object.assign({ novel: true }, ch)) : [];
+  return [].concat(lib.A1 || [], lib.A2 || [], (lib.B1 && lib.B1.texts) || [], (lib.B2 && lib.B2.articles) || [], novel);
+}
+function openReading(item) {
+  const v = screenBack('قراءة موسّعة');
+  v.appendChild(el('div', 'reason', 'لا قاموس في هذه الشاشة. سؤالان يقيسان ما سُئل، لا 98% من الكلمات. تحت 95% أو أسرع من 5 ثوانٍ لا يدخل R4.'));
+  const started = Date.now();
+  const body = el('div', 'zeigt');
+  body.setAttribute('dir', 'ltr');
+  body.textContent = item.body;
+  v.appendChild(body);
+  const picked = {};
+  (item.questions || []).slice(0, 2).forEach(q => {
+    const card = el('div', 'card small');
+    card.appendChild(el('div', null, q.prompt));
+    q.options.forEach(opt => {
+      const b = el('button', 'ghost', opt);
+      b.type = 'button';
+      b.onclick = () => { picked[q.prompt] = opt; };
+      card.appendChild(b);
+    });
+    v.appendChild(card);
+  });
+  const done = el('button', 'ghost', 'سلّم السؤالين');
+  done.type = 'button';
+  done.onclick = () => {
+    const session = DW.tracks.readingSession(item, picked, Date.now() - started);
+    session.date = DW.today();
+    session.novel = !!item.novel;
+    session.chapter = item.novel ? item.n : null;
+    S.portfolio.reading = S.portfolio.reading || [];
+    S.portfolio.reading.push(session);
+    save();
+    v.appendChild(el('div', session.counted ? 'layer good' : 'layer warn', session.reason));
+  };
+  v.appendChild(done);
+}
 function renderReading() {
   const v = screenBack('قراءة موسّعة');
-  v.appendChild(el('div', 'reason', 'لا قاموس في هذه الشاشة. إن احتجت قاموسًا، النص ليس لهذه الجلسة. لا تقدير ذاتي يدخل R4.'));
-  const lib = window.DW_LIBRARY;
-  if (!lib) { v.appendChild(el('div', 'meta', 'المكتبة غير محمّلة.')); return; }
-  const items = []
-    .concat(lib.A1 || [])
-    .concat(lib.A2 || [])
-    .concat((lib.B1 && lib.B1.texts) || [])
-    .concat((lib.B2 && lib.B2.articles) || []);
-  if (lib.B2 && lib.B2.novel) {
-    v.appendChild(el('h2', 'section', lib.B2.novel.title));
-    v.appendChild(el('div', 'meta', lib.B2.novel.note));
-    lib.B2.novel.chapters.forEach(ch => {
-      const card = el('div', 'card small');
-      card.appendChild(el('div', 'kicker', 'فصل ' + ch.n + ' · ' + ch.title));
-      const body = el('div', 'zeigt');
-      body.setAttribute('dir', 'ltr');
-      body.textContent = ch.body;
-      card.appendChild(body);
-      v.appendChild(card);
+  v.appendChild(el('div', 'reason', 'لا قاموس هنا. إن احتجته، هذا النص ليس لهذه الجلسة. لا تقدير ذاتي يدخل R4.'));
+  const nodes = readingNodes().filter(item => item.questions && item.questions.length >= 2);
+  if (!nodes.length || !DW.tracks) { v.appendChild(el('div', 'meta', 'لا نص بسؤالين. لا قياس.')); return; }
+  nodes.forEach(item => {
+    const b = el('button', 'ghost', (item.level || 'B2') + ' · ' + item.title);
+    b.type = 'button';
+    b.onclick = () => openReading(item);
+    v.appendChild(b);
+  });
+  const mag = window.DW_LIBRARY && DW_LIBRARY.B1 && DW_LIBRARY.B1.magazine;
+  if (mag) v.appendChild(el('div', 'meta', 'المجلة للقراءة المتصلة. قياسها في نصوصها العشرة، لا في اللصق.'));
+}
+function knownLessonWords() {
+  const done = new Set((S.progress || []).filter(p => p.state === 'completed').map(p => p.lessonId));
+  const words = new Set();
+  Object.keys(window.DW_LESSONS || {}).forEach(id => {
+    if (!done.has(id)) return;
+    (window.DW_LESSONS[id].schritte || []).forEach(st => {
+      const de = st.zeigt && st.zeigt.de;
+      if (!de || !DW.tracks) return;
+      DW.tracks.contentWords(de).forEach(w => words.add(w));
     });
+  });
+  return words;
+}
+function speakGerman(text, rate, done) {
+  if (!window.speechSynthesis || !text) { done(false); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE';
+  u.rate = rate || 0.9;
+  u.onend = () => done(true);
+  u.onerror = () => done(false);
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+function openListening(item) {
+  const v = screenBack('سماع');
+  const ladder = window.DW_LADDER || {};
+  v.appendChild(el('div', 'reason', ladder.not || 'صوت الجهاز ليس تسجيلًا بشريًا.'));
+  if (item.audio === false) {
+    v.appendChild(el('div', 'layer warn', item.note));
+    return;
   }
-  items.forEach(item => {
+  let played = false;
+  const play = el('button', 'ghost', 'تشغيل مرة');
+  play.type = 'button';
+  play.onclick = () => speakGerman(item.script, item.level === 'A1' ? 0.8 : item.level === 'B2' ? 1 : 0.9, ok => {
+    played = !!ok;
+    v.appendChild(el('div', 'meta', ok ? 'انتهى التشغيل. النص ما زال مخفيًا.' : 'لا صوت على هذا الجهاز. لا درجة.'));
+  });
+  v.appendChild(play);
+  const picked = {};
+  (item.questions || []).forEach(q => {
     const card = el('div', 'card small');
-    card.appendChild(el('div', 'kicker', item.level + ' · ' + item.words + ' كلمة'));
-    card.appendChild(el('div', null, item.title));
-    const body = el('div', 'zeigt');
-    body.setAttribute('dir', 'ltr');
-    body.textContent = item.body;
-    card.appendChild(body);
+    card.appendChild(el('div', null, q.prompt));
+    q.options.forEach(opt => {
+      const b = el('button', 'ghost', opt);
+      b.type = 'button';
+      b.onclick = () => { picked[q.prompt] = opt; };
+      card.appendChild(b);
+    });
     v.appendChild(card);
+  });
+  const done = el('button', 'ghost', 'سلّم');
+  done.type = 'button';
+  done.onclick = () => {
+    const studied = (S.portfolio.listening || []).some(s => s.itemId === item.id);
+    const session = DW.tracks.listeningSession(item, picked, {
+      audioPlayed: played,
+      studied: studied,
+      preTaught: DW.tracks.isPreTaught(item.script, knownLessonWords()),
+      transcriptBefore: false
+    });
+    session.date = DW.today();
+    S.portfolio.listening = S.portfolio.listening || [];
+    if (session.score != null) S.portfolio.listening.push(session);
+    save();
+    v.appendChild(el('div', session.counted ? 'layer good' : 'layer warn', session.reason));
+    const script = el('div', 'zeigt');
+    script.setAttribute('dir', 'ltr');
+    script.textContent = item.script;
+    v.appendChild(script);
+  };
+  v.appendChild(done);
+}
+function renderListening() {
+  const v = screenBack('سماع');
+  const ladder = window.DW_LADDER;
+  if (!ladder) { v.appendChild(el('div', 'meta', 'السلّم غير محمّل.')); return; }
+  v.appendChild(el('div', 'reason', ladder.not));
+  ladder.items.forEach(item => {
+    const b = el('button', 'ghost', item.level + ' · ' + item.kind + ' · ' + item.title);
+    b.type = 'button';
+    b.onclick = () => openListening(item);
+    v.appendChild(b);
   });
 }
 function renderGenerate() {
@@ -1054,24 +1165,45 @@ function renderGenerate() {
   v.appendChild(el('div', 'reason', 'كل نسخة لها مفتاح وتفسير ورابط قدرة. النسخة لا تدّعي أن البنك كامل.'));
   if (!bank.length || !DW.generator) { v.appendChild(el('div', 'meta', 'البنك غير محمّل.')); return; }
   S.exam = S.exam || {};
-  const item = DW.generator.instance(bank, S.exam.genIndex || 0);
+  const types = [['فراغ', 'cloze'], ['ترتيب', 'wortstellung'], ['اختيار', 'mcq'], ['مقابلة', 'matching']];
+  types.forEach(pair => {
+    const b = el('button', 'ghost', pair[0]);
+    b.type = 'button';
+    b.onclick = () => { S.exam.genType = pair[1]; renderGenerate(); };
+    v.appendChild(b);
+  });
+  const type = S.exam.genType || 'cloze';
+  const idx = S.exam.genIndex || 0;
+  const item = type === 'wortstellung' ? DW.generator.wortstellung(bank, idx)
+    : type === 'mcq' ? DW.generator.mcq(bank, idx)
+    : type === 'matching' ? DW.generator.matching(bank, idx)
+    : DW.generator.instance(bank, idx);
   if (!item) { v.appendChild(el('div', 'meta', 'لا نسخة بلا مفتاح.')); return; }
   const line = el('div', 'zeigt');
   line.setAttribute('dir', 'ltr');
-  line.textContent = item.prompt;
+  line.textContent = type === 'wortstellung' ? item.prompt.join(' · ') : type === 'matching' ? item.pairs.map(p => p.links).join(' / ') : item.prompt;
   v.appendChild(line);
   v.appendChild(el('div', 'meta', item.capabilityId));
   const input = el('input');
   input.type = 'text';
   input.setAttribute('dir', 'ltr');
   v.appendChild(input);
+  if (type === 'mcq') {
+    item.options.forEach(opt => {
+      const b = el('button', 'ghost', opt);
+      b.type = 'button';
+      b.onclick = () => { input.value = opt; };
+      v.appendChild(b);
+    });
+  }
+  const expected = type === 'wortstellung' ? item.key : type === 'matching' ? item.pairs[0].rechts : item.key;
   const b = el('button', 'ghost', 'افحص');
   b.type = 'button';
   b.onclick = () => {
-    const ok = String(input.value || '').trim() === item.key;
-    v.appendChild(el('div', ok ? 'layer good' : 'layer bad', ok ? item.rationale : 'المفتاح: ' + item.key + ' — ' + item.rationale));
-    if (!ok) DW.ledger.log({ wrong: input.value || '—', right: item.key, family: 'lexik-kollokation', source: 'generator' });
-    S.exam.genIndex = (S.exam.genIndex || 0) + 1;
+    const ok = String(input.value || '').trim() === expected;
+    v.appendChild(el('div', ok ? 'layer good' : 'layer bad', ok ? item.rationale : 'المفتاح: ' + expected + ' — ' + item.rationale));
+    if (!ok) DW.ledger.log({ wrong: input.value || '—', right: expected, family: 'lexik-kollokation', source: 'generator' });
+    S.exam.genIndex = idx + 1;
     save();
   };
   v.appendChild(b);
@@ -1105,43 +1237,220 @@ function renderChunks() {
   };
   v.appendChild(b);
 }
+function paperFor(moduleId) {
+  if (moduleId === 'lesen') {
+    const lib = window.DW_LIBRARY || {};
+    const nodes = [].concat((lib.B1 && lib.B1.texts) || [], (lib.B2 && lib.B2.articles) || []);
+    return DW.exam.flattenQuestions(nodes, 'lesen', 30);
+  }
+  const clips = ((window.DW_LADDER && DW_LADDER.items) || []).filter(it => it.audio !== false);
+  return DW.exam.flattenQuestions(clips, 'hoeren', 30);
+}
+function storeModule(moduleId, score, protocol) {
+  S.exam = S.exam || {};
+  S.exam.modules = S.exam.modules || {};
+  S.exam.modules[moduleId] = { id: moduleId, score: score, at: new Date().toISOString(), official: false, protocol: !!protocol };
+  S.mocks = S.mocks || [];
+  S.mocks.push(S.exam.modules[moduleId]);
+  save();
+}
+function runPaper(moduleId) {
+  const items = paperFor(moduleId);
+  const v = screenBack(moduleId === 'lesen' ? 'قراءة الامتحان' : 'سماع الامتحان');
+  if (!items) { v.appendChild(el('div', 'meta', 'لا ثلاثون بندًا بمفتاح. لا درجة.')); return; }
+  v.appendChild(el('div', 'reason', 'ثلاثون بندًا أصليًا بوقت القسم. ليست الأجزاء الرسمية، وليست ورقة غوته. انتهى الوقت = خطأ. لا زر «كنت سأعرف».'));
+  const minutes = moduleId === 'lesen' ? 65 : 40;
+  const started = Date.now();
+  const clock = el('div', 'timer', minutes + ':00');
+  v.appendChild(clock);
+  const answers = {};
+  let i = 0;
+  let closed = false;
+  const host = el('div');
+  v.appendChild(host);
+  function finish(timedOut) {
+    if (closed) return;
+    closed = true;
+    clearInterval(tick);
+    const late = {};
+    if (timedOut) items.forEach(it => { if (!answers[it.id]) late[it.id] = true; });
+    const out = DW.exam.scorePaper(items, answers, { late: late });
+    out.misses.forEach(m => DW.ledger.log({ wrong: m.wrong, right: m.right, family: m.family, source: 'exam' }));
+    storeModule(moduleId, out.score, false);
+    host.innerHTML = '';
+    host.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100'));
+  }
+  function draw() {
+    if (i >= items.length) { finish(false); return; }
+    host.innerHTML = '';
+    const item = items[i];
+    host.appendChild(el('div', 'counter', (i + 1) + ' / ' + items.length));
+    if (item.context) {
+      const body = el('div', 'zeigt');
+      body.setAttribute('dir', 'ltr');
+      body.textContent = item.context;
+      host.appendChild(body);
+    }
+    if (item.script) {
+      const play = el('button', 'ghost', 'تشغيل مرة');
+      play.type = 'button';
+      play.onclick = () => speakGerman(item.script, 0.95, ok => {
+        if (!ok) host.appendChild(el('div', 'meta', 'لا صوت. البند بلا تشغيل يُسلَّم خطأ إن تُرك.'));
+      });
+      host.appendChild(play);
+    }
+    host.appendChild(el('div', null, item.prompt));
+    item.options.forEach(opt => {
+      const b = el('button', 'ghost', opt);
+      b.type = 'button';
+      b.onclick = () => { answers[item.id] = opt; i++; draw(); };
+      host.appendChild(b);
+    });
+  }
+  const tick = setInterval(() => {
+    const left = minutes * 60 - (Date.now() - started) / 1000;
+    clock.textContent = left > 0 ? Math.ceil(left / 60) + ' د' : '0';
+    if (left <= 0) finish(true);
+  }, 1000);
+  timers.push(tick);
+  draw();
+}
 function renderExam() {
   const v = screenBack('الامتحان');
+  S.exam = S.exam || {};
   const gate = DW.exam.readiness(S);
-  const taper = DW.exam.taper(99);
-  v.appendChild(el('div', 'reason', 'لا درجة رسمية. لا تعويض بين الأقسام. «كنت سأعرف» لا يُحتسب.'));
-  v.appendChild(el('div', 'meta', gate.reason + ' دين حيّ: ' + gate.debt + '. إتقان موثّق: ' + gate.masteryCount + ' / 6.'));
+  const days = DW.exam.daysUntil(S.settings.examDate, DW.today());
+  const taper = DW.exam.taper(days);
+  const month = DW.exam.teachingMonth(S.learner.startDate, DW.today(), S.learner.weeklyHours);
+  const slot = DW.exam.protocolSlot(month);
+  v.appendChild(el('div', 'reason', 'لا درجة رسمية. لا تعويض بين الأقسام. «كنت سأعرف» لا يُحتسب. البوابة لا تحجز موعدًا.'));
+  v.appendChild(el('div', 'meta', gate.reason + ' دين حيّ: ' + gate.debt + '. شواهد إتقان: ' + gate.masteryCount + ' / 6.'));
   v.appendChild(el('div', 'meta', taper.reason));
-  const cmp = DW.exam.compareRecordings(S.portfolio && S.portfolio.recordings);
-  v.appendChild(el('div', 'meta', cmp.reason));
-  DW.exam.MOCKS.forEach(m => {
-    v.appendChild(el('div', 'meta', 'محاكاة ' + m.n + ' · شهر ' + m.month + ' · ' + m.purpose));
+  v.appendChild(el('div', 'meta', 'شهر تعليمي تقريبي: ' + month.toFixed(1) + '. ' + slot.reason));
+  const date = document.createElement('input');
+  date.type = 'date';
+  date.value = S.settings.examDate || '';
+  date.onchange = () => { S.settings.examDate = date.value || null; save(); renderExam(); };
+  v.appendChild(date);
+  [['قراءة 65 د', 'lesen'], ['سماع 40 د', 'hoeren']].forEach(pair => {
+    const b = el('button', 'ghost', pair[0]);
+    b.type = 'button';
+    b.onclick = () => runPaper(pair[1]);
+    v.appendChild(b);
   });
-  const axes = [
-    ['اكتمال المحتوى', 'inhalt'],
-    ['بناء النص', 'aufbau'],
-    ['التعبير', 'ausdruck'],
-    ['الصحة اللغوية', 'korrektheit']
-  ];
-  const scores = {};
-  axes.forEach(pair => {
+  const axes = [['المحتوى', 'inhalt'], ['البناء', 'aufbau'], ['التعبير', 'ausdruck'], ['الصحة', 'korrektheit']];
+  const t1 = {};
+  const t2 = {};
+  function axisRow(store, label) {
     const row = el('div', 'row');
-    row.appendChild(el('span', null, pair[0]));
+    row.appendChild(el('span', null, label));
+    [0, 5, 10, 15].forEach(n => {
+      const b = el('button', 'ghost', String(n));
+      b.type = 'button';
+      b.onclick = () => { store[label] = n; };
+      row.appendChild(b);
+    });
+    v.appendChild(row);
+  }
+  v.appendChild(el('div', 'meta', 'مهمة 1: 150 كلمة على الأقل، أربعة محاور. صفر على محور يصفر المهمة. نقطة محتوى غير مؤكدة تصفرها.'));
+  axes.forEach(pair => axisRow(t1, pair[0]));
+  v.appendChild(el('div', 'meta', 'مهمة 2: 100 كلمة على الأقل.'));
+  axes.forEach(pair => axisRow(t2, pair[0]));
+  const w1 = document.createElement('textarea');
+  const w2 = document.createElement('textarea');
+  w1.setAttribute('dir', 'ltr');
+  w2.setAttribute('dir', 'ltr');
+  v.appendChild(w1);
+  v.appendChild(w2);
+  const missed = { t1: true, t2: true };
+  [['المهمة 1: كل نقاط المحتوى مغطاة', 't1'], ['المهمة 2: كل نقاط المحتوى مغطاة', 't2']].forEach(pair => {
+    const b = el('button', 'ghost', pair[0]);
+    b.type = 'button';
+    b.onclick = () => { missed[pair[1]] = false; b.textContent = pair[0] + ' — أُكّدت'; };
+    v.appendChild(b);
+  });
+  const write = el('button', 'ghost', 'احسب الكتابة');
+  write.type = 'button';
+  write.onclick = () => {
+    const words = node => String(node.value || '').trim().split(/\s+/).filter(Boolean).length;
+    const asAxes = store => axes.map(pair => ({ id: pair[1], score: store[pair[0]] || 0 }));
+    const out = DW.exam.schreibenModule(
+      { words: words(w1), minWords: 150, missedContent: missed.t1, axes: asAxes(t1) },
+      { words: words(w2), minWords: 100, missedContent: missed.t2, axes: asAxes(t2) }
+    );
+    storeModule('schreiben', out.score, false);
+    v.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100'));
+  };
+  v.appendChild(write);
+  v.appendChild(el('div', 'meta', 'التحدّث: ستة محاور. النطق = هل أعاق الفهم؟ لا درجة بلا تسجيل.'));
+  const speakAxes = {};
+  ['الاكتمال', 'التفاعل', 'الترابط', 'المدى', 'الصحة', 'إعاقة الفهم'].forEach(name => {
+    const row = el('div', 'row');
+    row.appendChild(el('span', null, name));
     [0, 1, 2, 3].forEach(n => {
       const b = el('button', 'ghost', String(n));
       b.type = 'button';
-      b.onclick = () => { scores[pair[1]] = n; };
+      b.onclick = () => { speakAxes[name] = n; };
       row.appendChild(b);
     });
     v.appendChild(row);
   });
-  const scoreBtn = el('button', 'ghost', 'احسب مهمة الكتابة');
-  scoreBtn.type = 'button';
-  scoreBtn.onclick = () => {
-    const out = DW.exam.schreibenTask(axes.map(pair => ({ id: pair[1], score: scores[pair[1]] || 0 })));
-    v.appendChild(el('div', out.zeroed ? 'layer bad' : 'layer good', out.reason + ' ' + out.score));
+  let speakSeconds = 0;
+  let media = null;
+  const rec = el('button', 'ghost', 'سجّل التحدّث');
+  rec.type = 'button';
+  rec.onclick = async () => {
+    if (media && media.state === 'recording') { media.stop(); return; }
+    if (!navigator.mediaDevices || !window.MediaRecorder) {
+      v.appendChild(el('div', 'meta', 'لا مسجّل على هذا الجهاز. لا درجة تحدّث.'));
+      return;
+    }
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    media = new MediaRecorder(stream);
+    const chunks = [];
+    const t0 = Date.now();
+    media.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+    media.onstop = () => {
+      speakSeconds = (Date.now() - t0) / 1000;
+      stream.getTracks().forEach(t => t.stop());
+      const id = 'mock_' + Date.now();
+      S.portfolio.recordings.push({ id: id, date: DW.today(), seconds: speakSeconds, where: 'local', capability: 'exam.sprechen', tag: 'exam' });
+      DW.storage.mediaPut({ id: id, blob: new Blob(chunks), date: DW.today(), capability: 'exam.sprechen', seconds: speakSeconds }).catch(() => {});
+      save();
+      rec.textContent = 'سجّل التحدّث';
+      v.appendChild(el('div', 'meta', 'سُجّل ' + Math.round(speakSeconds) + ' ث. المدة ليست درجة.'));
+    };
+    media.start();
+    rec.textContent = 'أوقف التسجيل';
   };
-  v.appendChild(scoreBtn);
+  v.appendChild(rec);
+  const speak = el('button', 'ghost', 'احسب التحدّث');
+  speak.type = 'button';
+  speak.onclick = () => {
+    const out = DW.exam.sprechenModule(
+      Object.keys(speakAxes).map(name => ({ id: name, score: speakAxes[name], max: 3 })),
+      { seconds: speakSeconds }
+    );
+    if (out.score == null) { v.appendChild(el('div', 'layer bad', out.reason)); return; }
+    storeModule('sprechen', out.score, false);
+    v.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100'));
+  };
+  v.appendChild(speak);
+  const seal = el('button', 'ghost', 'اختم محاكاة كاملة');
+  seal.type = 'button';
+  seal.onclick = () => {
+    if (month < 26) {
+      v.appendChild(el('div', 'layer bad', slot.reason));
+      return;
+    }
+    const mods = ['lesen', 'hoeren', 'schreiben', 'sprechen'].map(id => S.exam.modules && S.exam.modules[id]).filter(Boolean);
+    if (mods.length < 4) { v.appendChild(el('div', 'meta', 'أربعة أقسام في الجلسة نفسها لازمة. هذه ليست محاكاة كاملة.')); return; }
+    S.exam.mocks = S.exam.mocks || [];
+    S.exam.mocks.push({ full: true, at: new Date().toISOString(), modules: mods, official: false });
+    save();
+    v.appendChild(el('div', 'meta', DW.exam.readiness(S).reason));
+  };
+  v.appendChild(seal);
   const set = el('button', 'ghost', S.settings.targetExam === 'telc-b2' ? 'الهدف الآن telc' : 'الهدف الآن Goethe');
   set.type = 'button';
   set.onclick = () => {
@@ -1150,6 +1459,9 @@ function renderExam() {
     renderExam();
   };
   v.appendChild(set);
+  if (S.settings.targetExam === 'telc-b2') {
+    v.appendChild(el('div', 'meta', 'telc: النجاح 135/225 كتابة و45/75 شفهي، كل منهما مستقل. رسالة نصف رسمية لا تقل عن 150 كلمة. هذه الشاشة لا تحوّل رسالة إلى 225.'));
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

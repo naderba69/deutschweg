@@ -1,12 +1,13 @@
 /* Deutschweg — offline cache. First load needs network; every load after is offline. */
-const CACHE = 'deutschweg-v6';
+const CACHE = 'deutschweg-v7';
 const ASSETS = [
   './', 'index.html', 'styles.css', 'app.js',
   'engine/storage.js', 'engine/ledger.js', 'engine/checker.js',
   'engine/renderers.js', 'engine/practice.js', 'engine/adaptive.js',
-  'engine/exam.js', 'engine/generator.js',
+  'engine/exam.js', 'engine/generator.js', 'engine/tracks.js',
   'data/inventory.js', 'data/chunks.js', 'data/syllabus.js',
   'data/bank.js', 'data/a0-u1-l1.js', 'data/catalog.js', 'data/library.js',
+  'data/comprehension.js', 'data/ladder.js',
   'audio/wasser.mp3',
   'manifest.webmanifest', 'icon.svg'
 ];

@@ -318,6 +318,16 @@
     startM.onclick = () => runSet(view, all.slice(5, 25), picked.family, 'measure');
     view.appendChild(startP);
     view.appendChild(startM);
+    if (window.DW_SENTENCES && DW.generator) {
+      const generated = window.DW_SENTENCES.slice(0, 8).map((row, i) => DW.generator.asCloze(DW.generator.instance(window.DW_SENTENCES, i))).filter(Boolean);
+      if (generated.length) {
+        const g = el('button', 'ghost', 'قياس من المولّد');
+        g.type = 'button';
+        g.onclick = () => runSet(view, generated, 'lexik-kollokation', 'measure');
+        view.appendChild(g);
+        view.appendChild(el('div', 'meta', 'النسخ المولَّدة لها مفتاح. المهلة خطأ. هذا لا يستبدل بنك العائلة.'));
+      }
+    }
   }
 
   function runSet(view, items, family, mode) {

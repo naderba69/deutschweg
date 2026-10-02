@@ -35,11 +35,11 @@
       weekPlan: { weekOf: null, allocation: {}, consumed: {}, decision: null, sessions: [] },
       errorLedger: [],
       srs: { cards: [], intervals: [0, 1, 2, 4, 7, 15, 30], leitner: true, reviewedToday: 0, reviewedOn: null },
-      portfolio: { recordings: [], texts: [] },
+      portfolio: { recordings: [], texts: [], reading: [], listening: [] },
       mocks: [],
       gaps: { lastSessionDate: null, reentryPending: false },
       rotation: { lastChange: null, variant: 'A' },
-      settings: { uiLanguage: 'ar', rtl: true, reviewDay: 'friday', speechScoring: 'local', aiConversation: false, writingChecker: true, pauseUntil: null },
+      settings: { uiLanguage: 'ar', rtl: true, reviewDay: 'friday', speechScoring: 'local', aiConversation: false, writingChecker: true, pauseUntil: null, examDate: null },
       checkLog: [],
       stats: { lastExport: null, sessionsCompleted: 0, startedAt: new Date().toISOString(), workshopDone: false, mediaError: null }
     };

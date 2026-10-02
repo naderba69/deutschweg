@@ -470,7 +470,7 @@
       ['pronunciation', 'pronunciation', 4, 'حصة النطق من حد ' + floors.pronunciation + '. البنك الموجود أصوات A0، لا المنهج الكامل.'],
       ['foundations', 'foundations', 3, 'أساسات يومية: الحرف الكبير وß والفاصلة. 3 دقائق من حد ' + floors.foundations + '.'],
       ['chunks', 'chunks', 5, syllabus() && syllabus().chunks && syllabus().chunks.A1 && syllabus().chunks.A1.length === 100
-        ? '100 قالب A1 في الخريطة. الحفر الزمني ليس هذه الشريحة، فلا درجة عليه.'
+        ? '100 قالب A1. الحفر الزمني يسجّل داخل الوقت فقط، ولا يلوّن R6.'
         : 'مسار القوالب. مئة عبارة لكل مستوى تُؤلَّف في مرحلة المحتوى. لا تمرين مختلق.']
     ];
     shares.forEach(function (row) {
@@ -485,8 +485,12 @@
     const nxt = nextLesson(S);
     const lessonOpen = !!(nxt && !nxt.blocked && nxt.status === 'authored');
     const hold = decision === 'HOLD' || S.consolidationWeek;
+    const taper = taperNow(S, today);
     const rerouteBlocksGrammar = decision === 'REROUTE' && (m.bands.R2 === 'red' || m.bands.R1 === 'red');
-    if (lessonOpen && !hold && (decision !== 'REROUTE' || rerouteBlocksGrammar)) {
+    if (taper.examDay) {
+      return out.filter(b => b.type === 'activation' || b.type === 'review-error' || b.type === 'chunks' || b.type === 'speaking' || b.type === 'writing').map(block).filter(Boolean);
+    }
+    if (lessonOpen && !hold && !taper.active && (decision !== 'REROUTE' || rerouteBlocksGrammar)) {
       const b = {
         track: 'grammar', type: 'lesson-step', minutes: 20, gateRequired: 1, lessonId: nxt.id,
         reason: 'محتوى جديد، وآخر ما يُدرج: ' + nxt.id + '. متطلّباته متحققة بـ E1 غير المساعد أو أعلى. البوابة لا تُفتح بـ E1. القرار ' + decision + ' يسمح به بعد الحدود والتحدّث.'
@@ -509,6 +513,13 @@
       out.push(rest.splice(pick, 1)[0]);
     }
     return out;
+  }
+  function taperNow(S, today) {
+    if (!DW.exam || !S || !S.settings || !S.settings.examDate) return { active: false, examDay: false };
+    const days = DW.exam.daysUntil(S.settings.examDate, today);
+    if (days === null) return { active: false, examDay: false };
+    const t = DW.exam.taper(days);
+    return { active: t.active, examDay: !!t.examDay, days: days, reason: t.reason };
   }
   function compose(S, today, opts) {
     opts = opts || {};
@@ -550,7 +561,8 @@
       minutes: ordered.reduce((s, b) => s + b.minutes, 0),
       decision: decision,
       rejected: rejected.length,
-      withheld: withheldOf(nextLesson(S))
+      withheld: withheldOf(nextLesson(S)),
+      taper: taperNow(S, today).active ? taperNow(S, today).reason : null
     };
   }
   function shorten(plan, minutes) {

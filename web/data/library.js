@@ -62,7 +62,7 @@
     ['التطوع', 'Ehrenamt trägt den Verein, solange die Zeit da ist. Aus eigener Erfahrung bricht es, wenn alle gleichzeitig arbeiten. Das ist eine Grenze, kein Vorwurf.'],
     ['السياحة', 'Die Stadt lebt vom Besuch und leidet unter ihm. Beide Seiten gehören in den Satz. Das Urteil kommt danach, nicht davor.'],
     ['اللغة في العمل', 'Ein Zertifikat öffnet die Tür nicht allein. Die Frage ist, ob die Person den Ablauf erklären kann. Ein Beispiel aus dem Tag sagt mehr als eine Note.'],
-    ['الهدر', 'Weniger wegwerfen ist konkret. Die Umwelt ist wichtig ist es nicht. Die Folge muss in den Mülltonnen sichtbar sein, nicht nur im Satz.'],
+    ['الهدر', 'Weniger wegwerfen ist konkret. Der Satz «die Umwelt ist wichtig» reicht nicht. Die Folge muss in den Mülltonnen sichtbar sein, nicht nur im Satz.'],
     ['الرياضة والمال', 'Der Verein braucht Beitrag und Zeit. Kostenlos für alle ist selten wahr. Wer profitiert, und wer zahlt, sind zwei Fragen.'],
     ['الدعم الثقافي', 'Ein Zuschuss hilft, wenn die Frist klar ist. Ohne Beleg bleibt der Antrag schwach. Der Ton der Begründung bleibt sachlich.'],
     ['الجيران', 'Lärm ist eine Tatsache, wenn er gemessen wird. Die Wertung, dass der Nachbar rücksichtslos ist, braucht mehr. Eine Bitte kommt vor dem Vorwurf.'],

@@ -20,6 +20,14 @@ const AR = /[\u0600-\u06FF]/;
 function die(m) { console.error(m); process.exit(1); }
 let currentId = '';
 function words(s) { return String(s || '').split(/\s+/).filter(Boolean); }
+function whyFor(spec, de) {
+  const bare = String(de).replace(/[.!?]+$/g, '');
+  const lex = spec.lex.find(l => bare.indexOf(String(l[0]).replace(/[.!?]+$/g, '')) >= 0);
+  if (lex) return lex[3];
+  const fact = spec.facts.find(f => bare.indexOf(f[0]) >= 0);
+  if (fact) return fact[1];
+  return spec.goalAr;
+}
 function js(v) { return JSON.stringify(v); }
 
 function mcq(seed, rightText, wrongs) {
@@ -276,11 +284,11 @@ const bank = [];
 specs.forEach((spec, i) => {
   if (lessons[spec.id]) die('duplicate spec ' + spec.id);
   lessons[spec.id] = lessonOf(spec, i);
-  [spec.model, spec.say].concat(spec.lex.map(l => l[0])).forEach((de, n) => {
+  [spec.model, spec.say].concat(spec.lex.map(l => l[0])).forEach(de => {
     bank.push({
       de: de,
       key: de,
-      why: n < 2 ? spec.facts[0][4] : spec.lex[n - 2][3],
+      why: whyFor(spec, de),
       cap: 'cap.' + spec.id + '.core',
       lessonId: spec.id
     });
