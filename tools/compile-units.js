@@ -310,6 +310,23 @@ function lessonOf(spec, index) {
 }
 
 /* ---------- P3.2 builder: a lesson that carries a real word list ---------- */
+/* The near-miss key of a cloze is the form the learner would actually type:
+   the token of the typical error that is absent from the example and closest
+   to the blank — "geschließt" for geschlossen, not a random neighbour word. */
+function nearKeyFor(it) {
+  const strip = t => String(t).replace(/[.,!?:;«»"()]/g, '');
+  const exToks = new Set(String(it.ex).split(/\s+/).map(t => strip(t).toLowerCase()));
+  const cands = String(it.err).split(/\s+/).map(strip).filter(t => t && !exToks.has(t.toLowerCase()));
+  const target = String(it.blank || '').toLowerCase();
+  const sim = t => {
+    const a = t.toLowerCase(); let i = 0;
+    while (i < a.length && i < target.length && a[i] === target[i]) i++;
+    return i * 2 + (a.slice(-2) === target.slice(-2) ? 1 : 0);
+  };
+  cands.sort((a, b) => sim(b) - sim(a));
+  return cands[0] || String(it.err).split(/\s+/).slice(-2)[0];
+}
+
 function blankOut(sentence, core) {
   /* Unicode-aware boundaries: \b is ASCII-only and would miss Österreich. */
   const esc = core.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -538,7 +555,7 @@ function lessonOfVocab(spec, vocabRow) {
         frage: {
           ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الفراغ بالكلمة الصحيحة من المجموعة.',
           zeigt: b.shown, antworten: [b.answer, anchor.blank, anchor.de],
-          nearMiss: { [String(anchor.err).split(/\s+/).slice(-2)[0]]: anchor.why },
+          nearMiss: { [nearKeyFor(anchor)]: anchor.why }, nearFamily: anchor.fam,
           feedback: { correct: anchor.why }
         }
       };
@@ -642,7 +659,7 @@ function lessonOfVocab(spec, vocabRow) {
         ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الجملة بالكلمة الصحيحة.',
         zeigt: b.shown,
         antworten: [b.answer, drillItem.blank, drillItem.de],
-        nearMiss: { [String(drillItem.err).split(/\s+/).slice(-2)[0]]: drillItem.why },
+        nearMiss: { [nearKeyFor(drillItem)]: drillItem.why }, nearFamily: drillItem.fam,
         feedback: { correct: drillItem.why }
       }
     });
@@ -774,7 +791,7 @@ function lessonOfVocab(spec, vocabRow) {
         frage: {
           ziel: cap(n + 1), prereq: src.prereq, art: 'cloze', frage: 'أكمل الفراغ بلا مساعدة.',
           zeigt: b.shown, antworten: [b.answer, src.cloze.blank, src.cloze.de],
-          nearMiss: { [String(src.cloze.err).split(/\s+/).slice(-2)[0]]: src.cloze.why },
+          nearMiss: { [nearKeyFor(src.cloze)]: src.cloze.why }, nearFamily: src.cloze.fam,
           feedback: { correct: src.cloze.why }
         }
       };
