@@ -6,6 +6,8 @@ This document is complete and self-contained. It contains every requirement, num
 
 Language of this prompt: **English**. Language of the product's UI and pedagogy: **Arabic (RTL)**. Language of the learning content: **German**.
 
+> **Revision 1.1 — consolidated review.** This version applies six changes, none of which alters the pedagogy: (1) the load model is now **flexible** — weekly hours are a setting and the calendar derives from it; (2) storage is **localStorage for state + IndexedDB for audio** (localStorage cannot hold recordings); (3) distribution is an **installable PWA over a secure context** (the microphone requires it); (4) the **syllabus map** is now a first-class deliverable (§13.9); (5) five arithmetic/count corrections; (6) two added behaviours — a **declared pause** that freezes decay, and a **bounded local writing checker**. Section numbering is unchanged.
+
 ---
 
 ## 1. ROLE & MANDATE
@@ -20,7 +22,7 @@ You own the architecture, the pedagogy, the data model and the sequencing. You d
 
 ## 2. MISSION & SUCCESS CRITERIA
 
-Carry one learner from A0 to B2 in German across 30 months and deliver, simultaneously:
+Carry one learner from A0 to B2 in German — 30 months at the 10 h/week baseline, longer if the weekly budget is smaller — and deliver, simultaneously:
 
 | Outcome | Definition | Measured by |
 |---|---|---|
@@ -29,7 +31,18 @@ Carry one learner from A0 to B2 in German across 30 months and deliver, simultan
 
 The project is done when **both** are true. A certificate without mastery is a product failure, and so is mastery without the certificate.
 
-**Planned load:** 1,210 hours across four quarterly cycles (see §6.3), inside a realistic envelope of 1,100–1,300 hours. At 10 h/week over 30 months, roughly 1,300 hours are available, so the plan carries about 90 hours of deliberate slack. Cycle hours include instruction, review, consolidation and exam preparation.
+**Planned load:** 1,210 hours of content across four quarterly cycles (see §6.3), inside a realistic envelope of 1,100–1,300 hours.
+
+**The weekly budget is a setting** (`learner.weeklyHours`, allowed range **6–12**, baseline **10**). The calendar is *derived from* the budget — never the reverse:
+
+| weeklyHours | calendar span | Note |
+|---|---|---|
+| 6 | ~46 months | the method's lower bound |
+| 8 | ~35 months | |
+| **10 (baseline)** | **~30 months** (~28 months of content + deliberate slack) | |
+| 12 | ~25 months | |
+
+Below 6 h/week the app must not compress the method further; it states plainly that the honest solution is a longer timeline. Cycle **hours** are fixed (§6.3); cycle **months** are computed as `cycle_hours ÷ (weeklyHours × 4.33)`. Cycle hours include instruction, review, consolidation and exam preparation.
 
 ---
 
@@ -60,16 +73,17 @@ Pedagogical consequences that are **requirements, not notes**:
 
 ## 5. NON-NEGOTIABLES
 
-1. **Local-first.** All state in localStorage under one versioned key. No account, no server, no login, no telemetry, no analytics.
-2. **Zero network during study.** The app must be fully functional with the network switched off. The only network feature is an explicitly optional backup sync.
-3. **Zero data loss.** Automatic weekly JSON export. Import merges, never overwrites. Schema migration is a merge, not a replace.
-4. **Progressive disclosure.** Nothing is shown all at once.
-5. **One template for every lesson, A0 through B2.** No bespoke per-level layouts.
-6. **One concept per step.** Two teachable ideas in one step is a bug.
-7. **No volume-rewarding gamification.** No streaks-as-shame, no points for time spent, no leaderboards. Progress is measured by evidence.
-8. **Arabic UI, German content.**
-9. **No visual theatre.** No simulated classroom, no blackboard, no decorative teacher avatar. The lesson is a method, not a scene. Visuals only where they carry information (declension tables, colour-coded sentence fields).
-10. **Mobile-first RTL**, working on a mid-range Android phone.
+1. **Local-first, two stores.** All state in **localStorage** (JSON) under one versioned key, and all binary media (audio recordings) in **IndexedDB**. No account, no server, no login, no telemetry, no analytics. Nothing is ever sent anywhere.
+2. **Zero network during study.** The app must be fully functional with the network switched off. It ships as an **installable PWA** served over a **secure context** (https) and cached by a service worker: the first load requires network, and **every load afterwards is fully offline**. The only network feature is an explicitly optional backup sync. *(Secure context is a hard requirement, not a preference: microphone permission for recording cannot be granted reliably from a `file://` origin on Android/Chrome, which would silently kill the speaking track, R3 and the portfolio.)*
+3. **No silent behaviour.** Every automated decision the app makes (block selection, decay, pruning of old recordings, rescheduling of overdue cards) is visible on screen in one tap. A rule the learner cannot see is a defect.
+4. **Zero data loss.** Automatic weekly JSON export plus an on-demand full backup (state + audio). Import merges, never overwrites. Schema migration is a merge, not a replace.
+5. **Progressive disclosure.** Nothing is shown all at once.
+6. **One template for every lesson, A0 through B2.** No bespoke per-level layouts.
+7. **One concept per step.** Two teachable ideas in one step is a bug.
+8. **No volume-rewarding gamification.** No streaks-as-shame, no points for time spent, no leaderboards. Progress is measured by evidence.
+9. **Arabic UI, German content.**
+10. **No visual theatre.** No simulated classroom, no blackboard, no decorative teacher avatar. The lesson is a method, not a scene. Visuals only where they carry information (declension tables, colour-coded sentence fields).
+11. **Mobile-first RTL**, working on a mid-range Android phone.
 
 ---
 
@@ -98,7 +112,15 @@ Nine tracks advance in parallel every week; every session touches several of the
 
 ### 6.2 Five gates
 
-G1 A1 (month 7) · G2 A2 (month 13) · G3 B1 (month 21) · G4 B2-readiness (months 26–27) · G5 B2 exam (months 28–30).
+Gates are keyed to **cumulative study hours**, not calendar months — so they behave identically at 6 h/week or 12 h/week:
+
+| Gate | Opens at | Calendar at the 10 h baseline |
+|---|---|---|
+| G1 A1 | 280 cumulative hours | ~month 7 |
+| G2 A2 | 540 cumulative hours | ~month 13 |
+| G3 B1 | 890 cumulative hours | ~month 21 |
+| G4 B2-readiness | ~1,090 cumulative hours **and** all four modules mocked at ≥65 | ~months 26–27 |
+| G5 B2 exam | 1,210 cumulative hours; booking additionally requires the readiness gate of §12.5 | ~months 28–30 |
 
 Gate states: `locked → diagnostic → open → at-risk → passed`.
 
@@ -106,13 +128,15 @@ Gate states: `locked → diagnostic → open → at-risk → passed`.
 
 ### 6.3 Four quarterly cycles
 
-| Cycle | Level | Months | Hours | Ends with |
-|---|---|---|---|---|
-| Q1 | A0 + A1 | 1–7 | 280 | Goethe A1 certificate + a 60-second video artefact |
-| Q2 | A2 | 8–13 | 260 | Goethe A2 certificate + a 3-minute presentation |
-| Q3 | B1 | 14–21 | 350 | Goethe B1 certificate + a debate |
-| Q4 | B2 | 22–30 | 320 | Goethe B2 certificate |
-| | | **30** | **1,210** | |
+| Cycle | Level | Hours | Ends with |
+|---|---|---|---|
+| Q1 | A0 + A1 | 280 | Goethe A1 certificate + a 60-second video artefact |
+| Q2 | A2 | 260 | Goethe A2 certificate + a 3-minute presentation |
+| Q3 | B1 | 350 | Goethe B1 certificate + a debate |
+| Q4 | B2 | 320 | Goethe B2 certificate |
+| | | **1,210** | |
+
+Cycle **months are derived, not fixed**: `months(cycle) = cycle_hours ÷ (weeklyHours × 4.33)`. At the 10 h baseline this yields 7 · 6 · 8 · 7 ≈ **28 months of content**, expanded to ~30 calendar months by the plan's deliberate slack. Change `weeklyHours` and every date moves; the hours never do.
 
 **Cycle rule:** each cycle is 80% competence / 20% exam technique. The last 8 weeks of every cycle are exam-only; the first 4 weeks are diagnostic + consolidation. Every cycle ends in a certificate **and** a tangible artefact (video, presentation, debate) — that is the retention mechanism, not decoration.
 
@@ -156,6 +180,7 @@ Memory fades; an instrument that shows frozen mastery lies.
 | Decay speed | chunks and pronunciation decay slower than grammar tables |
 | Wording | "needs activation" — never "you lost it" |
 | Portfolio | historical recordings are evidence of trajectory, not of current state |
+| Declared pause | decay is **frozen** during a declared pause (§14) — up to 3 weeks, at most 3 times a year — and the pause is not counted as a gap |
 
 ```
 decayUrgency(cap) = clamp( (daysSince(lastActive) − 45) / 30 , 0 , 1 )
@@ -218,7 +243,7 @@ Tie-breakers: (1) the capability least recently active among equals; (2) track r
 
 **Week plan, not day plan**
 
-The composer produces a weekly plan (5 sessions of ~90 minutes plus a lighter weekend session) at the moment the allocation is ratified, then re-evaluates daily:
+The composer produces a weekly plan at the moment the allocation is ratified, then re-evaluates daily. The weekly budget is spread over **5–7 sessions**, sized so the floors are met with room to spare: at the 10 h baseline, **6 sessions of ~90–105 minutes**; at 6–8 h/week, **5 sessions**; at 11–12 h/week, **7 sessions**. No session is shorter than 15 minutes (decision D8 still applies).
 
 | Allowed daily without re-ratification | Requires re-ratification |
 |---|---|
@@ -308,12 +333,14 @@ cut      = transfer taken from the strongest track, never below its floor
 proposed[weakest] += transfer
 proposed[strongest] −= transfer
 
-then correct so that: all floors hold; 0.5 hour stays unallocated;
+then correct so that: all floors hold; 10% of the weekly budget stays unallocated;
 the D6 exception is not breached (at most two consecutive weeks,
 never below 50% of floor, with explicit learner confirmation).
 ```
 
-**Hard floors (weekly minutes):**
+The transfer cap scales with the budget: `min(120 minutes, 20% of the weekly budget)`.
+
+**Hard floors (weekly minutes, at the 10 h baseline):**
 
 | Track | Floor |
 |---|---|
@@ -326,7 +353,16 @@ never below 50% of floor, with explicit learner confirmation).
 | Writing | 60 |
 | Foundations / spelling | 30 |
 
-Floors total **9.5 of the 10 hours**, leaving 0.5 hour deliberately unallocated for recovery and rotation.
+**Scaling rule (decision D13).** The table above is expressed at the 10 h/week baseline. Its total is 540 minutes = **9.0 hours — exactly 90% of the weekly budget** — so at any setting the floors consume **90% of the week and 10% stays unallocated** for recovery and rotation:
+
+| Weekly budget | Floor total (90%) | Unallocated (10%) |
+|---|---|---|
+| 6 h | 324 min, subject to the absolute minimums below | ~36 min |
+| 8 h | 432 min | 48 min |
+| **10 h (baseline)** | **540 min = 9.0 h** | **60 min** |
+| 12 h | 648 min | 72 min |
+
+**Absolute minimums that never scale down:** Speaking **45 min/week**, SRS **60 min/week**. If scaled floors plus these minimums leave less than 5% slack, the app must state plainly that the weekly budget sits at the method's lower bound and recommend extending the calendar rather than compressing the method.
 
 **Narrow exception (decision D6):** one track may drop below its floor for at most two consecutive weeks, never below 50% of floor, and only with explicit learner confirmation. Speaking and SRS are exempt from the exception.
 *Rationale:* this prevents the classic self-study collapse — discovering weak grammar and converting everything into grammar, which kills speaking and listening — while permitting genuine recovery weeks.
@@ -357,7 +393,9 @@ measure R1–R6 → classify → propose allocation → GO/HOLD/REROUTE
 
 ### 8.1 Universal template (all levels, no exceptions)
 
-A Lesson is an ordered array of **20–35 Steps**. A Step carries exactly **one concept**.
+A Lesson is an ordered array of **24–36 Steps**. A Step carries exactly **one concept**.
+
+*(The band is derived from the stage counts of §8.3: the minimum configuration yields 24 steps, the maximum yields 36. A lesson outside this band fails the Definition of Done.)*
 
 ```json
 {
@@ -402,7 +440,7 @@ Data contract: `lessons[].schritte: Step[]`.
 | Wortschatz (2–4 words in sentences, never isolated lists) | 3–5 |
 | Anwenden (model → imitate → transform) | 3 |
 | Übungen (one exercise per step, immediate explanation on every answer) | 5–8 |
-| Merkhilfe (memory trick) | 1–2 |
+| Merkhilfe (memory trick) | 1–3, and **≥3 whenever ≥5 new words appear** |
 | Produktion (the learner produces something real) | 1 |
 | Zusammenfassung (recap strip ≤6 words) | 1 |
 | Check (70% current + 30% review, 80% to pass) | 3–5 |
@@ -475,7 +513,17 @@ Without this triage, all listening errors receive the same treatment — which i
 
 **sprechen** — instructions, timer, record button. **Local heuristic scoring only** (decision D1): duration versus target · silence ratio · phoneme-pattern match against a reference · 0% on silence. A weak score triggers a hint, never a block. Every recording is saved to `portfolio.recordings[]` with its date and capability.
 
-**schreiben** — instructions, minimum word count, timer. **No automatic grammar correction and no claim of one.** The engine provides a 5-point checklist the learner applies themselves: ① content points ② connectors ③ sentence variety ④ capitalisation ⑤ punctuation — plus the word count. Complementary pattern "find the error": a sentence containing one deliberate error that the learner must locate and fix. Texts are saved to the portfolio.
+**schreiben** — instructions, minimum word count, timer. The engine provides a 5-point checklist the learner applies themselves: ① content points ② connectors ③ sentence variety ④ capitalisation ⑤ punctuation — plus the word count. Complementary pattern "find the error": a sentence containing one deliberate error that the learner must locate and fix. Texts are saved to the portfolio.
+
+**The bounded local checker (decision D16).** Alongside the checklist, the app runs an **offline, rule-based checker** covering a fixed list of ~30 high-frequency, mechanically detectable patterns — for example: a noun not capitalised; the finite verb not in second position in a main clause; the verb not final in a subordinate clause introduced by *weil / dass / wenn / obwohl*; a missing or wrong comma before a subordinate clause; `seit` / `vor` + wrong case; a missing umlaut where the word is on the list; `ss` where `ß` is required and vice versa; `ich` + a third-person verb form; a preposition from the top-20 list governing the wrong case.
+
+Rules that make it honest:
+
+- It **never claims to correct the text.** Its exact framing in the UI is: *"I checked these 30 patterns. I found N issues. Anything outside this list I did not check."*
+- It reports a **pattern id and a rule**, never a silent rewrite; the learner makes the correction.
+- False positives are treated as bugs of the same severity as false negatives.
+- Every issue it finds is logged to the error ledger with its family — this is the main reason it exists.
+- It is entirely local: no network, no model, no service.
 
 **flashcard** — two independently scheduled directions, receptive (DE→AR) and productive (AR→DE), plus a third type: sentence completion. Self-assessment "know / don't know". Anti-cheating: pressing "know" in under 1.5 seconds on a new card forces it into a mandatory "verify" queue in the next session. On "don't know": the answer, an example sentence, and whether this is a first or repeated forgetting.
 
@@ -602,6 +650,8 @@ Encode in the UI: pronunciation is judged only on *"does it impede understanding
 
 ### 12.4 Mock-exam protocol — 8 mocks across Q4
 
+Timings below are stated at the 10 h/week baseline; at any other weekly budget they scale with the calendar, while the sequence never changes.
+
 | # | Timing | Form | Purpose |
 |---|---|---|---|
 | 1–2 | month 26 | one module at a time | baseline; expose the weakest module |
@@ -677,6 +727,29 @@ Daily 5 minutes aloud from A1 · a weekly 60–90 second recording from A2 · mo
 
 Capitals, ß/ss, comma rules — 3 minutes daily. Landeskunde: institutions, bureaucracy (Anmeldung, Versicherung), etiquette, media, contemporary history.
 
+### 13.9 The syllabus map — mandatory deliverable (decision D14)
+
+Nothing can be authored or composed without a defined scope. The syllabus map defines **what is taught, in what order, and what each lesson assumes**. It is a first-class deliverable of P3 and a precondition of all content authoring.
+
+Per level it contains:
+
+- the **grammar sequence in teaching order**, each item tagged *inductive* or *explicit* per §6.1;
+- the **vocabulary themes**, one per lesson, with the target word count per theme;
+- the **100 chunks**;
+- the **20–30 false friends** (French–German, plus Arabic-interference items);
+- the **pronunciation items** (§13.7);
+- the **reading and listening items** (§13.3, §13.4);
+- the **lesson list**: id, title, the capability ids it introduces, and its prerequisite capability ids.
+
+**Ownership and method:**
+
+- **A0–A2 — authored in full, lesson by lesson**, ordered by the engine's own progression logic and cross-checked against the official Goethe A1/A2 grammar and vocabulary inventories. The learner starts here, so this half must exist completely before P3 content authoring begins.
+- **B1–B2 — derived** from the official Goethe B1/B2 inventories plus the B2 exam topic list, mapped lesson by lesson.
+
+**Validation rule:** no lesson may be authored before its map row exists and validates — prerequisite graph acyclic, capability ids unique, per-level counts within the §13 targets. A lesson whose prerequisites are unmet is never composed by the Session Composer.
+
+**Content slices, not a wall.** P3 content is produced in slices and the app is usable from the first slice: the first slice (the A0 opening block) ships immediately after P2, and authoring then stays **at least 3 teaching weeks ahead of the learner's position** at all times. A build in which the learner catches up with the content is a build failure.
+
 ---
 
 ## 14. RETENTION DESIGN
@@ -684,6 +757,8 @@ Capitals, ß/ss, comma rules — 3 minutes daily. Landeskunde: institutions, bur
 - Quarterly cycles ending in a certificate **and** a tangible artefact.
 - **15-minute minimum day.** A 15-minute session is a success. The UI must never display a broken streak. A shortened session always contains a speaking block of at least 5 minutes (decision D8) — speaking is the first skill to die in self-study.
 - **No-guilt resume.** Returning after a gap restores context and offers a shortened re-entry session — never a catch-up penalty.
+- **Declared pause (decision D15).** The learner may declare a pause of up to **3 consecutive weeks, at most 3 times a year** (travel, illness, exams, work). During a declared pause: **decay is frozen**, the pause is **not counted as a gap**, and `reentryPending` is not raised by it. The first session afterwards is the standard 30-minute re-entry session. The system must be able to survive the learner having a life — a tool that punishes absence loses the learner at month nine.
+- **Recording retention (stated, never silent).** The portfolio keeps: the current week's recordings, two anchors (the first recording ever, and the most recent best per capability), and all mock-exam recordings. Older practice recordings are pruned after 90 days. The policy and the prune dates are visible in the UI.
 - **Activity change every 6 weeks** to prevent habituation. `rotation.variant` cycles A / B / C:
 
 | Track | Variant A | Variant B | Variant C |
@@ -752,17 +827,26 @@ Capitals, ß/ss, comma rules — 3 minutes daily. Landeskunde: institutions, bur
   "mocks": [],
   "gaps": { "lastSessionDate": "2026-10-03", "reentryPending": false },
   "rotation": { "lastChange": "2026-08-15", "variant": "A" },
-  "settings": { "uiLanguage": "ar", "rtl": true, "reviewDay": "friday", "speechScoring": "local", "aiConversation": false }
+  "settings": { "uiLanguage": "ar", "rtl": true, "reviewDay": "friday", "speechScoring": "local", "aiConversation": false, "writingChecker": true, "pauseUntil": null }
 }
 ```
 
 **Storage rules:**
 
-- Key: `deutschweg_v2`. All reads and writes pass through a single storage layer; nothing writes to localStorage directly.
-- Export = that object as a downloadable `.json`, automatically at least weekly.
-- Import = deep merge by id, preferring the higher evidence state, unioning arrays. Never destructive. A timestamped backup is written to localStorage before any import.
-- Migration v1 → v2 = merge, not replace; anything not understood is preserved verbatim under a legacy key.
+**Two stores, one storage layer (decision D11).**
+
+| Store | Holds | Why |
+|---|---|---|
+| **localStorage**, key `deutschweg_v2` | the JSON above — state only, no binaries | small, synchronous, trivially exportable |
+| **IndexedDB**, database `deutschweg_media` | audio recordings (one blob per recording, keyed by id, with its date and capability) | localStorage is capped near 5 MB, which ~22 minutes of 32 kbps audio exhausts — against a 60 min/week speaking floor, storing audio there guarantees the loss that §5.3 forbids |
+
+- All reads and writes pass through a single storage layer. Nothing touches localStorage or IndexedDB directly.
+- **Weekly auto-export** = the JSON state file, small and fast.
+- **Full backup** (on demand) = one archive containing `state.json` plus every audio blob. The archive is written by a **store-only ZIP writer built into the app** (audio is already compressed, so no compression code is needed) — no external library, no network, no CDN.
+- **Import** = deep merge by id, preferring the higher evidence state, unioning arrays. Never destructive. A timestamped backup of the current state is taken before any import.
+- **Migration v1 → v2** = merge, not replace; anything not understood is preserved verbatim under a legacy key.
 - Every field that later phases use is created empty from day one. No field is ever deleted.
+- If a browser refuses or loses IndexedDB access, the app degrades loudly — it says so on screen and keeps the JSON state intact. It never fails silently.
 
 ---
 
@@ -803,7 +887,7 @@ A simulated classroom or blackboard · a linear course browser · streaks, point
 
 ## 19. DEFINITION OF DONE
 
-**A lesson is done when:** all 12 stages are present · 20–35 steps · one concept per step · next disabled until answered · three-layer simplification present · hint ladder 1→2→answer · ≥3 Merkhilfen with mandatory warum when ≥5 new words · every exercise tied to a ziel · every check tied to a prereq · immediate explanation on every answer · every error auto-logged with a family · the 20-second rule passes · recap strip ≤6 words · Hausaufgabe present.
+**A lesson is done when:** all 12 stages are present · 24–36 steps · one concept per step · next disabled until answered · three-layer simplification present · hint ladder 1→2→answer · ≥3 Merkhilfen with mandatory warum when ≥5 new words · every exercise tied to a ziel · every check tied to a prereq · immediate explanation on every answer · every error auto-logged with a family · the 20-second rule passes · recap strip ≤6 words · Hausaufgabe present.
 
 **A release is done when:** it works fully offline · RTL on a mid-range Android phone · zero network calls during study · export/import round-trips without loss · migration from v1 merges · all 8 exercise renderers function · the Session Composer can explain every block it chose · the Allocator cannot breach a floor (except the decision-D6 exception) · no screen shows an untraceable number.
 
@@ -817,9 +901,9 @@ Build strictly in this order. Ship something usable at the end of every phase. D
 
 ### Phase P0 — Skeleton (the step engine)
 
-**Deliverables:** the complete data model of §15 · the storage layer · export/import with merge · the RTL Arabic shell (offline, mobile-first) · the lesson renderer with step gating and the four-beat cycle · the hint ladder · remedial-step injection · auto-escalation · immediate explanations · error capture into the ledger · resume at the last unfinished step · recap strip ≤6 words plus "step 7 of 14" · one complete real A0 lesson running end to end.
+**Deliverables:** the complete data model of §15 · the **two-store storage layer** (state in localStorage, audio in IndexedDB) · export/import with merge · the **installable PWA shell** with a service worker that caches every asset — first load needs network, every load after that is fully offline · the RTL Arabic shell (mobile-first) · the lesson renderer with step gating and the four-beat cycle · the hint ladder · remedial-step injection · auto-escalation · immediate explanations · error capture into the ledger · resume at the last unfinished step · recap strip ≤6 words plus "step 7 of 14" · one complete real A0 lesson running end to end.
 
-**The reference lesson `a0-u1-l1`** — A0, 90 minutes, 29 steps, all 12 stages:
+**The reference lesson `a0-u1-l1`** — A0, 90 minutes, 30 steps, all 12 stages:
 
 | Steps | Stage | Content |
 |---|---|---|
@@ -852,7 +936,7 @@ Build strictly in this order. Ship something usable at the end of every phase. D
 | T3 | answer wrong three times | a remedial micro-step is injected automatically |
 | T4 | reveal the answer | `assisted: true` in the stored state |
 | T5 | press "explain more simply" three times | example → analogy → rule, in that order |
-| T6 | close at step 7 | on return: "step 7 of 29" plus the recap strip |
+| T6 | close at step 7 | on return: "step 7 of 30" plus the recap strip |
 | T7 | err deliberately in S5 | a line appears in errorLedger with family `aussprache` |
 | T8 | finish, export, wipe storage, import | everything returns, nothing lost |
 | T9 | export two different files, import both | union, not replacement — no duplicates, no loss |
@@ -862,6 +946,8 @@ Build strictly in this order. Ship something usable at the end of every phase. D
 | T13 | three consecutive unassisted correct answers | escalation: a tighter timer or a move to a Produktion step |
 | T14 | inspect `localStorage.deutschweg_v2` | every key of §15 is present, empty where required |
 | T15 | finish the Check below 80% | returns to S5–S12, not to S1 |
+| T54 | install the PWA, switch the network off, reopen the app | it loads and works completely; a network log shows zero outbound requests |
+| T55 | record audio, close the app, reopen the device | the recording is still there and plays; `localStorage` contains no binary audio |
 
 **T15 is the most important test in P0** — it proves the tool corrects itself instead of restarting the learner.
 
@@ -893,6 +979,7 @@ Build strictly in this order. Ship something usable at the end of every phase. D
 | T31 | succeed on a receptive card | its direction advances; the productive direction does not |
 | T32 | an exercise without `ziel` | rejected in authoring, never displayed |
 | T33 | disable the network and open every renderer | all eight work — including hören with bundled audio |
+| T56 | paste a text with a seeded error from the 30-pattern list | the checker reports the pattern id and the rule, states plainly that it checks only those 30 patterns, and the issue lands in the error ledger |
 
 **P1 exit criteria:** all eight renderers work offline (T33) · every error produces a specific explanation (T16–T19) · the ledger writes, promotes, retires and merges correctly (T25–T27) · the drill works in both modes with timeouts logged (T23) · SRS runs two independent schedules with anti-cheating (T22, T30, T31) · `capabilities[]` holds real evidence (T28) · schreiben makes no correction claim (T21) · every exercise carries `ziel` (T32).
 
@@ -924,14 +1011,18 @@ Build strictly in this order. Ship something usable at the end of every phase. D
 | T51 | the proposal tries to cut reading below 60 min | the constraint rejects and corrects it |
 | T52 | a transfer above 120 minutes | rejected |
 | T53 | a gap of ≥8 weeks with the gate passed | it returns to `at-risk` plus an automatic consolidation week before any new content |
+| T57 | set `weeklyHours` to 8 | every floor scales, the calendar recomputes to ~35 months, the speaking (45) and SRS (60) absolute minimums hold, and the app says so on screen |
+| T58 | declare a pause of 3 weeks, then return | decay never moved during the pause; no gap was recorded; the first session is the standard re-entry session |
 
 **P2 exit criteria:** every capability has a real record with state, evidence and history (T38) · the decay clock works — activation appears, restores in one step, drops one step, with different speeds (T34–T37) · the composer produces a daily session across nine tracks with a written reason for every block (T39, T40) · speaking is guaranteed in every session including the 15-minute one · new content is only inserted after the other rules are satisfied · the six indicators are computed from their correct sources (T41–T44) · every number on screen is traceable in one tap (T45) · resume after a gap is guilt-free with no card backlog (T46–T48) · the GO/HOLD/REROUTE decision follows its rules (T49, T50) · constraints prevent floor breaches and excessive transfers (T51, T52) · the gate state machine works including at-risk and re-opening (T53) · the capability map displays no completion percentage, with E1a visible and activation markers shown · the 6-week rotation works.
 
 ### Phase P3 — Content
 
-**Deliverables:** 100 built lessons (A0–A1: 30, A2: 30, B1: 40) · 20 B2 workshops (text analysis, writing workshop, discussion, listening, exam technique, all on authentic material) · the procedural exercise generator from the 500–800 sentence bank · pronunciation recordings (decision D2 tiers) · the extensive-reading library · 100 chunks per level · 20–30 false friends per level.
+**Deliverables:** the **syllabus map** of §13.9 (A0–A2 authored in full; B1–B2 derived from the official inventories) · 100 built lessons (A0–A1: 30, A2: 30, B1: 40) · 20 B2 workshops (text analysis, writing workshop, discussion, listening, exam technique, all on authentic material) · the procedural exercise generator from the 500–800 sentence bank · the **bounded local writing checker** (~30 patterns, decision D16) · pronunciation recordings (decision D2 tiers) · the extensive-reading library · 100 chunks per level · 20–30 false friends per level.
 
-**Exit criteria:** every lesson passes the Definition of Done of §19 · the generator produces instances with answer keys, diagnostic rationales and capability links · B2 is delivered as workshops, not lessons.
+**Slicing rule:** content is produced in slices and the app is usable from the first slice; after the first slice ships, authoring must stay **at least 3 teaching weeks ahead of the learner's position**. A build in which the learner catches up with the content is a build failure.
+
+**Exit criteria:** the syllabus map validates (acyclic prerequisites, unique capability ids, counts within §13 targets) · every lesson passes the Definition of Done of §19 · the generator produces instances with answer keys, diagnostic rationales and capability links · the writing checker reports patterns without ever claiming completeness (T56) · B2 is delivered as workshops, not lessons.
 
 ### Phase P4 — Exam engine
 
@@ -954,7 +1045,13 @@ Build strictly in this order. Ship something usable at the end of every phase. D
 | D7 | E1a is visible in the capability map with a distinct marker and excluded from gate counting | Transparency is a product value, not a nicety |
 | D8 | A shortened (15-minute) session always contains a speaking block of at least 5 minutes | Speaking is the first skill to die in self-study |
 | D9 | B2 is delivered as workshops on authentic material, not as built lessons | B2 is about using the language, not receiving it |
-| D10 | Load fixed at 1,210 planned hours / 30 months / 4 quarterly cycles, inside a 1,100–1,300 h envelope | Derived from realistic weekly hours including exam-only tail weeks and deliberate slack |
+| D10 | Load fixed at 1,210 planned hours / 4 quarterly cycles, inside a 1,100–1,300 h envelope; the calendar is derived | Hours are pedagogy; months are arithmetic |
+| D11 | State in localStorage, audio in IndexedDB, with a stated retention policy | 5 MB of localStorage is exhausted by ~22 minutes of 32 kbps audio, against a 60 min/week speaking floor — keeping audio there guarantees the data loss §5 item 4 forbids |
+| D12 | Installable PWA over a secure context, service-worker cached, fully offline after first load | Microphone permission (recording, R3, the portfolio) cannot be granted reliably from a `file://` origin on Android/Chrome |
+| D13 | `weeklyHours` is a setting (6–12, baseline 10); floors scale to 90% of the budget with absolute minimums for speaking (45) and SRS (60); the calendar derives from the budget | The method must survive the learner's real life; otherwise the floors are theory |
+| D14 | The syllabus map is a mandatory deliverable: A0–A2 authored in full, B1–B2 derived from the official Goethe inventories | Lessons cannot be authored or composed without a defined order and declared prerequisites |
+| D15 | Declared pause: up to 3 weeks, at most 3 times a year, decay frozen | The system must not punish the learner for having a life |
+| D16 | A bounded local writing checker (~30 mechanically detectable patterns), offline, alongside the self-checklist — it never claims completeness | Writing is a quarter of the exam and a zero on one criterion zeroes the task; "no feedback at all" is too costly, and a fake corrector would be worse |
 
 ---
 
