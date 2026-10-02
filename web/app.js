@@ -542,8 +542,18 @@ function handleResult(st, r) {
   if (!wasAssisted) escStreak++;
   else escStreak = 0;
   if (escStreak >= 3) armNext = true;
-  if (DW.BANK.STEP_CARDS[st.id]) DW.practice.introduce(DW.BANK.STEP_CARDS[st.id]);
-  else if (window.DW_STEP_CARDS && window.DW_STEP_CARDS[lessonId() + ':' + st.id]) DW.practice.introduce(window.DW_STEP_CARDS[lessonId() + ':' + st.id]);
+  /* Card lookup, in this order and no other:
+       1. the lesson-qualified catalogue built by the compiler (the real words
+          of this lesson), then
+       2. the hand-written bank — but only for the opening lesson, whose steps
+          are the only ones the bank was written for.
+     The bank is keyed by the bare step id ('s09', 's12', …), and every lesson
+     has an s12. Looking the bank up first silently handed the opening lesson's
+     greetings to 119 lessons and kept their own words out of the review queue. */
+  const cardKey = lessonId() + ':' + st.id;
+  const cards = (window.DW_STEP_CARDS && window.DW_STEP_CARDS[cardKey]) ||
+    (lessonId() === 'a0-u1-l1' && DW.BANK.STEP_CARDS[st.id]) || null;
+  if (cards) DW.practice.introduce(cards);
 }
 
 function injectRemedial(st) {

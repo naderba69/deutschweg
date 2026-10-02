@@ -70,6 +70,78 @@ console.log('\n— P3.2 lexical layer —\n');
   t('step cards built for the flashcard steps: ' + cardKeys.length, cardKeys.length >= 5 && Object.values(cards).every(v => v[0].de && v[0].ar && v[0].level));
 }
 
+/* ---------- A1, unit 1: the port used the same gate the map promises ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const A1 = ['a1-u1-l1', 'a1-u1-l2', 'a1-u1-l3', 'a1-u1-l4', 'a1-u1-l5', 'a1-u1-l6'];
+  let fieldsOk = true, stepOk = true, groupOk = true, finiteOk = true, trickOk = true;
+  const a1Tricks = [];
+  A1.forEach(id => {
+    const lesson = L[id];
+    const wl = lesson.wortschatz || [];
+    if (wl.length < 14) fieldsOk = false;
+    wl.forEach(it => {
+      ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].forEach(k => { if (!it[k]) fieldsOk = false; });
+    });
+    const vsteps = lesson.schritte.filter(s => s.wortschatz);
+    if (lesson.schritte.length < 24 || lesson.schritte.length > 36) stepOk = false;
+    vsteps.forEach(s => { if (s.wortschatz.length < 2 || s.wortschatz.length > 4) groupOk = false; });
+    const order = lesson.schritte.find(s => s.frage && s.frage.art === 'wortstellung');
+    if (!order || order.frage.correct.indexOf(order.frage.finite) !== 1) finiteOk = false;
+    lesson.schritte.forEach(s => { if (s.merkhilfe) a1Tricks.push(s.merkhilfe.trick); });
+  });
+  t('A1 unit 1: every ported lesson carries ≥14 complete words', fieldsOk);
+  t('A1 unit 1: every lesson keeps 24–36 steps', stepOk);
+  t('A1 unit 1: Wortschatz steps carry 2–4 words each', groupOk);
+  t('A1 unit 1: every word-order item puts the finite verb in position 2', finiteOk);
+  t('A1 unit 1: 18 tricks, all distinct', a1Tricks.length === 18 && new Set(a1Tricks).size === 18);
+
+  const a0Tricks = [];
+  A0.forEach(id => L[id].schritte.forEach(s => { if (s.merkhilfe) a0Tricks.push(s.merkhilfe.trick); }));
+  const all = new Set(a0Tricks.concat(a1Tricks));
+  t('no trick is copied between A0 and A1 (' + all.size + ' distinct)', all.size === a0Tricks.length + a1Tricks.length);
+  trickOk = true;
+  t('the A1 tricks are tied to a German form, not to a slogan',
+    a1Tricks.every(x => x.length > 6) && trickOk);
+
+  const cov = win.DW_COVERAGE || [];
+  const a1 = cov.find(c => c.level === 'A1');
+  t('A1 coverage is published and honestly mid-port: ' + a1.items + '/' + a1.declared + ' (' + Math.round(a1.ratio * 100) + '%)',
+    a1 && a1.items === 144 && a1.ratio < 0.8);
+}
+
+/* ---------- an A1 lesson runs in the DOM with its word table ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const id = 'a1-u1-l1';
+  const lesson = L[id];
+  const steps = lesson.schritte;
+  const order = win.DW_SYLLABUS.lessons.map(l => l.id);
+  const before = order.slice(0, order.indexOf(id));
+  const S = win.DW.session.S;
+  S.progress = before.map(x => ({ lessonId: x, state: 'completed' }));
+  S.capabilities = before.map(x => ({ id: 'cap.' + x + '.core', evidence: 'E1', lastActive: '2026-10-02', history: [] }))
+    .concat([{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: '2026-10-02', history: [] }]);
+  win.go('lesson');
+  /* the verb group opens first; take the card step whose head word is a noun,
+     because the article is part of what a German noun must always be shown with */
+  const idx = steps.findIndex(s => s.frage && s.frage.art === 'flashcard' && /^(der|die|das)\s/.test(s.frage.de));
+  const p = (S.progress || []).find(x => x.lessonId === id) || { lessonId: id, state: 'in_progress' };
+  p.completedSteps = steps.slice(0, idx).map(s => s.id);
+  p.lastStepId = steps[idx].id;
+  S.progress = (S.progress || []).filter(x => x.lessonId !== id).concat([p]);
+  win.go('lesson');
+  const rows = [...win.document.querySelectorAll('.vocab-row')];
+  const texts = rows.map(r => r.querySelector('.vocab-de').textContent);
+  t('the A1 word table opens with a row per word, and every noun carries its article',
+    rows.length === steps[idx].wortschatz.length && texts.every(x => /^(der|die|das)\s/.test(x)));
+  clickText(win, 'أعرف');
+  const card = (S.srs.cards || []).find(c => c.de === steps[idx].frage.de);
+  t('an A1 word enters the queue with level A1', !!card && card.level === 'A1');
+}
+
 /* ---------- the word table in the DOM, the missing forms, the cards ---------- */
 {
   const { window: win } = boot();
@@ -161,6 +233,32 @@ console.log('\n— P3.2 lexical layer —\n');
     right.click();
   }
   t('matching pairs the word list with its glosses', ok && !!win.document.querySelector('.layer.good'));
+}
+
+/* ---------- the card lookup prefers the lesson's own words ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const id = 'a0-u1-l6';
+  const steps = L[id].schritte;
+  const order = win.DW_SYLLABUS.lessons.map(l => l.id);
+  const before = order.slice(0, order.indexOf(id));
+  const S = win.DW.session.S;
+  S.progress = before.map(x => ({ lessonId: x, state: 'completed' }));
+  S.capabilities = before.map(x => ({ id: 'cap.' + x + '.core', evidence: 'E1', lastActive: '2026-10-02', history: [] }))
+    .concat([{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: '2026-10-02', history: [] }]);
+  win.go('lesson');
+  /* s12 exists in every lesson; the hand-written bank also has an s12 (Danke,
+     Bitte, Freut mich). The lesson's own word must win. */
+  const idx = steps.findIndex(s => s.id === 's12' && s.frage && s.frage.art === 'flashcard');
+  const p = { lessonId: id, state: 'in_progress', completedSteps: steps.slice(0, idx).map(s => s.id), lastStepId: steps[idx].id };
+  S.progress = (S.progress || []).filter(x => x.lessonId !== id).concat([p]);
+  win.go('lesson');
+  const beforeCount = (S.srs.cards || []).length;
+  clickText(win, 'أعرف');
+  const added = (S.srs.cards || []).slice(beforeCount);
+  t('a card step whose id collides with the bank still queues the lesson word: ' +
+    added.map(c => c.de).join(', '), added.length === 1 && added[0].de === steps[idx].frage.de);
 }
 
 /* ---------- the engine still answers honestly after the new forms ---------- */

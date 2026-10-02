@@ -17,9 +17,11 @@ const FAM = new Set([
 ]);
 
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
-   five Wortschatz steps carrying the real word list, and the forms the older
-   generator never used (flashcard, word order, writing). */
-const VOCAB = require('./vocab-a0a1');
+   Wortschatz steps carrying the real word list (2–4 words each, as many steps
+   as the list needs and §8.3 allows), and the forms the older generator never
+   used (flashcard, word order, writing). vocab-a0a1 holds A0; vocab-a1 grows
+   unit by unit, so a later slice adds a key, not a rewrite. */
+const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'));
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 const AR = /[\u0600-\u06FF]/;
@@ -316,9 +318,28 @@ const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|s
 /* The order exercise is scored on four levels, and level 1 needs the finite
    verb, level 3 the fields. Without them the engine could only say "wrong",
    so a sentence without a finite verb is refused rather than shipped blind. */
+/* The whitelist above is a fast path, not the definition. A hard-coded list
+   would silently refuse every new verb a later slice adds, so the fallback
+   reads the shape of the sentence: after the first field comes a lowercase
+   token ending in a personal ending. Nouns and function words are skipped. */
+const STOP = new Set(('ich du er sie es wir ihr man mich dich ihn uns euch mir dir ihm nicht nichts nie niemand kein keine keinen keinem keiner gern auch sehr hier da dort heute morgen gestern jetzt immer oft manchmal schon noch mehr am im in an auf aus bei mit nach von zu zum zur für und aber oder denn bitte etwas viel ein eine einen einem einer das der die den dem des mein meine meinen dein deine deinen sein seine seinen ihr ihre ihren unser unsere euer eure ihre').split(' '));
+function finiteOf(toks) {
+  const bare = t => t.replace(/[.,!?;:]+$/g, '');
+  const hit = toks.find(t => FINITE.test(bare(t)));
+  if (hit) return hit;
+  const idx = toks.findIndex((t, i) => {
+    if (i === 0) return false;                 /* sentence-initial capital: covered by the whitelist */
+    const b = bare(t);
+    if (/^[A-ZÄÖÜ]/.test(b)) return false;     /* nouns are capitalised */
+    const low = b.toLowerCase();
+    if (STOP.has(low) || low.length < 3) return false;
+    return /(e|st|t|en|n)$/.test(low);
+  });
+  return idx < 0 ? null : toks[idx];
+}
 function orderFrage(sentence, frageText) {
   const toks = String(sentence).split(/\s+/).filter(Boolean);
-  const finite = toks.find(t => FINITE.test(t.replace(/[.,!?;:]+$/, '')));
+  const finite = finiteOf(toks);
   if (!finite) return null;
   const i = toks.indexOf(finite);
   return {
@@ -347,7 +368,11 @@ function lessonOfVocab(spec, vocabRow) {
   }));
   const floor = VOCAB_FLOOR[spec.level] || 12;
   if (items.length < floor) die(spec.id + ' vocab ' + items.length + ' below the ' + spec.level + ' floor ' + floor);
-  if (items.length > 20) die(spec.id + ' vocab ' + items.length + ' exceeds what 5 Wortschatz steps can carry');
+  /* The map row declares how many words the lesson promises (A1: 28). The step
+     budget is derived from that promise, not the other way round: a list of 24
+     becomes six Wortschatz steps of four, a list of 15 stays five steps of three.
+     §8.3 still caps a single step at four words. */
+  if (items.length > 28) die(spec.id + ' vocab ' + items.length + ' exceeds what 7 Wortschatz steps can carry');
   items.forEach(it => {
     if (!FAM.has(it.fam)) die(spec.id + ' bad vocab family ' + it.fam);
     if (AR.test(it.de) || AR.test(it.ex) || AR.test(it.err)) die(spec.id + ' Arabic inside German vocab: ' + it.de);
@@ -436,7 +461,7 @@ function lessonOfVocab(spec, vocabRow) {
 
   /* Wortschatz: the real word list, 2–4 words per step, each word in a sentence.
      The forms rotate so the list is met four different ways, never as a list. */
-  const size = Math.max(2, Math.min(4, Math.ceil(items.length / 5)));
+  const size = Math.max(2, Math.min(4, Math.ceil(items.length / 7)));
   const groups = [];
   for (let i = 0; i < items.length; i += size) groups.push(items.slice(i, i + size));
   groups.forEach((group, gi) => {

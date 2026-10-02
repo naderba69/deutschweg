@@ -64,7 +64,7 @@ S.forEach(s => { const i = ORDER.indexOf(s.phase); if (i < last) orderOk = false
 orderOk ? ok('stage sequence is in order') : bad('stage sequence is out of order');
 
 /* 3. stage counts within declared bounds */
-const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,5],
+const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,7],
   Anwenden:[3,3], 'Übungen':[5,8], Merkhilfe:[1,3], Produktion:[1,1], Zusammenfassung:[1,1], Check:[3,5], Hausaufgabe:[1,1] };
 Object.entries(BOUNDS).forEach(([p,[lo,hi]]) => {
   const n = S.filter(s => s.phase === p).length;
