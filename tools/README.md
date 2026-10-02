@@ -11,6 +11,16 @@ node tools/validate-lesson.js web/data/a0-u1-l1.js
 
 Exit code is non-zero on any hard failure — so it can gate a commit.
 
+## `validate-syllabus.js`
+
+Checks the map before any further lesson is authored: unique ids, acyclic
+prerequisites, counts inside §13, and that the composer refuses an unmet
+prerequisite and an unauthored row.
+
+```
+node tools/validate-syllabus.js
+```
+
 ## `p0-tests.mjs`
 Black-box acceptance tests for P0, run in a real DOM (jsdom). They drive the
 interface the way a learner does and read the result from `localStorage`.

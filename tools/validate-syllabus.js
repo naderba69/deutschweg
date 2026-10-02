@@ -1,0 +1,154 @@
+#!/usr/bin/env node
+/* Syllabus-map gate (PROMPT §13.9). No lesson may be authored before this passes. */
+const fs = require('fs');
+const path = require('path');
+const root = path.resolve(__dirname, '..');
+const w = {};
+['inventory.js', 'chunks.js', 'syllabus.js'].forEach(name => {
+  new Function('window', fs.readFileSync(path.join(root, 'web/data', name), 'utf8'))(w);
+});
+const S = w.DW_SYLLABUS;
+let hard = 0;
+const ok = m => console.log('  ✓ ' + m);
+const bad = m => { hard++; console.log('  ✗ ' + m); };
+
+const lessons = S.lessons;
+const ids = lessons.map(l => l.id);
+ids.length === new Set(ids).size ? ok('lesson ids unique') : bad('duplicate lesson id');
+
+const byLevel = {};
+lessons.forEach(l => { byLevel[l.level] = (byLevel[l.level] || 0) + 1; });
+const expect = { A0: 6, A1: 24, A2: 30, B1: 40, B2: 20 };
+Object.keys(expect).forEach(k => {
+  byLevel[k] === expect[k] ? ok(k + ' count ' + expect[k]) : bad(k + ' count ' + byLevel[k] + ' expected ' + expect[k]);
+});
+(byLevel.A0 + byLevel.A1 === 30) ? ok('A0+A1 is 30 lessons') : bad('A0+A1 is not 30');
+lessons.filter(l => l.level === 'B2').every(l => l.kind === 'workshop')
+  ? ok('B2 is workshops, not lessons')
+  : bad('a B2 row is not a workshop');
+
+const introduced = {};
+lessons.forEach(l => (l.introduces || []).forEach(id => {
+  if (introduced[id]) bad('capability id reused: ' + id);
+  introduced[id] = l.id;
+}));
+ok('capability ids collected: ' + Object.keys(introduced).length);
+
+let cycle = false;
+const seen = new Set();
+const stack = new Set();
+function walk(id) {
+  if (stack.has(id)) { cycle = true; return; }
+  if (seen.has(id)) return;
+  seen.add(id);
+  stack.add(id);
+  const lesson = lessons.find(l => l.id === id);
+  (lesson.prereqs || []).forEach(pid => {
+    if (!introduced[pid]) bad('missing prerequisite capability: ' + pid + ' required by ' + id);
+    const owner = lessons.find(l => (l.introduces || []).includes(pid));
+    if (owner) walk(owner.id);
+  });
+  stack.delete(id);
+}
+lessons.forEach(l => walk(l.id));
+cycle ? bad('prerequisite cycle') : ok('prerequisite graph is acyclic');
+
+function sum(level, field) {
+  return lessons.filter(l => l.level === level).reduce((s, l) => s + (l.words[field] || 0), 0);
+}
+const a1Rec = sum('A0', 'receptive') + sum('A1', 'receptive');
+const a1Prod = sum('A0', 'productive') + sum('A1', 'productive');
+a1Rec <= 800 && a1Rec >= 600 ? ok('A1 receptive ' + a1Rec + ' inside the 800') : bad('A1 receptive ' + a1Rec);
+a1Prod <= 300 && a1Prod >= 200 ? ok('A1 productive ' + a1Prod + ' inside the 300') : bad('A1 productive ' + a1Prod);
+const a2Rec = a1Rec + sum('A2', 'receptive');
+const a2Prod = a1Prod + sum('A2', 'productive');
+a2Rec <= 1600 && a2Rec >= 1200 ? ok('A2 receptive ' + a2Rec) : bad('A2 receptive ' + a2Rec);
+a2Prod <= 700 && a2Prod >= 500 ? ok('A2 productive ' + a2Prod) : bad('A2 productive ' + a2Prod);
+const b1Rec = a2Rec + sum('B1', 'receptive');
+const b1Prod = a2Prod + sum('B1', 'productive');
+b1Rec <= 3200 && b1Rec >= 2400 ? ok('B1 receptive ' + b1Rec) : bad('B1 receptive ' + b1Rec);
+b1Prod <= 1400 && b1Prod >= 1000 ? ok('B1 productive ' + b1Prod) : bad('B1 productive ' + b1Prod);
+const b2Rec = b1Rec + sum('B2', 'receptive');
+const b2Prod = b1Prod + sum('B2', 'productive');
+b2Rec <= 5000 && b2Rec >= 4000 ? ok('B2 receptive ' + b2Rec) : bad('B2 receptive ' + b2Rec);
+b2Prod <= 2600 && b2Prod >= 2000 ? ok('B2 productive ' + b2Prod) : bad('B2 productive ' + b2Prod);
+
+lessons.every(l => l.theme && l.words && l.grammar && l.grammar.method && (l.grammar.method === 'inductive' || l.grammar.method === 'explicit'))
+  ? ok('every row has one theme and a tagged grammar item')
+  : bad('a row is missing theme or grammar method');
+
+['A1', 'A2', 'B1', 'B2'].forEach(level => {
+  const n = (S.chunks[level] || []).length;
+  n === 100 ? ok(level + ' chunks 100') : bad(level + ' chunks ' + n);
+  const ff = (S.falseFriends[level] || []).length;
+  ff >= 20 && ff <= 30 ? ok(level + ' false friends ' + ff) : bad(level + ' false friends ' + ff);
+});
+const read = S.reading;
+read.A1.length === 10 ? ok('A1 reading 10') : bad('A1 reading');
+read.A2.length === 20 ? ok('A2 reading 20') : bad('A2 reading');
+read.B1.texts.length === 10 && read.B1.magazine ? ok('B1 reading 10 + magazine') : bad('B1 reading');
+read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 articles') : bad('B2 reading');
+['A1', 'A2', 'B1', 'B2'].forEach(level => {
+  const item = S.listening[level];
+  item && item.target ? ok(level + ' listening target ' + item.target) : bad(level + ' listening');
+});
+['A1', 'A2', 'B1', 'B2'].every(level => (S.pronunciation[level] || []).length >= 3)
+  ? ok('pronunciation items on every level')
+  : bad('pronunciation syllabus incomplete');
+
+const authored = lessons.filter(l => l.status === 'authored').map(l => l.id);
+authored.length === 1 && authored[0] === 'a0-u1-l1'
+  ? ok('only the opening lesson is authored; the map does not pretend otherwise')
+  : bad('authored set drifted: ' + authored.join(','));
+
+w.DW = w.DW || {};
+['storage.js', 'ledger.js', 'adaptive.js'].forEach(name => {
+  new Function('window', fs.readFileSync(path.join(root, 'web/engine', name), 'utf8'))(w);
+});
+const A = w.DW.adaptive;
+const today = '2026-10-02';
+function empty() {
+  const s = w.DW.storage.defaultState();
+  s.learner.weeklyHours = 10;
+  s.weekPlan = { decision: 'GO' };
+  return s;
+}
+{
+  const plan = A.compose(empty(), today, { minutes: 200 });
+  const step = plan.blocks.find(b => b.type === 'lesson-step');
+  step && step.lessonId === 'a0-u1-l1' && !plan.withheld
+    ? ok('composer offers only the authored opening lesson')
+    : bad('opening lesson was not offered');
+}
+{
+  const S = empty();
+  S.progress = [{ lessonId: 'a0-u1-l1', state: 'completed' }];
+  const plan = A.compose(S, today);
+  !plan.blocks.some(b => b.type === 'lesson-step') && plan.withheld && plan.withheld.lessonId === 'a0-u1-l2'
+    ? ok('composer refuses the next row when its prerequisite is unmet')
+    : bad('unmet prerequisite was not refused');
+}
+{
+  const S = empty();
+  S.progress = [{ lessonId: 'a0-u1-l1', state: 'completed' }];
+  S.capabilities = [{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1a', lastActive: today, history: [] }];
+  const plan = A.compose(S, today);
+  !plan.blocks.some(b => b.type === 'lesson-step')
+    ? ok('E1a does not satisfy a lesson prerequisite')
+    : bad('E1a opened a lesson');
+}
+{
+  const S = empty();
+  S.progress = [{ lessonId: 'a0-u1-l1', state: 'completed' }];
+  S.capabilities = [{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: today, history: [] }];
+  const plan = A.compose(S, today);
+  const nxt = S && w.DW_SYLLABUS.next(S);
+  nxt && nxt.id === 'a0-u1-l2' && nxt.status === 'mapped'
+    && !plan.blocks.some(b => b.type === 'lesson-step')
+    && plan.withheld && /لم يُؤلَّف/.test(plan.withheld.reason)
+    ? ok('a mapped row with met prerequisites is still not opened')
+    : bad('an unauthored lesson was opened');
+}
+
+console.log(hard ? '\n' + hard + ' hard failure(s)\n' : '\nsyllabus map valid\n');
+process.exit(hard ? 1 : 0);

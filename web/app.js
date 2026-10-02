@@ -830,6 +830,7 @@ function renderToday(mode) {
     card.appendChild(open);
     v.appendChild(card);
   });
+  if (plan.withheld) v.appendChild(el('div', 'reason', plan.withheld.reason));
   if (mode === 'short') v.appendChild(el('div', 'meta', 'أُجّل الباقي بلا عقوبة. الجلسة القصيرة نجاح.'));
   const short = el('button', 'ghost', '15 دقيقة فقط');
   short.type = 'button';
@@ -849,7 +850,10 @@ function openBlock(b) {
   if (b.track === 'reading' || b.track === 'listening') {
     v.appendChild(el('div', 'meta', 'لا نص ولا سلّم سماع في البنك بعد. R4 وR5 يبقيان غير مقيسين. لن أقبل تقديرًا ذاتيًا وأجعله رقمًا.'));
   } else if (b.track === 'chunks') {
-    v.appendChild(el('div', 'meta', 'مئة قالب لكل مستوى لم تُؤلَّف بعد. لا تمرين مختلق، ولا دليل مختلق.'));
+    const n = (window.DW_SYLLABUS && DW_SYLLABUS.chunks && DW_SYLLABUS.chunks.A1) ? DW_SYLLABUS.chunks.A1.length : 0;
+    v.appendChild(el('div', 'meta', n
+      ? 'الخريطة فيها ' + n + ' قالبًا للمستوى A1. الحفر الزمني ليس هذه الشريحة. لا درجة مختلقة.'
+      : 'مئة قالب لكل مستوى لم تُؤلَّف بعد. لا تمرين مختلق، ولا دليل مختلق.'));
   } else {
     v.appendChild(el('div', 'meta', 'هذه الحصة محجوزة للحد الأسبوعي. لا علامة يدوية.'));
   }

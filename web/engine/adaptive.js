@@ -388,8 +388,36 @@
       score: partial.score || 0,
       reason: String(partial.reason).trim(),
       lastActive: partial.lastActive || null,
-      decayUrgency: partial.decayUrgency || 0
+      decayUrgency: partial.decayUrgency || 0,
+      lessonId: partial.lessonId || null
     };
+  }
+  function syllabus() {
+    return (typeof window !== 'undefined' && window.DW_SYLLABUS) || null;
+  }
+  function nextLesson(S) {
+    const map = syllabus();
+    if (!map || typeof map.next !== 'function') {
+      const done = (S.progress || []).some(p => p.lessonId === 'a0-u1-l1' && p.state === 'completed');
+      return done ? null : { id: 'a0-u1-l1', status: 'authored', prereqs: [], title: { ar: 'اليوم الأول' } };
+    }
+    return map.next(S);
+  }
+  function withheldOf(nxt) {
+    if (!nxt) return null;
+    if (nxt.blocked) {
+      return {
+        lessonId: nxt.lesson.id,
+        reason: 'متطلّب ناقص: ' + nxt.missing.join('، ') + '. E1 غير المساعد أو أعلى فقط. E1a لا يكفي. لن أفتح ' + nxt.lesson.id + '.'
+      };
+    }
+    if (nxt.status !== 'authored') {
+      return {
+        lessonId: nxt.id,
+        reason: 'صف ' + nxt.id + ' موجود في الخريطة ولم يُؤلَّف. لن أفتح درسًا بلا متن.'
+      };
+    }
+    return null;
   }
   function scoreOf(b, ctx) {
     return 15 * (b.decayUrgency || 0)
@@ -441,7 +469,9 @@
       ['writing', 'writing', 8, 'حصة الكتابة من حد ' + floors.writing + '. الشكل هذا الأسبوع: ' + rot.writing + '. الفاحص لا يدّعي تصحيح النص.'],
       ['pronunciation', 'pronunciation', 4, 'حصة النطق من حد ' + floors.pronunciation + '. البنك الموجود أصوات A0، لا المنهج الكامل.'],
       ['foundations', 'foundations', 3, 'أساسات يومية: الحرف الكبير وß والفاصلة. 3 دقائق من حد ' + floors.foundations + '.'],
-      ['chunks', 'chunks', 5, 'مسار القوالب. مئة عبارة لكل مستوى تُؤلَّف في مرحلة المحتوى. لا تمرين مختلق.']
+      ['chunks', 'chunks', 5, syllabus() && syllabus().chunks && syllabus().chunks.A1 && syllabus().chunks.A1.length === 100
+        ? '100 قالب A1 في الخريطة. الحفر الزمني ليس هذه الشريحة، فلا درجة عليه.'
+        : 'مسار القوالب. مئة عبارة لكل مستوى تُؤلَّف في مرحلة المحتوى. لا تمرين مختلق.']
     ];
     shares.forEach(function (row) {
       const b = {
@@ -452,13 +482,14 @@
       b.score = scoreOf(b);
       out.push(b);
     });
-    const lessonOpen = !((S.progress || []).some(p => p.lessonId === 'a0-u1-l1' && p.state === 'completed'));
+    const nxt = nextLesson(S);
+    const lessonOpen = !!(nxt && !nxt.blocked && nxt.status === 'authored');
     const hold = decision === 'HOLD' || S.consolidationWeek;
     const rerouteBlocksGrammar = decision === 'REROUTE' && (m.bands.R2 === 'red' || m.bands.R1 === 'red');
     if (lessonOpen && !hold && (decision !== 'REROUTE' || rerouteBlocksGrammar)) {
       const b = {
-        track: 'grammar', type: 'lesson-step', minutes: 20, gateRequired: 1,
-        reason: 'محتوى جديد، وآخر ما يُدرج. البوابة لا تُفتح بـ E1. القرار ' + decision + ' يسمح به بعد الحدود والتحدّث.'
+        track: 'grammar', type: 'lesson-step', minutes: 20, gateRequired: 1, lessonId: nxt.id,
+        reason: 'محتوى جديد، وآخر ما يُدرج: ' + nxt.id + '. متطلّباته متحققة بـ E1 غير المساعد أو أعلى. البوابة لا تُفتح بـ E1. القرار ' + decision + ' يسمح به بعد الحدود والتحدّث.'
       };
       b.score = scoreOf(b);
       out.push(b);
@@ -514,7 +545,13 @@
     }
     const ordered = diversify(chosen);
     const rejected = raw.filter(b => !b.reason);
-    return { blocks: ordered, minutes: ordered.reduce((s, b) => s + b.minutes, 0), decision: decision, rejected: rejected.length };
+    return {
+      blocks: ordered,
+      minutes: ordered.reduce((s, b) => s + b.minutes, 0),
+      decision: decision,
+      rejected: rejected.length,
+      withheld: withheldOf(nextLesson(S))
+    };
   }
   function shorten(plan, minutes) {
     const blocks = (plan.blocks || plan).slice().sort((a, b) => b.score - a.score);
@@ -625,6 +662,6 @@
     constrain: constrain, applyTransfer: applyTransfer, confirmException: confirmException,
     compose: compose, shorten: shorten, reentry: reentry, composeWeek: composeWeek, guardSwap: guardSwap,
     resumeLine: resumeLine, rotate: rotate, tickGates: tickGates, finishConsolidation: finishConsolidation,
-    evidenceLabel: evidenceLabel, candidates: candidates
+    evidenceLabel: evidenceLabel, candidates: candidates, nextLesson: nextLesson
   };
 })(window.DW = window.DW || {});
