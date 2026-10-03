@@ -160,7 +160,7 @@ module.exports = [
       ['In der Schweiz sagt man oft Grüezi.', 'في سويسرا يُقال غالبًا Grüezi', 'Ich verstehe nichts und stoppe', 'ملاحظة لا توقف', 'Schweiz'],
       ['In der Prüfung bleibe ich beim Standard.', 'في الامتحان أبقى على المعيار', 'Ich antworte im Dialekt', 'الجواب معياري', 'Standard']
     ],
-    'Ich verstehe, ich ahme nicht nach.',
+    'Das Hörbeispiel kommt aus Wien und klingt österreichisch. Die Dialektfärbung ist stark, die Grammatik bleibt Hochdeutsch. In Zürich hört man Grüezi, in Bayern Servus, im Norden Moin. Jeder Sprachraum hat eine Sprachgrenze zum Nachbarn. Plattdeutsch und Bairisch liegen im Hörverstehen weit auseinander. Die Lautverschiebung erklärt manche Abweichung. Ich verstehe den Inhalt, aber ich ahme den Klang nicht nach. Der Wortschatz hilft, die Sprachmelodie nicht. Der Prüfer fragt nach dem Inhalt, nicht nach der Färbung. In der Prüfung bleibe ich beim Standard.',
     'In der Prüfung bleibe ich beim Standard.',
     'Markiere morgen einen Unterschied, ohne ihn nachzuahmen.',
     'غدًا علّم فرقًا بلا تقليد.'),
@@ -180,7 +180,7 @@ module.exports = [
       ['Im Vergleich zu Zweitausendzehn.', 'مقارنة بعام ألفين وعشرة', 'Die Zahl steht allein', 'المقارنة لازمة', 'Vergleich'],
       ['Danach deute ich vorsichtig.', 'بعد ذلك أؤول بحذر', 'Ich deute zuerst', 'الوصف أولًا', 'Danach']
     ],
-    'Die Grafik zeigt einen Anstieg. Auffällig ist der Unterschied.',
+    'Die Grafik zeigt den Zeitraum von zwei Jahren. Die x-Achse nennt die Monate, die y-Achse die Prozentangabe. Der Spitzenwert liegt im Juli, danach eine Schwankung. Die Trendlinie steigt, die Zahlenreihe bestätigt den Befund. Die Datenquelle fehlt, das schwächt jede Auswertung. Die Grafikunterschrift nennt die Quelle, die Achsenbeschriftung die Einheit. Ein Kreisdiagramm zeigt Anteile, ein Liniendiagramm den Verlauf. Der Farbverlauf der Farbskala ersetzt keine Wertachse. Die Einblendung erklärt den Stichtag. Die Vergleichsgruppe fehlt, die Hochrechnung bleibt eine Näherung.',
     'Die Grafik zeigt einen Anstieg.',
     'Beschreibe morgen eine Grafik in zwei Sätzen.',
     'غدًا صف رسمًا في جملتين.'),
