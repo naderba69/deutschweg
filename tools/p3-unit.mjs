@@ -193,7 +193,7 @@ console.log('\n— P3.2 lexical layer —\n');
 /* ---------- every ported A1 and B1 lesson, through the real DOM ----------
    Authored levels declare two order sentences and a writing task per row;
    the writing floor is 30 words at A1 (Start Deutsch 1 Teil 2), 40 at A2 and 50 at B1. */
-[['A1', 30], ['A2', 40], ['B1', 50]].forEach(([LEVEL, MIN_WORDS]) => {
+[['A1', 30], ['A2', 40], ['B1', 50], ['B2', 60]].forEach(([LEVEL, MIN_WORDS]) => {
   const { window: win0 } = boot();
   const ported = Object.values(win0.DW_LESSONS).filter(l => l.level === LEVEL && l.wortschatz && l.wortschatz.length).map(l => l.id);
   if (ported.length) {
