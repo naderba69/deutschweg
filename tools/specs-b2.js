@@ -340,7 +340,7 @@ module.exports = [
       ['Die Frist ist Freitag.', 'الأجل الجمعة', 'Irgendwann reicht', 'الأجل محدد', 'Freitag'],
       ['Sie bleiben Sie.', 'المخاطبة تبقى Sie', 'Du musst das sofort tun', 'الرسمي Sie', 'Sie']
     ],
-    'Ich bitte um eine Antwort bis Freitag. Sie bleiben Sie.',
+    'Der Briefkopf nennt Absender und Anschrift, die Betreffzeile den Vorgang, das Aktenzeichen die Sache. Die Anrede lautet Sehr geehrte Damen und Herren, die Grußformel bleibt kurz; die Höflichkeitsformel ersetzt kein Argument, die Floskel ersetzt keinen Beleg. Die Sachlichkeit bleibt, der Ton bleibt verbindlich, die Verbindlichkeit ist keine Unterwürfigkeit. Die Schriftform ist Pflicht, die Textform genügt nicht immer. Die Zuständigkeit liegt beim Sachbearbeiter im Amt; die Amtssprache der Verwaltung und die Bearbeitung des Vorgangs dauern. Der Bearbeitungsstand steht im Betreff; eine Fristverlängerung oder ein Aufschub braucht einen Grund. Gegen den Bescheid hilft das Rechtsmittel, gegen die Mahnung die Erinnerung an die Widerspruchsfrist. Die Zahlung braucht ein Zahlungsziel: der Zahlungseingang erfolgt per Überweisung auf das Konto, die Bankverbindung steht im Briefkopf. Die Vertragsnummer und die Kündigungsfrist gehören in jeden Antrag; der Verstoß, der Anspruch, die Gewährleistung und die Haftung sind Sache der Schadensmeldung an die Versicherung. Die Deckung prüft die Prüfung. Die Durchschrift bleibt in der Ablage im Ordner; der Postweg endet mit der Sendungsnummer, das Anschreiben mit der Empfangsbestätigung. Die Wiedervorlage, die Nachfrage, die Mahnstufe und der Verzug mit Verzugszinsen und Ratenzahlung stehen am Ende; eine Vollmacht braucht die Beglaubigung.',
     'Die Frist ist Freitag.',
     'Schreibe morgen Anlass, Bitte und Frist.',
     'غدًا اكتب مناسبة وطلبًا وأجلًا.'),
@@ -360,7 +360,7 @@ module.exports = [
       ['Wenn ich stocke, formuliere ich neu.', 'إذا تلعثمت أعيد الصياغة', 'Ich schweige bis es kommt', 'الإعادة أولى', 'formuliere'],
       ['Ich bitte um das Wort.', 'أطلب الكلام', 'Ich falle ins Wort', 'طلب الكلام أولى', 'bitte']
     ],
-    'Ich habe drei Minuten. Ich nenne die Gliederung.',
+    'Ich habe drei Minuten, nicht zehn. Die Sprechtechnik beginnt beim Atem: der Brustkorb bleibt ruhig, das Zwerchfell arbeitet, die Kehle bleibt offen, der Kehlkopf tief. Zunge, Gaumen, Lippe und Kiefer bilden die Laute; die Mundöffnung entscheidet über die Klarheit. Die Tonhöhe bleibt tief, das Tempo ruhig, die Geschwindigkeit gleichmäßig. Eine Sinnpause und eine Atempause trennen die Gedanken; der Satzakzent trägt das Schlüsselwort. Das Füllwort und die Fülllaute streicht der Merksatz, das Räuspern, das Nuscheln und jede Stockung verschwinden mit der Sprechprobe; die Wiederaufnahme des Satzes ist besser als der Abbruch. Die Videoaufnahme oder die Aufzeichnung zeigt, was die Selbstwahrnehmung nicht merkt; die Resonanz der Zuhörer ist die ehrlichste Rückmeldung. Die Generalprobe braucht eine Zeitmessung, eine Minutenmarke und einen Zeitrahmen; bei einer Zeitüberschreitung hilft die Verkürzung, die Streichung oder die Kürzung. Zur Nachbereitung gehören Sitzordnung, Raum und Akustik: das Mikrofon und der Beamer gehören zur Technik. Der Leitfaden, die Zielsetzung und die Kernbotschaft bleiben sichtbar; die Überzeugungskraft wächst mit der Präsenz.',
     'Wenn ich stocke, formuliere ich neu.',
     'Sprich morgen drei Minuten mit drei Teilen.',
     'غدًا تحدّث ثلاث دقائق بثلاثة أجزاء.'),
@@ -380,7 +380,7 @@ module.exports = [
       ['Wer zahlt, gehört zur Frage.', 'من يدفع جزء من السؤال', 'Das ist kostenlos für alle', 'الكلفة تُسأل', 'zahlt'],
       ['Das gilt nicht für jedes Land.', 'هذا لا يسري على كل بلد', 'Das gilt für jedes Land', 'الحد لازم', 'nicht']
     ],
-    'Zwei Wege reichen. Das gilt nicht für jedes Land.',
+    'Zwei Wege reichen, zehn Modelle ohne Satz nicht. Die Grundschule endet mit der Empfehlung, danach teilt das Schulsystem die Jahrgangsstufe. Die Schulpflicht gilt, der Schulbesuch nicht immer; die Abbrecherquote bleibt. Zur Allgemeinbildung gehört mehr als der Schulabschluss, und der Bildungsabschluss entscheidet über den Ausbildungsplatz. Die Berufsausbildung führt über den Betrieb zur Kammer: Ausbildungsvergütung, Geselle, Meister, Übernahme. Die Erziehung beginnt in der Familie, die Pädagogik und der Erzieher arbeiten mit der Ganztagsschule, der Betreuung und der Schulzeit. Die Kernkompetenz trägt mehr als die Vergleichsgruppe; die Leistungsmessung der Schulleistungsstudie misst, was sie messen kann. Die Bildungsausgaben und der Bildungshaushalt entscheiden über die Schulausstattung; die Bildungsreform braucht Zeit. Die Integration gelingt mit der Sprachförderung, die Chancengerechtigkeit mit früher Förderung. Der Fachkräftebedarf trifft auf den Meister und die Fachkraft, die längst da sind; die Zuwanderung gehört zur Rechnung. Wer zahlt, gehört zur Frage: die Studiengebühr entscheidet über den Zugang wie die Wohnung.',
     'Wer zahlt, gehört zur Frage.',
     'Vergleiche morgen zwei Bildungswege mit einer Grenze.',
     'غدًا قارن مسارين تعليميين بحد.'),
@@ -400,7 +400,7 @@ module.exports = [
       ['Jede Seite braucht ein Beispiel.', 'كل جانب يحتاج مثالًا', 'Pro ist gut, Kontra ist schlecht', 'المثال يسند', 'Beispiel'],
       ['Das Urteil steht am Schluss.', 'الحكم في الآخر', 'Das Urteil steht in der ersten Zeile', 'الحكم أخيرًا', 'Schluss']
     ],
-    'Zuerst beide Seiten. Das Urteil steht am Schluss.',
+    'Zuerst beide Seiten, dann das Urteil. Die Gegenüberstellung von These und Gegenthese braucht die Gewichtung: nicht jede Priorität ist gleich. Der Gegensatz bleibt sichtbar, die Gegenprobe prüft die Folgerichtigkeit, die Stichhaltigkeit, die Haltbarkeit und die Tragfähigkeit. Die Parteilichkeit ist erlaubt, die Neutralität nicht Pflicht; die Distanz zur Sache bleibt, die Rhetorik und die Überredung ersetzen kein Gegenargument. Die Polemik, die Stimmungsmache, die Plattitüde und die Unterstellung stehen auf der Liste der Schwächen, nicht der Beweise. Die Tatsachenbehauptung und die Meinungsäußerung trennt der Prüfstein: die Beweislast, die Belegpflicht und die Kontrollfrage. Der Kurzschluss, die Fehlannahme und der Selbstwiderspruch sind Auslassungen; die Ambivalenz und die Dialektik sind keine. Zwischen den Seiten liegt die Spannung: der Interessenkonflikt, die Interessenlage, der Nutzen, der Schaden, die Nebenwirkung und die Nebenfolge. Die Ausgangslage, die Sachlage und die Faktenlage sind nicht dasselbe; die Randbedingung, die Voraussetzung und die Rahmenbedingung ändern die Antwort. Die Gegenfrage, die Rückfrage und die Zwischenfrage halten den Text offen, bis die Beurteilung und die Abwägung am Schluss stehen.',
     'Nicht beide Seiten sind gleich stark.',
     'Stelle morgen beide Seiten dar, dann urteile.',
     'غدًا اعرض الجانبين ثم احكم.')
