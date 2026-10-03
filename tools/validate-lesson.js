@@ -67,8 +67,11 @@ orderOk ? ok('stage sequence is in order') : bad('stage sequence is out of order
    Wortschatz: §8.3 allows 3–5 steps at 2–4 words each. Amendment A1-L1
    (DECISIONS-PENDING.md) raises the step ceiling to 7 because §13.9's A1 rows
    declare 28 receptive words per lesson and the words-per-step rule is not
-   negotiable. A0 still ships 5; nothing else changed. */
-const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,7],
+   negotiable. A0 still ships 5; nothing else changed.
+   Amendment B1-L1 raises the Wortschatz ceiling to 10: B1 rows declare 40
+   receptive words, and 40 / 4 = 10 steps. A lesson then runs 36 steps, the top
+   of the 24–36 window, so the window itself is untouched. */
+const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,10],
   Anwenden:[3,3], 'Übungen':[5,8], Merkhilfe:[1,3], Produktion:[1,1], Zusammenfassung:[1,1], Check:[3,5], Hausaufgabe:[1,1] };
 Object.entries(BOUNDS).forEach(([p,[lo,hi]]) => {
   const n = S.filter(s => s.phase === p).length;

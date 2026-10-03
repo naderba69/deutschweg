@@ -28,7 +28,11 @@ const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
    raised 5 → 7 for the ported levels (amendment A1-L1, DECISIONS-PENDING.md).
    The words-per-step rule is untouched, A0 still ships 5 steps, and 28 is the
    hard ceiling of one lesson word list. */
-const VOCAB_CEIL = 28;
+/* A1 rows declare 28 words; B1 rows declare 40 (amendment B1-L1 in
+   DECISIONS-PENDING.md). At 4 words per step 40 words need 10 Wortschatz steps,
+   so the stage bounds in validate-lesson.js move with this number, not instead
+   of it. A0/A1/A2 lessons keep their own declared counts. */
+const VOCAB_CEIL = 40;
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 const AR = /[\u0600-\u06FF]/;
 
