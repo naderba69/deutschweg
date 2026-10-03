@@ -142,6 +142,12 @@ for (const [file, mod] of audited) {
       }
       const core = blank || CORE(de);
       if (!blankOut(ex, core)) bad(where + ': blank "' + core + '" not found in: ' + ex);
+      /* The audit cannot judge German, but it can catch the one shape of that
+         failure that is mechanical: the field that must hold the correct
+         sentence holding exactly the wrong variant instead. */
+      if (String(ex).trim() === String(err).trim()) {
+        bad(where + ': the example and its wrong variant are identical — ' + ex);
+      }
     });
   }
 }

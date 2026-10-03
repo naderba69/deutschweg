@@ -120,7 +120,7 @@ module.exports = [
       ['Ich bitte um eine neue Lieferung.', 'أطلب تسليمًا جديدًا', 'Ich will Rache', 'الطلب حل', 'bitte'],
       ['Der Ton bleibt sachlich.', 'النبرة تبقى موضوعية', 'Das ist lächerlich', 'النبرة جزء من النص', 'sachlich']
     ],
-    'Die Lieferung kam zu spät. Ich bitte um eine Lösung.',
+    'Die Absenderadresse steht oben links, darunter die Empfängeradresse. In der Betreffzeile stehen Sendungsnummer und Datum. Die Falschlieferung kam an die Lieferadresse. Ich bitte um Umtausch oder Nachlieferung. Die Zahlungsfrist läuft, sonst folgt eine Mahnung.',
     'Der Ton bleibt sachlich.',
     'Schreibe morgen Tatsache und Bitte.',
     'غدًا اكتب واقعة وطلبًا.'),
@@ -140,7 +140,7 @@ module.exports = [
       ['Die Grenze ist das Team vor Ort.', 'الحد هو الفريق في المكان', 'Das gilt für alle Berufe', 'الحد لازم', 'Grenze'],
       ['Ein Beispiel ist die Nachtschicht.', 'مثال هو الوردية الليلية', 'Arbeit ist wichtig ohne Beispiel', 'المثال يسند', 'Beispiel']
     ],
-    'Einerseits spart das Zeit. Andererseits kostet es Kontrolle.',
+    'Im Betrieb ist die Arbeitszeit der Streitpunkt. Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst. Der Betriebsrat nennt eine Zahl: Die Produktivität sinkt nach acht Stunden. Die Belastung bleibt im Team der Abteilung ungleich. Der Tarifvertrag regelt die Pause, nicht die Erreichbarkeit. Wer im Homeoffice arbeitet, braucht klare Regeln. Die Abteilung testet ein Modell mit Vertrauensarbeitszeit. Die Kollegen melden Überforderung und Unterforderung zugleich. Die Weiterbildung fehlt, das Lob auch. Arbeitsplatzsicherheit und Flexibilität sind kein Widerspruch. In der Betriebsversammlung stehen die Überstundenregelung, die Zulage und die Schichtzulage. Der Arbeitgeber und der Arbeitnehmer streiten über die Gleichstellung. Die Arbeitsmittel stellt der Betrieb.',
     'Die Grenze ist das Team vor Ort.',
     'Nenne morgen Vorteil, Nachteil und Grenze.',
     'غدًا سمِّ حسنة ومساوئ وحدًا.'),
