@@ -200,7 +200,7 @@ module.exports = [
       ['Die Zusammenfassung ist kürzer.', 'التلخيص أقصر', 'Ich schreibe den Text ab', 'النسخ ليس تلخيصًا', 'kürzer'],
       ['Das heißt, der Plan scheitert.', 'هذا يعني أن الخطة تفشل', 'Dieselben Sätze noch einmal', 'الإعادة بأدوات أخرى', 'heißt']
     ],
-    'Ich füge keine Wertung hinzu. Die Zusammenfassung ist kürzer.',
+    'Die Inhaltsangabe folgt der Textvorlage, nicht dem eigenen Geschmack. Die Kurzfassung behält die Reihenfolge des Ausgangstextes. Ich streiche jeden Zusatz und jede Wiederholung. Der Nebensatz wird zum Hauptsatz, die Konjunktion darf bleiben. Anführungszeichen stehen nur um ein wörtliches Zitat. Am Rand notiere ich Stichpunkte. Am Ende prüfe ich die Vollständigkeit. Die Zeilenzahl und die Seitenzahl stehen in der Vorgabe. Ein Doppelpunkt kündigt die Aufzählung an, ein Semikolon trennt sie. Das Register und das Wörterverzeichnis helfen bei der Ergänzung. Die Regeln dafür stehen im Glossar. Jede Silbe, jede Ziffer und jeder Buchstabe zählt.',
     'Ich behalte die Reihenfolge.',
     'Fasse morgen einen Absatz ohne Wertung zusammen.',
     'غدًا لخّص فقرة بلا تقييم.'),
@@ -220,7 +220,7 @@ module.exports = [
       ['Die Überschrift reicht nicht.', 'العنوان لا يكفي', 'Die Überschrift reicht', 'العنوان وعد', 'Überschrift'],
       ['Ein Gegenbeispiel gehört dazu.', 'المثال المضاد جزء من النقاش', 'Ich ignoriere das Gegenbeispiel', 'المضاد يُذكر', 'Gegenbeispiel']
     ],
-    'Viele Leser machen es nicht wahr. Die Überschrift reicht nicht.',
+    'Die Plattform verbreitet schneller als jede Zeitung. Die Reichweite wächst, die Glaubwürdigkeit wächst nicht mit. Die Schlagzeile ist ein Klickköder, der Faktencheck fehlt. Ohne Quellenkritik bleibt jede Meldung ein Gerücht. Die Redaktion prüft vor der Veröffentlichung, das Netz nicht.',
     'Die Plattform ist nicht die Quelle.',
     'Trenne morgen Reichweite und Wahrheit.',
     'غدًا افصل الانتشار عن الصحة.'),
@@ -240,7 +240,7 @@ module.exports = [
       ['Ich plane zwei Durchgänge.', 'أخطّط لجولتَين', 'Ich warte auf das dritte Mal', 'لا تفترض الثالثة', 'zwei'],
       ['Ich notiere zur Frage.', 'أدوّن بما يخدم السؤال', 'Ich schreibe jedes Wort', 'الملاحظة انتقائية', 'notiere']
     ],
-    'Die Position ist ein Satz. Die Einschränkung gehört dazu.',
+    'Im Studio beginnt das Gespräch mit einer Vorstellung. Der Gesprächsleiter stellt die Leitfrage, danach folgt die Anschlussfrage. Ich höre zu und notiere nach dem O-Ton. Die Körpersprache verrät mehr als der Lebenslauf. Am Ende bleibt die Einschätzung, nicht das Zeugnis.',
     'Ich plane zwei Durchgänge.',
     'Höre morgen eine kurze Antwort und notiere Position und Grenze.',
     'غدًا استمع إلى جواب قصير ودوّن الموقف والحد.'),
