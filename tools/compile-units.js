@@ -845,6 +845,26 @@ specs.forEach((spec, i) => {
   }
 });
 
+/* A material word may legitimately serve two workshops (das Beispiel is an
+   Erörterung tool and a lecture tool). The row's 90 is a per-workshop allowance,
+   so the level total counts it twice — this note states how often that happens,
+   so nobody reads the level number as a count of distinct words. */
+const materialSeen = {};
+specs.forEach(spec => {
+  const row = VOCAB[spec.id];
+  if (!row || !row.material) return;
+  row.material.forEach(w => {
+    const key = fold(w);
+    (materialSeen[key] = materialSeen[key] || []).push(spec.id);
+  });
+});
+const repeatedMaterial = Object.entries(materialSeen).filter(([, ids]) => ids.length > 1);
+if (repeatedMaterial.length) {
+  console.log('  note: ' + repeatedMaterial.length + ' material word(s) serve more than one workshop (per-workshop allowance, counted per workshop): '
+    + repeatedMaterial.slice(0, 6).map(([w, ids]) => w + ' (' + ids.join(' · ') + ')').join(', ')
+    + (repeatedMaterial.length > 6 ? ', …' : ''));
+}
+
 const ids = Object.keys(lessons);
 console.log('compiled lessons', ids.length, 'sentences', bank.length);
 if (ids.length !== 125) die('expected 125 lessons, got ' + ids.length);
