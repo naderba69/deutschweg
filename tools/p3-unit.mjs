@@ -281,5 +281,55 @@ console.log('\n— P3.2 lexical layer —\n');
     cov && cov.ratio >= 0.8);
 }
 
+/* ---------- B2 — the workshops, route (C)'s two measures ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const rows = win.DW_SYLLABUS.lessons.filter(l => l.level === 'B2');
+  const ported = rows.filter(r => (L[r.id].wortschatz || []).length > 0);
+  let itemsOk = true, countOk = true, materialOk = true, stepsOk = true, tricksOk = true,
+      sumsOk = true, noDupOk = true;
+  const allTricks = [];
+  ported.forEach(row => {
+    const lesson = L[row.id];
+    const wl = lesson.wortschatz || [];
+    const mat = lesson.material || [];
+    if (wl.length !== 40) countOk = false;
+    if (mat.length !== 50) materialOk = false;
+    /* route (C): the authored 40 + the 50 material words are exactly the 90
+       the map row declares — never 89, never 91. */
+    if (row.words && wl.length + mat.length !== row.words.receptive) sumsOk = false;
+    if (lesson.schritte.length < 24 || lesson.schritte.length > 36) stepsOk = false;
+    if (lesson.schritte.filter(s => s.wortschatz).length !== 10) stepsOk = false;
+    wl.forEach(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam', 'blank'].forEach(k => {
+      if (!it[k]) itemsOk = false;
+    }));
+    /* a material word must not be one of the workshop's own 40 headwords:
+       the row would then pay twice for one word. */
+    const cores = new Set(wl.map(it => String(it.de).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop().toLowerCase()));
+    mat.forEach(w => {
+      const core = String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop().toLowerCase();
+      if (cores.has(core)) noDupOk = false;
+    });
+    const tr = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe.trick);
+    if (tr.length !== 3 || new Set(tr).size !== tr.length) tricksOk = false;
+    allTricks.push.apply(allTricks, tr);
+  });
+  t('B2: all ' + rows.length + ' workshops carry the lexical layer', ported.length === rows.length && rows.length === 20);
+  t('B2: every authored item is complete to the last field, blank included', itemsOk);
+  t('B2: every workshop carries exactly its 40 authored words', countOk);
+  t('B2: every workshop carries exactly its 50 verified material words', materialOk);
+  t('B2: authored 40 + material 50 equals the row\'s declared 90', sumsOk);
+  t('B2: a material word is never one of the same workshop\'s headwords', noDupOk);
+  t('B2: every workshop stays inside the 24–36 step window with 10 Wortschatz steps', stepsOk);
+  t('B2: ' + allTricks.length + ' Merkhilfen across the level, all distinct', new Set(allTricks).size === allTricks.length);
+  t('B2: every workshop carries three distinct Merkhilfen', tricksOk);
+
+  const cov = (win.DW_COVERAGE || []).find(c => c.level === 'B2');
+  t('coverage table published: B2 ' + cov.items + '/' + cov.declared + ' authored (' +
+    Math.round(cov.ratio * 100) + '%) · material ' + cov.material + ' (' + Math.round(cov.materialRatio * 100) + '%)',
+    cov && cov.materialRatio >= 0.8 && cov.material === cov.declared);
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
