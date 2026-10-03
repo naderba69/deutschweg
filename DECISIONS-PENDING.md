@@ -44,3 +44,22 @@ with the more specific rule, or with the rule that produces more honest evidence
 
 12. **One A1 row carries more words than its own row declares.** `a1-u4-l6` (exam format) declares 8 receptive words; the level's 14-word floor gave it 14, so A1 totals 650 against 644 declared. Over-delivery on one row, not under-delivery; the level total is still printed as 650/644.
 10. **Words are authored, not extracted from the Goethe lists.** The lists are still not ingested (see item 6). The word list is written from the mapped sequence, so coverage of the official Wortlisten is not claimed.
+
+21. **The Goethe A2 match is measured, and the gap is recorded — not closed.** `tools/match-goethe-a2.js`
+    follows the A1 matcher's design with one addition the A2 list forces: the official A2 Wortliste carries
+    the A1 vocabulary inside it (ab, aber, als, auch), so the tool prints two cumulative measures — the A2
+    band alone and the whole A0+A1+A2 band — and the gate reads the cumulative one, because that is the
+    learner's real position at the end of A2. First run: 674 of 1,104 alphabetical entries as an authored
+    headword (61%), 825 met anywhere in the material (75%), word groups 143 (49%) authored / 188 (65%) met.
+    The recorded gap is 382 entries in `tools/goethe-a2-gap.txt`. Floors are the measured values of this
+    first accepted run (0.610 / 0.585 / 0.726 / 0.646) and may only rise; the production goals (80%
+    headword, 100% material and groups) are printed beside them and do **not** fail the run — an unfinished
+    gap failing every run would be noise, and a goal silently lowered would be a lie.
+    **Provenance, stated because it bounds every number:** the official list is copyrighted and stays out
+    of the repository (item 13). The transcription at `/home/user/goethe/a2_headwords.txt` (1,104 lines)
+    and `a2_groups.txt` (291 lines) is re-typed from the official PDF and is wiped by an environment
+    restore, so it is rebuilt from the PDF when a run is needed. The PDF's own text layer is a two-column
+    table and stops at "Wohnzimmer"; A–W come from that text layer, Z comes from the DWDS index of the same
+    Goethe list, which ends at "zurücklaufen". The published count is the line count of the transcription,
+    never Goethe's own "circa 1300 lexikalische Einheiten". **Next:** produce the A2 gap the way the A1 gap
+    was produced ("انتجها كلها"), then match B1 and B2 the same way.
