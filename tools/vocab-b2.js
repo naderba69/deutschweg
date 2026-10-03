@@ -5,5 +5,6 @@
    level is authored; the coverage gate reads the material measure. */
 module.exports = Object.assign({},
   require('./vocab-b2-w01'),
-  require('./vocab-b2-w02')
+  require('./vocab-b2-w02'),
+  require('./vocab-b2-w03')
 );

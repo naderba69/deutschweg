@@ -60,10 +60,10 @@ module.exports = [
       ['In der Sache bleiben wir uneinig.', 'في الجوهر نبقى مختلفين', 'Du verstehst mich nicht', 'الجوهر لا الشخص', 'Sache'],
       ['Lassen Sie mich ausreden.', 'دعوني أكمل', 'Ich unterbreche sofort', 'الإكمال أولى', 'ausreden']
     ],
-    'Den Punkt gebe ich zu. In der Sache bleiben wir uneinig.',
+    'Den Punkt gebe ich zu. In der Sache bleiben wir uneinig. Die Diskussionsleitung erteilt das Wort. Auf der Sachebene hilft ein ruhiger Tonfall. Beim nächsten Mal beipflichten wir vielleicht.',
     'Dem kann ich nur bedingt zustimmen.',
-    'Übe morgen Einräumen und Widerspruch.',
-    'غدًا تدرّب على الإقرار والمعارضة.'),
+    'Übe morgen Einräumen, Nachfragen und Gelassenheit.',
+    'غدًا تدرّب على الإقرار والسؤال والإتزان.'),
 
   U('b2-w04', 'سماع محاضرة', 'Vortrag',
     'Am Ende fängst du Gliederung und eine Grenze',
