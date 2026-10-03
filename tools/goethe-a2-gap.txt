@@ -12,17 +12,13 @@
          aufpassen
          aufregend
          ausgeben
-         auspacken
          außer
          außerdem
          außerhalb
          aussprechen
          die Ausstellung
-         austauschen
          austragen
-         der Babysitter
          die Band
-         der Basketball
          basteln
          die Baustelle
          beantworten
@@ -38,9 +34,7 @@
          die Bibliothek
          das Blatt
          blöd
-         der/das Blog
          blond
-         die Bohne
          braten
          die Cafeteria
          chatten
@@ -52,12 +46,9 @@
          dick
          direkt
          die Disco/Disko
-         doch
-         dringend
          drüben
          dumm
          dünn
-         das E-Book
          eigen-
          eigentlich
          einige
@@ -65,9 +56,7 @@
          einpacken
          eintragen (sich)
          einzel-
-         einziehen
          die (E-)Mail
-         endlich
          die Ermäßigung
          der Fahrplan
          der Fan
@@ -81,29 +70,23 @@
          der Fluss
          der Fotoapparat
          fotografieren
-         freiwillig
          froh
          der Führerschein
          die Fundsachen
          furchtbar
-         die Garage
          das Gegenteil
          die Geldbörse
          das Gericht
-         das Geschirr
          das Gesicht
          die Gitarre
          der Hamburger
          hässlich
-         der Haushalt
          her/her-
          heraus/raus
          herein/rein
          herstellen
-         herunterladen
          der Himmel
          hin/hin-
-         die Homepage
          informieren (sich)
          die Insel
          das Instrument
@@ -113,29 +96,23 @@
          die Jeans
          joggen
          die Kamera
-         die Kenntnisse
          die Kette
          klug
          komisch
-         der Kontakt
          das Konzert
          der Körper
          die Kosmetik
          die Krankheit
-         der Kredit
          der Krimi
          die Kultur
          kündigen
-         die Kunst
          langweilig
-         der/das Laptop
          Lieblings-
          die Lüge
          lügen
          die Mailbox
          mal/das Mal
          manch-
-         manchmal
          die Mannschaft
          die Menge
          merken
@@ -143,43 +120,29 @@
          das Mineralwasser
          der Mitarbeiter
          das Mittel
-         das Mobiltelefon
          der Motor
          der Motorroller
          die Natur
          natürlich
-         nebenan
          neblig
          nervös
          nirgends
-         notieren
-         die Notiz
          notwendig
          organisieren
          das Parfüm
-         das Passwort
          das Pferd
-         die Pflanze
          die Pizza
          das Plakat
          die Portion
          das Poster
-         preiswert
          pro
-         das Produkt
          das Programm
          das Projekt
-         die Qualität
-         das Quiz
          raten
-         das Rätsel
          rechnen
          die Reihe
-         die Reinigung
          reiten
-         renovieren
          der Rentner
-         die Rentnerin
          der Rest
          das Rind
          der Ring
@@ -190,12 +153,9 @@
          der Rundgang
          sammeln
          schädlich
-         schaffen
-         die Schere
          das Schiff
          schimpfen
          das Schloss
-         schneiden (sich)
          die Schokolade
          schrecklich
          die Schülerin
@@ -203,14 +163,11 @@
          das Schwein
          schwierig
          die Sendung
-         der Service
          die Situation
          der Ski
          sogar
          sonst
-         sparen
          der Spaziergang
-         speichern
          sportlich
          der Sportplatz
          der Stadtplan
@@ -219,28 +176,21 @@
          sterben
          der Stiefel
          das Stockwerk
-         stören
          der Strand
-         der Stress
          super
-         surfen
          die Süßigkeiten
          sympathisch
-         das Tablet
          die Tafel
          das Taschengeld
          das Team
          das Tennis
-         das Theater
          tief
          der Tipp
          der Titel
-         der Topf
          total
          die Tour
          der Tourist
          die Touristin
-         tragen
          trainieren
          das Training
          der Traum
@@ -255,12 +205,10 @@
          vereinbaren
          das Verkehrsmittel
          verlieben (sich)
-         die Vermieterin
          verpassen
          verreisen
          verschieden
          versuchen
-         der Volleyball
          vorsichtig
          vorwärts
          wahrscheinlich
@@ -268,7 +216,6 @@
          wechseln
          weg/weg-
          wenigstens
-         die Werkstatt
          der Wettbewerb
          der Workshop
          wurscht
@@ -282,62 +229,32 @@
          zurückgehen
          zurückkommen
          zurücklaufen
-         Abkürzungen
          ca.
          d.h.
          PC
          usw.
          WC
          z. B.
-         Familienmitglieder
          Cousin
          Cousine
          Enkel
          Enkelin
-         Prüferin
          geschieden
          lila
          rosa
          Angestellter
          Angestellte
-         Ärztin
          Auszubildender
          Auszubildende
          Autor
-         Autorin
-         Babysitter
-         Bäckerin
-         Doktorin
-         Fahrerin
          Friseur
-         Friseurin
-         Handwerker
          Handwerkerin
          Hausmann
-         Journalist
-         Journalistin
-         Kaufmann
-         Kauffrau
-         Kellnerin
-         Köchin
-         Krankenpfleger
-         Künstler
-         Künstlerin
          Mechaniker
-         Mechanikerin
          Model
          Musikerin
-         Polizist
-         Polizistin
          Rentner
-         Rentnerin
          Sänger
-         Sängerin
-         Schauspieler
-         Schauspielerin
-         Technikerin
-         Himmelsrichtungen
-         Länder und Nationalitäten
          Österreicherin
          österreichisch
          Schweizerin
@@ -349,22 +266,6 @@
          Europäer
          Europäerin
          europäisch
-headword Schule und Schulfächer
-         Abitur
-         Direktor
-         Klassenfahrt
-         Sekretariat
-         Biologie
-         Chemie
-         Französisch
-         Geografie
-         Kunst
-         Latein
-         Mathematik
-         Physik
-         Religion
-         Sozialkunde
-         Währungen und Maße
          Rappen
          Franken
          Zentimeter
@@ -372,11 +273,9 @@ headword Schule und Schulfächer
 headword Grad Celsius
          Karneval
          Silvester
-         Tageszeiten
          tagsüber
          nachts
          Werktag
-         Zeitmaße
          hundertteins
          zweitausendeins
          vierte

@@ -51,8 +51,13 @@ with the more specific rule, or with the rule that produces more honest evidence
     band alone and the whole A0+A1+A2 band — and the gate reads the cumulative one, because that is the
     learner's real position at the end of A2. First run: 674 of 1,104 alphabetical entries as an authored
     headword (61%), 825 met anywhere in the material (75%), word groups 143 (49%) authored / 188 (65%) met.
-    The recorded gap is 382 entries in `tools/goethe-a2-gap.txt`. Floors are the measured values of this
-    first accepted run (0.610 / 0.585 / 0.726 / 0.646) and may only rise; the production goals (80%
+    The recorded gap was 382 entries; after four new A2 reading texts (a2-r21 … a2-r24: the workshop and the
+    flat, the trades in the street, the timetable, the computer — 80–124 words each, two questions each) the
+    second run stands at 674 headword (61%), 878 met (80%), groups 134 authored (49%) / 219 met (80%), and the
+    recorded gap is 286 entries in `tools/goethe-a2-gap.txt`. The group count fell from 291 to 274 because the
+    group *headings* (Farbe, Berufe, Monate …) were transcription noise, not vocabulary, and were removed. Floors are the measured values of this
+    first accepted run (0.610 / 0.585 / 0.726 / 0.646), raised to the second run's measured values
+    (0.610 / 0.585 / 0.796 / 0.799), and may only rise; the production goals (80%
     headword, 100% material and groups) are printed beside them and do **not** fail the run — an unfinished
     gap failing every run would be noise, and a goal silently lowered would be a lie.
     **Provenance, stated because it bounds every number:** the official list is copyrighted and stays out

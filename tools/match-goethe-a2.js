@@ -44,8 +44,11 @@ const WRITE_GAP = process.argv.includes('--write-gap');
            floor rises with it.
    First measured run, 2026-10-03 (cumulative A0+A1+A2 band): headword 61%,
    material 75%, groups 65% — against the re-typed transcription. */
-const FLOOR = { headword: 0.610, allHeadword: 0.585, material: 0.726, groups: 0.646 };
-/* (rounded down from the measured 0.6105 / 0.5857 / 0.7262 / 0.6460) */
+const FLOOR = { headword: 0.610, allHeadword: 0.585, material: 0.796, groups: 0.799 };
+/* Rounded down from the measured values of the last accepted run:
+   0.6105 / 0.5857 / 0.7262 / 0.6460 on 2026-10-03 (first run), raised to the
+   second run 0.7960 / 0.7993 after the four new A2 reading texts. Floors may
+   only rise. */
 const GOAL = { headword: 0.80, material: 1.0, groups: 1.0 };
 
 const win = {};
