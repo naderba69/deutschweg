@@ -220,5 +220,39 @@ console.log('\n— P3.2 lexical layer —\n');
   t('the miss is explained in Arabic', /الجواب والمثال|نسيان/.test(win.document.body.textContent));
 }
 
+/* ---------- A2 — the third slice of the lexical layer ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const rows = win.DW_SYLLABUS.lessons.filter(l => l.level === 'A2');
+  let floorOk = true, itemsOk = true, stepsOk = true, ownOk = true, countOk = true;
+  rows.forEach(row => {
+    const lesson = L[row.id];
+    const wl = lesson.wortschatz || [];
+    if (wl.length < 16) floorOk = false;
+    if (wl.length < Math.min(16, row.words.receptive)) ownOk = false;
+    if (wl.length !== row.words.receptive) countOk = false;
+    if (lesson.schritte.filter(s => s.wortschatz).length < 3) stepsOk = false;
+    wl.forEach(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].forEach(k => { if (!it[k]) itemsOk = false; }));
+  });
+  t('A2: all ' + rows.length + ' lessons carry a word list on the 16-word floor', floorOk);
+  t('A2: every item is complete to the last field', itemsOk);
+  t('A2: every lesson has at least 3 Wortschatz steps', stepsOk);
+  t('A2: every row meets the smaller of the floor and its own declared count', ownOk);
+  t('A2: every row matches its own declared count exactly', countOk);
+
+  const a2Tricks = [], olderTricks = [];
+  rows.forEach(row => L[row.id].schritte.forEach(s => { if (s.merkhilfe) a2Tricks.push(s.merkhilfe.trick); }));
+  win.DW_SYLLABUS.lessons.filter(l => l.level === 'A0' || l.level === 'A1')
+    .concat([{ id: 'a0-u1-l1' }])
+    .forEach(row => (L[row.id] ? L[row.id].schritte : []).forEach(s => { if (s.merkhilfe) olderTricks.push(s.merkhilfe.trick); }));
+  t('A2 tricks: ' + a2Tricks.length + ', all distinct and none borrowed from A0/A1',
+    a2Tricks.length === rows.length * 3 && new Set(a2Tricks).size === a2Tricks.length && !a2Tricks.some(x => olderTricks.includes(x)));
+
+  const cov = (win.DW_COVERAGE || []).find(c => c.level === 'A2');
+  t('coverage table published: A2 ' + cov.items + '/' + cov.declared + ' (' + Math.round(cov.ratio * 100) + '%)',
+    cov && cov.ratio >= 0.8);
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
