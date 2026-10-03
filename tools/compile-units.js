@@ -772,7 +772,7 @@ specs.forEach((spec, i) => {
 
 const ids = Object.keys(lessons);
 console.log('compiled lessons', ids.length, 'sentences', bank.length);
-if (ids.length !== 119) die('expected 119 lessons, got ' + ids.length);
+if (ids.length !== 125) die('expected 125 lessons, got ' + ids.length);
 if (bank.length < 500 || bank.length > 800) die('sentence bank ' + bank.length + ' outside 500–800');
 
 /* P3.2 coverage against the map's own declared receptive targets. The map row

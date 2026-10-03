@@ -15,5 +15,7 @@ module.exports = Object.assign({},
   require('./vocab-a1-u3a'),
   require('./vocab-a1-u3b'),
   require('./vocab-a1-u4a'),
-  require('./vocab-a1-u4b')
+  require('./vocab-a1-u4b'),
+  require('./vocab-a1-u5a'),
+  require('./vocab-a1-u5b')
 );

@@ -93,7 +93,7 @@ console.log('\n— P3.2 lexical layer —\n');
   rows.forEach(row => L[row.id].schritte.forEach(s => { if (s.merkhilfe) a1Tricks.push(s.merkhilfe.trick); }));
   A0.concat(['a0-u1-l1']).forEach(id => (L[id] ? L[id].schritte : []).forEach(s => { if (s.merkhilfe) a0Tricks.push(s.merkhilfe.trick); }));
   t('A1 tricks: ' + a1Tricks.length + ', all distinct and none borrowed from A0',
-    a1Tricks.length === 72 && new Set(a1Tricks).size === 72 && !a1Tricks.some(x => a0Tricks.includes(x)));
+    a1Tricks.length === rows.length * 3 && new Set(a1Tricks).size === a1Tricks.length && !a1Tricks.some(x => a0Tricks.includes(x)));
 
   const cov = (win.DW_COVERAGE || []).find(c => c.level === 'A1');
   t('coverage table published: A1 ' + cov.items + '/' + cov.declared + ' (' + Math.round(cov.ratio * 100) + '%)',

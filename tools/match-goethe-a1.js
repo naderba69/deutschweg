@@ -33,7 +33,7 @@ const GROUPS = process.env.GOETHE_A1_GROUPS || path.resolve(root, '..', 'goethe'
 const WRITE_GAP = process.argv.includes('--write-gap');
 
 /* Floors are the measured values of the last accepted run. They may only rise. */
-const FLOOR = { headword: 0.56, material: 0.67, groups: 0.55 };
+const FLOOR = { headword: 0.80, material: 1.0, groups: 1.0 };
 
 const win = {};
 new Function('window', fs.readFileSync(path.join(root, 'web/data/a0-u1-l1.js'), 'utf8'))(win);
@@ -41,12 +41,14 @@ new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), '
 new Function('window', fs.readFileSync(path.join(root, 'web/data/library.js'), 'utf8'))(win);
 new Function('window', fs.readFileSync(path.join(root, 'web/data/comprehension.js'), 'utf8'))(win);
 
-const FOLD = s => String(s).normalize('NFC').toLowerCase().replace(/ß/g, 'ss');
+/* Hyphens are folded away in one place so that E-Mail, S-Bahn and Café are
+   one token on both sides of the comparison — the earlier split hid them. */
+const FOLD = s => String(s).normalize('NFC').toLowerCase().replace(/ß/g, 'ss').replace(/-/g, '');
 const STRIP = s => s.replace(/^(der|die|das)\s+/, '').replace(/^sich\s+/, '')
   .replace(/\(.*?\)/g, ' ').replace(/\s+/g, ' ').trim();
 /* German inflection folding, deliberately blunt: a family match is a receptive
    match ("the learner meets the word"), never a productive claim. */
-const stem = w => { const f = FOLD(w); return f.replace(/(en|ern|eln|em|er|es|e|n|s|t|st|te|et)$/, '') || f; };
+const stem = w => { const f = FOLD(w); return f.replace(/(ern|eln|en|em|er|es|et|te|st|e|n|s|t)$/, '') || f; };
 const STOP = new Set(['und', 'oder', 'aber', 'der', 'die', 'das', 'ein', 'eine', 'einen', 'einem', 'einer',
   'ist', 'sind', 'bin', 'bist', 'seid', 'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man', 'zu', 'in',
   'im', 'am', 'an', 'auf', 'mit', 'für', 'von', 'bei', 'nach', 'aus', 'als', 'auch', 'nicht', 'kein',
@@ -56,7 +58,10 @@ const STOP = new Set(['und', 'oder', 'aber', 'der', 'die', 'das', 'ein', 'eine',
 function tokensOf(value, out) {
   if (value == null) return out;
   if (typeof value === 'string') {
-    String(value).split(/[^A-Za-zÄÖÜäöüß]+/).forEach(w => { if (w.length > 1) out.add(FOLD(w)); });
+    textParts.push(FOLD(value));
+    /* fold first, then split: otherwise E-Mail splits into e + mail on this
+       side while the headword is folded to email on the other. */
+    FOLD(value).split(/[^\p{L}]+/u).forEach(w => { if (w.length > 1) out.add(w); });
     return out;
   }
   if (Array.isArray(value)) { value.forEach(v => tokensOf(v, out)); return out; }
@@ -76,6 +81,7 @@ band.forEach(l => (l.wortschatz || []).forEach(it => {
 }));
 
 const material = new Set(), materialStems = new Set();
+const textParts = [];
 band.forEach(l => {
   tokensOf(l.wortschatz || [], material);
   tokensOf(l.schritte || [], material);
@@ -87,6 +93,7 @@ tokensOf(lib === null ? [] : lib, material);
 const comp = win.DW_COMPREHENSION || win.DW_COMP_QUESTIONS || null;
 tokensOf(comp === null ? [] : comp, material);
 material.forEach(w => materialStems.add(stem(w)));
+const materialText = textParts.join(' ');
 if (!material.size) { console.error('no material tokens — check the data files'); process.exit(1); }
 
 function classify(entry) {
@@ -94,10 +101,13 @@ function classify(entry) {
   const words = phrase.split(/\s+/).filter(w => w.length > 2 && !STOP.has(w));
   const key = words.length ? words[words.length - 1] : phrase;
   const hit = (set, stemSet) => set.has(phrase) || set.has(key) || stemSet.has(stem(key));
+  const parts = phrase.split(/\s+/);
+  const content = parts.filter(w => w.length > 2);
   const inHead = hit(heads, headStems) ||
     (words.length > 1 && words.some(w => heads.has(w) || headStems.has(stem(w))));
-  const met = hit(material, materialStems) ||
-    (words.length > 1 && words.some(w => material.has(w) || materialStems.has(stem(w))));
+  const met = material.has(phrase) || materialStems.has(stem(key)) ||
+    (phrase.includes(' ') && materialText.includes(phrase)) ||
+    (content.length > 0 && content.every(w => material.has(w) || materialStems.has(stem(w))));
   return { entry, inHead, met };
 }
 

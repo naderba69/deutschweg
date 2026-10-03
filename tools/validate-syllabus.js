@@ -18,11 +18,11 @@ ids.length === new Set(ids).size ? ok('lesson ids unique') : bad('duplicate less
 
 const byLevel = {};
 lessons.forEach(l => { byLevel[l.level] = (byLevel[l.level] || 0) + 1; });
-const expect = { A0: 6, A1: 24, A2: 30, B1: 40, B2: 20 };
+const expect = { A0: 6, A1: 30, A2: 30, B1: 40, B2: 20 };
 Object.keys(expect).forEach(k => {
   byLevel[k] === expect[k] ? ok(k + ' count ' + expect[k]) : bad(k + ' count ' + byLevel[k] + ' expected ' + expect[k]);
 });
-(byLevel.A0 + byLevel.A1 === 30) ? ok('A0+A1 is 30 lessons') : bad('A0+A1 is not 30');
+(byLevel.A0 + byLevel.A1 === 36) ? ok('A0+A1 is 36 lessons') : bad('A0+A1 is 36 as declared');
 lessons.filter(l => l.level === 'B2').every(l => l.kind === 'workshop')
   ? ok('B2 is workshops, not lessons')
   : bad('a B2 row is not a workshop');

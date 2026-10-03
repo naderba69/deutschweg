@@ -48,7 +48,14 @@
     ['a1-u4-l3', 'A1', 'الطريق', 'Wegbeschreibung', 'الاتجاه', 28, 10, 'rechts وlinks وgeradeaus', 'inductive', 'lesson'],
     ['a1-u4-l4', 'A1', 'رسالة قصيرة', 'Kurze Nachricht', 'الكتابة القصيرة', 28, 10, 'شكل الرسالة القصيرة', 'explicit', 'lesson'],
     ['a1-u4-l5', 'A1', 'مراجعة A1', 'Wiederholung A1', 'المراجعة', 20, 10, 'جمع الأنماط لا درسًا جديدًا', 'explicit', 'lesson'],
-    ['a1-u4-l6', 'A1', 'شكل امتحان A1', 'Prüfungsform A1', 'شكل الامتحان', 8, 0, 'شكل Start Deutsch 1 لا محاكاة', 'explicit', 'lesson']
+    ['a1-u4-l6', 'A1', 'شكل امتحان A1', 'Prüfungsform A1', 'شكل الامتحان', 8, 0, 'شكل Start Deutsch 1 لا محاكاة', 'explicit', 'lesson'],
+
+    ['a1-u5-l1', 'A1', 'البريد والهاتف', 'Post und Telefon', 'المراسلة', 11, 4, 'أسماء البريد والهاتف في سياقها', 'inductive', 'lesson'],
+    ['a1-u5-l2', 'A1', 'المصرف والعمل', 'Bank und Arbeit', 'المصرف', 11, 4, 'الخدمات وحروف جرها: bei · am · zur', 'inductive', 'lesson'],
+    ['a1-u5-l3', 'A1', 'المدرسة والوثائق', 'Schule und Papiere', 'الوثائق', 11, 4, 'الاستمارة الرسمية: bei · Genitiv', 'explicit', 'lesson'],
+    ['a1-u5-l4', 'A1', 'البيت والجوار', 'Zuhause und Nachbarschaft', 'السكن', 11, 4, 'أسماء الأماكن بلا أداة: in Halle B', 'inductive', 'lesson'],
+    ['a1-u5-l5', 'A1', 'السفر والطريق', 'Reisen und Verkehr', 'السفر', 11, 4, 'المنفصل في السفر: abfahren · einsteigen', 'inductive', 'lesson'],
+    ['a1-u5-l6', 'A1', 'مراجعة قائمة غوته A1', 'Wortliste A1', 'المراجعة', 11, 4, 'Dativ مع gratulieren وgefallen', 'explicit', 'lesson']
   ];
 
   const A2 = [
@@ -167,7 +174,7 @@
     const prereq = i === 0 ? null : (i === 1 ? 'cap.a0.sprechen.greeting20' : 'cap.' + ROWS[i - 1][0] + '.core');
     push(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], prereq, 'authored');
   });
-  let prev = 'cap.a1-u4-l6.core';
+  let prev = 'cap.a1-u5-l6.core';
   A2.forEach((r, i) => {
     const id = 'a2-u' + (Math.floor(i / 6) + 1) + '-l' + ((i % 6) + 1);
     push(id, 'A2', r[0], r[1], r[2], i === 29 ? 26 : 26, i === 29 ? 4 : 13, r[3], r[4], 'lesson', prev, 'authored');
