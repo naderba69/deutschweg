@@ -270,7 +270,7 @@ console.log('\n— P3.2 lexical layer —\n');
     const tr = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe.trick);
     if (tr.length < 3 || new Set(tr).size !== tr.length) tricksOk = false;
   });
-  t('B1: ' + ported.length + ' of ' + rows.length + ' lessons carry the lexical layer', ported.length === 32);
+  t('B1: all ' + rows.length + ' lessons carry the lexical layer', ported.length === rows.length);
   t('B1: every ported item is complete to the last field', itemsOk);
   t('B1: every ported lesson carries exactly its declared 40 words', countOk);
   t('B1: every ported lesson splits them over 10 Wortschatz steps', stepsOk);
