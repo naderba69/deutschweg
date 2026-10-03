@@ -18,9 +18,22 @@ const FAM = new Set([
 
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
    five Wortschatz steps carrying the real word list, and the forms the older
-   generator never used (flashcard, word order, writing). */
-const VOCAB = require('./vocab-a0a1');
-const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+   generator never used (flashcard, word order, writing).
+   One file per slice: vocab-a0a1.js, then vocab-b1-11.js … vocab-b1-17.js
+   (one file per production unit of PRODUCTION.md). A lesson id defined twice
+   is a build error, not a silent override. */
+const VOCAB = {};
+fs.readdirSync(__dirname).filter(f => /^vocab-.*\.js$/.test(f)).sort().forEach(f => {
+  const part = require(path.join(__dirname, f));
+  Object.keys(part).forEach(id => {
+    if (VOCAB[id]) die('vocab for ' + id + ' defined twice (' + f + ')');
+    VOCAB[id] = part[id];
+  });
+});
+const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 20 }; /* B2: a workshop glossary of 20, decision 18 */
+/* A headword counted twice inside one level would inflate the coverage number.
+   The map is honest only if 800 means 800 different words. */
+const headwordsByLevel = {};
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 const AR = /[\u0600-\u06FF]/;
 
@@ -297,6 +310,37 @@ function lessonOf(spec, index) {
 }
 
 /* ---------- P3.2 builder: a lesson that carries a real word list ---------- */
+/* The near-miss key of a cloze is the form the learner would actually type:
+   the token of the typical error that is absent from the example and closest
+   to the blank — "geschließt" for geschlossen, not a random neighbour word. */
+function nearKeyFor(it) {
+  const strip = t => String(t).replace(/[.,!?:;«»"()]/g, '');
+  const exToks = new Set(String(it.ex).split(/\s+/).map(t => strip(t).toLowerCase()));
+  const cands = String(it.err).split(/\s+/).map(strip).filter(t => t && !exToks.has(t.toLowerCase()));
+  const target = String(it.blank || '').toLowerCase();
+  const sim = t => {
+    const a = t.toLowerCase(); let i = 0;
+    while (i < a.length && i < target.length && a[i] === target[i]) i++;
+    return i * 2 + (a.slice(-2) === target.slice(-2) ? 1 : 0);
+  };
+  cands.sort((a, b) => sim(b) - sim(a));
+  return cands[0] || String(it.err).split(/\s+/).slice(-2)[0];
+}
+
+/* The accepted answers of a cloze: the surface form, the declared blank and the
+   headword — minus anything that is the lesson's own typical error. Without
+   this an inflected blank (bequeme) would accept the bare headword (bequem),
+   which is exactly the form the row warns against. */
+function clozeAnswers(it, b) {
+  const miss = nearKeyFor(it).toLowerCase();
+  const out = [];
+  [b.answer, it.blank, it.de].forEach(a => {
+    if (!a || a.toLowerCase() === miss && a.toLowerCase() !== b.answer.toLowerCase()) return;
+    if (!out.some(x => x.toLowerCase() === a.toLowerCase())) out.push(a);
+  });
+  return out;
+}
+
 function blankOut(sentence, core) {
   /* Unicode-aware boundaries: \b is ASCII-only and would miss Österreich. */
   const esc = core.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -328,13 +372,49 @@ function orderFrage(sentence, frageText) {
   };
 }
 function orderSource(spec, items, skip) {
-  const pool = [spec.say, spec.model].concat(items.map(it => it.ex));
+  /* A two-sentence model ("Wie alt bist du? Ich bin zwanzig.") is not one
+     clause: its finite verb is not second, and the scorer would give the
+     correct answer zero. Only single sentences qualify. */
+  const pool = [spec.say, spec.model].concat(items.map(it => it.ex))
+    .filter(s => !/[.!?]\s+\S/.test(String(s)));
   for (const cand of pool) {
     if (skip && skip.indexOf(cand) >= 0) continue;
-    const f = orderFrage(cand, 'rtb');
+    const f = orderFrage(cand, 'رتّب الكلمات في جملة صحيحة.');
     if (f) return f;
   }
   return null;
+}
+
+/* Explicit field notation for authored order sentences (B1 onwards).
+     main clause:  'Vorfeld | finite | Mittelfeld | rechte Klammer | Nachfeld'
+                   (2–5 parts; empty parts allowed: 'Ich | habe | | vor, | umzuziehen.')
+     sub clause:   { satz: 'weil | ich müde | bin.', clause: 'sub' }
+                   (lsk | Mittelfeld | rsk — the conjunction opens, the finite verb closes)
+   The finite slot must hold exactly one token, tokens must be unique (the
+   scorer maps token text to its field), and `ar` tells the learner what to
+   build, since the German sentence itself is the answer. */
+function orderFromNotation(entry, frageText) {
+  const satz = typeof entry === 'string' ? entry : entry.satz;
+  const clause = (entry && entry.clause) || 'main';
+  if (!satz || satz.indexOf('|') < 0) die(currentId + ' order sentence needs field bars: ' + satz);
+  if (AR.test(satz)) die(currentId + ' Arabic inside an order sentence: ' + satz);
+  const parts = satz.split('|').map(p => p.trim().split(/\s+/).filter(Boolean));
+  const names = clause === 'sub' ? ['lsk', 'mittelfeld', 'rsk'] : ['vorfeld', 'lsk', 'mittelfeld', 'rsk', 'nachfeld'];
+  if (parts.length < 2 || parts.length > names.length) die(currentId + ' order sentence has ' + parts.length + ' parts: ' + satz);
+  const fields = { vorfeld: [], lsk: [], mittelfeld: [], rsk: [], nachfeld: [] };
+  names.forEach((nm, i) => { fields[nm] = parts[i] || []; });
+  const finiteSlot = clause === 'sub' ? fields.rsk : fields.lsk;
+  if (finiteSlot.length !== 1) die(currentId + ' order: the finite slot must hold one token: ' + satz);
+  if (clause === 'main' && !fields.vorfeld.length) die(currentId + ' order: a main clause needs a Vorfeld: ' + satz);
+  const toks = [].concat(...parts);
+  if (toks.length < 4 || toks.length > 9) die(currentId + ' order: ' + toks.length + ' tokens, the renderer takes 4–9: ' + satz);
+  if (new Set(toks).size !== toks.length) die(currentId + ' order: a token repeats, the scorer cannot place it: ' + satz);
+  const out = {
+    art: 'wortstellung', frage: frageText, tokens: toks, correct: toks, finite: finiteSlot[0],
+    clause: clause, fields: fields, familie: 'wortstellung'
+  };
+  if (fields.rsk.length) out.rightBracket = fields.rsk.slice();
+  return out;
 }
 
 function lessonOfVocab(spec, vocabRow) {
@@ -348,17 +428,35 @@ function lessonOfVocab(spec, vocabRow) {
   const floor = VOCAB_FLOOR[spec.level] || 12;
   if (items.length < floor) die(spec.id + ' vocab ' + items.length + ' below the ' + spec.level + ' floor ' + floor);
   if (items.length > 20) die(spec.id + ' vocab ' + items.length + ' exceeds what 5 Wortschatz steps can carry');
+  const seenDe = new Set();
+  const levelWords = headwordsByLevel[spec.level] = headwordsByLevel[spec.level] || new Map();
   items.forEach(it => {
     if (!FAM.has(it.fam)) die(spec.id + ' bad vocab family ' + it.fam);
     if (AR.test(it.de) || AR.test(it.ex) || AR.test(it.err)) die(spec.id + ' Arabic inside German vocab: ' + it.de);
     if (!it.ar || !it.why || !it.pl) die(spec.id + ' vocab item incomplete: ' + it.de);
     if (!blankOut(it.ex, it.blank)) die(spec.id + ' blank ' + it.blank + ' not found in: ' + it.ex);
+    if (it.err.trim() === it.ex.trim()) die(spec.id + ' the typical error equals the example: ' + it.de);
+    if (seenDe.has(it.de)) die(spec.id + ' headword listed twice: ' + it.de);
+    seenDe.add(it.de);
+    if (levelWords.has(it.de) && levelWords.get(it.de) !== spec.id) {
+      die(spec.id + ' headword already counted in ' + levelWords.get(it.de) + ' of the same level: ' + it.de);
+    }
+    levelWords.set(it.de, spec.id);
   });
   if (!vocabRow.tricks || vocabRow.tricks.length !== 3) die(spec.id + ' needs exactly 3 tricks');
   vocabRow.tricks.forEach(t => {
     if (!t.trick || !t.wie || !t.warum || !t.anchor) die(spec.id + ' trick incomplete');
     if (AR.test(t.anchor)) die(spec.id + ' trick anchor must be German');
   });
+  if (vocabRow.order && vocabRow.order.length !== 2) die(spec.id + ' order needs exactly two sentences (exercise, check)');
+  (vocabRow.order || []).forEach(o => {
+    if (!o || !o.satz || !o.ar) die(spec.id + ' order entry needs satz and ar');
+  });
+  if (vocabRow.writing) {
+    const wr = vocabRow.writing;
+    if (!wr.prompt || !wr.promptDe || !(wr.points || []).length || !wr.minWords) die(spec.id + ' writing needs prompt, promptDe, points, minWords');
+    if (AR.test(wr.promptDe)) die(spec.id + ' Arabic inside promptDe');
+  }
 
   const fam = spec.fam;
   const cap = n => 'cap.' + spec.id + '.s' + String(n).padStart(2, '0');
@@ -470,12 +568,15 @@ function lessonOfVocab(spec, vocabRow) {
         hinweise: ['اقرأ الجملة كاملة قبل الاختيار.', anchor.why],
         frage: {
           ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الفراغ بالكلمة الصحيحة من المجموعة.',
-          zeigt: b.shown, antworten: [b.answer, anchor.blank, anchor.de],
-          nearMiss: { [String(anchor.err).split(/\s+/).slice(-2)[0]]: anchor.why },
+          zeigt: b.shown, antworten: clozeAnswers(anchor, b),
+          nearMiss: { [nearKeyFor(anchor)]: anchor.why }, nearFamily: anchor.fam,
           feedback: { correct: anchor.why }
         }
       };
     } else if (form === 2) {
+      /* Two identical glosses in one matching column cannot be told apart. */
+      const glosses = group.map(it => it.ar);
+      if (new Set(glosses).size !== glosses.length) die(spec.id + ' matching group repeats a gloss: ' + glosses.join(' | '));
       st = {
         phase: 'Wortschatz', type: 'matching',
         zeigt: { de: group[0].de },
@@ -571,36 +672,56 @@ function lessonOfVocab(spec, vocabRow) {
       frage: {
         ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الجملة بالكلمة الصحيحة.',
         zeigt: b.shown,
-        antworten: [b.answer, drillItem.blank, drillItem.de],
-        nearMiss: { [String(drillItem.err).split(/\s+/).slice(-2)[0]]: drillItem.why },
+        antworten: clozeAnswers(drillItem, b),
+        nearMiss: { [nearKeyFor(drillItem)]: drillItem.why }, nearFamily: drillItem.fam,
         feedback: { correct: drillItem.why }
       }
     });
   }
-  const order = orderSource(spec, items);
+  /* Word order. Authored rows (B1+) declare two annotated sentences; the A0
+     rows fall back to the first single sentence with a finite verb. The
+     sentence is the answer, so zeigt shows only the task, and the Arabic
+     meaning tells the learner what to build. */
+  const authoredOrder = vocabRow.order || null;
+  const order = authoredOrder
+    ? orderFromNotation(authoredOrder[0], 'رتّب الكلمات لتقول: «' + authoredOrder[0].ar + '»')
+    : orderSource(spec, items);
   if (!order) die(spec.id + ' has no sentence with a finite verb for the order exercise');
+  const orderIsSub = order.clause === 'sub';
   push('order', {
     phase: 'Übungen', type: 'mcq',
-    zeigt: { de: order.correct.join(' ') },
-    erklaerung: 'رتّب الكلمات. الفعل المصرّف ثانٍ في الجملة الرئيسية، وليس الترتيب العربي.',
+    zeigt: { de: 'Satzbau' },
+    erklaerung: orderIsSub
+      ? 'رتّب الجملة الفرعية. أداة الربط تفتحها، والفعل المصرّف يغلقها في الآخر.'
+      : 'رتّب الكلمات. الفعل المصرّف في الموضع الثاني من الجملة الرئيسية، وليس الترتيب العربي.',
     recap: 'تمرين ٤',
-    hinweise: ['ابحث عن الفعل أولًا ثم ضعه في الموضع الثاني.', 'الفاعل يلي الفعل غالبًا هنا.'],
+    hinweise: orderIsSub
+      ? ['ابدأ بأداة الربط، وأخّر الفعل المصرّف إلى آخر الجملة.', 'ما بين الأداة والفعل هو الحقل الأوسط، ويبقى متصلًا.']
+      : ['ابحث عن الفعل المصرّف أولًا، ثم ضع قبله عنصرًا واحدًا فقط.', (order.rightBracket && order.rightBracket.length) ? 'الجزء غير المصرّف يغلق الجملة في الآخر.' : 'الفاعل يلي الفعل غالبًا هنا.'],
     frage: Object.assign({ ziel: cap(n + 1) }, order)
   });
   {
+    const wr = vocabRow.writing || {
+      prompt: 'اكتب أربع جمل قصيرة: من أنت، من أين، أين تسكن، وكلمة تعلّمتها اليوم.',
+      promptDe: 'Ich heiße … · Ich komme aus … · Ich wohne in … · Ich lerne ' + items[0].de + '.',
+      points: ['الاسم', 'البلد أو المدينة', 'كلمة من قائمة اليوم'],
+      minWords: 20,
+      hints: ['ابدأ بجملة النموذج ثم غيّر الاسم والبلد.', 'استعمل كلمتين على الأقل من قائمة اليوم.'],
+      erklaerung: 'اكتب أربع جمل عن نفسك بالكلمات الجديدة. الفحص يسمّي حدّه ولا يعيد كتابة نصّك.'
+    };
     push('writing', {
       phase: 'Übungen', type: 'mcq',
       zeigt: { de: 'Schreiben' },
-      erklaerung: 'اكتب أربع جمل عن نفسك بالكلمات الجديدة. الفحص يسمّي حدّه ولا يعيد كتابة نصّك.',
+      erklaerung: wr.erklaerung || ('اكتب نصًا قصيرًا من ' + wr.minWords + ' كلمة على الأقل بكلمات اليوم. الفحص يسمّي حدّه ولا يعيد كتابة نصّك.'),
       recap: 'تمرين ٥: كتابة',
-      hinweise: ['ابدأ بجملة النموذج ثم غيّر الاسم والبلد.', 'استعمل كلمتين على الأقل من قائمة اليوم.'],
+      hinweise: wr.hints || ['ابدأ بالهيكل الألماني المعروض ثم املأه بكلمات اليوم.', 'استعمل ثلاث كلمات على الأقل من قائمة اليوم.'],
       frage: {
-        ziel: cap(n + 1), art: 'schreiben', familie: 'wortstellung',
-        prompt: 'اكتب أربع جمل قصيرة: من أنت، من أين، أين تسكن، وكلمة تعلّمتها اليوم.',
-        promptDe: 'Ich heiße … · Ich komme aus … · Ich wohne in … · Ich lerne ' + items[0].de + '.',
-        points: ['الاسم', 'البلد أو المدينة', 'كلمة من قائمة اليوم'],
-        minWords: 20,
-        frage: 'اكتب أربع جمل عن نفسك.'
+        ziel: cap(n + 1), art: 'schreiben', familie: wr.familie || 'wortstellung',
+        prompt: wr.prompt,
+        promptDe: wr.promptDe,
+        points: wr.points,
+        minWords: wr.minWords,
+        frage: wr.prompt
       }
     });
   }
@@ -661,14 +782,18 @@ function lessonOfVocab(spec, vocabRow) {
   checkPlan.forEach((src, i) => {
     let st;
     if (i === 2) {
-      const checkOrder = orderSource(spec, items, [order.correct.join(' ')]);
+      const checkOrder = authoredOrder
+        ? orderFromNotation(authoredOrder[1], 'رتّب الجملة بلا مساعدة: «' + authoredOrder[1].ar + '»')
+        : orderSource(spec, items, [order.correct.join(' ')]);
       if (!checkOrder) die(spec.id + ' has no second sentence for the check');
+      if (checkOrder.correct.join(' ') === order.correct.join(' ')) die(spec.id + ' the check repeats the exercise sentence');
       st = {
         phase: 'Check', type: 'mcq',
         zeigt: { de: 'Check ' + (i + 1) },
         erklaerung: i === 0 ? 'فحص. النجاح 80٪ بلا مساعدة.' : 'البند يقيس ما شُرح، لا ما خُمّن.',
         recap: 'فحص ' + (i + 1),
-        frage: Object.assign({ ziel: cap(n + 1), prereq: src.prereq, frage: 'رتّب الجملة بلا مساعدة.' }, checkOrder)
+        frage: Object.assign({ ziel: cap(n + 1), prereq: src.prereq }, checkOrder,
+          authoredOrder ? {} : { frage: 'رتّب الجملة بلا مساعدة.' })
       };
     } else if (i === 1) {
       const b = blankOut(src.cloze.ex, src.cloze.blank);
@@ -679,8 +804,8 @@ function lessonOfVocab(spec, vocabRow) {
         recap: 'فحص ' + (i + 1),
         frage: {
           ziel: cap(n + 1), prereq: src.prereq, art: 'cloze', frage: 'أكمل الفراغ بلا مساعدة.',
-          zeigt: b.shown, antworten: [b.answer, src.cloze.blank, src.cloze.de],
-          nearMiss: { [String(src.cloze.err).split(/\s+/).slice(-2)[0]]: src.cloze.why },
+          zeigt: b.shown, antworten: clozeAnswers(src.cloze, b),
+          nearMiss: { [nearKeyFor(src.cloze)]: src.cloze.why }, nearFamily: src.cloze.fam,
           feedback: { correct: src.cloze.why }
         }
       };
@@ -766,16 +891,35 @@ const SYL = (() => {
   new Function('window', fs.readFileSync(path.join(root, 'web/data/syllabus.js'), 'utf8'))(w);
   return w.DW_SYLLABUS;
 })();
-const declared = {};
-SYL.lessons.forEach(l => { declared[l.level] = (declared[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
+const declared = {}, rows = {}, ported = {}, shippedDeclared = {};
+SYL.lessons.forEach(l => {
+  const rec = (l.words && l.words.receptive) || 0;
+  declared[l.level] = (declared[l.level] || 0) + rec;
+  rows[l.level] = (rows[l.level] || 0) + 1;
+  if (wortschatzByLesson[l.id]) {
+    ported[l.level] = (ported[l.level] || 0) + 1;
+    shippedDeclared[l.level] = (shippedDeclared[l.level] || 0) + rec;
+  }
+});
+/* Two ratios, both printed, so progress cannot be mistaken for delivery:
+   ratio   = authored / everything the level declares   → "delivered" at ≥ 80%
+   shipped = authored / what the ported rows declare    → honesty of what exists */
 const report = Object.keys(declared).map(level => {
   const have = coverage[level] || 0;
   const want = declared[level] || 0;
-  return { level, items: have, declared: want, ratio: want ? have / want : 0 };
+  const sd = shippedDeclared[level] || 0;
+  return {
+    level, items: have, declared: want, ratio: want ? have / want : 0,
+    lessons: rows[level] || 0, ported: ported[level] || 0,
+    shippedDeclared: sd, shippedRatio: sd ? have / sd : 0,
+    delivered: level !== 'B2' && want > 0 && have / want >= 0.8 /* B2 workshops are never 'delivered' by their glossary (decision 18) */
+  };
 });
 report.forEach(r => {
   console.log('  ' + r.level + ': ' + r.items + ' authored items vs ' + r.declared +
-    ' declared receptive (' + Math.round(r.ratio * 100) + '%)');
+    ' declared receptive (' + Math.round(r.ratio * 100) + '%) · ' + r.ported + '/' + r.lessons + ' lessons ported' +
+    (r.ported ? ' · shipped rows ' + Math.round(r.shippedRatio * 100) + '%' : '') +
+    (r.delivered ? ' · delivered' : ' · not delivered'));
 });
 console.log('  generic feedback lines left in the ported levels:', genericFeedback.length);
 

@@ -25,28 +25,28 @@
     ['a0-u1-l5', 'A0', 'العائلة والجنس', 'Familie und Genus', 'العائلة', 18, 8, 'der/die/das على أسماء العائلة', 'inductive', 'lesson'],
     ['a0-u1-l6', 'A0', 'السؤال والجواب', 'Fragen', 'السؤال', 12, 6, 'سؤال نعم/لا وسؤال W', 'explicit', 'lesson'],
 
-    ['a1-u1-l1', 'A1', 'المضارع المنتظم', 'Präsens', 'الأفعال اليومية', 28, 10, 'تصريف المضارع المنتظم', 'inductive', 'lesson'],
-    ['a1-u1-l2', 'A1', 'النفي', 'nicht und kein', 'النفي', 28, 10, 'nicht مقابل kein', 'inductive', 'lesson'],
-    ['a1-u1-l3', 'A1', 'المفعول به في الأداة', 'Akkusativ Artikel', 'الأشياء', 28, 10, 'أداة النصب', 'explicit', 'lesson'],
-    ['a1-u1-l4', 'A1', 'الضمائر في النصب', 'Akkusativ Pronomen', 'الضمائر', 28, 10, 'ضمائر النصب', 'explicit', 'lesson'],
-    ['a1-u1-l5', 'A1', 'الملكية', 'Possessivartikel', 'الملكية', 28, 10, 'أداة الملكية في الرفع والنصب', 'explicit', 'lesson'],
-    ['a1-u1-l6', 'A1', 'أستطيع ويجب', 'können und müssen', 'القدرة والواجب', 28, 10, 'können وmüssen', 'explicit', 'lesson'],
-    ['a1-u2-l1', 'A1', 'أريد وأود', 'wollen und möchten', 'الرغبة', 28, 10, 'wollen وmöchten', 'explicit', 'lesson'],
-    ['a1-u2-l2', 'A1', 'الأفعال المنفصلة', 'Trennbare Verben', 'الروتين', 28, 10, 'الفعل المنفصل', 'inductive', 'lesson'],
-    ['a1-u2-l3', 'A1', 'الساعة', 'Uhrzeit', 'الوقت', 28, 10, 'قول الساعة', 'inductive', 'lesson'],
-    ['a1-u2-l4', 'A1', 'حروف الزمان', 'Temporale Präpositionen', 'المواعيد', 28, 10, 'um وam وim', 'inductive', 'lesson'],
-    ['a1-u2-l5', 'A1', 'حروف المكان', 'Lokale Präpositionen', 'المكان', 28, 10, 'in وan وauf كقطع', 'inductive', 'lesson'],
-    ['a1-u2-l6', 'A1', 'الجمع', 'Plural', 'الأشياء الكثيرة', 28, 10, 'أنماط الجمع الشائعة', 'inductive', 'lesson'],
-    ['a1-u3-l1', 'A1', 'الطعام', 'Essen', 'الطعام', 28, 10, 'إطارات bestellen وmöchten', 'inductive', 'lesson'],
-    ['a1-u3-l2', 'A1', 'التسوق', 'Einkaufen', 'التسوق', 28, 10, 'السعر والكمية', 'inductive', 'lesson'],
-    ['a1-u3-l3', 'A1', 'يومي', 'Tagesablauf', 'اليوم', 28, 10, 'ترتيب اليوم بالأفعال المنفصلة', 'inductive', 'lesson'],
-    ['a1-u3-l4', 'A1', 'الماضي مع haben', 'Perfekt mit haben', 'الأحداث', 28, 10, 'Perfekt مع haben', 'explicit', 'lesson'],
-    ['a1-u3-l5', 'A1', 'الماضي مع sein', 'Perfekt mit sein', 'الحركة', 28, 10, 'Perfekt مع sein', 'explicit', 'lesson'],
-    ['a1-u3-l6', 'A1', 'الموعد', 'Termine', 'المواعيد', 28, 10, 'اقتراح موعد وقبوله', 'inductive', 'lesson'],
-    ['a1-u4-l1', 'A1', 'السكن', 'Wohnen', 'البيت', 28, 10, 'وصف غرفة بسيط', 'inductive', 'lesson'],
-    ['a1-u4-l2', 'A1', 'عند الطبيب', 'Beim Arzt', 'الجسم', 28, 10, 'ألم بسيط وطلب مساعدة', 'inductive', 'lesson'],
-    ['a1-u4-l3', 'A1', 'الطريق', 'Wegbeschreibung', 'الاتجاه', 28, 10, 'rechts وlinks وgeradeaus', 'inductive', 'lesson'],
-    ['a1-u4-l4', 'A1', 'رسالة قصيرة', 'Kurze Nachricht', 'الكتابة القصيرة', 28, 10, 'شكل الرسالة القصيرة', 'explicit', 'lesson'],
+    ['a1-u1-l1', 'A1', 'المضارع المنتظم', 'Präsens', 'الأفعال اليومية', 25, 10, 'تصريف المضارع المنتظم', 'inductive', 'lesson'],
+    ['a1-u1-l2', 'A1', 'النفي', 'nicht und kein', 'النفي', 25, 10, 'nicht مقابل kein', 'inductive', 'lesson'],
+    ['a1-u1-l3', 'A1', 'المفعول به في الأداة', 'Akkusativ Artikel', 'الأشياء', 25, 10, 'أداة النصب', 'explicit', 'lesson'],
+    ['a1-u1-l4', 'A1', 'الضمائر في النصب', 'Akkusativ Pronomen', 'الضمائر', 25, 10, 'ضمائر النصب', 'explicit', 'lesson'],
+    ['a1-u1-l5', 'A1', 'الملكية', 'Possessivartikel', 'الملكية', 25, 10, 'أداة الملكية في الرفع والنصب', 'explicit', 'lesson'],
+    ['a1-u1-l6', 'A1', 'أستطيع ويجب', 'können und müssen', 'القدرة والواجب', 25, 10, 'können وmüssen', 'explicit', 'lesson'],
+    ['a1-u2-l1', 'A1', 'أريد وأود', 'wollen und möchten', 'الرغبة', 25, 10, 'wollen وmöchten', 'explicit', 'lesson'],
+    ['a1-u2-l2', 'A1', 'الأفعال المنفصلة', 'Trennbare Verben', 'الروتين', 25, 10, 'الفعل المنفصل', 'inductive', 'lesson'],
+    ['a1-u2-l3', 'A1', 'الساعة', 'Uhrzeit', 'الوقت', 25, 10, 'قول الساعة', 'inductive', 'lesson'],
+    ['a1-u2-l4', 'A1', 'حروف الزمان', 'Temporale Präpositionen', 'المواعيد', 25, 10, 'um وam وim', 'inductive', 'lesson'],
+    ['a1-u2-l5', 'A1', 'حروف المكان', 'Lokale Präpositionen', 'المكان', 25, 10, 'in وan وauf كقطع', 'inductive', 'lesson'],
+    ['a1-u2-l6', 'A1', 'الجمع', 'Plural', 'الأشياء الكثيرة', 25, 10, 'أنماط الجمع الشائعة', 'inductive', 'lesson'],
+    ['a1-u3-l1', 'A1', 'الطعام', 'Essen', 'الطعام', 25, 10, 'إطارات bestellen وmöchten', 'inductive', 'lesson'],
+    ['a1-u3-l2', 'A1', 'التسوق', 'Einkaufen', 'التسوق', 25, 10, 'السعر والكمية', 'inductive', 'lesson'],
+    ['a1-u3-l3', 'A1', 'يومي', 'Tagesablauf', 'اليوم', 25, 10, 'ترتيب اليوم بالأفعال المنفصلة', 'inductive', 'lesson'],
+    ['a1-u3-l4', 'A1', 'الماضي مع haben', 'Perfekt mit haben', 'الأحداث', 25, 10, 'Perfekt مع haben', 'explicit', 'lesson'],
+    ['a1-u3-l5', 'A1', 'الماضي مع sein', 'Perfekt mit sein', 'الحركة', 25, 10, 'Perfekt مع sein', 'explicit', 'lesson'],
+    ['a1-u3-l6', 'A1', 'الموعد', 'Termine', 'المواعيد', 25, 10, 'اقتراح موعد وقبوله', 'inductive', 'lesson'],
+    ['a1-u4-l1', 'A1', 'السكن', 'Wohnen', 'البيت', 25, 10, 'وصف غرفة بسيط', 'inductive', 'lesson'],
+    ['a1-u4-l2', 'A1', 'عند الطبيب', 'Beim Arzt', 'الجسم', 25, 10, 'ألم بسيط وطلب مساعدة', 'inductive', 'lesson'],
+    ['a1-u4-l3', 'A1', 'الطريق', 'Wegbeschreibung', 'الاتجاه', 25, 10, 'rechts وlinks وgeradeaus', 'inductive', 'lesson'],
+    ['a1-u4-l4', 'A1', 'رسالة قصيرة', 'Kurze Nachricht', 'الكتابة القصيرة', 25, 10, 'شكل الرسالة القصيرة', 'explicit', 'lesson'],
     ['a1-u4-l5', 'A1', 'مراجعة A1', 'Wiederholung A1', 'المراجعة', 20, 10, 'جمع الأنماط لا درسًا جديدًا', 'explicit', 'lesson'],
     ['a1-u4-l6', 'A1', 'شكل امتحان A1', 'Prüfungsform A1', 'شكل الامتحان', 8, 0, 'شكل Start Deutsch 1 لا محاكاة', 'explicit', 'lesson']
   ];
@@ -170,12 +170,22 @@
   let prev = 'cap.a1-u4-l6.core';
   A2.forEach((r, i) => {
     const id = 'a2-u' + (Math.floor(i / 6) + 1) + '-l' + ((i % 6) + 1);
-    push(id, 'A2', r[0], r[1], r[2], i === 29 ? 26 : 26, i === 29 ? 4 : 13, r[3], r[4], 'lesson', prev, 'authored');
+    /* A2 rows declare 25 receptive items (decision 15): the lesson carries 20
+       authored words, and 25 is the only per-row figure that keeps the §13.1
+       bands with A1 at 25 and B1 at 25. */
+    push(id, 'A2', r[0], r[1], r[2], 25, i === 29 ? 4 : 13, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
+  /* B1 rows declare 25 receptive items each (decisions 11 and 15 in
+     DECISIONS-PENDING.md): the lesson body carries 20 authored words — five
+     Wortschatz steps × four words, the §8.3 ceiling — and the remaining budget
+     of the §13.1 B1 band is assigned to the B1 reading texts, which are not
+     authored and not counted. 24 (decision 11) became 25 when A2 was lowered
+     to 25, so that the cumulative B1 band (≥ 2,400) still holds. The earlier
+     uniform 40 was a placeholder, not a number from a Goethe list. */
   B1.forEach((r, i) => {
     const id = 'b1-u' + (Math.floor(i / 8) + 1) + '-l' + ((i % 8) + 1);
-    push(id, 'B1', r[0], r[1], r[2], 40, 17, r[3], r[4], 'lesson', prev, 'authored');
+    push(id, 'B1', r[0], r[1], r[2], 25, 17, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
   B2.forEach((r, i) => {

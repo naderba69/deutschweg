@@ -103,26 +103,138 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
 {
   const cat = {};
   new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
-  const floors = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
-  const have = {}, declaredN = {}, ported = {};
+  const floors = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 20 };
+  /* B2 rows are workshops (decision 18): the 90 receptive items a row declares are
+     the workshop's text exposure, the authored list is a glossary of 20. The
+     80% lexical gate is not applied to B2; it is printed and never delivered. */
+  const WORKSHOP = new Set(['B2']);
+  const have = {}, declaredN = {}, ported = {}, rowsN = {}, shippedDeclared = {};
+  const portedIds = new Set();
+  const seenWords = {};
   Object.keys(cat.DW_LESSONS || {}).forEach(id => {
     const L = cat.DW_LESSONS[id];
     const wl = L.wortschatz || [];
     have[L.level] = (have[L.level] || 0) + wl.length;
-    if (wl.length) ported[L.level] = (ported[L.level] || 0) + 1;
+    if (wl.length) { ported[L.level] = (ported[L.level] || 0) + 1; portedIds.add(id); }
     if (wl.length && wl.length < (floors[L.level] || 12)) bad('word list below the floor in ' + id);
+    /* a word counted twice inside one level is counted once here, and flagged */
+    seenWords[L.level] = seenWords[L.level] || new Map();
+    wl.forEach(it => {
+      if (seenWords[L.level].has(it.de)) bad('headword counted twice in ' + L.level + ': ' + it.de + ' (' + seenWords[L.level].get(it.de) + ', ' + id + ')');
+      else seenWords[L.level].set(it.de, id);
+    });
   });
-  lessons.forEach(l => { declaredN[l.level] = (declaredN[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
+  lessons.forEach(l => {
+    const rec = (l.words && l.words.receptive) || 0;
+    declaredN[l.level] = (declaredN[l.level] || 0) + rec;
+    rowsN[l.level] = (rowsN[l.level] || 0) + 1;
+    if (portedIds.has(l.id)) {
+      shippedDeclared[l.level] = (shippedDeclared[l.level] || 0) + rec;
+      /* a ported row must carry at least 80% of its own declaration */
+      const wl = (cat.DW_LESSONS[l.id].wortschatz || []).length;
+      if (l.level !== 'B2' && rec && wl < Math.round(0.8 * rec)) bad(l.id + ' carries ' + wl + ' words against a row declaration of ' + rec);
+    }
+  });
   console.log('  — lexical coverage (authored items vs the map declaration) —');
   Object.keys(declaredN).forEach(level => {
-    const h = have[level] || 0, d = declaredN[level] || 0;
+    const h = have[level] || 0, d = declaredN[level] || 0, sd = shippedDeclared[level] || 0;
     const ratio = d ? h / d : 0;
-    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' + (ported[level] || 0) + ' lessons ported');
-    if (ratio > 0 && ratio < 0.8) bad(level + ' lexical coverage ' + Math.round(ratio * 100) + '% is below the 80% gate once started');
+    const shipped = sd ? h / sd : 0;
+    const p = ported[level] || 0, r = rowsN[level] || 0;
+    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' + p + '/' + r + ' lessons ported' +
+      (p ? ' · shipped rows ' + Math.round(shipped * 100) + '%' : '') + (ratio >= 0.8 ? ' · delivered' : ' · not delivered'));
+    /* Unit-by-unit production: what is shipped must be honest to its rows at
+       every push, and a level is only delivered when the whole of it reaches
+       80%. A finished level below 80% fails. */
+    if (WORKSHOP.has(level)) { if (p) console.log('    ' + level + ': workshop glossary — the lexical gate is not applied (decision 18); not delivered'); return; }
+    if (p && shipped < 0.8) bad(level + ' shipped rows at ' + Math.round(shipped * 100) + '% are below the 80% gate');
+    if (p && p === r && ratio < 0.8) bad(level + ' is fully ported but its coverage ' + Math.round(ratio * 100) + '% is below the 80% gate');
   });
   (have.A0 || 0) >= Math.round(0.8 * (declaredN.A0 || 0))
     ? ok('A0 lexical coverage meets the 80% gate')
     : bad('A0 lexical coverage below the gate');
+}
+
+/* Reading texts against the authored word lists (R4 readiness, PRODUCTION.md):
+   a text is extensive reading only at ~98% known words. The known forms of a
+   level are every surface form shown in the lessons up to that level —
+   headwords, form columns and example sentences. Printed, not gated: the
+   number is a measurement for the owner, not a claim. */
+{
+  const cat = {};
+  new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
+  const order = ['A0', 'A1', 'A2', 'B1', 'B2'];
+  const strip = t => String(t).toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+  const formsByLevel = {};
+  /* the hand-written opening lesson has no word list; its German lines count as A0 forms */
+  {
+    const first = {};
+    new Function('window', fs.readFileSync(path.join(root, 'web/data/a0-u1-l1.js'), 'utf8'))(first);
+    const L1 = (first.DW_LESSONS || {})['a0-u1-l1'];
+    const set = formsByLevel.A0 = new Set();
+    const skip = new Set(['id', 'type', 'phase', 'art', 'ziel', 'prereq', 'familie', 'direction']);
+    const walk = o => {
+      if (!o) return;
+      if (typeof o === 'string') { if (!/[\u0600-\u06FF]/.test(o)) o.split(/\s+/).map(strip).filter(Boolean).forEach(x => set.add(x)); return; }
+      if (Array.isArray(o)) return o.forEach(walk);
+      if (typeof o === 'object') Object.keys(o).forEach(k => { if (!skip.has(k)) walk(o[k]); });
+    };
+    if (L1) walk(L1.schritte);
+  }
+  Object.values(cat.DW_LESSONS || {}).forEach(L => {
+    const set = formsByLevel[L.level] = formsByLevel[L.level] || new Set();
+    (L.wortschatz || []).forEach(it => {
+      [it.de, it.pl, it.ex].forEach(f => String(f || '').split(/\s+/).map(strip).filter(Boolean).forEach(w => set.add(w)));
+    });
+  });
+  const known = level => {
+    const out = new Set();
+    order.slice(0, order.indexOf(level) + 1).forEach(l => (formsByLevel[l] || new Set()).forEach(w => out.add(w)));
+    return out;
+  };
+  const lib = {};
+  new Function('window', fs.readFileSync(path.join(root, 'web/data/library.js'), 'utf8'))(lib);
+  const library = lib.DW_LIBRARY || {};
+  /* dialogues: forms known up to the lesson they follow, in map order */
+  {
+    const dl = {};
+    new Function('window', fs.readFileSync(path.join(root, 'web/data/dialogues.js'), 'utf8'))(dl);
+    const dialogues = dl.DW_DIALOGUES || [];
+    const mapOrder = lessons.map(l => l.id);
+    const upTo = id => {
+      const v = new Set(formsByLevel.A0 || []);
+      mapOrder.slice(0, mapOrder.indexOf(id) + 1).forEach(lid => {
+        const L = cat.DW_LESSONS[lid];
+        ((L && L.wortschatz) || []).forEach(it => [it.de, it.pl, it.ex].forEach(f => String(f || '').split(/\s+/).map(strip).filter(Boolean).forEach(w => v.add(w))));
+      });
+      return v;
+    };
+    const low = []; let tok = 0, hit = 0;
+    dialogues.forEach(d => {
+      const v = upTo(d.after);
+      const words = d.lines.map(l => l[1]).join(' ').split(/\s+/).map(strip).filter(x => x && !/^\d+$/.test(x));
+      const h = words.filter(x => v.has(x)).length;
+      tok += words.length; hit += h;
+      if (words.length && h / words.length < 0.98) low.push(d.id + ' ' + Math.round(100 * h / words.length) + '%');
+      if (!(d.questions && d.questions.length >= 2)) low.push(d.id + ' needs two questions');
+    });
+    if (dialogues.length) console.log('    dialogues: ' + dialogues.length + ' · known-form coverage up to their lesson ' + Math.round(100 * hit / tok) + '%' + (low.length ? ' · below 98%: ' + low.join(', ') : ' · all at or above 98%'));
+  }
+  ['A1', 'A2', 'B1'].forEach(level => {
+    const texts = Array.isArray(library[level]) ? library[level] : ((library[level] && library[level].texts) || []);
+    if (!texts.length) return;
+    const vocab = known(level);
+    if (!vocab.size) return;
+    let tok = 0, hit = 0; const low = [];
+    texts.forEach(t => {
+      const words = String(t.body || '').split(/\s+/).map(strip).filter(x => x && !/^\d+$/.test(x));
+      const h = words.filter(x => vocab.has(x)).length;
+      tok += words.length; hit += h;
+      if (words.length && h / words.length < 0.98) low.push(t.id + ' ' + Math.round(100 * h / words.length) + '%');
+    });
+    console.log('    reading ' + level + ': ' + texts.length + ' texts · known-form coverage ' + (tok ? Math.round(100 * hit / tok) : 0) + '%' +
+      (low.length ? ' · below 98%: ' + low.join(', ') : ' · all texts at or above 98%'));
+  });
 }
 
 ['a0-u1-l1.js', 'catalog.js'].forEach(name => {
