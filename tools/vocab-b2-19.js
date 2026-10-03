@@ -165,7 +165,7 @@ module.exports = {
   'b2-w11': {
     items: [
       ['die Plattform', 'die Plattformen', 'المنصّة', 'Die Plattform ist nicht die Quelle.', 'Das Netz ist die Quelle.', 'المنصّة تنقل، والمصدر من يقف خلف الخبر.', 'pruefstrategie'],
-      ['die Überschrift', 'die Überschriften', 'العنوان', 'Die Überschrift reicht nicht.', 'Die Überschrift reicht.', 'العنوان وعد، والنص هو الخبر.', 'pruefstrategie'],
+      ['die Titelzeile', 'die Titelzeilen', 'سطر العنوان', 'Die Titelzeile reicht nicht.', 'Die Titelzeile reicht.', 'العنوان وعد، والنص هو الخبر.', 'pruefstrategie'],
       ['wahr machen', 'macht wahr · machte wahr', 'يحقّق (يجعل صحيحًا)', 'Viele Leser machen eine Aussage nicht wahr.', 'Viele Leser machen eine Aussage wahr.', 'كثرة القراء لا تحوّل الادعاء إلى حقيقة.', 'pruefstrategie', 'wahr'],
       ['die Glaubwürdigkeit', '—', 'المصداقية', 'Die Glaubwürdigkeit hängt von der Quelle ab.', 'Die Glaubwürdigkeit hängt von die Quelle ab.', 'abhängen von + داتيف.', 'kasus'],
       ['die Falschmeldung', 'die Falschmeldungen', 'الخبر الكاذب', 'Eine Falschmeldung verbreitet sich schnell.', 'Eine Falschmeldung verbreitet schnell.', 'sich verbreiten انعكاسي.', 'deklination'],
@@ -180,15 +180,15 @@ module.exports = {
       ['hinterfragen', 'hinterfragt · hinterfragte · hat hinterfragt', 'يتساءل نقديًا عن', 'Ich hinterfrage jede Schlagzeile.', 'Ich frage jede Schlagzeile hinter.', 'hinterfragen غير منفصل.', 'wortstellung', 'hinterfrage'],
       ['der Zusammenhang', 'die Zusammenhänge', 'السياق', 'Ein Zitat ohne Zusammenhang täuscht.', 'Ein Zitat ohne Zusammenhang täuscht ab.', 'täuschen بلا ab.', 'lexik-kollokation'],
       ['täuschen', 'täuscht · täuschte · hat getäuscht', 'يخدع', 'Bilder können täuschen.', 'Bilder können täuschen sich.', 'täuschen متعدٍّ هنا بلا sich.', 'lexik-kollokation', 'täuschen'],
-      ['das Gegenbeispiel', 'die Gegenbeispiele', 'المثال المضاد', 'Ein Gegenbeispiel gehört zur Diskussion.', 'Ein Gegenbeispiel gehört zu der Diskussion dazu.', 'gehört zur Diskussion يكفي.', 'lexik-kollokation'],
-      ['ignorieren', 'ignoriert · ignorierte · hat ignoriert', 'يتجاهل', 'Wer das Gegenbeispiel ignoriert, verliert.', 'Wer ignoriert das Gegenbeispiel, verliert.', 'في جملة wer الفعل في الآخر.', 'wortstellung', 'ignoriert'],
+      ['die Gegenposition', 'die Gegenpositionen', 'الموقف المضاد', 'Die Gegenposition gehört zur Diskussion.', 'Die Gegenposition gehört zu der Diskussion dazu.', 'gehört zur Diskussion يكفي.', 'lexik-kollokation'],
+      ['ignorieren', 'ignoriert · ignorierte · hat ignoriert', 'يتجاهل', 'Wer die Gegenposition ignoriert, verliert.', 'Wer ignoriert die Gegenposition, verliert.', 'في جملة wer الفعل في الآخر.', 'wortstellung', 'ignoriert'],
       ['seriös', '—', 'جدّي · موثوق', 'Eine seriöse Quelle nennt Autor und Datum.', 'Eine seriös Quelle nennt Autor und Datum.', 'eine + مؤنث: seriöse.', 'deklination', 'seriöse'],
       ['teilen', 'teilt · teilte · hat geteilt', 'يشارك (منشورًا)', 'Ich teile nichts, was ich nicht geprüft habe.', 'Ich teile nichts, was ich habe nicht geprüft.', 'الفرعية: geprüft habe في الآخر.', 'wortstellung', 'teile']
     ],
     tricks: [
       { trick: 'ثلاثة أسئلة قبل المشاركة: من؟ متى؟ أين الأصل؟', wie: 'Eine seriöse Quelle nennt Autor und Datum. Ich suche die Primärquelle.', warum: 'المصداقية تُفحص بالمصدر لا بعدد القراء؛ Reichweite ist kein Beweis.', anchor: 'Die Plattform ist nicht die Quelle.' },
-      { trick: 'العنوان يَعِد والنص يُثبت أو لا', wie: 'Die Überschrift reicht nicht. — اقرأ الفقرة الأولى والأخيرة قبل الحكم.', warum: 'نصف النقاشات الإعلامية تدور حول عناوين لم يُقرأ نصها.', anchor: 'Die Überschrift reicht nicht.' },
-      { trick: 'المثال المضاد جزء من الحجة لا عدوّها', wie: 'Ein Gegenbeispiel gehört zur Diskussion. Wer es ignoriert, verliert.', warum: 'في B2 يُقيَّم ذكر الطرف الآخر؛ تجاهله يُقرأ ضعفًا لا قوة.', anchor: 'Ein Gegenbeispiel gehört zur Diskussion.' }
+      { trick: 'العنوان يَعِد والنص يُثبت أو لا', wie: 'Die Titelzeile reicht nicht. — اقرأ الفقرة الأولى والأخيرة قبل الحكم.', warum: 'نصف النقاشات الإعلامية تدور حول عناوين لم يُقرأ نصها.', anchor: 'Die Titelzeile reicht nicht.' },
+      { trick: 'الموقف المضاد جزء من الحجة لا عدوّها', wie: 'Die Gegenposition gehört zur Diskussion. Wer sie ignoriert, verliert.', warum: 'في B2 يُقيَّم ذكر الطرف الآخر؛ تجاهله يُقرأ ضعفًا لا قوة.', anchor: 'Die Gegenposition gehört zur Diskussion.' }
     ],
     order: [
       { satz: 'Die Plattform | ist | nicht die Quelle.', ar: 'المنصّة ليست المصدر.' },
@@ -196,16 +196,16 @@ module.exports = {
     ],
     writing: {
       prompt: 'اكتب تعليقًا من ستّ جمل عن خبر انتشر على منصّة: لماذا المنصّة ليست المصدر، ماذا تفحص قبل المشاركة، لماذا لا يكفي العنوان، مثال مضاد، وجملة عن الكفاءة الإعلامية.',
-      promptDe: 'Die Plattform ist nicht die Quelle, weil … · Bevor ich etwas teile, prüfe ich … · Die Überschrift … · Ein Gegenbeispiel: … · Medienkompetenz heißt, …',
-      points: ['Quelle vs Plattform', 'hinterfragen أو überprüfbar', 'Gegenbeispiel', 'جملة فرعية بالفعل في الآخر', 'أربع كلمات من قائمة اليوم'],
+      promptDe: 'Die Plattform ist nicht die Quelle, weil … · Bevor ich etwas teile, prüfe ich … · Die Titelzeile … · Die Gegenposition: … · Medienkompetenz heißt, …',
+      points: ['Quelle vs Plattform', 'hinterfragen أو überprüfbar', 'Gegenposition', 'جملة فرعية بالفعل في الآخر', 'أربع كلمات من قائمة اليوم'],
       minWords: 60, familie: 'pruefstrategie'
     }
   },
 
   'b2-w12': {
     items: [
-      ['die Position', 'die Positionen', 'الموقف', 'Die Position ist ein Satz, kein Wort.', 'Die Position ist ein Wort.', 'الموقف يُصاغ جملة كاملة.', 'pruefstrategie'],
-      ['die Einschränkung', 'die Einschränkungen', 'التحفظ', 'Die Einschränkung gehört zur Position.', 'Die Einschränkung gehört zu die Position.', 'zu + داتيف: zur.', 'kasus'],
+      ['der Standpunkt des Sprechers', '—', 'موقف المتحدث', 'Der Standpunkt des Sprechers ist ein Satz, kein Wort.', 'Der Standpunkt des Sprechers ist ein Wort.', 'الموقف يُصاغ جملة كاملة.', 'pruefstrategie', 'Standpunkt'],
+      ['die Einschränkung', 'die Einschränkungen', 'التحفظ', 'Die Einschränkung gehört zum Standpunkt.', 'Die Einschränkung gehört zu dem Standpunkt dazu.', 'gehört zum Standpunkt يكفي بلا dazu.', 'lexik-kollokation'],
       ['der Durchgang', 'die Durchgänge', 'الجولة (سماع)', 'Ich plane zwei Durchgänge.', 'Ich plane zwei Durchgang.', 'الجمع Durchgänge.', 'plural', 'Durchgänge'],
       ['zur Frage notieren', 'notiert · notierte · hat notiert', 'يدوّن بما يخص السؤال', 'Ich notiere nur zur Frage.', 'Ich notiere jedes Wort.', 'التدوين موجَّه بالسؤال.', 'hoerstrategie', 'notiere'],
       ['der Interviewte', 'die Interviewten', 'الشخص المُستجوَب', 'Der Interviewte schränkt seine Aussage ein.', 'Der Interviewte einschränkt seine Aussage.', 'منفصل: schränkt … ein.', 'wortstellung'],
@@ -226,7 +226,7 @@ module.exports = {
       ['das dritte Mal', '—', 'المرة الثالثة', 'Auf das dritte Mal warte ich nicht.', 'Auf das dritte Mal warte ich nicht ab.', 'warten auf بلا ab.', 'lexik-kollokation', 'dritte']
     ],
     tricks: [
-      { trick: 'الموقف جملة، والتحفظ جزء منها', wie: 'Die Position ist ein Satz. Die Einschränkung gehört dazu: Ich bin dafür, aber nur wenn …', warum: 'كلمة واحدة (dafür) ليست موقفًا في B2؛ الجملة بتحفظها هي ما يُسأل عنه في السماع.', anchor: 'Die Position ist ein Satz, kein Wort.' },
+      { trick: 'الموقف جملة، والتحفظ جزء منها', wie: 'Der Standpunkt ist ein Satz. Die Einschränkung gehört dazu: Ich bin dafür, aber nur wenn …', warum: 'كلمة واحدة (dafür) ليست موقفًا في B2؛ الجملة بتحفظها هي ما يُسأل عنه في السماع.', anchor: 'Der Standpunkt des Sprechers ist ein Satz, kein Wort.' },
       { trick: 'جولتان: بنية ثم إجابات', wie: 'Im ersten Durchgang höre ich nur die Struktur. Im zweiten Durchgang prüfe ich die Antworten.', warum: 'المقابلة تُسمع مرتين؛ من يحاول الإجابة في الأولى يخسر الثانية.', anchor: 'Ich plane zwei Durchgänge.' },
       { trick: 'النبرة تكشف الموقف: aber وeigentlich والتردد', wie: 'Die Haltung erkenne ich an Wörtern wie aber. Der Ton verrät mehr als die Wörter.', warum: 'الموقف في المقابلة يُخفى خلف المجاملة، وتظهره الكلمات العاكسة والنبرة.', anchor: 'Der Ton verrät mehr als die Wörter.' }
     ],
@@ -236,8 +236,8 @@ module.exports = {
     ],
     writing: {
       prompt: 'اكتب خطتك لسماع مقابلة في امتحان B2 في ستّ جمل: ماذا تفعل في الجولة الأولى والثانية، كيف تدوّن، كيف تعرف الموقف والتحفظ، على ماذا تنتبه في النبرة، وما لا تنتظره.',
-      promptDe: 'Im ersten Durchgang … · Im zweiten Durchgang … · Ich notiere nur zur Frage: … · Die Position erkenne ich an …, die Einschränkung an … · Der Ton verrät … · Auf das dritte Mal …',
-      points: ['Durchgänge', 'Position + Einschränkung', 'erkennen an بالداتيف', 'Stichwortnotiz', 'أربع كلمات من قائمة اليوم'],
+      promptDe: 'Im ersten Durchgang … · Im zweiten Durchgang … · Ich notiere nur zur Frage: … · Den Standpunkt erkenne ich an …, die Einschränkung an … · Der Ton verrät … · Auf das dritte Mal …',
+      points: ['Durchgänge', 'Standpunkt + Einschränkung', 'erkennen an بالداتيف', 'Stichwortnotiz', 'أربع كلمات من قائمة اليوم'],
       minWords: 60, familie: 'hoerstrategie'
     }
   }
