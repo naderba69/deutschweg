@@ -19,6 +19,10 @@ const FAM = new Set([
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
    Wortschatz steps carrying the real word list, and the forms the older
    generator never used (flashcard, word order, writing). */
+/* B2 joins this line the moment the level can hold its own gate: with one
+   workshop it sits at 90/1800 = 5%, and a started level under 80% fails
+   validate-syllabus by design. Until then tools/vocab-b2.js is held to the
+   compiler's rules by tools/audit-vocab.js --expect-items 40 --expect-material 50. */
 const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'), require('./vocab-a2'), require('./vocab-b1'));
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
 
@@ -384,6 +388,8 @@ function orderSource(spec, items, skip) {
   }
   return null;
 }
+
+const { ARABIC, fold, hasWord, collectGerman } = require('./material');
 
 function lessonOfVocab(spec, vocabRow) {
   currentId = spec.id;
@@ -763,6 +769,30 @@ function lessonOfVocab(spec, vocabRow) {
   });
 
   if (steps.length < 24 || steps.length > 36) die(spec.id + ' step count ' + steps.length);
+
+  /* The material measure: every declared material word must occur in the
+     German the workshop actually shows. */
+  const material = (vocabRow.material || []).slice();
+  /* A word cannot be counted twice: a material word that is already an authored
+     headword would inflate the level's coverage by 40 words per lesson. */
+  const itemCores = new Set(items.map(it => fold(CORE(it.de)).replace(/\s+/g, ' ')));
+  material.forEach(w => {
+    if (itemCores.has(fold(CORE(w)).replace(/\s+/g, ' '))) {
+      die(spec.id + ' material word duplicates an authored headword: ' + w);
+    }
+  });
+  const german = [];
+  collectGerman(steps, german);
+  items.forEach(it => german.push(it.de, it.ex, it.err));
+  german.push(spec.de || '', spec.model || '', spec.say || '', spec.hwDe || '');
+  (spec.lex || []).forEach(l => german.push(l[0], l[2], l[3]));
+  const folded = german.map(fold);
+  material.forEach(w => {
+    /* The article may inflect in context (jedes Schlüsselwort), so the check
+       looks for the core, exactly as the blank check does for list items. */
+    if (!hasWord(CORE(w), folded)) die(spec.id + ' material word not carried by the text: ' + w);
+  });
+
   return {
     id: spec.id,
     level: spec.level,
@@ -771,6 +801,7 @@ function lessonOfVocab(spec, vocabRow) {
     title: { ar: spec.ar, de: spec.de },
     minutes: spec.level === 'B2' ? 80 : 70,
     wortschatz: items,
+    material: material,
     schritte: steps
   };
 }
@@ -780,6 +811,7 @@ const bank = [];
 const stepCards = {};
 const wortschatzByLesson = {};
 const coverage = {};
+const materialCoverage = {};
 const genericFeedback = [];
 const GENERIC = /هذا شكل من الدرس|جملة من الدرس، لكن|هذا فخ الدرس، لكنه ليس جواب هذا البند/;
 specs.forEach((spec, i) => {
@@ -798,6 +830,9 @@ specs.forEach((spec, i) => {
   if (vocabRow) {
     wortschatzByLesson[spec.id] = lessons[spec.id].wortschatz;
     coverage[spec.level] = (coverage[spec.level] || 0) + vocabRow.items.length;
+    /* The material measure adds the material words the compile step verified. */
+    materialCoverage[spec.level] = (materialCoverage[spec.level] || 0)
+      + vocabRow.items.length + (lessons[spec.id].material || []).length;
     lessons[spec.id].schritte.forEach(st => {
       if (st.frage && st.frage.art === 'flashcard') {
         stepCards[spec.id + ':' + st.id] = [{
@@ -825,14 +860,33 @@ const SYL = (() => {
 })();
 const declared = {};
 SYL.lessons.forEach(l => { declared[l.level] = (declared[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
+/* Per-row check for the levels that use the two-measure design: an authored
+   count alone would let a level pass on a fraction of its promise. */
+const rowDeclared = {};
+SYL.lessons.forEach(l => { if (l.words && l.words.receptive) rowDeclared[l.id] = l.words.receptive; });
+specs.forEach(spec => {
+  const row = VOCAB[spec.id];
+  if (!row) return;
+  const want = rowDeclared[spec.id];
+  if (!want) die(spec.id + ' has a word list but no declared receptive count');
+  const have = row.items.length + (row.material || []).length;
+  if (spec.level === 'B2' && have !== want) {
+    die(spec.id + ' carries ' + have + ' words (40 authored + ' + ((row.material || []).length) +
+        ' material) but the row declares ' + want);
+  }
+});
+
 const report = Object.keys(declared).map(level => {
   const have = coverage[level] || 0;
   const want = declared[level] || 0;
-  return { level, items: have, declared: want, ratio: want ? have / want : 0 };
+  const met = materialCoverage[level] || 0;
+  return { level, items: have, material: met, declared: want, ratio: want ? have / want : 0,
+           materialRatio: want ? met / want : 0 };
 });
 report.forEach(r => {
   console.log('  ' + r.level + ': ' + r.items + ' authored items vs ' + r.declared +
-    ' declared receptive (' + Math.round(r.ratio * 100) + '%)');
+    ' declared receptive (' + Math.round(r.ratio * 100) + '%)' +
+    (r.material ? ' · material measure ' + r.material + ' (' + Math.round(r.materialRatio * 100) + '%)' : ''));
 });
 console.log('  generic feedback lines left in the ported levels:', genericFeedback.length);
 

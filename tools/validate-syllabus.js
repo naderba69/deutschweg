@@ -99,7 +99,16 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
 /* P3.2 coverage gate. The map row declares how many receptive items a level
    promises; the authored word lists are what exists. A level that has started
    the lexical layer must reach 80% of its own declaration. A level at 0% is
-   either not started (printed) or a listed exception. */
+   either not started (printed) or a listed exception.
+
+   B2 uses the two-measure design the owner chose (DECISIONS-PENDING item 20,
+   route C): 40 words authored as full list items inside the 24-36 step band,
+   plus the remainder declared as `material` words that the workshop's German
+   text must contain. The gate for B2 therefore reads the material measure —
+   but only material words the compiler verified against the lesson's own
+   German strings count, and the authored column is printed beside it so the
+   difference between the two cannot be hidden. Nothing here lowers a number:
+   the material measure is checked at the same 80%. */
 {
   const cat = {};
   new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
@@ -113,12 +122,21 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
     if (wl.length && wl.length < (floors[L.level] || 12)) bad('word list below the floor in ' + id);
   });
   lessons.forEach(l => { declaredN[l.level] = (declaredN[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
+  /* the compiler publishes the verified material measure per level */
+  const materialN = {};
+  (cat.DW_COVERAGE || []).forEach(c => { materialN[c.level] = c.material || 0; });
   console.log('  — lexical coverage (authored items vs the map declaration) —');
   Object.keys(declaredN).forEach(level => {
     const h = have[level] || 0, d = declaredN[level] || 0;
+    const met = materialN[level] || 0;
     const ratio = d ? h / d : 0;
-    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' + (ported[level] || 0) + ' lessons ported');
-    if (ratio > 0 && ratio < 0.8) bad(level + ' lexical coverage ' + Math.round(ratio * 100) + '% is below the 80% gate once started');
+    const mRatio = d ? met / d : 0;
+    const two = level === 'B2';
+    const gated = two ? mRatio : ratio;
+    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%)' +
+      (two ? ' · material ' + met + '/' + d + ' (' + Math.round(mRatio * 100) + '%)' : '') +
+      ' · ' + (ported[level] || 0) + ' lessons ported');
+    if (gated > 0 && gated < 0.8) bad(level + ' lexical coverage ' + Math.round(gated * 100) + '% is below the 80% gate once started');
   });
   (have.A0 || 0) >= Math.round(0.8 * (declaredN.A0 || 0))
     ? ok('A0 lexical coverage meets the 80% gate')

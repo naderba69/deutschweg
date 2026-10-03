@@ -12,6 +12,21 @@
 const fs = require('fs');
 const path = require('path');
 
+const { fold, hasWord, collectGerman } = require('./material');
+
+/* The specs, so an unwired workshop's material words can be checked against
+   the German it will actually show — the compiler's own rule, applied early. */
+const SPECS = (() => {
+  const all = [];
+  for (const f of ['specs-a0a1.js', 'specs-a2.js', 'specs-b1.js', 'specs-b2.js']) {
+    const p = path.join(__dirname, f);
+    if (fs.existsSync(p)) all.push(...require(p));
+  }
+  const byId = {};
+  all.forEach(s => { byId[s.id] = s; });
+  return byId;
+})();
+
 const FAM = new Set(['konjugation', 'wortstellung', 'kasus', 'genus', 'plural',
   'präposition', 'deklination', 'lexik-kollokation', 'falser-freund', 'register',
   'orthographie']);
@@ -29,9 +44,14 @@ function blankOut(sentence, core) {
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 
 const argv = process.argv.slice(2);
+const itemsIdx = argv.indexOf('--expect-items');
+const EXPECT_ITEMS = itemsIdx >= 0 ? Number(argv[itemsIdx + 1]) : 0;
+const matIdx = argv.indexOf('--expect-material');
+const EXPECT_MATERIAL = matIdx >= 0 ? Number(argv[matIdx + 1]) : 0;
 const expectIdx = argv.indexOf('--expect');
 const EXPECT = expectIdx >= 0 ? Number(argv[expectIdx + 1]) : 0;
-const files = argv.filter((a, i) => i !== expectIdx && i !== expectIdx + 1);
+const skip = new Set([expectIdx, expectIdx + 1, itemsIdx, itemsIdx + 1, matIdx, matIdx + 1].filter(i => i >= 0));
+const files = argv.filter((a, i) => !skip.has(i));
 if (!files.length) { console.log('usage: node tools/audit-vocab.js [--expect N] <module.js> …'); process.exit(2); }
 
 /* Load what is being audited first, so a module that a level already aggregates
@@ -80,6 +100,32 @@ for (const [file, mod] of audited) {
         seenTricks.add(t.trick);
       }
     });
+
+    if (Array.isArray(row.material) && row.material.length) {
+      const cores = new Set(row.items.map(it => fold(String(it[0]).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop()).replace(/\s+/g, ' ')));
+      row.material.forEach(w => {
+        const core = String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
+        if (cores.has(fold(core).replace(/\s+/g, ' '))) bad(id + ': material word duplicates an authored headword — ' + w);
+      });
+    }
+    if (EXPECT_ITEMS && row.items.length !== EXPECT_ITEMS) bad(id + ': ' + row.items.length + ' items, expected exactly ' + EXPECT_ITEMS);
+    if (EXPECT_MATERIAL && (!Array.isArray(row.material) || row.material.length !== EXPECT_MATERIAL)) {
+      bad(id + ': ' + ((row.material || []).length) + ' material words, expected exactly ' + EXPECT_MATERIAL);
+    }
+    if (Array.isArray(row.material) && row.material.length) {
+      const spec = SPECS[id];
+      if (!spec) bad(id + ': has material words but no spec to check them against');
+      else {
+        const german = collectGerman([spec.model, spec.say, spec.hwDe, spec.de,
+          (spec.lex || []).map(l => [l[0], l[2], l[3]])]);
+        row.items.forEach(it => german.push(it[3], it[4]));
+        const folded = german.map(fold);
+        row.material.forEach(w => {
+          const core = String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
+          if (!hasWord(core, folded)) bad(id + ': material word not carried by the text — ' + w);
+        });
+      }
+    }
 
     row.items.forEach((r, i) => {
       totalRows += 1;
