@@ -138,11 +138,11 @@ A1 كلها (24 درسًا) صارت على المخطط الجديد. الأر�
 ## أرقام الفحص اليوم
 
 ```bash
-npm test              # 248 فحصًا: 66 + 50 + 19 + 41 (P3.2/P3.5) + 14 + 45 + 13
-node tools/validate-lesson.js web/data/catalog.js   # 125 درسًا، 0 فشل صلب، 11 لافتة backlog في B1–B2
-node tools/validate-syllabus.js                     # التغطية: A0 100% · A1 115% · A2 100% · B1 0% · B2 0%
+npm test              # 253 فحصًا: 66 + 50 + 19 + 47 (P3.2/P3.5/B1) + 14 + 45 + 13
+node tools/validate-lesson.js web/data/catalog.js   # 125 درسًا، 0 فشل صلب، 4 لافتات backlog في B2
+node tools/validate-syllabus.js                     # التغطية: A0 100% · A1 115% · A2 100% · B1 80% · B2 0%
 node tools/match-goethe-a1.js                       # غوته A1: 81% كلمة مؤلَّفة · 100% مادة · مجموعات 100% · صفر مفقود
-node tools/audit-vocab.js tools/vocab-b1-u1a.js tools/vocab-b1-u1b.js   # B1 U1: 240 بندًا · 0 مشكلة (غير موصولة)
+node tools/audit-vocab.js --expect 40 tools/vocab-b1-u*.js   # B1: 1280 بندًا · 0 مشكلة
 ```
 
 ## ما لا يتغيّر بعد هذا الجرد

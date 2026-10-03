@@ -254,5 +254,32 @@ console.log('\n— P3.2 lexical layer —\n');
     cov && cov.ratio >= 0.8);
 }
 
+/* ---------- B1 — the fourth slice of the lexical layer ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const rows = win.DW_SYLLABUS.lessons.filter(l => l.level === 'B1');
+  const ported = rows.filter(r => (L[r.id].wortschatz || []).length > 0);
+  let itemsOk = true, stepsOk = true, countOk = true, tricksOk = true;
+  ported.forEach(row => {
+    const lesson = L[row.id];
+    const wl = lesson.wortschatz || [];
+    if (wl.length !== 40) countOk = false;
+    if (lesson.schritte.filter(s => s.wortschatz).length !== 10) stepsOk = false;
+    wl.forEach(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].forEach(k => { if (!it[k]) itemsOk = false; }));
+    const tr = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe.trick);
+    if (tr.length < 3 || new Set(tr).size !== tr.length) tricksOk = false;
+  });
+  t('B1: ' + ported.length + ' of ' + rows.length + ' lessons carry the lexical layer', ported.length === 32);
+  t('B1: every ported item is complete to the last field', itemsOk);
+  t('B1: every ported lesson carries exactly its declared 40 words', countOk);
+  t('B1: every ported lesson splits them over 10 Wortschatz steps', stepsOk);
+  t('B1: every ported lesson carries distinct Merkhilfen', tricksOk);
+
+  const cov = (win.DW_COVERAGE || []).find(c => c.level === 'B1');
+  t('coverage table published: B1 ' + cov.items + '/' + cov.declared + ' (' + Math.round(cov.ratio * 100) + '%)',
+    cov && cov.ratio >= 0.8);
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

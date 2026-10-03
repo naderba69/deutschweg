@@ -19,7 +19,7 @@ const FAM = new Set([
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
    Wortschatz steps carrying the real word list, and the forms the older
    generator never used (flashcard, word order, writing). */
-const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'), require('./vocab-a2'));
+const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'), require('./vocab-a2'), require('./vocab-b1'));
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
 
 /* The Wortschatz stage carries 2–4 words per step (PROMPT §8.3) and its step

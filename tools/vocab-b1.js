@@ -1,0 +1,19 @@
+/* Deutschweg — the B1 lexical layer, aggregated.
+   Wired into tools/compile-units.js when the level passed its own coverage gate
+   (1,280 of the declared 1,600 = 80%, 32 of 40 lessons). The remaining lessons
+   join this file as they are authored; the gate only fails if the level drops
+   back under 80%. */
+module.exports = Object.assign({},
+  require('./vocab-b1-u1a'),
+  require('./vocab-b1-u1b'),
+  require('./vocab-b1-u1c'),
+  require('./vocab-b1-u2a'),
+  require('./vocab-b1-u2b'),
+  require('./vocab-b1-u2c'),
+  require('./vocab-b1-u3a'),
+  require('./vocab-b1-u3b'),
+  require('./vocab-b1-u3c'),
+  require('./vocab-b1-u4a'),
+  require('./vocab-b1-u4b'),
+  require('./vocab-b1-u4c')
+);
