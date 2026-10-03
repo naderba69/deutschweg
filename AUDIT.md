@@ -138,7 +138,8 @@ A1 كلها (24 درسًا) صارت على المخطط الجديد. الأر�
 ```bash
 npm test              # 241 فحصًا: 66 + 50 + 19 + 34 (P3.2) + 14 + 45 + 13
 node tools/validate-lesson.js web/data/catalog.js   # 119 درسًا، 0 فشل صلب، 20 لافتة backlog في A2–B2
-node tools/validate-syllabus.js                     # التغطية: A0 83% · A1 101% · A2 0% · B1 0% · B2 0%
+node tools/validate-syllabus.js                     # التغطية: A0 100% · A1 101% · A2 0% · B1 0% · B2 0%
+node tools/match-goethe-a1.js                       # غوته A1: 57% كلمة مؤلَّفة · 71% مادة · مجموعات 100%
 ```
 
 ## ما لا يتغيّر بعد هذا الجرد

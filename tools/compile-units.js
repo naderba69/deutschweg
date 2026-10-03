@@ -444,9 +444,18 @@ function lessonOfVocab(spec, vocabRow) {
 
   /* Wortschatz: the real word list, 2–4 words per step, each word in a sentence.
      The forms rotate so the list is met four different ways, never as a list. */
-  const size = Math.max(2, Math.min(4, Math.ceil(items.length / 5)));
+  /* Balanced grouping: at most 4 words per step (PROMPT §8.3) and never fewer
+     than 2 — a fixed stride left a one-word tail (17 words → 4·4·4·4·1), which
+     is a list, not a step. Steps are distributed evenly instead. */
+  const want = Math.max(1, Math.ceil(items.length / 4));
+  const nGroups = Math.max(1, Math.min(want, Math.floor(items.length / 2)));
+  const base = Math.floor(items.length / nGroups), extra = items.length % nGroups;
   const groups = [];
-  for (let i = 0; i < items.length; i += size) groups.push(items.slice(i, i + size));
+  for (let k = 0, at = 0; k < nGroups; k++) {
+    const take = base + (k < extra ? 1 : 0);
+    groups.push(items.slice(at, at + take));
+    at += take;
+  }
   groups.forEach((group, gi) => {
     const form = gi % 4;
     const anchor = group[Math.min(1, group.length - 1)];
