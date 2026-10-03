@@ -17,10 +17,18 @@ const FAM = new Set([
 ]);
 
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
-   five Wortschatz steps carrying the real word list, and the forms the older
+   Wortschatz steps carrying the real word list, and the forms the older
    generator never used (flashcard, word order, writing). */
-const VOCAB = require('./vocab-a0a1');
+const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'));
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+
+/* The Wortschatz stage carries 2–4 words per step (PROMPT §8.3) and its step
+   ceiling was 5, so a lesson could hold 20 words. §13.9's A1 rows declare 28
+   receptive words each. At 4 words per step that is 7 steps, so the ceiling was
+   raised 5 → 7 for the ported levels (amendment A1-L1, DECISIONS-PENDING.md).
+   The words-per-step rule is untouched, A0 still ships 5 steps, and 28 is the
+   hard ceiling of one lesson word list. */
+const VOCAB_CEIL = 28;
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 const AR = /[\u0600-\u06FF]/;
 
@@ -347,7 +355,7 @@ function lessonOfVocab(spec, vocabRow) {
   }));
   const floor = VOCAB_FLOOR[spec.level] || 12;
   if (items.length < floor) die(spec.id + ' vocab ' + items.length + ' below the ' + spec.level + ' floor ' + floor);
-  if (items.length > 20) die(spec.id + ' vocab ' + items.length + ' exceeds what 5 Wortschatz steps can carry');
+  if (items.length > VOCAB_CEIL) die(spec.id + ' vocab ' + items.length + ' exceeds the ' + VOCAB_CEIL + '-word ceiling of one lesson');
   items.forEach(it => {
     if (!FAM.has(it.fam)) die(spec.id + ' bad vocab family ' + it.fam);
     if (AR.test(it.de) || AR.test(it.ex) || AR.test(it.err)) die(spec.id + ' Arabic inside German vocab: ' + it.de);

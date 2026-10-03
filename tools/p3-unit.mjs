@@ -70,6 +70,36 @@ console.log('\n— P3.2 lexical layer —\n');
   t('step cards built for the flashcard steps: ' + cardKeys.length, cardKeys.length >= 5 && Object.values(cards).every(v => v[0].de && v[0].ar && v[0].level));
 }
 
+/* ---------- A1 — the second slice of the lexical layer ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const rows = win.DW_SYLLABUS.lessons.filter(l => l.level === 'A1');
+  let floorOk = true, itemsOk = true, stepsOk = true, ownOk = true;
+  rows.forEach(row => {
+    const lesson = L[row.id];
+    const wl = lesson.wortschatz || [];
+    if (wl.length < 14) floorOk = false;
+    if (wl.length < Math.min(14, row.words.receptive)) ownOk = false;
+    if (lesson.schritte.filter(s => s.wortschatz).length < 3) stepsOk = false;
+    wl.forEach(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].forEach(k => { if (!it[k]) itemsOk = false; }));
+  });
+  t('A1: all ' + rows.length + ' lessons carry a word list on the 14-word floor', floorOk);
+  t('A1: every item is complete to the last field', itemsOk);
+  t('A1: every lesson has at least 3 Wortschatz steps', stepsOk);
+  t('A1: every row meets the smaller of the floor and its own declared count', ownOk);
+
+  const a1Tricks = [], a0Tricks = [];
+  rows.forEach(row => L[row.id].schritte.forEach(s => { if (s.merkhilfe) a1Tricks.push(s.merkhilfe.trick); }));
+  A0.concat(['a0-u1-l1']).forEach(id => (L[id] ? L[id].schritte : []).forEach(s => { if (s.merkhilfe) a0Tricks.push(s.merkhilfe.trick); }));
+  t('A1 tricks: ' + a1Tricks.length + ', all distinct and none borrowed from A0',
+    a1Tricks.length === 72 && new Set(a1Tricks).size === 72 && !a1Tricks.some(x => a0Tricks.includes(x)));
+
+  const cov = (win.DW_COVERAGE || []).find(c => c.level === 'A1');
+  t('coverage table published: A1 ' + cov.items + '/' + cov.declared + ' (' + Math.round(cov.ratio * 100) + '%)',
+    cov && cov.ratio >= 0.8);
+}
+
 /* ---------- the word table in the DOM, the missing forms, the cards ---------- */
 {
   const { window: win } = boot();
