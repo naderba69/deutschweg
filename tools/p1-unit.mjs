@@ -137,5 +137,30 @@ t('correct order is full credit', full.credit === 1 && full.failed === null);
 const buried = DW.order.score(orderItem, ['weil', 'ich', 'heute', 'habe', 'keine', 'Zeit']);
 t('verb buried in the Mittelfeld fails level 1', buried.credit === 0 && buried.failed === 1);
 
+/* The level-1 rule must read the declared Vorfeld, not token index 1: "Das Buch"
+   is one constituent written in two tokens. The old rule marked that sentence
+   wrong and logged a false error against the learner. */
+const mainItem = {
+  tokens: ['Das', 'Buch', 'liegt', 'auf', 'dem', 'Tisch'],
+  correct: ['Das', 'Buch', 'liegt', 'auf', 'dem', 'Tisch'],
+  clause: 'main', finite: 'liegt',
+  fields: { vorfeld: ['Das', 'Buch'], lsk: ['liegt'], mittelfeld: ['auf', 'dem', 'Tisch'], rsk: [], nachfeld: [] }
+};
+const mainFull = DW.order.score(mainItem, mainItem.correct);
+t('a two-token Vorfeld still scores full credit', mainFull.credit === 1);
+const mainMoved = DW.order.score(mainItem, ['Buch', 'Das', 'liegt', 'auf', 'dem', 'Tisch']);
+t('and a Vorfeld whose inside order is broken loses credit at level 4',
+  mainMoved.credit === 0.875 && mainMoved.failed === 4);
+
+/* Two clauses with the same subject: the second "Ich" must keep its own field. */
+const twoClauses = {
+  tokens: ['Ich', 'möchte', 'einen', 'Kaffee', 'Ich', 'will', 'schlafen'],
+  correct: ['Ich', 'möchte', 'einen', 'Kaffee', 'Ich', 'will', 'schlafen'],
+  clause: 'main', finite: 'möchte',
+  fields: { vorfeld: ['Ich'], lsk: ['möchte'], mittelfeld: ['einen', 'Kaffee', 'Ich', 'will', 'schlafen'], rsk: [], nachfeld: [] }
+};
+const twice = DW.order.score(twoClauses, twoClauses.correct);
+t('a repeated token does not borrow the other occurrence\'s field', twice.credit === 1);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

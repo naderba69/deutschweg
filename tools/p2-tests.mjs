@@ -16,7 +16,10 @@ function boot(state) {
   return dom;
 }
 function clickText(win, text) {
-  const b = [...win.document.querySelectorAll('button')].find(x => x.textContent.trim() === text);
+  /* exact label first; hub rows append their sub-label, so a prefix also counts */
+  const btns = [...win.document.querySelectorAll('button')];
+  const b = btns.find(x => x.textContent.trim() === text) ||
+    btns.find(x => x.textContent.trim().startsWith(text));
   if (!b) throw new Error('missing button: ' + text);
   b.click();
   return b;
@@ -72,7 +75,7 @@ console.log('\n— P2 surfaces —\n');
   });
   const home = win.document.querySelector('#view').textContent;
   t('T48 the next session names step 7 of 14 and the recap', /7 من 14/.test(home) && /التحية/.test(home));
-  clickText(win, 'خريطة القدرات');
+  clickText(win, 'الخريطة');
   const map = win.document.querySelector('#view').textContent;
   t('the map shows E1a and does not show a completion percentage', /E1a/.test(map) && /لا تُحتسب/.test(map) && !/%|87%|نسبة/.test(map));
   t('a capability inside the window is marked needs activation', /يحتاج تنشيطًا/.test(map));
@@ -80,6 +83,7 @@ console.log('\n— P2 surfaces —\n');
 
 {
   const { window: win } = boot();
+  clickText(win, 'الملف');
   clickText(win, 'توزيع الأسبوع');
   clickText(win, '8 ساعات');
   const txt = win.document.querySelector('#view').textContent;

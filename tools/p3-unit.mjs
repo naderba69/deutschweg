@@ -29,6 +29,11 @@ function clickText(win, text) {
 }
 
 const A0 = ['a0-u1-l2', 'a0-u1-l3', 'a0-u1-l4', 'a0-u1-l5', 'a0-u1-l6'];
+const A1_1 = ['a1-u1-l1', 'a1-u1-l2', 'a1-u1-l3', 'a1-u1-l4', 'a1-u1-l5', 'a1-u1-l6'];
+const A1_2 = ['a1-u2-l1', 'a1-u2-l2', 'a1-u2-l3', 'a1-u2-l4', 'a1-u2-l5', 'a1-u2-l6'];
+const A1_3 = ['a1-u3-l1', 'a1-u3-l2', 'a1-u3-l3', 'a1-u3-l4', 'a1-u3-l5', 'a1-u3-l6'];
+const A1_4 = ['a1-u4-l1', 'a1-u4-l2', 'a1-u4-l3', 'a1-u4-l4', 'a1-u4-l5', 'a1-u4-l6'];
+const A1_ALL = A1_1.concat(A1_2, A1_3, A1_4);
 const FORMS = ['mcq', 'cloze', 'matching', 'hoeren', 'sprechen', 'flashcard', 'wortstellung', 'schreiben'];
 
 console.log('\n— P3.2 lexical layer —\n');
@@ -68,6 +73,160 @@ console.log('\n— P3.2 lexical layer —\n');
   const cards = win.DW_STEP_CARDS || {};
   const cardKeys = Object.keys(cards);
   t('step cards built for the flashcard steps: ' + cardKeys.length, cardKeys.length >= 5 && Object.values(cards).every(v => v[0].de && v[0].ar && v[0].level));
+}
+
+/* ---------- A1 units 1–2: the port used the same gate the map promises ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const A1 = A1_ALL;
+  let fieldsOk = true, stepOk = true, groupOk = true, finiteOk = true, trickOk = true;
+  const a1Tricks = [];
+  A1.forEach(id => {
+    const lesson = L[id];
+    const wl = lesson.wortschatz || [];
+    if (wl.length < 14) fieldsOk = false;
+    wl.forEach(it => {
+      ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].forEach(k => { if (!it[k]) fieldsOk = false; });
+    });
+    const vsteps = lesson.schritte.filter(s => s.wortschatz);
+    if (lesson.schritte.length < 24 || lesson.schritte.length > 36) stepOk = false;
+    vsteps.forEach(s => { if (s.wortschatz.length < 2 || s.wortschatz.length > 4) groupOk = false; });
+    const order = lesson.schritte.find(s => s.frage && s.frage.art === 'wortstellung');
+    /* the finite verb stands right after the Vorfeld — one token or more */
+    if (!order) finiteOk = false;
+    else {
+      const f = order.frage;
+      const vf = (f.fields && f.fields.vorfeld) || [];
+      if (f.correct.indexOf(f.finite) !== vf.length) finiteOk = false;
+    }
+    lesson.schritte.forEach(s => { if (s.merkhilfe) a1Tricks.push(s.merkhilfe.trick); });
+  });
+  t('A1 units 1–4: every ported lesson carries ≥14 complete words', fieldsOk);
+  t('A1 units 1–4: every lesson keeps 24–36 steps', stepOk);
+  t('A1 units 1–4: Wortschatz steps carry 2–4 words each', groupOk);
+  t('A1 units 1–4: every word-order item puts the finite verb in position 2', finiteOk);
+  t('A1 units 1–4: 72 tricks, all distinct', a1Tricks.length === 72 && new Set(a1Tricks).size === 72);
+  /* the headline grammar of each unit must actually appear in its word list */
+  const has = (id, re) => (L[id].wortschatz || []).some(it => re.test(it.de + ' ' + it.ex));
+  t('unit 2 teaches möchte and will', has('a1-u2-l1', /möchte/) && has('a1-u2-l1', /will/));
+  t('unit 2 separates a prefix in the sentence it shows', has('a1-u2-l2', /stehe .*auf|rufe .*an|kaufe .*ein|fängt .*an/));
+  t('unit 2 states the halb trap', has('a1-u2-l3', /halb vier/));
+  t('unit 2 separates um, am and im', has('a1-u2-l4', /um neun/) && has('a1-u2-l4', /am Montag/) && has('a1-u2-l4', /Im Mai/));
+  t('unit 2 fixes the case after a place preposition', has('a1-u2-l5', /auf dem Tisch/) && has('a1-u2-l5', /an der Wand/));
+  t('unit 2 shows five plurals with an umlaut', ['Mütter', 'Bücher', 'Häuser', 'Stühle', 'Städte'].every(p => has('a1-u2-l6', new RegExp(p))));
+  t('unit 3 pairs the Perfekt bracket (haben) with a participle', has('a1-u3-l4', /habe .*gearbeitet/));
+  t('unit 3 pairs the Perfekt bracket (sein) with a participle', has('a1-u3-l5', /bin .*gegangen/));
+  t('unit 3 names both directions of home', has('a1-u3-l5', /nach Hause/) && has('a1-u3-l5', /zu Hause/));
+  t('unit 3 refuses an appointment with a fixed frame', has('a1-u3-l6', /Wie wäre es mit/) && has('a1-u3-l6', /entschuldige mich für/));
+  t('unit 3 keeps the separable prefix inside a routine', has('a1-u3-l3', /stehe um halb sieben auf|ziehe mich an|gehe um acht los/));
+  t('unit 3 states both states that take sein', has('a1-u3-l1', /bin satt/) && has('a1-u3-l1', /bin hungrig/));
+  t('unit 4 turns es gibt into an accusative door', has('a1-u4-l1', /Es gibt einen Balkon/));
+  t('unit 4 gives the pain frame with its Dativ owner', has('a1-u4-l2', /Mir tut der Kopf weh/));
+  t('unit 4 keeps the two directions apart', has('a1-u4-l2', /wehtun|weh/) && has('a1-u4-l2', /tut weh/) && has('a1-u4-l2', /tun die Beine weh/));
+  t('unit 4 gives the route in the Sie-imperative', has('a1-u4-l3', /Gehen Sie geradeaus/) && has('a1-u4-l3', /Bis zur Ampel/));
+  t('unit 4 keeps bis inside zu + Dativ', has('a1-u4-l3', /bis zum Platz/) && has('a1-u4-l3', /dem Kino gegenüber/));
+  t('unit 4 separates the two registers of a message', has('a1-u4-l4', /Liebe Anna/) && has('a1-u4-l4', /Sehr geehrte Frau Weber/));
+  t('unit 4 repairs the four declared A1 errors', has('a1-u4-l5', /Ich sehe den Mann/) && has('a1-u4-l5', /weil ich krank bin/) && has('a1-u4-l5', /Dann lerne ich/) && has('a1-u4-l5', /Ich bin zwanzig/));
+  t('unit 4 names the four parts each with its own time', has('a1-u4-l6', /Jeder Teil hat seine eigene Zeit/));
+  t('unit 4 states the no-compensation rule in its Merkhilfe', /rettet den anderen nicht/.test(JSON.stringify(L['a1-u4-l6'])));
+  t('unit 4 puts spelling inside speaking and names it a test item', has('a1-u4-l6', /buchstabieren/) && /Buchstabieren gehört zum Sprechen/.test(JSON.stringify(L['a1-u4-l6'])));
+
+  const a0Tricks = [];
+  A0.forEach(id => L[id].schritte.forEach(s => { if (s.merkhilfe) a0Tricks.push(s.merkhilfe.trick); }));
+  const all = new Set(a0Tricks.concat(a1Tricks));
+  t('no trick is copied between A0 and A1 (' + all.size + ' distinct)', all.size === a0Tricks.length + a1Tricks.length);
+  trickOk = true;
+  t('the A1 tricks are tied to a German form, not to a slogan',
+    a1Tricks.every(x => x.length > 6) && trickOk);
+
+  /* the engine's own scorer must accept every shipped sentence, and reject a
+     broken one: the level-1 rule reads the declared Vorfeld, not token index 1 */
+  const scorer = win.DW.order && win.DW.order.score;
+  const wrongs = [], rejects = [];
+  let scored = 0;
+  Object.keys(win.DW_LESSONS).forEach(lid => {
+    const lesson = win.DW_LESSONS[lid];
+    lesson.schritte.forEach(st => {
+      const f = st.frage;
+      if (!f || f.art !== 'wortstellung' || !f.correct) return;
+      scored++;
+      const good = scorer(f, f.correct.slice());
+      if (good.credit !== 1) wrongs.push(lid + ':' + st.id + ' (“' + f.correct.join(' ') + '” → credit ' + good.credit + ')');
+      const broken = f.correct.slice();
+      broken.push(broken.shift());
+      if (scorer(f, broken).credit === 1) rejects.push(lid + ':' + st.id);
+    });
+  });
+  t('the word-order scorer accepts all ' + scored + ' shipped sentences' + (wrongs.length ? ' — rejected: ' + wrongs.slice(0, 4).join(' · ') : ''), wrongs.length === 0);
+  t('and it still refuses a rotated sentence', rejects.length === 0);
+
+  const cov = win.DW_COVERAGE || [];
+  const a1 = cov.find(c => c.level === 'A1');
+  const ported = A1_ALL.filter(id => (L[id].wortschatz || []).length >= 14).length;
+  t('A1 coverage is published: every row ported and above the delivery gate (' + ported + ' lessons, ' + a1.items + '/' + a1.declared + ' = ' +
+    Math.round(a1.ratio * 100) + '%)', a1 && a1.items === 576 && a1.ratio >= 0.8 && ported === 24);
+}
+
+/* ---------- every A1 lesson opens in the app with its own word table ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const order = win.DW_SYLLABUS.lessons.map(l => l.id);
+  const S = win.DW.session.S;
+  let opened = 0, tables = 0, cards = 0;
+  const free = id => order.slice(0, order.indexOf(id)).map(x => ({ lessonId: x, state: 'completed' }));
+  const caps = id => order.slice(0, order.indexOf(id))
+    .map(x => ({ id: 'cap.' + x + '.core', evidence: 'E1', lastActive: '2026-10-02', history: [] }))
+    .concat([{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: '2026-10-02', history: [] }]);
+  A1_ALL.forEach(id => {
+    const steps = L[id].schritte;
+    const idx = steps.findIndex(s => s.frage && s.frage.art === 'flashcard');
+    if (idx < 0) return;
+    S.progress = free(id); S.capabilities = caps(id); S.srs = { cards: [] };
+    win.go('lesson');
+    const p = { lessonId: id, state: 'in_progress', completedSteps: steps.slice(0, idx).map(s => s.id), lastStepId: steps[idx].id };
+    S.progress = free(id).concat([p]);
+    win.go('lesson');
+    const rows = [...win.document.querySelectorAll('.vocab-row')];
+    if (rows.length && rows.length === (steps[idx].wortschatz || []).length) tables++;
+    clickText(win, 'أعرف');
+    if ((S.srs.cards || []).some(c => c.level === 'A1' && c.de === steps[idx].frage.de)) cards++;
+    opened++;
+  });
+  t('all 24 A1 lessons open in the app, each with its own word table (' + opened + '/' + tables + ')', opened === 24 && tables === 24);
+  t('and each lesson queues its own word at level A1 (' + cards + '/24)', cards === 24);
+}
+
+/* ---------- an A1 lesson runs in the DOM with its word table ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const id = 'a1-u1-l1';
+  const lesson = L[id];
+  const steps = lesson.schritte;
+  const order = win.DW_SYLLABUS.lessons.map(l => l.id);
+  const before = order.slice(0, order.indexOf(id));
+  const S = win.DW.session.S;
+  S.progress = before.map(x => ({ lessonId: x, state: 'completed' }));
+  S.capabilities = before.map(x => ({ id: 'cap.' + x + '.core', evidence: 'E1', lastActive: '2026-10-02', history: [] }))
+    .concat([{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: '2026-10-02', history: [] }]);
+  win.go('lesson');
+  /* the verb group opens first; take the card step whose head word is a noun,
+     because the article is part of what a German noun must always be shown with */
+  const idx = steps.findIndex(s => s.frage && s.frage.art === 'flashcard' && /^(der|die|das)\s/.test(s.frage.de));
+  const p = (S.progress || []).find(x => x.lessonId === id) || { lessonId: id, state: 'in_progress' };
+  p.completedSteps = steps.slice(0, idx).map(s => s.id);
+  p.lastStepId = steps[idx].id;
+  S.progress = (S.progress || []).filter(x => x.lessonId !== id).concat([p]);
+  win.go('lesson');
+  const rows = [...win.document.querySelectorAll('.vocab-row')];
+  const texts = rows.map(r => r.querySelector('.vocab-de').textContent);
+  t('the A1 word table opens with a row per word, and every noun carries its article',
+    rows.length === steps[idx].wortschatz.length && texts.every(x => /^(der|die|das)\s/.test(x)));
+  clickText(win, 'أعرف');
+  const card = (S.srs.cards || []).find(c => c.de === steps[idx].frage.de);
+  t('an A1 word enters the queue with level A1', !!card && card.level === 'A1');
 }
 
 /* ---------- the word table in the DOM, the missing forms, the cards ---------- */
@@ -161,6 +320,32 @@ console.log('\n— P3.2 lexical layer —\n');
     right.click();
   }
   t('matching pairs the word list with its glosses', ok && !!win.document.querySelector('.layer.good'));
+}
+
+/* ---------- the card lookup prefers the lesson's own words ---------- */
+{
+  const { window: win } = boot();
+  const L = win.DW_LESSONS;
+  const id = 'a0-u1-l6';
+  const steps = L[id].schritte;
+  const order = win.DW_SYLLABUS.lessons.map(l => l.id);
+  const before = order.slice(0, order.indexOf(id));
+  const S = win.DW.session.S;
+  S.progress = before.map(x => ({ lessonId: x, state: 'completed' }));
+  S.capabilities = before.map(x => ({ id: 'cap.' + x + '.core', evidence: 'E1', lastActive: '2026-10-02', history: [] }))
+    .concat([{ id: 'cap.a0.sprechen.greeting20', evidence: 'E1', lastActive: '2026-10-02', history: [] }]);
+  win.go('lesson');
+  /* s12 exists in every lesson; the hand-written bank also has an s12 (Danke,
+     Bitte, Freut mich). The lesson's own word must win. */
+  const idx = steps.findIndex(s => s.id === 's12' && s.frage && s.frage.art === 'flashcard');
+  const p = { lessonId: id, state: 'in_progress', completedSteps: steps.slice(0, idx).map(s => s.id), lastStepId: steps[idx].id };
+  S.progress = (S.progress || []).filter(x => x.lessonId !== id).concat([p]);
+  win.go('lesson');
+  const beforeCount = (S.srs.cards || []).length;
+  clickText(win, 'أعرف');
+  const added = (S.srs.cards || []).slice(beforeCount);
+  t('a card step whose id collides with the bank still queues the lesson word: ' +
+    added.map(c => c.de).join(', '), added.length === 1 && added[0].de === steps[idx].frage.de);
 }
 
 /* ---------- the engine still answers honestly after the new forms ---------- */

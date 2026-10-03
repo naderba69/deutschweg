@@ -19,12 +19,22 @@ function boot(state) {
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const stateOf = win => (win.DW && win.DW.session && win.DW.session.S) || JSON.parse(win.localStorage.getItem('deutschweg_v2') || '{}');
 function clickText(win, text) {
-  const b = [...win.document.querySelectorAll('button')].find(x => x.textContent.trim() === text);
+  /* exact label first; hub rows append their sub-label, so a prefix also counts */
+  const btns = [...win.document.querySelectorAll('button')];
+  const b = btns.find(x => x.textContent.trim() === text) ||
+    btns.find(x => x.textContent.trim().startsWith(text));
   if (!b) throw new Error('missing button: ' + text);
   b.click();
   return b;
 }
 function today() { return new Date().toISOString().slice(0, 10); }
+/* the training tools live in the training tab (dirB bottom navigation);
+   this opens the tab and then the tool, so every assertion below is unchanged */
+function openTool(win, label) {
+  const tab = [...win.document.querySelectorAll('#tabbar button')].find(b => b.textContent.trim() === 'تدريب');
+  if (tab && !tab.classList.contains('on')) tab.click();
+  return clickText(win, label);
+}
 
 let pass = 0, fail = 0;
 const t = (n, c) => { if (c) { pass++; console.log('  ✓', n); } else { fail++; console.log('  ✗', n); } };
@@ -73,7 +83,7 @@ console.log('\n— P1 acceptance —\n');
 /* T16 specific mcq feedback */
 {
   const { window: win } = boot();
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   t('T33 mcq renderer opens offline', art(win) === 'mcq' && win.document.querySelector('.opt'));
   [...win.document.querySelectorAll('.opt')].find(b => b.textContent === 'وونونغ').click();
   const txt = win.document.querySelector('#view').textContent;
@@ -83,7 +93,7 @@ console.log('\n— P1 acceptance —\n');
 /* T17 cloze near-miss */
 {
   const { window: win } = boot();
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   solveCurrent(win); clickText(win, 'التالي');
   t('cloze renderer', art(win) === 'cloze');
   win.document.querySelector('.inp').value = 'heißen';
@@ -95,7 +105,7 @@ console.log('\n— P1 acceptance —\n');
 /* T18 wortstellung partial credit */
 {
   const { window: win } = boot();
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   solveCurrent(win); clickText(win, 'التالي');
   solveCurrent(win); clickText(win, 'التالي');
   t('wortstellung renderer', art(win) === 'wortstellung');
@@ -111,7 +121,7 @@ console.log('\n— P1 acceptance —\n');
 /* T19 hören triage, transcript after answering only */
 {
   const { window: win } = boot();
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   for (let i = 0; i < 4; i++) { solveCurrent(win); clickText(win, 'التالي'); }
   t('T33 hören renderer', art(win) === 'hoeren');
   const audio = win.document.querySelector('audio');
@@ -142,7 +152,7 @@ console.log('\n— P1 acceptance —\n');
   }
   win.MediaRecorder = MR;
   win.navigator.mediaDevices = { getUserMedia: async () => ({ getTracks: () => [{ stop() {} }] }) };
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   for (let i = 0; i < 5; i++) { solveCurrent(win); clickText(win, 'التالي'); }
   t('sprechen renderer', art(win) === 'sprechen');
   clickText(win, '● سجّل الآن');
@@ -163,7 +173,7 @@ console.log('\n— P1 acceptance —\n');
 /* T21 + T56 schreiben */
 {
   const { window: win } = boot();
-  clickText(win, 'كتابة');
+  openTool(win, 'كتابة');
   const txt0 = win.document.querySelector('#view').textContent;
   const labels = ['نقاط المحتوى', 'أدوات الربط', 'تنويع الجمل', 'الحروف الكبيرة', 'علامات الترقيم'];
   t('T21 five-point checklist and word count', labels.every(l => txt0.includes(l)) && /عدد الكلمات/.test(txt0));
@@ -192,7 +202,7 @@ console.log('\n— P1 acceptance —\n');
       sentence: { box: 0, due: '2099-01-01', reviews: 0 }
     }], intervals: [0, 1, 2, 4, 7, 15, 30], leitner: true, reviewedToday: 0, reviewedOn: due }
   });
-  clickText(win, 'بطاقات المراجعة');
+  openTool(win, 'بطاقات المراجعة');
   clickText(win, 'أعرف');
   const st = stateOf(win);
   const card = st.srs.cards.find(c => c.id === 'card_new');
@@ -212,7 +222,7 @@ console.log('\n— P1 acceptance —\n');
     }], intervals: [0, 1, 2, 4, 7, 15, 30], leitner: true, reviewedToday: 0, reviewedOn: due }
   });
   const win = dom.window;
-  clickText(win, 'بطاقات المراجعة');
+  openTool(win, 'بطاقات المراجعة');
   t('SRS shows the receptive direction first', /استقبال/.test(win.document.querySelector('#view').textContent));
   await sleep(1700);
   clickText(win, 'أعرف');
@@ -230,7 +240,7 @@ console.log('\n— P1 acceptance —\n');
     sentence: { box: 0, due: '2099-01-01', reviews: 0 }
   }));
   const { window: win } = boot({ srs: { cards, intervals: [0, 1, 2, 4, 7, 15, 30], leitner: true, reviewedToday: 0, reviewedOn: due } });
-  clickText(win, 'بطاقات المراجعة');
+  openTool(win, 'بطاقات المراجعة');
   const txt = win.document.querySelector('#view').textContent;
   t('T30 cap of 30 is stated against 35 due', /30 من 35/.test(txt) || (/30/.test(txt) && /35/.test(txt)));
 }
@@ -243,7 +253,7 @@ console.log('\n— P1 acceptance —\n');
     status: 'live', streak: 10 - i, due: today(), reviews: [], examples: [{ wrong: 'falsch' + i, right: 'richtig' + i }]
   }));
   const { window: win } = boot({ errorLedger, indicators: { R1: 10, R2: null, R3: 0, R4: null, R5: null, R6: { productive: 0, chunks: 0 } } });
-  clickText(win, 'هجوم الآن');
+  openTool(win, 'هجوم الآن');
   const txt = win.document.querySelector('#view').textContent;
   t('T24 Attack now builds a drill of 10 live errors', /1 من 10/.test(txt) && /10 بنود/.test(txt));
 }
@@ -257,7 +267,7 @@ console.log('\n— P1 acceptance —\n');
       examples: [{ wrong: 'Jahre', right: 'Jahren' }]
     }]
   });
-  clickText(win, 'دفتر الأخطاء');
+  openTool(win, 'دفتر الأخطاء');
   clickText(win, 'راجع');
   win.document.querySelector('.inp').value = 'nope';
   clickText(win, 'تحقّق');
@@ -281,7 +291,7 @@ console.log('\n— P1 acceptance —\n');
       examples: [{ wrong: 'Jahre', right: 'Jahren' }]
     }]
   });
-  clickText(win, 'دفتر الأخطاء');
+  openTool(win, 'دفتر الأخطاء');
   t('seeded live error is R1', stateOf(win).indicators.R1 === 1);
   clickText(win, 'راجع');
   win.document.querySelector('.inp').value = 'Jahren';
@@ -299,10 +309,10 @@ console.log('\n— P1 acceptance —\n');
 /* T27 no duplicate lines */
 {
   const { window: win } = boot();
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   [...win.document.querySelectorAll('.opt')].find(b => b.textContent === 'وونونغ').click();
   clickText(win, '‹ اليوم');
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   [...win.document.querySelectorAll('.opt')].find(b => b.textContent === 'وونونغ').click();
   const lines = (stateOf(win).errorLedger || []).filter(e => e.wrong === 'وونونغ');
   t('T27 same error increments streak instead of adding a line', lines.length === 1 && lines[0].streak >= 1);
@@ -322,7 +332,7 @@ console.log('\n— P1 acceptance —\n');
 /* T29 recording metadata */
 {
   const { window: win } = boot();
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   for (let i = 0; i < 5; i++) { solveCurrent(win); clickText(win, 'التالي'); }
   const ok = win.document.querySelector('.ok-btn');
   ok.disabled = false;
@@ -341,7 +351,7 @@ console.log('\n— P1 acceptance —\n');
 /* T23 drill timeouts drop R2. T28 capabilities. This block is slow on purpose: two real 3-second timeouts. */
 {
   const { window: win } = boot();
-  clickText(win, 'تدريب الثلاث ثوانٍ');
+  openTool(win, 'تدريب الثلاث ثوانٍ');
   clickText(win, 'ابدأ التمرين');
   const bank = win.DW.BANK.drillItems('aussprache');
   for (let i = 0; i < 5; i++) {
@@ -363,7 +373,7 @@ console.log('\n— P1 acceptance —\n');
   t('first measure is a clean R2', afterFirst.indicators.R2 === 1);
   t('T28 ten answers created real E1 records', (afterFirst.capabilities || []).length >= 10 && afterFirst.capabilities.every(c => c.evidence === 'E1' || c.evidence === 'E1a'));
   clickText(win, 'إلى اليوم');
-  clickText(win, 'تدريب الثلاث ثوانٍ');
+  openTool(win, 'تدريب الثلاث ثوانٍ');
   clickText(win, 'ابدأ القياس');
   const start = Date.now();
   let seen = false;
@@ -389,7 +399,7 @@ console.log('\n— P1 acceptance —\n');
 /* T33 remaining renderers + no remote asset */
 {
   const { window: win } = boot();
-  clickText(win, 'ورشة الأشكال');
+  openTool(win, 'ورشة الأشكال');
   const seen = [];
   for (let i = 0; i < 8; i++) {
     seen.push(art(win));

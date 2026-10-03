@@ -96,33 +96,72 @@ read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 article
   ? ok('pronunciation items on every level')
   : bad('pronunciation syllabus incomplete');
 
-/* P3.2 coverage gate. The map row declares how many receptive items a level
-   promises; the authored word lists are what exists. A level that has started
-   the lexical layer must reach 80% of its own declaration. A level at 0% is
-   either not started (printed) or a listed exception. */
+/* P3.2 coverage gate. Two promises are checked separately, because they fail
+   separately:
+     (1) per lesson — a lesson that carries a word list must carry at least 80%
+         of what its own map row declares. This is the anti-inflation gate: a
+         ported lesson may not be thinner than its promise.
+     (2) per level — a level whose every row is ported is claimed as delivered,
+         and delivery needs 80% of the level declaration. A level that is still
+         mid-port is printed with its running number and explicitly not claimed.
+   This is stricter than the old single rule: the old one could hide a thin
+   lesson inside a fat level, and it forbade honest incremental porting. */
 {
   const cat = {};
   new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(cat);
   const floors = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
-  const have = {}, declaredN = {}, ported = {};
+  /* The hand-written opening lesson predates the lexical layer. The exception is
+     declared twice on purpose — here and in tools/validate-lesson.js — and both
+     printers name it, so it can never pass as a ported lesson. */
+  const EXEMPT = new Set(['a0-u1-l1']);
+  const have = {}, declaredN = {}, rowOf = {};
+  lessons.forEach(l => {
+    declaredN[l.level] = (declaredN[l.level] || 0) + ((l.words && l.words.receptive) || 0);
+    rowOf[l.id] = (l.words && l.words.receptive) || 0;
+  });
+  const listOf = {}, thin = [], portedIds = {};
   Object.keys(cat.DW_LESSONS || {}).forEach(id => {
     const L = cat.DW_LESSONS[id];
     const wl = L.wortschatz || [];
     have[L.level] = (have[L.level] || 0) + wl.length;
-    if (wl.length) ported[L.level] = (ported[L.level] || 0) + 1;
-    if (wl.length && wl.length < (floors[L.level] || 12)) bad('word list below the floor in ' + id);
+    if (!wl.length) return;
+    portedIds[id] = true;
+    if (wl.length < (floors[L.level] || 12)) bad('word list below the floor in ' + id);
+    const promise = rowOf[id] || 0;
+    if (promise) {
+      const own = wl.length / promise;
+      if (own < 0.8) thin.push(id + ' ' + wl.length + '/' + promise + ' (' + Math.round(own * 100) + '%)');
+    }
   });
-  lessons.forEach(l => { declaredN[l.level] = (declaredN[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
+  thin.length === 0
+    ? ok('every ported lesson carries ≥80% of its own map row')
+    : bad('ported lessons below 80% of their own row: ' + thin.join(', '));
   console.log('  — lexical coverage (authored items vs the map declaration) —');
   Object.keys(declaredN).forEach(level => {
     const h = have[level] || 0, d = declaredN[level] || 0;
     const ratio = d ? h / d : 0;
-    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' + (ported[level] || 0) + ' lessons ported');
-    if (ratio > 0 && ratio < 0.8) bad(level + ' lexical coverage ' + Math.round(ratio * 100) + '% is below the 80% gate once started');
+    const rows = lessons.filter(l => l.level === level);
+    const ported = rows.filter(l => portedIds[l.id]).length;
+    const exempt = rows.filter(l => EXEMPT.has(l.id)).length;
+    const missing = rows.filter(l => !portedIds[l.id] && !EXEMPT.has(l.id)).length;
+    const delivered = missing === 0;
+    console.log('    ' + level + ': ' + h + '/' + d + ' (' + Math.round(ratio * 100) + '%) · ' +
+      ported + '/' + rows.length + ' lessons ported' +
+      (exempt ? ' · ' + exempt + ' declared exception' : '') +
+      (delivered ? ' · DELIVERED' : ' · mid-port (not claimed)'));
+    if (delivered && ratio < 0.8) bad(level + ' is fully ported but its coverage ' + Math.round(ratio * 100) + '% is below the 80% delivery gate');
+    if (!delivered && ratio > 0) ok(level + ' is mid-port at ' + Math.round(ratio * 100) + '% and is not claimed as delivered');
   });
-  (have.A0 || 0) >= Math.round(0.8 * (declaredN.A0 || 0))
-    ? ok('A0 lexical coverage meets the 80% gate')
-    : bad('A0 lexical coverage below the gate');
+  {
+    const rows = lessons.filter(l => l.level === 'A0');
+    const ported = rows.filter(l => portedIds[l.id]).length;
+    const exempt = rows.filter(l => EXEMPT.has(l.id)).length;
+    const missing = rows.filter(l => !portedIds[l.id] && !EXEMPT.has(l.id)).length;
+    const ratio = (have.A0 || 0) / (declaredN.A0 || 1);
+    (missing === 0 && ratio >= 0.8)
+      ? ok('A0 lexical coverage meets the 80% gate (' + ported + '/' + rows.length + ' ported, ' + exempt + ' declared exception)')
+      : bad('A0 lexical coverage below the gate');
+  }
 }
 
 ['a0-u1-l1.js', 'catalog.js'].forEach(name => {

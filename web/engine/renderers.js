@@ -50,13 +50,21 @@
     const finIdx = given.indexOf(finite);
     const levels = [];
     let l1 = false;
-    if (clause === 'main') l1 = finIdx === 1;
+    /* Level 1 is "does the finite verb stand in the left bracket?", and the left
+       bracket sits after the Vorfeld. The Vorfeld is a constituent, not a token:
+       in "Das Buch liegt auf dem Tisch" it is two tokens. Reading the declared
+       Vorfeld is the only correct test — assuming index 1 marks a perfectly
+       built sentence wrong and logs a false error against the learner. When an
+       item declares no fields (older workshop items) the single-token case is
+       the fallback. */
+    const vorfeldLen = Array.isArray(fields.vorfeld) ? fields.vorfeld.length : 1;
+    if (clause === 'main') l1 = finIdx === vorfeldLen;
     else l1 = finIdx === given.length - 1 || finIdx === 2;
     levels.push({ id: 1, name: 'موضع الفعل', pass: l1 });
     if (!l1) {
       return {
         credit: 0, failed: 1, levels,
-        message: 'الفعل ليس في موضعه. في الجملة الرئيسية هو الثاني. وبعد weil أو dass أو wenn أو obwohl يكون الأخير، أو — وهذا الخطأ الشائع — الثاني بعد أداة الربط.'
+        message: 'الفعل ليس في الموضع الثاني للجملة. بعد المكوّن الأول (Vorfeld) يأتي الفعل المصرّف مباشرة، سواء كان المكوّن كلمة واحدة («Ich») أو أكثر («Das Buch»). وبعد weil أو dass أو wenn أو obwohl يكون الفعل في الآخر.'
       };
     }
     let l2 = true;
@@ -74,19 +82,38 @@
     levels.push({ id: 2, name: 'القوس الجُملي', pass: l2 });
     if (!l2) return { credit: 0.5, failed: 2, levels, message: l2msg };
 
-    const fieldOf = {};
-    Object.keys(fields).forEach(name => (fields[name] || []).forEach(t => { fieldOf[t] = name; }));
-    const order = ['vorfeld', 'lsk', 'mittelfeld', 'rsk', 'nachfeld'];
-    let lastRank = -1;
-    let l3 = true;
-    given.forEach(t => {
-      const rank = order.indexOf(fieldOf[t] || '');
-      if (rank < 0 || rank < lastRank) l3 = false;
-      if (rank >= 0) lastRank = rank;
+    /* Field attribution must survive a repeated token. Two clauses can both
+       start with "Ich", and mapping fields by token text would then read the
+       first "Ich" as Mittelfeld and mark a correct sentence wrong. Each token is
+       therefore matched to its own occurrence in the canonical sentence. */
+    const FIELD_ORDER = ['vorfeld', 'lsk', 'mittelfeld', 'rsk', 'nachfeld'];
+    const canon = [];
+    FIELD_ORDER.forEach(name => (fields[name] || []).forEach(t => canon.push({ t: t, f: name })));
+    const rank = {}, occ = {};
+    canon.forEach((slot, i) => {
+      if (rank[slot.f] === undefined) rank[slot.f] = FIELD_ORDER.indexOf(slot.f);
+      const k = occ[slot.t] || 0;
+      occ[slot.t] = k + 1;
+      slot.key = slot.t + '#' + k;
     });
-    order.forEach(name => {
+    const byKey = {};
+    canon.forEach(slot => { byKey[slot.key] = slot; });
+    const seen = {};
+    const mapped = given.map(t => {
+      const k = seen[t] || 0;
+      seen[t] = k + 1;
+      return byKey[t + '#' + k] || null;
+    });
+    let l3 = true;
+    let lastRank = -1;
+    mapped.forEach(slot => {
+      if (!slot) { l3 = false; return; }
+      if (rank[slot.f] < lastRank) l3 = false;
+      lastRank = rank[slot.f];
+    });
+    FIELD_ORDER.forEach(name => {
       const expect = (fields[name] || []).slice().sort().join('|');
-      const got = given.filter(t => fieldOf[t] === name).sort().join('|');
+      const got = given.filter((t, i) => mapped[i] && mapped[i].f === name).sort().join('|');
       if (expect !== got) l3 = false;
     });
     levels.push({ id: 3, name: 'ترتيب الحقول', pass: l3 });
@@ -94,9 +121,9 @@
       return { credit: 0.75, failed: 3, levels, message: 'ترتيب الحقول غير سليم: Vorfeld ثم القوس الأيسر ثم Mittelfeld ثم القوس الأيمن ثم Nachfeld.' };
     }
     let l4 = true;
-    order.forEach(name => {
+    FIELD_ORDER.forEach(name => {
       const expect = (fields[name] || []).join('|');
-      const got = given.filter(t => fieldOf[t] === name).join('|');
+      const got = given.filter((t, i) => mapped[i] && mapped[i].f === name).join('|');
       if (expect !== got) l4 = false;
     });
     levels.push({ id: 4, name: 'الترتيب داخل الحقل', pass: l4 });
@@ -108,12 +135,22 @@
 
   function paintFields(item) {
     const fields = item.fields || {};
-    const fieldOf = {};
-    Object.keys(fields).forEach(name => (fields[name] || []).forEach(t => { fieldOf[t] = name; }));
+    /* same occurrence rule as the scorer: a token that appears twice must be
+       coloured after its own place in the sentence, not after its text */
+    const queue = {};
+    ['vorfeld', 'lsk', 'mittelfeld', 'rsk', 'nachfeld'].forEach(name => { queue[name] = (fields[name] || []).slice(); });
     const wrap = el('div', 'fields');
     wrap.setAttribute('dir', 'ltr');
     (item.correct || []).forEach(tok => {
-      const name = fieldOf[tok] || 'mittelfeld';
+      let name = 'mittelfeld';
+      const order = ['vorfeld', 'lsk', 'mittelfeld', 'rsk', 'nachfeld'];
+      for (let i = 0; i < order.length; i++) {
+        if (queue[order[i]].length && queue[order[i]][0] === tok) {
+          queue[order[i]].shift();
+          name = order[i];
+          break;
+        }
+      }
       const s = el('span', 'chip f-' + name, tok);
       wrap.appendChild(s);
     });

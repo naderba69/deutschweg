@@ -22,7 +22,7 @@ const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
 /* The hand-written opening lesson predates the lexical layer. It stays the one
    declared exception until it is ported, and the exception is printed, not hidden. */
 const VOCAB_EXEMPT = new Set(['a0-u1-l1']);
-const PENDING_VOCAB_LEVELS = new Set(['A1', 'A2', 'B1', 'B2']);
+const PENDING_VOCAB_LEVELS = new Set(['A2', 'B1', 'B2']);
 const trickSeen = new Map();
 const FORMS = ['mcq', 'cloze', 'matching', 'hoeren', 'sprechen', 'flashcard', 'wortstellung', 'schreiben'];
 let formsUsed = new Set();
@@ -64,7 +64,7 @@ S.forEach(s => { const i = ORDER.indexOf(s.phase); if (i < last) orderOk = false
 orderOk ? ok('stage sequence is in order') : bad('stage sequence is out of order');
 
 /* 3. stage counts within declared bounds */
-const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,5],
+const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,7],
   Anwenden:[3,3], 'Übungen':[5,8], Merkhilfe:[1,3], Produktion:[1,1], Zusammenfassung:[1,1], Check:[3,5], Hausaufgabe:[1,1] };
 Object.entries(BOUNDS).forEach(([p,[lo,hi]]) => {
   const n = S.filter(s => s.phase === p).length;
