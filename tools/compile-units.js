@@ -17,10 +17,18 @@ const FAM = new Set([
 ]);
 
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
-   five Wortschatz steps carrying the real word list, and the forms the older
+   Wortschatz steps carrying the real word list, and the forms the older
    generator never used (flashcard, word order, writing). */
-const VOCAB = require('./vocab-a0a1');
+const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'));
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
+
+/* The Wortschatz stage carries 2–4 words per step (PROMPT §8.3) and its step
+   ceiling was 5, so a lesson could hold 20 words. §13.9's A1 rows declare 28
+   receptive words each. At 4 words per step that is 7 steps, so the ceiling was
+   raised 5 → 7 for the ported levels (amendment A1-L1, DECISIONS-PENDING.md).
+   The words-per-step rule is untouched, A0 still ships 5 steps, and 28 is the
+   hard ceiling of one lesson word list. */
+const VOCAB_CEIL = 28;
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 const AR = /[\u0600-\u06FF]/;
 
@@ -347,7 +355,7 @@ function lessonOfVocab(spec, vocabRow) {
   }));
   const floor = VOCAB_FLOOR[spec.level] || 12;
   if (items.length < floor) die(spec.id + ' vocab ' + items.length + ' below the ' + spec.level + ' floor ' + floor);
-  if (items.length > 20) die(spec.id + ' vocab ' + items.length + ' exceeds what 5 Wortschatz steps can carry');
+  if (items.length > VOCAB_CEIL) die(spec.id + ' vocab ' + items.length + ' exceeds the ' + VOCAB_CEIL + '-word ceiling of one lesson');
   items.forEach(it => {
     if (!FAM.has(it.fam)) die(spec.id + ' bad vocab family ' + it.fam);
     if (AR.test(it.de) || AR.test(it.ex) || AR.test(it.err)) die(spec.id + ' Arabic inside German vocab: ' + it.de);
@@ -436,9 +444,18 @@ function lessonOfVocab(spec, vocabRow) {
 
   /* Wortschatz: the real word list, 2–4 words per step, each word in a sentence.
      The forms rotate so the list is met four different ways, never as a list. */
-  const size = Math.max(2, Math.min(4, Math.ceil(items.length / 5)));
+  /* Balanced grouping: at most 4 words per step (PROMPT §8.3) and never fewer
+     than 2 — a fixed stride left a one-word tail (17 words → 4·4·4·4·1), which
+     is a list, not a step. Steps are distributed evenly instead. */
+  const want = Math.max(1, Math.ceil(items.length / 4));
+  const nGroups = Math.max(1, Math.min(want, Math.floor(items.length / 2)));
+  const base = Math.floor(items.length / nGroups), extra = items.length % nGroups;
   const groups = [];
-  for (let i = 0; i < items.length; i += size) groups.push(items.slice(i, i + size));
+  for (let k = 0, at = 0; k < nGroups; k++) {
+    const take = base + (k < extra ? 1 : 0);
+    groups.push(items.slice(at, at + take));
+    at += take;
+  }
   groups.forEach((group, gi) => {
     const form = gi % 4;
     const anchor = group[Math.min(1, group.length - 1)];
@@ -755,7 +772,7 @@ specs.forEach((spec, i) => {
 
 const ids = Object.keys(lessons);
 console.log('compiled lessons', ids.length, 'sentences', bank.length);
-if (ids.length !== 119) die('expected 119 lessons, got ' + ids.length);
+if (ids.length !== 125) die('expected 125 lessons, got ' + ids.length);
 if (bank.length < 500 || bank.length > 800) die('sentence bank ' + bank.length + ' outside 500–800');
 
 /* P3.2 coverage against the map's own declared receptive targets. The map row

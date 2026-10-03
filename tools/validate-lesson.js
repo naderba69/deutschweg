@@ -63,8 +63,12 @@ let last = -1, orderOk = true;
 S.forEach(s => { const i = ORDER.indexOf(s.phase); if (i < last) orderOk = false; last = i; });
 orderOk ? ok('stage sequence is in order') : bad('stage sequence is out of order');
 
-/* 3. stage counts within declared bounds */
-const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,5],
+/* 3. stage counts within declared bounds.
+   Wortschatz: §8.3 allows 3–5 steps at 2–4 words each. Amendment A1-L1
+   (DECISIONS-PENDING.md) raises the step ceiling to 7 because §13.9's A1 rows
+   declare 28 receptive words per lesson and the words-per-step rule is not
+   negotiable. A0 still ships 5; nothing else changed. */
+const BOUNDS = { Ziel:[1,1], 'Aufwärmen':[1,1], Einstieg:[1,1], 'Erklärung':[3,7], Wortschatz:[3,7],
   Anwenden:[3,3], 'Übungen':[5,8], Merkhilfe:[1,3], Produktion:[1,1], Zusammenfassung:[1,1], Check:[3,5], Hausaufgabe:[1,1] };
 Object.entries(BOUNDS).forEach(([p,[lo,hi]]) => {
   const n = S.filter(s => s.phase === p).length;

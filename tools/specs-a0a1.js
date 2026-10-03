@@ -581,4 +581,125 @@ module.exports = [
     'Es gibt vier Teile.',
     'Sage morgen die vier Teile laut.',
     'غدًا سمِّ الأقسام الأربعة بصوت عالٍ.')
+,
+
+  U('a1-u5-l1', 'A1', 'البريد والهاتف', 'Post und Telefon', 'lexik-kollokation',
+    'Am Ende schreibst du eine Postkarte und verstehst eine Ansage',
+    'في النهاية تكتب بطاقة بريد وتفهم نداءً مسجّلًا.',
+    [
+      ['der Absender steht oben', 'المرسل أعلى البطاقة والمستلم تحتها', 'العكس يجعل الرسالة ترجع', 'der Empfänger steht oben', 'الترتيب ثابت في البريد الألماني'],
+      ['anklicken am Ende', 'الفعل المنفصل يبقى قطعة واحدة', 'الفصل الخاطئ يُفقد المعنى', 'klicken an', 'anklicken لا تُقسَم في النهاية'],
+      ['Auf Wiederhören am Telefon', 'في الهاتف تحية أخرى', 'Wiedersehen للوجوه فقط', 'Auf Wiedersehen am Telefon', 'التحية تتبع الوسيلة'],
+      ['im Internet', 'الإنترنت يأخذ im', 'in dem ركيكة هنا', 'in dem Internet', 'im هي الصيغة الثابتة']
+    ],
+    [
+      ['Ich schreibe eine E-Mail.', 'أكتب بريدًا إلكترونيًا', 'Ich schreibe ein E-Mail', 'E-Mail مؤنث: eine', 'eine'],
+      ['Der Absender steht auf dem Brief.', 'المرسل على الرسالة', 'Der Sender steht auf dem Brief', 'Absender لا Sender', 'Absender'],
+      ['Bitte kreuzen Sie an.', 'من فضلك علّم في المربع', 'Bitte klicken Sie an', 'ankreuzen للاستمارة', 'kreuzen'],
+      ['Sprechen Sie auf den Anrufbeantworter.', 'تحدّث إلى جهاز الرد', 'Sprechen Sie auf dem Anrufbeantworter', 'الحركة: auf den', 'Anrufbeantworter']
+    ],
+    'Ich schreibe eine E-Mail und schicke ein Fax.',
+    'Ich schreibe eine E-Mail.',
+    'Schreibe morgen eine kurze E-Mail auf Deutsch.',
+    'غدًا اكتب بريدًا إلكترونيًا قصيرًا بالألمانية.'),
+
+  U('a1-u5-l2', 'A1', 'المصرف والعمل', 'Bank und Arbeit', 'präposition',
+    'Am Ende erledigst du am Schalter und an der Kasse alles selbst',
+    'في النهاية تنجز عند الشبّاك والدفع كل شيء بنفسك.',
+    [
+      ['bei der Firma', 'العمل عند مؤسسة يأخذ bei', 'in Firma خطأ شائع', 'in der Firma arbeiten', 'bei لا in مع جهة العمل'],
+      ['am Schalter', 'عند الشبّاك am لا in', 'الموضع المحدد يأخذ an', 'in dem Schalter', 'am Schalter هي الصيغة'],
+      ['auf das Konto', 'المال يذهب إلى الحساب بـ auf', 'in das Konto خطأ', 'in das Konto', 'auf das Konto'],
+      ['ab acht Uhr offen', 'البداية من وقت: ab', 'seit للماضي المستمر', 'seit acht Uhr geöffnet', 'ab للمستقبل والفتح']
+    ],
+    [
+      ['Ich arbeite bei Siemens.', 'أعمل في سيمنس', 'Ich arbeite in Siemens', 'bei للشركة', 'bei'],
+      ['Ich gehe zum Schalter.', 'أذهب إلى الشبّاك', 'Ich gehe zu dem Schalter', 'zum هي الشائع', 'zum'],
+      ['Ich fülle das Formular aus.', 'أملأ الاستمارة', 'Ich fülle das Formular', 'المنفصل يحتاج aus', 'aus'],
+      ['Ich bin arbeitslos.', 'أنا عاطل عن العمل', 'Ich bin arbeitslos gemacht', 'الصفة تكفي', 'arbeitslos']
+    ],
+    'Ich arbeite bei einer Firma und gehe zum Schalter.',
+    'Ich arbeite bei Siemens.',
+    'Fülle morgen eine echte Adresse auf Deutsch aus.',
+    'غدًا املأ عنوانًا حقيقيًا بالألمانية.'),
+
+  U('a1-u5-l3', 'A1', 'المدرسة والوثائق', 'Schule und Papiere', 'kasus',
+    'Am Ende füllst du ein Formular mit Namen, Geburtsort und Familienstand',
+    'في النهاية تملأ استمارة بالاسم ومكان الميلاد والحالة العائلية.',
+    [
+      ['bei Familienstand', 'الاستمارة تسأل بـ bei', 'in Familienstand خطأ', 'in „Familienstand“', 'bei في الاستمارة'],
+      ['das Geburtsjahr Ihres Sohnes', 'الإضافة بـ Genitiv', 'von Ihrem Sohn في الاستمارة أقل رسمية', 'das Geburtsjahr von Ihrem Sohn', 'Genitiv في الوثائق'],
+      ['ich bin geboren', 'الميلاد بـ sein', 'habe geboren للمرأة لا للشخص', 'Ich habe in Tunis geboren', 'sein مع geboren'],
+      ['ledig ohne Artikel', 'الحالة العائلية صفة', 'ein ledig خطأ', 'ein ledig', 'ledig صفة']
+    ],
+    [
+      ['Ich bin in Tunis geboren.', 'وُلدت في تونس', 'Ich habe in Tunis geboren', 'sein لا haben', 'geboren'],
+      ['Meine Schwester heiratet im Mai.', 'أختي تتزوج في ماي', 'Meine Schwester heiratet in Mai', 'الشهر im', 'im'],
+      ['Der Kindergarten ist neu.', 'الروضة جديدة', 'Die Kindergarten ist neu', 'Kindergarten مذكر', 'der'],
+      ['Das ist meine Ehefrau.', 'هذه زوجتي', 'Das ist mein Ehefrau', 'Frau مؤنث', 'meine']
+    ],
+    'Ich bin ledig und wohne in Nabeul.',
+    'Ich bin ledig.',
+    'Schreibe morgen deinen Familienstand in einem Satz.',
+    'غدًا اكتب حالتك العائلية في جملة.'),
+
+  U('a1-u5-l4', 'A1', 'البيت والجوار', 'Zuhause und Nachbarschaft', 'präposition',
+    'Am Ende beschreibst du deine Wohnung und den Weg im Haus',
+    'في النهاية تصف مسكنك والطريق داخل البيت.',
+    [
+      ['in Halle B ohne Artikel', 'أسماء القاعات بلا أداة', 'die Halle B خطأ في العنوان', 'in der Halle B', 'بلا أداة مع الرمز'],
+      ['daneben ist die Bank', 'daneben كلمة واحدة', 'neben وحدها ناقصة', 'Neben ist die Bank', 'daneben لا neben'],
+      ['im Kino und in die Disco', 'داخل المكان im، وإلى المكان in die', 'zu Disco خطأ', 'zu Disco', 'المكان يحدد حرف الجر'],
+      ['ein Einzelzimmer', 'Zimmer محايد فيبقى ein', 'eine Einzelzimmer خطأ', 'eine Einzelzimmer', 'ein مع Zimmer']
+    ],
+    [
+      ['Wir treffen uns in Halle B.', 'نتقابل في القاعة B', 'Wir treffen uns in der Halle B', 'بلا أداة مع B', 'Halle'],
+      ['Die Heimat ist weit.', 'الوطن بعيد', 'Der Heimat ist weit', 'Heimat مؤنث', 'die'],
+      ['Ich habe ein Doppelzimmer.', 'عندي غرفة مزدوجة', 'Ich habe eine Doppelzimmer', 'Zimmer محايد', 'ein'],
+      ['Am Kiosk gibt es Zeitungen.', 'في الكشك صحف', 'In Kiosk gibt es Zeitungen', 'am Kiosk', 'am']
+    ],
+    'Ich wohne in einer Wohnung und gehe zum Kiosk.',
+    'Ich wohne in einer Wohnung.',
+    'Beschreibe morgen dein Zimmer in drei Sätzen.',
+    'غدًا صف غرفتك في ثلاث جمل.'),
+
+  U('a1-u5-l5', 'A1', 'السفر والطريق', 'Reisen und Verkehr', 'wortstellung',
+    'Am Ende fragst du nach Abfahrt, Gleis und Ankunft und erzählst von einer Reise',
+    'في النهاية تسأل عن الانطلاق والرصيف والوصول وتحكي عن رحلة.',
+    [
+      ['der Zug fährt ab', 'الفعل المنفصل في النهاية', 'abfahren verbunden خطأ', 'Der Zug abfährt', 'ab في النهاية'],
+      ['auf welchem Bahnsteig', 'الرصيف يأخذ auf', 'in welchem Bahnsteig خطأ', 'in welchem Bahnsteig', 'auf dem Bahnsteig'],
+      ['Grad ohne Endung', 'الإعلان عن الحرارة بلا e', 'dreißig Grade', 'dreißig Grade', 'Grad بلا جمع'],
+      ['besichtigen die Stadt', 'المعالم تُزار بـ besichtigen', 'besuchen den Dom', 'besuchen den Dom', 'المعالم besichtigen']
+    ],
+    [
+      ['Der Zug fährt um acht ab.', 'القطار يرحل في الثامنة', 'Der Zug abfährt um acht', 'المنفصل في النهاية', 'ab'],
+      ['Wie viel kostet das Ticket?', 'كم ثمن التذكرة', 'Wie viel das Ticket kostet?', 'السؤال يقلب الفعل', 'kostet'],
+      ['Die Sonne scheint.', 'الشمس تلمع', 'Die Sonne ist scheinen', 'scheinen فعل كامل', 'scheint'],
+      ['Wir fahren zum See.', 'نذهب إلى البحيرة', 'Wir fahren zu See', 'zum See', 'zum']
+    ],
+    'Der Zug fährt ab und wir fahren zum See.',
+    'Der Zug fährt um acht ab.',
+    'Erzähle morgen eine echte Reise in zwei Sätzen.',
+    'غدًا احكِ رحلة حقيقية في جملتين.'),
+
+  U('a1-u5-l6', 'A1', 'مراجعة قائمة غوته A1', 'Wortliste A1', 'lexik-kollokation',
+    'Am Ende kennst du die Wörter der amtlichen A1-Liste, die noch fehlten',
+    'في النهاية تعرف كلمات قائمة A1 الرسمية التي كانت ناقصة.',
+    [
+      ['gratulieren dir', 'التهنئة تأخذ Dativ', 'dich خطأ', 'Ich gratuliere dich', 'gratulieren + Dativ'],
+      ['gefallen mir', 'الإعجاب يأخذ Dativ', 'mich خطأ', 'Die Farbe gefällt mich', 'gefallen + Dativ'],
+      ['Sport machen', 'الرياضة تُصنع بـ machen', 'Sport spielen خطأ', 'Sport spielen', 'machen مع Sport'],
+      ['sich kümmern um', 'العناية تحتاج um', 'kümmern ohne um', 'Er kümmert die Kinder', 'sich kümmern um']
+    ],
+    [
+      ['Ich gratuliere dir.', 'أهنّئك', 'Ich gratuliere dich', 'Dativ', 'dir'],
+      ['Die Farbe gefällt mir.', 'اللون يعجبني', 'Die Farbe gefällt mich', 'Dativ', 'mir'],
+      ['Ich mache Sport.', 'أمارس الرياضة', 'Ich spiele Sport', 'machen', 'Sport'],
+      ['Sie kümmert sich um die Kinder.', 'تعتني بالأطفال', 'Sie kümmert die Kinder', 'um', 'um']
+    ],
+    'Ich gratuliere dir und wünsche dir viel Glück.',
+    'Ich gratuliere dir.',
+    'Schreibe morgen eine Glückwunschkarte in zwei Sätzen.',
+    'غدًا اكتب بطاقة تهنئة في جملتين.')
 ];
