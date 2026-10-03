@@ -19,11 +19,12 @@ const FAM = new Set([
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
    Wortschatz steps carrying the real word list, and the forms the older
    generator never used (flashcard, word order, writing). */
-/* B2 joins this line the moment the level can hold its own gate: with one
-   workshop it sits at 90/1800 = 5%, and a started level under 80% fails
-   validate-syllabus by design. Until then tools/vocab-b2.js is held to the
-   compiler's rules by tools/audit-vocab.js --expect-items 40 --expect-material 50. */
-const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'), require('./vocab-a2'), require('./vocab-b1'));
+/* B2 is wired from workshop 16 of 20 on, the point where the authored column
+   reaches 1,440/1,800 = 80% and the level can hold its own gate. Under that
+   line a started level fails validate-syllabus by design; until then
+   tools/vocab-b2.js is held to the compiler's rules by
+   tools/audit-vocab.js --expect-items 40 --expect-material 50. */
+const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'), require('./vocab-a2'), require('./vocab-b1'), require('./vocab-b2'));
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
 
 /* The Wortschatz stage carries 2–4 words per step (PROMPT §8.3) and its step

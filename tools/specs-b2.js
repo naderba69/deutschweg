@@ -320,7 +320,7 @@ module.exports = [
       ['Die große Zahl reicht nicht.', 'الرقم الكبير لا يكفي', 'Die große Zahl reicht', 'الرقم يُفحص', 'Zahl'],
       ['Ich höre zur Frage.', 'أسمع من أجل السؤال', 'Ich höre zum Genuss', 'السماع يخدم السؤال', 'Frage']
     ],
-    'Die Meldung ist nicht der Kommentar. Ich höre zur Frage.',
+    'Die Meldung ist nicht der Kommentar, die Nachrichtensendung trennt beides nicht immer. Die Moderation führt durch die Sendung, der Korrespondent berichtet aus dem Ausland, die Korrespondentin aus dem Inland. Die Quelle bleibt im Beitrag oft ungenannt; die Agentur liefert den Text der Nachrichtenagentur. Ich höre die Sendung zweimal, wenn die Aufnahme es erlaubt, und notiere die Kernaussage. Der O-Ton ist kein Beweis, er ist eine Stimme; die Zusammenfassung am Ende bleibt die Übersicht. Die Wiederholung am nächsten Tag ändert die Meldung nicht, das Interview danach schon. Am Morgen prüfe ich die Ankündigung im Programm: Kanal, Sendetermin und Mediathek, danach der Abruf am Abend. Die Einschaltquote sagt nichts über die Hörerschaft, das Publikum, die Zielgruppe und die Umfrage sagen mehr. Die Übertragung einer Podiumsdiskussion, einer Talkrunde oder eines Streitgesprächs dauert länger als die Debatte im Studio. Der Nachrichtensprecher liest keine Titelseite; der Zeitungsartikel, der Leserbrief und das Abonnement tragen die Auflage. Die Statistik und die Grafik bleiben Hintergrund, bis der Faktencheck sie prüft.',
     'Die große Zahl reicht nicht.',
     'Trenne morgen eine Meldung von einem Kommentar.',
     'غدًا افصل خبرًا عن تعليق.'),
