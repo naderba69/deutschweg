@@ -28,8 +28,11 @@ function blankOut(sentence, core) {
 }
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 
-const files = process.argv.slice(2);
-if (!files.length) { console.log('usage: node tools/audit-vocab.js <module.js> …'); process.exit(2); }
+const argv = process.argv.slice(2);
+const expectIdx = argv.indexOf('--expect');
+const EXPECT = expectIdx >= 0 ? Number(argv[expectIdx + 1]) : 0;
+const files = argv.filter((a, i) => i !== expectIdx && i !== expectIdx + 1);
+if (!files.length) { console.log('usage: node tools/audit-vocab.js [--expect N] <module.js> …'); process.exit(2); }
 
 /* Load what is being audited first, so a module that a level already aggregates
    is not compared against itself. */
@@ -66,6 +69,7 @@ for (const [file, mod] of audited) {
     if (!row || !Array.isArray(row.items)) { bad(id + ': no items array'); continue; }
     if (row.items.length < floor) bad(id + ': ' + row.items.length + ' items below the ' + level + ' floor ' + floor);
     if (row.items.length > VOCAB_CEIL) bad(id + ': ' + row.items.length + ' items above the ceiling ' + VOCAB_CEIL);
+    if (EXPECT && row.items.length !== EXPECT) bad(id + ': ' + row.items.length + ' items, expected exactly ' + EXPECT);
     if (!row.tricks || row.tricks.length !== 3) bad(id + ': needs exactly 3 tricks, has ' + ((row.tricks || []).length));
 
     (row.tricks || []).forEach((t, i) => {
