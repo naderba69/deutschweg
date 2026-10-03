@@ -35,15 +35,15 @@ module.exports = [
       ['der Schluss nimmt Stellung', 'الخاتمة موقف', 'التلخيص وحده لا يكفي', 'der Schluss wiederholt nur', 'الخاتمة تتّخذ موقفًا']
     ],
     [
-      ['Die These lautet: Zeit ist knapp.', 'الدعوى: الوقت ضيق', 'Der Text beginnt ohne These', 'الدعوى لازمة', 'These'],
-      ['Das Argument braucht ein Beispiel.', 'الحجة تحتاج مثالًا', 'Fünf Argumente ohne Beispiel', 'حجة ثم مثال', 'Argument'],
-      ['Ein Beispiel ersetzt keine Begründung.', 'المثال لا يغني عن التعليل', 'Ein Beispiel reicht als Begründung', 'المثال يخدم فقط', 'Beispiel'],
-      ['Der Schluss nimmt Stellung.', 'الخاتمة تتّخذ موقفًا', 'Der Schluss wiederholt nur', 'الخاتمة موقف', 'Stellung']
+      ['Eine Erörterung braucht Kontext, These und Beleg.', 'المقال يحتاج سياقًا ودعوى ودليلًا', 'Die Erörterung beginnt ohne Kontext', 'السياق أولًا', 'Kontext'],
+      ['Differenzierung schlägt Pauschalisierung.', 'التفريق أدقّ من التعميم الجائر', 'Die Erörterung bleibt bei Pauschalisierung', 'التفريق أدق', 'Differenzierung'],
+      ['Der Belegtext nennt Quelle, Studie und Zitat genau.', 'نص الدليل يسمّي المصدر والدراسة والاقتباس بدقة', 'Der Belegtext nennt keine Quelle', 'المصدر مطلوب', 'Belegtext'],
+      ['Zwar nennt der Einwand eine Bedingung, doch die Widerlegung trägt.', 'الاعتراض يذكر شرطًا، لكن التفنيد يصمد', 'Der Einwand bleibt ohne Widerlegung', 'التفنيد لازم', 'Einwand']
     ],
-    'Die These lautet: Zeit ist knapp. Der Schluss nimmt Stellung.',
-    'Ein Beispiel ersetzt keine Begründung.',
-    'Schreibe morgen These und ein Argument.',
-    'غدًا اكتب دعوى وحجة.'),
+    'Die These ist die Kernaussage. Die Entkräftung des Einwands gelingt mit einer Statistik. Die Verknüpfung durch Bindewort und Satzverbindung hält den Text zusammen. Objektivität und Subjektivität trennt man an der Wertung. Die Überarbeitung prüft die Fußnote und das Literaturverzeichnis.',
+    'Die Argumentation bleibt sachlich, die Wertung bleibt sichtbar.',
+    'Schreibe morgen eine Erörterung mit Einleitung und Hauptteil.',
+    'غدًا اكتب مقالًا حجاجيًا بمقدمة ومتن.'),
 
   U('b2-w03', 'نقاش', 'Diskussion',
     'Am Ende räumst du einen Punkt ein und bleibst bei deiner Sache',
