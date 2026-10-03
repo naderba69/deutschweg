@@ -19,7 +19,7 @@ const FAM = new Set([
 /* P3.2 lexical layer. A lesson with an entry here is built by lessonOfVocab:
    Wortschatz steps carrying the real word list, and the forms the older
    generator never used (flashcard, word order, writing). */
-const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'));
+const VOCAB = Object.assign({}, require('./vocab-a0a1'), require('./vocab-a1'), require('./vocab-a2'));
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
 
 /* The Wortschatz stage carries 2–4 words per step (PROMPT §8.3) and its step
@@ -324,11 +324,47 @@ const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|s
 /* The order exercise is scored on four levels, and level 1 needs the finite
    verb, level 3 the fields. Without them the engine could only say "wrong",
    so a sentence without a finite verb is refused rather than shipped blind. */
+/* Words that can never be the finite verb (adverbs, articles, pronouns). */
+const NONVERB = new Set(['bitte', 'nicht', 'noch', 'auch', 'sehr', 'gut', 'hier', 'dort', 'heute',
+  'morgen', 'gestern', 'jetzt', 'immer', 'oft', 'schon', 'mal', 'gern', 'gerne', 'leider',
+  'vielleicht', 'zusammen', 'allein', 'wieder', 'bald', 'genug', 'viel', 'wenig', 'mehr', 'so',
+  'nur', 'doch', 'denn', 'aber', 'oder', 'und', 'mit', 'nach', 'aus', 'an', 'auf', 'in', 'bei',
+  'von', 'vor', 'für', 'über', 'unter', 'neben', 'zwischen', 'hinter', 'zu', 'zum', 'zur', 'im',
+  'am', 'dem', 'der', 'den', 'das', 'die', 'ein', 'eine', 'einen', 'einem', 'einer', 'mir',
+  'dir', 'ihm', 'ihr', 'uns', 'euch', 'mich', 'dich', 'sich', 'es', 'sie', 'er', 'du', 'ich',
+  'wir', 'man', 'mein', 'dein', 'sein', 'unser', 'euer', 'kein', 'keine', 'keinen', 'diesen',
+  'dieser', 'dieses', 'diese', 'alle', 'allen', 'mehrere', 'viele', 'wenige', 'zwei', 'drei',
+  'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'Glück']);
+const NOMINATIVE = new Set(['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr']);
+
+/* Which token is the finite verb? The curated FINITE list answers for the
+   lessons that already ship, so their keys never move. The A2 vocabulary uses
+   verbs outside that list, so a morphological fallback runs after it: German
+   main clauses put the finite verb in position 2, imperatives in position 1,
+   and a capitalised token after position 1 is a noun, not a verb. */
+function finiteIndex(toks) {
+  const clean = toks.map(t => t.replace(/[.,!?;:]+$/, ''));
+  const listed = clean.findIndex(t => FINITE.test(t));
+  if (listed >= 0) return listed;
+  const verbish = w => {
+    const l = w.toLowerCase();
+    if (l.length < 2 || NONVERB.has(l)) return false;
+    if (!/[a-zäöüß]/.test(w)) return false;
+    return /(est|en|et|st|te|t|e)$/.test(l);
+  };
+  const nounish = i => i > 1 && /^[A-ZÄÖÜ]/.test(clean[i]);
+  const hasSubject = clean.some((w, i) => i > 0 && NOMINATIVE.has(w.toLowerCase()));
+  if (!hasSubject && clean[0] && !NONVERB.has(clean[0].toLowerCase()) && /[a-zäöüß]/i.test(clean[0])) return 0;
+  if (clean[1] && verbish(clean[1]) && !nounish(1)) return 1;
+  for (let i = 1; i < clean.length; i++) if (verbish(clean[i]) && !nounish(i)) return i;
+  return -1;
+}
+
 function orderFrage(sentence, frageText) {
   const toks = String(sentence).split(/\s+/).filter(Boolean);
-  const finite = toks.find(t => FINITE.test(t.replace(/[.,!?;:]+$/, '')));
-  if (!finite) return null;
-  const i = toks.indexOf(finite);
+  const i = finiteIndex(toks);
+  if (i < 0) return null;
+  const finite = toks[i];
   return {
     art: 'wortstellung', frage: frageText, tokens: toks, correct: toks, finite: finite,
     fields: { vorfeld: toks.slice(0, i), lsk: [finite], mittelfeld: toks.slice(i + 1) },
