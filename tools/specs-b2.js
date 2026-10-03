@@ -260,7 +260,7 @@ module.exports = [
       ['Den Schluss habe ich im Kopf.', 'الخاتمة جاهزة في ذهني', 'Ich lasse den Schluss weg', 'الخاتمة لازمة', 'Schluss'],
       ['Nach dem Schreiben prüfe ich Verbzweit.', 'بعد الكتابة أفحص موضع الفعل', 'Ich prüfe nichts', 'الفحص جزء من الوقت', 'prüfe']
     ],
-    'Ich plane die Gliederung vor dem Text. Den Schluss habe ich im Kopf.',
+    'Die Prüfungszeit ist in drei Blöcke geteilt. Der Entwurf steht auf dem Konzeptpapier. Die Reinschrift folgt in der zweiten Hälfte. Die Endkontrolle prüft die Kommasetzung und die Verbzweitstellung. Bei Zeitmangel entscheidet der Bewertungsbogen. Die Textproduktion beginnt mit der Schreibaufgabe. Die Themenstellung nennt den Umfang und die Mindestlänge. Der Absatzbau folgt der Argumentationslinie, der Übergangssatz verbindet. Die Textstruktur bleibt sichtbar, auch in der Reinschrift. Der Schlussgedanke steht schon im Entwurf. Ein Konnektor pro Satz genügt, die Konjunktion und das Adverb sparsam. Der Satzbau bleibt einfach, die Wortstellung klar. Die Zeitform bleibt einheitlich: Präteritum oder Perfekt, nicht beides. Passiv und Aktiv wechseln nur mit Grund. Der Konjunktiv gehört in die indirekte Rede. Jede Endung, jede Wortart, jede Grundform wird geprüft. Der Infinitiv, das Partizip und die Vergleichsform stehen im Merkzettel. Die Wortgruppe um die Satzklammer heißt Satzglied. Subjekt, Objekt und Attribut stehen im Nominativ, Akkusativ, Dativ oder Genitiv. Der Relativsatz hängt an der Präposition. Wortbildung heißt Ableitung oder Zusammensetzung, nie Zufall. Der Konzeptpapierbogen hat eine Randzeile für jede Minute. Zeitmanagement heißt: den Zwischenstand prüfen, bevor der Zeitverlust sichtbar wird.',
     'Nach dem Schreiben prüfe ich Verbzweit.',
     'Schreibe morgen zwanzig Minuten mit Gliederung.',
     'غدًا اكتب عشرين دقيقة بهيكل.'),
@@ -280,7 +280,7 @@ module.exports = [
       ['Der Autor unterstellt, dass alle zustimmen.', 'يفترض الكاتب أن الجميع يوافق', 'Der Autor weiß es sicher', 'الافتراض ليس خبرًا', 'unterstellt'],
       ['Der Witz beweist es nicht.', 'النكتة لا تُثبت', 'Der Witz beweist es', 'النبرة ليست برهانًا', 'beweist']
     ],
-    'Gedruckt heißt nicht wahr. Der Witz beweist es nicht.',
+    'Gedruckt heißt nicht wahr. Der Meinungsartikel lebt von der Grundthese. Nicht jedes Gegenbeispiel trägt die Beweislast. Die Zuspitzung ersetzt den Beweisgang nicht. Die Häme verrät die Absicht des Verfassers. Die Kommentarform verrät die Rubrik und den Anlass. Der Hintergrund, die Vorgeschichte und die Einordnung fehlen oft. Die Auslegung bleibt eine Lesart, keine Wahrheit. Die Stoßrichtung zeigt der Blickwinkel, nicht die Sichtweise. Die Zwischenzeile trägt die Pointe, das Wortspiel den Spott.',
     'Der Autor unterstellt, dass alle zustimmen.',
     'Markiere morgen Behauptung und Beleg.',
     'غدًا علّم ادعاءً وشاهدًا.'),
@@ -300,7 +300,7 @@ module.exports = [
       ['Die Kosten gehören zur Frage.', 'الكلفة جزء من السؤال', 'Das kostet nichts und gilt für alle', 'الكلفة تُسمّى', 'Kosten'],
       ['Die Maßnahme löst nicht alles.', 'الإجراء لا يحل كل شيء', 'Die Maßnahme löst alles', 'الحد لازم', 'alles']
     ],
-    'Die Maßnahme ist die Mülltrennung. Die Absicht reicht nicht.',
+    'Die Maßnahme ist die Mülltrennung, die Wirkung bleibt klein. Die Absicht reicht nicht, die Kosten gehören zur Frage. Die Solarzelle und die Windkraft ersetzen die Kohle langsam. Das Tempolimit und der Nahverkehr sparen mehr als jede Kampagne. Die Kreislaufwirtschaft braucht Rohstoffe und Ressourcen. Das Fahrrad, das Carsharing und die Mitfahrgelegenheit ersetzen keine Bahn.',
     'Die Kosten gehören zur Frage.',
     'Nenne morgen Maßnahme, Wirkung und Grenze.',
     'غدًا سمِّ إجراءً وأثرًا وحدًا.'),

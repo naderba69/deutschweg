@@ -24,7 +24,7 @@ module.exports = {
       ['das Ausweichen', '—', 'التهرّب', 'Das Ausweichen erkennt man am Tempo; der Themenwechsel verrät es.', 'Das Ausweichen erkennen man am Tempo.', 'محايد ومفرد: erkennt.', 'konjugation', 'Ausweichen'],
       ['ausweichen', 'weicht aus · wich aus · ist ausgewichen', 'يتهرّب', 'Er weicht der Frage aus, obwohl der Blickkontakt stimmt.', 'Er ausweicht der Frage.', 'الفعل مع aus منفصل.', 'wortstellung', 'weicht'],
       ['nachfragen', 'fragt nach · fragte nach · hat nachgefragt', 'يستوضح', 'Der Interviewer fragt nach, ohne zu bohren; die Stimme bleibt ruhig.', 'Der Interviewer nachfragt, ohne zu bohren.', 'الفعل مع nach منفصل.', 'wortstellung', 'fragt'],
-      ['bohren', 'bohrt · bohrte · hat gebohrt', 'يلحّ في السؤال', 'Er bohrt nach, bis die Zahl kommt; die Sprechgeschwindigkeit steigt.', 'Er bohrt nach, bis die Zahl kommt du.', 'بلا ضمير زائد.', 'wortstellung', 'bohrt'],
+      ['bohren', 'bohrt · bohrte · hat gebohrt', 'يلحّ في السؤال', 'Er bohrt nach, bis die Zahl kommt; die Sprechgeschwindigkeit steigt.', 'Er bohrt nach, bis die Zahl kommt.', 'بلا ضمير زائد.', 'wortstellung', 'bohrt'],
       ['ins Wort fallen', 'fällt ins Wort · fiel ins Wort · ist ins Wort gefallen', 'يقاطع', 'Sie fällt ihm nicht ins Wort; die Gestik bleibt ruhig.', 'Sie ins Wort fällt ihm nicht.', 'الفعل ثانٍ ولا يُفصل.', 'wortstellung', 'fällt'],
       ['das Schweigen', '—', 'الصمت', 'Das Schweigen ist auch eine Antwort; der Zeitrahmen erlaubt es.', 'Das Schweigen sind auch eine Antwort.', 'محايد ومفرد: ist.', 'konjugation', 'Schweigen'],
       ['der Nachdruck', '—', 'التشديد', 'Der Nachdruck liegt auf dem zweiten Wort; das Mikrofon verstärkt ihn.', 'Der Nachdruck liegen auf dem zweiten Wort.', 'المفرد: liegt.', 'konjugation', 'Nachdruck'],

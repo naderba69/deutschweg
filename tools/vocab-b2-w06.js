@@ -66,7 +66,7 @@ module.exports = {
     tricks: [
       { trick: 'الشكوى وثيقة: Tatsache — Folge — Bitte، في هذا الترتيب', wie: 'Die Lieferung kam zu spät. Die Folge war ein verpasster Termin. Ich bitte um eine neue Lieferung.', warum: 'الغاضب يبدأ بالحكم، والموظف لا يعالج إلا واقعة لها رقم.', anchor: 'Die Folge war' },
       { trick: 'لا تصف الشخص: صف المبلغ والموعد', wie: 'Der Betrag wurde doppelt abgebucht, nicht: Sie sind unfähig.', warum: 'الحكم على الشخص يُقفل المعالجة؛ الرقم يفتحها.', anchor: 'doppelt abgebucht' },
-      { trick: 'اطلب بديلًا محددًا: Ersatz، Gutschrift، Nachlieferung — وسمِّ المهلة', wie: 'Ich bitte um Ersatz bis zum 20. Mai.', warum: 'طلب بلا موعد ولا بديل يبقى بلا نتيجة.', anchor: 'eine Nachfrist' }
+      { trick: 'اطلب بديلًا محددًا: Ersatz، Gutschrift، Nachlieferung — وسمِّ المهلة', wie: 'Ich bitte um Ersatz bis zum 20. Mai und setze eine Nachfrist.', warum: 'طلب بلا موعد ولا بديل يبقى بلا نتيجة.', anchor: 'eine Nachfrist' }
     ]
   }
 
