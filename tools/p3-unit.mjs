@@ -816,5 +816,24 @@ console.log('\n— P3.2 lexical layer —\n');
   t('cache: the app memory is versioned (deutschweg-v<n>)', !!m && Number(m[1]) >= 10);
 }
 
+/* ---------- a failing run never lowers a floor ---------- */
+
+/* The floor files are ratchets. Every measure may raise its own with --write-floor,
+   but a run that failed a gate must not write: otherwise one red run silently
+   rewrites the reference to the broken state and the next green run proves nothing.
+   This is not theory — it happened in this repository. The check reads the eight
+   measures and insists on the refusal guard ahead of the write. */
+{
+  const measures = fs.readdirSync(ROOT + '/tools').filter(f => /^measure-.*\.js$/.test(f));
+  const unguarded = measures.filter(f => {
+    const src = fs.readFileSync(ROOT + '/tools/' + f, 'utf8');
+    const i = src.indexOf('if (WRITE) {');
+    if (i < 0) return true;
+    return !/if \(fail\) \{[\s\S]{0,160}?refused:/.test(src.slice(i, i + 400));
+  });
+  t('floors: every measure refuses to write a floor from a failing run (' + measures.length + ' measures)',
+    measures.length >= 8 && unguarded.length === 0, unguarded.join(' '));
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

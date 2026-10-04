@@ -127,6 +127,11 @@ must('the map names the paper (DW_EXAM.B2): ' + (MAP ? MAP.lesenItems + ' + ' + 
   MAP.hoerenParts === hoeren.parts && MAP.hoerenItems === hoeren.items, JSON.stringify(MAP));
 
 if (WRITE) {
+  /* a failing run must not lower the floor: the ratchet is the whole point of the file */
+  if (fail) {
+    console.log('\n  refused: ' + fail + ' gate' + (fail === 1 ? '' : 's') + ' failed — the floor is not lowered');
+    process.exit(1);
+  }
   const raised = {};
   Object.keys(FLOOR).forEach(k => { raised[k] = Math.max(FLOOR[k], measured[k] || 0); });
   fs.writeFileSync(FLOOR_FILE, JSON.stringify(raised, null, 2) + '\n');

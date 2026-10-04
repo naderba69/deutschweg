@@ -113,6 +113,11 @@ gate('B2 material words reachable (harvest screen wired)',
   wiring.harvest ? 1 : 0, Math.min(1, (FLOOR._wiring && FLOOR._wiring.harvest) || 0));
 
 if (WRITE) {
+  /* a failing run must not lower the floor: the ratchet is the whole point of the file */
+  if (fail) {
+    console.log('\n  refused: ' + fail + ' gate' + (fail === 1 ? '' : 's') + ' failed — the floor is not lowered');
+    process.exit(1);
+  }
   const raised = {};
   LEVELS.forEach(lv => {
     const f = FLOOR[lv] || {};

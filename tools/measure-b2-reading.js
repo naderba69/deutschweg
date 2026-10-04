@@ -181,6 +181,11 @@ if (mapNovel === (B2.novel && B2.novel.title)) console.log('  ✓ DW_READING nam
 else { fail += 1; console.log('  ✗ DW_READING novella "' + mapNovel + '" vs library "' + (B2.novel && B2.novel.title) + '"'); }
 
 if (WRITE) {
+  /* a failing run must not lower the floor: the ratchet is the whole point of the file */
+  if (fail) {
+    console.log('\n  refused: ' + fail + ' gate' + (fail === 1 ? '' : 's') + ' failed — the floor is not lowered');
+    process.exit(1);
+  }
   const raised = {
     article: Math.max(FLOOR.article, measured.article),
     chapter: Math.max(FLOOR.chapter, measured.chapter),

@@ -99,6 +99,11 @@ if (!FLOOR) {
 }
 
 if (WRITE) {
+  /* a failing run must not lower the floor: the ratchet is the whole point of the file */
+  if (fail) {
+    console.log('\n  refused: ' + fail + ' gate' + (fail === 1 ? '' : 's') + ' failed — the floor is not lowered');
+    process.exit(1);
+  }
   const next = {
     totals: { distinct: distinct.length, running: tokens.length },
     accepted: Array.from(accepted).sort(),

@@ -135,6 +135,11 @@ console.log('  ' + (produced >= (FLOOR.evidences || 0) ? '✓' : '✗') + ' prod
   ' (floor ' + (FLOOR.evidences || 0) + ')');
 
 if (WRITE) {
+  /* a failing run must not lower the floor: the ratchet is the whole point of the file */
+  if (fail) {
+    console.log('\n  refused: ' + fail + ' gate' + (fail === 1 ? '' : 's') + ' failed — the floor is not lowered');
+    process.exit(1);
+  }
   const raised = { evidences: Math.max(FLOOR.evidences || 0, produced) };
   fs.writeFileSync(FLOOR_FILE, JSON.stringify(raised, null, 2) + '\n');
   console.log('\n  wrote ' + path.relative(root, FLOOR_FILE) + ' ' + JSON.stringify(raised));

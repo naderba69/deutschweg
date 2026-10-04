@@ -90,6 +90,11 @@ if (badPrint.length) { fail += 1; console.log('  ✗ print-only items stay out o
 else console.log('  ✓ print-only items stay out of R5 (' + printOnly.length + ')');
 
 if (WRITE) {
+  /* a failing run must not lower the floor: the ratchet is the whole point of the file */
+  if (fail) {
+    console.log('\n  refused: ' + fail + ' gate' + (fail === 1 ? '' : 's') + ' failed — the floor is not lowered');
+    process.exit(1);
+  }
   const raised = {};
   Object.keys(FLOOR).forEach(k => { raised[k] = Math.max(FLOOR[k], measured[k] || 0); });
   Object.keys(measured).forEach(k => {

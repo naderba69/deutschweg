@@ -88,6 +88,11 @@ must('the map names what exists (DW_SPEAKING.B2): ' + (MAP ? MAP.recorded + ' re
   MAP.axes === B2.axes.length, JSON.stringify(MAP));
 
 if (WRITE) {
+  /* a failing run must not lower the floor: the ratchet is the whole point of the file */
+  if (fail) {
+    console.log('\n  refused: ' + fail + ' gate' + (fail === 1 ? '' : 's') + ' failed — the floor is not lowered');
+    process.exit(1);
+  }
   const raised = {};
   Object.keys(FLOOR).forEach(k => { raised[k] = Math.max(FLOOR[k], measured[k] || 0); });
   fs.writeFileSync(FLOOR_FILE, JSON.stringify(raised, null, 2) + '\n');
