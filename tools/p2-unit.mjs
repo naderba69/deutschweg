@@ -188,5 +188,33 @@ console.log('\n— allocator and gates —\n');
   t('a swap that would exceed the allocation is restored', A.guardSwap(week, { track: 'grammar', minutes: 15 }, { track: 'grammar', minutes: 40 }).ok === false);
 }
 
+/* ---------- the graded readers: one definition of "known" (§13.3) ---------- */
+{
+  const { createRequire } = await import('module');
+  const require = createRequire(import.meta.url);
+  const K = require('./known.js');
+  const dw = {};
+  ['web/data/inventory.js', 'web/data/chunks.js', 'web/data/syllabus.js', 'web/data/a0-u1-l1.js',
+    'web/data/catalog.js', 'web/data/library.js', 'web/data/comprehension.js']
+    .forEach(rel => new Function('window', fs.readFileSync(path.join(ROOT, rel), 'utf8'))(dw));
+
+  const texts = K.libraryTexts(dw.DW_LIBRARY);
+  const setB1 = K.knownWords(dw, { upto: 'B1' });
+  const setA1 = K.knownWords(dw, { upto: 'A1' });
+  const setB2 = K.knownWords(dw, { upto: 'B2' });
+
+  t('T60 the library holds 126 graded texts', texts.length === 126);
+  t('T61 every graded text carries two questions', texts.every(x => x.questions === 2));
+  t('T62 a word nothing teaches is unknown', !K.isKnown(setB2, 'zonk') && !K.isKnown(setA1, 'zonk'));
+  t('T63 an irregular form counts only when its infinitive is known',
+    K.isKnown(setB1, 'stiehlt') && !K.isKnown(setB1, 'verordnet'));
+  t('T64 a text is never evidence for itself (b1-r60 stays unknown at B1, known at B2)',
+    !K.isKnown(setB1, 'rückseite') && K.isKnown(setB2, 'rückseite'));
+  t('T65 a B2 workshop headword is not known at B1',
+    !K.isKnown(setB1, 'einseitigkeit') && K.isKnown(setB2, 'einseitigkeit'));
+  const under = texts.filter(x => K.coverage(K.knownWords(dw, { upto: x.level }), x.body).ratio < 0.98);
+  t('T66 the 98% rule (§13.3) holds in every level', under.length === 0);
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
