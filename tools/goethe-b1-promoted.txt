@@ -1,9 +1,12 @@
 # Promotions the Goethe B1 match verified — authored in a word list AND met in the material.
 # One line per entry, written the way the recorded gap writes it. tools/match-goethe-b1.js
 # re-checks every line and prints any line that is not both; a line that fails is dropped.
-# None of these were authored before this round: they are the 219 entries the gap recorded as
-# met-but-unnamed (tools/goethe-b1-candidates.txt) plus 21 entries from the gap's 'new' column
-# that the six new lessons' own material introduces. Amendment B1-L2, DECISIONS-PENDING item 25.
+# First round (unit 6, amendment B1-L2, DECISIONS-PENDING item 25): the 219 entries the gap
+# recorded as met-but-unnamed (tools/goethe-b1-candidates.txt) plus 21 entries from the gap's
+# 'new' column that the six new lessons' own material introduces.
+# Second round (unit 7, amendment B1-L3, item 27): 240 more of the pool — the material step grew
+# it to 371 after the 18 new B1 texts, and one unit holds 240 headword slots, so unit 7 carries
+# these. The remaining 131 stay in tools/goethe-b1-candidates.txt for the next unit.
 
 list -weise
 list abheben
@@ -245,3 +248,243 @@ list das Dokument
 list die Urkunde
 list der Sekretär
 list die Praktikantin
+list anstrengen
+list die Arbeitserlaubnis
+list die Arbeitsstelle
+list ausbilden
+list beachten
+list behindern
+list benötigen
+list beschäftigen
+list besprechen
+list beteiligen
+list betreuen
+list der Betreuer
+list der Betriebsrat
+list das Diplom
+list duzen
+list einrichten
+list die Gewerkschaft
+list das Gewissen
+list der Handel
+list der Lehrling
+list die Mahnung
+list die Matura
+list die Mehrwertsteuer
+list das Personal
+list der Personenstand
+list das Referat
+list siezen
+list die Tätigkeit
+list der Terminkalender
+list überprüfen
+list verpflichten
+list die Versichertenkarte
+list der Wissenschaftler
+list zuverlässig
+list die Konferenz
+list der Ersatz
+list pauschal
+list offiziell
+list verantwortlich
+list besorgen
+list das Benzin
+list die Bremse
+list bremsen
+list die Einbahnstraße
+list die Fahrbahn
+list das Fahrzeug
+list der Führerausweis
+list der Fußgänger
+list die Fußgängerzone
+list die Geschwindigkeit
+list die Geschwindigkeitsbeschränkung
+list der Hauptbahnhof
+list hupen
+list das Kraftfahrzeug
+list der Laster
+list das Motorrad
+list der Notausgang
+list parkieren
+list der Perron
+list der Radfahrer
+list der Stau
+list die Tankstelle
+list die Tram
+list überholen
+list die Umleitung
+list winken
+list die Eisenbahn
+list der Speisewagen
+list das Boot
+list das Kennzeichen
+list der Dieb
+list die Zeugin
+list die Strafe
+list strafbar
+list der Alarm
+list schauen
+list zuschauen
+list der Zuschauer
+list springen
+list die Kiste
+list der Hammer
+list das Werkzeug
+list die Zange
+list der Nagel
+list die Steckdose
+list die Badewanne
+list der Flur
+list das Treppenhaus
+list das Stiegenhaus
+list der Rasen
+list der Hügel
+list die Wiese
+list der Bauernhof
+list das Grundstück
+list der Briefkasten
+list die Einfahrt
+list die Mauer
+list reinigen
+list spülen
+list der Schmutz
+list der Fleck
+list einschalten
+list das Rohr
+list der Kasten
+list der Lift
+list die Müllabfuhr
+list die Umgebung
+list heizen
+list haltbar
+list glatt
+list flach
+list die Wärme
+list trocknen
+list der Stein
+list der Sand
+list das Gras
+list das Tal
+list die Erde
+list die Landwirtschaft
+list die Küste
+list bluten
+list erkälten
+list frieren
+list schwitzen
+list die Klinik
+list das Knie
+list der Knochen
+list der Krankenwagen
+list der Muskel
+list die Ordination
+list die Patientin
+list die Pflegerin
+list die Pille
+list das Schmerzmittel
+list der Schnupfen
+list die Schulter
+list die Schwangerschaft
+list die Spritze
+list taub
+list das Taschentuch
+list der Staub
+list Staub saugen/staubsaugen
+list der Schreck
+list der Schrecken
+list erschrecken
+list die Überraschung
+list die Laune
+list das Heimweh
+list die Stimmung
+list hassen
+list der Protest
+list die Reaktion
+list die Freundschaft
+list unheimlich
+list seltsam
+list unglaublich
+list vergeblich
+list ernsthaft
+list mutig
+list stumm
+list der Bancomat
+list der Bankomat
+list die Bankomatkarte
+list die Bankleitzahl
+list die Chipkarte
+list die EC-Karte
+list das Girokonto
+list die Münze
+list die Einnahme
+list die Einzahlung
+list die Botschaft
+list die Brieftasche
+list die Briefträgerin
+list der Briefumschlag
+list die Buchhandlung
+list das Netz
+list das Netzwerk
+list die Festplatte
+list der Monitor
+list der Lautsprecher
+list die Mobilbox
+list herunterfahren
+list hochladen
+list twittern
+list das Inserat
+list die Recherche
+list die Reportage
+list die Reklame
+list die Fotografie/Photographie
+list virtuell
+list elektronisch
+list mobil
+list die Kassette
+list der Katalog
+list die Gebrauchsanweisung
+list die Mappe
+list der Knopf
+list das Feuerzeug
+list der Wohnort
+list die Verbindung
+list die Bühne
+list ausstellen
+list das Gedicht
+list die Flöte
+list die Galerie
+list musikalisch
+list das Orchester
+list die Tradition
+list traditionell
+list interkulturell
+list der Saal
+list die Fremdsprache
+list die Zweitsprache
+list der Intensivkurs
+list der Kursleiter
+list die Kursleiterin
+list der Kreis
+list sozial
+list politisch
+list national
+list regional
+list rechtlich
+list die Region
+list der Bereich
+list die Umweltverschmutzung
+list die Rolle
+list der Trainer
+list die Sportlerin
+list unentschieden
+list umsonst
+list verwechseln
+list überlegen
+list erfüllen
+list ergänzen
+list erstellen
+list eröffnen
+list festlegen
+list verschreiben
+list statistisch
+list theoretisch

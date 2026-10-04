@@ -39,11 +39,10 @@ const PROMOTED = path.join(root, 'tools', 'goethe-b1-promoted.txt');
 const WRITE_GAP = process.argv.includes('--write-gap');
 const REQUIRE = process.argv.includes('--require-transcription');
 
-/* Floors are the measured values of the last accepted run. They may only rise. */
 /* Floors are the measured values of the last accepted run. They may only rise.
-   Ratcheted after the B1-L2 material step (18 texts in all, 345 entries carried):
-   raw 844/1820 = 0.4637 and 1215/1820 = 0.6676, rounded down. */
-const FLOOR = { headword: 0.463, material: 0.667 };
+   Ratcheted after unit 7 (B1-L3: 240 promotions, 480 verified in all):
+   raw 1084/1820 = 0.5956 and 1218/1820 = 0.6692, rounded down. */
+const FLOOR = { headword: 0.595, material: 0.669 };
 
 const HAVE_LIST = fs.existsSync(LIST);
 if (!HAVE_LIST && REQUIRE) {

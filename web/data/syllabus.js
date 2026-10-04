@@ -149,7 +149,15 @@
     ['الروابط المزدوجة', 'Zweiteilige Konnektoren', 'الربط', 'entweder oder وje desto', 'explicit'],
     ['المجهول مع أفعال المساعدة', 'Passiv mit Modalverben', 'الحدث', 'muss werden', 'explicit'],
     ['الأسلوب الاسمي', 'Nominalstil', 'الكتابة الرسمية', 'beim Ausfüllen des Formulars', 'explicit'],
-    ['الاشتقاق', 'Wortbildung', 'المفردات', 'in وung وheit', 'explicit']
+    ['الاشتقاق', 'Wortbildung', 'المفردات', 'in وung وheit', 'explicit'],
+    /* Unit 7 — amendment B1-L3: the material step grew the promotion pool to 371
+       entries and a unit holds 240 slots, so unit 7 carries the first 240. */
+    ['في المؤسسة', 'Im Betrieb', 'العمل', 'bildet … aus und besprechen', 'explicit'],
+    ['في الطريق', 'Unterwegs', 'المرور', 'an die Küste und am Ufer', 'explicit'],
+    ['البيت والحرفة', 'Haus und Handwerk', 'السكن', 'im Keller und wurde beschädigt', 'explicit'],
+    ['الصحة والمشاعر', 'Gesundheit und Gefühle', 'الصحة', 'tut weh und gegen Grippe', 'explicit'],
+    ['المال والأجهزة والبريد', 'Geld, Geräte und Post', 'المال', 'EC-Karte und Netzwerk', 'explicit'],
+    ['الثقافة واللغة', 'Kultur und Sprache', 'الثقافة', 'Das Orchester spielt und festlegen', 'explicit']
   ];
 
   const B2 = [
@@ -201,7 +209,15 @@
     prev = 'cap.' + id + '.core';
   });
   B1.forEach((r, i) => {
-    const id = 'b1-u' + (Math.floor(i / 8) + 1) + '-l' + ((i % 8) + 1);
+    /* The first five B1 units carry eight lessons each (40 rows). Amendments
+       B1-L2 and B1-L3 added two six-lesson units (the Goethe B1 pool is promoted
+       40 words per lesson, and a unit is what the map declares), so the id is
+       built from the row's own unit: rows 0..39 → u1..u5 (8 each), rows 40..45 →
+       u6 (6), rows 46..51 → u7 (6). The count is derived, never typed twice. */
+    let unit, lesson;
+    if (i < 40) { unit = Math.floor(i / 8) + 1; lesson = (i % 8) + 1; }
+    else { unit = i < 46 ? 6 : 7; lesson = (i - (i < 46 ? 40 : 46)) + 1; }
+    const id = 'b1-u' + unit + '-l' + lesson;
     push(id, 'B1', r[0], r[1], r[2], 40, 17, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });

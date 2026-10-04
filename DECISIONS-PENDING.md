@@ -187,3 +187,21 @@ with the more specific rule, or with the rule that produces more honest evidence
     unit can hold (240 headword slots), so the next authored step is either a seventh unit or another
     material round — and the 605 entries the corpus still does not carry need material before any list can
     name them.
+
+27. **B1-L3 — the seventh unit carries 240 of the 371-entry pool (delivered 2026-10-04).**
+    The material step (item 26) grew the promotion pool to **371** entries — met in the material, named
+    by no word list — while one six-lesson unit holds **240** headword slots (6 × 40, the lesson ceiling).
+    B1 therefore grows from **46 to 52 lessons** with a second amendment unit (`b1-u7-l1` … `b1-u7-l6`),
+    each lesson again 40 words, 10 Wortschatz steps and three distinct Merkhilfen, on the practical-life
+    themes the pool's words belong to: the workplace, the road, the house and its trades, health and
+    feelings, money/devices/post, culture and language. It carries **240 pool entries**, and the remaining
+    **131** stay in `tools/goethe-b1-candidates.txt` for the next unit.
+    **Measured after the unit:** authored **844 → 1,084/1,820 = 60%**, met **1,218/1,820 = 67%**, the open
+    gap **976 → 736** (134 met already / 602 not carried), and the promoted file verifies **480** entries
+    line by line (240 from unit 6, 240 from unit 7) — every one authored AND met, none dropped. Floors
+    ratchet to **0.595 / 0.669**. Declared B1 receptive moves 1,840 → **2,080 = 100%**; the cumulative
+    ceiling shifts are `B1_GOETHE_SHIFT_3 = 240` and `B1_GOETHE_SHIFT_PROD_3 = 102`; no floor moves down.
+    **One structural detail, so the map stays honest:** B1 rows are generated with their unit taken from
+    the row itself (rows 0–39 → units 1–5 with eight lessons each, rows 40–45 → unit 6, rows 46–51 →
+    unit 7), because the earlier generator assumed a fixed eight lessons per unit and would have renamed
+    the unit-6 lessons while adding unit 7.

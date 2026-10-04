@@ -926,5 +926,130 @@ module.exports = [
     'Die Autorin liest heute. Die Besserung kommt langsam.',
     'Die Freiheit ist wichtig.',
     'Bilde fünf Berufsnamen mit -in.',
-    'غدًا كوّن خمسة أسماء مهن بـ-in.')
+    'غدًا كوّن خمسة أسماء مهن بـ-in.'),
+
+/* Unit 7 — amendment B1-L3 (DECISIONS-PENDING.md item 27). The B1 pool (entries the
+   learner meets in the material and no word list names) grew to 371 after the material
+   step, and one unit holds 240 headword slots (6 x 40), so unit 7 carries 240 of them:
+   Betrieb · Verkehr · Haus und Handwerk · Gesundheit und Gefühle · Geld, Geräte und
+   Post · Kultur und Sprache. The remaining 131 wait in tools/goethe-b1-candidates.txt. */
+  U('b1-u7-l1', 'B1', 'في المؤسسة', 'Im Betrieb', 'lexik-kollokation',
+    'Am Ende beschreibst du deine Arbeitsstelle und ihre Regeln',
+    'في النهاية تصف مكان عملك وقواعده.',
+    [
+      ['Die Firma bildet jedes Jahr aus.', 'الفعل المنفصل في الآخر', 'Trennbares Verb: bildet … aus', 'Die Firma ausbildet jedes Jahr.', 'bildet … aus'],
+      ['Wir besprechen den Plan.', 'besprechen بلا حرف جر', 'kein über nach besprechen', 'Wir besprechen über den Plan.', 'بلا über'],
+      ['Sie beteiligt sich an der Planung.', 'sich beteiligen an', 'feste Präposition: an', 'Sie beteiligt sich die Planung.', 'an + داتيف'],
+      ['Wer ist dafür verantwortlich?', 'verantwortlich dafür', 'verantwortlich für + Akkusativ', 'Wer ist verantwortlich für das?', 'dafür في السؤال']
+    ],
+    [
+      ['Die Firma bildet zwei Lehrlinge aus.', 'الشركة تدرّب متدرّبين', 'Die Firma ausbildet zwei Lehrlinge.', 'bildet … aus.', 'aus'],
+      ['Wir besprechen den Plan am Montag.', 'نناقش الخطة الاثنين', 'Wir besprechen über den Plan.', 'بلا über.', 'besprechen'],
+      ['Sie beteiligt sich an der Planung.', 'تشارك في التخطيط', 'Sie beteiligt sich die Planung.', 'an + داتيف.', 'an der'],
+      ['Der Betriebsrat vertritt uns.', 'مجلس العمال يمثّلنا', 'Der Betriebsrat vertritt auf uns.', 'بلا auf.', 'vertritt']
+    ],
+    'Die Firma bildet jedes Jahr zwei Lehrlinge aus. Wir besprechen den Plan.',
+    'Ich bin für die Termine verantwortlich.',
+    'Beschreibe morgen drei Regeln deiner Arbeitsstelle.',
+    'غدًا صف ثلاث قواعد من مكان عملك.'),
+
+  U('b1-u7-l2', 'B1', 'في الطريق', 'Unterwegs', 'präposition',
+    'Am Ende beschreibst du einen Weg mit den richtigen Präpositionen',
+    'في النهاية تصف طريقًا بحروف الجر الصحيحة.',
+    [
+      ['Wir fahren an die Küste.', 'الجهة إلى: an + Akkusativ', 'Richtung mit Akkusativ', 'Wir fahren an der Küste.', 'الجهة die Küste'],
+      ['Das Boot liegt am Ufer.', 'الموضع: an + Dativ', 'Ort mit Dativ', 'Das Boot liegt an das Ufer.', 'الموضع dem Ufer'],
+      ['Die Zuschauer warten auf den Anfang.', 'warten auf', 'feste Präposition: auf', 'Die Zuschauer warten den Anfang.', 'warten auf'],
+      ['Der Zug steht am Perron.', 'Perron صيغة سويسرية', 'schweizerisch: Perron statt Bahnsteig', 'Der Zug steht auf Perron.', 'am Perron']
+    ],
+    [
+      ['Wir fahren an die Küste.', 'نسافر إلى الساحل', 'Wir fahren an der Küste.', 'الجهة an die.', 'an die'],
+      ['Das Boot liegt am Ufer.', 'القارب على الشاطئ', 'Das Boot liegt an das Ufer.', 'الموضع am.', 'am Ufer'],
+      ['Ich winke dem Fahrer.', 'ألوّح للسائق', 'Ich winke auf den Fahrer.', 'winken + داتيف.', 'dem Fahrer'],
+      ['Er bremst vor der Kreuzung.', 'يفرمل قبل التقاطع', 'Er bremst auf die Kreuzung.', 'bremsen بلا حرف.', 'bremst']
+    ],
+    'Wir fahren an die Küste. Das Boot liegt am Ufer.',
+    'Der Radfahrer überholt mich.',
+    'Beschreibe morgen deinen Weg zur Arbeit.',
+    'غدًا صف طريقك إلى العمل.'),
+
+  U('b1-u7-l3', 'B1', 'البيت والحرفة', 'Haus und Handwerk', 'kasus',
+    'Am Ende beschreibst du eine Reparatur im Haus',
+    'في النهاية تصف إصلاحًا في البيت.',
+    [
+      ['Der Kasten steht im Keller.', 'الموضع: in + Dativ', 'Ort mit Dativ statt auf', 'Der Kasten steht im Keller auf.', 'بلا auf'],
+      ['Die Einfahrt ist gesperrt.', 'المجهول يصف العمل', 'Zustandspassiv mit sein', 'Die Einfahrt ist sperren.', 'gesperrt'],
+      ['Wir heizen mit Gas.', 'heizen يحتاج mit للمادة', 'heizen mit + Dativ', 'Wir heizen auf Gas.', 'mit Gas'],
+      ['Die Mauer wurde beschädigt.', 'الماضي المجهول', 'Passiv Präteritum: wurde + Partizip', 'Die Mauer wurde beschädigen.', 'beschädigt']
+    ],
+    [
+      ['Der Kasten steht im Keller.', 'الخزانة في القبو', 'Der Kasten steht im Keller auf.', 'بلا auf.', 'im Keller'],
+      ['Ich hänge die Mappe an die Wand.', 'أعلّق الملف على الحائط', 'Ich hänge die Mappe an der Wand.', 'الجهة an die Wand.', 'an die'],
+      ['Die Mauer wurde beschädigt.', 'السور تضرّر', 'Die Mauer wurde beschädigen.', 'المجهول beschädigt.', 'beschädigt'],
+      ['Wir reinigen die Fenster.', 'ننظّف النوافذ', 'Wir reinigen auf die Fenster.', 'بلا auf.', 'reinigen']
+    ],
+    'Der Kasten steht im Keller. Die Mauer wurde beschädigt.',
+    'Die Einfahrt ist gesperrt.',
+    'Beschreibe morgen eine Reparatur mit fünf Wörtern aus der Liste.',
+    'غدًا صف إصلاحًا بخمس كلمات من القائمة.'),
+
+  U('b1-u7-l4', 'B1', 'الصحة والمشاعر', 'Gesundheit und Gefühle', 'konjugation',
+    'Am Ende sagst du was dir weh tut und wie du dich fühlst',
+    'في النهاية تقول ما يؤلمك وكيف تشعر.',
+    [
+      ['Das Knie tut weh.', 'الألم بالفعل tun', 'wehtun: tut weh', 'Das Knie tut weh es.', 'tut weh'],
+      ['Gegen Grippe hilft eine Spritze.', 'ضد: gegen', 'gegen + Akkusativ', 'Für Grippe hilft eine Spritze.', 'gegen Grippe'],
+      ['Die Stimmung ist ruhig.', 'أسماء المشاعر مفردة بفعل مفرد', 'die Stimmung: Singular + ist', 'Die Stimmung sind ruhig.', 'ist'],
+      ['Die Knochen werden alt.', 'الجمع مع werden', 'Plural: werden', 'Die Knochen wird alt.', 'werden']
+    ],
+    [
+      ['Das Knie tut weh.', 'الركبة تؤلم', 'Das Knie tut weh es.', 'tut weh.', 'tut'],
+      ['Gegen Grippe hilft eine Spritze.', 'ضد الإنفلونزا حقنة تنفع', 'Für Grippe hilft eine Spritze.', 'gegen لا für.', 'gegen'],
+      ['Die Laune ist heute gut.', 'المزاج جيد اليوم', 'Die Laune sind heute gut.', 'الفعل مفرد.', 'ist'],
+      ['Ich habe mich erkältet.', 'أصابني البرد', 'Ich habe mich erkältet gehabt.', 'الماضي: habe erkältet.', 'erkältet']
+    ],
+    'Das Knie tut weh. Gegen Grippe hilft eine Spritze.',
+    'Ich friere am Morgen.',
+    'Beschreibe morgen drei Gefühle mit je einem Satz.',
+    'غدًا صف ثلاث مشاعر بجملة لكل واحدة.'),
+
+  U('b1-u7-l5', 'B1', 'المال والأجهزة والبريد', 'Geld, Geräte und Post', 'lexik-kollokation',
+    'Am Ende erklärst du einen Bank- oder Gerätefehler am Telefon',
+    'في النهاية تشرح خللًا في البنك أو في جهاز عبر الهاتف.',
+    [
+      ['Meine EC-Karte ist gesperrt.', 'البطاقة مفرد بفعل مفرد', 'die Karte: Singular + ist', 'Meine EC-Karte sind gesperrt.', 'ist'],
+      ['Am Bankomat hole ich Geld ab.', 'abholen منفصل', 'Trennbares Verb: hole … ab', 'Am Bankomat abhole ich Geld.', 'hole … ab'],
+      ['Das Netzwerk ist langsam.', 'المحايد مفرد', 'das Netzwerk: Singular + ist', 'Das Netzwerk sind langsam.', 'ist'],
+      ['Vor dem Herunterfahren speichere ich.', 'المصدر اسمًا في الآخر', 'Substantivierung: das Herunterfahren', 'Vor dem herunterfahren speichere ich.', 'Herunterfahren كبيرة']
+    ],
+    [
+      ['Meine EC-Karte ist gesperrt.', 'بطاقتي موقوفة', 'Meine EC-Karte sind gesperrt.', 'الفعل مفرد.', 'ist'],
+      ['Am Bankomat hole ich Geld ab.', 'أسحب المال من الصراف', 'Am Bankomat abhole ich Geld.', 'ab في الآخر.', 'ab'],
+      ['Das Netzwerk ist langsam.', 'الشبكة بطيئة', 'Das Netzwerk sind langsam.', 'الفعل مفرد.', 'ist'],
+      ['Die Festplatte ist fast voll.', 'القرص ممتلئ تقريبًا', 'Die Festplatte sind fast voll.', 'الفعل مفرد.', 'ist']
+    ],
+    'Meine EC-Karte ist gesperrt. Das Netzwerk ist langsam.',
+    'Die Festplatte ist voll.',
+    'Schreibe morgen drei Sätze über ein Gerät, das nicht funktioniert.',
+    'غدًا اكتب ثلاث جمل عن جهاز لا يعمل.'),
+
+  U('b1-u7-l6', 'B1', 'الثقافة واللغة', 'Kultur und Sprache', 'wortstellung',
+    'Am Ende berichtest du über ein Fest und einen Sprachkurs',
+    'في النهاية تحكي عن حفل ودورة لغة.',
+    [
+      ['Das Orchester spielt im Hof.', 'الأوركسترا مفرد بفعل مفرد', 'das Orchester: Singular + spielt', 'Das Orchester spielen im Hof.', 'spielt'],
+      ['Wir legen die Termine fest.', 'festlegen منفصل', 'Trennbares Verb: legen … fest', 'Wir festlegen die Termine.', 'legen … fest'],
+      ['Sie erfüllt jede Bedingung.', 'erfüllen بلا حرف جر', 'kein auf nach erfüllen', 'Sie erfüllt auf jede Bedingung.', 'بلا auf'],
+      ['Die Künstlerin stellt im Herbst aus.', 'ausstellen منفصل', 'Trennbares Verb: stellt … aus', 'Die Künstlerin ausstellt im Herbst.', 'stellt … aus']
+    ],
+    [
+      ['Das Orchester spielt im Hof.', 'الأوركسترا تعزف في الساحة', 'Das Orchester spielen im Hof.', 'الفعل مفرد.', 'spielt'],
+      ['Wir legen die Termine fest.', 'نحدّد المواعيد', 'Wir festlegen die Termine.', 'fest في الآخر.', 'fest'],
+      ['Sie erfüllt jede Bedingung.', 'تستوفي كل شرط', 'Sie erfüllt auf jede Bedingung.', 'بلا auf.', 'erfüllt'],
+      ['Die Kursleiterin kommt aus Wien.', 'منشّطة الدورة من فيينا', 'Die Kursleiterin kommen aus Wien.', 'الفعل مفرد.', 'kommt']
+    ],
+    'Das Orchester spielt im Hof. Die Künstlerin stellt im Herbst aus.',
+    'Wir legen die Termine fest.',
+    'Berichte morgen über ein Fest in deiner Stadt.',
+    'غدًا احكِ عن حفل في مدينتك.')
 ];

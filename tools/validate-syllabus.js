@@ -24,8 +24,10 @@ lessons.forEach(l => { byLevel[l.level] = (byLevel[l.level] || 0) + 1; });
    levels are untouched, so this number is edited only by an explicit amendment. */
 /* Amendment B1-L2 (DECISIONS-PENDING.md item 25): the B1 match put 219 entries in
    the promotion pool (met in material, named by no list) and a B1 lesson holds 40
-   words, so B1 grows by one six-lesson unit: 40 -> 46 lessons. */
-const expect = { A0: 6, A1: 30, A2: 36, B1: 46, B2: 20 };
+   words, so B1 grows by one six-lesson unit: 40 -> 46 lessons.
+   Amendment B1-L3 (item 27): the material step grew the pool to 371 and one unit
+   holds 240 slots, so B1 grows by a second six-lesson unit: 46 -> 52 lessons. */
+const expect = { A0: 6, A1: 30, A2: 36, B1: 52, B2: 20 };
 Object.keys(expect).forEach(k => {
   byLevel[k] === expect[k] ? ok(k + ' count ' + expect[k]) : bad(k + ' count ' + byLevel[k] + ' expected ' + expect[k]);
 });
@@ -80,6 +82,10 @@ const A2_GOETHE_SHIFT_PROD = 78;
    them, because the bands are cumulative. No floor moves down. */
 const B1_GOETHE_SHIFT = 240;
 const B1_GOETHE_SHIFT_PROD = 102;
+/* Amendment B1-L3: six more B1 lessons, again 40 receptive and 17 productive each,
+   so the cumulative B1 ceiling moves by another 240 / 102. No floor moves down. */
+const B1_GOETHE_SHIFT_3 = 240;
+const B1_GOETHE_SHIFT_PROD_3 = 102;
 /* Amendment A2-GOETHE-4: the DWDS-index harvest (letters A–N then O–Z) added 93 more
    items to the same ten lessons, and each row declares its own receptive count, so the
    shift that keeps the A2 ceiling honest grows by 115 (288 → 403, the 21 rows the r30 reading carries included). */
@@ -93,12 +99,12 @@ a2Rec <= 1600 + A2_GOETHE_SHIFT && a2Rec >= 1200 ? ok('A2 receptive ' + a2Rec + 
 a2Prod <= 700 + A2_GOETHE_SHIFT_PROD && a2Prod >= 500 ? ok('A2 productive ' + a2Prod) : bad('A2 productive ' + a2Prod);
 const b1Rec = a2Rec + sum('B1', 'receptive');
 const b1Prod = a2Prod + sum('B1', 'productive');
-b1Rec <= 3200 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT && b1Rec >= 2400 ? ok('B1 receptive ' + b1Rec + ' inside ' + (3200 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT)) : bad('B1 receptive ' + b1Rec);
-b1Prod <= 1400 + A2_GOETHE_SHIFT_PROD + B1_GOETHE_SHIFT_PROD && b1Prod >= 1000 ? ok('B1 productive ' + b1Prod) : bad('B1 productive ' + b1Prod);
+b1Rec <= 3200 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT + B1_GOETHE_SHIFT_3 && b1Rec >= 2400 ? ok('B1 receptive ' + b1Rec + ' inside ' + (3200 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT + B1_GOETHE_SHIFT_3)) : bad('B1 receptive ' + b1Rec);
+b1Prod <= 1400 + A2_GOETHE_SHIFT_PROD + B1_GOETHE_SHIFT_PROD + B1_GOETHE_SHIFT_PROD_3 && b1Prod >= 1000 ? ok('B1 productive ' + b1Prod) : bad('B1 productive ' + b1Prod);
 const b2Rec = b1Rec + sum('B2', 'receptive');
 const b2Prod = b1Prod + sum('B2', 'productive');
-b2Rec <= 5000 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT && b2Rec >= 4000 ? ok('B2 receptive ' + b2Rec + ' inside ' + (5000 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT)) : bad('B2 receptive ' + b2Rec);
-b2Prod <= 2600 + A2_GOETHE_SHIFT_PROD + B1_GOETHE_SHIFT_PROD && b2Prod >= 2000 ? ok('B2 productive ' + b2Prod) : bad('B2 productive ' + b2Prod);
+b2Rec <= 5000 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT + B1_GOETHE_SHIFT_3 && b2Rec >= 4000 ? ok('B2 receptive ' + b2Rec + ' inside ' + (5000 + A2_GOETHE_SHIFT + B1_GOETHE_SHIFT + B1_GOETHE_SHIFT_3)) : bad('B2 receptive ' + b2Rec);
+b2Prod <= 2600 + A2_GOETHE_SHIFT_PROD + B1_GOETHE_SHIFT_PROD + B1_GOETHE_SHIFT_PROD_3 && b2Prod >= 2000 ? ok('B2 productive ' + b2Prod) : bad('B2 productive ' + b2Prod);
 
 lessons.every(l => l.theme && l.words && l.grammar && l.grammar.method && (l.grammar.method === 'inductive' || l.grammar.method === 'explicit'))
   ? ok('every row has one theme and a tagged grammar item')

@@ -5,7 +5,9 @@
    back under 80%.
    Unit 6 joined under amendment B1-L2 (DECISIONS-PENDING.md item 25): its six
    lessons carry the 219 entries the Goethe B1 match found the learner already
-   meets in the material, plus the 21 the new lessons' own material introduces. */
+   meets in the material, plus the 21 the new lessons' own material introduces.
+   Unit 7 joined under amendment B1-L3 (item 27): after the material step the pool
+   held 371 entries, and one unit holds 240 slots, so unit 7 carries 240 of them. */
 module.exports = Object.assign({},
   require('./vocab-b1-u1a'),
   require('./vocab-b1-u1b'),
@@ -24,5 +26,8 @@ module.exports = Object.assign({},
   require('./vocab-b1-u5c'),
   require('./vocab-b1-u6a'),
   require('./vocab-b1-u6b'),
-  require('./vocab-b1-u6c')
+  require('./vocab-b1-u6c'),
+  require('./vocab-b1-u7a'),
+  require('./vocab-b1-u7b'),
+  require('./vocab-b1-u7c')
 );
