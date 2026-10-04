@@ -305,6 +305,25 @@ console.log('\n— P3.2 lexical layer —\n');
     chs.reduce((s, c) => s + wc(c.body), 0) >= floor.novelTotal);
 }
 
+/* ---------- the listening ladder — R5's content ---------- */
+{
+  const { window: win } = boot();
+  const items = (win.DW_LADDER && win.DW_LADDER.items) || [];
+  const floor = JSON.parse(fs.readFileSync(ROOT + '/tools/ladder-floor.json', 'utf8'));
+  const audio = items.filter(i => i.audio !== false);
+  const printOnly = items.filter(i => i.audio === false);
+  const per = lv => audio.filter(i => i.level === lv).length;
+  t('ladder: ' + audio.length + ' audio items, floor ' + floor.audio, audio.length >= floor.audio);
+  ['A1', 'A2', 'B1', 'B2'].forEach(lv =>
+    t('ladder: ' + lv + ' ' + per(lv) + ' audio items, floor ' + floor[lv], per(lv) >= floor[lv]));
+  t('ladder: every audio item carries two questions with a key inside its options',
+    audio.every(i => (i.questions || []).length === 2 &&
+      i.questions.every(q => (q.options || []).includes(q.key))));
+  t('ladder: the dialect item stays print-only and out of R5 (' + printOnly.length + ')',
+    printOnly.length > 0 && printOnly.every(i => i.r5 === false));
+  t('ladder: the audio warning is present', !!(win.DW_LADDER.voice && win.DW_LADDER.not));
+}
+
 /* ---------- B2 — the workshops, route (C)'s two measures ---------- */
 {
   const { window: win } = boot();
