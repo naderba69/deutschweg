@@ -20,9 +20,13 @@ const FLOOR_FILE = path.join(__dirname, 'b2-reading-floor.json');
 const WRITE = process.argv.includes('--write-floor');
 
 const win = {};
-['web/data/library.js', 'web/data/comprehension.js']
+['web/data/library.js', 'web/data/comprehension.js', 'web/data/inventory.js']
   .forEach(f => new Function('window', fs.readFileSync(path.join(root, f), 'utf8'))(win));
 const B2 = win.DW_LIBRARY.B2;
+/* The map (DW_READING) names the texts the level promises; the library is what
+   exists. Titles are compared in order, so the reading list in the UI and the
+   row in the map cannot drift apart. */
+const MAP = (win.DW_READING && win.DW_READING.B2) || {};
 const words = s => String(s).trim().split(/\s+/).filter(Boolean).length;
 
 const articles = (B2.articles || []).map(a => ({
@@ -61,6 +65,19 @@ gate('novella total words', measured.novelTotal, FLOOR.novelTotal);
 const qBad = articles.concat(chapters).filter(t => t.questions !== 2);
 if (qBad.length) { fail += 1; console.log('  ✗ every text carries two questions — bad: ' + qBad.map(t => t.id).join(', ')); }
 else console.log('  ✓ every text carries two questions');
+const mapArticles = (MAP.articles || []);
+const mapNovel = MAP.novel || '';
+const titles = articles.map(a => a.title);
+const mapOk = mapArticles.length === titles.length && mapArticles.every((t, i) => t === titles[i]);
+if (mapOk) console.log('  ✓ DW_READING names all ' + titles.length + ' articles, in the library\'s order');
+else {
+  fail += 1;
+  console.log('  ✗ DW_READING B2 articles differ from the library');
+  titles.forEach((t, i) => { if (mapArticles[i] !== t) console.log('      ' + (i + 1) + ': map "' + (mapArticles[i] || '—') + '" vs library "' + t + '"'); });
+  for (let i = titles.length; i < mapArticles.length; i++) console.log('      ' + (i + 1) + ': map "' + mapArticles[i] + '" has no library text');
+}
+if (mapNovel === (B2.novel && B2.novel.title)) console.log('  ✓ DW_READING names the novella (' + mapNovel + ')');
+else { fail += 1; console.log('  ✗ DW_READING novella "' + mapNovel + '" vs library "' + (B2.novel && B2.novel.title) + '"'); }
 
 if (WRITE) {
   const raised = {
