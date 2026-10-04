@@ -676,11 +676,19 @@ Waschmaschine · Ersatzteile · Fahrradweg · Sponsor · Zuschuss · Vorsatz · 
 | | قبل | **بعد** |
 |---|---|---|
 | أدنى مقال | 87.9% | **100%** |
-| أدنى فصل | 91.0% | **90.9%** (لم يُمَسّ بعد) |
+| أدنى فصل | 91.0% | **100%** |
 
-المقالات العشرون كلها 100%، أي فوق 98% بهامش؛ والفصول الستة باقية على قائمتها (60 كلمة مجهولة، مطبوعة
-بالاسم) وهي الشريحة التالية. و**أسئلة الفهم لم تتغير**: الاستبدالات حافظت على المعنى، والمقياس يعيد
-التحقق من وجود سؤالين لكل نص.
+**ثم الفصول الستة (45 موضعًا آخر):** كل كلمة مجهولة كانت مطبوعة بالاسم، فاستُبدلت أو أُعيد بناء جملتها —
+*Dienstagabend · Altstadt · Tor · brannte · Matte · Schwelle · Hintertür · schüttelte* في الفصل الأول،
+*Schlafanzug · hinauf · Drama · zuckte · abkochen · bereithalten · roch · davor* في الثاني،
+*Klassenzimmer · tippte · sortierte · Fracht · Liefertermin · verschluckte · strich · Rückweg* في الثالث،
+*Lastwagen · Lieferpapiere · ausgefallen · einreichen · Montagmorgen · Schimpfwort · zitterte · Innentasche* في الرابع،
+*Abflüsse · Pfützen · tropfte · Gefäß · Dachdecker · Provisorium · glänzte · Laterne · Tor* في الخامس،
+*Wasserleitung · Geräusche · dadurch · ausbaute · strich* في السادس. والنتيجة: **أدنى فصل 100%** أيضًا،
+وأرضية الفصول 909‰ → **1000‰**، وNovelle 1,554 → **1,610 كلمة** (فصل القرار عاد إلى 254 بعد أن كان 244
+في مسودة الاستبدال — والأرضية 254 لا تُخفض، فأُضيفت جملة واحدة).
 
-**الفحص:** `npm test` **307** خضراء · المقياس يطبع قاعدة 98% سطرين، والاختبار في `tools/p3-unit.mjs`
+و**أسئلة الفهم لم تتغير** في أي نص: الاستبدالات حافظت على المعنى، والمقياس يعيد التحقق من وجود سؤالين لكل نص.
+
+**الفحص:** `npm test` **311** خضراء · المقياس يطبع قاعدة 98% سطرين، والاختبار في `tools/p3-unit.mjs`
 يتحقق أن الأرضية تحمل المفتاحين فلا يفقدهما المقياس صامتًا.
