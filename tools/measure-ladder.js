@@ -23,19 +23,32 @@ new Function('window', fs.readFileSync(path.join(root, 'web/data/ladder.js'), 'u
 const items = (win.DW_LADDER && win.DW_LADDER.items) || [];
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2'];
+const words = s => String(s || '').trim().split(/\s+/).filter(Boolean).length;
 const levels = {};
 LEVELS.forEach(lv => {
   const mine = items.filter(i => i.level === lv);
+  /* Length is content, not decoration: R5 measures unannounced listening, and a
+     nine-word script is a vocabulary card read aloud. The shortest audio script of
+     every level is therefore a measured number with its own ratchet, exactly like
+     the shortest text of a level in tools/measure-reading-levels.js. */
+  const lens = mine.filter(i => i.audio !== false).map(i => words(i.script)).sort((a, b) => a - b);
   levels[lv] = {
     audio: mine.filter(i => i.audio !== false).length,
     print: mine.filter(i => i.audio === false).length,
-    r5: mine.filter(i => i.r5 !== false).length
+    r5: mine.filter(i => i.r5 !== false).length,
+    shortest: lens.length ? lens[0] : 0,
+    median: lens.length ? lens[Math.floor(lens.length / 2)] : 0,
+    words: lens.reduce((n, w) => n + w, 0)
   };
 });
 const measured = {
   total: items.length,
   audio: items.filter(i => i.audio !== false).length,
-  A1: levels.A1.audio, A2: levels.A2.audio, B1: levels.B1.audio, B2: levels.B2.audio
+  A1: levels.A1.audio, A2: levels.A2.audio, B1: levels.B1.audio, B2: levels.B2.audio,
+  A1Words: levels.A1.words, A1Shortest: levels.A1.shortest,
+  A2Words: levels.A2.words, A2Shortest: levels.A2.shortest,
+  B1Words: levels.B1.words, B1Shortest: levels.B1.shortest,
+  B2Words: levels.B2.words, B2Shortest: levels.B2.shortest
 };
 const FLOOR = fs.existsSync(FLOOR_FILE)
   ? JSON.parse(fs.readFileSync(FLOOR_FILE, 'utf8'))
@@ -44,8 +57,10 @@ const FLOOR = fs.existsSync(FLOOR_FILE)
 console.log('\nListening ladder — ' + items.length + ' items, ' + measured.audio + ' with audio');
 LEVELS.forEach(lv => {
   const mine = items.filter(i => i.level === lv);
-  console.log('  ' + lv + '  ' + mine.length + ' items · ' + levels[lv].audio + ' audio · ' +
-    'targets ' + [...new Set(mine.map(i => i.target))].join(',') + ' · kinds ' +
+  const len = levels[lv];
+  console.log('  ' + lv + '  ' + mine.length + ' items · ' + len.audio + ' audio · ' +
+    len.shortest + '-' + Math.max.apply(null, mine.filter(i => i.audio !== false).map(i => words(i.script))) +
+    'w (median ' + len.median + ') · targets ' + [...new Set(mine.map(i => i.target))].join(',') + ' · kinds ' +
     [...new Set(mine.map(i => i.kind))].join(' / '));
 });
 
@@ -56,9 +71,11 @@ function gate(name, now, floor) {
   console.log('  ' + (ok ? '✓' : '✗') + ' ' + name + ': ' + now + ' (floor ' + floor + ')');
 }
 console.log('\nladder gate  (floor = last accepted run · a ratchet, never lowered)');
-LEVELS.forEach(lv => gate(lv + ' audio items', levels[lv].audio, FLOOR[lv]));
-gate('all items', measured.total, FLOOR.total);
-gate('items with audio', measured.audio, FLOOR.audio);
+LEVELS.forEach(lv => {
+  gate(lv + ' audio items', levels[lv].audio, FLOOR[lv]);
+  gate(lv + ' shortest audio script (words)', levels[lv].shortest, FLOOR[lv + 'Shortest'] || 0);
+  gate(lv + ' audio script words', levels[lv].words, FLOOR[lv + 'Words'] || 0);
+});
 
 const audioQ = items.filter(i => i.audio !== false);
 const badQ = audioQ.filter(i => !Array.isArray(i.questions) || i.questions.length !== 2);
@@ -75,6 +92,9 @@ else console.log('  ✓ print-only items stay out of R5 (' + printOnly.length + 
 if (WRITE) {
   const raised = {};
   Object.keys(FLOOR).forEach(k => { raised[k] = Math.max(FLOOR[k], measured[k] || 0); });
+  Object.keys(measured).forEach(k => {
+    if (/Shortest$|Words$/.test(k)) raised[k] = Math.max(FLOOR[k] || 0, measured[k]);
+  });
   fs.writeFileSync(FLOOR_FILE, JSON.stringify(raised, null, 2) + '\n');
   console.log('\n  wrote ' + path.relative(root, FLOOR_FILE) + ' ' + JSON.stringify(raised));
 }
