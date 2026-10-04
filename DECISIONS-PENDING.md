@@ -135,3 +135,19 @@ with the more specific rule, or with the rule that produces more honest evidence
     31 chunks), then B2.
 
 
+25. **B1-L2 — the B1 match is measured, and B1 promotions need new lessons, not bigger ones.**
+    Run 1 of `tools/match-goethe-b1.js` measures the official B1 list (1,820 entries, read whole from the
+    DWDS index of the same list, kept outside the repo as usual) against the A0..B1 corpus: **599/1,820 =
+    33% authored** and **818/1,820 = 45% met**. The recorded gap (`tools/goethe-b1-gap.txt`) holds **1,221
+    entries**, of which **219 are already met in the material and named by no word list** — the promotion
+    pool `tools/goethe-b1-candidates.txt` — and **1,002 the material does not carry at all**. Floors are the
+    run's own values (0.329 / 0.449) and may only rise; a run without the transcription reads the baseline
+    from the gap file's header (verified to reproduce 599 · 818 exactly) and is refused under
+    `--require-transcription`.
+    **The structural finding, declared rather than worked around:** every B1 lesson already sits on the
+    compiler's hard ceiling of 40 words per lesson (a 41st word would need an 11th Wortschatz step and break
+    the 3–10 step band), so unlike A2 — whose lessons were below the ceiling and could absorb promotions —
+    B1 promotions require **new lessons**. The amendment that follows (B1-L2) adds B1 map rows whose lesson
+    lists carry the 219 pool first, then the 1,002 the material still lacks. The **98 rows** already authored
+    for this round are kept, unwired, in `tools/b1-promoted-rows.js` and count for nothing until they are
+    wired into their lessons and verified by the matcher line by line. After that the B2 match follows.
