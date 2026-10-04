@@ -1185,3 +1185,22 @@ wechsel · vorn) لا مفردات جديدة. **الأرضيات:** A2 5908/175
 wichtigen). **الأرضيات:** `b2-reading-floor` article 251 · articlesTotal 5366 ·
 `reading-levels-floor` B2 7724/251 · `corpus-floor` 9,644 رمزًا.
 **الفحص:** `npm test` **389** خضراء، 0 حمراء.
+
+## ذاكرة التطبيق تُرفع — والفحص يمنع نسيانها (392 فحصًا) — 2026-10-04
+
+قاعدة الإنتاج تنص: «ذاكرة التطبيق تُرفع حتى لا يعلق المتصفح على النسخة القديمة». وكان
+`web/sw.js` يقول `deutschweg-v9` منذ دمج الفرع، مع أن هذا الفرع غيّر `library.js`
+و`exam-b2.js` و`ladder.js` — والملفات الثلاثة **cache-first**، فمتصفح من ثبّت التطبيق كان
+يقرأ نسخة قديمة من المكتبة والورقة والسلّم.
+
+**ما نُفِّذ:**
+- رُفعت الذاكرة إلى `deutschweg-v10`.
+- قائمة `ASSETS` كانت ناقصة خمسة ملفات يحمّلها `index.html`: `data/writing-b2.js` ·
+  `data/speaking-b2.js` · `data/exam-b2.js` · `data/mastery-b2.js` · `engine/mastery.js`.
+  أُضيفت، فصار التثبيت الأول يخزّن التطبيق كاملًا.
+- ثلاثة فحوص جديدة في `tools/p3-unit.mjs`: كل `<script src>` في `index.html` موجود في
+  القائمة · كل ملف في القائمة موجود على القرص · اسم الذاكرة مُرقَّم (`deutschweg-v<n>` ≥ 10).
+  وأُثبت أن الفحص له أسنان: بحذف `data/exam-b2.js` من القائمة خرج
+  `✗ cache: every script the shell loads is in the offline cache list — data/exam-b2.js`.
+
+**الفحص:** `npm test` **392** خضراء، 0 حمراء (كانت 389).

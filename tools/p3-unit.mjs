@@ -792,5 +792,29 @@ console.log('\n— P3.2 lexical layer —\n');
   win.DW.go('home');
 }
 
+/* ---------- the offline cache lists what the shell loads ---------- */
+
+/* The production rule is explicit: every web change raises the app's memory so the
+   browser is not stuck on the old version. That only works if the precache list is
+   complete — a file the shell loads but the cache never lists is fetched once and
+   then frozen at whatever version the learner happened to install. Both halves are
+   checked here: the shell's own script list, and that the cache name is versioned. */
+{
+  const sw = fs.readFileSync(ROOT + '/web/sw.js', 'utf8');
+  const index = fs.readFileSync(ROOT + '/web/index.html', 'utf8');
+  const listed = new Set([...sw.matchAll(/'([^']+)'/g)].map(m => m[1])
+    .filter(x => x.endsWith('.js') || x.endsWith('.css') || x.endsWith('.png') ||
+                 x.endsWith('.mp3') || x.endsWith('.webmanifest') || x.endsWith('.svg') ||
+                 x === './' || x === 'index.html'));
+  const shell = [...index.matchAll(/<script src="([^"]+)"><\/script>/g)].map(m => m[1]);
+  const missing = shell.filter(f => !listed.has(f));
+  t('cache: every script the shell loads is in the offline cache list',
+    missing.length === 0, missing.join(' '));
+  const dead = [...listed].filter(f => f !== './' && !fs.existsSync(ROOT + '/web/' + f));
+  t('cache: every listed asset exists on disk', dead.length === 0, dead.join(' '));
+  const m = sw.match(/const CACHE = 'deutschweg-v(\d+)'/);
+  t('cache: the app memory is versioned (deutschweg-v<n>)', !!m && Number(m[1]) >= 10);
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
