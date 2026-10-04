@@ -4,16 +4,16 @@
     return { id: id, level: level, title: title, body: body, words: body.split(/\s+/).filter(Boolean).length };
   }
   const A1 = [
-    ['a1-r1', 'بطاقة الفندق', 'Guten Tag. Ich heiße Sara. Ich habe ein Zimmer. Das Zimmer ist klein und hell. Ich bleibe zwei Nächte.'],
-    ['a1-r2', 'قائمة قصيرة', 'Einen Kaffee, bitte. Ein Wasser, bitte. Die Rechnung, bitte. Das macht acht Euro.'],
-    ['a1-r3', 'رسالة إلى صديق', 'Liebe Anna, ich komme am Montag. Ich wohne bei meiner Schwester. Viele Grüße, Sara.'],
-    ['a1-r4', 'إعلان غرفة', 'Zimmer frei. Das Zimmer ist hell. Es gibt ein Bett. Die Wohnung ist klein. Preis: 300 Euro.'],
-    ['a1-r5', 'لافتة قطار', 'Der Zug nach Berlin kommt um acht. Gleis zwei. Der Zug hat keine Verspätung.'],
-    ['a1-r6', 'ملاحظة', 'Ich bin im Kurs. Ich komme um sechs nach Hause. Es gibt Brot auf dem Tisch.'],
-    ['a1-r7', 'دعوة', 'Kommst du am Samstag? Wir feiern um sieben. Ja, gerne. Ich bringe Wasser mit.'],
-    ['a1-r8', 'وصفة قصيرة', 'Zuerst das Wasser. Dann den Kaffee. Danach die Milch. Zum Schluss trinken.'],
-    ['a1-r9', 'جدول', 'Der Bus kommt um neun. Dann um zehn. Die Fahrt dauert zwanzig Minuten.'],
-    ['a1-r10', 'بريد قصير', 'Hallo, ich bin krank. Ich komme morgen. Ich brauche keinen Termin. Danke, Sara.']
+    ['a1-r1', 'بطاقة الفندق', 'Guten Tag. Ich heiße Sara. Ich wohne in Berlin und arbeite in einem Hotel. Das Hotel ist klein, aber hell. Ich habe ein Zimmer im ersten Stock. Das Zimmer ist ruhig, es hat ein Bett, einen Tisch und zwei Stühle. Am Morgen trinke ich Kaffee, dann gehe ich zur Arbeit. Am Abend lese ich ein Buch oder ich höre Musik. Ich bleibe zwei Nächte in der Stadt, dann fahre ich nach Hause.'],
+    ['a1-r2', 'قائمة قصيرة', 'Im Café am Markt gibt es Kaffee, Tee und Kuchen. Ein Kaffee kostet zwei Euro, ein Stück Kuchen drei Euro. Ich bestelle einen Kaffee und ein Wasser. Die Frau bringt die Getränke schnell. Mein Freund isst einen Salat, er trinkt keinen Kaffee, er möchte Tee mit Milch. Wir sprechen über die Arbeit und über die Familie. Am Ende bezahlen wir zusammen und geben drei Euro mehr. Die Rechnung liegt auf dem Tisch.'],
+    ['a1-r3', 'رسالة إلى صديق', 'Liebe Anna, wie geht es dir? Ich habe eine neue Wohnung. Sie ist im dritten Stock und hat zwei Zimmer. Die Küche ist klein, aber die Fenster sind groß. Am Montag kaufe ich einen Tisch und einen Schrank, am Dienstag kommt mein Bruder und hilft mir. Am Samstag mache ich eine Party. Kommst du um sieben? Bring bitte Musik mit. Ich freue mich sehr. Viele Grüße, Sara.'],
+    ['a1-r4', 'إعلان غرفة', 'Zimmer frei ab Montag. Das Zimmer ist hell und ruhig, es liegt im zweiten Stock. Es gibt ein Bett, einen Tisch, einen Stuhl und ein Regal. Die Küche und das Bad teilen wir zu dritt. Die Wohnung ist in der Stadt, die Haltestelle ist fünf Minuten zu Fuß. Preis: 300 Euro im Monat, alles zusammen. Keine Tiere. Fragen? Rufen Sie abends an.'],
+    ['a1-r5', 'لافتة قطار', 'Der Zug nach Frankfurt kommt um acht Uhr auf Gleis zwei. Der Zug hat heute zehn Minuten Verspätung. Fahrkarten kaufen Sie am Automaten oder im Internet. Ein Ticket nach Frankfurt kostet vierzig Euro. Kinder bis sechs Jahre bezahlen nichts. Im Zug gibt es keinen Kaffee, aber Wasser. In Frankfurt ist der Zug um zwölf Uhr. Bitte einsteigen und die Türen schließen.'],
+    ['a1-r6', 'ملاحظة', 'Hallo Ben, ich bin im Kurs und komme um sechs Uhr nach Hause. Es gibt Brot, Käse und Obst auf dem Tisch. Die Milch ist im Kühlschrank. Bitte kaufe noch zwei Flaschen Wasser, das Geld liegt in der Küche. Um sieben Uhr kommt mein Bruder, wir essen zusammen. Wenn du müde bist, schlaf eine Stunde. Bis später! Sara.'],
+    ['a1-r7', 'دعوة', 'Liebe Nachbarn, am Samstag feiern wir meinen Geburtstag. Die Party beginnt um sieben Uhr im Garten. Wir essen, trinken und tanzen. Bitte bringt Musik mit, wir haben nur ein Radio. Es gibt Kuchen, Salat und Getränke. Kinder sind willkommen. Die Wohnung ist im ersten Stock, der Garten ist hinter dem Haus. Sagt bitte bis Donnerstag, ob ihr kommt. Viele Grüße, Sara und Ben.'],
+    ['a1-r8', 'وصفة قصيرة', 'Heute koche ich Reis mit Gemüse. Zuerst wasche ich das Gemüse und mache es klein. Dann koche ich Wasser. Der Reis braucht zwanzig Minuten, das Gemüse nur zehn. Danach koche ich alles zusammen, ich brauche Salz und Öl. Zum Schluss esse ich mit meiner Schwester. Das Essen ist einfach und billig. Am Abend trinken wir Tee und sprechen über den Tag.'],
+    ['a1-r9', 'جدول', 'Der Bus kommt um neun Uhr an der Haltestelle. Die Fahrt dauert zwanzig Minuten. Ich steige am Bahnhof um und nehme den Bus vier. Am Montag arbeite ich von acht bis zwölf, am Dienstag von zwei bis sechs. Am Mittwoch habe ich frei, dann lerne ich Deutsch. Der Kurs beginnt um fünf Uhr und dauert neunzig Minuten. Danach gehe ich zu Fuß nach Hause.'],
+    ['a1-r10', 'بريد قصير', 'Liebe Frau Meier, ich bin krank und kann heute nicht in den Kurs kommen. Ich habe Fieber und mein Kopf tut weh. Der Arzt sagt: Bleiben Sie zwei Tage im Bett und trinken Sie viel Wasser. Am Donnerstag komme ich wieder. Bitte schicken Sie mir die Hausaufgabe. Vielen Dank und viele Grüße, Sara.']
   ].map(r => text(r[0], 'A1', r[1], r[2]));
   const A2 = [
     ['Der Tag in Berlin', 'Ich bin gestern angekommen. Der Zug hatte Verspätung. Ich habe ein Zimmer reserviert. Am Abend bin ich durch die Stadt gegangen.'],
