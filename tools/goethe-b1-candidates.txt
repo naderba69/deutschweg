@@ -6,22 +6,81 @@
 # Every line was verified against the corpus: authored lines and lines the corpus does not
 # carry are excluded. Promoting an entry means naming it in a word list; the matcher then
 # verifies authored AND met before the entry counts, so this file can never overstate.
+der Abfalleimer
+das Abgas
+abhangen
+abmachen
+das Abonnement
 abonnieren
+abschreiben
+die Absenderin
+abstimmen
+die Abwartin
+abwärts
+abwaschen
+abwesend
+allerbest
+allerschönst
+allgemein
 alltäglich
 das Alphabet
+das Altenheim
 amüsieren
 anderseits
+anhaben
+ankündigen
+anschließen
+anschnallen
+anstellen
+die Arbeiterin
+die Architektin
+das Asyl
+auffallen
+auffordern
+aufführen
+aufgeben
+aufhalten
+aufheben
+aufladen
+auflösen
+auftreten
+der Auftritt
 aufwärts
+auseinander
 die Ausfahrt
+ausgezeichnet
+ausschließen
+ausschließlich
+äußerlich
+aussuchen
+auswählen
 das Ballett
+die Bancomatkarte
+die Bedienungsanleitung
+befreit
+befriedigend
 begleiten
 begrenzt
+beißen
+beleidigen
+bemerken
 beschränken
+besonder
 bestrafen
+die Betriebsrätin
+betrügen
 betrunken
+die Bewohnerin
+biologisch
 bisher
 bloß
+brechen
+die Broschüre
+die Brust
+der Bub
 die Burg
+der Coiffeur
+die Coiffeuse
 dahin
 dasselbe
 dauernd
@@ -32,54 +91,120 @@ der Dialekt
 diesmal
 die Direktorin
 die Diskothek
+die Distanz
+doppelt
 drehen
+die Droge
+die Drogerie
 durcheinander
+durstig
+eben
 ebenfalls
+ebenso
+eignen
 einbrechen
 der Einbrecher
+die Einbrecherin
 der Einbruch
+eindeutig
+der Einfall
+einfallen
+einfügen
+einführen
 einheitlich
+einnehmen
 einsam
+einsetzen
+einstellen
+eintreten
+die Einwohnerin
+einzahlen
+elegant
+elektrisch
+entdecken
+entfernen
 entlang
+entlassen
+entschließen
+entschlossen
+entsorgen
 entweder
+erfordern
+die Eröffnung
+erziehen
+die Erziehung
 ewig
+der Export
+extrem
+der Fachmann
+farbig
+färbig
+das Faschierte
 der Fasching
 die Fasnacht
 faulenzen
 der Feber
+die Fernbedienung
+festhalten
 festnehmen
+festsetzen
+feststehen
+feststellen
 fliehen
 fließen
 die Flucht
+folgend
+fortsetzen
 die Fortsetzung
+das Forum
+fressen
+die Frisur
+das Fundbüro
+die Fußgängerin
+füttern
 gar
 das Gasthaus
 die Gaststätte
 das Gebiet
 das Gebirge
+gebrauchen
 die Geburt
 geeignet
 das Gefängnis
+der Gegenstand
+der Gegner
+geheim
 der Gehsteig
+der Geldautomat
 gelingen
 gelten
 genauso
 genießen
+genügen
 gerecht
+gesamt
+das Geschlecht
 gespannt
 gewöhnlich
 das Gift
 giftig
+gleichberechtigt
 gleichfalls
 gleichzeitig
+der Gott
+die Gratulation
 gucken
 der Hafen
+hageln
 der Händler
 die Händlerin
 das Haustier
 heimlich
 die Heldin
 herausfinden
+die Herausforderung
+hieher/hierher
+hinterher
 historisch
 höchstens
 die Hörerin
@@ -89,149 +214,289 @@ ideal
 illegal
 indem
 individuell
+inklusive
 innen
 inner
+insgesamt
+integrieren
 die Intelligenz
+intensiv
 inzwischen
+irgendein
 irgendwann
 irren
 jederzeit
 jedoch
+jemals
+jeweils
+die Kabine
 der Kanal
+kaputtgehen
+die Karotte
 der Käufer
 die Käuferin
+klettern
+die Klimaanlage
+klopfen
 komplett
 die Konkurrenz
 das Konsulat
+konsumieren
 körperlich
 der Korridor
+kräftig
 das Kraftwerk
 kreativ
 künstlich
 der Kunststoff
+der Kuss
+küssen
+das Kuvert/Couvert
 das Leder
+die Lernerin
 die Leserin
 das Lexikon
 die Linie
+die Lippe
 die Literatur
+das Loch
 locker
 losfahren
+die Malerin
 das Märchen
+das Material
 maximal
+meinetwegen
 die Mensa
+menschlich
+merkwürdig
 das Metall
 die Metropole
+der Migrant
+die Migrantin
 die Migration
 mild
+minimal
 mischen
+die Mitarbeiterin
 miteinander
+mittler
 mittlerweile
 die Mobilität
 nachdenken
 nachher
+nachschlagen
 die Nachspeise
+das Nahrungsmittel
+nämlich
+nebenbei
 der Neffe
+negativ
+die Neuigkeit
+der/das Nichtraucher
+die Nichtraucherin
 nirgendwo
 normalerweise
+nun
+nützen
+öffentlich
 öko-
 ökologisch
 die Oper
+parallel
+der Passagier
+die Passagierin
+der Pensionist
+die Pensionistin
+die Personalie
 persönlich
 die Pfanne
 der Pilz
 die Politikerin
 populär
 positiv
+prima
 der Profi
+der Profisportler
 die Profisportlerin
+die Puppe
 quer
+die Radfahrerin
+rasieren
+die Raucherin
+rauf
+rauf-
 relativ
+rennen
 die Reservierung
 riesig
 roh
+runterwerfen
 salzig
+sämtlich
 satt
+die Schachtel
+die Scheibe
+scheiden
+die Scheidung
+schieben
 schief
+schießen
 das Schlagobers
 der Schlagrahm
+die Schlagsahne
 schlank
 schließlich
+schminken
 der Schmuck
+schreien
+die Schriftstellerin
+der Schritt
 schuldig
+die Schüssel
+schütteln
 der/das Schwammerl
 selbstverständlich
 die Semmel
+der Senior
 die Seniorin
 senkrecht
 die Serie
 der/die Serviceangestellte
+die Siegerin
 sinnlos
 solch
+soviel
 sowieso
 sowohl
+der Sozialarbeiter
+die Sozialarbeiterin
 sparsam
 spätestens
+der Spezialist
+die Spezialistin
 speziell
 spitz
 die Spur
+spüren
 städtisch
+stammen
+stechen
+stehlen
+der Steward
+die Stewardess
+stinken
 der Stoff
 der Strafzettel
+das Streichholz
 der Streik
 streiken
+der Strumpf
 das Studio
+stürzen
 tanken
 der Täter
+die Täterin
+tauchen
 technisch
 das Tempo
 die Terrasse
+der Tod
 tolerant
 der Tourismus
 die Trainerin
+die Träne
 der Transport
 transportieren
+treiben
+die Trennung
 treu
 das Trinkgeld
 das Trottoir
+der Typ
 überfahren
+überreden
+die Überzeugung
 übrig
 übrigens
 das Ufer
+umdrehen
+umgehen
 umgekehrt
 umso
+ungefähr
+die Uniform
+unterlassen
 ursprünglich
 vegetarisch
 das Velo
+der Verbrecher
+die Verbrecherin
 verbrennen
 verbringen
 verdächtig
+vergrößern
 verhaften
+das Verhalten
+verhalten
 das Verkehrszeichen
 verlassen
+vermissen
+die Vermittlung
+verrückt
+versäumen
+versprechen
 verstecken
+die Vertreterin
 verurteilen
+verwenden
+verzeihen
+das Vitamin
 völlig
 voneinander
+voraussichtlich
+vorder
 die Vorfahrt
 vorhin
+vorkommen
+vorläufig
+vorlesen
 die Vorspeise
 waagerecht/waagrecht
 wahnsinnig
 die Wanderung
+weder
+weigern
+weltenweit
+wertlos
+wertvoll
 die Wettervorhersage
 wild
 die Wirtin
+die Wissenschaftlerin
+worum
+zahlreich
 die Zahnpasta
 zelten
 zentral
 ziemlich
+der Zins
 das/der Znüni
+zubereiten
 der Zugang
 zugänglich
+zugehen
 die Zuhörerin
+zukünftig
 zumindest
 zunächst
 der Zünder
 das Zündholz
+zurechtkommen
+zusätzlich
+die Zuschauerin
+der Zuschlag
+die Zutat
 das Zvieri
+zweifeln
 zwingen

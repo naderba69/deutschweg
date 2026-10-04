@@ -233,3 +233,18 @@ with the more specific rule, or with the rule that produces more honest evidence
     B1 map **58 lessons / 2,320 declared (100%)**; catalogue **149 lessons / 894 sentences**.
     **Next:** the 265 entries the corpus still lacks need a fourth material round, and then a ninth unit
     names them; the 229 pool entries wait for the same unit.
+
+30. **B1-L5: fourth material round — every Goethe B1 entry is now carried (delivered 2026-10-04).**
+    The 265 entries the corpus still lacked (the gap's `new` column after unit 8) were the target of
+    **16 new B1 texts** (`b1-r45` … `b1-r60`) on the themes those words belong to: tidying and rubbish,
+    bank and cash machine, the new job, complaints, learning with a method, a quarrel, the vanished
+    neighbour, bathroom and beauty, the airport, the neighbours, market and cooking, the sports festival,
+    streets of the city, old age, art and press, and the registry office. Each missing entry appears in its
+    lemma form — separable verbs inside a modal construction (`will … einstellen`) — because the matcher
+    compares stems, not inflections.
+    **Measured:** the material measure reaches **1,820/1,820 = 100%** — no Goethe B1 entry is missing from
+    the material — the floating floor rises **0.854 → 1.000**, the open gap stays **494** but every line of it
+    is now met-not-authored (the promotion pool), and the reading count moves 44 → **60**.
+    The authored column is unchanged at **1,326 = 73%**, by design: this round is material, not lists.
+    **Next:** two more units (12 lessons, 480 headword slots) name the 494 and take the authored column to
+    100%; then B2's own material and its gate.
