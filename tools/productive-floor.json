@@ -1,0 +1,27 @@
+{
+  "A0": {
+    "cards": 89,
+    "cumulative": 89,
+    "chunks": 0
+  },
+  "A1": {
+    "cards": 801,
+    "cumulative": 890,
+    "chunks": 100
+  },
+  "A2": {
+    "cards": 1029,
+    "cumulative": 1919,
+    "chunks": 100
+  },
+  "B1": {
+    "cards": 2410,
+    "cumulative": 4329,
+    "chunks": 100
+  },
+  "B2": {
+    "cards": 725,
+    "cumulative": 5054,
+    "chunks": 100
+  }
+}

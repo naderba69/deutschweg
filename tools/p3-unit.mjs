@@ -589,5 +589,66 @@ console.log('\n— P3.2 lexical layer —\n');
   win.DW.go('home');
 }
 
+/* ---------- the productive column: the step's words and a hit chunk enter the queue ---------- */
+{
+  const { window: win } = boot();
+  const id = 'a1-u1-l1';
+  const lesson = win.DW_LESSONS[id];
+  const order = win.DW_SYLLABUS.lessons.map(l => l.id);
+  const before = order.slice(0, order.indexOf(id));
+  const S = win.DW.session.S;
+  S.progress = before.map(x => ({ lessonId: x, state: 'completed' }));
+  S.capabilities = before.map(x => ({ id: 'cap.' + x + '.core', evidence: 'E1', lastActive: '2026-10-02', history: [] }));
+  const steps = lesson.schritte;
+  const wStep = steps.filter(st => st.wortschatz && st.wortschatz.length && st.frage && st.frage.art !== 'flashcard')[0]
+    || steps.filter(st => st.wortschatz && st.wortschatz.length)[0];
+  const p = { lessonId: id, state: 'in_progress', completedSteps: steps.slice(0, steps.indexOf(wStep)).map(x => x.id), lastStepId: wStep.id };
+  S.progress = S.progress.filter(x => x.lessonId !== id).concat([p]);
+  win.go('lesson');
+  /* answer the step for real, so the path under test is the app's, not the test's */
+  const f = wStep.frage;
+  let answered = false;
+  if (f && f.art === 'cloze') {
+    win.document.querySelector('.inp').value = f.antworten[0];
+    const ok = [...win.document.querySelectorAll('button')].find(x => x.textContent.trim() === 'تحقّق');
+    if (ok) { ok.click(); answered = !!win.document.querySelector('.layer.good'); }
+  } else if (f && f.art === 'mcq') {
+    const right = (f.optionen || []).find(o => o.id === f.richtig);
+    const b = [...win.document.querySelectorAll('button')].find(x => right && x.textContent.trim() === right.text);
+    if (b) b.click();
+    const ok = [...win.document.querySelectorAll('button')].find(x => x.textContent.trim() === 'تحقّق');
+    if (ok) { ok.click(); answered = !!win.document.querySelector('.layer.good'); }
+  }
+  t('productive: the Wortschatz step was answered correctly through the lesson screen', answered, 'step ' + wStep.id + ' art ' + (f && f.art));
+  const cards = win.DW.session.S.srs.cards || [];
+  const words = wStep.wortschatz.map(x => x.de);
+  t('productive: the whole Wortschatz step entered the queue (' + words.length + ' words)',
+    words.every(d => cards.some(c => c.de === d)));
+  const one = cards.filter(c => c.de === words[0])[0];
+  t('productive: each card carries its own receptive and productive schedules',
+    !!one && !!one.receptive && !!one.productive && one.receptive.due !== one.productive.due && one.level === lesson.level);
+  t('productive: the flashcard word is not the only card of the step',
+    cards.filter(c => words.indexOf(c.de) >= 0).length === words.length);
+  win.go('home');
+}
+{
+  const { window: win } = boot();
+  const S = win.DW.session.S;
+  S.gates.G1 = { state: 'passed' }; S.gates.G2 = { state: 'passed' };
+  win.DW.go('chunks');
+  const chunk = win.DW_SYLLABUS.chunks.B1[0];
+  const input = win.document.querySelector('#view input');
+  input.value = chunk.de;
+  const btn = [...win.document.querySelectorAll('#view button')].find(b => b.textContent.trim() === 'سجّل');
+  btn.click();
+  const cards = win.DW.session.S.srs.cards || [];
+  const card = cards.filter(c => c.de === chunk.de)[0];
+  t('productive: a chunk hit inside the time becomes a chunk card of its level',
+    !!card && card.chunk === true && card.level === 'B1' && !!card.productive);
+  t('productive: the chunk log records the level with the attempt',
+    (S.chunksLog || []).some(x => x.de === chunk.de && x.level === 'B1' && x.counted === true));
+  win.DW.go('home');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

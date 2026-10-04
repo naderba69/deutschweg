@@ -548,6 +548,16 @@ function handleResult(st, r) {
   if (escStreak >= 3) armNext = true;
   if (DW.BANK.STEP_CARDS[st.id]) DW.practice.introduce(DW.BANK.STEP_CARDS[st.id]);
   else if (window.DW_STEP_CARDS && window.DW_STEP_CARDS[lessonId() + ':' + st.id]) DW.practice.introduce(window.DW_STEP_CARDS[lessonId() + ':' + st.id]);
+  /* The whole Wortschatz step enters the queue, not only the one flashcard word:
+     the step's list is what the lesson has just taught, and the level's lexical
+     column is declared from it. Without this path the productive target of R6 is
+     unreachable — 424 card words against a declared 3,157. */
+  if (st.wortschatz && st.wortschatz.length) {
+    const lesson = (window.DW_LESSONS && DW_LESSONS[lessonId()]) || null;
+    DW.practice.introduce(st.wortschatz.map(x => ({
+      de: x.de, ar: x.ar, example: x.ex || '', level: (lesson && lesson.level) || 'A0'
+    })));
+  }
 }
 
 function injectRemedial(st) {
@@ -1306,6 +1316,10 @@ function renderChunks() {
     S.chunksLog = S.chunksLog || [];
     S.chunksLog.push({ de: item.de, level: sylLevel(), counted: counted, at: new Date().toISOString() });
     S.exam.chunkIndex = (S.exam.chunkIndex || 0) + 1;
+    /* A chunk hit inside the time enters the queue as a chunk card: R6 counts
+       chunks separately from words, and without this path the 100-per-level target
+       could never be met (the bank carried three A0 chunks). */
+    if (counted) DW.practice.introduce([{ de: item.de, ar: item.ar, example: '', chunk: true, level: sylLevel() }]);
     save();
     v.appendChild(el('div', counted ? 'layer good' : 'layer bad', counted ? 'داخل الوقت.' : 'لا يُحتسب. المفتاح: ' + item.de));
   };
