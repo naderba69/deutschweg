@@ -23,18 +23,23 @@ const STOP = new Set(['und', 'oder', 'aber', 'denn', 'dass', 'wenn', 'als', 'wie
 
 const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
 
-/* Every text of the library, whatever shape its level uses. */
+/* Every text of the library, whatever shape its level uses. `questions` is the
+   number of checkable questions the text carries (2 is the rule). */
 function libraryTexts(lib) {
   const out = [];
+  const row = (level, t, id) => ({
+    level: level, id: id || t.id, title: t.title, body: t.body,
+    questions: (t.questions || []).length
+  });
   ['A1', 'A2'].forEach(lv => {
     const node = lib[lv];
-    (Array.isArray(node) ? node : []).forEach(t => { if (t && t.body) out.push({ level: lv, id: t.id, title: t.title, body: t.body }); });
+    (Array.isArray(node) ? node : []).forEach(t => { if (t && t.body) out.push(row(lv, t)); });
   });
   const b1 = ((lib.B1 || {}).texts) || [];
-  b1.forEach(t => { if (t && t.body) out.push({ level: 'B1', id: t.id, title: t.title, body: t.body }); });
+  b1.forEach(t => { if (t && t.body) out.push(row('B1', t)); });
   const b2 = lib.B2 || {};
-  (b2.articles || []).forEach(t => { if (t && t.body) out.push({ level: 'B2', id: t.id, title: t.title, body: t.body }); });
-  (((b2.novel || {}).chapters) || []).forEach(t => { if (t && t.body) out.push({ level: 'B2', id: t.id || ('novelle-' + t.n), title: t.title, body: t.body }); });
+  (b2.articles || []).forEach(t => { if (t && t.body) out.push(row('B2', t)); });
+  (((b2.novel || {}).chapters) || []).forEach(t => { if (t && t.body) out.push(row('B2', t, 'novelle-' + t.n)); });
   return out;
 }
 

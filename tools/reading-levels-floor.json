@@ -1,0 +1,18 @@
+{
+  "A1": {
+    "texts": 10,
+    "lowestPermille": 1000
+  },
+  "A2": {
+    "texts": 30,
+    "lowestPermille": 980
+  },
+  "B1": {
+    "texts": 60,
+    "lowestPermille": 981
+  },
+  "B2": {
+    "texts": 26,
+    "lowestPermille": 1000
+  }
+}
