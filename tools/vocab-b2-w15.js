@@ -18,7 +18,7 @@ module.exports = {
       ['der Verbrauch', '—', 'الاستهلاك', 'Der Verbrauch steigt trotz jeder Subvention; der Energieverbrauch auch.', 'Der Verbrauch steigen trotz jeder Subvention.', 'المفرد: steigt.', 'konjugation', 'Verbrauch'],
       ['die Energie', 'die Energien', 'الطاقة', 'Die Energie kommt aus der Biomasse, nicht aus dem Zufall.', 'Die Energie kommen aus der Biomasse.', 'المفرد: kommt.', 'konjugation', 'Energie'],
       ['die Energiewende', '—', 'التحول الطاقي', 'Die Energiewende braucht einen Speicher, eine Batterie und einen Emissionshandel.', 'Die Energiewende brauchen einen Speicher.', 'المفرد: braucht.', 'konjugation', 'Energiewende'],
-      ['die erneuerbare Energie', '—', 'الطاقة المتجددة', 'Die erneuerbare Energie stammt aus Geothermie und Wasserkraft.', 'Die erneuerbare Energie stammen aus Geothermie.', 'المفرد: stammt.', 'konjugation', 'erneuerbare'],
+      ['der Strommix', 'die Strommixe', 'مزيج الكهرباء', 'Der Strommix ändert sich, sobald die Wasserkraft nachlässt; die Geothermie trägt wenig.', 'Der Strommix ändern sich, sobald die Wasserkraft nachlässt.', 'مذكر مفرد: ändert.', 'konjugation', 'Strommix'],
       ['die Solaranlage', 'die Solaranlagen', 'المنشأة الشمسية', 'Die Solaranlage liefert Strom, die Photovoltaik erklärt ihn.', 'Die Solaranlage liefern Strom.', 'المفرد: liefert.', 'konjugation', 'Solaranlage'],
       ['das Windrad', 'die Windräder', 'عجلة الريح', 'Das Windrad steht am Radweg, nicht im Moor.', 'Das Windrad stehen am Radweg.', 'محايد ومفرد: steht.', 'konjugation', 'Windrad'],
       ['der Strom', '—', 'الكهرباء', 'Der Strom kommt aus der Steckdose, der Anreiz aus der Politik.', 'Der Strom kommen aus der Steckdose.', 'المفرد: kommt.', 'konjugation', 'Strom'],

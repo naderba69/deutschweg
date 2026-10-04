@@ -292,3 +292,25 @@ with the more specific rule, or with the rule that produces more honest evidence
     `tools/p3-unit.mjs` read the same floor file, so raising the content raises the test with it, and
     `npm test` runs **270 green**. B2's own gate (the material measure of route C) stays at 100%; the
     authored column stays 800/1,800 = 44% by the owner's decision, not by omission.
+34. **B2-L1: the authored column is at the ratified template's ceiling — measured, with a floor, and the level has its own gate (delivered 2026-10-04).**
+    B2 declares **1,800** receptive words (R6's B2 delta: 5,000 − 3,200) as **20 workshops × 90**, and route C
+    splits each workshop into **40 authored items + 50 material words**. The 40 is arithmetic, not preference:
+    §8.1's band is 24–36 steps, a compiled workshop spends **26** of them on the non-Wortschatz stages, and §8.3
+    allows 2–4 words per Wortschatz step — 10 × 4 = **40**, times twenty workshops = **800 = 44%**. Raising the
+    authored column is a change to the ratified band or to the per-step ceiling, not a content edit; so the
+    column is *recorded at its top* instead of being quietly called "44% done".
+    **New measure:** `tools/measure-b2-vocab.js` prints per-workshop rows (authored · verified material · tricks ·
+    declared) and gates on `tools/b2-vocab-floor.json` — the last accepted run, which may only rise
+    (`--write-floor`): workshops 20 · authored/workshop 40 · authored total 800 · material/workshop 50 · verified
+    material 1,000 · level measured 1,800 · tricks 60 · declared 1,800. Beyond the numbers it checks: every
+    workshop is exactly 40 + 50 = its declared 90, every material word is carried by the German the learner
+    reads, no material word duplicates an authored headword of its workshop, no authored headword repeats inside
+    a workshop, three tricks per workshop with a German anchor, and the authored column never exceeds 800.
+    Eight checks in `tools/p3-unit.mjs` read the floor file itself, and the measure runs inside `npm test` and
+    `npm run validate`. **The measure paid for itself immediately:** it found two real duplicates in the authored
+    column — `das Ausweichen` with `ausweichen` (one core after the article strip) in b2-w12, and `die Energie`
+    with `die erneuerbare Energie` (the second contains the first) in b2-w15 — replaced by `die Ausrede` and
+    `der Strommix`, with the new German examples written to keep carrying the material words that the deleted
+    sentences had carried (`der Themenwechsel`; `die Wasserkraft`, `die Geothermie`) — which the compiler proved
+    by refusing the build twice until it did. **Green:** `npm test` **286**; coverage prints
+    `B2: 800/1800 (44%) · material 1800/1800 (100%)`; the B1 match stays 1.000 / 1.000.

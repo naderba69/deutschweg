@@ -2,6 +2,10 @@
    real DOM, the three forms that no lesson used before, and the coverage gate. */
 import { JSDOM } from 'jsdom';
 import fs from 'fs';
+import { createRequire } from 'module';
+/* p3-unit.mjs is an ES module; the tools it reads (the vocab layer, the floor
+   files) are CommonJS. */
+const require = createRequire(import.meta.url);
 
 const ROOT = '/home/user/deutschweg';
 const FILES = [
@@ -281,6 +285,36 @@ console.log('\n— P3.2 lexical layer —\n');
   const cov = (win.DW_COVERAGE || []).find(c => c.level === 'B1');
   t('coverage table published: B1 ' + cov.items + '/' + cov.declared + ' (' + Math.round(cov.ratio * 100) + '%)',
     cov && cov.ratio >= 0.8);
+}
+
+/* ---------- B2 vocabulary — route (C)'s two measures, against the floor ---------- */
+{
+  const { window: win } = boot();
+  const floor = JSON.parse(fs.readFileSync(ROOT + '/tools/b2-vocab-floor.json', 'utf8'));
+  const VOCAB = require('./vocab-b2.js');
+  const ids = Object.keys(VOCAB).sort();
+  const B2 = win.DW_LIBRARY && win.DW_LIBRARY.B2;
+  const declared = {};
+  (win.DW_SYLLABUS.lessons || []).forEach(l => { if (l.words && l.words.receptive) declared[l.id] = l.words.receptive; });
+  const authored = ids.reduce((s, id) => s + (VOCAB[id].items || []).length, 0);
+  const material = ids.reduce((s, id) => s + (VOCAB[id].material || []).length, 0);
+  const tricks = ids.reduce((s, id) => s + (VOCAB[id].tricks || []).length, 0);
+  const perRowOk = ids.every(id => (VOCAB[id].items || []).length === floor.authoredPerWorkshop &&
+    (VOCAB[id].material || []).length === floor.materialPerWorkshop &&
+    declared[id] === (VOCAB[id].items || []).length + (VOCAB[id].material || []).length);
+  t('B2 vocab: ' + ids.length + ' workshops, floor ' + floor.workshops, ids.length >= floor.workshops);
+  t('B2 vocab: authored ' + authored + ', floor ' + floor.authoredTotal, authored >= floor.authoredTotal);
+  t('B2 vocab: verified material words ' + material + ', floor ' + floor.materialTotal, material >= floor.materialTotal);
+  t('B2 vocab: level measured ' + (authored + material) + ', floor ' + floor.measuredTotal,
+    authored + material >= floor.measuredTotal);
+  t('B2 vocab: every workshop is 40 authored + 50 material = its declared 90', perRowOk);
+  t('B2 vocab: the authored column is at the template ceiling, not below it (' + floor.authoredPerWorkshop + '/workshop)',
+    ids.every(id => (VOCAB[id].items || []).length >= floor.authoredPerWorkshop));
+  t('B2 vocab: each workshop carries 3 tricks with a German anchor', ids.every(id =>
+    (VOCAB[id].tricks || []).length === 3 &&
+    VOCAB[id].tricks.every(tr => tr.trick && tr.wie && tr.warum && tr.anchor && !/[\u0600-\u06FF]/.test(tr.anchor))));
+  t('B2 vocab: the level is wired into the compiled catalogue',
+    !!(B2 && B2.articles) && ids.every(id => !!win.DW_LESSONS[id]) && tricks >= floor.tricks * ids.length / 20 - 0.5);
 }
 
 /* ---------- B2 reading — the level's own material measure ---------- */

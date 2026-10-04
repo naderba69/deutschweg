@@ -2,8 +2,8 @@
   "name": "deutschweg",
   "private": true,
   "scripts": {
-    "validate": "node tools/validate-lesson.js web/data/a0-u1-l1.js && node tools/validate-lesson.js web/data/catalog.js && node tools/validate-syllabus.js && node tools/measure-b2-reading.js && node tools/measure-ladder.js && node tools/audit-vocab.js --expect-items 40 --expect-material 50 tools/vocab-b2-w*.js",
-    "test": "node tools/validate-syllabus.js && node tools/measure-b2-reading.js && node tools/measure-ladder.js && node tools/p1-unit.mjs && node tools/p2-unit.mjs && node tools/p4-unit.mjs && node tools/p3-unit.mjs && node tools/p0-tests.mjs && node tools/p1-tests.mjs && node tools/p2-tests.mjs && node tools/audit-vocab.js --expect-items 40 --expect-material 50 tools/vocab-b2-w*.js",
+    "validate": "node tools/validate-lesson.js web/data/a0-u1-l1.js && node tools/validate-lesson.js web/data/catalog.js && node tools/validate-syllabus.js && node tools/measure-b2-reading.js && node tools/measure-b2-vocab.js && node tools/measure-ladder.js && node tools/audit-vocab.js --expect-items 40 --expect-material 50 tools/vocab-b2-w*.js",
+    "test": "node tools/validate-syllabus.js && node tools/measure-b2-reading.js && node tools/measure-b2-vocab.js && node tools/measure-ladder.js && node tools/p1-unit.mjs && node tools/p2-unit.mjs && node tools/p4-unit.mjs && node tools/p3-unit.mjs && node tools/p0-tests.mjs && node tools/p1-tests.mjs && node tools/p2-tests.mjs && node tools/audit-vocab.js --expect-items 40 --expect-material 50 tools/vocab-b2-w*.js",
     "start": "python3 -m http.server 8080 --bind 0.0.0.0 --directory web",
     "build": "node tools/compile-units.js"
   },

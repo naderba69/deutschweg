@@ -1,0 +1,10 @@
+{
+  "workshops": 20,
+  "authoredTotal": 800,
+  "materialTotal": 1000,
+  "measuredTotal": 1800,
+  "authoredPerWorkshop": 40,
+  "materialPerWorkshop": 50,
+  "tricks": 60,
+  "declared": 1800
+}
