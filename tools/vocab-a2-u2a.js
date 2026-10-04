@@ -30,7 +30,11 @@ module.exports = {
       ['so … wie', '—', 'بمثل ما', 'Das Zimmer ist so teuer wie das andere.', 'Das Zimmer ist so teuer als das andere.', 'so … wie للتساوي.', 'deklination', 'wie'],
       ['die Wohnung', 'die Wohnungen', 'الشقة', 'Die neue Wohnung ist heller als die alte.', 'Die neue Wohnung ist heller wie die alte.', 'als للمقارنة.', 'deklination', 'Wohnung'],
       ['der Preis', 'die Preise', 'الثمن', 'Der Preis ist höher als im Internet.', 'Der Preis ist höher wie im Internet.', 'als لا wie.', 'deklination', 'Preis'],
-      ['die Zeit', 'die Zeiten', 'الوقت', 'Die Zeit ist knapper als im Sommer.', 'Die Zeit ist knapper wie im Sommer.', 'als.', 'deklination', 'Zeit']
+      ['die Zeit', 'die Zeiten', 'الوقت', 'Die Zeit ist knapper als im Sommer.', 'Die Zeit ist knapper wie im Sommer.', 'als.', 'deklination', 'Zeit'],
+      ['eng', 'enger · am engsten', 'ضيّق', 'Meine Schuhe sind zu eng.', 'Meine Schuhe sind zu enge.', 'في الخبر تبقى الصفة بلا نهاية.', 'deklination', 'eng'],
+      ['nett', 'netter · am nettesten', 'لطيف', 'Der neue Nachbar ist sehr nett.', 'Der neue Nachbar ist sehr nette.', 'في الخبر تبقى الصفة بلا نهاية.', 'deklination', 'nett'],
+      ['der Zentimeter', 'die Zentimeter', 'السنتيمتر', 'Der Koffer ist zwei Zentimeter zu breit.', 'Der Koffer ist zwei Zentimeter breiter wie erlaubt.', 'المقارنة: breiter als، لا wie.', 'lexik-kollokation', 'Zentimeter'],
+      ['das Kilogramm', 'die Kilogramm', 'الكيلوغرام', 'Mein Koffer ist ein Kilogramm schwerer geworden.', 'Mein Koffer ist ein Kilogramm schwerer wie vorher.', 'المقارنة: schwerer als، لا wie.', 'lexik-kollokation', 'Kilogramm'],
     ],
     tricks: [
       { trick: 'als للمقارنة وwie للتساوي مع so', wie: 'Er ist größer als ich. · Er ist so groß wie ich. · Viel besser als gestern.', warum: 'العربية تقول «مثل» في الحالتين، فالخلط بين als وwie أشهر خطأ مقارنة عند الناطق بالعربية.', anchor: 'als' },
@@ -102,7 +106,9 @@ module.exports = {
       ['das erste Mal', '—', 'المرة الأولى', 'Das ist das erste Mal in Berlin.', 'Das ist das erst Mal in Berlin.', 'e مع das.', 'deklination', 'erste'],
       ['die kleinen Kinder', '—', 'الأطفال الصغار', 'Die kleinen Kinder spielen draußen.', 'Die klein Kinder spielen draußen.', 'الجمع en.', 'deklination', 'kleinen'],
       ['der gute Preis', '—', 'الثمن الجيد', 'Der gute Preis gefällt ihm.', 'Der gut Preis gefällt ihm.', 'e مع der.', 'deklination', 'gute'],
-      ['die grüne Lampe', '—', 'المصباح الأخضر', 'Die grüne Lampe ist schön.', 'Die grün Lampe ist schön.', 'e مع die.', 'deklination', 'grüne']
+      ['die grüne Lampe', '—', 'المصباح الأخضر', 'Die grüne Lampe ist schön.', 'Die grün Lampe ist schön.', 'e مع die.', 'deklination', 'grüne'],
+      ['echt', '—', 'حقيقي', 'Das ist eine echte Perle.', 'Das ist eine echt Perle.', 'الصفة قبل الاسم: echte.', 'deklination', 'echte'],
+      ['leer', '—', 'فارغ', 'Die Wohnung ist noch leer.', 'Die Wohnung ist noch leere.', 'في الخبر تبقى الصفة بلا نهاية.', 'deklination', 'leer'],
     ],
     tricks: [
       { trick: 'بعد der/die/das الجمع تأخذ الوصف en والجمع', wie: 'die alten Häuser · die kleinen Kinder · die schwarzen Schuhe.', warum: 'العربية تضع الصفة بعد الاسم بلا علامة، فالمتعلم ينسى أن الجمع يطلب en.', anchor: 'die alten Häuser' },

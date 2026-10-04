@@ -104,12 +104,19 @@ with the more specific rule, or with the rule that produces more honest evidence
     in material, otherwise the tool prints it as unverified and leaves it out. The gap file's baseline is
     now defined in writing as *the run without the promotion file*, and the promotions are added back on
     every derived run, so an entry can never be counted twice across two runs. Measured: the alphabetical
-    list's authored column reaches its declared goal — **889/1,104 = 81%** (goal 80%) — with 1,104/1,104
-    met (100%) and 274/274 groups met (100%). Floors rise to 0.805 / 0.767 / 1.000 / 1.000.
-    **Still open, and declared so:** the combined measure (list + groups as headwords) is **1,058/1,378 =
-    77%** against a 80% goal; its remaining 76 entries are the entries the learner meets and no word list
-    names, and that list can only be produced from a transcription — the promotion harvest cannot see past
-    the run-2 gap. Re-typing the list (used for the full run and for that enumeration) is the next round's
-    first step, ahead of the B1 and B2 matches.
+    Round 5 (2026-10-04) closed that gap without waiting for the transcription: the **DWDS index of the
+    same Goethe A2 list** (the list's machine-readable twin) enumerates the entries, so letters A–N were
+    harvested, each line classified, and every entry that is met in material and named by no word list was
+    collected into `tools/goethe-a2-candidates.txt` — **57 verified candidates** — of which **48 were
+    promoted** into the ten A2 lesson lists, raising the syllabus's A2 declaration from 1,020 to **1,068**
+    (and the validator's unit-6 shift from 240 to **288**). Measured: alphabetical list **937/1,104 = 85%**
+    authored (goal 80% ✓ by 5 points), 1,104/1,104 met (100%), 274/274 groups met (100%), and the
+    **combined measure 1,106/1,378 = 80% — the goal is met**. Floors rise to 0.848 / 0.802 / 1.000 /
+    1.000. No double counting: the pre-batch corpus (45bdc7f) was measured separately and showed the 31
+    earlier promotions were the only ones already authored, while all 48 new rows were met and unnamed.
+    **Still open, and declared so:** 11 candidates remain in the pool (der Comic · her · hin · manchmal ·
+    der Basketball · die Bohne · das Gerät · die Kunst · der Laptop · austragen · bauen) and letters O–Z of
+    the index are unread; both are the next A2 round. After that the B1 match starts (its enumeration
+    source: `https://www.dwds.de/api/lemma/goethe/B1.json`), then B2.
 
 

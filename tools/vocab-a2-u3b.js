@@ -30,7 +30,9 @@ module.exports = {
       ['das Souvenir', 'die Souvenirs', 'التذكار', 'Ich kaufe ein Souvenir für dich.', 'Ich kaufe ein Souvenir zu dich.', 'لأجلك: für dich.', 'präposition', 'Souvenir'],
       ['die Landschaft', 'die Landschaften', 'المنظر الطبيعي', 'Die Landschaft ist wunderschön.', 'Die Landschaft ist wunderschön gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Landschaft'],
       ['der Ausflug', 'die Ausflüge', 'الرحلة القصيرة', 'Wir machen einen Ausflug.', 'Wir machen ein Ausflug.', 'Ausflug مذكر: einen.', 'genus', 'Ausflug'],
-      ['die Erinnerung', 'die Erinnerungen', 'الذكرى', 'Die Erinnerung bleibt.', 'Die Erinnerung bleibt es.', 'لا ضمير زائد.', 'wortstellung', 'Erinnerung']
+      ['die Erinnerung', 'die Erinnerungen', 'الذكرى', 'Die Erinnerung bleibt.', 'Die Erinnerung bleibt es.', 'لا ضمير زائد.', 'wortstellung', 'Erinnerung'],
+      ['der Rappen', 'die Rappen', 'الرابن (سنتيم سويسري)', 'Ein Kaffee kostet fünf Franken und achtzig Rappen.', 'Ein Kaffee kostet fünf Franken und achtzig Rappen Geld.', 'Rappen تكفي بلا Geld.', 'lexik-kollokation', 'Rappen'],
+      ['der Kredit', 'die Kredite', 'القرض', 'Für das Auto nehmen wir einen Kredit.', 'Für das Auto nehmen wir ein Kredit.', 'Kredit مذكر: einen.', 'genus', 'Kredit'],
     ],
     tricks: [
       { trick: 'أفعال الرحلة المنفصلة: einsteigen · aussteigen · umsteigen', wie: 'Wir steigen in Frankfurt um. Bitte einsteigen! Wir steigen am Bahnhof aus.', warum: 'العربية تستعمل فعلًا واحدًا «يغيّر» و«يركب»، والألمانية تفصل البادئة إلى نهاية الجملة.', anchor: 'umsteigen' },
@@ -102,7 +104,9 @@ module.exports = {
       ['die Zeugnisse', '—', 'الشهادات', 'Ich schicke die Zeugnisse mit.', 'Ich schicke die Zeugnisse.', 'المنفصل: mit.', 'wortstellung', 'mit'],
       ['die Bewerbungsfrist', 'die Bewerbungsfristen', 'أجل الترشح', 'Die Bewerbungsfrist endet am Freitag.', 'Die Bewerbungsfrist endet in Freitag.', 'اليوم: am.', 'präposition', 'Bewerbungsfrist'],
       ['die Teilzeit', '—', 'دوام جزئي', 'Ich arbeite in Teilzeit.', 'Ich arbeite in die Teilzeit.', 'التركيب الثابت: in Teilzeit.', 'lexik-kollokation', 'Teilzeit'],
-      ['die Vollzeit', '—', 'دوام كامل', 'Er sucht eine Stelle in Vollzeit.', 'Er sucht eine Stelle in die Vollzeit.', 'in Vollzeit ثابت.', 'lexik-kollokation', 'Vollzeit']
+      ['die Vollzeit', '—', 'دوام كامل', 'Er sucht eine Stelle in Vollzeit.', 'Er sucht eine Stelle in die Vollzeit.', 'in Vollzeit ثابت.', 'lexik-kollokation', 'Vollzeit'],
+      ['dringend', 'dringender · am dringendsten', 'عاجل', 'Das ist eine dringende Aufgabe.', 'Das ist eine dringend Aufgabe.', 'الصفة قبل الاسم: dringende.', 'deklination', 'dringende'],
+      ['die Datei', 'die Dateien', 'الملف', 'Bitte schicken Sie mir die Datei.', 'Bitte schicken Sie mir das Datei.', 'Datei مؤنث: die.', 'genus', 'Datei'],
     ],
     tricks: [
       { trick: 'في العمل: bei einer Firma · in der Abteilung · in Teilzeit', wie: 'Ich arbeite bei einer Firma in der Abteilung Verkauf. Ich arbeite in Teilzeit.', warum: 'العربية تقول «أعمل في شركة» بـ«في» واحدة، فالألمانية تفرّق بين الجهة والقسم ونمط الدوام.', anchor: 'die Abteilung' },

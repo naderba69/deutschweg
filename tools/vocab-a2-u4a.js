@@ -30,7 +30,9 @@ module.exports = {
       ['der Kurs', 'die Kurse', 'الدورة', 'Der Kurs beginnt im September.', 'Der Kurs beginnt in September.', 'الشهر: im.', 'präposition', 'Kurs'],
       ['die Anmeldung', 'die Anmeldungen', 'التسجيل', 'Die Anmeldung ist online möglich.', 'Die Anmeldung ist online möglich es.', 'لا ضمير.', 'wortstellung', 'Anmeldung'],
       ['das Zeugnis', 'die Zeugnisse', 'الشهادة', 'Das Zeugnis liegt zu Hause.', 'Das Zeugnis liegt in Hause.', 'في البيت: zu Hause.', 'präposition', 'Zeugnis'],
-      ['der Stundenplan', 'die Stundenpläne', 'الجدول الدراسي', 'Der Stundenplan hängt an der Wand.', 'Der Stundenplan hängt in der Wand.', 'على الجدار: an der Wand.', 'präposition', 'Stundenplan']
+      ['der Stundenplan', 'die Stundenpläne', 'الجدول الدراسي', 'Der Stundenplan hängt an der Wand.', 'Der Stundenplan hängt in der Wand.', 'على الجدار: an der Wand.', 'präposition', 'Stundenplan'],
+      ['das Heft', 'die Hefte', 'الدفتر', 'Ich schreibe die Wörter ins Heft.', 'Ich schreibe die Wörter in dem Heft.', 'الاتجاه: ins Heft.', 'präposition', 'Heft'],
+      ['kontrollieren', 'kontrolliert · kontrollierte · hat kontrolliert', 'يتحقق من', 'Der Lehrer kontrolliert die Hausaufgaben.', 'Der Lehrer kontrolliert auf die Hausaufgaben.', 'kontrollieren بلا حرف.', 'lexik-kollokation', 'kontrolliert'],
     ],
     tricks: [
       { trick: 'في الجامعة an der Universität، وفي المدرسة in der Schule', wie: 'Sie studiert an der Universität. Die Kinder sind in der Schule.', warum: 'المؤسسة التعليمية العليا تأخذ an، والعربية تقول «في» في الحالتين.', anchor: 'die Universität' },
@@ -66,7 +68,8 @@ module.exports = {
       ['der Gast', 'die Gäste', 'الضيف', 'Die Gäste kommen um acht.', 'Die Gast kommt um acht.', 'الجمع: Gäste.', 'plural', 'Gäste'],
       ['das Brautpaar', 'die Brautpaare', 'العروسان', 'Das Brautpaar tanzt.', 'Die Brautpaar tanzt.', 'Paar محايد: das.', 'genus', 'Brautpaar'],
       ['der Jahrestag', 'die Jahrestage', 'ذكرى سنوية', 'Der Jahrestag ist im Juni.', 'Der Jahrestag ist in Juni.', 'الشهر: im.', 'präposition', 'Jahrestag'],
-      ['das Feuerwerk', 'die Feuerwerke', 'الألعاب النارية', 'Das Feuerwerk beginnt um zehn.', 'Das Feuerwerk beginnt in zehn.', 'الساعة: um.', 'präposition', 'Feuerwerk']
+      ['das Feuerwerk', 'die Feuerwerke', 'الألعاب النارية', 'Das Feuerwerk beginnt um zehn.', 'Das Feuerwerk beginnt in zehn.', 'الساعة: um.', 'präposition', 'Feuerwerk'],
+      ['der Ball', 'die Bälle', 'الحفل الراقص، الكرة', 'Am Samstag ist ein Ball im Schloss.', 'Am Samstag ist ein Ball in dem Schloss statt.', 'بلا statt زائدة.', 'lexik-kollokation', 'Ball'],
     ],
     tricks: [
       { trick: 'المناسبات مع zu: zu Weihnachten · zu Ostern · zu Neujahr', wie: 'Zu Weihnachten sind wir zu Hause. Zu Ostern besuchen wir die Familie.', warum: 'العربية تقول «في العيد»، والألمانية تستعمل zu للمناسبة وin للمكان.', anchor: 'das Weihnachten' },
@@ -102,7 +105,8 @@ module.exports = {
       ['umtauschen', 'tauscht um · tauschte um · hat umgetauscht', 'يستبدل', 'Kann ich die Hose umtauschen?', 'Kann ich die Hose tauschen um?', 'المنفصل كلمة واحدة.', 'wortstellung', 'umtauschen'],
       ['zurückgeben', 'gibt zurück · gab zurück · hat zurückgegeben', 'يعيد', 'Ich gebe die Jacke zurück.', 'Ich gebe zurück die Jacke.', 'المنفصل في النهاية.', 'wortstellung', 'zurück'],
       ['die Kasse', 'die Kassen', 'صندوق الدفع', 'Bitte zahlen Sie an der Kasse.', 'Bitte zahlen Sie in der Kasse.', 'عند الصندوق: an der Kasse.', 'präposition', 'Kasse'],
-      ['die Quittung', 'die Quittungen', 'الوصل', 'Bitte geben Sie mir die Quittung.', 'Bitte geben Sie mir der Quittung.', 'المفعول نصب: die.', 'kasus', 'Quittung']
+      ['die Quittung', 'die Quittungen', 'الوصل', 'Bitte geben Sie mir die Quittung.', 'Bitte geben Sie mir der Quittung.', 'المفعول نصب: die.', 'kasus', 'Quittung'],
+      ['das Kaufhaus', 'die Kaufhäuser', 'المتجر الكبير', 'Im Kaufhaus kaufe ich neue Kleidung.', 'In dem Kaufhaus kaufe ich neue Kleidung gehen.', 'بلا gehen.', 'lexik-kollokation', 'Kaufhaus'],
     ],
     tricks: [
       { trick: 'anziehen/ausziehen منفصلان: an في النهاية', wie: 'Ich ziehe die Jacke an. Zieh die Schuhe aus!', warum: 'العربية تستعمل فعلًا واحدًا، وإسقاط an أو aus يجعل الجملة ناقصة.', anchor: 'anziehen' },

@@ -32,7 +32,10 @@ module.exports = {
       ['die Lehrerin', 'die Lehrerinnen', 'المعلمة', 'Ich antworte der Lehrerin auf Deutsch.', 'Ich antworte die Lehrerin auf Deutsch.', 'antworten داتيف.', 'kasus', 'Lehrerin'],
       ['der Chef', 'die Chefs', 'الرئيس في العمل', 'Das passt dem Chef gut.', 'Das passt den Chef gut.', 'Chef مذكر داتيف dem.', 'kasus', 'Chef'],
       ['das Geschenk', 'die Geschenke', 'الهدية', 'Das Geschenk gefällt der Familie.', 'Das Geschenk gefällt die Familie.', 'Familie مؤنث داتيف der.', 'kasus', 'Geschenk'],
-      ['die Wohnung', 'die Wohnungen', 'الشقة', 'Die Wohnung gefällt den Kindern.', 'Die Wohnung gefällt die Kinder.', 'الجمع في الداتيف den + n.', 'kasus', 'Wohnung']
+      ['die Wohnung', 'die Wohnungen', 'الشقة', 'Die Wohnung gefällt den Kindern.', 'Die Wohnung gefällt die Kinder.', 'الجمع في الداتيف den + n.', 'kasus', 'Wohnung'],
+      ['liefern', 'liefert · lieferte · hat geliefert', 'يوصّل', 'Der Bäcker liefert mir das Brot.', 'Der Bäcker liefert mich das Brot.', 'الشخص في الداتيف: mir.', 'kasus', 'liefert'],
+      ['nennen', 'nennt · nannte · hat genannt', 'يسمّي', 'Kannst du mir den Namen nennen?', 'Kannst du mich den Namen nennen?', 'الشخص في الداتيف: mir.', 'kasus', 'nennen'],
+      ['beschreiben', 'beschreibt · beschrieb · hat beschrieben', 'يصف', 'Beschreiben Sie mir bitte den Weg!', 'Beschreiben Sie mich bitte den Weg!', 'الشخص في الداتيف: mir.', 'kasus', 'Beschreiben'],
     ],
     tricks: [
       { trick: 'الداتيف يعطي: dem · der · dem · den', wie: 'Ich gebe dem Mann (m) das Buch · Ich gebe der Frau (f) das Buch · Ich gebe dem Kind (n) das Buch · Ich gebe den Kindern (Pl.) das Buch.', warum: 'العربية تعبّر بـ«لـ» فتفلت علامة الحالة، والجدول القصير يثبّت الأداة قبل أن تُقال.', anchor: 'dem Mann' },
@@ -68,7 +71,9 @@ module.exports = {
       ['die Sekretärin', 'die Sekretärinnen', 'السكرتيرة', 'Ich schicke der Sekretärin die Datei.', 'Ich schicke die Sekretärin die Datei.', 'داتيف مؤنث: der.', 'kasus', 'Sekretärin'],
       ['der Onkel', 'die Onkel', 'العم', 'Ich schenke dem Onkel ein Buch.', 'Ich schenke den Onkel ein Buch.', 'Onkel داتيف: dem.', 'kasus', 'Onkel'],
       ['die Tante', 'die Tanten', 'العمة', 'Ich empfehle der Tante ein Café.', 'Ich empfehle die Tante ein Café.', 'Tante داتيف: der.', 'kasus', 'Tante'],
-      ['die Gäste', '—', 'الضيوف', 'Wir zeigen den Gästen die Stadt.', 'Wir zeigen die Gäste die Stadt.', 'جمع الداتيف den + n: Gästen.', 'kasus', 'Gästen']
+      ['die Gäste', '—', 'الضيوف', 'Wir zeigen den Gästen die Stadt.', 'Wir zeigen die Gäste die Stadt.', 'جمع الداتيف den + n: Gästen.', 'kasus', 'Gästen'],
+      ['auspacken', 'packt aus · packte aus · hat ausgepackt', 'يفتح الحزمة', 'Die Kinder packen die Geschenke aus.', 'Die Kinder auspacken die Geschenke.', 'الفصل: packen … aus.', 'wortstellung', 'aus'],
+      ['austauschen', 'tauscht aus · tauschte aus · hat ausgetauscht', 'يتبادل', 'Wir tauschen die Geschenke aus.', 'Wir austauschen die Geschenke.', 'الفصل: tauschen … aus.', 'wortstellung', 'aus'],
     ],
     tricks: [
       { trick: 'الآخذ داتيف والشيء نصب: ترتيب ثابت', wie: 'Ich gebe dem Kind den Ball. Ich schenke der Frau die Blume. Person vor Sache.', warum: 'العربية تقول «أعطي الطفل الكرة» بلا علامة، فالترتيب وحده هو ما يفصل الفاعل من الآخذ.', anchor: 'geben' },
@@ -104,7 +109,9 @@ module.exports = {
       ['der Teppich', 'die Teppiche', 'السجادة', 'Der Teppich liegt auf dem Boden.', 'Der Teppich liegt auf den Boden.', 'السجادة ساكنة: auf dem.', 'präposition', 'Teppich'],
       ['die Ecke', 'die Ecken', 'الزاوية', 'Der Stuhl steht in der Ecke.', 'Der Stuhl steht in die Ecke.', 'مكان ثابت: in der Ecke.', 'präposition', 'Ecke'],
       ['der Balkon', 'die Balkone', 'الشرفة', 'Die Blumen stehen auf dem Balkon.', 'Die Blumen stehen auf den Balkon.', 'السكون: auf dem.', 'präposition', 'Balkon'],
-      ['der Boden', 'die Böden', 'الأرضية', 'Die Tasche liegt auf dem Boden.', 'Die Tasche liegt auf den Boden.', 'السكون: auf dem.', 'präposition', 'Boden']
+      ['der Boden', 'die Böden', 'الأرضية', 'Die Tasche liegt auf dem Boden.', 'Die Tasche liegt auf den Boden.', 'السكون: auf dem.', 'präposition', 'Boden'],
+      ['drinnen', '—', 'في الداخل', 'Bei Regen bleiben wir drinnen.', 'Bei Regen wir bleiben drinnen.', 'الفعل ثانيًا: bleiben wir.', 'wortstellung', 'drinnen'],
+      ['nebenan', '—', 'في الجوار', 'Der Nachbar nebenan hilft immer.', 'Der Nachbar nebenan hilft immer an.', 'بلا an زائدة.', 'lexik-kollokation', 'nebenan'],
     ],
     tricks: [
       { trick: 'سؤالان يفصلان الحالتين: Wohin? نصب · Wo? داتيف', wie: 'Wohin legst du das Buch? – Auf den Tisch. Wo liegt das Buch? – Auf dem Tisch.', warum: 'العربية لا تُظهر الحالة، فالسؤال بسؤالين هو أسرع مفتاح يحفظه المتعلم.', anchor: 'auf den Tisch' },

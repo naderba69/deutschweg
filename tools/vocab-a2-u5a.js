@@ -30,7 +30,9 @@ module.exports = {
       ['das Gefühl', 'die Gefühle', 'الشعور', 'Ich hatte ein gutes Gefühl.', 'Ich war ein gutes Gefühl.', 'Gefühl مع haben.', 'konjugation', 'Gefühl'],
       ['die Angst', 'die Ängste', 'الخوف', 'Ich hatte Angst.', 'Ich war Angst.', 'Angst مع haben.', 'konjugation', 'Angst'],
       ['aufgeregt', '—', 'متوتر', 'Ich war sehr aufgeregt.', 'Ich habe sehr aufgeregt.', 'الصفة مع sein.', 'konjugation', 'aufgeregt'],
-      ['ruhig', '—', 'هادئ', 'Bleib ruhig!', 'Bleib ruhig du!', 'الأمر بلا ضمير.', 'wortstellung', 'ruhig']
+      ['ruhig', '—', 'هادئ', 'Bleib ruhig!', 'Bleib ruhig du!', 'الأمر بلا ضمير.', 'wortstellung', 'ruhig'],
+      ['der Club', 'die Clubs', 'النادي', 'Früher waren wir oft im Club.', 'Früher waren wir oft in der Club.', 'im = in dem.', 'präposition', 'Club'],
+      ['ausgehen', 'geht aus · ging aus · ist ausgegangen', 'يخرج للترفيه', 'Am Samstag gehen wir aus.', 'Am Samstag ausgehen wir.', 'الفصل: gehen … aus.', 'wortstellung', 'aus'],
     ],
     tricks: [
       { trick: 'ترتيب الحكاية: zuerst · danach · zum Schluss', wie: 'Zuerst sind wir gefahren, danach haben wir gegessen, zum Schluss sind wir nach Hause gegangen.', warum: 'الحكاية الألمانية تحتاج علامات ترتيب، والعربية تصل الجمل بـ«ثم» وحدها فيضيع التسلسل.', anchor: 'zuerst' },
@@ -66,7 +68,8 @@ module.exports = {
       ['die Wahl', 'die Wahlen', 'الاختيار', 'Die Wahl ist schwer.', 'Die Wahl ist schwer gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Wahl'],
       ['wählen', 'wählt · wählte · hat gewählt', 'يختار', 'Ich wähle den Zug.', 'Ich wähle dem Zug.', 'المفعول: den.', 'kasus', 'wähle'],
       ['sinnvoll', '—', 'منطقي', 'Das ist sinnvoll.', 'Das ist sinnvoll gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'sinnvoll'],
-      ['unsinnig', '—', 'غير منطقي', 'Das finde ich unsinnig.', 'Das finde ich unsinnig es.', 'لا ضمير.', 'wortstellung', 'unsinnig']
+      ['unsinnig', '—', 'غير منطقي', 'Das finde ich unsinnig.', 'Das finde ich unsinnig es.', 'لا ضمير.', 'wortstellung', 'unsinnig'],
+      ['genau', '—', 'بالضبط', 'Das ist genau meine Meinung.', 'Das ist genau mein Meinung.', 'Meinung مؤنث: meine.', 'deklination', 'genau'],
     ],
     tricks: [
       { trick: 'obwohl تدفع الفعل للنهاية وtrotzdem تتركه ثانيًا', wie: 'Obwohl es teuer ist, kaufe ich es. · Es ist teuer. Trotzdem kaufe ich es.', warum: 'الزوج المتقابل يُختبر كثيرًا، والعربية تصل السبب والنتيجة بلا فرق ترتيبي.', anchor: 'obwohl' },
@@ -102,7 +105,8 @@ module.exports = {
       ['die Antwort', 'die Antworten', 'الجواب', 'Ich warte auf Ihre Antwort.', 'Ich warte Ihre Antwort.', 'warten يحتاج auf.', 'präposition', 'Antwort'],
       ['die Frist', 'die Fristen', 'الأجل', 'Die Frist endet am Freitag.', 'Die Frist endet in Freitag.', 'اليوم: am.', 'präposition', 'Frist'],
       ['die Post', '—', 'البريد', 'Die Post kommt um zehn.', 'Die Post kommt in zehn.', 'الساعة: um.', 'präposition', 'Post'],
-      ['die E-Mail', 'die E-Mails', 'البريد الإلكتروني', 'Ich schreibe eine E-Mail an die Firma.', 'Ich schreibe eine E-Mail für die Firma.', 'إلى الجهة: an.', 'präposition', 'E-Mail']
+      ['die E-Mail', 'die E-Mails', 'البريد الإلكتروني', 'Ich schreibe eine E-Mail an die Firma.', 'Ich schreibe eine E-Mail für die Firma.', 'إلى الجهة: an.', 'präposition', 'E-Mail'],
+      ['der Kontakt', 'die Kontakte', 'التواصل', 'Bitte schreiben Sie mir die Kontaktdaten.', 'Bitte schreiben Sie mir die Daten von Kontakt.', 'التركيب: Kontaktdaten.', 'lexik-kollokation', 'Kontaktdaten'],
     ],
     tricks: [
       { trick: 'النداء والختام بفاصلة لا نقطة', wie: 'Liebe Sara, … · Sehr geehrte Damen und Herren, … · Mit freundlichen Grüßen, Ali', warum: 'نقل عادة النقطة العربية يجعل الرسالة تبدو غير ألمانية، والفاصلة هي علامة الشكل الخارجي.', anchor: 'Liebe' },

@@ -10,7 +10,8 @@
 # counted as authored, and the rest were neither authored nor met; the 62 that are met and
 # not authored are the promotable set, and 31 of them are promoted here.
 #
-# Measured against the re-typed transcription of the official PDF, not against the PDF.
+# Round 2 of promotions: 48 entries from the A–N harvest (tools/goethe-a2-candidates.txt),
+# five of them already predicted by the run-2 gap. Measured against the re-typed transcription of the official PDF, not against the PDF.
 # format:  list <entry>    alphabetical list     group <entry>    word groups
 list hässlich
 list vorsichtig
@@ -43,3 +44,51 @@ list blöd
 list dumm
 list wurscht
 list tschüs
+list liefern
+list nennen
+list beschreiben
+list auspacken
+list austauschen
+list drinnen
+list nebenan
+list meistens
+list endlich
+list jemand
+list anders
+list erst
+list eng
+list nett
+list echt
+list leer
+list ganz
+list freiwillig
+list ändern
+list lassen
+list der Babysitter
+list dabei
+list darauf
+list der Rappen
+list der Kredit
+list dringend
+list die Datei
+list das Heft
+list kontrollieren
+list der Ball
+list das Kaufhaus
+list bewölkt
+list fallen
+list der Müll
+list das Ding
+list das Geschirr
+list der Club
+list ausgehen
+list genau
+list der Kontakt
+list der Apparat
+list das Mobiltelefon
+list die Homepage
+list herunterladen
+list das E-Book
+list der Blog
+list der Zentimeter
+list das Kilogramm

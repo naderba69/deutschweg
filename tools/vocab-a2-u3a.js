@@ -66,7 +66,9 @@ module.exports = {
       ['das Gespräch', 'die Gespräche', 'المحادثة', 'Wir sprechen über das Gespräch.', 'Wir sprechen das Gespräch.', 'über das Gespräch.', 'präposition', 'Gespräch'],
       ['die Familie', 'die Familien', 'العائلة', 'Ich denke an meine Familie.', 'Ich denke meine Familie.', 'an meine Familie.', 'präposition', 'Familie'],
       ['der Urlaub', 'die Urlaube', 'العطلة', 'Wir freuen uns auf den Urlaub.', 'Wir freuen uns den Urlaub.', 'auf den Urlaub.', 'präposition', 'Urlaub'],
-      ['das Wetter', '—', 'الطقس', 'Wir sprechen über das Wetter.', 'Wir sprechen das Wetter.', 'über das Wetter.', 'präposition', 'Wetter']
+      ['das Wetter', '—', 'الطقس', 'Wir sprechen über das Wetter.', 'Wir sprechen das Wetter.', 'über das Wetter.', 'präposition', 'Wetter'],
+      ['dabei', '—', 'مع ذلك، مشارك', 'Ich bin beim Umzug dabei.', 'Ich bin beim Umzug dabei mit.', 'dabei تكفي بلا mit.', 'lexik-kollokation', 'dabei'],
+      ['darauf', '—', 'على ذلك', 'Ich freue mich darauf.', 'Ich freue mich darauf es.', 'بلا es زائدة.', 'lexik-kollokation', 'darauf'],
     ],
     tricks: [
       { trick: 'الحرف جزء من معنى الفعل لا زينة', wie: 'warten auf = ينتظر · denken an = يفكّر في · sprechen über = يتحدّث عن · bitten um = يرجو', warum: 'العربية تصل الفعل بمفعوله مباشرة، فالمتعلم يحذف الحرف أو يستبدله بحرف عربي مباشر.', anchor: 'warten auf' },

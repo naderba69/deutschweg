@@ -30,7 +30,10 @@ module.exports = {
       ['der Winter', 'die Winter', 'الشتاء', 'Im Winter schneit es.', 'In Winter schneit es.', 'im.', 'präposition', 'Winter'],
       ['schneien', 'schneit · schneite · hat geschneit', 'يُثلج', 'Es schneit seit gestern.', 'Es schneit für gestern.', 'منذ: seit.', 'präposition', 'schneit'],
       ['der Wetterumschwung', 'die Wetterumschwünge', 'تغيّر الطقس', 'Der Wetterumschwung kommt plötzlich.', 'Der Wetterumschwung kommt plötzlich es.', 'لا ضمير.', 'wortstellung', 'Wetterumschwung'],
-      ['die Vorhersage', 'die Vorhersagen', 'التوقّع', 'Die Vorhersage ist gut.', 'Die Vorhersage ist gut gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Vorhersage']
+      ['die Vorhersage', 'die Vorhersagen', 'التوقّع', 'Die Vorhersage ist gut.', 'Die Vorhersage ist gut gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Vorhersage'],
+      ['bewölkt', '—', 'غائم', 'Heute ist es bewölkt.', 'Heute ist es bewölkt Wetter.', 'الجملة تامة بلا Wetter.', 'lexik-kollokation', 'bewölkt'],
+      ['fallen', 'fällt · fiel · ist gefallen', 'يسقط', 'Im Herbst fallen die Blätter.', 'Im Herbst fallen die Blätter runter.', 'fallen تكفي.', 'lexik-kollokation', 'fallen'],
+      ['der Müll', '—', 'القمامة', 'Bring bitte den Müll raus!', 'Bring bitte die Müll raus!', 'Müll مذكر: den.', 'genus', 'Müll'],
     ],
     tricks: [
       { trick: 'المناخ بحرف bei: bei Regen · bei Nebel · bei Kälte', wie: 'Bei Regen bleiben wir drinnen. Bei Nebel fahre ich langsam.', warum: 'العربية تقول «في المطر»، والألمانية تستعمل bei للحالة الجوية.', anchor: 'der Regen' },
@@ -102,7 +105,9 @@ module.exports = {
       ['das Missverständnis', 'die Missverständnisse', 'سوء الفهم', 'Das war ein Missverständnis.', 'Das war eine Missverständnis.', 'محايد: ein.', 'genus', 'Missverständnis'],
       ['die Lösung', 'die Lösungen', 'الحل', 'Wir finden eine Lösung.', 'Wir finden ein Lösung.', 'مؤنث: eine.', 'genus', 'Lösung'],
       ['der Kundendienst', '—', 'خدمة العملاء', 'Der Kundendienst hilft weiter.', 'Der Kundendienst hilft weiter es.', 'لا ضمير.', 'wortstellung', 'Kundendienst'],
-      ['die Beschwerde', 'die Beschwerden', 'الشكوى', 'Ich schreibe eine Beschwerde.', 'Ich schreibe ein Beschwerde.', 'مؤنث: eine.', 'genus', 'Beschwerde']
+      ['die Beschwerde', 'die Beschwerden', 'الشكوى', 'Ich schreibe eine Beschwerde.', 'Ich schreibe ein Beschwerde.', 'مؤنث: eine.', 'genus', 'Beschwerde'],
+      ['das Ding', 'die Dinge', 'الشيء', 'Das Ding ist schon wieder kaputt.', 'Die Ding ist schon wieder kaputt.', 'Ding محايد: das.', 'genus', 'Ding'],
+      ['das Geschirr', '—', 'الأواني', 'Das Geschirr ist gespült.', 'Die Geschirr ist gespült.', 'Geschirr محايد: das.', 'genus', 'Geschirr'],
     ],
     tricks: [
       { trick: 'verloren لا gegangen: الشيء يُفقد لا يذهب', wie: 'Ich habe den Schlüssel verloren. Meine Tasche ist verloren.', warum: 'العربية تقول «ضاع مني»، فيترجم المتعلم بـ gegangen ويجعل الجملة مضحكة.', anchor: 'verlieren' },

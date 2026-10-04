@@ -30,7 +30,11 @@ module.exports = {
       ['sich entschuldigen', 'entschuldigt sich · entschuldigte sich · hat sich entschuldigt', 'يعتذر', 'Ich entschuldige mich für die Störung.', 'Ich entschuldige für die Störung.', 'الضمير mich.', 'konjugation', 'entschuldige'],
       ['die Störung', 'die Störungen', 'الإزعاج', 'Entschuldigung für die Störung!', 'Entschuldigung für der Störung!', 'für + نصب.', 'kasus', 'Störung'],
       ['der Rückruf', 'die Rückrufe', 'إعادة الاتصال', 'Ich bitte um einen Rückruf.', 'Ich bitte für einen Rückruf.', 'bitten um.', 'präposition', 'Rückruf'],
-      ['die SMS', 'die SMS', 'الرسالة القصيرة', 'Schick mir bitte eine SMS.', 'Schick mir bitte ein SMS.', 'SMS مؤنث: eine.', 'genus', 'SMS']
+      ['die SMS', 'die SMS', 'الرسالة القصيرة', 'Schick mir bitte eine SMS.', 'Schick mir bitte ein SMS.', 'SMS مؤنث: eine.', 'genus', 'SMS'],
+      ['der Apparat', 'die Apparate', 'الجهاز، الخط', 'Am Apparat ist Herr Bauer.', 'In der Apparat ist Herr Bauer.', 'التعبير: am Apparat.', 'präposition', 'Apparat'],
+      ['das Mobiltelefon', 'die Mobiltelefone', 'الهاتف المحمول', 'Mein Mobiltelefon ist leer.', 'Mein Mobiltelefon ist leer gemacht.', 'بلا gemacht.', 'lexik-kollokation', 'Mobiltelefon'],
+      ['die Homepage', 'die Homepages', 'الصفحة الرئيسية', 'Auf der Homepage findest du die Nummer.', 'In der Homepage findest du die Nummer.', 'auf der Homepage.', 'präposition', 'Homepage'],
+      ['herunterladen', 'lädt herunter · lud herunter · hat heruntergeladen', 'ينزّل', 'Ich lade die Datei herunter.', 'Ich lade die Datei runter herunter.', 'herunterladen فعل واحد.', 'lexik-kollokation', 'lade'],
     ],
     tricks: [
       { trick: 'أفعال التلفون المنفصلة: anrufen · zurückrufen · sich melden', wie: 'Ich rufe Sie später an. Ich rufe Sie morgen zurück. Ich melde mich.', warum: 'العربية تقول «أتصل بك» بفعل واحد، والألمانية تفصل an وzurück إلى النهاية.', anchor: 'anrufen' },
@@ -66,7 +70,9 @@ module.exports = {
       ['üben', 'übt · übte · hat geübt', 'يتمرّن', 'Ich übe jeden Tag zehn Minuten.', 'Ich übe jeden Tag zehn Minute.', 'الجمع: Minuten.', 'plural', 'übe'],
       ['die Übung', 'die Übungen', 'التمرين', 'Die Übung war nützlich.', 'Die Übung ist nützlich gewesen.', 'war.', 'konjugation', 'Übung'],
       ['nützlich', '—', 'مفيد', 'Diese Übung ist nützlich.', 'Diese Übung ist nützlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'nützlich'],
-      ['die Prüfung', 'die Prüfungen', 'الامتحان', 'Die Prüfung ist nächste Woche.', 'Die Prüfung ist in nächste Woche.', 'بلا حرف جر.', 'präposition', 'Prüfung']
+      ['die Prüfung', 'die Prüfungen', 'الامتحان', 'Die Prüfung ist nächste Woche.', 'Die Prüfung ist in nächste Woche.', 'بلا حرف جر.', 'präposition', 'Prüfung'],
+      ['das E-Book', 'die E-Books', 'الكتاب الإلكتروني', 'Ich lese ein E-Book im Zug.', 'Ich lese ein E-Book in dem Zug lesen.', 'بلا lesen زائدة.', 'lexik-kollokation', 'E-Book'],
+      ['der Blog', 'die Blogs', 'المدونة', 'Sie schreibt einen Blog über ihre Reisen.', 'Sie schreibt einen Blog für ihre Reisen.', 'über + النصب.', 'präposition', 'Blog'],
     ],
     tricks: [
       { trick: 'مراجعة الحالات الثلاث في جدول واحد', wie: 'der Mann / den Mann / dem Mann · die Frau / die Frau / der Frau · das Kind / das Kind / dem Kind.', warum: 'الجدول نفسه يجيب عن أغلب أسئلة A2، والعربية لا تُظهر الحالة فلا بديل عن الجدول.', anchor: 'der Akkusativ' },

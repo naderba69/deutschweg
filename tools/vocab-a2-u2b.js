@@ -30,7 +30,9 @@ module.exports = {
       ['das erste Mal', '—', 'المرة الأولى (نصب)', 'Ich erlebe das erste Mal.', 'Ich erlebe dem erste Mal.', 'das في النصب.', 'kasus', 'erste'],
       ['die kleinen Kinder', '—', 'الأطفال الصغار (نصب)', 'Ich sehe die kleinen Kinder.', 'Ich sehe der kleinen Kinder.', 'الجمع die في النصب.', 'kasus', 'kleinen'],
       ['den guten Preis', '—', 'الثمن الجيد (نصب)', 'Er findet den guten Preis.', 'Er findet der gute Preis.', 'den guten.', 'kasus', 'guten'],
-      ['die grüne Lampe', '—', 'المصباح الأخضر (نصب)', 'Ich kaufe die grüne Lampe.', 'Ich kaufe der grüne Lampe.', 'die في النصب.', 'kasus', 'grüne']
+      ['die grüne Lampe', '—', 'المصباح الأخضر (نصب)', 'Ich kaufe die grüne Lampe.', 'Ich kaufe der grüne Lampe.', 'die في النصب.', 'kasus', 'grüne'],
+      ['ganz', '—', 'كامل', 'Ich habe den ganzen Tag gearbeitet.', 'Ich habe den ganz Tag gearbeitet.', 'النصب المذكر: ganzen.', 'deklination', 'ganzen'],
+      ['freiwillig', '—', 'طوعي', 'Sie macht einen freiwilligen Kurs.', 'Sie macht einen freiwillig Kurs.', 'النصب المذكر: freiwilligen.', 'deklination', 'freiwilligen'],
     ],
     tricks: [
       { trick: 'في النصب يتغيّر المذكر وحده: den neuen', wie: 'Ich kenne den neuen Kollegen. · Ich habe einen guten Freund. · Ich sehe ein kleines Kind.', warum: 'العربية لا تُظهر حالة المفعول، فالعلامة n في den neuen هي كل الفرق في الجملة.', anchor: 'den neuen Kollegen' },
@@ -66,7 +68,9 @@ module.exports = {
       ['der Sport', '—', 'الرياضة', 'Er interessiert sich für Sport.', 'Er interessiert für Sport.', 'sich ضرورية.', 'konjugation', 'Sport'],
       ['der Termin', 'die Termine', 'الموعد', 'Wir treffen uns für den Termin.', 'Wir treffen für den Termin.', 'uns ضرورية.', 'konjugation', 'Termin'],
       ['die Nachricht', 'die Nachrichten', 'الرسالة', 'Ich freue mich über die Nachricht.', 'Ich freue mich für die Nachricht.', 'الفرح الحاصل: über.', 'präposition', 'Nachricht'],
-      ['der Urlaub', 'die Urlaube', 'العطلة', 'Ich freue mich auf den Urlaub.', 'Ich freue mich für den Urlaub.', 'المنتظر: auf.', 'präposition', 'Urlaub']
+      ['der Urlaub', 'die Urlaube', 'العطلة', 'Ich freue mich auf den Urlaub.', 'Ich freue mich für den Urlaub.', 'المنتظر: auf.', 'präposition', 'Urlaub'],
+      ['sich ändern', 'ändert sich · änderte sich · hat sich geändert', 'يتغيّر', 'Das Wetter ändert sich schnell.', 'Das Wetter ändert schnell.', 'الفعل الانعكاسي يحتاج sich.', 'konjugation', 'ändert sich'],
+      ['lassen', 'lässt · ließ · hat gelassen', 'يترك، يدع', 'Lass dich nicht ärgern!', 'Lass dich nicht ärgern machen!', 'lassen فعل كامل.', 'lexik-kollokation', 'Lass'],
     ],
     tricks: [
       { trick: 'أفعال انعكاسية بحروف ثابتة: sich freuen auf · sich interessieren für · sich ärgern über', wie: 'Ich freue mich auf den Urlaub. Ich interessiere mich für Musik. Er ärgert sich über den Lärm.', warum: 'الحرف لا يُترجم من العربية («أهتم بالموسيقى» بحرف الباء)، فيُحفظ مع الفعل كوحدة.', anchor: 'sich freuen' },
@@ -102,7 +106,8 @@ module.exports = {
       ['der Besuch', 'die Besuche', 'الزيارة', 'Der Besuch war lang.', 'Der Besuch ist lang gewesen.', 'war.', 'konjugation', 'Besuch'],
       ['die Reise', 'die Reisen', 'الرحلة', 'Die Reise war anstrengend.', 'Die Reise ist anstrengend gewesen.', 'war.', 'konjugation', 'Reise'],
       ['der Kaffee', '—', 'القهوة', 'Der Kaffee war heiß.', 'Der Kaffee ist heiß gewesen.', 'war.', 'konjugation', 'Kaffee'],
-      ['die Stadt', 'die Städte', 'المدينة', 'Die Stadt war voll.', 'Die Stadt ist voll gewesen.', 'war.', 'konjugation', 'Stadt']
+      ['die Stadt', 'die Städte', 'المدينة', 'Die Stadt war voll.', 'Die Stadt ist voll gewesen.', 'war.', 'konjugation', 'Stadt'],
+      ['der Babysitter', 'die Babysitter', 'جليس الأطفال', 'Als Kind hatte ich einen Babysitter.', 'Als Kind hatte ich ein Babysitter.', 'Babysitter مذكر: einen.', 'genus', 'Babysitter'],
     ],
     tricks: [
       { trick: 'sein وhaben في الماضي البسيط: war · hatte', wie: 'Ich war krank. Ich hatte Fieber. Wir waren in Berlin. Sie hatten Zeit.', warum: 'الألمانية تستعمل الماضي البسيط لهذين الفعلين، والعربية تستعمل الماضي المركّب دائمًا فيترجمها المتعلم خطأً بـ bin gewesen.', anchor: 'war' },
