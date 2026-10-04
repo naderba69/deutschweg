@@ -135,6 +135,11 @@ die Quelle|source|مصدر النص|تحليل
     B2: { target: 0.65, items: ['مقابلة', 'محاضرة', 'تمييز لهجة نمساوية وسويسرية وبافارية'] }
   };
 
+  root.DW_SPEAKING = {
+    /* §13.3 track T6 and §12.1: recorded discussions, six axes, no recording → no score. */
+    B2: { recorded: 15, prepMinutes: 15, minutes: 15, axes: 6 }
+  };
+
   root.DW_WRITING = {
     /* §13.3 track T7 and §12.1: twenty timed writings of the exam's own shape. */
     B2: { timed: 20, minutes: 75, task1Min: 150, task2Min: 100,

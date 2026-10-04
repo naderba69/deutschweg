@@ -1460,6 +1460,30 @@ function renderExam() {
     v.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100'));
   };
   v.appendChild(write);
+  const speakBank = window.DW_SPEAKING_BANK && DW_SPEAKING_BANK.B2;
+  if (speakBank && speakBank.tasks.length) {
+    const pick = document.createElement('select');
+    speakBank.tasks.forEach(t => {
+      const o = document.createElement('option');
+      o.value = t.id;
+      o.textContent = t.n + '. ' + t.title;
+      pick.appendChild(o);
+    });
+    const detail = el('div', 'meta', '');
+    const draw = () => {
+      const t = speakBank.tasks.filter(x => x.id === pick.value)[0] || speakBank.tasks[0];
+      detail.textContent = t.situation + ' — المدخل: ' + t.input + ' — العرض (' +
+        Math.round(t.presentation.seconds / 60) + ' د): ' + t.presentation.topic + ' [' +
+        t.presentation.points.join(' · ') + '] — النقاش (' + Math.round(t.discussion.seconds / 60) +
+        ' د): ' + t.discussion.prompt + ' [' + t.discussion.points.join(' · ') + '] — التحضير ' +
+        t.prepMinutes + ' دقيقة.';
+    };
+    pick.onchange = draw;
+    draw();
+    v.appendChild(el('div', 'meta', 'مناقشة مسجّلة من بنك B2 — اختر الموضوع:'));
+    v.appendChild(pick);
+    v.appendChild(detail);
+  }
   v.appendChild(el('div', 'meta', 'التحدّث: ستة محاور. النطق = هل أعاق الفهم؟ لا درجة بلا تسجيل.'));
   const speakAxes = {};
   ['الاكتمال', 'التفاعل', 'الترابط', 'المدى', 'الصحة', 'إعاقة الفهم'].forEach(name => {

@@ -1,0 +1,9 @@
+{
+  "tasks": 15,
+  "prepMinutes": 15,
+  "minutes": 15,
+  "presentationSeconds": 240,
+  "discussionSeconds": 300,
+  "pointsPerPart": 3,
+  "axes": 6
+}

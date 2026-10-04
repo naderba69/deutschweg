@@ -329,3 +329,20 @@ with the more specific rule, or with the rule that produces more honest evidence
     prints, for the chosen one, the situation, both prompts, the word limits, the content points and the 75
     minutes — verified in JSDOM (the select carries 20 options and the detail line changes with the choice), and
     served in the preview (`/data/writing-b2.js` 200). **Green:** `npm test` **294**.
+36. **B2-L3: fifteen recorded discussions in the exam's own shape, with the six axes and no score without a recording (delivered 2026-10-04).**
+    §12.1 gives Sprechen ~15 minutes plus 15 minutes of preparation — a short presentation (~4 min) with
+    partner questions, then a discussion (~5 min); §12.2 gives the six axes and the rule that pronunciation is
+    judged only by *does it impede understanding*; the engine already refuses a speaking score without a real
+    recording. `web/data/speaking-b2.js` delivers the discussions: each with a B2 exam topic, a situation, a
+    **German input** (the exam hands one out during the preparation, so the task has something to work from),
+    a presentation with three content points, the partner's question with three points, both durations, and the
+    six axes in order.
+    **Measured:** `tools/measure-b2-speaking.js` with the floor `tools/b2-speaking-floor.json` (`15 discussions ·
+    15 min preparation · 15 min exam · 240 s presentation · 300 s discussion · 3 points per part · 6 axes`),
+    plus sequential ids, German-and-short text everywhere, no repeated title, **every discussion carrying its
+    input**, and the map (`DW_SPEAKING.B2` in `inventory.js`) naming what exists. Eight checks in
+    `tools/p3-unit.mjs` read the same floor file.
+    **Wired:** `web/index.html` loads the bank, and the exam view offers the fifteen topics with the situation,
+    the input, the presentation and discussion and the preparation time — verified in JSDOM (two selects on the
+    exam view: 20 writing topics and 15 discussions) and served in the preview (`/data/speaking-b2.js` 200).
+    **Green:** `npm test` **302**.

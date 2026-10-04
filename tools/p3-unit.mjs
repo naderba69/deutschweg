@@ -13,7 +13,7 @@ const FILES = [
   'engine/practice.js', 'engine/adaptive.js', 'engine/tracks.js', 'engine/exam.js',
   'engine/generator.js', 'data/inventory.js', 'data/chunks.js', 'data/syllabus.js',
   'data/bank.js', 'data/a0-u1-l1.js', 'data/catalog.js', 'data/library.js',
-  'data/comprehension.js', 'data/ladder.js', 'data/writing-b2.js', 'app.js'
+  'data/comprehension.js', 'data/ladder.js', 'data/writing-b2.js', 'data/speaking-b2.js', 'app.js'
 ];
 const html = fs.readFileSync(ROOT + '/web/index.html', 'utf8').replace(/<script src="[^"]+"><\/script>/g, '');
 function boot() {
@@ -363,6 +363,37 @@ console.log('\n— P3.2 lexical layer —\n');
     tasks.every(t2 => JSON.stringify(t2.axes) === JSON.stringify(bank.axes)));
   t('writing: the map (DW_WRITING.B2) names what exists',
     !!map && map.timed === tasks.length && map.minutes === bank.minutes);
+}
+
+/* ---------- B2 recorded discussions — the exam's shape, against the floor ---------- */
+{
+  const { window: win } = boot();
+  const floor = JSON.parse(fs.readFileSync(ROOT + '/tools/b2-speaking-floor.json', 'utf8'));
+  const bank = win.DW_SPEAKING_BANK && win.DW_SPEAKING_BANK.B2;
+  const map = win.DW_SPEAKING && win.DW_SPEAKING.B2;
+  const tasks = (bank && bank.tasks) || [];
+  const words = s => String(s || '').trim().split(/\s+/).filter(Boolean).length;
+  const AR = /[\u0600-\u06FF]/;
+  t('speaking: the page loads the bank (data/speaking-b2.js)',
+    fs.readFileSync(ROOT + '/web/index.html', 'utf8').includes('data/speaking-b2.js'));
+  t('speaking: ' + tasks.length + ' recorded discussions, floor ' + floor.tasks, tasks.length >= floor.tasks);
+  t('speaking: ' + bank.prepMinutes + ' min preparation + ' + bank.minutes + ' min exam',
+    bank.prepMinutes >= floor.prepMinutes && bank.minutes >= floor.minutes);
+  t('speaking: presentation 4 min, discussion 5 min',
+    tasks.every(t2 => t2.presentation.seconds >= floor.presentationSeconds &&
+      t2.discussion.seconds >= floor.discussionSeconds));
+  t('speaking: ' + floor.pointsPerPart + ' points in each part, every task',
+    tasks.every(t2 => t2.presentation.points.length >= floor.pointsPerPart &&
+      t2.discussion.points.length >= floor.pointsPerPart));
+  t('speaking: the six axes on every discussion',
+    tasks.every(t2 => JSON.stringify(t2.axes) === JSON.stringify(bank.axes)) && bank.axes.length === floor.axes);
+  t('speaking: every situation, input, topic and prompt is German and short', tasks.every(t2 =>
+    t2.situation && !AR.test(t2.situation) && words(t2.situation) <= 50 &&
+    t2.input && !AR.test(t2.input) && words(t2.input) <= 45 &&
+    !AR.test(t2.presentation.topic) && words(t2.presentation.topic) <= 25 &&
+    !AR.test(t2.discussion.prompt) && words(t2.discussion.prompt) <= 25));
+  t('speaking: the map (DW_SPEAKING.B2) names what exists',
+    !!map && map.recorded === tasks.length && map.axes === bank.axes.length);
 }
 
 /* ---------- the listening ladder — R5's content ---------- */
