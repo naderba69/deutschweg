@@ -177,12 +177,13 @@ with the more specific rule, or with the rule that produces more honest evidence
     kitchen, weather and garden, bank, computer and network, insurance, country and city, energy, training
     in figures, flat hunting, sports). Each is about 170 words with an Arabic title and a German body, no
     Arabic inside, and carries two comprehension questions (comprehension, not translation).
-    **Measured:** the material measure rises **870 → 1,151/1,820 = 63%** (281 entries carried that the
+    **Measured:** the material measure rises **870 → 1,215/1,820 = 67%** (345 entries carried that the
     matcher had proved missing, none lost), the authored measure is unchanged at **844 = 46%** by design,
-    the open gap stays **976** but is now split **307 met already / 669 not carried at all**, and the
-    floating floor rises **0.478 → 0.632**. The B1 reading count moves 10 → **24** in the library, the
-    inventory and the gate, with two questions per text in `comprehension.js`.
-    **What the split means for the next step:** the promotion pool (307) is now larger than one six-lesson
+    the open gap stays **976** but is now split **371 met already / 605 not carried at all**, and the
+    floating floor rises **0.478 → 0.667**. The B1 reading count moves 10 → **28** in the library, the
+    inventory and the gate, with two questions per text in `comprehension.js` (18 texts in all: the 14
+    unit-6 themes plus coast, cleanliness, village music and the language course).
+    **What the split means for the next step:** the promotion pool (371) is now larger than one six-lesson
     unit can hold (240 headword slots), so the next authored step is either a seventh unit or another
-    material round — and the 669 entries the corpus still does not carry need material before any list can
+    material round — and the 605 entries the corpus still does not carry need material before any list can
     name them.

@@ -41,9 +41,9 @@ const REQUIRE = process.argv.includes('--require-transcription');
 
 /* Floors are the measured values of the last accepted run. They may only rise. */
 /* Floors are the measured values of the last accepted run. They may only rise.
-   Ratcheted after the B1-L2 material step (14 texts, 281 entries carried):
-   raw 844/1820 = 0.4637 and 1151/1820 = 0.6324, rounded down. */
-const FLOOR = { headword: 0.463, material: 0.632 };
+   Ratcheted after the B1-L2 material step (18 texts in all, 345 entries carried):
+   raw 844/1820 = 0.4637 and 1215/1820 = 0.6676, rounded down. */
+const FLOOR = { headword: 0.463, material: 0.667 };
 
 const HAVE_LIST = fs.existsSync(LIST);
 if (!HAVE_LIST && REQUIRE) {

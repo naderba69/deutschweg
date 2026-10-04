@@ -118,7 +118,7 @@ read.A2.length === 30 ? ok('A2 reading 30') : bad('A2 reading ' + read.A2.length
 /* Amendment B1-L2's material step: the B1 match recorded 950 entries the corpus did
    not carry, so 14 new B1 texts were written to carry them in context (b1-r11 … b1-r24).
    The count moves with the library, and the texts are counted, not asserted. */
-read.B1.texts.length === 24 && read.B1.magazine ? ok('B1 reading 24 + magazine') : bad('B1 reading ' + read.B1.texts.length);
+read.B1.texts.length === 28 && read.B1.magazine ? ok('B1 reading 28 + magazine') : bad('B1 reading ' + read.B1.texts.length);
 read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 articles') : bad('B2 reading');
 ['A1', 'A2', 'B1', 'B2'].forEach(level => {
   const item = S.listening[level];
