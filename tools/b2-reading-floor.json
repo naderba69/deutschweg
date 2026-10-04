@@ -1,6 +1,8 @@
 {
   "article": 118,
   "chapter": 245,
-  "articlesTotal": 2661,
-  "novelTotal": 1554
+  "articlesTotal": 2717,
+  "novelTotal": 1554,
+  "articlesLowestPermille": 1000,
+  "chaptersLowestPermille": 909
 }

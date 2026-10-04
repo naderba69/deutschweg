@@ -367,3 +367,21 @@ with the more specific rule, or with the rule that produces more honest evidence
     header, reading material, or a one-shot play button for the listening script), falling back to the
     question-pool paper only when the bank is absent. Served in the preview (`/data/exam-b2.js` 200).
     **Green:** `npm test` **312**.
+38. **B2-L5: the 98% rule of §13.3 is measured now — and the articles were rewritten until it holds (delivered 2026-10-04).**
+    "98% comprehension, no dictionary" was a slogan. `tools/measure-b2-reading.js` now looks up **every token**
+    of every B2 text against what the app has taught: the authored headwords of all levels, the B2 material
+    words, the 100 chunks, and the German of the compiled lessons and of the reading library below B2 — matched
+    with the same stemmer the material measure uses. It prints each text's coverage and gates on two new floor
+    keys (`articlesLowestPermille`, `chaptersLowestPermille`) that may only rise.
+    **The first measurement found the rule broken:** articles sat between **87.9%** and 100%, the six novella
+    chapters between **91.0%** and **94.4%**. The tool printed the unknown words by name, which is what made the
+    fix possible (*Pendler · Klassenzimmer · Waschmaschine · Ersatzteile · Fahrradweg · Sponsor · Zuschuss ·
+    Vorsatz · Ausstieg · unangenehm* …).
+    **54 positions in the twenty articles were rewritten** — either substituting words the learner has met
+    (*Pendler* → "Menschen, die jeden Tag zur Arbeit fahren" → then "diese Menschen"; *Klassenzimmer* →
+    "Unterricht"; *Waschmaschine* → "eine teure Maschine für den Haushalt"; *Zuschuss* → "ein Antrag auf Geld";
+    *dreiundsechzig* → "63") or rebuilding the sentence (*behaftet · wegwünschen · übersieht · aufhängte ·
+    anstrich*). **Result: the lowest article is at 100%** (all twenty above the 98% target), the novella
+    unchanged at **90.9%** — its sixty unknown words are printed by name and are the next slice. The
+    comprehension questions were not touched: the substitutions preserve the meaning their answers depend on.
+    **Green:** `npm test` **307**.

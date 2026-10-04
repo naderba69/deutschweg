@@ -326,6 +326,7 @@ console.log('\n— P3.2 lexical layer —\n');
   const arts = B2.articles || [];
   const chs = (B2.novel && B2.novel.chapters) || [];
   const shortest = (list) => list.length ? Math.min.apply(null, list.map(x => wc(x.body))) : 0;
+  const total = (list) => list.reduce((s, x) => s + wc(x.body), 0);
   t('B2 reading: 20 articles and a six-chapter novella', arts.length === 20 && chs.length === 6);
   t('B2 reading: every text carries exactly two questions',
     arts.concat(chs).every(x => (x.questions || []).length === 2));
@@ -333,10 +334,17 @@ console.log('\n— P3.2 lexical layer —\n');
     arts.every(a => wc(a.body) >= floor.article));
   t('B2 reading: shortest chapter ' + shortest(chs) + ' words, floor ' + floor.chapter,
     chs.every(c => wc(c.body) >= floor.chapter));
-  t('B2 reading: articles total ' + arts.reduce((s, a) => s + wc(a.body), 0) + ' words, floor ' + floor.articlesTotal,
-    arts.reduce((s, a) => s + wc(a.body), 0) >= floor.articlesTotal);
-  t('B2 reading: novella total ' + chs.reduce((s, c) => s + wc(c.body), 0) + ' words, floor ' + floor.novelTotal,
-    chs.reduce((s, c) => s + wc(c.body), 0) >= floor.novelTotal);
+  t('B2 reading: articles total ' + total(arts) + ' words, floor ' + floor.articlesTotal,
+    total(arts) >= floor.articlesTotal);
+  t('B2 reading: novella total ' + total(chs) + ' words, floor ' + floor.novelTotal,
+    total(chs) >= floor.novelTotal);
+  /* §13.3's 98% rule has one implementation — tools/measure-b2-reading.js — and it
+     runs inside npm test before this file. What is checked here is that the floor
+     file still carries the coverage keys, so the measure cannot lose them quietly. */
+  t('B2 reading: the floor records the 98% rule (articles ' + (floor.articlesLowestPermille / 10) +
+    '% · novella ' + (floor.chaptersLowestPermille / 10) + '%)',
+    Number.isFinite(floor.articlesLowestPermille) && Number.isFinite(floor.chaptersLowestPermille) &&
+    floor.articlesLowestPermille > 0 && floor.chaptersLowestPermille > 0);
 }
 
 /* ---------- the B2 mock paper — real parts, official split, scored in the DOM ---------- */

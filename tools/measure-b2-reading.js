@@ -19,9 +19,74 @@ const root = path.resolve(__dirname, '..');
 const FLOOR_FILE = path.join(__dirname, 'b2-reading-floor.json');
 const WRITE = process.argv.includes('--write-floor');
 
+const { fold, stem } = require('./material');
+
 const win = {};
-['web/data/library.js', 'web/data/comprehension.js', 'web/data/inventory.js']
+['web/data/library.js', 'web/data/comprehension.js', 'web/data/inventory.js',
+  'web/data/catalog.js', 'web/data/chunks.js']
   .forEach(f => new Function('window', fs.readFileSync(path.join(root, f), 'utf8'))(win));
+
+/* §13.3: "98% comprehension, no dictionary" during extensive reading. That is a
+   claim about words, so it is measured: every token of every text is looked up
+   against the words the learner has been taught up to B2 — the authored headwords
+   of all levels, the B2 material words, the chunks — with the same stemming the
+   material measure uses. Unknown tokens are printed, most frequent first. */
+const CORE = w => String(w).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
+const KNOWN = (() => {
+  const set = new Set();
+  const add = w => {
+    const f = core(w);
+    if (!f) return;
+    const parts = fold(f).split(' ');
+    parts.forEach((p, i) => {
+      set.add(p);
+      if (i === parts.length - 1) { set.add(stem(p)); set.add(stem(p).replace(/e$/, '')); }
+    });
+  };
+  const core = w => fold(CORE(w)).replace(/[-–—]/g, '').trim();
+  const { collectGerman } = require('./material');
+  Object.keys((win.DW_LESSONS || {})).forEach(id => {
+    const L = win.DW_LESSONS[id];
+    (L.wortschatz || []).forEach(it => add(it.de != null ? it.de : it[0]));
+    (L.material || []).forEach(add);
+    /* Everything the app has already shown this learner below B2 — the German of
+       the compiled lessons of A0, A1, A2 and B1, and every B1 reading text. A word
+       that appeared there has been read once, and that is what "known" means here. */
+    collectGerman(L.schritte || L).forEach(str => fold(str).split(' ').forEach(w => {
+      if (w.length > 2) { set.add(w); set.add(stem(w)); }
+    }));
+  });
+  const lib = win.DW_LIBRARY || {};
+  ['A1', 'A2', 'B1'].forEach(lv => {
+    const node = lib[lv] || {};
+    const texts = [].concat(node.texts || [], node.readers || []);
+    texts.forEach(t => fold(t.body || '').split(' ').forEach(w => { if (w.length > 2) { set.add(w); set.add(stem(w)); } }));
+  });
+  const vocab = require('./vocab-b2.js');
+  Object.keys(vocab).forEach(id => { (vocab[id].items || []).forEach(it => add(it[0])); (vocab[id].material || []).forEach(add); });
+  const chunks = win.DW_CHUNKS || {};
+  Object.keys(chunks).forEach(lv => (chunks[lv] || []).forEach(c => {
+    const t = typeof c === 'string' ? c : (c.de || c.text || '');
+    fold(t).split(' ').forEach(w => { set.add(w); set.add(stem(w)); });
+  }));
+  return set;
+})();
+const STOP = new Set(['und', 'oder', 'aber', 'denn', 'dass', 'wenn', 'als', 'wie', 'auch', 'nicht', 'nur', 'noch', 'schon',
+  'sehr', 'mehr', 'viel', 'viele', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines', 'der', 'die', 'das', 'den', 'dem', 'des',
+  'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man', 'mich', 'dich', 'sich', 'uns', 'euch', 'mein', 'dein', 'sein', 'unser',
+  'ist', 'sind', 'war', 'waren', 'sein', 'hat', 'haben', 'hatte', 'hatten', 'wird', 'werden', 'wurde', 'wurden', 'kann', 'können',
+  'muss', 'müssen', 'soll', 'sollen', 'will', 'wollen', 'darf', 'dürfen', 'mag', 'mögen', 'in', 'im', 'an', 'am', 'auf', 'aus',
+  'bei', 'mit', 'von', 'vor', 'für', 'zu', 'zum', 'zur', 'um', 'über', 'unter', 'durch', 'gegen', 'ohne', 'nach', 'seit', 'bis',
+  'zwischen', 'hinter', 'neben', 'ohne', 'trotz', 'wegen', 'ja', 'nein', 'hier', 'da', 'dort', 'dann', 'doch', 'eben', 'mal']);
+function unknownWords(text) {
+  const toks = fold(text).split(' ').filter(w => w.length > 2 && !STOP.has(w));
+  const out = [];
+  toks.forEach(t => {
+    if (KNOWN.has(t) || KNOWN.has(stem(t)) || KNOWN.has(t.replace(/e$/, ''))) return;
+    out.push(t);
+  });
+  return { tokens: toks.length, unknown: out };
+}
 const B2 = win.DW_LIBRARY.B2;
 /* The map (DW_READING) names the texts the level promises; the library is what
    exists. Titles are compared in order, so the reading list in the UI and the
@@ -51,6 +116,32 @@ articles.forEach(a => console.log('  ' + a.id.padEnd(7) + String(a.words).padSta
 chapters.forEach(c => console.log('  ' + c.id.padEnd(10) + String(c.words).padStart(4) + 'w  ' + c.questions + 'Q  ' + c.title));
 console.log('  articles total ' + measured.articlesTotal + 'w · novella total ' + measured.novelTotal + 'w');
 
+/* the 98% rule of §13.3, measured per text */
+const all = articles.concat(chapters);
+const cov = all.map(t => {
+  const text = t.words >= 0 ? null : null;
+  return null;
+});
+const covRows = [];
+let covMin = 1;
+const freqAll = {};
+[...(B2.articles || []), ...(((B2.novel && B2.novel.chapters) || []))].forEach(node => {
+  const r = unknownWords(node.body || '');
+  const known = r.tokens - r.unknown.length;
+  const ratio = r.tokens ? known / r.tokens : 1;
+  covMin = Math.min(covMin, ratio);
+  r.unknown.forEach(w => { freqAll[w] = (freqAll[w] || 0) + 1; });
+  covRows.push({ id: node.id, tokens: r.tokens, unknown: r.unknown, ratio: ratio, node: node });
+});
+const sorted = covRows.slice().sort((a, b) => a.ratio - b.ratio);
+sorted.forEach(r => console.log('  ' + String(r.id).padEnd(10) + (Math.round(r.ratio * 1000) / 10).toFixed(1).padStart(5) + '%  ' +
+  'unknown ' + String(r.unknown.length).padStart(3) + ' / ' + String(r.tokens).padStart(4)));
+const topUnknown = Object.entries(freqAll).sort((a, b) => b[1] - a[1]).slice(0, 25)
+  .map(([w, n]) => w + '×' + n).join(' · ');
+console.log('  the 98% rule (§13.3): lowest coverage ' + (Math.round(covMin * 1000) / 10) + '% — the texts the learner reads');
+console.log('  most frequent unknown words: ' + topUnknown.slice(0, 400));
+console.log('  lowest text (' + sorted[0].id + '), unknown: ' + sorted[0].unknown.slice(0, 24).join(' '));
+
 let fail = 0;
 function gate(name, now, floor) {
   const ok = now >= floor;
@@ -65,6 +156,16 @@ gate('novella total words', measured.novelTotal, FLOOR.novelTotal);
 const qBad = articles.concat(chapters).filter(t => t.questions !== 2);
 if (qBad.length) { fail += 1; console.log('  ✗ every text carries two questions — bad: ' + qBad.map(t => t.id).join(', ')); }
 else console.log('  ✓ every text carries two questions');
+const artRows = covRows.filter(r => /^b2-a\d+$/.test(r.id));
+const chRows = covRows.filter(r => /^novelle-\d+$/.test(r.id));
+const lo = rows => rows.length ? Math.min.apply(null, rows.map(r => r.ratio)) : 1;
+const artLow = lo(artRows), chLow = lo(chRows);
+gate('coverage of the known words, lowest article (‰)', Math.floor(artLow * 1000), FLOOR.articlesLowestPermille || 0);
+gate('coverage of the known words, lowest chapter (‰)', Math.floor(chLow * 1000), FLOOR.chaptersLowestPermille || 0);
+console.log('  ' + (artLow >= 0.98 ? '✓' : '·') + ' the 98% rule (§13.3) on the articles: lowest ' +
+  (Math.round(artLow * 1000) / 10) + '% (target 98%)');
+console.log('  ' + (chLow >= 0.98 ? '✓' : '·') + ' the 98% rule (§13.3) on the novella: lowest ' +
+  (Math.round(chLow * 1000) / 10) + '% (target 98%)');
 const mapArticles = (MAP.articles || []);
 const mapNovel = MAP.novel || '';
 const titles = articles.map(a => a.title);
@@ -84,7 +185,9 @@ if (WRITE) {
     article: Math.max(FLOOR.article, measured.article),
     chapter: Math.max(FLOOR.chapter, measured.chapter),
     articlesTotal: Math.max(FLOOR.articlesTotal, measured.articlesTotal),
-    novelTotal: Math.max(FLOOR.novelTotal, measured.novelTotal)
+    novelTotal: Math.max(FLOOR.novelTotal, measured.novelTotal),
+    articlesLowestPermille: Math.max(FLOOR.articlesLowestPermille || 0, Math.floor(artLow * 1000)),
+    chaptersLowestPermille: Math.max(FLOOR.chaptersLowestPermille || 0, Math.floor(chLow * 1000))
   };
   fs.writeFileSync(FLOOR_FILE, JSON.stringify(raised, null, 2) + '\n');
   console.log('\n  wrote ' + path.relative(root, FLOOR_FILE) + ' ' + JSON.stringify(raised));
