@@ -1291,5 +1291,145 @@ module.exports = [
     'Das Schlagobers ist süß. Man spürt den Wind am Abend.',
     'Über den Tod spricht man selten.',
     'Beschreibe morgen ein Gericht und einen Körperteil in je zwei Sätzen.',
-    'غدًا صف طبقًا وعضوًا من الجسد في جملتين لكل منهما.')
+    'غدًا صف طبقًا وعضوًا من الجسد في جملتين لكل منهما.'),
+
+  U('b1-u10-l1', 'B1', 'الأمن والقانون', 'Sicherheit und Recht', 'konjugation',
+    'Am Ende berichtest du über einen Vorfall und ein Gericht',
+    'في النهاية تحكي عن حادث ومحكمة.',
+    [
+      ['Der Einbruch war im Winter.', 'الاسم مفرد بفعل مفرد', 'der Einbruch: Singular + war', 'Der Einbruch waren im Winter.', 'war'],
+      ['Jemand wollte das Geld stehlen.', 'stehlen بلا حرف جر', 'kein von nach stehlen', 'Jemand wollte das Geld stehlen von.', 'stehlen'],
+      ['Die Frau will sich scheiden lassen.', 'تركيب ثابت بانعكاسي', 'sich scheiden lassen', 'Die Frau will sich scheiden gelassen.', 'scheiden lassen'],
+      ['Die Familie tut klug, sie nicht zu bestrafen.', 'المصدر مع zu في الآخر', 'zu bestrafen', 'Die Familie tut klug, sie nicht bestrafen.', 'zu bestrafen']
+    ],
+    [
+      ['Der Täter stand vor dem Gericht.', 'الجاني أمام المحكمة', 'Der Täter standen vor dem Gericht.', 'الفعل مفرد.', 'stand'],
+      ['Alle Nachbarn vermissen sie.', 'كل الجيران يفتقدونها', 'Alle Nachbarn vermissen auf sie.', 'بلا auf.', 'vermissen'],
+      ['Alle Menschen sind gleichberechtigt.', 'الناس متساوون في الحقوق', 'Alle Menschen sind gleichberechtigt gemacht.', 'الصفة تكفي.', 'gleichberechtigt'],
+      ['Man kann sich hier leicht irren.', 'يسهل الخطأ هنا', 'Man kann sich hier leicht irren auf.', 'بلا auf.', 'irren']
+    ],
+    'Der Einbruch war im Winter. Jemand wollte das Geld stehlen.',
+    'Alle Menschen sind gleichberechtigt.',
+    'Berichte morgen in fünf Sätzen über einen Vorfall in deiner Straße.',
+    'غدًا احكِ في خمس جمل عن حادث في شارعك.'),
+
+  U('b1-u10-l2', 'B1', 'الإدارة والمدرسة', 'Verwaltung und Schule', 'wortstellung',
+    'Am Ende füllst du ein Formular aus und erzählst von Schule und Kunst',
+    'في النهاية تملأ استمارة وتحكي عن المدرسة والفن.',
+    [
+      ['Man soll den Besuch vorher ankündigen.', 'ankündigen بلا حرف جر', 'kein auf nach ankündigen', 'Man soll den Besuch vorher ankündigen auf.', 'ankündigen'],
+      ['Die Malerin stellt im Herbst aus.', 'المهنة المؤنثة بفعل مفرد', 'die Malerin: Singular + stellt', 'Die Malerin stellen im Herbst aus.', 'stellt'],
+      ['Jeder Schritt ist klein.', 'der Schritt مفرد', 'der Schritt: Singular + ist', 'Jeder Schritt sind klein.', 'ist'],
+      ['Man will den Grund herausfinden.', 'herausfinden بلا حرف جر', 'kein auf nach herausfinden', 'Man will den Grund herausfinden auf.', 'herausfinden']
+    ],
+    [
+      ['Die Absenderin steht oben auf dem Brief.', 'المرسلة أعلى الرسالة', 'Die Absenderin stehen oben auf dem Brief.', 'الفعل مفرد.', 'steht'],
+      ['Die Gratulation kommt von der Architektin.', 'التهنئة من المهندسة', 'Die Gratulation kommen von der Architektin.', 'الفعل مفرد.', 'kommt'],
+      ['Die Linie drei fährt zum Bahnhof.', 'الخط ثلاثة إلى المحطة', 'Die Linie drei fahren zum Bahnhof.', 'الفعل مفرد.', 'fährt'],
+      ['Zwei Personen sind heute abwesend.', 'شخصان غائبان اليوم', 'Zwei Personen sind heute abwesend gemacht.', 'الصفة تكفي.', 'abwesend']
+    ],
+    'Man soll den Besuch vorher ankündigen. Die Absenderin steht oben auf dem Brief.',
+    'Jeder Schritt ist klein.',
+    'Schreibe morgen drei Sätze über einen Behördengang.',
+    'غدًا اكتب ثلاث جمل عن زيارة دائرة رسمية.'),
+
+  U('b1-u10-l3', 'B1', 'البيئة والطبيعة', 'Umwelt und Natur', 'lexik-kollokation',
+    'Am Ende sprichst du über Müll, Tiere und Formen',
+    'في النهاية تتحدث عن النفايات والحيوانات والأشكال.',
+    [
+      ['Das Abgas von den Autos schadet allen.', 'المفرد بفعل مفرد', 'das Abgas: Singular + schadet', 'Das Abgas von den Autos schaden allen.', 'schadet'],
+      ['Die Bilder stammen aus dem Süden.', 'stammen مع aus', 'stammen + aus', 'Die Bilder stammen von dem Süden.', 'aus'],
+      ['Der Hund will fressen.', 'الحيوان يأكل fressen', 'fressen für Tiere', 'Der Hund will essen.', 'fressen'],
+      ['Das Bild hängt schief.', 'الصفة خبرًا بلا تصريف', 'schief ohne Endung', 'Das Bild hängt schief gemacht.', 'schief']
+    ],
+    [
+      ['Für das Faschierte brauche ich nur eine Zutat.', 'للحم المفروم مكوّن واحد', 'Für das Faschierte brauche ich nur einen Zutat.', 'Zutat مؤنثة.', 'eine Zutat'],
+      ['Unser Haustier ist eine alte Katze.', 'حيواننا المنزلي قطة', 'Unser Haustier sind eine alte Katze.', 'الفعل مفرد.', 'ist'],
+      ['Innen ist es warm und trocken.', 'في الداخل دافئ', 'Innen ist es warm und trocken auf.', 'بلا auf.', 'Innen'],
+      ['Die städtische Schule ist groß.', 'مدرسة المدينة كبيرة', 'Die städtisch Schule ist groß.', 'الصفة تُصرَّف.', 'städtische']
+    ],
+    'Das Abgas von den Autos schadet allen. Die Bilder stammen aus dem Süden.',
+    'Das Bild hängt schief.',
+    'Beschreibe morgen fünf Dinge in deiner Küche.',
+    'غدًا صف خمسة أشياء في مطبخك.'),
+
+  U('b1-u10-l4', 'B1', 'الأفعال والظروف', 'Verben und Umstände', 'wortstellung',
+    'Am Ende ordnest du Ereignisse in der Zeit und begründest Entscheidungen',
+    'في النهاية ترتّب الأحداث زمنيًا وتبرّر القرارات.',
+    [
+      ['Zunächst lesen wir den Text.', 'الظرف أولًا والفعل ثانيًا', 'Verb an zweiter Stelle', 'Zunächst wir lesen den Text.', 'lesen wir'],
+      ['Ich will nicht an der Werbung zweifeln.', 'zweifeln + an', 'zweifeln an + Akkusativ', 'Ich will nicht auf die Werbung zweifeln.', 'an der'],
+      ['Über den Tod will man nicht nachdenken.', 'nachdenken + über', 'nachdenken über + Akkusativ', 'Über den Tod will man nicht nachdenken auf.', 'nachdenken'],
+      ['Das Fleisch ist noch nicht gar.', 'الصفة خبرًا', 'gar ohne Zusatz', 'Das Fleisch ist noch nicht gar gemacht.', 'gar']
+    ],
+    [
+      ['Die Regel gilt für alle.', 'القاعدة سارية على الجميع', 'Die Regel gelten für alle.', 'الفعل مفرد.', 'gilt'],
+      ['Solche Fehler können oft vorkommen.', 'أخطاء كهذه تقع', 'Solche Fehler können oft vorkommen auf.', 'بلا auf.', 'vorkommen'],
+      ['Zusätzlich zahle ich hundert Franken.', 'إضافة إلى ذلك أدفع', 'Zusätzlich zahle ich hundert Franken auf.', 'بلا auf.', 'Zusätzlich'],
+      ['Es ist nichts mehr übrig.', 'لم يبقَ شيء', 'Es ist nichts mehr übrig gemacht.', 'الصفة تكفي.', 'übrig']
+    ],
+    'Zunächst lesen wir den Text. Die Regel gilt für alle.',
+    'Solche Fehler können oft vorkommen.',
+    'Erzähle morgen der Reihe nach, was du gestern gemacht hast.',
+    'غدًا احكِ بالترتيب ما فعلته أمس.'),
+
+  U('b1-u10-l5', 'B1', 'الأشياء والصفات', 'Dinge und Eigenschaften', 'deklination',
+    'Am Ende beschreibst du Gegenstände, Formen und Materialien',
+    'في النهاية تصف أشياء وأشكالًا وموادّ.',
+    [
+      ['Der Treffpunkt bleibt derselbe.', 'derselbe في الخبر بلا تصريف', 'derselbe als Prädikatsnomen', 'Der Treffpunkt bleibt derselber.', 'derselbe'],
+      ['Wir gehen den Fluss entlang.', 'entlang بعد الاسم', 'entlang steht nach dem Nomen', 'Wir gehen entlang den Fluss.', 'Fluss entlang'],
+      ['Für den Umtausch eignet sich nur die Rechnung.', 'انعكاسي كامل', 'sich eignen für', 'Für den Umtausch eignet nur die Rechnung.', 'eignet sich'],
+      ['Die Wohnung ist komplett möbliert.', 'الصفة مع الفعل التام', 'komplett + Partizip', 'Die Wohnung ist komplett möbliert gemacht.', 'komplett möbliert']
+    ],
+    [
+      ['In die Liste darf man einen Namen einfügen.', 'يجوز إدراج اسم', 'In die Liste darf man einen Namen einfügen auf.', 'بلا auf.', 'einfügen'],
+      ['Die Schüssel steht im Regal.', 'السلطانية على الرف', 'Die Schüssel stehen im Regal.', 'الفعل مفرد.', 'steht'],
+      ['Die Etiketten sind farbig.', 'اللصاقات ملوّنة', 'Die Etiketten sind farbig gemacht.', 'الصفة تكفي.', 'farbig'],
+      ['Der Stoff ist künstlich.', 'القماش اصطناعي', 'Der Stoff ist künstlich gemacht.', 'الصفة تكفي.', 'künstlich']
+    ],
+    'Der Treffpunkt bleibt derselbe. Wir gehen den Fluss entlang.',
+    'Die Wohnung ist komplett möbliert.',
+    'Beschreibe morgen einen Gegenstand in deinem Zimmer mit Form und Farbe.',
+    'غدًا صف شيئًا في غرفتك بشكله ولونه.'),
+
+  U('b1-u10-l6', 'B1', 'الناس والمدينة', 'Menschen und Stadt', 'konjugation',
+    'Am Ende stellst du Nachbarn vor und sprichst über das Alter',
+    'في النهاية تقدّم الجيران وتتحدث عن الكبر.',
+    [
+      ['Im Feber beginnt der Fasching.', 'الصيغة النمساوية للشهر', 'der Feber = der Februar', 'Im Feber beginnen der Fasching.', 'beginnt'],
+      ['Nichtraucher sitzen hier getrennt.', 'الجمع بلا أداة', 'Plural ohne Artikel', 'Nichtraucher sitzt hier getrennt.', 'sitzen'],
+      ['Die Kinder spielen miteinander.', 'الضمير المدمج', 'miteinander = mit einander', 'Die Kinder spielen miteinander auf.', 'miteinander'],
+      ['Der mittlere Teil bleibt leer.', 'الصفة تُصرَّف', 'mittlere mit Endung', 'Der mittlerer Teil bleibt leer.', 'mittlere']
+    ],
+    [
+      ['Eine Bewohnerin erzählt von den Neuen.', 'ساكنة تحكي', 'Eine Bewohnerin erzählen von den Neuen.', 'الفعل مفرد.', 'erzählt'],
+      ['Die Wirtin bringt die Suppe.', 'صاحبة المطعم تحضر الشوربة', 'Die Wirtin bringen die Suppe.', 'الفعل مفرد.', 'bringt'],
+      ['Zeit ist wertvoll.', 'الوقت ثمين', 'Zeit ist wertvoll gemacht.', 'الصفة تكفي.', 'wertvoll'],
+      ['Die Fragen sind zahlreich.', 'الأسئلة كثيرة العدد', 'Die Fragen sind zahlreich gemacht.', 'الصفة تكفي.', 'zahlreich']
+    ],
+    'Im Feber beginnt der Fasching. Die Kinder spielen miteinander.',
+    'Nichtraucher sitzen hier getrennt.',
+    'Stelle morgen zwei Nachbarn mit je zwei Sätzen vor.',
+    'غدًا قدّم جارين بجملتين لكل واحد.'),
+
+  U('b1-u10-l7', 'B1', 'الربط والتعميم', 'Verbindung und Allgemeines', 'wortstellung',
+    'Am Ende verbindest du Sätze und ordnest Aussagen allgemein',
+    'في النهاية تربط الجمل وتعمّم الأحكام.',
+    [
+      ['Die gesamte Verwaltung arbeitet langsam.', 'الصفة تُصرَّف أمام الاسم', 'gesamte mit Endung', 'Die gesamt Verwaltung arbeitet langsam.', 'gesamte'],
+      ['Er liest sowohl Zeitungen als auch Magazine.', 'زوج الرابط كامل', 'sowohl … als auch', 'Er liest sowohl Zeitungen als auch Magazine auf.', 'als auch'],
+      ['Man lernt, indem man übt.', 'indem ترسل الفعل للآخر', 'indem + Verb am Ende', 'Man lernt, indem man übt auf.', 'indem'],
+      ['Über das Geschlecht diskutieren sie lange.', 'الجمع بفعل جمع', 'Plural: diskutieren', 'Über das Geschlecht diskutiert sie lange.', 'diskutieren']
+    ],
+    [
+      ['Sowieso kommt sie mit.', 'على أي حال تأتي معنا', 'Sowieso kommt sie mit auf.', 'بلا auf.', 'Sowieso'],
+      ['Nirgendwo ist es so ruhig.', 'لا مكان بهذا الهدوء', 'Nirgendwo ist es so ruhig auf.', 'بلا auf.', 'Nirgendwo'],
+      ['Der Saal war ziemlich voll.', 'القاعة كانت ممتلئة إلى حد كبير', 'Der Saal war ziemlich voll gemacht.', 'الصفة تكفي.', 'ziemlich voll'],
+      ['Diese Regel ist speziell für B1.', 'هذه القاعدة خاصة بـ B1', 'Diese Regel ist speziell für B1 gemacht.', 'الصفة تكفي.', 'speziell']
+    ],
+    'Die gesamte Verwaltung arbeitet langsam. Man lernt, indem man übt.',
+    'Nirgendwo ist es so ruhig.',
+    'Verbinde morgen fünf Sätze mit sowohl … als auch und indem.',
+    'غدًا اربط خمس جمل بـ sowohl … als auch وindem.')
 ];

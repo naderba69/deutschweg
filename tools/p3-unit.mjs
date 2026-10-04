@@ -264,16 +264,18 @@ console.log('\n— P3.2 lexical layer —\n');
   ported.forEach(row => {
     const lesson = L[row.id];
     const wl = lesson.wortschatz || [];
-    if (wl.length !== 40) countOk = false;
-    if (lesson.schritte.filter(s => s.wortschatz).length !== 10) stepsOk = false;
+    /* The map row declares its own count (unit 10 reads 37 and 36), and the compiler
+       balances the list at most four words per step, so the step count is derived. */
+    if (wl.length !== (row.words ? row.words.receptive : 40)) countOk = false;
+    if (lesson.schritte.filter(s => s.wortschatz).length !== Math.ceil(wl.length / 4)) stepsOk = false;
     wl.forEach(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].forEach(k => { if (!it[k]) itemsOk = false; }));
     const tr = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe.trick);
     if (tr.length < 3 || new Set(tr).size !== tr.length) tricksOk = false;
   });
   t('B1: all ' + rows.length + ' lessons carry the lexical layer', ported.length === rows.length);
   t('B1: every ported item is complete to the last field', itemsOk);
-  t('B1: every ported lesson carries exactly its declared 40 words', countOk);
-  t('B1: every ported lesson splits them over 10 Wortschatz steps', stepsOk);
+  t('B1: every ported lesson carries exactly its declared words', countOk);
+  t('B1: every ported lesson splits them over at most four words per step', stepsOk);
   t('B1: every ported lesson carries distinct Merkhilfen', tricksOk);
 
   const cov = (win.DW_COVERAGE || []).find(c => c.level === 'B1');

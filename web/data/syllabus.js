@@ -173,7 +173,18 @@
     ['التعليم والدلائل', 'Bildung und Nachschlagen', 'التعليم', 'Das Denkmal steht und nachschlagen', 'explicit'],
     ['السلوك والمشاعر', 'Verhalten und Gefühl', 'المشاعر', 'uns amüsieren und weder … noch', 'explicit'],
     ['المرور والسفر', 'Verkehr und Reise', 'المرور', 'anschnallen und verhaften', 'explicit'],
-    ['الطعام والصحة', 'Essen und Gesundheit', 'الطعام', 'Das Schlagobers ist und spürt', 'explicit']
+    ['الطعام والصحة', 'Essen und Gesundheit', 'الطعام', 'Das Schlagobers ist und spürt', 'explicit'],
+    /* Unit 10 — amendment B1-L6: the last 253 pool entries are named, which closes the
+       B1 match at 100% in both measures. Seven lessons (37 + 6 x 36) because 253 does
+       not divide by the forty-word ceiling and a 13-word lesson would fall under the
+       B1 floor of twenty; each row declares its own count (r[5], r[6]). */
+    ['الأمن والقانون', 'Sicherheit und Recht', 'القانون', 'Der Einbruch war und stehlen', 'explicit', 37, 15],
+    ['الإدارة والمدرسة', 'Verwaltung und Schule', 'الإدارة', 'ankündigen und herausfinden', 'explicit', 36, 15],
+    ['البيئة والطبيعة', 'Umwelt und Natur', 'البيئة', 'Das Abgas schadet und stammen aus', 'explicit', 36, 15],
+    ['الأفعال والظروف', 'Verben und Umstände', 'الزمن', 'Zunächst lesen wir und zweifeln an', 'explicit', 36, 15],
+    ['الأشياء والصفات', 'Dinge und Eigenschaften', 'الوصف', 'derselbe und Fluss entlang', 'explicit', 36, 15],
+    ['الناس والمدينة', 'Menschen und Stadt', 'المجتمع', 'Im Feber beginnt und miteinander', 'explicit', 36, 15],
+    ['الربط والتعميم', 'Verbindung und Allgemeines', 'الربط', 'Die gesamte Verwaltung und indem', 'explicit', 36, 15]
   ];
 
   const B2 = [
@@ -235,9 +246,13 @@
     else if (i < 46) { unit = 6; lesson = i - 40 + 1; }
     else if (i < 52) { unit = 7; lesson = i - 46 + 1; }
     else if (i < 58) { unit = 8; lesson = i - 52 + 1; }
-    else { unit = 9; lesson = i - 58 + 1; }
+    else if (i < 64) { unit = 9; lesson = i - 58 + 1; }
+    else { unit = 10; lesson = i - 64 + 1; }
     const id = 'b1-u' + unit + '-l' + lesson;
-    push(id, 'B1', r[0], r[1], r[2], 40, 17, r[3], r[4], 'lesson', prev, 'authored');
+    /* Rows may declare their own counts (unit 10 does: 37 and 36 receptive, 15
+       productive each) so that a unit whose size does not divide by forty still
+       keeps authored items and declared receptive slots equal. */
+    push(id, 'B1', r[0], r[1], r[2], r[5] || 40, r[6] || 17, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
   B2.forEach((r, i) => {

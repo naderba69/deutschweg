@@ -5,6 +5,8 @@
 # was 471, and unit 8 carries the next 240. The remaining 231 stay in the candidates file.
 # Fourth round (unit 9, amendment B1-L5, item 30): the fourth material round left the whole
 # pool (494) met-not-authored, and unit 9 carries 240 of it. 254 stay in the candidates file.
+# Fifth round (unit 10, amendment B1-L6, item 31): the last 253 entries of the pool are named
+# by unit 10, which closes the B1 match at 100% in both measures. The pool file is empty after it.
 # First round (unit 6, amendment B1-L2, DECISIONS-PENDING item 25): the 219 entries the gap
 # recorded as met-but-unnamed (tools/goethe-b1-candidates.txt) plus 21 entries from the gap's
 # 'new' column that the six new lessons' own material introduces.
@@ -972,3 +974,256 @@ list spüren
 list schütteln
 list klopfen
 list hübsch
+list das Abgas
+list abhangen
+list abmachen
+list die Absenderin
+list die Abwartin
+list abwesend
+list allgemein
+list alltäglich
+list das Altenheim
+list anderseits
+list ankündigen
+list anschließen
+list anstellen
+list das Asyl
+list auffallen
+list aufführen
+list aufgeben
+list auflösen
+list auftreten
+list der Auftritt
+list aufwärts
+list auseinander
+list ausschließen
+list ausschließlich
+list aussuchen
+list auswählen
+list befreit
+list befriedigend
+list begleiten
+list begrenzt
+list beißen
+list beleidigen
+list beschränken
+list besonder
+list bestrafen
+list betrügen
+list die Bewohnerin
+list biologisch
+list bisher
+list brechen
+list der Bub
+list dahin
+list dasselbe
+list derselbe
+list diesmal
+list drehen
+list durcheinander
+list durstig
+list eben
+list ebenso
+list eignen
+list einbrechen
+list der Einbrecher
+list die Einbrecherin
+list der Einbruch
+list eindeutig
+list der Einfall
+list einfallen
+list einfügen
+list einheitlich
+list die Einwohnerin
+list entdecken
+list entfernen
+list entlang
+list entsorgen
+list erfordern
+list erziehen
+list die Erziehung
+list extrem
+list farbig
+list färbig
+list das Faschierte
+list der Fasching
+list die Fasnacht
+list faulenzen
+list der Feber
+list festhalten
+list feststehen
+list feststellen
+list fortsetzen
+list die Fortsetzung
+list das Forum
+list fressen
+list füttern
+list gar
+list gebrauchen
+list die Geburt
+list geeignet
+list das Gefängnis
+list der Gegenstand
+list der Gegner
+list gelingen
+list gelten
+list genießen
+list gesamt
+list das Geschlecht
+list gewöhnlich
+list gleichberechtigt
+list der Gott
+list die Gratulation
+list gucken
+list das Haustier
+list die Heldin
+list herausfinden
+list höchstens
+list der Hut
+list ideal
+list illegal
+list indem
+list individuell
+list innen
+list inner
+list integrieren
+list inzwischen
+list irgendein
+list irgendwann
+list irren
+list jederzeit
+list jedoch
+list jemals
+list jeweils
+list kaputtgehen
+list die Karotte
+list komplett
+list das Konsulat
+list konsumieren
+list körperlich
+list der Korridor
+list kreativ
+list künstlich
+list die Linie
+list das Loch
+list locker
+list losfahren
+list die Malerin
+list das Material
+list maximal
+list meinetwegen
+list menschlich
+list der Migrant
+list die Migrantin
+list die Migration
+list miteinander
+list mittler
+list mittlerweile
+list nachdenken
+list nachher
+list das Nahrungsmittel
+list nämlich
+list nebenbei
+list der Neffe
+list negativ
+list die Neuigkeit
+list der/das Nichtraucher
+list die Nichtraucherin
+list nirgendwo
+list normalerweise
+list nun
+list nützen
+list öffentlich
+list öko-
+list ökologisch
+list der Pensionist
+list die Pensionistin
+list persönlich
+list populär
+list positiv
+list die Puppe
+list quer
+list die Raucherin
+list relativ
+list riesig
+list scheiden
+list die Scheidung
+list schief
+list schlank
+list schließlich
+list die Schriftstellerin
+list der Schritt
+list die Schüssel
+list selbstverständlich
+list der Senior
+list die Seniorin
+list senkrecht
+list die Siegerin
+list sinnlos
+list solch
+list soviel
+list sowieso
+list sowohl
+list sparsam
+list spätestens
+list speziell
+list spitz
+list städtisch
+list stammen
+list stechen
+list stehlen
+list der Täter
+list die Täterin
+list treiben
+list die Trennung
+list das Trinkgeld
+list der Typ
+list übrig
+list übrigens
+list umgehen
+list die Uniform
+list unterlassen
+list ursprünglich
+list der Verbrecher
+list die Verbrecherin
+list verbrennen
+list verbringen
+list vergrößern
+list verlassen
+list vermissen
+list die Vermittlung
+list versäumen
+list versprechen
+list verstecken
+list die Vertreterin
+list verurteilen
+list verwenden
+list völlig
+list voneinander
+list vorder
+list vorhin
+list vorkommen
+list vorläufig
+list vorlesen
+list waagerecht/waagrecht
+list weltenweit
+list wertlos
+list wertvoll
+list die Wirtin
+list die Wissenschaftlerin
+list worum
+list zahlreich
+list zentral
+list ziemlich
+list zubereiten
+list der Zugang
+list zugänglich
+list zugehen
+list zumindest
+list zunächst
+list zurechtkommen
+list zusätzlich
+list die Zuschauerin
+list die Zutat
+list zweifeln
+list zwingen

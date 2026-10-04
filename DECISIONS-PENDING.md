@@ -261,3 +261,20 @@ with the more specific rule, or with the rule that produces more honest evidence
     count as delivered.
     **Next:** one more unit (240 slots, 10 lessons of six) names the remaining 253 and takes the authored
     column to 100%; then B2.
+
+32. **B1-L6 closes the level: unit 10 names the last 253 entries (delivered 2026-10-04).**
+    The pool after unit 9 was 253 met-not-authored entries. **Unit 10** names them in **seven lessons**
+    (37 + 6 x 36): *Sicherheit und Recht · Verwaltung und Schule · Umwelt und Natur · Verben und Umstände ·
+    Dinge und Eigenschaften · Menschen und Stadt · Verbindung und Allgemeines*, with 21 new tricks.
+    Seven lessons, not six, because 253 does not divide by the forty-word ceiling and a 13-word lesson
+    would fall under the B1 vocabulary floor of twenty; to keep the invariant *authored = declared* the
+    B1 map builder now lets a row declare its own counts (37 / 36 receptive, 15 productive each), and the
+    validator's cumulative B1 ceiling moves by exactly **253 / 105** (`B1_GOETHE_SHIFT_6`).
+    **Measured:** **1,820/1,820 authored = 100%** and **1,820/1,820 met = 100%**, the open gap is **zero**
+    (`tools/goethe-b1-gap.txt` is a header only, `tools/goethe-b1-candidates.txt` is empty), the promoted
+    file holds **1,213 verified entries**, and the floating floors are **1.000 / 1.000** — they can only
+    stay there. B1 map **71 lessons / 2,813 declared (100%)**, catalogue **162 lessons / 972 sentences**.
+    **This is the project's first and only zero-missing claim**, and it is claimed exactly where the rule
+    requires it: at a measured 100%, not before.
+    **Next:** B2 — its 20 workshops carry 800 authored items and 1,800 material words; the level needs its
+    own word-list measure (B2 has no Goethe list, so the measure is the level's own material) and its gate.
