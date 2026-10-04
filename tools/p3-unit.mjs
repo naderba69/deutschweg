@@ -13,7 +13,7 @@ const FILES = [
   'engine/practice.js', 'engine/adaptive.js', 'engine/tracks.js', 'engine/exam.js',
   'engine/generator.js', 'data/inventory.js', 'data/chunks.js', 'data/syllabus.js',
   'data/bank.js', 'data/a0-u1-l1.js', 'data/catalog.js', 'data/library.js',
-  'data/comprehension.js', 'data/ladder.js', 'data/writing-b2.js', 'data/speaking-b2.js', 'app.js'
+  'data/comprehension.js', 'data/ladder.js', 'data/writing-b2.js', 'data/speaking-b2.js', 'data/exam-b2.js', 'app.js'
 ];
 const html = fs.readFileSync(ROOT + '/web/index.html', 'utf8').replace(/<script src="[^"]+"><\/script>/g, '');
 function boot() {
@@ -337,6 +337,52 @@ console.log('\n— P3.2 lexical layer —\n');
     arts.reduce((s, a) => s + wc(a.body), 0) >= floor.articlesTotal);
   t('B2 reading: novella total ' + chs.reduce((s, c) => s + wc(c.body), 0) + ' words, floor ' + floor.novelTotal,
     chs.reduce((s, c) => s + wc(c.body), 0) >= floor.novelTotal);
+}
+
+/* ---------- the B2 mock paper — real parts, official split, scored in the DOM ---------- */
+{
+  const { window: win } = boot();
+  const floor = JSON.parse(fs.readFileSync(ROOT + '/tools/b2-exam-floor.json', 'utf8'));
+  const bank = win.DW_EXAM_BANK && win.DW_EXAM_BANK.B2;
+  const map = win.DW_EXAM && win.DW_EXAM.B2;
+  const parts = (id) => (bank && bank[id] && bank[id].parts) || [];
+  const itemsOf = (id) => parts(id).reduce((a, p) => a.concat(p.items), []);
+  const lesen = itemsOf('lesen'), hoeren = itemsOf('hoeren');
+  const AR = /[\u0600-\u06FF]/;
+  t('paper: the page loads the bank (data/exam-b2.js)',
+    fs.readFileSync(ROOT + '/web/index.html', 'utf8').includes('data/exam-b2.js'));
+  t('paper: Lesen ' + parts('lesen').length + ' Teile · ' + lesen.length + ' items, floor ' +
+    floor.lesenItems, parts('lesen').length >= floor.lesenParts && lesen.length >= floor.lesenItems);
+  t('paper: Hören ' + parts('hoeren').length + ' Teile · ' + hoeren.length + ' items, floor ' +
+    floor.hoerenItems, parts('hoeren').length >= floor.hoerenParts && hoeren.length >= floor.hoerenItems);
+  t('paper: the official splits (9 · 6 · 6 · 6 · 3) and (10 · 6 · 6 · 8)',
+    JSON.stringify(parts('lesen').map(p => p.items.length)) === JSON.stringify([9, 6, 6, 6, 3]) &&
+    JSON.stringify(parts('hoeren').map(p => p.items.length)) === JSON.stringify([10, 6, 6, 8]));
+  t('paper: every item has a German prompt and its key among its options',
+    lesen.concat(hoeren).every(i => i.prompt && !AR.test(i.prompt) && (i.options || []).includes(i.key)));
+  t('paper: declared unofficial — never presented as a Goethe paper',
+    bank.official === false && !!bank.note && bank.lesen.official === false && bank.hoeren.official === false);
+  t('paper: the map (DW_EXAM.B2) names the parts and items',
+    !!map && map.lesenItems === lesen.length && map.hoerenItems === hoeren.length &&
+    map.lesenParts === parts('lesen').length && map.hoerenParts === parts('hoeren').length);
+
+  /* run it in the DOM: the paper must offer the first part's material and score */
+  win.DW.go('exam');
+  const start = Array.from(win.document.querySelectorAll('button'))
+    .filter(b => b.textContent.trim() === 'قراءة 65 د')[0];
+  let ran = false, sawMaterial = false;
+  if (start) {
+    start.click();
+    const view = win.document.querySelector('#view');
+    const text = view ? view.textContent : '';
+    sawMaterial = text.indexOf('Zuordnung') >= 0 && text.indexOf('Marlene') >= 0 && text.indexOf('9 · 6 · 6 · 6 · 3') >= 0;
+    /* answer one item: the first option button of the first item */
+    const opt = Array.from(view.querySelectorAll('button')).filter(b => /^a Marlene$/.test(b.textContent.trim()))[0];
+    ran = !!opt;
+    if (opt) opt.click();
+  }
+  t('paper: the exam view runs it — part header, material and items', ran && sawMaterial);
+  win.DW.go('home');
 }
 
 /* ---------- B2 timed writings — the exam's shape, against the floor ---------- */

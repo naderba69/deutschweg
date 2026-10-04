@@ -1293,6 +1293,101 @@ function renderChunks() {
   };
   v.appendChild(b);
 }
+/* The bank paper: real parts, each with its material and its items, instead of
+   thirty items pulled from the reading library. Used when web/data/exam-b2.js is
+   loaded; the item-pool paper below stays as the fallback. */
+function runBankPaper(moduleId) {
+  const bank = window.DW_EXAM_BANK && DW_EXAM_BANK.B2;
+  const mod = bank && bank[moduleId];
+  if (!mod || !mod.parts || !mod.parts.length) return false;
+  const v = screenBack(moduleId === 'lesen' ? 'قراءة الامتحان' : 'سماع الامتحان');
+  const total = mod.parts.reduce((s, p) => s + p.items.length, 0);
+  v.appendChild(el('div', 'reason', (bank.note || '') + ' — ' + mod.parts.length + ' Teile · ' + total +
+    ' بندًا · ' + mod.minutes + ' دقيقة. انتهى الوقت = خطأ. لا زر «كنت سأعرف».'));
+  const mini = mod.parts.map(p => p.items.length).join(' · ');
+  v.appendChild(el('div', 'meta', 'توزيع البنود على الأجزاء: ' + mini + ' (شكل الامتحان).'));
+  const started = Date.now();
+  const clock = el('div', 'timer', mod.minutes + ':00');
+  v.appendChild(clock);
+  const host = el('div');
+  v.appendChild(host);
+  const answers = {};
+  const all = [];
+  mod.parts.forEach(p => p.items.forEach(it => all.push(it)));
+  let pi = 0, ii = 0, closed = false, heard = {};
+  function finish(timedOut) {
+    if (closed) return;
+    closed = true;
+    clearInterval(tick);
+    const late = {};
+    if (timedOut) all.forEach(it => { if (!answers[it.id]) late[it.id] = true; });
+    const out = DW.exam.scorePaper(all, answers, { late: late });
+    out.misses.forEach(m => DW.ledger.log({ wrong: m.wrong, right: m.right, family: m.family, source: 'exam' }));
+    storeModule(moduleId, out.score, false);
+    host.innerHTML = '';
+    host.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100 (' + out.correct + '/' + out.total + ')'));
+  }
+  function material(node) {
+    const box = el('div', 'zeigt');
+    box.setAttribute('dir', 'ltr');
+    if (node.title) box.appendChild(el('div', 'counter', node.title));
+    if (node.body) String(node.body).split(/\n\n/).forEach(par => box.appendChild(el('div', null, par)));
+    (node.texts || []).forEach(t => {
+      const one = el('div', null, '');
+      if (t.name) one.appendChild(el('div', 'counter', t.name));
+      one.appendChild(el('div', null, t.text));
+      box.appendChild(one);
+    });
+    (node.sections || []).forEach(s => box.appendChild(el('div', null, s.n + ' ' + s.text)));
+    (node.scripts || []).forEach(sc => {
+      const play = el('button', 'ghost', '▶ ' + (sc.title || 'النص'));
+      play.type = 'button';
+      play.onclick = () => {
+        if (heard[sc.id]) { play.disabled = true; play.textContent = (sc.title || 'النص') + ' — سُمع'; return; }
+        speakGerman(sc.text, 0.95, ok => {
+          if (!ok) { host.appendChild(el('div', 'meta', 'لا صوت. البند بلا تشغيل يُسلَّم خطأ إن تُرك.')); return; }
+          heard[sc.id] = true;
+          play.textContent = (sc.title || 'النص') + ' — سُمع';
+          play.disabled = true;
+        });
+      };
+      box.appendChild(play);
+    });
+    host.appendChild(box);
+  }
+  function draw() {
+    if (pi >= mod.parts.length) { finish(false); return; }
+    const p = mod.parts[pi];
+    if (ii === 0) {
+      host.innerHTML = '';
+      host.appendChild(el('div', 'counter', 'Teil ' + p.n + ' / ' + mod.parts.length + ' — ' + p.kind + ' (' + p.minutes + ' د)'));
+      if (p.material) material(p.material);
+      host.appendChild(el('div', 'meta', 'Teil ' + p.n + ': ' + p.items.length + ' بندًا.'));
+    }
+    if (ii >= p.items.length) { pi += 1; ii = 0; draw(); return; }
+    const item = p.items[ii];
+    const box = el('div');
+    box.appendChild(el('div', 'counter', (all.indexOf(item) + 1) + ' / ' + all.length));
+    box.appendChild(el('div', null, item.prompt));
+    const opts = el('div', 'row');
+    item.options.forEach(opt => {
+      const b = el('button', 'ghost', opt);
+      b.type = 'button';
+      b.onclick = () => { answers[item.id] = opt; ii += 1; draw(); };
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);
+    host.appendChild(box);
+  }
+  const tick = setInterval(() => {
+    const left = mod.minutes * 60 - (Date.now() - started) / 1000;
+    clock.textContent = left > 0 ? Math.ceil(left / 60) + ' د' : '0';
+    if (left <= 0) finish(true);
+  }, 1000);
+  timers.push(tick);
+  draw();
+  return true;
+}
 function paperFor(moduleId) {
   if (moduleId === 'lesen') {
     const lib = window.DW_LIBRARY || {};
@@ -1311,6 +1406,7 @@ function storeModule(moduleId, score, protocol) {
   save();
 }
 function runPaper(moduleId) {
+  if (runBankPaper(moduleId)) return;
   const items = paperFor(moduleId);
   const v = screenBack(moduleId === 'lesen' ? 'قراءة الامتحان' : 'سماع الامتحان');
   if (!items) { v.appendChild(el('div', 'meta', 'لا ثلاثون بندًا بمفتاح. لا درجة.')); return; }

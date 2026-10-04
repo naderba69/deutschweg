@@ -346,3 +346,24 @@ with the more specific rule, or with the rule that produces more honest evidence
     the input, the presentation and discussion and the preparation time — verified in JSDOM (two selects on the
     exam view: 20 writing topics and 15 discussions) and served in the preview (`/data/speaking-b2.js` 200).
     **Green:** `npm test` **302**.
+37. **B2-L4: the mock paper is a real paper now — 60 items in the exam's own parts, declared unofficial, and run in the UI (delivered 2026-10-04).**
+    Until now the exam's receptive modules were built on the spot from twenty library questions: no parts, no part
+    types, no material. `web/data/exam-b2.js` (`DW_EXAM_BANK.B2`) is a paper in the published shape:
+    **Lesen** 5 parts / 30 items / 65 minutes / **1,294 words of material** in the official split **9 · 6 · 6 · 6 · 3**
+    — forum answers to match, a report with six sentences to insert (two left over), a newspaper article with
+    three-option items, four opinions, a library regulation; **Hören** 4 parts / 30 items / 40 minutes /
+    **1,384 words** in the split **10 · 6 · 6 · 8** — five everyday dialogues with two items each, an interview, a
+    three-voice discussion, a lecture. Every item carries its key, and the linguistic items state the answer
+    explicitly so no question has two defensible answers.
+    **Measured:** `tools/measure-b2-exam.js` with the floor `tools/b2-exam-floor.json` (`5 · 30 · 65 · 1294 ·
+    4 · 30 · 40 · 1384 · 60 · 3`), plus unique ids, every key among its own options, no repeated option inside an
+    item, German prompts, **the paper declaring itself unofficial**, and the map (`DW_EXAM.B2`) naming it. Seven
+    checks in `tools/p3-unit.mjs` read the same floor file; an eighth **runs the paper in the DOM** — opens the
+    reading module and verifies the part header, the material and the items are rendered.
+    **The measure found real defects:** it refused `H4-7` because its key `' aufstehen'` (leading space) was not
+    among its options, and the first Hören scripts were too short for their 40 minutes, so the five dialogues,
+    the interview, the discussion and the lecture were lengthened — **843 → 1,384 words**.
+    **Wired:** `index.html` loads the bank and `runPaper` renders the real paper when the bank exists (per part:
+    header, reading material, or a one-shot play button for the listening script), falling back to the
+    question-pool paper only when the bank is absent. Served in the preview (`/data/exam-b2.js` 200).
+    **Green:** `npm test` **312**.

@@ -135,6 +135,13 @@ die Quelle|source|مصدر النص|تحليل
     B2: { target: 0.65, items: ['مقابلة', 'محاضرة', 'تمييز لهجة نمساوية وسويسرية وبافارية'] }
   };
 
+  root.DW_EXAM = {
+    /* §12.1: the shape of the two receptive modules. The paper itself lives in
+       web/data/exam-b2.js and is declared unofficial. */
+    B2: { lesenParts: 5, lesenItems: 30, lesenMinutes: 65, lesenSplits: [9, 6, 6, 6, 3],
+      hoerenParts: 4, hoerenItems: 30, hoerenMinutes: 40, hoerenSplits: [10, 6, 6, 8], official: false }
+  };
+
   root.DW_SPEAKING = {
     /* §13.3 track T6 and §12.1: recorded discussions, six axes, no recording → no score. */
     B2: { recorded: 15, prepMinutes: 15, minutes: 15, axes: 6 }
