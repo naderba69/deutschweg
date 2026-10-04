@@ -76,6 +76,17 @@ LEVELS.forEach(lv => {
     (t ? (c >= t ? '  ✓' : '  ✗') : ''));
 });
 
+/* The reserve is a pool only if the learner can reach it. web/app.js's harvest
+   screen is the one path that writes a material word into the queue — a measure
+   that counts a pool nobody can introduce is measuring a claim, so the wiring is
+   checked here and gated like any other number. */
+const appSrc = fs.readFileSync(path.join(root, 'web/app.js'), 'utf8');
+const wiring = {
+  harvest: /function renderHarvest\(/.test(appSrc) &&
+    /name === 'harvest'\) renderHarvest\(/.test(appSrc) &&
+    /material: true/.test(appSrc)
+};
+
 let fail = 0;
 function gate(name, now, floor) {
   const ok = now >= floor;
@@ -98,6 +109,8 @@ LEVELS.forEach(lv => {
   const bad = (CHUNKS[lv] || []).filter(c => !c || !c.de || !c.ar);
   if (bad.length) { fail += 1; console.log('  ✗ ' + lv + ' has a chunk without German or Arabic'); }
 });
+gate('B2 material words reachable (harvest screen wired)',
+  wiring.harvest ? 1 : 0, Math.min(1, (FLOOR._wiring && FLOOR._wiring.harvest) || 0));
 
 if (WRITE) {
   const raised = {};
@@ -109,6 +122,9 @@ if (WRITE) {
       chunks: Math.max(f.chunks || 0, chunks[lv])
     };
   });
+  if (wiring.harvest) {
+    raised._wiring = { harvest: Math.max((FLOOR._wiring && FLOOR._wiring.harvest) || 0, 1) };
+  }
   fs.writeFileSync(FLOOR_FILE, JSON.stringify(raised, null, 2) + '\n');
   console.log('\n  wrote ' + path.relative(root, FLOOR_FILE) + ' ' + JSON.stringify(raised));
 }

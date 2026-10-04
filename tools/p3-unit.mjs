@@ -691,5 +691,59 @@ console.log('\n— P3.2 lexical layer —\n');
   win.DW.go('home');
 }
 
+/* ---------- §7 R6: the material column has a path into the queue ---------- */
+{
+  const { window: win } = boot();
+  const text = () => win.document.querySelector('#view').textContent;
+  win.DW.go('harvest');
+  t('harvest: before a lesson is done, the screen names the lessons that carry material',
+    text().indexOf('أنهِ درسًا يحمل مادة') >= 0 && text().indexOf('R6') >= 0);
+
+  const S = win.DW.session.S;
+  const all = Object.keys(win.DW_LESSONS).filter(id => (win.DW_LESSONS[id].material || []).length);
+  t('harvest: the material column exists somewhere (B2 workshops)', all.length >= 20);
+  S.progress = (S.progress || []).concat([{ lessonId: 'b2-w01', state: 'completed', completedSteps: [] }]);
+  win.DW.go('harvest');
+  const lesson = win.DW_LESSONS['b2-w01'];
+  t('harvest: the completed lesson appears with its full word count (0 / ' + lesson.material.length + ')',
+    text().indexOf(lesson.title.ar) >= 0 && text().indexOf('0 / ' + lesson.material.length + ' محصودة') >= 0);
+  const chips = () => [...win.document.querySelectorAll('#view button')].filter(b => b.getAttribute('dir') === 'ltr');
+  t('harvest: every material word of the lesson is a chip', chips().length >= lesson.material.length);
+  t('harvest: the chips carry the German words themselves',
+    lesson.material.slice(0, 5).every(w => chips().some(b => b.textContent.trim() === w)));
+
+  const target = lesson.material[0];
+  chips().filter(b => b.textContent.trim() === target)[0].click();
+  const input = win.document.querySelector('#view input.meaning');
+  t('harvest: a chip opens the meaning field, and the word is shown with its sentence', !!input &&
+    text().indexOf(target) >= 0);
+  const saveBtn = [...win.document.querySelectorAll('#view button')].filter(b => b.textContent.trim() === 'احفظ البطاقة')[0];
+  t('harvest: the card can be saved', !!saveBtn);
+  saveBtn.click();
+  t('harvest: an empty meaning does not write a card',
+    !(win.DW.session.S.srs.cards || []).some(c => c.material));
+  input.value = 'المعنى الذي كتبه المتعلم';
+  saveBtn.click();
+  const card = (win.DW.session.S.srs.cards || []).filter(c => c.material)[0];
+  t('harvest: the card carries the word, the learner\'s meaning, the lesson level and its source',
+    !!card && card.de === target && card.ar === 'المعنى الذي كتبه المتعلم' &&
+    card.level === 'B2' && card.source === 'b2-w01');
+  t('harvest: the card is a normal non-chunk card at box 0 in both directions',
+    !!card && card.chunk === false && card.receptive.box === 0 && card.productive.box === 0);
+  const gates = win.DW.session.S.gates || {};
+  gates.G1 = { state: 'passed' }; gates.G2 = { state: 'passed' }; gates.G3 = { state: 'open' };
+  win.DW.session.S.gates = gates;
+  const r6 = win.DW.adaptive.measure(win.DW.session.S);
+  t('harvest: R6 does not count it yet, at B2\'s real target — the box, not the harvest, is the measure',
+    r6.R6.productive === 0 && r6.R6Detail.target === 2600 && r6.R6Detail.chunks === 0);
+  t('harvest: the counter moves to 1 / ' + lesson.material.length + ' and the chip is done',
+    win.document.querySelector('#view').textContent.indexOf('1 / ' + lesson.material.length + ' محصودة') >= 0 &&
+    [...win.document.querySelectorAll('#view button')].filter(b => b.getAttribute('dir') === 'ltr' && b.disabled).length >= 1);
+  t('harvest: the example sentence carrying the word is found in the lesson\'s own German',
+    typeof card.example === 'string' && card.example.toLowerCase().indexOf('schlüsselwort') >= 0,
+    card.example);
+  win.DW.go('home');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

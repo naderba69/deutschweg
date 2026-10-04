@@ -119,6 +119,7 @@ function go(name) {
   else if (name === 'falsefriends') renderFalseFriends();
   else if (name === 'pronunciation') renderPronunciation();
   else if (name === 'mastery') renderMastery();
+  else if (name === 'harvest') renderHarvest();
   else if (name === 'exam') renderExam();
 }
 DW.go = go;
@@ -213,6 +214,7 @@ function renderHome() {
     ['قوالب', 'chunks'],
     ['أصدقاء كذّابون', 'falsefriends'],
     ['النطق', 'pronunciation'],
+    ['حصد المادة', 'harvest'],
     ['مهام الإتقان', 'mastery'],
     ['الامتحان', 'exam']
   ].forEach(([label, name]) => {
@@ -734,6 +736,25 @@ function renderLessonEnd() {
     card.appendChild(b);
   }
   v.appendChild(card);
+  /* The material column is only a pool if the learner can reach it: after the
+     lesson, offer the words its German carried but the steps did not teach. */
+  const mat = (lesson().material || []);
+  if (mat.length) {
+    const cards = harvestedCards();
+    const left = mat.filter(w => !cards[String(w).toLowerCase()]).length;
+    const h = el('div', 'card small');
+    h.appendChild(el('div', 'kicker', 'من مادة هذا الدرس'));
+    h.appendChild(el('div', 'meta', left
+      ? (left + ' كلمة قرأتها في أمثلة الدرس ولم تُدرَّس. اكتب معناها فتصل البطاقة إلى الطابور.')
+      : 'حصدت كل كلمات المادة في هذا الدرس.'));
+    if (left) {
+      const hb = el('button', 'ghost', 'احصد من المادة');
+      hb.type = 'button';
+      hb.onclick = () => go('harvest');
+      h.appendChild(hb);
+    }
+    v.appendChild(h);
+  }
 }
 
 /* ---------------- portfolio ---------------- */
@@ -1369,6 +1390,125 @@ function renderPronunciation() {
    this screen claims to correct a text: the checker counts what its thirty
    patterns see, the learner ticks the content points and the axes, and the clock
    and the microphone write the rest. */
+/* ---------------- material harvest (§7 R6) ----------------
+   A lesson declares a `material` list: words its own German carries — they sit in
+   the example sentences and the model lines — that the Wortschatz steps do not
+   teach. That list is the level's lexical reserve: B2 declares 1,200 productive
+   words and 920 of them are material, so without a path from the reserve to the
+   queue the declaration is a claim rather than a pool. Here the learner harvests a
+   word by writing its meaning; that gloss is theirs, and it is what the productive
+   direction (AR→DE) needs to ask a question at all. The card enters the queue at
+   the lesson's level and marked as material, so the pool can be audited. */
+const ARABIC_TEXT = /[\u0600-\u06FF]/;
+function lessonGermanStrings(lesson) {
+  const out = [];
+  const push = (val, depth) => {
+    if (val == null || depth > 3) return;
+    if (typeof val === 'string') { if (val && !ARABIC_TEXT.test(val)) out.push(val); return; }
+    if (Array.isArray(val)) { val.forEach(x => push(x, depth + 1)); return; }
+    if (typeof val === 'object') Object.keys(val).forEach(k => push(val[k], depth + 1));
+  };
+  (lesson.wortschatz || []).forEach(it => push(it.ex, 0));
+  (lesson.schritte || []).forEach(st => { push(st.zeigt, 0); push(st.recap, 0); push(st.erklaerung, 0); });
+  return out;
+}
+function materialSentence(lesson, word) {
+  const core = String(word).replace(/^(der|die|das)\s+/i, '').split(/\s+/).pop();
+  const needle = String(core).toLowerCase();
+  if (!needle) return '';
+  const hit = lessonGermanStrings(lesson)
+    .filter(x => x.length > 12 && x.toLowerCase().indexOf(needle) >= 0)
+    .sort((a, b) => a.length - b.length)[0];
+  return hit || '';
+}
+function harvestedCards() {
+  const out = {};
+  (((S.srs || {}).cards) || []).forEach(c => { if (c && c.material) out[String(c.de).toLowerCase()] = c; });
+  return out;
+}
+function materialLessons(onlyDone) {
+  const done = {};
+  (S.progress || []).forEach(p => { if (p.state === 'completed') done[p.lessonId] = true; });
+  const lessons = window.DW_LESSONS || {};
+  return Object.keys(lessons)
+    .filter(id => (!onlyDone || done[id]) && Array.isArray(lessons[id].material) && lessons[id].material.length)
+    .sort()
+    .map(id => ({ id: id, lesson: lessons[id], done: !!done[id] }));
+}
+function renderHarvest() {
+  const v = screenBack('حصد المادة · R6');
+  const cards = harvestedCards();
+  const rows = materialLessons(true);
+  const all = materialLessons(false);
+  const total = rows.reduce((n, r) => n + r.lesson.material.length, 0);
+  const got = rows.reduce((n, r) => n + r.lesson.material.filter(w => cards[String(w).toLowerCase()]).length, 0);
+  v.appendChild(el('div', 'reason', 'المادة كلمات قرأتها في أمثلة الدرس ولم تُدرَّس: ' + got + ' / ' + total +
+    ' محصودة من ' + rows.length + ' درسًا مكتملًا. البطاقة تدخل الطابور بمستوى الدرس، وتُعلَن مادةً.'));
+  v.appendChild(el('div', 'meta', 'R6 يقرأ بطاقات الاتجاه الإنتاجي في صندوق ≥ 3، وهذه تدخل بصندوق 0 مثل غيرها: ' +
+    'الحصد يفتح الطريق، لا يمنح الدرجة. اكتب المعنى بنفسك — بطاقة بلا معنى لا يسألك الاتجاه الثاني عنها.'));
+  if (!all.length) { v.appendChild(el('div', 'meta', 'لا درس يحمل عمود مادة بعد.')); return; }
+  if (!rows.length) {
+    v.appendChild(el('div', 'meta', 'أنهِ درسًا يحمل مادة أولًا. الدروس التي تحمل مادة الآن: ' +
+      all.length + ' — أولها ' + all[0].lesson.title.ar + '.'));
+  }
+  rows.forEach(row => {
+    const lesson = row.lesson;
+    const list = lesson.material;
+    const card = el('div', 'card small');
+    const left = list.filter(w => !cards[String(w).toLowerCase()]).length;
+    card.appendChild(el('div', 'kicker', lesson.title.ar + ' · ' + lesson.level));
+    card.appendChild(el('div', 'meta', (list.length - left) + ' / ' + list.length + ' محصودة' +
+      (left ? '' : ' — تمّت')));
+    const rowEl = el('div', 'row');
+    list.forEach(word => {
+      const have = cards[String(word).toLowerCase()];
+      const chip = el('button', 'ghost', (have ? '✓ ' : '') + word);
+      chip.type = 'button';
+      chip.setAttribute('dir', 'ltr');
+      if (have) { chip.disabled = true; rowEl.appendChild(chip); return; }
+      chip.onclick = () => {
+        const box = el('div', 'layer src-box');
+        box.appendChild(el('div', 'meta', 'الكلمة في الدرس:'));
+        const de = el('div', 'zeigt', word);
+        de.setAttribute('dir', 'ltr');
+        box.appendChild(de);
+        const sentence = materialSentence(lesson, word);
+        if (sentence) {
+          const ex = el('div', 'meta', sentence);
+          ex.setAttribute('dir', 'ltr');
+          box.appendChild(ex);
+        }
+        const input = document.createElement('input');
+        input.placeholder = 'المعنى بالعربية';
+        input.className = 'meaning';
+        box.appendChild(input);
+        const saveBtn = el('button', 'primary', 'احفظ البطاقة');
+        saveBtn.type = 'button';
+        saveBtn.onclick = () => {
+          const ar = String(input.value || '').trim();
+          if (!ar) { toast('اكتب المعنى. البطاقة بلا معنى لا تُختبر في الاتجاهين.'); input.focus(); return; }
+          DW.practice.introduce([{
+            de: word, ar: ar, example: sentence, level: lesson.level,
+            material: true, source: row.id
+          }]);
+          save();
+          toast('دخلت البطاقة الطابور بمستوى ' + lesson.level + '.');
+          renderHarvest();
+        };
+        box.appendChild(saveBtn);
+        const skip = el('button', 'ghost', 'تخطَّ الآن');
+        skip.type = 'button';
+        skip.onclick = () => { box.remove(); };
+        box.appendChild(skip);
+        card.appendChild(box);
+      };
+      rowEl.appendChild(chip);
+    });
+    card.appendChild(rowEl);
+    v.appendChild(card);
+  });
+}
+
 function renderMastery() {
   const v = screenBack('مهام الإتقان · §12.5');
   const master = DW.mastery;

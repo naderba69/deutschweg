@@ -111,6 +111,25 @@ t('wortstellung instance keeps its key', order && order.key === 'Ich bin hier');
   t('one module under 65 keeps the gate closed', E.readiness(S2).open === false && E.readiness(S2).modulesOk === false);
 }
 
+/* ---------- §7 R6: a harvested material word is a card, and it says so ---------- */
+{
+  const w2 = { DW: { today: () => '2026-10-04', plusDays: () => '2026-10-04', persist: () => {} } };
+  w2.DW.session = { S: { srs: { cards: [] } } };
+  new Function('window', fs.readFileSync(path.join(ROOT, 'web/engine/practice.js'), 'utf8'))(w2);
+  const win = w2;
+  const P = win.DW.practice;
+  P.introduce([{ de: 'das Schlüsselwort', ar: 'الكلمة المفتاحية', example: 'Ich markiere jedes Schlüsselwort.',
+    level: 'B2', material: true, source: 'b2-w01' }]);
+  P.introduce([{ de: 'der Tisch', ar: 'الطاولة', level: 'A1' }]);
+  const cards = win.DW.session.S.srs.cards;
+  const mat = cards.filter(c => c.material)[0];
+  const plain = cards.filter(c => c.de === 'der Tisch')[0];
+  t('a material card carries its flag and its source lesson', !!mat && mat.source === 'b2-w01' && mat.level === 'B2');
+  t('a lesson card is not material and has no source', !!plain && plain.material === false && plain.source === null);
+  t('introducing the same material word twice writes one card',
+    (() => { P.introduce([{ de: 'das Schlüsselwort', ar: 'الكلمة المفتاحية', material: true }]); return win.DW.session.S.srs.cards.filter(c => c.de === 'das Schlüsselwort').length === 1; })());
+}
+
 /* ---------- §12.5: the recorders write exactly what the gate reads ---------- */
 {
   const w2 = { DW: {} };

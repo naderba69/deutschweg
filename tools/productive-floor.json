@@ -23,5 +23,8 @@
     "cards": 725,
     "cumulative": 5054,
     "chunks": 100
+  },
+  "_wiring": {
+    "harvest": 1
   }
 }
