@@ -111,5 +111,50 @@ t('wortstellung instance keeps its key', order && order.key === 'Ich bin hier');
   t('one module under 65 keeps the gate closed', E.readiness(S2).open === false && E.readiness(S2).modulesOk === false);
 }
 
+/* ---------- §12.5: the recorders write exactly what the gate reads ---------- */
+{
+  const w2 = { DW: {} };
+  const load = rel => new Function('window', fs.readFileSync(path.join(ROOT, rel), 'utf8'))(w2);
+  ['web/data/inventory.js', 'web/data/chunks.js', 'web/data/syllabus.js', 'web/data/catalog.js',
+    'web/data/library.js', 'web/data/comprehension.js', 'web/data/ladder.js', 'web/data/mastery-b2.js'].forEach(load);
+  ['web/engine/tracks.js', 'web/engine/mastery.js', 'web/engine/exam.js'].forEach(load);
+  const T = w2.DW.tracks, M = w2.DW.mastery, E2 = w2.DW.exam;
+  const answers = qs => { const a = {}; (qs || []).forEach(q => { a[q.prompt] = q.key; }); return a; };
+  const portfolio = { recordings: [], texts: [], listening: [], reading: [] };
+  const byKind = k => M.list().filter(x => x.kind === k)[0];
+
+  w2.DW_LIBRARY.B2.novel.chapters.forEach(ch => {
+    portfolio.reading.push(T.readingSession(ch, answers(ch.questions), 150000));
+  });
+  const pod = w2.DW_LADDER.items.filter(i => i.podcast && i.level === 'B2')[0];
+  portfolio.listening.push(T.listeningSession(pod, answers(pod.questions),
+    { audioPlayed: true, studied: false, preTaught: false, transcriptBefore: false }));
+  portfolio.recordings.push(M.speakingSession(byKind('novel-summary'), 210, { noNotes: true }));
+  portfolio.recordings.push(M.speakingSession(byKind('discussion'), 1260, {}));
+  portfolio.recordings.push(M.speakingSession(byKind('explain-rule'), 96, { noNotes: true }));
+  portfolio.texts.push(M.writingSession(byKind('essay'),
+    new Array(420).fill('Wort').join(' ') + ' weil dass obwohl ', 40 * 60000,
+    { points: byKind('essay').points, errors: 3 }));
+  portfolio.texts.push(M.writingSession(byKind('formal-letter'),
+    new Array(120).fill('Wort').join(' ') + ' weil dass ', 20 * 60000,
+    { points: byKind('formal-letter').points, errors: 2, purpose: 'achieved',
+      axes: { inhalt: 2, aufbau: 2, ausdruck: 2, korrektheit: 2 } }));
+
+  const ev = E2.masteryEvidence({ portfolio: portfolio });
+  t('the six §12.5 evidences are producible by the recorders the app calls', Object.keys(ev).every(k => ev[k] === true), JSON.stringify(ev));
+  t('a summary outside three to four minutes does not count',
+    E2.masteryEvidence({ portfolio: { recordings: [M.speakingSession(byKind('novel-summary'), 120, { noNotes: true })], texts: [], listening: [], reading: portfolio.reading } }).novel === false);
+  t('an explain-rule recording that used notes does not count',
+    E2.masteryEvidence({ portfolio: { recordings: [M.speakingSession(byKind('explain-rule'), 120, {})], texts: [], listening: [], reading: [] } })['explain-rule'] === false);
+  t('a twenty-minute discussion with a long pause does not count',
+    E2.masteryEvidence({ portfolio: { recordings: [M.speakingSession(byKind('discussion'), 1260, { longPause: true })], texts: [], listening: [], reading: [] } }).discussion20 === false);
+  const S2 = {
+    exam: { mocks: [{ n: 1, full: true, official: false, modules: [{ id: 'lesen', score: 80 }, { id: 'hoeren', score: 80 }, { id: 'schreiben', score: 70 }, { id: 'sprechen', score: 70 }] }] },
+    errorLedger: [], portfolio: portfolio
+  };
+  const g = E2.readiness(S2);
+  t('with a full mock and the recorded evidences the readiness gate opens', g.open === true, JSON.stringify({ open: g.open, masteryCount: g.masteryCount }));
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

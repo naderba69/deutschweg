@@ -10,10 +10,10 @@ const require = createRequire(import.meta.url);
 const ROOT = '/home/user/deutschweg';
 const FILES = [
   'engine/storage.js', 'engine/ledger.js', 'engine/checker.js', 'engine/renderers.js',
-  'engine/practice.js', 'engine/adaptive.js', 'engine/tracks.js', 'engine/exam.js',
+  'engine/practice.js', 'engine/adaptive.js', 'engine/tracks.js', 'engine/mastery.js', 'engine/exam.js',
   'engine/generator.js', 'data/inventory.js', 'data/chunks.js', 'data/syllabus.js',
   'data/bank.js', 'data/a0-u1-l1.js', 'data/catalog.js', 'data/library.js',
-  'data/comprehension.js', 'data/ladder.js', 'data/writing-b2.js', 'data/speaking-b2.js', 'data/exam-b2.js', 'app.js'
+  'data/comprehension.js', 'data/ladder.js', 'data/mastery-b2.js', 'data/writing-b2.js', 'data/speaking-b2.js', 'data/exam-b2.js', 'app.js'
 ];
 const html = fs.readFileSync(ROOT + '/web/index.html', 'utf8').replace(/<script src="[^"]+"><\/script>/g, '');
 function boot() {
@@ -647,6 +647,47 @@ console.log('\n— P3.2 lexical layer —\n');
     !!card && card.chunk === true && card.level === 'B1' && !!card.productive);
   t('productive: the chunk log records the level with the attempt',
     (S.chunksLog || []).some(x => x.de === chunk.de && x.level === 'B1' && x.counted === true));
+  win.DW.go('home');
+}
+
+/* ---------- §12.5: the mastery tasks are on a screen, and the essay lands in the portfolio ---------- */
+{
+  const { window: win } = boot();
+  win.DW.go('mastery');
+  const view = win.document.querySelector('#view');
+  const text = () => win.document.querySelector('#view').textContent;
+  t('mastery: the screen names §12.5 and counts the six evidences',
+    text().indexOf('الشواهد الستة لجهوزية §12.5') >= 0 && text().indexOf('0 / 6') >= 0);
+  t('mastery: all five tasks are listed',
+    win.DW.mastery.list().every(t2 => text().indexOf(t2.title) >= 0));
+  t('mastery: the six evidences are listed with their names',
+    ['مناقشة 20 دقيقة', 'مقال 400 كلمة', 'بودكاست بلا نص', 'النوفيلة: ستة فصول + ملخّص', 'رسالة رسمية', 'شرح قاعدة بلا ملاحظات']
+      .every(n => text().indexOf(n) >= 0));
+
+  const areas = Array.from(win.document.querySelectorAll('#view textarea.write'));
+  t('mastery: the two written tasks open a writing area', areas.length === 2);
+  const essay = areas[0];
+  const block = 'Der Verkehr in der Stadt wächst, weil die Bevölkerung wächst. Ich finde, dass ein kostenloser Bus sinnvoll ist, obwohl die Kosten hoch sind. Ein Argument dafür ist der Platz: Wer den Bus nimmt, braucht kein Auto. ';
+  essay.value = new Array(12).fill(block).join('');
+  const panel = essay.parentNode;
+  const counter = () => panel.textContent;
+  essay.dispatchEvent(new win.Event('input'));
+  t('mastery: the word count and the clause types are live (400+ words)',
+    /الكلمات: 432 \/ الحد 400/.test(counter()) && /أنواع الجمل التابعة: 3/.test(counter()));
+  const points = Array.from(panel.querySelectorAll('button')).filter(b => b.textContent.indexOf('غطّيتها: ') === 0);
+  t('mastery: the essay lists its four content points', points.length === 4);
+  points.forEach(b => b.click());
+  const save = Array.from(panel.querySelectorAll('button')).filter(b => b.textContent.trim() === 'سجّل الكتابة في المحفظة')[0];
+  t('mastery: the essay can be written into the portfolio', !!save);
+  if (save) save.click();
+  const rec = (win.DW.session.S.portfolio.texts || []).filter(x => x.tag === 'essay')[0];
+  t('mastery: the record carries tag, words, content points, clause types and the checker count',
+    !!rec && rec.words === 432 && rec.contentPoints === 4 && rec.clauseTypes === 3 && typeof rec.errors === 'number' && typeof rec.minutes === 'number');
+  t('mastery: the gate reads the recorded essay as an evidence',
+    win.DW.exam.masteryEvidence(win.DW.session.S).essay400 === true);
+  t('mastery: the task list marks the essay done, and the screen counts one evidence',
+    win.DW.mastery.state(win.DW.session.S.portfolio).filter(x => x.kind === 'essay')[0].done === true &&
+    win.document.querySelector('#view').textContent.indexOf('1 / 6') >= 0);
   win.DW.go('home');
 }
 

@@ -15,6 +15,8 @@
   function isPreTaught(script, knownWords) {
     return preTaughtRatio(script, knownWords) >= 0.8;
   }
+  /* §12.5 counts a novel evidence only from sessions that say *which* chapter they
+     were: the reading screen knows the text, so the session carries the pointer. */
   function readingSession(text, answers, elapsedMs) {
     const asked = ((text && text.questions) || []).slice(0, 2);
     if (asked.length < 2) return { measured: false, counted: false, reason: 'أقل من سؤالين. لا يدخل R4.' };
@@ -27,12 +29,15 @@
     const words = text.words || String(text.body || '').split(/\s+/).filter(Boolean).length;
     const measured = !fast && minutes > 0;
     const counted = measured && comprehension >= 0.95;
+    const novel = !!(text && text.novel);
     return {
       textId: text.id,
       words: words,
       minutes: minutes,
       questions: asked.length,
       comprehension: comprehension,
+      novel: novel,
+      chapter: novel ? (text.chapter != null ? text.chapter : (text.n != null ? text.n : null)) : null,
       measured: measured,
       counted: counted,
       reason: counted
@@ -51,6 +56,14 @@
     let correct = 0;
     qs.forEach(q => { if (answers && answers[q.prompt] === q.key) correct++; });
     const score = correct / qs.length;
+    /* §12.5's podcast evidence separates the gist from the detail. The item says
+       how many of its leading questions ask for the gist; the rest ask for detail. */
+    const gist = Math.max(0, Math.min(Number(item.gist) || 0, qs.length));
+    const ratio = list => list.length
+      ? list.filter(q => answers && answers[q.prompt] === q.key).length / list.length
+      : null;
+    const general = item.podcast && gist > 0 && gist < qs.length ? ratio(qs.slice(0, gist)) : null;
+    const detail = item.podcast && gist > 0 && gist < qs.length ? ratio(qs.slice(gist)) : null;
     const studied = !!opts.studied;
     const preTaught = !!opts.preTaught;
     const unannounced = !opts.transcriptBefore;
@@ -67,6 +80,10 @@
       studied: studied,
       counted: counted,
       questions: qs.length,
+      podcast: !!item.podcast,
+      gist: gist,
+      general: general,
+      detail: detail,
       reason: reason
     };
   }

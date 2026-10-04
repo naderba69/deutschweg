@@ -113,5 +113,12 @@
     script: 'Grüezi ist eine schweizerische Begrüßung. Servus hört man im Süden. Das ist Schrift, kein Hörbeleg.',
     questions: [ask('لماذا لا يُحتسب هذا البند؟', ['لأنه ليس سماعًا', 'لأنه سهل', 'لأنه طويل'], 'لأنه ليس سماعًا')]
   });
+  /* §12.5's podcast evidence: a monologue the learner has never studied, with a
+     gist question and at least one detail question. A monologue is the slow talk,
+     the lecture, the report or the opinion — dialogue items are not podcasts, and
+     the dialect item is print-only. The first question asks for the gist. */
+  ['l-b1-1', 'l-b1-6', 'l-b1-8', 'l-b2-2', 'l-b2-5', 'l-b2-7'].forEach(function (id) {
+    items.forEach(function (it) { if (it.id === id) { it.podcast = true; it.gist = 1; } });
+  });
   root.DW_LADDER = { items: items, voice: 'device', not: 'ليس تسجيلًا بشريًا، وليس نشرة DW Langsam، وليس Slow German.' };
 })(typeof window !== 'undefined' ? window : global);

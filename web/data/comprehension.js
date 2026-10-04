@@ -151,6 +151,10 @@
     lib.B2.novel.chapters.forEach(ch => {
       ch.id = 'novelle-' + ch.n;
       ch.level = 'B2';
+      /* the flag lives in the data: the reading recorder names the chapter, and
+         the §12.5 novel evidence counts chapters, not texts read. */
+      ch.novel = true;
+      ch.chapter = ch.n;
       ch.words = String(ch.body || '').split(/\s+/).filter(Boolean).length;
       attach(ch);
     });

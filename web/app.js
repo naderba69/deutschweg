@@ -118,6 +118,7 @@ function go(name) {
   else if (name === 'chunks') renderChunks();
   else if (name === 'falsefriends') renderFalseFriends();
   else if (name === 'pronunciation') renderPronunciation();
+  else if (name === 'mastery') renderMastery();
   else if (name === 'exam') renderExam();
 }
 DW.go = go;
@@ -212,6 +213,7 @@ function renderHome() {
     ['قوالب', 'chunks'],
     ['أصدقاء كذّابون', 'falsefriends'],
     ['النطق', 'pronunciation'],
+    ['مهام الإتقان', 'mastery'],
     ['الامتحان', 'exam']
   ].forEach(([label, name]) => {
     const g = el('button', 'ghost', label);
@@ -1360,6 +1362,164 @@ function renderPronunciation() {
   drill.type = 'button';
   drill.onclick = () => DW.practice.openDrill($('#view'));
   v.appendChild(drill);
+}
+/* §12.5 — the mastery tasks. The readiness gate reads six evidences out of the
+   portfolio; the novel chapters and the podcast come from the reading and
+   listening recorders, and the other four are written or spoken here. Nothing on
+   this screen claims to correct a text: the checker counts what its thirty
+   patterns see, the learner ticks the content points and the axes, and the clock
+   and the microphone write the rest. */
+function renderMastery() {
+  const v = screenBack('مهام الإتقان · §12.5');
+  const master = DW.mastery;
+  if (!master || !master.list().length) { v.appendChild(el('div', 'meta', 'بنك مهام الإتقان غير محمّل.')); return; }
+  const ev = DW.exam.masteryEvidence(S);
+  const names = {
+    discussion20: 'مناقشة 20 دقيقة', essay400: 'مقال 400 كلمة', podcast: 'بودكاست بلا نص',
+    novel: 'النوفيلة: ستة فصول + ملخّص', 'formal-letter': 'رسالة رسمية', 'explain-rule': 'شرح قاعدة بلا ملاحظات'
+  };
+  const done = Object.keys(names).filter(k => ev[k]).length;
+  v.appendChild(el('div', 'reason', 'الشواهد الستة لجهوزية §12.5: ' + done + ' / 6 منجَز. ' +
+    'الشاهد يُقرأ من المحفظة، ولا يُعلن هنا. القاعدة الثلاثية: امتحان كامل + دين ≤8 + أربعة شواهد.'));
+  Object.keys(names).forEach(k => {
+    v.appendChild(el('div', 'meta', (ev[k] ? '✓ ' : '· ') + names[k]));
+  });
+  S.mastery = S.mastery || {};
+  master.list().forEach(t => {
+    const card = el('div', 'card small');
+    card.appendChild(el('div', 'kicker', (ev[t.tag === 'novel-summary' ? 'novel' : t.tag] ? '✓ ' : '') + t.title));
+    card.appendChild(el('div', 'meta', t.ar));
+    card.appendChild(el('div', 'zeigt', t.prompt));
+    card.lastChild.setAttribute('dir', 'ltr');
+    const state = master.state(S.portfolio).filter(x => x.id === t.id)[0];
+    if (state && state.done) card.appendChild(el('div', 'layer good', 'الشاهد مكتوب في المحفظة. الإعادة تحسّنه ولا تُلغيه.'));
+
+    if (t.kind === 'essay' || t.kind === 'formal-letter') {
+      const startedAt = Date.now();
+      const area = el('textarea', 'write');
+      area.setAttribute('dir', 'ltr');
+      area.rows = 6;
+      card.appendChild(area);
+      const count = el('div', 'meta', '');
+      card.appendChild(count);
+      const update = () => {
+        const n = String(area.value || '').trim().split(/\s+/).filter(Boolean).length;
+        count.textContent = 'الكلمات: ' + n + ' / الحد ' + (t.minWords || 0) +
+          ' · أنواع الجمل التابعة: ' + master.clauseTypes(area.value);
+      };
+      area.oninput = update;
+      update();
+      const ticked = {};
+      (t.points || []).forEach(pt => {
+        const row = el('div', 'row');
+        const b = el('button', 'ghost', 'غطّيتها: ' + pt);
+        b.type = 'button';
+        b.onclick = () => {
+          ticked[pt] = !ticked[pt];
+          b.className = ticked[pt] ? 'primary' : 'ghost';
+        };
+        row.appendChild(b);
+        card.appendChild(row);
+      });
+      const axes = {};
+      if (t.kind === 'formal-letter') {
+        ['inhalt', 'aufbau', 'ausdruck', 'korrektheit'].forEach(name => {
+          const row = el('div', 'row');
+          row.appendChild(el('span', null, name));
+          [0, 1, 2, 3].forEach(n => {
+            const b = el('button', 'ghost', String(n));
+            b.type = 'button';
+            b.onclick = () => { axes[name] = n; row.querySelectorAll('button').forEach(x => { x.className = 'ghost'; }); b.className = 'primary'; };
+            row.appendChild(b);
+          });
+          card.appendChild(row);
+        });
+      }
+      let purposeDone = false;
+      const purpose = t.kind === 'formal-letter'
+        ? (() => { const b = el('button', 'ghost', 'الغرض محقَّق (تصحيح مطلوب ومسنود ومهلة)'); b.type = 'button'; b.onclick = () => { purposeDone = !purposeDone; b.className = purposeDone ? 'primary' : 'ghost'; }; return b; })()
+        : null;
+      if (purpose) card.appendChild(purpose);
+      const saveBtn = el('button', 'ghost', 'سجّل الكتابة في المحفظة');
+      saveBtn.type = 'button';
+      saveBtn.onclick = () => {
+        const hits = (DW.checker && DW.checker.check(area.value)) || [];
+        const rec = master.writingSession(t, area.value, Date.now() - startedAt, {
+          errors: hits.length,
+          points: (t.points || []).filter(p => ticked[p]),
+          purpose: t.kind === 'formal-letter' ? (purposeDone ? 'achieved' : 'open') : null,
+          axes: t.kind === 'formal-letter' ? axes : null
+        });
+        rec.words = String(area.value || '').trim().split(/\s+/).filter(Boolean).length;
+        S.portfolio.texts = S.portfolio.texts || [];
+        S.portfolio.texts.push(rec);
+        save();
+        const line = el('div', rec.counted ? 'layer good' : 'layer warn',
+          'كلمات ' + rec.words + ' · دقائق ' + rec.minutes + ' · نقاط ' + rec.contentPoints + ' / ' + (t.points || []).length +
+          ' · أنواع الجمل ' + rec.clauseTypes + ' · أخطاء الفاحص ' + rec.errors +
+          (rec.zeroAxis ? ' · محور عند الصفر: لا يحتسب' : '') +
+          ' · ' + (DW.checker ? DW.checker.framing(hits.length) : ''));
+        card.appendChild(line);
+        renderMastery();
+      };
+      card.appendChild(saveBtn);
+    } else {
+      const range = t.seconds || [0, null];
+      card.appendChild(el('div', 'meta', 'المطلوب: ' + range[0] + ' ثانية' + (range[1] ? ' إلى ' + range[1] : ' أو أكثر') +
+        (t.notes === false ? ' · بلا ملاحظات' : '')));
+      let seconds = 0, media = null, timer = null;
+      const live = el('div', 'meta', 'لم يُسجّل بعد.');
+      const rec = el('button', 'ghost', 'سجّل');
+      rec.type = 'button';
+      rec.onclick = async () => {
+        if (media && media.state === 'recording') { media.stop(); return; }
+        if (!navigator.mediaDevices || !window.MediaRecorder) {
+          card.appendChild(el('div', 'meta', 'لا مسجّل على هذا الجهاز. لا شاهد بلا تسجيل.'));
+          return;
+        }
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        media = new MediaRecorder(stream);
+        const chunks = [];
+        const t0 = Date.now();
+        media.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+        media.onstop = () => {
+          seconds = (Date.now() - t0) / 1000;
+          stream.getTracks().forEach(x => x.stop());
+          clearInterval(timer);
+          const rec2 = master.speakingSession(t, seconds, { noNotes: noNotesDone, longPause: longPauseDone });
+          const id = 'mst_' + Date.now();
+          rec2.id = id; rec2.where = 'local'; rec2.capability = 'mastery.' + t.kind;
+          S.portfolio.recordings.push(rec2);
+          DW.storage.mediaPut({ id: id, blob: new Blob(chunks), date: DW.today(), capability: rec2.capability, seconds: seconds }).catch(() => {});
+          save();
+          renderMastery();
+        };
+        timer = setInterval(() => {
+          live.textContent = 'يسجّل: ' + Math.round((Date.now() - t0) / 1000) + ' ث. الإيقاف يُنهي الشاهد.';
+        }, 500);
+        media.start();
+        rec.textContent = 'أوقف التسجيل';
+      };
+      let noNotesDone = t.notes !== false;
+      let longPauseDone = false;
+      if (t.notes === false) {
+        const b = el('button', 'ghost', 'سأشرح بلا ملاحظات');
+        b.type = 'button';
+        b.onclick = () => { noNotesDone = !noNotesDone; b.className = noNotesDone ? 'primary' : 'ghost'; };
+        b.className = noNotesDone ? 'primary' : 'ghost';
+        card.appendChild(b);
+      }
+      if (t.seconds && t.seconds[0] >= 600) {
+        const b = el('button', 'ghost', 'لا وقفة طويلة في الوسط');
+        b.type = 'button';
+        b.onclick = () => { longPauseDone = !longPauseDone; b.className = longPauseDone ? 'primary' : 'ghost'; };
+        card.appendChild(b);
+      }
+      card.appendChild(rec);
+      card.appendChild(live);
+    }
+    v.appendChild(card);
+  });
 }
 /* The bank paper: real parts, each with its material and its items, instead of
    thirty items pulled from the reading library. Used when web/data/exam-b2.js is
