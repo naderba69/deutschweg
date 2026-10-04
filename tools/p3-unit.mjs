@@ -13,7 +13,7 @@ const FILES = [
   'engine/practice.js', 'engine/adaptive.js', 'engine/tracks.js', 'engine/exam.js',
   'engine/generator.js', 'data/inventory.js', 'data/chunks.js', 'data/syllabus.js',
   'data/bank.js', 'data/a0-u1-l1.js', 'data/catalog.js', 'data/library.js',
-  'data/comprehension.js', 'data/ladder.js', 'app.js'
+  'data/comprehension.js', 'data/ladder.js', 'data/writing-b2.js', 'app.js'
 ];
 const html = fs.readFileSync(ROOT + '/web/index.html', 'utf8').replace(/<script src="[^"]+"><\/script>/g, '');
 function boot() {
@@ -337,6 +337,32 @@ console.log('\n— P3.2 lexical layer —\n');
     arts.reduce((s, a) => s + wc(a.body), 0) >= floor.articlesTotal);
   t('B2 reading: novella total ' + chs.reduce((s, c) => s + wc(c.body), 0) + ' words, floor ' + floor.novelTotal,
     chs.reduce((s, c) => s + wc(c.body), 0) >= floor.novelTotal);
+}
+
+/* ---------- B2 timed writings — the exam's shape, against the floor ---------- */
+{
+  const { window: win } = boot();
+  const floor = JSON.parse(fs.readFileSync(ROOT + '/tools/b2-writing-floor.json', 'utf8'));
+  const bank = win.DW_WRITING_BANK && win.DW_WRITING_BANK.B2;
+  const map = win.DW_WRITING && win.DW_WRITING.B2;
+  const tasks = (bank && bank.tasks) || [];
+  const words = s => String(s || '').trim().split(/\s+/).filter(Boolean).length;
+  const AR = /[\u0600-\u06FF]/;
+  t('writing: the page loads the bank (data/writing-b2.js)',
+    fs.readFileSync(ROOT + '/web/index.html', 'utf8').includes('data/writing-b2.js'));
+  t('writing: ' + tasks.length + ' timed writings, floor ' + floor.tasks, tasks.length >= floor.tasks);
+  t('writing: ' + bank.minutes + ' minutes, floor ' + floor.minutes, bank.minutes >= floor.minutes);
+  t('writing: Task 1 ≥' + bank.task1.minWords + ' words, Task 2 ≥' + bank.task2.minWords,
+    bank.task1.minWords >= floor.minWords1 && bank.task2.minWords >= floor.minWords2);
+  t('writing: ' + floor.pointsPerTask + ' content points per task, every task',
+    tasks.every(t2 => t2.task1.points.length >= floor.pointsPerTask && t2.task2.points.length >= floor.pointsPerTask));
+  t('writing: every situation and prompt is German', tasks.every(t2 =>
+    t2.situation && !AR.test(t2.situation) && !AR.test(t2.task1.prompt) && !AR.test(t2.task2.prompt) &&
+    words(t2.situation) <= 60));
+  t('writing: the four rubric axes on every writing',
+    tasks.every(t2 => JSON.stringify(t2.axes) === JSON.stringify(bank.axes)));
+  t('writing: the map (DW_WRITING.B2) names what exists',
+    !!map && map.timed === tasks.length && map.minutes === bank.minutes);
 }
 
 /* ---------- the listening ladder — R5's content ---------- */

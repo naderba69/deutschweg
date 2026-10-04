@@ -1394,6 +1394,28 @@ function renderExam() {
     b.onclick = () => runPaper(pair[1]);
     v.appendChild(b);
   });
+  const bank = window.DW_WRITING_BANK && DW_WRITING_BANK.B2;
+  if (bank && bank.tasks.length) {
+    const pick = document.createElement('select');
+    bank.tasks.forEach(t => {
+      const o = document.createElement('option');
+      o.value = t.id;
+      o.textContent = t.n + '. ' + t.title + ' — ' + t.type;
+      pick.appendChild(o);
+    });
+    const detail = el('div', 'meta', '');
+    const draw = () => {
+      const t = bank.tasks.filter(x => x.id === pick.value)[0] || bank.tasks[0];
+      detail.textContent = t.situation + ' — مهمة 1: ' + t.task1.prompt + ' (' + t.task1.minWords +
+        ' كلمة: ' + t.task1.points.join(' · ') + ') — مهمة 2: ' + t.task2.prompt + ' (' +
+        t.task2.minWords + ' كلمة: ' + t.task2.points.join(' · ') + ') — الوقت ' + t.minutes + ' دقيقة.';
+    };
+    pick.onchange = draw;
+    draw();
+    v.appendChild(el('div', 'meta', 'كتابة موقوتة من بنك B2 — اختر الموضوع:'));
+    v.appendChild(pick);
+    v.appendChild(detail);
+  }
   const axes = [['المحتوى', 'inhalt'], ['البناء', 'aufbau'], ['التعبير', 'ausdruck'], ['الصحة', 'korrektheit']];
   const t1 = {};
   const t2 = {};

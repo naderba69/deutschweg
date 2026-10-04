@@ -1,0 +1,8 @@
+{
+  "tasks": 20,
+  "minutes": 75,
+  "minWords1": 150,
+  "minWords2": 100,
+  "pointsPerTask": 3,
+  "kinds": 7
+}

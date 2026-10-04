@@ -135,6 +135,12 @@ die Quelle|source|مصدر النص|تحليل
     B2: { target: 0.65, items: ['مقابلة', 'محاضرة', 'تمييز لهجة نمساوية وسويسرية وبافارية'] }
   };
 
+  root.DW_WRITING = {
+    /* §13.3 track T7 and §12.1: twenty timed writings of the exam's own shape. */
+    B2: { timed: 20, minutes: 75, task1Min: 150, task2Min: 100,
+      axes: ['inhalt', 'aufbau', 'ausdruck', 'korrektheit'] }
+  };
+
   root.DW_PRONUNCIATION = {
     A1: ['طول الحركة', 'حروف المساعدة h', 'ei', 'ie', 'eu', 'ch', 'sch', 'w مقابل v'],
     A2: ['ä', 'ö', 'ü', 'ich-Laut وach-Laut', 'r', 'قساوة آخر الكلمة'],

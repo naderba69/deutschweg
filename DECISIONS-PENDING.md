@@ -314,3 +314,18 @@ with the more specific rule, or with the rule that produces more honest evidence
     sentences had carried (`der Themenwechsel`; `die Wasserkraft`, `die Geothermie`) — which the compiler proved
     by refusing the build twice until it did. **Green:** `npm test` **286**; coverage prints
     `B2: 800/1800 (44%) · material 1800/1800 (100%)`; the B1 match stays 1.000 / 1.000.
+35. **B2-L2: twenty timed writings in the exam's own shape — content, its own measure, and a place in the UI (delivered 2026-10-04).**
+    §12.1 fixes Schreiben at 75 minutes: Task 1 an opinion text of ≥150 words (60 points), Task 2 a message of
+    ≥100 words (40 points), a missed content point zeroing the task. §13.3's track T7 promises twenty timed
+    writings before B2. `web/data/writing-b2.js` delivers them: each with a B2 exam topic, a German situation
+    (≤60 words), both tasks with their kind and **three content points** each — a writing without points is
+    "write an essay" and cannot be scored the way the module scores — the four rubric axes, and structure focus
+    (Konjunktiv II · Passiv · Nomen-Verb-Verbindungen).
+    **Measured:** `tools/measure-b2-writing.js` with the floor `tools/b2-writing-floor.json` (`20 writings ·
+    75 min · 150/100 words · 3 points per task · 7 kind pairs`) also checks sequential ids, German-and-short
+    situations/prompts/points, no repeated title, and that the map (`DW_WRITING.B2` in `inventory.js`) names
+    what exists. Eight checks in `tools/p3-unit.mjs` read the same floor file.
+    **Wired, not shelved:** `web/index.html` loads the bank, and the exam view now offers the twenty topics and
+    prints, for the chosen one, the situation, both prompts, the word limits, the content points and the 75
+    minutes — verified in JSDOM (the select carries 20 options and the detail line changes with the choice), and
+    served in the preview (`/data/writing-b2.js` 200). **Green:** `npm test` **294**.
