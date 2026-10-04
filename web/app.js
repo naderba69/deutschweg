@@ -1326,6 +1326,7 @@ function runBankPaper(moduleId) {
     storeModule(moduleId, out.score, false);
     host.innerHTML = '';
     host.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100 (' + out.correct + '/' + out.total + ')'));
+    if (mockNote()) host.appendChild(el('div', 'meta', mockNote()));
   }
   function material(node) {
     const box = el('div', 'zeigt');
@@ -1403,8 +1404,17 @@ function storeModule(moduleId, score, protocol) {
   S.exam.modules[moduleId] = { id: moduleId, score: score, at: new Date().toISOString(), official: false, protocol: !!protocol };
   S.mocks = S.mocks || [];
   S.mocks.push(S.exam.modules[moduleId]);
+  /* §12.4: while a mock session is open, a finished module joins it. The full
+     record is pushed only when all four sections are in — that record is what
+     the readiness gate reads. */
+  const into = DW.exam.recordMockModule(S, moduleId, score);
+  lastMockRecord = into.recorded ? into : null;
   save();
 }
+let lastMockRecord = null;
+/* The learner should see what a finished module did to the mock session, not
+   discover it on the next screen. */
+function mockNote() { return lastMockRecord ? lastMockRecord.reason : ''; }
 function runPaper(moduleId) {
   if (runBankPaper(moduleId)) return;
   const items = paperFor(moduleId);
@@ -1431,6 +1441,7 @@ function runPaper(moduleId) {
     storeModule(moduleId, out.score, false);
     host.innerHTML = '';
     host.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100'));
+    if (mockNote()) host.appendChild(el('div', 'meta', mockNote()));
   }
   function draw() {
     if (i >= items.length) { finish(false); return; }
@@ -1490,6 +1501,31 @@ function renderExam() {
     b.onclick = () => runPaper(pair[1]);
     v.appendChild(b);
   });
+  /* ---------- §12.4 mock protocol ---------- */
+  const mock = DW.exam.mockState(S);
+  v.appendChild(el('div', 'meta', 'بروتوكول المحاكاة: ' + mock.fullMocks + ' محاكاة كاملة من 8. ' +
+    (mock.open ? 'جلسة ' + mock.n + ' مفتوحة — ينقص: ' + (mock.missing.join('، ') || 'لا شيء') : 'لا جلسة مفتوحة.')));
+  mock.plan.forEach(row => {
+    v.appendChild(el('div', 'meta', 'محاكاة ' + row.n + ' · شهر ' + row.month + ' · ' + row.purpose + (row.done ? ' ✓' : '')));
+  });
+  if (mock.open) {
+    const line = el('div', 'meta', 'أكمل الأقسام الأربعة في هذه الجلسة: قراءة (الورقة) · سماع (الورقة) · كتابة (بنك الكتابة) · تحدّث (تسجيل).');
+    v.appendChild(line);
+    const cancel = el('button', 'ghost', 'أغلق جلسة المحاكاة ' + mock.n + ' بلا محاكاة');
+    cancel.type = 'button';
+    cancel.onclick = () => { S.exam.mockSession = null; save(); renderExam(); };
+    v.appendChild(cancel);
+  } else {
+    const start = el('button', 'ghost', 'ابدأ محاكاة كاملة ' + (mock.fullMocks + 1));
+    start.type = 'button';
+    start.onclick = () => {
+      const r = DW.exam.startMock(S, mock.fullMocks + 1);
+      S.exam.mockSessionNote = r.reason;
+      save();
+      renderExam();
+    };
+    v.appendChild(start);
+  }
   const bank = window.DW_WRITING_BANK && DW_WRITING_BANK.B2;
   if (bank && bank.tasks.length) {
     const pick = document.createElement('select');
@@ -1554,6 +1590,7 @@ function renderExam() {
     );
     storeModule('schreiben', out.score, false);
     v.appendChild(el('div', 'layer warn', out.reason + ' ' + out.score + '/100'));
+    if (mockNote()) v.appendChild(el('div', 'meta', mockNote()));
   };
   v.appendChild(write);
   const speakBank = window.DW_SPEAKING_BANK && DW_SPEAKING_BANK.B2;
@@ -1617,6 +1654,7 @@ function renderExam() {
       save();
       rec.textContent = 'سجّل التحدّث';
       v.appendChild(el('div', 'meta', 'سُجّل ' + Math.round(speakSeconds) + ' ث. المدة ليست درجة.'));
+      if (mockNote()) v.appendChild(el('div', 'meta', mockNote()));
     };
     media.start();
     rec.textContent = 'أوقف التسجيل';

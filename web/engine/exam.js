@@ -77,6 +77,52 @@
       reason: open ? 'الشروط الثلاثة معًا. هذا لا يحجز موعدًا.' : 'البوابة مغلقة. شرط ناقص.'
     };
   }
+  /* §12.4/§12.5 — the mock protocol and the readiness gate.
+     A module result is not a mock. The gate reads a *full* mock: one session in
+     which all four modules were taken. Before this, nothing in the app could
+     produce such a record, so the gate could never open. */
+  const MODULES = ['lesen', 'hoeren', 'schreiben', 'sprechen'];
+  function mockSession(S) { return (S && S.exam && S.exam.mockSession) || null; }
+  function startMock(S, n) {
+    S.exam = S.exam || {};
+    const done = (S.exam.mocks || []).filter(m => m && m.full).length;
+    const num = Number(n) || (done + 1);
+    if (num < 1 || num > MOCKS.length) return { started: false, reason: 'بروتوكول المحاكاة ثماني جلسات. لا محاكاة رقم ' + num + '.' };
+    S.exam.mockSession = { n: num, at: new Date().toISOString(), modules: {} };
+    return { started: true, session: S.exam.mockSession, reason: 'محاكاة ' + num + ' مفتوحة. الأقسام الأربعة تكتمل فيها.' };
+  }
+  function recordMockModule(S, id, score) {
+    const s = mockSession(S);
+    if (!s) return { recorded: false, reason: 'لا جلسة محاكاة مفتوحة. درجة القسم تدخل السجل ولا تصير محاكاة.' };
+    if (MODULES.indexOf(id) < 0) return { recorded: false, reason: 'قسم غير معروف: ' + id };
+    const n = Number(score);
+    if (!Number.isFinite(n)) return { recorded: false, reason: 'بلا درجة، لا بند.' };
+    s.modules[id] = { id: id, score: Math.max(0, Math.min(100, n)), at: new Date().toISOString(), official: false };
+    const missing = MODULES.filter(m => !s.modules[m]);
+    if (missing.length) return { recorded: true, full: false, missing: missing, reason: 'سُجّل. ينقص: ' + missing.join('، ') };
+    S.exam.mocks = S.exam.mocks || [];
+    const mock = { n: s.n, full: true, at: new Date().toISOString(), official: false,
+      modules: MODULES.map(m => s.modules[m]) };
+    S.exam.mocks.push(mock);
+    S.exam.mockSession = null;
+    return { recorded: true, full: true, mock: mock, reason: 'محاكاة ' + s.n + ' كاملة: الأقسام الأربعة.' };
+  }
+  function mockState(S) {
+    const s = mockSession(S);
+    const full = ((S && S.exam && S.exam.mocks) || []).filter(m => m && m.full);
+    const last = full[full.length - 1] || null;
+    return {
+      open: !!s,
+      n: s ? s.n : null,
+      done: s ? MODULES.filter(m => s.modules[m]) : [],
+      missing: s ? MODULES.filter(m => !s.modules[m]) : MODULES.slice(),
+      fullMocks: full.length,
+      last: last,
+      plan: MOCKS.map(row => ({ n: row.n, month: row.month, purpose: row.purpose,
+        done: full.some(m => m.n === row.n) }))
+    };
+  }
+
   function taper(daysLeft) {
     if (daysLeft === null || daysLeft === undefined || daysLeft === '') {
       return { active: false, newGrammar: true, newVocabulary: true, examDay: false, focus: [], reason: 'لا موعد، فلا تخفيف.' };
@@ -204,6 +250,8 @@
     noCompensation: noCompensation, telcPass: telcPass, readiness: readiness,
     taper: taper, daysUntil: daysUntil, teachingMonth: teachingMonth, protocolSlot: protocolSlot,
     scorePaper: scorePaper, schreibenModule: schreibenModule, sprechenModule: sprechenModule,
+    MODULES: MODULES, mockSession: mockSession, startMock: startMock,
+    recordMockModule: recordMockModule, mockState: mockState,
     masteryEvidence: masteryEvidence, flattenQuestions: flattenQuestions,
     compareRecordings: compareRecordings
   };

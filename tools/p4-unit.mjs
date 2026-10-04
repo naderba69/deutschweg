@@ -65,5 +65,51 @@ t('already heard listening does not enter R5', heard.score === 1 && !heard.count
 const order = G.wortstellung([{ de: 'Ich bin hier.', key: 'Ich bin hier.', why: 'bin مع ich', cap: 'cap.test' }], 0);
 t('wortstellung instance keeps its key', order && order.key === 'Ich bin hier');
 
+/* ---------- §12.4 mock protocol: a module is not a mock ---------- */
+{
+  const S = { exam: {}, portfolio: { recordings: [] }, errorLedger: [] };
+  const r0 = E.recordMockModule(S, 'lesen', 80);
+  t('a module result outside a session is not a mock', r0.recorded === false && (S.exam.mocks || []).length === 0);
+  const started = E.startMock(S, 1);
+  t('starting mock 1 opens a session', started.started === true && S.exam.mockSession.n === 1);
+  const off = E.startMock({ exam: {} }, 9);
+  t('the protocol has eight mocks, not nine', off.started === false);
+  const a = E.recordMockModule(S, 'lesen', 80);
+  const b = E.recordMockModule(S, 'hoeren', 82);
+  const c = E.recordMockModule(S, 'schreiben', 65);
+  t('three of four modules do not make a mock yet',
+    a.recorded && b.recorded && c.recorded && !a.full && !b.full && !c.full && (S.exam.mocks || []).length === 0);
+  const unknown = E.recordMockModule(S, 'lesen-und-hoeren', 50);
+  t('an unknown module is refused', unknown.recorded === false);
+  const d = E.recordMockModule(S, 'sprechen', 70);
+  t('the fourth module closes the mock as full', d.recorded && d.full === true && S.exam.mocks.length === 1);
+  t('the full record carries the four sections', (d.mock.modules || []).length === 4 && d.mock.official === false);
+  t('the session is closed after the mock', S.exam.mockSession === null);
+  t('mockState reports one full mock of eight', (() => { const st = E.mockState(S);
+    return st.fullMocks === 1 && st.plan.length === 8 && st.plan.filter(p => p.done).length === 1; })());
+  const g = E.readiness(S);
+  t('readiness still needs mastery evidence, not only the mock', !g.modulesOk === false && g.open === false && g.masteryOk === false);
+  /* with the mastery evidence present, the gate opens — which it could not before,
+     because no full mock could be produced by the app. */
+  S.portfolio = {
+    recordings: [{ tag: 'discussion', seconds: 1200, longPause: false },
+      { tag: 'novel-summary', seconds: 200 }],
+    texts: [{ tag: 'essay', words: 420, minutes: 40, contentPoints: 4, clauseTypes: 3, errors: 2 }],
+    listening: [{ podcast: true, unannounced: true, preTaught: false, studied: false, general: 0.8, detail: 0.6 }],
+    reading: [1, 2, 3, 4, 5, 6].map(n => ({ novel: true, chapter: n, comprehension: 1, questions: 2 }))
+  };
+  const open2 = E.readiness(S);
+  t('a full mock the app can produce now opens the readiness gate: ' + open2.masteryCount + ' / 6 capabilities',
+    open2.modulesOk === true && open2.masteryCount >= 4 && open2.open === true);
+  /* a module under the bar keeps it closed even with everything else in place */
+  const S2 = { exam: {}, portfolio: S.portfolio, errorLedger: [] };
+  E.startMock(S2, 2);
+  E.recordMockModule(S2, 'lesen', 80);
+  E.recordMockModule(S2, 'hoeren', 80);
+  E.recordMockModule(S2, 'schreiben', 55);
+  E.recordMockModule(S2, 'sprechen', 80);
+  t('one module under 65 keeps the gate closed', E.readiness(S2).open === false && E.readiness(S2).modulesOk === false);
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

@@ -390,3 +390,25 @@ with the more specific rule, or with the rule that produces more honest evidence
     1,554 → **1,610 words**. Chapter 6 fell to 244 words in the first pass — under the 254 floor — so a sentence
     was added instead of lowering the floor. The comprehension questions were not touched: the substitutions
     preserve the meaning their answers depend on. **Green:** `npm test` **311**.
+39. **B2-L6: the mock protocol exists now — and with it the readiness gate can open (delivered 2026-10-04).**
+    §12.5 opens readiness on three conditions together: a **full** mock with all four modules ≥65, live error debt
+    ≤8, and four mastery evidences. The engine has always read `mocks` for `full: true` — and nothing in the
+    application could write such a record: every section was stored alone (`storeModule` pushes `{id, score, at}`
+    into `S.mocks`). The gate was therefore unreachable by construction, and the old `p4-unit.mjs` tests hid it by
+    fabricating the full record by hand.
+    **The protocol, engine and UI:** `DW.exam.startMock(S, n)` opens a session with the number from `MOCKS` (the
+    eight with their months and purposes — baseline · weakest module · stamina · time · recorded speaking ·
+    speaking axes · no-phone simulation · the exam); the ninth number is refused. `DW.exam.recordMockModule(S, id,
+    score)` joins a section to it, refuses an unknown section or a result without a score, and **writes the mock
+    record only when all four sections are in** — then it pushes `{n, full: true, modules: [...]}`, marks it
+    unofficial, and closes the session. Three of four is not a mock. The exam view shows "n full mocks of 8", lists
+    the eight with their months and purposes, offers starting a session or closing it without claiming a mock, and
+    prints what is still missing after every section; every existing section path (the reading and listening papers,
+    the writing bank, the speaking recording) now flows through `storeModule` into the session, so the mock is
+    completed by ordinary use rather than from a hidden screen.
+    **Tests:** 16 new checks in `tools/p4-unit.mjs` — a module result outside a session is not a mock, the ninth
+    number is refused, three of four does not close the mock, an unknown section is refused, the fourth closes it
+    with the four sections and `official: false`, the session is emptied, `mockState` counts 1 of 8, and **the
+    readiness gate opens** once the four mastery evidences are present — the case that was impossible before. Six
+    more checks in `tools/p3-unit.mjs` run the exam view in the DOM: it states the state, lists the eight, starts a
+    session, and closes it leaving zero mocks. **Green:** `npm test` **329**.

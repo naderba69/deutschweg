@@ -347,6 +347,34 @@ console.log('\n— P3.2 lexical layer —\n');
     floor.articlesLowestPermille > 0 && floor.chaptersLowestPermille > 0);
 }
 
+/* ---------- the mock protocol in the UI — a session the learner can open ---------- */
+{
+  const { window: win } = boot();
+  win.DW.go('exam');
+  const view = win.document.querySelector('#view');
+  const texts = Array.from(view.querySelectorAll('.meta')).map(x => x.textContent);
+  t('mock: the exam view states the protocol (0 full mocks of 8)',
+    texts.some(x => x.indexOf('0 محاكاة كاملة من 8') >= 0) && texts.some(x => x.indexOf('لا جلسة مفتوحة') >= 0));
+  t('mock: the eight planned mocks are listed with their months and purposes',
+    texts.filter(x => /^محاكاة \d+ · شهر \d+/.test(x)).length === 8);
+  const start = Array.from(view.querySelectorAll('button'))
+    .filter(b => b.textContent.trim() === 'ابدأ محاكاة كاملة 1')[0];
+  t('mock: the view offers starting mock 1', !!start);
+  if (start) start.click();
+  const after = Array.from(win.document.querySelector('#view').querySelectorAll('.meta')).map(x => x.textContent);
+  t('mock: starting it opens a session with the four sections missing',
+    after.some(x => x.indexOf('جلسة 1 مفتوحة') >= 0) &&
+    after.some(x => x.indexOf('قراءة (الورقة) · سماع (الورقة) · كتابة (بنك الكتابة) · تحدّث (تسجيل)') >= 0));
+  const close = Array.from(win.document.querySelector('#view').querySelectorAll('button'))
+    .filter(b => b.textContent.trim() === 'أغلق جلسة المحاكاة 1 بلا محاكاة')[0];
+  t('mock: an open session can be closed without claiming a mock', !!close);
+  if (close) close.click();
+  const back = Array.from(win.document.querySelector('#view').querySelectorAll('.meta')).map(x => x.textContent);
+  t('mock: closing it leaves zero full mocks',
+    back.some(x => x.indexOf('0 محاكاة كاملة من 8') >= 0) && back.some(x => x.indexOf('لا جلسة مفتوحة') >= 0));
+  win.DW.go('home');
+}
+
 /* ---------- the B2 mock paper — real parts, official split, scored in the DOM ---------- */
 {
   const { window: win } = boot();
