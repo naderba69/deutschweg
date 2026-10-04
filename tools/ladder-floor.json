@@ -1,16 +1,16 @@
 {
-  "total": 32,
-  "audio": 31,
+  "total": 33,
+  "audio": 32,
   "A1": 8,
   "A2": 8,
   "B1": 8,
-  "B2": 7,
+  "B2": 8,
   "A1Words": 472,
   "A1Shortest": 49,
   "A2Words": 531,
   "A2Shortest": 59,
   "B1Words": 782,
   "B1Shortest": 92,
-  "B2Words": 671,
-  "B2Shortest": 86
+  "B2Words": 960,
+  "B2Shortest": 112
 }
