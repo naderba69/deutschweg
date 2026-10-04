@@ -168,3 +168,21 @@ with the more specific rule, or with the rule that produces more honest evidence
     new baseline (`1820 total, 844 authored, 870 met`), and re-running on it reports 0 gained. Likewise the
     pool generator (`tools/goethe-a2-candidates.js`, `GOETHE_LEVEL=B1`) reads the pool from the gap file
     when the copyrighted index is absent, so the remaining 26-entry pool is reproducible without it.
+
+26. **B1-L2's material step — 14 new B1 texts (delivered 2026-10-04).**
+    After the sixth unit the promotion pool was down to 26 entries while the recorded gap was still
+    **976**: the bottleneck had moved from the word lists to the **material** — 950 list entries no text
+    carried. So the next step was material, not lists: **14 B1 texts** (`b1-r11` … `b1-r24`) were written
+    on the sixth unit's own themes (housing and building, application and work, health, traffic, market and
+    kitchen, weather and garden, bank, computer and network, insurance, country and city, energy, training
+    in figures, flat hunting, sports). Each is about 170 words with an Arabic title and a German body, no
+    Arabic inside, and carries two comprehension questions (comprehension, not translation).
+    **Measured:** the material measure rises **870 → 1,151/1,820 = 63%** (281 entries carried that the
+    matcher had proved missing, none lost), the authored measure is unchanged at **844 = 46%** by design,
+    the open gap stays **976** but is now split **307 met already / 669 not carried at all**, and the
+    floating floor rises **0.478 → 0.632**. The B1 reading count moves 10 → **24** in the library, the
+    inventory and the gate, with two questions per text in `comprehension.js`.
+    **What the split means for the next step:** the promotion pool (307) is now larger than one six-lesson
+    unit can hold (240 headword slots), so the next authored step is either a seventh unit or another
+    material round — and the 669 entries the corpus still does not carry need material before any list can
+    name them.

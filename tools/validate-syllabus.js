@@ -115,7 +115,10 @@ read.A1.length === 10 ? ok('A1 reading 10') : bad('A1 reading');
 /* 20 long-standing A2 texts, the 9 the Goethe match added (a2-r21 … r29), and r30 which carries
    the words the harvest showed the material did not have yet. */
 read.A2.length === 30 ? ok('A2 reading 30') : bad('A2 reading ' + read.A2.length);
-read.B1.texts.length === 10 && read.B1.magazine ? ok('B1 reading 10 + magazine') : bad('B1 reading');
+/* Amendment B1-L2's material step: the B1 match recorded 950 entries the corpus did
+   not carry, so 14 new B1 texts were written to carry them in context (b1-r11 … b1-r24).
+   The count moves with the library, and the texts are counted, not asserted. */
+read.B1.texts.length === 24 && read.B1.magazine ? ok('B1 reading 24 + magazine') : bad('B1 reading ' + read.B1.texts.length);
 read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 articles') : bad('B2 reading');
 ['A1', 'A2', 'B1', 'B2'].forEach(level => {
   const item = S.listening[level];
