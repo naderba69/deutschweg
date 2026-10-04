@@ -216,5 +216,16 @@ console.log('\n— allocator and gates —\n');
   t('T66 the 98% rule (§13.3) holds in every level', under.length === 0);
 }
 
+/* ---------- §13.9: the map knows the learner's level, and the app reads it ---------- */
+{
+  const lv = S => A.levelOf(S);
+  const st = g => ({ gates: g || {} });
+  t('T67 levelOf is exported and maps the gates to the level being studied',
+    lv(st({ G1: { state: 'open' } })) === 'A2' &&
+    lv(st({ G1: { state: 'passed' }, G2: { state: 'passed' } })) === 'B1' &&
+    lv(st({ G1: { state: 'passed' }, G2: { state: 'passed' }, G3: { state: 'open' } })) === 'B2' &&
+    lv(st({})) === 'A1');
+}
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

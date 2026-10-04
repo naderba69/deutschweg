@@ -116,6 +116,8 @@ function go(name) {
   else if (name === 'reading') renderReading();
   else if (name === 'generate') renderGenerate();
   else if (name === 'chunks') renderChunks();
+  else if (name === 'falsefriends') renderFalseFriends();
+  else if (name === 'pronunciation') renderPronunciation();
   else if (name === 'exam') renderExam();
 }
 DW.go = go;
@@ -208,6 +210,8 @@ function renderHome() {
     ['سماع', 'listening'],
     ['مولّد', 'generate'],
     ['قوالب', 'chunks'],
+    ['أصدقاء كذّابون', 'falsefriends'],
+    ['النطق', 'pronunciation'],
     ['الامتحان', 'exam']
   ].forEach(([label, name]) => {
     const g = el('button', 'ghost', label);
@@ -933,8 +937,9 @@ function openBlock(b) {
   }
   const map = {
     speaking: 'portfolio', srs: 'srs', 'review-error': 'attack', 'drill-3s': 'drill',
-    grammar: 'drill', writing: 'write', pronunciation: 'drill',
-    activation: 'activation', reading: 'reading', listening: 'listening', chunks: 'chunks'
+    grammar: 'drill', writing: 'write', pronunciation: 'pronunciation',
+    activation: 'activation', reading: 'reading', listening: 'listening', chunks: 'chunks',
+    falsefriends: 'falsefriends'
   };
   if (map[b.type]) { go(map[b.type]); return; }
   const v = screenBack(b.track);
@@ -942,9 +947,9 @@ function openBlock(b) {
   if (b.track === 'reading' || b.track === 'listening') {
     v.appendChild(el('div', 'meta', 'هذه الحصة لها شاشة. لا تقدير ذاتي يدخل R4 أو R5.'));
   } else if (b.track === 'chunks') {
-    const n = (window.DW_SYLLABUS && DW_SYLLABUS.chunks && DW_SYLLABUS.chunks.A1) ? DW_SYLLABUS.chunks.A1.length : 0;
+    const n = sylChunks().length;
     v.appendChild(el('div', 'meta', n
-      ? 'الخريطة فيها ' + n + ' قالبًا. الحفر الزمني لا يلوّن R6.'
+      ? 'الخريطة فيها ' + n + ' قالبًا لمستوى ' + sylLevel() + '. الحفر الزمني لا يلوّن R6.'
       : 'مئة قالب لكل مستوى لم تُؤلَّف بعد. لا تمرين مختلق، ولا دليل مختلق.'));
   } else {
     v.appendChild(el('div', 'meta', 'هذه الحصة محجوزة للحد الأسبوعي. لا علامة يدوية.'));
@@ -1264,10 +1269,23 @@ function renderGenerate() {
   };
   v.appendChild(b);
 }
+/* §13.9 ships 100 chunks per level; the drill opens the set of the learner's
+   own level (A1 → B2), never A1 forever. */
+function sylLevel() {
+  try { return (DW.adaptive && DW.adaptive.levelOf && DW.adaptive.levelOf(S)) || 'A1'; } catch (e) { return 'A1'; }
+}
+function sylChunks() {
+  const all = (window.DW_SYLLABUS && DW_SYLLABUS.chunks) || {};
+  return all[sylLevel()] || [];
+}
+function sylList(field) {
+  const all = (window.DW_SYLLABUS && DW_SYLLABUS[field]) || {};
+  return all[sylLevel()] || [];
+}
 function renderChunks() {
-  const v = screenBack('قوالب');
-  const chunks = (window.DW_SYLLABUS && DW_SYLLABUS.chunks && DW_SYLLABUS.chunks.A1) || [];
-  v.appendChild(el('div', 'reason', 'حفر زمني. الإجابة خارج الوقت خطأ. هذا لا يلوّن R6 ولا يدّعي صندوقًا.'));
+  const v = screenBack('قوالب · ' + sylLevel());
+  const chunks = sylChunks();
+  v.appendChild(el('div', 'reason', 'حفر زمني. الإجابة خارج الوقت خطأ. هذا لا يلوّن R6 ولا يدّعي صندوقًا. مئة قالب لكل مستوى، وهذه قوالب ' + sylLevel() + '.'));
   if (!chunks.length) { v.appendChild(el('div', 'meta', 'لا قوالب.')); return; }
   S.exam = S.exam || {};
   const item = chunks[(S.exam.chunkIndex || 0) % chunks.length];
@@ -1286,12 +1304,48 @@ function renderChunks() {
     const match = String(input.value || '').trim() === item.de;
     const counted = match && !expired;
     S.chunksLog = S.chunksLog || [];
-    S.chunksLog.push({ de: item.de, counted: counted, at: new Date().toISOString() });
+    S.chunksLog.push({ de: item.de, level: sylLevel(), counted: counted, at: new Date().toISOString() });
     S.exam.chunkIndex = (S.exam.chunkIndex || 0) + 1;
     save();
     v.appendChild(el('div', counted ? 'layer good' : 'layer bad', counted ? 'داخل الوقت.' : 'لا يُحتسب. المفتاح: ' + item.de));
   };
   v.appendChild(b);
+}
+/* The other two §13.9 deliverables: false friends (§13.9, 25 per level) and the
+   pronunciation syllabus (§13.7). Both existed as map data and in no screen. */
+function renderFalseFriends() {
+  const v = screenBack('أصدقاء كذّابون · ' + sylLevel());
+  const list = sylList('falseFriends');
+  v.appendChild(el('div', 'reason', 'الكلمة الألمانية لا تعني ما يوحي به شكلها. الخريطة تحمل ' + list.length +
+    ' بندًا لمستوى ' + sylLevel() + '، وهذه هي. ليست قائمة قراءة: كل بند خطأ منتظر، لا معلومة.'));
+  if (!list.length) { v.appendChild(el('div', 'meta', 'لا بند لمستوى ' + sylLevel() + '.')); return; }
+  list.forEach(f => {
+    const card = el('div', 'card small');
+    const head = el('div', 'kicker', f.de + ' ≠ ' + f.other);
+    card.appendChild(head);
+    card.appendChild(el('div', null, f.ar));
+    if (f.note) card.appendChild(el('div', 'meta', 'المصدر: ' + f.note));
+    v.appendChild(card);
+  });
+  const lower = ['A1', 'A2', 'B1', 'B2'].filter(lv => lv !== sylLevel());
+  v.appendChild(el('div', 'meta', 'بنود المستويات الأخرى (' + lower.join(' · ') + ') تبقى في الخريطة، وتُعرض عند بلوغها. المصدر: السطر falseFriends في خريطة المنهج (§13.9).'));
+}
+function renderPronunciation() {
+  const v = screenBack('النطق · ' + sylLevel());
+  const list = sylList('pronunciation');
+  v.appendChild(el('div', 'reason', 'منهج النطق (§13.7) لمستوى ' + sylLevel() + ': ' + list.length +
+    ' بندًا. النطق يخدم السماع: ما لا تفرّقه بأذنك لا تنطقه.'));
+  if (!list.length) { v.appendChild(el('div', 'meta', 'لا بند نطق لمستوى ' + sylLevel() + '.')); return; }
+  list.forEach((item, i) => {
+    const card = el('div', 'card small');
+    card.appendChild(el('div', 'kicker', (i + 1) + ' · ' + item));
+    card.appendChild(el('div', 'meta', 'المصدر: السطر pronunciation في خريطة المنهج (§13.9) ← §13.7.'));
+    v.appendChild(card);
+  });
+  const drill = el('button', 'ghost', 'افتح تدريب النطق');
+  drill.type = 'button';
+  drill.onclick = () => DW.practice.openDrill($('#view'));
+  v.appendChild(drill);
 }
 /* The bank paper: real parts, each with its material and its items, instead of
    thirty items pulled from the reading library. Used when web/data/exam-b2.js is

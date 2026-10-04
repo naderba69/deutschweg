@@ -469,9 +469,15 @@
       ['writing', 'writing', 8, 'حصة الكتابة من حد ' + floors.writing + '. الشكل هذا الأسبوع: ' + rot.writing + '. الفاحص لا يدّعي تصحيح النص.'],
       ['pronunciation', 'pronunciation', 4, 'حصة النطق من حد ' + floors.pronunciation + '. البنك الموجود أصوات A0، لا المنهج الكامل.'],
       ['foundations', 'foundations', 3, 'أساسات يومية: الحرف الكبير وß والفاصلة. 3 دقائق من حد ' + floors.foundations + '.'],
-      ['chunks', 'chunks', 5, syllabus() && syllabus().chunks && syllabus().chunks.A1 && syllabus().chunks.A1.length === 100
-        ? '100 قالب A1. الحفر الزمني يسجّل داخل الوقت فقط، ولا يلوّن R6.'
-        : 'مسار القوالب. مئة عبارة لكل مستوى تُؤلَّف في مرحلة المحتوى. لا تمرين مختلق.']
+      ['chunks', 'chunks', 5, (function () {
+        /* the block names the learner's own level, not A1 forever: 100 chunks
+           exist for A1, A2, B1 and B2, and the drill must open the right set. */
+        const lv = levelOf(S);
+        const n = (syllabus() && syllabus().chunks && syllabus().chunks[lv]) ? syllabus().chunks[lv].length : 0;
+        return n === 100
+          ? '100 قالب ' + lv + '. الحفر الزمني يسجّل داخل الوقت فقط، ولا يلوّن R6.'
+          : 'مسار القوالب: ' + n + ' في ' + lv + '. مئة عبارة لكل مستوى، ولا تمرين مختلق.';
+      })()]
     ];
     shares.forEach(function (row) {
       const b = {
@@ -674,6 +680,6 @@
     constrain: constrain, applyTransfer: applyTransfer, confirmException: confirmException,
     compose: compose, shorten: shorten, reentry: reentry, composeWeek: composeWeek, guardSwap: guardSwap,
     resumeLine: resumeLine, rotate: rotate, tickGates: tickGates, finishConsolidation: finishConsolidation,
-    evidenceLabel: evidenceLabel, candidates: candidates, nextLesson: nextLesson
+    evidenceLabel: evidenceLabel, candidates: candidates, nextLesson: nextLesson, levelOf: levelOf
   };
 })(window.DW = window.DW || {});

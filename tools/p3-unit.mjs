@@ -547,5 +547,47 @@ console.log('\n— P3.2 lexical layer —\n');
     cov && cov.materialRatio >= 0.8 && cov.material === cov.declared);
 }
 
+/* ---------- §13.9 reaches the learner: chunks per level, false friends, pronunciation ---------- */
+{
+  const { window: win } = boot();
+  const syl = win.DW_SYLLABUS;
+  const at = level => { win.DW.session.S.gates.G1 = { state: 'passed' }; win.DW.session.S.gates.G2 = { state: 'passed' }; win.DW.session.S.gates.G3 = { state: level === 'B2' ? 'open' : 'locked' }; };
+  const texts = () => win.document.querySelector('#view').textContent;
+
+  at('B1');
+  win.DW.go('chunks');
+  t('map: the chunk drill states the learner\'s level (B1, not A1)',
+    texts().indexOf('مئة قالب لكل مستوى، وهذه قوالب B1') >= 0);
+  const b1 = texts().indexOf(syl.chunks.B1[0].ar) >= 0;
+  const a1 = texts().indexOf(syl.chunks.A1[0].ar) >= 0;
+  t('map: it drills the B1 list (' + syl.chunks.B1[0].ar.slice(0, 24) + '…) and not A1\'s', b1 && !a1);
+
+  win.DW.go('falsefriends');
+  const ff = texts();
+  t('map: the false-friend screen lists B1 items (' + (syl.falseFriends.B1[0].de) + ' ≠ ' + syl.falseFriends.B1[0].other + ')',
+    ff.indexOf(syl.falseFriends.B1[0].de + ' ≠ ' + syl.falseFriends.B1[0].other) >= 0 && ff.indexOf('أصدقاء كذّابون · B1') >= 0);
+  t('map: every listed false friend carries its Arabic interference line',
+    syl.falseFriends.B1.every(f => ff.indexOf(f.ar) >= 0));
+
+  win.DW.go('pronunciation');
+  const pr = texts();
+  t('map: the pronunciation screen lists the §13.7 items of the level (' + syl.pronunciation.B1.length + ')',
+    pr.indexOf('النطق · B1') >= 0 && syl.pronunciation.B1.every(x => pr.indexOf(x) >= 0));
+
+  at('B2');
+  win.DW.go('chunks');
+  const b2 = texts();
+  t('map: at B2 the drill switches to the B2 list (' + syl.chunks.B2[0].ar.slice(0, 24) + '…)',
+    b2.indexOf(syl.chunks.B2[0].ar) >= 0 && b2.indexOf(syl.chunks.B1[0].ar) < 0);
+
+  /* the composer names the same level in the block's reason */
+  win.DW.session.S.learner.weeklyHours = 10;
+  const day = win.DW.adaptive.compose(win.DW.session.S, win.DW.today());
+  const ch = (day.blocks || []).filter(b => b.track === 'chunks')[0];
+  t('map: the session composer\'s chunk block names B2 too',
+    !!ch && ch.reason.indexOf('قالب B2') >= 0, ch && ch.reason);
+  win.DW.go('home');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
