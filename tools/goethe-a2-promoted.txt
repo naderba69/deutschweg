@@ -1,0 +1,45 @@
+# Promoted entries: Goethe A2 entries the material already carried (met in a text or a
+# sentence) but no word list named, so the learner met them without a lesson teaching them
+# as an item. This file records the promotions, and the tool verifies every line: an entry
+# must be BOTH in a word list (authored) and met in material, otherwise the tool prints it
+# as unverified and leaves it out of the count. That is why the file can only overstate
+# nothing — the numbers move because the corpus moved.
+#
+# Source of the list: the run-2 gap (tools/goethe-a2-gap.txt at 4e2ef79, 281 entries) minus
+# the entries authored in A2 unit 6. Entries marked "headword" in that file were already
+# counted as authored, and the rest were neither authored nor met; the 62 that are met and
+# not authored are the promotable set, and 31 of them are promoted here.
+#
+# Measured against the re-typed transcription of the official PDF, not against the PDF.
+# format:  list <entry>    alphabetical list     group <entry>    word groups
+list hässlich
+list vorsichtig
+list notwendig
+list super
+list direkt
+list einige
+list verschieden
+list außer
+list sonst
+list total
+list überall
+list rund
+list mindestens
+list wenigstens
+list nirgends
+list drüben
+list außerhalb
+list vorwärts
+list wahrscheinlich
+list zurückfahren
+list unbedingt
+list eigentlich
+list außerdem
+list deutlich
+list schwierig
+list langweilig
+list furchtbar
+list blöd
+list dumm
+list wurscht
+list tschüs

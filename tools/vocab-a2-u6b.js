@@ -39,7 +39,12 @@ module.exports = {
       ['luxemburgisch', '—', 'لوكسمبورغي (صفة)', 'Sie spricht luxemburgisch.', 'Sie spricht die luxemburgisch.', 'اللغة بلا أداة.', 'lexik-kollokation', 'luxemburgisch'],
       ['der Europäer', 'die Europäer', 'الأوروبي', 'Er ist Europäer und lebt in Brüssel.', 'Er ist ein Europäer Mann.', 'الصفة/الاسم يكفي.', 'lexik-kollokation', 'Europäer'],
       ['die Europäerin', 'die Europäerinnen', 'الأوروبية', 'Sie ist Europäerin.', 'Sie ist eine Europäerin Frau.', 'بلا Frau زائدة.', 'lexik-kollokation', 'Europäerin'],
-      ['europäisch', '—', 'أوروبي (صفة)', 'Das ist eine europäische Regel.', 'Das ist eine Regel europäisch.', 'الصفة قبل الاسم.', 'wortstellung', 'europäische']
+      ['europäisch', '—', 'أوروبي (صفة)', 'Das ist eine europäische Regel.', 'Das ist eine Regel europäisch.', 'الصفة قبل الاسم.', 'wortstellung', 'europäische'],
+      ['drüben', '—', 'في الجهة الأخرى', 'Drüben ist der Bahnhof.', 'Drüben der Bahnhof ist.', 'الفعل ثانيًا: ist der Bahnhof.', 'wortstellung', 'Drüben'],
+      ['außerhalb', '—', 'خارج', 'Wir wohnen außerhalb der Stadt.', 'Wir wohnen außerhalb von die Stadt.', 'außerhalb + مضاف إليه: der Stadt.', 'präposition', 'außerhalb'],
+      ['vorwärts', '—', 'إلى الأمام', 'Der Zug fährt langsam vorwärts.', 'Der Zug fährt vorwärts zurück.', 'عكس vorwärts هو rückwärts لا zurück.', 'lexik-kollokation', 'vorwärts'],
+      ['wahrscheinlich', '—', 'على الأرجح', 'Wahrscheinlich kommt der Zug später.', 'Wahrscheinlich der Zug kommt später.', 'الفعل ثانيًا: kommt der Zug.', 'wortstellung', 'Wahrscheinlich'],
+      ['zurückfahren', 'fährt zurück · fuhr zurück · ist zurückgefahren', 'يعود بمركبة', 'Wann fahrt ihr nach Hause zurück?', 'Wann zurückfahrt ihr nach Hause?', 'في الجملة الرئيسية يتجزأ الفعل: fahrt … zurück.', 'wortstellung', 'zurück'],
     ],
     tricks: [
       { trick: 'الفعل المنفصل في النهاية', wie: 'Das Spiel findet auch bei Regen statt.', warum: 'stattfinden يتشطر: findet … statt.', anchor: 'findet auch bei Regen statt' },
@@ -84,7 +89,12 @@ module.exports = {
       ['die Webseite', 'die Webseiten', 'الموقع الإلكتروني', 'Es gibt viele Webseiten mit Übungen.', 'Es gibt viele Webseiten von Übungen.', 'mit + الداتيف.', 'präposition', 'Webseiten'],
       ['übersetzen', 'übersetzt · übersetzte · hat übersetzt', 'يترجم', 'Können Sie mir den Brief übersetzen?', 'Können Sie mir den Brief übersetzen machen?', 'übersetzen فعل كامل.', 'lexik-kollokation', 'übersetzen'],
       ['zuhören', 'hört zu · hörte zu · hat zugehört', 'يُنصت', 'Kinder sollen den Eltern zuhören.', 'Kinder sollen den Eltern anhören.', 'zuhören بلا an.', 'falser-freund', 'zuhören'],
-      ['das Interesse', 'die Interessen', 'الاهتمام', 'Ich habe viele Interessen.', 'Ich habe viele Interessen von Sport.', 'بلا von.', 'lexik-kollokation', 'Interessen']
+      ['das Interesse', 'die Interessen', 'الاهتمام', 'Ich habe viele Interessen.', 'Ich habe viele Interessen von Sport.', 'بلا von.', 'lexik-kollokation', 'Interessen'],
+      ['unbedingt', '—', 'بالضرورة', 'Du musst unbedingt anrufen.', 'Du musst anrufen unbedingt.', 'بعد الفعل المساعد يبقى المصدر في النهاية.', 'wortstellung', 'unbedingt'],
+      ['eigentlich', '—', 'في الحقيقة', 'Eigentlich arbeite ich am Sonntag.', 'Eigentlich ich arbeite am Sonntag.', 'الفعل ثانيًا: arbeite ich.', 'wortstellung', 'Eigentlich'],
+      ['außerdem', '—', 'بالإضافة إلى ذلك', 'Außerdem brauchen wir noch Milch.', 'Außerdem wir brauchen noch Milch.', 'الفعل ثانيًا: brauchen wir.', 'wortstellung', 'Außerdem'],
+      ['deutlich', '—', 'بوضوح', 'Sprich bitte deutlich, ich verstehe dich nicht.', 'Sprich bitte mit deutlich, ich verstehe dich nicht.', 'deutlich حال بلا حرف جرّ.', 'präposition', 'deutlich'],
+      ['schwierig', 'schwieriger · am schwierigsten', 'صعب', 'Das ist eine schwierige Aufgabe.', 'Das ist eine schwierig Aufgabe.', 'الصفة قبل الاسم: schwierige.', 'deklination', 'schwierige'],
     ],
     tricks: [
       { trick: 'الفعل بلا حرف لا يحتاج حرفًا', wie: 'Können Sie meine Frage beantworten?', warum: 'beantworten، begründen، organisieren — بلا حرف جرّ.', anchor: 'meine Frage beantworten' },
@@ -128,8 +138,13 @@ module.exports = {
       ['österreichisch', '—', 'نمساوي (صفة)', 'Das ist eine österreichische Spezialität.', 'Das ist eine Spezialität österreichisch.', 'الصفة قبل الاسم.', 'wortstellung', 'österreichische'],
       ['die Schweizerin', 'die Schweizerinnen', 'السويسرية', 'Unsere Nachbarin ist Schweizerin.', 'Unsere Nachbarin ist eine Schweizerin Frau.', 'بلا Frau زائدة.', 'lexik-kollokation', 'Schweizerin'],
       ['schweizerisch', '—', 'سويسري (صفة)', 'Der schweizerische Käse schmeckt gut.', 'Der Käse schweizerisch schmeckt gut.', 'الصفة قبل الاسم.', 'wortstellung', 'schweizerische'],
-      ['schrecklich', '—', 'فظيع', 'Ich finde den Film schrecklich.', 'Ich finde den Film schrecklich gut.', 'schrecklich لا تحتاج توضيحًا.', 'lexik-kollokation', 'schrecklich'],
-      ['sich verlieben', 'verliebt sich · verliebte sich · hat sich verliebt', 'يقع في الحب', 'Ich habe mich in sie verliebt.', 'Ich habe mich für sie verliebt.', 'verlieben in.', 'präposition', 'verliebt']
+      ['tschüs', '—', 'إلى اللقاء (ودّي)', 'Tschüs! Bis morgen!', 'Tschüs, guten Tag!', 'tschüs للوداع لا للتحية؛ للتحية: Guten Tag.', 'register', 'Tschüs'],
+      ['sich verlieben', 'verliebt sich · verliebte sich · hat sich verliebt', 'يقع في الحب', 'Ich habe mich in sie verliebt.', 'Ich habe mich für sie verliebt.', 'verlieben in.', 'präposition', 'verliebt'],
+      ['langweilig', 'langweiliger · am langweiligsten', 'ممل', 'Der Film war langweilig.', 'Ich bin langweilig.', 'Ich bin langweilig = أنا شخص ممل؛ للملل: Mir ist langweilig.', 'falser-freund', 'langweilig'],
+      ['furchtbar', '—', 'فظيع', 'Es war furchtbar laut.', 'Es war furchtbar laut gemacht.', 'صفة بلا gemacht.', 'lexik-kollokation', 'furchtbar'],
+      ['blöd', 'blöder · am blödesten', 'أحمق', 'Das ist eine blöde Idee.', 'Das ist ein blöde Idee.', 'Idee مؤنث: eine blöde.', 'deklination', 'blöde'],
+      ['dumm', 'dümmer · am dümmsten', 'غبي', 'Das war dumm von mir.', 'Das war dumm für mich.', 'التعبير: dumm von mir.', 'präposition', 'dumm'],
+      ['wurscht', '—', 'لا يهم', 'Das ist mir wurscht.', 'Das ist mich wurscht.', 'wurscht مع الداتيف: mir.', 'register', 'wurscht'],
     ],
     tricks: [
       { trick: 'الصفة قبل الاسم تُصرَّف', wie: 'Thomas Müller ist ein berühmter Fußballspieler.', warum: 'berühmter مع ein مذكر.', anchor: 'ein berühmter Fußballspieler' },

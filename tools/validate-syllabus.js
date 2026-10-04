@@ -65,9 +65,11 @@ function sum(level, field) {
    the map did not, so the cumulative A2 ceiling moves 1600 → 1810 and every
    later ceiling moves with it, because the bands are cumulative. No floor moves
    down: 1200 / 2400 / 4000 are the numbers that were there before. */
-const A2_GOETHE_SHIFT = 210;
+const A2_GOETHE_SHIFT = 240;
 /* The same amendment moves the productive ceiling: each new row declares 4
-   productive words less than an old row, 6 × 13 = 78 in all. */
+   productive words less than an old row, 6 × 13 = 78 in all. The six rows then
+   grew from 35 to 40 words each (the compiler's ceiling, amendment A2-GOETHE-2),
+   which is 30 more receptive in the same shift. */
 const A2_GOETHE_SHIFT_PROD = 78;
 const a1Rec = sum('A0', 'receptive') + sum('A1', 'receptive');
 const a1Prod = sum('A0', 'productive') + sum('A1', 'productive');

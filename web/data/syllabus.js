@@ -92,12 +92,12 @@
     /* The Goethe-A2-list unit: the words the official list carries and the app
        did not have yet (tools/goethe-a2-gap.txt). 35 words per lesson, so the
        row declares its own receptive count instead of the A2 default 26. */
-    ['الجسم والملابس', 'Körper und Kleidung', 'الجسم واللباس', 'أسماء يومية بأدواتها', 'inductive', 35, 13],
-    ['الطعام والموسيقى', 'Essen und Musik', 'الطعام والترفيه', 'الكمية والطلب', 'inductive', 35, 13],
-    ['الرياضة والطبيعة', 'Sport und Natur', 'الرياضة والخارج', 'اللعبة والمكان', 'inductive', 35, 13],
-    ['السفر والمرور', 'Reisen und Verkehr', 'السفر', 'إطار الرحلة والموعد', 'inductive', 35, 13],
-    ['العمل والمكتب', 'Arbeit und Büro', 'العمل', 'إطار المكتب والطلب', 'inductive', 35, 13],
-    ['الناس والمشاعر', 'Menschen und Gefühle', 'الناس', 'وصف الأشخاص', 'inductive', 35, 13]
+    ['الجسم والملابس', 'Körper und Kleidung', 'الجسم واللباس', 'أسماء يومية بأدواتها', 'inductive', 40, 13],
+    ['الطعام والموسيقى', 'Essen und Musik', 'الطعام والترفيه', 'الكمية والطلب', 'inductive', 40, 13],
+    ['الرياضة والطبيعة', 'Sport und Natur', 'الرياضة والخارج', 'اللعبة والمكان', 'inductive', 40, 13],
+    ['السفر والمرور', 'Reisen und Verkehr', 'السفر', 'إطار الرحلة والموعد', 'inductive', 40, 13],
+    ['العمل والمكتب', 'Arbeit und Büro', 'العمل', 'إطار المكتب والطلب', 'inductive', 40, 13],
+    ['الناس والمشاعر', 'Menschen und Gefühle', 'الناس', 'وصف الأشخاص', 'inductive', 40, 13]
   ];
 
   const B1 = [

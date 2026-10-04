@@ -6,6 +6,7 @@
 # what this corpus closed. Counted against the re-typed transcription of the official PDF, not the PDF.
 # baseline list: 1104 total, 858 as headword, 1104 met
 # baseline groups: 274 total, 169 as headword, 274 met
+# baseline = the run without the promotion file; tools/goethe-a2-promoted.txt is added back per run.
 
 # word groups below this line
 

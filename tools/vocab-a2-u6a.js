@@ -41,7 +41,12 @@ module.exports = {
       ['die Ahnung', 'die Ahnungen', 'الفكرة', 'Ich hatte keine Ahnung.', 'Ich habe keine Ahnung gehabt.', 'الماضي: hatte.', 'konjugation', 'Ahnung'],
       ['merken', 'merkt · merkte · hat gemerkt', 'يلاحظ', 'Ich merke mir die Zahlen gut.', 'Ich merke die Zahlen mir gut.', 'الترتيب: mir … merken.', 'wortstellung', 'merke'],
       ['aufpassen', 'passt auf · passte auf · hat aufgepasst', 'ينتبه', 'Der Babysitter passt auf die Kinder auf.', 'Der Babysitter aufpassen die Kinder.', 'الفعل المنفصل: passt … auf.', 'wortstellung', 'passt'],
-      ['die Menge', 'die Mengen', 'الكمية', 'Wir haben noch eine Menge Zeit.', 'Wir haben noch eine Menge von Zeit.', 'eine Menge Zeit بلا حرف.', 'lexik-kollokation', 'Menge']
+      ['die Menge', 'die Mengen', 'الكمية', 'Wir haben noch eine Menge Zeit.', 'Wir haben noch eine Menge von Zeit.', 'eine Menge Zeit بلا حرف.', 'lexik-kollokation', 'Menge'],
+      ['hässlich', 'hässlicher · am hässlichsten', 'قبيح', 'Das hässliche Sofa kommt in den Keller.', 'Das hässlich Sofa kommt in den Keller.', 'الصفة قبل الاسم تنال النهاية: hässliche.', 'deklination', 'hässliche'],
+      ['vorsichtig', '—', 'حذر', 'Sei vorsichtig mit dem Messer!', 'Sei vorsichtig dem Messer!', 'الحرف الثابت: vorsichtig mit.', 'präposition', 'vorsichtig'],
+      ['notwendig', '—', 'ضروري', 'Das ist eine notwendige Unterschrift.', 'Das ist eine notwendig Unterschrift.', 'الصفة قبل الاسم: notwendige.', 'deklination', 'notwendige'],
+      ['super', '—', 'رائع', 'Dein Kleid ist super!', 'Dein Kleid ist sehr super!', 'super كافية وحدها ولا تدخل عليها sehr.', 'register', 'super'],
+      ['direkt', '—', 'مباشرة', 'Die Creme kommt direkt auf die Haut.', 'Die Creme kommt direkt in die Haut.', 'الحرف: direkt auf etwas.', 'präposition', 'direkt'],
     ],
     tricks: [
       { trick: 'الأداة تُحفظ مع الكلمة لا بعدها', wie: 'Die Jeans passt mir nicht.', warum: 'الجنس يظهر في الأداة: die Jeans، das Parfüm، der Zettel.', anchor: 'Die Jeans passt' },
@@ -86,7 +91,12 @@ module.exports = {
       ['das Schloss', 'die Schlösser', 'القصر', 'Am Wochenende besichtigen wir ein Schloss.', 'Am Wochenende besichtigen wir einen Schloss.', 'Schloss محايد: ein.', 'genus', 'Schloss'],
       ['der Rundgang', 'die Rundgänge', 'الجولة', 'Der Rundgang beginnt in wenigen Minuten.', 'Der Rundgang beginnen in wenigen Minuten.', 'المفرد: beginnt.', 'konjugation', 'Rundgang'],
       ['komisch', '—', 'غريب', 'Das Essen schmeckt komisch.', 'Das Essen schmeckt komisch gemacht.', 'صفة مع schmecken بلا gemacht.', 'lexik-kollokation', 'komisch'],
-      ['schrecklich', '—', 'فظيع', 'Ich finde den Film schrecklich.', 'Ich finde den Film schrecklich gut.', 'schrecklich لا تحتاج توضيحًا.', 'lexik-kollokation', 'schrecklich']
+      ['schrecklich', '—', 'فظيع', 'Ich finde den Film schrecklich.', 'Ich finde den Film schrecklich gut.', 'schrecklich لا تحتاج توضيحًا.', 'lexik-kollokation', 'schrecklich'],
+      ['einige', '—', 'بعض', 'Einige Gäste essen kein Fleisch.', 'Einige Gast essen kein Fleisch.', 'einige مع الجمع: Gäste.', 'plural', 'Einige'],
+      ['verschieden', 'verschiedener · am verschiedensten', 'مختلف', 'Wir haben verschiedene Getränke.', 'Wir haben verschieden Getränke.', 'الصفة قبل الاسم: verschiedene.', 'deklination', 'verschiedene'],
+      ['außer', '—', 'عدا', 'Außer Tom kommen alle.', 'Außer Tom kommt alle.', 'الفاعل جمع: kommen.', 'konjugation', 'Außer'],
+      ['sonst', '—', 'وإلا', 'Iss jetzt, sonst wird es kalt.', 'Iss jetzt, oder wird es kalt.', 'sonst تقول النتيجة، لا أو.', 'lexik-kollokation', 'sonst'],
+      ['total', '—', 'تمامًا', 'Die Band war total gut.', 'Die Band war total gute.', 'في الخبر تبقى الصفة بلا نهاية: gut.', 'register', 'total'],
     ],
     tricks: [
       { trick: 'الكمية بلا حرف جرّ', wie: 'Ein Glas Mineralwasser, bitte!', warum: 'الألمانية تحذف von بعد الكمية.', anchor: 'Ein Glas Mineralwasser' },
@@ -131,7 +141,12 @@ module.exports = {
       ['klug', '—', 'ذكي', 'Das ist klug von dir.', 'Das ist klug für dich.', 'التعبير: klug von dir.', 'präposition', 'klug'],
       ['intelligent', '—', 'ذكي جدًا', 'Einstein war sehr intelligent.', 'Einstein war sehr intelligent gewesen.', 'war يكفي.', 'konjugation', 'intelligent'],
       ['nervös', '—', 'متوتر', 'Bei Prüfungen bin ich immer sehr nervös.', 'Bei Prüfungen bin ich immer sehr nervös gemacht.', 'صفة بلا gemacht.', 'lexik-kollokation', 'nervös'],
-      ['sympathisch', '—', 'ودود', 'Der neue Chef ist sehr sympathisch.', 'Der neue Chef ist sehr sympathisch Mann.', 'الصفة تكفي.', 'lexik-kollokation', 'sympathisch']
+      ['sympathisch', '—', 'ودود', 'Der neue Chef ist sehr sympathisch.', 'Der neue Chef ist sehr sympathisch Mann.', 'الصفة تكفي.', 'lexik-kollokation', 'sympathisch'],
+      ['überall', '—', 'في كل مكان', 'Überall liegt Schnee.', 'Überall Schnee liegt.', 'الفعل ثانيًا: liegt.', 'wortstellung', 'Überall'],
+      ['rund', '—', 'حول', 'Wir laufen rund um den See.', 'Wir laufen um rund den See.', 'rund يأتي قبل um.', 'wortstellung', 'rund'],
+      ['mindestens', '—', 'على الأقل', 'Trainiere mindestens dreimal pro Woche.', 'Trainiere mindestens von dreimal pro Woche.', 'mindestens + عدد بلا حرف.', 'lexik-kollokation', 'mindestens'],
+      ['wenigstens', '—', 'على الأقل', 'Wenigstens einmal pro Woche schwimme ich.', 'Wenigstens einmal pro Woche ich schwimme.', 'بعدها يبقى الفعل ثانيًا: schwimme ich.', 'wortstellung', 'Wenigstens'],
+      ['nirgends', '—', 'في أي مكان (مع النفي)', 'Nirgends ist es so ruhig wie hier.', 'Nirgends es ist so ruhig wie hier.', 'الفعل ثانيًا: ist es.', 'wortstellung', 'Nirgends'],
     ],
     tricks: [
       { trick: 'اللعبة والآلة بلا أداة عند الممارسة', wie: 'Steffi spielt sehr gut Tennis.', warum: 'Tennis spielen, Gitarre spielen — بلا أداة.', anchor: 'spielt sehr gut Tennis' },

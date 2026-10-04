@@ -28,6 +28,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { FOLD, STRIP, stem, loadCorpus, entryPhrases, buildBands, makeClassify } = require('./goethe-match');
 
 const root = path.resolve(__dirname, '..');
 const LIST = process.env.GOETHE_A2_LIST || path.resolve(root, '..', 'goethe', 'a2_headwords.txt');
@@ -46,45 +47,20 @@ const WRITE_GAP = process.argv.includes('--write-gap');
    material 75%, groups 65% — against the re-typed transcription.
    Run 3 (2026-10-04) is derived rather than read from the PDF: see the block
    before the gap path for why, and what it can and cannot claim. */
-const FLOOR = { headword: 0.777, allHeadword: 0.745, material: 1.0, groups: 1.0 };
+const FLOOR = { headword: 0.805, allHeadword: 0.767, material: 1.0, groups: 1.0 };
 /* Rounded down from the measured values of the last accepted run:
    run 1, 2026-10-03: 0.6105 / 0.5857 / 0.7262 / 0.6460
    run 2, 2026-10-03: 0.7960 / 0.7993 after the four new A2 reading texts
    run 3, 2026-10-04 (derived — no transcription in this sandbox, so the totals
    come from the committed gap file plus run 2's recorded baseline):
      0.7772 / 0.7453 / 1.0000 / 1.0000
+   run 4, 2026-10-04 (derived, plus 31 verified promotions): 0.8053 / 0.7678 /
+     1.0000 / 1.0000
    The two material measures are at their ceiling: every entry of the
    transcription is now met somewhere in A2 material. Floors may only rise. */
 const GOAL = { headword: 0.80, material: 1.0, groups: 1.0 };
 
-const win = {};
-new Function('window', fs.readFileSync(path.join(root, 'web/data/a0-u1-l1.js'), 'utf8'))(win);
-new Function('window', fs.readFileSync(path.join(root, 'web/data/catalog.js'), 'utf8'))(win);
-new Function('window', fs.readFileSync(path.join(root, 'web/data/library.js'), 'utf8'))(win);
-new Function('window', fs.readFileSync(path.join(root, 'web/data/comprehension.js'), 'utf8'))(win);
-
-const FOLD = s => String(s).normalize('NFC').toLowerCase().replace(/ß/g, 'ss').replace(/-/g, '');
-const STRIP = s => s.replace(/^(der|die|das)\s+/, '').replace(/^sich\s+/, '')
-  .replace(/\(.*?\)/g, ' ').replace(/\s+/g, ' ').trim();
-const stem = w => { const f = FOLD(w); return f.replace(/(ern|eln|en|em|er|es|et|te|st|e|n|s|t)$/, '') || f; };
-const STOP = new Set(['und', 'oder', 'aber', 'der', 'die', 'das', 'ein', 'eine', 'einen', 'einem', 'einer',
-  'ist', 'sind', 'bin', 'bist', 'seid', 'ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man', 'zu', 'in',
-  'im', 'am', 'an', 'auf', 'mit', 'für', 'von', 'bei', 'nach', 'aus', 'als', 'auch', 'nicht', 'kein',
-  'keine', 'keinen', 'sehr', 'so', 'nur', 'noch', 'schon', 'dann', 'doch', 'mal', 'bitte', 'ja', 'nein',
-  'wie', 'was', 'wer', 'wo', 'wann', 'warum', 'dass', 'wenn', 'ob', 'zum', 'zur']);
-
-const textParts = [];
-function tokensOf(value, out) {
-  if (value == null) return out;
-  if (typeof value === 'string') {
-    textParts.push(FOLD(value));
-    FOLD(value).split(/[^\p{L}]+/u).forEach(w => { if (w.length > 1) out.add(w); });
-    return out;
-  }
-  if (Array.isArray(value)) { value.forEach(v => tokensOf(v, out)); return out; }
-  if (typeof value === 'object') { Object.values(value).forEach(v => tokensOf(v, out)); return out; }
-  return out;
-}
+const win = loadCorpus(root);
 
 const lessons = Object.values(win.DW_LESSONS || {});
 const a2Band = lessons.filter(l => l.level === 'A2');
@@ -96,33 +72,12 @@ const a2Band = lessons.filter(l => l.level === 'A2');
 const LEVELS = { a2: ['A2'], cumulative: ['A0', 'A1', 'A2'] };
 if (!a2Band.length) { console.error('no A2 lessons found — did the catalog load?'); process.exit(1); }
 
-function setsFor(levels) {
-  const band = lessons.filter(l => levels.includes(l.level));
-  const heads = new Set(), headStems = new Set();
-  band.forEach(l => (l.wortschatz || []).forEach(it => {
-    const h = STRIP(FOLD(it.de));
-    heads.add(h); headStems.add(stem(h));
-    String(it.de).split(/\s+/).forEach(w => { if (w.length > 2) { heads.add(FOLD(w)); headStems.add(stem(w)); } });
-  }));
-  const material = new Set(), materialStems = new Set();
-  band.forEach(l => {
-    tokensOf(l.wortschatz || [], material);
-    tokensOf(l.schritte || [], material);
-    tokensOf(l.title || {}, material);
-  });
-  /* The reading texts of the band's own levels are material the learner meets,
-     exactly as in the A1 run — and in the cumulative band, A1's texts count too. */
-  const lib = win.DW_LIBRARY || {};
-  levels.forEach(lv => tokensOf(lib[lv] || [], material));
-  material.forEach(w => materialStems.add(stem(w)));
-  return { heads, headStems, material, materialStems };
-}
-const BAND = {
-  a2: setsFor(LEVELS.a2),
-  cumulative: setsFor(LEVELS.cumulative)
-};
-const materialText = textParts.join(' ');
+const { bands, materialText } = buildBands(win, LEVELS);
+const BAND = { a2: bands.a2, cumulative: bands.cumulative };
 if (!BAND.a2.material.size) { console.error('no material tokens — check the data files'); process.exit(1); }
+
+const classifiers = { a2: makeClassify(BAND.a2, materialText), cumulative: makeClassify(BAND.cumulative, materialText) };
+function classify(entry, which) { return classifiers[which](entry); }
 
 /* One official entry can stand for several headwords, and the transcription
    keeps the list's own notation: "der/das Club/Klub", "die (E-)Mail",
@@ -130,55 +85,6 @@ if (!BAND.a2.material.size) { console.error('no material tokens — check the da
    miss although the app carried the word. Every variant is tried:
      article cluster × word variants, the bare word, the parentheses inlined,
      and a trailing hyphen read as a prefix (Lieblings- → Lieblingsplatz). */
-function entryPhrases(entry) {
-  const out = [];
-  const push = v => { const t = String(v).trim(); if (t && out.indexOf(t) < 0) out.push(t); };
-  [entry, String(entry).replace(/\(([^)]*)\)/g, '$1')].forEach(raw => {
-    push(raw);
-    /* Abbreviations in the list carry dots (usw., ca., d. h.). The corpus holds
-       words and the folded text, so try both the bare form and the spaced one. */
-    push(String(raw).replace(/\.$/, ''));
-    push(String(raw).replace(/\.(?!\s)/g, '. ').trim());
-    const m = /^((?:der|die|das)(?:\/(?:der|die|das))*)\s+(.*)$/i.exec(raw.trim());
-    let arts = [''], rest = raw;
-    if (m) { arts = m[1].split('/'); rest = m[2]; }
-    const words = rest.split('/').map(x => x.trim()).filter(Boolean);
-    if (words.length > 1 || arts.length > 1) {
-      arts.forEach(a => words.forEach(w => push((a ? a + ' ' : '') + w)));
-      words.forEach(w => push(w));
-    }
-  });
-  return out;
-}
-
-function classify(entry, which) {
-  const { heads, headStems, material, materialStems } = BAND[which];
-  let inHead = false, met = false;
-  entryPhrases(entry).forEach(raw => {
-    if (inHead && met) return;
-    const phrase = STRIP(FOLD(raw));
-    if (!phrase) return;
-    const words = phrase.split(/\s+/).filter(w => w.length > 2 && !STOP.has(w));
-    const key = words.length ? words[words.length - 1] : phrase;
-    const hit = (set, stemSet) => set.has(phrase) || set.has(key) || stemSet.has(stem(key));
-    const parts = phrase.split(/\s+/);
-    const content = parts.filter(w => w.length > 2);
-    if (!inHead && (hit(heads, headStems) ||
-      (words.length > 1 && words.some(w => heads.has(w) || headStems.has(stem(w)))))) inHead = true;
-    if (!met && (material.has(phrase) || materialStems.has(stem(key)) ||
-      (phrase.includes(' ') && materialText.includes(phrase)) ||
-      (content.length > 0 && content.every(w => material.has(w) || materialStems.has(stem(w)))))) met = true;
-    if (raw.trim().endsWith('-')) {
-      const pfx = FOLD(raw.trim().slice(0, -1)).replace(/\s+/g, '');
-      if (pfx) {
-        if (!inHead && [...heads].some(w => w.startsWith(pfx))) inHead = true;
-        if (!met && [...material].some(w => w.startsWith(pfx))) met = true;
-      }
-    }
-  });
-  return { entry, inHead, met };
-}
-
 function readList(file, what) {
   if (!fs.existsSync(file)) {
     console.error('missing ' + what + ': ' + file);
@@ -223,6 +129,33 @@ function report(entries, label, which) {
    record the moment a transcription is available.
    Last full run: 2026-10-03, second run (0.6105 / 0.5864 / 0.7961 / 0.7993). */
 const GAP_FILE = path.join(root, 'tools', 'goethe-a2-gap.txt');
+/* The promotion file: entries that were met in material and named in no word list, now
+   authored. The derived run cannot see them — the gap file only ever held entries that
+   were NOT met, and the baseline header records totals, not identities — so the file
+   carries the identities and the tool verifies each one against the corpus before it
+   counts. Unverified lines are printed and dropped, never counted. */
+const PROMOTED_FILE = path.join(root, 'tools', 'goethe-a2-promoted.txt');
+function readPromoted() {
+  const out = { list: [], group: [] };
+  if (!fs.existsSync(PROMOTED_FILE)) return out;
+  fs.readFileSync(PROMOTED_FILE, 'utf8').split('\n').forEach(line => {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) return;
+    const m = /^(list|group)\s+(.+)$/.exec(t);
+    if (!m) { console.log('  ! promoted line not readable: ' + t); return; }
+    out[m[1] === 'list' ? 'list' : 'group'].push(m[2].trim());
+  });
+  return out;
+}
+/* Verify a promotion: both measures must hold, or the line counts for nothing. */
+function verifyPromoted(entries, which) {
+  const ok = [], bad = [];
+  entries.forEach(e => {
+    const c = classify(e, which);
+    (c.inHead && c.met ? ok : bad).push({ entry: e, c });
+  });
+  return { ok, bad };
+}
 /* The baseline is read from the gap file's own header, so the file and the
    numbers it implies can never drift apart. RUN2 is the fallback for a gap file
    written before the header carried the baseline (the file at 4e2ef79). */
@@ -304,10 +237,24 @@ if (!HAVE_LIST) {
   console.log('  the full run returns as soon as a transcription is present (GOETHE_A2_LIST / GOETHE_A2_GROUPS).');
   const aRows = alpha.map(r => ({ entry: r.entry, wasHead: r.wasHead, c: classify(r.entry, 'cumulative') }));
   const gRows = groups.map(r => ({ entry: r.entry, wasHead: r.wasHead, c: classify(r.entry, 'cumulative') }));
-  const alphaHead = BASE.alphaAuthored + aRows.filter(r => r.c.inHead).length;
+  const promoted = readPromoted();
+  const promotedList = verifyPromoted(promoted.list, 'cumulative');
+  const promotedGroup = verifyPromoted(promoted.group, 'cumulative');
+  const promotedOpen = new Set(alpha.concat(groups).map(r => r.entry));
+  [promotedList, promotedGroup].forEach(v => v.bad.forEach(b => {
+    console.log('  ! promoted entry not verified (' +
+      (b.c.inHead ? 'met' : 'authored') + ' side missing): ' + b.entry);
+  }));
+  [promotedList, promotedGroup].forEach(v => v.ok.forEach(o => {
+    if (promotedOpen.has(o.entry)) console.log('  ! promoted entry is still in the open gap: ' + o.entry);
+  }));
+  const alphaHead = BASE.alphaAuthored + aRows.filter(r => r.c.inHead).length + promotedList.ok.length;
   const alphaMet = BASE.alphaMet + aRows.filter(r => r.c.met).length;
-  const groupsHead = BASE.groupsAuthored + gRows.filter(r => r.c.inHead).length;
+  const groupsHead = BASE.groupsAuthored + gRows.filter(r => r.c.inHead).length + promotedGroup.ok.length;
   const groupsMet = BASE.groupsMet + gRows.filter(r => r.c.met).length;
+  console.log('  promoted file        ' + (promotedList.ok.length + promotedGroup.ok.length) + ' entries verified as authored and met (' +
+    promotedList.ok.length + ' list · ' + promotedGroup.ok.length + ' groups)'
+    + (promotedList.bad.length + promotedGroup.bad.length ? ' · ' + (promotedList.bad.length + promotedGroup.bad.length) + ' unverified' : ''));
   console.log('  alphabetical list      ' + alphaHead + '/' + BASE.alpha + ' as headword · ' +
     alphaMet + '/' + BASE.alpha + ' met · ' + (BASE.alpha - alphaMet) + ' still open');
   console.log('  word groups            ' + groupsHead + '/' + BASE.groups + ' as headword · ' +
@@ -317,14 +264,19 @@ if (!HAVE_LIST) {
   const stillOpen = aRows.concat(gRows).filter(r => !r.c.met);
   stillOpen.forEach(r => { if (r.wasHead && !r.c.met) console.log('  ! headword but never met: ' + r.entry); });
   if (WRITE_GAP) {
+    /* The baseline is by definition the run's totals WITHOUT the promotion file:
+       the promotions are recorded in their own file and added back on every
+       derived run. Writing the raw totals here would count them twice on the
+       next run. */
     const head = '# Recorded gap: Goethe A2 entries the app does not carry yet.\n' +
       '# Generated by tools/match-goethe-a2.js --write-gap on ' + new Date().toISOString().slice(0, 10) + '.\n' +
       '# Two measures: authored headword (in a word list) and material (met in an A2 lesson or A2 reading text).\n' +
       '# An entry marked "headword" is in a word list but never met in a sentence — that is a defect to fix.\n' +
       '# Derived run: the transcription was not present, so the baseline below is the previous run plus\n' +
       '# what this corpus closed. Counted against the re-typed transcription of the official PDF, not the PDF.\n' +
-      baselineLines({ alpha: BASE.alpha, alphaAuthored: alphaHead, alphaMet: alphaMet,
-        groups: BASE.groups, groupsAuthored: groupsHead, groupsMet: groupsMet });
+      baselineLines({ alpha: BASE.alpha, alphaAuthored: alphaHead - promotedList.ok.length, alphaMet: alphaMet,
+        groups: BASE.groups, groupsAuthored: groupsHead - promotedGroup.ok.length, groupsMet: groupsMet })
+      + '# baseline = the run without the promotion file; tools/goethe-a2-promoted.txt is added back per run.\n';
     const line = r => (r.c.inHead ? 'headword ' : '         ') + r.entry;
     const listOpen = stillOpen.filter(r => r.section !== 'groups').map(line);
     const groupOpen = stillOpen.filter(r => r.section === 'groups').map(line);
@@ -341,8 +293,22 @@ if (!HAVE_LIST) {
   process.exit(failed ? 1 : 0);
 }
 
+const alsoPromoted = readPromoted();
 const A2_ENTRIES = readList(LIST, 'A2 list transcription');
 const A2_GROUPS = readList(GROUPS, 'A2 word-group transcription');
+
+/* A promotion is a line in the promotion file; the full run counts it through the
+   transcription, so the file's job here is to prove it belongs to the list at all. */
+{
+  const transcript = new Set(A2_ENTRIES.concat(A2_GROUPS).map(e => FOLD(String(e).trim())));
+  const all = alsoPromoted.list.concat(alsoPromoted.group);
+  const outside = all.filter(e => {
+    const variants = entryPhrases(e).map(v => FOLD(String(v).trim()));
+    return !variants.some(v => transcript.has(v));
+  });
+  console.log('\npromotion file: ' + all.length + ' entries, ' + (all.length - outside.length) +
+    ' found in the transcription' + (outside.length ? ', NOT in it: ' + outside.join(' · ') : ''));
+}
 
 const main = report(A2_ENTRIES, 'Goethe A2 alphabetical list vs the Deutschweg A2 band alone', 'a2');
 const cum = report(A2_ENTRIES, 'Goethe A2 alphabetical list vs the whole A0+A1+A2 band (cumulative)', 'cumulative');
@@ -361,8 +327,13 @@ if (WRITE_GAP) {
     '# Two measures: authored headword (in a word list) and material (met in an A2 lesson or A2 reading text).\n' +
     '# An entry marked "headword" is in a word list but never met in a sentence — that is a defect to fix.\n' +
     '# Counted against the re-typed transcription of the official PDF, not against the PDF itself.\n' +
-    baselineLines({ alpha: A2_ENTRIES.length, alphaAuthored: cum.rows.filter(r => r.inHead).length, alphaMet: cum.rows.filter(r => r.met).length,
-      groups: A2_GROUPS.length, groupsAuthored: groups.rows.filter(r => r.inHead).length, groupsMet: groups.rows.filter(r => r.met).length })
+    baselineLines({ alpha: A2_ENTRIES.length,
+      alphaAuthored: cum.rows.filter(r => r.inHead).length - verifyPromoted(alsoPromoted.list, 'cumulative').ok.length,
+      alphaMet: cum.rows.filter(r => r.met).length,
+      groups: A2_GROUPS.length,
+      groupsAuthored: groups.rows.filter(r => r.inHead).length - verifyPromoted(alsoPromoted.group, 'cumulative').ok.length,
+      groupsMet: groups.rows.filter(r => r.met).length })
+    + '# baseline = the run without the promotion file; tools/goethe-a2-promoted.txt is added back per run.\n'
     + '# word groups below this line\n';
   fs.writeFileSync(path.join(root, 'tools/goethe-a2-gap.txt'),
     head + listLines.join('\n') + '\n' + groupLines.join('\n') + '\n');

@@ -95,4 +95,21 @@ with the more specific rule, or with the rule that produces more honest evidence
     `ca.`): of the 265 entries closed this round, **16 were entries the older classifier mis-read although
     the material already carried them**, and 249 were closed by new material — the split is recorded in
     `AUDIT.md` rather than folded together.
+24. **An entry that is met is not yet an entry that is taught — the promotion file.** Zero gap does not
+    mean every Goethe entry is named in a word list: of the run-2 gap's 281 entries, 62 are met in material
+    and named by no lesson. 31 of them are promoted into word lists (five per lesson in A2 unit 6, which
+    therefore grew from 35 to 40 words each — the compiler's own ceiling — so A2 stands at 1,020/1,020
+    authored against its declaration). The promotions are recorded in `tools/goethe-a2-promoted.txt`, and
+    the matcher verifies every line before it counts it: an entry must be **both** in a word list and met
+    in material, otherwise the tool prints it as unverified and leaves it out. The gap file's baseline is
+    now defined in writing as *the run without the promotion file*, and the promotions are added back on
+    every derived run, so an entry can never be counted twice across two runs. Measured: the alphabetical
+    list's authored column reaches its declared goal — **889/1,104 = 81%** (goal 80%) — with 1,104/1,104
+    met (100%) and 274/274 groups met (100%). Floors rise to 0.805 / 0.767 / 1.000 / 1.000.
+    **Still open, and declared so:** the combined measure (list + groups as headwords) is **1,058/1,378 =
+    77%** against a 80% goal; its remaining 76 entries are the entries the learner meets and no word list
+    names, and that list can only be produced from a transcription — the promotion harvest cannot see past
+    the run-2 gap. Re-typing the list (used for the full run and for that enumeration) is the next round's
+    first step, ahead of the B1 and B2 matches.
+
 
