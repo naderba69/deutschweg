@@ -7,15 +7,15 @@
   },
   "A2": {
     "texts": 30,
-    "words": 4041,
-    "shortest": 123,
-    "lowestPermille": 987
+    "words": 5169,
+    "shortest": 146,
+    "lowestPermille": 988
   },
   "B1": {
     "texts": 60,
-    "words": 9534,
-    "shortest": 130,
-    "lowestPermille": 986
+    "words": 10755,
+    "shortest": 150,
+    "lowestPermille": 987
   },
   "B2": {
     "texts": 26,
