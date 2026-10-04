@@ -479,6 +479,11 @@
       if (st.srs.cards.some(c => c.id === id)) return;
       st.srs.cards.push({
         id, de: raw.de, ar: raw.ar, example: raw.example || '', chunk: !!raw.chunk, level: raw.level || 'A0',
+        /* §7 R6 counts every non-chunk card, so a word the learner harvests out of
+           a lesson's material column is a card like any other. The flag is kept so
+           the pool can be audited: B2 declares 1,200 productive words of which 920
+           are material — the reserve only exists once these cards exist. */
+        material: !!raw.material, source: raw.source || null,
         addedOn: DW.today(),
         receptive: { box: 0, due: DW.plusDays(1), reviews: 0 },
         productive: { box: 0, due: DW.plusDays(2), reviews: 0 },
