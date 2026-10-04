@@ -205,3 +205,19 @@ with the more specific rule, or with the rule that produces more honest evidence
     the row itself (rows 0–39 → units 1–5 with eight lessons each, rows 40–45 → unit 6, rows 46–51 →
     unit 7), because the earlier generator assumed a fixed eight lessons per unit and would have renamed
     the unit-6 lessons while adding unit 7.
+
+28. **B1-L3's third material round — 16 more B1 texts (delivered 2026-10-04).**
+    After unit 7 the recorded gap was **736** entries, of which **602 the material did not carry at all**.
+    Sixteen new B1 texts (`b1-r29` … `b1-r44`) were written on the everyday themes the missing words
+    belong to: moving in, market and kitchen, club and sport, city and traffic, illness and recovery,
+    industry and office, school and learning, feelings and living together, the public office, village
+    festivals, animals and weather, press and radio, looking for work, security, growing old in the city,
+    and the small things of the day. Each text is about 170 words with an Arabic title, a German body and
+    two comprehension questions.
+    **Measured:** the material measure rises **1,218 → 1,555/1,820 = 85%** (337 entries carried that the
+    matcher had proved missing, none lost), the authored measure is unchanged by design at **1,084 = 60%**,
+    and the open gap stays **736** but is now split **471 met already / 265 not carried at all**. The
+    floating floor rises **0.669 → 0.854**; B1 reading count moves 28 → **44**.
+    **Next:** the promotion pool (471) again exceeds one unit's 240 headword slots, so the eighth unit
+    carries 240 of them, and the 265 entries the corpus still lacks need a fourth material round before any
+    list can name them.

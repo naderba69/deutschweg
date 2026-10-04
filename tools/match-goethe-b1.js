@@ -40,9 +40,9 @@ const WRITE_GAP = process.argv.includes('--write-gap');
 const REQUIRE = process.argv.includes('--require-transcription');
 
 /* Floors are the measured values of the last accepted run. They may only rise.
-   Ratcheted after unit 7 (B1-L3: 240 promotions, 480 verified in all):
-   raw 1084/1820 = 0.5956 and 1218/1820 = 0.6692, rounded down. */
-const FLOOR = { headword: 0.595, material: 0.669 };
+   Ratcheted after the third material round (16 more texts, r29..r44):
+   raw 1084/1820 = 0.5956 and 1555/1820 = 0.8544, rounded down. */
+const FLOOR = { headword: 0.595, material: 0.854 };
 
 const HAVE_LIST = fs.existsSync(LIST);
 if (!HAVE_LIST && REQUIRE) {
