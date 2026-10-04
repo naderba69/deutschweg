@@ -35,6 +35,9 @@ module.exports = {
       ['das Mobiltelefon', 'die Mobiltelefone', 'الهاتف المحمول', 'Mein Mobiltelefon ist leer.', 'Mein Mobiltelefon ist leer gemacht.', 'بلا gemacht.', 'lexik-kollokation', 'Mobiltelefon'],
       ['die Homepage', 'die Homepages', 'الصفحة الرئيسية', 'Auf der Homepage findest du die Nummer.', 'In der Homepage findest du die Nummer.', 'auf der Homepage.', 'präposition', 'Homepage'],
       ['herunterladen', 'lädt herunter · lud herunter · hat heruntergeladen', 'ينزّل', 'Ich lade die Datei herunter.', 'Ich lade die Datei runter herunter.', 'herunterladen فعل واحد.', 'lexik-kollokation', 'lade'],
+      ['surfen', 'surft · surfte · hat gesurft', 'يتصفح', 'Ich surfe im Internet.', 'Ich surfe auf Internet.', 'im Internet.', 'präposition', 'surfe'],
+      ['planen', 'plant · plante · hat geplant', 'يخطّط', 'Wir planen eine Reise nach Wien.', 'Wir planen eine Reise in Wien.', 'المدينة مع nach: nach Wien.', 'präposition', 'planen'],
+      ['die Person', 'die Personen', 'الشخص', 'Die Person am Telefon war freundlich.', 'Der Person am Telefon war freundlich.', 'مؤنث: die Person.', 'genus', 'Person'],
     ],
     tricks: [
       { trick: 'أفعال التلفون المنفصلة: anrufen · zurückrufen · sich melden', wie: 'Ich rufe Sie später an. Ich rufe Sie morgen zurück. Ich melde mich.', warum: 'العربية تقول «أتصل بك» بفعل واحد، والألمانية تفصل an وzurück إلى النهاية.', anchor: 'anrufen' },
@@ -73,6 +76,9 @@ module.exports = {
       ['die Prüfung', 'die Prüfungen', 'الامتحان', 'Die Prüfung ist nächste Woche.', 'Die Prüfung ist in nächste Woche.', 'بلا حرف جر.', 'präposition', 'Prüfung'],
       ['das E-Book', 'die E-Books', 'الكتاب الإلكتروني', 'Ich lese ein E-Book im Zug.', 'Ich lese ein E-Book in dem Zug lesen.', 'بلا lesen زائدة.', 'lexik-kollokation', 'E-Book'],
       ['der Blog', 'die Blogs', 'المدونة', 'Sie schreibt einen Blog über ihre Reisen.', 'Sie schreibt einen Blog für ihre Reisen.', 'über + النصب.', 'präposition', 'Blog'],
+      ['stark', 'stärker · am stärksten', 'قوي', 'Der Wind war stark.', 'Der Wind war starke.', 'في الخبر بلا نهاية: stark.', 'deklination', 'stark'],
+      ['das Produkt', 'die Produkte', 'المنتج', 'Das Produkt ist neu auf dem Markt.', 'Der Produkt ist neu auf dem Markt.', 'محايد: das Produkt.', 'genus', 'Produkt'],
+      ['die Qualität', 'die Qualitäten', 'الجودة', 'Die Qualität ist wichtig.', 'Der Qualität ist wichtig.', 'مؤنث: die Qualität.', 'genus', 'Qualität'],
     ],
     tricks: [
       { trick: 'مراجعة الحالات الثلاث في جدول واحد', wie: 'der Mann / den Mann / dem Mann · die Frau / die Frau / der Frau · das Kind / das Kind / dem Kind.', warum: 'الجدول نفسه يجيب عن أغلب أسئلة A2، والعربية لا تُظهر الحالة فلا بديل عن الجدول.', anchor: 'der Akkusativ' },
@@ -108,7 +114,11 @@ module.exports = {
       ['die Wiederholung', 'die Wiederholungen', 'الإعادة', 'Sie hören den Text zweimal, ohne Wiederholung.', 'Sie hören den Text zweimal, ohne die Wiederholung.', 'بلا أداة بعد ohne.', 'kasus', 'Wiederholung'],
       ['die Prüfungsangst', '—', 'رهبة الامتحان', 'Gegen Prüfungsangst hilft Übung.', 'Für Prüfungsangst hilft Übung.', 'ضد: gegen.', 'präposition', 'Prüfungsangst'],
       ['die Vorbereitung', 'die Vorbereitungen', 'التحضير', 'Die Vorbereitung dauert Wochen.', 'Die Vorbereitung dauert Wochen es.', 'لا ضمير.', 'wortstellung', 'Vorbereitung'],
-      ['der Erfolg', 'die Erfolge', 'النجاح', 'Der Erfolg kommt mit Übung.', 'Der Erfolg kommt mit die Übung.', 'mit + داتيف: der Übung.', 'kasus', 'Erfolg']
+      ['der Erfolg', 'die Erfolge', 'النجاح', 'Der Erfolg kommt mit Übung.', 'Der Erfolg kommt mit die Übung.', 'mit + داتيف: der Übung.', 'kasus', 'Erfolg'],
+      ['prüfen', 'prüft · prüfte · hat geprüft', 'يفحص', 'Der Lehrer prüft die Antworten.', 'Der Lehrer prüft an die Antworten.', 'prüfen + مفعول مباشر بلا حرف.', 'lexik-kollokation', 'prüft'],
+      ['renovieren', 'renoviert · renovierte · hat renoviert', 'يرمّم', 'Wir renovieren die Küche im Frühling.', 'Wir renovieren in die Küche im Frühling.', 'مفعول مباشر: die Küche.', 'lexik-kollokation', 'renovieren'],
+      ['raus', '—', 'إلى الخارج', 'Er ist aus dem Zimmer raus.', 'Er ist aus dem Zimmer aus.', 'raus وحدها تكفي، بلا تكرار.', 'lexik-kollokation', 'raus'],
+      ['zurücklaufen', 'läuft zurück · lief zurück · ist zurückgelaufen', 'يعود راكضًا', 'Er ist schnell nach Hause zurückgelaufen.', 'Er hat schnell nach Hause zurückgelaufen.', 'الحركة مع sein: ist.', 'konjugation', 'zurückgelaufen'],
     ],
     tricks: [
       { trick: 'أقسام A2 الأربعة: Hören · Lesen · Schreiben · Sprechen', wie: 'Der erste Teil ist Hören. Beim Schreiben schreibt man eine E-Mail. Das Sprechen ist mündlich.', warum: 'كل قسم له وقته ودرجته، والنسخ الأربعة تظهر في كل امتحان A2.', anchor: 'der Teil' },

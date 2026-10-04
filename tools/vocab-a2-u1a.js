@@ -36,6 +36,9 @@ module.exports = {
       ['liefern', 'liefert · lieferte · hat geliefert', 'يوصّل', 'Der Bäcker liefert mir das Brot.', 'Der Bäcker liefert mich das Brot.', 'الشخص في الداتيف: mir.', 'kasus', 'liefert'],
       ['nennen', 'nennt · nannte · hat genannt', 'يسمّي', 'Kannst du mir den Namen nennen?', 'Kannst du mich den Namen nennen?', 'الشخص في الداتيف: mir.', 'kasus', 'nennen'],
       ['beschreiben', 'beschreibt · beschrieb · hat beschrieben', 'يصف', 'Beschreiben Sie mir bitte den Weg!', 'Beschreiben Sie mich bitte den Weg!', 'الشخص في الداتيف: mir.', 'kasus', 'Beschreiben'],
+      ['der Comic', 'die Comics', 'الكوميك', 'Der Comic gehört meinem Bruder.', 'Der Comic gehört mein Bruder.', 'gehören يريد داتيف: meinem Bruder.', 'kasus', 'Comic'],
+      ['die Notiz', 'die Notizen', 'الملاحظة', 'Die Notiz hilft meiner Schwester.', 'Die Notiz hilft meine Schwester.', 'helfen يريد داتيف: meiner Schwester.', 'kasus', 'Notiz'],
+      ['das Paar', 'die Paare', 'الزوجان/الزوج', 'Ich gebe dem Paar ein Geschenk.', 'Ich gebe das Paar ein Geschenk.', 'المفعول غير المباشر داتيف: dem Paar.', 'kasus', 'Paar'],
     ],
     tricks: [
       { trick: 'الداتيف يعطي: dem · der · dem · den', wie: 'Ich gebe dem Mann (m) das Buch · Ich gebe der Frau (f) das Buch · Ich gebe dem Kind (n) das Buch · Ich gebe den Kindern (Pl.) das Buch.', warum: 'العربية تعبّر بـ«لـ» فتفلت علامة الحالة، والجدول القصير يثبّت الأداة قبل أن تُقال.', anchor: 'dem Mann' },
@@ -74,6 +77,9 @@ module.exports = {
       ['die Gäste', '—', 'الضيوف', 'Wir zeigen den Gästen die Stadt.', 'Wir zeigen die Gäste die Stadt.', 'جمع الداتيف den + n: Gästen.', 'kasus', 'Gästen'],
       ['auspacken', 'packt aus · packte aus · hat ausgepackt', 'يفتح الحزمة', 'Die Kinder packen die Geschenke aus.', 'Die Kinder auspacken die Geschenke.', 'الفصل: packen … aus.', 'wortstellung', 'aus'],
       ['austauschen', 'tauscht aus · tauschte aus · hat ausgetauscht', 'يتبادل', 'Wir tauschen die Geschenke aus.', 'Wir austauschen die Geschenke.', 'الفصل: tauschen … aus.', 'wortstellung', 'aus'],
+      ['das Gerät', 'die Geräte', 'الجهاز', 'Das Gerät gehört dem Nachbarn.', 'Das Gerät gehört der Nachbar.', 'gehören + داتيف: dem Nachbarn.', 'kasus', 'Gerät'],
+      ['die Kunst', 'die Künste', 'الفن', 'Die Kunst gefällt meiner Mutter.', 'Die Kunst gefällt meine Mutter.', 'gefallen يريد داتيف: meiner Mutter.', 'kasus', 'Kunst'],
+      ['der Laptop', 'die Laptops', 'الحاسوب المحمول', 'Der Laptop gehört mir nicht.', 'Der Laptop gehört mich nicht.', 'gehören + داتيف: mir لا mich.', 'kasus', 'Laptop'],
     ],
     tricks: [
       { trick: 'الآخذ داتيف والشيء نصب: ترتيب ثابت', wie: 'Ich gebe dem Kind den Ball. Ich schenke der Frau die Blume. Person vor Sache.', warum: 'العربية تقول «أعطي الطفل الكرة» بلا علامة، فالترتيب وحده هو ما يفصل الفاعل من الآخذ.', anchor: 'geben' },
@@ -112,6 +118,9 @@ module.exports = {
       ['der Boden', 'die Böden', 'الأرضية', 'Die Tasche liegt auf dem Boden.', 'Die Tasche liegt auf den Boden.', 'السكون: auf dem.', 'präposition', 'Boden'],
       ['drinnen', '—', 'في الداخل', 'Bei Regen bleiben wir drinnen.', 'Bei Regen wir bleiben drinnen.', 'الفعل ثانيًا: bleiben wir.', 'wortstellung', 'drinnen'],
       ['nebenan', '—', 'في الجوار', 'Der Nachbar nebenan hilft immer.', 'Der Nachbar nebenan hilft immer an.', 'بلا an زائدة.', 'lexik-kollokation', 'nebenan'],
+      ['die Postkarte', 'die Postkarten', 'بطاقة البريد', 'Ich hänge die Postkarte an die Wand.', 'Ich hänge die Postkarte in die Wand.', 'على الجدار: an die Wand.', 'präposition', 'Postkarte'],
+      ['die Schere', 'die Scheren', 'المقص', 'Die Schere liegt auf dem Tisch.', 'Die Schere liegt auf den Tisch.', 'مكان ساكن: auf dem Tisch.', 'präposition', 'Schere'],
+      ['das Tablet', 'die Tablets', 'الجهاز اللوحي', 'Das Tablet steht neben dem Sofa.', 'Das Tablet steht neben das Sofa.', 'مكان ساكن: neben dem Sofa.', 'präposition', 'Tablet'],
     ],
     tricks: [
       { trick: 'سؤالان يفصلان الحالتين: Wohin? نصب · Wo? داتيف', wie: 'Wohin legst du das Buch? – Auf den Tisch. Wo liegt das Buch? – Auf dem Tisch.', warum: 'العربية لا تُظهر الحالة، فالسؤال بسؤالين هو أسرع مفتاح يحفظه المتعلم.', anchor: 'auf den Tisch' },

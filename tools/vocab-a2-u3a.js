@@ -30,7 +30,10 @@ module.exports = {
       ['das Problem', 'die Probleme', 'المشكلة', 'Ich würde das Problem sofort lösen.', 'Ich würde das Problem sofort lösen würde.', 'würde مرة واحدة.', 'register', 'Problem'],
       ['die Lösung', 'die Lösungen', 'الحل', 'Ich würde eine andere Lösung suchen.', 'Ich würde eine andere Lösung suchen würde.', 'würde مرة واحدة.', 'register', 'Lösung'],
       ['der Vorschlag', 'die Vorschläge', 'الاقتراح', 'Ich hätte einen Vorschlag.', 'Ich würde einen Vorschlag haben.', 'hätte هي الصيغة.', 'register', 'Vorschlag'],
-      ['der Kaffee', '—', 'القهوة', 'Ich würde gern einen Kaffee bestellen.', 'Ich würde gern einen Kaffee bestellen würde.', 'würde مرة واحدة.', 'register', 'Kaffee']
+      ['der Kaffee', '—', 'القهوة', 'Ich würde gern einen Kaffee bestellen.', 'Ich würde gern einen Kaffee bestellen würde.', 'würde مرة واحدة.', 'register', 'Kaffee'],
+      ['reservieren', 'reserviert · reservierte · hat reserviert', 'يحجز', 'Ich würde gern einen Tisch reservieren.', 'Ich würde gern einen Tisch reserviere.', 'بعد würde يأتي المصدر: reservieren.', 'konjugation', 'reservieren'],
+      ['rufen', 'ruft · rief · hat gerufen', 'ينادي', 'Würdest du bitte einen Arzt rufen?', 'Würdest du bitte einen Arzt rufst?', 'بعد würde المصدر: rufen.', 'konjugation', 'rufen'],
+      ['tauschen', 'tauscht · tauschte · hat getauscht', 'يستبدل/يتبادل', 'Ich würde die Hose gern tauschen.', 'Ich würde die Hose gern tausche.', 'بعد würde المصدر: tauschen.', 'konjugation', 'tauschen'],
     ],
     tricks: [
       { trick: 'würde + مصدر في النهاية، ولا تُكرَّر', wie: 'Ich würde gern mitkommen. · Ich würde einen Kaffee bestellen.', warum: 'العربية تستعمل «سـ» أو «أودّ»، فلا يظهر في ذهن المتعلم أن الفعل المساعد واحد فقط.', anchor: 'würde' },
@@ -69,6 +72,9 @@ module.exports = {
       ['das Wetter', '—', 'الطقس', 'Wir sprechen über das Wetter.', 'Wir sprechen das Wetter.', 'über das Wetter.', 'präposition', 'Wetter'],
       ['dabei', '—', 'مع ذلك، مشارك', 'Ich bin beim Umzug dabei.', 'Ich bin beim Umzug dabei mit.', 'dabei تكفي بلا mit.', 'lexik-kollokation', 'dabei'],
       ['darauf', '—', 'على ذلك', 'Ich freue mich darauf.', 'Ich freue mich darauf es.', 'بلا es زائدة.', 'lexik-kollokation', 'darauf'],
+      ['reden', 'redet · redete · hat geredet', 'يتحدث', 'Wir reden über den Plan.', 'Wir reden für den Plan.', 'reden über etwas.', 'präposition', 'reden'],
+      ['ziehen', 'zieht · zog · hat gezogen', 'ينتقل/يسحب', 'Wir ziehen nach Berlin.', 'Wir ziehen in Berlin.', 'الانتقال: ziehen nach.', 'präposition', 'ziehen'],
+      ['bauen', 'baut · baute · hat gebaut', 'يبني', 'Sie bauen an einem Haus.', 'Sie bauen ein Haus an.', 'bauen an + داتيف.', 'präposition', 'bauen'],
     ],
     tricks: [
       { trick: 'الحرف جزء من معنى الفعل لا زينة', wie: 'warten auf = ينتظر · denken an = يفكّر في · sprechen über = يتحدّث عن · bitten um = يرجو', warum: 'العربية تصل الفعل بمفعوله مباشرة، فالمتعلم يحذف الحرف أو يستبدله بحرف عربي مباشر.', anchor: 'warten auf' },
@@ -104,7 +110,10 @@ module.exports = {
       ['das Büro', 'die Büros', 'المكتب', 'Die Tür des Büros ist zu.', 'Die Tür von dem Büro ist zu.', 'des Büros.', 'kasus', 'Büros'],
       ['die Straße', 'die Straßen', 'الشارع', 'Der Name der Straße ist mir neu.', 'Der Name von die Straße ist mir neu.', 'der Straße.', 'kasus', 'Straße'],
       ['die Wohnung', 'die Wohnungen', 'الشقة', 'Die Miete der Wohnung ist hoch.', 'Die Miete von der Wohnung ist hoch.', 'der Wohnung.', 'kasus', 'Wohnung'],
-      ['der Kollege', 'die Kollegen', 'الزميل', 'Das Büro des Kollegen ist oben.', 'Das Büro von dem Kollege ist oben.', 'des Kollegen.', 'kasus', 'Kollegen']
+      ['der Kollege', 'die Kollegen', 'الزميل', 'Das Büro des Kollegen ist oben.', 'Das Büro von dem Kollege ist oben.', 'des Kollegen.', 'kasus', 'Kollegen'],
+      ['die Vermieterin', 'die Vermieterinnen', 'المالكة/المؤجِّرة', 'Die Wohnung der Vermieterin ist groß.', 'Die Wohnung von die Vermieterin ist groß.', 'الملكية بالـgenitiv: der Vermieterin.', 'kasus', 'Vermieterin'],
+      ['die Studentin', 'die Studentinnen', 'الطالبة', 'Das ist der Rucksack der Studentin.', 'Das ist der Rucksack von die Studentin.', 'genitiv: der Studentin.', 'kasus', 'Studentin'],
+      ['die Rentnerin', 'die Rentnerinnen', 'المتقاعدة', 'Der Garten der Rentnerin ist schön.', 'Der Garten von die Rentnerin ist schön.', 'genitiv: der Rentnerin.', 'kasus', 'Rentnerin'],
     ],
     tricks: [
       { trick: 'الـ s على المذكر والمحايد: des Vaters · des Kindes', wie: 'das Auto meines Vaters · das Zimmer des Kindes · die Tür des Hauses.', warum: 'العربية تعبّر بالإضافة بلا علامة، فالـ s هي كل ما يدل على الإضافة الألمانية.', anchor: 'das Auto meines Vaters' },

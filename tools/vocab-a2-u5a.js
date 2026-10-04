@@ -33,6 +33,9 @@ module.exports = {
       ['ruhig', '—', 'هادئ', 'Bleib ruhig!', 'Bleib ruhig du!', 'الأمر بلا ضمير.', 'wortstellung', 'ruhig'],
       ['der Club', 'die Clubs', 'النادي', 'Früher waren wir oft im Club.', 'Früher waren wir oft in der Club.', 'im = in dem.', 'präposition', 'Club'],
       ['ausgehen', 'geht aus · ging aus · ist ausgegangen', 'يخرج للترفيه', 'Am Samstag gehen wir aus.', 'Am Samstag ausgehen wir.', 'الفصل: gehen … aus.', 'wortstellung', 'aus'],
+      ['vergessen', 'vergisst · vergaß · hat vergessen', 'ينسى', 'Ich habe den Termin vergessen.', 'Ich habe den Termin vergisst.', 'بعد haben: vergessen.', 'konjugation', 'vergessen'],
+      ['zurückgehen', 'geht zurück · ging zurück · ist zurückgegangen', 'يرجع ماشيًا', 'Er ist nach Hause zurückgegangen.', 'Er hat nach Hause zurückgegangen.', 'الحركة مع sein: ist zurückgegangen.', 'konjugation', 'zurückgegangen'],
+      ['zurückkommen', 'kommt zurück · kam zurück · ist zurückgekommen', 'يعود', 'Wann bist du zurückgekommen?', 'Wann hast du zurückgekommen?', 'الحركة مع sein: bist zurückgekommen.', 'konjugation', 'zurückgekommen'],
     ],
     tricks: [
       { trick: 'ترتيب الحكاية: zuerst · danach · zum Schluss', wie: 'Zuerst sind wir gefahren, danach haben wir gegessen, zum Schluss sind wir nach Hause gegangen.', warum: 'الحكاية الألمانية تحتاج علامات ترتيب، والعربية تصل الجمل بـ«ثم» وحدها فيضيع التسلسل.', anchor: 'zuerst' },
@@ -70,6 +73,9 @@ module.exports = {
       ['sinnvoll', '—', 'منطقي', 'Das ist sinnvoll.', 'Das ist sinnvoll gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'sinnvoll'],
       ['unsinnig', '—', 'غير منطقي', 'Das finde ich unsinnig.', 'Das finde ich unsinnig es.', 'لا ضمير.', 'wortstellung', 'unsinnig'],
       ['genau', '—', 'بالضبط', 'Das ist genau meine Meinung.', 'Das ist genau mein Meinung.', 'Meinung مؤنث: meine.', 'deklination', 'genau'],
+      ['privat', '—', 'خاص', 'Das ist meine private Nummer.', 'Das ist meine privat Nummer.', 'النهاية مع meine: private.', 'deklination', 'private'],
+      ['selbst', '—', 'بنفسه/بنفسي', 'Ich mache das selbst.', 'Ich mache das selbst mir.', 'selbst ظرف، بلا ضمير إضافي.', 'lexik-kollokation', 'selbst'],
+      ['streng', 'strenger · am strengsten', 'صارم', 'Der Lehrer ist sehr streng.', 'Der Lehrer ist sehr strenge.', 'في الخبر بلا نهاية: streng.', 'deklination', 'streng'],
     ],
     tricks: [
       { trick: 'obwohl تدفع الفعل للنهاية وtrotzdem تتركه ثانيًا', wie: 'Obwohl es teuer ist, kaufe ich es. · Es ist teuer. Trotzdem kaufe ich es.', warum: 'الزوج المتقابل يُختبر كثيرًا، والعربية تصل السبب والنتيجة بلا فرق ترتيبي.', anchor: 'obwohl' },
@@ -107,6 +113,10 @@ module.exports = {
       ['die Post', '—', 'البريد', 'Die Post kommt um zehn.', 'Die Post kommt in zehn.', 'الساعة: um.', 'präposition', 'Post'],
       ['die E-Mail', 'die E-Mails', 'البريد الإلكتروني', 'Ich schreibe eine E-Mail an die Firma.', 'Ich schreibe eine E-Mail für die Firma.', 'إلى الجهة: an.', 'präposition', 'E-Mail'],
       ['der Kontakt', 'die Kontakte', 'التواصل', 'Bitte schreiben Sie mir die Kontaktdaten.', 'Bitte schreiben Sie mir die Daten von Kontakt.', 'التركيب: Kontaktdaten.', 'lexik-kollokation', 'Kontaktdaten'],
+      ['sparen', 'spart · sparte · hat gespart', 'يوفّر', 'Ich spare für ein neues Rad.', 'Ich spare mir ein neues Rad.', 'sparen für etwas، لا mir.', 'präposition', 'spare'],
+      ['schaffen', 'schafft · schaffte · hat geschafft', 'ينجز', 'Ich habe die Prüfung geschafft.', 'Ich habe die Prüfung geschäft.', 'الماضي التامّ: geschafft.', 'orthographie', 'geschafft'],
+      ['die Bohne', 'die Bohnen', 'الفاصولياء', 'Die Bohnen kochen im Topf.', 'Die Bohne kochen im Topf.', 'الجمع: die Bohnen.', 'plural', 'Bohnen'],
+      ['paar', '—', 'بعض', 'Ich habe ein paar Fragen.', 'Ich habe ein Paar Fragen.', '«بضع» تكتب صغيرة: ein paar.', 'orthographie', 'paar'],
     ],
     tricks: [
       { trick: 'النداء والختام بفاصلة لا نقطة', wie: 'Liebe Sara, … · Sehr geehrte Damen und Herren, … · Mit freundlichen Grüßen, Ali', warum: 'نقل عادة النقطة العربية يجعل الرسالة تبدو غير ألمانية، والفاصلة هي علامة الشكل الخارجي.', anchor: 'Liebe' },

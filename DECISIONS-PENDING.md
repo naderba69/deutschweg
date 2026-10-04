@@ -109,14 +109,23 @@ with the more specific rule, or with the rule that produces more honest evidence
     harvested, each line classified, and every entry that is met in material and named by no word list was
     collected into `tools/goethe-a2-candidates.txt` — **57 verified candidates** — of which **48 were
     promoted** into the ten A2 lesson lists, raising the syllabus's A2 declaration from 1,020 to **1,068**
-    (and the validator's unit-6 shift from 240 to **288**). Measured: alphabetical list **937/1,104 = 85%**
-    authored (goal 80% ✓ by 5 points), 1,104/1,104 met (100%), 274/274 groups met (100%), and the
-    **combined measure 1,106/1,378 = 80% — the goal is met**. Floors rise to 0.848 / 0.802 / 1.000 /
-    1.000. No double counting: the pre-batch corpus (45bdc7f) was measured separately and showed the 31
-    earlier promotions were the only ones already authored, while all 48 new rows were met and unnamed.
-    **Still open, and declared so:** 11 candidates remain in the pool (der Comic · her · hin · manchmal ·
-    der Basketball · die Bohne · das Gerät · die Kunst · der Laptop · austragen · bauen) and letters O–Z of
-    the index are unread; both are the next A2 round. After that the B1 match starts (its enumeration
+    (and the validator's unit-6 shift from 240 to **288**). The round closed the harvest itself: letters
+    **O–Z** of the same index were then read (289 lines) and yielded **82 more candidates**, which with the
+    **11** the A–N pool still held make a **139-entry pool**, every line verified as met and not authored.
+    All **93** were promoted into the ten A2 lessons, and a re-run of the harvest tool then found exactly one
+    candidate left, `die Grippe`, which was promoted too — **94 rows in one round**. So the A2 declaration
+    rose from 1,068 to **1,162**, the validator shift from 288 to **382** (amendment A2-GOETHE-4) and the
+    promotion file to **173 entries**. Measured (run 6): alphabetical list **1,031/1,104 = 93%** authored
+    (goal 80% ✓ by 13 points), 1,104/1,104 met (100%), 169/274 groups authored, 274/274 met (100%),
+    **combined measure 1,200/1,378 = 87%**. Floors rise to 0.933 / 0.870 / 1.000 / 1.000. No double counting, measured not
+    claimed: against the pre-batch corpus (e82d9dd) **zero** of the 93 rows was authored before, and all 93
+    were met. **The pool is now empty** — the harvest tool re-run prints 0 candidates: every entry the material
+    carries is named by a word list. The **73** entries still missing from the authored column are entries
+    the app's material does not carry; 22 of them are named by the harvest itself (das Händetuch · die Mail
+    · dafür · dagegen · darüber · dorther · egal · eigen · einzeln · fit · die Erlaubnis · die Kenntnis ·
+    das Klavier · aufregen · das Stipendium · streiten · die Übersetzung · unterwegs · vorne · windig ·
+    der Witz · witzig). Producing them means new material (a reading text or a lesson that carries these
+    words) and then promoting them the same way — the A2 work that follows the B1 match (its enumeration
     source: `https://www.dwds.de/api/lemma/goethe/B1.json`), then B2.
 
 

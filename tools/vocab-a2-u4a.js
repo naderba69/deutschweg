@@ -33,6 +33,9 @@ module.exports = {
       ['der Stundenplan', 'die Stundenpläne', 'الجدول الدراسي', 'Der Stundenplan hängt an der Wand.', 'Der Stundenplan hängt in der Wand.', 'على الجدار: an der Wand.', 'präposition', 'Stundenplan'],
       ['das Heft', 'die Hefte', 'الدفتر', 'Ich schreibe die Wörter ins Heft.', 'Ich schreibe die Wörter in dem Heft.', 'الاتجاه: ins Heft.', 'präposition', 'Heft'],
       ['kontrollieren', 'kontrolliert · kontrollierte · hat kontrolliert', 'يتحقق من', 'Der Lehrer kontrolliert die Hausaufgaben.', 'Der Lehrer kontrolliert auf die Hausaufgaben.', 'kontrollieren بلا حرف.', 'lexik-kollokation', 'kontrolliert'],
+      ['notieren', 'notiert · notierte · hat notiert', 'يدوّن', 'Notieren Sie bitte die Hausaufgabe!', 'Notiert Sie bitte die Hausaufgabe!', 'مع Sie: Notieren Sie.', 'konjugation', 'notieren'],
+      ['das Quiz', 'die Quiz', 'المسابقة', 'Das Quiz beginnt um acht.', 'Die Quiz beginnt um acht.', 'محايد: das Quiz.', 'genus', 'Quiz'],
+      ['das Rätsel', 'die Rätsel', 'اللغز', 'Das Rätsel ist schwer.', 'Der Rätsel ist schwer.', 'محايد: das Rätsel.', 'genus', 'Rätsel'],
     ],
     tricks: [
       { trick: 'في الجامعة an der Universität، وفي المدرسة in der Schule', wie: 'Sie studiert an der Universität. Die Kinder sind in der Schule.', warum: 'المؤسسة التعليمية العليا تأخذ an، والعربية تقول «في» في الحالتين.', anchor: 'die Universität' },
@@ -70,6 +73,9 @@ module.exports = {
       ['der Jahrestag', 'die Jahrestage', 'ذكرى سنوية', 'Der Jahrestag ist im Juni.', 'Der Jahrestag ist in Juni.', 'الشهر: im.', 'präposition', 'Jahrestag'],
       ['das Feuerwerk', 'die Feuerwerke', 'الألعاب النارية', 'Das Feuerwerk beginnt um zehn.', 'Das Feuerwerk beginnt in zehn.', 'الساعة: um.', 'präposition', 'Feuerwerk'],
       ['der Ball', 'die Bälle', 'الحفل الراقص، الكرة', 'Am Samstag ist ein Ball im Schloss.', 'Am Samstag ist ein Ball in dem Schloss statt.', 'بلا statt زائدة.', 'lexik-kollokation', 'Ball'],
+      ['der Spaß', 'die Späße', 'المرح/المتعة', 'Der Spaß gehört zum Fest.', 'Die Spaß gehört zum Fest.', 'مذكر: der Spaß.', 'genus', 'Spaß'],
+      ['singen', 'singt · sang · hat gesungen', 'يغني', 'Wir singen ein Lied zum Geburtstag.', 'Wir singen ein Lied für Geburtstag.', 'المناسبة: zum Geburtstag.', 'präposition', 'singen'],
+      ['die Süßigkeit', 'die Süßigkeiten', 'الحلوى', 'Die Süßigkeit schmeckt den Kindern.', 'Die Süßigkeit schmeckt die Kinder.', 'schmecken + داتيف: den Kindern.', 'kasus', 'Süßigkeit'],
     ],
     tricks: [
       { trick: 'المناسبات مع zu: zu Weihnachten · zu Ostern · zu Neujahr', wie: 'Zu Weihnachten sind wir zu Hause. Zu Ostern besuchen wir die Familie.', warum: 'العربية تقول «في العيد»، والألمانية تستعمل zu للمناسبة وin للمكان.', anchor: 'das Weihnachten' },
@@ -107,6 +113,9 @@ module.exports = {
       ['die Kasse', 'die Kassen', 'صندوق الدفع', 'Bitte zahlen Sie an der Kasse.', 'Bitte zahlen Sie in der Kasse.', 'عند الصندوق: an der Kasse.', 'präposition', 'Kasse'],
       ['die Quittung', 'die Quittungen', 'الوصل', 'Bitte geben Sie mir die Quittung.', 'Bitte geben Sie mir der Quittung.', 'المفعول نصب: die.', 'kasus', 'Quittung'],
       ['das Kaufhaus', 'die Kaufhäuser', 'المتجر الكبير', 'Im Kaufhaus kaufe ich neue Kleidung.', 'In dem Kaufhaus kaufe ich neue Kleidung gehen.', 'بلا gehen.', 'lexik-kollokation', 'Kaufhaus'],
+      ['die Reinigung', 'die Reinigungen', 'المصبغة/التنظيف', 'Ich bringe den Mantel in die Reinigung.', 'Ich bringe den Mantel in der Reinigung.', 'حركة: in die Reinigung.', 'präposition', 'Reinigung'],
+      ['tragen', 'trägt · trug · hat getragen', 'يلبس/يحمل', 'Sie trägt heute einen roten Rock.', 'Sie trägt heute ein roten Rock.', 'النصب مع einen: roten.', 'deklination', 'trägt'],
+      ['schneiden', 'schneidet · schnitt · hat geschnitten', 'يقص', 'Ich schneide mir die Haare kurz.', 'Ich schneide mich die Haare kurz.', 'لنفسي: mir، لا mich.', 'kasus', 'schneide'],
     ],
     tricks: [
       { trick: 'anziehen/ausziehen منفصلان: an في النهاية', wie: 'Ich ziehe die Jacke an. Zieh die Schuhe aus!', warum: 'العربية تستعمل فعلًا واحدًا، وإسقاط an أو aus يجعل الجملة ناقصة.', anchor: 'anziehen' },

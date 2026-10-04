@@ -92,3 +92,97 @@ list das E-Book
 list der Blog
 list der Zentimeter
 list das Kilogramm
+list der Comic
+list her
+list hin
+list manchmal
+list der Basketball
+list die Bohne
+list das Gerät
+list die Kunst
+list der Laptop
+list austragen
+list bauen
+list notieren
+list die Notiz
+list offen
+list online
+list paar
+list das Paar
+list packen
+list das Passwort
+list die Person
+list die Pflanze
+list planen
+list die Postkarte
+list praktisch
+list preiswert
+list privat
+list pro
+list das Produkt
+list prüfen
+list die Qualität
+list das Quiz
+list das Rad
+list das Rätsel
+list raus
+list reden
+list reich
+list der Reifen
+list die Reinigung
+list renovieren
+list die Rentnerin
+list reservieren
+list rufen
+list die Ruhe
+list die Sache
+list sauer
+list schaffen
+list scharf
+list die Schere
+list schneiden
+list schwach
+list selbst
+list der Service
+list singen
+list sogar
+list sonnig
+list sparen
+list der Spaß/Spass
+list stark
+list stören
+list streng
+list der Stress
+list stressig
+list die Studentin
+list surfen
+list süß
+list die Süßigkeit
+list der/das Tablet
+list tauschen
+list der Teller
+list das Theater
+list toll
+list der Topf
+list tragen
+list traurig
+list typisch
+list vergessen
+list die Vermieterin
+list der Vogel
+list voll
+list der/das Volleyball
+list vorbei
+list vorher
+list wahr
+list der Wald
+list die Wäsche
+list weich
+list weinen
+list die Werkstatt
+list ziehen
+list das Ziel
+list zurückgehen
+list zurückkommen
+list zurücklaufen
+list die Grippe

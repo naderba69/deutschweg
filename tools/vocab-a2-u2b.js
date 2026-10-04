@@ -33,6 +33,9 @@ module.exports = {
       ['die grüne Lampe', '—', 'المصباح الأخضر (نصب)', 'Ich kaufe die grüne Lampe.', 'Ich kaufe der grüne Lampe.', 'die في النصب.', 'kasus', 'grüne'],
       ['ganz', '—', 'كامل', 'Ich habe den ganzen Tag gearbeitet.', 'Ich habe den ganz Tag gearbeitet.', 'النصب المذكر: ganzen.', 'deklination', 'ganzen'],
       ['freiwillig', '—', 'طوعي', 'Sie macht einen freiwilligen Kurs.', 'Sie macht einen freiwillig Kurs.', 'النصب المذكر: freiwilligen.', 'deklination', 'freiwilligen'],
+      ['wahr', '—', 'صحيح/حقيقي', 'Ich sage nur die wahre Geschichte.', 'Ich sage nur die wahr Geschichte.', 'النصب مع die: wahre.', 'deklination', 'wahre'],
+      ['typisch', '—', 'نموذجي', 'Das ist eine typische Frage.', 'Das ist eine typisch Frage.', 'النصب مع eine: typische.', 'deklination', 'typische'],
+      ['traurig', '—', 'حزين', 'Ich sehe einen traurigen Mann.', 'Ich sehe einen traurig Mann.', 'النصب مع einen: traurigen.', 'deklination', 'traurigen'],
     ],
     tricks: [
       { trick: 'في النصب يتغيّر المذكر وحده: den neuen', wie: 'Ich kenne den neuen Kollegen. · Ich habe einen guten Freund. · Ich sehe ein kleines Kind.', warum: 'العربية لا تُظهر حالة المفعول، فالعلامة n في den neuen هي كل الفرق في الجملة.', anchor: 'den neuen Kollegen' },
@@ -71,6 +74,9 @@ module.exports = {
       ['der Urlaub', 'die Urlaube', 'العطلة', 'Ich freue mich auf den Urlaub.', 'Ich freue mich für den Urlaub.', 'المنتظر: auf.', 'präposition', 'Urlaub'],
       ['sich ändern', 'ändert sich · änderte sich · hat sich geändert', 'يتغيّر', 'Das Wetter ändert sich schnell.', 'Das Wetter ändert schnell.', 'الفعل الانعكاسي يحتاج sich.', 'konjugation', 'ändert sich'],
       ['lassen', 'lässt · ließ · hat gelassen', 'يترك، يدع', 'Lass dich nicht ärgern!', 'Lass dich nicht ärgern machen!', 'lassen فعل كامل.', 'lexik-kollokation', 'Lass'],
+      ['die Wäsche', '—', 'الغسيل', 'Ich wasche meine Wäsche selbst.', 'Ich wasche mich meine Wäsche selbst.', 'Wäsche مفعول به، فلا mich.', 'kasus', 'Wäsche'],
+      ['packen', 'packt · packte · hat gepackt', 'يحزم', 'Ich habe mir den Rucksack selbst gepackt.', 'Ich habe mich den Rucksack selbst gepackt.', 'الشخص داتيف: mir، لا mich.', 'kasus', 'gepackt'],
+      ['der Topf', 'die Töpfe', 'القدر', 'Ich koche mir im Topf eine Suppe.', 'Ich koche mich im Topf eine Suppe.', 'لنفسي: mir، لا mich.', 'kasus', 'Topf'],
     ],
     tricks: [
       { trick: 'أفعال انعكاسية بحروف ثابتة: sich freuen auf · sich interessieren für · sich ärgern über', wie: 'Ich freue mich auf den Urlaub. Ich interessiere mich für Musik. Er ärgert sich über den Lärm.', warum: 'الحرف لا يُترجم من العربية («أهتم بالموسيقى» بحرف الباء)، فيُحفظ مع الفعل كوحدة.', anchor: 'sich freuen' },
@@ -108,6 +114,9 @@ module.exports = {
       ['der Kaffee', '—', 'القهوة', 'Der Kaffee war heiß.', 'Der Kaffee ist heiß gewesen.', 'war.', 'konjugation', 'Kaffee'],
       ['die Stadt', 'die Städte', 'المدينة', 'Die Stadt war voll.', 'Die Stadt ist voll gewesen.', 'war.', 'konjugation', 'Stadt'],
       ['der Babysitter', 'die Babysitter', 'جليس الأطفال', 'Als Kind hatte ich einen Babysitter.', 'Als Kind hatte ich ein Babysitter.', 'Babysitter مذكر: einen.', 'genus', 'Babysitter'],
+      ['vorher', '—', 'قبل ذلك', 'Vorher war ich im Kino.', 'Vorher ich war im Kino.', 'بعد الظرف يأتي الفعل: war ich.', 'wortstellung', 'vorher'],
+      ['vorbei', '—', 'منتهٍ/عابر', 'Als ich kam, war das Fest schon vorbei.', 'Als ich kam, war das Fest schon vorbei gehen.', 'vorbei خبر بلا فعل إضافي.', 'lexik-kollokation', 'vorbei'],
+      ['manchmal', '—', 'أحيانًا', 'Manchmal war ich traurig, aber selten.', 'Manchmal ich war traurig, aber selten.', 'الفعل في الثاني: war ich.', 'wortstellung', 'manchmal'],
     ],
     tricks: [
       { trick: 'sein وhaben في الماضي البسيط: war · hatte', wie: 'Ich war krank. Ich hatte Fieber. Wir waren in Berlin. Sie hatten Zeit.', warum: 'الألمانية تستعمل الماضي البسيط لهذين الفعلين، والعربية تستعمل الماضي المركّب دائمًا فيترجمها المتعلم خطأً بـ bin gewesen.', anchor: 'war' },

@@ -33,6 +33,9 @@ module.exports = {
       ['die Kinderbetreuung', '—', 'رعاية الأطفال', 'Sie arbeitet halbtags, weil die Kinderbetreuung fehlt.', 'Sie arbeitet halbtags, weil die Kinderbetreuung fehlt es.', 'لا ضمير زائد بعد الفعل.', 'wortstellung', 'Kinderbetreuung'],
       ['meistens', '—', 'في الأغلب', 'Ich komme meistens mit dem Bus, weil ich kein Auto habe.', 'Ich komme meistens mit dem Bus, weil ich habe kein Auto.', 'بعد weil: الفعل في النهاية.', 'wortstellung', 'meistens'],
       ['endlich', '—', 'أخيرًا', 'Endlich sind die Ferien da!', 'Endlich die Ferien sind da!', 'الفعل ثانيًا: sind.', 'wortstellung', 'Endlich'],
+      ['stressig', '—', 'مُجهِد', 'Ich komme nicht, weil die Woche stressig ist.', 'Ich komme nicht, weil die Woche ist stressig.', 'بعد weil الفعل في الآخر: stressig ist.', 'wortstellung', 'stressig'],
+      ['der Stress', '—', 'الضغط والتوتر', 'Er hat Stress, weil die Prüfung morgen ist.', 'Er hat Stress, weil ist die Prüfung morgen.', 'بعد weil الفعل في الآخر: morgen ist.', 'wortstellung', 'Stress'],
+      ['die Ruhe', '—', 'الهدوء', 'Ich brauche Ruhe, weil ich morgen früh aufstehe.', 'Ich brauche Ruhe, weil ich aufstehe morgen früh.', 'الفعل المنفصل في الآخر: aufstehe.', 'wortstellung', 'Ruhe'],
     ],
     tricks: [
       { trick: 'weil ترسل الفعل إلى النهاية، وdenn تتركه ثانيًا', wie: 'Ich komme nicht, weil ich krank bin. · Ich komme nicht, denn ich bin krank.', warum: 'العربية تصل السبب بلا ترتيب، فالمتعلم يضع الفعل ثانيًا بعد weil فيكسر بنية الجملة الثانوية.', anchor: 'weil' },
@@ -71,6 +74,9 @@ module.exports = {
       ['der Kurs', 'die Kurse', 'الدورة', 'Er sagt, dass der Kurs im Mai beginnt.', 'Er sagt, dass der Kurs beginnt im Mai.', 'الفعل في النهاية.', 'wortstellung', 'Kurs'],
       ['jemand', '—', 'شخص ما', 'Ich glaube, dass jemand an der Tür ist.', 'Ich glaube, dass jemand an der Tür hat.', 'المعنى يريد ist.', 'lexik-kollokation', 'jemand'],
       ['anders', '—', 'مختلف', 'Ich glaube, dass er anders denkt.', 'Ich glaube, dass er anders denken.', 'الفعل مصرّف في النهاية: denkt.', 'konjugation', 'anders'],
+      ['die Sache', 'die Sachen', 'الأمر/الشيء', 'Ich glaube, dass die Sache einfach ist.', 'Ich glaube, dass die Sache einfach.', 'الجملة الثانوية تحتاج فعلًا: ist.', 'wortstellung', 'Sache'],
+      ['das Ziel', 'die Ziele', 'الهدف', 'Ich weiß, dass das Ziel wichtig ist.', 'Ich weiß, dass ist das Ziel wichtig.', 'الفعل في آخر الجملة الثانوية: wichtig ist.', 'wortstellung', 'Ziel'],
+      ['der Service', '—', 'الخدمة', 'Ich finde, dass der Service gut ist.', 'Ich finde, dass der Service gut.', 'لا بد من ist في آخر الجملة.', 'wortstellung', 'Service'],
     ],
     tricks: [
       { trick: 'dass مثل weil: الفعل في النهاية', wie: 'Ich glaube, dass er kommt. · Ich glaube, dass er heute kommt. · Ich glaube, dass er kommen will.', warum: 'كل الجمل الثانوية تدفع الفعل إلى النهاية؛ العربية لا تفعل، فينسى المتعلم القاعدة تحت الضغط.', anchor: 'dass' },
@@ -108,6 +114,9 @@ module.exports = {
       ['die Nachricht', 'die Nachrichten', 'الرسالة', 'Wenn die Nachricht kommt, sage ich es dir.', 'Wenn die Nachricht kommt, ich sage es dir.', 'الفعل ثانٍ.', 'wortstellung', 'Nachricht'],
       ['der Kaffee', '—', 'القهوة', 'Wenn der Kaffee fertig ist, rufe ich dich.', 'Wenn der Kaffee ist fertig, rufe ich dich.', 'الفعل في النهاية.', 'wortstellung', 'Kaffee'],
       ['erst', '—', 'أولًا، ليس إلا', 'Wenn ich erst fertig bin, rufe ich dich an.', 'Wenn ich erst fertig bin, ich rufe dich an.', 'بعد الجملة الثانوية: الفعل ثانيًا.', 'wortstellung', 'erst'],
+      ['sonnig', '—', 'مشمس', 'Wenn es sonnig ist, gehen wir in den Park.', 'Wenn es ist sonnig, gehen wir in den Park.', 'بعد wenn الفعل في الآخر: sonnig ist.', 'wortstellung', 'sonnig'],
+      ['weich', '—', 'طري/ناعم', 'Wenn das Brot weich ist, esse ich es gern.', 'Wenn das Brot weich, esse ich es gern.', 'الجملة الثانوية تحتاج فعلًا: weich ist.', 'wortstellung', 'weich'],
+      ['pro', '—', 'لكل', 'Pro Person kostet das zehn Euro.', 'Für Person kostet das zehn Euro.', 'pro يريد داتيف بلا أداة: pro Person.', 'präposition', 'pro'],
     ],
     tricks: [
       { trick: 'wenn للعادة وals للمرة الواحدة في الماضي', wie: 'Wenn es regnet, bleibe ich hier. · Als ich klein war, wohnten wir in Tunis.', warum: 'العربية تستعمل «عندما» للحالتين، فالتمييز يمنع جملة تبدو صحيحة وهي خطأ زمني.', anchor: 'wenn' },

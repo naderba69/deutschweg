@@ -35,6 +35,9 @@ module.exports = {
       ['nett', 'netter · am nettesten', 'لطيف', 'Der neue Nachbar ist sehr nett.', 'Der neue Nachbar ist sehr nette.', 'في الخبر تبقى الصفة بلا نهاية.', 'deklination', 'nett'],
       ['der Zentimeter', 'die Zentimeter', 'السنتيمتر', 'Der Koffer ist zwei Zentimeter zu breit.', 'Der Koffer ist zwei Zentimeter breiter wie erlaubt.', 'المقارنة: breiter als، لا wie.', 'lexik-kollokation', 'Zentimeter'],
       ['das Kilogramm', 'die Kilogramm', 'الكيلوغرام', 'Mein Koffer ist ein Kilogramm schwerer geworden.', 'Mein Koffer ist ein Kilogramm schwerer wie vorher.', 'المقارنة: schwerer als، لا wie.', 'lexik-kollokation', 'Kilogramm'],
+      ['preiswert', 'preiswerter · am preiswertesten', 'رخيص الثمن', 'Dieses Café ist preiswerter als das am Bahnhof.', 'Dieses Café ist preiswert als das am Bahnhof.', 'المقارنة تحتاج -er: preiswerter als.', 'lexik-kollokation', 'preiswerter'],
+      ['praktisch', 'praktischer · am praktischsten', 'عملي', 'Ein Rucksack ist praktischer als eine Tasche.', 'Ein Rucksack ist praktisch als eine Tasche.', 'المقارنة: praktischer als.', 'lexik-kollokation', 'praktischer'],
+      ['toll', 'toller · am tollsten', 'رائع', 'Das Konzert war toller als das letzte.', 'Das Konzert war toll als das letzte.', 'المقارنة: toller als.', 'lexik-kollokation', 'toller'],
     ],
     tricks: [
       { trick: 'als للمقارنة وwie للتساوي مع so', wie: 'Er ist größer als ich. · Er ist so groß wie ich. · Viel besser als gestern.', warum: 'العربية تقول «مثل» في الحالتين، فالخلط بين als وwie أشهر خطأ مقارنة عند الناطق بالعربية.', anchor: 'als' },
@@ -70,7 +73,10 @@ module.exports = {
       ['das Hotel', 'die Hotels', 'الفندق', 'Das Hotel am Meer ist am teuersten.', 'Das Hotel am Meer ist am teuerste.', 'am teuersten.', 'deklination', 'teuersten'],
       ['der Monat', 'die Monate', 'الشهر', 'Der Juli ist der wärmste Monat.', 'Der Juli ist der wärmste Monat es.', 'لا ضمير.', 'deklination', 'wärmste'],
       ['die Uhr', 'die Uhren', 'الساعة (آلة)', 'Die Uhr war die teuerste im Geschäft.', 'Die Uhr war die teuerste in Geschäft.', 'في المتجر: im Geschäft.', 'präposition', 'Uhr'],
-      ['die Regel', 'die Regeln', 'القاعدة', 'Diese Regel ist am schwierigsten.', 'Diese Regel ist am schwierigste.', 'am + en.', 'deklination', 'schwierigsten']
+      ['die Regel', 'die Regeln', 'القاعدة', 'Diese Regel ist am schwierigsten.', 'Diese Regel ist am schwierigste.', 'am + en.', 'deklination', 'schwierigsten'],
+      ['süß', 'süßer · am süßesten', 'حلو', 'Der Kuchen ist am süßesten.', 'Der Kuchen ist am süßeste.', 'التفضيل: am …esten.', 'deklination', 'süßesten'],
+      ['sauer', 'saurer · am sauersten', 'حامض', 'Die Zitrone ist am sauersten.', 'Die Zitrone ist am sauerste.', 'التفضيل: am …sten.', 'deklination', 'sauersten'],
+      ['scharf', 'schärfer · am schärfsten', 'حار/حاد', 'Die Soße ist am schärfsten.', 'Die Soße ist am scharfsten.', 'التفضيل مع umlaut: schärfsten.', 'orthographie', 'schärfsten'],
     ],
     tricks: [
       { trick: 'am + en في التفضيل المطلق', wie: 'am schnellsten · am besten · am liebsten · am meisten.', warum: 'اللاحقة en ثابتة مع am، وإسقاطها خطأ يسمعه الألماني فورًا.', anchor: 'am schnellsten' },
@@ -109,6 +115,9 @@ module.exports = {
       ['die grüne Lampe', '—', 'المصباح الأخضر', 'Die grüne Lampe ist schön.', 'Die grün Lampe ist schön.', 'e مع die.', 'deklination', 'grüne'],
       ['echt', '—', 'حقيقي', 'Das ist eine echte Perle.', 'Das ist eine echt Perle.', 'الصفة قبل الاسم: echte.', 'deklination', 'echte'],
       ['leer', '—', 'فارغ', 'Die Wohnung ist noch leer.', 'Die Wohnung ist noch leere.', 'في الخبر تبقى الصفة بلا نهاية.', 'deklination', 'leer'],
+      ['offen', '—', 'مفتوح', 'Der offene Laden ist hell.', 'Der offen Laden ist hell.', 'الصفة قبل الاسم: offene.', 'deklination', 'offene'],
+      ['reich', '—', 'غني', 'Der reiche Mann hat ein Haus.', 'Der reich Mann hat ein Haus.', 'e مع der: reiche.', 'deklination', 'reiche'],
+      ['voll', '—', 'ممتلئ', 'Die volle Flasche steht dort.', 'Die voll Flasche steht dort.', 'e مع die: volle.', 'deklination', 'volle'],
     ],
     tricks: [
       { trick: 'بعد der/die/das الجمع تأخذ الوصف en والجمع', wie: 'die alten Häuser · die kleinen Kinder · die schwarzen Schuhe.', warum: 'العربية تضع الصفة بعد الاسم بلا علامة، فالمتعلم ينسى أن الجمع يطلب en.', anchor: 'die alten Häuser' },

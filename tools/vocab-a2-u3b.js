@@ -33,6 +33,10 @@ module.exports = {
       ['die Erinnerung', 'die Erinnerungen', 'الذكرى', 'Die Erinnerung bleibt.', 'Die Erinnerung bleibt es.', 'لا ضمير زائد.', 'wortstellung', 'Erinnerung'],
       ['der Rappen', 'die Rappen', 'الرابن (سنتيم سويسري)', 'Ein Kaffee kostet fünf Franken und achtzig Rappen.', 'Ein Kaffee kostet fünf Franken und achtzig Rappen Geld.', 'Rappen تكفي بلا Geld.', 'lexik-kollokation', 'Rappen'],
       ['der Kredit', 'die Kredite', 'القرض', 'Für das Auto nehmen wir einen Kredit.', 'Für das Auto nehmen wir ein Kredit.', 'Kredit مذكر: einen.', 'genus', 'Kredit'],
+      ['das Rad', 'die Räder', 'الدراجة/العجلة', 'Ich fahre mit dem Rad zur Arbeit.', 'Ich fahre mit das Rad zur Arbeit.', 'mit + داتيف: dem Rad.', 'präposition', 'Rad'],
+      ['der Reifen', 'die Reifen', 'الإطار', 'Der Reifen ist platt.', 'Der Reifen sind platt.', 'مفرد: ist.', 'konjugation', 'Reifen'],
+      ['her', '—', 'إلى هنا', 'Komm her, das Taxi ist da!', 'Komm hin, das Taxi ist da!', 'نحو المتكلم: her.', 'lexik-kollokation', 'her'],
+      ['hin', '—', 'إلى هناك', 'Wann fährst du hin?', 'Wann fährst du her?', 'بعيدًا عن المتكلم: hin.', 'lexik-kollokation', 'hin'],
     ],
     tricks: [
       { trick: 'أفعال الرحلة المنفصلة: einsteigen · aussteigen · umsteigen', wie: 'Wir steigen in Frankfurt um. Bitte einsteigen! Wir steigen am Bahnhof aus.', warum: 'العربية تستعمل فعلًا واحدًا «يغيّر» و«يركب»، والألمانية تفصل البادئة إلى نهاية الجملة.', anchor: 'umsteigen' },
@@ -68,7 +72,11 @@ module.exports = {
       ['sich erholen', 'erholt sich · erholte sich · hat sich erholt', 'يتعافى', 'Er erholt sich schnell.', 'Er erholt schnell.', 'sich ضرورية.', 'konjugation', 'erholt'],
       ['die Diät', 'die Diäten', 'الحمية', 'Der Arzt empfiehlt eine Diät.', 'Der Arzt empfiehlt ein Diät.', 'Diät مؤنث: eine.', 'genus', 'Diät'],
       ['das Sprechzimmer', 'die Sprechzimmer', 'غرفة الفحص', 'Bitte warten Sie im Sprechzimmer.', 'Bitte warten Sie in Sprechzimmer.', 'في: im.', 'präposition', 'Sprechzimmer'],
-      ['die Schmerztablette', 'die Schmerztabletten', 'مسكّن', 'Die Schmerztablette hilft sofort.', 'Die Schmerztablette hilft es sofort.', 'لا ضمير زائد.', 'wortstellung', 'Schmerztablette']
+      ['die Schmerztablette', 'die Schmerztabletten', 'مسكّن', 'Die Schmerztablette hilft sofort.', 'Die Schmerztablette hilft es sofort.', 'لا ضمير زائد.', 'wortstellung', 'Schmerztablette'],
+      ['schwach', 'schwächer · am schwächsten', 'ضعيف', 'Nach der Grippe fühlte ich mich schwach.', 'Nach der Grippe fühlte ich mich schwache.', 'في الخبر بلا نهاية: schwach.', 'deklination', 'schwach'],
+      ['weinen', 'weint · weinte · hat geweint', 'يبكي', 'Das Kind weint, weil es sich verletzt hat.', 'Das Kind weint, weil es hat sich verletzt.', 'المساعد في الآخر: sich verletzt hat.', 'wortstellung', 'weint'],
+      ['stören', 'stört · störte · hat gestört', 'يزعج', 'Bitte stören Sie mich nicht!', 'Bitte stören Sie mir nicht!', 'المفعول المباشر: mich، لا mir.', 'kasus', 'stören'],
+      ['die Grippe', '—', 'الإنفلونزا', 'Ich habe die Grippe und bleibe im Bett.', 'Ich habe der Grippe und bleibe im Bett.', 'مؤنث: die Grippe.', 'genus', 'Grippe'],
     ],
     tricks: [
       { trick: 'الأعراض مع haben: Fieber · Husten · Schmerzen · Erkältung', wie: 'Ich habe Fieber. Ich habe Husten. Ich habe starke Schmerzen. Ich habe eine Erkältung.', warum: 'العربية تصل الحالة بالفعل «أنا مُحمّى»، فالمتعلم يستعمل sein حيث تريد الألمانية haben.', anchor: 'das Fieber' },
@@ -107,6 +115,9 @@ module.exports = {
       ['die Vollzeit', '—', 'دوام كامل', 'Er sucht eine Stelle in Vollzeit.', 'Er sucht eine Stelle in die Vollzeit.', 'in Vollzeit ثابت.', 'lexik-kollokation', 'Vollzeit'],
       ['dringend', 'dringender · am dringendsten', 'عاجل', 'Das ist eine dringende Aufgabe.', 'Das ist eine dringend Aufgabe.', 'الصفة قبل الاسم: dringende.', 'deklination', 'dringende'],
       ['die Datei', 'die Dateien', 'الملف', 'Bitte schicken Sie mir die Datei.', 'Bitte schicken Sie mir das Datei.', 'Datei مؤنث: die.', 'genus', 'Datei'],
+      ['die Werkstatt', 'die Werkstätten', 'الورشة', 'Das Auto ist in der Werkstatt.', 'Das Auto ist in die Werkstatt.', 'مكان ساكن: in der Werkstatt.', 'präposition', 'Werkstatt'],
+      ['online', '—', 'على الإنترنت', 'Ich bin den ganzen Tag online.', 'Ich bin den ganzen Tag im Online.', 'online صفة بلا أداة.', 'lexik-kollokation', 'online'],
+      ['das Passwort', 'die Passwörter', 'كلمة المرور', 'Ich habe mein Passwort vergessen.', 'Ich habe meinen Passwort vergessen.', 'محايد: mein Passwort.', 'genus', 'Passwort'],
     ],
     tricks: [
       { trick: 'في العمل: bei einer Firma · in der Abteilung · in Teilzeit', wie: 'Ich arbeite bei einer Firma in der Abteilung Verkauf. Ich arbeite in Teilzeit.', warum: 'العربية تقول «أعمل في شركة» بـ«في» واحدة، فالألمانية تفرّق بين الجهة والقسم ونمط الدوام.', anchor: 'die Abteilung' },

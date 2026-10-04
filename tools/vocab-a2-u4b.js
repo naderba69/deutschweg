@@ -34,6 +34,9 @@ module.exports = {
       ['bewölkt', '—', 'غائم', 'Heute ist es bewölkt.', 'Heute ist es bewölkt Wetter.', 'الجملة تامة بلا Wetter.', 'lexik-kollokation', 'bewölkt'],
       ['fallen', 'fällt · fiel · ist gefallen', 'يسقط', 'Im Herbst fallen die Blätter.', 'Im Herbst fallen die Blätter runter.', 'fallen تكفي.', 'lexik-kollokation', 'fallen'],
       ['der Müll', '—', 'القمامة', 'Bring bitte den Müll raus!', 'Bring bitte die Müll raus!', 'Müll مذكر: den.', 'genus', 'Müll'],
+      ['der Wald', 'die Wälder', 'الغابة', 'Im Wald ist es kühl.', 'In der Wald ist es kühl.', 'المكان: im Wald.', 'präposition', 'Wald'],
+      ['der Vogel', 'die Vögel', 'الطائر', 'Der Vogel singt am Morgen.', 'Die Vogel singt am Morgen.', 'مذكر: der Vogel.', 'genus', 'Vogel'],
+      ['die Pflanze', 'die Pflanzen', 'النبتة', 'Die Pflanze braucht Wasser.', 'Der Pflanze braucht Wasser.', 'مؤنث: die Pflanze.', 'genus', 'Pflanze'],
     ],
     tricks: [
       { trick: 'المناخ بحرف bei: bei Regen · bei Nebel · bei Kälte', wie: 'Bei Regen bleiben wir drinnen. Bei Nebel fahre ich langsam.', warum: 'العربية تقول «في المطر»، والألمانية تستعمل bei للحالة الجوية.', anchor: 'der Regen' },
@@ -69,7 +72,10 @@ module.exports = {
       ['die Kleidung', '—', 'اللباس', 'Die Kleidung soll bequem sein.', 'Die Kleidung soll bequem ist.', 'بعد soll مصدر: sein.', 'konjugation', 'Kleidung'],
       ['der Anlass', 'die Anlässe', 'المناسبة', 'Der Anlass ist ein Geburtstag.', 'Der Anlass ist ein Geburtstag es.', 'لا ضمير.', 'wortstellung', 'Anlass'],
       ['die Tischkarte', 'die Tischkarten', 'بطاقة الجلوس', 'Die Tischkarte zeigt den Platz.', 'Die Tischkarte zeigt der Platz.', 'المفعول: den.', 'kasus', 'Tischkarte'],
-      ['die Dankeskarte', 'die Dankeskarten', 'بطاقة شكر', 'Nach der Feier schreibe ich eine Dankeskarte.', 'Nach der Feier ich schreibe eine Dankeskarte.', 'الفعل ثانٍ بعد الظرف.', 'wortstellung', 'Dankeskarte']
+      ['die Dankeskarte', 'die Dankeskarten', 'بطاقة شكر', 'Nach der Feier schreibe ich eine Dankeskarte.', 'Nach der Feier ich schreibe eine Dankeskarte.', 'الفعل ثانٍ بعد الظرف.', 'wortstellung', 'Dankeskarte'],
+      ['der Teller', 'die Teller', 'الطبق', 'Der Teller steht auf dem Tisch.', 'Der Teller stehen auf dem Tisch.', 'مفرد: steht.', 'konjugation', 'Teller'],
+      ['das Theater', 'die Theater', 'المسرح', 'Wir gehen heute ins Theater.', 'Wir gehen heute in Theater.', 'إلى المسرح: ins Theater.', 'präposition', 'Theater'],
+      ['der Volleyball', 'die Volleyballs', 'الكرة الطائرة', 'Wir spielen am Strand Volleyball.', 'Wir spielen am Strand der Volleyball.', 'اللعب بلا أداة: Volleyball spielen.', 'lexik-kollokation', 'Volleyball'],
     ],
     tricks: [
       { trick: 'قبول الدعوة ورفضها: annehmen · absagen · zusagen', wie: 'Ich nehme die Einladung an. Ich muss leider absagen. Ich habe zugesagt.', warum: 'العربية تقول «أوافق» و«أعتذر» بفعلين عاديين، والألمانية تفصل البادئات إلى نهاية الجملة.', anchor: 'annehmen' },
@@ -108,6 +114,9 @@ module.exports = {
       ['die Beschwerde', 'die Beschwerden', 'الشكوى', 'Ich schreibe eine Beschwerde.', 'Ich schreibe ein Beschwerde.', 'مؤنث: eine.', 'genus', 'Beschwerde'],
       ['das Ding', 'die Dinge', 'الشيء', 'Das Ding ist schon wieder kaputt.', 'Die Ding ist schon wieder kaputt.', 'Ding محايد: das.', 'genus', 'Ding'],
       ['das Geschirr', '—', 'الأواني', 'Das Geschirr ist gespült.', 'Die Geschirr ist gespült.', 'Geschirr محايد: das.', 'genus', 'Geschirr'],
+      ['austragen', 'trägt aus · trug aus · hat ausgetragen', 'يوزّع البريد', 'Der Bote trägt die Post aus.', 'Der Bote austrägt die Post.', 'الفصل: trägt … aus.', 'wortstellung', 'aus'],
+      ['der Basketball', 'die Basketbälle', 'كرة السلة', 'Er spielt gern Basketball.', 'Er spielt gern den Basketball.', 'اللعبة بلا أداة: Basketball spielen.', 'lexik-kollokation', 'Basketball'],
+      ['sogar', '—', 'حتى', 'Sogar der Chef war da.', 'Sogar war der Chef da.', 'بعد sogar يأتي الفاعل ثم الفعل.', 'wortstellung', 'sogar'],
     ],
     tricks: [
       { trick: 'verloren لا gegangen: الشيء يُفقد لا يذهب', wie: 'Ich habe den Schlüssel verloren. Meine Tasche ist verloren.', warum: 'العربية تقول «ضاع مني»، فيترجم المتعلم بـ gegangen ويجعل الجملة مضحكة.', anchor: 'verlieren' },
