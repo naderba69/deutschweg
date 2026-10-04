@@ -221,3 +221,15 @@ with the more specific rule, or with the rule that produces more honest evidence
     **Next:** the promotion pool (471) again exceeds one unit's 240 headword slots, so the eighth unit
     carries 240 of them, and the 265 entries the corpus still lacks need a fourth material round before any
     list can name them.
+
+29. **B1-L4: unit 8 carries the next 240 of the promotion pool (delivered 2026-10-04).**
+    The third material round left a promotion pool of **471** named-by-nobody but carried entries, and one
+    unit holds 240 headword slots, so **unit 8** (six lessons of forty: *Haus und Umzug · Küche und Markt ·
+    Körper und Seele · Arbeit und Büro · Verwaltung und Schule · Natur und Sport*) carries 240 of them,
+    each row with article/plural, Arabic gloss, example, the common Arabic-speaker error and its cause,
+    plus three tricks per lesson on distinct anchors. **Measured:** the authored measure rises
+    **1,084 → 1,326/1,820 = 73%** and the floating headword floor **0.595 → 0.728**; the material measure
+    stays **1,555 = 85%**; the recorded gap falls **736 → 494 = 229 promotion pool + 265 not carried**.
+    B1 map **58 lessons / 2,320 declared (100%)**; catalogue **149 lessons / 894 sentences**.
+    **Next:** the 265 entries the corpus still lacks need a fourth material round, and then a ninth unit
+    names them; the 229 pool entries wait for the same unit.

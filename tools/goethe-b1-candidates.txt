@@ -6,374 +6,232 @@
 # Every line was verified against the corpus: authored lines and lines the corpus does not
 # carry are excluded. Promoting an entry means naming it in a word list; the matcher then
 # verifies authored AND met before the entry counts, so this file can never overstate.
-der Alarm
+abonnieren
 alltäglich
+das Alphabet
+amüsieren
 anderseits
-anstrengen
-die Aprikose
-die Arbeitserlaubnis
-die Arbeitsstelle
-aufnehmen
 aufwärts
-ausbilden
-ausreichen
-ausstellen
-der Backofen
-das Backrohr
-die Badewanne
-der Bancomat
-die Bankleitzahl
-der Bankomat
-die Bankomatkarte
-der Bauernhof
-beachten
-begegnen
+die Ausfahrt
+das Ballett
 begleiten
-behindern
-benötigen
-das Benzin
-beobachten
-berechnen
-der Bereich
-berufstätig
-beschäftigen
-besorgen
-besprechen
-beteiligen
-betreuen
-der Betreuer
-der Betriebsrat
+begrenzt
+beschränken
+bestrafen
+betrunken
 bisher
-der Blitz
-blitzen
 bloß
-bluten
-das Boot
-die Botschaft
-die Bremse
-bremsen
-der Briefkasten
-die Brieftasche
-die Briefträgerin
-der Briefumschlag
-die Buchhandlung
-die Bühne
-die Chipkarte
+die Burg
 dahin
+dasselbe
 dauernd
+das Denkmal
 derselbe
 desto
-der Dieb
+der Dialekt
 diesmal
-das Diplom
-der Donner
-donnern
-duzen
+die Direktorin
+die Diskothek
+drehen
+durcheinander
 ebenfalls
-die EC-Karte
-die Einbahnstraße
-die Einfahrt
+einbrechen
+der Einbrecher
+der Einbruch
 einheitlich
-die Einnahme
-einrichten
 einsam
-einschalten
-die Einzahlung
-die Eisenbahn
-elektronisch
 entlang
 entweder
-der Erdapfel
-die Erde
-erfüllen
-ergänzen
-erkälten
-ernsthaft
-eröffnen
-der Ersatz
-erschrecken
-erstellen
-der Essig
 ewig
-die Fahrbahn
-das Fahrzeug
-festlegen
-die Festplatte
-das Feuerzeug
-flach
-der Fleck
-der Fleischhauer
-die Flöte
-der Flur
-die Fotografie/Photographie
-die Fremdsprache
-die Freundschaft
-frieren
-die Frucht
-der Führerausweis
-der Fußgänger
-die Fußgängerzone
-die Galerie
+der Fasching
+die Fasnacht
+faulenzen
+der Feber
+festnehmen
+fliehen
+fließen
+die Flucht
+die Fortsetzung
 gar
-die Gebrauchsanweisung
-das Gedicht
+das Gasthaus
+die Gaststätte
+das Gebiet
+das Gebirge
+die Geburt
 geeignet
+das Gefängnis
+der Gehsteig
+gelingen
 gelten
+genauso
 genießen
 gerecht
-die Geschwindigkeit
-die Geschwindigkeitsbeschränkung
 gespannt
-die Gewerkschaft
-das Gewissen
 gewöhnlich
+das Gift
 giftig
-das Girokonto
-glatt
 gleichfalls
 gleichzeitig
-das Gras
-das Grundstück
-das Hackfleisch
-haltbar
-der Hammer
-der Handel
-hassen
-der Hauptbahnhof
-die Hausmeisterin
-das Heimweh
-heizen
-herunterfahren
-die Hitze
-hochladen
+gucken
+der Hafen
+der Händler
+die Händlerin
+das Haustier
+heimlich
+die Heldin
+herausfinden
+historisch
 höchstens
+die Hörerin
 hübsch
-der Hügel
-hungrig
-hupen
 der Hut
 ideal
 illegal
-der Imbiss
 indem
 individuell
 innen
 inner
-das Inserat
-der Intensivkurs
-interkulturell
+die Intelligenz
 inzwischen
 irgendwann
+irren
 jederzeit
 jedoch
-kämpfen
-die Kassette
-der Kasten
-der Katalog
-das Kennzeichen
-das Kissen
-die Kiste
-die Klinik
-der Kloß
-das Knie
-der Knochen
-der Knödel
-der Knopf
+der Kanal
+der Käufer
+die Käuferin
 komplett
-die Konferenz
+die Konkurrenz
+das Konsulat
 körperlich
-das Kraftfahrzeug
+der Korridor
 das Kraftwerk
-der Krankenwagen
 kreativ
-der Kreis
 künstlich
-der Kursleiter
-die Kursleiterin
-die Küste
-die Landwirtschaft
-der Laster
-die Laune
-der Lautsprecher
-der Lehrling
-der Lift
+der Kunststoff
+das Leder
+die Leserin
+das Lexikon
+die Linie
+die Literatur
 locker
-die Mahnung
-die Mappe
-die Marille
-die Matura
-die Mauer
+losfahren
+das Märchen
 maximal
-das Mehl
-die Mehrwertsteuer
-das Menü
-die Mieterin
+die Mensa
+das Metall
+die Metropole
+die Migration
 mild
-mobil
-die Mobilbox
-möbliert
-die Möhre
-der Mond
-der Monitor
-das Motorrad
-die Müllabfuhr
-die Münze
-musikalisch
-der Muskel
-mutig
+mischen
+miteinander
+mittlerweile
+die Mobilität
+nachdenken
 nachher
 die Nachspeise
-der Nagel
-national
-das Netz
-das Netzwerk
+der Neffe
 nirgendwo
-die Nordsee
 normalerweise
-der Notausgang
-offiziell
 öko-
 ökologisch
-das Orchester
-ordentlich
-die Ordination
-die Ostsee
-parkieren
-die Patientin
-pauschal
-der Perron
-das Personal
-der Personenstand
+die Oper
 persönlich
 die Pfanne
-die Pflegerin
-die Pille
-politisch
+der Pilz
+die Politikerin
 populär
 positiv
-das Poulet
-der Protest
-der Radfahrer
-der Rasen
-die Reaktion
-die Recherche
-rechtlich
-das Referat
-die Region
-regional
-reinigen
-die Reklame
+der Profi
+die Profisportlerin
+quer
 relativ
-die Reportage
+die Reservierung
 riesig
-das Rohr
-die Rolle
-der Saal
-die Saison
-der Sand
-der Schatten
-schauen
+roh
+salzig
+satt
+schief
 das Schlagobers
+der Schlagrahm
 schlank
 schließlich
-das Schmerzmittel
-der Schmutz
-der Schnupfen
-der Schreck
-der Schrecken
+der Schmuck
 schuldig
-die Schulter
-die Schwangerschaft
-schwitzen
-seltsam
+der/das Schwammerl
+selbstverständlich
 die Semmel
+die Seniorin
 senkrecht
-siezen
+die Serie
+der/die Serviceangestellte
+sinnlos
 solch
 sowieso
 sowohl
-sozial
 sparsam
 spätestens
-der Speisewagen
 speziell
 spitz
-die Sportlerin
-springen
-die Spritze
-spülen
-statistisch
-der Stau
-der Staub
-Staub saugen/staubsaugen
-die Steckdose
-der Stein
-das Stiegenhaus
-die Stimmung
-strafbar
-die Strafe
-stumm
-das Tal
-die Tankstelle
-das Taschentuch
-die Tätigkeit
-taub
+die Spur
+städtisch
+der Stoff
+der Strafzettel
+der Streik
+streiken
+das Studio
+tanken
+der Täter
 technisch
-der Terminkalender
-theoretisch
+das Tempo
+die Terrasse
 tolerant
-die Tradition
-traditionell
-der Trainer
-die Tram
-das Treppenhaus
+der Tourismus
+die Trainerin
+der Transport
+transportieren
 treu
 das Trinkgeld
-trocknen
-twittern
-überholen
-überlegen
-überprüfen
-die Überraschung
+das Trottoir
+überfahren
 übrig
 übrigens
-umarmen
-die Umgebung
+das Ufer
 umgekehrt
-die Umleitung
 umso
-umsonst
-die Umweltverschmutzung
-unentschieden
-unglaublich
-unheimlich
 ursprünglich
-verantwortlich
-die Verbindung
+vegetarisch
+das Velo
+verbrennen
 verbringen
 verdächtig
-vergeblich
+verhaften
+das Verkehrszeichen
 verlassen
-verpflichten
-verschreiben
-die Versichertenkarte
-verwechseln
-virtuell
+verstecken
+verurteilen
 völlig
+voneinander
+die Vorfahrt
 vorhin
 die Vorspeise
-die Wärme
-das Werkzeug
-die Wiese
-winken
-der Wissenschaftler
-der Wohnort
+waagerecht/waagrecht
+wahnsinnig
+die Wanderung
+die Wettervorhersage
+wild
+die Wirtin
 die Zahnpasta
-die Zange
-die Zeugin
+zelten
+zentral
 ziemlich
+das/der Znüni
+der Zugang
+zugänglich
+die Zuhörerin
+zumindest
 zunächst
-zuschauen
-der Zuschauer
-zuverlässig
-die Zweitsprache
+der Zünder
+das Zündholz
+das Zvieri
+zwingen

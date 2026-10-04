@@ -1051,5 +1051,125 @@ module.exports = [
     'Das Orchester spielt im Hof. Die Künstlerin stellt im Herbst aus.',
     'Wir legen die Termine fest.',
     'Berichte morgen über ein Fest in deiner Stadt.',
-    'غدًا احكِ عن حفل في مدينتك.')
+    'غدًا احكِ عن حفل في مدينتك.'),
+
+  U('b1-u8-l1', 'B1', 'البيت والانتقال', 'Haus und Umzug', 'lexik-kollokation',
+    'Am Ende beschreibst du eine Wohnung und einen Umzug',
+    'في النهاية تصف شقة وانتقالًا.',
+    [
+      ['Die Couch steht im Wohnzimmer.', 'الأثاث مفرد بفعل مفرد', 'die Couch: Singular + steht', 'Die Couch stehen im Wohnzimmer.', 'steht'],
+      ['Die Wohnung liegt in der dritten Etage.', 'الطابق بـ in + داتيف', 'in der Etage, nicht auf', 'Die Wohnung liegt auf der dritten Etage.', 'in der'],
+      ['Der Abwart hilft beim Umzug.', 'الصيغة السويسرية معروفة', 'der Abwart = Hausmeister', 'Der Abwart helfen beim Umzug.', 'hilft'],
+      ['Die Wohnung ist möbliert.', 'الصفة تكفي بلا gemacht', 'möbliert ohne Zusatz', 'Die Wohnung ist möbliert gemacht.', 'möbliert']
+    ],
+    [
+      ['Die Fläche ist klein, aber hell.', 'المساحة صغيرة لكن مضيئة', 'Die Fläche sind klein, aber hell.', 'الفعل مفرد.', 'ist'],
+      ['Die Mülltonne steht hinter dem Haus.', 'الحاوية خلف البيت', 'Die Mülltonne stehen hinter dem Haus.', 'الفعل مفرد.', 'steht'],
+      ['Der Wohnsitz steht im Vertrag.', 'محل الإقامة في العقد', 'Der Wohnsitz stehen im Vertrag.', 'الفعل مفرد.', 'steht'],
+      ['Das Ehepaar wohnt über uns.', 'الزوجان يسكنان فوقنا', 'Das Ehepaar wohnen über uns.', 'das Ehepaar مفرد.', 'wohnt']
+    ],
+    'Die Couch steht im Wohnzimmer. Die Wohnung liegt in der dritten Etage.',
+    'Die Wohnung ist möbliert.',
+    'Beschreibe morgen deine Wohnung in fünf Sätzen.',
+    'غدًا صف شقتك في خمس جمل.'),
+
+  U('b1-u8-l2', 'B1', 'المطبخ والسوق', 'Küche und Markt', 'lexik-kollokation',
+    'Am Ende kaufst du auf dem Markt ein und kochst ein Menü',
+    'في النهاية تتسوّق في السوق وتطبخ وجبة.',
+    [
+      ['In Österreich heißt die Tomate Paradeiser.', 'الكلمة النمساوية معروفة', 'Paradeiser = Tomate', 'In Österreich heißt die Tomate Paradeiser auf.', 'Paradeiser'],
+      ['Der Rahm ist süß.', 'غير المعدود مفرد', 'der Rahm: Singular + ist', 'Der Rahm sind süß.', 'ist'],
+      ['Das Menü besteht aus drei Teilen.', 'المفرد بفعل مفرد', 'das Menü: Singular + besteht', 'Das Menü bestehen aus drei Teilen.', 'besteht'],
+      ['Ich streiche Margarine aufs Brot.', 'على الخبز aufs', 'auf + das = aufs', 'Ich streiche Margarine in das Brot.', 'aufs']
+    ],
+    [
+      ['Der Erdapfel aus dem Garten schmeckt besser.', 'البطاطس النمساوية', 'Der Erdapfel aus dem Garten schmecken besser.', 'الفعل مفرد.', 'schmeckt'],
+      ['Im Kaffeehaus sitzen wir lange.', 'في المقهى نجلس طويلًا', 'Im Kaffeehaus wir sitzen lange.', 'الفعل ثانٍ.', 'sitzen'],
+      ['Der Knödel sättigt mehr als Brot.', 'كرة العجين تشبع', 'Der Knödel sättigen mehr als Brot.', 'الفعل مفرد.', 'sättigt'],
+      ['Die Marille ist jetzt reif.', 'المشمش الآن ناضج', 'Die Marille sind jetzt reif.', 'الفعل مفرد.', 'ist']
+    ],
+    'Der Erdapfel aus dem Garten schmeckt besser. Der Rahm ist süß.',
+    'Das Menü besteht aus drei Teilen.',
+    'Schreibe morgen eine Einkaufsliste mit fünf Wörtern aus der Stunde.',
+    'غدًا اكتب قائمة تسوّق بخمس كلمات من الدرس.'),
+
+  U('b1-u8-l3', 'B1', 'الجسد والنفس', 'Körper und Seele', 'lexik-kollokation',
+    'Am Ende sprichst du über Gesundheit und Gefühle',
+    'في النهاية تتحدث عن الصحة والمشاعر.',
+    [
+      ['Ich war wütend auf mich selbst.', 'المشاعر بحرف ثابت', 'wütend auf + Person', 'Ich war wütend für mich selbst.', 'wütend auf'],
+      ['Abends entspanne ich mich im Salon.', 'الفعل الانعكاسي بضميره', 'sich entspannen', 'Abends entspanne ich im Salon.', 'mich'],
+      ['Jeder ist abhängig von Hilfe.', 'abhängig مع von', 'abhängig von + Dativ', 'Jeder ist abhängig auf Hilfe.', 'von'],
+      ['Das Unglück war im Fernsehen.', 'الحدث مفرد بفعل مفرد', 'das Unglück: Singular + war', 'Das Unglück waren im Fernsehen.', 'war']
+    ],
+    [
+      ['Die Therapie dauert drei Monate.', 'العلاج يستمر ثلاثة أشهر', 'Die Therapie dauern drei Monate.', 'الفعل مفرد.', 'dauert'],
+      ['Der Notruf kommt sofort.', 'نداء الطوارئ فورًا', 'Der Notruf kommen sofort.', 'الفعل مفرد.', 'kommt'],
+      ['Danke für dein Verständnis.', 'شكرًا لتفهمك', 'Danke für dein Verständnis auf.', 'بلا auf.', 'für'],
+      ['Das Kind wirkt ängstlich.', 'الطفل يبدو خائفًا', 'Das Kind wirkt ängstlich gemacht.', 'الصفة تكفي.', 'ängstlich']
+    ],
+    'Ich war wütend auf mich selbst. Die Therapie dauert drei Monate.',
+    'Danke für dein Verständnis.',
+    'Schreibe morgen drei Sätze über einen Tag, an dem du erschöpft warst.',
+    'غدًا اكتب ثلاث جمل عن يوم كنت فيه منهكًا.'),
+
+  U('b1-u8-l4', 'B1', 'العمل والمكتب', 'Arbeit und Büro', 'lexik-kollokation',
+    'Am Ende beschreibst du deine Arbeit und dein Büro',
+    'في النهاية تصف عملك ومكتبك.',
+    [
+      ['Die Anwältin prüft den Vertrag.', 'المهن بفعل مفرد', 'die Anwältin: Singular + prüft', 'Die Anwältin prüfen den Vertrag.', 'prüft'],
+      ['Ich schreibe die Nummer gleich auf.', 'aufschreiben منفصل', 'Trennbares Verb: schreibe … auf', 'Ich aufschreibe die Nummer gleich.', 'schreibe … auf'],
+      ['Wir garantieren die Lieferung.', 'garantieren بلا حرف جر', 'kein für nach garantieren', 'Wir garantieren für die Lieferung.', 'garantieren'],
+      ['Ich muss mich auf die Arbeit konzentrieren.', 'التركّز على شيء', 'sich konzentrieren auf + Akkusativ', 'Ich muss mich auf die Arbeit konzentrieren an.', 'auf die Arbeit']
+    ],
+    [
+      ['Der Kopierer steht neben der Tür.', 'آلة النسخ بجانب الباب', 'Der Kopierer stehen neben der Tür.', 'الفعل مفرد.', 'steht'],
+      ['Bitte kopieren Sie alle Seiten.', 'انسخ كل الصفحات', 'Bitte kopieren Sie auf alle Seiten.', 'بلا auf.', 'kopieren'],
+      ['Die Industrie sucht Fachkräfte.', 'الصناعة تبحث عن خبراء', 'Die Industrie suchen Fachkräfte.', 'الفعل مفرد.', 'sucht'],
+      ['Ich lösche die alten Dateien.', 'أمحو الملفات القديمة', 'Ich lösche auf die alten Dateien.', 'بلا auf.', 'lösche']
+    ],
+    'Die Anwältin prüft den Vertrag. Ich muss mich auf die Arbeit konzentrieren.',
+    'Bitte kopieren Sie alle Seiten.',
+    'Schreibe morgen fünf Sätze über deinen Arbeitsplatz.',
+    'غدًا اكتب خمس جمل عن مكان عملك.'),
+
+  U('b1-u8-l5', 'B1', 'الإدارة والتعليم', 'Verwaltung und Schule', 'wortstellung',
+    'Am Ende füllst du einen Antrag aus und sprichst über die Ausbildung',
+    'في النهاية تملأ طلبًا وتتحدث عن التعليم.',
+    [
+      ['Der Zivilstand ist im Formular anzugeben.', 'المصدر مع zu في الوسط', 'an-zu-geben', 'Der Zivilstand ist im Formular angeben.', 'anzugeben'],
+      ['Wir schaffen einen Rechner an.', 'anschaffen منفصل', 'Trennbares Verb: schaffen … an', 'Wir anschaffen einen Rechner.', 'schaffen … an'],
+      ['Das Heim nimmt neue Gäste auf.', 'aufnehmen منفصل', 'nimmt … auf', 'Das Heim aufnimmt neue Gäste.', 'nimmt … auf'],
+      ['Die Teilnahme am Kurs ist freiwillig.', 'الاشتراك مفرد', 'die Teilnahme: Singular + ist', 'Die Teilnahme am Kurs sind freiwillig.', 'ist']
+    ],
+    [
+      ['Die Kriminalpolizei übernimmt den Fall.', 'الشرطة الجنائية تتولى القضية', 'Die Kriminalpolizei übernehmen den Fall.', 'الفعل مفرد.', 'übernimmt'],
+      ['Nach der Entlassung sucht er sofort.', 'بعد التسريح يبحث فورًا', 'Nach der Entlassung sucht er sofort auf.', 'بلا auf.', 'sucht'],
+      ['Die Rechnung ist nächste Woche fällig.', 'الفاتورة مستحقة الأسبوع القادم', 'Die Rechnung ist nächste Woche fällig gemacht.', 'الصفة تكفي.', 'fällig'],
+      ['Bitte unterstreichen Sie die Fehler.', 'ضع خطًّا تحت الأخطاء', 'Bitte unterstreichen Sie auf die Fehler.', 'بلا auf.', 'unterstreichen']
+    ],
+    'Der Zivilstand ist im Formular anzugeben. Wir schaffen einen Rechner an.',
+    'Die Rechnung ist nächste Woche fällig.',
+    'Fülle morgen einen einfachen Antrag aus und lies ihn laut vor.',
+    'غدًا املأ طلبًا بسيطًا واقرأه بصوت عالٍ.'),
+
+  U('b1-u8-l6', 'B1', 'الطبيعة والرياضة', 'Natur und Sport', 'wortstellung',
+    'Am Ende berichtest du über Wetter, Ausflug und Sport',
+    'في النهاية تحكي عن الطقس والرحلة والرياضة.',
+    [
+      ['Auf dem Weg begegne ich dem Trainer.', 'begegnen + داتيف', 'begegnen + Dativ', 'Auf dem Weg begegne ich den Trainer.', 'dem Trainer'],
+      ['Es donnert seit einer Stunde.', 'الطقس بضمير es', 'es donnert, es gibt kein anderes Subjekt', 'Es donnern seit einer Stunde.', 'donnert'],
+      ['Das Stadion war voll.', 'الأمكنة مفردة', 'das Stadion: Singular + war', 'Das Stadion waren voll.', 'war'],
+      ['Golf spielt er nur im Sommer.', 'اللعبة بلا أداة', 'Golf spielen ohne Artikel', 'Er spielt das Golf nur im Sommer.', 'Golf']
+    ],
+    [
+      ['Der Treffpunkt bleibt derselbe.', 'نقطة اللقاء نفسها', 'Der Treffpunkt bleiben derselbe.', 'الفعل مفرد.', 'bleibt'],
+      ['Die Übernachtung kostet extra.', 'المبيت بتكلفة إضافية', 'Die Übernachtung kosten extra.', 'الفعل مفرد.', 'kostet'],
+      ['Der Blitz kam vor dem Donner.', 'البرق سبق الرعد', 'Der Blitz kamen vor dem Donner.', 'الفعل مفرد.', 'kam'],
+      ['Der Rekord fiel im letzten Versuch.', 'الرقم القياسي سُجّل في المحاولة الأخيرة', 'Der Rekord fielen im letzten Versuch.', 'الفعل مفرد.', 'fiel']
+    ],
+    'Auf dem Weg begegne ich dem Trainer. Es donnert seit einer Stunde.',
+    'Das Stadion war voll.',
+    'Berichte morgen über einen Ausflug bei schlechtem Wetter.',
+    'غدًا احكِ عن رحلة في طقس سيئ.')
 ];

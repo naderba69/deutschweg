@@ -157,7 +157,15 @@
     ['البيت والحرفة', 'Haus und Handwerk', 'السكن', 'im Keller und wurde beschädigt', 'explicit'],
     ['الصحة والمشاعر', 'Gesundheit und Gefühle', 'الصحة', 'tut weh und gegen Grippe', 'explicit'],
     ['المال والأجهزة والبريد', 'Geld, Geräte und Post', 'المال', 'EC-Karte und Netzwerk', 'explicit'],
-    ['الثقافة واللغة', 'Kultur und Sprache', 'الثقافة', 'Das Orchester spielt und festlegen', 'explicit']
+    ['الثقافة واللغة', 'Kultur und Sprache', 'الثقافة', 'Das Orchester spielt und festlegen', 'explicit'],
+    /* Unit 8 — amendment B1-L4: the third material round grew the promotion pool to
+       471 entries, so unit 8 carries the next 240 (six lessons of forty). */
+    ['البيت والانتقال', 'Haus und Umzug', 'السكن', 'Die Couch steht und in der Etage', 'explicit'],
+    ['المطبخ والسوق', 'Küche und Markt', 'الطعام', 'Paradeiser und Der Rahm ist', 'explicit'],
+    ['الجسد والنفس', 'Körper und Seele', 'الصحة', 'wütend auf und entspanne ich mich', 'explicit'],
+    ['العمل والمكتب', 'Arbeit und Büro', 'المهنة', 'schreibe … auf und konzentrieren auf', 'explicit'],
+    ['الإدارة والتعليم', 'Verwaltung und Schule', 'التعليم', 'anzugeben und schaffen … an', 'explicit'],
+    ['الطبيعة والرياضة', 'Natur und Sport', 'الترفيه', 'begegne ich dem und Es donnert', 'explicit']
   ];
 
   const B2 = [
@@ -216,7 +224,9 @@
        u6 (6), rows 46..51 → u7 (6). The count is derived, never typed twice. */
     let unit, lesson;
     if (i < 40) { unit = Math.floor(i / 8) + 1; lesson = (i % 8) + 1; }
-    else { unit = i < 46 ? 6 : 7; lesson = (i - (i < 46 ? 40 : 46)) + 1; }
+    else if (i < 46) { unit = 6; lesson = i - 40 + 1; }
+    else if (i < 52) { unit = 7; lesson = i - 46 + 1; }
+    else { unit = 8; lesson = i - 52 + 1; }
     const id = 'b1-u' + unit + '-l' + lesson;
     push(id, 'B1', r[0], r[1], r[2], 40, 17, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';

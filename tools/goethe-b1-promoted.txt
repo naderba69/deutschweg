@@ -1,6 +1,8 @@
 # Promotions the Goethe B1 match verified — authored in a word list AND met in the material.
 # One line per entry, written the way the recorded gap writes it. tools/match-goethe-b1.js
 # re-checks every line and prints any line that is not both; a line that fails is dropped.
+# Third round (unit 8, amendment B1-L4, item 28): after the third material round the pool
+# was 471, and unit 8 carries the next 240. The remaining 231 stay in the candidates file.
 # First round (unit 6, amendment B1-L2, DECISIONS-PENDING item 25): the 219 entries the gap
 # recorded as met-but-unnamed (tools/goethe-b1-candidates.txt) plus 21 entries from the gap's
 # 'new' column that the six new lessons' own material introduces.
@@ -488,3 +490,243 @@ list festlegen
 list verschreiben
 list statistisch
 list theoretisch
+list die Aufnahme
+list das Altersheim
+list die Betreuung
+list die Betreuerin
+list der Bewohner
+list die Bürgerin
+list die Couch
+list dekorieren
+list die Einrichtung
+list die Etage
+list die Fläche
+list der Fauteuil
+list die Garderobe
+list das Ehepaar
+list die Erhöhung
+list die Entfernung
+list die Vermietung
+list der Wohnsitz
+list der Zivilstand
+list die Mieterin
+list möbliert
+list der Hausmeister
+list die Hausmeisterin
+list der Abwart
+list ordentlich
+list das Quartier
+list der Vorort
+list die Zone
+list die Vase
+list der Spiegel
+list der Sack
+list die Mülltonne
+list der Dreck
+list die Dose
+list die Büchse
+list das Waschmittel
+list die Zahncreme
+list die Nadel
+list das Kissen
+list eckig
+list die Aprikose
+list der Backofen
+list das Backrohr
+list das Brötli
+list das Büfett
+list das Dessert
+list der Erdapfel
+list der Essig
+list der Fleischhauer
+list die Frucht
+list das Gebäck
+list der Geschmack
+list das Gewürz
+list die Glace
+list das Hackfleisch
+list das Henderl
+list das Hühnchen
+list hungrig
+list der Imbiss
+list die Jause
+list das Kaffeehaus
+list der Kakao
+list der Kloß
+list die Kneipe
+list der Knödel
+list die Konfitüre
+list die Limonade
+list die Mahlzeit
+list die Margarine
+list die Marille
+list das Mehl
+list das Menü
+list der Metzger
+list die Möhre
+list das Obers
+list der Paradeiser
+list die Pflaume
+list das Poulet
+list der Rahm
+list die Sahne
+list abhängig
+list ängstlich
+list blass
+list blind
+list entspannen
+list die Erholung
+list ernähren
+list erschöpft
+list die Infektion
+list die Medizin
+list der Notruf
+list operieren
+list das Opfer
+list optimistisch
+list die Pension
+list pensionieren
+list die Therapie
+list tödlich
+list der Tropfen
+list das Virus
+list süchtig
+list das Suchtmittel
+list verpflegen
+list die Gewalt
+list wütend
+list fröhlich
+list frech
+list peinlich
+list lächeln
+list fürchten
+list enttäuschen
+list die Verzeihung
+list das Verständnis
+list das Vergnügen
+list vergnügt
+list das Unglück
+list umarmen
+list der Sinn
+list die Unterhaltung
+list der Ratschlag
+list die Annonce
+list die Anwältin
+list aufschreiben
+list beobachten
+list berechnen
+list die Beschäftigung
+list die Empfehlung
+list der Faktor
+list die Fachfrau
+list Fachleute
+list finanziell
+list finanzieren
+list garantieren
+list die Industrie
+list der Ingenieur
+list das Institut
+list die Integration
+list die Kommunikation
+list konzentrieren
+list kopieren
+list der Kopierer
+list der Kuli
+list das Laufwerk
+list löschen
+list das Magazin
+list das Medium
+list die Methode
+list das Modell
+list die Organisation
+list der Prozess
+list realisieren
+list die Reporterin
+list die Richterin
+list die Rufnummer
+list der Schriftsteller
+list stilistisch
+list das Symbol
+list die Übersetzerin
+list der Verlag
+list die Visitenkarte
+list die Änderung
+list die Aushilfe
+list beruflich
+list berufstätig
+list die Einführung
+list einschließlich
+list das Einschreiben
+list die Einzelheit
+list die Entlassung
+list erforderlich
+list andrerseits
+list der Angehörige
+list anschaffen
+list anwesend
+list der Import
+list fällig
+list genehmigen
+list aufnehmen
+list die Kriminalpolizei
+list die Lehrstelle
+list die Leiterin
+list die Nachhilfe
+list der Nachwuchs
+list die Versammlung
+list vertreten
+list ausreichen
+list die Vertretung
+list der Bedarf
+list die Professorin
+list die Schularbeit
+list der Stempel
+list die Stufe
+list die Teilnahme
+list die Teilnehmerin
+list die Unternehmerin
+list untersagt
+list unterstreichen
+list befinden
+list die Zeichnung
+list die Klassenarbeit
+list begegnen
+list der Blitz
+list blitzen
+list blühen
+list der Donner
+list donnern
+list das Golf
+list grillieren
+list die Gymnastik
+list das Hallenbad
+list die Hitze
+list der Humor
+list die Hütte
+list der Kampf
+list kämpfen
+list die Katastrophe
+list das Kostüm
+list die Landung
+list der Mond
+list die Nordsee
+list der Ozean
+list die Ostsee
+list das Picknick
+list der Rekord
+list die Rückfahrt
+list die Rückkehr
+list die Rundfahrt
+list die Saison
+list der Salon
+list das Schaufenster
+list der Schatten
+list die Schlange
+list die Sportart
+list der Sportler
+list die Spielerin
+list das Spielzeug
+list das Stadion
+list der Treffpunkt
+list die Übernachtung
+list der Tierpark
