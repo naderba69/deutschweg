@@ -800,5 +800,131 @@ module.exports = [
     'Ein Argument braucht ein Beispiel. Immer und nie sind schwach.',
     'Ich nenne die Gegenposition.',
     'Sage morgen was für B2 noch fehlt.',
-    'غدًا قل ما ينقص لـ B2.')
+    'غدًا قل ما ينقص لـ B2.'),/* Unit 6 — amendment B1-L2 (DECISIONS-PENDING.md item 25). The sixth unit exists
+   because of the B1 match: tools/goethe-b1-candidates.txt holds 219 entries the
+   learner already MEETS in the material and no word list names. A B1 lesson holds
+   40 words (the compiler's ceiling), so 219 + the 21 entries the new lessons carry
+   in their own material are spread over six lessons of 40. The grammar of the unit
+   is the B1 grammar the earlier five units did not name: Pronominaladverbien,
+   Partizip als Adjektiv, zweiteilige Konnektoren, Passiv mit Modalverben,
+   Nominalstil, Wortbildung. */
+  U('b1-u6-l1', 'B1', 'الضمائر الظرفية', 'Pronominaladverbien', 'präposition',
+    'Am Ende benutzt du darauf und worüber statt auf das',
+    'في النهاية تستعمل darauf وworüber بدل auf das.',
+    [
+      ['Ich warte darauf.', 'الضمير الظرفي يشير إلى شيء ذُكر', 'Präposition + Sache → da(r) + Präposition', 'Ich warte auf das.', 'للشيء darauf لا auf das'],
+      ['Worüber sprecht ihr?', 'السؤال عن شيء: wo(r) + حرف', 'wo + Präposition → worüber', 'Über was sprecht ihr?', 'السؤال worüber'],
+      ['Ich denke daran.', 'denken an يصبح daran', 'Verb + Präposition → Pronominaladverb', 'Ich denke an das.', 'daran'],
+      ['Ich helfe ihm.', 'للأشخاص حرف + ضمير شخصي', 'Person → Präposition + Pronomen', 'Ich helfe daran.', 'الأشخاص an ihn']
+    ],
+    [
+      ['Ich warte darauf.', 'أنتظر ذلك', 'Ich warte auf das.', 'للشيء ضمير ظرفي.', 'darauf'],
+      ['Worüber sprecht ihr?', 'عن ماذا تتحدثون؟', 'Über was sprecht ihr als Frage?', 'السؤال worüber.', 'Worüber'],
+      ['Ich denke daran.', 'أفكر في ذلك', 'Ich denke an das.', 'daran مع denken.', 'daran'],
+      ['Ich helfe ihm.', 'أساعده', 'Ich helfe daran.', 'الأشخاص ضمير شخصي.', 'ihm']
+    ],
+    'Ich warte darauf. Worüber sprecht ihr?',
+    'Ich denke oft daran.',
+    'Notiere drei Sätze mit darauf.',
+    'غدًا اكتب ثلاث جمل بـdarauf.'),
+
+  U('b1-u6-l2', 'B1', 'اسم الفاعل والمفعول كصفة', 'Partizip als Adjektiv', 'deklination',
+    'Am Ende beschreibst du mit spannend und gespannt richtig',
+    'في النهاية تصف بـspannend وgespannt وصفًا سليمًا.',
+    [
+      ['Der Film ist spannend.', 'اسم الفاعل يصف من يفعل', 'Partizip I = aktiv und gleichzeitig', 'Der Film ist gespannt.', 'الفاعل spannend'],
+      ['Das Kind ist gespannt.', 'اسم المفعول يصف من يقع عليه', 'Partizip II = passiv und vorher', 'Das Kind ist spannend.', 'المفعول gespannt'],
+      ['ein spannendes Buch', 'كصفة تأخذ نهاية الصفة', 'Adjektivendung nach ein: -es', 'ein spannend Buch', 'نهاية الصفة'],
+      ['die beruhigte Mutter', 'اسم المفعول كصفة للنقل', 'Partizip II als Adjektiv', 'die beruhigen Mutter', 'beruhigt + e']
+    ],
+    [
+      ['Der Film ist spannend.', 'الفيلم مشوّق', 'Der Film ist gespannt.', 'الفاعل spannend.', 'spannend'],
+      ['Das Kind ist gespannt.', 'الطفل متلهّف', 'Das Kind ist spannend.', 'المفعول gespannt.', 'gespannt'],
+      ['ein spannendes Buch', 'كتاب مشوّق', 'ein spannend Buch', 'نهاية الصفة -es.', 'spannendes'],
+      ['Die Musik ist beruhigend.', 'الموسيقى مهدّئة', 'Die Musik ist beruhigen.', 'كصفة: beruhigend.', 'beruhigend']
+    ],
+    'Der Film ist spannend. Das Kind ist gespannt.',
+    'Die Musik ist beruhigend.',
+    'Beschreibe zwei Dinge mit -end und zwei mit -t.',
+    'غدًا صف شيئين بـ-end وشيئين بـ-t.'),
+
+  U('b1-u6-l3', 'B1', 'الروابط المزدوجة', 'Zweiteilige Konnektoren', 'wortstellung',
+    'Am Ende verbindest du zwei Teile mit entweder oder und je desto',
+    'في النهاية تربط شطرين بـentweder … oder وje … desto.',
+    [
+      ['Entweder du rufst an oder du schreibst.', 'الشطران معًا', 'entweder … oder يعملان زوجًا', 'Entweder du rufst an.', 'الشطر الثاني لازم'],
+      ['Je mehr du übst, desto besser sprichst du.', 'je في الفرعية وdesto في الرئيسية', 'je + Komparativ, desto + Komparativ', 'Je mehr du übst, besser sprichst du.', 'desto لازم'],
+      ['Er ist nicht Lehrer, sondern Arzt.', 'sondern تصحّح بعد النفي', 'nicht … sondern', 'Er ist nicht Lehrer, aber Arzt.', 'التصحيح sondern'],
+      ['Sie spricht sowohl Deutsch als auch Arabisch.', 'sowohl … als auch للجمع', 'sowohl … als auch', 'Sie spricht sowohl Deutsch und Arabisch.', 'als auch لا und']
+    ],
+    [
+      ['Entweder du rufst an oder du schreibst.', 'إما أن تهاتف أو تكتب', 'Entweder du rufst an.', 'الشطر الثاني: oder.', 'oder'],
+      ['Je mehr du übst, desto besser sprichst du.', 'كلّما تدرّبت أكثر تحدّثت أفضل', 'Je mehr du übst, besser sprichst du.', 'desto مع الأفعل.', 'desto'],
+      ['Er ist nicht Lehrer, sondern Arzt.', 'هو ليس مدرّسًا بل طبيبًا', 'Er ist nicht Lehrer, aber Arzt.', 'بعد النفي sondern.', 'sondern'],
+      ['Sie spricht sowohl Deutsch als auch Arabisch.', 'تتحدث الألمانية والعربية معًا', 'Sie spricht sowohl Deutsch und Arabisch.', 'als auch لا und.', 'als auch']
+    ],
+    'Entweder du rufst an oder du schreibst. Je mehr du übst, desto besser sprichst du.',
+    'Nicht nur du lernst, sondern auch ich lerne.',
+    'Schreibe drei Sätze mit entweder oder.',
+    'غدًا اكتب ثلاث جمل بـentweder … oder.'),
+
+  U('b1-u6-l4', 'B1', 'المجهول مع أفعال المساعدة', 'Passiv mit Modalverben', 'konjugation',
+    'Am Ende sagst du muss repariert werden statt muss reparieren',
+    'في النهاية تقول muss repariert werden لا muss reparieren.',
+    [
+      ['Die Straße muss repariert werden.', 'المساعد + اسم المفعول + werden', 'Modalverb + Partizip II + werden', 'Die Straße muss reparieren werden.', 'repariert لا reparieren'],
+      ['Das Dach kann saniert werden.', 'kann للمكن', 'können + Partizip II + werden', 'Das Dach kann sanieren werden.', 'saniert'],
+      ['Man repariert die Straße.', 'بديل المجهول: man', 'man + 3. Person Singular', 'Man reparieren die Straße.', 'man مع مفرد'],
+      ['Die Straße ist repariert.', 'sein يصف الحالة لا الحدث', 'Zustandspassiv = sein + Partizip II', 'Die Straße wird repariert als Zustand', 'الحالة ist']
+    ],
+    [
+      ['Die Straße muss repariert werden.', 'الشارع يجب أن يُرمَّم', 'Die Straße muss reparieren werden.', 'repariert werden.', 'repariert'],
+      ['Das Dach kann saniert werden.', 'السقف يمكن ترميمه', 'Das Dach kann sanieren werden.', 'saniert werden.', 'saniert'],
+      ['Man repariert die Straße.', 'يُرمَّم الشارع (بديل)', 'Man reparieren die Straße.', 'man مع الفعل المفرد.', 'repariert'],
+      ['Die Straße ist repariert.', 'الشارع مُرمَّم (حالة)', 'Die Straße ist reparieren.', 'حالة: repariert.', 'repariert']
+    ],
+    'Die Straße muss repariert werden. Das Dach kann saniert werden.',
+    'Die Rechnung muss bezahlt werden.',
+    'Sage drei Sätze mit muss und werden.',
+    'غدًا قل ثلاث جمل بـmuss … werden.'),
+
+  U('b1-u6-l5', 'B1', 'الأسلوب الاسمي', 'Nominalstil', 'kasus',
+    'Am Ende schreibst du beim Ausfüllen des Formulars statt einer wenn-Konstruktion',
+    'في النهاية تكتب beim Ausfüllen des Formulars بدل جملة بـwenn.',
+    [
+      ['Beim Ausfüllen des Formulars hilft die Sekretärin.', 'الاسم يحمل الحدث', 'bei + Substantivierung + Genitiv', 'Wenn ich ausfülle hilft die Sekretärin ohne Komma', 'الصيغة الاسمية'],
+      ['Die Höhe des Turms ist bekannt.', 'الجينيتيف يربط بدل von', 'Nomen + Genitiv statt von + Dativ', 'Die Höhe von dem Turm ist bekannt.', 'الإضافة'],
+      ['Der Schutz der Daten gilt.', 'النص الرسمي يسمّي الحماية باسمها', 'Genitivattribut', 'Der Schutz von den Daten gilt.', 'der Daten'],
+      ['Nach dem Prüfen kommt die Antwort.', 'nach + اسم مصدري', 'nach + Substantivierung', 'Nach dem wir prüfen kommt die Antwort.', 'nach dem Prüfen']
+    ],
+    [
+      ['Beim Ausfüllen des Formulars hilft die Sekretärin.', 'عند ملء الاستمارة تساعد السكرتيرة', 'Wenn ich ausfülle hilft die Sekretärin.', 'الصيغة الاسمية beim + اسم.', 'Ausfüllen'],
+      ['Die Höhe des Turms ist bekannt.', 'ارتفاع البرج معروف', 'Die Höhe von dem Turm ist bekannt.', 'الإضافة des Turms.', 'des Turms'],
+      ['Der Schutz der Daten gilt.', 'حماية البيانات نافذة', 'Der Schutz von den Daten gilt.', 'der Daten لا von den.', 'der Daten'],
+      ['Nach dem Prüfen kommt die Antwort.', 'بعد الفحص يأتي الجواب', 'Nach dem wir prüfen kommt die Antwort.', 'nach dem Prüfen.', 'Prüfen']
+    ],
+    'Beim Ausfüllen des Formulars hilft die Sekretärin. Die Höhe des Turms ist bekannt.',
+    'Der Schutz der Daten ist wichtig.',
+    'Schreibe drei Sätze im Nominalstil.',
+    'غدًا اكتب ثلاث جمل بالأسلوب الاسمي.'),
+
+  U('b1-u6-l6', 'B1', 'الاشتقاق', 'Wortbildung', 'orthographie',
+    'Am Ende bildest du Berufsnamen und Nomen aus Verben',
+    'في النهاية تصوغ أسماء المهن والأسماء من الأفعال.',
+    [
+      ['Die Autorin liest heute.', 'مؤنث المهنة بـ-in', 'weibliche Form -in, Plural -innen', 'Die Autorinnen liest heute.', 'الجمع -innen'],
+      ['bessern und die Besserung', 'الاسم من الفعل بـ-ung', 'Verb + -ung = Nomen mit die', 'der Besserung', 'die Besserung'],
+      ['frei und die Freiheit', 'الاسم من الصفة بـ-heit', 'Adjektiv + -heit = Nomen mit die', 'die Frei ohne -heit', 'die Freiheit'],
+      ['bio- oder öko-', 'السابقة بشرطة', 'Präfix mit Bindestrich', 'bio oder öko ohne Bindestrich', 'bio-']
+    ],
+    [
+      ['Die Autorin liest heute.', 'المؤلفة تقرأ اليوم', 'Die Autorin liest heute es.', 'لا ضمير زائد.', 'Autorin'],
+      ['Die Besserung kommt langsam.', 'التحسّن يأتي ببطء', 'Die Besserung kommt langsam es.', 'لا ضمير زائد.', 'Besserung'],
+      ['Die Freiheit ist wichtig.', 'الحرية مهمة', 'Die Freiheit ist wichtig gemacht.', 'الصفة تكفي.', 'Freiheit'],
+      ['Viele Produkte heißen bio-.', 'منتجات كثيرة تُسمّى عضوية', 'Viele Produkte heißen bio.', 'السابقة بشرطة.', 'bio-']
+    ],
+    'Die Autorin liest heute. Die Besserung kommt langsam.',
+    'Die Freiheit ist wichtig.',
+    'Bilde fünf Berufsnamen mit -in.',
+    'غدًا كوّن خمسة أسماء مهن بـ-in.')
 ];

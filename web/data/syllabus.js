@@ -140,7 +140,16 @@
     ['صحة عامة', 'Gesundheitssystem', 'الصحة', 'موعد وتأمين بجملة', 'explicit'],
     ['مراجعة B1', 'Wiederholung B1', 'المراجعة', 'جمع الوصلات', 'explicit'],
     ['شكل امتحان B1', 'Prüfungsform B1', 'شكل الامتحان', 'شكل Goethe B1 لا محاكاة', 'explicit'],
-    ['جسر إلى B2', 'Übergang', 'الحدود', 'ما لا يكفي لـ B2', 'explicit']
+    ['جسر إلى B2', 'Übergang', 'الحدود', 'ما لا يكفي لـ B2', 'explicit'],
+    /* Unit 6 — amendment B1-L2: the B1 match found 219 entries the learner already
+       meets in the material and no word list names (tools/goethe-b1-candidates.txt),
+       and a B1 lesson holds 40 words, so the promotion needs its own six-lesson unit. */
+    ['الضمائر الظرفية', 'Pronominaladverbien', 'الإشارة إلى شيء', 'da(r) + Präposition', 'explicit'],
+    ['اسم الفاعل والمفعول كصفة', 'Partizip als Adjektiv', 'الوصف', 'Partizip I und II كصفة', 'explicit'],
+    ['الروابط المزدوجة', 'Zweiteilige Konnektoren', 'الربط', 'entweder oder وje desto', 'explicit'],
+    ['المجهول مع أفعال المساعدة', 'Passiv mit Modalverben', 'الحدث', 'muss werden', 'explicit'],
+    ['الأسلوب الاسمي', 'Nominalstil', 'الكتابة الرسمية', 'beim Ausfüllen des Formulars', 'explicit'],
+    ['الاشتقاق', 'Wortbildung', 'المفردات', 'in وung وheit', 'explicit']
   ];
 
   const B2 = [

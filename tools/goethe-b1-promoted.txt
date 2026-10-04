@@ -1,0 +1,247 @@
+# Promotions the Goethe B1 match verified — authored in a word list AND met in the material.
+# One line per entry, written the way the recorded gap writes it. tools/match-goethe-b1.js
+# re-checks every line and prints any line that is not both; a line that fails is dropped.
+# None of these were authored before this round: they are the 219 entries the gap recorded as
+# met-but-unnamed (tools/goethe-b1-candidates.txt) plus 21 entries from the gap's 'new' column
+# that the six new lessons' own material introduces. Amendment B1-L2, DECISIONS-PENDING item 25.
+
+list -weise
+list abheben
+list das Abitur
+list absolut
+list der Abt
+list ähnlich
+list die Aktivität
+list der Alkohol
+list analysieren
+list der Anbieter
+list anerkennen
+list angenehm
+list anstrengend
+list anwenden
+list ärgerlich
+list atmen
+list aufmerksam
+list ausfallen
+list ausrichten
+list die Autorin
+list die Beamtin
+list bedienen
+list begeistert
+list behalten
+list bereits
+list beruhigen
+list beschädigen
+list die Beschreibung
+list die Besserung
+list der Betrieb
+list bieten
+list das Billett/Billet
+list bio-
+list die Biologie
+list brennen
+list der Briefträger
+list die Bürste
+list das Dach
+list Daten
+list das Detail
+list der Dialog
+list diese
+list dieselbe
+list dieser
+list dieses
+list digital
+list der Direktor
+list die Doktorin
+list drin
+list einzig
+list endgültig
+list enthalten
+list entstehen
+list ereignen
+list erfahren
+list erfolgreich
+list erhalten
+list erkennen
+list erledigen
+list ersetzen
+list erwachsen
+list etwa
+list extra
+list die Fabrik
+list die Fähre
+list fair
+list fangen
+list fassen
+list das Feld
+list flexibel
+list fließend
+list die Form
+list führen
+list funktionieren
+list der Gang
+list das Gebäude
+list gemeinsam
+list gering
+list geschehen
+list das Gesetz
+list getrennt
+list gießen
+list das Gold
+list gratis
+list greifen
+list gründen
+list gründlich
+list halbtags
+list der Handwerker
+list häufig
+list heben
+list das Heim
+list heim
+list herein-
+list die Herkunft
+list hinterlassen
+list hinweisen
+list der Hof
+list die Höhe
+list innerhalb
+list interessant
+list je
+list jedes Mal
+list die Journalistin
+list das Kabel
+list die Kälte
+list die Kanne
+list die Kantine
+list die Kellnerin
+list klagen
+list kleben
+list der/das Klick
+list klicken
+list die Klingel
+list knapp
+list die Köchin
+list der König
+list die Kontrolle
+list korrekt
+list der Krankenpfleger
+list kritisch
+list der Künstler
+list die Künstlerin
+list leisten
+list leiten
+list die Leiter
+list die Liste
+list lohnen
+list los
+list markieren
+list die Mechanikerin
+list mehrere
+list mitten
+list der Nerv
+list neugierig
+list niedrig
+list noch mal/nochmal
+list öfter
+list ordnen
+list der Ordner
+list per
+list die Planung
+list die Polizistin
+list protestieren
+list reagieren
+list realistisch
+list die Reihenfolge
+list die Religion
+list retten
+list der Richter
+list rückwärts
+list die Sängerin
+list der Schauspieler
+list die Schauspielerin
+list die Schrift
+list der Schutz
+list schwieger-
+list selten
+list sichtbar
+list der Sieg
+list siegen
+list der Sieger
+list sodass/so dass
+list sogenannt/so genannt
+list sondern
+list die Soße/Sauce
+list die Speise
+list spezial-
+list ständig
+list starten
+list die Station
+list steil
+list der Stern
+list die Stiege
+list stoppen
+list die Strecke
+list die Studie
+list der/die Studierende
+list der Tagesablauf
+list das Talent
+list die Tat
+list teilweise
+list testen
+list die Theorie
+list trennen
+list treten
+list das Tuch
+list der Turm
+list überraschen
+list üblich
+list ungewöhnlich
+list unterscheiden
+list unterschiedlich
+list das Urteil
+list verlangen
+list verlaufen
+list verpacken
+list verraten
+list verschwinden
+list verteilen
+list verwandt
+list voraus
+list wachsen
+list warnen
+list weiter
+list weltweit
+list werfen
+list wiegen
+list wirken
+list wohl
+list worüber
+list wunderschön
+list zählen
+list das Zeichen
+list zerstören
+list zufällig
+list das Zuhause
+list der Zustand
+list zuständig
+list der Bildschirm
+list die Tastatur
+list die Taste
+list das Video
+list installieren
+list empfangen
+list die Freude
+list die Eile
+list der Atem
+list die Aufforderung
+list die Auswahl
+list das Abenteuer
+list der Abschnitt
+list der Ausdruck
+list die Angabe
+list die Anzahl
+list die Anleitung
+list das Dokument
+list die Urkunde
+list der Sekretär
+list die Praktikantin

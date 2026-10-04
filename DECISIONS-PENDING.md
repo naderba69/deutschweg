@@ -135,19 +135,36 @@ with the more specific rule, or with the rule that produces more honest evidence
     31 chunks), then B2.
 
 
-25. **B1-L2 — the B1 match is measured, and B1 promotions need new lessons, not bigger ones.**
-    Run 1 of `tools/match-goethe-b1.js` measures the official B1 list (1,820 entries, read whole from the
+25. **B1-L2 — the B1 match is measured, and B1 promotions needed new lessons; the sixth unit now
+    carries them (delivered 2026-10-04).**
+    Run 1 of `tools/match-goethe-b1.js` measured the official B1 list (1,820 entries, read whole from the
     DWDS index of the same list, kept outside the repo as usual) against the A0..B1 corpus: **599/1,820 =
-    33% authored** and **818/1,820 = 45% met**. The recorded gap (`tools/goethe-b1-gap.txt`) holds **1,221
-    entries**, of which **219 are already met in the material and named by no word list** — the promotion
-    pool `tools/goethe-b1-candidates.txt` — and **1,002 the material does not carry at all**. Floors are the
-    run's own values (0.329 / 0.449) and may only rise; a run without the transcription reads the baseline
-    from the gap file's header (verified to reproduce 599 · 818 exactly) and is refused under
-    `--require-transcription`.
-    **The structural finding, declared rather than worked around:** every B1 lesson already sits on the
-    compiler's hard ceiling of 40 words per lesson (a 41st word would need an 11th Wortschatz step and break
-    the 3–10 step band), so unlike A2 — whose lessons were below the ceiling and could absorb promotions —
-    B1 promotions require **new lessons**. The amendment that follows (B1-L2) adds B1 map rows whose lesson
-    lists carry the 219 pool first, then the 1,002 the material still lacks. The **98 rows** already authored
-    for this round are kept, unwired, in `tools/b1-promoted-rows.js` and count for nothing until they are
-    wired into their lessons and verified by the matcher line by line. After that the B2 match follows.
+    33% authored** and **818/1,820 = 45% met**, with the recorded gap (`tools/goethe-b1-gap.txt`) holding
+    **1,221 entries** — **219 already met in the material and named by no word list** (the promotion pool)
+    and **1,002 the material does not carry at all**.
+    **The structural finding:** every B1 lesson already sits on the compiler's hard ceiling of 40 words
+    (a 41st word would need an 11th Wortschatz step and break the 3–10 step band), so unlike A2 — whose
+    lessons were below the ceiling and could absorb promotions — a B1 promotion requires **new lessons**.
+    B1 therefore grows from **40 to 46 lessons**: one sixth unit of six lessons (`b1-u6-l1` … `b1-u6-l6`),
+    each carrying 40 words, 10 Wortschatz steps and three distinct Merkhilfen. Its grammar is the B1
+    grammar the first five units did not name — Pronominaladverbien, Partizip als Adjektiv, zweiteilige
+    Konnektoren, Passiv mit Modalverben, Nominalstil, Wortbildung. The unit carries **all 219 pool entries**
+    (tools/goethe-b1-candidates.txt) plus **21 entries** from the gap's `new` column that the new lessons'
+    own German material introduces. Declared B1 receptive moves 1,600 → **1,840 = 100%**, the productive
+    ceiling moves with it (6 × 17), and the level ceiling shifts in `tools/validate-syllabus.js` are
+    `B1_GOETHE_SHIFT = 240` and `B1_GOETHE_SHIFT_PROD = 102`; no floor moves down.
+    **Measured after the unit:** authored **844/1,820 = 46%**, met **870/1,820 = 48%**, open gap **976**,
+    remaining pool **26**, with **240 promotions** verified line by line in `tools/goethe-b1-promoted.txt`
+    (the matcher re-checks each one as authored AND met; anything that fails is printed and dropped).
+    Floors ratchet to **0.463 / 0.478**.
+    **One constant moved and it is declared:** the brief sizes the sentence bank at 500–800 and wrote that
+    window for the map it planned (100 lessons, later 133). Every compiled lesson contributes exactly six
+    sentences, so `tools/compile-units.js` now derives the ceiling from the map (`max(800, 6 × lessons)`)
+    instead of letting the growth hide; the 500 floor is untouched and a lesson that adds more than its six
+    still fails the build.
+    **A tool improvement that removes a sandbox dependency:** a derived run may now rewrite the gap file
+    (`--write-gap`), because the gap file *is* the open set — every entry it lists is re-classified against
+    the corpus, and nothing already carried can fall back (the corpus only grows). The header carries the
+    new baseline (`1820 total, 844 authored, 870 met`), and re-running on it reports 0 gained. Likewise the
+    pool generator (`tools/goethe-a2-candidates.js`, `GOETHE_LEVEL=B1`) reads the pool from the gap file
+    when the copyrighted index is absent, so the remaining 26-entry pool is reproducible without it.
