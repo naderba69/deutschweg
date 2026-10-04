@@ -1779,6 +1779,11 @@ function storeModule(moduleId, score, protocol) {
   lastMockRecord = into.recorded ? into : null;
   save();
 }
+/* The four module screens above are the only producers of a mock module. One of them
+   is enough to record a score; all four in one open session are what makes the
+   *full* mock the §12.5 gate reads. Exposed so a test can walk the same path the
+   learner walks without clicking thirty items per section. */
+DW.storeModule = storeModule;
 let lastMockRecord = null;
 /* The learner should see what a finished module did to the mock session, not
    discover it on the next screen. */

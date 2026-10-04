@@ -745,5 +745,52 @@ console.log('\n— P3.2 lexical layer —\n');
   win.DW.go('home');
 }
 
+/* ---------- §12.4/§12.5: one session, four modules, and the gate sees a full mock ---------- */
+{
+  const { window: win } = boot();
+  const S = win.DW.session.S;
+  const src = fs.readFileSync(ROOT + '/web/app.js', 'utf8');
+  const calls = (src.match(/storeModule\(/g) || []).length;
+  const papers = ['قراءة 65 د', 'سماع 40 د'].every(run => src.indexOf(run) >= 0);
+  t('mock: each module reaches the recorder from its own screen (four call sites + two paper runners)',
+    calls === 5 /* four calls and the definition */ && papers &&
+    src.indexOf("storeModule('schreiben'") >= 0 && src.indexOf("storeModule('sprechen'") >= 0,
+    'calls ' + calls);
+
+  win.DW.go('exam');
+  const start = Array.from(win.document.querySelectorAll('button'))
+    .filter(b => b.textContent.trim() === 'ابدأ محاكاة كاملة 1')[0];
+  t('mock: the exam view opens a full-mock session', !!start);
+  if (start) start.click();
+  win.DW.storeModule('lesen', 80, false);
+  win.DW.storeModule('hoeren', 72, false);
+  const third = win.DW.session.S.exam.mockSession;
+  t('mock: three modules leave the session open with one missing',
+    !!third && third.modules.schreiben == null && third.modules.sprechen == null);
+  win.DW.storeModule('schreiben', 66, false);
+  win.DW.storeModule('sprechen', 70, false);
+  t('mock: the fourth module closes the session and writes one full record',
+    win.DW.session.S.exam.mockSession === null &&
+    (win.DW.session.S.exam.mocks || []).filter(m => m.full).length === 1 &&
+    (win.DW.session.S.exam.mocks || [])[0].modules.length === 4);
+  win.DW.go('exam');
+  const texts = () => Array.from(win.document.querySelectorAll('#view *')).map(n => n.textContent);
+  t('mock: the view counts one full mock and no open session',
+    texts().some(x => x.indexOf('1 محاكاة كاملة من 8') >= 0) &&
+    texts().some(x => x.indexOf('جلسة 1 مفتوحة') < 0));
+  const gate = win.DW.exam.readiness(win.DW.session.S);
+  t('mock: the gate reads the full mock as its module condition',
+    gate.modulesOk === true && gate.evidence && Object.keys(gate.evidence).length === 6);
+  t('mock: a module under the bar would keep it closed',
+    win.DW.exam.readiness({ exam: { mocks: [{ full: true, modules: [
+      { id: 'lesen', score: 80 }, { id: 'hoeren', score: 80 }, { id: 'schreiben', score: 64 }, { id: 'sprechen', score: 80 }] }] },
+      errorLedger: [] }).modulesOk === false);
+  t('mock: 61 in the last section is under the 65 bar — the run above proves the gate reads scores, not attendance',
+    win.DW.exam.readiness({ exam: { mocks: [{ full: true, modules: [
+      { id: 'lesen', score: 80 }, { id: 'hoeren', score: 72 }, { id: 'schreiben', score: 66 }, { id: 'sprechen', score: 61 }] }] },
+      errorLedger: [] }).modulesOk === false);
+  win.DW.go('home');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
