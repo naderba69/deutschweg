@@ -1,0 +1,105 @@
+/* Deutschweg — B1 lexical layer, unit 9 (part c): b1-u9-l5 · b1-u9-l6. */
+
+module.exports = {
+
+  'b1-u9-l5': {
+    items: [
+      ['anschnallen', '—', 'يربط الحزام', 'Wir müssen uns anschnallen, bevor der Flug startet.', 'Wir müssen uns anschnallen auf, bevor der Flug startet.', 'انعكاسي ومبني مع müssen بلا حرف جر.', 'lexik-kollokation', 'anschnallen'],
+      ['die Distanz', 'die Distanzen', 'المسافة', 'Die Distanz zwischen den Sitzen ist klein.', 'Die Distanz zwischen den Sitzen sind klein.', 'الفعل مفرد: ist.', 'konjugation', 'Distanz'],
+      ['elegant', '—', 'أنيق', 'Die Kabine ist klein, aber elegant.', 'Die Kabine ist klein, aber elegant gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'elegant'],
+      ['elektrisch', '—', 'كهربائي', 'Der Motor ist elektrisch.', 'Der Motor ist elektrisch gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'elektrisch'],
+      ['parallel', '—', 'متوازٍ', 'Zwei Reihen liegen parallel.', 'Zwei Reihen liegen parallel auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'parallel'],
+      ['der Passagier', 'die Passagiere', 'المسافر', 'Ein Passagier fragt am Schalter.', 'Ein Passagier fragen am Schalter.', 'الفعل مفرد: fragt.', 'konjugation', 'Passagier'],
+      ['die Passagierin', 'die Passagierinnen', 'المسافرة', 'Eine Passagierin hört aufmerksam zu.', 'Eine Passagierin hören aufmerksam zu.', 'الفعل مفرد: hört.', 'konjugation', 'Passagierin'],
+      ['der Steward', 'die Stewards', 'المضيف', 'Der Steward begrüßt alle Gäste.', 'Der Steward begrüßen alle Gäste.', 'الفعل مفرد: begrüßt.', 'konjugation', 'Steward'],
+      ['die Stewardess', 'die Stewardessen', 'المضيفة', 'Die Stewardess zeigt den Weg.', 'Die Stewardess zeigen den Weg.', 'الفعل مفرد: zeigt.', 'konjugation', 'Stewardess'],
+      ['die Kabine', 'die Kabinen', 'المقصورة', 'Die Kabine ist klein und warm.', 'Die Kabine sind klein und warm.', 'الفعل مفرد: ist.', 'konjugation', 'Kabine'],
+      ['die Klimaanlage', 'die Klimaanlagen', 'المكيّف', 'Die Klimaanlage ist zu kalt.', 'Die Klimaanlage sind zu kalt.', 'الفعل مفرد: ist.', 'konjugation', 'Klimaanlage'],
+      ['ungefähr', '—', 'تقريبًا', 'Ungefähr zwanzig Minuten später beginnt der Flug.', 'Ungefähr zwanzig Minuten später beginnt der Flug auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Ungefähr'],
+      ['voraussichtlich', '—', 'على الأرجح', 'Voraussichtlich landen wir um acht.', 'Voraussichtlich landen wir um acht auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Voraussichtlich'],
+      ['zukünftig', '—', 'في المستقبل', 'Zukünftig fliegen wir direkt.', 'Zukünftig fliegen wir direkt auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Zukünftig'],
+      ['hinterher', '—', 'وراء/بعد ذلك', 'Wir sehen einander hinterher.', 'Wir sehen einander hinterher auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'hinterher'],
+      ['hierher', '—', 'إلى هنا', '«Komm hierher!», ruft jemand.', '«Komm hierher auf!», ruft jemand.', 'لا حرف جر بعد hierher.', 'register', 'hierher'],
+      ['rauf', '—', 'إلى الأعلى (عامي)', 'Rauf bis zum Schloss, dann abwärts.', 'Rauf bis zum Schloss auf, dann abwärts.', 'لا حرف جر زائد.', 'register', 'Rauf'],
+      ['abwärts', '—', 'إلى الأسفل', 'Dann geht der Weg abwärts zum Fluss.', 'Dann geht der Weg abwärts zum Fluss auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'abwärts'],
+      ['umdrehen', '—', 'يقلب/يستدير', 'Ich will den Stein umdrehen.', 'Ich will den Stein umdrehen auf.', 'umdrehen بلا حرف جر.', 'lexik-kollokation', 'umdrehen'],
+      ['rennen', '—', 'يعدو', 'Die Kleinen rennen über den Platz.', 'Die Kleinen rennen über den Platz auf.', 'rennen بلا حرف جر.', 'lexik-kollokation', 'rennen'],
+      ['klettern', '—', 'يتسلّق', 'Ein Kind will auf den Baum klettern.', 'Ein Kind will auf den Baum klettern auf.', 'klettern + auf.', 'präposition', 'klettern'],
+      ['schieben', '—', 'يدفع', 'Zwei Männer schieben den Karren.', 'Zwei Männer schieben den Karren auf.', 'schieben بلا حرف جر.', 'lexik-kollokation', 'schieben'],
+      ['schießen', '—', 'يطلق/يسدد', 'Die Kinder wollen mit dem Ball schießen.', 'Die Kinder wollen mit dem Ball schießen auf.', 'schießen بلا حرف جر.', 'lexik-kollokation', 'schießen'],
+      ['runterwerfen', '—', 'يرمي إلى الأسفل', 'Ein Kind will den Ball runterwerfen.', 'Ein Kind will den Ball runterwerfen auf.', 'runterwerfen بلا حرف جر.', 'register', 'runterwerfen'],
+      ['zelten', '—', 'يخيّم', 'Im Sommer wollen wir am See zelten.', 'Im Sommer wollen wir am See zelten auf.', 'zelten بلا حرف جر.', 'lexik-kollokation', 'zelten'],
+      ['tanken', '—', 'يزوّد بالوقود', 'Vor der Fahrt muss ich noch tanken.', 'Vor der Fahrt muss ich noch tanken auf.', 'tanken بلا حرف جر.', 'lexik-kollokation', 'tanken'],
+      ['das Verkehrszeichen', 'die Verkehrszeichen', 'إشارة المرور', 'Das Verkehrszeichen ist neu.', 'Das Verkehrszeichen sind neu.', 'الفعل مفرد: ist.', 'konjugation', 'Verkehrszeichen'],
+      ['die Vorfahrt', '—', 'أولوية المرور', 'Die Vorfahrt gilt hier.', 'Die Vorfahrt gelten hier.', 'الفعل مفرد: gilt.', 'konjugation', 'Vorfahrt'],
+      ['der Strafzettel', 'die Strafzettel', 'المخالفة', 'Der Strafzettel kam per Post.', 'Der Strafzettel kamen per Post.', 'الفعل مفرد: kam.', 'konjugation', 'Strafzettel'],
+      ['überfahren', '—', 'يدهس/يتجاوز', 'Der Fahrer will die rote Ampel überfahren.', 'Der Fahrer will die rote Ampel überfahren auf.', 'überfahren بلا حرف جر.', 'lexik-kollokation', 'überfahren'],
+      ['verhaften', '—', 'يعتقل', 'Die Polizei will den Täter verhaften.', 'Die Polizei will den Täter verhaften auf.', 'verhaften بلا حرف جر.', 'lexik-kollokation', 'verhaften'],
+      ['festnehmen', '—', 'يوقف/يحتجز', 'Sie wollen den Einbrecher festnehmen.', 'Sie wollen den Einbrecher festnehmen auf.', 'festnehmen بلا حرف جر.', 'lexik-kollokation', 'festnehmen'],
+      ['die Flucht', 'die Fluchten', 'الهروب', 'Die Flucht dauerte zwei Tage.', 'Die Flucht dauerten zwei Tage.', 'الفعل مفرد: dauerte.', 'konjugation', 'Flucht'],
+      ['fliehen', '—', 'يهرب', 'Die Täter wollen über die Grenze fliehen.', 'Die Täter wollen über die Grenze fliehen auf.', 'fliehen بلا حرف جر.', 'lexik-kollokation', 'fliehen'],
+      ['fließen', '—', 'يتدفق', 'Die Bäche fließen zum Fluss.', 'Die Bäche fließen zum Fluss auf.', 'fließen بلا حرف جر.', 'lexik-kollokation', 'fließen'],
+      ['das Trottoir', 'die Trottoirs', 'الرصيف (سويسرا)', 'Das Trottoir ist hier schmal.', 'Das Trottoir sind hier schmal.', 'الفعل مفرد: ist.', 'register', 'Trottoir'],
+      ['der Gehsteig', 'die Gehsteige', 'الرصيف (النمسا)', 'Der Gehsteig ist neu.', 'Der Gehsteig sind neu.', 'الفعل مفرد: ist.', 'register', 'Gehsteig'],
+      ['die Fußgängerin', 'die Fußgängerinnen', 'الماشية على القدم', 'Die Fußgängerin wartet am Rand.', 'Die Fußgängerin warten am Rand.', 'الفعل مفرد: wartet.', 'konjugation', 'Fußgängerin'],
+      ['die Radfahrerin', 'die Radfahrerinnen', 'راكبة الدراجة', 'Die Radfahrerin fährt auf der Straße.', 'Die Radfahrerin fahren auf der Straße.', 'الفعل مفرد: fährt.', 'konjugation', 'Radfahrerin'],
+      ['das Velo', 'die Velos', 'الدراجة (سويسرا)', 'In der Schweiz heißt das Fahrrad Velo.', 'In der Schweiz heißt das Fahrrad Velo auf.', 'لا حرف جر زائد.', 'register', 'Velo']
+    ],
+    tricks: [
+      { trick: 'الصيغ السويسرية والنمساوية في المرور: das Velo · das Trottoir · der Gehsteig', wie: 'In der Schweiz heißt das Fahrrad Velo. · Das Trottoir ist hier schmal.', warum: 'الامتحان يذكر الصيغة المحلية بدل الفصحى، والطالب يظنها كلمة أخرى.', anchor: 'heißt das Fahrrad Velo' },
+      { trick: 'الانعكاسي مع müssen: sich anschnallen — ومصدر منفصل بلا فصل بعده', wie: 'Wir müssen uns anschnallen, bevor der Flug startet.', warum: 'بعد müssen يبقى المصدر في الآخر بلا بادئة منفصلة في الأول.', anchor: 'müssen uns anschnallen' },
+      { trick: 'أفعال الحركة اللازمة: rennen · klettern · schieben · fließen بلا مفعول', wie: 'Die Kleinen rennen über den Platz. · Die Bäche fließen zum Fluss.', warum: 'العربية تقول «يركض في» فتدخل حرفًا، والألمانية تستعمل حرف اتجاه لا مفعولًا.', anchor: 'Die Bäche fließen zum Fluss' }
+    ]
+  },
+
+  'b1-u9-l6': {
+    items: [
+      ['hageln', '—', 'يتساقط البَرَد', 'Es kann im April hageln.', 'Es kann im April hageln auf.', 'hageln مع es بلا حرف جر.', 'lexik-kollokation', 'hageln'],
+      ['das Gift', 'die Gifte', 'السّم', 'Das Gift ist gefährlich.', 'Das Gift sind gefährlich.', 'الفعل مفرد: ist.', 'konjugation', 'Gift'],
+      ['giftig', '—', 'سام', 'Die Beere ist giftig.', 'Die Beere ist giftig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'giftig'],
+      ['der Pilz', 'die Pilze', 'الفطر', 'Dieser Pilz ist essbar.', 'Dieser Pilz sind essbar.', 'الفعل مفرد: ist.', 'konjugation', 'Pilz'],
+      ['das Schwammerl', 'die Schwammerl', 'الفطر (النمسا/بافاريا)', 'In Österreich heißt der Pilz Schwammerl.', 'In Österreich heißt der Pilz Schwammerl auf.', 'لا حرف جر زائد.', 'register', 'Schwammerl'],
+      ['das Znüni', 'die Znüni', 'وجبة الصباح (سويسرا)', 'In Zürich heißt der Vormittagsimbiss Znüni.', 'In Zürich heißt der Vormittagsimbiss Znüni auf.', 'لا حرف جر زائد.', 'register', 'Znüni'],
+      ['das Zvieri', 'die Zvieri', 'وجبة الرابعة (سويسرا)', 'Das Zvieri kommt um vier.', 'Das Zvieri kommen um vier.', 'الفعل مفرد: kommt.', 'register', 'Zvieri'],
+      ['die Semmel', 'die Semmeln', 'الخبز الصغير (بافاريا)', 'Semmel heißt das Brötchen in Bayern.', 'Semmel heißen das Brötchen in Bayern.', 'الفعل مفرد: heißt.', 'register', 'Semmel'],
+      ['der Schlagrahm', '—', 'القشدة (جنوب ألمانيا)', 'Der Schlagrahm gehört auf den Kuchen.', 'Der Schlagrahm gehören auf den Kuchen.', 'الفعل مفرد: gehört.', 'register', 'Schlagrahm'],
+      ['das Schlagobers', '—', 'القشدة (النمسا)', 'Das Schlagobers ist süß.', 'Das Schlagobers sind süß.', 'الفعل مفرد: ist.', 'register', 'Schlagobers'],
+      ['die Schlagsahne', '—', 'القشدة المخفوقة', 'Die Schlagsahne steht im Kühlschrank.', 'Die Schlagsahne stehen im Kühlschrank.', 'الفعل مفرد: steht.', 'konjugation', 'Schlagsahne'],
+      ['die Nachspeise', 'die Nachspeisen', 'التحلية', 'Als Nachspeise gibt es Eis mit Obst.', 'Als Nachspeise gibt es Eis für Obst.', 'mit Obst لا für.', 'präposition', 'Nachspeise'],
+      ['die Vorspeise', 'die Vorspeisen', 'المقبلات', 'Die Vorspeise war eine Suppe.', 'Die Vorspeise waren eine Suppe.', 'الفعل مفرد: war.', 'konjugation', 'Vorspeise'],
+      ['salzig', '—', 'مالح', 'Die Suppe ist zu salzig.', 'Die Suppe ist zu salzig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'salzig'],
+      ['roh', '—', 'نيء', 'Das Fleisch ist noch roh.', 'Das Fleisch ist noch roh gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'roh'],
+      ['satt', '—', 'شبعان', 'Nach dem Essen bin ich satt.', 'Nach dem Essen bin ich satt gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'satt'],
+      ['vegetarisch', '—', 'نباتي', 'Sie isst nur vegetarisch.', 'Sie isst nur vegetarisch auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'vegetarisch'],
+      ['mischen', '—', 'يخلط', 'Ich will den Teig mischen.', 'Ich will den Teig mischen auf.', 'mischen بلا حرف جر.', 'lexik-kollokation', 'mischen'],
+      ['mild', '—', 'معتدل/خفيف', 'Der Geschmack ist mild.', 'Der Geschmack sind mild.', 'الفعل مفرد: ist.', 'konjugation', 'mild'],
+      ['die Zahnpasta', 'die Zahnpasten', 'معجون الأسنان', 'Die Zahnpasta ist schon alle.', 'Die Zahnpasta sind schon alle.', 'الفعل مفرد: ist.', 'konjugation', 'Zahnpasta'],
+      ['die Brust', 'die Brüste', 'الصدر', 'Die Brust tut nach dem Husten weh.', 'Die Brust tun nach dem Husten weh.', 'الفعل مفرد: tut.', 'konjugation', 'Brust'],
+      ['die Lippe', 'die Lippen', 'الشفة', 'Die Lippe ist trocken.', 'Die Lippe sind trocken.', 'الفعل مفرد: ist.', 'konjugation', 'Lippe'],
+      ['die Frisur', 'die Frisuren', 'تسريحة الشعر', 'Die Frisur sitzt noch nicht.', 'Die Frisur sitzen noch nicht.', 'الفعل مفرد: sitzt.', 'konjugation', 'Frisur'],
+      ['rasieren', '—', 'يحلق', 'Er will sich rasieren.', 'Er will sich rasieren auf.', 'انعكاسي: sich rasieren.', 'lexik-kollokation', 'rasieren'],
+      ['schminken', '—', 'يضع المكياج', 'Sie will sich schminken.', 'Sie will sich schminken auf.', 'انعكاسي: sich schminken.', 'lexik-kollokation', 'schminken'],
+      ['der Coiffeur', 'die Coiffeure', 'الحلاق (سويسرا)', 'Der Coiffeur arbeitet seit zwanzig Jahren.', 'Der Coiffeur arbeiten seit zwanzig Jahren.', 'الفعل مفرد: arbeitet.', 'register', 'Coiffeur'],
+      ['die Coiffeuse', 'die Coiffeusen', 'الحلاقة (سويسرا)', 'Die Coiffeuse hat einen neuen Stil.', 'Die Coiffeuse haben einen neuen Stil.', 'الفعل مفرد: hat.', 'register', 'Coiffeuse'],
+      ['die Drogerie', 'die Drogerien', 'متجر المستحضرات', 'In der Drogerie kauft sie Creme.', 'In der Drogerie kauft sie Creme auf.', 'لا حرف جر زائد.', 'konjugation', 'Drogerie'],
+      ['die Droge', 'die Drogen', 'المخدر', 'Eine Droge braucht sie nicht.', 'Eine Droge brauchen sie nicht.', 'الفعل مفرد: braucht.', 'konjugation', 'Droge'],
+      ['das Vitamin', 'die Vitamine', 'الفيتامين', 'Das Vitamin steckt im Obst.', 'Das Vitamin stecken im Obst.', 'الفعل مفرد: steckt.', 'konjugation', 'Vitamin'],
+      ['kräftig', '—', 'قوي', 'Der Wind ist heute kräftig.', 'Der Wind ist heute kräftig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'kräftig'],
+      ['äußerlich', '—', 'ظاهريًا', 'Äußerlich ist alles in Ordnung.', 'Äußerlich ist alles in Ordnung auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Äußerlich'],
+      ['stürzen', '—', 'ينهار/يسقط', 'Am Abend können die Preise stürzen.', 'Am Abend können die Preise stürzen auf.', 'stürzen بلا حرف جر.', 'lexik-kollokation', 'stürzen'],
+      ['tauchen', '—', 'يغوص', 'Im Sommer will er tauchen lernen.', 'Im Sommer will er tauchen lernen auf.', 'tauchen بلا حرف جر.', 'lexik-kollokation', 'tauchen'],
+      ['der Tod', 'die Tode', 'الموت', 'Über den Tod spricht man selten.', 'Über den Tod sprechen man selten.', 'الفاعل man مفرد: spricht.', 'konjugation', 'Tod'],
+      ['stinken', '—', 'ينتن', 'Der Käse kann stark stinken.', 'Der Käse kann stark stinken auf.', 'stinken بلا حرف جر.', 'lexik-kollokation', 'stinken'],
+      ['spüren', '—', 'يشعر بـ', 'Man spürt den Wind am Abend.', 'Man spürt auf den Wind am Abend.', 'spüren بلا حرف جر.', 'lexik-kollokation', 'spürt'],
+      ['schütteln', '—', 'يرجّ', 'Die Bäume schütteln sich im Wind.', 'Die Bäume schütteln sich im Wind auf.', 'schütteln بلا حرف جر.', 'lexik-kollokation', 'schütteln'],
+      ['klopfen', '—', 'يقرع', 'Jemand klopft an die Tür.', 'Jemand klopft auf die Tür.', 'klopfen + an.', 'präposition', 'klopft an die Tür'],
+      ['hübsch', '—', 'جميل', 'Das Dorf ist hübsch.', 'Das Dorf ist hübsch gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'hübsch']
+    ],
+    tricks: [
+      { trick: 'القشدة بأسماء محلية: der Rahm · das Obers · der Schlagrahm · die Schlagsahne', wie: 'Der Schlagrahm gehört auf den Kuchen. · Das Schlagobers ist süß.', warum: 'أربع كلمات لشيء واحد بحسب البلد، والامتحان يذكر صيغة غير التي تعلّمها الطالب.', anchor: 'Das Schlagobers ist süß' },
+      { trick: 'الفطر والخبز: der Pilz · das Schwammerl · die Semmel · das Brötli', wie: 'In Österreich heißt der Pilz Schwammerl. · Semmel heißt das Brötchen in Bayern.', warum: 'الكلمات المحلية تُذكر في نصوص الامتحان بلا ترجمة، فتُحفظ في جملة لا في قائمة.', anchor: 'heißt der Pilz Schwammerl' },
+      { trick: 'انعكاسي العناية: sich rasieren · sich schminken', wie: 'Er will sich rasieren. · Sie will sich schminken.', warum: 'الفعل يحتاج الضمير العائد، وحذفه يجعل الجملة ناقصة.', anchor: 'will sich rasieren' }
+    ]
+  }
+
+};

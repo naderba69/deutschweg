@@ -40,9 +40,9 @@ const WRITE_GAP = process.argv.includes('--write-gap');
 const REQUIRE = process.argv.includes('--require-transcription');
 
 /* Floors are the measured values of the last accepted run. They may only rise.
-   Ratcheted after the fourth material round (16 more texts, r45..r60) carried the
-   last 265 entries the corpus lacked: raw 1326/1820 = 0.7286 and 1820/1820 = 1.0. */
-const FLOOR = { headword: 0.728, material: 1 };
+   Ratcheted after unit 9 (amendment B1-L5) named 240 more of the pool:
+   raw 1567/1820 = 0.8609 and 1820/1820 = 1.0, rounded down. */
+const FLOOR = { headword: 0.860, material: 1 };
 
 const HAVE_LIST = fs.existsSync(LIST);
 if (!HAVE_LIST && REQUIRE) {

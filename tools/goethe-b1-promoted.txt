@@ -3,6 +3,8 @@
 # re-checks every line and prints any line that is not both; a line that fails is dropped.
 # Third round (unit 8, amendment B1-L4, item 28): after the third material round the pool
 # was 471, and unit 8 carries the next 240. The remaining 231 stay in the candidates file.
+# Fourth round (unit 9, amendment B1-L5, item 30): the fourth material round left the whole
+# pool (494) met-not-authored, and unit 9 carries 240 of it. 254 stay in the candidates file.
 # First round (unit 6, amendment B1-L2, DECISIONS-PENDING item 25): the 219 entries the gap
 # recorded as met-but-unnamed (tools/goethe-b1-candidates.txt) plus 21 entries from the gap's
 # 'new' column that the six new lessons' own material introduces.
@@ -730,3 +732,243 @@ list das Stadion
 list der Treffpunkt
 list die Übernachtung
 list der Tierpark
+list der Abfalleimer
+list abwaschen
+list das Abonnement
+list abonnieren
+list anhaben
+list aufheben
+list aufladen
+list die Bancomatkarte
+list die Bedienungsanleitung
+list die Broschüre
+list die Fernbedienung
+list das Fundbüro
+list das Kuvert
+list die Schachtel
+list die Scheibe
+list das Streichholz
+list der Strumpf
+list das Zündholz
+list der Zünder
+list der Geldautomat
+list einzahlen
+list der Zins
+list der Zuschlag
+list doppelt
+list minimal
+list sämtlich
+list insgesamt
+list inklusive
+list genügen
+list prima
+list ausgezeichnet
+list allerbest
+list allerschönst
+list das Leder
+list das Metall
+list der Kunststoff
+list der Stoff
+list der Schmuck
+list die Pfanne
+list das Kraftwerk
+list die Arbeiterin
+list die Architektin
+list die Betriebsrätin
+list die Direktorin
+list die Mitarbeiterin
+list die Politikerin
+list der Profi
+list der Profisportler
+list die Profisportlerin
+list die Trainerin
+list die Hörerin
+list die Leserin
+list die Lernerin
+list die Zuhörerin
+list die Käuferin
+list die Händlerin
+list der Händler
+list der Käufer
+list der Sozialarbeiter
+list die Sozialarbeiterin
+list der Spezialist
+list die Spezialistin
+list der Serviceangestellte
+list der Fachmann
+list die Personalie
+list einstellen
+list eintreten
+list einnehmen
+list einsetzen
+list einführen
+list entlassen
+list der Export
+list auffordern
+list abstimmen
+list festsetzen
+list folgend
+list die Eröffnung
+list die Konkurrenz
+list der Streik
+list streiken
+list das Alphabet
+list abschreiben
+list bemerken
+list nachschlagen
+list die Herausforderung
+list intensiv
+list das Lexikon
+list die Literatur
+list die Mensa
+list das Studio
+list der Dialekt
+list die Intelligenz
+list das Märchen
+list historisch
+list technisch
+list die Serie
+list die Spur
+list die Wanderung
+list die Wettervorhersage
+list das Gebiet
+list das Gebirge
+list der Hafen
+list das Ufer
+list der Kanal
+list das Denkmal
+list die Burg
+list das Gasthaus
+list die Gaststätte
+list die Diskothek
+list das Ballett
+list die Oper
+list der Tourismus
+list die Metropole
+list die Mobilität
+list der Transport
+list transportieren
+list das Tempo
+list die Reservierung
+list die Terrasse
+list die Ausfahrt
+list amüsieren
+list aufhalten
+list entschließen
+list entschlossen
+list verrückt
+list überreden
+list die Überzeugung
+list das Verhalten
+list verhalten
+list verzeihen
+list die Träne
+list schreien
+list der Kuss
+list küssen
+list weigern
+list betrunken
+list verdächtig
+list wahnsinnig
+list gespannt
+list gerecht
+list schuldig
+list treu
+list tolerant
+list wild
+list heimlich
+list geheim
+list merkwürdig
+list einsam
+list ewig
+list bloß
+list dauernd
+list genauso
+list gleichfalls
+list gleichzeitig
+list ebenfalls
+list umgekehrt
+list umso
+list desto
+list weder
+list entweder
+list anschnallen
+list die Distanz
+list elegant
+list elektrisch
+list parallel
+list der Passagier
+list die Passagierin
+list der Steward
+list die Stewardess
+list die Kabine
+list die Klimaanlage
+list ungefähr
+list voraussichtlich
+list zukünftig
+list hinterher
+list hierher
+list rauf
+list abwärts
+list umdrehen
+list rennen
+list klettern
+list schieben
+list schießen
+list runterwerfen
+list zelten
+list tanken
+list das Verkehrszeichen
+list die Vorfahrt
+list der Strafzettel
+list überfahren
+list verhaften
+list festnehmen
+list die Flucht
+list fliehen
+list fließen
+list das Trottoir
+list der Gehsteig
+list die Fußgängerin
+list die Radfahrerin
+list das Velo
+list hageln
+list das Gift
+list giftig
+list der Pilz
+list das Schwammerl
+list das Znüni
+list das Zvieri
+list die Semmel
+list der Schlagrahm
+list das Schlagobers
+list die Schlagsahne
+list die Nachspeise
+list die Vorspeise
+list salzig
+list roh
+list satt
+list vegetarisch
+list mischen
+list mild
+list die Zahnpasta
+list die Brust
+list die Lippe
+list die Frisur
+list rasieren
+list schminken
+list der Coiffeur
+list die Coiffeuse
+list die Drogerie
+list die Droge
+list das Vitamin
+list kräftig
+list äußerlich
+list stürzen
+list tauchen
+list der Tod
+list stinken
+list spüren
+list schütteln
+list klopfen
+list hübsch

@@ -248,3 +248,16 @@ with the more specific rule, or with the rule that produces more honest evidence
     The authored column is unchanged at **1,326 = 73%**, by design: this round is material, not lists.
     **Next:** two more units (12 lessons, 480 headword slots) name the 494 and take the authored column to
     100%; then B2's own material and its gate.
+
+31. **B1-L5 closes the gate: unit 9 carries 240 more, both measures above 80% (delivered 2026-10-04).**
+    After the fourth material round the pool was 494 met-not-authored entries. **Unit 9** (six lessons of
+    forty: *Haus und Geräte · Berufe und Betrieb · Bildung und Nachschlagen · Verhalten und Gefühl ·
+    Verkehr und Reise · Essen und Gesundheit*) names 240 of them with the same row shape (article, plural,
+    Arabic gloss, example, typical error, cause) and three tricks per lesson.
+    **Measured:** authored **1,326 → 1,567/1,820 = 86%** (floating floor **0.728 → 0.860**) and material
+    stays **1,820/1,820 = 100%**; the open gap falls **494 → 253**, all of it promotion pool; promoted file
+    **960 entries verified**. B1 map **64 lessons / 2,560 declared (100%)**, catalogue **155 lessons /
+    930 sentences**. For the first time both B1 measures clear the 80% gate the project set for a level to
+    count as delivered.
+    **Next:** one more unit (240 slots, 10 lessons of six) names the remaining 253 and takes the authored
+    column to 100%; then B2.

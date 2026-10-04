@@ -1,0 +1,105 @@
+/* Deutschweg — B1 lexical layer, unit 9 (part b): b1-u9-l3 · b1-u9-l4. */
+
+module.exports = {
+
+  'b1-u9-l3': {
+    items: [
+      ['das Alphabet', 'die Alphabete', 'الأبجدية', 'Das Alphabet hat sechsundzwanzig Buchstaben.', 'Das Alphabet haben sechsundzwanzig Buchstaben.', 'الفعل مفرد: hat.', 'konjugation', 'Alphabet'],
+      ['abschreiben', '—', 'ينسخ/يغش', 'Man darf nicht vom Nachbarn abschreiben.', 'Man darf nicht vom Nachbarn abschreiben auf.', 'abschreiben بلا حرف جر.', 'lexik-kollokation', 'abschreiben'],
+      ['bemerken', '—', 'يلاحظ', 'Ich will bemerken, dass die Seite fehlt.', 'Ich will bemerken auf, dass die Seite fehlt.', 'bemerken بلا حرف جر.', 'lexik-kollokation', 'bemerken'],
+      ['nachschlagen', '—', 'يبحث في المعجم', 'Sie muss jedes neue Wort nachschlagen.', 'Sie muss jedes neue Wort nachschlagen auf.', 'nachschlagen بلا حرف جر.', 'lexik-kollokation', 'nachschlagen'],
+      ['die Herausforderung', 'die Herausforderungen', 'التحدّي', 'Die Herausforderung ist nicht die Grammatik.', 'Die Herausforderung sind nicht die Grammatik.', 'الفعل مفرد: ist.', 'konjugation', 'Herausforderung'],
+      ['intensiv', '—', 'مكثّف', 'Sie lernt intensiv, aber nicht jeden Tag.', 'Sie lernt intensiv gemacht, aber nicht jeden Tag.', 'الصفة تكفي.', 'lexik-kollokation', 'intensiv'],
+      ['das Lexikon', 'die Lexika', 'المعجم', 'Das Lexikon steht im Regal.', 'Das Lexikon stehen im Regal.', 'الفعل مفرد: steht.', 'konjugation', 'Lexikon'],
+      ['die Literatur', '—', 'الأدب', 'Die Literatur dieser Zeit ist schwer.', 'Die Literatur dieser Zeit sind schwer.', 'الفعل مفرد: ist.', 'konjugation', 'Literatur'],
+      ['die Mensa', 'die Mensen', 'مطعم الجامعة', 'Die Mensa öffnet um elf.', 'Die Mensa öffnen um elf.', 'الفعل مفرد: öffnet.', 'konjugation', 'Mensa'],
+      ['das Studio', 'die Studios', 'الاستوديو', 'Das Studio liegt im dritten Stock.', 'Das Studio liegen im dritten Stock.', 'الفعل مفرد: liegt.', 'konjugation', 'Studio'],
+      ['der Dialekt', 'die Dialekte', 'اللهجة', 'Der Dialekt klingt hier ganz anders.', 'Der Dialekt klingen hier ganz anders.', 'الفعل مفرد: klingt.', 'konjugation', 'Dialekt'],
+      ['die Intelligenz', '—', 'الذكاء', 'Intelligenz allein genügt nicht.', 'Intelligenz allein genügen nicht.', 'الفاعل مفرد: genügt.', 'konjugation', 'Intelligenz'],
+      ['das Märchen', 'die Märchen', 'الحكاية', 'Das Märchen beginnt mit «Es war einmal».', 'Das Märchen beginnen mit «Es war einmal».', 'الفعل مفرد: beginnt.', 'konjugation', 'Märchen'],
+      ['historisch', '—', 'تاريخي', 'Der Roman ist historisch genau.', 'Der Roman ist historisch genau gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'historisch'],
+      ['technisch', '—', 'تقني', 'Das Problem ist technisch.', 'Das Problem ist technisch gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'technisch'],
+      ['die Serie', 'die Serien', 'المسلسل', 'Die Serie läuft am Sonntagabend.', 'Die Serie laufen am Sonntagabend.', 'الفعل مفرد: läuft.', 'konjugation', 'Serie'],
+      ['die Spur', 'die Spuren', 'الأثر', 'Die Spur führt zum Fluss.', 'Die Spur führen zum Fluss.', 'الفعل مفرد: führt.', 'konjugation', 'Spur'],
+      ['die Wanderung', 'die Wanderungen', 'الرحلة على الأقدام', 'Die Wanderung dauert vier Stunden.', 'Die Wanderung dauern vier Stunden.', 'الفعل مفرد: dauert.', 'konjugation', 'Wanderung'],
+      ['die Wettervorhersage', 'die Wettervorhersagen', 'نشرة الطقس', 'Die Wettervorhersage verspricht Regen.', 'Die Wettervorhersage versprechen Regen.', 'الفعل مفرد: verspricht.', 'konjugation', 'Wettervorhersage'],
+      ['das Gebiet', 'die Gebiete', 'المنطقة', 'Das Gebiet ist dünn besiedelt.', 'Das Gebiet sind dünn besiedelt.', 'الفعل مفرد: ist.', 'konjugation', 'Gebiet'],
+      ['das Gebirge', 'die Gebirge', 'سلسلة الجبال', 'Das Gebirge liegt im Süden.', 'Das Gebirge liegen im Süden.', 'الفعل مفرد: liegt.', 'konjugation', 'Gebirge'],
+      ['der Hafen', 'die Häfen', 'المرفأ', 'Der Hafen bleibt im Winter offen.', 'Der Hafen bleiben im Winter offen.', 'الفعل مفرد: bleibt.', 'konjugation', 'Hafen'],
+      ['das Ufer', 'die Ufer', 'الضفة', 'Das Ufer ist hier flach.', 'Das Ufer sind hier flach.', 'الفعل مفرد: ist.', 'konjugation', 'Ufer'],
+      ['der Kanal', 'die Kanäle', 'القناة', 'Der Kanal verbindet zwei Städte.', 'Der Kanal verbinden zwei Städte.', 'الفعل مفرد: verbindet.', 'konjugation', 'Kanal'],
+      ['das Denkmal', 'die Denkmäler', 'النصب التذكاري', 'Das Denkmal steht auf dem Platz.', 'Das Denkmal stehen auf dem Platz.', 'الفعل مفرد: steht.', 'konjugation', 'Denkmal'],
+      ['die Burg', 'die Burgen', 'القلعة', 'Die Burg über dem Dorf ist alt.', 'Die Burg über dem Dorf sind alt.', 'الفعل مفرد: ist.', 'konjugation', 'Burg'],
+      ['das Gasthaus', 'die Gasthäuser', 'الفندق الريفي', 'Das Gasthaus serviert bis zehn.', 'Das Gasthaus servieren bis zehn.', 'الفعل مفرد: serviert.', 'konjugation', 'Gasthaus'],
+      ['die Gaststätte', 'die Gaststätten', 'المطعم', 'Die Gaststätte ist heute geschlossen.', 'Die Gaststätte sind heute geschlossen.', 'الفعل مفرد: ist.', 'konjugation', 'Gaststätte'],
+      ['die Diskothek', 'die Diskotheken', 'الديسكو', 'Die Diskothek macht um zwei zu.', 'Die Diskothek machen um zwei zu.', 'الفعل مفرد: macht.', 'konjugation', 'Diskothek'],
+      ['das Ballett', 'die Ballette', 'الباليه', 'Das Ballett beginnt um acht.', 'Das Ballett beginnen um acht.', 'الفعل مفرد: beginnt.', 'konjugation', 'Ballett'],
+      ['die Oper', 'die Opern', 'الأوبرا', 'Die Oper war ausverkauft.', 'Die Oper waren ausverkauft.', 'الفعل مفرد: war.', 'konjugation', 'Oper'],
+      ['der Tourismus', '—', 'السياحة', 'Der Tourismus wächst hier schnell.', 'Der Tourismus wachsen hier schnell.', 'الفعل مفرد: wächst.', 'konjugation', 'Tourismus'],
+      ['die Metropole', 'die Metropolen', 'الحاضرة الكبرى', 'Die Metropole zieht junge Leute an.', 'Die Metropole ziehen junge Leute an.', 'الفعل مفرد: zieht.', 'konjugation', 'Metropole'],
+      ['die Mobilität', '—', 'الحركة/التنقل', 'Mobilität ist heute ein Thema.', 'Mobilität sind heute ein Thema.', 'الفاعل مفرد: ist.', 'konjugation', 'Mobilität'],
+      ['der Transport', 'die Transporte', 'النقل', 'Der Transport kostet extra.', 'Der Transport kosten extra.', 'الفعل مفرد: kostet.', 'konjugation', 'Transport'],
+      ['transportieren', '—', 'ينقل', 'Sie wollen die Ware morgen transportieren.', 'Sie wollen die Ware morgen transportieren auf.', 'transportieren بلا حرف جر.', 'lexik-kollokation', 'transportieren'],
+      ['das Tempo', 'die Tempos', 'السرعة', 'Das Tempo ist hier auf fünfzig begrenzt.', 'Das Tempo sind hier auf fünfzig begrenzt.', 'الفعل مفرد: ist.', 'konjugation', 'Tempo'],
+      ['die Reservierung', 'die Reservierungen', 'الحجز', 'Die Reservierung gilt bis acht Uhr.', 'Die Reservierung gelten bis acht Uhr.', 'الفعل مفرد: gilt.', 'konjugation', 'Reservierung'],
+      ['die Terrasse', 'die Terrassen', 'الشرفة/التراس', 'Die Terrasse ist im Sommer voll.', 'Die Terrasse sind im Sommer voll.', 'الفعل مفرد: ist.', 'konjugation', 'Terrasse'],
+      ['die Ausfahrt', 'die Ausfahrten', 'المخرج من الطريق السريع', 'Die Ausfahrt kommt gleich.', 'Die Ausfahrt kommen gleich.', 'الفعل مفرد: kommt.', 'konjugation', 'Ausfahrt']
+    ],
+    tricks: [
+      { trick: 'أماكن الجمع في الألمانية: das Gasthaus · die Gaststätte · das Denkmal · die Mensa', wie: 'Das Gasthaus serviert bis zehn. · Das Denkmal steht auf dem Platz.', warum: 'الأسماء المكانية مختلفة الأجناس، ولا قاعدة واحدة تجمعها.', anchor: 'Das Denkmal steht' },
+      { trick: 'المصدر في الآخر بعد الفعل المساعد: abschreiben · nachschlagen · transportieren', wie: 'Man darf nicht vom Nachbarn abschreiben. · Sie muss jedes neue Wort nachschlagen.', warum: 'الفعل المساعد يجذب المصدر إلى نهاية الجملة، ويبقى بلا فصل.', anchor: 'jedes neue Wort nachschlagen' },
+      { trick: 'صفات المعرفة في مكانها بلا تصريف: historisch · technisch · intensiv', wie: 'Das Problem ist technisch. · Sie lernt intensiv.', warum: 'خبر الصفة لا يُصرَّف في العربية، فينسى الطالب أن الألمانية تحذف هنا كل نهاية.', anchor: 'Das Problem ist technisch' }
+    ]
+  },
+
+  'b1-u9-l4': {
+    items: [
+      ['amüsieren', '—', 'يتسلّى', 'Im Kaffeehaus wollen wir uns amüsieren.', 'Im Kaffeehaus wollen wir amüsieren.', 'انعكاسي: sich amüsieren.', 'lexik-kollokation', 'amüsieren'],
+      ['aufhalten', '—', 'يوقِف/يعطّل', 'Die Arbeit kann uns lange aufhalten.', 'Die Arbeit kann uns lange aufhalten auf.', 'aufhalten بلا حرف جر.', 'lexik-kollokation', 'aufhalten'],
+      ['entschließen', '—', 'يقرّر', 'Wir wollen uns zu warten entschließen.', 'Wir wollen uns zu warten entschließen an.', 'sich entschließen + zu.', 'präposition', 'entschließen'],
+      ['entschlossen', '—', 'حاسم/عازم', 'Sie bleibt entschlossen und ruhig.', 'Sie bleibt entschlossen gemacht und ruhig.', 'الصفة تكفي.', 'lexik-kollokation', 'entschlossen'],
+      ['verrückt', '—', 'مجنون', 'Alle sagen, wir seien verrückt.', 'Alle sagen, wir seien verrückt gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'verrückt'],
+      ['überreden', '—', 'يقنع', 'Er will uns zum Mitkommen überreden.', 'Er will uns zum Mitkommen überreden auf.', 'überreden + zu.', 'präposition', 'überreden'],
+      ['die Überzeugung', 'die Überzeugungen', 'القناعة', 'Meine Überzeugung ist einfach.', 'Meine Überzeugung sind einfach.', 'الفعل مفرد: ist.', 'konjugation', 'Überzeugung'],
+      ['das Verhalten', '—', 'السلوك', 'Das Verhalten der Gäste war ruhig.', 'Das Verhalten der Gäste waren ruhig.', 'الفعل مفرد: war.', 'konjugation', 'Verhalten'],
+      ['verhalten', '—', 'يتصرّف', 'Man muss sich anders verhalten.', 'Man muss sich anders verhalten auf.', 'verhalten بلا حرف جر.', 'lexik-kollokation', 'verhalten'],
+      ['verzeihen', '—', 'يسامح', 'Beim Abschied wollen sie sich verzeihen.', 'Beim Abschied wollen sie sich verzeihen auf.', 'verzeihen + داتيف بلا حرف جر.', 'lexik-kollokation', 'verzeihen'],
+      ['die Träne', 'die Tränen', 'الدمعة', 'Eine Träne kam bei der Rede.', 'Eine Träne kamen bei der Rede.', 'الفعل مفرد: kam.', 'konjugation', 'Träne'],
+      ['schreien', '—', 'يصرخ', 'Die Kinder wollen nicht schreien.', 'Die Kinder wollen nicht schreien auf.', 'schreien بلا حرف جر.', 'lexik-kollokation', 'schreien'],
+      ['der Kuss', 'die Küsse', 'القُبلة', 'Ein Kuss sagt mehr als Wörter.', 'Ein Kuss sagen mehr als Wörter.', 'الفعل مفرد: sagt.', 'konjugation', 'Kuss'],
+      ['küssen', '—', 'يقبّل', 'Sie wollen sich vor allen küssen.', 'Sie wollen sich vor allen küssen auf.', 'küssen بلا حرف جر.', 'lexik-kollokation', 'küssen'],
+      ['weigern', '—', 'يرفض', 'Sie will sich nicht weigern.', 'Sie will sich nicht weigern auf.', 'انعكاسي: sich weigern.', 'lexik-kollokation', 'weigern'],
+      ['betrunken', '—', 'ثمل', 'Der Fahrer war betrunken.', 'Der Fahrer war betrunken gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'betrunken'],
+      ['verdächtig', '—', 'مشبوه', 'Der Wagen sah verdächtig aus.', 'Der Wagen sah verdächtig aus gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'verdächtig'],
+      ['wahnsinnig', '—', 'جنوني', 'Der Lärm war wahnsinnig.', 'Der Lärm war wahnsinnig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'wahnsinnig'],
+      ['gespannt', '—', 'متشوّق', 'Ich bin gespannt auf das Ergebnis.', 'Ich bin gespannt für das Ergebnis.', 'gespannt auf + أكوزاتيف.', 'präposition', 'gespannt auf'],
+      ['gerecht', '—', 'عادل', 'Die Lösung war gerecht.', 'Die Lösung war gerecht gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'gerecht'],
+      ['schuldig', '—', 'مذنب', 'Das Gericht hält ihn schuldig.', 'Das Gericht hält ihn schuldig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'schuldig'],
+      ['treu', '—', 'مخلص', 'Der Hund bleibt ihm treu.', 'Der Hund bleibt ihm treu gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'treu'],
+      ['tolerant', '—', 'متسامح', 'Die Nachbarn sind sehr tolerant.', 'Die Nachbarn sind sehr tolerant gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'tolerant'],
+      ['wild', '—', 'بري/جامح', 'Der Park ist wild geblieben.', 'Der Park ist wild geblieben gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'wild'],
+      ['heimlich', '—', 'سرًّا', 'Sie haben heimlich geheiratet.', 'Sie haben heimlich geheiratet auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'heimlich'],
+      ['geheim', '—', 'سرّي', 'Der Test bleibt bis Freitag geheim.', 'Der Test bleibt bis Freitag geheim gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'geheim'],
+      ['merkwürdig', '—', 'غريب', 'Der Typ wirkt merkwürdig.', 'Der Typ wirkt merkwürdig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'merkwürdig'],
+      ['einsam', '—', 'وحيد', 'Ohne Nachbarn ist das Haus einsam.', 'Ohne Nachbarn ist das Haus einsam gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'einsam'],
+      ['ewig', '—', 'أبدي', 'Das dauert eine ewige Zeit.', 'Das dauert eine ewig Zeit.', 'الصفة تُصرَّف: ewige.', 'deklination', 'ewige Zeit'],
+      ['bloß', '—', 'مجرد', 'Das war bloß ein Zufall.', 'Das war bloß ein Zufall auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'bloß'],
+      ['dauernd', '—', 'باستمرار', 'Er ruft dauernd an.', 'Er ruft dauernd an auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'dauernd'],
+      ['genauso', '—', 'تمامًا كذلك', 'Es ist genauso wie früher.', 'Es ist genauso wie früher auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'genauso'],
+      ['gleichfalls', '—', 'وبالمثل', 'Guten Abend! — Gleichfalls!', 'Guten Abend! — Gleichfalls auf!', 'لا حرف جر زائد.', 'register', 'Gleichfalls'],
+      ['gleichzeitig', '—', 'في الوقت نفسه', 'Beide reden gleichzeitig.', 'Beide reden gleichzeitig auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'gleichzeitig'],
+      ['ebenfalls', '—', 'أيضًا', 'Sie kommt ebenfalls mit.', 'Sie kommt ebenfalls mit auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'ebenfalls'],
+      ['umgekehrt', '—', 'بالعكس', 'Es ist genau umgekehrt.', 'Es ist genau umgekehrt auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'umgekehrt'],
+      ['umso', '—', 'كلّما/فكلّما', 'Je mehr sie lernt, umso besser.', 'Je mehr sie lernt, umso besser auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'umso besser'],
+      ['desto', '—', 'فـ (في التركيب)', 'Je mehr ich übe, desto besser.', 'Je mehr ich übe, desto besser auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'desto besser'],
+      ['weder', '—', 'لا… ولا', 'Weder der Vermieter noch die Nachbarn wissen es.', 'Weder der Vermieter noch die Nachbarn weiß es.', 'weder … noch مع جمع: wissen.', 'konjugation', 'Weder der Vermieter'],
+      ['entweder', '—', 'إما', 'Entweder wir gehen, oder wir bleiben.', 'Entweder wir gehen, oder bleiben wir.', 'الفعل ثانٍ بعد oder.', 'wortstellung', 'Entweder wir gehen']
+    ],
+    tricks: [
+      { trick: 'الضمير الانعكاسي جزء من الفعل: sich amüsieren · sich weigern · sich entschließen', wie: 'Im Kaffeehaus wollen wir uns amüsieren. · Sie will sich nicht weigern.', warum: 'العربية تعبّر بها أفعالًا لازمة، فيحذف الطالب sich فيصير الفعل ناقصًا.', anchor: 'wollen wir uns amüsieren' },
+      { trick: 'الحروف المزدوجة: weder … noch · entweder … oder · je … desto', wie: 'Weder der Vermieter noch die Nachbarn wissen es. · Je mehr ich übe, desto besser.', warum: 'هذه أزواج لا تُفصل، وترتيب الجملة بعدها ثابت (الفعل ثانٍ).', anchor: 'Weder der Vermieter noch' },
+      { trick: 'الصفة خبرًا لا تُصرَّف ولا تزاد عليها gemacht: gerecht · tolerant · verrückt', wie: 'Die Nachbarn sind sehr tolerant. · Alle sagen, wir seien verrückt.', warum: 'العربية تقول «متسامحون»، فيضيف الطالب نهاية أو فعلًا زائدًا، والألمانية تكفي بالصفة.', anchor: 'sind sehr tolerant' }
+    ]
+  }
+
+};

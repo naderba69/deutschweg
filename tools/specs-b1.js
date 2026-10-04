@@ -1171,5 +1171,125 @@ module.exports = [
     'Auf dem Weg begegne ich dem Trainer. Es donnert seit einer Stunde.',
     'Das Stadion war voll.',
     'Berichte morgen über einen Ausflug bei schlechtem Wetter.',
-    'غدًا احكِ عن رحلة في طقس سيئ.')
+    'غدًا احكِ عن رحلة في طقس سيئ.'),
+
+  U('b1-u9-l1', 'B1', 'البيت والأجهزة', 'Haus und Geräte', 'lexik-kollokation',
+    'Am Ende beschreibst du Geräte und Materialien im Haushalt',
+    'في النهاية تصف أجهزة وموادّ في البيت.',
+    [
+      ['Der Abfalleimer steht unter der Spüle.', 'الأداة المنزلية مفردة', 'der Eimer: Singular + steht', 'Der Abfalleimer stehen unter der Spüle.', 'steht'],
+      ['Ich will die Zeitung abonnieren.', 'abonnieren بلا حرف جر', 'kein auf nach abonnieren', 'Ich will die Zeitung abonnieren auf.', 'abonnieren'],
+      ['Sämtliche Rechnungen sind bezahlt.', 'الجمع: sind', 'sämtlich im Plural', 'Sämtliche Rechnungen ist bezahlt.', 'sind'],
+      ['Der Schmuck liegt im Safe.', 'المواد غير المعدودة مفردة', 'der Schmuck: Singular + liegt', 'Der Schmuck liegen im Safe.', 'liegt']
+    ],
+    [
+      ['Die Fernbedienung liegt neben dem Sofa.', 'جهاز التحكم بجانب الأريكة', 'Die Fernbedienung liegen neben dem Sofa.', 'الفعل مفرد.', 'liegt'],
+      ['Insgesamt zahle ich hundert Franken mehr.', 'إجمالًا أدفع أكثر', 'Insgesamt zahle ich hundert Franken mehr auf.', 'بلا auf.', 'Insgesamt'],
+      ['Der Service war ausgezeichnet.', 'الخدمة كانت ممتازة', 'Der Service war ausgezeichnet gemacht.', 'الصفة تكفي.', 'ausgezeichnet'],
+      ['Der Preis ist inklusive Heizung.', 'السعر شامل التدفئة', 'Der Preis ist inklusive von Heizung.', 'بلا von.', 'inklusive']
+    ],
+    'Der Abfalleimer steht unter der Spüle. Der Service war ausgezeichnet.',
+    'Der Schmuck liegt im Safe.',
+    'Beschreibe morgen drei Geräte in deiner Küche.',
+    'غدًا صف ثلاثة أجهزة في مطبخك.'),
+
+  U('b1-u9-l2', 'B1', 'المهن والعمل', 'Berufe und Betrieb', 'konjugation',
+    'Am Ende stellst du Kolleginnen und Kollegen vor',
+    'في النهاية تقدّم زميلات وزملاء العمل.',
+    [
+      ['Die Arbeiterin aus der Werkstatt hilft uns.', 'المهنة المؤنثة بفعل مفرد', 'die Arbeiterin: Singular + hilft', 'Die Arbeiterin aus der Werkstatt helfen uns.', 'hilft'],
+      ['Die Firma will zehn Leute einstellen.', 'المصدر في الآخر', 'einstellen nach will', 'Die Firma will zehn Leute einstellen auf.', 'einstellen'],
+      ['Die Personalie liegt beim Betriebsrat.', 'اصطلاح إداري', 'die Personalie: Singular + liegt', 'Die Personalie liegen beim Betriebsrat.', 'liegt'],
+      ['Sie wollen morgen über den Plan abstimmen.', 'abstimmen + über', 'abstimmen über + Akkusativ', 'Sie wollen morgen über den Plan abstimmen auf.', 'über den Plan']
+    ],
+    [
+      ['Der Fachmann von der Technik kommt gleich.', 'الخبير يأتي حالًا', 'Der Fachmann von der Technik kommen gleich.', 'الفعل مفرد.', 'kommt'],
+      ['Der Streik beginnt am Montag.', 'الإضراب يبدأ الإثنين', 'Der Streik beginnen am Montag.', 'الفعل مفرد.', 'beginnt'],
+      ['Am folgenden Montag beginnt die Schulung.', 'الإثنين التالي', 'Am folgend Montag beginnt die Schulung.', 'الصفة تُصرَّف.', 'folgenden'],
+      ['Die Konkurrenz schläft nicht.', 'المنافسة لا تنام', 'Die Konkurrenz schlafen nicht.', 'الفعل مفرد.', 'schläft']
+    ],
+    'Die Arbeiterin aus der Werkstatt hilft uns. Der Streik beginnt am Montag.',
+    'Die Firma will zehn Leute einstellen.',
+    'Stelle morgen zwei Kolleginnen mit je einem Satz vor.',
+    'غدًا قدّم زميلتين بجملة لكل واحدة.'),
+
+  U('b1-u9-l3', 'B1', 'التعليم والدلائل', 'Bildung und Nachschlagen', 'konjugation',
+    'Am Ende sprichst du über Lernen, Museen und Reisen',
+    'في النهاية تتحدث عن التعلّم والمتاحف والرحلات.',
+    [
+      ['Das Alphabet hat sechsundzwanzig Buchstaben.', 'المفرد بفعل مفرد', 'das Alphabet: Singular + hat', 'Das Alphabet haben sechsundzwanzig Buchstaben.', 'hat'],
+      ['Sie muss jedes neue Wort nachschlagen.', 'المصدر في الآخر', 'nachschlagen nach muss', 'Sie muss jedes neue Wort nachschlagen auf.', 'nachschlagen'],
+      ['Das Denkmal steht auf dem Platz.', 'المفرد بفعل مفرد', 'das Denkmal: Singular + steht', 'Das Denkmal stehen auf dem Platz.', 'steht'],
+      ['Das Problem ist technisch.', 'الصفة خبرًا', 'technisch ohne Endung', 'Das Problem ist technisch gemacht.', 'technisch']
+    ],
+    [
+      ['Die Mensa öffnet um elf.', 'مطعم الجامعة يفتح', 'Die Mensa öffnen um elf.', 'الفعل مفرد.', 'öffnet'],
+      ['Die Burg über dem Dorf ist alt.', 'القلعة قديمة', 'Die Burg über dem Dorf sind alt.', 'الفعل مفرد.', 'ist'],
+      ['Das Gasthaus serviert bis zehn.', 'الفندق الريفي يقدّم', 'Das Gasthaus servieren bis zehn.', 'الفعل مفرد.', 'serviert'],
+      ['Die Ausfahrt kommt gleich.', 'المخرج قادم', 'Die Ausfahrt kommen gleich.', 'الفعل مفرد.', 'kommt']
+    ],
+    'Sie muss jedes neue Wort nachschlagen. Das Denkmal steht auf dem Platz.',
+    'Die Mensa öffnet um elf.',
+    'Schreibe morgen fünf Sätze über deine Lernmethode.',
+    'غدًا اكتب خمس جمل عن طريقة تعلّمك.'),
+
+  U('b1-u9-l4', 'B1', 'السلوك والمشاعر', 'Verhalten und Gefühl', 'wortstellung',
+    'Am Ende beschreibst du Verhalten und redest über Gefühle',
+    'في النهاية تصف السلوك وتتحدث عن المشاعر.',
+    [
+      ['Im Kaffeehaus wollen wir uns amüsieren.', 'انعكاسي كامل', 'sich amüsieren, nicht amüsieren', 'Im Kaffeehaus wollen wir amüsieren.', 'uns amüsieren'],
+      ['Weder der Vermieter noch die Nachbarn wissen es.', 'weder … noch مع جمع', 'weder noch + Plural', 'Weder der Vermieter noch die Nachbarn weiß es.', 'wissen'],
+      ['Je mehr ich übe, desto besser.', 'تركيب je … desto', 'desto + Komparativ', 'Je mehr ich übe, desto besser auf.', 'desto besser'],
+      ['Sie bleibt entschlossen und ruhig.', 'الصفة خبرًا', 'entschlossen ohne Zusatz', 'Sie bleibt entschlossen gemacht und ruhig.', 'entschlossen']
+    ],
+    [
+      ['Ich bin gespannt auf das Ergebnis.', 'متشوّق للنتيجة', 'Ich bin gespannt für das Ergebnis.', 'gespannt auf.', 'auf'],
+      ['Der Test bleibt bis Freitag geheim.', 'الاختبار سري', 'Der Test bleibt bis Freitag geheim gemacht.', 'الصفة تكفي.', 'geheim'],
+      ['Entweder wir gehen, oder wir bleiben.', 'إما نذهب أو نبقى', 'Entweder wir gehen, oder bleiben wir.', 'الفعل ثانٍ بعد oder.', 'oder wir bleiben'],
+      ['Sie will sich nicht weigern.', 'لا تريد أن ترفض', 'Sie will sich nicht weigern auf.', 'بلا auf.', 'weigern']
+    ],
+    'Im Kaffeehaus wollen wir uns amüsieren. Je mehr ich übe, desto besser.',
+    'Ich bin gespannt auf das Ergebnis.',
+    'Schreibe morgen drei Sätze über ein Verhalten, das dich überrascht hat.',
+    'غدًا اكتب ثلاث جمل عن سلوك أدهشك.'),
+
+  U('b1-u9-l5', 'B1', 'المرور والسفر', 'Verkehr und Reise', 'lexik-kollokation',
+    'Am Ende berichtest du über eine Fahrt und einen Vorfall',
+    'في النهاية تحكي عن رحلة وحادث.',
+    [
+      ['Wir müssen uns anschnallen, bevor der Flug startet.', 'انعكاسي مع müssen', 'sich anschnallen', 'Wir müssen uns anschnallen auf, bevor der Flug startet.', 'anschnallen'],
+      ['In der Schweiz heißt das Fahrrad Velo.', 'الصيغة السويسرية', 'Velo = Fahrrad', 'In der Schweiz heißt das Fahrrad Velo auf.', 'Velo'],
+      ['Die Polizei will den Täter verhaften.', 'المصدر في الآخر', 'verhaften nach will', 'Die Polizei will den Täter verhaften auf.', 'verhaften'],
+      ['Das Verkehrszeichen ist neu.', 'المفرد بفعل مفرد', 'das Verkehrszeichen: Singular + ist', 'Das Verkehrszeichen sind neu.', 'ist']
+    ],
+    [
+      ['Die Vorfahrt gilt hier.', 'الأولوية هنا', 'Die Vorfahrt gelten hier.', 'الفعل مفرد.', 'gilt'],
+      ['Die Flucht dauerte zwei Tage.', 'الهروب استمر يومين', 'Die Flucht dauerten zwei Tage.', 'الفعل مفرد.', 'dauerte'],
+      ['Der Strafzettel kam per Post.', 'المخالفة وصلت بالبريد', 'Der Strafzettel kamen per Post.', 'الفعل مفرد.', 'kam'],
+      ['Die Bäche fließen zum Fluss.', 'الجداول تتدفق', 'Die Bäche fließen zum Fluss auf.', 'بلا auf.', 'fließen']
+    ],
+    'Wir müssen uns anschnallen. Die Vorfahrt gilt hier.',
+    'In der Schweiz heißt das Fahrrad Velo.',
+    'Berichte morgen über eine Fahrt mit einem Zwischenfall.',
+    'غدًا احكِ عن رحلة وقع فيها أمر طارئ.'),
+
+  U('b1-u9-l6', 'B1', 'الطعام والصحة', 'Essen und Gesundheit', 'lexik-kollokation',
+    'Am Ende beschreibst du ein Gericht und sprichst über den Körper',
+    'في النهاية تصف طبقًا وتتحدث عن الجسد.',
+    [
+      ['In Österreich heißt der Pilz Schwammerl.', 'الصيغة النمساوية', 'Schwammerl = Pilz', 'In Österreich heißt der Pilz Schwammerl auf.', 'Schwammerl'],
+      ['Das Schlagobers ist süß.', 'العنصر مفرد', 'das Schlagobers: Singular + ist', 'Das Schlagobers sind süß.', 'ist'],
+      ['Der Schlagrahm gehört auf den Kuchen.', 'الرهايم على الكيك', 'Der Schlagrahm gehören auf den Kuchen.', 'الفعل مفرد.', 'gehört'],
+      ['Er will sich rasieren.', 'انعكاسي العناية', 'sich rasieren', 'Er will sich rasieren auf.', 'rasieren']
+    ],
+    [
+      ['Man spürt den Wind am Abend.', 'نشعر بالريح', 'Man spürt auf den Wind am Abend.', 'بلا auf.', 'spürt'],
+      ['Die Brust tut nach dem Husten weh.', 'الصدر يؤلم بعد الكحة', 'Die Brust tun nach dem Husten weh.', 'الفعل مفرد.', 'tut'],
+      ['Die Zahnpasta ist schon alle.', 'معجون الأسنان انتهى', 'Die Zahnpasta sind schon alle.', 'الفعل مفرد.', 'ist'],
+      ['Über den Tod spricht man selten.', 'نادرًا ما نتحدث عن الموت', 'Über den Tod sprechen man selten.', 'الفاعل man مفرد.', 'spricht']
+    ],
+    'Das Schlagobers ist süß. Man spürt den Wind am Abend.',
+    'Über den Tod spricht man selten.',
+    'Beschreibe morgen ein Gericht und einen Körperteil in je zwei Sätzen.',
+    'غدًا صف طبقًا وعضوًا من الجسد في جملتين لكل منهما.')
 ];
