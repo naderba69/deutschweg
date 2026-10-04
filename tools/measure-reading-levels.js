@@ -60,12 +60,17 @@ LEVELS.forEach(lv => {
   }).sort((a, b) => a.ratio - b.ratio || a.id.localeCompare(b.id));
   const tokens = rows.reduce((n, r) => n + r.tokens, 0);
   const words = rows.reduce((n, r) => n + r.words, 0);
+  /* §13.3 is extensive reading: a text the learner reads without a dictionary. A
+     twenty-word fragment is a signpost, not a text — so the shortest text of every
+     level is a measured number with its own ratchet, and a level that grows only by
+     adding fragments fails here. */
+  const shortest = rows.length ? Math.min.apply(null, rows.map(r => r.words)) : 0;
   const low = rows.length ? Math.floor(rows[0].ratio * 1000) : 1000;
   const under = rows.filter(r => r.ratio * 1000 < TARGET);
-  measured[lv] = { texts: rows.length, tokens: tokens, words: words, lowestPermille: low, under: under.length };
+  measured[lv] = { texts: rows.length, tokens: tokens, words: words, shortest: shortest, lowestPermille: low, under: under.length };
   worst[lv] = rows.slice(0, 5);
   console.log('\n' + lv + ' — ' + rows.length + ' texts · ' + words + ' words (' + tokens +
-    ' graded tokens, function words dropped) · lowest ' +
+    ' graded tokens, function words dropped) · shortest ' + shortest + 'w · lowest ' +
     (Math.round(rows[0].ratio * 1000) / 10) + '% · under ' + TARGET / 10 + '%: ' + under.length);
   worst[lv].forEach(r => console.log('  ' + r.id.padEnd(9) + (Math.round(r.ratio * 1000) / 10).toFixed(1).padStart(6) + '%  ' +
     'unknown ' + String(r.unknown.length).padStart(3) + ' / ' + String(r.tokens).padStart(4) +
@@ -81,9 +86,10 @@ function gate(name, now, floor) {
 }
 console.log('\nreading-levels gate  (floor = last accepted run · a ratchet, never lowered)');
 LEVELS.forEach(lv => {
-  const f = FLOOR[lv] || { texts: 0, words: 0, lowestPermille: 0 };
+  const f = FLOOR[lv] || { texts: 0, words: 0, shortest: 0, lowestPermille: 0 };
   gate(lv + ' texts', measured[lv].texts, f.texts);
   gate(lv + ' words', measured[lv].words, f.words || 0);
+  gate(lv + ' shortest text (words)', measured[lv].shortest, f.shortest || 0);
   gate(lv + ' lowest coverage (‰)', measured[lv].lowestPermille, f.lowestPermille);
   const ok = measured[lv].lowestPermille >= TARGET;
   console.log('  ' + (ok ? '✓' : '✗') + ' the 98% rule on ' + lv + ': lowest ' +
@@ -128,10 +134,11 @@ else console.log('  ✓ every text carries two questions');
 if (WRITE) {
   const raised = {};
   LEVELS.forEach(lv => {
-    const f = FLOOR[lv] || { texts: 0, words: 0, lowestPermille: 0 };
+    const f = FLOOR[lv] || { texts: 0, words: 0, shortest: 0, lowestPermille: 0 };
     raised[lv] = {
       texts: Math.max(f.texts, measured[lv].texts),
       words: Math.max(f.words || 0, measured[lv].words),
+      shortest: Math.max(f.shortest || 0, measured[lv].shortest),
       lowestPermille: Math.max(f.lowestPermille, measured[lv].lowestPermille)
     };
   });
