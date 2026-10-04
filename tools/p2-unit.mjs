@@ -203,7 +203,11 @@ console.log('\n— allocator and gates —\n');
   const setA1 = K.knownWords(dw, { upto: 'A1' });
   const setB2 = K.knownWords(dw, { upto: 'B2' });
 
-  t('T60 the library holds 126 graded texts', texts.length === 126);
+  /* The count is read from the floors, not typed here: a level that grows raises its own
+     floor file, and this test follows it instead of failing on a stale number. */
+  const readFloor = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/reading-levels-floor.json'), 'utf8'));
+  const floorTexts = ['A1', 'A2', 'B1', 'B2'].reduce((n, lv) => n + (readFloor[lv] || {}).texts, 0);
+  t('T60 the library holds ' + floorTexts + ' graded texts (its four floors)', texts.length === floorTexts);
   t('T61 every graded text carries two questions', texts.every(x => x.questions === 2));
   t('T62 a word nothing teaches is unknown', !K.isKnown(setB2, 'zonk') && !K.isKnown(setA1, 'zonk'));
   t('T63 an irregular form counts only when its infinitive is known',

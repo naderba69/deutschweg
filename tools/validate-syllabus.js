@@ -129,7 +129,10 @@ lessons.every(l => l.theme && l.words && l.grammar && l.grammar.method && (l.gra
   ff >= 20 && ff <= 30 ? ok(level + ' false friends ' + ff) : bad(level + ' false friends ' + ff);
 });
 const read = S.reading;
-read.A1.length === 10 ? ok('A1 reading 10') : bad('A1 reading');
+/* A1 grew from the map's ten short texts to twenty: the level the learner spends the most
+   time at is the one that needs the most to read. The count is measured against the library,
+   not asserted — a text that exists without a row here, or a row without a text, fails. */
+read.A1.length === 20 ? ok('A1 reading 20') : bad('A1 reading ' + read.A1.length);
 /* 20 long-standing A2 texts, the 9 the Goethe match added (a2-r21 … r29), and r30 which carries
    the words the harvest showed the material did not have yet. */
 read.A2.length === 30 ? ok('A2 reading 30') : bad('A2 reading ' + read.A2.length);
