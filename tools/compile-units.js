@@ -868,7 +868,6 @@ if (repeatedMaterial.length) {
 
 const ids = Object.keys(lessons);
 console.log('compiled lessons', ids.length, 'sentences', bank.length);
-if (ids.length !== 125) die('expected 125 lessons, got ' + ids.length);
 if (bank.length < 500 || bank.length > 800) die('sentence bank ' + bank.length + ' outside 500–800');
 
 /* P3.2 coverage against the map's own declared receptive targets. The map row
@@ -879,6 +878,19 @@ const SYL = (() => {
   new Function('window', fs.readFileSync(path.join(root, 'web/data/syllabus.js'), 'utf8'))(w);
   return w.DW_SYLLABUS;
 })();
+/* a0-u1-l1 ships as a hand-written body (web/data/a0-u1-l1.js), so the map holds
+   exactly one row more than the compiler produces. The expected count is derived
+   from the map, never typed: a row without a body and a body without a row both
+   fail here, and adding lessons cannot silently leave the number behind. */
+const HAND_WRITTEN = ['a0-u1-l1'];
+const expectedLessons = SYL.lessons.filter(l => HAND_WRITTEN.indexOf(l.id) < 0).length;
+if (ids.length !== expectedLessons) {
+  die('expected ' + expectedLessons + ' compiled lessons (map rows minus ' + HAND_WRITTEN.length + ' hand-written), got ' + ids.length);
+}
+SYL.lessons.forEach(l => {
+  if (HAND_WRITTEN.indexOf(l.id) >= 0) return;
+  if (!lessons[l.id]) die('syllabus row without a compiled body: ' + l.id);
+});
 const declared = {};
 SYL.lessons.forEach(l => { declared[l.level] = (declared[l.level] || 0) + ((l.words && l.words.receptive) || 0); });
 /* Per-row check for the levels that use the two-measure design: an authored

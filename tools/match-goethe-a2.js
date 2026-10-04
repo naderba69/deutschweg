@@ -43,12 +43,18 @@ const WRITE_GAP = process.argv.includes('--write-gap');
            the gap is produced away workshop by workshop, like A1's was, and the
            floor rises with it.
    First measured run, 2026-10-03 (cumulative A0+A1+A2 band): headword 61%,
-   material 75%, groups 65% — against the re-typed transcription. */
-const FLOOR = { headword: 0.610, allHeadword: 0.585, material: 0.796, groups: 0.799 };
+   material 75%, groups 65% — against the re-typed transcription.
+   Run 3 (2026-10-04) is derived rather than read from the PDF: see the block
+   before the gap path for why, and what it can and cannot claim. */
+const FLOOR = { headword: 0.777, allHeadword: 0.745, material: 1.0, groups: 1.0 };
 /* Rounded down from the measured values of the last accepted run:
-   0.6105 / 0.5857 / 0.7262 / 0.6460 on 2026-10-03 (first run), raised to the
-   second run 0.7960 / 0.7993 after the four new A2 reading texts. Floors may
-   only rise. */
+   run 1, 2026-10-03: 0.6105 / 0.5857 / 0.7262 / 0.6460
+   run 2, 2026-10-03: 0.7960 / 0.7993 after the four new A2 reading texts
+   run 3, 2026-10-04 (derived — no transcription in this sandbox, so the totals
+   come from the committed gap file plus run 2's recorded baseline):
+     0.7772 / 0.7453 / 1.0000 / 1.0000
+   The two material measures are at their ceiling: every entry of the
+   transcription is now met somewhere in A2 material. Floors may only rise. */
 const GOAL = { headword: 0.80, material: 1.0, groups: 1.0 };
 
 const win = {};
@@ -118,19 +124,58 @@ const BAND = {
 const materialText = textParts.join(' ');
 if (!BAND.a2.material.size) { console.error('no material tokens — check the data files'); process.exit(1); }
 
+/* One official entry can stand for several headwords, and the transcription
+   keeps the list's own notation: "der/das Club/Klub", "die (E-)Mail",
+   "Lieblings-", "mal/das Mal". Reading only the raw line made those entries
+   miss although the app carried the word. Every variant is tried:
+     article cluster × word variants, the bare word, the parentheses inlined,
+     and a trailing hyphen read as a prefix (Lieblings- → Lieblingsplatz). */
+function entryPhrases(entry) {
+  const out = [];
+  const push = v => { const t = String(v).trim(); if (t && out.indexOf(t) < 0) out.push(t); };
+  [entry, String(entry).replace(/\(([^)]*)\)/g, '$1')].forEach(raw => {
+    push(raw);
+    /* Abbreviations in the list carry dots (usw., ca., d. h.). The corpus holds
+       words and the folded text, so try both the bare form and the spaced one. */
+    push(String(raw).replace(/\.$/, ''));
+    push(String(raw).replace(/\.(?!\s)/g, '. ').trim());
+    const m = /^((?:der|die|das)(?:\/(?:der|die|das))*)\s+(.*)$/i.exec(raw.trim());
+    let arts = [''], rest = raw;
+    if (m) { arts = m[1].split('/'); rest = m[2]; }
+    const words = rest.split('/').map(x => x.trim()).filter(Boolean);
+    if (words.length > 1 || arts.length > 1) {
+      arts.forEach(a => words.forEach(w => push((a ? a + ' ' : '') + w)));
+      words.forEach(w => push(w));
+    }
+  });
+  return out;
+}
+
 function classify(entry, which) {
   const { heads, headStems, material, materialStems } = BAND[which];
-  const phrase = STRIP(FOLD(entry));
-  const words = phrase.split(/\s+/).filter(w => w.length > 2 && !STOP.has(w));
-  const key = words.length ? words[words.length - 1] : phrase;
-  const hit = (set, stemSet) => set.has(phrase) || set.has(key) || stemSet.has(stem(key));
-  const parts = phrase.split(/\s+/);
-  const content = parts.filter(w => w.length > 2);
-  const inHead = hit(heads, headStems) ||
-    (words.length > 1 && words.some(w => heads.has(w) || headStems.has(stem(w))));
-  const met = material.has(phrase) || materialStems.has(stem(key)) ||
-    (phrase.includes(' ') && materialText.includes(phrase)) ||
-    (content.length > 0 && content.every(w => material.has(w) || materialStems.has(stem(w))));
+  let inHead = false, met = false;
+  entryPhrases(entry).forEach(raw => {
+    if (inHead && met) return;
+    const phrase = STRIP(FOLD(raw));
+    if (!phrase) return;
+    const words = phrase.split(/\s+/).filter(w => w.length > 2 && !STOP.has(w));
+    const key = words.length ? words[words.length - 1] : phrase;
+    const hit = (set, stemSet) => set.has(phrase) || set.has(key) || stemSet.has(stem(key));
+    const parts = phrase.split(/\s+/);
+    const content = parts.filter(w => w.length > 2);
+    if (!inHead && (hit(heads, headStems) ||
+      (words.length > 1 && words.some(w => heads.has(w) || headStems.has(stem(w)))))) inHead = true;
+    if (!met && (material.has(phrase) || materialStems.has(stem(key)) ||
+      (phrase.includes(' ') && materialText.includes(phrase)) ||
+      (content.length > 0 && content.every(w => material.has(w) || materialStems.has(stem(w)))))) met = true;
+    if (raw.trim().endsWith('-')) {
+      const pfx = FOLD(raw.trim().slice(0, -1)).replace(/\s+/g, '');
+      if (pfx) {
+        if (!inHead && [...heads].some(w => w.startsWith(pfx))) inHead = true;
+        if (!met && [...material].some(w => w.startsWith(pfx))) met = true;
+      }
+    }
+  });
   return { entry, inHead, met };
 }
 
@@ -166,6 +211,136 @@ function report(entries, label, which) {
   return { rows, missing };
 }
 
+/* ---------------------------------------------------------------------------
+   Derived gap run. The transcription lives outside the repository (the official
+   list is copyrighted) and the sandbox does not keep files outside the repo
+   between sessions, so the full run is impossible until the list is typed again.
+   The committed gap file is enough to measure the next step exactly, because it
+   lists every entry the last full run did not meet and the corpus only grows: an
+   entry once met stays met, and an entry once authored stays authored. The
+   totals of that run are recorded here, the report says the numbers are derived
+   rather than read from the PDF, and the full run stays the measurement of
+   record the moment a transcription is available.
+   Last full run: 2026-10-03, second run (0.6105 / 0.5864 / 0.7961 / 0.7993). */
+const GAP_FILE = path.join(root, 'tools', 'goethe-a2-gap.txt');
+/* The baseline is read from the gap file's own header, so the file and the
+   numbers it implies can never drift apart. RUN2 is the fallback for a gap file
+   written before the header carried the baseline (the file at 4e2ef79). */
+const RUN2 = { alpha: 1104, alphaAuthored: 674, alphaMet: 878, groups: 274, groupsAuthored: 134, groupsMet: 219 };
+function baselineFrom(text, kind, fallback) {
+  const re = new RegExp('^#\\s*baseline ' + kind + ':\\s*(\\d+)\\s+total,\\s*(\\d+)\\s+as headword,\\s*(\\d+)\\s+met\\s*$', 'mi');
+  const m = re.exec(text);
+  if (!m) return fallback;
+  const o = { total: +m[1], head: +m[2], met: +m[3] };
+  if (kind === 'list') return { alpha: o.total, alphaAuthored: o.head, alphaMet: o.met };
+  return { groups: o.total, groupsAuthored: o.head, groupsMet: o.met };
+}
+function baselineLines(b) {
+  return '# baseline list: ' + b.alpha + ' total, ' + b.alphaAuthored + ' as headword, ' + b.alphaMet + ' met\n' +
+    '# baseline groups: ' + b.groups + ' total, ' + b.groupsAuthored + ' as headword, ' + b.groupsMet + ' met\n';
+}
+
+function gateLines(o) {
+  let failed = 0;
+  const pct = v => Math.round(v * 100) + '%';
+  function gate(name, value, floor, goal) {
+    const ok = value >= floor;
+    const goalNote = value >= goal ? 'goal ' + pct(goal) + ' met'
+      : 'goal ' + pct(goal) + ' — gap ' + pct(goal - value) + ' still to produce';
+    console.log('  ' + (ok ? '✓' : '✗') + ' ' + name + ': ' + pct(value) +
+      ' (floor ' + pct(floor) + ', ' + goalNote + ')');
+    if (!ok) failed++;
+  }
+  console.log('\ncoverage gate  (floor = last accepted run · goal = production target)');
+  if (process.env.SHOW_RAW) {
+    console.log('  raw ' + JSON.stringify({ headRatio: +o.headRatio.toFixed(4), headAll: +o.headAll.toFixed(4),
+      metRatio: +o.metRatio.toFixed(4), groupRatio: +o.groupRatio.toFixed(4) }));
+  }
+  gate('main list as headword', o.headRatio, FLOOR.headword, GOAL.headword);
+  gate('main list + groups as headword', o.headAll, FLOOR.allHeadword, GOAL.headword);
+  gate('main list + groups met in material', o.metRatio, FLOOR.material, GOAL.material);
+  gate('word groups met in material', o.groupRatio, FLOOR.groups, GOAL.groups);
+  return failed;
+}
+
+const HAVE_LIST = fs.existsSync(LIST) && fs.existsSync(GROUPS);
+if (!HAVE_LIST && process.argv.includes('--require-transcription')) {
+  console.error('missing A2 list transcription: ' + LIST + ' / ' + GROUPS);
+  console.error('--require-transcription was given, so the derived run is refused.');
+  process.exit(2);
+}
+if (!HAVE_LIST) {
+  /* Gap file format: header comments, the alphabetical gap, the marker comment,
+     then the word-group gap. A "headword " prefix means: in a word list, but
+     never met in a sentence. */
+  if (!fs.existsSync(GAP_FILE)) {
+    console.error('missing ' + GAP_FILE + ' and the transcription — nothing to measure against.');
+    process.exit(2);
+  }
+  const alpha = [], groups = [];
+  const gapText = fs.readFileSync(GAP_FILE, 'utf8');
+  const BASE = Object.assign({}, RUN2,
+    baselineFrom(gapText, 'list', null) || {},
+    baselineFrom(gapText, 'groups', null) || {});
+  let section = alpha, marked = false;
+  gapText.split('\n').forEach(line => {
+    if (/^#\s*word groups/i.test(line)) { section = groups; marked = true; return; }
+    if (/^#/.test(line) || !line.trim()) return;
+    const m = /^headword\s+(.*)$/.exec(line.trim());
+    section.push({ entry: m ? m[1] : line.trim(), wasHead: !!m, section: section === groups ? 'groups' : 'list' });
+  });
+  if (!marked) {
+    /* Older gap files carry no marker; the group section starts at the entry the
+       alphabetical list ends with. */
+    const cut = alpha.findIndex(r => r.entry === 'ca.');
+    if (cut < 0) { console.error('cannot split the gap file into list and groups'); process.exit(2); }
+    alpha.slice(cut).forEach(r => { r.section = 'groups'; groups.push(r); });
+    alpha.length = cut;
+  }
+  console.log('\nGoethe A2 match — DERIVED run (no transcription in this sandbox)');
+  console.log('  source: tools/goethe-a2-gap.txt + its recorded baseline (' +
+    BASE.alpha + ' + ' + BASE.groups + ' entries)');
+  console.log('  exact for this corpus: the gap file is the set the last run missed and the corpus only grows.');
+  console.log('  the full run returns as soon as a transcription is present (GOETHE_A2_LIST / GOETHE_A2_GROUPS).');
+  const aRows = alpha.map(r => ({ entry: r.entry, wasHead: r.wasHead, c: classify(r.entry, 'cumulative') }));
+  const gRows = groups.map(r => ({ entry: r.entry, wasHead: r.wasHead, c: classify(r.entry, 'cumulative') }));
+  const alphaHead = BASE.alphaAuthored + aRows.filter(r => r.c.inHead).length;
+  const alphaMet = BASE.alphaMet + aRows.filter(r => r.c.met).length;
+  const groupsHead = BASE.groupsAuthored + gRows.filter(r => r.c.inHead).length;
+  const groupsMet = BASE.groupsMet + gRows.filter(r => r.c.met).length;
+  console.log('  alphabetical list      ' + alphaHead + '/' + BASE.alpha + ' as headword · ' +
+    alphaMet + '/' + BASE.alpha + ' met · ' + (BASE.alpha - alphaMet) + ' still open');
+  console.log('  word groups            ' + groupsHead + '/' + BASE.groups + ' as headword · ' +
+    groupsMet + '/' + BASE.groups + ' met · ' + (BASE.groups - groupsMet) + ' still open');
+  console.log('  corpus gained from the gap: ' + aRows.filter(r => r.c.met).length + ' list entries and ' +
+    gRows.filter(r => r.c.met).length + ' group entries');
+  const stillOpen = aRows.concat(gRows).filter(r => !r.c.met);
+  stillOpen.forEach(r => { if (r.wasHead && !r.c.met) console.log('  ! headword but never met: ' + r.entry); });
+  if (WRITE_GAP) {
+    const head = '# Recorded gap: Goethe A2 entries the app does not carry yet.\n' +
+      '# Generated by tools/match-goethe-a2.js --write-gap on ' + new Date().toISOString().slice(0, 10) + '.\n' +
+      '# Two measures: authored headword (in a word list) and material (met in an A2 lesson or A2 reading text).\n' +
+      '# An entry marked "headword" is in a word list but never met in a sentence — that is a defect to fix.\n' +
+      '# Derived run: the transcription was not present, so the baseline below is the previous run plus\n' +
+      '# what this corpus closed. Counted against the re-typed transcription of the official PDF, not the PDF.\n' +
+      baselineLines({ alpha: BASE.alpha, alphaAuthored: alphaHead, alphaMet: alphaMet,
+        groups: BASE.groups, groupsAuthored: groupsHead, groupsMet: groupsMet });
+    const line = r => (r.c.inHead ? 'headword ' : '         ') + r.entry;
+    const listOpen = stillOpen.filter(r => r.section !== 'groups').map(line);
+    const groupOpen = stillOpen.filter(r => r.section === 'groups').map(line);
+    fs.writeFileSync(GAP_FILE, head + listOpen.join('\n') + '\n# word groups below this line\n' +
+      groupOpen.join('\n') + '\n');
+    console.log('\nwrote tools/goethe-a2-gap.txt (' + stillOpen.length + ' entries)');
+  }
+  const failed = gateLines({
+    headRatio: alphaHead / BASE.alpha,
+    headAll: (alphaHead + groupsHead) / (BASE.alpha + BASE.groups),
+    metRatio: (alphaMet + groupsMet) / (BASE.alpha + BASE.groups),
+    groupRatio: groupsMet / BASE.groups
+  });
+  process.exit(failed ? 1 : 0);
+}
+
 const A2_ENTRIES = readList(LIST, 'A2 list transcription');
 const A2_GROUPS = readList(GROUPS, 'A2 word-group transcription');
 
@@ -178,37 +353,27 @@ const metRatio = (cum.rows.filter(r => r.met).length + groups.rows.filter(r => r
   (cum.rows.length + groups.rows.length);
 
 if (WRITE_GAP) {
-  const lines = cum.rows.concat(groups.rows).filter(r => !r.met)
-    .map(r => (r.inHead ? 'headword ' : '         ') + r.entry);
+  const listLines = cum.rows.filter(r => !r.met).map(r => (r.inHead ? 'headword ' : '         ') + r.entry);
+  const groupLines = groups.rows.filter(r => !r.met).map(r => (r.inHead ? 'headword ' : '         ') + r.entry);
+  const lines = listLines.concat(groupLines);
   const head = '# Recorded gap: Goethe A2 entries the app does not carry yet.\n' +
     '# Generated by tools/match-goethe-a2.js --write-gap on ' + new Date().toISOString().slice(0, 10) + '.\n' +
     '# Two measures: authored headword (in a word list) and material (met in an A2 lesson or A2 reading text).\n' +
     '# An entry marked "headword" is in a word list but never met in a sentence — that is a defect to fix.\n' +
-    '# Counted against the re-typed transcription of the official PDF, not against the PDF itself.\n';
-  fs.writeFileSync(path.join(root, 'tools/goethe-a2-gap.txt'), head + lines.join('\n') + '\n');
+    '# Counted against the re-typed transcription of the official PDF, not against the PDF itself.\n' +
+    baselineLines({ alpha: A2_ENTRIES.length, alphaAuthored: cum.rows.filter(r => r.inHead).length, alphaMet: cum.rows.filter(r => r.met).length,
+      groups: A2_GROUPS.length, groupsAuthored: groups.rows.filter(r => r.inHead).length, groupsMet: groups.rows.filter(r => r.met).length })
+    + '# word groups below this line\n';
+  fs.writeFileSync(path.join(root, 'tools/goethe-a2-gap.txt'),
+    head + listLines.join('\n') + '\n' + groupLines.join('\n') + '\n');
   console.log('\nwrote tools/goethe-a2-gap.txt (' + lines.length + ' entries)');
 }
 
-let failed = 0;
-const pct = v => Math.round(v * 100) + '%';
-const headAll = (cum.rows.filter(r => r.inHead).length + groups.rows.filter(r => r.inHead).length) /
-  (cum.rows.length + groups.rows.length);
-const groupRatio = groups.rows.filter(r => r.met).length / groups.rows.length;
-function gate(name, value, floor, goal) {
-  const ok = value >= floor;
-  const goalNote = value >= goal ? 'goal ' + pct(goal) + ' met'
-    : 'goal ' + pct(goal) + ' — gap ' + pct(goal - value) + ' still to produce';
-  console.log('  ' + (ok ? '✓' : '✗') + ' ' + name + ': ' + pct(value) +
-    ' (floor ' + pct(floor) + ', ' + goalNote + ')');
-  if (!ok) failed++;
-}
-console.log('\ncoverage gate  (floor = last accepted run · goal = production target)');
-if (process.env.SHOW_RAW) {
-  console.log('  raw ' + JSON.stringify({ headRatio: +headRatio.toFixed(4), headAll: +headAll.toFixed(4),
-    metRatio: +metRatio.toFixed(4), groupRatio: +groupRatio.toFixed(4) }));
-}
-gate('main list as headword', headRatio, FLOOR.headword, GOAL.headword);
-gate('main list + groups as headword', headAll, FLOOR.allHeadword, GOAL.headword);
-gate('main list + groups met in material', metRatio, FLOOR.material, GOAL.material);
-gate('word groups met in material', groupRatio, FLOOR.groups, GOAL.groups);
+const failed = gateLines({
+  headRatio: headRatio,
+  headAll: (cum.rows.filter(r => r.inHead).length + groups.rows.filter(r => r.inHead).length) /
+    (cum.rows.length + groups.rows.length),
+  metRatio: metRatio,
+  groupRatio: groups.rows.filter(r => r.met).length / groups.rows.length
+});
 process.exit(failed ? 1 : 0);

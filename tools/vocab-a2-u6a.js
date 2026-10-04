@@ -1,0 +1,143 @@
+/* Deutschweg — P3.8 lexical layer, A2 unit 6 (part a): a2-u6-l1 … a2-u6-l3.
+   The Goethe-A2-list unit: every item is an entry the official Goethe A2
+   Wortliste carries and the app did not have yet (tools/goethe-a2-gap.txt).
+   35 items per lesson — 9 Wortschatz steps at the 2–4 words the rule allows. */
+
+module.exports = {
+
+  'a2-u6-l1': {
+    items: [
+      ['das Blatt', 'die Blätter', 'الورقة', 'Nimm ein Blatt Papier und schreib!', 'Nimm ein Papier Blatt und schreib!', 'Blatt يأتي قبل مكوّنه الثاني.', 'wortstellung', 'Blatt'],
+      ['die Geldbörse', 'die Geldbörsen', 'المحفظة', 'Die Geldbörse liegt in der Tasche.', 'Die Geldbörse liegen in der Tasche.', 'المفرد: liegt.', 'konjugation', 'Geldbörse'],
+      ['das Gesicht', 'die Gesichter', 'الوجه', 'Wasch dir bitte das Gesicht!', 'Wasch dich bitte das Gesicht!', 'المفعول به: das Gesicht.', 'kasus', 'Gesicht'],
+      ['die Jeans', 'die Jeans', 'الجينز', 'Die Jeans passt mir nicht.', 'Der Jeans passt mir nicht.', 'Jeans مؤنث: die.', 'genus', 'Jeans'],
+      ['die Kamera', 'die Kameras', 'الكاميرا', 'Die Kamera ist neu.', 'Der Kamera ist neu.', 'الكاميرا مؤنث: die.', 'genus', 'Kamera'],
+      ['die Kette', 'die Ketten', 'السلسلة', 'Die Kette ist aus Gold.', 'Die Kette ist von Gold.', 'المادة بـ aus.', 'präposition', 'Kette'],
+      ['die Kosmetik', '—', 'مستحضرات التجميل', 'Kosmetik kaufe ich im Erdgeschoss.', 'Ich kaufe eine Kosmetik.', 'الكلمة مادة بلا أداة.', 'lexik-kollokation', 'Kosmetik'],
+      ['die Lüge', 'die Lügen', 'الكذبة', 'Das ist eine Lüge!', 'Das ist ein Lüge!', 'Lüge مؤنث: eine.', 'genus', 'Lüge'],
+      ['lügen', 'lügt · log · hat gelogen', 'يكذب', 'Du sollst nicht lügen.', 'Du sollst nicht lügst.', 'بعد soll المصدر: lügen.', 'konjugation', 'lügen'],
+      ['die Mailbox', 'die Mailboxen', 'البريد الصوتي', 'Ich habe dir auf die Mailbox gesprochen.', 'Ich habe dir in die Mailbox gesprochen.', 'الحرف: auf die Mailbox.', 'präposition', 'Mailbox'],
+      ['die E-Mail', 'die E-Mails', 'البريد الإلكتروني', 'Ich schreibe dir eine E-Mail.', 'Ich schreibe dir ein E-Mail.', 'E-Mail مؤنث: eine.', 'genus', 'E-Mail'],
+      ['das Parfüm', 'die Parfüms', 'العطر', 'Das Parfüm riecht gut.', 'Die Parfüm riecht gut.', 'Parfüm محايد: das.', 'genus', 'Parfüm'],
+      ['das Poster', 'die Poster', 'الملصق', 'Das Poster hängt über dem Bett.', 'Das Poster hängen über dem Bett.', 'محايد ومفرد: hängt.', 'konjugation', 'Poster'],
+      ['der Ring', 'die Ringe', 'الخاتم', 'Ich habe meinen Ring verloren.', 'Ich habe mein Ring verloren.', 'النصب: meinen Ring.', 'kasus', 'Ring'],
+      ['das Stockwerk', 'die Stockwerke', 'الطابق', 'Wir wohnen im dritten Stockwerk.', 'Wir wohnen in der dritten Stockwerk.', 'في المكان: im (in dem).', 'präposition', 'Stockwerk'],
+      ['die Tafel', 'die Tafeln', 'السبورة', 'Der Lehrer schreibt an die Tafel.', 'Das Tafel ist groß.', 'Tafel مؤنث: die.', 'genus', 'Tafel'],
+      ['das Taschengeld', '—', 'مصروف الجيب', 'Wie viel Taschengeld bekommst du?', 'Wie viele Taschengeld bekommst du?', 'Taschengeld بلا جمع وبلا wie viele.', 'lexik-kollokation', 'Taschengeld'],
+      ['der Zettel', 'die Zettel', 'الورقة الصغيرة', 'Hast du einen Zettel für mich?', 'Hast du ein Zettel für mich?', 'Zettel مذكر: einen.', 'genus', 'Zettel'],
+      ['einpacken', 'packt ein · packte ein · hat eingepackt', 'يحزم', 'Pack bitte die Handtücher ein!', 'Pack bitte die Handtücher einpacken!', 'الفصل في الأمر: … ein.', 'wortstellung', 'ein'],
+      ['herstellen', 'stellt her · stellte her · hat hergestellt', 'يصنع', 'In unserer Firma stellen wir Möbel her.', 'In unserer Firma herstellen wir Möbel.', 'الفعل الثاني: stellen … her.', 'wortstellung', 'her'],
+      ['wechseln', 'wechselt · wechselte · hat gewechselt', 'يبدّل', 'Wir müssen den Reifen wechseln.', 'Wir müssen den Reifen ändern.', 'wechseln للتبديل، nicht ändern.', 'lexik-kollokation', 'wechseln'],
+      ['der Anzug', 'die Anzüge', 'البدلة', 'Er trägt heute einen Anzug.', 'Er trägt heute ein Anzug.', 'النصب: einen Anzug.', 'kasus', 'Anzug'],
+      ['dick', '—', 'سمين', 'Ich bin zu dick.', 'Ich bin zu fett.', 'fett للطعام؛ للجسم dick.', 'falser-freund', 'dick'],
+      ['dünn', '—', 'نحيف', 'Er ist groß und dünn.', 'Er ist groß und schwach.', 'schwach للقوة؛ للنحافة dünn.', 'falser-freund', 'dünn'],
+      ['blond', '—', 'أشقر', 'Lisa hat blonde Haare.', 'Lisa hat blonde Haar.', 'الجمع: Haare.', 'plural', 'blonde'],
+      ['die Creme', 'die Cremes', 'الكريم', 'Ich suche eine Creme für die Hände.', 'Ich suche eine Creme zu den Händen.', 'الحرف: für die Hände.', 'präposition', 'Creme'],
+      ['das Mittel', 'die Mittel', 'الدواء', 'Haben Sie ein Mittel gegen Magenschmerzen?', 'Haben Sie ein Mittel für Magenschmerzen?', 'ضد شيء: gegen.', 'präposition', 'Mittel'],
+      ['die Krankheit', 'die Krankheiten', 'المرض', 'Welche Krankheit hat Herr Brandner?', 'Welcher Krankheit hat Herr Brandner?', 'النصب: welche Krankheit.', 'kasus', 'Krankheit'],
+      ['der Körper', 'die Körper', 'الجسم', 'Ich muss etwas für meinen Körper tun.', 'Ich muss etwas für mein Körper tun.', 'النصب: meinen Körper.', 'kasus', 'Körper'],
+      ['schädlich', '—', 'ضار', 'Rauchen ist schädlich für die Gesundheit.', 'Rauchen ist schädlich zu der Gesundheit.', 'الحرف الثابت: schädlich für.', 'präposition', 'schädlich'],
+      ['schwanger', '—', 'حامل', 'Lena ist schwanger.', 'Lena hat schwanger.', 'schwanger مع sein.', 'konjugation', 'schwanger'],
+      ['die Ahnung', 'die Ahnungen', 'الفكرة', 'Ich hatte keine Ahnung.', 'Ich habe keine Ahnung gehabt.', 'الماضي: hatte.', 'konjugation', 'Ahnung'],
+      ['merken', 'merkt · merkte · hat gemerkt', 'يلاحظ', 'Ich merke mir die Zahlen gut.', 'Ich merke die Zahlen mir gut.', 'الترتيب: mir … merken.', 'wortstellung', 'merke'],
+      ['aufpassen', 'passt auf · passte auf · hat aufgepasst', 'ينتبه', 'Der Babysitter passt auf die Kinder auf.', 'Der Babysitter aufpassen die Kinder.', 'الفعل المنفصل: passt … auf.', 'wortstellung', 'passt'],
+      ['die Menge', 'die Mengen', 'الكمية', 'Wir haben noch eine Menge Zeit.', 'Wir haben noch eine Menge von Zeit.', 'eine Menge Zeit بلا حرف.', 'lexik-kollokation', 'Menge']
+    ],
+    tricks: [
+      { trick: 'الأداة تُحفظ مع الكلمة لا بعدها', wie: 'Die Jeans passt mir nicht.', warum: 'الجنس يظهر في الأداة: die Jeans، das Parfüm، der Zettel.', anchor: 'Die Jeans passt' },
+      { trick: 'الفعل المنفصل يرجع إلى آخر الجملة', wie: 'In unserer Firma stellen wir Möbel her.', warum: 'الجزء الثاني (her) يبقى في النهاية.', anchor: 'stellen wir Möbel her' },
+      { trick: 'لا تترجم الحرف حرفيًا', wie: 'Rauchen ist schädlich für die Gesundheit.', warum: 'الألمانية تختار حرفها: für، nicht zu.', anchor: 'schädlich für' }
+    ]
+  },
+
+  'a2-u6-l2': {
+    items: [
+      ['das Mineralwasser', '—', 'الماء المعدني', 'Ein Glas Mineralwasser, bitte!', 'Ein Glas von Mineralwasser, bitte!', 'بلا حرف: ein Glas Mineralwasser.', 'lexik-kollokation', 'Mineralwasser'],
+      ['die Portion', 'die Portionen', 'الحصة', 'Ich nehme eine kleine Portion Eis.', 'Ich nehme einen kleinen Portion Eis.', 'Portion مؤنث: eine kleine.', 'genus', 'Portion'],
+      ['der Rest', 'die Reste', 'البقية', 'Den Rest gebe ich dir später.', 'Den Rest gebe ich dir später es.', 'بلا ضمير زائد.', 'wortstellung', 'Rest'],
+      ['das Gericht', 'die Gerichte', 'الطبق', 'Heute gibt es nur ein Gericht.', 'Heute gibt es nur einen Gericht.', 'Gericht محايد: ein.', 'genus', 'Gericht'],
+      ['der Hamburger', 'die Hamburger', 'الهامبرغر', 'Einen Hamburger ohne Salat, bitte!', 'Ein Hamburger ohne Salat, bitte!', 'النصب: einen Hamburger.', 'kasus', 'Hamburger'],
+      ['die Pizza', 'die Pizzas', 'البيتزا', 'Eine Pizza mit viel Käse, bitte!', 'Ein Pizza mit viel Käse, bitte!', 'Pizza مؤنث: eine.', 'genus', 'Pizza'],
+      ['die Schokolade', 'die Schokoladen', 'الشوكولاتة', 'Julia liebt Schokolade.', 'Julia liebt eine Schokolade.', 'المادة بلا أداة.', 'lexik-kollokation', 'Schokolade'],
+      ['die Süßigkeiten', 'die Süßigkeiten', 'الحلويات', 'Ich mag keine Süßigkeiten.', 'Ich mag keine Süßigkeit.', 'الغالب جمع: Süßigkeiten.', 'plural', 'Süßigkeiten'],
+      ['das Schwein', 'die Schweine', 'الخنزير', 'Ich esse kein Schweinefleisch.', 'Ich esse kein Schwein.', 'اللحم: Schweinefleisch.', 'lexik-kollokation', 'Schweinefleisch'],
+      ['das Rind', 'die Rinder', 'البقر', 'Ich esse nur Fleisch vom Rind.', 'Ich esse nur Fleisch von das Rind.', 'vom = von dem.', 'präposition', 'Rind'],
+      ['fett', '—', 'دهني', 'Die Wurst ist mir zu fett.', 'Die Wurst ist mir zu dick.', 'dick للجسم؛ للطعام fett.', 'falser-freund', 'fett'],
+      ['braten', 'brät · briet · hat gebraten', 'يقلي', 'Braten Sie das Fleisch in etwas Öl!', 'Braten Sie das Fleisch in etwas Öl machen!', 'braten فعل كامل.', 'lexik-kollokation', 'Braten'],
+      ['die Cafeteria', 'die Cafeterias', 'الكافتيريا', 'Ich gehe jetzt in die Cafeteria.', 'Ich gehe jetzt in der Cafeteria.', 'الاتجاه: in die.', 'präposition', 'Cafeteria'],
+      ['das Festival', 'die Festivals', 'المهرجان', 'Am Wochenende ist ein Festival in der Stadt.', 'Am Wochenende ist ein Festival von der Stadt.', 'الحرف: in der Stadt.', 'präposition', 'Festival'],
+      ['die Band', 'die Bands', 'الفرقة الموسيقية', 'Anton spielt in einer Band.', 'Anton spielt in ein Band.', 'في الداتيف: einer Band.', 'kasus', 'Band'],
+      ['das Konzert', 'die Konzerte', 'الحفل الموسيقي', 'Für das Konzert gibt es noch Karten.', 'Für dem Konzert gibt es noch Karten.', 'für مع النصب: das.', 'kasus', 'Konzert'],
+      ['die Gitarre', 'die Gitarren', 'الجيتار', 'Er kann gut Gitarre spielen.', 'Er kann gut die Gitarre spielen.', 'الآلة بلا أداة عند العزف.', 'lexik-kollokation', 'Gitarre'],
+      ['das Instrument', 'die Instrumente', 'الآلة الموسيقية', 'Spielen Sie auch ein Instrument?', 'Spielen Sie auch ein Instrumente?', 'المفرد بعد ein.', 'plural', 'Instrument'],
+      ['romantisch', '—', 'رومانسي', 'Dieser Film ist sehr romantisch.', 'Dieser Film ist sehr romantik.', 'الصفة: romantisch.', 'lexik-kollokation', 'romantisch'],
+      ['die Rose', 'die Rosen', 'الوردة', 'Er schenkt ihr rote Rosen.', 'Er schenkt ihr rote Rose.', 'الجمع: Rosen.', 'plural', 'Rosen'],
+      ['der Star', 'die Stars', 'النجم', 'Diese Sängerin ist ein Star.', 'Diese Sängerin ist ein Stern.', 'Stern في السماء؛ Star للمشهور.', 'falser-freund', 'Star'],
+      ['die Kultur', 'die Kulturen', 'الثقافة', 'Jana interessiert sich für Kultur.', 'Jana interessiert sich für die Kultur.', 'المجال بلا أداة.', 'lexik-kollokation', 'Kultur'],
+      ['die Bibliothek', 'die Bibliotheken', 'المكتبة', 'In der Bibliothek darf man nicht laut sprechen.', 'In die Bibliothek darf man nicht laut sprechen.', 'المكان: in der.', 'präposition', 'Bibliothek'],
+      ['der Krimi', 'die Krimis', 'الرواية البوليسية', 'Miriam liest gern spannende Krimis.', 'Miriam liest gern spannende Krimi.', 'الجمع: Krimis.', 'plural', 'Krimis'],
+      ['basteln', 'bastelt · bastelte · hat gebastelt', 'يصنع بيديه', 'Die Kinder haben etwas gebastelt.', 'Die Kinder haben etwas gebastelt gemacht.', 'basteln فعل كامل.', 'lexik-kollokation', 'gebastelt'],
+      ['zeichnen', 'zeichnet · zeichnete · hat gezeichnet', 'يرسم', 'Er zeichnet gern Tiere.', 'Er malt gern Tiere mit Stift.', 'zeichnen بالخط؛ malen بالألوان.', 'falser-freund', 'zeichnet'],
+      ['sammeln', 'sammelt · sammelte · hat gesammelt', 'يجمع', 'Peter sammelt Briefmarken.', 'Peter sammelt die Briefmarken zusammen.', 'sammeln يكفي.', 'lexik-kollokation', 'sammelt'],
+      ['das Plakat', 'die Plakate', 'الملصق الكبير', 'Wir machen ein Plakat zum Thema.', 'Wir machen ein Plakat für das Thema.', 'التعبير: zum Thema.', 'präposition', 'Plakat'],
+      ['der Zirkus', 'die Zirkusse', 'السيرك', 'Im Zirkus arbeiten viele Tiere.', 'Im Zirkus arbeiten viele Tiere mit.', 'بلا mit زائدة.', 'lexik-kollokation', 'Zirkus'],
+      ['der Zoo', 'die Zoos', 'حديقة الحيوان', 'Wir gehen am Sonntag in den Zoo.', 'Wir gehen am Sonntag in dem Zoo.', 'الاتجاه: in den.', 'präposition', 'Zoo'],
+      ['die Ausstellung', 'die Ausstellungen', 'المعرض', 'Gehen wir morgen in die Ausstellung?', 'Gehen wir morgen zu der Ausstellung?', 'الاتجاه: in die.', 'präposition', 'Ausstellung'],
+      ['das Schloss', 'die Schlösser', 'القصر', 'Am Wochenende besichtigen wir ein Schloss.', 'Am Wochenende besichtigen wir einen Schloss.', 'Schloss محايد: ein.', 'genus', 'Schloss'],
+      ['der Rundgang', 'die Rundgänge', 'الجولة', 'Der Rundgang beginnt in wenigen Minuten.', 'Der Rundgang beginnen in wenigen Minuten.', 'المفرد: beginnt.', 'konjugation', 'Rundgang'],
+      ['komisch', '—', 'غريب', 'Das Essen schmeckt komisch.', 'Das Essen schmeckt komisch gemacht.', 'صفة مع schmecken بلا gemacht.', 'lexik-kollokation', 'komisch'],
+      ['schrecklich', '—', 'فظيع', 'Ich finde den Film schrecklich.', 'Ich finde den Film schrecklich gut.', 'schrecklich لا تحتاج توضيحًا.', 'lexik-kollokation', 'schrecklich']
+    ],
+    tricks: [
+      { trick: 'الكمية بلا حرف جرّ', wie: 'Ein Glas Mineralwasser, bitte!', warum: 'الألمانية تحذف von بعد الكمية.', anchor: 'Ein Glas Mineralwasser' },
+      { trick: 'اللحم والحيوان كلمتان', wie: 'Ich esse kein Schweinefleisch.', warum: 'Schwein حيوان، Schweinefleisch لحم.', anchor: 'Schweinefleisch' },
+      { trick: 'الأداة تتغير مع für و in', wie: 'Für das Konzert gibt es noch Karten.', warum: 'für + النصب (das)، وin + الداتيف للمكان (in der Bibliothek).', anchor: 'Für das Konzert' }
+    ]
+  },
+
+  'a2-u6-l3': {
+    items: [
+      ['joggen', 'joggt · joggte · ist/hat gejoggt', 'يهرول', 'Ich jogge gern im Park.', 'Ich jogge gern in dem Park spazieren.', 'joggen يكفي بلا spazieren.', 'lexik-kollokation', 'jogge'],
+      ['reiten', 'reitet · ritt · ist geritten', 'يركب الخيل', 'Möchtest du reiten lernen?', 'Möchtest du fahren lernen?', 'reiten للخيل؛ fahren للمركبة.', 'falser-freund', 'reiten'],
+      ['das Pferd', 'die Pferde', 'الحصان', 'Amira liebt Pferde.', 'Amira liebt die Pferde.', 'lieben بلا sehr viel.', 'lexik-kollokation', 'Pferde'],
+      ['der Ski', 'die Ski', 'الزحلقة', 'Gehen wir am Wochenende Ski fahren?', 'Gehen wir am Wochenende Ski machen?', 'الفعل: Ski fahren.', 'lexik-kollokation', 'Ski'],
+      ['das Tennis', '—', 'التنس', 'Steffi spielt sehr gut Tennis.', 'Steffi spielt sehr gut das Tennis.', 'اللعبة بلا أداة.', 'lexik-kollokation', 'Tennis'],
+      ['das Team', 'die Teams', 'الفريق', 'Ich arbeite gern in einem Team.', 'Ich arbeite gern in ein Team.', 'في الداتيف: einem.', 'kasus', 'Team'],
+      ['die Mannschaft', 'die Mannschaften', 'الفريق الرياضي', 'Die Mannschaft hat 1:0 verloren.', 'Die Mannschaft hat 1:0 verloren gemacht.', 'بلا gemacht.', 'lexik-kollokation', 'Mannschaft'],
+      ['der Verein', 'die Vereine', 'النادي', 'Er ist seit vielen Jahren im Verein.', 'Er ist seit vielen Jahren in der Verein.', 'im = in dem.', 'präposition', 'Verein'],
+      ['der Wettbewerb', 'die Wettbewerbe', 'المسابقة', 'Die Kinder machen einen Wettbewerb.', 'Die Kinder machen einen Wettbewerb zusammen.', 'بلا zusammen.', 'lexik-kollokation', 'Wettbewerb'],
+      ['das Training', 'die Trainings', 'التدريب', 'Das Training ist immer dienstags.', 'Das Training sind immer dienstags.', 'محايد ومفرد: ist.', 'konjugation', 'Training'],
+      ['trainieren', 'trainiert · trainierte · hat trainiert', 'يتدرّب', 'Wir trainieren einmal pro Woche.', 'Wir trainieren einmal in der Woche pro.', 'pro بلا in der.', 'lexik-kollokation', 'trainieren'],
+      ['sportlich', '—', 'رياضي', 'Tom ist sehr sportlich.', 'Tom ist sehr Sport.', 'الصفة: sportlich.', 'lexik-kollokation', 'sportlich'],
+      ['der Sportplatz', 'die Sportplätze', 'الملعب', 'Das Training ist auf dem Sportplatz.', 'Das Training ist in der Sportplatz.', 'الحرف: auf dem Sportplatz.', 'präposition', 'Sportplatz'],
+      ['der Spaziergang', 'die Spaziergänge', 'النزهة', 'Abends mache ich einen Spaziergang.', 'Abends mache ich einen Spaziergang gehen.', 'machen يكفي.', 'lexik-kollokation', 'Spaziergang'],
+      ['die Natur', '—', 'الطبيعة', 'Ich bin gern draußen in der Natur.', 'Ich bin gern draußen in die Natur.', 'في المكان: in der.', 'präposition', 'Natur'],
+      ['natürlich', '—', 'طبعًا', 'Natürlich helfen wir dir.', 'Natürlich wir helfen dir.', 'الفعل ثانيًا بعد natürlich.', 'wortstellung', 'Natürlich'],
+      ['der Strand', 'die Strände', 'الشاطئ', 'Im Urlaub bin ich am liebsten am Strand.', 'Im Urlaub bin ich am liebsten in dem Strand.', 'am Strand.', 'präposition', 'Strand'],
+      ['der Fluss', 'die Flüsse', 'النهر', 'Der Rhein ist ein großer Fluss.', 'Der Rhein ist ein großer Wasser.', 'Wasser للماء؛ Fluss للنهر.', 'falser-freund', 'Fluss'],
+      ['die Insel', 'die Inseln', 'الجزيرة', 'Im Sommer machen wir Urlaub auf einer Insel.', 'Im Sommer machen wir Urlaub in einer Insel.', 'على الجزيرة: auf.', 'präposition', 'Insel'],
+      ['das Zelt', 'die Zelte', 'الخيمة', 'Ich muss mein Zelt mitnehmen.', 'Ich muss mein Zelt mitgehen.', 'الفعل: mitnehmen.', 'lexik-kollokation', 'Zelt'],
+      ['der Rucksack', 'die Rucksäcke', 'حقيبة الظهر', 'Ich nehme lieber einen Rucksack mit.', 'Ich nehme lieber einen Rucksack mit mir.', 'mitnehmen بلا mir.', 'lexik-kollokation', 'Rucksack'],
+      ['der Stiefel', 'die Stiefel', 'الحذاء الطويل', 'Wie viel kosten die roten Stiefel?', 'Wie viel kosten die rote Stiefel?', 'الجمع: die roten.', 'deklination', 'Stiefel'],
+      ['tief', '—', 'عميق', 'Vorsicht, das Wasser ist tief!', 'Vorsicht, das Wasser ist tief gemacht!', 'صفة بلا gemacht.', 'lexik-kollokation', 'tief'],
+      ['neblig', '—', 'ضبابي', 'Du musst vorsichtig fahren, es ist neblig.', 'Es hat Nebel neblig.', 'الصفة: es ist neblig.', 'lexik-kollokation', 'neblig'],
+      ['der Himmel', '—', 'السماء', 'Der Himmel ist blau und es gibt keine Wolken.', 'Der Himmel sind blau.', 'المفرد: ist.', 'konjugation', 'Himmel'],
+      ['sterben', 'stirbt · starb · ist gestorben', 'يموت', 'Sein Vater ist gestern gestorben.', 'Sein Vater hat gestern gestorben.', 'sterben مع sein.', 'konjugation', 'gestorben'],
+      ['der Traum', 'die Träume', 'الحلم', 'Eine eigene Firma, das ist mein Traum.', 'Eine eigene Firma, das ist mein träumen.', 'الحلم اسم: Traum.', 'lexik-kollokation', 'Traum'],
+      ['der Fan', 'die Fans', 'المشجّع', 'Er ist ein großer Fan von Rammstein.', 'Er ist ein großer Fan für Rammstein.', 'Fan von etwas.', 'präposition', 'Fan'],
+      ['aufregend', '—', 'مثير', 'Die letzte Woche war sehr aufregend.', 'Die letzte Woche war sehr aufregend gewesen.', 'war يكفي.', 'konjugation', 'aufregend'],
+      ['aktiv', '—', 'نشيط', 'Peter ist sehr aktiv und macht viel Sport.', 'Peter ist sehr aktiv gemacht.', 'صفة بلا gemacht.', 'lexik-kollokation', 'aktiv'],
+      ['fleißig', '—', 'مجتهد', 'Ibrahim ist sehr fleißig.', 'Ibrahim ist sehr fleißig Mann.', 'الصفة تكفي.', 'lexik-kollokation', 'fleißig'],
+      ['klug', '—', 'ذكي', 'Das ist klug von dir.', 'Das ist klug für dich.', 'التعبير: klug von dir.', 'präposition', 'klug'],
+      ['intelligent', '—', 'ذكي جدًا', 'Einstein war sehr intelligent.', 'Einstein war sehr intelligent gewesen.', 'war يكفي.', 'konjugation', 'intelligent'],
+      ['nervös', '—', 'متوتر', 'Bei Prüfungen bin ich immer sehr nervös.', 'Bei Prüfungen bin ich immer sehr nervös gemacht.', 'صفة بلا gemacht.', 'lexik-kollokation', 'nervös'],
+      ['sympathisch', '—', 'ودود', 'Der neue Chef ist sehr sympathisch.', 'Der neue Chef ist sehr sympathisch Mann.', 'الصفة تكفي.', 'lexik-kollokation', 'sympathisch']
+    ],
+    tricks: [
+      { trick: 'اللعبة والآلة بلا أداة عند الممارسة', wie: 'Steffi spielt sehr gut Tennis.', warum: 'Tennis spielen, Gitarre spielen — بلا أداة.', anchor: 'spielt sehr gut Tennis' },
+      { trick: 'المكان له حرفه: auf dem Sportplatz، am Strand', wie: 'Das Training ist auf dem Sportplatz.', warum: 'الحarf richtig يحفظ مع الاسم.', anchor: 'auf dem Sportplatz' },
+      { trick: 'sein مع الحركة، haben مع الحالة', wie: 'Sein Vater ist gestern gestorben.', warum: 'sterben يتحرك من حال إلى حال: مع sein.', anchor: 'ist gestern gestorben' }
+    ]
+  }
+
+};

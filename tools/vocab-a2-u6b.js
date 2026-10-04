@@ -1,0 +1,141 @@
+/* Deutschweg — P3.8 lexical layer, A2 unit 6 (part b): a2-u6-l4 … a2-u6-l6.
+   The Goethe-A2-list unit, second half. 35 items per lesson. */
+
+module.exports = {
+
+  'a2-u6-l4': {
+    items: [
+      ['der Fotoapparat', 'die Fotoapparate', 'آلة التصوير', 'Ich möchte mir einen Fotoapparat kaufen.', 'Ich möchte mir ein Fotoapparat kaufen.', 'Fotoapparat مذكر: einen.', 'genus', 'Fotoapparat'],
+      ['fotografieren', 'fotografiert · fotografierte · hat fotografiert', 'يصوّر', 'Ich fotografiere gern.', 'Ich mache gern Fotos von fotografieren.', 'fotografieren فعل كامل.', 'lexik-kollokation', 'fotografiere'],
+      ['der Führerschein', 'die Führerscheine', 'رخصة القيادة', 'Wo ist dein Führerschein?', 'Wo ist deine Führerschein?', 'Führerschein مذكر: dein.', 'genus', 'Führerschein'],
+      ['die Fundsachen', 'die Fundsachen', 'المفقودات', 'Ihr Schirm liegt bei den Fundsachen.', 'Ihr Schirm liegt bei der Fundsachen.', 'الجمع في الداتيف: den (bei den).', 'kasus', 'Fundsachen'],
+      ['der Fahrplan', 'die Fahrpläne', 'جدول الرحلات', 'Ist das der neue Fahrplan?', 'Ist das der neue Fahrplan neu?', 'الفعل يكفي.', 'lexik-kollokation', 'Fahrplan'],
+      ['die Ermäßigung', 'die Ermäßigungen', 'التخفيض', 'Für Gruppen gibt es eine Ermäßigung.', 'Für Gruppen gibt es einen Ermäßigung.', 'Ermäßigung مؤنث: eine.', 'genus', 'Ermäßigung'],
+      ['das Einkaufszentrum', 'die Einkaufszentren', 'المركز التجاري', 'Kommst du morgen mit ins Einkaufszentrum?', 'Kommst du morgen mit in der Einkaufszentrum?', 'الاتجاه: ins.', 'präposition', 'Einkaufszentrum'],
+      ['der Motor', 'die Motoren', 'المحرّك', 'Der Motor ist kaputt.', 'Der Motor sind kaputt.', 'المفرد: ist.', 'konjugation', 'Motor'],
+      ['der Motorroller', 'die Motorroller', 'الدراجة الصغيرة', 'Oskar fährt mit dem Motorroller zur Arbeit.', 'Oskar fährt mit dem Motorroller zu der Arbeit.', 'التعبير: zur Arbeit.', 'präposition', 'Motorroller'],
+      ['das Schiff', 'die Schiffe', 'السفينة', 'Wir fahren mit dem Schiff nach Köln.', 'Wir fahren mit dem Schiff zu Köln.', 'nach مع المدن.', 'präposition', 'Schiff'],
+      ['der Stadtplan', 'die Stadtpläne', 'خريطة المدينة', 'Ich kaufe mir einen Stadtplan.', 'Ich kaufe mir ein Stadtplan.', 'Stadtplan مذكر: einen.', 'genus', 'Stadtplan'],
+      ['die Tour', 'die Touren', 'الجولة', 'Ich kenne eine schöne Tour in den Bergen.', 'Ich kenne eine schöne Tour durch den Bergen.', 'المكان: in den Bergen.', 'kasus', 'Tour'],
+      ['der Tourist', 'die Touristen', 'السائح', 'Im Sommer kommen viele Touristen.', 'Im Sommer kommen viele Tourist.', 'الجمع: Touristen.', 'plural', 'Touristen'],
+      ['die Touristin', 'die Touristinnen', 'السائحة', 'Eine Touristin fragt nach dem Weg.', 'Eine Touristin fragt für den Weg.', 'نach dem Weg.', 'präposition', 'Touristin'],
+      ['das Verkehrsmittel', 'die Verkehrsmittel', 'وسيلة النقل', 'Welche Verkehrsmittel benutzen Sie oft?', 'Welche Verkehrsmittel benutzen Sie oft mit?', 'بلا mit زائدة.', 'lexik-kollokation', 'Verkehrsmittel'],
+      ['verreisen', 'verreist · verreiste · ist verreist', 'يسافر بعيدًا', 'Verreist ihr in den Ferien?', 'Verreist ihr in die Ferien?', 'in den Ferien.', 'präposition', 'Verreist'],
+      ['verpassen', 'verpasst · verpasste · hat verpasst', 'يفوّت', 'Ich habe den Zug verpasst.', 'Ich habe den Zug verpasst gemacht.', 'verpassen فعل كامل.', 'lexik-kollokation', 'verpasst'],
+      ['unternehmen', 'unternimmt · unternahm · hat unternommen', 'يقوم بـ', 'Wollen wir heute Abend etwas unternehmen?', 'Wollen wir heute Abend etwas unternehmen gehen?', 'unternehmen يكفي.', 'lexik-kollokation', 'unternehmen'],
+      ['der Flohmarkt', 'die Flohmärkte', 'سوق المستعمل', 'Ich gehe gern auf den Flohmarkt.', 'Ich gehe gern in den Flohmarkt.', 'auf den Flohmarkt.', 'präposition', 'Flohmarkt'],
+      ['stattfinden', 'findet statt · fand statt · hat stattgefunden', 'يقام', 'Das Spiel findet auch bei Regen statt.', 'Das Spiel stattfindet auch bei Regen.', 'الفصل: findet … statt.', 'wortstellung', 'statt'],
+      ['Karneval', '—', 'الكرنفال', 'In Köln feiern wir Karneval.', 'In Köln feiern wir das Karneval.', 'المناسبة بلا أداة.', 'lexik-kollokation', 'Karneval'],
+      ['Silvester', '—', 'رأس السنة', 'Silvester feiern wir zu Hause.', 'An Silvester wir feiern zu Hause.', 'الفعل ثانيًا.', 'wortstellung', 'Silvester'],
+      ['nachts', '—', 'ليلًا', 'Nachts ist es hier ruhig.', 'In der Nacht ist es hier nachts ruhig.', 'nachts تكفي.', 'lexik-kollokation', 'Nachts'],
+      ['der Werktag', 'die Werktage', 'يوم العمل', 'Am Werktag beginnt der Verkehr früh.', 'Am Werktag beginnt der Verkehr früh an.', 'بلا an زائدة.', 'lexik-kollokation', 'Werktag'],
+      ['der Rentner', 'die Rentner', 'المتقاعد', 'Mein Onkel arbeitet nicht mehr, er ist Rentner.', 'Mein Onkel arbeitet nicht mehr, er ist ein Rentner gemacht.', 'الصفة بلا gemacht.', 'lexik-kollokation', 'Rentner'],
+      ['der Tipp', 'die Tipps', 'النصيحة', 'Kannst du mir einen guten Tipp geben?', 'Kannst du mir einen guten Tipp machen?', 'geben مع Tipp.', 'lexik-kollokation', 'Tipp'],
+      ['raten', 'rät · riet · hat geraten', 'ينصح', 'Was raten Sie mir?', 'Was beraten Sie mir?', 'raten بلا بادئة في السؤال.', 'lexik-kollokation', 'raten'],
+      ['schimpfen', 'schimpft · schimpfte · hat geschimpft', 'يتذمّر', 'Alle schimpfen über das Wetter.', 'Alle schimpfen auf das Wetter mit.', 'über das Wetter.', 'präposition', 'schimpfen'],
+      ['Luxemburg', '—', 'لوكسمبورغ', 'Luxemburg liegt zwischen Deutschland und Belgien.', 'Luxemburg liegt zwischen Deutschland und Belgien zusammen.', 'بلا zusammen.', 'lexik-kollokation', 'Luxemburg'],
+      ['der Luxemburger', 'die Luxemburger', 'اللوكسمبورغي', 'Ein Luxemburger arbeitet bei uns.', 'Ein Luxemburger arbeiten bei uns.', 'المفرد: arbeitet.', 'konjugation', 'Luxemburger'],
+      ['die Luxemburgerin', 'die Luxemburgerinnen', 'اللوكسمبورغية', 'Die Luxemburgerin spricht drei Sprachen.', 'Die Luxemburgerin sprechen drei Sprachen.', 'المفرد: spricht.', 'konjugation', 'Luxemburgerin'],
+      ['luxemburgisch', '—', 'لوكسمبورغي (صفة)', 'Sie spricht luxemburgisch.', 'Sie spricht die luxemburgisch.', 'اللغة بلا أداة.', 'lexik-kollokation', 'luxemburgisch'],
+      ['der Europäer', 'die Europäer', 'الأوروبي', 'Er ist Europäer und lebt in Brüssel.', 'Er ist ein Europäer Mann.', 'الصفة/الاسم يكفي.', 'lexik-kollokation', 'Europäer'],
+      ['die Europäerin', 'die Europäerinnen', 'الأوروبية', 'Sie ist Europäerin.', 'Sie ist eine Europäerin Frau.', 'بلا Frau زائدة.', 'lexik-kollokation', 'Europäerin'],
+      ['europäisch', '—', 'أوروبي (صفة)', 'Das ist eine europäische Regel.', 'Das ist eine Regel europäisch.', 'الصفة قبل الاسم.', 'wortstellung', 'europäische']
+    ],
+    tricks: [
+      { trick: 'الفعل المنفصل في النهاية', wie: 'Das Spiel findet auch bei Regen statt.', warum: 'stattfinden يتشطر: findet … statt.', anchor: 'findet auch bei Regen statt' },
+      { trick: 'البلاد بلا أداة، والصفة معها', wie: 'Luxemburg liegt zwischen Deutschland und Belgien.', warum: 'أسماء البلاد بلا أداة، والصفة تتبع الاسم.', anchor: 'Luxemburg liegt zwischen' },
+      { trick: 'الفعل يدل على حرفه', wie: 'Alle schimpfen über das Wetter.', warum: 'schimpfen über — الحرف يُحفظ مع الفعل.', anchor: 'schimpfen über das Wetter' }
+    ]
+  },
+
+  'a2-u6-l5': {
+    items: [
+      ['abschließen', 'schließt ab · schloss ab · hat abgeschlossen', 'يُنهي/يُقفل', 'Hast du die Tür abgeschlossen?', 'Hast du die Tür geschlossen ab?', 'الفصل: abgeschlossen.', 'wortstellung', 'abgeschlossen'],
+      ['beantworten', 'beantwortet · beantwortete · hat beantwortet', 'يجيب على', 'Können Sie meine Frage beantworten?', 'Können Sie auf meine Frage beantworten?', 'beantworten بلا حرف.', 'lexik-kollokation', 'beantworten'],
+      ['beenden', 'beendet · beendete · hat beendet', 'يُنهي', 'Du musst deine Ausbildung beenden.', 'Du musst deine Ausbildung beenden machen.', 'beenden فعل كامل.', 'lexik-kollokation', 'beenden'],
+      ['begründen', 'begründet · begründete · hat begründet', 'يعلّل', 'Bitte begründen Sie Ihre Meinung.', 'Bitte begründen Sie über Ihre Meinung.', 'begründen بلا حرف.', 'lexik-kollokation', 'begründen'],
+      ['beraten', 'berät · beriet · hat beraten', 'ينصح (رسميًا)', 'Unsere Sekretärin berät Sie gern.', 'Unsere Sekretärin berät Sie gern an.', 'بلا an زائدة.', 'lexik-kollokation', 'berät'],
+      ['berichten', 'berichtet · berichtete · hat berichtet', 'يُخبر', 'Alle Zeitungen berichten von dem Unfall.', 'Alle Zeitungen berichten über dem Unfall.', 'von + الداتيف.', 'präposition', 'berichten'],
+      ['der Bescheid', 'die Bescheide', 'القرار', 'Sie bekommt nächste Woche Bescheid.', 'Sie bekommt nächste Woche einen Bescheid gegeben.', 'التعبير: Bescheid bekommen.', 'lexik-kollokation', 'Bescheid'],
+      ['sich bewerben', 'bewirbt sich · bewarb sich · hat sich beworben', 'يتقدّم بطلب', 'Ich bewerbe mich um eine Stelle.', 'Ich bewerbe mich für eine Stelle um.', 'um eine Stelle.', 'präposition', 'bewerbe'],
+      ['die Chefin', 'die Chefinnen', 'المديرة', 'Wir haben eine neue Chefin.', 'Wir haben ein neuer Chefin.', 'Chefin مؤنث: eine neue.', 'deklination', 'Chefin'],
+      ['kündigen', 'kündigt · kündigte · hat gekündigt', 'يُنهي العقد', 'Ich habe bei der Firma gekündigt.', 'Ich habe die Firma gekündigt.', 'kündigen bei einer Firma.', 'lexik-kollokation', 'gekündigt'],
+      ['der Mitarbeiter', 'die Mitarbeiter', 'الموظف', 'Unsere Firma hat sieben Mitarbeiter.', 'Unsere Firma hat sieben Mitarbeitern.', 'النصب بلا n: Mitarbeiter.', 'deklination', 'Mitarbeiter'],
+      ['das Programm', 'die Programme', 'البرنامج', 'Das Programm beginnt um acht.', 'Die Programm beginnt um acht.', 'Programm محايد: das.', 'genus', 'Programm'],
+      ['das Projekt', 'die Projekte', 'المشروع', 'Wir machen ein Projekt über unsere Stadt.', 'Wir machen ein Projekt für unsere Stadt.', 'über + النصب.', 'präposition', 'Projekt'],
+      ['der Workshop', 'die Workshops', 'الورشة', 'Am Samstag besuche ich einen Workshop.', 'Am Samstag besuche ich ein Workshop.', 'Workshop مذكر: einen.', 'genus', 'Workshop'],
+      ['rechnen', 'rechnet · rechnete · hat gerechnet', 'يحسب', 'Sarah kann gut rechnen.', 'Sarah kann gut rechnen machen.', 'rechnen فعل كامل.', 'lexik-kollokation', 'rechnen'],
+      ['die Reihe', 'die Reihen', 'الصف', 'Wir sitzen in der dritten Reihe.', 'Wir sitzen in der dritten Reihe Platz.', 'بلا Platz زائدة.', 'lexik-kollokation', 'Reihe'],
+      ['organisieren', 'organisiert · organisierte · hat organisiert', 'ينظّم', 'Wir organisieren ein Fest.', 'Wir organisieren zu einem Fest.', 'organisieren بلا حرف.', 'lexik-kollokation', 'organisieren'],
+      ['die Situation', 'die Situationen', 'الوضع', 'Ich bin in einer schwierigen Situation.', 'Ich bin in einer schwierigen Situation gemacht.', 'بلا gemacht.', 'lexik-kollokation', 'Situation'],
+      ['der Unterschied', 'die Unterschiede', 'الفرق', 'Was ist der Unterschied zwischen den Kursen?', 'Was ist der Unterschied von den Kursen?', 'zwischen + الداتيف.', 'präposition', 'Unterschied'],
+      ['versuchen', 'versucht · versuchte · hat versucht', 'يحاول', 'Kann ich es auch einmal versuchen?', 'Kann ich es auch einmal probe?', 'versuchen للفعل؛ probieren للتذوق.', 'falser-freund', 'versuchen'],
+      ['vereinbaren', 'vereinbart · vereinbarte · hat vereinbart', 'يتفق على', 'Können wir einen Termin vereinbaren?', 'Können wir einen Termin vereinbaren machen?', 'vereinbaren فعل كامل.', 'lexik-kollokation', 'vereinbaren'],
+      ['die Veranstaltung', 'die Veranstaltungen', 'الفعالية', 'Am Samstag haben wir eine Veranstaltung.', 'Am Samstag haben wir ein Veranstaltung.', 'Veranstaltung مؤنث: eine.', 'genus', 'Veranstaltung'],
+      ['sich eintragen', 'trägt sich ein · trug sich ein · hat sich eingetragen', 'يسجّل اسمه', 'Tragen Sie sich bitte in die Liste ein!', 'Tragen Sie sich bitte in die Liste ein sich!', 'الفصل: … ein.', 'wortstellung', 'ein'],
+      ['sich informieren', 'informiert sich · informierte sich · hat sich informiert', 'يستعلم', 'Ich informiere mich über die Prüfung.', 'Ich informiere über die Prüfung.', 'informieren (sich) بلا mich ناقص.', 'lexik-kollokation', 'informiere'],
+      ['die Schülerin', 'die Schülerinnen', 'التلميذة', 'Eine Schülerin aus meinem Kurs heißt Lena.', 'Ein Schülerin aus meinem Kurs heißt Lena.', 'Schülerin مؤنث: eine.', 'genus', 'Schülerin'],
+      ['die Baustelle', 'die Baustellen', 'ورشة البناء', 'Vor unserem Haus ist eine große Baustelle.', 'Vor unserem Haus ist ein großer Baustelle.', 'Baustelle مؤنث: eine große.', 'deklination', 'Baustelle'],
+      ['der Titel', 'die Titel', 'العنوان', 'Ich weiß den Titel nicht mehr.', 'Ich weiß der Titel nicht mehr.', 'النصب: den Titel.', 'kasus', 'Titel'],
+      ['das Interview', 'die Interviews', 'المقابلة', 'Im Radio kommt ein Interview mit dem Sänger.', 'Im Radio kommt ein Interview von dem Sänger.', 'mit + الداتيف.', 'präposition', 'Interview'],
+      ['die Sendung', 'die Sendungen', 'البرنامج الإذاعي', 'Diese Sendung ist nicht für Jugendliche.', 'Diese Sendung ist nicht zu Jugendlichen.', 'für + النصب.', 'präposition', 'Sendung'],
+      ['aktuell', '—', 'حديث/حالي', 'Das ist das aktuelle Kinoprogramm.', 'Das ist das Programm aktuell.', 'الصفة قبل الاسم.', 'wortstellung', 'aktuelle'],
+      ['chatten', 'chattet · chattete · hat gechattet', 'يدردش', 'Luis chattet gern mit seinen Freunden.', 'Luis chattet gern zu seinen Freunden.', 'mit + الداتيف.', 'präposition', 'chattet'],
+      ['die Webseite', 'die Webseiten', 'الموقع الإلكتروني', 'Es gibt viele Webseiten mit Übungen.', 'Es gibt viele Webseiten von Übungen.', 'mit + الداتيف.', 'präposition', 'Webseiten'],
+      ['übersetzen', 'übersetzt · übersetzte · hat übersetzt', 'يترجم', 'Können Sie mir den Brief übersetzen?', 'Können Sie mir den Brief übersetzen machen?', 'übersetzen فعل كامل.', 'lexik-kollokation', 'übersetzen'],
+      ['zuhören', 'hört zu · hörte zu · hat zugehört', 'يُنصت', 'Kinder sollen den Eltern zuhören.', 'Kinder sollen den Eltern anhören.', 'zuhören بلا an.', 'falser-freund', 'zuhören'],
+      ['das Interesse', 'die Interessen', 'الاهتمام', 'Ich habe viele Interessen.', 'Ich habe viele Interessen von Sport.', 'بلا von.', 'lexik-kollokation', 'Interessen']
+    ],
+    tricks: [
+      { trick: 'الفعل بلا حرف لا يحتاج حرفًا', wie: 'Können Sie meine Frage beantworten?', warum: 'beantworten، begründen، organisieren — بلا حرف جرّ.', anchor: 'meine Frage beantworten' },
+      { trick: 'التعبير الثابت يُحفظ كاملًا', wie: 'Sie bekommt nächste Woche Bescheid.', warum: 'Bescheid bekommen/geben — لا تُترجم حرفيًا.', anchor: 'bekommt nächste Woche Bescheid' },
+      { trick: 'الصفة في موضعها قبل الاسم', wie: 'Das ist das aktuelle Kinoprogramm.', warum: 'aktuelle … قبل الاسم مع أل التعريف.', anchor: 'das aktuelle Kinoprogramm' }
+    ]
+  },
+
+  'a2-u6-l6': {
+    items: [
+      ['ansehen', 'sieht an · sah an · hat angesehen', 'ينظر إلى', 'Darf ich eure Urlaubsfotos ansehen?', 'Darf ich zu euren Urlaubsfotos ansehen?', 'ansehen بلا حرف.', 'lexik-kollokation', 'ansehen'],
+      ['ausgeben', 'gibt aus · gab aus · hat ausgegeben', 'ينفق', 'Agata gibt viel Geld für Bücher aus.', 'Agata ausgibt viel Geld.', 'الفصل: gibt … aus.', 'wortstellung', 'aus'],
+      ['aussprechen', 'spricht aus · sprach aus · hat ausgesprochen', 'ينطق', 'Wie spricht man das Wort aus?', 'Wie spricht man das Wort aussprechen?', 'الفصل: spricht … aus.', 'wortstellung', 'aus'],
+      ['das Gegenteil', 'die Gegenteile', 'العكس', 'Das Gegenteil von klein ist groß.', 'Das Gegenteil für klein ist groß.', 'von + الداتيف.', 'präposition', 'Gegenteil'],
+      ['besonders', '—', 'بشكل خاص', 'Dieses Angebot ist besonders günstig.', 'Dieses Angebot ist besonders günstig mehr.', 'بلا mehr.', 'lexik-kollokation', 'besonders'],
+      ['beliebt', '—', 'محبوب', 'Fußball ist bei vielen Menschen beliebt.', 'Fußball ist für viele Menschen beliebt.', 'beliebt bei.', 'präposition', 'beliebt'],
+      ['berühmt', '—', 'مشهور', 'Thomas Müller ist ein berühmter Fußballspieler.', 'Thomas Müller ist ein berühmt Fußballspieler.', 'الصفة تُصرَّف قبل الاسم.', 'deklination', 'berühmter'],
+      ['froh', '—', 'مسرور', 'Ich bin froh, dass du kommen kannst.', 'Ich habe froh, dass du kommen kannst.', 'froh مع sein.', 'konjugation', 'froh'],
+      ['fantastisch', '—', 'رائع', 'Dein neues Kleid sieht fantastisch aus!', 'Dein neues Kleid sieht fantastisch!', 'aussehen يبقى مع aus.', 'wortstellung', 'fantastisch'],
+      ['faul', '—', 'كسول', 'Heute sind wir faul.', 'Heute wir sind faul.', 'الفعل ثانيًا.', 'wortstellung', 'faul'],
+      ['lila', '—', 'بنفسجي', 'Sie trägt ein lila Kleid.', 'Sie trägt ein lila Kleid lila.', 'الصفة تكفي مرة.', 'lexik-kollokation', 'lila'],
+      ['rosa', '—', 'زهري', 'Die Wand ist rosa.', 'Die Wand ist eine rosa Farbe.', 'rosa صفة تكفي.', 'lexik-kollokation', 'rosa'],
+      ['geschieden', '—', 'مطلَّق', 'Meine Eltern sind geschieden.', 'Meine Eltern haben geschieden.', 'geschieden مع sein.', 'konjugation', 'geschieden'],
+      ['der Cousin', 'die Cousins', 'ابن الخال/العم', 'Mein Cousin wohnt in Wien.', 'Mein Cousin wohnen in Wien.', 'المفرد: wohnt.', 'konjugation', 'Cousin'],
+      ['die Cousine', 'die Cousinen', 'بنت الخال/العم', 'Meine Cousine kommt zu Besuch.', 'Meine Cousine kommen zu Besuch.', 'المفرد: kommt.', 'konjugation', 'Cousine'],
+      ['der Enkel', 'die Enkel', 'الحفيد', 'Ihr Enkel ist drei Jahre alt.', 'Ihr Enkel sind drei Jahre alt.', 'المفرد: ist.', 'konjugation', 'Enkel'],
+      ['die Enkelin', 'die Enkelinnen', 'الحفيدة', 'Die Enkelin hilft der Großmutter.', 'Die Enkelin hilft die Großmutter.', 'helfen + الداتيف: der.', 'kasus', 'Enkelin'],
+      ['der Angestellte', 'die Angestellten', 'الموظف', 'Er ist Angestellter bei einer Bank.', 'Er ist Angestellte bei einer Bank.', 'المذكر في الرفع: Angestellter.', 'deklination', 'Angestellter'],
+      ['die Angestellte', 'die Angestellten', 'الموظفة', 'Sie ist Angestellte bei einer Bank.', 'Sie ist Angestellter bei einer Bank.', 'المؤنث: Angestellte.', 'deklination', 'Angestellte'],
+      ['der Auszubildende', 'die Auszubildenden', 'المتدرب', 'Der Auszubildende lernt im Betrieb.', 'Der Auszubildende lernen im Betrieb.', 'المفرد: lernt.', 'konjugation', 'Auszubildende'],
+      ['die Auszubildende', 'die Auszubildenden', 'المتدربة', 'Die Auszubildende arbeitet im Büro.', 'Die Auszubildende arbeiten im Büro.', 'المفرد: arbeitet.', 'konjugation', 'Auszubildende'],
+      ['der Autor', 'die Autoren', 'المؤلف', 'Der Autor liest aus seinem Buch.', 'Der Autor lesen aus seinem Buch.', 'المفرد: liest.', 'konjugation', 'Autor'],
+      ['der Friseur', 'die Friseure', 'الحلاق', 'Der Friseur schneidet die Haare.', 'Der Friseur schneiden die Haare.', 'المفرد: schneidet.', 'konjugation', 'Friseur'],
+      ['die Handwerkerin', 'die Handwerkerinnen', 'الحرفية', 'Die Handwerkerin baut ein Regal.', 'Die Handwerkerin bauen ein Regal.', 'المفرد: baut.', 'konjugation', 'Handwerkerin'],
+      ['der Hausmann', 'die Hausmänner', 'رب المنزل', 'Er ist Hausmann und kümmert sich um die Kinder.', 'Er ist Hausmann und kümmert um die Kinder.', 'sich kümmern um.', 'präposition', 'Hausmann'],
+      ['der Mechaniker', 'die Mechaniker', 'الميكانيكي', 'Der Mechaniker repariert den Motor.', 'Der Mechaniker repariert der Motor.', 'النصب: den Motor.', 'kasus', 'Mechaniker'],
+      ['das Model', 'die Models', 'العارضة', 'Sie arbeitet als Model.', 'Sie arbeitet wie ein Model.', 'als للوظيفة.', 'register', 'Model'],
+      ['die Musikerin', 'die Musikerinnen', 'الموسيقية', 'Die Musikerin spielt Geige.', 'Die Musikerin spielt die Geige gut.', 'الآلة بلا أداة عند العزف.', 'lexik-kollokation', 'Musikerin'],
+      ['der Sänger', 'die Sänger', 'المغني', 'Der Sänger singt im Konzert.', 'Der Sänger singt in dem Konzert mit.', 'بلا mit.', 'lexik-kollokation', 'Sänger'],
+      ['die Österreicherin', 'die Österreicherinnen', 'النمساوية', 'Sie ist Österreicherin und wohnt in Wien.', 'Sie ist eine Österreicherin Frau.', 'بلا Frau زائدة.', 'lexik-kollokation', 'Österreicherin'],
+      ['österreichisch', '—', 'نمساوي (صفة)', 'Das ist eine österreichische Spezialität.', 'Das ist eine Spezialität österreichisch.', 'الصفة قبل الاسم.', 'wortstellung', 'österreichische'],
+      ['die Schweizerin', 'die Schweizerinnen', 'السويسرية', 'Unsere Nachbarin ist Schweizerin.', 'Unsere Nachbarin ist eine Schweizerin Frau.', 'بلا Frau زائدة.', 'lexik-kollokation', 'Schweizerin'],
+      ['schweizerisch', '—', 'سويسري (صفة)', 'Der schweizerische Käse schmeckt gut.', 'Der Käse schweizerisch schmeckt gut.', 'الصفة قبل الاسم.', 'wortstellung', 'schweizerische'],
+      ['schrecklich', '—', 'فظيع', 'Ich finde den Film schrecklich.', 'Ich finde den Film schrecklich gut.', 'schrecklich لا تحتاج توضيحًا.', 'lexik-kollokation', 'schrecklich'],
+      ['sich verlieben', 'verliebt sich · verliebte sich · hat sich verliebt', 'يقع في الحب', 'Ich habe mich in sie verliebt.', 'Ich habe mich für sie verliebt.', 'verlieben in.', 'präposition', 'verliebt']
+    ],
+    tricks: [
+      { trick: 'الصفة قبل الاسم تُصرَّف', wie: 'Thomas Müller ist ein berühmter Fußballspieler.', warum: 'berühmter مع ein مذكر.', anchor: 'ein berühmter Fußballspieler' },
+      { trick: 'الجنس يظهر في نهاية الكلمة', wie: 'Er ist Angestellter bei einer Bank.', warum: 'er في النهاية للمذكر، e للمؤنث.', anchor: 'Er ist Angestellter' },
+      { trick: 'الحالة تحدد النهاية', wie: 'Der Mechaniker repariert den Motor.', warum: 'الفاعل der، والمفعول به den.', anchor: 'repariert den Motor' }
+    ]
+  }
+
+};

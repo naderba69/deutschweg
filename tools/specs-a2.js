@@ -600,5 +600,125 @@ module.exports = [
     'Vier Module. Kein Ausgleich. Sprechen ist Dialog.',
     'Ein Modul rettet das andere nicht.',
     'Sage morgen die Ausgleich-Regel.',
-    'غدًا قل قاعدة عدم التعويض.')
+    'غدًا قل قاعدة عدم التعويض.'),
+
+  U('a2-u6-l1', 'A2', 'الجسم والملابس', 'Körper und Kleidung', 'genus',
+    'Am Ende benutzt du zehn neue Alltagswörter im Satz',
+    'في النهاية تستعمل عشر كلمات يومية جديدة داخل جملة.',
+    [
+      ['das Gesicht waschen', 'الوجه يُغسل مع مفعول صريح لا ضمير انعكاسي', 'الضمير الانعكاسي الخطأ', 'Wasch dich das Gesicht', 'المفعول به: das Gesicht'],
+      ['die Jeans passt', 'الجينز مؤنث في الألمانية', 'الجنس الخطأ', 'Der Jeans passt nicht', 'الأداة die تحدد الجنس'],
+      ['einen Zettel für mich', 'Zettel مذكر، فالنصب einen', 'النصب الخطأ', 'ein Zettel für mich', 'مذكر: einen Zettel'],
+      ['eine Creme für die Hände', 'الكريم مع für لا مع zu', 'الحرف الخطأ', 'eine Creme zu den Händen', 'الصيغة الثابتة: für die Hände']
+    ],
+    [
+      ['Ich habe keine Ahnung.', 'ليست لدي فكرة', 'Ich habe keine Idee gehabt.', 'التعبير الثابت: keine Ahnung', 'Ahnung'],
+      ['Das Parfüm riecht gut.', 'رائحة العطر طيبة', 'Die Parfüm riecht gut.', 'محايد: das Parfüm', 'Parfüm'],
+      ['Ich merke mir die Zahlen gut.', 'أحفظ الأرقام جيدًا', 'Ich merke die Zahlen mir gut.', 'الترتيب: mir … merken', 'merke'],
+      ['Rauchen ist schädlich für die Gesundheit.', 'التدخين ضار بالصحة', 'Rauchen ist schädlich zu der Gesundheit.', 'الحرف الثابت: für', 'schädlich']
+    ],
+    'Die Jeans passt mir nicht, ich brauche eine neue.',
+    'Mein Anzug ist zu dick.',
+    'Schreibe morgen drei Sätze über deine Kleidung.',
+    'غدًا اكتب ثلاث جمل عن ملابسك.'),
+
+  U('a2-u6-l2', 'A2', 'الطعام والموسيقى', 'Essen und Musik', 'lexik-kollokation',
+    'Am Ende bestellst du ein Gericht und sprichst über Musik',
+    'في النهاية تطلب طبقًا وتتحدث عن الموسيقى.',
+    [
+      ['Ein Glas Mineralwasser', 'الكمية تُذكر بلا حرف', 'حرف زائد', 'ein Glas von Mineralwasser', 'الكمية بلا حرف'],
+      ['Ich esse kein Schweinefleisch', 'اللحم غير الحيوان: Schwein ثم Schweinefleisch', 'الخلط بين الحيوان واللحم', 'Ich esse kein Schwein', 'الطعام: Schweinefleisch'],
+      ['Für das Konzert gibt es Karten', 'für مع النصب', 'الحالة الخطأ', 'Für dem Konzert gibt es Karten', 'für + النصب: das'],
+      ['Er spielt in einer Band', 'في الداتيف einer Band', 'الحالة الخطأ', 'in ein Band', 'الداتيف: einer']
+    ],
+    [
+      ['Ich nehme eine kleine Portion Eis.', 'آخذ حصة صغيرة من المثلجات', 'Ich nehme einen kleinen Portion Eis.', 'Portion مؤنث: eine kleine', 'Portion'],
+      ['Den Rest gebe ich dir später.', 'البقية أعطيك إياها لاحقًا', 'Den Rest gebe ich dir später es.', 'بلا ضمير زائد', 'Rest'],
+      ['Die Wurst ist mir zu fett.', 'النقانق دهنية أكثر من اللازم', 'Die Wurst ist mir zu dick.', 'للطعام fett لا dick', 'fett'],
+      ['In der Bibliothek darf man nicht laut sprechen.', 'في المكتبة لا كلام بصوت عال', 'In die Bibliothek darf man nicht laut sprechen.', 'المكان: in der', 'Bibliothek']
+    ],
+    'Ich nehme eine kleine Portion Eis.',
+    'Die Band spielt heute im Konzert.',
+    'Bestelle morgen ein Gericht mit einer Portion.',
+    'غدًا اطلب طبقًا مع حصة.'),
+
+  U('a2-u6-l3', 'A2', 'الرياضة والطبيعة', 'Sport und Natur', 'präposition',
+    'Am Ende sprichst du über Sport und einen Tag draußen',
+    'في النهاية تتحدث عن الرياضة ويوم في الطبيعة.',
+    [
+      ['Er spielt Tennis', 'اللعبة بلا أداة عند الممارسة', 'أداة زائدة', 'Er spielt das Tennis', 'اللعبة بلا أداة'],
+      ['Das Training ist auf dem Sportplatz', 'المكان: auf dem Sportplatz', 'حرف المكان الخطأ', 'Das Training ist in der Sportplatz', 'المكان: auf dem'],
+      ['Im Urlaub bin ich am Strand', 'الشاطئ: am Strand', 'حرف خطأ', 'Ich bin in dem Strand', 'am Strand'],
+      ['Sein Vater ist gestorben', 'sterben في الماضي مع sein', 'haben الخطأ', 'Sein Vater hat gestorben', 'sterben مع sein']
+    ],
+    [
+      ['Wir trainieren einmal pro Woche.', 'نتدرب مرة كل أسبوع', 'Wir trainieren einmal in der Woche pro.', 'الترتيب: pro Woche', 'trainieren'],
+      ['Abends mache ich einen Spaziergang.', 'مساءً أتنزه', 'Abends mache ich einen Spaziergang gehen.', 'التعبير: einen Spaziergang machen', 'Spaziergang'],
+      ['Vorsicht, das Wasser ist tief!', 'انتبه، الماء عميق', 'Vorsicht, das Wasser ist tief gemacht!', 'صفة بلا gemacht', 'tief'],
+      ['Der Himmel ist blau und es gibt keine Wolken.', 'السماء زرقاء ولا سحاب', 'Der Himmel sind blau und es gibt keine Wolken.', 'المفرد: ist', 'Himmel']
+    ],
+    'Wir trainieren auf dem Sportplatz.',
+    'Im Urlaub bin ich am Strand.',
+    'Schreibe morgen zwei Sätze über deinen Sport.',
+    'غدًا اكتب جملتين عن رياضتك.'),
+
+  U('a2-u6-l4', 'A2', 'السفر والمرور', 'Reisen und Verkehr', 'präposition',
+    'Am Ende erzählst du von einer Reise und einem Termin auf der Straße',
+    'في النهاية تحكي عن رحلة وموعد في الطريق.',
+    [
+      ['Ich habe die Führerscheinprüfung bestanden', 'التركيب يبقى كلمة واحدة', 'كلمتان منفصلتان', 'Ich habe die Prüfung von Führerschein bestanden', 'التركيب: Führerscheinprüfung'],
+      ['Wir fahren mit dem Schiff nach Köln', 'المدن مع nach', 'حرف خطأ', 'Wir fahren mit dem Schiff zu Köln', 'المدن: nach'],
+      ['Oskar fährt zur Arbeit', 'zur = zu der', 'الصيغة الكاملة', 'Oskar fährt zu der Arbeit', 'التعبير: zur Arbeit'],
+      ['Das Spiel findet bei Regen statt', 'الفعل المنفصل: findet … statt', 'الفصل الخطأ', 'Das Spiel stattfindet bei Regen', 'statt في النهاية']
+    ],
+    [
+      ['Ich habe den Zug verpasst.', 'فوّت القطار', 'Ich habe den Zug verpasst gemacht.', 'مركب كامل', 'verpasst'],
+      ['Ich gehe gern auf den Flohmarkt.', 'أذهب إلى سوق المستعمل', 'Ich gehe gern in den Flohmarkt.', 'حرف المكان: auf', 'Flohmarkt'],
+      ['Verreist ihr in den Ferien?', 'هل تسافرون في العطلة؟', 'Verreist ihr in die Ferien?', 'التعبير: in den Ferien', 'Verreist'],
+      ['Welche Verkehrsmittel benutzen Sie oft?', 'أي وسائل نقل تستعملون كثيرًا؟', 'Welche Verkehrsmittel benutzen Sie oft mit?', 'بلا mit زائدة', 'Verkehrsmittel']
+    ],
+    'Wir fahren mit dem Schiff nach Köln.',
+    'Ich habe den Zug verpasst.',
+    'Schreibe morgen drei Sätze über deine letzte Reise.',
+    'غدًا اكتب ثلاث جمل عن آخر رحلة لك.'),
+
+  U('a2-u6-l5', 'A2', 'العمل والمكتب', 'Arbeit und Büro', 'lexik-kollokation',
+    'Am Ende schreibst du eine Bewerbung in drei Sätzen',
+    'في النهاية تكتب طلب تقديم في ثلاث جمل.',
+    [
+      ['Können Sie meine Frage beantworten?', 'الفعل بلا حرف جرّ', 'حرف زائد', 'Können Sie auf meine Frage beantworten?', 'beantworten بلا حرف'],
+      ['Sie bekommt Bescheid.', 'التعبير: Bescheid bekommen', 'ترجمة حرفية', 'Sie bekommt einen Bescheid gegeben', 'التعبير الثابت'],
+      ['Ich bewerbe mich um eine Stelle.', 'um مع التقديم على وظيفة', 'حرف خطأ', 'Ich bewerbe mich für eine Stelle', 'um eine Stelle'],
+      ['Das ist das aktuelle Kinoprogramm.', 'الصفة قبل الاسم', 'الموضع الخطأ', 'Das ist das Kinoprogramm aktuell', 'الصفة قبل الاسم']
+    ],
+    [
+      ['Können wir einen Termin vereinbaren?', 'هل يمكننا الاتفاق على موعد؟', 'Können wir einen Termin vereinbaren machen?', 'مركب كامل', 'vereinbaren'],
+      ['Ich informiere mich über die Prüfung.', 'أستعلم عن الامتحان', 'Ich informiere über die Prüfung.', 'الضمير الانعكاسي: mich', 'informiere'],
+      ['Luis chattet gern mit seinen Freunden.', 'لويس يدردش مع أصدقائه', 'Luis chattet gern zu seinen Freunden.', 'mit + الداتيف', 'chattet'],
+      ['Was ist der Unterschied zwischen den Kursen?', 'ما الفرق بين الدورات؟', 'Was ist der Unterschied von den Kursen?', 'zwischen + الداتيف', 'Unterschied']
+    ],
+    'Ich bewerbe mich um eine Stelle.',
+    'Können wir einen Termin vereinbaren?',
+    'Schreibe morgen einen Satz mit Bescheid und einen mit Termin.',
+    'غدًا اكتب جملة مع Bescheid وأخرى مع Termin.'),
+
+  U('a2-u6-l6', 'A2', 'الناس والمشاعر', 'Menschen und Gefühle', 'deklination',
+    'Am Ende beschreibst du Personen und deine Familie genau',
+    'في النهاية تصف أشخاصًا وعائلتك بدقة.',
+    [
+      ['Er ist Angestellter', 'المذكر في الرفع ينتهي بـ er', 'نهاية خطأ', 'Er ist Angestellter bei einer Bank und Angestellte', 'المذكر: Angestellter'],
+      ['ein berühmter Fußballspieler', 'الصفة قبل الاسم تُصرَّف', 'الصفة مجردة', 'ein berühmt Fußballspieler', 'مذكر رفع: berühmter'],
+      ['Der Mechaniker repariert den Motor', 'الفاعل der والمفعول به den', 'الحالة الخطأ', 'Der Mechaniker repariert der Motor', 'النصب: den Motor'],
+      ['Ich habe mich in sie verliebt', 'verlieben مع in', 'حرف خطأ', 'Ich habe mich für sie verliebt', 'in + النصب']
+    ],
+    [
+      ['Meine Eltern sind geschieden.', 'والداي مطلقان', 'Meine Eltern haben geschieden.', 'geschieden مع sein', 'geschieden'],
+      ['Fußball ist bei vielen Menschen beliebt.', 'كرة القدم محبوبة عند كثيرين', 'Fußball ist für viele Menschen beliebt.', 'beliebt bei', 'beliebt'],
+      ['Sie ist Österreicherin und wohnt in Wien.', 'هي نمساوية وتسكن في فيينا', 'Sie ist eine Österreicherin Frau.', 'بلا Frau زائدة', 'Österreicherin'],
+      ['Ich bin froh, dass du kommen kannst.', 'أنا مسرور أنك تستطيع القدوم', 'Ich habe froh, dass du kommen kannst.', 'froh مع sein', 'froh']
+    ],
+    'Meine Eltern sind geschieden.',
+    'Mein Cousin ist ein berühmter Musiker.',
+    'Schreibe morgen zwei Sätze über deine Familie.',
+    'غدًا اكتب جملتين عن عائلتك.')
 ];

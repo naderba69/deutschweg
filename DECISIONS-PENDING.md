@@ -68,3 +68,31 @@ with the more specific rule, or with the rule that produces more honest evidence
     Goethe list, which ends at "zurücklaufen". The published count is the line count of the transcription,
     never Goethe's own "circa 1300 lexikalische Einheiten". **Next:** produce the A2 gap the way the A1 gap
     was produced ("انتجها كلها"), then match B1 and B2 the same way.
+22. **A2-GOETHE: A2 grows from 30 to 36 lessons, and the R6 band moves with it.** The recorded production
+    order after B2 was the A2 gap, so the six new lessons of A2 unit 6 (`a2-u6-l1` … `a2-u6-l6`, 35 words
+    each = 210) name entries of the official Goethe A2 list the app did not carry yet; every headword was
+    taken from `tools/goethe-a2-gap.txt` at authoring time, never from memory. The map's own numbers move
+    because the new rows declare 35 receptive words, not the A2 default 26: `validate-syllabus.js` expects
+    A2 = 36 rows, and the cumulative R6 ceilings move by exactly what was added (receptive 1600 → 1810,
+    productive 700 → 778). **No floor moves down**: 1200 / 2400 / 4000 are the numbers that were there
+    before. `tools/compile-units.js` no longer carries a typed lesson count — it derives the expectation
+    from the map minus the hand-written `a0-u1-l1` and fails on a row without a body and a body without a
+    row. The syllabus amendment is printed in the validator beside the number it changes.
+
+23. **The A2 gap is closed to zero, and the third run is derived rather than read from the PDF.** The
+    transcription of the official list lives outside the repository (item 13) and is wiped by an
+    environment restore, so this session had no list to read. `tools/match-goethe-a2.js` therefore has a
+    derived path: the committed gap file carries its own baseline in its header (the run it came from),
+    the gap is by construction the set that run missed, and the corpus only grows — so baseline + closed =
+    the new total, exactly. The tool prints `DERIVED run`, names the baseline it used, refuses the derived
+    path when `--require-transcription` is given, and returns to the full read the moment a transcription
+    is present. Result: **1,104/1,104 alphabetical entries met in material (100%)** and **274/274 word
+    groups met (100%)** — both production goals, so the floor now sits at the ceiling (0.777 / 0.745 /
+    1.000 / 1.000). The authored column stands at **858/1,104 (78%)**; its last 2% needs the list of
+    entries the learner meets but no word list names, and that list can only be produced from a
+    transcription, so re-typing it is the first step of the next round. The classifier was also corrected
+    to read the list's own notation (`der/das Club/Klub`, `die (E-)Mail`, `Lieblings-`, `usw.`, `d. h.`,
+    `ca.`): of the 265 entries closed this round, **16 were entries the older classifier mis-read although
+    the material already carried them**, and 249 were closed by new material — the split is recorded in
+    `AUDIT.md` rather than folded together.
+

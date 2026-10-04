@@ -88,7 +88,16 @@
     ['رسالة أطول', 'Ein kurzer Brief', 'الرسالة', 'افتتاح وخاتمة', 'explicit'],
     ['الهاتف', 'Telefon', 'الهاتف', 'إطار المكالمة', 'inductive'],
     ['مراجعة A2', 'Wiederholung A2', 'المراجعة', 'جمع A2', 'explicit'],
-    ['شكل امتحان A2', 'Prüfungsform A2', 'شكل الامتحان', 'شكل Goethe A2 لا محاكاة', 'explicit']
+    ['شكل امتحان A2', 'Prüfungsform A2', 'شكل الامتحان', 'شكل Goethe A2 لا محاكاة', 'explicit'],
+    /* The Goethe-A2-list unit: the words the official list carries and the app
+       did not have yet (tools/goethe-a2-gap.txt). 35 words per lesson, so the
+       row declares its own receptive count instead of the A2 default 26. */
+    ['الجسم والملابس', 'Körper und Kleidung', 'الجسم واللباس', 'أسماء يومية بأدواتها', 'inductive', 35, 13],
+    ['الطعام والموسيقى', 'Essen und Musik', 'الطعام والترفيه', 'الكمية والطلب', 'inductive', 35, 13],
+    ['الرياضة والطبيعة', 'Sport und Natur', 'الرياضة والخارج', 'اللعبة والمكان', 'inductive', 35, 13],
+    ['السفر والمرور', 'Reisen und Verkehr', 'السفر', 'إطار الرحلة والموعد', 'inductive', 35, 13],
+    ['العمل والمكتب', 'Arbeit und Büro', 'العمل', 'إطار المكتب والطلب', 'inductive', 35, 13],
+    ['الناس والمشاعر', 'Menschen und Gefühle', 'الناس', 'وصف الأشخاص', 'inductive', 35, 13]
   ];
 
   const B1 = [
@@ -177,7 +186,9 @@
   let prev = 'cap.a1-u5-l6.core';
   A2.forEach((r, i) => {
     const id = 'a2-u' + (Math.floor(i / 6) + 1) + '-l' + ((i % 6) + 1);
-    push(id, 'A2', r[0], r[1], r[2], i === 29 ? 26 : 26, i === 29 ? 4 : 13, r[3], r[4], 'lesson', prev, 'authored');
+    const rec = r[5] || 26;
+    const prod = r[6] || (i === 29 ? 4 : 13);
+    push(id, 'A2', r[0], r[1], r[2], rec, prod, r[3], r[4], 'lesson', prev, 'authored');
     prev = 'cap.' + id + '.core';
   });
   B1.forEach((r, i) => {

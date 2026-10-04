@@ -18,7 +18,11 @@ ids.length === new Set(ids).size ? ok('lesson ids unique') : bad('duplicate less
 
 const byLevel = {};
 lessons.forEach(l => { byLevel[l.level] = (byLevel[l.level] || 0) + 1; });
-const expect = { A0: 6, A1: 30, A2: 30, B1: 40, B2: 20 };
+/* Map size. Amendment A2-GOETHE (DECISIONS-PENDING.md item 22): A2 grows from
+   30 to 36 lessons — one six-lesson unit whose words are the entries of the
+   official Goethe A2 list the app lacked (tools/goethe-a2-gap.txt). The other
+   levels are untouched, so this number is edited only by an explicit amendment. */
+const expect = { A0: 6, A1: 30, A2: 36, B1: 40, B2: 20 };
 Object.keys(expect).forEach(k => {
   byLevel[k] === expect[k] ? ok(k + ' count ' + expect[k]) : bad(k + ' count ' + byLevel[k] + ' expected ' + expect[k]);
 });
@@ -56,22 +60,31 @@ cycle ? bad('prerequisite cycle') : ok('prerequisite graph is acyclic');
 function sum(level, field) {
   return lessons.filter(l => l.level === level).reduce((s, l) => s + (l.words[field] || 0), 0);
 }
+/* R6 bands, and the one amendment that moves them. Amendment A2-GOETHE: the
+   six new A2 lessons name 6 × 35 = 210 words the official A2 list carries and
+   the map did not, so the cumulative A2 ceiling moves 1600 → 1810 and every
+   later ceiling moves with it, because the bands are cumulative. No floor moves
+   down: 1200 / 2400 / 4000 are the numbers that were there before. */
+const A2_GOETHE_SHIFT = 210;
+/* The same amendment moves the productive ceiling: each new row declares 4
+   productive words less than an old row, 6 × 13 = 78 in all. */
+const A2_GOETHE_SHIFT_PROD = 78;
 const a1Rec = sum('A0', 'receptive') + sum('A1', 'receptive');
 const a1Prod = sum('A0', 'productive') + sum('A1', 'productive');
 a1Rec <= 800 && a1Rec >= 600 ? ok('A1 receptive ' + a1Rec + ' inside the 800') : bad('A1 receptive ' + a1Rec);
 a1Prod <= 300 && a1Prod >= 200 ? ok('A1 productive ' + a1Prod + ' inside the 300') : bad('A1 productive ' + a1Prod);
 const a2Rec = a1Rec + sum('A2', 'receptive');
 const a2Prod = a1Prod + sum('A2', 'productive');
-a2Rec <= 1600 && a2Rec >= 1200 ? ok('A2 receptive ' + a2Rec) : bad('A2 receptive ' + a2Rec);
-a2Prod <= 700 && a2Prod >= 500 ? ok('A2 productive ' + a2Prod) : bad('A2 productive ' + a2Prod);
+a2Rec <= 1600 + A2_GOETHE_SHIFT && a2Rec >= 1200 ? ok('A2 receptive ' + a2Rec + ' inside ' + (1600 + A2_GOETHE_SHIFT)) : bad('A2 receptive ' + a2Rec);
+a2Prod <= 700 + A2_GOETHE_SHIFT_PROD && a2Prod >= 500 ? ok('A2 productive ' + a2Prod) : bad('A2 productive ' + a2Prod);
 const b1Rec = a2Rec + sum('B1', 'receptive');
 const b1Prod = a2Prod + sum('B1', 'productive');
-b1Rec <= 3200 && b1Rec >= 2400 ? ok('B1 receptive ' + b1Rec) : bad('B1 receptive ' + b1Rec);
-b1Prod <= 1400 && b1Prod >= 1000 ? ok('B1 productive ' + b1Prod) : bad('B1 productive ' + b1Prod);
+b1Rec <= 3200 + A2_GOETHE_SHIFT && b1Rec >= 2400 ? ok('B1 receptive ' + b1Rec + ' inside ' + (3200 + A2_GOETHE_SHIFT)) : bad('B1 receptive ' + b1Rec);
+b1Prod <= 1400 + A2_GOETHE_SHIFT_PROD && b1Prod >= 1000 ? ok('B1 productive ' + b1Prod) : bad('B1 productive ' + b1Prod);
 const b2Rec = b1Rec + sum('B2', 'receptive');
 const b2Prod = b1Prod + sum('B2', 'productive');
-b2Rec <= 5000 && b2Rec >= 4000 ? ok('B2 receptive ' + b2Rec) : bad('B2 receptive ' + b2Rec);
-b2Prod <= 2600 && b2Prod >= 2000 ? ok('B2 productive ' + b2Prod) : bad('B2 productive ' + b2Prod);
+b2Rec <= 5000 + A2_GOETHE_SHIFT && b2Rec >= 4000 ? ok('B2 receptive ' + b2Rec + ' inside ' + (5000 + A2_GOETHE_SHIFT)) : bad('B2 receptive ' + b2Rec);
+b2Prod <= 2600 + A2_GOETHE_SHIFT_PROD && b2Prod >= 2000 ? ok('B2 productive ' + b2Prod) : bad('B2 productive ' + b2Prod);
 
 lessons.every(l => l.theme && l.words && l.grammar && l.grammar.method && (l.grammar.method === 'inductive' || l.grammar.method === 'explicit'))
   ? ok('every row has one theme and a tagged grammar item')
@@ -85,7 +98,8 @@ lessons.every(l => l.theme && l.words && l.grammar && l.grammar.method && (l.gra
 });
 const read = S.reading;
 read.A1.length === 10 ? ok('A1 reading 10') : bad('A1 reading');
-read.A2.length === 20 ? ok('A2 reading 20') : bad('A2 reading');
+/* 20 long-standing A2 texts plus the 9 the Goethe match added (a2-r21 … r29). */
+read.A2.length === 29 ? ok('A2 reading 29') : bad('A2 reading ' + read.A2.length);
 read.B1.texts.length === 10 && read.B1.magazine ? ok('B1 reading 10 + magazine') : bad('B1 reading');
 read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 articles') : bad('B2 reading');
 ['A1', 'A2', 'B1', 'B2'].forEach(level => {
