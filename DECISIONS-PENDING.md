@@ -124,8 +124,14 @@ with the more specific rule, or with the rule that produces more honest evidence
     the app's material does not carry; 22 of them are named by the harvest itself (das Händetuch · die Mail
     · dafür · dagegen · darüber · dorther · egal · eigen · einzeln · fit · die Erlaubnis · die Kenntnis ·
     das Klavier · aufregen · das Stipendium · streiten · die Übersetzung · unterwegs · vorne · windig ·
-    der Witz · witzig). Producing them means new material (a reading text or a lesson that carries these
-    words) and then promoting them the same way — the A2 work that follows the B1 match (its enumeration
-    source: `https://www.dwds.de/api/lemma/goethe/B1.json`), then B2.
+    der Witz · witzig). That material arrived in run 7: the new A2 reading **`a2-r30` “Ein Semester in
+    Freiburg”** (156 words) carries 21 of the 22, and the 21 were promoted into the ten A2 lessons, so the
+    A2 declaration is **1,183**, the validator shift **403**, the promotion file **194 entries**, and the
+    A2 reading count **30**. Measured (run 7): alphabetical list **1,052/1,104 = 95%** authored, 1,104/1,104
+    met (100%), 169/274 groups authored, 274/274 met (100%), **combined 1,221/1,378 = 89%**. Floors rise to
+    0.952 / 0.886 / 1.000 / 1.000. One entry is still uncarried — `eigen`, which German uses only inflected
+    (eigenes/eigene) — and it waits for the first material that uses the bare form. Next: the **B1 match**
+    against the official B1 list (enumeration source: `https://www.dwds.de/api/lemma/goethe/B1.json`,
+    31 chunks), then B2.
 
 

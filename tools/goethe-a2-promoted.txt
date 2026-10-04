@@ -186,3 +186,24 @@ list zurückgehen
 list zurückkommen
 list zurücklaufen
 list die Grippe
+list unterwegs
+list vorne
+list dorther
+list fit
+list die Erlaubnis
+list die Kenntnis
+list das Stipendium
+list die Übersetzung
+list einzeln
+list das Klavier
+list der Witz
+list witzig
+list das Händetuch
+list windig
+list dafür
+list dagegen
+list darüber
+list egal
+list aufregen
+list streiten
+list die Mail

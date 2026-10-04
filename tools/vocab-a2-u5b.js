@@ -38,6 +38,7 @@ module.exports = {
       ['surfen', 'surft · surfte · hat gesurft', 'يتصفح', 'Ich surfe im Internet.', 'Ich surfe auf Internet.', 'im Internet.', 'präposition', 'surfe'],
       ['planen', 'plant · plante · hat geplant', 'يخطّط', 'Wir planen eine Reise nach Wien.', 'Wir planen eine Reise in Wien.', 'المدينة مع nach: nach Wien.', 'präposition', 'planen'],
       ['die Person', 'die Personen', 'الشخص', 'Die Person am Telefon war freundlich.', 'Der Person am Telefon war freundlich.', 'مؤنث: die Person.', 'genus', 'Person'],
+      ['die Mail', 'die Mails', 'البريد الإلكتروني', 'Die Mail kam heute Morgen.', 'Der Mail kam heute Morgen.', 'مؤنث: die Mail.', 'genus', 'Mail'],
     ],
     tricks: [
       { trick: 'أفعال التلفون المنفصلة: anrufen · zurückrufen · sich melden', wie: 'Ich rufe Sie später an. Ich rufe Sie morgen zurück. Ich melde mich.', warum: 'العربية تقول «أتصل بك» بفعل واحد، والألمانية تفصل an وzurück إلى النهاية.', anchor: 'anrufen' },

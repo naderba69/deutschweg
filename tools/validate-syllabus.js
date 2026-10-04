@@ -65,7 +65,7 @@ function sum(level, field) {
    the map did not, so the cumulative A2 ceiling moves 1600 → 1810 and every
    later ceiling moves with it, because the bands are cumulative. No floor moves
    down: 1200 / 2400 / 4000 are the numbers that were there before. */
-const A2_GOETHE_SHIFT = 382;
+const A2_GOETHE_SHIFT = 403;
 /* The same amendment moves the productive ceiling: each new row declares 4
    productive words less than an old row, 6 × 13 = 78 in all. The six rows then
    grew from 35 to 40 words each (the compiler's ceiling, amendment A2-GOETHE-2),
@@ -73,7 +73,7 @@ const A2_GOETHE_SHIFT = 382;
 const A2_GOETHE_SHIFT_PROD = 78;
 /* Amendment A2-GOETHE-4: the DWDS-index harvest (letters A–N then O–Z) added 93 more
    items to the same ten lessons, and each row declares its own receptive count, so the
-   shift that keeps the A2 ceiling honest grows by 94 (288 → 382). */
+   shift that keeps the A2 ceiling honest grows by 115 (288 → 403, the 21 rows the r30 reading carries included). */
 const a1Rec = sum('A0', 'receptive') + sum('A1', 'receptive');
 const a1Prod = sum('A0', 'productive') + sum('A1', 'productive');
 a1Rec <= 800 && a1Rec >= 600 ? ok('A1 receptive ' + a1Rec + ' inside the 800') : bad('A1 receptive ' + a1Rec);
@@ -103,8 +103,9 @@ lessons.every(l => l.theme && l.words && l.grammar && l.grammar.method && (l.gra
 });
 const read = S.reading;
 read.A1.length === 10 ? ok('A1 reading 10') : bad('A1 reading');
-/* 20 long-standing A2 texts plus the 9 the Goethe match added (a2-r21 … r29). */
-read.A2.length === 29 ? ok('A2 reading 29') : bad('A2 reading ' + read.A2.length);
+/* 20 long-standing A2 texts, the 9 the Goethe match added (a2-r21 … r29), and r30 which carries
+   the words the harvest showed the material did not have yet. */
+read.A2.length === 30 ? ok('A2 reading 30') : bad('A2 reading ' + read.A2.length);
 read.B1.texts.length === 10 && read.B1.magazine ? ok('B1 reading 10 + magazine') : bad('B1 reading');
 read.B2.novel && read.B2.articles.length === 20 ? ok('B2 novel slot + 20 articles') : bad('B2 reading');
 ['A1', 'A2', 'B1', 'B2'].forEach(level => {

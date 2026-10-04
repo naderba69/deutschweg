@@ -36,6 +36,11 @@ module.exports = {
       ['notieren', 'notiert · notierte · hat notiert', 'يدوّن', 'Notieren Sie bitte die Hausaufgabe!', 'Notiert Sie bitte die Hausaufgabe!', 'مع Sie: Notieren Sie.', 'konjugation', 'notieren'],
       ['das Quiz', 'die Quiz', 'المسابقة', 'Das Quiz beginnt um acht.', 'Die Quiz beginnt um acht.', 'محايد: das Quiz.', 'genus', 'Quiz'],
       ['das Rätsel', 'die Rätsel', 'اللغز', 'Das Rätsel ist schwer.', 'Der Rätsel ist schwer.', 'محايد: das Rätsel.', 'genus', 'Rätsel'],
+      ['die Erlaubnis', 'die Erlaubnisse', 'الإذن', 'Die Erlaubnis der Eltern fehlt noch.', 'Der Erlaubnis der Eltern fehlt noch.', 'مؤنث: die Erlaubnis.', 'genus', 'Erlaubnis'],
+      ['die Kenntnis', 'die Kenntnisse', 'المعرفة', 'Sie hat gute Kenntnisse in Deutsch.', 'Sie hat gute Kenntnis in Deutsch.', 'الجمع هنا: Kenntnisse.', 'plural', 'Kenntnisse'],
+      ['das Stipendium', 'die Stipendien', 'المنحة الدراسية', 'Sie bekommt ein Stipendium für ein Jahr.', 'Sie bekommt eine Stipendium für ein Jahr.', 'محايد: ein Stipendium.', 'genus', 'Stipendium'],
+      ['die Übersetzung', 'die Übersetzungen', 'الترجمة', 'Die Übersetzung der Zeugnisse fehlt.', 'Die Übersetzung von die Zeugnisse fehlt.', 'الملكية بالـgenitiv: der Zeugnisse.', 'kasus', 'Übersetzung'],
+      ['einzeln', '—', 'واحدًا واحدًا', 'Lies jede Frage einzeln.', 'Lies jede Frage einzelne.', 'في الخبر بلا نهاية: einzeln.', 'deklination', 'einzeln'],
     ],
     tricks: [
       { trick: 'في الجامعة an der Universität، وفي المدرسة in der Schule', wie: 'Sie studiert an der Universität. Die Kinder sind in der Schule.', warum: 'المؤسسة التعليمية العليا تأخذ an، والعربية تقول «في» في الحالتين.', anchor: 'die Universität' },
@@ -76,6 +81,9 @@ module.exports = {
       ['der Spaß', 'die Späße', 'المرح/المتعة', 'Der Spaß gehört zum Fest.', 'Die Spaß gehört zum Fest.', 'مذكر: der Spaß.', 'genus', 'Spaß'],
       ['singen', 'singt · sang · hat gesungen', 'يغني', 'Wir singen ein Lied zum Geburtstag.', 'Wir singen ein Lied für Geburtstag.', 'المناسبة: zum Geburtstag.', 'präposition', 'singen'],
       ['die Süßigkeit', 'die Süßigkeiten', 'الحلوى', 'Die Süßigkeit schmeckt den Kindern.', 'Die Süßigkeit schmeckt die Kinder.', 'schmecken + داتيف: den Kindern.', 'kasus', 'Süßigkeit'],
+      ['das Klavier', 'die Klaviere', 'البيانو', 'Das Klavier steht am Fenster.', 'Der Klavier steht am Fenster.', 'محايد: das Klavier.', 'genus', 'Klavier'],
+      ['der Witz', 'die Witze', 'النكتة', 'Der Witz war wirklich gut.', 'Die Witz war wirklich gut.', 'مذكر: der Witz.', 'genus', 'Witz'],
+      ['witzig', 'witziger · am witzigsten', 'مضحك', 'Der Film war witzig.', 'Der Film war witzige.', 'في الخبر بلا نهاية: witzig.', 'deklination', 'witzig'],
     ],
     tricks: [
       { trick: 'المناسبات مع zu: zu Weihnachten · zu Ostern · zu Neujahr', wie: 'Zu Weihnachten sind wir zu Hause. Zu Ostern besuchen wir die Familie.', warum: 'العربية تقول «في العيد»، والألمانية تستعمل zu للمناسبة وin للمكان.', anchor: 'das Weihnachten' },
@@ -116,6 +124,7 @@ module.exports = {
       ['die Reinigung', 'die Reinigungen', 'المصبغة/التنظيف', 'Ich bringe den Mantel in die Reinigung.', 'Ich bringe den Mantel in der Reinigung.', 'حركة: in die Reinigung.', 'präposition', 'Reinigung'],
       ['tragen', 'trägt · trug · hat getragen', 'يلبس/يحمل', 'Sie trägt heute einen roten Rock.', 'Sie trägt heute ein roten Rock.', 'النصب مع einen: roten.', 'deklination', 'trägt'],
       ['schneiden', 'schneidet · schnitt · hat geschnitten', 'يقص', 'Ich schneide mir die Haare kurz.', 'Ich schneide mich die Haare kurz.', 'لنفسي: mir، لا mich.', 'kasus', 'schneide'],
+      ['das Händetuch', 'die Händetücher', 'منشفة اليد', 'Das Händetuch liegt im Mantel.', 'Der Händetuch liegt im Mantel.', 'محايد: das Händetuch.', 'genus', 'Händetuch'],
     ],
     tricks: [
       { trick: 'anziehen/ausziehen منفصلان: an في النهاية', wie: 'Ich ziehe die Jacke an. Zieh die Schuhe aus!', warum: 'العربية تستعمل فعلًا واحدًا، وإسقاط an أو aus يجعل الجملة ناقصة.', anchor: 'anziehen' },

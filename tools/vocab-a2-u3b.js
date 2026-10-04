@@ -37,6 +37,9 @@ module.exports = {
       ['der Reifen', 'die Reifen', 'الإطار', 'Der Reifen ist platt.', 'Der Reifen sind platt.', 'مفرد: ist.', 'konjugation', 'Reifen'],
       ['her', '—', 'إلى هنا', 'Komm her, das Taxi ist da!', 'Komm hin, das Taxi ist da!', 'نحو المتكلم: her.', 'lexik-kollokation', 'her'],
       ['hin', '—', 'إلى هناك', 'Wann fährst du hin?', 'Wann fährst du her?', 'بعيدًا عن المتكلم: hin.', 'lexik-kollokation', 'hin'],
+      ['unterwegs', '—', 'في الطريق', 'Ich bin heute den ganzen Tag unterwegs.', 'Ich bin heute den ganzen Tag in unterwegs.', 'unterwegs ظرف مكان بلا حرف جر.', 'lexik-kollokation', 'unterwegs'],
+      ['vorne', '—', 'في المقدمة', 'Vorne ist noch ein Platz frei.', 'Vor ist noch ein Platz frei.', 'المكان: vorne، لا vor.', 'lexik-kollokation', 'vorne'],
+      ['dorther', '—', 'من هناك', 'Der Wind kommt dorther.', 'Der Wind kommt von dorther.', 'dorther تحمل «من» داخلها، فلا von.', 'lexik-kollokation', 'dorther'],
     ],
     tricks: [
       { trick: 'أفعال الرحلة المنفصلة: einsteigen · aussteigen · umsteigen', wie: 'Wir steigen in Frankfurt um. Bitte einsteigen! Wir steigen am Bahnhof aus.', warum: 'العربية تستعمل فعلًا واحدًا «يغيّر» و«يركب»، والألمانية تفصل البادئة إلى نهاية الجملة.', anchor: 'umsteigen' },
@@ -77,6 +80,7 @@ module.exports = {
       ['weinen', 'weint · weinte · hat geweint', 'يبكي', 'Das Kind weint, weil es sich verletzt hat.', 'Das Kind weint, weil es hat sich verletzt.', 'المساعد في الآخر: sich verletzt hat.', 'wortstellung', 'weint'],
       ['stören', 'stört · störte · hat gestört', 'يزعج', 'Bitte stören Sie mich nicht!', 'Bitte stören Sie mir nicht!', 'المفعول المباشر: mich، لا mir.', 'kasus', 'stören'],
       ['die Grippe', '—', 'الإنفلونزا', 'Ich habe die Grippe und bleibe im Bett.', 'Ich habe der Grippe und bleibe im Bett.', 'مؤنث: die Grippe.', 'genus', 'Grippe'],
+      ['fit', 'fitter · am fittesten', 'لائق/نشيط', 'Nach dem Sport bin ich fit.', 'Nach dem Sport bin ich fitt.', 'الصفة: fit بحرف واحد في الآخر.', 'orthographie', 'fit'],
     ],
     tricks: [
       { trick: 'الأعراض مع haben: Fieber · Husten · Schmerzen · Erkältung', wie: 'Ich habe Fieber. Ich habe Husten. Ich habe starke Schmerzen. Ich habe eine Erkältung.', warum: 'العربية تصل الحالة بالفعل «أنا مُحمّى»، فالمتعلم يستعمل sein حيث تريد الألمانية haben.', anchor: 'das Fieber' },

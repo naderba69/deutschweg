@@ -47,7 +47,7 @@ const WRITE_GAP = process.argv.includes('--write-gap');
    material 75%, groups 65% — against the re-typed transcription.
    Run 3 (2026-10-04) is derived rather than read from the PDF: see the block
    before the gap path for why, and what it can and cannot claim. */
-const FLOOR = { headword: 0.933, allHeadword: 0.870, material: 1.0, groups: 1.0 };
+const FLOOR = { headword: 0.952, allHeadword: 0.886, material: 1.0, groups: 1.0 };
 /* Rounded down from the measured values of the last accepted run:
    run 1, 2026-10-03: 0.6105 / 0.5857 / 0.7262 / 0.6460
    run 2, 2026-10-03: 0.7960 / 0.7993 after the four new A2 reading texts

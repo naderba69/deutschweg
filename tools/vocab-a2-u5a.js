@@ -76,6 +76,12 @@ module.exports = {
       ['privat', '—', 'خاص', 'Das ist meine private Nummer.', 'Das ist meine privat Nummer.', 'النهاية مع meine: private.', 'deklination', 'private'],
       ['selbst', '—', 'بنفسه/بنفسي', 'Ich mache das selbst.', 'Ich mache das selbst mir.', 'selbst ظرف، بلا ضمير إضافي.', 'lexik-kollokation', 'selbst'],
       ['streng', 'strenger · am strengsten', 'صارم', 'Der Lehrer ist sehr streng.', 'Der Lehrer ist sehr strenge.', 'في الخبر بلا نهاية: streng.', 'deklination', 'streng'],
+      ['dafür', '—', 'مؤيّد بذلك', 'Ich bin dafür, dass wir früher anfangen.', 'Ich bin für dass wir früher anfangen.', 'dafür تصل الجملة بـdass.', 'wortstellung', 'dafür'],
+      ['dagegen', '—', 'معارض', 'Ich bin dagegen.', 'Ich bin gegen dafür.', 'dagegen تكفي وحدها.', 'lexik-kollokation', 'dagegen'],
+      ['darüber', '—', 'عن ذلك', 'Wir sprechen darüber.', 'Wir sprechen über das.', 'ضمير الإشارة: darüber.', 'lexik-kollokation', 'darüber'],
+      ['egal', '—', 'لا يهمّ', 'Das ist mir egal.', 'Das ist mich egal.', 'egal مع الداتيف: mir.', 'kasus', 'egal'],
+      ['aufregen', 'regt auf · regte auf · hat aufgeregt', 'يثير الأعصاب', 'Ich will mich nicht aufregen.', 'Ich will mich nicht aufrege.', 'بعد will المصدر: aufregen.', 'konjugation', 'aufregen'],
+      ['streiten', 'streitet · stritt · hat gestritten', 'يتشاجر', 'Wir streiten oft über Geld.', 'Wir streiten oft für Geld.', 'streiten über etwas.', 'präposition', 'streiten'],
     ],
     tricks: [
       { trick: 'obwohl تدفع الفعل للنهاية وtrotzdem تتركه ثانيًا', wie: 'Obwohl es teuer ist, kaufe ich es. · Es ist teuer. Trotzdem kaufe ich es.', warum: 'الزوج المتقابل يُختبر كثيرًا، والعربية تصل السبب والنتيجة بلا فرق ترتيبي.', anchor: 'obwohl' },

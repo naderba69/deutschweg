@@ -37,6 +37,7 @@ module.exports = {
       ['der Wald', 'die Wälder', 'الغابة', 'Im Wald ist es kühl.', 'In der Wald ist es kühl.', 'المكان: im Wald.', 'präposition', 'Wald'],
       ['der Vogel', 'die Vögel', 'الطائر', 'Der Vogel singt am Morgen.', 'Die Vogel singt am Morgen.', 'مذكر: der Vogel.', 'genus', 'Vogel'],
       ['die Pflanze', 'die Pflanzen', 'النبتة', 'Die Pflanze braucht Wasser.', 'Der Pflanze braucht Wasser.', 'مؤنث: die Pflanze.', 'genus', 'Pflanze'],
+      ['windig', 'windiger · am windigsten', 'عاصف', 'Heute ist es windig.', 'Heute ist es windige.', 'في الخبر بلا نهاية: windig.', 'deklination', 'windig'],
     ],
     tricks: [
       { trick: 'المناخ بحرف bei: bei Regen · bei Nebel · bei Kälte', wie: 'Bei Regen bleiben wir drinnen. Bei Nebel fahre ich langsam.', warum: 'العربية تقول «في المطر»، والألمانية تستعمل bei للحالة الجوية.', anchor: 'der Regen' },
