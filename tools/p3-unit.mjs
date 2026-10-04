@@ -283,6 +283,28 @@ console.log('\n— P3.2 lexical layer —\n');
     cov && cov.ratio >= 0.8);
 }
 
+/* ---------- B2 reading — the level's own material measure ---------- */
+{
+  const { window: win } = boot();
+  const B2 = win.DW_LIBRARY.B2;
+  const floor = JSON.parse(fs.readFileSync(ROOT + '/tools/b2-reading-floor.json', 'utf8'));
+  const wc = s => String(s).trim().split(/\s+/).filter(Boolean).length;
+  const arts = B2.articles || [];
+  const chs = (B2.novel && B2.novel.chapters) || [];
+  const shortest = (list) => list.length ? Math.min.apply(null, list.map(x => wc(x.body))) : 0;
+  t('B2 reading: 20 articles and a six-chapter novella', arts.length === 20 && chs.length === 6);
+  t('B2 reading: every text carries exactly two questions',
+    arts.concat(chs).every(x => (x.questions || []).length === 2));
+  t('B2 reading: shortest article ' + shortest(arts) + ' words, floor ' + floor.article,
+    arts.every(a => wc(a.body) >= floor.article));
+  t('B2 reading: shortest chapter ' + shortest(chs) + ' words, floor ' + floor.chapter,
+    chs.every(c => wc(c.body) >= floor.chapter));
+  t('B2 reading: articles total ' + arts.reduce((s, a) => s + wc(a.body), 0) + ' words, floor ' + floor.articlesTotal,
+    arts.reduce((s, a) => s + wc(a.body), 0) >= floor.articlesTotal);
+  t('B2 reading: novella total ' + chs.reduce((s, c) => s + wc(c.body), 0) + ' words, floor ' + floor.novelTotal,
+    chs.reduce((s, c) => s + wc(c.body), 0) >= floor.novelTotal);
+}
+
 /* ---------- B2 — the workshops, route (C)'s two measures ---------- */
 {
   const { window: win } = boot();

@@ -278,3 +278,17 @@ with the more specific rule, or with the rule that produces more honest evidence
     requires it: at a measured 100%, not before.
     **Next:** B2 — its 20 workshops carry 800 authored items and 1,800 material words; the level needs its
     own word-list measure (B2 has no Goethe list, so the measure is the level's own material) and its gate.
+
+33. **B2-L1: the B2 reading is real text now, and it has a measure with a floor (delivered 2026-10-04).**
+    B2 has no Goethe list of its own, so the level's measure is what it carries: twenty opinion
+    articles and a six-chapter novella. They were sketches — 20–31 words an article, 37–47 a chapter —
+    and the plan promises *eine Novelle und 20 selbst geschriebene Meinungsartikel*. All were rewritten:
+    **20 articles** (118–146 words, **2,661 total**) and **6 chapters** (245–294, **1,554 total**), each
+    keeping its two existing comprehension questions, every answer still in the new text.
+    **Measured by a new tool:** `tools/measure-b2-reading.js` prints the table and gates against
+    `tools/b2-reading-floor.json`, which records the last accepted run and may only rise (`--write-floor`
+    raises it after a higher measurement). This round's floor: **118 shortest article · 245 shortest
+    chapter · 2,661 articles total · 1,554 novella total · two questions per text**. Six new checks in
+    `tools/p3-unit.mjs` read the same floor file, so raising the content raises the test with it, and
+    `npm test` runs **270 green**. B2's own gate (the material measure of route C) stays at 100%; the
+    authored column stays 800/1,800 = 44% by the owner's decision, not by omission.
