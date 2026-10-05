@@ -1,7 +1,7 @@
 /* Deutschweg — offline cache. First load needs network; every load after is offline.
    The shell (index.html) is network-first so an update lands on the next visit;
    every other asset is cache-first so studying never waits for the network. */
-const CACHE = 'deutschweg-v12';
+const CACHE = 'deutschweg-v13';
 const ASSETS = [
   './', 'index.html', 'styles.css', 'app.js',
   'engine/storage.js', 'engine/ledger.js', 'engine/checker.js',
