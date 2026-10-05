@@ -1,20 +1,20 @@
 {
   "A1": {
     "texts": 20,
-    "words": 4099,
-    "shortest": 199,
+    "words": 4134,
+    "shortest": 200,
     "lowestPermille": 1000
   },
   "A2": {
     "texts": 30,
-    "words": 6243,
-    "shortest": 200,
+    "words": 6255,
+    "shortest": 201,
     "lowestPermille": 990
   },
   "B1": {
     "texts": 60,
-    "words": 12712,
-    "shortest": 201,
+    "words": 12754,
+    "shortest": 202,
     "lowestPermille": 989
   },
   "B2": {
