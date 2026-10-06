@@ -1997,3 +1997,11 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - إضافات B1 (`kalten` · `wirklich` · `gute` · `neuen`) فُحصت بمجموعة معرفة B1، وإضافات B2 (`besonders` · `endlich` · `mir` · `guter`) بالقياس الصارم (b2known) — الكل معلوم قبل الكتابة، وأسئلة الـ 64 لم تُمسّ.
 - السلّم خارج نطاق `corpus` (ثابت **9,672 / 365,521** — 0 كسب)؛ الأرضية كُتبت: `ladder` ← `{B1Words 872, B1Shortest 109, B2Words 1000, B2Shortest 125}`.
 - `web/sw.js`: `deutschweg-v70` → **`deutschweg-v71`** · `npm test` **393 خضراء / 0 حمراء** · الملف حُدِّث داخل هذا الـ commit.
+
+## مقالات B2 (جولة ثالثة عشرة): أقصر مقال 299 → 300 — 2026-10-06
+
+- العشرون مقالًا كلها عند 299، أُضيفت لكل منها كلمة واحدة (+20)، فصارت **300** والمجموع **5,980 → 6,000**.
+- الإضافات العشرون (`viel` · `etwas` · `leisen` · `immer` ×2 · `offenen` · `feste` · `noch` · `ordentlich` · `gute` · `genauen` · `komplizierten` · `neue` · `freundlich` · `offiziellen` · `stillen` · `wirklich` · `ruhig` · `gemeinsam` · `gleichen`) فُحصت بالقياس الصارم قبل الكتابة: **0 مجهول جديد**، والغطاء **1000‰** في العشرين والفصول الستة.
+- **كسب الرمز المميّز ×4** — أفضل جولة مقالات حتى الآن: `leisen` · `offenen` · `komplizierten` · `offiziellen` (صيغ لقواعد معلَنة: leise · offen · kompliziert · offiziell)؛ صيغة `genaue` المخطَّطة لم تُحتسب لأن `genauen` موجودة سلفًا — والقراءة من الأرضية المكتوبة لا من التنبؤ. المعجم **9,672 → 9,676** · المجموعة **365,521 → 365,541** (+20).
+- الأرضيات بالترتيب: `b2-reading` ← `{article 300, articlesTotal 6000}` ثم `reading-levels` ← `{B2 26/9072/300}` ثم `corpus` ← `9,676 / 365,541`.
+- المكتبة كلها الآن **32,347 كلمة** · `web/sw.js`: `deutschweg-v71` → **`deutschweg-v72`** · `npm test` **393 خضراء / 0 حمراء** · الملف حُدِّث داخل هذا الـ commit.
