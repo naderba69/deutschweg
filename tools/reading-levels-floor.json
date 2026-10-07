@@ -13,13 +13,13 @@
   },
   "B1": {
     "texts": 60,
-    "words": 12958,
+    "words": 12959,
     "shortest": 211,
     "lowestPermille": 990
   },
   "B2": {
     "texts": 26,
-    "words": 9174,
+    "words": 9180,
     "shortest": 303,
     "lowestPermille": 1000
   }
