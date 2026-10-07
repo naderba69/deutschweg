@@ -2514,3 +2514,11 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - الأرضيات: `b2-reading {313, 532, 6260, 3192, 1000, 1000}` · `reading-levels B2 26/9452/313/1000` (B2 9,446 → **9,452**) · المكتبة **33,759 كلمة / 136 نصًا**.
 - **استعادة #34** قبل الجولة: الاسترداد القياسي (fetch + reset إلى `b24356f` + إعادة بناء المساعدات في `/home/user/helpers/` + npm install + 393/0 + إقلاع التطبيق).
 - `web/sw.js`: `deutschweg-v128` → **`deutschweg-v129`** (رفع منفصل + `grep` قبل الـ commit) · `npm test` **393 خضراء / 0 حمراء** · الملف حُدِّث داخل هذا الـ commit.
+
+## مقالات B2 إلى 314 — 2026-10-07
+
+- الكلمة (+1) أُدخلت على **العشرين مقالًا كلها** 313 → **314** (6,260 → **6,280**) — مواضع جديدة كليًا (a3 حُلّ بـ«keiner offiziellen Statistik» · a10 بـ«die langen Abende»).
+- الفحص known B2: **20/20 أخضر من أول محاولة** (`eigentliche` ×2 · `ganz` · `offiziellen` · `neue` · `gleichen` · `wirkliche` · `sehr` · `wirklich` · `langen` · `klare` · `gute` · `normalen` · `kurzes` · `echte` · `geschriebenen` · `gemessene` · `monatliche` · `ruhig` · `genau`) · المضاعفات: **0**.
+- **5 كلمات معجمية جديدة** (`eigentliche` · `offiziellen` · `gleichen` · `normalen` · `gemessene` وأخواتها): corpus المميز 9,711 → **9,716** · الجاري 366,953 → **366,973**.
+- الأرضيات: `b2-reading {314, 532, 6280, 3192, 1000, 1000}` · `reading-levels B2 26/9472/314/1000` (B2 9,452 → **9,472**) · المكتبة **33,779 كلمة / 136 نصًا**.
+- `web/sw.js`: `deutschweg-v129` → **`deutschweg-v130`** (رفع منفصل + `grep` قبل الـ commit) · `npm test` **393 خضراء / 0 حمراء** · الملف حُدِّث داخل هذا الـ commit.
