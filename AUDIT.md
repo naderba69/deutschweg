@@ -2737,3 +2737,14 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - «Ich bleibe noch.» بقيت آخر كلمات النوفيلة (الإدراجات في متون الفصول لا الفقرة الأخيرة).
 - المقاسات: الفصول الستة كلها **539** · المجموع **3,234** · B2 قراءة **9,614** · المكتبة **34,388** · corpus **9,762/367,582**.
 - الأرضيات كُتبت بالترتيب b2-reading ← reading-levels ← corpus على تشغيل أخضر · الخزّان **v150** · `npm test` **393/0**.
+
+
+## مقالات B2: 319 → 320 (2026-10-08)
+
+- العشرون مقالًا · +1 كلمة لكل مقال: digitalen Unterricht/Kalender · einfachen Gewohnheit/Plan · klare Maßnahme · leere Tabelle · offenen Streit · stillen Dorf · letzten Modul · neuen Bericht/Satz/Ablauf/Wertung/Deutung · alten Büro/Verein · engen Bus · teure Stück · richtigen Tag.
+- **b2-a3** (لا slots قياسية — كل الأزواج مكررة إلا واحدًا): أُدرج «richtigen» على الزوج الفريد «den Tag:» ×1 — استثناء موثّق: «Tag» هنا ليست زمنية بل يوم السفر (السياق: Arbeitszeiten und Fahrplan).
+- **b2-a11**: البوابة أسقطت «freien Müll» دلاليًا بعد التطبيق واستُبدلت بإدراج الظرف: «Besser ist immer eine Reihe kleiner Fragen».
+- مرساة فريدة في library.js كله · العبارة ∉ المتن · صارم B2 (§13.3) — التغطية **1000‰/1000‰** وقاعدة 98% خضراء (أدنى 100%).
+- المقاسات: المقالات كلها **320** · المجموع **6,400** · B2 قراءة **9,634** · المكتبة **34,408** · corpus **9,763/367,602**.
+- استعادة #48 وقعت قبل جولة الفصول (الـ ref رجع 268c599): تعافٍ بالبروتوكول الموثّق (تحقق الشجرة ثم fetch + reset --mixed) ثم إيداع `da4cc39`.
+- الأرضيات كُتبت بالترتيب b2-reading ← reading-levels ← corpus · الخزّان **v151** · `npm test` **393/0**.
