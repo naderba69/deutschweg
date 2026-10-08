@@ -2615,3 +2615,19 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - الأرضيات: `b2-reading {317, 536, 6340, 3216, 1000, 1000}` · `reading-levels B2 26/9556/317/1000` (B2 9,536 → **9,556**) — أقصر نص B2 الآن **317**.
 - **استعادة #41** قبل الجولة (ثالثة اليوم): الاسترداد القياسي (fetch + reset إلى `9459341` + npm install + إعادة بناء cover.js/b2known.js مع التحقق dickes@A1 أحمر · gemessene B2 أخضر + 393/0 + إقلاع التطبيق).
 - `web/sw.js`: `deutschweg-v139` → **`deutschweg-v140`** (رفع منفصل + `grep` قبل الـ commit) · `npm test` **393 خضراء / 0 حمراء** · الملف حُدِّث داخل هذا الـ commit.
+
+## فصول الرواية إلى 537 — 2026-10-08
+
+- الكلمة (+1) أُدخلت على **الفصول الستة كلها** 536 → **537** (3,216 → **3,222**) — مواضع جديدة كليًا:
+  - ف1 «Das Zimmer im **teuren** Hotel hätte die Hälfte ihres Geldes gekostet» (im Hotel hätte)
+  - ف2 «Die Fenster gingen auf den **stillen** Hof» (auf den Hof,)
+  - ف3 «über den **kalten** Hügeln lag grauer Nebel» (über den Hügeln)
+  - ف4 «Sie verstand den **letzten** Satz erst später» (وهي فعلًا الجملة الأخيرة في الرسالة)
+  - ف5 «sondern wie eine **echte** Aufgabe» (wie eine Aufgabe.)
+  - ف6 «Der Kurs hatte im Juli eine **wichtige** Prüfung» (Juli eine Prüfung,)
+- الفحص known B2 (b2known بمرآة القياس الرسمية): **6/6 أخضر + عائلة طازجة** — المضاعفات: **0**. الكلمات الست كلها موجودة أصلًا في المعجم (distinct بلا تغيير 9,742)؛ الجاري 367,332 → **367,338** (+6).
+- الماسح scan537 (المشتق من تصميم scan317): **182 slot** للفصول الستة، كلها لها props، 2 بلا مرساة. التحقق اليدوي رفض 4 (leeren@ف3 وganzen@ف4 — العائلة في الجسم؛ kurzen@ف4 — العائلة؛ eigene@ف4 — تسقط عبر stems('eigene')∋'eine').
+- **بوابتان أمسكتا خطأي قبل المكتبة**: build537 رفض مرساة «Zimmer im Hotel» (ظهرت ×2 — أخذت سطر الجملة بدل سطر المرساة؛ الصحيحة tri2 «im Hotel hätte»)، وapply537 رفض عدّاد مجاميع خاطئ (A1/A2 مصفوفتان مباشرة — صُحّح إلى K.libraryTexts). لا كتابة إلا بعد البوابة كاملة.
+- **استعادة #42** قبل الجولة: HEAD كان عند نقطة الانطلاق `268c599` — الاسترداد القياسي (fetch + reset إلى `300bf4f` + npm install + إعادة بناء cover.js/b2known.js مع التحقق dickes@A1 أحمر · guten أخضر · gemessene أخضر · nackte أحمر + 393/0).
+- الأرضيات: `b2-reading {317, 537, 6340, 3222, 1000, 1000}` · `reading-levels B2 26/9562/317/1000` (B2 9,556 → **9,562**) — المكتبة 34,138 → **34,144 كلمة / 136 نصًا**.
+- `web/sw.js`: `deutschweg-v140` → **`deutschweg-v141`** · `npm test` **393 خضراء / 0 حمراء** (7 مجموعات).
