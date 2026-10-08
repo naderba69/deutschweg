@@ -2644,3 +2644,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - المعجم: `aktuellen` كانت وحيدة في المكتبة فزالت مع التصحيح — قُبل الفقدان عبر الآلية الموثقة (`--accept-lost aktuellen`) ومسجّلة في `corpus-floor.json {accepted:["aktuellen"]}`؛ المميز ثابت **9,742** (صيغة مصححة دخلت) والجاري ثابت 367,338.
 - عدد الكلمات لم يتغير في أي نص (تغيير صيغة فقط) · `npm test` **393/0** (7 مجموعات) · `web/sw.js` v141 → **v142**.
 - فحص عكسي إضافي: «die diese Zahlen» (ضمير موصول + هذه ✓ سليم) · «die junge Lehrerin» (مفردة مؤنثة ✓ سليم).
+
+## مقالات B2 إلى 318 — 2026-10-08
+
+- الكلمة (+1) أُدخلت على **العشرين مقالًا كلها** 317 → **318** (6,340 → **6,360**) — مواضع جديدة كليًا: schwere (a1) · klaren (a2) · schweren ×2 (a3·a20) · feste (a4) · kurze (a5) · gemeinsamen (a6) · echten (a7) · kalten (a8) · lauten (a9) · engen (a10) · fremden (a11) · kurzen (a12) · vollen (a13) · festen (a14) · hohe (a15) · klare (a16) · schnellen (a17) · kleinen (a18) · fremde (a19).
+- من أبرز المواضع: «Es braucht eine schwere Tür» (a1) · «Wer nur den lauten Titel liest» (a9) · «über den engen Zeitplan der Mitglieder» (a10) · «Die Läden lebten von den fremden Gästen» (a11) · «Die Folge muss in den vollen Mülltonnen sichtbar sein» (a13) · «Wer eine hohe Summe nennt» (a15، hoch→hohe حالة خاصة) · «nicht in eine fremde Wohnung» (a19).
+- الفحص known B2: **20/20 أخضر + عائلة طازجة** — المضاعفات: **0**. بوابة البناء أمسكت خطأين قبل المكتبة: «eine lange Liste» موجودة أصلًا في نص آخر (a11 → بديل «von den fremden Gästen») وalten ليست طازجة في a18 (→ kleinen).
+- **خريطة نهايات الماسح صُحّحت قبل الجولة**: بعد `ins`/`ans` (= in/an + das) النهاية «-e» لا «-en» — أعيد المسح بالخريطة المصححة (لا slots من نوع ins/ans في المقالات، فلم يتغير شيء في النتائج). فحص الصرف `inflect(base, نهاية الأداة) === surface` إلزامي في البوابة.
+- المعجم: رمزان جديدان (`engen` · `fremden`): المميز 9,742 → **9,744** · الجاري 367,338 → **367,358** (+20) · المكتبة 34,144 → **34,164 كلمة / 136 نصًا** (B2 9,582).
+- الأرضيات: `b2-reading {318, 537, 6360, 3222, 1000, 1000}` · `reading-levels B2 26/9582/318/1000` — أقصر مقالة B2 الآن **318**.
+- `web/sw.js`: v142 → **v143** · `npm test` **393 خضراء / 0 حمراء** (7 مجموعات) · الملف حُدِّث داخل هذا الالتزام.
