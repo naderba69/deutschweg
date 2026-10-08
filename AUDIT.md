@@ -2631,3 +2631,16 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - **استعادة #42** قبل الجولة: HEAD كان عند نقطة الانطلاق `268c599` — الاسترداد القياسي (fetch + reset إلى `300bf4f` + npm install + إعادة بناء cover.js/b2known.js مع التحقق dickes@A1 أحمر · guten أخضر · gemessene أخضر · nackte أحمر + 393/0).
 - الأرضيات: `b2-reading {317, 537, 6340, 3222, 1000, 1000}` · `reading-levels B2 26/9562/317/1000` (B2 9,556 → **9,562**) — المكتبة 34,138 → **34,144 كلمة / 136 نصًا**.
 - `web/sw.js`: `deutschweg-v140` → **`deutschweg-v141`** · `npm test` **393 خضراء / 0 حمراء** (7 مجموعات).
+
+## تصحيح نحوي شامل — 17 موضعًا في المكتبة — 2026-10-08
+
+- **الفئة**: بعد أداة التعريف القوية المؤنثة/المحايدة المفردة (`eine`/`das`) تأخذ الصفة النهاية **-e**، لا **-en**. سبعة عشر موضعًا في المكتبة كانت تحمل «eine/das + صفة-en» — كلها أُصلحت إلى «-e»:
+  - A1 (2): a1-r6 «das ganze**n** Geld→ganze» · a1-r8 «das ganze**n** Gemüse→ganze»
+  - A2 (5): a2-r2 «eine ganze Woche» · a2-r13 «eine einfache Regel» · a2-r21 «das schmutzige Geschirr» · a2-r27 «eine ganze Stunde» · a2-r30 «eine genaue Übersetzung»
+  - B1 (7): b1-r8 «eine ganze Minute» · b1-r22 «das aktuelle Angebot» · b1-r24 «das erste Spiel» · b1-r27 «eine lange Rede» · b1-r29 «eine bekannte Agentur» · b1-r30 «das ganze Dessert» · b1-r51 «das ganze Haus»
+  - B2 (3، من جولة مقالات 317): b2-a14 «eine junge Firma» · b2-a16 «eine feste Dauer» · b2-a17 «eine einzelne Stunde»
+- **الأصل**: جولات القراءة القديمة (دورات #1–#4) أدخلت الصيغ الخاطئة؛ بواباتها تحققت أخضر+طازج لكنها لم تتحقق من النهاية مقابل الأداة. بوابة البناء الحالية (من فصول 537) تتحقق الآن `inflect(base, نهاية الأداة) === surface` — وهذا الفحص يبقى إلزاميًا في كل جولة قادمة.
+- **اكتشاف منهجي**: بعد `ins`/`ans` (= in/an + **das** تصل) النهاية «-e» أيضًا، لا «-en» — صُحّحت خريطة الماسح (كانت تضعهما في مجموعة -en). اجتياح «ins/ans + صفة-en» على المكتبة كلها: **صفر** — لا إدخالات مصابة بهذه الطبقة.
+- المعجم: `aktuellen` كانت وحيدة في المكتبة فزالت مع التصحيح — قُبل الفقدان عبر الآلية الموثقة (`--accept-lost aktuellen`) ومسجّلة في `corpus-floor.json {accepted:["aktuellen"]}`؛ المميز ثابت **9,742** (صيغة مصححة دخلت) والجاري ثابت 367,338.
+- عدد الكلمات لم يتغير في أي نص (تغيير صيغة فقط) · `npm test` **393/0** (7 مجموعات) · `web/sw.js` v141 → **v142**.
+- فحص عكسي إضافي: «die diese Zahlen» (ضمير موصول + هذه ✓ سليم) · «die junge Lehrerin» (مفردة مؤنثة ✓ سليم).
