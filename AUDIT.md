@@ -2868,3 +2868,12 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - مرساة ×1 · عبارة ∉ الملف · صفر مجهولات (distinct +1: 9,774).
 - المقاسات: المقالات العشرون كلها **323** (مجموع **6,460**) · B2 9,712 · المكتبة **34,782** · corpus **9,774/367,976**.
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v163** · `npm test` **393/0**.
+
+
+## سلّم الاستماع — A1→107 · A2→108 (2026-10-08)
+
+- 16 إدراجًا (+كلمة لكل سكربت): A1 — dann (kaufe ich dann frisches Brot) · sehr (ein Wasser, sehr kalt) · nur (bleibe hier nur bis Donnerstag) · groß (in die große Tasche) · dann (bekomme dann nur zwei Euro zurück) · heute (kaufen wir heute noch zusammen) · ganz (ist ganz genau neben der Post) · bitte (bleiben Sie bitte zu Hause) · A2 — heute (Züge fahren heute von Gleis fünf) · neu (neben der neuen Apotheke) · heute (Fahrt dauert heute nur zwanzig Minuten) · leider (kann leider heute nicht arbeiten) · dann (wartet dann besser bis Samstag) · heute (bezahle heute alles mit Karte) · heute (die Rechnung heute am Vormittag) · alle (freuen uns alle schon sehr).
+- **درس مستجد هام:** اختيار l-a2-7 الأول كان يستبدل «sofort» بـ«direkt» (صفر زيادة صافية!) — اكتشفه فحص العدد الإجمالي (863 بدل 864) لا فحص المراسي؛ صُحّح بإعادة «sofort» وإدراج «heute» في جملة النسخة الطويلة. **القاعدة: فحص المرساة لا يكفي — تحقق دائمًا أن +1 تحقق فعلًا في العدّ.**
+- كل كلمة متحقق منها ضد known-sets قبل التطبيق؛ المجهولات المُبلّغ عنها (wechselgeld/lege/linie/kopfschmerzen/hälfte) أساسية قديمة لا علاقة لها بالإدراجات.
+- المقاسات: A1 8× **107** (856) · A2 8× **108** (864) · B1 110 · B2 126 كما هي.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v164** · `npm test` **393/0**.
