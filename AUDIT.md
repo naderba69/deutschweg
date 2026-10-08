@@ -2785,3 +2785,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - مرساة فريدة في library.js كله · العبارة ∉ الملف · الألف العشرون كلها معلومة أصلًا (distinct لم يتغير: 9,765).
 - المقاسات: المقالات العشرون كلها **321** (مجموع **6,420**) · B2 9,660 · المكتبة **34,532** · corpus **9,765/367,726**.
 - الأرضيات كُتبت على تشغيل أخضر (b2-reading {321, 540, 6420, 3240}) · الخزّان **v155** · `npm test` **393/0**.
+
+
+## سلّم الاستماع A1→105 · A2→106 (2026-10-08)
+
+- 16 إدراجًا (+1 كلمة لكل سكربت من الثمانية A1 والثمانية A2) — اختيارات يدوية بمراسي فريدة في ladder.js كله:
+- A1: a1-1 «Alles **wirklich** ganz klar» · a1-2 «sage ich **dann**: die Rechnung» · a1-3 «auch **ein** gutes warmes Frühstück» · a1-4 «und nehme **dann** auch die Rechnung» · a1-5 «immer **sehr** gern» · a1-6 «zahlen wir dann **zusammen**» · a1-7 «man kann es **wirklich** nicht verpassen» · a1-8 «ist es **sehr** viel los».
+- A2: a2-1 «Ich warte **ganz** ruhig» · a2-2 «warten hier **heute** auch» · a2-3 «an der **alten** kleinen Haltestelle» · a2-4 «und kann **heute** nicht arbeiten» · a2-5 «der Himmel wird **wieder** hell» · a2-6 «Ich kaufe **dann** schnell» · a2-7 «ist **heute** leider krank» · a2-8 «bring **vielleicht** einfach Musik».
+- البوابة الكاملة: مرساة ×1 في الملف كله · العبارة ∉ الملف · الكلمة معلنة بمستوى النص · صفر مجهولات جديدة (القائمة البيضاء القديمة كما هي: wechselgeld/lege/linie/kopfschmerzen/hälfte).
+- ملاحظة: شكلان صرفيان (langen·ganze) رفضتهما بوابة A1 الصارمة — استُبدلا فورًا بـ wirklich·zusammen قبل أي كتابة.
+- المقاسات: A1 8×105=840 · A2 8×106=848 · B1 880 · B2 1,008 · الأرضية ladder {33, 32, 8/8/8/8, 840/105, 848/106, 880/110, 1008/126} · الخزّان **v156** · `npm test` **393/0**.
