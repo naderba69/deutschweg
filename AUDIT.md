@@ -2775,3 +2775,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - خطأ التقط أثناء القياس نفسه: مرساة novelle-4 كانت ثلاثية («sie den Brief») فاستُبدلت بثلاث كلمات فابتلعت «sie» («las den braunen Brief») — أعيدت «sie» فورًا قبل أي commit (المقياس كشفه: 3,239 بدل 3,240).
 - المقاسات: الفصول الستة كلها **540** (مجموع **3,240**) · B2 9,640 · المكتبة **34,512** · corpus **9,765/367,706**.
 - الأرضيات كُتبت على تشغيل أخضر (b2-reading {320, 540, 6400, 3240}) · الخزّان **v154** · `npm test` **393/0**.
+
+
+## مقالات B2 — العشرون مقالًا 320→321 (2026-10-08)
+
+- 18 إدراج صفة (slot أداة+اسم، اختيار يدوي دلالي من مسح scan-b2a): das große Problem · den alten Wohnungen · des modernen Unterrichts · eine alte Person · dem starken Verbrauch · am leeren Bahnsteig · eine feste Gewohnheit · nur eine letzte Frage · genau den richtigen Termin · eine lange Reihe · eine große Lieferung · das teure Brot · den letzten Rest · im digitalen Ordner · häufiger eine einfache Antwort · das alte Spiel · das volle Einkommen · beim starken Verkehr.
+- حالتان ظرفيتان خاصتان: b2-a3 «hatten **endlich** viel Platz» · b2-a20 «und schimpft **deutlich** weniger» (الكلمتان مُتحقق منهما ضد known-B2 قبل التطبيق).
+- إصلاح منطق المراسي ثلاثية الكلمات (nur eine Frage · genau den Termin · häufiger eine Antwort) — البادئة تُحفظ الآن في الاستبدال (خطأ novelle-4 في الجولة السابقة لا يتكرر).
+- مرساة فريدة في library.js كله · العبارة ∉ الملف · الألف العشرون كلها معلومة أصلًا (distinct لم يتغير: 9,765).
+- المقاسات: المقالات العشرون كلها **321** (مجموع **6,420**) · B2 9,660 · المكتبة **34,532** · corpus **9,765/367,726**.
+- الأرضيات كُتبت على تشغيل أخضر (b2-reading {321, 540, 6420, 3240}) · الخزّان **v155** · `npm test` **393/0**.
