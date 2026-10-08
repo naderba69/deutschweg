@@ -2816,3 +2816,14 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - المقاسات: الفصول الستة كلها **541** (مجموع **3,246**) · B2 9,666 · المكتبة **34,637** · corpus **9,768/367,831**.
 - استعادة #51 قبل الجولة (reset --mixed إلى `3d8de5a` + npm install + إعادة بناء cover.js) — البروتوكول ذاته دون فقدان شيء.
 - الأرضيات كُتبت على تشغيل أخضر (b2-reading {321, 541, 6420, 3246}) · الخزّان **v158** · `npm test` **393/0**.
+
+
+## مقالات B2 — العشرون مقالًا 321→322 (2026-10-08)
+
+- 14 إدراج صفة (slot أداة+اسم): das gemütliche Wohnzimmer · den starken Anstieg · den praktischen Unterricht · den freien Termin · ins volle Regal · Autos am kleinen Bahnhof · eine einzelne Stufe · dem ersten Termin · vom kurzen Besuch · im digitalen Lebenslauf · bis eine junge Kollegin · den dunklen Flur · eine wichtige Sache · Im klaren Vergleich.
+- 6 حالات ظرفية خاصة (الكلمة مُتحقق منها ضد known-B2 قبل التطبيق): b2-a3 «aber **leider}** nicht überall» · b2-a9 «woher **genau}** weiß er es» · b2-a13 «Das ist **sicher}** keine große Politik» · b2-a14 «niemand **einfach}** wegen des Geldes aufhört» · b2-a18 «nicht mehr **so}** schwer im Kopf» · b2-a20 «am Ende **vielleicht}** nicht gleich».
+- العائلات الأفضل كانت مستهلكة داخليًا (كل مقال يحمل صفة الجولة السابقة في متنه) — الانتقاء من القوائم الكاملة بقراءة السياق قبل الاختيار.
+- **إصلاح نحوي مُلتقط قبل القياس:** مدخل POOL لـ«erste» يعرّف صيغة dative خطأً («erste») فأنتج «dem erste Termin» — صُحّح فورًا إلى «dem **ersten}** Termin» قبل أي commit (يُرحّل تصحيح المدخل إلى الجولة القادمة).
+- مرساة فريدة ×1 · العبارة ∉ الملف · صفر مجهولات (distinct +1 فقط: 9,769).
+- المقاسات: المقالات العشرون كلها **322** (مجموع **6,440**) · B2 9,686 · المكتبة **34,657** · corpus **9,769/367,851**.
+- الأرضيات كُتبت على تشغيل أخضر (b2-reading {322, 541, 6440, 3246}) · الخزّان **v159** · `npm test` **393/0**.
