@@ -2877,3 +2877,16 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - كل كلمة متحقق منها ضد known-sets قبل التطبيق؛ المجهولات المُبلّغ عنها (wechselgeld/lege/linie/kopfschmerzen/hälfte) أساسية قديمة لا علاقة لها بالإدراجات.
 - المقاسات: A1 8× **107** (856) · A2 8× **108** (864) · B1 110 · B2 126 كما هي.
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v164** · `npm test` **393/0**.
+
+
+## دورة قراءة عاشرة — 227/228/229 (2026-10-08)
+
+- **100 نص** (A1 19 · A2 28 · B1 53 — a2-r19 وb1-r47 انضافتا للأرضية) كلها +1 كلمة: 58 إدراج صفة + 42 حالة ظرفية/خاصة يدوية.
+- **دروسان تشغيليان مهمان:** (1) أساس عائلة «ganz» في POOL هو «ganze» لا «ganz» — وسلاسل التفضيل يجب أن تستخدم صيغ الأساس (alt/jung/gross) لا صيغ السطح (alte/junge/grosse)؛ فشل 15 سلسلة في المسودة سببه هذا. (2) تحقق +1 بالعدّ الفعلي لكل مستوى (هذه الجولة: +19/+28/+53 = +100 بالضبط).
+- أمثلة الصفات: isst einen ganzen Kuchen · das ganze Zimmer · am offenen Fenster · immer den richtigen Schlüssel · den blauen See · den elektrischen Backofen · wir im vollen Haus · einem vollen Sack · des alten Kaffeehauses · das schwere Leben · über den bunten Markt · funktioniert das ganze Haus.
+- أمثلة الظروف (42): schon ×2 · dann ×8 · wirklich ×3 · auch · mir · neue · endlich · eigentlich · sofort · wieder · zusammen · gerne · gerade · allein · oft · echt · mehr · nur · leider ×2 · viel · immer · genau · wohl · deshalb · einfach · freundlich · gern.
+- رُفضت قبل التطبيق: «den letzten Süden» · «das letzte Dach» · «das einzelne Ergebnis» · «das letzte Bild» · «das letzte Geld» (في مقال واحد) — وحُوّلت مراسيها إلى اختيارات سليمة أو ظروف.
+- مرساة ×1 (مع تمديد «wirklich gut und alle waren zufrieden» لتفادي تكرار عبر الملف) · عبارة ∉ الملف · صفر مجهولات · تحت 98%: صفر.
+- المقاسات النهائية: A1 4,560/227 (19) · A2 6,842/228 (28) · B1 13,768/229 (53+2) · المكتبة **34,882** · corpus **9,776/368,076**.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v165** · `npm test` **393/0**.
+- ملاحظة: هذه الجولة الأولى بعد الاستعادة **#53** (reset --mixed إلى 7b69a21 · cover.js أُعيد بناؤه · npm install · PWA 200).
