@@ -2910,3 +2910,12 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - المقاسات: المقالات العشرون كلها **324** (مجموع **6,480**) · B2 9,738 · المكتبة **34,908** · corpus **9,778/368,102**.
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v167** · `npm test` **393/0**.
 - ملاحظة: هذه الجولة الأولى بعد الاستعادة **#54** (fetch bf27f1e ثم reset --mixed · cover.js أُعيد بناؤه · npm install · PWA 200 · تحقق 34,888/136 · 393/0).
+
+
+## سلّم الاستماع — A1 108 · A2 109 (2026-10-09)
+
+- ستة عشر إدراجًا (كلمة واحدة لكل نص من الستة عشر عند الأرضية): a1-1 «zum **richtigen}** Gleis» · a1-2 «einen **warmen}** Tee ohne Milch» · a1-3 «Am **letzten}** Abend» (انسجام مع «Ich bleibe hier nur bis Donnerstag») · a1-4 «sagt die **junge}** Frau» · a1-5 «kaufe das **ganze}** Brot» (تباين مع «ein Stück ist klein») · a1-6 «Der **gute}** Kellner fragt» · a1-7 «Vor dem **alten}** Bahnhof» · a1-8 «Der **junge}** Arzt sagt» · a2-1 «Der **erste}** Zug nach Berlin» · a2-2 «den **ersten}** Termin» · a2-3 «Die **ganze}** Fahrt dauert» · a2-4 «Meine **gute}** Tochter kocht» · a2-5 «kommt **immer}** die Sonne» (ظرف بين الفعل والفاعل — الجولة الوحيدة بإدراج ظرف) · a2-6 «Die **volle}** Tasche» · a2-7 «Der **lange}** Brief» · a2-8 «im **großen}** Garten hinter dem Haus».
+- الجولة الثالثة على نفس النصوص: كثير من العائلات محجوبة ذاتيًا (warm في a2-5 بسبب «warme Jacke» · klein في a2-4 · gut في a1-3/a1-5) — الانتقاء من القوائم الكاملة؛ كل كلمة متحقق منها ضد مجموعة مستواها (A1/A2) قبل التطبيق.
+- مرساة ×1 في ladder.js كله (بمراسي ثلاثية عند التكرار: «kaufe das Brot» · «Hause Der Arzt») · عبارة ∅ (ثنائية عند الإدراج الظرفي) · +1 لكل نص **بالعدّ الفعلي** (درس ladder11: لا تثق بالمرساة).
+- المقاسات: A1 8×**108** (مجموع **864**) · A2 8×**109** (مجموع **872**) · B1 880/110 وB2 1,008/126 دون تغيير · المكتبة 34,908 (السلّم خارج corpus).
+- الأرضية كُتبت على تشغيل أخضر · الخزّان **v168** · `npm test` **393/0**.
