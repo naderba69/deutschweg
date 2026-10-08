@@ -2836,3 +2836,15 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - مرساة l-a1-8 «Bringen Sie die Karte mit» كانت ×2 عبر المستويين (تتطابق مع l-a2-4) فمُدّدت إلى «mit. Wenn Sie Fieber» قبل التطبيق.
 - المقاسات: A1 8× **106** (848) · A2 8× **107** (856) · B1 110 · B2 126 كما هي.
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v160** · `npm test` **393/0**.
+
+
+## دورة قراءة تاسعة — 226/227/228 (2026-10-08)
+
+- **99 نصًا** (A1 19 · A2 27 · B1 53) كلها +1 كلمة: 72 إدراج صفة عبر خانة أداة+اسم + 27 حالة ظرفية/خاصة يدوية.
+- نهج الجولة: مسح scan9r (نمط scan8r المفقود — أُعيد بناؤه على نمط scan-nov541 مع floors {225/226/227}) ثم جدول اختيارات بسلاسل تفضيلات؛ العائلات الأكثر طبيعية محجوبة نصيًا بعد ثماني دورات، فالاختيار النهائي من «الصف الثاني» الدلالي بقراءة السياق (مثلاً: Im warmen Zug · Fuß am blauen Wasser · Das süße Obst · im gemütlichen Hotel · wieder zur festen Arbeit · den elektrischen Autos · Das junge Ehepaar · Eine nette Bewohnerin).
+- الظروف الخاصة (27): jetzt/wirklich/dann/heute (A1) · schon/dann/vielen/gern/noch/schnell/jetzt (A2) · nur/viel ×2/genau/mich/leider ×2/ganz/wieder/einfach/immer (B1).
+- **إصلاحان آليان قبل القياس:** «den erste Kredit» → «den **ersten}** Kredit» (علّة مدخل POOL لـ«erste» الثانية — يُرحّل تصحيح المدخل) · «Eine letzte Bewohnerin» → «Eine **nette}** Bewohnerin» (فشل «fremd» في المرشحين).
+- **نص فائت التقطه القياس:** b1-r7 لم يُغطَّ في الجدول الأولي (98/99) — أُضيف له ظرف «kommt **immer}** pünktlich an» فورًا.
+- الأسماء الزمنية والمُشتقة محجوبة (Nachmittag/Mittag/Alten/Jungen/Schreiben…) · مرساة ×1 · عبارة ∉ ملف · صفر مجهولات.
+- المقاسات النهائية: A1 4,541/226 (19) · A2 6,814/227 (27) · B1 13,715/228 (53) · المكتبة **34,756** · corpus **9,773/367,950** · تحت 98%: صفر.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v161** · `npm test` **393/0**.
