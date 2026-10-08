@@ -2899,3 +2899,14 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - مرساة ×1 · عبارة ∉ الملف · distinct ثابت (9,776).
 - المقاسات: الفصول الستة كلها **543** (مجموع **3,258**) · B2 9,718 · المكتبة **34,888** · corpus **9,776/368,082**.
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v166** · `npm test` **393/0**.
+
+
+## مقالات B2 — العشرون مقالًا 323→324 (2026-10-09)
+
+- عشرون إدراجًا (خانة أداة+اسم، اختيار يدوي دلالي من مسح scan-b2a324 — الجولة الرابعة على نفس النصوص): a1 «keine **genaue}** Grenze» · a2 «als ein **leerer}** Satz» · a3 «bezahlt, jeden **einzelnen}** Tag» · a4 «muss die **ganze}** Übung sehen» · a5 «einen **sicheren}** Betrag» · a6 «nichts über die **ganze}** Dauer» · a7 «Der **richtige}** Plan braucht einen zweiten Weg» · a8 «Ein **volles}** Jahr danach» · a9 «von einer **langen}** Zusammenfassung» · a10 «Die **harten}** Prüfungen» · a11 «Im **frühen}** Winter prüfen wir» · a12 «keine **einzige}** Minute» · a13 «Die **erste}** Zahl an der Tür» · a14 «die **gute}** Trainerin» · a15 «sondern ein **einfacher}** Kalender» · a16 «der **gemeinsame}** Hof» · a17 «verkauft eine **falsche}** Meinung» · a18 «den ein **genauer}** Plan macht» · a19 «ihre **eigenen}** Kinder» · a20 «ein **gutes}** Ziel».
+- **تصحيح جمع يدوي مرتين:** جدول نهايات الماسح لا يعرف الجمع — «Die Prüfungen» و«ihre Kinder» جمع فيلزم -en لا -e: اختير «harten» و«eigenen» يدويًا، والبوابات (known · عبارة ∉ الملف · مرساة ×1) فُرضت عليهما في build كما على البقية — باب التحقق المستقبلي.
+- معظم عائلات الصف الأول محجوبة بعد ثلاث جولات (klare/feste/neu/alt/kalt/ganze في مواضع كثيرة) — الانتقاء من القوائم الكاملة بقراءة السياق؛ رُفض قبل التطبيق: «keine klare Grenze» (klare Grenze في متن a1) و«einen festen Betrag» (feste محجوبة) و«Im kalten Winter» (عبارة موجودة في المكتبة).
+- مرساة ×1 في library.js كله (بمراسي ثلاثية تعبر علامات ترقيم: «niedriger. Ein volles Jahr» · «Laune. Im frühen Winter») · عبارة ∉ الملف · صفر مجهولات (distinct +2: 9,778).
+- المقاسات: المقالات العشرون كلها **324** (مجموع **6,480**) · B2 9,738 · المكتبة **34,908** · corpus **9,778/368,102**.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v167** · `npm test` **393/0**.
+- ملاحظة: هذه الجولة الأولى بعد الاستعادة **#54** (fetch bf27f1e ثم reset --mixed · cover.js أُعيد بناؤه · npm install · PWA 200 · تحقق 34,888/136 · 393/0).
