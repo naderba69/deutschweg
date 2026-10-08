@@ -2858,3 +2858,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - المقاسات: الفصول الستة كلها **542** (مجموع **3,252**) · B2 9,692 · المكتبة **34,762** · corpus **9,773/367,956**.
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v162** · `npm test` **393/0**.
 - ملاحظة تشغيلية: هذه الجولة الأولى بعد الاستعادة **#52** (HEAD رُدّ للقاعدة والشجرة كانت تحمل v161 — reset --mixed إلى origin 67eb342، cover.js أُعيد بناؤه، npm install، PWA restart 200).
+
+
+## مقالات B2 — العشرون مقالًا 322→323 (2026-10-08)
+
+- 15 إدراج صفة (خانة أداة+اسم): das starke Team · den echten Grund · das elektrische Gerät · eine schnelle Überweisung · den wichtigen Kauf · den einfachen Ersatz · den richtigen Schutz · wie eine klare Antwort · dem starken Willen · den richtigen Satz · einen einfachen Fall · den digitalen Einkauf · eine falsche Frage · eine klare Tatsache · Weg zum guten Arzt.
+- 5 حالات ظرفية خاصة: b2-a3 «Viele fahren **einfach}** jeden Tag» · b2-a14 «und beides ist **wirklich}** knapp» · b2-a15 «sondern **oft}** an einem falschen Datum» · b2-a18 «liegt seitdem **wirklich}** immer noch im Schreibtisch» · b2-a20 «und ich hasse **wirklich}** diesen Tag».
+- العائلات الأولى محجوبة داخليًا بعد جولتين متتاليتين على نفس النصوص — الانتقاء من القوائم الكاملة (90+ مرشحًا) بقراءة السياق؛ رُفض «im freien Kurs» و«schwer im freien Kopf» قبل التطبيق فحُوّلا إلى ظروف.
+- مرساة ×1 · عبارة ∉ الملف · صفر مجهولات (distinct +1: 9,774).
+- المقاسات: المقالات العشرون كلها **323** (مجموع **6,460**) · B2 9,712 · المكتبة **34,782** · corpus **9,774/367,976**.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v163** · `npm test` **393/0**.
