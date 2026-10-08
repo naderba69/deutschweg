@@ -2605,3 +2605,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - الأرضيات: `b2-reading {316, 536, 6320, 3216, 1000, 1000}` · `reading-levels B2 26/9536/316/1000`.
 - **استعادة #40** قبل الجولة (مساحة كاملة عادت إلى 268c599): الاسترداد القياسي (fetch + reset إلى `adfb8c2` + npm install + إعادة بناء cover.js + b2known.js مع التحقق dickes@A1 أحمر · gemessene B2 أخضر + 393/0 + إقلاع التطبيق).
 - `web/sw.js`: `deutschweg-v138` → **`deutschweg-v139`** (رفع منفصل + `grep` قبل الـ commit) · `npm test` **393 خضراء / 0 حمراء** · الملف حُدِّث داخل هذا الـ commit.
+
+## مقالات B2 إلى 317 — 2026-10-08
+
+- الكلمة (+1) أُدخلت على **العشرين مقالًا كلها** 316 → **317** (6,320 → **6,340**) — مواضع جديدة كليًا.
+- الفحص known B2 (b2known بمرآة أداة القياس الرسمية): **20/20 أخضر + عائلة طازجة** — `echte` · `direkten` ×2 (einen direkten Vergleich · im direkten Vergleich) · `weiteren` · `großen` (seinem großen Rabatt) · `einzelnen` ×2 (einem einzelnen Blatt · einem einzelnen Beleg) · `bekannten` · `neuen` · `letzten` · `schnelle` · `gemeinsamen` · `schnellen` · `kleinen` · `alten` · `jungen` · `festen` · `einzelnen` (eine einzelne Stunde) · `gleichen` · `fremde` — المضاعفات: **0**.
+- تحقق ما قبل التطبيق رفض 9 مرشحات (العائلة في النص: festen@5 · vollen@7 · ganzen@11/13/17 · einzigen@17 · eigenen@18 · langen@19 · schwierigen@20)، وبوابة البناء أمسكت خطأ قراءة props لـ großen@a14/a15 قبل أي لمس للمكتبة.
+- ثلاث كلمات معجمية جديدة (`direkten` · `fremde` · `weiteren`): corpus المميز 9,739 → **9,742** · الجاري 367,312 → **367,332** (+20) · المكتبة 34,118 → **34,138 كلمة / 136 نصًا** (B2 9,556).
+- الأرضيات: `b2-reading {317, 536, 6340, 3216, 1000, 1000}` · `reading-levels B2 26/9556/317/1000` (B2 9,536 → **9,556**) — أقصر نص B2 الآن **317**.
+- **استعادة #41** قبل الجولة (ثالثة اليوم): الاسترداد القياسي (fetch + reset إلى `9459341` + npm install + إعادة بناء cover.js/b2known.js مع التحقق dickes@A1 أحمر · gemessene B2 أخضر + 393/0 + إقلاع التطبيق).
+- `web/sw.js`: `deutschweg-v139` → **`deutschweg-v140`** (رفع منفصل + `grep` قبل الـ commit) · `npm test` **393 خضراء / 0 حمراء** · الملف حُدِّث داخل هذا الـ commit.
