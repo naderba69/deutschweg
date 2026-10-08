@@ -2827,3 +2827,12 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - مرساة فريدة ×1 · العبارة ∉ الملف · صفر مجهولات (distinct +1 فقط: 9,769).
 - المقاسات: المقالات العشرون كلها **322** (مجموع **6,440**) · B2 9,686 · المكتبة **34,657** · corpus **9,769/367,851**.
 - الأرضيات كُتبت على تشغيل أخضر (b2-reading {322, 541, 6440, 3246}) · الخزّان **v159** · `npm test` **393/0**.
+
+
+## سلّم الاستماع — A1→106 · A2→107 (2026-10-08)
+
+- 16 إدراجًا يدويًا (+كلمة واحدة لكل سكربت): A1 — heute (Mein Termin ist heute um zehn Uhr) · sehr (schon sehr früh wieder) · dann (schlafe dann früh ein) · wirklich ×3 (habe wirklich genug · heute wirklich nur zehn Euro · Es ist wirklich nicht weit) · zusammen (kaufen wir noch zusammen ein frisches Brot) · bitte (Bringen Sie bitte die Karte mit) · A2 — erst (kommt erst um elf Uhr) · einfach (rufen Sie bitte einfach später an) · leider (hält heute leider nicht an der Kirche) · aber (heute, aber nicht morgen) · dann (kommt dann die Sonne) · sehr (Die sehr freundliche Frau) · heute (ich muss heute zum Arzt) · pünktlich (beginnen pünktlich um sieben Uhr).
+- كل كلمة متحقق منها ضد known-sets قبل التطبيق؛ بوابة المجهولات: صفر تسربات في السكربتات الستة عشر.
+- مرساة l-a1-8 «Bringen Sie die Karte mit» كانت ×2 عبر المستويين (تتطابق مع l-a2-4) فمُدّدت إلى «mit. Wenn Sie Fieber» قبل التطبيق.
+- المقاسات: A1 8× **106** (848) · A2 8× **107** (856) · B1 110 · B2 126 كما هي.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v160** · `npm test` **393/0**.
