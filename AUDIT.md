@@ -2795,3 +2795,14 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - البوابة الكاملة: مرساة ×1 في الملف كله · العبارة ∉ الملف · الكلمة معلنة بمستوى النص · صفر مجهولات جديدة (القائمة البيضاء القديمة كما هي: wechselgeld/lege/linie/kopfschmerzen/hälfte).
 - ملاحظة: شكلان صرفيان (langen·ganze) رفضتهما بوابة A1 الصارمة — استُبدلا فورًا بـ wirklich·zusammen قبل أي كتابة.
 - المقاسات: A1 8×105=840 · A2 8×106=848 · B1 880 · B2 1,008 · الأرضية ladder {33, 32, 8/8/8/8, 840/105, 848/106, 880/110, 1008/126} · الخزّان **v156** · `npm test` **393/0**.
+
+
+## دورة قراءة ثامنة — 99 نصًا: A1→225 · A2→226 · B1→227 (2026-10-08)
+
+- 99 نصًا عند الأرضية (A1 19 · A2 27 · B1 53 — B1 كبر بنص بعد انضمام نص آخر عند 226): **77 إدراج صفة** (slot أداة+اسم) + **20 حالة ظرفية خاصة موثّقة** + **2 إصلاح عبارة**.
+- **جديد هذه الدورة — تنسيق دلالي آلي:** خريطة اسم→صفات مرتّبة (70+ اسمًا) + حجب الزمنيات والمصادر والمضاف إليه المطبَّع (Tages→tag, Weges→weg) + حجب الأسماء المجردة — أوّلاً وضع «اقتراح» يُراجع ثم «تطبيق»، فسقطت الترهات الدلالية («jungen Nachmittag» · «den den» من الجشع الأول) قبل أي كتابة.
+- الحالات الظرفية العشرون (نمط موثّق): a1-r6 «essen dann zusammen» · a1-r12 «trinke langsam Kaffee» · a1-r14 «bin schon beim neuen Arzt» · a1-r19 «backt wirklich sehr gut» · a2-r2 «seit genau drei Tagen» · a2-r4 «haben wir alle zusammen» · a2-r6 «haben schon zwanzig Leute» · a2-r9 «dauert genau zwei Stunden» · a2-r23 «lerne ich sehr gern» · b1-r1 «Zufrieden sind natürlich» · b1-r3 «behalte leider nur» · b1-r5 «kaufe ich es erst» · b1-r8 «die mich wirklich geärgert» · b1-r9 «hat sich sofort entschuldigt» · b1-r21 «läuft fast rund um die Uhr» · b1-r22 «muss zuerst festlegen» · b1-r36 «ich irre mich wirklich selten» · b1-r46 «zahlt dafür leider nur» · b1-r49 «Jeder Schritt ist wirklich klein» · b1-r50 «versucht uns weiter zu überreden».
+- فخّ التفرد على مستوى الملف كله ضبط التطبيق: a2-r12 أخذت «das dünne Buch» فسقطت a2-r16 عند التطبيق — حُلّت بـ«das **blaue** Buch»؛ وa1-r11 أخذت «eine kurze Liste» فسقطت b1-r42 — حُلّت بـ«nur im **leeren}** Hof».
+- بوابات صارمة طوال الدورة: مرساة ×1 في library.js كله · العبارة ∉ الملف · الكلمة معلنة بمستوى نصه (رفضت البوابة langen/ganze في A1 وfast في A2 قبل الكتابة) · «fast» للـA2 استُبدلت بـ«genau».
+- المقاسات: A1 4,522/225 · A2 6,787/226 · B1 13,662/227 · B2 9,660 (321/540) · المكتبة **34,631** · corpus **9,768/367,825** · لا نص تحت 98%.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v157** · `npm test` **393/0**.
