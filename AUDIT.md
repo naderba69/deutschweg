@@ -2890,3 +2890,12 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - المقاسات النهائية: A1 4,560/227 (19) · A2 6,842/228 (28) · B1 13,768/229 (53+2) · المكتبة **34,882** · corpus **9,776/368,076**.
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v165** · `npm test` **393/0**.
 - ملاحظة: هذه الجولة الأولى بعد الاستعادة **#53** (reset --mixed إلى 7b69a21 · cover.js أُعيد بناؤه · npm install · PWA 200).
+
+
+## فصول B2 — الستة فصول 542→543 (2026-10-08)
+
+- ستة إدراجات: novelle-1 «hob den **dicken}** Stein» · novelle-2 «im **hellen}** Bad» · novelle-3 «den **teuren}** Computer,» · novelle-4 «zwischen den **freien}** Terminen» (dative plural سليم) · novelle-5 «über das **stille}** Wasser» · novelle-6 «sie den **schweren}** Kasten».
+- الأفضل الطبيعي (schwer Stein/ruhig Zimmer/neu Computer) محجوب عائليًا بعد ثلاث جولات على نفس النصوص — الاختيار من القوائم الكاملة؛ رُفض «den ganzen Kasten» (ganz-family محجوبة في novelle-6) لصالح «schweren».
+- مرساة ×1 · عبارة ∉ الملف · distinct ثابت (9,776).
+- المقاسات: الفصول الستة كلها **543** (مجموع **3,258**) · B2 9,718 · المكتبة **34,888** · corpus **9,776/368,082**.
+- الأرضيات كُتبت على تشغيل أخضر · الخزّان **v166** · `npm test` **393/0**.
