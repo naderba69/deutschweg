@@ -2665,3 +2665,48 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - الأرضيات: `reading-levels {A1 20/4465/222/1000, A2 30/6706/223/992, B1 60/13506/224/990, B2 26/9582/318/1000}` — أقصر نص الآن **222/223/224/318** (الفجوة مع B2 تتقلص من 95 إلى 94).
 - **استعادة #44** قبل الجولة (reset إلى `927f708` + إعادة بناء المساعدات + القياسات خضراء).
 - `web/sw.js`: v143 → **v144** · `npm test` **393 خضراء / 0 حمراء** (7 مجموعات).
+
+## فصول الرواية إلى 538 — 2026-10-08
+
+- الكلمة (+1) أُدخلت على **الفصول الستة كلها** 537 → **538** (3,222 → **3,228**) — مواضع جديدة كليًا:
+  - ف1 «Sara trank den **bitteren** Tee langsam und sah durch das Fenster auf die Straße» (trank den Tee)
+  - ف2 «hängte die Kleidung in den **leeren** Schrank» (den Schrank und)
+  - ف3 «Sie fuhren mit dem **langsamen** Bus aus der Stadt» (dem Bus aus)
+  - ف4 «eines für sich und eines für den **netten** Chef» (den Chef.)
+  - ف5 «kaufte sie zwei neue Eimer und eine **schwere** Rolle Papier» (eine Rolle)
+  - ف6 «Im Juli unterschrieb sie den **dicken** Vertrag für ein Zimmer im Stock darüber» (sie den Vertrag)
+- الماسح scan538 (المشتق من تصميم scan317/scan537 نفسه): **192 slot** للفصول الستة (38·39·23·27·31·34)، 3 بلا مرساة فريدة. الاختيار اليدوي رفض عائلات موجودة في الجسم قبل الوصول للبوابة: blau/ruhig@ف2 · alt/lang/wichtig@ف4 · kurz@ف5·ف6 · trocken@ف5 · neu@ف6 («den neuen Vertrag» عبارة موجودة أصلًا في نص آخر — أمسكها فحص العبارة) — كل الاستبدالات دلاليًا طبيعية.
+- الفحص known B2 (b2known): **6/6 أخضر + عائلة طازجة** · فحص الصرف `inflect(base, نهاية الأداة) === surface` إلزامي في البوابة · المضاعفات: **0** · خاتمة النوفيلة «Ich bleibe noch.» بقيت آخر كلمات ف6 (فحص بعد الكتابة) وكل مرساة من فصلها نفسه.
+- المعجم: رمز واحد جديد (`bitteren` — البقية موجودة أصلًا): المميز 9,749 → **9,750** · الجاري 367,453 → **367,459** (+6) · المكتبة 34,259 → **34,265 كلمة / 136 نصًا** (B2 9,588).
+- الأرضيات: `b2-reading {318, 538, 6360, 3228, 1000, 1000}` · `reading-levels B2 26/9588/318/1000`.
+- **استعادة #45** قبل الجولة: HEAD عند نقطة الانطلاق `268c599` مع تعديلات أول الجلسة غير الملتزمة · node_modules وhelpers و/tmp ممسوحات · الخادم معطّل — fetch ثم reset --hard إلى origin `ff87afa` أعاد كل شيء (npm install + إعادة بناء cover/b2known + 393/0 قبل العمل).
+- `web/sw.js`: v144 → **`v145`** · `npm test` **393 خضراء / 0 حمراء** (7 مجموعات) · الملف حُدِّث داخل هذا الالتزام.
+
+## مقالات B2 إلى 319 — 2026-10-08
+
+- الكلمة (+1) أُدخلت على **العشرين مقالًا كلها** 318 → **319** (6,360 → **6,380**) — مواضع جديدة كليًا:
+  - a1 «spart die Arbeit zu Hause den **weiten** Weg» · a2 «Wer trotzdem einen **einzelnen** Schuldigen braucht» · a3 «Als seine Firma das **echte** Homeoffice erlaubt hat» · a4 «bleibt eine **offene** Frage des Unterrichts» · a5 «Wer aus einem **starken** Wunsch ein Datum macht» · a6 «nach dem **hohen** Preis der Teile» · a7 «Eine **einzelne** Maßnahme ohne Alternative scheitert» · a8 «das **helle** Licht, das niemand braucht» · a9 «Ich lese eine **große** Schlagzeile heute wie eine einfache Frage» · a10 «das **echte** Turnier zählt».
+  - a11 «Eine **kluge** Stadt, die diese Zahlen kennt, kann steuern» · a12 «in Gesprächen um eine **feste** Stelle» · a13 «es ist eine **gesunde** Gewohnheit» · a14 «die Kleidung und den **teuren** Strom» · a15 «bis eine Kollegin einen **neuen** Kalender an die Wand hängte» · a16 «weil er eine **echte** Beschwerde erwartet hatte» · a17 «eine ganze Stunde mehr für das **dicke** Buch» · a18 «einen **neuen** Ordner, in dem die wichtigsten Zahlen liegen» · a19 «muss jemand ins **nächste** Krankenhaus» · a20 «Wer einen **einzelnen** Teil schwach lässt».
+- **a13 وa16 نصّان مشبعان** (عوائق عائلية كثيفة) — استُنزف POOL كاملًا (القاعدة الموثقة) قبل الاختيار: a13 رفض ganze/klein/erste/alt/neu/groß/frisch/klar («eine klare Zahl» عبارة موجودة أصلًا) → «eine gesunde Gewohnheit» · a16 رفض freundlich/klar/ruhig («eine einfache Frage» عبارة موجودة أصلًا في نص آخر) وunfreundlich غير معروفة في القياس الصارم → «eine echte Beschwerde».
+- موجات الفحص اليدوي أمسكت قبل الوصول للبوابات: ganze محجوبة في a3·a9·a10·a12·a13·a14·a18·a20 · gut@a12 · frisch@a13 · erste@a5 · fest@a5 · einzelne@a5 — كلها عائلات في الجسم.
+- الفحص known B2 (b2known): **20/20 أخضر + عائلة طازجة** · فحص الصرف إلزامي · المضاعفات: **0** (لا تضارب عبارة عند البناء ولا تضارب متقاطع عند التطبيق).
+- المعجم: رمزان جديدان (`weiten` · `kluge`): المميز 9,750 → **9,752** · الجاري 367,459 → **367,479** (+20) · المكتبة 34,265 → **34,285 كلمة / 136 نصًا** (B2 9,608).
+- الأرضيات: `b2-reading {319, 538, 6380, 3228, 1000, 1000}` · `reading-levels B2 26/9608/319/1000` — أقصر مقالة B2 الآن **319**.
+- **اتصال GitHub انقطع أثناء الجولة** (الرمز في GH_TOKEN مرفوض: «Invalid username or token» — لا اعتماد مخزّن): جولة فصول 538 (`58f533b`) وهذه الجولة مودعتان محليًا وستُدفعان فور عودة الاتصال.
+- `web/sw.js`: v145 → **`v146`** · `npm test` **393 خضراء / 0 حمراء** (7 مجموعات) · الملف حُدِّث داخل هذا الالتزام.
+- **مزامنة داخل هذا الالتزام**: جولة فصول 538 (`58f533b`) خرجت بأسطر قديمة في ملف الاستمرار (المعجم/الخزّان/الأرضيات/§4/§9/الخاتمة) لأن تعديلات edit_file متوازية على الملف نفسه تسابقت فداست كتاباتٌ على بعضها رغم إبلاغ النجاح — فُحصت القيم القديمة كلها بـ`grep` وصُفّرت، وأُصلح كل شيء هنا، ووُثّق الفخّ في §10 (تعديل واحد لكل ملف في كل رسالة).
+
+## سلّم الاستماع: A1 إلى 102 · A2 إلى 103 — 2026-10-08
+
+- الكلمة (+1) أُدخلت على كل سكربت عند الأرضية: **A1 8 سكربتات 101 → 102** (808 → **816**) · **A2 8 سكربتات 102 → 103** (816 → **824**) — التسلسل الصاعد **102 < 103 < 110 < 126** محفوظ.
+- الإدخالات (كلمات صغيرة شائعة، بنمط الفحص-يكتب-والتطبيق-يقرأ): A1: «Der Zug ist **wirklich** pünktlich» · «hören wir **sehr** gern neue Musik» · «es ist klein und **sehr** ruhig» · «und nehme **auch** die Rechnung mit» · «gehe ich **immer** gern wieder früh zum Bäcker» · «Wir sitzen **zusammen** am Fenster» · «Der Bahnhof ist **genau** neben der Post» · «schon wieder **ganz** gut ist». A2: «und trinke **noch** einen guten Kaffee» · «und kommen Sie **bitte** zehn Minuten früher» · «steigt **einfach** am Bahnhof um» · «Kommen Sie **heute** um drei Uhr» · «und es ist **sehr** kalt» · «Ich kaufe **schnell** zwei Flaschen» · «**Vielen** Dank und bis später» · «bring **einfach** Musik oder ein Spiel mit».
+- الفحص known بالمستوى: **16/16 أخضر** (لا مجهول جديد في أي سكربت؛ a2-6 تحسّنت حتى ‰984→985) · المضاعفات: **0** (لا مرساة مكررة ولا عبارة موجودة أصلًا — بوابتا الفحص والتطبيق).
+- الأرضيات: `ladder {33, 32, 8/8/8/8, 816/102, 824/103, 880/110, 1008/126}` (مستقلة عن corpus — لم يُكتب غيرها).
+- **الرفع ما زال معلّقًا** (رمز GitHub مرفوض) — ثلاثة التزامات محلية تنتظر: فصول 538 · مقالات 319 · هذا السلّم.
+- `web/sw.js`: v146 → **`v147`** · `npm test` **393 خضراء / 0 حمراء** (7 مجموعات) · الملف حُدِّث داخل هذا الالتزام.
+
+## استعادة #46 + التزام توحيد — 2026-10-08
+
+- بعد جولة السلّم وقبل الرفع: الاستعادة أرجعت الـ ref المحلي إلى نقطة الانطلاق `268c599` وفقدت الالتزامات الثلاثة (فصول 538 `58f533b` · مقالات 319 `aff9af1` · سلّم 102/103 `fe82ca9`) من مخزن الكائنات — لكن شجرة العمل بقيت كاملة بمحتواها (المكتبة · السلّم · الأرضيات · v147 · أقسام AUDIT الثلاثة).
+- التعافي: `fetch` ثم `reset --mixed` إلى origin `ff87afa` (يحفظ شجرة العمل) — الفرق 9 ملفات بالضبط = الجولات الثلاث → **التزام توحيد واحد** بدل الثلاثة المفقودة. تفاصيل كل جولة موثقة في أقسامها أعلاه.
+- `npm test` **393 خضراء / 0 حمراء** (7 مجموعات) قبل الإيداع · `web/sw.js` على **v147**.
