@@ -3000,3 +3000,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - أدوات داخل `tools/arena-helpers/`: `check-novel545.js` (6/6 PASS) و`build-novel545.js` (باني يقرأ SEL من الفاحص + حراسة ما بعد البناء).
 - المقاسات: الفصول الستة كلها **545** (مجموع **3,270**) · B2 26/**9,770** · المكتبة **35,146** · corpus **9,815/368,340** (+3 مميز: hartes · weiße · müden).
 - الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus) · الخزّان **v175** · `npm test` **393/0**.
+
+
+## مقالات B2 — العشرون مقالًا 325→326 (2026-10-09)
+
+- عشرون إدراجًا (كلمة واحدة لكل مقال، القياس الصارم B2): b2-a1:«den leeren Schreibtisch» · b2-a2:«eine runde Zahl» · b2-a3:«die wahre Zahl» · b2-a4:«ein nützliches Werkzeug» · b2-a5:«drei persönliche Zeilen» · b2-a6:«ein teures Gerät» · b2-a7:«ein allgemeines Verbot» · b2-a8:«einen langen Montag» · b2-a9:«die einzige Quelle» · b2-a10:«die müden Kinder» · b2-a11:«die hohen Mieten» · b2-a12:«der geduldige Kunde» · b2-a13:«die ehrliche Bilanz» · b2-a14:«die alte Halle» · b2-a15:«die freie Kunst» · b2-a16:«ein sachliches Gespräch» · b2-a17:«die späten Stunden» · b2-a18:«die letzte Rechnung» · b2-a19:«der kurze Weg» · b2-a20:«viele mündliche Prüfungen».
+- الجولة السادسة على نفس المقالات: النصوص الجدلية مشبعة بالعائلات — بُني ماسح «العائلات الحرة» (100 جذع مرشح × 20 مقالًا) والانتقاء من القوائم كاملةً بقراءة السياق؛ محجوبات مؤكدة: gut · klein · groß · genau · klar · wahr(a7) · freundlich(a16) · einzeln(a17) · schwer(a18) · weit(a19) · fest(a4/a5) · letzt(a8) · jung(a4 bigram) · rund-ناجية…
+- البوابات: مرساة ×1 في library.js كله · عبارة ∅ (bigram+trigram في library.js وفي ladder.js) · صفر مجهولات بالقياس الصارم (المقالات العشرون 100% بعد الإدراج) · فرادة العائلات بين الإدراجات العشرين (leer · rund · wahr · nützlich · persönlich · teuer · allgemein · lang · einzeln · müde · hoch · geduldig · ehrlich · alt · frei · sachlich · spät · letzt · kurz · mündlich) · +1 لكل مقال **بالعدّ الفعلي** (326×20).
+- أدوات داخل `tools/arena-helpers/`: `check-b2a326.js` (20/20 PASS) و`build-b2a326.js` (باني يقرأ SEL من الفاحص + حراسة ما بعد البناء).
+- المقاسات: المقالات العشرون كلها **326** (مجموع **6,520**) · الفصول 545 دون تغيير · B2 26/**9,790** · المكتبة **35,166** · corpus **9,818/368,360** (+3 مميز: nützliches · persönliche · allgemeines).
+- الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus) · الخزّان **v176** · `npm test` **393/0**.
