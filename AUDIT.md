@@ -2953,3 +2953,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - مرساة ×1 في library.js كله · عبارة ∅ (bigram form+noun وtrigram det+form+noun على الصيغة النهائية) · صفر مجهولات بالقياس الصارم · فرادة العائلات بين الإدراجات العشرين · +1 لكل مقال **بالعدّ الفعلي** (العشرون كلها 325).
 - المقاسات: المقالات العشرون كلها **325** (مجموع **6,500**) · B2 9,764 · المكتبة **35,036** · corpus **9,792/368,230** (+3 مميز: digitales · vergessene · vollständige).
 - الأرضيات كُتبت على تشغيل أخضر · الخزّان **v171** · `npm test` **393/0**.
+
+
+## سلّم الاستماع — الأدنى أولًا: A1 108→109 وB1 110→111 (2026-10-09)
+
+- ستة عشر إدراجًا (خانة أداة+اسم عدا ظرف واحد): A1: l-a1-1 «genug **freie}** Zeit» · l-a1-2 «ein **frisches}** Wasser, sehr kalt» · l-a1-3 «gibt es **denn}** Frühstück?» (ظرف سؤال) · l-a1-4 «die **richtige}** Rechnung mit» · l-a1-5 «Der **freundliche}** Bäcker sagt» · l-a1-6 «Eine **ganze}** Stunde später» · l-a1-7 «Der **nächste}** Bahnhof ist ganz genau» · l-a1-8 «Ihr **erster}** Termin ist am Dienstag um genau». B1: l-b1-1 «fehlt die **klare}** Grenze» · l-b1-2 «den **täglichen}** Ablauf kenne» · l-b1-3 «**Kein böses}** Wort über Schuld» · l-b1-4 «Die **alte}** Bahn hat uns» · l-b1-5 «Eine **höfliche}** Bitte erreicht mehr» · l-b1-6 «sondern eine **einfache}** Liste» · l-b1-7 «die **erste}** Fahrt einmal falsch» · l-b1-8 «In unserem **kleinen}** Büro».
+- رفع الأدنى أولًا: A2→110 محجوب لأنه يساوي B1 110 — رُفع A1 إلى 109 (تعادل مؤقت مع A2 109، مسموح تاريخيًا) ورُفع B1 إلى 111 لفتح الطريق أمام A2→110 في جولة سلّم قادمة دون تعادل.
+- استبدالات قبل القبول: «hier leider nur» (ثنائية «leider nur» موجودة في السلّم) · «Der teure Käse» (teuer غير معروف عند A1 بقياس known.js — النصوص المسموعة خارج بوابة التغطية فالتحقق يدوي) · «die kurze Nachricht» (kurzen موجودة في l-b1-3 نفسه).
+- البوابات: مرساة ×1 في ladder.js كله (ممدودة عند التكرار: «Euro Zusammen» في l-a1-5 · «um genau» في l-a1-8) · عبارة ∅ (ثنائية الشكل+الاسم وثلاثية الأداة+الشكل+الاسم؛ وعند الظرف ثنائيتا الجوار «es denn» و«denn Frühstück») · العائلة ∅ داخل النص · كل كلمة متحقق منها ضد مجموعة مستواها (A1/B1 عبر known.js) · قوائم الحجب · +1 لكل نص بالعدّ الفعلي.
+- بند اللهجة المطبوع (76 كلمة، بلا صوت) لم يُمَس؛ الالتزام في الباني تحقق منه صراحة.
+- المقاسات: A1 **872/109** · B1 **888/111** (الكل متجانس) · أرضية السلّم كُتبت على تشغيل أخضر · الخزّان **v172** · `npm test` **393/0**.
