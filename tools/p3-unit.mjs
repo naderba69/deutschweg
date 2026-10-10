@@ -405,6 +405,14 @@ console.log('\n— P3.2 lexical layer —\n');
     texts['a1-r5'].body.includes('Der Zug hat heute zehn Minuten Verspätung') &&
       texts['a1-r5'].body.includes('Der Zug fährt oft pünktlich um acht Uhr ab') &&
       q('a1-r5', 1).key === 'نعم');
+  t('A1 a1-r6 ends its note after the farewell and signature',
+    texts['a1-r6'].body.endsWith('Am Abend rufe ich dich dann sicher wieder an. Bis später! Sara.') &&
+      texts['a1-r6'].body.indexOf('Bis später! Sara.') === texts['a1-r6'].body.lastIndexOf('Bis später! Sara.'));
+  t('A1 a1-r6 questions match the course and bread stated in the note',
+    q('a1-r6', 0).prompt.includes('أين هي الآن') && q('a1-r6', 0).key === 'في الدورة' &&
+      texts['a1-r6'].body.includes('ich bin im Kurs') &&
+      q('a1-r6', 1).prompt.includes('على الطاولة') && q('a1-r6', 1).key === 'خبز' &&
+      texts['a1-r6'].body.includes('Brot, Käse und Obst auf dem alten Tisch'));
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
