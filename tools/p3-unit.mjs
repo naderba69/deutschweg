@@ -397,6 +397,10 @@ console.log('\n— P3.2 lexical layer —\n');
       texts['a1-r16'].body.includes('Vom kleinen Bahnhof sind es noch ganze zehn Minuten zu Fuß') &&
       texts['a1-r16'].body.includes('Den ganzen Weg zu Fuß gehe ich nur bei gutem Wetter') &&
       texts['a1-r16'].body.includes('Am Abend fahre ich mit dem Fahrrad'));
+  t('A1 a1-r4 move-in respects the advertised Monday availability',
+    texts['a1-r4'].body.includes('Zimmer frei ab Montag') &&
+      texts['a1-r4'].body.indexOf('Am Montag bringe ich meine Sachen') >
+        texts['a1-r4'].body.indexOf('bekomme den eigenen Schlüssel'));
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
