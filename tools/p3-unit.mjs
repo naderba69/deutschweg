@@ -401,6 +401,10 @@ console.log('\n— P3.2 lexical layer —\n');
     texts['a1-r4'].body.includes('Zimmer frei ab Montag') &&
       texts['a1-r4'].body.indexOf('Am Montag bringe ich meine Sachen') >
         texts['a1-r4'].body.indexOf('bekomme den eigenen Schlüssel'));
+  t('A1 a1-r5 treats today’s ten-minute delay as an exception',
+    texts['a1-r5'].body.includes('Der Zug hat heute zehn Minuten Verspätung') &&
+      texts['a1-r5'].body.includes('Der Zug fährt oft pünktlich um acht Uhr ab') &&
+      q('a1-r5', 1).key === 'نعم');
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
