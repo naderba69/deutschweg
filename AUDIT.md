@@ -3106,3 +3106,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - أدوات داخل `tools/arena-helpers/`: `check-novel549.js` (6 PASS · 0 FAIL؛ يحفظ `/tmp/novel-549.sel.json`) و`build-novel549.js` (يعيد القراءة من القرص ويتحقق من ×1 · +1 · 549 لكل فصل · صفر مجهولات · الأسئلة والخاتمة · اقتصار التغيير على الفصول الستة).
 - المقاسات — من الأرضيات المكتوبة للتو: الفصول **549** لكل فصل (مجموع **3294**) · المقالات **328/6560** دون تغيير · B2 **26/9854** · المكتبة **35230** كلمة في **136** نصًا · corpus **9819/368424** (+0 مميز) · الخزّان **deutschweg-v184** · `npm test` **393/0**.
 - الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus).
+
+
+## فصول B2 — الستة فصول 549→550 (2026-10-10)
+
+- ست إدراجات (كلمة واحدة لكل فصل، القياس الصارم B2، خانة أداة+اسم): novelle-1:«Sie schrieb eine Nachricht an die **richtige** Nummer auf dem Zettel» · novelle-2:«Im Kurs saß sie neben einem **netten** Mann, der seine kleinen Notizen in zwei Sprachen schrieb» · novelle-3:«die **junge freundliche** Lehrerin schrieb das klare Thema an die Tafel» · novelle-4:«Sie hatte alle Papiere in einem **schweren grauen** Ordner» · novelle-5:«Im kalten Schlafzimmer kam an einer bestimmten **feuchten** Stelle Wasser durch» · novelle-6:«mit einem **breiten hohen** Fenster zum Hof».
+- الجولة الحادية عشرة على الفصول: الاختيار من خانات أداة+اسم بعد قراءة السياق؛ مرّ الفاحص `check-novel550.js` **6/6 PASS · 0 FAIL**. رفضت بوابة فرادة العبارة «am frühen Morgen» (ثنائية «frühen Morgen» وثلاثية «am frühen Morgen» ×3) و«eine dicke warme Jacke» (ثنائية «dicke warme» ×2).
+- البوابات: مرساة ×1 في library.js كله وداخل الفصل · +1 كلمة بالعدّ الفعلي لكل فصل · **صفر مجهولات بالقياس الصارم B2** · فرادة العائلات وغيابها داخل الفصل (richtig · nett · freundlich · schwer · feucht · breit) · bigram/trigram جديدتان في المنتج كله (library.js وladder.js) · قوائم §7 · الإعراب مفحوص يدويًا: `die richtige Nummer` مؤنث منصوب · `neben einem netten Mann` مذكر مجرور · `die junge freundliche Lehrerin` مؤنث مرفوع · `in einem schweren grauen Ordner` مذكر مجرور · `an einer bestimmten feuchten Stelle` مؤنث مجرور · `mit einem breiten hohen Fenster` محايد مجرور. الأسئلة لم تتغير، و«Ich bleibe noch.» بقيت آخر الكلمات.
+- أدوات داخل `tools/arena-helpers/`: `check-novel550.js` (6/6 PASS؛ يحفظ `/tmp/novel-550.sel.json`) و`build-novel550.js` (حراسة من القرص: ×1 · +1 · 550 لكل فصل · صفر مجهولات · الأسئلة والخاتمة · الاقتصار على الفصول الستة).
+- المقاسات — من الأرضيات المكتوبة للتو: الفصول **550** لكل فصل (مجموع **3300**) · المقالات **328/6560** دون تغيير · B2 **26/9860** · المكتبة **35236** كلمة في **136** نصًا · corpus **9819/368430** (+0 مميز) · الخزّان **deutschweg-v185** · `npm test` **393/0**.
+- الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus).
