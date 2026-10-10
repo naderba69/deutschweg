@@ -4,7 +4,7 @@
  * §13.3 promises extensive reading the learner can do without a dictionary:
  * 98% of the words known. That promise was measured for B2 only
  * (tools/measure-b2-reading.js); this tool applies the same rule to the whole
- * library — the ten A1 texts, the thirty A2 texts, the sixty B1 texts and the
+ * library — the twenty A1 texts, the thirty A2 texts, the sixty B1 texts and the
  * twenty-six B2 texts — and gates each level against a floor that is the
  * measured value of the last accepted run. The floor may only rise.
  *

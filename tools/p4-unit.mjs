@@ -60,6 +60,10 @@ const fast = w.DW.tracks.readingSession({ id: 't', questions: [{ prompt: 'q', ke
 t('a reading glance does not enter R4', fast.measured === false && fast.counted === false);
 const weak = w.DW.tracks.readingSession({ id: 't', questions: [{ prompt: 'q', key: 'a' }, { prompt: 'r', key: 'b' }], words: 40 }, { q: 'a', r: 'no' }, 20000);
 t('reading under 95% is stored out of R4', weak.measured && !weak.counted);
+const impossible = w.DW.tracks.readingSession({ id: 'long', questions: [{ prompt: 'q', key: 'a' }, { prompt: 'r', key: 'b' }], words: 229 }, { q: 'a', r: 'b' }, 6000);
+t('R4 rejects a 229-word text completed in six seconds', !impossible.measured && !impossible.counted);
+const plausible = w.DW.tracks.readingSession({ id: 'long', questions: [{ prompt: 'q', key: 'a' }, { prompt: 'r', key: 'b' }], words: 229 }, { q: 'a', r: 'b' }, 50000);
+t('R4 still accepts a measured 229-word read within the speed ceiling', plausible.measured && plausible.counted);
 const heard = w.DW.tracks.listeningSession({ id: 'h', audio: true, r5: true, questions: [{ prompt: 'q', key: 'a' }], target: 0.8 }, { q: 'a' }, { audioPlayed: true, studied: true });
 t('already heard listening does not enter R5', heard.score === 1 && !heard.counted);
 const order = G.wortstellung([{ de: 'Ich bin hier.', key: 'Ich bin hier.', why: 'bin مع ich', cap: 'cap.test' }], 0);

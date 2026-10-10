@@ -355,22 +355,22 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r2 asks the price actually stated for coffee',
     q('a1-r2', 1).prompt.includes('سعر القهوة') && q('a1-r2', 1).key === '2 يورو' &&
       texts['a1-r2'].body.includes('Ein Kaffee kostet zwei Euro'));
-  t('A1 a1-r3 answer says Saturday, the invited day',
-    q('a1-r3', 1).prompt.includes('متى تأتي') && q('a1-r3', 1).key === 'السبت' &&
+  t('A1 a1-r3 asks for the party day stated by the invitation',
+    q('a1-r3', 1).prompt.includes('متى الحفل') && q('a1-r3', 1).key === 'السبت' &&
       texts['a1-r3'].body.includes('Am Samstag mache ich eine laute Party.'));
-  t('A1 a1-r7 asks what the younger brother brings, not what the reader brings',
-    q('a1-r7', 1).prompt.includes('الأخ الأصغر') && q('a1-r7', 1).key === 'الموسيقى' &&
-      texts['a1-r7'].body.includes('Mein junger Bruder bringt gute Musik mit'));
-  t('A1 a1-r8 questions match the first action and named ingredients',
+  t('A1 a1-r7 asks what the speaker buys before the party',
+    q('a1-r7', 1).prompt.includes('المتكلم') && q('a1-r7', 1).key === 'ماء' &&
+      texts['a1-r7'].body.includes('Ich kaufe noch Wasser'));
+  t('A1 a1-r8 questions match the first action and final drink',
     q('a1-r8', 0).prompt.includes('تغسل أولًا') && q('a1-r8', 0).key === 'الخضار' &&
-      q('a1-r8', 1).prompt.includes('تحتاج للطبخ') && q('a1-r8', 1).key === 'الملح والزيت' &&
-      texts['a1-r8'].body.includes('Zuerst wasche ich das ganze Gemüse') && texts['a1-r8'].body.includes('ich brauche Salz und Öl'));
-  t('A1 a1-r9 explicitly asks for the time in the opening schedule',
-    q('a1-r9', 0).prompt.includes('في أول النص') && q('a1-r9', 0).key === 'التاسعة' &&
-      texts['a1-r9'].body.startsWith('Der Bus kommt um neun Uhr'));
-  t('A1 a1-r10 asks about the homework request actually made',
-    q('a1-r10', 1).prompt.includes('من المعلمة') && q('a1-r10', 1).key === 'الواجب القادم' &&
-      texts['a1-r10'].body.includes('Bitte schicken Sie mir die nächste Hausaufgabe.'));
+      q('a1-r8', 1).prompt.includes('في نهاية النص') && q('a1-r8', 1).key === 'الماء' &&
+      texts['a1-r8'].body.includes('Zuerst wasche ich das ganze Gemüse') && texts['a1-r8'].body.includes('kaltes Wasser'));
+  t('A1 a1-r9 asks for the work bus time stated in the schedule',
+    q('a1-r9', 0).prompt.includes('حافلة العمل') && q('a1-r9', 0).key === 'السابعة' &&
+      texts['a1-r9'].body.startsWith('Der Bus kommt um sieben Uhr'));
+  t('A1 a1-r10 verifies the explicit bed-rest duration',
+    q('a1-r10', 1).prompt.includes('كم يومًا') && q('a1-r10', 1).key === 'يومان' &&
+      texts['a1-r10'].body.includes('Bleiben Sie zwei Tage'));
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
@@ -526,6 +526,52 @@ console.log('\n— P3.2 lexical layer —\n');
   t('ladder: the dialect item stays print-only and out of R5 (' + printOnly.length + ')',
     printOnly.length > 0 && printOnly.every(i => i.r5 === false));
   t('ladder: the audio warning is present', !!(win.DW_LADDER.voice && win.DW_LADDER.not));
+}
+
+/* ---------- learner routes and evidence feedback ---------- */
+{
+  const { window: win } = boot();
+  clickText(win, 'سماع');
+  const audioButtons = [...win.document.querySelectorAll('#view button')]
+    .filter(b => /^A1 ·/.test(b.textContent.trim()));
+  t('the home listening control opens its ladder screen', audioButtons.length === 8);
+  audioButtons[0].click();
+  win.SpeechSynthesisUtterance = function (text) { this.text = text; };
+  win.speechSynthesis = { cancel() {}, speak(u) { if (u.onend) u.onend(); } };
+  const play = [...win.document.querySelectorAll('#view button')].find(b => b.textContent.trim() === 'تشغيل مرة');
+  play.click();
+  t('a listening clip can be played only once per attempt', play.disabled === true);
+  [...win.document.querySelectorAll('#view button')].find(b => b.textContent.trim() === 'neun').click();
+  [...win.document.querySelectorAll('#view button')].find(b => b.textContent.trim() === 'acht').click();
+  clickText(win, 'سلّم');
+  t('listening feedback shows the correct answer', /الإجابة الصحيحة: acht/.test(win.document.querySelector('#view').textContent));
+}
+{
+  const { window: win } = boot();
+  clickText(win, 'قراءة');
+  const level = win.document.querySelector('#view select[aria-label="مستوى القراءة"]');
+  let graded = [...win.document.querySelectorAll('#view button')].filter(b => /^A1 ·/.test(b.textContent.trim()));
+  t('reading opens at the learner level instead of listing all 136 texts', !!level && level.value === 'A1' && graded.length === 20);
+  level.value = 'B2';
+  level.dispatchEvent(new win.Event('change'));
+  graded = [...win.document.querySelectorAll('#view button')].filter(b => /^B2 ·/.test(b.textContent.trim()));
+  t('the reading list can be filtered to B2', graded.length === 26);
+  level.value = 'A1';
+  level.dispatchEvent(new win.Event('change'));
+  clickText(win, 'A1 · بطاقة الفندق');
+  [...win.document.querySelectorAll('#view button')].find(b => b.textContent.trim() === 'Anna').click();
+  [...win.document.querySelectorAll('#view button')].find(b => b.textContent.trim() === 'ثلاث').click();
+  clickText(win, 'سلّم السؤالين');
+  t('reading feedback names the right answer after a miss', /الإجابة الصحيحة: Sara/.test(win.document.querySelector('#view').textContent));
+}
+{
+  const { window: win } = boot();
+  const rows = win.DW_LIBRARY.A1;
+  const byId = id => rows.find(x => x.id === id);
+  t('A1 café question asks a value stated by the source', /Kaffee kostet zwei Euro/.test(byId('a1-r2').body) && byId('a1-r2').questions[1].key === '2 يورو');
+  t('A1 party question follows the Saturday invitation', /Am Samstag mache ich eine laute Party/.test(byId('a1-r3').body) && byId('a1-r3').questions[1].key === 'السبت');
+  t('A1 recipe questions follow the first action and evening drink', byId('a1-r8').questions[0].key === 'الخضار' && byId('a1-r8').questions[1].key === 'الماء');
+  t('A1 bed-rest question is answered explicitly', /Bleiben Sie zwei Tage/.test(byId('a1-r10').body) && byId('a1-r10').questions[1].key === 'يومان');
 }
 
 /* ---------- B2 — the workshops, route (C)'s two measures ---------- */

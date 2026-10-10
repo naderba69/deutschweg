@@ -1121,6 +1121,17 @@ function readingNodes() {
   const novel = lib.B2 && lib.B2.novel ? lib.B2.novel.chapters.map(ch => Object.assign({ novel: true }, ch)) : [];
   return [].concat(lib.A1 || [], lib.A2 || [], (lib.B1 && lib.B1.texts) || [], (lib.B2 && lib.B2.articles) || [], novel);
 }
+function appendAnswerFeedback(v, item, picked) {
+  const box = el('div', 'card small');
+  (item.questions || []).slice(0, 2).forEach(q => {
+    const chosen = picked[q.prompt];
+    const correct = chosen === q.key;
+    const line = el('div', correct ? 'layer good' : 'layer bad');
+    line.textContent = q.prompt + ' — إجابتك: ' + (chosen || 'لم تجب') + '؛ الإجابة الصحيحة: ' + q.key;
+    box.appendChild(line);
+  });
+  v.appendChild(box);
+}
 function openReading(item) {
   const v = screenBack('قراءة موسّعة');
   v.appendChild(el('div', 'reason', 'لا قاموس في هذه الشاشة. سؤالان يقيسان ما سُئل، لا 98% من الكلمات. تحت 95% أو أسرع من 5 ثوانٍ لا يدخل R4.'));
@@ -1144,6 +1155,7 @@ function openReading(item) {
   const done = el('button', 'ghost', 'سلّم السؤالين');
   done.type = 'button';
   done.onclick = () => {
+    done.disabled = true;
     const session = DW.tracks.readingSession(item, picked, Date.now() - started);
     session.date = DW.today();
     session.novel = !!item.novel;
@@ -1152,6 +1164,7 @@ function openReading(item) {
     S.portfolio.reading.push(session);
     save();
     v.appendChild(el('div', session.counted ? 'layer good' : 'layer warn', session.reason));
+    appendAnswerFeedback(v, item, picked);
   };
   v.appendChild(done);
 }
@@ -1160,12 +1173,32 @@ function renderReading() {
   v.appendChild(el('div', 'reason', 'لا قاموس هنا. إن احتجته، هذا النص ليس لهذه الجلسة. لا تقدير ذاتي يدخل R4.'));
   const nodes = readingNodes().filter(item => item.questions && item.questions.length >= 2);
   if (!nodes.length || !DW.tracks) { v.appendChild(el('div', 'meta', 'لا نص بسؤالين. لا قياس.')); return; }
-  nodes.forEach(item => {
-    const b = el('button', 'ghost', (item.level || 'B2') + ' · ' + item.title);
-    b.type = 'button';
-    b.onclick = () => openReading(item);
-    v.appendChild(b);
+  const levels = ['A1', 'A2', 'B1', 'B2'];
+  const select = document.createElement('select');
+  select.setAttribute('aria-label', 'مستوى القراءة');
+  levels.forEach(lv => {
+    const option = document.createElement('option');
+    option.value = lv;
+    option.textContent = lv + ' · ' + nodes.filter(item => item.level === lv).length + ' نصًا';
+    select.appendChild(option);
   });
+  select.value = levels.includes(sylLevel()) ? sylLevel() : 'A1';
+  const list = el('div', 'reading-list');
+  function drawLevel() {
+    list.innerHTML = '';
+    const selected = nodes.filter(item => item.level === select.value);
+    selected.forEach(item => {
+      const b = el('button', 'ghost', item.level + ' · ' + item.title);
+      b.type = 'button';
+      b.onclick = () => openReading(item);
+      list.appendChild(b);
+    });
+    if (!selected.length) list.appendChild(el('div', 'meta', 'لا نصوص متاحة في هذا المستوى.'));
+  }
+  select.onchange = drawLevel;
+  v.appendChild(select);
+  v.appendChild(list);
+  drawLevel();
   const mag = window.DW_LIBRARY && DW_LIBRARY.B1 && DW_LIBRARY.B1.magazine;
   if (mag) v.appendChild(el('div', 'meta', 'المجلة للقراءة المتصلة. قياسها في نصوصها العشرة، لا في اللصق.'));
 }
@@ -1201,12 +1234,19 @@ function openListening(item) {
     return;
   }
   let played = false;
+  let playbackUsed = false;
   const play = el('button', 'ghost', 'تشغيل مرة');
   play.type = 'button';
-  play.onclick = () => speakGerman(item.script, item.level === 'A1' ? 0.8 : item.level === 'B2' ? 1 : 0.9, ok => {
-    played = !!ok;
-    v.appendChild(el('div', 'meta', ok ? 'انتهى التشغيل. النص ما زال مخفيًا.' : 'لا صوت على هذا الجهاز. لا درجة.'));
-  });
+  play.onclick = () => {
+    if (playbackUsed) return;
+    playbackUsed = true;
+    play.disabled = true;
+    speakGerman(item.script, item.level === 'A1' ? 0.8 : item.level === 'B2' ? 1 : 0.9, ok => {
+      played = !!ok;
+      if (!ok) { playbackUsed = false; play.disabled = false; }
+      v.appendChild(el('div', 'meta', ok ? 'انتهى التشغيل مرة واحدة. النص ما زال مخفيًا.' : 'لا صوت على هذا الجهاز. أعد المحاولة أو لا درجة.'));
+    });
+  };
   v.appendChild(play);
   const picked = {};
   (item.questions || []).forEach(q => {
@@ -1223,6 +1263,7 @@ function openListening(item) {
   const done = el('button', 'ghost', 'سلّم');
   done.type = 'button';
   done.onclick = () => {
+    done.disabled = true;
     const studied = (S.portfolio.listening || []).some(s => s.itemId === item.id);
     const session = DW.tracks.listeningSession(item, picked, {
       audioPlayed: played,
@@ -1235,6 +1276,7 @@ function openListening(item) {
     if (session.score != null) S.portfolio.listening.push(session);
     save();
     v.appendChild(el('div', session.counted ? 'layer good' : 'layer warn', session.reason));
+    appendAnswerFeedback(v, item, picked);
     const script = el('div', 'zeigt');
     script.setAttribute('dir', 'ltr');
     script.textContent = item.script;

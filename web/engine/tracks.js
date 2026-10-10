@@ -17,6 +17,7 @@
   }
   /* §12.5 counts a novel evidence only from sessions that say *which* chapter they
      were: the reading screen knows the text, so the session carries the pointer. */
+  const MAX_READ_WPM = 300;
   function readingSession(text, answers, elapsedMs) {
     const asked = ((text && text.questions) || []).slice(0, 2);
     if (asked.length < 2) return { measured: false, counted: false, reason: 'أقل من سؤالين. لا يدخل R4.' };
@@ -25,8 +26,9 @@
     const comprehension = correct / asked.length;
     const ms = Number(elapsedMs);
     const minutes = ms / 60000;
-    const fast = !(ms >= 5000);
-    const words = text.words || String(text.body || '').split(/\s+/).filter(Boolean).length;
+    const words = Number(text.words) || String(text.body || '').split(/\s+/).filter(Boolean).length;
+    const rateWpm = minutes > 0 ? words / minutes : Infinity;
+    const fast = !(ms >= 5000) || words <= 0 || rateWpm > MAX_READ_WPM;
     const measured = !fast && minutes > 0;
     const counted = measured && comprehension >= 0.95;
     const novel = !!(text && text.novel);
@@ -42,7 +44,7 @@
       counted: counted,
       reason: counted
         ? 'دخلت R4. هذا فهم السؤالين، لا 98% من كلمات النص.'
-        : (fast ? 'أقل من 5 ثوانٍ. لا قياس.' : 'تحت 95%. الجلسة تُحفظ ولا تدخل R4.')
+        : (fast ? 'الزمن أقل من 5 ثوانٍ، أو سرعة القراءة أعلى من 300 كلمة/دقيقة، أو النص فارغ. لا قياس.' : 'تحت 95%. الجلسة تُحفظ ولا تدخل R4.')
     };
   }
   function listeningSession(item, answers, opts) {
