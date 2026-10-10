@@ -378,6 +378,20 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r20 identifies the red shirt before the family comment',
     texts['a1-r20'].body.includes('Die Verkäuferin bringt ein anderes rotes Hemd') &&
       texts['a1-r20'].body.includes('Das rote Hemd ist schön'));
+  const r1Order = [
+    'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
+    'Ich suche ein bequemes Zimmer im ersten Stock.',
+    'Das Zimmer soll sauber und ruhig sein.',
+    'Am Morgen trinke ich Kaffee, dann gehe ich in die Stadt.',
+    'Ich möchte zwei Nächte in der Stadt bleiben und dann nach Hause fahren.',
+    'Am Abend komme ich ins schöne Hotel',
+    'Die Frau sagt ja und ich nehme das leere Zimmer für zwei Nächte.',
+    'Nach zwei Nächten nehme ich meinen schweren Koffer',
+    'Der Zug fährt dann um genau sechzehn Uhr.'
+  ].map(part => texts['a1-r1'].body.indexOf(part));
+  t('A1 a1-r1 keeps its two-night hotel trip in chronological order',
+    r1Order.every((pos, i) => pos >= 0 && (i === 0 || pos > r1Order[i - 1])) &&
+      q('a1-r1', 1).key === 'ليلتان');
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
