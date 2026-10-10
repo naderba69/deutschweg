@@ -347,6 +347,32 @@ console.log('\n— P3.2 lexical layer —\n');
     floor.articlesLowestPermille > 0 && floor.chaptersLowestPermille > 0);
 }
 
+/* ---------- A1 reading questions — keys must be grounded in their source text ---------- */
+{
+  const { window: win } = boot();
+  const texts = Object.fromEntries(win.DW_LIBRARY.A1.map(x => [x.id, x]));
+  const q = (id, n) => texts[id].questions[n];
+  t('A1 a1-r2 asks the price actually stated for coffee',
+    q('a1-r2', 1).prompt.includes('سعر القهوة') && q('a1-r2', 1).key === '2 يورو' &&
+      texts['a1-r2'].body.includes('Ein Kaffee kostet zwei Euro'));
+  t('A1 a1-r3 answer says Saturday, the invited day',
+    q('a1-r3', 1).prompt.includes('متى تأتي') && q('a1-r3', 1).key === 'السبت' &&
+      texts['a1-r3'].body.includes('Am Samstag mache ich eine laute Party.'));
+  t('A1 a1-r7 asks what the younger brother brings, not what the reader brings',
+    q('a1-r7', 1).prompt.includes('الأخ الأصغر') && q('a1-r7', 1).key === 'الموسيقى' &&
+      texts['a1-r7'].body.includes('Mein junger Bruder bringt gute Musik mit'));
+  t('A1 a1-r8 questions match the first action and named ingredients',
+    q('a1-r8', 0).prompt.includes('تغسل أولًا') && q('a1-r8', 0).key === 'الخضار' &&
+      q('a1-r8', 1).prompt.includes('تحتاج للطبخ') && q('a1-r8', 1).key === 'الملح والزيت' &&
+      texts['a1-r8'].body.includes('Zuerst wasche ich das ganze Gemüse') && texts['a1-r8'].body.includes('ich brauche Salz und Öl'));
+  t('A1 a1-r9 explicitly asks for the time in the opening schedule',
+    q('a1-r9', 0).prompt.includes('في أول النص') && q('a1-r9', 0).key === 'التاسعة' &&
+      texts['a1-r9'].body.startsWith('Der Bus kommt um neun Uhr'));
+  t('A1 a1-r10 asks about the homework request actually made',
+    q('a1-r10', 1).prompt.includes('من المعلمة') && q('a1-r10', 1).key === 'الواجب القادم' &&
+      texts['a1-r10'].body.includes('Bitte schicken Sie mir die nächste Hausaufgabe.'));
+}
+
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
 {
   const { window: win } = boot();
