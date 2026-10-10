@@ -3126,3 +3126,12 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - الأدوات في `tools/arena-helpers/`: `check-articles329.js` (يحفظ `/tmp/b2a-329.sel.json`) و`build-articles329.js` (حراسة من القرص: ×1 · +1 · 329 · صفر مجهولات · الرواية · الاقتصار على المقالات العشرين)؛ مقارنة المكتبة قبل/بعد أكدت ثبات العناوين والأسئلة.
 - المقاسات — من الأرضيات المكتوبة للتو: المقالات **329** كلمة لكل مقال (مجموع **6580**) · الفصول **550** لكل فصل (مجموع **3300**) دون تغيير · B2 **26/9880** (أقصر **329** · 1000‰) · المكتبة **35256** كلمة في **136** نصًا · corpus **9819/368450** (+0 مميز) · الخزّان **deutschweg-v186** · `npm test` **393/0**.
 - الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus).
+
+## فصول B2 — الستة فصول 550→551 (2026-10-10)
+
+- ست إضافات، كلمة واحدة مقيسة لكل فصل: novelle-1 «mit einem **braunen Hund** vorbei» · novelle-2 «einem **persönlichen Satz** über Leila» · novelle-3 «das **billige, leckere Essen**» · novelle-4 «eine neue **schriftliche Bestätigung**» · novelle-5 «drei lange **graue Tage**» · novelle-6 «einen **klaren Satz**» قبل الفقرة الأخيرة.
+- الفاحص `check-novel551.js`: **6 PASS · 0 FAIL**؛ مرساة ×1 لكل استبدال؛ delta +1 مقيس في كل فصل؛ العائلات (braun · persönlich · billig · schriftlich · grau · klar) فريدة وغير موجودة داخل فصلها؛ العبارات الجديدة اجتازت بوابة bigram/trigram الملائمة؛ **0 مجهولات بالقياس الصارم B2**. الباني أكد 551 كلمة في كل فصل، بقاء الأسئلة، واقتصار التغيير على الفصول الستة.
+- البدائل المرفوضة قبل البناء: «leeren weißen Blatt» (عائلة leer موجودة أصلًا في الفصل: «halb leer») · «dicke weiße Kerze» (bigram «dicke weiße» ×3) · «heißen Kaffee» (bigram ×2، ومنها ladder). أُضيفت جملة الفصل السادس قبل علامة فقرته الأخيرة؛ ظلّت خاتمة النوفيلة حرفيًا «Ich bleibe noch.»
+- الإعراب: `mit einem braunen Hund` مذكر مجرور · `einem persönlichen Satz` مذكر مجرور · `das billige, leckere Essen` محايد منصوب · `eine neue schriftliche Bestätigung` مؤنث منصوب · `drei lange graue Tage` جمع · `einen klaren Satz` مذكر منصوب.
+- المقاسات — من الأرضيات المكتوبة للتو: المقالات **20 × 329 = 6,580** · الفصول **6 × 551 = 3,306** · B2 **26/9,886** (أقصر 329 · 1000‰) · المكتبة **136 نصًا/35,262 كلمة** · corpus **9,820 مميزًا/368,456 تراكميًا** (+1 مميز) · الخزّان `deutschweg-v187`.
+- الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus) · `npm test` **393/0** (66 · 58 · 39 · 158 · 14 · 45 · 13).
