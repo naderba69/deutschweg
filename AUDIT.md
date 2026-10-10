@@ -3135,3 +3135,11 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - الإعراب: `mit einem braunen Hund` مذكر مجرور · `einem persönlichen Satz` مذكر مجرور · `das billige, leckere Essen` محايد منصوب · `eine neue schriftliche Bestätigung` مؤنث منصوب · `drei lange graue Tage` جمع · `einen klaren Satz` مذكر منصوب.
 - المقاسات — من الأرضيات المكتوبة للتو: المقالات **20 × 329 = 6,580** · الفصول **6 × 551 = 3,306** · B2 **26/9,886** (أقصر 329 · 1000‰) · المكتبة **136 نصًا/35,262 كلمة** · corpus **9,820 مميزًا/368,456 تراكميًا** (+1 مميز) · الخزّان `deutschweg-v187`.
 - الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus) · `npm test` **393/0** (66 · 58 · 39 · 158 · 14 · 45 · 13).
+
+## فصول B2 — الستة فصول 551→552 (2026-10-10)
+
+- ست إضافات، كلمة واحدة مقيسة لكل فصل: novelle-1 «ein **müder alter Mann**» · novelle-2 «eine **billige weiße Kerze**» · novelle-3 «auf einem **sauberen weißen Blatt Papier**» · novelle-4 «eine **zusätzliche Kopie** für sich» · novelle-5 «einen **wichtigen Satz**» · novelle-6 «Der **feste Plan**» قبل الفقرة الأخيرة.
+- الفاحص والباني للجولة: **6/6 PASS · 0 FAIL**؛ كل مرساة ×1 في المكتبة وداخل فصلها، و+1 كلمة بالقياس الفعلي لكل فصل، والعائلات الست مختلفة وغير موجودة داخل فصولها؛ ثنائيات الصفة+الاسم وثلاثيات الأداة+الصفة+الاسم اجتازت فرادة المنتج (المكتبة وسلّم الاستماع). **0 مجهولات بالقياس الصارم B2**، والأسئلة لم تتغير.
+- الإعراب: `ein müder alter Mann` مذكر مرفوع · `eine billige weiße Kerze` مؤنث منصوب · `auf einem sauberen weißen Blatt` محايد مجرور · `eine zusätzliche Kopie` مؤنث منصوب · `einen wichtigen Satz` مذكر منصوب · `Der feste Plan` مذكر مرفوع. إدراج الفصل السادس قبل فقرة `Im Juli unterschrieb`؛ نهاية النوفيلة بقيت حرفيًا «Ich bleibe noch.»
+- المقاسات — مقروءة من الأرضيات المكتوبة للتو: الفصول **6 × 552 = 3,312** · مقالات B2 **20 × 329 = 6,580** · B2 **26/9,892** (أقصر مقال 329 · أقصر فصل 552 · التغطية 1000‰/1000‰) · المكتبة **136 نصًا/35,268 كلمة** · corpus **9,821 مميزًا/368,462 تراكميًا** (+1 مميز و+6 تراكميًا).
+- CACHE: `deutschweg-v188` (لأن `web/data/library.js` ضمن ASSETS). الأرضيات كُتبت على قياس أخضر بالترتيب `b2-reading` ← `reading-levels` ← `corpus` · `npm test` **393/0** (66 · 58 · 39 · 158 · 14 · 45 · 13).
