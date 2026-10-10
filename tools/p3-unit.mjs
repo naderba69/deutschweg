@@ -371,6 +371,10 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r10 verifies the explicit bed-rest duration',
     q('a1-r10', 1).prompt.includes('كم يومًا') && q('a1-r10', 1).key === 'يومان' &&
       texts['a1-r10'].body.includes('Bleiben Sie zwei Tage'));
+  t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
+    texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
+      texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
+      !texts['a1-r18'].body.includes('einfach immer zusammen wirklich ganz viel besser'));
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
