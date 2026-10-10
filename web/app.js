@@ -114,6 +114,7 @@ function go(name) {
   else if (name === 'pause') renderPause();
   else if (name === 'activation') renderActivation();
   else if (name === 'reading') renderReading();
+  else if (name === 'listening') renderListening();
   else if (name === 'generate') renderGenerate();
   else if (name === 'chunks') renderChunks();
   else if (name === 'falsefriends') renderFalseFriends();

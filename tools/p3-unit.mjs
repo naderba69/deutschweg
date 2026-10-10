@@ -485,6 +485,11 @@ console.log('\n— P3.2 lexical layer —\n');
   const floor = JSON.parse(fs.readFileSync(ROOT + '/tools/ladder-floor.json', 'utf8'));
   const audio = items.filter(i => i.audio !== false);
   const printOnly = items.filter(i => i.audio === false);
+  clickText(win, 'سماع');
+  const visibleClips = [...win.document.querySelectorAll('#view button')]
+    .filter(b => /^(A1|A2|B1|B2) ·/.test(b.textContent.trim()));
+  t('listening screen opens from the learner home screen and lists the clips',
+    visibleClips.length === items.length);
   const per = lv => audio.filter(i => i.level === lv).length;
   t('ladder: ' + audio.length + ' audio items, floor ' + floor.audio, audio.length >= floor.audio);
   ['A1', 'A2', 'B1', 'B2'].forEach(lv =>
