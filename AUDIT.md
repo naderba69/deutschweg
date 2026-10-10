@@ -3116,3 +3116,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - أدوات داخل `tools/arena-helpers/`: `check-novel550.js` (6/6 PASS؛ يحفظ `/tmp/novel-550.sel.json`) و`build-novel550.js` (حراسة من القرص: ×1 · +1 · 550 لكل فصل · صفر مجهولات · الأسئلة والخاتمة · الاقتصار على الفصول الستة).
 - المقاسات — من الأرضيات المكتوبة للتو: الفصول **550** لكل فصل (مجموع **3300**) · المقالات **328/6560** دون تغيير · B2 **26/9860** · المكتبة **35236** كلمة في **136** نصًا · corpus **9819/368430** (+0 مميز) · الخزّان **deutschweg-v185** · `npm test` **393/0**.
 - الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus).
+
+
+## مقالات B2 — العشرون 328→329 (2026-10-10)
+
+- إدراج واحد مقيس في كل مقال: a1 «**vollen Kalender**» · a2 «**eigene Deutung**» · a3 «**tägliche Strecke**» · a4 «**schwierige Rückfrage**» · a5 «**weitere Untersuchung**» · a6 «**knappe Zeit**» · a7 «**offene Diskussion**» · a8 «**praktische Regel**» · a9 «**scharfe Überschrift**» · a10 «**notwendigen Aufgaben**» · a11 «**schmalen Straßen**» · a12 «**starkes Zertifikat**» · a13 «**heiße Suppe**» · a14 «**helle Halle**» · a15 «**wichtige Termine**» · a16 «**direkte Bitte**» · a17 «**sachliche Liste**» · a18 «**realistische Grenze**» · a19 «**netter Nachbar**» · a20 «**verschiedenen Bereichen**».
+- البوابات: `check-articles329.js` **20/20 PASS · 0 FAIL**؛ مرساة ×1 في المكتبة وداخل المقال، +1 كلمة، صفر مجهولات بالقياس الصارم B2، عائلات المقالات خالية من العائلة المضافة، 20 عائلة مختلفة، bigram/trigram جديدتان في المنتج كله (library.js وladder.js)، وقوائم §7. builder أثبت 329 كلمة في كل مقال وغيّر المقالات العشرين المختارة فقط؛ أسئلة كل النصوص بقيت بواقع سؤالين حسب القياس.
+- بدائل رُفضت بقياس فرادة المنتج: «warme Suppe» ×2 (اختيرت «heiße Suppe») · «einfache Liste» ×1 (اختيرت «sachliche Liste») · «freundlicher Nachbar» ×1 (اختير «netter Nachbar»). صيغ لم تدخل المرشحات لأنها غير موجودة في KNOWN الصارم: monatliche · menschliche · regelmäßige · pauschales · nützlichen · ursprüngliche · konkreten · gültiges · schriftlicher · späte.
+- الأدوات في `tools/arena-helpers/`: `check-articles329.js` (يحفظ `/tmp/b2a-329.sel.json`) و`build-articles329.js` (حراسة من القرص: ×1 · +1 · 329 · صفر مجهولات · الرواية · الاقتصار على المقالات العشرين)؛ مقارنة المكتبة قبل/بعد أكدت ثبات العناوين والأسئلة.
+- المقاسات — من الأرضيات المكتوبة للتو: المقالات **329** كلمة لكل مقال (مجموع **6580**) · الفصول **550** لكل فصل (مجموع **3300**) دون تغيير · B2 **26/9880** (أقصر **329** · 1000‰) · المكتبة **35256** كلمة في **136** نصًا · corpus **9819/368450** (+0 مميز) · الخزّان **deutschweg-v186** · `npm test` **393/0**.
+- الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus).
