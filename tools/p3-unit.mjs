@@ -375,6 +375,9 @@ console.log('\n— P3.2 lexical layer —\n');
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
       !texts['a1-r18'].body.includes('einfach immer zusammen wirklich ganz viel besser'));
+  t('A1 a1-r20 identifies the red shirt before the family comment',
+    texts['a1-r20'].body.includes('Die Verkäuferin bringt ein anderes rotes Hemd') &&
+      texts['a1-r20'].body.includes('Das rote Hemd ist schön'));
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
