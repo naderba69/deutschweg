@@ -3025,3 +3025,13 @@ B1 12,311 · B2 8,178)، وأقصر نص لكل مستوى **164 / 175 / 177 / 2
 - بند اللهجة المطبوع (76 كلمة، بلا صوت، خارج R5) لم يُمَس.
 - المقاسات: A1 **880/110** · A2 **888/111** · B1 **896/112** · B2 **1,008/126** دون تغيير · أرضية السلّم كُتبت على تشغيل أخضر · corpus **9,818/368,360** دون تغيير (السلّم خارج المعجم) · الخزّان **v177** · `npm test` **393/0**.
 - ملاحظة فرع: الجولة أُنجزت على الفرع `arena/a2934b57-deutschweg` المتفرّع من `6214708`، ورُفع الفرع إلى origin قبلها.
+
+
+## فصول B2 — الستة فصول 545→546 (2026-10-10)
+
+- ست إدراجات (كلمة واحدة لكل فصل، القياس الصارم B2، خانة أداة+اسم): novelle-1:«kam ein **junger** Nachbar mit einem Hund» · novelle-2:«stellte sie die Kerze neben das schmale Bett und den **runden** Stuhl an das Fenster» · novelle-3:«Sie zog die **schweren** Schuhe an und stieg die dunkle Treppe hoch» · novelle-4:«Sie hatte alle Papiere in einem **grauen** Ordner» · novelle-5:«Sara hatte ein **schwarzes** Heft, in dem jede Reparatur stand» · novelle-6:«Leila klopfte oben an die **hohe** Decke, wie sie es jeden Samstag tat».
+- الجولة السابعة على نفس الفصول: العائلات الشائعة محجوبة داخل كل فصل (klein · groß · neu · alt · ganz · weiß · leer · dunkel · hell · warm · lang …) — فحصت البوابات ثلاثة مرشحات وردّتها: «den ganzen Weg» و«Der ganze Hof» و«die letzte Lieferung» (العائلة داخل الفصل نفسه: «die ganzen Monate» في novelle-6، «ganz gut …» في novelle-5، «am letzten …» في novelle-4).
+- البوابات: مرساة ×1 في library.js كله · **عبارة ∅** (ثنائية الصفة+الاسم وثلاثية الأداة+الصفة+الاسم جديدة في المنتج كله: library.js **و** ladder.js) · **العائلة ∅ داخل الفصل** · **فرادة العائلة بين الإدراجات الستة** (jung · rund · schwer · grau · schwarz · hoch) · **صفر مجهولات بالقياس الصارم** — مجموعة KNOWN نفسها التي يبنيها `measure-b2-reading.js` منسوخة حرفيًا في الفاحص، والفصول الستة 100% بعد الإدراج · قوائم الحجب §7 (وقائمة النوفيلة) · +1 لكل فصل **بالعدّ الفعلي** (546×6).
+- أدوات داخل `tools/arena-helpers/`: `check-novel546.js` (22 مرشحًا، 6 PASS و3 FAIL بأسبابها) و`build-novel546.js` (باني يقرأ SEL من الفاحص + حراسة ما بعد البناء: الإدراج ×1 · +1 فعلي · 546 لكل فصل · الأسئلة لم تتغيّر · **آخر كلمات النوفيلة «Ich bleibe noch.» لم تتحرّك**).
+- المقاسات: الفصول الستة كلها **546** (مجموع **3,276**) · المقالات 326/6,520 دون تغيير · B2 26/**9,796** · المكتبة **35,172** كلمة في 136 نصًّا · corpus **9,819/368,366** (+1 مميز: `schwarzes`).
+- الأرضيات كُتبت على تشغيل أخضر بالترتيب (b2-reading ← reading-levels ← corpus) · الخزّان **v178** · `npm test` **393/0**.
