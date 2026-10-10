@@ -392,6 +392,11 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r1 keeps its two-night hotel trip in chronological order',
     r1Order.every((pos, i) => pos >= 0 && (i === 0 || pos > r1Order[i - 1])) &&
       q('a1-r1', 1).key === 'ليلتان');
+  t('A1 a1-r16 makes the bus-stop route and full walking option clear',
+    texts['a1-r16'].body.includes('bis zum kleinen Bahnhof') &&
+      texts['a1-r16'].body.includes('Vom kleinen Bahnhof sind es noch ganze zehn Minuten zu Fuß') &&
+      texts['a1-r16'].body.includes('Den ganzen Weg zu Fuß gehe ich nur bei gutem Wetter') &&
+      texts['a1-r16'].body.includes('Am Abend fahre ich mit dem Fahrrad'));
 }
 
 /* ---------- the mock protocol in the UI — a session the learner can open ---------- */
