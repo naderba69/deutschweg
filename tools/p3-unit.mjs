@@ -471,6 +471,10 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r2 symptom question matches the stated cough and headache',
     a2q('a2-r2', 0).prompt === 'ما الأعراض التي يذكرها النص؟' && a2q('a2-r2', 0).key === 'السعال والصداع' &&
       a2Texts['a2-r2'].body.includes('Husten') && a2Texts['a2-r2'].body.includes('mein Kopf tut weh'));
+  t('Corpus A2 a2-r3 Saturday destination question matches the seaside trip',
+    a2q('a2-r3', 0).key === 'إلى البحر' && a2Texts['a2-r3'].body.includes('Am Samstag sind wir ans schöne Meer gefahren'));
+  t('Corpus A2 a2-r3 Sunday question matches staying at home',
+    a2q('a2-r3', 1).key === 'في البيت' && a2Texts['a2-r3'].body.includes('Am Sonntag sind wir zu Hause geblieben'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
