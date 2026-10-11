@@ -422,6 +422,13 @@ console.log('\n— P3.2 lexical layer —\n');
     q('a1-r15', 1).prompt === 'ماذا يشاهد مساء السبت؟' && q('a1-r15', 1).key === 'فيلمًا' &&
       texts['a1-r15'].body.indexOf('Am Samstag') < texts['a1-r15'].body.indexOf('Am Abend sehen wir einen neuen Film') &&
       texts['a1-r15'].body.indexOf('Am Abend sehen wir einen neuen Film') < texts['a1-r15'].body.indexOf('Am Sonntag besuchen wir meine lieben Eltern'));
+  t('A1 a1-r16 winter-evening question distinguishes the bus from the bicycle',
+    q('a1-r16', 0).prompt === 'كيف يعود مساءً في الشتاء؟' && q('a1-r16', 0).key === 'بالباص' &&
+      texts['a1-r16'].body.includes('Am Abend fahre ich mit dem Fahrrad') &&
+      texts['a1-r16'].body.includes('Im Winter nehme ich den Bus, auch am Abend, weil es heute zu kalt ist'));
+  t('A1 a1-r16 monthly-pass question matches Friday',
+    q('a1-r16', 1).prompt.includes('متى يشتري بطاقة الشهر') && q('a1-r16', 1).key === 'الجمعة' &&
+      texts['a1-r16'].body.includes('Am Freitag kaufe ich eine günstige Karte für den Monat'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
