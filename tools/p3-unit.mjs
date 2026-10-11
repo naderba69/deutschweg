@@ -435,6 +435,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r17 after-course question matches homework together',
     q('a1-r17', 1).key === 'الواجبات مع زملاء' &&
       texts['a1-r17'].body.includes('Nach dem kurzen Kurs machen wir oft die langen Hausaufgaben zusammen in einem alten Café'));
+  t('A1 a1-r18 upstairs-family question matches the neighbors',
+    q('a1-r18', 0).key === 'عائلة بأطفال' &&
+      texts['a1-r18'].body.includes('Die junge Familie oben hat zwei Kinder, sie sind sechs und neun Jahre alt'));
+  t('A1 a1-r18 summer question matches the shared courtyard meal',
+    q('a1-r18', 1).key === 'يأكلون في الحوش معًا' &&
+      texts['a1-r18'].body.includes('Im Sommer essen wir im Hof zusammen'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
