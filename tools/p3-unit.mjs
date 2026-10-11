@@ -468,6 +468,9 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r1 journey-duration question matches three hours',
     a2q('a2-r1', 1).prompt === 'كم استغرقت الرحلة؟' && a2q('a2-r1', 1).key === 'ثلاث ساعات' &&
       a2Texts['a2-r1'].body.includes('Die ganze Fahrt hat drei lange Stunden gedauert'));
+  t('Corpus A2 a2-r2 symptom question matches the stated cough and headache',
+    a2q('a2-r2', 0).prompt === 'ما الأعراض التي يذكرها النص؟' && a2q('a2-r2', 0).key === 'السعال والصداع' &&
+      a2Texts['a2-r2'].body.includes('Husten') && a2Texts['a2-r2'].body.includes('mein Kopf tut weh'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
