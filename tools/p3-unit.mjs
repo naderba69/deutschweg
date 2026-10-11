@@ -415,6 +415,13 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r14 pill-frequency question matches three times a day',
     q('a1-r14', 1).prompt.includes('كم مرة يأخذ الحبوب') && q('a1-r14', 1).key === 'ثلاث مرات' &&
       texts['a1-r14'].body.includes('nehmen Sie die Tabletten dreimal am Tag'));
+  t('A1 a1-r15 weekend-visit question matches Sunday',
+    q('a1-r15', 0).prompt.includes('متى يزور الأهل') && q('a1-r15', 0).key === 'الأحد' &&
+      texts['a1-r15'].body.includes('Am Sonntag besuchen wir meine lieben Eltern'));
+  t('A1 a1-r15 film question specifies Saturday evening',
+    q('a1-r15', 1).prompt === 'ماذا يشاهد مساء السبت؟' && q('a1-r15', 1).key === 'فيلمًا' &&
+      texts['a1-r15'].body.indexOf('Am Samstag') < texts['a1-r15'].body.indexOf('Am Abend sehen wir einen neuen Film') &&
+      texts['a1-r15'].body.indexOf('Am Abend sehen wir einen neuen Film') < texts['a1-r15'].body.indexOf('Am Sonntag besuchen wir meine lieben Eltern'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
