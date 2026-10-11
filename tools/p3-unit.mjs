@@ -481,6 +481,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r4 difficulty question matches work being not difficult',
     a2q('a2-r4', 1).prompt === 'كيف تصف صعوبة العمل؟' && a2q('a2-r4', 1).key === 'ليس صعبًا' &&
       a2Texts['a2-r4'].body.includes('Die Arbeit ist wirklich nicht schwer'));
+  t('Corpus A2 a2-r5 apartment-floor question matches the third floor',
+    a2q('a2-r5', 0).prompt === 'في أي طابق تقع الشقة؟' && a2q('a2-r5', 0).key === 'الثالث' &&
+      a2Texts['a2-r5'].body.includes('Sie ist im dritten Stock'));
+  t('Corpus A2 a2-r5 neighbor question matches quiet and friendly',
+    a2q('a2-r5', 1).prompt === 'كيف الجيران؟' && a2q('a2-r5', 1).key === 'هادئون وودودون' &&
+      a2Texts['a2-r5'].body.includes('Die Nachbarn sind ruhig und freundlich'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
