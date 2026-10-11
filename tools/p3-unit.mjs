@@ -390,6 +390,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r10 closes the email after its recovery timeline',
     texts['a1-r10'].body.endsWith('Am Montag bin ich dann wirklich wieder ganz früh im Kurs. Vielen Dank und viele Grüße, Sara.') &&
       texts['a1-r10'].body.indexOf('Vielen Dank und viele Grüße, Sara.') === texts['a1-r10'].body.lastIndexOf('Vielen Dank und viele Grüße, Sara.'));
+  t('A1 a1-r11 asks where she shops and for the total purchase price',
+    q('a1-r11', 0).key === 'في السوق' && texts['a1-r11'].body.includes('auf den vollen Markt') &&
+      q('a1-r11', 1).prompt === 'كم ثمن المشتريات؟' && q('a1-r11', 1).key === 'اثنا عشر يورو' &&
+      texts['a1-r11'].body.includes('Zusammen macht das zwölf Euro'));
+  t('A1 a1-r11 states a twenty-euro note and consistent eight-euro change',
+    texts['a1-r11'].body.includes('mit einem alten Zwanzig-Euro-Schein und bekomme acht Euro zurück') && 12 + 8 === 20);
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
