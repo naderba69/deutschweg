@@ -367,10 +367,11 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r7 asks for the Saturday party day stated in the invitation',
     q('a1-r7', 0).prompt.includes('متى الاحتفال') && q('a1-r7', 0).key === 'السبت' &&
       texts['a1-r7'].body.includes('am Samstag feiern wir meinen Geburtstag'));
-  t('A1 a1-r8 questions match the first action and final drink',
+  t('A1 a1-r8 questions match the first action and evening drink',
     q('a1-r8', 0).prompt.includes('تغسل أولًا') && q('a1-r8', 0).key === 'الخضار' &&
-      q('a1-r8', 1).prompt.includes('في نهاية النص') && q('a1-r8', 1).key === 'الماء' &&
-      texts['a1-r8'].body.includes('Zuerst wasche ich das ganze Gemüse') && texts['a1-r8'].body.includes('kaltes Wasser'));
+      q('a1-r8', 1).prompt.includes('في المساء') && q('a1-r8', 1).key === 'الماء' &&
+      texts['a1-r8'].body.includes('Zuerst wasche ich das ganze Gemüse') &&
+      texts['a1-r8'].body.includes('Am Abend trinke ich noch ein gutes Glas kaltes Wasser'));
   t('A1 a1-r9 asks for the work bus time stated in the schedule',
     q('a1-r9', 0).prompt.includes('حافلة العمل') && q('a1-r9', 0).key === 'السابعة' &&
       texts['a1-r9'].body.startsWith('Der Bus kommt um sieben Uhr'));
