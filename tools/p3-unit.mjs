@@ -516,6 +516,15 @@ console.log('\n— P3.2 lexical layer —\n');
     a2q('a2-r8', 1).prompt === 'ما الذي حدث للحقيبة بعد أن فقدها؟' &&
       a2q('a2-r8', 1).key === 'عثر عليها شخص' &&
       a2Texts['a2-r8'].body.includes('dass jemand die schwarze Tasche gefunden hat'));
+  t('Corpus A2 a2-r9 course-start question matches six o’clock',
+    a2q('a2-r9', 0).prompt === 'متى تبدأ الدورة؟' && a2q('a2-r9', 0).key === 'السادسة' &&
+      a2Texts['a2-r9'].body.includes('Der Kurs beginnt um sechs Uhr'));
+  t('Corpus A2 a2-r9 does not infer total understanding from understanding more',
+    a2q('a2-r9', 1).prompt === 'هل تفهم كل شيء؟' && a2q('a2-r9', 1).key === 'النص لا يقول' &&
+      a2Texts['a2-r9'].body.includes('ich verstehe jetzt viel mehr als am Anfang'));
+  t('Corpus A2 a2-r9 replaces the impossible blank page with a readable whole page',
+    a2Texts['a2-r9'].body.includes('jeden Abend eine ganze Seite') &&
+      !a2Texts['a2-r9'].body.includes('jeden Abend eine leere Seite'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
