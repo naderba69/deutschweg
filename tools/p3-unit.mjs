@@ -375,6 +375,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r9 asks for the work bus time stated in the schedule',
     q('a1-r9', 0).prompt.includes('حافلة العمل') && q('a1-r9', 0).key === 'السابعة' &&
       texts['a1-r9'].body.startsWith('Der Bus kommt um sieben Uhr'));
+  t('A1 a1-r9 softens the absolute bus claim while keeping Monday’s bus trip possible',
+    texts['a1-r9'].body.includes('Der Bus am Morgen ist oft voll, deshalb nehme ich lieber den Zug') &&
+      texts['a1-r9'].body.includes('Am Montag fahre ich mit dem Bus zur Arbeit'));
+  t('A1 a1-r9 duration question matches the stated twenty-minute journey',
+    q('a1-r9', 1).prompt.includes('كم تستغرق الرحلة') && q('a1-r9', 1).key === 'عشرون دقيقة' &&
+      texts['a1-r9'].body.includes('Die Fahrt dauert zwanzig Minuten'));
   t('A1 a1-r10 verifies the explicit bed-rest duration',
     q('a1-r10', 1).prompt.includes('كم يومًا') && q('a1-r10', 1).key === 'يومان' &&
       texts['a1-r10'].body.includes('Bleiben Sie zwei Tage'));
