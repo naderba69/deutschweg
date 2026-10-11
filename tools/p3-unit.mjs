@@ -543,6 +543,18 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r10'].body.includes('Der Markt ist nächsten Dienstag wieder offen') &&
       a2Texts['a2-r10'].body.includes('Nächsten Samstag gehe ich wieder hin') &&
       a2Texts['a2-r10'].body.includes('Und dann probiere ich auch endlich'));
+  t('Corpus A2 a2-r11 first-call question asks for the conversation partner, not who initiated it',
+    a2q('a2-r11', 0).prompt === 'مع من كانت المكالمة الأولى؟' &&
+      a2q('a2-r11', 0).key === 'أختي الصغرى' &&
+      a2Texts['a2-r11'].body.includes('Beim ersten Mal war es meine kleine Schwester'));
+  t('Corpus A2 a2-r11 location question identifies the husband who was not at home',
+    a2q('a2-r11', 1).prompt === 'أين كان زوجي عندما لم يسمع الهاتف؟' &&
+      a2q('a2-r11', 1).key === 'لم يكن في البيت' &&
+      a2Texts['a2-r11'].body.includes('Er war nicht zu Hause und hat sein Telefon nicht gehört'));
+  t('Corpus A2 a2-r11 marks the meeting as today after yesterday’s calls and tomorrow’s plan',
+    a2Texts['a2-r11'].body.includes('Gestern habe ich drei Mal telefoniert') &&
+      a2Texts['a2-r11'].body.includes('gefragt, ob sie morgen Zeit hat') &&
+      a2Texts['a2-r11'].body.includes('Wir treffen uns im vollen Café. Heute um vier Uhr bin ich ins alte Café gegangen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
