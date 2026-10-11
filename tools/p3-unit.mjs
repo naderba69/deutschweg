@@ -408,6 +408,13 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r13 January travel question matches the southern destination',
     q('a1-r13', 1).prompt.includes('في يناير') && q('a1-r13', 1).key === 'إلى الجنوب' &&
       texts['a1-r13'].body.includes('Im Januar fahre ich in den Süden'));
+  t('A1 a1-r14 doctor question matches fever and sore throat',
+    q('a1-r14', 0).prompt.includes('ماذا يقول للطبيب') && q('a1-r14', 0).key === 'الحمّى والحلق' &&
+      texts['a1-r14'].body.includes('Was fehlt Ihnen?') &&
+      texts['a1-r14'].body.includes('Ich habe Fieber und mein armer Hals tut weh'));
+  t('A1 a1-r14 pill-frequency question matches three times a day',
+    q('a1-r14', 1).prompt.includes('كم مرة يأخذ الحبوب') && q('a1-r14', 1).key === 'ثلاث مرات' &&
+      texts['a1-r14'].body.includes('nehmen Sie die Tabletten dreimal am Tag'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
