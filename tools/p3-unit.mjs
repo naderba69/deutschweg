@@ -402,6 +402,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r12 workday question matches Friday ending at three',
     q('a1-r12', 1).prompt.includes('حتى الثالثة') && q('a1-r12', 1).key === 'الجمعة' &&
       texts['a1-r12'].body.includes('Am Freitag arbeite ich nur bis drei Uhr'));
+  t('A1 a1-r13 half-hour walk question matches the spring routine',
+    q('a1-r13', 0).prompt.includes('يمشي كل يوم نصف ساعة') && q('a1-r13', 0).key === 'في الربيع' &&
+      texts['a1-r13'].body.includes('Im Frühling gehe ich allein jeden Tag eine halbe Stunde zu Fuß'));
+  t('A1 a1-r13 January travel question matches the southern destination',
+    q('a1-r13', 1).prompt.includes('في يناير') && q('a1-r13', 1).key === 'إلى الجنوب' &&
+      texts['a1-r13'].body.includes('Im Januar fahre ich in den Süden'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
