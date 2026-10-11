@@ -384,6 +384,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r10 verifies the explicit bed-rest duration',
     q('a1-r10', 1).prompt.includes('كم يومًا') && q('a1-r10', 1).key === 'يومان' &&
       texts['a1-r10'].body.includes('Bleiben Sie zwei Tage'));
+  t('A1 a1-r10 illness question matches the stated fever and illness',
+    q('a1-r10', 0).prompt === 'ما حالها؟' && q('a1-r10', 0).key === 'مريضة' &&
+      texts['a1-r10'].body.includes('ich bin krank') && texts['a1-r10'].body.includes('Ich habe Fieber'));
+  t('A1 a1-r10 closes the email after its recovery timeline',
+    texts['a1-r10'].body.endsWith('Am Montag bin ich dann wirklich wieder ganz früh im Kurs. Vielen Dank und viele Grüße, Sara.') &&
+      texts['a1-r10'].body.indexOf('Vielen Dank und viele Grüße, Sara.') === texts['a1-r10'].body.lastIndexOf('Vielen Dank und viele Grüße, Sara.'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
