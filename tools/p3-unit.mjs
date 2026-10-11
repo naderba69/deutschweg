@@ -452,6 +452,14 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r20 identifies the red shirt before the family comment',
     texts['a1-r20'].body.includes('Die Verkäuferin bringt ein anderes rotes Hemd') &&
       texts['a1-r20'].body.includes('Das rote Hemd ist schön'));
+  t('A1 a1-r20 shirt-size question matches the first shirt',
+    q('a1-r20', 0).key === 'صغير جدًا' && texts['a1-r20'].body.includes('Das bequeme Hemd ist zu klein'));
+  t('A1 a1-r20 payment question matches paying by card',
+    q('a1-r20', 1).key === 'بالبطاقة' && texts['a1-r20'].body.includes('Kann ich mit Karte bezahlen?') &&
+      texts['a1-r20'].body.includes('Ich bezahle und bekomme einen echten Beleg'));
+  t('A1 a1-r20 pants reference keeps feminine pronouns',
+    texts['a1-r20'].body.includes('Sie ist nicht perfekt, aber sie passt') &&
+      !texts['a1-r20'].body.includes('Es ist nicht perfekt, aber es passt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
