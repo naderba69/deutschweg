@@ -497,6 +497,18 @@ console.log('\n— P3.2 lexical layer —\n');
     a2Texts['a2-r6'].body.includes('Danach haben wir Fotos gemacht') &&
       !a2Texts['a2-r6'].body.includes('Danach schreiben wir Fotos') &&
       a2Texts['a2-r6'].body.startsWith('Letzten Samstag ist meine Schwester'));
+  t('Corpus A2 a2-r7 asks what the speaker took instead of the bicycle',
+    a2q('a2-r7', 0).prompt === 'ماذا أخذ المتكلم بدلًا من الدراجة إلى العمل؟' &&
+      a2q('a2-r7', 0).key === 'الحافلة القديمة' &&
+      a2Texts['a2-r7'].body.includes('mit dem schnellen Fahrrad zur Arbeit fahren, aber ich habe den alten Bus genommen'));
+  t('Corpus A2 a2-r7 asks when they planned the park walk',
+    a2q('a2-r7', 1).prompt === 'متى أرادوا الذهاب إلى الحديقة؟' &&
+      a2q('a2-r7', 1).key === 'في اليوم التالي' &&
+      a2Texts['a2-r7'].body.includes('Am nächsten Tag sollte die Sonne wieder scheinen. Dann wollten wir in den Park gehen'));
+  t('Corpus A2 a2-r7 keeps the rain timeline retrospective and links the forecast to day four',
+    a2Texts['a2-r7'].body.startsWith('Es hat schon drei Tage geregnet') &&
+      a2Texts['a2-r7'].body.includes('Am vierten Tag ist der starke Regen weniger geworden') &&
+      !a2Texts['a2-r7'].body.includes('Morgen soll die Sonne wieder scheinen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
