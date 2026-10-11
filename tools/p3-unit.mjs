@@ -487,6 +487,16 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r5 neighbor question matches quiet and friendly',
     a2q('a2-r5', 1).prompt === 'كيف الجيران؟' && a2q('a2-r5', 1).key === 'هادئون وودودون' &&
       a2Texts['a2-r5'].body.includes('Die Nachbarn sind ruhig und freundlich'));
+  t('Corpus A2 a2-r6 party-day question matches the Saturday event',
+    a2q('a2-r6', 0).prompt === 'متى الحفل؟' && a2q('a2-r6', 0).key === 'السبت' &&
+      a2Texts['a2-r6'].body.startsWith('Letzten Samstag ist meine Schwester dreißig Jahre alt geworden'));
+  t('Corpus A2 a2-r6 surprise question matches the sister not knowing',
+    a2q('a2-r6', 1).prompt === 'هل تعرف الأخت عن الحفل؟' && a2q('a2-r6', 1).key === 'لا' &&
+      a2Texts['a2-r6'].body.includes('Meine Schwester wusste nichts. Wir haben es ihr nicht gesagt'));
+  t('Corpus A2 a2-r6 corrects the photo collocation and keeps the event retrospective',
+    a2Texts['a2-r6'].body.includes('Danach haben wir Fotos gemacht') &&
+      !a2Texts['a2-r6'].body.includes('Danach schreiben wir Fotos') &&
+      a2Texts['a2-r6'].body.startsWith('Letzten Samstag ist meine Schwester'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
