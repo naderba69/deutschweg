@@ -396,6 +396,12 @@ console.log('\n— P3.2 lexical layer —\n');
       texts['a1-r11'].body.includes('Zusammen macht das zwölf Euro'));
   t('A1 a1-r11 states a twenty-euro note and consistent eight-euro change',
     texts['a1-r11'].body.includes('mit einem alten Zwanzig-Euro-Schein und bekomme acht Euro zurück') && 12 + 8 === 20);
+  t('A1 a1-r12 commute question matches the stated bus journey',
+    q('a1-r12', 0).prompt.includes('كيف يذهب إلى العمل') && q('a1-r12', 0).key === 'بالباص' &&
+      texts['a1-r12'].body.includes('mit dem alten Bus'));
+  t('A1 a1-r12 workday question matches Friday ending at three',
+    q('a1-r12', 1).prompt.includes('حتى الثالثة') && q('a1-r12', 1).key === 'الجمعة' &&
+      texts['a1-r12'].body.includes('Am Freitag arbeite ich nur bis drei Uhr'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
