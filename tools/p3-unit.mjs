@@ -475,6 +475,12 @@ console.log('\n— P3.2 lexical layer —\n');
     a2q('a2-r3', 0).key === 'إلى البحر' && a2Texts['a2-r3'].body.includes('Am Samstag sind wir ans schöne Meer gefahren'));
   t('Corpus A2 a2-r3 Sunday question matches staying at home',
     a2q('a2-r3', 1).key === 'في البيت' && a2Texts['a2-r3'].body.includes('Am Sonntag sind wir zu Hause geblieben'));
+  t('Corpus A2 a2-r4 office-time question matches eight o’clock',
+    a2q('a2-r4', 0).prompt === 'متى يجب أن تكون في المكتب؟' && a2q('a2-r4', 0).key === 'الثامنة' &&
+      a2Texts['a2-r4'].body.includes('um acht Uhr im ruhigen Büro sein'));
+  t('Corpus A2 a2-r4 difficulty question matches work being not difficult',
+    a2q('a2-r4', 1).prompt === 'كيف تصف صعوبة العمل؟' && a2q('a2-r4', 1).key === 'ليس صعبًا' &&
+      a2Texts['a2-r4'].body.includes('Die Arbeit ist wirklich nicht schwer'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
