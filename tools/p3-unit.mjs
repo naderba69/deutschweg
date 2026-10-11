@@ -361,6 +361,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r7 asks what the speaker buys before the party',
     q('a1-r7', 1).prompt.includes('المتكلم') && q('a1-r7', 1).key === 'ماء' &&
       texts['a1-r7'].body.includes('Ich kaufe noch Wasser'));
+  t('A1 a1-r7 closes the invitation after all of its follow-up text',
+    texts['a1-r7'].body.endsWith('Beim nächsten Mal laden wir auch die netten Nachbarn wieder ein. Viele Grüße, Sara und Ben.') &&
+      texts['a1-r7'].body.indexOf('Viele Grüße, Sara und Ben.') === texts['a1-r7'].body.lastIndexOf('Viele Grüße, Sara und Ben.'));
+  t('A1 a1-r7 asks for the Saturday party day stated in the invitation',
+    q('a1-r7', 0).prompt.includes('متى الاحتفال') && q('a1-r7', 0).key === 'السبت' &&
+      texts['a1-r7'].body.includes('am Samstag feiern wir meinen Geburtstag'));
   t('A1 a1-r8 questions match the first action and final drink',
     q('a1-r8', 0).prompt.includes('تغسل أولًا') && q('a1-r8', 0).key === 'الخضار' &&
       q('a1-r8', 1).prompt.includes('في نهاية النص') && q('a1-r8', 1).key === 'الماء' &&
