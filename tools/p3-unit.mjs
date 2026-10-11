@@ -509,6 +509,13 @@ console.log('\n— P3.2 lexical layer —\n');
     a2Texts['a2-r7'].body.startsWith('Es hat schon drei Tage geregnet') &&
       a2Texts['a2-r7'].body.includes('Am vierten Tag ist der starke Regen weniger geworden') &&
       !a2Texts['a2-r7'].body.includes('Morgen soll die Sonne wieder scheinen'));
+  t('Corpus A2 a2-r8 location question matches the bag left under the train seat',
+    a2q('a2-r8', 0).prompt === 'أين ترك الحقيبة؟' && a2q('a2-r8', 0).key === 'تحت المقعد' &&
+      a2Texts['a2-r8'].body.includes('unter dem engen Sitz gelassen'));
+  t('Corpus A2 a2-r8 asks what happened without inventing the finder’s gender',
+    a2q('a2-r8', 1).prompt === 'ما الذي حدث للحقيبة بعد أن فقدها؟' &&
+      a2q('a2-r8', 1).key === 'عثر عليها شخص' &&
+      a2Texts['a2-r8'].body.includes('dass jemand die schwarze Tasche gefunden hat'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
