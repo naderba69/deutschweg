@@ -429,6 +429,12 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r16 monthly-pass question matches Friday',
     q('a1-r16', 1).prompt.includes('متى يشتري بطاقة الشهر') && q('a1-r16', 1).key === 'الجمعة' &&
       texts['a1-r16'].body.includes('Am Freitag kaufe ich eine günstige Karte für den Monat'));
+  t('A1 a1-r17 course-days question matches Monday and Wednesday',
+    q('a1-r17', 0).key === 'الاثنين والأربعاء' &&
+      texts['a1-r17'].body.includes('Der Kurs ist am Montag und am Mittwoch, von sechs Uhr bis halb acht'));
+  t('A1 a1-r17 after-course question matches homework together',
+    q('a1-r17', 1).key === 'الواجبات مع زملاء' &&
+      texts['a1-r17'].body.includes('Nach dem kurzen Kurs machen wir oft die langen Hausaufgaben zusammen in einem alten Café'));
   t('A1 a1-r18 ends with a clear, grammatical neighbor sentence',
     texts['a1-r18'].body.includes('Jeder passt auch immer besser auf das Haus auf') &&
       texts['a1-r18'].body.includes('die Nachbarn helfen zusammen') &&
