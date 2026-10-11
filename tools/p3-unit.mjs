@@ -525,6 +525,24 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r9 replaces the impossible blank page with a readable whole page',
     a2Texts['a2-r9'].body.includes('jeden Abend eine ganze Seite') &&
       !a2Texts['a2-r9'].body.includes('jeden Abend eine leere Seite'));
+  t('Corpus A2 a2-r10 market question names all four regular purchases',
+    a2q('a2-r10', 0).prompt === 'ما الأشياء الأربعة التي تشتريها عادةً من السوق؟' &&
+      a2q('a2-r10', 0).key === 'فواكه وخضارًا وخبزًا وجبنًا' &&
+      a2q('a2-r10', 0).options[0] === a2q('a2-r10', 0).key &&
+      a2Texts['a2-r10'].body.includes('Dort kaufe ich Obst, Gemüse, Brot und Käse'));
+  t('Corpus A2 a2-r10 asks about the completed card payment and states the amount once',
+    a2q('a2-r10', 1).prompt === 'بماذا دفعت؟' && a2q('a2-r10', 1).key === 'بالبطاقة' &&
+      a2Texts['a2-r10'].body.includes('Ich habe mit Karte bezahlt. Das waren genau zehn Euro.') &&
+      !a2Texts['a2-r10'].body.includes('Ich habe mit Karte bezahlt und zehn Euro bezahlt'));
+  t('Corpus A2 a2-r10 keeps the noon return and lunch in a consistent past sequence',
+    a2Texts['a2-r10'].body.includes('Um zwölf Uhr bin ich wieder nach Hause gekommen und habe das leckere Mittagessen gemacht') &&
+      !a2Texts['a2-r10'].body.includes('Um zwölf Uhr bin ich wieder zu Hause und koche'));
+  t('Corpus A2 a2-r10 distinguishes the last Tuesday, next Tuesday, next Monday, and next Saturday',
+    a2Texts['a2-r10'].body.includes('Brot für den nächsten Montag') &&
+      a2Texts['a2-r10'].body.includes('Letzten Dienstag habe ich auf dem Markt frischen Fisch gekauft') &&
+      a2Texts['a2-r10'].body.includes('Der Markt ist nächsten Dienstag wieder offen') &&
+      a2Texts['a2-r10'].body.includes('Nächsten Samstag gehe ich wieder hin') &&
+      a2Texts['a2-r10'].body.includes('Und dann probiere ich auch endlich'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
