@@ -460,6 +460,14 @@ console.log('\n— P3.2 lexical layer —\n');
   t('A1 a1-r20 pants reference keeps feminine pronouns',
     texts['a1-r20'].body.includes('Sie ist nicht perfekt, aber sie passt') &&
       !texts['a1-r20'].body.includes('Es ist nicht perfekt, aber es passt'));
+  const a2Texts = Object.fromEntries(win.DW_LIBRARY.A2.map(x => [x.id, x]));
+  const a2q = (id, n) => a2Texts[id].questions[n];
+  t('Corpus A2 a2-r1 travel-day question matches Friday in Berlin',
+    a2q('a2-r1', 0).prompt === 'في أي يوم سافر إلى برلين؟' && a2q('a2-r1', 0).key === 'الجمعة' &&
+      a2Texts['a2-r1'].body.includes('Ich bin am Freitag mit dem schnellen Zug nach Berlin gefahren'));
+  t('Corpus A2 a2-r1 journey-duration question matches three hours',
+    a2q('a2-r1', 1).prompt === 'كم استغرقت الرحلة؟' && a2q('a2-r1', 1).key === 'ثلاث ساعات' &&
+      a2Texts['a2-r1'].body.includes('Die ganze Fahrt hat drei lange Stunden gedauert'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
