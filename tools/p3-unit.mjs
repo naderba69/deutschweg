@@ -573,6 +573,23 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r12'].body.includes('Das Geschenk für meinen Vater war nicht groß') &&
       !a2Texts['a2-r12'].body.includes('Am Samstag fahren wir mit dem Bus zu ihr') &&
       !a2Texts['a2-r12'].body.includes('das schwere Buch in ein Papier gemacht'));
+  t('Corpus A2 a2-r13 volume request matches the quoted neighbor dialogue',
+    a2q('a2-r13', 0).prompt === 'ماذا قالت؟' &&
+      a2q('a2-r13', 0).key === 'هل يمكنكم خفض الصوت؟' &&
+      a2Texts['a2-r13'].body.includes('Bitte nicht so laut'));
+  t('Corpus A2 a2-r13 apology answer matches the neighbor response',
+    a2q('a2-r13', 1).prompt === 'ماذا فعل الجار؟' && a2q('a2-r13', 1).key === 'اعتذر' &&
+      a2Texts['a2-r13'].body.includes('Er hat sich entschuldigt'));
+  t('Corpus A2 a2-r13 clarifies the later Friday and fixes the shopping phrase',
+    a2Texts['a2-r13'].body.indexOf('Am Freitag war es wieder laut') <
+      a2Texts['a2-r13'].body.indexOf('Am Sonntag habe ich eine kurze Nachricht geschrieben') &&
+      a2Texts['a2-r13'].body.indexOf('Am Sonntag habe ich eine kurze Nachricht geschrieben') <
+      a2Texts['a2-r13'].body.indexOf('Am Montag habe ich mit ihm gesprochen') &&
+      a2Texts['a2-r13'].body.indexOf('Am Montag habe ich mit ihm gesprochen') <
+      a2Texts['a2-r13'].body.indexOf('Am nächsten Freitag hat er mich zum Kaffee eingeladen') &&
+      a2Texts['a2-r13'].body.includes('Auch heute helfen wir uns wieder beim Einkauf, und das machen wir sehr gern') &&
+      !a2Texts['a2-r13'].body.includes('Am Freitag hat er mich zum starken Kaffee eingeladen') &&
+      !a2Texts['a2-r13'].body.includes('zusammen mit dem Einkauf'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
