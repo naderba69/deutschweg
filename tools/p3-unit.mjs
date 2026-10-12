@@ -631,6 +631,29 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r16'].body.includes('Die kleinen Kinder haben alle gern auf dem Boden gespielt') &&
       !a2Texts['a2-r16'].body.includes('auf dem ruhigen Boden') &&
       !a2Texts['a2-r16'].body.includes('die letzten Fotos in ein schönes Buch'));
+  t('Corpus A2 a2-r17 asks what was closed and matches the closed street',
+    a2q('a2-r17', 0).prompt === 'ما الذي أُغلق؟' &&
+      a2q('a2-r17', 0).key === 'الشارع' &&
+      a2q('a2-r17', 0).options.includes(a2q('a2-r17', 0).key) &&
+      a2Texts['a2-r17'].title === 'Die gesperrte Straße' &&
+      a2Texts['a2-r17'].body.includes('die ganze Straße gesperrt'));
+  t('Corpus A2 a2-r17 asks for the narrator’s Monday wait, not an unspecified plural',
+    a2q('a2-r17', 1).prompt === 'كم دقيقة انتظر الراوي يوم الاثنين؟' &&
+      a2q('a2-r17', 1).key === 'عشر دقائق' &&
+      a2Texts['a2-r17'].body.includes('Am Montag habe ich einfach zehn Minuten gewartet'));
+  t('Corpus A2 a2-r17 separates the two Mondays, keeps one park route, and repairs the final subordinate clause',
+    a2Texts['a2-r17'].body.indexOf('Am Montag habe ich einfach zehn Minuten gewartet') <
+      a2Texts['a2-r17'].body.indexOf('Am Dienstag habe ich einen anderen Weg genommen') &&
+      a2Texts['a2-r17'].body.indexOf('Am Dienstag habe ich einen anderen Weg genommen') <
+        a2Texts['a2-r17'].body.indexOf('Seit Mittwoch komme ich wieder pünktlich') &&
+      a2Texts['a2-r17'].body.indexOf('Seit Mittwoch komme ich wieder pünktlich') <
+        a2Texts['a2-r17'].body.indexOf('Am nächsten Montag habe ich einen anderen Weg genommen') &&
+      a2Texts['a2-r17'].body.indexOf('Am nächsten Montag habe ich einen anderen Weg genommen') <
+        a2Texts['a2-r17'].body.indexOf('Am Mittwoch hat mein netter Kollege mir einen kleinen Weg hinter dem schönen Park gezeigt') &&
+      a2Texts['a2-r17'].body.includes('Meine Kollegen haben mir gesagt, dass ein kleiner Weg hinter dem schönen Park offen ist') &&
+      a2Texts['a2-r17'].body.includes('Der Weg hinter dem schönen Park ist ganz kurz') &&
+      a2Texts['a2-r17'].body.includes('Sonst nehme ich immer den Bus') &&
+      a2Texts['a2-r17'].body.includes('Bis der neue wichtige Vertrag endlich kommt, läuft die Suche weiter'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
