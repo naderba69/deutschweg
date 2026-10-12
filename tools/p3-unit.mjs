@@ -718,6 +718,26 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r21'].body.includes('eine kurze Pause') &&
       a2Texts['a2-r21'].body.includes('Dann zählen wir alle das Geld für die ganze Woche') &&
       !a2Texts['a2-r21'].body.includes('rechnen wir alle wirklich zusammen die ganze Woche'));
+  t('Corpus A2 a2-r22 bakery question matches the baker and his opening time',
+    a2q('a2-r22', 0).key === 'der Bäcker' &&
+      a2Texts['a2-r22'].body.includes('Der Bäcker öffnet um fünf') &&
+      a2Texts['a2-r22'].body.includes('Der Bäcker verkauft morgens frisches Brot'));
+  t('Corpus A2 a2-r22 rehearsal question matches the musicians in the cellar',
+    a2q('a2-r22', 1).key === 'im Keller' &&
+      a2Texts['a2-r22'].body.includes('Im dunklen Keller proben ein junger Musiker und eine freundliche Sängerin'));
+  t('Corpus A2 a2-r22 corrects the profession wording and avoids the cook/cooks tautology',
+    a2Texts['a2-r22'].body.includes('In unserer Straße wohnen viele Menschen. Sie haben verschiedene Berufe') &&
+      !a2Texts['a2-r22'].body.includes('wohnen viele Berufe') &&
+      a2Texts['a2-r22'].body.includes('Der Koch arbeitet im neuen Lokal') &&
+      !a2Texts['a2-r22'].body.includes('Der Koch kocht'));
+  t('Corpus A2 a2-r22 removes conflicting bakery hours and repeated family-return event',
+    a2Texts['a2-r22'].body.includes('Der Bäcker öffnet um fünf') &&
+      !a2Texts['a2-r22'].body.includes('öffnet schon um sechs') &&
+      a2Texts['a2-r22'].body.indexOf('Am Nachmittag machen die Kinder ihre Hausaufgaben') <
+        a2Texts['a2-r22'].body.indexOf('Die Eltern sind dann noch bei der Arbeit') &&
+      a2Texts['a2-r22'].body.indexOf('Die Eltern sind dann noch bei der Arbeit') <
+        a2Texts['a2-r22'].body.indexOf('Am Abend kommen die Eltern müde von der Arbeit') &&
+      !a2Texts['a2-r22'].body.includes('Die Eltern kommen dann alle müde nach Hause'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
