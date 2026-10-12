@@ -555,6 +555,24 @@ console.log('\n— P3.2 lexical layer —\n');
     a2Texts['a2-r11'].body.includes('Gestern habe ich drei Mal telefoniert') &&
       a2Texts['a2-r11'].body.includes('gefragt, ob sie morgen Zeit hat') &&
       a2Texts['a2-r11'].body.includes('Wir treffen uns im vollen Café. Heute um vier Uhr bin ich ins alte Café gegangen'));
+  t('Corpus A2 a2-r12 asks which present she bought for her friend, not every purchase',
+    a2q('a2-r12', 0).prompt === 'ما الهدية التي اشترتها لصديقتها؟' &&
+      a2q('a2-r12', 0).key === 'كتابًا' &&
+      a2Texts['a2-r12'].body.includes('ein interessantes Buch gekauft') &&
+      a2Texts['a2-r12'].body.includes('Ich habe noch einen frischen Kuchen gekauft'));
+  t('Corpus A2 a2-r12 identifies the friend as the book recipient, not a sister',
+    a2q('a2-r12', 1).prompt === 'لمن اشترت الكتاب؟' &&
+      a2q('a2-r12', 1).key === 'لصديقتها' && a2q('a2-r12', 1).options.includes('لصديقتها') &&
+      a2Texts['a2-r12'].body.includes('das ich ihr gekauft habe') &&
+      !a2q('a2-r12', 1).key.includes('أخت'));
+  t('Corpus A2 a2-r12 clarifies wrapping, the Saturday plan, and the gift references',
+    a2Texts['a2-r12'].body.includes('das schwere Buch schön als Geschenk eingepackt') &&
+      a2Texts['a2-r12'].body.includes('Am Samstag wollte ich mit dem Bus zu ihr fahren') &&
+      a2Texts['a2-r12'].body.includes('Am Samstag bin ich mit dem Bus zu meiner Freundin gefahren') &&
+      a2Texts['a2-r12'].body.includes('an das neue Buch gedacht, das ich ihr gekauft habe') &&
+      a2Texts['a2-r12'].body.includes('Das Geschenk für meinen Vater war nicht groß') &&
+      !a2Texts['a2-r12'].body.includes('Am Samstag fahren wir mit dem Bus zu ihr') &&
+      !a2Texts['a2-r12'].body.includes('das schwere Buch in ein Papier gemacht'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
