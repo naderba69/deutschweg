@@ -590,6 +590,19 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r13'].body.includes('Auch heute helfen wir uns wieder beim Einkauf, und das machen wir sehr gern') &&
       !a2Texts['a2-r13'].body.includes('Am Freitag hat er mich zum starken Kaffee eingeladen') &&
       !a2Texts['a2-r13'].body.includes('zusammen mit dem Einkauf'));
+  t('Corpus A2 a2-r14 identifies the invalid ticket as the problem',
+    a2q('a2-r14', 0).prompt === 'ما الخطأ؟' && a2q('a2-r14', 0).key === 'تذكرة خاطئة' &&
+      a2Texts['a2-r14'].body.includes('dass die Karte nicht gilt'));
+  t('Corpus A2 a2-r14 question asks for the supported pre-trip ticket check',
+    a2q('a2-r14', 1).prompt === 'ماذا ينبغي أن تفعل قبل الرحلة؟' &&
+      a2q('a2-r14', 1).key === 'تتحقق من التذكرة جيدًا' &&
+      a2q('a2-r14', 1).options[0] === a2q('a2-r14', 1).key &&
+      a2Texts['a2-r14'].body.includes('vor der Reise immer zwei Minuten Zeit nehmen muss'));
+  t('Corpus A2 a2-r14 clarifies the plan-to-past timeline and the changed choice',
+    a2Texts['a2-r14'].body.includes('In der nächsten Woche wollte ich die Karte im Internet kaufen') &&
+      a2Texts['a2-r14'].body.includes('Am Dienstag bin ich aber zum kleinen Schalter gegangen') &&
+      a2Texts['a2-r14'].body.includes('Am Samstag bin ich mit der richtigen Karte nach Frankfurt gefahren') &&
+      !a2Texts['a2-r14'].body.includes('In der nächsten Woche kaufe ich die Karte'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
