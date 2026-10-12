@@ -603,6 +603,18 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r14'].body.includes('Am Dienstag bin ich aber zum kleinen Schalter gegangen') &&
       a2Texts['a2-r14'].body.includes('Am Samstag bin ich mit der richtigen Karte nach Frankfurt gefahren') &&
       !a2Texts['a2-r14'].body.includes('In der nächsten Woche kaufe ich die Karte'));
+  t('Corpus A2 a2-r15 first-washed question matches the vegetables',
+    a2q('a2-r15', 0).prompt === 'ماذا غسلت أولًا؟' && a2q('a2-r15', 0).key === 'الخضار' &&
+      a2Texts['a2-r15'].body.includes('Zuerst habe ich das bunte Gemüse gewaschen'));
+  t('Corpus A2 a2-r15 asks what the daughter said and matches the stated praise',
+    a2q('a2-r15', 1).prompt === 'ماذا قالت الابنة عن الطعام؟' &&
+      a2q('a2-r15', 1).key === 'كان جيدًا جدًا' &&
+      a2Texts['a2-r15'].body.includes('Meine Tochter hat gesagt, dass das Essen sehr gut war'));
+  t('Corpus A2 a2-r15 completes the pot sentence and removes the odd table adjective',
+    a2Texts['a2-r15'].body.includes('Dann habe ich das Öl und das grüne Gemüse in einen tiefen Topf getan') &&
+      a2Texts['a2-r15'].body.includes('die sauberen Teller auf den Tisch gestellt. Danach haben wir zusammen gegessen') &&
+      !a2Texts['a2-r15'].body.includes('und das grüne Gemüse dazu.') &&
+      !a2Texts['a2-r15'].body.includes('auf den ruhigen Tisch'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
