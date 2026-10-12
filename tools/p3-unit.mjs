@@ -654,6 +654,19 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r17'].body.includes('Der Weg hinter dem schönen Park ist ganz kurz') &&
       a2Texts['a2-r17'].body.includes('Sonst nehme ich immer den Bus') &&
       a2Texts['a2-r17'].body.includes('Bis der neue wichtige Vertrag endlich kommt, läuft die Suche weiter'));
+  t('Corpus A2 a2-r18 dog-description question matches the friendly dog',
+    a2q('a2-r18', 0).prompt === 'كيف الكلب؟' &&
+      a2q('a2-r18', 0).key === 'ودود' &&
+      a2Texts['a2-r18'].body.includes('Er ist schon alt und sehr freundlich'));
+  t('Corpus A2 a2-r18 asks what the daughter gives the dog after play',
+    a2q('a2-r18', 1).prompt === 'ماذا تعطي الابنة للكلب بعد اللعب؟' &&
+      a2q('a2-r18', 1).key === 'ماء' &&
+      a2Texts['a2-r18'].body.includes('Danach gibt sie ihm kaltes Wasser'));
+  t('Corpus A2 a2-r18 states the daughter’s reduced fear naturally and uses ans Wasser',
+    a2Texts['a2-r18'].body.includes('Jetzt hat sie keine Angst vor Hunden mehr') &&
+      a2Texts['a2-r18'].body.includes('Am Wochenende gehen wir alle zusammen ans Wasser') &&
+      !a2Texts['a2-r18'].body.includes('keine echte Angst') &&
+      !a2Texts['a2-r18'].body.includes('an das Wasser'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
