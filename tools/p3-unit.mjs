@@ -462,6 +462,8 @@ console.log('\n— P3.2 lexical layer —\n');
       !texts['a1-r20'].body.includes('Es ist nicht perfekt, aber es passt'));
   const a2Texts = Object.fromEntries(win.DW_LIBRARY.A2.map(x => [x.id, x]));
   const a2q = (id, n) => a2Texts[id].questions[n];
+  const known = require(ROOT + '/tools/known.js');
+  const a2Known = known.knownWords(win, { upto: 'A2' });
   t('Corpus A2 a2-r1 travel-day question matches Friday in Berlin',
     a2q('a2-r1', 0).prompt === 'في أي يوم سافر إلى برلين؟' && a2q('a2-r1', 0).key === 'الجمعة' &&
       a2Texts['a2-r1'].body.includes('Ich bin am Freitag mit dem schnellen Zug nach Berlin gefahren'));
@@ -790,6 +792,21 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r27 uses the correct plural adjective ending',
     a2Texts['a2-r27'].body.includes('meine vielen Bücher stehen in der Nähe') &&
       !a2Texts['a2-r27'].body.includes('meine viele Bücher'));
+  t('Corpus A2 a2-r28 reading-frequency answer is stated explicitly',
+    a2q('a2-r28', 0).key === 'viermal' &&
+      a2Texts['a2-r28'].body.includes('Ich lese viermal in der Woche'));
+  t('Corpus A2 a2-r28 residence question matches the location statement',
+    a2q('a2-r28', 1).key === 'außerhalb der Stadt' &&
+      a2Texts['a2-r28'].body.includes('Ich wohne außerhalb der Stadt'));
+  t('Corpus A2 a2-r28 preserves its historic unique corpus token',
+    a2Texts['a2-r28'].body.includes('Ich lese viermal in der Woche') &&
+      !a2Texts['a2-r28'].body.includes('Ich lese vier Mal in der Woche'));
+  t('A2 recognizes viermal from the already-taught numeral and frequency particle',
+    a2Known.has('vier') && a2Known.has('mal') && known.isKnown(a2Known, 'viermal') &&
+      known.coverage(a2Known, a2Texts['a2-r28'].body).unknown.length === 0);
+  t('frequency-compound recognition requires both components to be known',
+    !known.isKnown(new Set(['vier']), 'viermal') && !known.isKnown(new Set(['mal']), 'viermal') &&
+      known.isKnown(new Set(['vier', 'mal']), 'viermal'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',

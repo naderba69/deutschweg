@@ -118,9 +118,23 @@ function stems(w) {
 function tokenise(text) {
   return fold(text).split(' ').filter(w => w.length > 2 && !STOP.has(w));
 }
+/* German frequency adverbs productively compound a number and `mal`:
+   viermal = vier + mal. The spelling must not make two taught components
+   appear as a new content word, but both components still have to be known at
+   the learner's level. */
+const NUMBER_TIMES_HEADS = new Set([
+  'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'elf', 'zwölf',
+  'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn', 'siebzehn', 'achtzehn', 'neunzehn', 'zwanzig',
+  'dreißig', 'vierzig', 'fünfzig', 'sechzig', 'siebzig', 'achtzig', 'neunzig', 'hundert', 'tausend'
+]);
+
 function isKnown(set, w) {
   const hit = t => set.has(t) || set.has(stem(t)) || set.has(t.replace(/e$/, ''));
   for (const s of stems(w)) if (hit(s)) return true;
+  if (w.endsWith('mal')) {
+    const head = w.slice(0, -3);
+    if (NUMBER_TIMES_HEADS.has(head) && hit(head) && hit('mal')) return true;
+  }
   if (IRREG[w]) return hit(IRREG[w]);
   return false;
 }
