@@ -769,6 +769,15 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r25 mountain ending states the children’s wish and the family’s response clearly',
     a2Texts['a2-r25'].body.includes('Und die Kinder wollen natürlich noch weiter, aber wir sagen ihnen einfach Nein und gehen zurück') &&
       !a2Texts['a2-r25'].body.includes('noch immer so weiter'));
+  t('Corpus A2 a2-r26 necessary-programs question matches the text',
+    a2q('a2-r26', 0).key === 'einige Programme' &&
+      a2Texts['a2-r26'].body.includes('einige Programme waren notwendig'));
+  t('Corpus A2 a2-r26 WC question matches the office location',
+    a2q('a2-r26', 1).key === 'im Büro' &&
+      a2Texts['a2-r26'].body.includes('Das WC im modernen Büro'));
+  t('Corpus A2 a2-r26 separates the noise problem from the desk need',
+    a2Texts['a2-r26'].body.includes('Überall ist Lärm, das muss ich unbedingt ändern. Außerdem brauche ich einen größeren Tisch') &&
+      !a2Texts['a2-r26'].body.includes('sonst brauche ich einen größeren Tisch'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
