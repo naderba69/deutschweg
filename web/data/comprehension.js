@@ -51,7 +51,7 @@
     'a2-r20': [['ماذا ضاع؟', ['المفتاح', 'الحقيبة', 'البطاقة'], 'المفتاح'], ['من يملك مفتاحًا ثانيًا؟', ['الأخت', 'الجارة', 'لا أحد'], 'الأخت']],
     'a2-r21': [['ماذا تُصلح الورشة؟', ['Die Maschine', 'Das Geschirr', 'Die Bluse'], 'Die Maschine'], ['ماذا نشتري لأننا نريد التوفير؟', ['preiswerte Möbel', 'einen Kredit', 'eine neue Garage'], 'preiswerte Möbel']],
     'a2-r22': [['من يخبز في الحارة؟', ['der Bäcker', 'der Koch', 'die Verkäuferin'], 'der Bäcker'], ['أين يتدرّب الموسيقيون؟', ['im Keller', 'im Theater', 'im Büro'], 'im Keller']],
-    'a2-r23': [['ما المادة الأقرب إلى قلبه؟', ['Kunst', 'Chemie', 'Latein'], 'Kunst'], ['من يجمع المال للرحلة؟', ['der Lehrer', 'der Direktor', 'der Kellner'], 'der Lehrer']],
+    'a2-r23': [['ما المادة التي يدرسها بعد الإنجليزية؟', ['Kunst', 'Chemie', 'Latein'], 'Kunst'], ['من يجمع المال للرحلة؟', ['der Lehrer', 'der Direktor', 'der Kellner'], 'der Lehrer']],
     'a2-r24': [['ماذا يقرأ في السرير؟', ['ein E-Book', 'ein Blog', 'ein Quiz'], 'ein E-Book'], ['ما المهم في كلمة المرور؟', ['dass sie lang ist', 'dass sie kurz ist', 'dass sie alt ist'], 'dass sie lang ist']],
     'a2-r25': [['كم درجة الحرارة نهارًا؟', ['25 Grad', '5 Grad', '60 Grad'], '25 Grad'], ['ما الذي يفعل الرجل كل صباح؟', ['die Post austragen', 'Steine werfen', 'Kaffee trinken'], 'die Post austragen']],
     'a2-r26': [['ما الذي كان ضروريًا؟', ['einige Programme', 'ein größerer Tisch', 'ein Drucker'], 'einige Programme'], ['أين الـ WC؟', ['im Büro', 'zu Hause', 'im Kurs'], 'im Büro']],

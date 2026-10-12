@@ -738,6 +738,22 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r22'].body.indexOf('Die Eltern sind dann noch bei der Arbeit') <
         a2Texts['a2-r22'].body.indexOf('Am Abend kommen die Eltern müde von der Arbeit') &&
       !a2Texts['a2-r22'].body.includes('Die Eltern kommen dann alle müde nach Hause'));
+  t('Corpus A2 a2-r23 subject question matches the morning timetable',
+    a2q('a2-r23', 0).key === 'Kunst' &&
+      a2q('a2-r23', 0).prompt === 'ما المادة التي يدرسها بعد الإنجليزية؟' &&
+      a2Texts['a2-r23'].body.includes('Am Morgen habe ich Englisch, danach Kunst und Sport'));
+  t('Corpus A2 a2-r23 trip-money question is supported by the teacher sentence',
+    a2q('a2-r23', 1).key === 'der Lehrer' &&
+      a2Texts['a2-r23'].body.includes('Der Lehrer sammelt dann das Geld für die Reise'));
+  t('Corpus A2 a2-r23 distinguishes the old two-hour schedule from the March plan',
+    a2Texts['a2-r23'].body.includes('Jetzt lerne ich am Morgen eine halbe Stunde und am Abend lese ich nur') &&
+      a2Texts['a2-r23'].body.includes('Vor dem März lernte ich jeden Abend zwei Stunden') &&
+      a2Texts['a2-r23'].body.includes('Den neuen Plan halte ich bis zum Sommer ein') &&
+      !a2Texts['a2-r23'].body.includes('Jetzt lerne ich wirklich jeden Abend zwei Stunden'));
+  t('Corpus A2 a2-r23 separates the exam plans and closes without redundant emphasis',
+    a2Texts['a2-r23'].body.includes('Ich will die wichtige Prüfung im Sommer machen. Danach habe ich endlich viel mehr Zeit') &&
+      !a2Texts['a2-r23'].body.includes('die schwere wichtige Prüfung') &&
+      a2Texts['a2-r23'].body.includes('Auf die Ferien freue ich mich schon'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
