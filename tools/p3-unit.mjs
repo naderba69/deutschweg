@@ -778,6 +778,18 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r26 separates the noise problem from the desk need',
     a2Texts['a2-r26'].body.includes('Überall ist Lärm, das muss ich unbedingt ändern. Außerdem brauche ich einen größeren Tisch') &&
       !a2Texts['a2-r26'].body.includes('sonst brauche ich einen größeren Tisch'));
+  t('Corpus A2 a2-r27 sofa-description question matches the stated adjective',
+    a2q('a2-r27', 0).key === 'furchtbar' &&
+      a2Texts['a2-r27'].body.includes('das lange Sofa ist furchtbar'));
+  t('Corpus A2 a2-r27 daily-break question is stated explicitly',
+    a2q('a2-r27', 1).key === 'dreißig Minuten' &&
+      a2Texts['a2-r27'].body.includes('Jeden Tag mache ich mindestens dreißig Minuten Pause'));
+  t('Corpus A2 a2-r27 farewell appears after the reading, not in its middle',
+    !a2Texts['a2-r27'].body.includes('Tschüs, bis morgen! Am Abend') &&
+      a2Texts['a2-r27'].body.endsWith('Ich bin wirklich zufrieden mit meinem Zimmer. Tschüs, bis morgen!'));
+  t('Corpus A2 a2-r27 uses the correct plural adjective ending',
+    a2Texts['a2-r27'].body.includes('meine vielen Bücher stehen in der Nähe') &&
+      !a2Texts['a2-r27'].body.includes('meine viele Bücher'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
