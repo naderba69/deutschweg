@@ -760,6 +760,15 @@ console.log('\n— P3.2 lexical layer —\n');
   t('Corpus A2 a2-r24 password question matches the explicit length statement',
     a2q('a2-r24', 1).key === 'dass sie lang ist' &&
       a2Texts['a2-r24'].body.includes('Mein Passwort ist lang, das ist wichtig'));
+  t('Corpus A2 a2-r25 daytime-temperature question matches the stated 25 degrees',
+    a2q('a2-r25', 0).key === '25 Grad' &&
+      a2Texts['a2-r25'].body.includes('Am Tag sind es 25 Grad'));
+  t('Corpus A2 a2-r25 morning-job question matches the mail-delivery sentence',
+    a2q('a2-r25', 1).key === 'die Post austragen' &&
+      a2Texts['a2-r25'].body.includes('jeden Morgen die Post austragen'));
+  t('Corpus A2 a2-r25 mountain ending states the children’s wish and the family’s response clearly',
+    a2Texts['a2-r25'].body.includes('Und die Kinder wollen natürlich noch weiter, aber wir sagen ihnen einfach Nein und gehen zurück') &&
+      !a2Texts['a2-r25'].body.includes('noch immer so weiter'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
