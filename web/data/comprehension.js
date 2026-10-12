@@ -57,7 +57,7 @@
     'a2-r26': [['ما الذي كان ضروريًا؟', ['einige Programme', 'ein größerer Tisch', 'ein Drucker'], 'einige Programme'], ['أين الـ WC؟', ['im Büro', 'zu Hause', 'im Kurs'], 'im Büro']],
     'a2-r27': [['كيف يصف الأريكة؟', ['furchtbar', 'wunderschön', 'neu'], 'furchtbar'], ['ما الحد الأدنى للاستراحة يوميًا؟', ['dreißig Minuten', 'zwei Stunden', 'zehn Minuten'], 'dreißig Minuten']],
     'a2-r28': [['كم مرة يقرأ في الأسبوع؟', ['viermal', 'zweimal', 'jeden Tag'], 'viermal'], ['أين يسكن؟', ['außerhalb der Stadt', 'im Zentrum', 'am Bahnhof'], 'außerhalb der Stadt']],
-    'a2-r29': [['في أي يوم يبدأ مهرجان المدينة؟', ['am Donnerstag', 'am ersten Tag', 'am Sonntag'], 'am Donnerstag'], ['كيف يرجع من هو متعب؟', ['er geht früher zurück', 'er nimmt den Bus', 'er läuft zurück'], 'er geht früher zurück']],
+    'a2-r29': [['في أي يوم يبدأ مهرجان المدينة؟', ['am Donnerstag', 'am ersten Tag', 'am Sonntag'], 'am Donnerstag'], ['ماذا يمكن أن يفعل من يتعب؟', ['er kann früher nach Hause zurückgehen', 'er nimmt den Bus', 'er läuft zurück'], 'er kann früher nach Hause zurückgehen']],
     'a2-r30': [['ماذا تطلب الجامعة من سارة؟', ['eine Übersetzung und eine Erlaubnis', 'ein neues Klavier', 'einen Witz'], 'eine Übersetzung und eine Erlaubnis'], ['كيف تكون سارة بعد الدورة؟', ['fit', 'müde', 'krank'], 'fit']],
     'b1-r1': [['ما الحل الذي يختاره؟', ['أربعة أيام عمل والخامس للتعلّم', 'نعم مطلق', 'لا مطلق'], 'أربعة أيام عمل والخامس للتعلّم'], ['ماذا ينقص الأسبوع القصير؟', ['المال', 'الوقت', 'العمل'], 'المال']],
     'b1-r2': [['ما ميزة المدينة بلا سيارة؟', ['الهدوء', 'قرب العمل', 'رخص السيارة'], 'الهدوء'], ['أين الحد؟', ['حيث لا حافلة', 'في المركز', 'لا حد'], 'حيث لا حافلة']],

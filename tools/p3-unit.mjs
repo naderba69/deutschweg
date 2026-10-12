@@ -807,6 +807,19 @@ console.log('\n— P3.2 lexical layer —\n');
   t('frequency-compound recognition requires both components to be known',
     !known.isKnown(new Set(['vier']), 'viermal') && !known.isKnown(new Set(['mal']), 'viermal') &&
       known.isKnown(new Set(['vier', 'mal']), 'viermal'));
+  t('Corpus A2 a2-r29 festival-start question matches Thursday',
+    a2q('a2-r29', 0).key === 'am Donnerstag' &&
+      a2Texts['a2-r29'].body.startsWith('Am Donnerstag beginnt unser Fest'));
+  t('Corpus A2 a2-r29 fatigue question asks what is possible and matches the modal detail',
+    a2q('a2-r29', 1).prompt === 'ماذا يمكن أن يفعل من يتعب؟' &&
+      a2q('a2-r29', 1).key === 'er kann früher nach Hause zurückgehen' &&
+      a2q('a2-r29', 1).options.includes(a2q('a2-r29', 1).key) &&
+      a2Texts['a2-r29'].body.includes('Wer müde ist, kann früher nach Hause zurückgehen'));
+  t('Corpus A2 a2-r29 compares the walking and bus trips idiomatically',
+    a2Texts['a2-r29'].body.includes('denn zu Fuß ist es kürzer als mit dem Bus') &&
+      !a2Texts['a2-r29'].body.includes('zurücklaufen ist kürzer als der Bus'));
+  t('Corpus A2 a2-r29 remains fully known at A2 after the clarification',
+    known.coverage(a2Known, a2Texts['a2-r29'].body).unknown.length === 0);
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
