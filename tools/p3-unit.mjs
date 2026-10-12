@@ -684,6 +684,23 @@ console.log('\n— P3.2 lexical layer —\n');
       !a2Texts['a2-r19'].body.includes('kurze Stunde Zeit') &&
       !a2Texts['a2-r19'].body.includes('In zwei Wochen schreiben wir wieder einen Test') &&
       !a2Texts['a2-r19'].body.includes('Am Abend habe ich die Wörter in mein Heft geschrieben und die Fehler noch einmal gemacht'));
+  t('Corpus A2 a2-r20 lost-key question matches the opening event',
+    a2q('a2-r20', 0).prompt === 'ماذا ضاع؟' &&
+      a2q('a2-r20', 0).key === 'المفتاح' &&
+      a2Texts['a2-r20'].body.includes('meinen alten Schlüssel verloren'));
+  t('Corpus A2 a2-r20 second-key question matches the sister’s spare',
+    a2q('a2-r20', 1).prompt === 'من يملك مفتاحًا ثانيًا؟' &&
+      a2q('a2-r20', 1).key === 'الأخت' &&
+      a2Texts['a2-r20'].body.includes('meine Schwester einen zweiten Schlüssel'));
+  t('Corpus A2 a2-r20 places the three new keys after the Tuesday copies and before Saturday exchange',
+    a2Texts['a2-r20'].body.indexOf('Am Montag habe ich einen neuen Schlüssel machen lassen') <
+      a2Texts['a2-r20'].body.indexOf('Am Dienstag habe ich einen neuen Schlüssel für meine Schwester machen lassen') &&
+      a2Texts['a2-r20'].body.indexOf('Am Dienstag habe ich einen neuen Schlüssel für meine Schwester machen lassen') <
+        a2Texts['a2-r20'].body.indexOf('Jetzt gibt es drei neue Schlüssel') &&
+      a2Texts['a2-r20'].body.indexOf('Jetzt gibt es drei neue Schlüssel') <
+        a2Texts['a2-r20'].body.indexOf('Am Samstag habe ich meiner Schwester den neuen Schlüssel gegeben') &&
+      a2Texts['a2-r20'].body.includes('Jetzt habe ich genug Schlüssel') &&
+      !a2Texts['a2-r20'].body.includes('Jetzt habe ich drei neue Schlüssel'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
