@@ -701,6 +701,23 @@ console.log('\n— P3.2 lexical layer —\n');
         a2Texts['a2-r20'].body.indexOf('Am Samstag habe ich meiner Schwester den neuen Schlüssel gegeben') &&
       a2Texts['a2-r20'].body.includes('Jetzt habe ich genug Schlüssel') &&
       !a2Texts['a2-r20'].body.includes('Jetzt habe ich drei neue Schlüssel'));
+  t('Corpus A2 a2-r21 workshop-repair answer matches the machine named in the text',
+    a2q('a2-r21', 0).prompt === 'ماذا تُصلح الورشة؟' &&
+      a2q('a2-r21', 0).key === 'Die Maschine' &&
+      a2Texts['a2-r21'].body.includes('repariert die alte Maschine'));
+  t('Corpus A2 a2-r21 saving question matches the affordable furniture',
+    a2q('a2-r21', 1).prompt === 'ماذا نشتري لأننا نريد التوفير؟' &&
+      a2q('a2-r21', 1).key === 'preiswerte Möbel' &&
+      a2Texts['a2-r21'].body.includes('deshalb kaufen wir preiswerte Möbel'));
+  t('Corpus A2 a2-r21 resolves household logic and preserves the existing corpus-floor token',
+    a2Texts['a2-r21'].body.includes('Im Haushalt gibt es viel zu tun') &&
+      a2Texts['a2-r21'].body.includes('Ich wasche das schmutzige Geschirr und stelle es in den leeren Schrank') &&
+      a2Texts['a2-r21'].body.includes('im Juni wollen wir einziehen'));
+  t('Corpus A2 a2-r21 clarifies the warm workshop, break, and Friday cash count',
+    a2Texts['a2-r21'].body.includes('aber sie ist meistens warm') &&
+      a2Texts['a2-r21'].body.includes('eine kurze Pause') &&
+      a2Texts['a2-r21'].body.includes('Dann zählen wir alle das Geld für die ganze Woche') &&
+      !a2Texts['a2-r21'].body.includes('rechnen wir alle wirklich zusammen die ganze Woche'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
