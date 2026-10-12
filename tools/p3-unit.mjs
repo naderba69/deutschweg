@@ -754,6 +754,12 @@ console.log('\n— P3.2 lexical layer —\n');
     a2Texts['a2-r23'].body.includes('Ich will die wichtige Prüfung im Sommer machen. Danach habe ich endlich viel mehr Zeit') &&
       !a2Texts['a2-r23'].body.includes('die schwere wichtige Prüfung') &&
       a2Texts['a2-r23'].body.includes('Auf die Ferien freue ich mich schon'));
+  t('Corpus A2 a2-r24 bed-reading question matches the E-Book detail',
+    a2q('a2-r24', 0).key === 'ein E-Book' &&
+      a2Texts['a2-r24'].body.includes('ein E-Book lese ich abends im warmen Bett'));
+  t('Corpus A2 a2-r24 password question matches the explicit length statement',
+    a2q('a2-r24', 1).key === 'dass sie lang ist' &&
+      a2Texts['a2-r24'].body.includes('Mein Passwort ist lang, das ist wichtig'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
