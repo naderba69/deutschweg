@@ -667,6 +667,23 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r18'].body.includes('Am Wochenende gehen wir alle zusammen ans Wasser') &&
       !a2Texts['a2-r18'].body.includes('keine echte Angst') &&
       !a2Texts['a2-r18'].body.includes('an das Wasser'));
+  t('Corpus A2 a2-r19 result question matches the two errors in the returned test',
+    a2q('a2-r19', 0).prompt === 'هل كان كل شيء صحيحًا؟' &&
+      a2q('a2-r19', 0).key === 'لا' &&
+      a2Texts['a2-r19'].body.includes('Ich hatte 18 von 20 Punkten') &&
+      a2Texts['a2-r19'].body.includes('Die zwei Fehler waren in der Grammatik'));
+  t('Corpus A2 a2-r19 asks how the narrator handles mistakes and matches the notebook review',
+    a2q('a2-r19', 1).prompt === 'كيف تتعامل الراوية مع الأخطاء؟' &&
+      a2q('a2-r19', 1).key === 'تدوّنها في دفترها وتراجعها' &&
+      a2Texts['a2-r19'].body.includes('Ich habe sie in mein Heft geschrieben und am Abend noch einmal geübt'));
+  t('Corpus A2 a2-r19 removes duplicate test/evening sentences and clarifies its time limit',
+    a2Texts['a2-r19'].body.includes('nur eine Stunde Zeit für den Test') &&
+      a2Texts['a2-r19'].body.includes('Am Abend habe ich die Grammatik noch einmal geübt') &&
+      a2Texts['a2-r19'].body.includes('Bis zum Test lese ich jeden Tag einen Text') &&
+      a2Texts['a2-r19'].body.includes('So lerne ich die neuen Wörter und schreibe sie in mein Heft') &&
+      !a2Texts['a2-r19'].body.includes('kurze Stunde Zeit') &&
+      !a2Texts['a2-r19'].body.includes('In zwei Wochen schreiben wir wieder einen Test') &&
+      !a2Texts['a2-r19'].body.includes('Am Abend habe ich die Wörter in mein Heft geschrieben und die Fehler noch einmal gemacht'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
