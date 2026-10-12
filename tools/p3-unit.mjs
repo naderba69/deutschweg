@@ -615,6 +615,22 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r15'].body.includes('die sauberen Teller auf den Tisch gestellt. Danach haben wir zusammen gegessen') &&
       !a2Texts['a2-r15'].body.includes('und das grüne Gemüse dazu.') &&
       !a2Texts['a2-r15'].body.includes('auf den ruhigen Tisch'));
+  t('Corpus A2 a2-r16 arrival-time question matches the first guests at four',
+    a2q('a2-r16', 0).prompt === 'متى وصل أول الضيوف؟' &&
+      a2q('a2-r16', 0).key === 'الساعة الرابعة' &&
+      a2Texts['a2-r16'].body.includes('Um vier Uhr sind die ersten Gäste gekommen'));
+  t('Corpus A2 a2-r16 mother-brings question distinguishes drinks from the narrator’s cake',
+    a2q('a2-r16', 1).prompt === 'ماذا أحضرت الأم؟' &&
+      a2q('a2-r16', 1).key === 'المشروبات' &&
+      a2Texts['a2-r16'].body.includes('Meine Mutter hat Getränke mitgebracht') &&
+      a2Texts['a2-r16'].body.includes('Ich habe am Morgen einen süßen Kuchen und einen gesunden Salat gemacht'));
+  t('Corpus A2 a2-r16 orders the past photo album before the next-year plan',
+    a2Texts['a2-r16'].body.includes('aus den letzten Fotos ein schönes Buch gemacht') &&
+      a2Texts['a2-r16'].body.indexOf('Im Herbst haben wir aus den letzten Fotos') <
+        a2Texts['a2-r16'].body.indexOf('Nächstes Jahr feiern wir wieder bei uns') &&
+      a2Texts['a2-r16'].body.includes('Die kleinen Kinder haben alle gern auf dem Boden gespielt') &&
+      !a2Texts['a2-r16'].body.includes('auf dem ruhigen Boden') &&
+      !a2Texts['a2-r16'].body.includes('die letzten Fotos in ein schönes Buch'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
