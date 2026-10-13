@@ -920,6 +920,23 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r5', 1).key === 'الأدوية والإيجار والكهرباء' &&
       b1q('b1-r5', 1).options.includes(b1q('b1-r5', 1).key) &&
       b1Texts['b1-r5'].body.includes('Medikamente, Miete und Strom kann man nicht verschieben'));
+  t('Corpus B1 b1-r6 has 231 measured words, no unknown B1 tokens, and consistent club size',
+    b1Texts['b1-r6'].title === 'Der Verein' &&
+      b1Texts['b1-r6'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r6'].body).unknown.length === 0 &&
+      b1Texts['b1-r6'].body.includes('in einem kleinen Verein') &&
+      b1Texts['b1-r6'].body.includes('Im kleinen Verein spreche ich mehr Deutsch') &&
+      !b1Texts['b1-r6'].body.includes('Im großen Verein spreche ich mehr Deutsch'));
+  t('Corpus B1 b1-r6 experience question matches the personal account',
+    b1q('b1-r6', 0).prompt === 'من أين المثال؟' &&
+      b1q('b1-r6', 0).key === 'من تجربته' &&
+      b1q('b1-r6', 0).options.includes(b1q('b1-r6', 0).key) &&
+      b1Texts['b1-r6'].body.startsWith('Seit einem Jahr bin ich in einem kleinen Verein'));
+  t('Corpus B1 b1-r6 weekly-frequency question matches twice per week',
+    b1q('b1-r6', 1).prompt === 'كم مرة يتدرب الراوي في الأسبوع؟' &&
+      b1q('b1-r6', 1).key === 'مرتين' &&
+      b1q('b1-r6', 1).options.includes(b1q('b1-r6', 1).key) &&
+      b1Texts['b1-r6'].body.startsWith('Seit einem Jahr bin ich in einem kleinen Verein und trainiere dort zweimal pro Woche'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
