@@ -820,6 +820,33 @@ console.log('\n— P3.2 lexical layer —\n');
       !a2Texts['a2-r29'].body.includes('zurücklaufen ist kürzer als der Bus'));
   t('Corpus A2 a2-r29 remains fully known at A2 after the clarification',
     known.coverage(a2Known, a2Texts['a2-r29'].body).unknown.length === 0);
+  t('Corpus A2 a2-r30 scholarship place/title align and the A2 text has no unknown words',
+    a2Texts['a2-r30'].title === 'عام في فرايبورغ' &&
+      a2Texts['a2-r30'].body.includes('ein Jahr in Freiburg') &&
+      win.DW_CHUNKS.A2.some(c => c.de === 'Wir sind nach Freiburg gefahren.') &&
+      known.isKnown(a2Known, 'freiburg') &&
+      known.coverage(a2Known, a2Texts['a2-r30'].body).unknown.length === 0);
+  t('Corpus A2 a2-r30 university and post-course questions match explicit details',
+    a2q('a2-r30', 0).key === 'eine Übersetzung und eine Erlaubnis' &&
+      a2q('a2-r30', 0).options.includes(a2q('a2-r30', 0).key) &&
+      a2Texts['a2-r30'].body.includes('genaue Übersetzung ihrer Zeugnisse') &&
+      a2Texts['a2-r30'].body.includes('Erlaubnis für den Kurs') &&
+      a2q('a2-r30', 1).key === 'fit' &&
+      a2Texts['a2-r30'].body.includes('Nach dem Kurs ist sie fit'));
+  t('Corpus A2 a2-r30 completes the grandmother piano relative clause and clarifies the umbrella pocket',
+    a2Texts['a2-r30'].body.includes('Das schwarze Klavier kommt aus der Wohnung, die ihre Großmutter gemietet hat') &&
+      a2Texts['a2-r30'].body.includes('ihr Regenschirm steckt immer in der Tasche ihres dunklen Mantels') &&
+      !a2Texts['a2-r30'].body.includes('wo ihre alte Großmutter gemietet hat'));
+  t('Corpus A2 a2-r30 keeps Sara in third person and removes repetition in the study/music ending',
+    a2Texts['a2-r30'].body.includes('Sie lernt im leeren Zug und ist den ganzen Tag unterwegs') &&
+      a2Texts['a2-r30'].body.includes('Sie übt jedes Stück einzeln') &&
+      a2Texts['a2-r30'].body.includes('Ihr Nachbar findet den Witz lustig') &&
+      !a2Texts['a2-r30'].body.includes('lustigen Witz witzig') &&
+      !a2Texts['a2-r30'].body.includes('Sie lernt unterwegs im leeren Zug') &&
+      a2Texts['a2-r30'].body.includes('Sara und ihr Nachbar machen das Zimmer zusammen schön') &&
+      a2Texts['a2-r30'].body.includes('hören beide neue Musik') &&
+      a2Texts['a2-r30'].body.includes('für beide ein kleines Zuhause') &&
+      !/\b(?:ich|wir|unser)\b/i.test(a2Texts['a2-r30'].body.slice(a2Texts['a2-r30'].body.indexOf('Die Wohnung ist alt'))));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',

@@ -113,7 +113,7 @@ Pass auf!|انتبه
 Ich bin gestern angekommen.|وصلت أمس
 Ich habe das schon gemacht.|فعلت ذلك بعد
 Das war letztes Jahr.|كان ذلك العام الماضي
-Wir sind nach Berlin gefahren.|سافرنا إلى برلين
+Wir sind nach Freiburg gefahren.|سافرنا إلى فرايبورغ
 Ich habe den Film gesehen.|شاهدت الفيلم
 Es hat mir gefallen.|أعجبني
 Es hat mir nicht gefallen.|لم يعجبني
