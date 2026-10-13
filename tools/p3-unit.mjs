@@ -1008,6 +1008,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r11', 1).key === 'مديرة البيت' &&
       b1q('b1-r11', 1).options.includes(b1q('b1-r11', 1).key) &&
       b1Texts['b1-r11'].body.includes('Die Hausmeisterin zeigt uns den großen Kasten für die Fahrräder'));
+  t('Corpus B1 b1-r12 has 243 measured words and no unknown B1 tokens',
+    b1Texts['b1-r12'].title === 'Bewerbung und erste Woche im Betrieb' &&
+      b1Texts['b1-r12'].body.trim().split(/\s+/).length === 243 &&
+      known.coverage(b1Known, b1Texts['b1-r12'].body).unknown.length === 0);
+  t('Corpus B1 b1-r12 keeps payroll tax apart from VAT on a customer invoice',
+    b1Texts['b1-r12'].body.includes('Beim ersten Gehalt berechnete das Büro die Steuer falsch') &&
+      b1Texts['b1-r12'].body.includes('den Rest meines Gehalts') &&
+      b1Texts['b1-r12'].body.includes('Auf ihrer Rechnung steht die Mehrwertsteuer'));
+  t('Corpus B1 b1-r12 connects the insurance card with registration and explanation',
+    b1Texts['b1-r12'].body.includes('begleitet sie bei der Anmeldung und erklärt ihnen die Versichertenkarte') &&
+      b1Texts['b1-r12'].body.includes('die jeder benötigt'));
+  t('Corpus B1 b1-r12 both comprehension questions are supported by the narrative',
+    b1q('b1-r12', 0).prompt === 'ماذا تطلب الشركة؟' &&
+      b1q('b1-r12', 0).key === 'تصريح عمل ودبلومًا' &&
+      b1q('b1-r12', 0).options.includes(b1q('b1-r12', 0).key) &&
+      b1Texts['b1-r12'].body.includes('eine alte Arbeitserlaubnis und ein echtes Diplom') &&
+      b1q('b1-r12', 1).prompt === 'ماذا أرسلت في ملف الطلب؟' &&
+      b1q('b1-r12', 1).key === 'شهادات' &&
+      b1q('b1-r12', 1).options.includes(b1q('b1-r12', 1).key) &&
+      b1Texts['b1-r12'].body.includes('Mappe mit Zeugnissen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
