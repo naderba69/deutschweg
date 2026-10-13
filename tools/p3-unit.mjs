@@ -864,6 +864,20 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r1', 1).key === 'المال' &&
       b1q('b1-r1', 1).options.includes(b1q('b1-r1', 1).key) &&
       b1Texts['b1-r1'].body.startsWith('Einerseits spart die kurze Woche Zeit, andererseits fehlt dann Geld'));
+  t('Corpus B1 b1-r2 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r2'].title === 'Stadt ohne Auto' &&
+      b1Texts['b1-r2'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r2'].body).unknown.length === 0);
+  t('Corpus B1 b1-r2 advantage question matches the stated quiet',
+    b1q('b1-r2', 0).prompt === 'ما ميزة المدينة بلا سيارة؟' &&
+      b1q('b1-r2', 0).key === 'الهدوء' &&
+      b1q('b1-r2', 0).options.includes(b1q('b1-r2', 0).key) &&
+      b1Texts['b1-r2'].body.includes('Der Vorteil ist die Ruhe'));
+  t('Corpus B1 b1-r2 limit question matches where no bus runs',
+    b1q('b1-r2', 1).prompt === 'أين الحد؟' &&
+      b1q('b1-r2', 1).key === 'حيث لا حافلة' &&
+      b1q('b1-r2', 1).options.includes(b1q('b1-r2', 1).key) &&
+      b1Texts['b1-r2'].body.includes('Die Grenze ist der Ort, an dem kein Bus fährt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
