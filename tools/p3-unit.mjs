@@ -847,6 +847,23 @@ console.log('\n— P3.2 lexical layer —\n');
       a2Texts['a2-r30'].body.includes('hören beide neue Musik') &&
       a2Texts['a2-r30'].body.includes('für beide ein kleines Zuhause') &&
       !/\b(?:ich|wir|unser)\b/i.test(a2Texts['a2-r30'].body.slice(a2Texts['a2-r30'].body.indexOf('Die Wohnung ist alt'))));
+  const b1Texts = Object.fromEntries(win.DW_LIBRARY.B1.texts.map(x => [x.id, x]));
+  const b1q = (id, n) => b1Texts[id].questions[n];
+  const b1Known = known.knownWords(win, { upto: 'B1' });
+  t('Corpus B1 b1-r1 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r1'].title === 'Arbeit und Zeit' &&
+      b1Texts['b1-r1'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r1'].body).unknown.length === 0);
+  t('Corpus B1 b1-r1 compromise question matches four workdays and Friday learning',
+    b1q('b1-r1', 0).prompt === 'ما الحل الذي يختاره؟' &&
+      b1q('b1-r1', 0).key === 'أربعة أيام عمل والخامس للتعلّم' &&
+      b1q('b1-r1', 0).options.includes(b1q('b1-r1', 0).key) &&
+      b1Texts['b1-r1'].body.includes('Zum Beispiel arbeite ich nur vier Tage und lerne am Freitag'));
+  t('Corpus B1 b1-r1 missing-money question matches the explicit trade-off',
+    b1q('b1-r1', 1).prompt === 'ماذا ينقص الأسبوع القصير؟' &&
+      b1q('b1-r1', 1).key === 'المال' &&
+      b1q('b1-r1', 1).options.includes(b1q('b1-r1', 1).key) &&
+      b1Texts['b1-r1'].body.startsWith('Einerseits spart die kurze Woche Zeit, andererseits fehlt dann Geld'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
