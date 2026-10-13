@@ -978,6 +978,22 @@ console.log('\n— P3.2 lexical layer —\n');
     b1Texts['b1-r9'].body.includes('Wer schreit, bekommt selten eine nette Antwort') &&
       b1Texts['b1-r9'].body.includes('Wer am Telefon laut wird, erreicht selten etwas') &&
       b1Texts['b1-r9'].body.includes('Ein kurzes Danke muss nicht sein, hilft aber beim nächsten Kontakt wirklich sehr'));
+  t('Corpus B1 b1-r10 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r10'].title === 'Zwei Wege' &&
+      b1Texts['b1-r10'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r10'].body).unknown.length === 0);
+  t('Corpus B1 b1-r10 slow-course question matches the comparison',
+    b1q('b1-r10', 0).prompt === 'أي الطريقين أبطأ؟' &&
+      b1q('b1-r10', 0).key === 'الدورة' &&
+      b1q('b1-r10', 0).options.includes(b1q('b1-r10', 0).key) &&
+      b1Texts['b1-r10'].body.includes('Der Kurs gibt Struktur und Hilfe, aber er ist langsam') &&
+      b1Texts['b1-r10'].body.includes('Wer allein lernt, ist schnell'));
+  t('Corpus B1 b1-r10 learning-review question matches the Sunday recording',
+    b1q('b1-r10', 1).prompt === 'كيف يتابع الراوي ما تعلّمه؟' &&
+      b1q('b1-r10', 1).key === 'بتسجيل قصير يستمع إليه يوم الأحد' &&
+      b1q('b1-r10', 1).options.includes(b1q('b1-r10', 1).key) &&
+      b1Texts['b1-r10'].body.includes('die hole ich mir mit einer kurzen Aufnahme am Sonntag') &&
+      b1Texts['b1-r10'].body.includes('Diese halbe Stunde ist nicht leicht, aber sie zeigt mir, was ich wirklich gelernt habe'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
