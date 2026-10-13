@@ -994,6 +994,20 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r10', 1).options.includes(b1q('b1-r10', 1).key) &&
       b1Texts['b1-r10'].body.includes('die hole ich mir mit einer kurzen Aufnahme am Sonntag') &&
       b1Texts['b1-r10'].body.includes('Diese halbe Stunde ist nicht leicht, aber sie zeigt mir, was ich wirklich gelernt habe'));
+  t('Corpus B1 b1-r11 has 232 measured words and no unknown B1 tokens',
+    b1Texts['b1-r11'].title === 'شقة جديدة وساحتها' &&
+      b1Texts['b1-r11'].body.trim().split(/\s+/).length === 232 &&
+      known.coverage(b1Known, b1Texts['b1-r11'].body).unknown.length === 0);
+  t('Corpus B1 b1-r11 old-apartment question matches furnished',
+    b1q('b1-r11', 0).prompt === 'كيف كانت الشقة القديمة؟' &&
+      b1q('b1-r11', 0).key === 'مفروشة' &&
+      b1q('b1-r11', 0).options.includes(b1q('b1-r11', 0).key) &&
+      b1Texts['b1-r11'].body.includes('Die alte war möbliert'));
+  t('Corpus B1 b1-r11 caretaker question matches the bicycle storage detail',
+    b1q('b1-r11', 1).prompt === 'من يشرح مكان مخزن الدراجات؟' &&
+      b1q('b1-r11', 1).key === 'مديرة البيت' &&
+      b1q('b1-r11', 1).options.includes(b1q('b1-r11', 1).key) &&
+      b1Texts['b1-r11'].body.includes('Die Hausmeisterin zeigt uns den großen Kasten für die Fahrräder'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
