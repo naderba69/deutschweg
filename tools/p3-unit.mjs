@@ -937,6 +937,20 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r6', 1).key === 'مرتين' &&
       b1q('b1-r6', 1).options.includes(b1q('b1-r6', 1).key) &&
       b1Texts['b1-r6'].body.startsWith('Seit einem Jahr bin ich in einem kleinen Verein und trainiere dort zweimal pro Woche'));
+  t('Corpus B1 b1-r7 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r7'].title === 'Zwei Züge' &&
+      b1Texts['b1-r7'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r7'].body).unknown.length === 0);
+  t('Corpus B1 b1-r7 important-morning appointment question matches the first train',
+    b1q('b1-r7', 0).prompt === 'أي قطار يختار الراوي إذا كان لديه موعد مهم صباحًا؟' &&
+      b1q('b1-r7', 0).key === 'القطار الأول' &&
+      b1q('b1-r7', 0).options.includes(b1q('b1-r7', 0).key) &&
+      b1Texts['b1-r7'].body.includes('Wenn ich einen wichtigen Termin am Morgen habe, nehme ich den ersten'));
+  t('Corpus B1 b1-r7 connection-check question matches the evening',
+    b1q('b1-r7', 1).prompt === 'متى يفحص الراوي مسار الرحلة؟' &&
+      b1q('b1-r7', 1).key === 'في المساء' &&
+      b1q('b1-r7', 1).options.includes(b1q('b1-r7', 1).key) &&
+      b1Texts['b1-r7'].body.includes('Seitdem schaue ich am Abend in die neue App und prüfe die Verbindung'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
