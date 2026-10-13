@@ -951,6 +951,20 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r7', 1).key === 'في المساء' &&
       b1q('b1-r7', 1).options.includes(b1q('b1-r7', 1).key) &&
       b1Texts['b1-r7'].body.includes('Seitdem schaue ich am Abend in die neue App und prüfe die Verbindung'));
+  t('Corpus B1 b1-r8 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r8'].title === 'Nachricht und Meinung' &&
+      b1Texts['b1-r8'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r8'].body).unknown.length === 0);
+  t('Corpus B1 b1-r8 source question matches the speaker omission',
+    b1q('b1-r8', 0).prompt === 'ما الذي لم يوضحه المتحدث؟' &&
+      b1q('b1-r8', 0).key === 'مصدر الرقم' &&
+      b1q('b1-r8', 0).options.includes(b1q('b1-r8', 0).key) &&
+      b1Texts['b1-r8'].body.includes('Der Sprecher hat eine genaue Zahl genannt, aber die Quelle nicht erklärt'));
+  t('Corpus B1 b1-r8 verification questions match the stated checklist',
+    b1q('b1-r8', 1).prompt === 'ما الأسئلة التي يطرحها الراوي قبل أن ينقل خبرًا؟' &&
+      b1q('b1-r8', 1).key === 'من قاله، وما مصدره، وهل ينقصه رقم واضح' &&
+      b1q('b1-r8', 1).options.includes(b1q('b1-r8', 1).key) &&
+      b1Texts['b1-r8'].body.includes('Wer sagt es, woher weiß er es, und fehlt eine klare Zahl?'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
