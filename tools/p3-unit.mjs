@@ -892,6 +892,20 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r3', 1).key === 'يقرأ أو يستمع إلى تقرير قصير' &&
       b1q('b1-r3', 1).options.includes(b1q('b1-r3', 1).key) &&
       b1Texts['b1-r3'].body.includes('Am Abend lese ich nur, oder ich höre einen kurzen Bericht'));
+  t('Corpus B1 b1-r4 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r4'].title === 'Die Versicherung' &&
+      b1Texts['b1-r4'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r4'].body).unknown.length === 0);
+  t('Corpus B1 b1-r4 amount question matches the stated initial shortfall',
+    b1q('b1-r4', 0).prompt === 'كيف كان المبلغ في البداية مقارنةً بالفاتورة؟' &&
+      b1q('b1-r4', 0).key === 'كان أقل منها' &&
+      b1q('b1-r4', 0).options.includes(b1q('b1-r4', 0).key) &&
+      b1Texts['b1-r4'].body.includes('Der Betrag war niedriger als die Rechnung'));
+  t('Corpus B1 b1-r4 inquiry question matches the stated written request',
+    b1q('b1-r4', 1).prompt === 'كيف قدّم الراوي الاستفسار؟' &&
+      b1q('b1-r4', 1).key === 'كتابيًا' &&
+      b1q('b1-r4', 1).options.includes(b1q('b1-r4', 1).key) &&
+      b1Texts['b1-r4'].body.includes('Ich habe die Anfrage schriftlich gestellt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
