@@ -878,6 +878,20 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r2', 1).key === 'حيث لا حافلة' &&
       b1q('b1-r2', 1).options.includes(b1q('b1-r2', 1).key) &&
       b1Texts['b1-r2'].body.includes('Die Grenze ist der Ort, an dem kein Bus fährt'));
+  t('Corpus B1 b1-r3 has 231 measured words, no unknown B1 tokens, and idiomatic phrasing',
+    b1Texts['b1-r3'].title === 'Spät lernen' &&
+      b1Texts['b1-r3'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r3'].body).unknown.length === 0 &&
+      b1Texts['b1-r3'].body.includes('Ich habe es zwei Wochen lang immer wieder versucht'));
+  t('Corpus B1 b1-r3 purpose question uses the explicit not-stated option',
+    b1q('b1-r3', 0).prompt === 'لماذا تتعلّم؟' &&
+      b1q('b1-r3', 0).key === 'النص لا يقول' &&
+      b1q('b1-r3', 0).options.includes(b1q('b1-r3', 0).key));
+  t('Corpus B1 b1-r3 evening question matches the stated evening activity',
+    b1q('b1-r3', 1).prompt === 'ما الذي يفعله الراوي في المساء؟' &&
+      b1q('b1-r3', 1).key === 'يقرأ أو يستمع إلى تقرير قصير' &&
+      b1q('b1-r3', 1).options.includes(b1q('b1-r3', 1).key) &&
+      b1Texts['b1-r3'].body.includes('Am Abend lese ich nur, oder ich höre einen kurzen Bericht'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
