@@ -965,6 +965,19 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r8', 1).key === 'من قاله، وما مصدره، وهل ينقصه رقم واضح' &&
       b1q('b1-r8', 1).options.includes(b1q('b1-r8', 1).key) &&
       b1Texts['b1-r8'].body.includes('Wer sagt es, woher weiß er es, und fehlt eine klare Zahl?'));
+  t('Corpus B1 b1-r9 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r9'].title === 'Die Beschwerde' &&
+      b1Texts['b1-r9'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r9'].body).unknown.length === 0);
+  t('Corpus B1 b1-r9 consequence question names the missed appointment',
+    b1q('b1-r9', 0).prompt === 'ما المشكلة التي سببتها الشحنة المتأخرة؟' &&
+      b1q('b1-r9', 0).key === 'موعد فائت' &&
+      b1q('b1-r9', 0).options.includes(b1q('b1-r9', 0).key) &&
+      b1Texts['b1-r9'].body.includes('die Folge war ein verpasster Termin'));
+  t('Corpus B1 b1-r9 complaint advice is internally consistent and thanks phrasing is clear',
+    b1Texts['b1-r9'].body.includes('Wer schreit, bekommt selten eine nette Antwort') &&
+      b1Texts['b1-r9'].body.includes('Wer am Telefon laut wird, erreicht selten etwas') &&
+      b1Texts['b1-r9'].body.includes('Ein kurzes Danke muss nicht sein, hilft aber beim nächsten Kontakt wirklich sehr'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
