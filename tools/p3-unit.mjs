@@ -906,6 +906,20 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r4', 1).key === 'كتابيًا' &&
       b1q('b1-r4', 1).options.includes(b1q('b1-r4', 1).key) &&
       b1Texts['b1-r4'].body.includes('Ich habe die Anfrage schriftlich gestellt'));
+  t('Corpus B1 b1-r5 has 231 measured words and no unknown B1 tokens',
+    b1Texts['b1-r5'].title === 'Kaufen oder warten' &&
+      b1Texts['b1-r5'].body.trim().split(/\s+/).length === 231 &&
+      known.coverage(b1Known, b1Texts['b1-r5'].body).unknown.length === 0);
+  t('Corpus B1 b1-r5 purchase timing matches the stated one-week wait',
+    b1q('b1-r5', 0).prompt === 'متى يشتري الراوي ما يحتاج إليه؟' &&
+      b1q('b1-r5', 0).key === 'بعد أسبوع' &&
+      b1q('b1-r5', 0).options.includes(b1q('b1-r5', 0).key) &&
+      b1Texts['b1-r5'].body.includes('kaufe ich es erst nach genau einer Woche'));
+  t('Corpus B1 b1-r5 non-deferrable-items question matches the explicit list',
+    b1q('b1-r5', 1).prompt === 'ما الذي لا يمكن تأجيله؟' &&
+      b1q('b1-r5', 1).key === 'الأدوية والإيجار والكهرباء' &&
+      b1q('b1-r5', 1).options.includes(b1q('b1-r5', 1).key) &&
+      b1Texts['b1-r5'].body.includes('Medikamente, Miete und Strom kann man nicht verschieben'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
