@@ -1189,6 +1189,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r20', 1).key === 'قد يشعر بالوحدة' &&
       b1q('b1-r20', 1).options.includes(b1q('b1-r20', 1).key) &&
       b1Texts['b1-r20'].body.includes('Wer allein lebt, kann sich leicht einsam fühlen'));
+  t('Corpus B1 b1-r21 has 246 measured words and no unknown B1 tokens',
+    b1Texts['b1-r21'].title === 'Strom und Wärme' &&
+      b1Texts['b1-r21'].body.trim().split(/\s+/).length === 246 &&
+      known.coverage(b1Known, b1Texts['b1-r21'].body).unknown.length === 0);
+  t('Corpus B1 b1-r21 keeps heating, costs, and saving measures coherent',
+    b1Texts['b1-r21'].body.includes('Wenn wir weniger heizen, sparen wir wirklich Energie und Geld') &&
+      b1Texts['b1-r21'].body.includes('Jeden Monat schreiben wir den Verbrauch auf') &&
+      b1Texts['b1-r21'].body.includes('Verbote allein reichen jedoch nicht') &&
+      b1Texts['b1-r21'].body.includes('Lampen ausgetauscht, die weniger Strom brauchen') &&
+      b1Texts['b1-r21'].body.includes('die alte Heizung prüfen lassen'));
+  t('Corpus B1 b1-r21 reduced-heating question matches energy and money savings',
+    b1q('b1-r21', 0).prompt === 'ماذا تقول الكاتبة عن خفض التدفئة؟' &&
+      b1q('b1-r21', 0).key === 'يوفّر الطاقة والمال' &&
+      b1q('b1-r21', 0).options.includes(b1q('b1-r21', 0).key) &&
+      b1Texts['b1-r21'].body.includes('weniger heizen, sparen wir wirklich Energie und Geld'));
+  t('Corpus B1 b1-r21 ban-only question matches the need for financial help',
+    b1q('b1-r21', 1).prompt === 'ما رأيها في المنع وحده؟' &&
+      b1q('b1-r21', 1).key === 'لا يكفي' &&
+      b1q('b1-r21', 1).options.includes(b1q('b1-r21', 1).key) &&
+      b1Texts['b1-r21'].body.includes('Verbote allein reichen jedoch nicht'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
