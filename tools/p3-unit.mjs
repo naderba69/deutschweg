@@ -1229,6 +1229,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r22', 1).key === 'تقرير قصير' &&
       b1q('b1-r22', 1).options.includes(b1q('b1-r22', 1).key) &&
       b1Texts['b1-r22'].body.includes('jede Woche einen kurzen Bericht'));
+  t('Corpus B1 b1-r23 has 257 measured words and no unknown B1 tokens',
+    b1Texts['b1-r23'].title === 'Wohnungssuche mit Hindernissen' &&
+      b1Texts['b1-r23'].body.trim().split(/\s+/).length === 257 &&
+      known.coverage(b1Known, b1Texts['b1-r23'].body).unknown.length === 0);
+  t('Corpus B1 b1-r23 keeps both rejected offers and the final home coherent',
+    b1Texts['b1-r23'].body.includes('Fotos künstlich heller gemacht worden waren') &&
+      b1Texts['b1-r23'].body.includes('Der Bau war also illegal') &&
+      b1Texts['b1-r23'].body.includes('Diesmal waren alle Unterlagen vollständig') &&
+      b1Texts['b1-r23'].body.includes('den schlanken Baum in der Mitte des Hofes') &&
+      b1Texts['b1-r23'].body.includes('trotz der schwierigen Suche die richtige Entscheidung'));
+  t('Corpus B1 b1-r23 image question matches the artificially brightened photos',
+    b1q('b1-r23', 0).prompt === 'كيف عُدّلت صور الإعلان الأول؟' &&
+      b1q('b1-r23', 0).key === 'جُعلت أكثر سطوعًا بصورة مصطنعة' &&
+      b1q('b1-r23', 0).options.includes(b1q('b1-r23', 0).key) &&
+      b1Texts['b1-r23'].body.includes('Fotos künstlich heller gemacht worden waren'));
+  t('Corpus B1 b1-r23 second-offer question matches the illegal construction',
+    b1q('b1-r23', 1).prompt === 'لماذا لم يوقّعوا عقد العرض الثاني؟' &&
+      b1q('b1-r23', 1).key === 'لأن جزءًا من البناء كان غير قانوني' &&
+      b1q('b1-r23', 1).options.includes(b1q('b1-r23', 1).key) &&
+      b1Texts['b1-r23'].body.includes('keine Erlaubnis') &&
+      b1Texts['b1-r23'].body.includes('Der Bau war also illegal'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
