@@ -1049,6 +1049,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r13', 1).key === 'مسكّنًا' &&
       b1q('b1-r13', 1).options.includes(b1q('b1-r13', 1).key) &&
       b1Texts['b1-r13'].body.includes('verschreibt ein Schmerzmittel'));
+  t('Corpus B1 b1-r14 has 236 measured words and no unknown B1 tokens',
+    b1Texts['b1-r14'].title === 'Unterwegs in der Stadt' &&
+      b1Texts['b1-r14'].body.trim().split(/\s+/).length === 236 &&
+      known.coverage(b1Known, b1Texts['b1-r14'].body).unknown.length === 0);
+  t('Corpus B1 b1-r14 keeps the tram signs and next-day plan coherent',
+    b1Texts['b1-r14'].body.includes('obwohl sie heute voll ist. Das grüne Schild zum Notausgang zeigt nach hinten') &&
+      b1Texts['b1-r14'].body.includes('So bleibt mein Kopf frei, und der Rest kann ruhig bis morgen warten') &&
+      b1Texts['b1-r14'].body.includes('Am nächsten Morgen ist die Liste wieder voll') &&
+      !b1Texts['b1-r14'].body.includes('der Korb schon wieder ganz leer'));
+  t('Corpus B1 b1-r14 braking question matches the crossing pedestrian',
+    b1q('b1-r14', 0).prompt === 'لماذا يفرمل الراوي؟' &&
+      b1q('b1-r14', 0).key === 'لأن أحد المشاة يعبر' &&
+      b1q('b1-r14', 0).options.includes(b1q('b1-r14', 0).key) &&
+      b1Texts['b1-r14'].body.includes('Ich bremse, weil ein Fußgänger über die Einbahnstraße geht'));
+  t('Corpus B1 b1-r14 emergency-exit question names the sign that points backward',
+    b1q('b1-r14', 1).prompt === 'إلى أين تشير لافتة مخرج الطوارئ؟' &&
+      b1q('b1-r14', 1).key === 'إلى الخلف' &&
+      b1q('b1-r14', 1).options.includes(b1q('b1-r14', 1).key) &&
+      b1Texts['b1-r14'].body.includes('Das grüne Schild zum Notausgang zeigt nach hinten'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
