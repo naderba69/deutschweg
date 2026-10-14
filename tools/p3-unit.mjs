@@ -1129,6 +1129,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r17', 1).key === 'بطاقة جديدة' &&
       b1q('b1-r17', 1).options.includes(b1q('b1-r17', 1).key) &&
       b1Texts['b1-r17'].body.includes('Spätestens am Freitag soll die neue da sein'));
+  t('Corpus B1 b1-r18 has 237 measured words and no unknown B1 tokens',
+    b1Texts['b1-r18'].title === 'Computer, Netz und Büro' &&
+      b1Texts['b1-r18'].body.trim().split(/\s+/).length === 237 &&
+      known.coverage(b1Known, b1Texts['b1-r18'].body).unknown.length === 0);
+  t('Corpus B1 b1-r18 keeps shutdown, messages, and digital filing coherent',
+    b1Texts['b1-r18'].body.includes('Bevor ich den Computer herunterfahre, speichere ich alles') &&
+      b1Texts['b1-r18'].body.includes('wegen eines technischen Problems nicht zu verstehen') &&
+      b1Texts['b1-r18'].body.includes('eine neue Struktur für die digitalen Ordner erstellt') &&
+      b1Texts['b1-r18'].body.includes('jeder Ordner gehört zu einem klaren Thema') &&
+      b1Texts['b1-r18'].body.includes('unsere Arbeit im Büro geht deutlich schneller'));
+  t('Corpus B1 b1-r18 social-network question matches the slow network',
+    b1q('b1-r18', 0).prompt === 'ما مشكلة الشبكة الاجتماعية؟' &&
+      b1q('b1-r18', 0).key === 'بطيئة' &&
+      b1q('b1-r18', 0).options.includes(b1q('b1-r18', 0).key) &&
+      b1Texts['b1-r18'].body.includes('das soziale Netzwerk ist wieder langsam'));
+  t('Corpus B1 b1-r18 photo question matches the creative colleague',
+    b1q('b1-r18', 1).prompt === 'من يلتقط صور التقرير الأخير؟' &&
+      b1q('b1-r18', 1).key === 'زميل مبدع' &&
+      b1q('b1-r18', 1).options.includes(b1q('b1-r18', 1).key) &&
+      b1Texts['b1-r18'].body.includes('Die Fotos für den letzten Bericht macht ein junger Kollege, weil er kreativ ist'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
