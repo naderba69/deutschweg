@@ -1169,6 +1169,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r19', 1).key === 'استُخدمت بيانات قديمة' &&
       b1q('b1-r19', 1).options.includes(b1q('b1-r19', 1).key) &&
       b1Texts['b1-r19'].body.includes('hatte den Beitrag mit alten Daten berechnet'));
+  t('Corpus B1 b1-r20 has 252 measured words and no unknown B1 tokens',
+    b1Texts['b1-r20'].title === 'Auf dem Land' &&
+      b1Texts['b1-r20'].body.trim().split(/\s+/).length === 252 &&
+      known.coverage(b1Known, b1Texts['b1-r20'].body).unknown.length === 0);
+  t('Corpus B1 b1-r20 keeps rural life, transport, and the move coherent',
+    b1Texts['b1-r20'].body.includes('Seit zwei Jahren wohnen wir auf dem Land') &&
+      b1Texts['b1-r20'].body.includes('die alte Heizung verbraucht viel Energie') &&
+      b1Texts['b1-r20'].body.includes('dass der lange Weg in die Stadt sie nicht mehr stört') &&
+      b1Texts['b1-r20'].body.includes('Im Winter fährt der Bus nur selten') &&
+      b1Texts['b1-r20'].body.includes('Für die Kinder war der Umzug deshalb die richtige Entscheidung'));
+  t('Corpus B1 b1-r20 original-house question matches the former storage building',
+    b1q('b1-r20', 0).prompt === 'ماذا كان البيت في الأصل؟' &&
+      b1q('b1-r20', 0).key === 'مخزنًا' &&
+      b1q('b1-r20', 0).options.includes(b1q('b1-r20', 0).key) &&
+      b1Texts['b1-r20'].body.includes('Das kleine Haus war ursprünglich ein altes Lager'));
+  t('Corpus B1 b1-r20 living-alone question matches possible loneliness',
+    b1q('b1-r20', 1).prompt === 'ماذا قد يحدث لمن يعيش وحده؟' &&
+      b1q('b1-r20', 1).key === 'قد يشعر بالوحدة' &&
+      b1q('b1-r20', 1).options.includes(b1q('b1-r20', 1).key) &&
+      b1Texts['b1-r20'].body.includes('Wer allein lebt, kann sich leicht einsam fühlen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
