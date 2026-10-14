@@ -1270,6 +1270,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r24', 1).key === 'بأنه ضعيف' &&
       b1q('b1-r24', 1).options.includes(b1q('b1-r24', 1).key) &&
       b1Texts['b1-r24'].body.includes('von der Politik aber nur schwach unterstützt'));
+  t('Corpus B1 b1-r25 has 266 measured words and only the retained Streifen token unknown',
+    b1Texts['b1-r25'].title === 'Ein Wochenende an der Küste' &&
+      b1Texts['b1-r25'].body.trim().split(/\s+/).length === 266 &&
+      known.coverage(b1Known, b1Texts['b1-r25'].body).unknown.length === 1 &&
+      known.coverage(b1Known, b1Texts['b1-r25'].body).unknown[0] === 'streifen');
+  t('Corpus B1 b1-r25 keeps the coast trip, stay, activities, and return coherent',
+    b1Texts['b1-r25'].body.includes('mit dem Zug an die Ostsee') &&
+      b1Texts['b1-r25'].body.includes('erklärte den Weg vom Bahnhof zur Wohnung') &&
+      b1Texts['b1-r25'].body.includes('einen langen Spaziergang am Strand') &&
+      b1Texts['b1-r25'].body.includes('Auf der Rückfahrt planten wir'));
+  t('Corpus B1 b1-r25 travel question matches the train journey to the Baltic coast',
+    b1q('b1-r25', 0).prompt === 'بأي وسيلة سافر الراوي ومن معه إلى ساحل بحر البلطيق؟' &&
+      b1q('b1-r25', 0).key === 'بالقطار' &&
+      b1q('b1-r25', 0).options.includes(b1q('b1-r25', 0).key) &&
+      b1Texts['b1-r25'].body.includes('mit dem Zug an die Ostsee'));
+  t('Corpus B1 b1-r25 forgotten-item question matches the lighter needed for the candle',
+    b1q('b1-r25', 1).prompt === 'ما الشيء الذي نسوه في المنزل واحتاجوا إليه للشمعة؟' &&
+      b1q('b1-r25', 1).key === 'الولّاعة' &&
+      b1q('b1-r25', 1).options.includes(b1q('b1-r25', 1).key) &&
+      b1Texts['b1-r25'].body.includes('Feuerzeug, aber unseres hatten wir zu Hause vergessen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
