@@ -1089,6 +1089,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r15', 1).options.includes(b1q('b1-r15', 1).key) &&
       b1Texts['b1-r15'].body.includes('Im Imbiss an der Ecke') &&
       b1Texts['b1-r15'].body.includes('gebe kein Trinkgeld'));
+  t('Corpus B1 b1-r16 has 237 measured words and no unknown B1 tokens',
+    b1Texts['b1-r16'].title === 'Gewitter über dem Hügel' &&
+      b1Texts['b1-r16'].body.trim().split(/\s+/).length === 237 &&
+      known.coverage(b1Known, b1Texts['b1-r16'].body).unknown.length === 0);
+  t('Corpus B1 b1-r16 keeps the storm, roof check, and aftermath coherent',
+    b1Texts['b1-r16'].body.includes('dass sich die alten Fenster bewegen') &&
+      b1Texts['b1-r16'].body.includes('im Frühling sicher wieder ein starkes Gewitter gibt') &&
+      b1Texts['b1-r16'].body.includes('das helle Dach vorher prüfen soll') &&
+      b1Texts['b1-r16'].body.includes('einen festen Termin für den nächsten Herbst') &&
+      b1Texts['b1-r16'].body.includes('Die kurze Zeit der Ruhe direkt nach dem schweren Gewitter'));
+  t('Corpus B1 b1-r16 opening-weather question matches the July heat',
+    b1q('b1-r16', 0).prompt === 'كيف كان الطقس في بداية النص؟' &&
+      b1q('b1-r16', 0).key === 'حرارة شديدة' &&
+      b1q('b1-r16', 0).options.includes(b1q('b1-r16', 0).key) &&
+      b1Texts['b1-r16'].body.startsWith('Im Juli ist die große Hitze kaum auszuhalten'));
+  t('Corpus B1 b1-r16 fruit question matches the poisonous fruit',
+    b1q('b1-r16', 1).prompt === 'لماذا لا تؤكل ثمار شجرة الجار؟' &&
+      b1q('b1-r16', 1).key === 'الثمار سامة' &&
+      b1q('b1-r16', 1).options.includes(b1q('b1-r16', 1).key) &&
+      b1Texts['b1-r16'].body.includes('seine Früchte sind rot, aber giftig'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
