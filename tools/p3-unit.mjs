@@ -1068,6 +1068,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r14', 1).key === 'إلى الخلف' &&
       b1q('b1-r14', 1).options.includes(b1q('b1-r14', 1).key) &&
       b1Texts['b1-r14'].body.includes('Das grüne Schild zum Notausgang zeigt nach hinten'));
+  t('Corpus B1 b1-r15 has 237 measured words and no unknown B1 tokens',
+    b1Texts['b1-r15'].title === 'Einkaufen und kochen' &&
+      b1Texts['b1-r15'].body.trim().split(/\s+/).length === 237 &&
+      known.coverage(b1Known, b1Texts['b1-r15'].body).unknown.length === 0);
+  t('Corpus B1 b1-r15 explains regional food words and keeps the leftovers consistent',
+    b1Texts['b1-r15'].body.includes('Karotten, die man auch Möhren nennt') &&
+      b1Texts['b1-r15'].body.includes('stelle die Pfanne mit dem Poulet danach in den Backofen') &&
+      b1Texts['b1-r15'].body.includes('Der Erdapfel aus dem eigenen Garten ist kleiner, schmeckt aber besser') &&
+      b1Texts['b1-r15'].body.includes('Den ganzen Rest friere ich für Montag ein, damit ich dann nicht kochen muss') &&
+      !b1Texts['b1-r15'].body.includes('essen wir zusammen den ganzen Rest und ich friere einen Teil ein'));
+  t('Corpus B1 b1-r15 replacement-purchase question matches the chicken',
+    b1q('b1-r15', 0).prompt === 'ماذا اشترى بدل اللحم المفروم؟' &&
+      b1q('b1-r15', 0).key === 'دجاجًا' &&
+      b1q('b1-r15', 0).options.includes(b1q('b1-r15', 0).key) &&
+      b1Texts['b1-r15'].body.includes('kein Hackfleisch mehr, also kaufe ich Poulet'));
+  t('Corpus B1 b1-r15 tip question names the snack bar and matches no tip',
+    b1q('b1-r15', 1).prompt === 'كم إكرامية ترك في محل الوجبات الخفيفة؟' &&
+      b1q('b1-r15', 1).key === 'لا شيء' &&
+      b1q('b1-r15', 1).options.includes(b1q('b1-r15', 1).key) &&
+      b1Texts['b1-r15'].body.includes('Im Imbiss an der Ecke') &&
+      b1Texts['b1-r15'].body.includes('gebe kein Trinkgeld'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
