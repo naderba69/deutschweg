@@ -1109,6 +1109,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r16', 1).key === 'الثمار سامة' &&
       b1q('b1-r16', 1).options.includes(b1q('b1-r16', 1).key) &&
       b1Texts['b1-r16'].body.includes('seine Früchte sind rot, aber giftig'));
+  t('Corpus B1 b1-r17 has 238 measured words and no unknown B1 tokens',
+    b1Texts['b1-r17'].title === 'Am Bankschalter' &&
+      b1Texts['b1-r17'].body.trim().split(/\s+/).length === 238 &&
+      known.coverage(b1Known, b1Texts['b1-r17'].body).unknown.length === 0);
+  t('Corpus B1 b1-r17 distinguishes regional ATM terms, the card, and the branch visit',
+    b1Texts['b1-r17'].body.includes('In der Schweiz heißt der Geldautomat Bancomat') &&
+      b1Texts['b1-r17'].body.includes('ein österreichischer Geldautomat heißt Bankomat') &&
+      b1Texts['b1-r17'].body.includes('Meine Bank nennt die EC-Karte offiziell eine moderne Chipkarte') &&
+      b1Texts['b1-r17'].body.includes('prüfe ich zuerst online, was fehlt') &&
+      b1Texts['b1-r17'].body.includes('wenn ich dort wirklich etwas abgeben muss'));
+  t('Corpus B1 b1-r17 cause question matches the old defective card',
+    b1q('b1-r17', 0).prompt === 'ما سبب المشكلة في النهاية؟' &&
+      b1q('b1-r17', 0).key === 'البطاقة القديمة المعطوبة' &&
+      b1q('b1-r17', 0).options.includes(b1q('b1-r17', 0).key) &&
+      b1Texts['b1-r17'].body.includes('die alte, defekte Karte als Ursache'));
+  t('Corpus B1 b1-r17 Friday question matches the new card',
+    b1q('b1-r17', 1).prompt === 'ما الذي ينتظره الراوي حتى الجمعة؟' &&
+      b1q('b1-r17', 1).key === 'بطاقة جديدة' &&
+      b1q('b1-r17', 1).options.includes(b1q('b1-r17', 1).key) &&
+      b1Texts['b1-r17'].body.includes('Spätestens am Freitag soll die neue da sein'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
