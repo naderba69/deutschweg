@@ -1250,6 +1250,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r23', 1).options.includes(b1q('b1-r23', 1).key) &&
       b1Texts['b1-r23'].body.includes('keine Erlaubnis') &&
       b1Texts['b1-r23'].body.includes('Der Bau war also illegal'));
+  t('Corpus B1 b1-r24 has 261 measured words and no unknown B1 tokens',
+    b1Texts['b1-r24'].title === 'Das große Spiel' &&
+      b1Texts['b1-r24'].body.trim().split(/\s+/).length === 261 &&
+      known.coverage(b1Known, b1Texts['b1-r24'].body).unknown.length === 0);
+  t('Corpus B1 b1-r24 keeps the match, fan reaction, and training coherent',
+    b1Texts['b1-r24'].body.includes('keine Mannschaft nutzte sie') &&
+      b1Texts['b1-r24'].body.includes('traf während des Spiels schwierige Entscheidungen') &&
+      b1Texts['b1-r24'].body.includes('Niemand feierte einen Sieg') &&
+      b1Texts['b1-r24'].body.includes('Dann klatschten die treuen Fans') &&
+      b1Texts['b1-r24'].body.includes('ruhige Gespräche und weiteres Üben seien besser als Schimpfen'));
+  t('Corpus B1 b1-r24 result question matches the draw',
+    b1q('b1-r24', 0).prompt === 'بأي نتيجة انتهت المباراة؟' &&
+      b1q('b1-r24', 0).key === 'بالتعادل' &&
+      b1q('b1-r24', 0).options.includes(b1q('b1-r24', 0).key) &&
+      b1Texts['b1-r24'].body.includes('Ergebnis bis zum Schluss unentschieden'));
+  t('Corpus B1 b1-r24 support question matches the coach statement',
+    b1q('b1-r24', 1).prompt === 'كيف وصف المدرّب دعم الجهات السياسية للرياضة؟' &&
+      b1q('b1-r24', 1).key === 'بأنه ضعيف' &&
+      b1q('b1-r24', 1).options.includes(b1q('b1-r24', 1).key) &&
+      b1Texts['b1-r24'].body.includes('von der Politik aber nur schwach unterstützt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
