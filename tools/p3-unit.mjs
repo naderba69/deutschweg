@@ -1149,6 +1149,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r18', 1).key === 'زميل مبدع' &&
       b1q('b1-r18', 1).options.includes(b1q('b1-r18', 1).key) &&
       b1Texts['b1-r18'].body.includes('Die Fotos für den letzten Bericht macht ein junger Kollege, weil er kreativ ist'));
+  t('Corpus B1 b1-r19 has 242 measured words and no unknown B1 tokens',
+    b1Texts['b1-r19'].title === 'Brief an die Versicherung' &&
+      b1Texts['b1-r19'].body.trim().split(/\s+/).length === 242 &&
+      known.coverage(b1Known, b1Texts['b1-r19'].body).unknown.length === 0);
+  t('Corpus B1 b1-r19 keeps the insurance letter and follow-up coherent',
+    b1Texts['b1-r19'].body.includes('weil sich meine Daten geändert haben') &&
+      b1Texts['b1-r19'].body.includes('Ihr Büro hat dafür wahrscheinlich alte Angaben eingesetzt') &&
+      b1Texts['b1-r19'].body.includes('dass meine neuen Daten aufgenommen werden') &&
+      b1Texts['b1-r19'].body.includes('welche sind für die Entsorgung bestimmt') &&
+      !b1Texts['b1-r19'].body.includes('ein Grundstück bekommen'));
+  t('Corpus B1 b1-r19 reason-for-writing question matches the changed data',
+    b1q('b1-r19', 0).prompt === 'لماذا كتب إلى شركة التأمين؟' &&
+      b1q('b1-r19', 0).key === 'تغيّرت بياناته' &&
+      b1q('b1-r19', 0).options.includes(b1q('b1-r19', 0).key) &&
+      b1Texts['b1-r19'].body.includes('weil sich meine Daten geändert haben'));
+  t('Corpus B1 b1-r19 high-amount question matches the old-data calculation',
+    b1q('b1-r19', 1).prompt === 'لماذا كان المبلغ مرتفعًا؟' &&
+      b1q('b1-r19', 1).key === 'استُخدمت بيانات قديمة' &&
+      b1q('b1-r19', 1).options.includes(b1q('b1-r19', 1).key) &&
+      b1Texts['b1-r19'].body.includes('hatte den Beitrag mit alten Daten berechnet'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
