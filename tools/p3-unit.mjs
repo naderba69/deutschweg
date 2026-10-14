@@ -1028,6 +1028,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r12', 1).key === 'شهادات' &&
       b1q('b1-r12', 1).options.includes(b1q('b1-r12', 1).key) &&
       b1Texts['b1-r12'].body.includes('Mappe mit Zeugnissen'));
+  t('Corpus B1 b1-r13 has 233 measured words and no unknown B1 tokens',
+    b1Texts['b1-r13'].title === 'Beim Arzt und danach' &&
+      b1Texts['b1-r13'].body.trim().split(/\s+/).length === 233 &&
+      known.coverage(b1Known, b1Texts['b1-r13'].body).unknown.length === 0);
+  t('Corpus B1 b1-r13 uses natural phrasing for symptoms, prevention, and the daily routine',
+    b1Texts['b1-r13'].body.includes('dann tun mein Knie und die Muskeln im ganzen Rücken sehr weh') &&
+      b1Texts['b1-r13'].body.includes('Im Herbst bekomme ich beim Arzt eine Spritze gegen die Grippe') &&
+      b1Texts['b1-r13'].body.includes('Wenn ich putze, läuft mir die Nase, denn Staub in der Wohnung ist ein echtes Problem') &&
+      b1Texts['b1-r13'].body.includes('Während einer Schwangerschaft sind regelmäßige Kontrollen beim Arzt wichtig') &&
+      b1Texts['b1-r13'].body.includes('wenn ich mich gut fühle') &&
+      b1Texts['b1-r13'].body.includes('inzwischen ein fester Teil meines Tages'));
+  t('Corpus B1 b1-r13 first-symptom question points to the explicitly named cold symptom',
+    b1q('b1-r13', 0).prompt === 'ما أول عرض يذكره الراوي؟' &&
+      b1q('b1-r13', 0).key === 'رشح' &&
+      b1q('b1-r13', 0).options.includes(b1q('b1-r13', 0).key) &&
+      b1Texts['b1-r13'].body.includes('Zuerst ist es nur ein Schnupfen'));
+  t('Corpus B1 b1-r13 prescription question matches the painkiller',
+    b1q('b1-r13', 1).prompt === 'ماذا وصف الطبيب؟' &&
+      b1q('b1-r13', 1).key === 'مسكّنًا' &&
+      b1q('b1-r13', 1).options.includes(b1q('b1-r13', 1).key) &&
+      b1Texts['b1-r13'].body.includes('verschreibt ein Schmerzmittel'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
