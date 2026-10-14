@@ -281,7 +281,7 @@ Das habe ich selbst erlebt.|عشت هذا بنفسي
 Aus eigener Erfahrung …|من تجربتي
 Man sollte weniger wegwerfen.|ينبغي أن نرمِ أقل
 Es lohnt sich, das zu versuchen.|يستحق المحاولة
-Ich bin am Überlegen.|أنا أفكّر في الأمر
+Jedenfalls ist das wichtig.|على كل حال هذا مهم
 Kurz gesagt, …|باختصار
 Mit anderen Worten, …|بعبارة أخرى
 Das heißt, …|هذا يعني

@@ -1209,6 +1209,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r21', 1).key === 'لا يكفي' &&
       b1q('b1-r21', 1).options.includes(b1q('b1-r21', 1).key) &&
       b1Texts['b1-r21'].body.includes('Verbote allein reichen jedoch nicht'));
+  t('Corpus B1 b1-r22 has 253 measured words and no unknown B1 tokens',
+    b1Texts['b1-r22'].title === 'Ausbildung in Zahlen' &&
+      b1Texts['b1-r22'].body.trim().split(/\s+/).length === 253 &&
+      known.coverage(b1Known, b1Texts['b1-r22'].body).unknown.length === 0);
+  t('Corpus B1 b1-r22 keeps training, practice, and course evaluation coherent',
+    b1Texts['b1-r22'].body.includes('ob der Beruf und die tägliche Arbeit zu ihm passen') &&
+      b1Texts['b1-r22'].body.includes('Wenn Betreuer fehlen, behindert das die Ausbildung') &&
+      b1Texts['b1-r22'].body.includes('Klar ist jedenfalls: Ein Abschluss ohne Praxis hilft später wenig') &&
+      b1Texts['b1-r22'].body.includes('welche Themen verstanden waren und wo Fragen blieben') &&
+      b1Texts['b1-r22'].body.includes('Eine lange, langweilige Wiederholung ist nicht nötig'));
+  t('Corpus B1 b1-r22 activity-to-profession question matches the first research task',
+    b1q('b1-r22', 0).prompt === 'ما الذي يجب تحديده أولًا؟' &&
+      b1q('b1-r22', 0).key === 'أي نشاط يناسب أي مهنة' &&
+      b1q('b1-r22', 0).options.includes(b1q('b1-r22', 0).key) &&
+      b1Texts['b1-r22'].body.includes('welche Tätigkeit zu welchem Beruf passt'));
+  t('Corpus B1 b1-r22 weekly-writing question matches the short report',
+    b1q('b1-r22', 1).prompt === 'ماذا يكتبون كل أسبوع؟' &&
+      b1q('b1-r22', 1).key === 'تقرير قصير' &&
+      b1q('b1-r22', 1).options.includes(b1q('b1-r22', 1).key) &&
+      b1Texts['b1-r22'].body.includes('jede Woche einen kurzen Bericht'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
