@@ -1290,6 +1290,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r25', 1).key === 'الولّاعة' &&
       b1q('b1-r25', 1).options.includes(b1q('b1-r25', 1).key) &&
       b1Texts['b1-r25'].body.includes('Feuerzeug, aber unseres hatten wir zu Hause vergessen'));
+  t('Corpus B1 b1-r26 has 259 measured words and no unknown B1 tokens',
+    b1Texts['b1-r26'].title === 'Der Dienstag' &&
+      b1Texts['b1-r26'].body.trim().split(/\s+/).length === 259 &&
+      known.coverage(b1Known, b1Texts['b1-r26'].body).unknown.length === 0);
+  t('Corpus B1 b1-r26 keeps waste collection, the leak, repair, and chore plan coherent',
+    b1Texts['b1-r26'].body.includes('Müllabfuhr jeden Dienstag früh') &&
+      b1Texts['b1-r26'].body.includes('Unter der Spüle läuft Wasser aus einem Rohr') &&
+      b1Texts['b1-r26'].body.includes('Der Handwerker ersetzt das Rohr') &&
+      b1Texts['b1-r26'].body.includes('schreiben wir einen neuen Plan für den Haushalt'));
+  t('Corpus B1 b1-r26 collection-day question matches the early Tuesday pickup',
+    b1q('b1-r26', 0).prompt === 'في أي يوم تأتي شاحنة جمع النفايات مبكرًا؟' &&
+      b1q('b1-r26', 0).key === 'الثلاثاء' &&
+      b1q('b1-r26', 0).options.includes(b1q('b1-r26', 0).key) &&
+      b1Texts['b1-r26'].body.includes('Müllabfuhr jeden Dienstag früh'));
+  t('Corpus B1 b1-r26 repair question matches the pipe under the sink',
+    b1q('b1-r26', 1).prompt === 'ما الذي استبدله فنّي الصيانة؟' &&
+      b1q('b1-r26', 1).key === 'الأنبوب تحت المغسلة' &&
+      b1q('b1-r26', 1).options.includes(b1q('b1-r26', 1).key) &&
+      b1Texts['b1-r26'].body.includes('Unter der Spüle läuft Wasser aus einem Rohr') &&
+      b1Texts['b1-r26'].body.includes('Der Handwerker ersetzt das Rohr'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
