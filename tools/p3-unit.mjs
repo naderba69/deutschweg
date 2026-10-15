@@ -1451,6 +1451,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r33', 1).key === 'تخضع للعلاج وتأخذ فقط الدواء الذي يختاره الطبيب' &&
       b1q('b1-r33', 1).options.includes(b1q('b1-r33', 1).key) &&
       b1Texts['b1-r33'].body.includes('Nun macht sie eine Therapie und nimmt nur noch die Medizin, die der Arzt für sie auswählt'));
+  t('Corpus B1 b1-r34 has 311 measured words and no unknown B1 tokens',
+    b1Texts['b1-r34'].title === 'Industrie und Institut' &&
+      b1Texts['b1-r34'].body.trim().split(/\s+/).length === 311 &&
+      known.coverage(b1Known, b1Texts['b1-r34'].body).unknown.length === 0);
+  t('Corpus B1 b1-r34 keeps the institute course, factory project, office work, and next step coherent',
+    b1Texts['b1-r34'].body.includes('besuche am Institut einen Kurs über moderne Produktion') &&
+      b1Texts['b1-r34'].body.includes('ein neues Modell für eine Maschine entwickelt') &&
+      b1Texts['b1-r34'].body.includes('Die Dateien liegen auf einem gemeinsamen Laufwerk') &&
+      b1Texts['b1-r34'].body.includes('Nach dem Praktikum bekam ich einen Vertrag'));
+  t('Corpus B1 b1-r34 success question matches the supervisor’s communication factor',
+    b1q('b1-r34', 0).prompt === 'ما العامل الذي يقول المشرف إنه يحسم نجاح المشروع؟' &&
+      b1q('b1-r34', 0).key === 'التواصل الجيد' &&
+      b1q('b1-r34', 0).options.includes(b1q('b1-r34', 0).key) &&
+      b1Texts['b1-r34'].body.includes('gute Kommunikation über den Erfolg des Projekts entscheidet'));
+  t('Corpus B1 b1-r34 internship question matches the six-week factory placement guaranteed by the contract',
+    b1q('b1-r34', 1).prompt === 'ما الذي يضمنه العقد لكل طالب في الدورة؟' &&
+      b1q('b1-r34', 1).key === 'تدريبًا عمليًا لمدة ستة أسابيع في المصنع' &&
+      b1q('b1-r34', 1).options.includes(b1q('b1-r34', 1).key) &&
+      b1Texts['b1-r34'].body.includes('garantiert jedem Studenten im Kurs ein Praktikum für sechs Wochen in der Fabrik'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
