@@ -1991,6 +1991,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a1', 1).key === 'إلى رقابة' &&
       b2q('b2-a1', 1).options.includes(b2q('b2-a1', 1).key) &&
       b2Articles['b2-a1'].body.includes('Dann wird aus der versprochenen Freiheit leicht eine neue Form der Kontrolle'));
+  t('Corpus B2 b2-a2 has 399 measured words and no unknown B2 tokens',
+    b2Articles['b2-a2'].title === 'الإيجار' &&
+      b2Articles['b2-a2'].body.trim().split(/\s+/).length === 399 &&
+      known.coverage(b2Known, b2Articles['b2-a2'].body).unknown.length === 0);
+  t('Corpus B2 b2-a2 separates measured rent changes, scope, possible explanations, personal cases, and policy evidence coherently',
+    b2Articles['b2-a2'].body.includes('Der Vergleich zeigt einen Anstieg') &&
+      b2Articles['b2-a2'].body.includes('Neue Verträge sagen wenig darüber aus') &&
+      b2Articles['b2-a2'].body.includes('Unsere beiden Erfahrungen widersprechen dem Bericht nicht') &&
+      b2Articles['b2-a2'].body.includes('Für politische Entscheidungen reicht die Meldung allein ebenfalls nicht'));
+  t('Corpus B2 b2-a2 comparison question distinguishes the increase from its cause',
+    b2q('b2-a2', 0).prompt === 'ماذا تُظهر المقارنة بالعام السابق؟' &&
+      b2q('b2-a2', 0).key === 'الارتفاع، لا سببه' &&
+      b2q('b2-a2', 0).options.includes(b2q('b2-a2', 0).key) &&
+      b2Articles['b2-a2'].body.includes('nicht automatisch, warum die Wohnungen teurer geworden sind'));
+  t('Corpus B2 b2-a2 report-cause question matches the explicit evidence limit',
+    b2q('b2-a2', 1).prompt === 'هل يذكر التقرير سبب الارتفاع؟' &&
+      b2q('b2-a2', 1).key === 'لا' &&
+      b2q('b2-a2', 1).options.includes(b2q('b2-a2', 1).key) &&
+      b2Articles['b2-a2'].body.includes('der Bericht untersucht sie nicht'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
