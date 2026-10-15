@@ -1587,6 +1587,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r40', 1).key === 'مترجمة' &&
       b1q('b1-r40', 1).options.includes(b1q('b1-r40', 1).key) &&
       b1Texts['b1-r40'].body.includes('seine Kollegin, eine Übersetzerin, seine Antworten live'));
+  t('Corpus B1 b1-r41 has 333 measured words and no unknown B1 tokens',
+    b1Texts['b1-r41'].title === 'Arbeit gesucht' &&
+      b1Texts['b1-r41'].body.trim().split(/\s+/).length === 333 &&
+      known.coverage(b1Known, b1Texts['b1-r41'].body).unknown.length === 0);
+  t('Corpus B1 b1-r41 keeps the job search, company, application, interview, contract, and summer work coherent',
+    b1Texts['b1-r41'].body.includes('Eine Firma für Möbel sucht eine Aushilfe für den Sommer') &&
+      b1Texts['b1-r41'].body.includes('Nachdem ich zwei ausgewählt habe') &&
+      b1Texts['b1-r41'].body.includes('Eine Anwältin prüft ihn') &&
+      b1Texts['b1-r41'].body.includes('Im Sommer beginne ich die Arbeit im Büro am Markt'));
+  t('Corpus B1 b1-r41 advertisement question matches the summer assistant position',
+    b1q('b1-r41', 0).prompt === 'ما المطلوب في الإعلان؟' &&
+      b1q('b1-r41', 0).key === 'مساعدة صيفية' &&
+      b1q('b1-r41', 0).options.includes(b1q('b1-r41', 0).key) &&
+      b1Texts['b1-r41'].body.includes('sucht eine Aushilfe für den Sommer'));
+  t('Corpus B1 b1-r41 contract question matches the lawyer’s review',
+    b1q('b1-r41', 1).prompt === 'من يفحص العقد؟' &&
+      b1q('b1-r41', 1).key === 'المحامية' &&
+      b1q('b1-r41', 1).options.includes(b1q('b1-r41', 1).key) &&
+      b1Texts['b1-r41'].body.includes('Eine Anwältin prüft ihn, bevor ich ihn annehme'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
