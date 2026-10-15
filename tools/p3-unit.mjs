@@ -1949,6 +1949,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r59', 1).key === 'في منتدى الصحيفة' &&
       b1q('b1-r59', 1).options.includes(b1q('b1-r59', 1).key) &&
       b1Texts['b1-r59'].body.includes('Neuigkeit über die Ausstellung steht seit Montag im Forum der Zeitung'));
+  t('Corpus B1 b1-r60 has 466 measured words and keeps its single inherited B1 unknown above 98 percent',
+    b1Texts['b1-r60'].title === 'Auf dem Amt' &&
+      b1Texts['b1-r60'].body.trim().split(/\s+/).length === 466 &&
+      known.coverage(b1Known, b1Texts['b1-r60'].body).unknown.join(' ') === 'rückseite' &&
+      known.coverage(b1Known, b1Texts['b1-r60'].body).ratio >= 0.98);
+  t('Corpus B1 b1-r60 keeps the newcomer family, three appointments, municipal services, and document lesson coherent',
+    b1Texts['b1-r60'].body.includes('Als Neuzuzüger') &&
+      b1Texts['b1-r60'].body.includes('einen Termin am Montag') &&
+      b1Texts['b1-r60'].body.includes('Am Donnerstag komme ich wegen der Schule') &&
+      b1Texts['b1-r60'].body.includes('Insgesamt war ich also dreimal auf dem Amt'));
+  t('Corpus B1 b1-r60 advance-notice question matches making an appointment',
+    b1q('b1-r60', 0).prompt === 'ماذا ينبغي أن يفعل المرء قبل الزيارة؟' &&
+      b1q('b1-r60', 0).key === 'أن يُعلن عنها مسبقًا' &&
+      b1q('b1-r60', 0).options.includes(b1q('b1-r60', 0).key) &&
+      b1Texts['b1-r60'].body.includes('Vor dem ersten Besuch soll man einen Termin ankündigen'));
+  t('Corpus B1 b1-r60 organization question matches the half-hour saving',
+    b1q('b1-r60', 1).prompt === 'ما الذي يوفر نصف ساعة عند الشبّاك؟' &&
+      b1q('b1-r60', 1).key === 'ترتيب الأوراق في البيت' &&
+      b1q('b1-r60', 1).options.includes(b1q('b1-r60', 1).key) &&
+      b1Texts['b1-r60'].body.includes('Wer seine Papiere schon zu Hause ordnet, spart am Schalter leicht eine halbe Stunde'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
