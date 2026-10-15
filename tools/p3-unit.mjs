@@ -1911,6 +1911,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r57', 1).key === 'أن يقدّم مسرحية' &&
       b1q('b1-r57', 1).options.includes(b1q('b1-r57', 1).key) &&
       b1Texts['b1-r57'].body.includes('ein kleines Stück aufführen'));
+  t('Corpus B1 b1-r58 has 432 measured words and no unknown B1 tokens',
+    b1Texts['b1-r58'].title === 'Alt und jung' &&
+      b1Texts['b1-r58'].body.trim().split(/\s+/).length === 432 &&
+      known.coverage(b1Known, b1Texts['b1-r58'].body).unknown.length === 0);
+  t('Corpus B1 b1-r58 keeps intergenerational living, reciprocal help, house rules, research, and the shared plan coherent',
+    b1Texts['b1-r58'].body.includes('Haus der Generationen') &&
+      b1Texts['b1-r58'].body.includes('Die Jungen lernen von den Alten') &&
+      b1Texts['b1-r58'].body.includes('für alle dieselbe Regel') &&
+      b1Texts['b1-r58'].body.includes('gemeinsamen Plan an der Tür'));
+  t('Corpus B1 b1-r58 grandmother question is directly supported by the senior-home opening',
+    b1q('b1-r58', 0).prompt === 'أين تسكن الجدة؟' &&
+      b1q('b1-r58', 0).key === 'في دار المسنّين' &&
+      b1q('b1-r58', 0).options.includes(b1q('b1-r58', 0).key) &&
+      b1Texts['b1-r58'].body.startsWith('Meine Großmutter wohnt seit einem Monat im neuen Altenheim'));
+  t('Corpus B1 b1-r58 value question is directly supported by the grandmother quote',
+    b1q('b1-r58', 1).prompt === 'ما الذي لا قيمة له وحده؟' &&
+      b1q('b1-r58', 1).key === 'المال' &&
+      b1q('b1-r58', 1).options.includes(b1q('b1-r58', 1).key) &&
+      b1Texts['b1-r58'].body.includes('Geld allein ist wertlos'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
