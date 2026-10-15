@@ -1568,6 +1568,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r39', 1).key === 'في العشب الطويل' &&
       b1q('b1-r39', 1).options.includes(b1q('b1-r39', 1).key) &&
       b1Texts['b1-r39'].body.includes('verschwindet sie sofort im hohen Gras'));
+  t('Corpus B1 b1-r40 has 334 measured words and no unknown B1 tokens',
+    b1Texts['b1-r40'].title === 'Das Radio' &&
+      b1Texts['b1-r40'].body.trim().split(/\s+/).length === 334 &&
+      known.coverage(b1Known, b1Texts['b1-r40'].body).unknown.length === 0);
+  t('Corpus B1 b1-r40 keeps the language routine, city programme, audience, newsroom cooperation, and follow-up coherent',
+    b1Texts['b1-r40'].body.includes('Ich höre jeden Abend eine halbe Stunde') &&
+      b1Texts['b1-r40'].body.includes('Eine Reporterin interviewt einen Spezialisten für den Bau') &&
+      b1Texts['b1-r40'].body.includes('Der Sender arbeitet bei dieser Sendung mit einer Zeitung zusammen') &&
+      b1Texts['b1-r40'].body.includes('Am Abend höre ich die Sendung noch einmal'));
+  t('Corpus B1 b1-r40 medium question matches the narrator using radio most',
+    b1q('b1-r40', 0).prompt === 'ما الوسيلة التي يستخدمها أكثر؟' &&
+      b1q('b1-r40', 0).key === 'الراديو' &&
+      b1q('b1-r40', 0).options.includes(b1q('b1-r40', 0).key) &&
+      b1Texts['b1-r40'].body.includes('Das Medium, das ich am meisten nutze, ist das Radio'));
+  t('Corpus B1 b1-r40 live-translation question matches the specialist’s translator colleague',
+    b1q('b1-r40', 1).prompt === 'من تترجم مباشرة؟' &&
+      b1q('b1-r40', 1).key === 'مترجمة' &&
+      b1q('b1-r40', 1).options.includes(b1q('b1-r40', 1).key) &&
+      b1Texts['b1-r40'].body.includes('seine Kollegin, eine Übersetzerin, seine Antworten live'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
