@@ -1625,6 +1625,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r42', 1).key === 'حكمت عليهما' &&
       b1q('b1-r42', 1).options.includes(b1q('b1-r42', 1).key) &&
       b1Texts['b1-r42'].body.includes('Nach dem Verfahren konnte das Gericht beide verurteilen'));
+  t('Corpus B1 b1-r43 has 336 measured words and no unknown B1 tokens',
+    b1Texts['b1-r43'].title === 'Alt werden in der Stadt' &&
+      b1Texts['b1-r43'].body.trim().split(/\s+/).length === 336 &&
+      known.coverage(b1Known, b1Texts['b1-r43'].body).unknown.length === 0);
+  t('Corpus B1 b1-r43 keeps the move, support network, autonomy, visit routine, and continued connection coherent',
+    b1Texts['b1-r43'].body.includes('Die Treppe in ihrem alten Haus war zu steil') &&
+      b1Texts['b1-r43'].body.includes('sie entscheidet selbst über ihren Tag') &&
+      b1Texts['b1-r43'].body.includes('Jeden Morgen geht sie zehn Minuten an die frische Luft') &&
+      b1Texts['b1-r43'].body.includes('bleibt jedoch mit ihren Nachbarn'));
+  t('Corpus B1 b1-r43 move question matches the steep stairs in the old house',
+    b1q('b1-r43', 0).prompt === 'لماذا انتقلت الجدة من بيتها القديم؟' &&
+      b1q('b1-r43', 0).key === 'لأن الدرج كان شديد الانحدار' &&
+      b1q('b1-r43', 0).options.includes(b1q('b1-r43', 0).key) &&
+      b1Texts['b1-r43'].body.includes('Die Treppe in ihrem alten Haus war zu steil'));
+  t('Corpus B1 b1-r43 acceptance question matches prolonged reflection helping more than advice',
+    b1q('b1-r43', 1).prompt === 'ما الذي ساعدها على قبول الانتقال أكثر من أي نصيحة؟' &&
+      b1q('b1-r43', 1).key === 'التفكير الطويل في التغيير' &&
+      b1q('b1-r43', 1).options.includes(b1q('b1-r43', 1).key) &&
+      b1Texts['b1-r43'].body.includes('dachte sie lange über die große Änderung ihres Lebens nach') &&
+      b1Texts['b1-r43'].body.includes('Dieses Nachdenken half ihr mehr als jeder Ratschlag'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
