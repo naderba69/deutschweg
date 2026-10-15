@@ -1702,6 +1702,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r46', 1).key === 'لأنه يحتفظ بالنظرة الشاملة' &&
       b1q('b1-r46', 1).options.includes(b1q('b1-r46', 1).key) &&
       b1Texts['b1-r46'].body.includes('weil ich dabei den vollen Überblick behalte'));
+  t('Corpus B1 b1-r47 has 319 measured words and no unknown B1 tokens',
+    b1Texts['b1-r47'].title === 'Die neue Stelle' &&
+      b1Texts['b1-r47'].body.trim().split(/\s+/).length === 319 &&
+      known.coverage(b1Known, b1Texts['b1-r47'].body).unknown.length === 0);
+  t('Corpus B1 b1-r47 keeps expansion, works-council review, conditions, training, and the narrator’s first week coherent',
+    b1Texts['b1-r47'].body.includes('will im Herbst zehn neue Leute einstellen') &&
+      b1Texts['b1-r47'].body.includes('spricht die Firma mit dem Betriebsrat über die Personalie') &&
+      b1Texts['b1-r47'].body.includes('Am folgenden Montag beginnt die Schulung') &&
+      b1Texts['b1-r47'].body.includes('In einem Monat möchte ich mehr Verantwortung tragen'));
+  t('Corpus B1 b1-r47 hiring question matches ten new employees in autumn',
+    b1q('b1-r47', 0).prompt === 'كم شخصًا ستعيّن الشركة في الخريف؟' &&
+      b1q('b1-r47', 0).key === 'عشرة' &&
+      b1q('b1-r47', 0).options.includes(b1q('b1-r47', 0).key) &&
+      b1Texts['b1-r47'].body.includes('will im Herbst zehn neue Leute einstellen'));
+  t('Corpus B1 b1-r47 training question matches the following Monday',
+    b1q('b1-r47', 1).prompt === 'متى تبدأ الدورة؟' &&
+      b1q('b1-r47', 1).key === 'الإثنين التالي' &&
+      b1q('b1-r47', 1).options.includes(b1q('b1-r47', 1).key) &&
+      b1Texts['b1-r47'].body.includes('Am folgenden Montag beginnt die Schulung'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
