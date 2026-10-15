@@ -1759,6 +1759,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r49', 1).key === 'الوقت' &&
       b1q('b1-r49', 1).options.includes(b1q('b1-r49', 1).key) &&
       b1Texts['b1-r49'].body.includes('nicht die Grammatik, sondern die Zeit'));
+  t('Corpus B1 b1-r50 has 355 measured words and no unknown B1 tokens',
+    b1Texts['b1-r50'].title === 'Nach dem Streit' &&
+      b1Texts['b1-r50'].body.trim().split(/\s+/).length === 355 &&
+      known.coverage(b1Known, b1Texts['b1-r50'].body).unknown.length === 0);
+  t('Corpus B1 b1-r50 keeps the purchase conflict, cooling-off period, apologies, money plan, and reconciliation coherent',
+    b1Texts['b1-r50'].body.includes('von unserem gemeinsamen Geld einen neuen Lautsprecher gekauft') &&
+      b1Texts['b1-r50'].body.includes('bis zum nächsten Tag zu warten') &&
+      b1Texts['b1-r50'].body.includes('Dann konnten wir einander verzeihen') &&
+      b1Texts['b1-r50'].body.includes('Größere Einkäufe besprechen wir'));
+  t('Corpus B1 b1-r50 forgiveness question matches the partners forgiving each other after apologising',
+    b1q('b1-r50', 0).prompt === 'ماذا يفعل الشريكان بعد أن يعتذرا؟' &&
+      b1q('b1-r50', 0).key === 'ينبغي أن يسامح كلٌّ الآخر' &&
+      b1q('b1-r50', 0).options.includes(b1q('b1-r50', 0).key) &&
+      b1Texts['b1-r50'].body.includes('Dann konnten wir einander verzeihen'));
+  t('Corpus B1 b1-r50 kiss question matches acceptance expressed more strongly than words',
+    b1q('b1-r50', 1).prompt === 'ماذا تعني القُبلة بحسب النص؟' &&
+      b1q('b1-r50', 1).key === 'أكثر من ألف كلمة' &&
+      b1q('b1-r50', 1).options.includes(b1q('b1-r50', 1).key) &&
+      b1Texts['b1-r50'].body.includes('sagte der Kuss mehr als tausend Wörter'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
