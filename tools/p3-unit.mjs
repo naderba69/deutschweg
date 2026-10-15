@@ -1778,6 +1778,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r50', 1).key === 'أكثر من ألف كلمة' &&
       b1q('b1-r50', 1).options.includes(b1q('b1-r50', 1).key) &&
       b1Texts['b1-r50'].body.includes('sagte der Kuss mehr als tausend Wörter'));
+  t('Corpus B1 b1-r51 has 344 measured words and only its preserved Anwohner token unknown at B1',
+    b1Texts['b1-r51'].title === 'Die Nachbarin verschwindet' &&
+      b1Texts['b1-r51'].body.trim().split(/\s+/).length === 344 &&
+      JSON.stringify(known.coverage(b1Known, b1Texts['b1-r51'].body).unknown) === JSON.stringify(['anwohner']));
+  t('Corpus B1 b1-r51 keeps concern, the earlier burglary, separation support, safety notice, letter, and contact coherent',
+    b1Texts['b1-r51'].body.includes('Seit Montag ist unsere Nachbarin nicht mehr zu Hause') &&
+      b1Texts['b1-r51'].body.includes('glaubte die Polizei nicht, dass der alte Fall') &&
+      b1Texts['b1-r51'].body.includes('Die Polizei machte nicht öffentlich, wo die Familie war') &&
+      b1Texts['b1-r51'].body.includes('Nach einer Woche kam ein kurzer Brief'));
+  t('Corpus B1 b1-r51 police question matches officers asking residents about the missing neighbour',
+    b1q('b1-r51', 0).prompt === 'عن من تسأل الشرطة سكان المبنى؟' &&
+      b1q('b1-r51', 0).key === 'الجارة' &&
+      b1q('b1-r51', 0).options.includes(b1q('b1-r51', 0).key) &&
+      b1Texts['b1-r51'].body.includes('fragte im Haus nach ihr'));
+  t('Corpus B1 b1-r51 location question matches the new home at the edge of town',
+    b1q('b1-r51', 1).prompt === 'أين تسكن الجارة الآن؟' &&
+      b1q('b1-r51', 1).key === 'عند أطراف المدينة' &&
+      b1q('b1-r51', 1).options.includes(b1q('b1-r51', 1).key) &&
+      b1Texts['b1-r51'].body.includes('am Rand der Stadt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
