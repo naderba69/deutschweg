@@ -1549,6 +1549,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r38', 1).key === 'امرأة من القرية' &&
       b1q('b1-r38', 1).options.includes(b1q('b1-r38', 1).key) &&
       b1Texts['b1-r38'].body.includes('Eine alte Frau aus dem Dorf liest historische Briefe'));
+  t('Corpus B1 b1-r39 has 327 measured words and no unknown B1 tokens',
+    b1Texts['b1-r39'].title === 'Tiere, Wetter und Natur' &&
+      b1Texts['b1-r39'].body.trim().split(/\s+/).length === 327 &&
+      known.coverage(b1Known, b1Texts['b1-r39'].body).unknown.length === 0);
+  t('Corpus B1 b1-r39 keeps the country stay, storm preparation, garden work, cleanup, and return coherent',
+    b1Texts['b1-r39'].body.includes('Am Wochenende fahren wir aufs Land') &&
+      b1Texts['b1-r39'].body.includes('Nach einer Katastrophe im letzten Jahr haben wir das Haus stärker gebaut') &&
+      b1Texts['b1-r39'].body.includes('Unter einem Stein liegt außerdem ein alter Zünder') &&
+      b1Texts['b1-r39'].body.includes('Im Sommer fahren wir wieder aufs Land'));
+  t('Corpus B1 b1-r39 cat question asks for quantity and matches the cat eating little each morning',
+    b1q('b1-r39', 0).prompt === 'كم تأكل القطة كل صباح؟' &&
+      b1q('b1-r39', 0).key === 'قليلًا' &&
+      b1q('b1-r39', 0).options.includes(b1q('b1-r39', 0).key) &&
+      b1Texts['b1-r39'].body.includes('Jeden Morgen will sie gefüttert werden. Sie frisst wenig'));
+  t('Corpus B1 b1-r39 snake question matches its disappearance in the tall grass',
+    b1q('b1-r39', 1).prompt === 'أين تختفي الأفعى عندما تقترب الأسرة؟' &&
+      b1q('b1-r39', 1).key === 'في العشب الطويل' &&
+      b1q('b1-r39', 1).options.includes(b1q('b1-r39', 1).key) &&
+      b1Texts['b1-r39'].body.includes('verschwindet sie sofort im hohen Gras'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
