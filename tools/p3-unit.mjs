@@ -1431,6 +1431,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r32', 1).key === 'حقيبة ظهر خفيفة فقط' &&
       b1q('b1-r32', 1).options.includes(b1q('b1-r32', 1).key) &&
       b1Texts['b1-r32'].body.includes('Ich transportiere selbst nur einen leichten Rucksack'));
+  t('Corpus B1 b1-r33 has 322 measured words and no unknown B1 tokens',
+    b1Texts['b1-r33'].title === 'Krank und wieder gesund' &&
+      b1Texts['b1-r33'].body.trim().split(/\s+/).length === 322 &&
+      known.coverage(b1Known, b1Texts['b1-r33'].body).unknown.length === 0);
+  t('Corpus B1 b1-r33 keeps the infection, emergency delay, hospital care, and recovery coherent',
+    b1Texts['b1-r33'].body.includes('Ich bekam eine Infektion mit einem Virus') &&
+      b1Texts['b1-r33'].body.includes('Wegen des Einsatzes begann mein Termin später') &&
+      b1Texts['b1-r33'].body.includes('Die Klinik verpflegt alle Patienten') &&
+      b1Texts['b1-r33'].body.includes('Meine Nachbarin hat ebenfalls mit kurzen Spaziergängen angefangen'));
+  t('Corpus B1 b1-r33 delay question matches the emergency after the traffic accident',
+    b1q('b1-r33', 0).prompt === 'لماذا بدأ موعد الراوي في المستشفى متأخرًا؟' &&
+      b1q('b1-r33', 0).key === 'بسبب حالة طوارئ بعد حادث مروري' &&
+      b1q('b1-r33', 0).options.includes(b1q('b1-r33', 0).key) &&
+      b1Texts['b1-r33'].body.includes('Nach einem schweren Verkehrsunfall') &&
+      b1Texts['b1-r33'].body.includes('Wegen des Einsatzes begann mein Termin später'));
+  t('Corpus B1 b1-r33 addiction question matches the neighbour’s therapy and controlled medicine',
+    b1q('b1-r33', 1).prompt === 'كيف تعالج الجارة إدمانها للأقراص؟' &&
+      b1q('b1-r33', 1).key === 'تخضع للعلاج وتأخذ فقط الدواء الذي يختاره الطبيب' &&
+      b1q('b1-r33', 1).options.includes(b1q('b1-r33', 1).key) &&
+      b1Texts['b1-r33'].body.includes('Nun macht sie eine Therapie und nimmt nur noch die Medizin, die der Arzt für sie auswählt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
