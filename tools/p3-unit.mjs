@@ -1411,6 +1411,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r31', 1).key === 'إلى المسبح المغطّى' &&
       b1q('b1-r31', 1).options.includes(b1q('b1-r31', 1).key) &&
       b1Texts['b1-r31'].body.includes('Im Winter gehen einige Gruppen zum Schwimmen ins Hallenbad'));
+  t('Corpus B1 b1-r32 has 323 measured words and only the retained Regenwasser token unknown',
+    b1Texts['b1-r32'].title === 'In der Stadt unterwegs' &&
+      b1Texts['b1-r32'].body.trim().split(/\s+/).length === 323 &&
+      known.coverage(b1Known, b1Texts['b1-r32'].body).unknown.length === 1 &&
+      known.coverage(b1Known, b1Texts['b1-r32'].body).unknown[0] === 'regenwasser');
+  t('Corpus B1 b1-r32 keeps arrival, regional terms, the bicycle tour, and return coherent',
+    b1Texts['b1-r32'].body.includes('Nach der Landung des Flugzeugs organisiert meine Freundin den Transport') &&
+      b1Texts['b1-r32'].body.includes('Ein Velo ist ein Fahrrad, und Trottoir bedeutet Gehsteig') &&
+      b1Texts['b1-r32'].body.includes('zwei Velos für eine Rundfahrt quer durch die Stadt') &&
+      b1Texts['b1-r32'].body.includes('Unsere Rückkehr am Sonntag ist mit dem direkten Zug geplant'));
+  t('Corpus B1 b1-r32 Trottoir question matches the Swiss word for pavement',
+    b1q('b1-r32', 0).prompt === 'ماذا تعني كلمة Trottoir في سويسرا؟' &&
+      b1q('b1-r32', 0).key === 'الرصيف' &&
+      b1q('b1-r32', 0).options.includes(b1q('b1-r32', 0).key) &&
+      b1Texts['b1-r32'].body.includes('Trottoir bedeutet Gehsteig'));
+  t('Corpus B1 b1-r32 luggage question matches the narrator carrying one light backpack',
+    b1q('b1-r32', 1).prompt === 'ما الأمتعة التي ينقلها الراوي بنفسه؟' &&
+      b1q('b1-r32', 1).key === 'حقيبة ظهر خفيفة فقط' &&
+      b1q('b1-r32', 1).options.includes(b1q('b1-r32', 1).key) &&
+      b1Texts['b1-r32'].body.includes('Ich transportiere selbst nur einen leichten Rucksack'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
