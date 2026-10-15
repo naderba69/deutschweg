@@ -1370,6 +1370,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r29', 1).options.includes(b1q('b1-r29', 1).key) &&
       b1Texts['b1-r29'].body.includes('Reste der Verpackungen in einen großen Sack') &&
       b1Texts['b1-r29'].body.includes('bringe ihn zur Mülltonne im Hof'));
+  t('Corpus B1 b1-r30 has 292 measured words and only the retained Vegetarierin token unknown',
+    b1Texts['b1-r30'].title === 'Auf dem Markt und in der Küche' &&
+      b1Texts['b1-r30'].body.trim().split(/\s+/).length === 292 &&
+      known.coverage(b1Known, b1Texts['b1-r30'].body).unknown.length === 1 &&
+      known.coverage(b1Known, b1Texts['b1-r30'].body).unknown[0] === 'vegetarierin');
+  t('Corpus B1 b1-r30 keeps the market, regional terms, cooking, and snack times coherent',
+    b1Texts['b1-r30'].body.includes('in Österreich Paradeiser heißt') &&
+      b1Texts['b1-r30'].body.includes('nennt die Pilze Schwammerl') &&
+      b1Texts['b1-r30'].body.includes('die Pause am Vormittag Znüni und die am Nachmittag Zvieri') &&
+      b1Texts['b1-r30'].body.includes('während ich die Soße mische und probiere'));
+  t('Corpus B1 b1-r30 Paradeiser question matches the Austrian word for tomato',
+    b1q('b1-r30', 0).prompt === 'ماذا تعني كلمة Paradeiser في النمسا؟' &&
+      b1q('b1-r30', 0).key === 'البندورة' &&
+      b1q('b1-r30', 0).options.includes(b1q('b1-r30', 0).key) &&
+      b1Texts['b1-r30'].body.includes('eine Tomate in Österreich Paradeiser heißt'));
+  t('Corpus B1 b1-r30 Henderl question matches the vegetarian sister',
+    b1q('b1-r30', 1).prompt === 'لماذا ترك الراوي الـHenderl ولم يشتره؟' &&
+      b1q('b1-r30', 1).key === 'لأن أخته لا تأكل اللحم' &&
+      b1q('b1-r30', 1).options.includes(b1q('b1-r30', 1).key) &&
+      b1Texts['b1-r30'].body.includes('nennt es Henderl') &&
+      b1Texts['b1-r30'].body.includes('Meine Schwester isst kein Fleisch, deshalb lasse ich es liegen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
