@@ -1683,6 +1683,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r45', 1).key === 'في مكتب المفقودات' &&
       b1q('b1-r45', 1).options.includes(b1q('b1-r45', 1).key) &&
       b1Texts['b1-r45'].body.includes('im Fundbüro abgegeben'));
+  t('Corpus B1 b1-r46 has 318 measured words and only its preserved bargeldlos token unknown at B1',
+    b1Texts['b1-r46'].title === 'Am Geldautomaten' &&
+      b1Texts['b1-r46'].body.trim().split(/\s+/).length === 318 &&
+      JSON.stringify(known.coverage(b1Known, b1Texts['b1-r46'].body).unknown) === JSON.stringify(['bargeldlos']));
+  t('Corpus B1 b1-r46 keeps the cash deposit, rent costs, fee choice, account check, correction, and filing coherent',
+    b1Texts['b1-r46'].body.includes('Dieses Geld fehlt noch für die Miete') &&
+      b1Texts['b1-r46'].body.includes('mit einer normalen Überweisung') &&
+      b1Texts['b1-r46'].body.includes('Der Betrag und die Nummer sind richtig, aber das Datum ist falsch') &&
+      b1Texts['b1-r46'].body.includes('Bestätigung der Bank für das vergangene Jahr'));
+  t('Corpus B1 b1-r46 deposit question matches the three hundred francs paid into the account',
+    b1q('b1-r46', 0).prompt === 'كم يودع الراوي نقدًا في حسابه؟' &&
+      b1q('b1-r46', 0).key === 'ثلاث مئة فرنك' &&
+      b1q('b1-r46', 0).options.includes(b1q('b1-r46', 0).key) &&
+      b1Texts['b1-r46'].body.includes('dreihundert Franken auf mein Konto einzahlen'));
+  t('Corpus B1 b1-r46 cashless-payment question matches maintaining the full overview',
+    b1q('b1-r46', 1).prompt === 'لماذا يبدو الدفع بلا نقد أفضل للراوي؟' &&
+      b1q('b1-r46', 1).key === 'لأنه يحتفظ بالنظرة الشاملة' &&
+      b1q('b1-r46', 1).options.includes(b1q('b1-r46', 1).key) &&
+      b1Texts['b1-r46'].body.includes('weil ich dabei den vollen Überblick behalte'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
