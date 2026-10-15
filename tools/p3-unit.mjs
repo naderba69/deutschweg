@@ -1391,6 +1391,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r30', 1).options.includes(b1q('b1-r30', 1).key) &&
       b1Texts['b1-r30'].body.includes('nennt es Henderl') &&
       b1Texts['b1-r30'].body.includes('Meine Schwester isst kein Fleisch, deshalb lasse ich es liegen'));
+  t('Corpus B1 b1-r31 has 312 measured words and only the retained Nachbardorf token unknown',
+    b1Texts['b1-r31'].title === 'Unser Verein' &&
+      b1Texts['b1-r31'].body.trim().split(/\s+/).length === 312 &&
+      known.coverage(b1Known, b1Texts['b1-r31'].body).unknown.length === 1 &&
+      known.coverage(b1Known, b1Texts['b1-r31'].body).unknown[0] === 'nachbardorf');
+  t('Corpus B1 b1-r31 keeps the match, training, annual programme, and volunteer work coherent',
+    b1Texts['b1-r31'].body.includes('Beim letzten Spiel war das Stadion voll') &&
+      b1Texts['b1-r31'].body.includes('beginnt jedes Training mit Gymnastik und einem langsamen Lauf') &&
+      b1Texts['b1-r31'].body.includes('Im Winter gehen einige Gruppen zum Schwimmen ins Hallenbad') &&
+      b1Texts['b1-r31'].body.includes('hängt die neue Tür wieder ein'));
+  t('Corpus B1 b1-r31 spectator question matches the last match attendance',
+    b1q('b1-r31', 0).prompt === 'كم مشاهدًا حضروا المباراة الأخيرة؟' &&
+      b1q('b1-r31', 0).key === 'ألفان' &&
+      b1q('b1-r31', 0).options.includes(b1q('b1-r31', 0).key) &&
+      b1Texts['b1-r31'].body.includes('Zweitausend Zuschauer'));
+  t('Corpus B1 b1-r31 winter question matches the club groups at the indoor pool',
+    b1q('b1-r31', 1).prompt === 'إلى أين تذهب بعض مجموعات النادي في الشتاء؟' &&
+      b1q('b1-r31', 1).key === 'إلى المسبح المغطّى' &&
+      b1q('b1-r31', 1).options.includes(b1q('b1-r31', 1).key) &&
+      b1Texts['b1-r31'].body.includes('Im Winter gehen einige Gruppen zum Schwimmen ins Hallenbad'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
