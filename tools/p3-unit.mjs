@@ -1350,6 +1350,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r28', 1).options.includes(b1q('b1-r28', 1).key) &&
       b1Texts['b1-r28'].body.includes('mehrere Seiten ihres Buches fehlten') &&
       b1Texts['b1-r28'].body.includes('verlangte Ersatz'));
+  t('Corpus B1 b1-r29 has 264 measured words and no unknown B1 tokens',
+    b1Texts['b1-r29'].title === 'Beim Einzug' &&
+      b1Texts['b1-r29'].body.trim().split(/\s+/).length === 264 &&
+      known.coverage(b1Known, b1Texts['b1-r29'].body).unknown.length === 0);
+  t('Corpus B1 b1-r29 keeps the move, unpacking, repairs, and finishing work coherent',
+    b1Texts['b1-r29'].body.includes('neue Wohnung in der dritten Etage') &&
+      b1Texts['b1-r29'].body.includes('tragen wir die Möbel in die richtigen Zimmer') &&
+      b1Texts['b1-r29'].body.includes('Die eckige Kommode steht schief') &&
+      b1Texts['b1-r29'].body.includes('befestigen wir die Regale sicher an der Wand'));
+  t('Corpus B1 b1-r29 floor question matches the third-floor apartment',
+    b1q('b1-r29', 0).prompt === 'في أي طابق تقع الشقة الجديدة؟' &&
+      b1q('b1-r29', 0).key === 'الثالث' &&
+      b1q('b1-r29', 0).options.includes(b1q('b1-r29', 0).key) &&
+      b1Texts['b1-r29'].body.includes('Wohnung in der dritten Etage'));
+  t('Corpus B1 b1-r29 waste question matches the sack of packaging remains',
+    b1q('b1-r29', 1).prompt === 'ماذا حمل الراوي إلى حاوية النفايات في الفناء؟' &&
+      b1q('b1-r29', 1).key === 'كيسًا كبيرًا فيه بقايا مواد التغليف' &&
+      b1q('b1-r29', 1).options.includes(b1q('b1-r29', 1).key) &&
+      b1Texts['b1-r29'].body.includes('Reste der Verpackungen in einen großen Sack') &&
+      b1Texts['b1-r29'].body.includes('bringe ihn zur Mülltonne im Hof'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
