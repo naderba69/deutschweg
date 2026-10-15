@@ -1816,6 +1816,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r52', 1).key === 'كريمًا وفيتامينًا' &&
       b1q('b1-r52', 1).options.includes(b1q('b1-r52', 1).key) &&
       b1Texts['b1-r52'].body.includes('kauft sie eine Creme für die Lippe und ein Vitamin'));
+  t('Corpus B1 b1-r53 has 344 measured words and no unknown B1 tokens',
+    b1Texts['b1-r53'].title === 'Am Flughafen' &&
+      b1Texts['b1-r53'].body.trim().split(/\s+/).length === 344 &&
+      known.coverage(b1Known, b1Texts['b1-r53'].body).unknown.length === 0);
+  t('Corpus B1 b1-r53 keeps packing, check-in, security, boarding, flight, landing, luggage, and hotel arrival coherent',
+    b1Texts['b1-r53'].body.includes('Am Abend vor der Reise packe ich') &&
+      b1Texts['b1-r53'].body.includes('Um zehn Uhr beginnt das Einsteigen') &&
+      b1Texts['b1-r53'].body.includes('Tatsächlich landen wir kurz vor acht') &&
+      b1Texts['b1-r53'].body.includes('am späten Abend kommen wir im Hotel an'));
+  t('Corpus B1 b1-r53 seat-belt question matches fastening belts before take-off',
+    b1q('b1-r53', 0).prompt === 'ماذا يجب على المسافرين أن يفعلوا قبل الإقلاع؟' &&
+      b1q('b1-r53', 0).key === 'يربطوا الأحزمة' &&
+      b1q('b1-r53', 0).options.includes(b1q('b1-r53', 0).key) &&
+      b1Texts['b1-r53'].body.includes('müssen wir uns anschnallen'));
+  t('Corpus B1 b1-r53 landing question matches the expected eight o’clock arrival',
+    b1q('b1-r53', 1).prompt === 'متى يُتوقع هبوط الطائرة؟' &&
+      b1q('b1-r53', 1).key === 'الثامنة' &&
+      b1q('b1-r53', 1).options.includes(b1q('b1-r53', 1).key) &&
+      b1Texts['b1-r53'].body.includes('Voraussichtlich landen wir um acht Uhr am Abend'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
