@@ -1892,6 +1892,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r56', 1).key === 'يدخلون إلى المبنى' &&
       b1q('b1-r56', 1).options.includes(b1q('b1-r56', 1).key) &&
       b1Texts['b1-r56'].body.includes('gehen alle in das Gebäude'));
+  t('Corpus B1 b1-r57 has 398 measured words and no unknown B1 tokens',
+    b1Texts['b1-r57'].title === 'Wege in der Stadt' &&
+      b1Texts['b1-r57'].body.trim().split(/\s+/).length === 398 &&
+      known.coverage(b1Known, b1Texts['b1-r57'].body).unknown.length === 0);
+  t('Corpus B1 b1-r57 keeps the commute, class walk, path conflict, castle rehearsal, repair, and return coherent',
+    b1Texts['b1-r57'].body.includes('Ich arbeite an einer Schule') &&
+      b1Texts['b1-r57'].body.includes('begleitet meine Klasse mich') &&
+      b1Texts['b1-r57'].body.includes('Raum für unsere Probe') &&
+      b1Texts['b1-r57'].body.includes('Nach der Probe gehen wir'));
+  t('Corpus B1 b1-r57 uphill-route question matches the castle',
+    b1q('b1-r57', 0).prompt === 'إلى أين يصعد الطريق؟' &&
+      b1q('b1-r57', 0).key === 'إلى القلعة' &&
+      b1q('b1-r57', 0).options.includes(b1q('b1-r57', 0).key) &&
+      b1Texts['b1-r57'].body.includes('rauf bis zum Schloss'));
+  t('Corpus B1 b1-r57 class question matches performing a play at the castle',
+    b1q('b1-r57', 1).prompt === 'ماذا يريد صف الراوي أن يقدّم في القلعة؟' &&
+      b1q('b1-r57', 1).key === 'أن يقدّم مسرحية' &&
+      b1q('b1-r57', 1).options.includes(b1q('b1-r57', 1).key) &&
+      b1Texts['b1-r57'].body.includes('ein kleines Stück aufführen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
