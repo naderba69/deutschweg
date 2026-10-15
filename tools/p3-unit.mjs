@@ -2030,6 +2030,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a3', 1).key === 'السماح له بالعمل من المنزل يومين' &&
       b2q('b2-a3', 1).options.includes(b2q('b2-a3', 1).key) &&
       b2Articles['b2-a3'].body.includes('zwei Tage Homeoffice pro Woche erlaubt'));
+  t('Corpus B2 b2-a4 has 454 measured words and no unknown B2 tokens',
+    b2Articles['b2-a4'].title === 'المدرسة والرقمنة' &&
+      b2Articles['b2-a4'].body.trim().split(/\s+/).length === 454 &&
+      known.coverage(b2Known, b2Articles['b2-a4'].body).unknown.length === 0);
+  t('Corpus B2 b2-a4 connects teaching goals, classroom uses, fair financing, teacher preparation, and evaluation coherently',
+    b2Articles['b2-a4'].body.includes('ersetzt keine Lehrkraft') &&
+      b2Articles['b2-a4'].body.includes('ein konkretes Ziel nennen') &&
+      b2Articles['b2-a4'].body.includes('eine gemeinsame Finanzierung finden') &&
+      b2Articles['b2-a4'].body.includes('Ebenso wichtig ist die Fortbildung') &&
+      b2Articles['b2-a4'].body.includes('ein Datum für die Auswertung'));
+  t('Corpus B2 b2-a4 replacement question matches the teacher-responsibility argument',
+    b2q('b2-a4', 0).prompt === 'هل الجهاز يحل محل المعلّم؟' &&
+      b2q('b2-a4', 0).key === 'لا' &&
+      b2q('b2-a4', 0).options.includes(b2q('b2-a4', 0).key) &&
+      b2Articles['b2-a4'].body.startsWith('Ein digitales Gerät ersetzt keine Lehrkraft'));
+  t('Corpus B2 b2-a4 purchase question matches the explicit payer question',
+    b2q('b2-a4', 1).prompt === 'ما السؤال الذي يجب طرحه عند شراء الأجهزة؟' &&
+      b2q('b2-a4', 1).key === 'من يدفع؟' &&
+      b2q('b2-a4', 1).options.includes(b2q('b2-a4', 1).key) &&
+      b2Articles['b2-a4'].body.includes('Zur Entscheidung gehört außerdem die Frage: Wer zahlt?'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
