@@ -1489,6 +1489,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r35', 1).key === 'الأستاذة' &&
       b1q('b1-r35', 1).options.includes(b1q('b1-r35', 1).key) &&
       b1Texts['b1-r35'].body.includes('Die Professorin hat die Einführung in unser Thema selbst geschrieben'));
+  t('Corpus B1 b1-r36 has 324 measured words and no unknown B1 tokens',
+    b1Texts['b1-r36'].title === 'Gefühle und Miteinander' &&
+      b1Texts['b1-r36'].body.trim().split(/\s+/).length === 324 &&
+      known.coverage(b1Known, b1Texts['b1-r36'].body).unknown.length === 0);
+  t('Corpus B1 b1-r36 keeps the delivery, move planning, conflict, and reconciliation coherent',
+    b1Texts['b1-r36'].body.includes('weil die letzte Lieferung wieder fehlte') &&
+      b1Texts['b1-r36'].body.includes('Der Streik der Fahrer hat die ganze Versammlung verschoben') &&
+      b1Texts['b1-r36'].body.includes('Am nächsten Tag verteilten die Helfer dort ihre Aufgaben') &&
+      b1Texts['b1-r36'].body.includes('Sie hat mir verziehen'));
+  t('Corpus B1 b1-r36 embarrassment question matches forgetting the customer’s full name',
+    b1q('b1-r36', 0).prompt === 'لماذا شعر الراوي بالحرج أمام الزبونة؟' &&
+      b1q('b1-r36', 0).key === 'لأنه نسي اسم الزبونة الكامل' &&
+      b1q('b1-r36', 0).options.includes(b1q('b1-r36', 0).key) &&
+      b1Texts['b1-r36'].body.includes('ich hatte ihren vollen Namen vergessen'));
+  t('Corpus B1 b1-r36 forgiveness question matches the sister forgiving the narrator',
+    b1q('b1-r36', 1).prompt === 'ماذا فعلت أخت الراوي بعد أن اعتذر إليها؟' &&
+      b1q('b1-r36', 1).key === 'سامحت الراوي' &&
+      b1q('b1-r36', 1).options.includes(b1q('b1-r36', 1).key) &&
+      b1Texts['b1-r36'].body.includes('Danach habe ich mich bei ihr entschuldigt') &&
+      b1Texts['b1-r36'].body.includes('Sie hat mir verziehen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
