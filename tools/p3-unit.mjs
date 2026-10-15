@@ -1873,6 +1873,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r55', 1).key === 'أن يكون بيولوجيًا' &&
       b1q('b1-r55', 1).options.includes(b1q('b1-r55', 1).key) &&
       b1Texts['b1-r55'].body.includes('wähle ich ein biologisches Produkt'));
+  t('Corpus B1 b1-r56 has 398 measured words and no unknown B1 tokens',
+    b1Texts['b1-r56'].title === 'Beim Sportfest' &&
+      b1Texts['b1-r56'].body.trim().split(/\s+/).length === 398 &&
+      known.coverage(b1Known, b1Texts['b1-r56'].body).unknown.length === 0);
+  t('Corpus B1 b1-r56 keeps setup, events, safety, weather plan, awards, feedback, and repetition coherent',
+    b1Texts['b1-r56'].body.includes('messen bei den Rennen die genaue Zeit') &&
+      b1Texts['b1-r56'].body.includes('mit leichten Bällen') &&
+      b1Texts['b1-r56'].body.includes('gehen alle in das Gebäude') &&
+      b1Texts['b1-r56'].body.includes('was wir im nächsten Jahr anders machen sollen'));
+  t('Corpus B1 b1-r56 timing question matches the two club specialists',
+    b1q('b1-r56', 0).prompt === 'من يقيس الوقت في السباقات؟' &&
+      b1q('b1-r56', 0).key === 'الخبير والخبيرة' &&
+      b1q('b1-r56', 0).options.includes(b1q('b1-r56', 0).key) &&
+      b1Texts['b1-r56'].body.includes('Ein Spezialist und eine Spezialistin'));
+  t('Corpus B1 b1-r56 hail question matches everyone moving into the building',
+    b1q('b1-r56', 1).prompt === 'ماذا يفعل الجميع إذا بدأ البَرَد؟' &&
+      b1q('b1-r56', 1).key === 'يدخلون إلى المبنى' &&
+      b1q('b1-r56', 1).options.includes(b1q('b1-r56', 1).key) &&
+      b1Texts['b1-r56'].body.includes('gehen alle in das Gebäude'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
