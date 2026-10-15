@@ -2112,6 +2112,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a7', 1).key === 'لأن الحافلة كانت تأتي كل عشر دقائق حتى المساء' &&
       b2q('b2-a7', 1).options.includes(b2q('b2-a7', 1).key) &&
       b2Articles['b2-a7'].body.includes('Der Bus kam am Tag alle zehn Minuten und fuhr auch am Abend'));
+  t('Corpus B2 b2-a8 has 464 measured words and no unknown B2 tokens',
+    b2Articles['b2-a8'].title === 'الطاقة' &&
+      b2Articles['b2-a8'].body.trim().split(/\s+/).length === 464 &&
+      known.coverage(b2Known, b2Articles['b2-a8'].body).unknown.length === 0);
+  t('Corpus B2 b2-a8 connects failed all-at-once change, measured habits, causal limits, structural responsibility, and ordered decisions coherently',
+    b2Articles['b2-a8'].body.includes('dreißig Dinge gleichzeitig ändern') &&
+      b2Articles['b2-a8'].body.includes('notierten wir jeden Monat, was das Gerät für den Verbrauch zeigte') &&
+      b2Articles['b2-a8'].body.includes('keinen sicheren Beweis für ihre Ursache') &&
+      b2Articles['b2-a8'].body.includes('Verantwortung liegt daher auch bei Eigentümern') &&
+      b2Articles['b2-a8'].body.includes('erwartete Kosten, möglicher Nutzen, Aufwand und zuständige Person'));
+  t('Corpus B2 b2-a8 description question matches energy saving as an everyday habit',
+    b2q('b2-a8', 0).prompt === 'كيف يصف النص توفير الطاقة في الحياة اليومية؟' &&
+      b2q('b2-a8', 0).key === 'عادة يومية لا عملًا بطوليًا' &&
+      b2q('b2-a8', 0).options.includes(b2q('b2-a8', 0).key) &&
+      b2Articles['b2-a8'].body.startsWith('Energie zu sparen ist im Alltag eine Gewohnheit, keine große Tat'));
+  t('Corpus B2 b2-a8 first-change question matches lowering bedroom heating one level',
+    b2q('b2-a8', 1).prompt === 'ما أول تغيير طبّقته الأسرة؟' &&
+      b2q('b2-a8', 1).key === 'خفض التدفئة في غرفة النوم درجة واحدة' &&
+      b2q('b2-a8', 1).options.includes(b2q('b2-a8', 1).key) &&
+      b2Articles['b2-a8'].body.includes('Im Schlafzimmer stellten wir die Heizung eine Stufe niedriger'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
