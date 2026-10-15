@@ -2091,6 +2091,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a6', 1).key === 'إذا تعطّل سريعًا واحتاج إلى إصلاح أو استبدال' &&
       b2q('b2-a6', 1).options.includes(b2q('b2-a6', 1).key) &&
       b2Articles['b2-a6'].body.includes('später teuer werden, wenn ein Produkt schnell kaputtgeht'));
+  t('Corpus B2 b2-a7 has 482 measured words and no unknown B2 tokens',
+    b2Articles['b2-a7'].title === 'النقل' &&
+      b2Articles['b2-a7'].body.trim().split(/\s+/).length === 482 &&
+      known.coverage(b2Known, b2Articles['b2-a7'].body).unknown.length === 0);
+  t('Corpus B2 b2-a7 connects service times, disruption alternatives, work organization, a frequent-bus case, fair policy, evaluation, and trust coherently',
+    b2Articles['b2-a7'].body.includes('zu den Zeiten fahren') &&
+      b2Articles['b2-a7'].body.includes('Alternative bei einer Störung') &&
+      b2Articles['b2-a7'].body.includes('Nicht jede Lösung gehört allein zum Verkehr') &&
+      b2Articles['b2-a7'].body.includes('alle zehn Minuten') &&
+      b2Articles['b2-a7'].body.includes('in der richtigen Reihenfolge') &&
+      b2Articles['b2-a7'].body.includes('Gute Planung braucht außerdem klare Daten'));
+  t('Corpus B2 b2-a7 trust question matches a missing alternative during disruption',
+    b2q('b2-a7', 0).prompt === 'ما الذي يفقد الناس الثقة بنظام النقل؟' &&
+      b2q('b2-a7', 0).key === 'غياب بديل عند تعطّل الخط' &&
+      b2q('b2-a7', 0).options.includes(b2q('b2-a7', 0).key) &&
+      b2Articles['b2-a7'].body.includes('weil Menschen ihm nach mehreren Störungen nicht mehr vertrauen'));
+  t('Corpus B2 b2-a7 car question matches the ten-minute evening bus service',
+    b2q('b2-a7', 1).prompt === 'لماذا لم يحتج الراوي إلى سيارته ثلاث سنوات؟' &&
+      b2q('b2-a7', 1).key === 'لأن الحافلة كانت تأتي كل عشر دقائق حتى المساء' &&
+      b2q('b2-a7', 1).options.includes(b2q('b2-a7', 1).key) &&
+      b2Articles['b2-a7'].body.includes('Der Bus kam am Tag alle zehn Minuten und fuhr auch am Abend'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
