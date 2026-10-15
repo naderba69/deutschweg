@@ -2010,6 +2010,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a2', 1).key === 'لا' &&
       b2q('b2-a2', 1).options.includes(b2q('b2-a2', 1).key) &&
       b2Articles['b2-a2'].body.includes('der Bericht untersucht sie nicht'));
+  t('Corpus B2 b2-a3 has 479 measured words and no unknown B2 tokens',
+    b2Articles['b2-a3'].title === 'الهجرة اليومية' &&
+      b2Articles['b2-a3'].body.trim().split(/\s+/).length === 479 &&
+      known.coverage(b2Known, b2Articles['b2-a3'].body).unknown.length === 0);
+  t('Corpus B2 b2-a3 connects commuting costs, the brother case, transport, work organization, occupational limits, and evaluation coherently',
+    b2Articles['b2-a3'].body.includes('eigentliche Preis jedoch aus Zeit') &&
+      b2Articles['b2-a3'].body.includes('Mein Bruder kennt diese Rechnung') &&
+      b2Articles['b2-a3'].body.includes('Die Planung des Verkehrs') &&
+      b2Articles['b2-a3'].body.includes('Natürlich lassen sich diese Lösungen nicht auf alle Berufe übertragen') &&
+      b2Articles['b2-a3'].body.includes('Auch die Wirkung einer Maßnahme muss genauer geprüft werden'));
+  t('Corpus B2 b2-a3 invisible-cost question matches lost commuting time',
+    b2q('b2-a3', 0).prompt === 'ما الثمن الذي لا يظهر في الإحصاء الرسمي؟' &&
+      b2q('b2-a3', 0).key === 'الوقت الضائع في التنقّل' &&
+      b2q('b2-a3', 0).options.includes(b2q('b2-a3', 0).key) &&
+      b2Articles['b2-a3'].body.includes('In keiner offiziellen Statistik steht'));
+  t('Corpus B2 b2-a3 brother-trip question matches two home-office days',
+    b2q('b2-a3', 1).prompt === 'ما الذي خفّض عدد رحلات أخ الراوي؟' &&
+      b2q('b2-a3', 1).key === 'السماح له بالعمل من المنزل يومين' &&
+      b2q('b2-a3', 1).options.includes(b2q('b2-a3', 1).key) &&
+      b2Articles['b2-a3'].body.includes('zwei Tage Homeoffice pro Woche erlaubt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
