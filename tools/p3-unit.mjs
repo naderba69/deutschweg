@@ -1530,6 +1530,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r37', 1).options.includes(b1q('b1-r37', 1).key) &&
       b1Texts['b1-r37'].body.includes('weil eine Urkunde des Konsulats fehlt') &&
       b1Texts['b1-r37'].body.includes('das Original kommt als Einschreiben per Post'));
+  t('Corpus B1 b1-r38 has 300 measured words and no unknown B1 tokens',
+    b1Texts['b1-r38'].title === 'Feste im Dorf' &&
+      b1Texts['b1-r38'].body.trim().split(/\s+/).length === 300 &&
+      known.coverage(b1Known, b1Texts['b1-r38'].body).unknown.length === 0);
+  t('Corpus B1 b1-r38 keeps the February festival, historical programme, local businesses, and annual planning coherent',
+    b1Texts['b1-r38'].body.includes('Im Feber feiern wir in unserem Dorf Fasching') &&
+      b1Texts['b1-r38'].body.includes('Das Mädchen spielt eine Heldin von der Burg') &&
+      b1Texts['b1-r38'].body.includes('der halbe Ort lebt vom Tourismus') &&
+      b1Texts['b1-r38'].body.includes('verteilen wir die Termine gemeinsam auf die Monate'));
+  t('Corpus B1 b1-r38 costume question matches the neighbour sewing a costume for her daughter',
+    b1q('b1-r38', 0).prompt === 'ماذا تخيط الجارة؟' &&
+      b1q('b1-r38', 0).key === 'زيًّا تنكريًّا' &&
+      b1q('b1-r38', 0).options.includes(b1q('b1-r38', 0).key) &&
+      b1Texts['b1-r38'].body.includes('Die Nachbarin näht ein buntes Kostüm für ihre Tochter'));
+  t('Corpus B1 b1-r38 letters question matches the old village woman’s historical reading',
+    b1q('b1-r38', 1).prompt === 'من يقرأ الرسائل التاريخية؟' &&
+      b1q('b1-r38', 1).key === 'امرأة من القرية' &&
+      b1q('b1-r38', 1).options.includes(b1q('b1-r38', 1).key) &&
+      b1Texts['b1-r38'].body.includes('Eine alte Frau aus dem Dorf liest historische Briefe'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
