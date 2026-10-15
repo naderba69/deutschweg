@@ -2152,6 +2152,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a9', 1).key === 'المصدر الأصلي' &&
       b2q('b2-a9', 1).options.includes(b2q('b2-a9', 1).key) &&
       b2Articles['b2-a9'].body.includes('einen direkten Link dorthin anbieten'));
+  t('Corpus B2 b2-a10 has 495 measured words and no unknown B2 tokens',
+    b2Articles['b2-a10'].title === 'التطوع' &&
+      b2Articles['b2-a10'].body.trim().split(/\s+/).length === 495 &&
+      known.coverage(b2Known, b2Articles['b2-a10'].body).unknown.length === 0);
+  t('Corpus B2 b2-a10 connects time limits, a concrete planning change, resilient knowledge, fair limits, and evaluation coherently',
+    b2Articles['b2-a10'].body.includes('genug freie Zeit da ist') &&
+      b2Articles['b2-a10'].body.includes('Wir teilten den Tag in Abschnitte von jeweils zwei Stunden') &&
+      b2Articles['b2-a10'].body.includes('Wissen soll im Verein bleiben') &&
+      b2Articles['b2-a10'].body.includes('niemanden unter Druck setzen') &&
+      b2Articles['b2-a10'].body.includes('ob Aufgaben zuverlässig erledigt werden'));
+  t('Corpus B2 b2-a10 old-request question matches the unclear two-hours-or-whole-day duration',
+    b2q('b2-a10', 0).prompt === 'ما الذي لم يكن واضحًا في الطلب القديم؟' &&
+      b2q('b2-a10', 0).key === 'هل كانت المساعدة لساعتين أم ليوم كامل' &&
+      b2q('b2-a10', 0).options.includes(b2q('b2-a10', 0).key) &&
+      b2Articles['b2-a10'].body.includes('ob damit zwei Stunden oder der ganze Tag gemeint waren'));
+  t('Corpus B2 b2-a10 backup-person question matches taking over during illness',
+    b2q('b2-a10', 1).prompt === 'لماذا يعيّن النادي شخصًا ثانيًا للمهام المهمة؟' &&
+      b2q('b2-a10', 1).key === 'ليتولى المهمة إذا مرض شخص' &&
+      b2q('b2-a10', 1).options.includes(b2q('b2-a10', 1).key) &&
+      b2Articles['b2-a10'].body.includes('eine zweite Person, die übernehmen kann, falls jemand krank wird'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
