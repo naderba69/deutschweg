@@ -1797,6 +1797,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r51', 1).key === 'عند أطراف المدينة' &&
       b1q('b1-r51', 1).options.includes(b1q('b1-r51', 1).key) &&
       b1Texts['b1-r51'].body.includes('am Rand der Stadt'));
+  t('Corpus B1 b1-r52 has 366 measured words and no unknown B1 tokens',
+    b1Texts['b1-r52'].title === 'Im Badezimmer' &&
+      b1Texts['b1-r52'].body.trim().split(/\s+/).length === 366 &&
+      known.coverage(b1Known, b1Texts['b1-r52'].body).unknown.length === 0);
+  t('Corpus B1 b1-r52 keeps the morning observation, care advice, final bathroom work, safety, and completion coherent',
+    b1Texts['b1-r52'].body.includes('Auf der Brust entdeckt sie einen kleinen roten Fleck') &&
+      b1Texts['b1-r52'].body.includes('gehen wir in die Drogerie') &&
+      b1Texts['b1-r52'].body.includes('Auf dem Boden darf kein Wasser bleiben') &&
+      b1Texts['b1-r52'].body.includes('nach drei Wochen wirklich alles fertig'));
+  t('Corpus B1 b1-r52 observation question matches the wife’s chest spot and lip wound in the mirror',
+    b1q('b1-r52', 0).prompt === 'ماذا تلاحظ الزوجة في المرآة صباحًا؟' &&
+      b1q('b1-r52', 0).key === 'بقعة على الصدر وجُرح على الشفة' &&
+      b1q('b1-r52', 0).options.includes(b1q('b1-r52', 0).key) &&
+      b1Texts['b1-r52'].body.includes('auf ihrer Lippe ist eine offene Wunde'));
+  t('Corpus B1 b1-r52 shop question matches the wife buying cream and a vitamin',
+    b1q('b1-r52', 1).prompt === 'ماذا تشتري الزوجة من متجر المستحضرات؟' &&
+      b1q('b1-r52', 1).key === 'كريمًا وفيتامينًا' &&
+      b1q('b1-r52', 1).options.includes(b1q('b1-r52', 1).key) &&
+      b1Texts['b1-r52'].body.includes('kauft sie eine Creme für die Lippe und ein Vitamin'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
