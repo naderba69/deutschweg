@@ -1606,6 +1606,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r41', 1).key === 'المحامية' &&
       b1q('b1-r41', 1).options.includes(b1q('b1-r41', 1).key) &&
       b1Texts['b1-r41'].body.includes('Eine Anwältin prüft ihn, bevor ich ihn annehme'));
+  t('Corpus B1 b1-r42 has 306 measured words and no unknown B1 tokens',
+    b1Texts['b1-r42'].title === 'Sicherheit in der Stadt' &&
+      b1Texts['b1-r42'].body.trim().split(/\s+/).length === 306 &&
+      known.coverage(b1Known, b1Texts['b1-r42'].body).unknown.length === 0);
+  t('Corpus B1 b1-r42 keeps the break-ins, escape, police case, house rules, and neighbourhood watch coherent',
+    b1Texts['b1-r42'].body.includes('im letzten Winter zweimal eingebrochen worden') &&
+      b1Texts['b1-r42'].body.includes('Bei der Flucht wurde ein fremder Radfahrer überfahren') &&
+      b1Texts['b1-r42'].body.includes('Nach einigen Tagen konnte die Polizei') &&
+      b1Texts['b1-r42'].body.includes('Wir haben für das Haus eine Liste gemacht'));
+  t('Corpus B1 b1-r42 entry question matches the second break-in through the open balcony',
+    b1q('b1-r42', 0).prompt === 'كيف دخل اللص المنزل في المرة الثانية؟' &&
+      b1q('b1-r42', 0).key === 'عبر الشرفة المفتوحة' &&
+      b1q('b1-r42', 0).options.includes(b1q('b1-r42', 0).key) &&
+      b1Texts['b1-r42'].body.includes('Beim zweiten kam er am frühen Morgen über einen offenen Balkon'));
+  t('Corpus B1 b1-r42 court question matches both suspects being convicted after proceedings',
+    b1q('b1-r42', 1).prompt === 'ماذا فعلت المحكمة بالمشتبه بهما بعد الإجراءات؟' &&
+      b1q('b1-r42', 1).key === 'حكمت عليهما' &&
+      b1q('b1-r42', 1).options.includes(b1q('b1-r42', 1).key) &&
+      b1Texts['b1-r42'].body.includes('Nach dem Verfahren konnte das Gericht beide verurteilen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
