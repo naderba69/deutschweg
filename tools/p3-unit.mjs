@@ -1835,6 +1835,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r53', 1).key === 'الثامنة' &&
       b1q('b1-r53', 1).options.includes(b1q('b1-r53', 1).key) &&
       b1Texts['b1-r53'].body.includes('Voraussichtlich landen wir um acht Uhr am Abend'));
+  t('Corpus B1 b1-r54 has 376 measured words and no unknown B1 tokens',
+    b1Texts['b1-r54'].title === 'Die neue Nachbarin' &&
+      b1Texts['b1-r54'].body.trim().split(/\s+/).length === 376 &&
+      known.coverage(b1Known, b1Texts['b1-r54'].body).unknown.length === 0);
+  t('Corpus B1 b1-r54 keeps arrival, unfair judgement, work explanation, mutual help, festival, and apology coherent',
+    b1Texts['b1-r54'].body.includes('Vor zwei Monaten ist eine neue Familie') &&
+      b1Texts['b1-r54'].body.includes('Dieses Urteil finde ich unfair') &&
+      b1Texts['b1-r54'].body.includes('Bald helfen wir einander') &&
+      b1Texts['b1-r54'].body.includes('entschuldigt sich bei ihm'));
+  t('Corpus B1 b1-r54 parents question matches the migrant mother and father who moved in',
+    b1q('b1-r54', 0).prompt === 'من هما الوالدان اللذان انتقلا إلى البيت؟' &&
+      b1q('b1-r54', 0).key === 'مهاجر ومهاجرة' &&
+      b1q('b1-r54', 0).options.includes(b1q('b1-r54', 0).key) &&
+      b1Texts['b1-r54'].body.includes('als Migrant und Migrantin'));
+  t('Corpus B1 b1-r54 father question matches his frequent absence for driving work',
+    b1q('b1-r54', 1).prompt === 'لماذا يكون الأب غالبًا خارج المنزل؟' &&
+      b1q('b1-r54', 1).key === 'لأنه يعمل سائقًا' &&
+      b1q('b1-r54', 1).options.includes(b1q('b1-r54', 1).key) &&
+      b1Texts['b1-r54'].body.includes('der Vater als Fahrer arbeitet'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
