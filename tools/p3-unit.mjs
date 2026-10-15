@@ -1645,6 +1645,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r43', 1).options.includes(b1q('b1-r43', 1).key) &&
       b1Texts['b1-r43'].body.includes('dachte sie lange über die große Änderung ihres Lebens nach') &&
       b1Texts['b1-r43'].body.includes('Dieses Nachdenken half ihr mehr als jeder Ratschlag'));
+  t('Corpus B1 b1-r44 has 335 measured words and no unknown B1 tokens',
+    b1Texts['b1-r44'].title === 'Am Samstag' &&
+      b1Texts['b1-r44'].body.trim().split(/\s+/).length === 335 &&
+      known.coverage(b1Known, b1Texts['b1-r44'].body).unknown.length === 0);
+  t('Corpus B1 b1-r44 keeps cleaning, safe repair, cooking, invoice, gifts, planning, and Sunday visit coherent',
+    b1Texts['b1-r44'].body.includes('bereiten meine Frau und ich die Wohnung') &&
+      b1Texts['b1-r44'].body.includes('der alte Stecker des Geräts kaputtgegangen') &&
+      b1Texts['b1-r44'].body.includes('Die Frist für die Zahlung steht fest') &&
+      b1Texts['b1-r44'].body.includes('Am Sonntag kann die Familie kommen'));
+  t('Corpus B1 b1-r44 broken-item question matches the device plug during cleaning',
+    b1q('b1-r44', 0).prompt === 'ما الذي انكسر أثناء التنظيف؟' &&
+      b1q('b1-r44', 0).key === 'القابس' &&
+      b1q('b1-r44', 0).options.includes(b1q('b1-r44', 0).key) &&
+      b1Texts['b1-r44'].body.includes('der alte Stecker des Geräts kaputtgegangen'));
+  t('Corpus B1 b1-r44 invoice question matches the Monday payment deadline',
+    b1q('b1-r44', 1).prompt === 'ما آخر موعد لدفع الفاتورة؟' &&
+      b1q('b1-r44', 1).key === 'يوم الاثنين' &&
+      b1q('b1-r44', 1).options.includes(b1q('b1-r44', 1).key) &&
+      b1Texts['b1-r44'].body.includes('spätestens am Montag bezahlen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
