@@ -1721,6 +1721,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r47', 1).key === 'الإثنين التالي' &&
       b1q('b1-r47', 1).options.includes(b1q('b1-r47', 1).key) &&
       b1Texts['b1-r47'].body.includes('Am folgenden Montag beginnt die Schulung'));
+  t('Corpus B1 b1-r48 has 345 measured words and no unknown B1 tokens',
+    b1Texts['b1-r48'].title === 'Beschwerde im Geschäft' &&
+      b1Texts['b1-r48'].body.trim().split(/\s+/).length === 345 &&
+      known.coverage(b1Known, b1Texts['b1-r48'].body).unknown.length === 0);
+  t('Corpus B1 b1-r48 keeps pickup, empty box, receipt check, complaint, replacement, and filing coherent',
+    b1Texts['b1-r48'].body.includes('öffne ich den Karton noch im Geschäft') &&
+      b1Texts['b1-r48'].body.includes('Er gilt hier als Rechnung') &&
+      b1Texts['b1-r48'].body.includes('ein vollständiges Gerät') &&
+      b1Texts['b1-r48'].body.includes('Die Rechnung lege ich in meinen Ordner'));
+  t('Corpus B1 b1-r48 empty-box question matches the box opened in the shop',
+    b1q('b1-r48', 0).prompt === 'ماذا يجد الراوي عندما يفتح العلبة في المتجر؟' &&
+      b1q('b1-r48', 0).key === 'أن العلبة فارغة' &&
+      b1q('b1-r48', 0).options.includes(b1q('b1-r48', 0).key) &&
+      b1Texts['b1-r48'].body.includes('Zu meiner Überraschung ist er ganz leer'));
+  t('Corpus B1 b1-r48 exchange question matches the required receipt used as the invoice',
+    b1q('b1-r48', 1).prompt === 'ما الذي يلزم للاستبدال؟' &&
+      b1q('b1-r48', 1).key === 'الفاتورة' &&
+      b1q('b1-r48', 1).options.includes(b1q('b1-r48', 1).key) &&
+      b1Texts['b1-r48'].body.includes('für einen Umtausch die Rechnung nötig ist'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
