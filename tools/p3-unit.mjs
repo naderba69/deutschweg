@@ -1930,6 +1930,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r58', 1).key === 'المال' &&
       b1q('b1-r58', 1).options.includes(b1q('b1-r58', 1).key) &&
       b1Texts['b1-r58'].body.includes('Geld allein ist wertlos'));
+  t('Corpus B1 b1-r59 has 428 measured words and no unknown B1 tokens',
+    b1Texts['b1-r59'].title === 'Kunst und Presse' &&
+      b1Texts['b1-r59'].body.trim().split(/\s+/).length === 428 &&
+      known.coverage(b1Known, b1Texts['b1-r59'].body).unknown.length === 0);
+  t('Corpus B1 b1-r59 keeps the joint exhibition, newspaper coverage, opening, school project, and follow-up coherent',
+    b1Texts['b1-r59'].body.includes('Eine Malerin und eine Schriftstellerin') &&
+      b1Texts['b1-r59'].body.includes('im Forum der Zeitung') &&
+      b1Texts['b1-r59'].body.includes('Die Bilder bleiben zwei ganze Wochen hängen') &&
+      b1Texts['b1-r59'].body.includes('noch mehr Klassen teilnehmen'));
+  t('Corpus B1 b1-r59 city representative question matches the funding application',
+    b1q('b1-r59', 0).prompt === 'ماذا تعلن ممثلة المدينة؟' &&
+      b1q('b1-r59', 0).key === 'أنها ستطلب مزيدًا من المال للمشروع' &&
+      b1q('b1-r59', 0).options.includes(b1q('b1-r59', 0).key) &&
+      b1Texts['b1-r59'].body.includes('mehr Geld für das Projekt mit der Schule zu beantragen'));
+  t('Corpus B1 b1-r59 publication question matches the newspaper forum',
+    b1q('b1-r59', 1).prompt === 'أين نُشر الخبر؟' &&
+      b1q('b1-r59', 1).key === 'في منتدى الصحيفة' &&
+      b1q('b1-r59', 1).options.includes(b1q('b1-r59', 1).key) &&
+      b1Texts['b1-r59'].body.includes('Neuigkeit über die Ausstellung steht seit Montag im Forum der Zeitung'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
