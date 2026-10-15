@@ -1310,6 +1310,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r26', 1).options.includes(b1q('b1-r26', 1).key) &&
       b1Texts['b1-r26'].body.includes('Unter der Spüle läuft Wasser aus einem Rohr') &&
       b1Texts['b1-r26'].body.includes('Der Handwerker ersetzt das Rohr'));
+  t('Corpus B1 b1-r27 has 261 measured words and no unknown B1 tokens',
+    b1Texts['b1-r27'].title === 'Musik im Dorf' &&
+      b1Texts['b1-r27'].body.trim().split(/\s+/).length === 261 &&
+      known.coverage(b1Known, b1Texts['b1-r27'].body).unknown.length === 0);
+  t('Corpus B1 b1-r27 keeps the move, festival, performance, and belonging coherent',
+    b1Texts['b1-r27'].body.includes('lange in der Stadt gelebt') &&
+      b1Texts['b1-r27'].body.includes('beim Aufbau zu helfen') &&
+      b1Texts['b1-r27'].body.includes('Die Leiterin des Orchesters begrüßte alle kurz') &&
+      b1Texts['b1-r27'].body.includes('Das Dorf ist für mich jetzt weniger fremd'));
+  t('Corpus B1 b1-r27 flute question matches the young village musician',
+    b1q('b1-r27', 0).prompt === 'من عزف الناي في الحفل؟' &&
+      b1q('b1-r27', 0).key === 'امرأة شابة من القرية' &&
+      b1q('b1-r27', 0).options.includes(b1q('b1-r27', 0).key) &&
+      b1Texts['b1-r27'].body.includes('Eine junge Frau aus dem Dorf spielte Flöte'));
+  t('Corpus B1 b1-r27 mood question matches the narrator homesickness',
+    b1q('b1-r27', 1).prompt === 'لماذا كان مزاج الراوي سيئًا في بداية الحفل؟' &&
+      b1q('b1-r27', 1).key === 'لأنه كان يحنّ إلى المدينة' &&
+      b1q('b1-r27', 1).options.includes(b1q('b1-r27', 1).key) &&
+      b1Texts['b1-r27'].body.includes('weil ich Heimweh nach der Stadt hatte'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
