@@ -2070,6 +2070,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a5', 1).key === 'موعد وتكاليف وجهة مسؤولة' &&
       b2q('b2-a5', 1).options.includes(b2q('b2-a5', 1).key) &&
       b2Articles['b2-a5'].body.includes('einen Termin, mögliche Kosten und die zuständige Stelle'));
+  t('Corpus B2 b2-a6 has 496 measured words and no unknown B2 tokens',
+    b2Articles['b2-a6'].title === 'الاستهلاك' &&
+      b2Articles['b2-a6'].body.trim().split(/\s+/).length === 496 &&
+      known.coverage(b2Known, b2Articles['b2-a6'].body).unknown.length === 0);
+  t('Corpus B2 b2-a6 connects lifetime costs, evidence limits, comparison work, a repair case, environmental trade-offs, and producer responsibility coherently',
+    b2Articles['b2-a6'].body.includes('über die ganze Zeit der Nutzung') &&
+      b2Articles['b2-a6'].body.includes('Auch der Beleg beantwortet diese Frage nicht') &&
+      b2Articles['b2-a6'].body.includes('Dieser Vergleich bedeutet Arbeit') &&
+      b2Articles['b2-a6'].body.includes('Vor jeder Reparatur') &&
+      b2Articles['b2-a6'].body.includes('Auch die Umwelt gehört zur Rechnung') &&
+      b2Articles['b2-a6'].body.includes('Verantwortung trägt aber nicht nur der einzelne Käufer'));
+  t('Corpus B2 b2-a6 receipt question distinguishes payment evidence from product quality',
+    b2q('b2-a6', 0).prompt === 'ماذا يثبت الإيصال؟' &&
+      b2q('b2-a6', 0).key === 'أن الثمن دُفع، لا جودة المنتج' &&
+      b2q('b2-a6', 0).options.includes(b2q('b2-a6', 0).key) &&
+      b2Articles['b2-a6'].body.includes('Er beweist nur, wann und zu welchem Preis jemand etwas gekauft hat'));
+  t('Corpus B2 b2-a6 cheap-device question matches early failure and later repair or replacement costs',
+    b2q('b2-a6', 1).prompt === 'متى قد يصبح الجهاز الرخيص أعلى كلفة؟' &&
+      b2q('b2-a6', 1).key === 'إذا تعطّل سريعًا واحتاج إلى إصلاح أو استبدال' &&
+      b2q('b2-a6', 1).options.includes(b2q('b2-a6', 1).key) &&
+      b2Articles['b2-a6'].body.includes('später teuer werden, wenn ein Produkt schnell kaputtgeht'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
