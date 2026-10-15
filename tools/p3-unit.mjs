@@ -1740,6 +1740,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r48', 1).key === 'الفاتورة' &&
       b1q('b1-r48', 1).options.includes(b1q('b1-r48', 1).key) &&
       b1Texts['b1-r48'].body.includes('für einen Umtausch die Rechnung nötig ist'));
+  t('Corpus B1 b1-r49 has 334 measured words and only its preserved weiterbringt token unknown at B1',
+    b1Texts['b1-r49'].title === 'Lernen mit Methode' &&
+      b1Texts['b1-r49'].body.trim().split(/\s+/).length === 334 &&
+      JSON.stringify(known.coverage(b1Known, b1Texts['b1-r49'].body).unknown) === JSON.stringify(['weiterbringt']));
+  t('Corpus B1 b1-r49 keeps time limits, the weekly method, testing, adjustment, and six-month progress coherent',
+    b1Texts['b1-r49'].body.includes('jeden Abend nur zwei Stunden Zeit') &&
+      b1Texts['b1-r49'].body.includes('Freitags macht sie einen kleinen Test') &&
+      b1Texts['b1-r49'].body.includes('ändert nur eine kleine Sache') &&
+      b1Texts['b1-r49'].body.includes('Nach einem halben Jahr'));
+  t('Corpus B1 b1-r49 study-time question matches the two hours available each evening',
+    b1q('b1-r49', 0).prompt === 'كم ساعة تستطيع المتعلمة الدراسة كل مساء؟' &&
+      b1q('b1-r49', 0).key === 'ساعتين' &&
+      b1q('b1-r49', 0).options.includes(b1q('b1-r49', 0).key) &&
+      b1Texts['b1-r49'].body.includes('jeden Abend nur zwei Stunden Zeit'));
+  t('Corpus B1 b1-r49 challenge question matches time rather than grammar',
+    b1q('b1-r49', 1).prompt === 'ما التحدي الحقيقي عندها؟' &&
+      b1q('b1-r49', 1).key === 'الوقت' &&
+      b1q('b1-r49', 1).options.includes(b1q('b1-r49', 1).key) &&
+      b1Texts['b1-r49'].body.includes('nicht die Grammatik, sondern die Zeit'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
