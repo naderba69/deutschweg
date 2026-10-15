@@ -1854,6 +1854,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r54', 1).key === 'لأنه يعمل سائقًا' &&
       b1q('b1-r54', 1).options.includes(b1q('b1-r54', 1).key) &&
       b1Texts['b1-r54'].body.includes('der Vater als Fahrer arbeitet'));
+  t('Corpus B1 b1-r55 has 367 measured words and no unknown B1 tokens',
+    b1Texts['b1-r55'].title === 'Einkaufen und kochen' &&
+      b1Texts['b1-r55'].body.trim().split(/\s+/).length === 367 &&
+      known.coverage(b1Known, b1Texts['b1-r55'].body).unknown.length === 0);
+  t('Corpus B1 b1-r55 keeps Wednesday shopping, Saturday choices, cooking, shared cleanup, leftovers, and planning coherent',
+    b1Texts['b1-r55'].body.includes('Jeden Mittwoch gehe ich nach der Arbeit auf den Markt') &&
+      b1Texts['b1-r55'].body.includes('Für gutes Faschiertes reicht Salz') &&
+      b1Texts['b1-r55'].body.includes('Niemand soll danach allein abwaschen') &&
+      b1Texts['b1-r55'].body.includes('kommt am Sonntag in die Pfanne'));
+  t('Corpus B1 b1-r55 Wednesday question matches the carrot and cream purchase',
+    b1q('b1-r55', 0).prompt === 'ماذا يشتري الراوي كل يوم أربعاء؟' &&
+      b1q('b1-r55', 0).key === 'جزرة وقشدة' &&
+      b1q('b1-r55', 0).options.includes(b1q('b1-r55', 0).key) &&
+      b1Texts['b1-r55'].body.includes('eine dicke Karotte und frische Schlagsahne'));
+  t('Corpus B1 b1-r55 food-choice question matches the preference for an organic product',
+    b1q('b1-r55', 1).prompt === 'أي نوع من المنتجات الغذائية يفضله الراوي؟' &&
+      b1q('b1-r55', 1).key === 'أن يكون بيولوجيًا' &&
+      b1q('b1-r55', 1).options.includes(b1q('b1-r55', 1).key) &&
+      b1Texts['b1-r55'].body.includes('wähle ich ein biologisches Produkt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
