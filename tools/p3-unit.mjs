@@ -1509,6 +1509,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r36', 1).options.includes(b1q('b1-r36', 1).key) &&
       b1Texts['b1-r36'].body.includes('Danach habe ich mich bei ihr entschuldigt') &&
       b1Texts['b1-r36'].body.includes('Sie hat mir verziehen'));
+  t('Corpus B1 b1-r37 has 301 measured words and only the retained Staatsangehörigkeit token unknown',
+    b1Texts['b1-r37'].title === 'Bei der Behörde' &&
+      b1Texts['b1-r37'].body.trim().split(/\s+/).length === 301 &&
+      known.coverage(b1Known, b1Texts['b1-r37'].body).unknown.length === 1 &&
+      known.coverage(b1Known, b1Texts['b1-r37'].body).unknown[0] === 'staatsangehörigkeit');
+  t('Corpus B1 b1-r37 keeps the office internship, three cases, and six-week decision coherent',
+    b1Texts['b1-r37'].body.includes('bei einem Praktikum eine Beamtin auf dem Amt') &&
+      b1Texts['b1-r37'].body.includes('Der erste Termin gehört einer alten Dame') &&
+      b1Texts['b1-r37'].body.includes('Die Geburt meines Neffen ist noch nicht eingetragen') &&
+      b1Texts['b1-r37'].body.includes('dass die strenge Prüfung etwa sechs Wochen dauert'));
+  t('Corpus B1 b1-r37 details question matches the elderly woman’s residence and civil status',
+    b1q('b1-r37', 0).prompt === 'ما المعلومتان اللتان تطلبهما الموظفة من السيدة المسنّة؟' &&
+      b1q('b1-r37', 0).key === 'محل الإقامة والحالة المدنية' &&
+      b1q('b1-r37', 0).options.includes(b1q('b1-r37', 0).key) &&
+      b1Texts['b1-r37'].body.includes('Die Beamtin verlangt Wohnsitz und Zivilstand'));
+  t('Corpus B1 b1-r37 registration question matches the missing original consular document',
+    b1q('b1-r37', 1).prompt === 'لماذا لم تُسجَّل ولادة ابن أخت الراوي بعد؟' &&
+      b1q('b1-r37', 1).key === 'لأن وثيقة القنصلية الأصلية لم تصل بعد' &&
+      b1q('b1-r37', 1).options.includes(b1q('b1-r37', 1).key) &&
+      b1Texts['b1-r37'].body.includes('weil eine Urkunde des Konsulats fehlt') &&
+      b1Texts['b1-r37'].body.includes('das Original kommt als Einschreiben per Post'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
