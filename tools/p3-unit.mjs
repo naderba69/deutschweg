@@ -2050,6 +2050,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a4', 1).key === 'من يدفع؟' &&
       b2q('b2-a4', 1).options.includes(b2q('b2-a4', 1).key) &&
       b2Articles['b2-a4'].body.includes('Zur Entscheidung gehört außerdem die Frage: Wer zahlt?'));
+  t('Corpus B2 b2-a5 has 449 measured words and no unknown B2 tokens',
+    b2Articles['b2-a5'].title === 'الصحة والوقاية' &&
+      b2Articles['b2-a5'].body.trim().split(/\s+/).length === 449 &&
+      known.coverage(b2Known, b2Articles['b2-a5'].body).unknown.length === 0);
+  t('Corpus B2 b2-a5 connects individualized advice, insurance terms, a January checklist, an appointment case, and access limits coherently',
+    b2Articles['b2-a5'].body.includes('bespreche ich mit meiner Ärztin') &&
+      b2Articles['b2-a5'].body.includes('Vorsorge und Nachsorge sind dabei nicht dasselbe') &&
+      b2Articles['b2-a5'].body.includes('Im Januar nehme ich mir deshalb') &&
+      b2Articles['b2-a5'].body.includes('Im vergangenen Jahr hat dieser Ablauf') &&
+      b2Articles['b2-a5'].body.includes('Ein Datum allein löst jedoch nicht jedes Problem'));
+  t('Corpus B2 b2-a5 January-note question matches examination, last appointment, and responsible party',
+    b2q('b2-a5', 0).prompt === 'ما المعلومات الثلاث التي يدوّنها الراوي في يناير؟' &&
+      b2q('b2-a5', 0).key === 'الفحص الموصى به وموعده الأخير والجهة المسؤولة' &&
+      b2q('b2-a5', 0).options.includes(b2q('b2-a5', 0).key) &&
+      b2Articles['b2-a5'].body.includes('Welche Untersuchung wurde empfohlen? Wann war der letzte Termin? Wer ist für die Kosten und die Anmeldung zuständig?'));
+  t('Corpus B2 b2-a5 practical-plan question matches appointment, costs, and responsible office',
+    b2q('b2-a5', 1).prompt === 'ما الذي يحوّل النية إلى خطة عملية؟' &&
+      b2q('b2-a5', 1).key === 'موعد وتكاليف وجهة مسؤولة' &&
+      b2q('b2-a5', 1).options.includes(b2q('b2-a5', 1).key) &&
+      b2Articles['b2-a5'].body.includes('einen Termin, mögliche Kosten und die zuständige Stelle'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
