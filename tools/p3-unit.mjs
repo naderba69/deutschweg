@@ -2132,6 +2132,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a8', 1).key === 'خفض التدفئة في غرفة النوم درجة واحدة' &&
       b2q('b2-a8', 1).options.includes(b2q('b2-a8', 1).key) &&
       b2Articles['b2-a8'].body.includes('Im Schlafzimmer stellten wir die Heizung eine Stufe niedriger'));
+  t('Corpus B2 b2-a9 has 477 measured words and no unknown B2 tokens',
+    b2Articles['b2-a9'].title === 'العنوان' &&
+      b2Articles['b2-a9'].body.trim().split(/\s+/).length === 477 &&
+      known.coverage(b2Known, b2Articles['b2-a9'].body).unknown.length === 0);
+  t('Corpus B2 b2-a9 connects headline strength, correlation limits, the source chain, verification, a concrete case, and shared responsibility coherently',
+    b2Articles['b2-a9'].body.includes('schwachen Zusammenhang') &&
+      b2Articles['b2-a9'].body.includes('Zwischen Zusammenhang und Ursache') &&
+      b2Articles['b2-a9'].body.includes('Auf jeder Stufe') &&
+      b2Articles['b2-a9'].body.includes('Vor einigen Monaten las ich einen Titel') &&
+      b2Articles['b2-a9'].body.includes('Verantwortung nicht allein bei den Lesern'));
+  t('Corpus B2 b2-a9 headline question matches evidence stronger than the study',
+    b2q('b2-a9', 0).prompt === 'ما مشكلة العنوان في المثال؟' &&
+      b2q('b2-a9', 0).key === 'يقدّم دليلًا أقوى مما وجدته الدراسة' &&
+      b2q('b2-a9', 0).options.includes(b2q('b2-a9', 0).key) &&
+      b2Articles['b2-a9'].body.includes('Der Titel war nicht vollständig falsch, aber deutlich stärker als die Quelle'));
+  t('Corpus B2 b2-a9 platform-post question matches opening the original source',
+    b2q('b2-a9', 1).prompt === 'ما الذي ينبغي فتحه بدل الاكتفاء بمنشور المنصة؟' &&
+      b2q('b2-a9', 1).key === 'المصدر الأصلي' &&
+      b2q('b2-a9', 1).options.includes(b2q('b2-a9', 1).key) &&
+      b2Articles['b2-a9'].body.includes('einen direkten Link dorthin anbieten'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
