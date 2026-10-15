@@ -1470,6 +1470,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r34', 1).key === 'تدريبًا عمليًا لمدة ستة أسابيع في المصنع' &&
       b1q('b1-r34', 1).options.includes(b1q('b1-r34', 1).key) &&
       b1Texts['b1-r34'].body.includes('garantiert jedem Studenten im Kurs ein Praktikum für sechs Wochen in der Fabrik'));
+  t('Corpus B1 b1-r35 has 327 measured words and no unknown B1 tokens',
+    b1Texts['b1-r35'].title === 'Schule und Lernen' &&
+      b1Texts['b1-r35'].body.trim().split(/\s+/).length === 327 &&
+      known.coverage(b1Known, b1Texts['b1-r35'].body).unknown.length === 0);
+  t('Corpus B1 b1-r35 keeps the upcoming test, study plan, course content, and practice coherent',
+    b1Texts['b1-r35'].body.includes('In vier Wochen schreiben wir eine Klassenarbeit') &&
+      b1Texts['b1-r35'].body.includes('Für Deutsch habe ich einen festen Plan') &&
+      b1Texts['b1-r35'].body.includes('Die Schule braucht außerdem mehr Nachwuchs in technischen Berufen') &&
+      b1Texts['b1-r35'].body.includes('Jeden Freitag üben wir für die Klassenarbeit'));
+  t('Corpus B1 b1-r35 dictionary question matches underlining the rule and writing an example',
+    b1q('b1-r35', 0).prompt === 'ماذا يفعل الراوي بعد البحث عن كلمة جديدة في المعجم؟' &&
+      b1q('b1-r35', 0).key === 'يضع خطًا تحت القاعدة ويكتب مثالًا' &&
+      b1q('b1-r35', 0).options.includes(b1q('b1-r35', 0).key) &&
+      b1Texts['b1-r35'].body.includes('Danach unterstreiche ich die Regel und schreibe ein Beispiel'));
+  t('Corpus B1 b1-r35 introduction question matches the professor writing the topic introduction',
+    b1q('b1-r35', 1).prompt === 'من كتب مقدمة موضوع الدورة؟' &&
+      b1q('b1-r35', 1).key === 'الأستاذة' &&
+      b1q('b1-r35', 1).options.includes(b1q('b1-r35', 1).key) &&
+      b1Texts['b1-r35'].body.includes('Die Professorin hat die Einführung in unser Thema selbst geschrieben'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
