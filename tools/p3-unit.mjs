@@ -1969,6 +1969,28 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r60', 1).key === 'ترتيب الأوراق في البيت' &&
       b1q('b1-r60', 1).options.includes(b1q('b1-r60', 1).key) &&
       b1Texts['b1-r60'].body.includes('Wer seine Papiere schon zu Hause ordnet, spart am Schalter leicht eine halbe Stunde'));
+  const b2Articles = Object.fromEntries(win.DW_LIBRARY.B2.articles.map(x => [x.id, x]));
+  const b2q = (id, n) => b2Articles[id].questions[n];
+  const b2Known = known.knownWords(win, { upto: 'B2' });
+  t('Corpus B2 b2-a1 has 393 measured words and no unknown B2 tokens',
+    b2Articles['b2-a1'].title === 'العمل عن بعد' &&
+      b2Articles['b2-a1'].body.trim().split(/\s+/).length === 393 &&
+      known.coverage(b2Known, b2Articles['b2-a1'].body).unknown.length === 0);
+  t('Corpus B2 b2-a1 develops remote-work benefits, risks, a team rule, measured results, exceptions, and limits coherently',
+    b2Articles['b2-a1'].body.includes('mehr Freiheit') &&
+      b2Articles['b2-a1'].body.includes('bestimmte gemeinsame Zeiten vereinbart') &&
+      b2Articles['b2-a1'].body.includes('Nach einem Monat haben wir gemeinsam geprüft') &&
+      b2Articles['b2-a1'].body.includes('Das beweist nicht, dass dieselbe Lösung überall funktioniert'));
+  t('Corpus B2 b2-a1 remote-work-rule question matches defined working times',
+    b2q('b2-a1', 0).prompt === 'متى تنجح قاعدة العمل عن بعد؟' &&
+      b2q('b2-a1', 0).key === 'حين يحدد الفريق أوقات العمل' &&
+      b2q('b2-a1', 0).options.includes(b2q('b2-a1', 0).key) &&
+      b2Articles['b2-a1'].body.includes('einen festen Anfang, ein festes Ende und Ausnahmen klar festlegt'));
+  t('Corpus B2 b2-a1 missing-rule question matches freedom becoming control',
+    b2q('b2-a1', 1).prompt === 'إلى ماذا تتحول الحرية عند غياب القاعدة؟' &&
+      b2q('b2-a1', 1).key === 'إلى رقابة' &&
+      b2q('b2-a1', 1).options.includes(b2q('b2-a1', 1).key) &&
+      b2Articles['b2-a1'].body.includes('Dann wird aus der versprochenen Freiheit leicht eine neue Form der Kontrolle'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
