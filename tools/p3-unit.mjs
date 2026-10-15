@@ -1664,6 +1664,25 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r44', 1).key === 'يوم الاثنين' &&
       b1q('b1-r44', 1).options.includes(b1q('b1-r44', 1).key) &&
       b1Texts['b1-r44'].body.includes('spätestens am Montag bezahlen'));
+  t('Corpus B1 b1-r45 has 320 measured words and no unknown B1 tokens',
+    b1Texts['b1-r45'].title === 'Aufräumen am Samstag' &&
+      b1Texts['b1-r45'].body.trim().split(/\s+/).length === 320 &&
+      known.coverage(b1Known, b1Texts['b1-r45'].body).unknown.length === 0);
+  t('Corpus B1 b1-r45 keeps Friday planning, Saturday sorting, found objects, donation, and one clean ending coherent',
+    b1Texts['b1-r45'].body.includes('Schon am Freitag schreiben wir eine Liste') &&
+      b1Texts['b1-r45'].body.includes('Dinge, die noch gut sind') &&
+      b1Texts['b1-r45'].body.includes('im Fundbüro abgegeben') &&
+      b1Texts['b1-r45'].body.includes('bleibt der Sonntag frei'));
+  t('Corpus B1 b1-r45 reuse question matches giving good unneeded items to a family-aid group',
+    b1q('b1-r45', 0).prompt === 'ماذا تفعل الأسرة بالأشياء الجيدة التي لم تعد تحتاجها؟' &&
+      b1q('b1-r45', 0).key === 'تعطيها لجهة تساعد الأسر' &&
+      b1q('b1-r45', 0).options.includes(b1q('b1-r45', 0).key) &&
+      b1Texts['b1-r45'].body.includes('Andere Kleidungsstücke geben wir einer Gruppe, die Familien hilft'));
+  t('Corpus B1 b1-r45 bag question matches the narrator collecting it from lost property',
+    b1q('b1-r45', 1).prompt === 'أين وُجدت حقيبة الراوي المفقودة؟' &&
+      b1q('b1-r45', 1).key === 'في مكتب المفقودات' &&
+      b1q('b1-r45', 1).options.includes(b1q('b1-r45', 1).key) &&
+      b1Texts['b1-r45'].body.includes('im Fundbüro abgegeben'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
