@@ -1329,6 +1329,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r27', 1).key === 'لأنه كان يحنّ إلى المدينة' &&
       b1q('b1-r27', 1).options.includes(b1q('b1-r27', 1).key) &&
       b1Texts['b1-r27'].body.includes('weil ich Heimweh nach der Stadt hatte'));
+  t('Corpus B1 b1-r28 has 263 measured words and only the retained nachholen token unknown',
+    b1Texts['b1-r28'].title === 'Sprachkurs und ein Brief' &&
+      b1Texts['b1-r28'].body.trim().split(/\s+/).length === 263 &&
+      known.coverage(b1Known, b1Texts['b1-r28'].body).unknown.length === 1 &&
+      known.coverage(b1Known, b1Texts['b1-r28'].body).unknown[0] === 'nachholen');
+  t('Corpus B1 b1-r28 keeps the course, book replacement, practice, and letter coherent',
+    b1Texts['b1-r28'].body.includes('einen Intensivkurs für Deutsch als Zweitsprache') &&
+      b1Texts['b1-r28'].body.includes('mehrere Seiten ihres Buches fehlten') &&
+      b1Texts['b1-r28'].body.includes('während ich unser Gespräch aufnehme') &&
+      b1Texts['b1-r28'].body.includes('schrieb sie der Kursleiterin einen kurzen Brief'));
+  t('Corpus B1 b1-r28 course question matches the intensive German course',
+    b1q('b1-r28', 0).prompt === 'ما نوع دورة اللغة الألمانية التي تحضرها صديقة الراوي؟' &&
+      b1q('b1-r28', 0).key === 'دورة مكثّفة' &&
+      b1q('b1-r28', 0).options.includes(b1q('b1-r28', 0).key) &&
+      b1Texts['b1-r28'].body.includes('einen Intensivkurs für Deutsch als Zweitsprache'));
+  t('Corpus B1 b1-r28 replacement question matches the book with missing pages',
+    b1q('b1-r28', 1).prompt === 'ماذا طلبت الصديقة بعدما اكتشفت أن صفحات من كتابها مفقودة؟' &&
+      b1q('b1-r28', 1).key === 'كتابًا بديلًا' &&
+      b1q('b1-r28', 1).options.includes(b1q('b1-r28', 1).key) &&
+      b1Texts['b1-r28'].body.includes('mehrere Seiten ihres Buches fehlten') &&
+      b1Texts['b1-r28'].body.includes('verlangte Ersatz'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
