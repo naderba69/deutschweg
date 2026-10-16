@@ -2296,6 +2296,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a16', 1).key === 'عند وجود تهديد أو عنف أو خطر مباشر' &&
       b2q('b2-a16', 1).options.includes(b2q('b2-a16', 1).key) &&
       b2Articles['b2-a16'].body.includes('muss niemand zuerst an einer offenen Tür diskutieren'));
+  t('Corpus B2 b2-a17 has 706 measured words and no unknown B2 tokens',
+    b2Articles['b2-a17'].title === 'الشاشة' &&
+      b2Articles['b2-a17'].body.trim().split(/\s+/).length === 706 &&
+      known.coverage(b2Known, b2Articles['b2-a17'].body).unknown.length === 0);
+  t('Corpus B2 b2-a17 connects measurement limits, context, correlation, categorized self-observation, a bounded experiment, review, privacy, and shared responsibility coherently',
+    b2Articles['b2-a17'].body.includes('Manche Angaben stammen aus einer Befragung') &&
+      b2Articles['b2-a17'].body.includes('Inhalt, Zweck, Tageszeit und Situation') &&
+      b2Articles['b2-a17'].body.includes('Auch ein Zusammenhang beweist noch keine Ursache') &&
+      b2Articles['b2-a17'].body.includes('Nachrichten, Fahrpläne, Arbeit, Videos, Spiele oder Lesen') &&
+      b2Articles['b2-a17'].body.includes('Für zwei Wochen stellte ich nach 22 Uhr') &&
+      b2Articles['b2-a17'].body.includes('Verantwortung liegt schließlich nicht nur bei einzelnen Nutzern'));
+  t('Corpus B2 b2-a17 total-duration question matches use differing by content, purpose, time, and context',
+    b2q('b2-a17', 0).prompt === 'لماذا لا تكفي المدة الإجمالية وحدها للحكم على الاستخدام؟' &&
+      b2q('b2-a17', 0).key === 'لأن الاستخدام يختلف باختلاف المحتوى والغرض والوقت والسياق' &&
+      b2q('b2-a17', 0).options.includes(b2q('b2-a17', 0).key) &&
+      b2Articles['b2-a17'].body.includes('Inhalt, Zweck, Tageszeit und Situation unterscheiden sich jedoch'));
+  t('Corpus B2 b2-a17 experiment question matches disabling game notices and leaving the phone in the kitchen while reading',
+    b2q('b2-a17', 1).prompt === 'ما التغيير الذي اختبره الراوي لمدة أسبوعين؟' &&
+      b2q('b2-a17', 1).key === 'إيقاف إشعارات الألعاب بعد العاشرة وترك الهاتف في المطبخ أثناء القراءة' &&
+      b2q('b2-a17', 1).options.includes(b2q('b2-a17', 1).key) &&
+      b2Articles['b2-a17'].body.includes('die Mitteilungen der Spiele ab und ließ das Telefon beim Lesen in der Küche'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
