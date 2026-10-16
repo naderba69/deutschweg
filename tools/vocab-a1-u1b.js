@@ -51,8 +51,8 @@ module.exports = {
     items: [
       ['mein Bruder', 'meine Brüder', 'أخي', 'Das ist mein Bruder.', 'Das ist meinen Bruder.', 'في الرفع mein بلا نهاية.', 'deklination', 'mein'],
       ['meine Schwester', 'meine Schwestern', 'أختي', 'Das ist meine Schwester.', 'Das ist mein Schwester.', 'Schwester مؤنث: meine.', 'deklination', 'meine'],
-      ['mein Vater', 'die Väter', 'أبي', 'Mein Vater arbeitet hier.', 'Meinen Vater arbeitet hier.', 'الفاعل في الرفع: mein Vater.', 'kasus', 'Mein'],
-      ['meine Mutter', 'die Mütter', 'أمي', 'Meine Mutter kocht gern.', 'Mein Mutter kocht gern.', 'المؤنث: meine Mutter.', 'deklination', 'Meine'],
+      ['mein Vater', 'meine Väter', 'أبي', 'Mein Vater arbeitet hier.', 'Meinen Vater arbeitet hier.', 'الفاعل في الرفع: mein Vater.', 'kasus', 'Mein'],
+      ['meine Mutter', 'meine Mütter', 'أمي', 'Meine Mutter kocht gern.', 'Mein Mutter kocht gern.', 'المؤنث: meine Mutter.', 'deklination', 'Meine'],
       ['meine Eltern', '—', 'والداي', 'Meine Eltern wohnen in Tunis.', 'Mein Eltern wohnen in Tunis.', 'الجمع يأخذ meine.', 'plural', 'Meine'],
       ['mein Kind', 'meine Kinder', 'طفلي', 'Mein Kind spielt im Hof.', 'Meine Kind spielt im Hof.', 'Kind محايد: mein.', 'genus', 'Mein'],
       ['mein Auto', 'meine Autos', 'سيارتي', 'Mein Auto ist alt.', 'Meine Auto ist alt.', 'Auto محايد: mein.', 'genus', 'Mein'],
@@ -66,22 +66,30 @@ module.exports = {
       ['dein Freund', 'deine Freunde', 'صديقك', 'Ist das dein Freund?', 'Ist das deinen Freund?', 'بعد sein يأتي الرفع: dein Freund.', 'kasus', 'dein'],
       ['seine Frau', 'seine Frauen', 'زوجته', 'Seine Frau arbeitet im Büro.', 'Sein Frau arbeitet im Büro.', 'Frau مؤنث: seine.', 'deklination', 'Seine'],
       ['sein Sohn', 'seine Söhne', 'ابنه', 'Sein Sohn ist zehn.', 'Seine Sohn ist zehn.', 'Sohn مذكر: sein.', 'genus', 'Sein'],
-      ['ihre Tochter', 'ihre Töchter', 'ابنتها', 'Ihre Tochter lernt Deutsch.', 'Ihr Tochter lernt Deutsch.', 'Tochter مؤنث: ihre.', 'deklination', 'Ihre'],
+      ['ihre Tochter', 'ihre Töchter', 'ابنتها', 'Ich kenne ihre Tochter.', 'Ich kenne ihr Tochter.', 'Tochter مؤنث، لذلك نقول ihre؛ والحرف الصغير يعني هنا «ابنتها».', 'deklination', 'ihre'],
       ['unser Haus', 'unsere Häuser', 'بيتنا', 'Unser Haus ist groß.', 'Unsere Haus ist groß.', 'Haus محايد: unser.', 'genus', 'Unser'],
       ['unsere Wohnung', 'unsere Wohnungen', 'شقتنا', 'Unsere Wohnung ist klein.', 'Unser Wohnung ist klein.', 'Wohnung مؤنث: unsere.', 'deklination', 'Unsere'],
       ['euer Lehrer', 'eure Lehrer', 'معلّمكم', 'Euer Lehrer ist neu.', 'Eure Lehrer ist neu.', 'Lehrer مذكر: euer.', 'deklination', 'Euer'],
-      ['Ihre Nummer', 'Ihre Nummern', 'رقم حضرتك', 'Wie ist Ihre Nummer?', 'Wie ist ihre Nummer?', 'خطاب الاحترام يبدأ بحرف كبير.', 'register', 'Ihre'],
-      ['Ihr Termin', 'Ihre Termine', 'موعد حضرتك', 'Ihr Termin ist um zehn.', 'Ihre Termin ist um zehn.', 'Termin مذكر: Ihr بلا e.', 'register', 'Ihr'],
+      ['Ihre Nummer', 'Ihre Nummern', 'رقم حضرتك', 'Wie ist Ihre Nummer?', 'Wie ist Sie Nummer?', 'في خطاب الاحترام نحتاج أداة الملكية Ihre؛ أما ihre بحرف صغير فتعني «رقمها/رقمهم» وليست خطأً نحويًا.', 'register', 'Ihre'],
+      ['Ihr Termin', 'Ihre Termine', 'موعد حضرتك', 'Ihr Termin ist um zehn.', 'Ihre Termin ist um zehn.', 'Termin مذكر في الرفع، لذلك نقول Ihr بلا e.', 'deklination', 'Ihr'],
       ['mein Beruf', 'meine Berufe', 'مهنتي', 'Mein Beruf ist Lehrer.', 'Meine Beruf ist Lehrer.', 'Beruf مذكر: mein.', 'genus', 'Mein'],
       ['meine Arbeit', 'meine Arbeiten', 'عملي', 'Meine Arbeit macht mir Spaß.', 'Mein Arbeit macht mir Spaß.', 'Arbeit مؤنث: meine.', 'deklination', 'Meine'],
       ['mein Termin', 'meine Termine', 'موعدي', 'Mein Termin ist am Montag.', 'Meine Termin ist am Montag.', 'Termin مذكر: mein.', 'deklination', 'Mein'],
       ['deine Hilfe', '—', 'مساعدتك', 'Danke für deine Hilfe.', 'Danke für dein Hilfe.', 'Hilfe مؤنث: deine.', 'deklination', 'deine'],
       ['meine Freundin', 'meine Freundinnen', 'صديقتي', 'Meine Freundin kommt aus Berlin.', 'Mein Freundin kommt aus Berlin.', 'Freundin مؤنث: meine.', 'deklination', 'Meine']
     ],
+    clozeNearMiss: 'Mein',
+    extraCheck: {
+      right: 'Ich sehe meinen Bruder.',
+      bad: 'Ich sehe mein Bruder.',
+      why: 'Bruder مذكر ومفعول به هنا، لذلك نحتاج meinen.',
+      family: 'deklination',
+      prereq: 'cap.a1-u1-l5.s06'
+    },
     tricks: [
-      { trick: 'أداة الملكية تتبع الشيء لا صاحبه', wie: 'mein Bruder · meine Schwester · mein Kind.', warum: 'الجنس للاسم المملوك، والعربية لا تُظهره فلا يجد المتعلم مرشدًا.', anchor: 'Das ist mein Bruder.' },
-      { trick: 'في النصب يتحرّك المذكر وحده', wie: 'mein Bruder ← Ich sehe meinen Bruder، وmeine · mein ثابتتان.', warum: 'الحركة نفسها التي تعلّمها مع den، فتصلح هنا أيضًا.', anchor: 'Ich sehe meinen Bruder.' },
-      { trick: 'Ihre بحرف كبير لحضرتك', wie: 'Wie ist Ihre Nummer? — الكبير يفصل الاحترام عن «رقمها».', warum: 'حرف واحد يفرّق بين خطاب الاحترام والغائب، والخطأ فيه يُلبس المعنى.', anchor: 'Wie ist Ihre Nummer?' }
+      { trick: 'الجذر للمالك والنهاية للاسم', wie: 'ich → mein · du → dein؛ ثم mein Bruder · meine Schwester.', warum: 'mein/dein/sein يحدد صاحب الشيء، أما النهاية فتتبع جنس الاسم وعدده وحالته.', anchor: 'Das ist mein Bruder.' },
+      { trick: 'المذكر المفرد يأخذ -en في النصب', wie: 'Das ist mein Bruder. → Ich sehe meinen Bruder.', warum: 'في النمط المستهدف تتغير صيغة المذكر المفرد من mein إلى meinen عندما تصبح مفعولًا به.', anchor: 'Ich sehe meinen Bruder.' },
+      { trick: 'Ihr وIhre بحرف كبير مع Sie الرسمية', wie: 'Wie ist Ihre Nummer? · Ihr Termin ist um zehn.', warum: 'في وسط الجملة تشير الكتابة الكبيرة إلى المخاطب الرسمي؛ أما ihre الصغيرة فيمكن أن تعني «لها/لهم».', anchor: 'Wie ist Ihre Nummer?' }
     ]
   },
 

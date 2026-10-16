@@ -625,6 +625,7 @@ function lessonOfVocab(spec, vocabRow) {
     });
   });
   const drillItem = items[items.length - 1];
+  const drillNearMiss = vocabRow.clozeNearMiss || String(drillItem.err).split(/\s+/).slice(-2)[0];
   {
     const b = blankOut(drillItem.ex, drillItem.blank);
     push('clozeDrill', {
@@ -637,7 +638,7 @@ function lessonOfVocab(spec, vocabRow) {
         ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الجملة بالكلمة الصحيحة.',
         zeigt: b.shown,
         antworten: [b.answer, drillItem.blank, drillItem.de],
-        nearMiss: { [String(drillItem.err).split(/\s+/).slice(-2)[0]]: drillItem.why },
+        nearMiss: { [drillNearMiss]: drillItem.why },
         feedback: { correct: drillItem.why }
       }
     });
@@ -730,7 +731,9 @@ function lessonOfVocab(spec, vocabRow) {
   checkPlan.forEach((src, i) => {
     let st;
     if (i === 2) {
-      const checkOrder = orderSource(spec, items, [order.correct.join(' ')]);
+      const checkOrder = spec.checkOrderSentence
+        ? orderFrage(spec.checkOrderSentence, 'rtb')
+        : orderSource(spec, items, [order.correct.join(' ')]);
       if (!checkOrder) die(spec.id + ' has no second sentence for the check');
       st = {
         phase: 'Check', type: 'mcq',
@@ -749,7 +752,7 @@ function lessonOfVocab(spec, vocabRow) {
         frage: {
           ziel: cap(n + 1), prereq: src.prereq, art: 'cloze', frage: 'أكمل الفراغ بلا مساعدة.',
           zeigt: b.shown, antworten: [b.answer, src.cloze.blank, src.cloze.de],
-          nearMiss: { [String(src.cloze.err).split(/\s+/).slice(-2)[0]]: src.cloze.why },
+          nearMiss: { [drillNearMiss]: src.cloze.why },
           feedback: { correct: src.cloze.why }
         }
       };

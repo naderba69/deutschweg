@@ -433,6 +433,56 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Besuchst du uns?'));
 }
 
+/* ---------- audited A1 possessive-article lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u1-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u1-l5 teaches bounded possessive forms through complete nominative, accusative and formal sentences',
+    lesson.title.de === 'Possessivartikel' && lesson.title.ar === 'أدوات الملكية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['mein', 'meine', 'meinen', 'Ihr', 'Ihre'].every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Das ist mein Bruder.', 'Das ist meine Schwester.', 'Ich sehe meinen Bruder.', 'Wie ist Ihre Nummer?']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  t('Corpus lesson a1-u1-l5 distinguishes possessor stems, noun endings and formal capitalization without rejecting grammatical lowercase ihre',
+    byWord['mein Vater'].pl === 'meine Väter' && byWord['meine Mutter'].pl === 'meine Mütter' &&
+      byWord['ihre Tochter'].ex === 'Ich kenne ihre Tochter.' &&
+      byWord['Ihre Nummer'].err === 'Wie ist Sie Nummer?' &&
+      byWord['Ihre Nummer'].why.includes('ihre بحرف صغير') && byWord['Ihre Nummer'].why.includes('ليست خطأً نحويًا') &&
+      tricks[0].trick === 'الجذر للمالك والنهاية للاسم' && tricks[0].wie.includes('ich → mein') &&
+      tricks[1].wie === 'Das ist mein Bruder. → Ich sehe meinen Bruder.' && !tricks[1].wie.includes('←') &&
+      tricks[2].warum.includes('ihre الصغيرة'));
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const order = lesson.schritte.find(s => s.phase === 'Übungen' && s.frage && s.frage.art === 'wortstellung');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['mein', 'meine', 'meinen', 'Ihr', 'Ihre'];
+  t('Corpus lesson a1-u1-l5 aligns imitation, writing, speaking, summary, one-sentence order and homework with the target forms',
+    lesson.schritte.find(s => s.id === 's15').zeigt.de === 'Das ist meine Schwester.' &&
+      imitate.frage.nearMiss.meinen && writing.frage.familie === 'deklination' &&
+      writing.frage.points.length === 6 && writing.frage.minWords === 24 &&
+      targets.every(x => writing.frage.prompt.includes(x) && speaking.erklaerung.includes(x) &&
+        summary.zeigt.de.includes(x) && homework.zeigt.de.includes(x)) &&
+      order.frage.correct.join(' ') === 'Ich sehe meinen Bruder.' && order.frage.finite === 'sehe' &&
+      order.frage.correct.filter(x => /[.!?]$/.test(x)).length === 1 &&
+      summary.recap === 'المالك أولًا ثم الجنس والحالة');
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  t('Corpus lesson a1-u1-l5 makes 80 percent four of five with five directly supported checks covering all target forms',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u1-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Wie ist Ihre Nummer?') &&
+      clozeCheck.frage.zeigt === '____ Freundin kommt aus Berlin.' && clozeCheck.frage.nearMiss.Mein &&
+      orderCheck.frage.correct.join(' ') === 'Ihr Termin ist um zehn.' && orderCheck.frage.finite === 'ist' &&
+      checks[3].frage.optionen.some(o => o.text === 'Das ist mein Bruder.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Ich sehe meinen Bruder.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

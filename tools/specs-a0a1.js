@@ -324,25 +324,47 @@ module.exports = [
       summaryRecap: 'سبعة ضمائر نصب في جمل كاملة'
     }),
 
-  U('a1-u1-l5', 'A1', 'الملكية', 'Possessivartikel', 'deklination',
-    'Am Ende benutzt du mein und meine im Nominativ und Akkusativ',
-    'في النهاية تستعمل أداة الملكية في الرفع والنصب.',
+  U('a1-u1-l5', 'A1', 'أدوات الملكية', 'Possessivartikel', 'deklination',
+    'Am Ende verwendest du mein, meine und meinen sowie die formellen Formen Ihr und Ihre in kurzen Sätzen',
+    'في النهاية تستعمل mein وmeine وmeinen، وكذلك Ihr وIhre في الخطاب الرسمي، داخل جمل قصيرة.',
     [
-      ['mein Bruder', 'مذكر الرفع mein', 'meine لا تطابق Bruder', 'meine Bruder', 'Bruder مذكر'],
-      ['meine Schwester', 'مؤنث meine', 'mein لا يكفي', 'mein Schwester', 'Schwester مؤنث'],
-      ['meinen Bruder', 'مذكر النصب meinen', 'mein تبقى للرفع', 'mein Bruder sehe', 'النصب يحتاج نهاية'],
-      ['Ihre Nummer', 'المخاطبة الرسمية Ihre', 'deine هنا مقام خطأ', 'deine Nummer bitte', 'مع Sie الرسمية لا deine']
+      ['Das ist mein Bruder.', 'مع الاسم المذكر في الرفع نستعمل mein', 'بعد ist يأتي Bruder هنا في الرفع: mein Bruder', 'Das ist meine Bruder.', 'Bruder مذكر وفي الرفع، لذلك نقول mein لا meine'],
+      ['Das ist meine Schwester.', 'مع الاسم المؤنث في الرفع نستعمل meine', 'Schwester مؤنث، لذلك تأخذ meine', 'Das ist mein Schwester.', 'Schwester مؤنث، لذلك نقول meine لا mein'],
+      ['Ich sehe meinen Bruder.', 'مع الاسم المذكر في النصب نستعمل meinen', 'Bruder مفعول به مذكر هنا، لذلك تتغير mein إلى meinen', 'Ich sehe mein Bruder.', 'المذكر في النصب يحتاج meinen في هذه الجملة'],
+      ['Wie ist Ihre Nummer?', 'في خطاب الاحترام نستعمل Ihre مع Nummer', 'Ihr أو Ihre تدل على الملكية مع Sie الرسمية؛ والنهاية تتبع الاسم', 'Wie ist Sie Nummer?', 'Sie ضمير شخصي؛ أداة الملكية الرسمية الصحيحة هنا هي Ihre']
     ],
     [
-      ['Das ist mein Bruder.', 'هذا أخي', 'Das ist meine Bruder', 'المذكر mein', 'mein'],
-      ['Das ist meine Schwester.', 'هذه أختي', 'Das ist mein Schwester', 'المؤنث meine', 'meine'],
-      ['Ich sehe meinen Bruder.', 'أرى أخي', 'Ich sehe mein Bruder', 'النصب meinen', 'meinen'],
-      ['Wie ist Ihre Nummer?', 'ما رقمكم؟', 'Wie ist deine Nummer?', 'المقام الرسمي Ihre', 'Ihre']
+      ['Das ist mein Bruder.', 'هذا أخي', 'Das ist meine Bruder.', 'Bruder مذكر في الرفع: mein', 'mein'],
+      ['Das ist meine Schwester.', 'هذه أختي', 'Das ist mein Schwester.', 'Schwester مؤنث: meine', 'meine'],
+      ['Ich sehe meinen Bruder.', 'أرى أخي', 'Ich sehe mein Bruder.', 'Bruder مذكر في النصب: meinen', 'meinen'],
+      ['Wie ist Ihre Nummer?', 'ما رقم حضرتك؟', 'Wie ist Sie Nummer?', 'في خطاب الاحترام نقول Ihre Nummer', 'Ihre']
     ],
-    'Das ist mein Bruder. Ich sehe meinen Bruder.',
+    'Das ist meine Schwester.',
     'Ich sehe meinen Bruder.',
-    'Schreibe morgen mein und meinen in zwei Sätzen.',
-    'غدًا اكتب mein وmeinen في جملتين.'),
+    'Schreibe morgen sechs Sätze: Verwende mein mit einem maskulinen und einem neutralen Nomen sowie meine, meinen, Ihr und Ihre jeweils mindestens einmal.',
+    'غدًا اكتب ست جمل: استعمل mein مرةً مع اسم مذكر ومرةً مع اسم محايد، ثم استعمل meine وmeinen وIhr وIhre مرةً على الأقل.',
+    {
+      writing: {
+        zeigt: 'Possessivartikel in kurzen Sätzen',
+        erklaerung: 'اكتب ست جمل: استعمل mein مع اسم مذكر أو محايد، وmeine مع اسم مؤنث أو جمع، وmeinen مع مفعول مذكر، ثم Ihr وIhre في خطاب رسمي.',
+        prompt: 'اكتب ست جمل صحيحة تغطي mein وmeine وmeinen وIhr وIhre.',
+        promptDe: 'Das ist mein Bruder. · Das ist meine Schwester. · Mein Kind ist hier. · Ich sehe meinen Bruder. · Ihr Termin ist um zehn. · Wie ist Ihre Nummer?',
+        points: ['mein مع اسم مذكر', 'mein مع اسم محايد', 'meine مع اسم مؤنث أو جمع', 'meinen في النصب المذكر', 'Ihr في الخطاب الرسمي', 'Ihre في الخطاب الرسمي'],
+        minWords: 24,
+        frage: 'اكتب ست جمل بأدوات الملكية المستهدفة.',
+        familie: 'deklination',
+        hinweise: ['اختر صاحب الشيء أولًا، ثم طابق نهاية أداة الملكية مع جنس الاسم وعدده وحالته.', 'في النصب المذكر استعمل meinen، واكتب Ihr وIhre بحرف كبير عند مخاطبة Sie.']
+      },
+      imitateNearMiss: 'meinen',
+      orderAr: 'رتّب جملة فيها أداة ملكية ومفعول به، واجعل الفعل المصرف في الموضع الثاني.',
+      orderHints: ['ابدأ بـIch، ثم ضع sehe في الموضع الثاني.', 'بعد الفعل ضع meinen Bruder بوصفه المفعول به.'],
+      speakAr: 'سجّل عشرين ثانية: قل جملة مع mein، وأخرى مع meine، وثالثة مع meinen، ثم جملتين رسميتين مع Ihr وIhre.',
+      orderSentence: 'Ich sehe meinen Bruder.',
+      checkOrderSentence: 'Ihr Termin ist um zehn.',
+      summaryDe: 'Nominativ: mein Bruder, mein Kind · meine Schwester, meine Eltern · Akkusativ: meinen Bruder · formell: Ihr Termin, Ihre Nummer',
+      summaryAr: 'جذر أداة الملكية يحدد صاحب الشيء، أما النهاية فتتبع جنس الاسم وعدده وحالته: mein أو meine، وفي النصب المذكر meinen؛ ومع Sie الرسمية نكتب Ihr وIhre بحرف كبير.',
+      summaryRecap: 'المالك أولًا ثم الجنس والحالة'
+    }),
 
   U('a1-u1-l6', 'A1', 'أستطيع ويجب', 'können und müssen', 'konjugation',
     'Am Ende sagst du was du kannst und was du musst',
