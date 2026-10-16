@@ -2338,6 +2338,28 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a18', 1).key === 'سيعمل مدة أطول أو يخفض ساعات العمل أولًا' &&
       b2q('b2-a18', 1).options.includes(b2q('b2-a18', 1).key) &&
       b2Articles['b2-a18'].body.includes('arbeite ich länger oder reduziere zunächst nur die Stunden'));
+  t('Corpus B2 b2-a19 has 716 measured words and no unknown B2 tokens',
+    b2Articles['b2-a19'].title === 'القرية والمدينة' &&
+      b2Articles['b2-a19'].body.trim().split(/\s+/).length === 716 &&
+      known.coverage(b2Known, b2Articles['b2-a19'].body).unknown.length === 0);
+  t('Corpus B2 b2-a19 connects a household-specific comparison, full costs, time, services, emergency planning, a route test, social ties, a conditional move, review, and shared responsibility coherently',
+    b2Articles['b2-a19'].body.includes('einen bestimmten Haushalt, einen bestimmten Ort und einen bestimmten Zeitraum') &&
+      b2Articles['b2-a19'].body.includes('Kosten für Fahrten, Wege, Heizung, notwendige Reparaturen') &&
+      b2Articles['b2-a19'].body.includes('In einer zweiten Spalte stand die Zeit') &&
+      b2Articles['b2-a19'].body.includes('sollte sich die Familie jedoch nicht auf einen freundlichen Nachbarn verlassen') &&
+      b2Articles['b2-a19'].body.includes('nur drei Minuten Zeit zum Umsteigen') &&
+      b2Articles['b2-a19'].body.includes('Nähe entsteht nicht automatisch durch wenige Häuser') &&
+      b2Articles['b2-a19'].body.includes('Auch die Verwaltungen in Dörfern und Städten tragen Verantwortung'));
+  t('Corpus B2 b2-a19 low-rent question matches transport, heating, repair, and travel-time costs',
+    b2q('b2-a19', 0).prompt === 'لماذا لا تكفي أجرة القرية المنخفضة للمقارنة؟' &&
+      b2q('b2-a19', 0).key === 'لأن تكاليف النقل والتدفئة والإصلاح ووقت الطريق تؤثر أيضًا' &&
+      b2q('b2-a19', 0).options.includes(b2q('b2-a19', 0).key) &&
+      b2Articles['b2-a19'].body.includes('Sie sagt aber noch nichts über Kosten für Fahrten, Wege, Heizung, notwendige Reparaturen'));
+  t('Corpus B2 b2-a19 delayed-move question matches written confirmation of two home-working days',
+    b2q('b2-a19', 1).prompt === 'لماذا انتظرت الأسرة قبل الانتقال؟' &&
+      b2q('b2-a19', 1).key === 'حتى يؤكد صاحب عمل الزوج خطيًا يومي العمل من المنزل' &&
+      b2q('b2-a19', 1).options.includes(b2q('b2-a19', 1).key) &&
+      b2Articles['b2-a19'].body.includes('bis der Arbeitgeber ihres Mannes die zwei Tage Arbeit zu Hause schriftlich bestätigt hatte'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
