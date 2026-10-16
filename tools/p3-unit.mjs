@@ -967,6 +967,88 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Zwei Mütter warten vor der Schule.'));
 }
 
+/* ---------- audited A1 restaurant-food lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u3-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u3-l1 states five bounded restaurant frames and teaches them through complete German utterances',
+    lesson.title.de === 'Essen' && lesson.title.ar === 'الطعام' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['fünf vollständige', 'Ich möchte bestellen', 'die Speisekarte', 'den Salat',
+        'einen Kaffee ohne Zucker', 'die Rechnung']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Ich möchte bestellen.', 'Ich möchte die Speisekarte, bitte.',
+        'Ich nehme den Salat.', 'Ich möchte einen Kaffee ohne Zucker, bitte.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u3-l1 keeps all 28 food entries, Arabic meanings, gender and quantity guidance accurate without English or ending shortcuts',
+    lesson.wortschatz.length === 28 &&
+      byWord['die Speisekarte'].ex === 'Ich möchte die Speisekarte, bitte.' &&
+      byWord['das Hähnchen'].why.includes('لاحقة تصغير') &&
+      byWord['der Salat'].blank === 'den' && byWord['der Salat'].fam === 'kasus' &&
+      byWord['das Salz'].err === 'Ich brauche zweihundert Salz Gramm.' &&
+      byWord['der Zucker'].err === 'Ich brauche ein Zucker Pfund.' &&
+      byWord['die Wurst'].ar === 'السجق' && byWord['die Birne'].ar === 'حبة الكمثرى' &&
+      byWord['die Zitrone'].ar === 'حبة الليمون' && byWord['die Zwiebel'].ar === 'حبة البصل' &&
+      byWord['das Müsli'].pl === 'die Müslis' && byWord['der Joghurt'].ar === 'الزبادي' &&
+      byWord['der Joghurt'].why.includes('الصيغة الإقليمية das Joghurt') &&
+      byWord.frühstücken.why.includes('نحذف -en') && byWord.frühstücken.why.includes('نضيف -e') &&
+      tricks[0].trick === 'احفظ الأداة مع اسم الطعام' && tricks[0].warum.includes('لا تكشف نهاية الاسم') &&
+      tricks[1].wie === 'der Löffel · die Gabel · das Messer.' &&
+      tricks[2].wie.includes('das Abendessen') && tricks[2].warum.includes('الجزء الأخير') &&
+      !/(^|\W)(Bill|Menu)(\W|$)/.test(lessonText) && !lessonText.includes('will خشن') &&
+      !lessonText.includes('الجنس يتبع النهاية'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['bestellen', 'Speisekarte', 'Salat', 'Kaffee ohne Zucker', 'Rechnung'];
+  t('Corpus lesson a1-u3-l1 aligns strict restaurant clozes, one-sentence order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Ich möchte die Speisekarte, bitte.' &&
+      imitate.frage.antworten.join(' ') === 'möchte' && imitate.frage.nearMiss.bestelle &&
+      transform.zeigt.de === 'Ich möchte einen Kaffee ohne Zucker, bitte.' &&
+      transform.hinweise[1].includes('ohne Zucker') &&
+      drill.frage.zeigt === 'Ich nehme ____ Salat.' &&
+      drill.frage.antworten.join(' ') === 'den' && drill.frage.nearMiss.der &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'der').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Ich nehme den Salat.' &&
+      order.frage.finite === 'nehme' && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'den', 'Salat.', 'nehme']).failed === 1 &&
+      writing.frage.points.join(' ') === 'bestellen Speisekarte den Salat Kaffee ohne Zucker Rechnung' &&
+      writing.frage.minWords === 24 &&
+      targets.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u3-l1 makes 80 percent four of five measurable across coffee, salad, bill, menu and ordering',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u3-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich möchte einen Kaffee ohne Zucker, bitte.') &&
+      clozeCheck.frage.zeigt === 'Ich nehme ____ Salat.' &&
+      clozeCheck.frage.antworten.join(' ') === 'den' && clozeCheck.frage.nearMiss.der &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'der').ok &&
+      orderCheck.frage.correct.join(' ') === 'Ich möchte die Rechnung, bitte.' &&
+      orderCheck.frage.finite === 'möchte' && orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'die', 'Rechnung,', 'möchte', 'bitte.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich möchte die Speisekarte, bitte.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Ich möchte bestellen.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

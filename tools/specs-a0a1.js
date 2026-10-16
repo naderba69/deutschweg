@@ -680,24 +680,48 @@ module.exports = [
     }),
 
   U('a1-u3-l1', 'A1', 'الطعام', 'Essen', 'lexik-kollokation',
-    'Am Ende bestellst du ein Essen und ein Getränk',
-    'في النهاية تطلب طعامًا وشرابًا.',
+    'Am Ende verwendest du im Restaurant fünf vollständige Äußerungen: Ich möchte bestellen, die Speisekarte, den Salat, einen Kaffee ohne Zucker und die Rechnung.',
+    'في النهاية تستعمل خمس عبارات كاملة في المطعم: Ich möchte bestellen وdie Speisekarte وden Salat وeinen Kaffee ohne Zucker وdie Rechnung.',
     [
-      ['Ich möchte bestellen', 'الطلب يبدأ بـ möchte', 'will خشن مع النادل', 'Ich will sofort du', 'المقام والمبنى معًا خطأ'],
-      ['die Speisekarte', 'قائمة الطعام Speisekarte', 'لا Menu كترجمة دائمة', 'das Menu bitte als Liste', 'Menu قد تعني وجبة ثابتة'],
-      ['ohne Zucker', 'ohne تنفي المضاف', 'nicht Zucker أضعف هنا', 'nicht Zucker bitte im Kaffee', 'الإطار ohne Zucker'],
-      ['Die Rechnung bitte', 'الحساب Rechnung', 'لا the bill', 'die Bill bitte', 'Bill ليست الكلمة']
+      ['Ich möchte bestellen.', 'نستعمل möchte مع المصدر bestellen لبدء الطلب بأدب.', 'بعد möchte يأتي المصدر bestellen', 'Ich möchte bestelle.', 'بعد möchte نقول bestellen، لا bestelle'],
+      ['Ich möchte die Speisekarte, bitte.', 'نطلب قائمة الطعام بعبارة كاملة مع die Speisekarte.', 'Speisekarte مؤنث وتبقى die هنا', 'Ich möchte der Speisekarte, bitte.', 'نقول die Speisekarte، لا der Speisekarte'],
+      ['Ich nehme den Salat.', 'عند اختيار السلطة نقول den Salat لأنه مذكر منصوب.', 'Salat مذكر ويأخذ den هنا', 'Ich nehme der Salat.', 'بعد nehmen نقول den Salat، لا der Salat'],
+      ['Ich möchte einen Kaffee ohne Zucker, bitte.', 'نستعمل ohne Zucker لطلب القهوة من دون سكر.', 'قل einen Kaffee ohne Zucker', 'Ich möchte einen Kaffee nicht Zucker, bitte.', 'نقول ohne Zucker، لا nicht Zucker']
     ],
     [
-      ['Ich möchte bestellen.', 'أود أن أطلب', 'Ich will du bestellen', 'الطلب المهذب möchte', 'möchte'],
-      ['Die Speisekarte, bitte.', 'قائمة الطعام من فضلك', 'Das Menu, bitte.', 'القائمة هنا Speisekarte', 'Speisekarte'],
-      ['Einen Kaffee ohne Zucker.', 'قهوة بلا سكر', 'Einen Kaffee nicht Zucker', 'بلا سكر ohne', 'ohne'],
-      ['Die Rechnung, bitte.', 'الحساب من فضلك', 'Die Bill, bitte.', 'الحساب Rechnung', 'Rechnung']
+      ['Ich möchte bestellen.', 'أود أن أطلب', 'Ich möchte bestelle.', 'بعد möchte يأتي المصدر bestellen.', 'möchte'],
+      ['Ich möchte die Speisekarte, bitte.', 'أود قائمة الطعام من فضلك', 'Ich möchte der Speisekarte, bitte.', 'نقول die Speisekarte.', 'Speisekarte'],
+      ['Ich nehme den Salat.', 'سآخذ السلطة', 'Ich nehme der Salat.', 'نقول den Salat في هذه الجملة.', 'den'],
+      ['Ich möchte einen Kaffee ohne Zucker, bitte.', 'أود قهوة من دون سكر من فضلك', 'Ich möchte einen Kaffee nicht Zucker, bitte.', 'نقول ohne Zucker.', 'ohne']
     ],
-    'Ich möchte die Speisekarte. Einen Kaffee ohne Zucker, bitte.',
-    'Die Rechnung, bitte.',
-    'Bestelle morgen ein Getränk laut.',
-    'غدًا اطلب شرابًا بصوت عالٍ.'),
+    'Ich möchte die Speisekarte, bitte.',
+    'Ich möchte einen Kaffee ohne Zucker, bitte.',
+    'Schreibe morgen fünf Sätze für eine Bestellung im Restaurant. Es geht um Essen und Getränke: Verwende bestellen, Speisekarte, Salat, Kaffee ohne Zucker und Rechnung.',
+    'غدًا اكتب خمس جمل لطلب في المطعم عن الطعام والمشروبات، واستعمل bestellen وSpeisekarte وSalat وKaffee ohne Zucker وRechnung.',
+    {
+      writing: {
+        zeigt: 'Fünf Äußerungen im Restaurant',
+        erklaerung: 'اكتب خمس عبارات كاملة: بدء الطلب، وطلب القائمة، واختيار السلطة، وطلب قهوة بلا سكر، وطلب الحساب.',
+        prompt: 'اكتب خمس عبارات ألمانية كاملة تستعمل الأطر الخمسة المستهدفة.',
+        promptDe: 'Ich möchte bestellen. · Ich möchte die Speisekarte, bitte. · Ich nehme den Salat. · Ich möchte einen Kaffee ohne Zucker, bitte. · Ich möchte die Rechnung, bitte.',
+        points: ['bestellen', 'Speisekarte', 'den Salat', 'Kaffee ohne Zucker', 'Rechnung'],
+        minWords: 24,
+        frage: 'اكتب العبارات الخمس في سياق مطعم.',
+        familie: 'lexik-kollokation',
+        hinweise: ['اكتب عبارة ألمانية كاملة لكل موقف.', 'استعمل bitte في الطلبات المناسبة.']
+      },
+      imitateNearMiss: 'bestelle',
+      transformHint: 'للقهوة من دون سكر نقول ohne Zucker.',
+      orderAr: 'رتّب الجملة: Ich ثم nehme ثم den Salat.',
+      orderHints: ['ابدأ بـIch.', 'ضع nehme في الموضع الثاني، ثم den Salat.'],
+      orderSentence: 'Ich nehme den Salat.',
+      checkOrderSentence: 'Ich möchte die Rechnung, bitte.',
+      orderPromptAr: 'رتّب الكلمات لتكوين طلب صحيح في المطعم.',
+      speakAr: 'سجّل عشرين ثانية: قل العبارات الخمس مع bestellen وSpeisekarte وden Salat وKaffee ohne Zucker وRechnung.',
+      summaryDe: 'Ich möchte bestellen. · Ich möchte die Speisekarte, bitte. · Ich nehme den Salat. · Ich möchte einen Kaffee ohne Zucker, bitte. · Ich möchte die Rechnung, bitte.',
+      summaryAr: 'ابدأ الطلب بـmöchte، واستعمل den مع Salat، وohne Zucker، وbitte في الطلبات المناسبة.',
+      summaryRecap: 'bestellen Speisekarte Salat Kaffee Rechnung'
+    }),
 
   U('a1-u3-l2', 'A1', 'التسوق', 'Einkaufen', 'lexik-kollokation',
     'Am Ende fragst du nach dem Preis und der Größe',
