@@ -104,6 +104,42 @@ console.log('\n— P3.2 lexical layer —\n');
       lesson.schritte.find(s => s.phase === 'Hausaufgabe').erklaerung.includes('وإن لم يتوفر الموقف'));
 }
 
+/* ---------- audited A0 numbers and spelling lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a0-u1-l2'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  t('Corpus lesson a0-u1-l2 removes false usage claims and carries corrected weak-noun, clock-time and number examples',
+    byWord.zwei.ex.includes('zwei Züge') && byWord.zwei.ex.includes('zwei Kaffees') &&
+      byWord.sechs.ex === 'Sechs Kinder spielen.' &&
+      byWord.buchstabieren.why.includes('Ihren Namen') &&
+      byWord.fünfzehn.err === 'Der Zug fährt in fünfzehn Uhr.' &&
+      byWord.vierzig.ex === 'Zwanzig plus zwanzig ist vierzig.' &&
+      lesson.wortschatz.filter(it => it.de === 'zwanzig').length === 1);
+  const allArabic = lesson.schritte.map(s => [s.erklaerung, ...(s.hinweise || [])].join(' ')).join(' ');
+  t('Corpus lesson a0-u1-l2 states a bounded 0–20 goal and treats A wie Anna as optional clarification, not the only way to spell',
+    lesson.schritte[0].zeigt.de.includes('von null bis zwanzig') &&
+      lesson.schritte[5].erklaerung.includes('يمكن توضيح الحرف') &&
+      lesson.schritte[5].vereinfachung.regel.includes('يجوز قول اسم الحرف وحده') &&
+      !allArabic.includes('كل حرف يُقرن باسم واضح'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  t('Corpus lesson a0-u1-l2 makes 80 percent exactly four of five and links every check to direct prior support',
+    checks.length === 5 &&
+      checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => s.frage && /^cap\.a0-u1-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[4].frage.optionen.some(o => o.text === 'A wie Anna.'));
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const order = lesson.schritte.find(s => s.phase === 'Übungen' && s.frage && s.frage.art === 'wortstellung');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a0-u1-l2 aligns writing, speaking, summary, order work and homework with numbers plus spelling',
+    writing.frage.prompt.includes('تهجّ اسمك') && writing.frage.minWords === 12 &&
+      order.frage.correct.join(' ') === 'Ich bin zwanzig Jahre alt.' &&
+      summary.zeigt.de.includes('A wie Anna') &&
+      homework.zeigt.de === 'Zähle morgen laut von null bis zwanzig und buchstabiere deinen Namen.' &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('ثم اسمك، ثم تهجّه'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

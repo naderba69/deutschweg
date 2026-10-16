@@ -1,26 +1,41 @@
-function U(id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr) {
-  return { id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr };
+function U(id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr, options) {
+  return Object.assign({ id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr }, options || {});
 }
 module.exports = [
   U('a0-u1-l2', 'A0', 'الأرقام والتهجئة', 'Zahlen und Buchstabieren', 'lexik-kollokation',
-    'Am Ende sagst du die Zahlen und buchstabierst deinen Namen',
-    'في النهاية تقول الأرقام وتهجئ اسمك.',
+    'Am Ende zählst du von null bis zwanzig und buchstabierst deinen Namen',
+    'في النهاية تعدّ من صفر إلى عشرين وتهجّئ اسمك.',
     [
-      ['null eins zwei drei', 'الأرقام الأولى كلمات ألمانية', 'لا تُنقل من الإنجليزية', 'one two three', 'هذه سلسلة إنجليزية'],
-      ['elf zwölf dreizehn', 'بعد عشرة تتغير الكلمة', 'أحد عشر لا يُركَّب من عشرة وواحد', 'zehn eins', 'لا تُلصق عشرة بواحد'],
-      ['A wie Anna', 'التهجئة باسم لا بحرف عارٍ', 'كل حرف يُقرن باسم واضح', 'A like Anna', 'like ليست أداة التهجئة'],
-      ['Ich bin zwanzig', 'العمر مع bin', 'العمر ليس ملكية', 'Ich habe zwanzig Jahre alt', 'alt لا يأتي مع haben هنا']
+      ['null eins zwei drei', 'الأعداد من صفر إلى ثلاثة', 'ابدأ بـ null ثم eins، لا بالكلمات الإنجليزية', 'zero one two three', 'هذه كلمات إنجليزية لا ألمانية'],
+      ['elf zwölf dreizehn', 'أحد عشر واثنا عشر شكلان خاصان، ومن 13 يبدأ التركيب مع -zehn', 'احفظ elf وzwölf، ثم اربط drei بـ zehn في dreizehn', 'zehn drei', 'العدد 13 كلمة واحدة وترتيبه drei + zehn'],
+      ['A wie Anna', 'يمكن توضيح الحرف بمثال: A wie Anna', 'يجوز قول اسم الحرف وحده؛ واستعمل wie مع كلمة مثال عند الحاجة إلى التوضيح', 'A like Anna', 'أداة المثال الألمانية هي wie لا like'],
+      ['Ich bin zwanzig Jahre alt', 'العمر مع sein وJahre alt', 'قل Ich bin … Jahre alt، لا Ich habe', 'Ich habe zwanzig Jahre alt', 'العمر يُصاغ مع sein لا haben']
     ],
     [
-      ['Ich bin zwanzig.', 'عمري عشرون', 'Ich habe zwanzig', 'العمر يُقال مع bin', 'zwanzig'],
-      ['Meine Zahl ist drei.', 'رقمي ثلاثة', 'Meine Zahl ist three', 'الرقم كلمة ألمانية', 'drei'],
-      ['Bitte buchstabiere den Namen.', 'رجى تهجئة الاسم', 'Bitte spell den Namen', 'الفعل هو buchstabieren', 'buchstabiere'],
-      ['A wie Anna.', 'أ كما آنا', 'A wie Anne', 'المثال هنا Anna لا Anne', 'Anna']
+      ['Ich bin zwanzig Jahre alt.', 'عمري عشرون سنة', 'Ich habe zwanzig Jahre alt.', 'العمر يُقال مع sein وJahre alt', 'zwanzig'],
+      ['Meine Zahl ist drei.', 'رقمي ثلاثة', 'Meine Zahl ist three.', 'العدد يُقال بكلمة ألمانية', 'drei'],
+      ['Bitte buchstabiere den Namen.', 'يرجى تهجئة الاسم', 'Bitte spell den Namen.', 'الفعل الألماني هو buchstabieren', 'buchstabiere'],
+      ['A wie Anna.', 'A كما في Anna', 'A like Anna.', 'أداة المثال الألمانية هي wie', 'Anna']
     ],
-    'Wie alt bist du? Ich bin zwanzig.',
-    'Ich bin zwanzig.',
-    'Zaehle morgen laut von null bis zehn.',
-    'غدًا عد بصوت عالٍ من صفر إلى عشرة.'),
+    'Mein Name ist Omar.',
+    'Ich bin zwanzig Jahre alt. Mein Name ist Omar: O wie Otto, M wie Martha, A wie Anton, R wie Richard.',
+    'Zähle morgen laut von null bis zwanzig und buchstabiere deinen Namen.',
+    'غدًا عدّ بصوت عالٍ من صفر إلى عشرين، ثم تهجّ اسمك.',
+    {
+      writing: {
+        zeigt: 'Zahlen und Buchstabieren',
+        erklaerung: 'اكتب عمرك واسمك، ثم وضّح ثلاثة أحرف على الأقل بصيغة wie.',
+        prompt: 'اكتب عمرك واسمك، ثم تهجّ اسمك بثلاثة أمثلة على الأقل.',
+        promptDe: 'Ich bin … Jahre alt. Mein Name ist …: A wie …, M wie …, R wie …',
+        points: ['العمر مع Jahre alt', 'الاسم', 'ثلاثة أحرف بصيغة wie'],
+        minWords: 12
+      },
+      speakAr: 'سجّل عشرين ثانية: قل عمرك، ثم اسمك، ثم تهجّه بأمثلة مثل A wie Anna.',
+      orderSentence: 'Ich bin zwanzig Jahre alt.',
+      hwHintDe: 'Schreib „Zähle“ mit ä, nicht „Zaehle“.',
+      summaryDe: 'null bis zwanzig · A wie Anna · Ich bin … Jahre alt',
+      summaryAr: 'تعدّ من صفر إلى عشرين، وتوضح الحروف بـ wie عند الحاجة، وتقول العمر مع sein وJahre alt.'
+    }),
 
   U('a0-u1-l3', 'A0', 'أنا أكون واسمي', 'sein und heißen', 'konjugation',
     'Am Ende sagst du wer du bist und wie du heißt',

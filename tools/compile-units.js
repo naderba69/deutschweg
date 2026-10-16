@@ -381,7 +381,7 @@ function orderFrage(sentence, frageText) {
   };
 }
 function orderSource(spec, items, skip) {
-  const pool = [spec.say, spec.model].concat(items.map(it => it.ex));
+  const pool = [spec.orderSentence || spec.say, spec.model].concat(items.map(it => it.ex));
   for (const cand of pool) {
     if (skip && skip.indexOf(cand) >= 0) continue;
     const f = orderFrage(cand, 'rtb');
@@ -652,19 +652,20 @@ function lessonOfVocab(spec, vocabRow) {
     frage: Object.assign({ ziel: cap(n + 1) }, order)
   });
   {
+    const writing = spec.writing || {};
     push('writing', {
       phase: 'Übungen', type: 'mcq',
-      zeigt: { de: 'Schreiben' },
-      erklaerung: 'اكتب أربع جمل عن نفسك بالكلمات الجديدة. الفحص يسمّي حدّه ولا يعيد كتابة نصّك.',
+      zeigt: { de: writing.zeigt || 'Schreiben' },
+      erklaerung: writing.erklaerung || 'اكتب أربع جمل عن نفسك بالكلمات الجديدة. الفحص يسمّي حدّه ولا يعيد كتابة نصّك.',
       recap: 'تمرين ٥: كتابة',
-      hinweise: ['ابدأ بجملة النموذج ثم غيّر الاسم والبلد.', 'استعمل كلمتين على الأقل من قائمة اليوم.'],
+      hinweise: writing.hinweise || ['ابدأ بجملة النموذج ثم غيّر الاسم والبلد.', 'استعمل كلمتين على الأقل من قائمة اليوم.'],
       frage: {
         ziel: cap(n + 1), art: 'schreiben', familie: 'wortstellung',
-        prompt: 'اكتب أربع جمل قصيرة: من أنت، من أين، أين تسكن، وكلمة تعلّمتها اليوم.',
-        promptDe: 'Ich heiße … · Ich komme aus … · Ich wohne in … · Ich lerne ' + items[0].de + '.',
-        points: ['الاسم', 'البلد أو المدينة', 'كلمة من قائمة اليوم'],
-        minWords: 20,
-        frage: 'اكتب أربع جمل عن نفسك.'
+        prompt: writing.prompt || 'اكتب أربع جمل قصيرة: من أنت، من أين، أين تسكن، وكلمة تعلّمتها اليوم.',
+        promptDe: writing.promptDe || ('Ich heiße … · Ich komme aus … · Ich wohne in … · Ich lerne ' + items[0].de + '.'),
+        points: writing.points || ['الاسم', 'البلد أو المدينة', 'كلمة من قائمة اليوم'],
+        minWords: writing.minWords || 20,
+        frage: writing.frage || 'اكتب أربع جمل عن نفسك.'
       }
     });
   }
@@ -703,24 +704,27 @@ function lessonOfVocab(spec, vocabRow) {
   push('sprachen', {
     phase: 'Produktion', type: 'sprechen',
     zeigt: { de: spec.say },
-    erklaerung: 'سجّل عشرين ثانية: ' + spec.say,
+    erklaerung: spec.speakAr || ('سجّل عشرين ثانية: ' + spec.say),
     recap: 'تسجيل عشرين ثانية',
     ziel: 'cap.' + spec.id + '.speak'
   });
+  const summaryDe = spec.summaryDe || spec.facts[0][0];
   push(null, {
     phase: 'Zusammenfassung', type: 'verstehen',
-    zeigt: { de: spec.facts[0][0] },
-    erklaerung: spec.facts[0][2],
-    recap: words(spec.facts[0][0]).slice(0, 6).join(' ')
+    zeigt: { de: summaryDe },
+    erklaerung: spec.summaryAr || spec.facts[0][2],
+    recap: words(summaryDe).slice(0, 6).join(' ')
   });
 
-  /* Check ×4. No hints inside a check: a hint would corrupt the measurement.
-     No writing inside a check either: the learner grades the checklist himself. */
+  /* Check ×4, plus a lesson-specific fifth item where the exact 80% threshold
+     is part of the audited pedagogy. No hints inside a check: a hint would
+     corrupt the measurement. No writing inside a check either: the learner
+     grades the checklist himself. */
   const checkPlan = [
-    { right: spec.facts[3][0], bad: spec.facts[3][3], why: spec.facts[3][4], prereq: cap(7) },
-    { right: items[items.length - 1].ex, bad: items[items.length - 1].err, why: items[items.length - 1].why, prereq: named['w0'], cloze: items[items.length - 1] },
+    { right: spec.facts[3][0], bad: spec.facts[3][3], why: spec.facts[3][4], family: fam, prereq: cap(7) },
+    { right: items[items.length - 1].ex, bad: items[items.length - 1].err, why: items[items.length - 1].why, prereq: named['clozeDrill'], cloze: items[items.length - 1] },
     { right: null, bad: null, why: null, prereq: named['order'] },
-    { right: items[0].ex, bad: items[0].err, why: items[0].why, prereq: named['model'] }
+    { right: items[0].ex, bad: items[0].err, why: items[0].why, family: items[0].fam, prereq: named['w0'] }
   ];
   checkPlan.forEach((src, i) => {
     let st;
@@ -730,7 +734,7 @@ function lessonOfVocab(spec, vocabRow) {
       st = {
         phase: 'Check', type: 'mcq',
         zeigt: { de: 'Check ' + (i + 1) },
-        erklaerung: i === 0 ? 'فحص. النجاح 80٪ بلا مساعدة.' : 'البند يقيس ما شُرح، لا ما خُمّن.',
+        erklaerung: i === 0 ? (vocabRow.extraCheck ? 'فحص. النجاح أربع إجابات صحيحة من خمس (80٪) بلا مساعدة.' : 'فحص. النجاح 80٪ بلا مساعدة.') : 'البند يقيس ما شُرح، لا ما خُمّن.',
         recap: 'فحص ' + (i + 1),
         frage: Object.assign({ ziel: cap(n + 1), prereq: src.prereq, frage: 'رتّب الجملة بلا مساعدة.' }, checkOrder)
       };
@@ -739,7 +743,7 @@ function lessonOfVocab(spec, vocabRow) {
       st = {
         phase: 'Check', type: 'mcq',
         zeigt: { de: 'Check ' + (i + 1) },
-        erklaerung: i === 0 ? 'فحص. النجاح 80٪ بلا مساعدة.' : 'البند يقيس ما شُرح، لا ما خُمّن.',
+        erklaerung: i === 0 ? (vocabRow.extraCheck ? 'فحص. النجاح أربع إجابات صحيحة من خمس (80٪) بلا مساعدة.' : 'فحص. النجاح 80٪ بلا مساعدة.') : 'البند يقيس ما شُرح، لا ما خُمّن.',
         recap: 'فحص ' + (i + 1),
         frage: {
           ziel: cap(n + 1), prereq: src.prereq, art: 'cloze', frage: 'أكمل الفراغ بلا مساعدة.',
@@ -752,21 +756,36 @@ function lessonOfVocab(spec, vocabRow) {
       st = {
         phase: 'Check', type: 'mcq',
         zeigt: { de: 'Check ' + (i + 1) },
-        erklaerung: i === 0 ? 'فحص. النجاح 80٪ بلا مساعدة.' : 'البند يقيس ما شُرح، لا ما خُمّن.',
+        erklaerung: i === 0 ? (vocabRow.extraCheck ? 'فحص. النجاح أربع إجابات صحيحة من خمس (80٪) بلا مساعدة.' : 'فحص. النجاح 80٪ بلا مساعدة.') : 'البند يقيس ما شُرح، لا ما خُمّن.',
         recap: 'فحص ' + (i + 1),
         frage: Object.assign({
           ziel: cap(n + 1), prereq: src.prereq, art: 'mcq', frage: 'أي جملة صحيحة بلا مساعدة؟'
-        }, mcq(25 + i, src.right, [[src.bad, items[0].fam, src.why]]))
+        }, mcq(25 + i, src.right, [[src.bad, src.family || items[0].fam, src.why]]))
       };
     }
     push(null, st);
   });
 
+  if (vocabRow.extraCheck) {
+    const x = vocabRow.extraCheck;
+    push(null, {
+      phase: 'Check', type: 'mcq',
+      zeigt: { de: 'Check 5' },
+      erklaerung: 'البند الخامس يجعل أربع إجابات صحيحة من خمس مساوية لـ80٪.',
+      recap: 'فحص 5',
+      frage: Object.assign({
+        ziel: cap(n + 1), prereq: x.prereq || cap(6), art: 'mcq',
+        frage: 'أي صيغة صحيحة بلا مساعدة؟'
+      }, mcq(29, x.right, [[x.bad, x.family, x.why]]))
+    });
+  }
+
   push(null, {
     phase: 'Hausaufgabe', type: 'verstehen',
     zeigt: { de: spec.hwDe },
     erklaerung: spec.hwAr,
-    recap: 'واجب اليوم التالي'
+    recap: 'واجب اليوم التالي',
+    hinweise: spec.hwHintDe ? [spec.hwHintDe] : []
   });
 
   if (steps.length < 24 || steps.length > 36) die(spec.id + ' step count ' + steps.length);
