@@ -670,6 +670,77 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Um acht stehe ich auf.'));
 }
 
+/* ---------- audited A1 clock-time lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u2-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u2-l3 states a bounded clock-time and appointment goal through complete German sentences',
+    lesson.title.de === 'Uhrzeit' && lesson.title.ar === 'الساعة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['3:00', '3:15', '3:30', '3:45', 'erfragst den Kursbeginn', 'antwortest mit einer Uhrzeit']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Es ist drei Uhr.', 'Es ist Viertel nach drei.', 'Es ist halb vier.', 'Um wie viel Uhr beginnt der Kurs?']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u2-l3 distinguishes Uhr, duration, quarters, half and appointment um without English or broad L1 shortcuts',
+    lesson.wortschatz.length === 28 && byWord['die Uhr'].why.includes('Stunde') &&
+      byWord['die Uhrzeit'].ex === 'Ich notiere die Uhrzeit.' &&
+      byWord.warten.err === 'Ich warte zehn Minute.' && byWord.warten.fam === 'plural' &&
+      byWord.um.ex === 'Der Kurs beginnt um acht Uhr.' &&
+      tricks[0].trick === 'Uhr لوقت الساعة وStunde للمدة' &&
+      tricks[1].trick === 'بعد halb نذكر الساعة القادمة' && tricks[1].warum.includes('vier في المثالين') &&
+      tricks[2].trick === 'موعد الساعة المحدد يأتي مع um' && tricks[2].warum.includes('Um wie viel Uhr?') &&
+      !/(^|\W)(hour|quarter|past)(\W|$)/i.test(lessonText) &&
+      !lessonText.includes('العربية تستعمل') && !lessonText.includes('الوقت يأخذ um دائمًا'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const cloze = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u2-l3 aligns model, strict cloze, six-part writing, speaking, summary, multiword-question order and homework',
+    model.zeigt.de === 'Es ist drei Uhr.' && imitate.frage.nearMiss.Stunde &&
+      transform.zeigt.de === 'Es ist halb vier.' && transform.hinweise[1].includes('3:30') &&
+      cloze.frage.zeigt === 'Es ist ____ vor vier.' && cloze.frage.antworten.length === 1 &&
+      cloze.frage.antworten[0] === 'Viertel' && cloze.frage.nearMiss.halb &&
+      !win.DW.renderers.judgeCloze(cloze.frage, 'halb').ok &&
+      lesson.schritte.find(s => s.id === 's13').frage.nearMiss.Daten &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      writing.frage.points.length === 6 && writing.frage.minWords === 28 &&
+      ['drei Uhr', 'Viertel nach drei', 'halb vier', 'Viertel vor vier',
+        'Um wie viel Uhr beginnt der Kurs?', 'Der Kurs beginnt um acht Uhr.']
+        .every(x => writing.frage.promptDe.includes(x)) &&
+      ['3:00', '3:15', '3:30', '3:45'].every(x => speaking.erklaerung.includes(x) && summary.zeigt.de.includes(x)) &&
+      homework.zeigt.de.includes('Um wie viel Uhr beginnt der Kurs?') &&
+      order.frage.frage !== 'rtb' && order.frage.correct.join(' ') === 'Um wie viel Uhr beginnt der Kurs?' &&
+      order.frage.finite === 'beginnt' && order.frage.fields.vorfeld.join(' ') === 'Um wie viel Uhr' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Um', 'wie', 'viel', 'Uhr', 'der', 'Kurs?', 'beginnt']).failed === 1);
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  const halfBad = checks[4].frage.optionen.find(o => o.text === 'Es ist halb drei.');
+  t('Corpus lesson a1-u2-l3 makes 80 percent four of five measurable across appointment, quarter-to, quarter-past, full-hour and 3:30 forms',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u2-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Um wie viel Uhr beginnt der Kurs?') &&
+      clozeCheck.frage.zeigt === 'Es ist ____ vor vier.' && clozeCheck.frage.antworten.join(' ') === 'Viertel' &&
+      orderCheck.frage.correct.join(' ') === 'Es ist Viertel nach drei.' && orderCheck.frage.finite === 'ist' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Es ist drei Uhr.') &&
+      checks[4].frage.frage === 'أي صيغة تعني 3:30؟' &&
+      checks[4].frage.optionen.some(o => o.text === 'Es ist halb vier.') &&
+      halfBad && checks[4].frage.feedback[halfBad.id].includes('2:30'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

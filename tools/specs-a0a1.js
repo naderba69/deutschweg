@@ -503,24 +503,49 @@ module.exports = [
     }),
 
   U('a1-u2-l3', 'A1', 'الساعة', 'Uhrzeit', 'lexik-kollokation',
-    'Am Ende sagst du eine Uhrzeit mit Uhr und eine mit Viertel',
-    'في النهاية تقول ساعة تامة وربعًا.',
+    'Am Ende nennst du 3:00, 3:15, 3:30 und 3:45 auf Deutsch, erfragst den Kursbeginn und antwortest mit einer Uhrzeit.',
+    'في النهاية تقول 3:00 و3:15 و3:30 و3:45 بالألمانية، وتسأل عن وقت بدء الدورة وتجيب بوقت.',
     [
-      ['Es ist drei Uhr', 'الساعة التامة مع Uhr', 'لا hour', 'Es ist drei hour', 'hour إنجليزية'],
-      ['Viertel nach drei', 'الربع بعد', 'لا quarter past كترجمة', 'quarter past drei', 'الخليط ليس ألمانيًا'],
-      ['halb vier', 'النصف يُنسب إلى الساعة القادمة', 'halb drei ليست 3:30', 'halb drei bedeutet 3:30', 'halb drei تعني 2:30'],
-      ['Um wie viel Uhr', 'السؤال عن الموعد مع Um', 'Wie viel Uhr allein ist knapp', 'Was Uhr ist', 'السؤال الناقص لا يُفهم']
+      ['Es ist drei Uhr.', 'للساعة التامة نضع العدد قبل Uhr', '3:00 = drei Uhr؛ أما Stunde فتدل على مدة', 'Es ist drei Stunde.', 'لوقت الساعة نقول drei Uhr؛ zwei Stunden مثلًا مدة'],
+      ['Es ist Viertel nach drei.', '3:15 هي Viertel nach drei', 'Viertel يأتي قبل nach، ثم تأتي الساعة الحالية', 'Es ist drei nach Viertel.', 'الترتيب هو Viertel nach drei'],
+      ['Es ist halb vier.', '3:30 هي halb vier لأننا نذكر الساعة القادمة', 'بعد halb نذكر الساعة القادمة: halb vier = 3:30', 'Es ist halb nach vier.', 'في قراءة الوقت نقول halb vier بلا nach'],
+      ['Um wie viel Uhr beginnt der Kurs?', 'نسأل عن وقت الموعد بعبارة Um wie viel Uhr', 'عبارة السؤال كاملةً أولًا، ثم الفعل المصرف beginnt، ثم الفاعل', 'Wie viel Uhr beginnt der Kurs?', 'عند السؤال عن وقت الموعد نحتاج Um في البداية']
     ],
     [
-      ['Es ist drei Uhr.', 'الساعة الثالثة', 'Es ist drei hour', 'Uhr لا hour', 'Uhr'],
-      ['Es ist Viertel nach drei.', 'الثالثة والربع', 'Es ist quarter past drei', 'الربع Viertel nach', 'Viertel'],
-      ['Es ist halb vier.', 'الثالثة والنصف', 'Es ist halb drei', 'halb vier تعني 3:30', 'halb'],
-      ['Um wie viel Uhr?', 'في أي ساعة؟', 'Was Uhr ist es?', 'السؤال Um wie viel Uhr', 'Uhr']
+      ['Es ist drei Uhr.', 'الساعة الثالثة', 'Es ist drei Stunde.', 'لوقت الساعة نقول Uhr، لا Stunde', 'Uhr'],
+      ['Es ist Viertel nach drei.', 'الثالثة والربع', 'Es ist drei nach Viertel.', 'الترتيب هو Viertel nach drei', 'Viertel'],
+      ['Es ist halb vier.', 'الثالثة والنصف', 'Es ist halb nach vier.', 'في قراءة الوقت نقول halb vier بلا nach', 'halb'],
+      ['Um wie viel Uhr beginnt der Kurs?', 'في أي ساعة تبدأ الدورة؟', 'Wie viel Uhr beginnt der Kurs?', 'عند السؤال عن وقت الموعد نبدأ بـUm wie viel Uhr', 'Uhr']
     ],
-    'Um wie viel Uhr? Es ist halb vier.',
     'Es ist drei Uhr.',
-    'Sage morgen zwei Uhrzeiten laut.',
-    'غدًا قل ساعتين بصوت عالٍ.'),
+    'Es ist halb vier.',
+    'Sage morgen vier Uhrzeiten laut und frage: „Um wie viel Uhr beginnt der Kurs?“',
+    'غدًا قل أربع صيغ للوقت بصوت عالٍ، ثم اسأل: Um wie viel Uhr beginnt der Kurs؟',
+    {
+      factFamilies: ['lexik-kollokation', 'lexik-kollokation', 'lexik-kollokation', 'präposition'],
+      writing: {
+        zeigt: 'Uhrzeiten und ein Termin',
+        erklaerung: 'اكتب ست جمل: أربعًا للأوقات 3:00 و3:15 و3:30 و3:45، ثم سؤالًا عن بداية الدورة وجوابًا بوقت الساعة.',
+        prompt: 'اكتب الأوقات الأربعة، ثم سؤال الموعد وجوابه.',
+        promptDe: 'Es ist drei Uhr. · Es ist Viertel nach drei. · Es ist halb vier. · Es ist Viertel vor vier. · Um wie viel Uhr beginnt der Kurs? · Der Kurs beginnt um acht Uhr.',
+        points: ['3:00 مع Uhr', '3:15 مع Viertel nach', '3:30 مع halb والساعة القادمة', '3:45 مع Viertel vor', 'سؤال Um wie viel Uhr', 'جواب الموعد مع um'],
+        minWords: 28,
+        frage: 'اكتب أربع صيغ للوقت وسؤال موعد وجوابه.',
+        familie: 'lexik-kollokation',
+        hinweise: ['اكتب جملة كاملة لكل وقت.', 'في سؤال الموعد ابدأ بـUm wie viel Uhr.']
+      },
+      imitateNearMiss: 'Stunde',
+      transformHint: 'لـ3:30 نقول halb vier لأن vier هي الساعة القادمة.',
+      orderAr: 'رتّب سؤال الموعد: عبارة Um wie viel Uhr أولًا، ثم الفعل المصرف beginnt، ثم الفاعل.',
+      orderHints: ['ابدأ بعبارة Um wie viel Uhr كاملةً.', 'ضع beginnt بعدها مباشرةً، ثم der Kurs.'],
+      orderSentence: 'Um wie viel Uhr beginnt der Kurs?',
+      checkOrderSentence: 'Es ist Viertel nach drei.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة وقت صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل 3:00 و3:15 و3:30 و3:45 بالألمانية، ثم اسأل عن بداية الدورة وأجب بوقت.',
+      summaryDe: '3:00: drei Uhr · 3:15: Viertel nach drei · 3:30: halb vier · 3:45: Viertel vor vier · Termin: um acht Uhr',
+      summaryAr: 'الساعة التامة مع Uhr، والربع بعد مع Viertel nach، والنصف مع الساعة القادمة، والربع قبل مع Viertel vor. نسأل عن الموعد بـUm wie viel Uhr ونجيب بـum.',
+      summaryRecap: 'Uhr nach halb vor um'
+    }),
 
   U('a1-u2-l4', 'A1', 'حروف الزمان', 'Temporale Präpositionen', 'präposition',
     'Am Ende benutzt du um am und im für die Zeit',

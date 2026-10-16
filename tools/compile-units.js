@@ -548,7 +548,10 @@ function lessonOfVocab(spec, vocabRow) {
     } else if (form === 1) {
       const b = blankOut(anchor.ex, anchor.blank);
       const answers = clozeAnswers(b, anchor);
-      const nearKey = String(anchor.err).split(/\s+/).slice(-2)[0];
+      const nearKey = vocabRow.wordClozeNearMisses &&
+        Object.prototype.hasOwnProperty.call(vocabRow.wordClozeNearMisses, anchor.de)
+        ? vocabRow.wordClozeNearMisses[anchor.de]
+        : String(anchor.err).split(/\s+/).slice(-2)[0];
       st = {
         phase: 'Wortschatz', type: 'cloze',
         zeigt: { de: anchor.de },
