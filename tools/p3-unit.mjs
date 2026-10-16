@@ -2232,6 +2232,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a13', 1).key === 'أكل طعام لم يعد صالحًا' &&
       b2q('b2-a13', 1).options.includes(b2q('b2-a13', 1).key) &&
       b2Articles['b2-a13'].body.includes('wird nicht gegessen, nur damit die Zahl kleiner wirkt'));
+  t('Corpus B2 b2-a14 has 551 measured words and no unknown B2 tokens',
+    b2Articles['b2-a14'].title === 'الرياضة والمال' &&
+      b2Articles['b2-a14'].body.trim().split(/\s+/).length === 551 &&
+      known.coverage(b2Known, b2Articles['b2-a14'].body).unknown.length === 0);
+  t('Corpus B2 b2-a14 connects full participation costs, confidential support, transparent finances, sponsor conditions, a hall decision, review, and volunteer time coherently',
+    b2Articles['b2-a14'].body.includes('gesamten Kosten der Teilnahme') &&
+      b2Articles['b2-a14'].body.includes('muss seine Lage nicht vor der Gruppe erklären') &&
+      b2Articles['b2-a14'].body.includes('warum er sich verändert') &&
+      b2Articles['b2-a14'].body.includes('ob das Angebot zu den Werten des Vereins passt') &&
+      b2Articles['b2-a14'].body.includes('Nach sechs Monaten wurde geprüft') &&
+      b2Articles['b2-a14'].body.includes('wo zu viel Arbeit von wenigen Personen abhängt'));
+  t('Corpus B2 b2-a14 registration question matches disclosure of regular and possible additional costs',
+    b2q('b2-a14', 0).prompt === 'ماذا ينبغي للنادي أن يوضّح قبل التسجيل؟' &&
+      b2q('b2-a14', 0).key === 'التكاليف المنتظمة والإضافية المحتملة' &&
+      b2q('b2-a14', 0).options.includes(b2q('b2-a14', 0).key) &&
+      b2Articles['b2-a14'].body.includes('regelmäßige und mögliche weitere Kosten erklären'));
+  t('Corpus B2 b2-a14 sponsor question matches checking the offer against club values',
+    b2q('b2-a14', 1).prompt === 'ما الذي يفحصه الأعضاء قبل قبول مال شركة؟' &&
+      b2q('b2-a14', 1).key === 'مدى توافق العرض مع قيم النادي' &&
+      b2q('b2-a14', 1).options.includes(b2q('b2-a14', 1).key) &&
+      b2Articles['b2-a14'].body.includes('ob das Angebot zu den Werten des Vereins passt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
