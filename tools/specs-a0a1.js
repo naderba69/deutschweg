@@ -176,24 +176,38 @@ module.exports = [
     }),
 
   U('a1-u1-l1', 'A1', 'المضارع المنتظم', 'Präsens', 'konjugation',
-    'Am Ende konjugierst du ein regelmäßiges Verb im Präsens',
-    'في النهاية تصرف فعلًا منتظمًا في المضارع.',
+    'Am Ende konjugierst du regelmäßige Verben mit ich, du, er/sie/es und wir',
+    'في النهاية تصرّف أفعالًا منتظمة مع ich وdu وer/sie/es وwir.',
     [
-      ['ich wohne', 'مع ich يسقط النهاية الزائدة', 'لا -t مع ich', 'ich wohnt', 'wohnt للغائب'],
-      ['du wohnst', 'مع du نضيف st', 'النهاية تحمل الضمير', 'du wohne', 'هذه صيغة ich'],
-      ['er wohnt', 'مع er / sie / es نضيف t', 'لا st مع الغائب', 'er wohnst', 'wohnst للمخاطب'],
-      ['wir wohnen', 'مع wir تبقى en', 'الجمع مع المتكلم لا يُصرَّف كالفاعل المفرد', 'wir wohnt', 'wohnt لا تطابق wir']
+      ['ich wohne', 'مع ich نحذف -en من المصدر ونضيف -e', 'صيغة ich للفعل المنتظم تنتهي غالبًا بـ-e', 'ich wohnt', 'wohnt صيغة er/sie/es، لا ich'],
+      ['du wohnst', 'مع du نحذف -en ونضيف -st', 'صيغة du للفعل المنتظم تنتهي غالبًا بـ-st', 'du wohne', 'wohne صيغة ich، لا du'],
+      ['er wohnt', 'مع er/sie/es نحذف -en ونضيف -t', 'صيغة الغائب المفرد للفعل المنتظم تنتهي غالبًا بـ-t', 'er wohnst', 'wohnst صيغة du، لا er'],
+      ['wir wohnen', 'مع wir يطابق الشكلُ المصدرَ في الكتابة', 'صيغة wir للفعل المنتظم تنتهي بـ-en', 'wir wohnt', 'wohnt لا تطابق wir']
     ],
     [
-      ['Ich wohne in Sousse.', 'أسكن في سوسة', 'Ich wohnt in Sousse', 'مع ich: wohne', 'wohne'],
-      ['Du lernst Deutsch.', 'تتعلم الألمانية', 'Du lernen Deutsch', 'مع du: lernst', 'lernst'],
-      ['Er arbeitet heute.', 'هو يعمل اليوم', 'Er arbeiten heute', 'مع er: arbeitet', 'arbeitet'],
-      ['Wir lernen zusammen.', 'نتعلم معًا', 'Wir lernt zusammen', 'مع wir: lernen', 'lernen']
+      ['Ich wohne in Sousse.', 'أسكن في سوسة', 'Ich wohnt in Sousse.', 'مع ich نقول wohne', 'wohne'],
+      ['Du lernst Deutsch.', 'تتعلم الألمانية', 'Du lernen Deutsch.', 'مع du نقول lernst', 'lernst'],
+      ['Er arbeitet heute.', 'هو يعمل اليوم', 'Er arbeiten heute.', 'مع er نقول arbeitet', 'arbeitet'],
+      ['Wir lernen zusammen.', 'نتعلم معًا', 'Wir lernt zusammen.', 'مع wir نقول lernen', 'lernen']
     ],
-    'Ich wohne in Sousse und ich lerne Deutsch.',
     'Ich wohne in Sousse.',
-    'Schreibe morgen drei Sätze mit ich du und er.',
-    'غدًا اكتب ثلاث جمل مع ich وdu وer.'),
+    'Ich lerne Deutsch.',
+    'Schreib morgen vier Sätze mit ich, du, er oder sie und wir.',
+    'غدًا اكتب أربع جمل مع ich وdu وer أو sie وwir.',
+    {
+      writing: {
+        zeigt: 'Ein regelmäßiges Verb im Präsens',
+        erklaerung: 'اكتب أربع جمل بفعل منتظم واحد أو أكثر مع الضمائر الأربعة المستهدفة.',
+        prompt: 'اكتب جملة مع ich وأخرى مع du وثالثة مع er أو sie ورابعة مع wir.',
+        promptDe: 'Ich lerne … · Du lernst … · Er/Sie lernt … · Wir lernen …',
+        points: ['ich: -e', 'du: -st', 'er/sie/es: -t', 'wir: -en'],
+        minWords: 16
+      },
+      speakAr: 'سجّل عشرين ثانية: قل أربع جمل قصيرة بفعل منتظم مع ich وdu وer أو sie وwir.',
+      orderSentence: 'Du lernst Deutsch.',
+      summaryDe: 'ich wohne · du wohnst · er wohnt · wir wohnen',
+      summaryAr: 'نهايات الفعل المنتظم هنا: ich -e، du -st، er/sie/es -t، wir -en.'
+    }),
 
   U('a1-u1-l2', 'A1', 'النفي', 'nicht und kein', 'lexik-kollokation',
     'Am Ende verneinst du ein Verb und ein Nomen richtig',

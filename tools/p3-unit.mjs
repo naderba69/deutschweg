@@ -276,6 +276,40 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Wie viele Kinder hast du?'));
 }
 
+/* ---------- audited A1 regular-present lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u1-l1'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u1-l1 teaches the four regular present endings instead of claiming ich has no ending',
+    lesson.schritte[0].zeigt.de.includes('ich, du, er/sie/es und wir') &&
+      lesson.schritte[3].vereinfachung.regel.includes('تنتهي غالبًا بـ-e') &&
+      lesson.schritte[6].vereinfachung.regel.includes('تنتهي بـ-en') &&
+      !tricks.some(x => x.trick.includes('ich بلا نهاية')));
+  t('Corpus lesson a1-u1-l1 qualifies infinitive-shaped wir and stem-changing strong verbs while correcting gehen and essen guidance',
+    tricks.some(x => x.trick === 'wir يطابق المصدر كتابةً' && x.warum.includes('لا يعني غياب التصريف')) &&
+      tricks.some(x => x.trick === 'بعض الأفعال القوية تغيّر الحركة' && x.warum.includes('لا تعمم')) &&
+      byWord.gehen.why.includes('في عبارة الذهاب إلى العمل') &&
+      byWord.essen.err === 'Er esst Brot mit Käse.');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u1-l1 aligns writing, speaking, summary, word order and homework with all four target persons',
+    writing.frage.points.join(' ').includes('wir: -en') && writing.frage.minWords === 16 &&
+      summary.zeigt.de.includes('du wohnst') && summary.zeigt.de.includes('wir wohnen') &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('أربع جمل قصيرة') &&
+      lesson.schritte.find(s => s.phase === 'Übungen' && s.frage && s.frage.art === 'wortstellung').frage.correct.join(' ') === 'Du lernst Deutsch.' &&
+      homework.zeigt.de.includes('ich, du, er oder sie und wir'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u1-l1 makes 80 percent four of five with direct support and a one-sentence order check',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u1-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderCheck.frage.correct.join(' ') === 'Ich wohne in Sousse.' &&
+      checks[4].frage.optionen.some(o => o.text === 'Du lernst Deutsch.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

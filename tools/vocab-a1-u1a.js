@@ -11,10 +11,10 @@ module.exports = {
       ['lernen', 'lernt · lernte', 'يتعلّم', 'Du lernst Deutsch.', 'Du lernen Deutsch.', 'صيغة du تنتهي بـ -st: du lernst.', 'konjugation', 'lernst'],
       ['arbeiten', 'arbeitet · arbeitete', 'يعمل', 'Er arbeitet heute.', 'Er arbeite heute.', 'مع er تبقى -et: er arbeitet.', 'konjugation', 'arbeitet'],
       ['kommen', 'kommt · kam', 'يأتي', 'Wir kommen aus Tunesien.', 'Wir kommt aus Tunesien.', 'الجمع wir يأخذ صيغة المصدر: wir kommen.', 'konjugation'],
-      ['gehen', 'geht · ging', 'يذهب', 'Ich gehe zur Arbeit.', 'Ich gehe in die Arbeit.', 'المكان المعتاد يأخذ zu: zur Arbeit.', 'präposition', 'gehe'],
+      ['gehen', 'geht · ging', 'يذهب', 'Ich gehe zur Arbeit.', 'Ich gehe in die Arbeit.', 'في عبارة الذهاب إلى العمل نقول zur Arbeit.', 'präposition', 'gehe'],
       ['spielen', 'spielt · spielte', 'يلعب', 'Mein Sohn spielt Fußball.', 'Mein Sohn spielen Fußball.', 'الفاعل المفرد يأخذ -t: spielt.', 'konjugation', 'spielt'],
       ['trinken', 'trinkt · trank', 'يشرب', 'Ich trinke Tee am Morgen.', 'Ich trinke Tee in Morgen.', 'أوقات اليوم تأخذ am: am Morgen.', 'präposition', 'trinke'],
-      ['essen', 'isst · aß', 'يأكل', 'Er isst Brot mit Käse.', 'Er isst Brot mit ein Käse.', 'mit تأخذ داتيف، وKäse بلا أداة هنا.', 'kasus', 'isst'],
+      ['essen', 'isst · aß', 'يأكل', 'Er isst Brot mit Käse.', 'Er esst Brot mit Käse.', 'essen فعل قوي؛ مع er نقول isst، لا esst.', 'konjugation', 'isst'],
       ['machen', 'macht · machte', 'يفعل', 'Was machst du am Wochenende?', 'Was du machst am Wochenende?', 'في سؤال W يأتي الفعل بعد الأداة.', 'wortstellung', 'machst'],
       ['hören', 'hört · hörte', 'يسمع', 'Ich höre Musik im Bus.', 'Ich höre Musik in Bus.', 'in + dem تصير im: im Bus.', 'präposition', 'höre'],
       ['kaufen', 'kauft · kaufte', 'يشتري', 'Wir kaufen Brot und Milch.', 'Wir kaufen Brot und Milch wir.', 'الفاعل لا يُعاد ضميرًا في الآخر.', 'wortstellung'],
@@ -36,10 +36,17 @@ module.exports = {
       ['die Freundin', 'die Freundinnen', 'الصديقة', 'Meine Freundin arbeitet im Krankenhaus.', 'Meine Freundin arbeitet in Krankenhaus.', 'in + dem = im.', 'präposition'],
       ['zusammen', '—', 'معًا', 'Wir lernen zusammen Deutsch.', 'Wir zusammen lernen Deutsch.', 'الفعل ثانٍ: wir lernen zusammen.', 'wortstellung']
     ],
+    extraCheck: {
+      right: 'Du lernst Deutsch.',
+      bad: 'Du lernen Deutsch.',
+      why: 'مع du تنتهي صيغة الفعل المنتظم بـ-st: lernst.',
+      family: 'konjugation',
+      prereq: 'cap.a1-u1-l1.s05'
+    },
     tricks: [
-      { trick: 'ich بلا نهاية', wie: 'ich wohne · ich lerne · ich arbeite: الجذر بلا -n وبلا -st.', warum: 'النهاية -en خاصة بالمصدر وwir، ونقلها إلى ich أول انزلاق.', anchor: 'Ich wohne in Sousse.' },
-      { trick: 'wir يلبس ثوب المصدر', wie: 'wir kommen · wir lernen · wir kaufen: الشكل نفسه في القائمة.', warum: 'الجمع لا يتغيّر، فيُنسى لأن المتعلم يبحث عن نهاية جديدة.', anchor: 'Wir kommen aus Tunesien.' },
-      { trick: 'الحرف a يتحوّل مع du وer', wie: 'fahren ← er fährt · schlafen ← sie schläft.', warum: 'التغيّر صوتي ويُحفظ بالفم؛ القاعدة وحدها لا تثبّته.', anchor: 'Er fährt nach Berlin.' }
+      { trick: 'ich يأخذ -e', wie: 'wohnen → ich wohne · lernen → ich lerne · arbeiten → ich arbeite.', warum: 'نحذف -en من المصدر المنتظم ونضيف -e مع ich؛ الصيغة ليست جذرًا بلا نهاية.', anchor: 'Ich wohne in Sousse.' },
+      { trick: 'wir يطابق المصدر كتابةً', wie: 'wir kommen · wir lernen · wir kaufen: صيغة wir تنتهي بـ-en مثل المصدر.', warum: 'التطابق في الشكل لا يعني غياب التصريف؛ الضمير wir يطلب نهاية -en.', anchor: 'Wir kommen aus Tunesien.' },
+      { trick: 'بعض الأفعال القوية تغيّر الحركة', wie: 'fahren → er fährt · schlafen → sie schläft؛ وهذا امتداد خارج النمط المنتظم.', warum: 'لا تعمم a→ä على كل فعل؛ احفظ تغير الحركة مع الفعل القوي نفسه.', anchor: 'Er fährt nach Berlin.' }
     ]
   },
 
