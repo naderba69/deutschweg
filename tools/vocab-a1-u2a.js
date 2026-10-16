@@ -5,7 +5,7 @@ module.exports = {
   'a1-u2-l1': {
     items: [
       ['wollen', 'will · wollte', 'يريد', 'Ich will zu Hause bleiben.', 'Ich will zu Hause bleibe.', 'بعد wollen يأتي المصدر.', 'konjugation', 'will'],
-      ['möchten', 'möchte · mochte', 'يودّ', 'Ich möchte einen Kaffee.', 'Ich möchte ein Kaffee.', 'Kaffee مذكر، وفي النصب einen.', 'kasus', 'möchte'],
+      ['möchten', 'möchte · möchtest; mochte = Präteritum von mögen', 'يودّ', 'Ich möchte einen Kaffee.', 'Ich möchte ein Kaffee.', 'Kaffee مذكر، وفي النصب einen.', 'kasus', 'möchte'],
       ['will', '—', 'أريد', 'Er will nicht warten.', 'Er will nicht wartet.', 'المصدر بعد will.', 'konjugation', 'will'],
       ['möchte', '—', 'أودّ', 'Möchte er mitkommen?', 'Möchte er mitkommt?', 'بعد möchte مصدر: mitkommen.', 'konjugation', 'Möchte'],
       ['zahlen', 'zahlt · zahlte', 'يدفع الحساب', 'Ich möchte zahlen.', 'Ich möchte zahle.', 'المصدر في الآخر.', 'konjugation'],
@@ -17,10 +17,10 @@ module.exports = {
       ['der Saft', 'die Säfte', 'العصير', 'Ich möchte einen Saft.', 'Ich möchte ein Saft.', 'Saft مذكر: einen.', 'kasus'],
       ['das Bier', 'die Biere', 'البيرة', 'Er möchte ein Bier.', 'Er möchte einen Bier.', 'Bier محايد: ein.', 'genus'],
       ['die Cola', 'die Colas', 'الكولا', 'Ich möchte eine Cola.', 'Ich möchte ein Cola.', 'Cola مؤنث: eine.', 'genus'],
-      ['gern', '—', 'بسرور', 'Ich trinke gern Kaffee.', 'Ich gern trinke Kaffee.', 'gern بعد الفعل لا قبله.', 'wortstellung'],
-      ['lieber', '—', 'أفضل', 'Ich trinke lieber Tee.', 'Ich lieber trinke Tee.', 'lieber بعد الفعل.', 'wortstellung'],
+      ['gern', '—', 'بسرور', 'Ich trinke gern Kaffee.', 'Ich gern trinke Kaffee.', 'في هذا الترتيب يأتي gern بعد الفعل؛ وإذا بدأنا به نقول: Gern trinke ich Kaffee.', 'wortstellung'],
+      ['lieber', '—', 'أفضل', 'Ich trinke lieber Tee.', 'Ich lieber trinke Tee.', 'في هذا الترتيب يأتي lieber بعد الفعل؛ ويمكن البدء به مع قلب الترتيب: Lieber trinke ich Tee.', 'wortstellung'],
       ['zu Hause', '—', 'في البيت', 'Ich will zu Hause bleiben.', 'Ich will in Hause bleiben.', 'zu Hause تعبير ثابت.', 'präposition', 'Hause'],
-      ['nach Hause', '—', 'إلى البيت', 'Ich will nach Hause gehen.', 'Ich will zu Hause gehen.', 'nach Hause للحركة، وzu Hause للسكون.', 'präposition', 'Hause'],
+      ['nach Hause', '—', 'إلى البيت', 'Ich will nach Hause gehen.', 'Ich will in Hause gehen.', 'للوجهة المنزلية نقول nach Hause؛ أما zu Hause فيدل على المكان الساكن.', 'präposition', 'Hause'],
       ['heute Abend', '—', 'هذا المساء', 'Ich möchte heute Abend kommen.', 'Ich möchte heute Abend zu kommen.', 'بعد möchte مصدر بلا zu.', 'konjugation', 'Abend'],
       ['später', '—', 'لاحقًا', 'Ich möchte später zahlen.', 'Ich möchte später zahle.', 'المصدر zahlen.', 'konjugation'],
       ['der Kellner', 'die Kellner', 'النادل', 'Der Kellner bringt das Wasser.', 'Die Kellner bringt das Wasser.', 'Kellner مذكر: der.', 'genus'],
@@ -29,14 +29,24 @@ module.exports = {
       ['dauern', 'dauert · dauerte', 'يستغرق', 'Das dauert zehn Minuten.', 'Das dauern zehn Minuten.', 'الفاعل المفرد يأخذ -t.', 'konjugation', 'dauert'],
       ['noch', '—', 'بعد · ما زال', 'Möchten Sie noch etwas?', 'Möchten Sie etwas noch?', 'noch قبل etwas في هذا التركيب.', 'wortstellung'],
       ['schmecken', 'schmeckt · schmeckte', 'يُستساغ', 'Wie schmeckt der Kuchen?', 'Wie der Kuchen schmeckt?', 'الفعل ثانٍ بعد أداة السؤال.', 'wortstellung', 'schmeckt'],
-      ['lecker', '—', 'لذيذ', 'Der Kuchen ist sehr lecker.', 'Der Kuchen ist sehr lecker schmeckt.', 'صفة واحدة تكفي، بلا فعل ثانٍ.', 'wortstellung'],
+      ['lecker', '—', 'لذيذ', 'Der Kuchen ist sehr lecker.', 'Der Kuchen ist sehr lecker schmeckt.', 'نقول إما ist sehr lecker وإما schmeckt sehr lecker، ولا نجمع الفعلين هنا.', 'wortstellung'],
       ['das Frühstück', 'die Frühstücke', 'الفطور', 'Das Frühstück ist um acht.', 'Der Frühstück ist um acht.', 'Frühstück محايد: das.', 'genus'],
       ['das Mittagessen', 'die Mittagessen', 'الغداء', 'Das Mittagessen ist fertig.', 'Der Mittagessen ist fertig.', 'Mittagessen محايد: das.', 'genus']
     ],
+    clozeItemIndex: 5,
+    clozeNearMiss: 'bestellt',
+    extraCheck: {
+      right: 'Ich möchte zahlen.',
+      bad: 'Ich will zahlen.',
+      why: 'Ich will zahlen جملة نحوية لكنها مباشرة؛ في طلب مهذب بالمطعم تكون Ich möchte zahlen أنسب.',
+      family: 'register',
+      frage: 'أي جملة أنسب لطلب الدفع بأدب في المطعم؟',
+      prereq: 'cap.a1-u2-l1.s05'
+    },
     tricks: [
-      { trick: 'wollen قوية ومöchten مؤدّبة', wie: 'Ich will bleiben. · Ich möchte zahlen.', warum: 'استعمال will في المطعم يبدو حادًّا؛ الأدب هنا جزء من المعنى لا زينة.', anchor: 'Ich möchte zahlen.' },
-      { trick: 'möchten تُصرَّف مثل الفعل العادي', wie: 'ich möchte · du möchtest · wir möchten.', warum: 'شكلها يوهم بشذوذ الأفعال الناقصة، وهي أقرب إلى الفعل العادي.', anchor: 'Ich möchte einen Kaffee.' },
-      { trick: 'ein Glas Wasser بلا von', wie: 'ein Glas Wasser · eine Tasse Tee · ein Stück Kuchen.', warum: 'العربية تقول «كأس من ماء»، والألمانية تسقط «من» في الكميات.', anchor: 'Ich möchte ein Glas Wasser.' }
+      { trick: 'will لنية مباشرة وmöchte لطلب مهذب', wie: 'Ich will zu Hause bleiben. · Ich möchte zahlen.', warum: 'في طلب الخدمة تكون möchte عادةً ألطف؛ أما will فصيغة نحوية تعبّر عن رغبة أو نية مباشرة.', anchor: 'Ich möchte zahlen.' },
+      { trick: 'möchte وmöchtest وmöchten حسب الفاعل', wie: 'Ich möchte zahlen. · Du möchtest zahlen. · Möchten Sie zahlen?', warum: 'مع ich نستعمل möchte، ومع du نضيف -st إلى الجذر möcht- فنقول möchtest، ومع Sie الرسمية نستعمل möchten.', anchor: 'Ich möchte einen Kaffee.' },
+      { trick: 'بين اسم الكمية والمشروب لا نضع von', wie: 'ein Glas Wasser · eine Tasse Tee · ein Stück Kuchen.', warum: 'في تراكيب الكمية هذه يأتي الماء أو الشاي أو الكعك مباشرةً بعد اسم الكمية بلا von.', anchor: 'Ich möchte ein Glas Wasser.' }
     ]
   },
 

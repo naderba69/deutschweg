@@ -328,7 +328,7 @@ function blankOut(sentence, core) {
   };
 }
 
-const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|antwortet|antworte|fragt|frage|möchte|kann|kannst|muss|will|darf|mag|holt|kauf)$/i;
+const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|antwortet|antworte|fragt|frage|möchte|möchten|kann|kannst|muss|will|willst|darf|mag|holt|kauf)$/i;
 
 /* The order exercise is scored on four levels, and level 1 needs the finite
    verb, level 3 the fields. Without them the engine could only say "wrong",
@@ -417,6 +417,10 @@ function lessonOfVocab(spec, vocabRow) {
   });
 
   const fam = spec.fam;
+  if (spec.factFamilies && (spec.factFamilies.length !== 4 || spec.factFamilies.some(x => !FAM.has(x)))) {
+    die(spec.id + ' needs four valid factFamilies');
+  }
+  const factFamily = i => spec.factFamilies ? spec.factFamilies[i] : fam;
   const cap = n => 'cap.' + spec.id + '.s' + String(n).padStart(2, '0');
   const steps = [];
   const named = {};
@@ -477,8 +481,8 @@ function lessonOfVocab(spec, vocabRow) {
   /* Erklärung ×4 from the lesson facts */
   spec.facts.forEach((f, i) => {
     const other = spec.facts[(i + 1) % 4];
-    const q = mcq(4 + i, f[0], [[f[3], fam, f[4]],
-      [other[0], fam, 'الجملة سليمة، لكنها تخصّ: ' + other[1] + '. البند هنا يسأل عن: ' + f[2] + '.']]);
+    const q = mcq(4 + i, f[0], [[f[3], factFamily(i), f[4]],
+      [other[0], factFamily((i + 1) % 4), 'الجملة سليمة، لكنها تخصّ: ' + other[1] + '. البند هنا يسأل عن: ' + f[2] + '.']]);
     push(null, {
       phase: 'Erklärung', type: 'mcq',
       zeigt: { de: f[0] },
@@ -607,7 +611,7 @@ function lessonOfVocab(spec, vocabRow) {
     recap: 'تحويل لا ترجمة',
     hinweise: ['الجملة الألمانية جاهزة في السطر.', spec.transformHint || spec.facts[0][2]],
     frage: Object.assign({ ziel: cap(n + 1), art: 'mcq', frage: 'أي جملة هي التحويل الصحيح؟' },
-      mcq(14, spec.say, [[spec.facts[0][3], fam, spec.facts[0][4]], [spec.lex[1][2], fam, spec.lex[1][3]]]))
+      mcq(14, spec.say, [[spec.facts[0][3], factFamily(0), spec.facts[0][4]], [spec.lex[1][2], factFamily(1), spec.lex[1][3]]]))
   });
 
   /* Übungen ×6: two facts, a cloze from the word list, word order, writing, one more fact */
@@ -620,8 +624,8 @@ function lessonOfVocab(spec, vocabRow) {
       recap: 'تمرين ' + (i + 1),
       hinweise: ['احذف الشكل الذي تعرفه من لغة أخرى.', f[4]],
       frage: Object.assign({ ziel: cap(n + 1), art: 'mcq', frage: 'اختر الشكل الذي يُنتج الجملة الصحيحة.' },
-        mcq(15 + i, f[0], [[f[3], fam, f[4]],
-          [spec.lex[(i + 1) % 4][2], fam, 'هذا فخ معروف في الدرس، لكنه لا يجيب هذا البند: البند يقيس «' + f[2] + '».']]))
+        mcq(15 + i, f[0], [[f[3], factFamily(i), f[4]],
+          [spec.lex[(i + 1) % 4][2], factFamily((i + 1) % 4), 'هذا فخ معروف في الدرس، لكنه لا يجيب هذا البند: البند يقيس «' + f[2] + '».']]))
     });
   });
   if (vocabRow.clozeItemIndex !== undefined &&
@@ -684,8 +688,8 @@ function lessonOfVocab(spec, vocabRow) {
       recap: 'تمرين ٦',
       hinweise: ['احذف الشكل الذي تعرفه من لغة أخرى.', f[4]],
       frage: Object.assign({ ziel: cap(n + 1), art: 'mcq', frage: 'اختر الشكل الذي يُنتج الجملة الصحيحة.' },
-        mcq(17, f[0], [[f[3], fam, f[4]],
-          [spec.lex[2][2], fam, 'هذا فخ معروف في الدرس، لكنه لا يجيب هذا البند: البند يقيس «' + f[2] + '».']]))
+        mcq(17, f[0], [[f[3], factFamily(2), f[4]],
+          [spec.lex[2][2], factFamily(2), 'هذا فخ معروف في الدرس، لكنه لا يجيب هذا البند: البند يقيس «' + f[2] + '».']]))
     });
   }
 
@@ -702,7 +706,7 @@ function lessonOfVocab(spec, vocabRow) {
         ziel: cap(n + 1), art: 'mcq', frage: 'أي صيغة تُثبّتها هذه الحيلة؟'
       }, mcq(21 + i, t.anchor, [
         [items[0].err, items[0].fam, items[0].why],
-        [spec.facts[3][3], fam, spec.facts[3][4]]
+        [spec.facts[3][3], factFamily(3), spec.facts[3][4]]
       ]))
     });
   });
@@ -727,7 +731,7 @@ function lessonOfVocab(spec, vocabRow) {
      corrupt the measurement. No writing inside a check either: the learner
      grades the checklist himself. */
   const checkPlan = [
-    { right: spec.facts[3][0], bad: spec.facts[3][3], why: spec.facts[3][4], family: fam, prereq: cap(7) },
+    { right: spec.facts[3][0], bad: spec.facts[3][3], why: spec.facts[3][4], family: factFamily(3), prereq: cap(7) },
     { right: drillItem.ex, bad: drillItem.err, why: drillItem.why, prereq: named['clozeDrill'], cloze: drillItem },
     { right: null, bad: null, why: null, prereq: named['order'] },
     { right: items[0].ex, bad: items[0].err, why: items[0].why, family: items[0].fam, prereq: named['w0'] }
@@ -783,7 +787,7 @@ function lessonOfVocab(spec, vocabRow) {
       recap: 'فحص 5',
       frage: Object.assign({
         ziel: cap(n + 1), prereq: x.prereq || cap(6), art: 'mcq',
-        frage: 'أي صيغة صحيحة بلا مساعدة؟'
+        frage: x.frage || 'أي صيغة صحيحة بلا مساعدة؟'
       }, mcq(29, x.right, [[x.bad, x.family, x.why]]))
     });
   }

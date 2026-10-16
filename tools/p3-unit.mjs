@@ -542,6 +542,65 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Ich muss lernen.'));
 }
 
+/* ---------- audited A1 wishes and polite-requests lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u2-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u2-l1 states a measurable will, willst, möchte and formal Möchten Sie goal through complete sentences',
+    lesson.title.de === 'wollen und möchten' && lesson.title.ar === 'أريد وأود' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['will/willst', 'möchte/Möchten Sie'].every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Ich will zu Hause bleiben.', 'Ich möchte zahlen.', 'Du willst heute kochen.', 'Möchten Sie etwas trinken?']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  t('Corpus lesson a1-u2-l1 qualifies register and preserves valid gern, lieber, home-direction and quantity contrasts',
+    byWord.möchten.pl === 'möchte · möchtest; mochte = Präteritum von mögen' &&
+      byWord.gern.why.includes('Gern trinke ich Kaffee.') &&
+      byWord.lieber.why.includes('Lieber trinke ich Tee.') &&
+      byWord['nach Hause'].err === 'Ich will in Hause gehen.' &&
+      byWord['nach Hause'].why.includes('zu Hause') &&
+      byWord.lecker.why.includes('ist sehr lecker') && byWord.lecker.why.includes('schmeckt sehr lecker') &&
+      tricks[0].warum.includes('will فصيغة نحوية') && tricks[0].warum.includes('möchte عادةً ألطف') &&
+      tricks[1].wie.includes('Du möchtest zahlen.') && !tricks[1].warum.includes('möchtenst') &&
+      tricks[2].trick.includes('لا نضع von'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const cloze = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['ich will', 'du willst', 'ich möchte', 'möchten sie'];
+  t('Corpus lesson a1-u2-l1 aligns model, imitation, transformation, cloze, writing, speaking, summary, order and homework',
+    model.zeigt.de === 'Ich will zu Hause bleiben.' && imitate.frage.nearMiss.willst &&
+      transform.hinweise[1].includes('Ich möchte zahlen') &&
+      cloze.frage.zeigt === 'Wir möchten ____.' && cloze.frage.nearMiss.bestellt &&
+      writing.frage.familie === 'register' && writing.frage.points.length === 6 && writing.frage.minWords === 24 &&
+      targets.every(x => writing.frage.promptDe.toLowerCase().includes(x) &&
+        speaking.erklaerung.toLowerCase().includes(x) && summary.zeigt.de.toLowerCase().includes(x) &&
+        homework.zeigt.de.toLowerCase().includes(x)) &&
+      order.frage.frage === 'رتّب الكلمات لتكوين جملة صحيحة.' &&
+      order.frage.correct.join(' ') === 'Ich möchte einen Kaffee.' && order.frage.finite === 'möchte' &&
+      order.frage.correct.filter(x => /[.!?]$/.test(x)).length === 1);
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u2-l1 makes 80 percent four of five while testing forms, sentence frame and polite register directly',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u2-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.misconceptionFamilies.a === 'konjugation' &&
+      clozeCheck.frage.zeigt === 'Wir möchten ____.' && clozeCheck.frage.nearMiss.bestellt &&
+      orderCheck.frage.frage !== 'rtb' && orderCheck.frage.correct.join(' ') === 'Du willst heute kochen.' &&
+      orderCheck.frage.finite === 'willst' && orderCheck.frage.verbFirst === false &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich will zu Hause bleiben.') &&
+      checks[4].frage.frage.includes('بأدب') && checks[4].frage.optionen.some(o => o.text === 'Ich möchte zahlen.') &&
+      checks[4].frage.feedback.a.includes('جملة نحوية'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

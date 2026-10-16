@@ -412,24 +412,49 @@ module.exports = [
     }),
 
   U('a1-u2-l1', 'A1', 'أريد وأود', 'wollen und möchten', 'register',
-    'Am Ende unterscheidest du wollen und möchten',
-    'في النهاية تفرّق بين أريد وأود.',
+    'Am Ende formulierst du persönliche Wünsche mit „will/willst“ und höfliche Bitten oder Angebote mit „möchte/Möchten Sie ...?“.',
+    'في النهاية تعبّر عن رغبات شخصية بـ«will/willst»، وعن طلبات أو عروض مهذبة بـ«möchte/Möchten Sie ...؟»',
     [
-      ['ich will', 'will مباشر', 'في الطلب من غريب هو خشن', 'ich will bitte zahlen', 'المقام يحتاج möchten'],
-      ['ich möchte', 'möchte ألطف', 'هي الصيغة التي تُستعمل في المقهى', 'ich möchtest', 'möchtest للمخاطب'],
-      ['du willst', 'willst مع du', 'لا will مع du', 'du will', 'الضمير يحتاج willst'],
-      ['möchten Sie', 'الرسمي möchten Sie', 'willst Sie مقام مكسور', 'willst Sie', 'Sie لا تأخذ willst']
+      ['Ich will zu Hause bleiben.', 'will يعبّر هنا عن رغبة أو نية شخصية مباشرة', 'في الخطة الشخصية يمكن استعمال will؛ وبعده يبقى bleiben مصدرًا', 'Ich willst zu Hause bleiben.', 'مع ich نقول will لا willst'],
+      ['Ich möchte zahlen.', 'möchte صيغة مألوفة لطلب مهذب في المطعم', 'في طلب الخدمة تكون möchte عادةً ألطف من will، مع أن will صيغة نحوية', 'Ich möchtest zahlen.', 'مع ich نقول möchte لا möchtest'],
+      ['Du willst heute kochen.', 'مع du نستعمل willst', 'will يتغير مع du إلى willst، ويبقى kochen مصدرًا في النهاية', 'Du will heute kochen.', 'مع du نقول willst لا will'],
+      ['Möchten Sie etwas trinken?', 'في السؤال الرسمي نستعمل Möchten Sie', 'مع Sie الرسمية تأتي صيغة الجمع möchten، ثم المصدر trinken', 'Möchtest Sie etwas trinken?', 'مع Sie الرسمية نقول möchten لا möchtest']
     ],
     [
-      ['Ich will bleiben.', 'أريد البقاء', 'Ich möchte bitte bleiben sofort', 'الجملة مخلوطة المقام', 'will'],
-      ['Ich möchte zahlen.', 'أود أن أدفع', 'Ich will zahlen jetzt du', 'في الدفع möchten أسلم', 'möchte'],
-      ['Du willst gehen.', 'تريد الذهاب', 'Du will gehen', 'مع du: willst', 'willst'],
-      ['Möchten Sie Wasser?', 'هل تودون ماء؟', 'Willst Sie Wasser?', 'الرسمي möchten Sie', 'Möchten']
+      ['Ich will zu Hause bleiben.', 'أريد البقاء في البيت', 'Ich willst zu Hause bleiben.', 'مع ich نقول will', 'will'],
+      ['Ich möchte zahlen.', 'أودّ أن أدفع', 'Ich möchtest zahlen.', 'مع ich نقول möchte', 'möchte'],
+      ['Du willst heute kochen.', 'تريد أن تطبخ اليوم', 'Du will heute kochen.', 'مع du نقول willst', 'willst'],
+      ['Möchten Sie etwas trinken?', 'هل تودّون شرب شيء؟', 'Möchtest Sie etwas trinken?', 'مع Sie الرسمية نقول möchten', 'Möchten']
     ],
-    'Ich möchte einen Kaffee. Ich will zu Hause bleiben.',
+    'Ich will zu Hause bleiben.',
     'Ich möchte zahlen.',
-    'Bestelle morgen etwas mit möchte.',
-    'غدًا اطلب شيئًا بـ möchte.'),
+    'Schreibe morgen vier Sätze: einen mit „ich will“, einen mit „du willst“, eine höfliche Bitte mit „ich möchte“ und eine formelle Frage mit „Möchten Sie ...?“.',
+    'غدًا اكتب أربع جمل: واحدة مع «ich will»، وأخرى مع «du willst»، وطلبًا مهذبًا مع «ich möchte»، وسؤالًا رسميًا مع «Möchten Sie ...؟»',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'konjugation'],
+      writing: {
+        zeigt: 'Persönliche Wünsche, höfliche Bitten und Angebote',
+        erklaerung: 'اكتب ست جمل: رغبتين شخصيتين مع will أو willst، وطلبين مهذبين مع möchte، وسؤالين رسميين مع Möchten Sie. ضع المصدر في النهاية عندما يوجد فعل ثانٍ.',
+        prompt: 'اكتب ست جمل تميز الرغبة الشخصية من الطلب المهذب.',
+        promptDe: 'Ich will zu Hause bleiben. · Du willst heute kochen. · Ich möchte einen Kaffee. · Ich möchte zahlen. · Möchten Sie etwas trinken? · Möchten Sie den Kuchen probieren?',
+        points: ['رغبة شخصية مع ich will', 'رغبة شخصية مع du willst', 'طلب مع ich möchte واسم', 'طلب مع ich möchte ومصدر', 'سؤال رسمي مع Möchten Sie وtrinken', 'سؤال رسمي مع Möchten Sie وprobieren'],
+        minWords: 24,
+        frage: 'اكتب ست جمل بـwill وwillst وmöchte وMöchten Sie.',
+        familie: 'register',
+        hinweise: ['استعمل will أو willst لخطة أو رغبة شخصية مباشرة.', 'استعمل möchte أو Möchten Sie لطلب أو عرض مهذب، وضع المصدر في النهاية.']
+      },
+      imitateNearMiss: 'willst',
+      transformHint: 'في طلب الدفع في المطعم نقول عادةً Ich möchte zahlen.',
+      orderAr: 'رتّب طلبًا مهذبًا، واجعل möchte في الموضع الثاني.',
+      orderHints: ['ابدأ بـIch، ثم ضع möchte في الموضع الثاني.', 'ضع einen Kaffee بعد الفعل المصرف.'],
+      orderSentence: 'Ich möchte einen Kaffee.',
+      checkOrderSentence: 'Du willst heute kochen.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل رغبة مع ich will، وأخرى مع du willst، ثم طلبًا مع ich möchte، واسأل سؤالًا رسميًا مع Möchten Sie.',
+      summaryDe: 'persönlich: Ich will zu Hause bleiben. · Du willst heute kochen. · höflich: Ich möchte zahlen. · Möchten Sie etwas trinken?',
+      summaryAr: 'will وwillst يناسبان الرغبة أو النية الشخصية المباشرة؛ وفي طلب الخدمة أو تقديم عرض رسمي تكون möchte وMöchten Sie عادةً ألطف. وإذا وُجد فعل ثانٍ بقي مصدرًا في النهاية.',
+      summaryRecap: 'رغبة مباشرة وطلب مهذب'
+    }),
 
   U('a1-u2-l2', 'A1', 'الأفعال المنفصلة', 'Trennbare Verben', 'wortstellung',
     'Am Ende trennst du aufstehen und anrufen im Präsens',
