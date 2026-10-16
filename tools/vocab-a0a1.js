@@ -56,24 +56,31 @@ module.exports = {
     items: [
       ['ich bin', '—', 'أنا أكون', 'Ich bin Sara.', 'Ich ist Sara.', 'مع ich نقول bin دائمًا.', 'konjugation'],
       ['du bist', '—', 'أنت تكون', 'Du bist hier.', 'Du bin hier.', 'صيغة bin لا تصاحب du.', 'konjugation'],
-      ['er ist', 'sie ist · es ist', 'هو يكون', 'Er ist Lehrer.', 'Er bist Lehrer.', 'مع er/sie/es نقول ist.', 'konjugation'],
+      ['er ist', 'sie ist · es ist', 'هو يكون', 'Er ist Lehrer. Sie ist Lehrerin.', 'Er bist Lehrer. Sie bist Lehrerin.', 'مع er/sie/es نقول ist.', 'konjugation'],
       ['wir sind', '—', 'نحن نكون', 'Wir sind aus Tunesien.', 'Wir ist aus Tunesien.', 'الجمع wir يأخذ sind.', 'konjugation'],
       ['ihr seid', '—', 'أنتم تكونون', 'Ihr seid im Kurs.', 'Ihr sind im Kurs.', 'ihr وحدها تأخذ seid، وهي الاستثناء في سلّم sein.', 'konjugation'],
-      ['sie sind', '—', 'هم يكونون', 'Sie sind Studenten.', 'Sie ist Studenten.', 'الجمع يأخذ sind، والإفراد ist.', 'konjugation'],
-      ['heißen', 'heißt · hieß · hat geheißen', 'يُسمّى', 'Wie heißt du?', 'Wie heiß du?', 'مع du يصير heißen ← heißt، ويُلفظ ß هنا صوتًا واحدًا.', 'konjugation', 'heißt'],
+      ['sie sind', '—', 'هم · هن يكونون', 'Die Studenten sind hier. Sie sind im Kurs.', 'Die Studenten sind hier. Sie ist im Kurs.', 'الضمير sie العائد على جمع يأخذ sind، لا ist.', 'konjugation'],
+      ['heißen', 'heißt · hieß · hat geheißen', 'يُسمّى', 'Wie heißt du?', 'Wie heiß du?', 'الجذر heiß- ينتهي بـß، لذلك صيغة du هي heißt بحرف t؛ وß يمثل /s/.', 'konjugation', 'heißt'],
       ['der Name', 'die Namen', 'الاسم', 'Mein Name ist Sara.', 'Meine Name ist Sara.', 'Name مفرد مذكر: mein بلا e.', 'genus'],
-      ['der Vorname', 'die Vornamen', 'الاسم الأول', 'Mein Vorname ist Sara.', 'Der Vorname ist Müller.', 'Vorname هو الأول، وما ينتهي بـ Müller هو اسم العائلة.', 'lexik-kollokation'],
-      ['der Nachname', 'die Nachnamen', 'اسم العائلة', 'Mein Nachname ist Müller.', 'Mein Nachname ist Sara.', 'خلط الموضعين يقلب هويّة التعريف.', 'lexik-kollokation'],
-      ['das Alter', '—', 'العمر', 'Ich bin zwanzig Jahre alt.', 'Ich habe zwanzig Jahre.', 'العمر بـ sein، وhaben للملكية لا للعمر.', 'lexik-kollokation', 'alt'],
+      ['der Vorname', 'die Vornamen', 'الاسم الأول', 'Mein Vorname ist Sara.', 'Mein Vorname sind Sara.', 'Vorname مفرد، لذلك نقول ist لا sind.', 'konjugation'],
+      ['der Nachname', 'die Nachnamen', 'اسم العائلة', 'Mein Nachname ist Müller.', 'Meine Nachname ist Müller.', 'Nachname مذكر: mein Nachname، لا meine.', 'genus'],
+      ['das Alter', '—', 'العمر', 'Im Formular steht mein Alter.', 'Im Formular steht meine Alter.', 'Alter محايد: mein Alter، لا meine.', 'genus', 'Alter'],
       ['die Frau', 'die Frauen', 'السيدة · الزوجة', 'Guten Tag, Frau Klein.', 'Guten Tag, die Frau Klein.', 'نداء اللقب بلا أداة قبل الاسم.', 'register'],
       ['der Herr', 'die Herren', 'السيد', 'Guten Tag, Herr Klein.', 'Guten Tag, der Herr Klein.', 'النداء بلا أداة، وHerren جمع غير منتظم.', 'register'],
-      ['kommen aus', 'kommt aus · kam aus', 'يأتي من', 'Ich komme aus Tunesien.', 'Ich komme von Tunesien.', 'البلد يأخذ aus، وvon للشخص أو الجهة.', 'präposition', 'komme'],
-      ['wohnen', 'wohnt · wohnte', 'يسكن', 'Ich wohne in Sousse.', 'Ich wohne auf Sousse.', 'المدينة تأخذ in؛ auf للسطح أو للميدان.', 'präposition', 'wohne']
+      ['kommen aus', 'kommt aus · kam aus · ist gekommen', 'يأتي من', 'Ich komme aus Tunesien.', 'Ich komme von Tunesien.', 'مع بلد المنشأ نقول aus Tunesien، لا von Tunesien.', 'präposition', 'komme'],
+      ['wohnen', 'wohnt · wohnte · hat gewohnt', 'يسكن', 'Ich wohne in Sousse.', 'Ich wohne auf Sousse.', 'مع المدينة نقول in Sousse، لا auf Sousse.', 'präposition', 'wohne']
     ],
+    extraCheck: {
+      right: 'Du bist hier.',
+      bad: 'Du bin hier.',
+      why: 'مع du نقول bist، لا bin.',
+      family: 'konjugation',
+      prereq: 'cap.a0-u1-l3.s05'
+    },
     tricks: [
       { trick: 'سلّم sein من الأعلى', wie: 'bin · bist · ist ثم sind · seid · sind: فرد، فرد، فرد، ثم جمع.', warum: 'مجموعة الجمع كلها sind، باستثناء واحد فقط هو seid، فتذكّر الاستثناء لا تكرّر القاعدة.' , anchor: 'Du bist hier.'},
-      { trick: 'a يصير ä عند du', wie: 'heißen ← du heißt، fahren ← du fährst، schlafen ← du schläfst.', warum: 'النبرة تتغيّر مع du في أفعال بعينها، وحفظها صوتًا يمنع الخطأ قبل النحو.' , anchor: 'Wie heißt du?'},
-      { trick: 'الأسماء الألمانية تُحفظ بالأداة', wie: 'لا تحفظ Name بل der Name، ولا تحفظ Frau بل die Frau.', warum: 'الجنس ليس في العربية، فالأداة هي الذاكرة الوحيدة لتصريف ما بعدها.' , anchor: 'Ich bin Sara.'}
+      { trick: 'بعد ß تأتي t فقط مع du', wie: 'heißen ← du heißt؛ مثل reisen ← du reist وtanzen ← du tanzt.', warum: 'إذا انتهى جذر الفعل بصوت s أو ß أو x أو z، لا نضيف st كاملةً؛ تكفي t في صيغة du.' , anchor: 'Wie heißt du?'},
+      { trick: 'الأسماء الألمانية تُحفظ بالأداة', wie: 'لا تحفظ Name بل der Name، ولا تحفظ Frau بل die Frau.', warum: 'العربية لا تعطيك جنس الاسم الألماني؛ حفظ الأداة مع الاسم نقطة بداية موثوقة للتصريف.' , anchor: 'Ich bin Sara.'}
     ]
   },
 

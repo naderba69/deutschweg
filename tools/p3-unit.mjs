@@ -140,6 +140,40 @@ console.log('\n— P3.2 lexical layer —\n');
       lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('ثم اسمك، ثم تهجّه'));
 }
 
+/* ---------- audited A0 sein and heißen lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a0-u1-l3'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a0-u1-l3 teaches the real du form of heißen and removes the false a-to-ä mnemonic',
+    byWord.heißen.why.includes('صيغة du هي heißt بحرف t') &&
+      tricks.some(x => x.wie.includes('heißen ← du heißt') && x.warum.includes('s أو ß أو x أو z')) &&
+      !tricks.some(x => x.trick.includes('a يصير ä') || x.wie.includes('fahren ← du fährst')));
+  t('Corpus lesson a0-u1-l3 uses unambiguous plural, first-name, surname, age and place examples',
+    byWord['sie sind'].ex.includes('Die Studenten') &&
+      byWord['der Vorname'].err === 'Mein Vorname sind Sara.' &&
+      byWord['der Nachname'].err === 'Meine Nachname ist Müller.' &&
+      byWord['das Alter'].ex === 'Im Formular steht mein Alter.' &&
+      byWord.wohnen.why.includes('in Sousse'));
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a0-u1-l3 aligns its bounded goal, writing, speaking, summary and fallback homework with sein plus heißen',
+    lesson.schritte[0].zeigt.de.includes('mit den Verben sein und heißen') &&
+      writing.frage.points.join(' ').includes('du bist') && writing.frage.minWords === 12 &&
+      summary.zeigt.de.includes('ich heiße') &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('Wie heißt du?') &&
+      homework.zeigt.de.includes('Ohne Gespräch: Schreib den Satz.'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderChecks = checks.filter(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a0-u1-l3 makes 80 percent four of five with direct support and a single-sentence order check',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a0-u1-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderChecks.length === 1 && orderChecks[0].frage.correct.join(' ') === 'Wie heißt du?' &&
+      checks[4].frage.optionen.some(o => o.text === 'Du bist hier.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

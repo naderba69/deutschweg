@@ -38,24 +38,38 @@ module.exports = [
     }),
 
   U('a0-u1-l3', 'A0', 'أنا أكون واسمي', 'sein und heißen', 'konjugation',
-    'Am Ende sagst du wer du bist und wie du heißt',
-    'في النهاية تقول من أنت وما اسمك.',
+    'Am Ende stellst du dich mit den Verben sein und heißen vor',
+    'في النهاية تعرّف بنفسك باستعمال sein وheißen.',
     [
-      ['Ich bin Sara', 'bin مع أنا', 'sein يتغير مع الضمير', 'Ich ist Sara', 'ist للغائب لا للمتكلم'],
-      ['Du bist hier', 'bist مع أنت', 'لا تُنقل صيغة أنا إلى أنت', 'Du bin hier', 'bin لا تُصاحب du'],
-      ['Er ist Lehrer', 'ist مع هو', 'المهنة بلا أداة في هذه الجملة البسيطة', 'Er ist ein Lehrerin', 'Lehrerin لا تطابق er'],
-      ['Ich heiße Sara', 'الاسم مع heißen لا مع bin فقط', 'bin للكينونة وheißen للاسم', 'Ich bin heiße Sara', 'فعلان مصرّفان معًا خطأ']
+      ['Ich bin Sara', 'مع ich تأتي صيغة bin', 'يتغير sein مع الضمير: ich bin', 'Ich ist Sara', 'مع ich نقول bin، لا ist'],
+      ['Du bist hier', 'مع du تأتي صيغة bist', 'لا تنقل صيغة ich إلى du: du bist', 'Du bin hier', 'مع du نقول bist، لا bin'],
+      ['Er ist Lehrer', 'مع er تأتي صيغة ist', 'بعد sein تأتي المهنة عادةً بلا أداة في التعريف المحايد', 'Er ist eine Lehrer', 'Lehrer مذكر هنا؛ eine لا تطابقه'],
+      ['Ich heiße Sara', 'heißen يجيب مباشرةً عن سؤال الاسم', 'نقول Ich heiße …؛ وIch bin … ممكنة أيضًا عند التعريف بالنفس', 'Ich bin heiße Sara', 'لا نجمع فعلين مصرّفين متتاليين بهذه الصورة']
     ],
     [
-      ['Ich bin Sara.', 'أنا سارة', 'Ich ist Sara', 'مع ich نقول bin', 'bin'],
-      ['Du bist hier.', 'أنت هنا', 'Du bin hier', 'مع du نقول bist', 'bist'],
-      ['Er ist Lehrer.', 'هو معلّم', 'Er bin Lehrer', 'مع er نقول ist', 'ist'],
-      ['Ich heiße Sara.', 'اسمي سارة', 'Ich heißt Sara', 'مع ich نقول heiße', 'heiße']
+      ['Ich bin Sara.', 'أنا سارة', 'Ich ist Sara.', 'مع ich نقول bin، لا ist', 'bin'],
+      ['Du bist hier.', 'أنت هنا', 'Du bin hier.', 'مع du نقول bist، لا bin', 'bist'],
+      ['Er ist Lehrer.', 'هو معلّم', 'Er bin Lehrer.', 'مع er نقول ist، لا bin', 'ist'],
+      ['Ich heiße Sara.', 'اسمي سارة', 'Ich heißt Sara.', 'مع ich نقول heiße، لا heißt', 'heiße']
     ],
-    'Wie heißt du? Ich heiße Sara.',
+    'Wie heißt du?',
     'Ich heiße Sara.',
-    'Sage morgen deinen Namen mit Ich heiße.',
-    'غدًا قل اسمك بجملة Ich heiße.'),
+    'Stell dich morgen mit „Ich heiße …“ vor. Ohne Gespräch: Schreib den Satz.',
+    'غدًا عرّف بنفسك بجملة Ich heiße …، وإن لم تجد محادثة فاكتب الجملة.',
+    {
+      writing: {
+        zeigt: 'sein und heißen',
+        erklaerung: 'اكتب أربع جمل قصيرة تستعمل ich bin وdu bist وer أو sie ist وich heiße.',
+        prompt: 'اكتب أربع جمل: عرّف بنفسك، خاطب شخصًا، عرّف بشخص ثالث، ثم اذكر اسمك.',
+        promptDe: 'Ich bin … · Du bist … · Er/Sie ist … · Ich heiße …',
+        points: ['ich bin', 'du bist', 'er/sie ist', 'ich heiße'],
+        minWords: 12
+      },
+      speakAr: 'سجّل عشرين ثانية: استبدل Sara باسمك في Ich heiße …، ثم اسأل Wie heißt du? وأجب مرة أخرى.',
+      orderSentence: 'Ich heiße Sara.',
+      summaryDe: 'ich bin · du bist · er ist · ich heiße',
+      summaryAr: 'مع ich نقول bin أو heiße، ومع du نقول bist، ومع er وsie نقول ist.'
+    }),
 
   U('a0-u1-l4', 'A0', 'البلد واللغة', 'Länder und Sprachen', 'lexik-kollokation',
     'Am Ende sagst du woher du kommst und welche Sprache du sprichst',
