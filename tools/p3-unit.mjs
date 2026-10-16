@@ -890,6 +890,83 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Die Lampe steht neben dem Bett.'));
 }
 
+/* ---------- audited A1 plural lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u2-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u2-l6 states five bounded plural patterns and teaches them through complete German sentences',
+    lesson.title.de === 'Plural' && lesson.title.ar === 'الجمع' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['fünf Pluralmuster', 'Tage', 'Kinder', 'Mütter', 'Autos', 'Tomaten', 'vollständigen Sätzen']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Der Kurs dauert zwei Tage.', 'Zwei Kinder spielen im Garten.',
+        'Zwei Mütter warten vor der Schule.', 'Vor dem Haus stehen zwei Autos.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u2-l6 keeps all 28 plural pairs and Arabic meanings accurate without predictive ending or umlaut shortcuts',
+    lesson.wortschatz.length === 28 && byWord['der Rücken'].ex === 'Drei Rücken sind auf dem Foto zu sehen.' &&
+      byWord['der Rücken'].err === 'Drei Rücken ist auf dem Foto zu sehen.' &&
+      byWord['der Rücken'].why.includes('بالشكل نفسه') && byWord['der Rücken'].why.includes('drei مع sind') &&
+      byWord['das Hemd'].err === 'Die Hemd sind blau.' && byWord['das Hemd'].fam === 'plural' &&
+      byWord['der Rock'].ar === 'التنورة' && byWord['das T-Shirt'].ar === 'القميص ذو الأكمام القصيرة' &&
+      byWord['die Kartoffel'].ar === 'حبة البطاطا' && byWord['die Tomate'].ar === 'حبة الطماطم' &&
+      byWord['die Banane'].ar === 'الموزة' && byWord['die Orange'].ar === 'البرتقالة' &&
+      byWord['der Hund'].err === 'Die Hund sind schwarz und bellen laut.' &&
+      tricks[0].trick === 'صنّف النهاية ولا تخمّن بها' && tricks[0].wie.includes('-n/-en') &&
+      tricks[0].warum.includes('لا تختار جمع كلمة جديدة') &&
+      tricks[1].warum.includes('لا تفترض أن كل كلمة') &&
+      tricks[2].trick === 'لاحظ -n و-en مع أمثلة محددة' &&
+      !lessonText.includes('خمس نهايات تكفي') && !lessonText.includes('المؤنث يأخذ -n أو -en'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['Tage', 'Kinder', 'Mütter', 'Autos', 'Tomaten'];
+  t('Corpus lesson a1-u2-l6 aligns strict plural clozes, multiword order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Zwei Kinder spielen im Garten.' &&
+      imitate.frage.antworten.join(' ') === 'Tage' && imitate.frage.nearMiss.Tags &&
+      transform.zeigt.de === 'Zwei Mütter warten vor der Schule.' && transform.hinweise[1].includes('Mütter') &&
+      drill.frage.zeigt === 'Zwei ____ liegen auf dem Tisch.' &&
+      drill.frage.antworten.join(' ') === 'Tomaten' && drill.frage.nearMiss.Tomate &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Tomate').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Vor dem Haus stehen zwei Autos.' &&
+      order.frage.finite === 'stehen' && order.frage.fields.vorfeld.join(' ') === 'Vor dem Haus' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Vor', 'dem', 'Haus', 'zwei', 'Autos.', 'stehen']).failed === 1 &&
+      writing.frage.points.join(' ') === targets.join(' ') && writing.frage.minWords === 28 &&
+      targets.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u2-l6 makes 80 percent four of five measurable across Autos, Tomaten, Kinder and Tage, Häuser and Mütter',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u2-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Vor dem Haus stehen zwei Autos.') &&
+      clozeCheck.frage.zeigt === 'Zwei ____ liegen auf dem Tisch.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Tomaten' && clozeCheck.frage.nearMiss.Tomate &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Tomate').ok &&
+      orderCheck.frage.correct.join(' ') === 'Zwei Kinder bleiben zwei Tage in der Stadt.' &&
+      orderCheck.frage.finite === 'bleiben' && orderCheck.frage.fields.vorfeld.join(' ') === 'Zwei Kinder' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Zwei', 'Kinder', 'zwei', 'Tage', 'bleiben', 'in', 'der', 'Stadt.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Zwei Häuser sind alt.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Zwei Mütter warten vor der Schule.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

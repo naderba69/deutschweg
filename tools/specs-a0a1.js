@@ -636,24 +636,48 @@ module.exports = [
     }),
 
   U('a1-u2-l6', 'A1', 'الجمع', 'Plural', 'plural',
-    'Am Ende bildest du vier häufige Plurale',
-    'في النهاية تكوّن أربعة جموع شائعة.',
+    'Am Ende verwendest du fünf Pluralmuster in vollständigen Sätzen: Tage, Kinder, Mütter, Autos und Tomaten.',
+    'في النهاية تستعمل خمسة أنماط للجمع في جمل كاملة: Tage وKinder وMütter وAutos وTomaten.',
     [
-      ['die Tage', 'Tag يأخذ -e', 'لا Tags', 'die Tags', 'الجمع Tage'],
-      ['die Kinder', 'Kind يأخذ -er', 'لا Kinds', 'die Kinds', 'الجمع Kinder'],
-      ['die Mütter', 'Mutter تأخذ حركة', 'لا Mutters في الفصحى هنا', 'die Mutters', 'الجمع Mütter'],
-      ['die Autos', 'بعض الدخيل يأخذ -s', 'لا Auten', 'die Auten', 'الجمع Autos']
+      ['Der Kurs dauert zwei Tage.', 'جمع Tag هو Tage بالنهاية -e.', 'احفظ الزوج der Tag وdie Tage', 'Der Kurs dauert zwei Tags.', 'بعد zwei نقول Tage، لا Tags'],
+      ['Zwei Kinder spielen im Garten.', 'جمع Kind هو Kinder بالنهاية -er.', 'احفظ الزوج das Kind وdie Kinder', 'Zwei Kinds spielen im Garten.', 'بعد zwei نقول Kinder، لا Kinds'],
+      ['Zwei Mütter warten vor der Schule.', 'جمع Mutter هو Mütter بالأوملاوت ومن دون نهاية إضافية.', 'احفظ الزوج die Mutter وdie Mütter', 'Zwei Mutters warten vor der Schule.', 'بعد zwei نقول Mütter، لا Mutters'],
+      ['Vor dem Haus stehen zwei Autos.', 'جمع Auto هو Autos بالنهاية -s.', 'احفظ الزوج das Auto وdie Autos', 'Vor dem Haus stehen zwei Auten.', 'بعد zwei نقول Autos، لا Auten']
     ],
     [
-      ['zwei Tage', 'يومان', 'zwei Tags', 'الجمع Tage', 'Tage'],
-      ['zwei Kinder', 'طفلان', 'zwei Kinds', 'الجمع Kinder', 'Kinder'],
-      ['zwei Mütter', 'أمّان', 'zwei Mutters', 'الجمع Mütter', 'Mütter'],
-      ['zwei Autos', 'سيارتان', 'zwei Auten', 'الجمع Autos', 'Autos']
+      ['Der Kurs dauert zwei Tage.', 'تستغرق الدورة يومين', 'Der Kurs dauert zwei Tags.', 'جمع Tag هو Tage.', 'Tage'],
+      ['Zwei Kinder spielen im Garten.', 'يلعب طفلان في الحديقة', 'Zwei Kinds spielen im Garten.', 'جمع Kind هو Kinder.', 'Kinder'],
+      ['Zwei Mütter warten vor der Schule.', 'تنتظر أمّان أمام المدرسة', 'Zwei Mutters warten vor der Schule.', 'جمع Mutter هو Mütter.', 'Mütter'],
+      ['Vor dem Haus stehen zwei Autos.', 'تقف سيارتان أمام المنزل', 'Vor dem Haus stehen zwei Auten.', 'جمع Auto هو Autos.', 'Autos']
     ],
-    'Ich habe zwei Kinder und zwei Autos.',
-    'Ich habe zwei Kinder.',
-    'Bilde morgen vier Plurale laut.',
-    'غدًا كوّن أربعة جموع بصوت عالٍ.'),
+    'Zwei Kinder spielen im Garten.',
+    'Zwei Mütter warten vor der Schule.',
+    'Schreibe morgen je einen Satz mit Tage, Kinder, Mütter, Autos und Tomaten.',
+    'غدًا اكتب جملة واحدة لكل من Tage وKinder وMütter وAutos وTomaten.',
+    {
+      writing: {
+        zeigt: 'Fünf Pluralmuster',
+        erklaerung: 'اكتب خمس جمل كاملة تستعمل Tage وKinder وMütter وAutos وTomaten.',
+        prompt: 'اكتب خمس جمل، وفي كل جملة صيغة جمع مستهدفة واحدة على الأقل.',
+        promptDe: 'Der Kurs dauert zwei Tage. · Zwei Kinder spielen im Garten. · Zwei Mütter warten vor der Schule. · Vor dem Haus stehen zwei Autos. · Zwei Tomaten liegen auf dem Tisch.',
+        points: ['Tage', 'Kinder', 'Mütter', 'Autos', 'Tomaten'],
+        minWords: 28,
+        frage: 'اكتب خمس جمل بصيغ الجمع الخمس.',
+        familie: 'plural',
+        hinweise: ['اكتب جملة ألمانية كاملة لكل جمع.', 'احفظ المفرد والجمع زوجًا واحدًا؛ لا تخمّن النهاية من جنس الاسم وحده.']
+      },
+      imitateNearMiss: 'Tags',
+      transformHint: 'بعد zwei نقول Mütter، لا Mutters.',
+      orderAr: 'رتّب الجملة: تبدأ عبارة Vor dem Haus في الحقل الأول، ثم stehen، ثم zwei Autos.',
+      orderHints: ['ابدأ بعبارة Vor dem Haus كاملةً.', 'ضع stehen بعدها مباشرةً، ثم zwei Autos.'],
+      orderSentence: 'Vor dem Haus stehen zwei Autos.',
+      checkOrderSentence: 'Zwei Kinder bleiben zwei Tage in der Stadt.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة جمع صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل خمس جمل تستعمل Tage وKinder وMütter وAutos وTomaten.',
+      summaryDe: 'Plurale: der Tag → die Tage · das Kind → die Kinder · die Mutter → die Mütter · das Auto → die Autos · die Tomate → die Tomaten',
+      summaryAr: 'نرى هنا -e و-er و-n/-en و-s والجمع بلا نهاية إضافية؛ احفظ كل مفرد مع جمعه.',
+      summaryRecap: 'Tage Kinder Mütter Autos Tomaten'
+    }),
 
   U('a1-u3-l1', 'A1', 'الطعام', 'Essen', 'lexik-kollokation',
     'Am Ende bestellst du ein Essen und ein Getränk',
