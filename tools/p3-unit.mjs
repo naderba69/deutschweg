@@ -2317,6 +2317,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a17', 1).key === 'إيقاف إشعارات الألعاب بعد العاشرة وترك الهاتف في المطبخ أثناء القراءة' &&
       b2q('b2-a17', 1).options.includes(b2q('b2-a17', 1).key) &&
       b2Articles['b2-a17'].body.includes('die Mitteilungen der Spiele ab und ließ das Telefon beim Lesen in der Küche'));
+  t('Corpus B2 b2-a18 has 684 measured words and no unknown B2 tokens',
+    b2Articles['b2-a18'].title === 'التقاعد' &&
+      b2Articles['b2-a18'].body.trim().split(/\s+/).length === 684 &&
+      known.coverage(b2Known, b2Articles['b2-a18'].body).unknown.length === 0);
+  t('Corpus B2 b2-a18 connects distinct work and pension dates, annual costs, three scenarios, cautious assumptions, financial and social preparation, review, and personal advice coherently',
+    b2Articles['b2-a18'].body.includes('Wann endet die regelmäßige Arbeit, und wann beginnt die gesetzliche Rente?') &&
+      b2Articles['b2-a18'].body.includes('die Ausgaben eines ganzen Jahres') &&
+      b2Articles['b2-a18'].body.includes('Ein kleiner Rechner zeigte mir drei Möglichkeiten') &&
+      b2Articles['b2-a18'].body.includes('mit den gleichen vorsichtigen Annahmen') &&
+      b2Articles['b2-a18'].body.includes('was ich danach tun könnte') &&
+      b2Articles['b2-a18'].body.includes('Allgemeine Beispiele ersetzen keine persönliche Auskunft'));
+  t('Corpus B2 b2-a18 date-separation question matches possible months without employment income',
+    b2q('b2-a18', 0).prompt === 'لماذا يفصل الراوي بين نهاية العمل وبداية المعاش القانوني؟' &&
+      b2q('b2-a18', 0).key === 'لأن أشهرًا قد تمر بلا دخل من العمل' &&
+      b2q('b2-a18', 0).options.includes(b2q('b2-a18', 0).key) &&
+      b2Articles['b2-a18'].body.includes('mögliche Monate ohne Einkommen aus der Arbeit'));
+  t('Corpus B2 b2-a18 insufficient-savings question matches working longer or reducing hours first',
+    b2q('b2-a18', 1).prompt === 'ماذا سيفعل الراوي إذا لم يكف المال الإضافي في الموعد المتفق عليه؟' &&
+      b2q('b2-a18', 1).key === 'سيعمل مدة أطول أو يخفض ساعات العمل أولًا' &&
+      b2q('b2-a18', 1).options.includes(b2q('b2-a18', 1).key) &&
+      b2Articles['b2-a18'].body.includes('arbeite ich länger oder reduziere zunächst nur die Stunden'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
