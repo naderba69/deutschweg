@@ -87,26 +87,33 @@ module.exports = {
   'a0-u1-l4': {
     items: [
       ['Deutschland', '—', 'ألمانيا', 'Ich wohne in Deutschland.', 'Ich wohne in der Deutschland.', 'أسماء الدول بلا أداة، إلا قليلًا محفوظًا مثل die Schweiz.', 'genus'],
-      ['Österreich', '—', 'النمسا', 'Sie kommt aus Österreich.', 'Sie kommt aus Osterreich.', 'حرف ä يغيّر النطق والكتابة معًا؛ بلا نقطتين تصير كلمة أخرى.', 'orthographie'],
-      ['die Schweiz', '—', 'سويسرا', 'Er fährt in die Schweiz.', 'Er fährt nach Schweiz.', 'die Schweiz وحدها بين الجيران تأخذ أداة؛ ونقول in die Schweiz.', 'genus'],
-      ['Tunesien', '—', 'تونس', 'Ich komme aus Tunesien.', 'Ich komme aus Tunis.', 'Tunesien هي الدولة، وTunis هي العاصمة.', 'lexik-kollokation'],
+      ['Österreich', '—', 'النمسا', 'Sie kommt aus Österreich.', 'Sie kommt aus Osterreich.', 'اسم Österreich يبدأ بحرف Ö؛ كتابة O بدل Ö خطأ إملائي.', 'orthographie'],
+      ['die Schweiz', '—', 'سويسرا', 'Er fährt in die Schweiz.', 'Er fährt nach Schweiz.', 'Schweiz اسم بلد مؤنث يأخذ الأداة: in die Schweiz.', 'genus'],
+      ['Tunesien', '—', 'تونس', 'Ich komme aus Tunesien.', 'Ich komme aus der Tunesien.', 'Tunesien اسم بلد يأتي بلا أداة هنا: aus Tunesien.', 'genus'],
       ['Frankreich', '—', 'فرنسا', 'Sie lebt in Frankreich.', 'Sie lebt in Frankreich Land.', 'اسم الدولة لا يحتاج كلمة Land بعده.', 'lexik-kollokation'],
       ['die Sprache', 'die Sprachen', 'اللغة', 'Deutsch ist eine Sprache.', 'Deutsch ist ein Sprache.', 'Sprache مؤنث: eine Sprache.', 'genus'],
       ['Deutsch', '—', 'الألمانية', 'Ich spreche Deutsch.', 'Ich spreche die Deutsch.', 'أسماء اللغات بلا أداة عند sprechen.', 'register'],
-      ['Arabisch', '—', 'العربية', 'Meine Muttersprache ist Arabisch.', 'Meine Muttersprache ist die Arabisch.', 'اسم اللغة بلا أداة، وهو محايد ولا يُصرّف.', 'register'],
+      ['Arabisch', '—', 'العربية', 'Meine Muttersprache ist Arabisch.', 'Meine Muttersprache ist die Arabisch.', 'اسم اللغة يأتي بلا أداة في هذا التركيب: ist Arabisch.', 'register'],
       ['Englisch', '—', 'الإنجليزية', 'Ich lerne Englisch.', 'Ich lerne englisch.', 'أسماء اللغات تُكتب بحرف كبير في الألمانية، خلافًا للعربية.', 'orthographie'],
       ['sprechen', 'spricht · sprach · hat gesprochen', 'يتكلّم', 'Ich spreche ein wenig Deutsch.', 'Ich spreche ein klein Deutsch.', 'قبل اللغة يلزم ظرف: ein wenig أو etwas.', 'deklination', 'spreche'],
       ['die Muttersprache', 'die Muttersprachen', 'اللغة الأم', 'Meine Muttersprache ist Arabisch.', 'Meine Mutter Sprache ist Arabisch.', 'الكلمة مركّبة: Mutter + Sprache في كلمة واحدة بلا فراغ.', 'orthographie'],
       ['das Land', 'die Länder', 'البلد', 'Mein Land ist Tunesien.', 'Meine Land ist Tunesien.', 'Land محايد: mein Land.', 'genus'],
-      ['die Hauptstadt', 'die Hauptstädte', 'العاصمة', 'Tunis ist die Hauptstadt.', 'Tunis ist die Stadt haupt.', 'التركيب يقلب الترتيب: Hauptstadt كلمة واحدة، وبجمع Hauptstädte.', 'orthographie'],
+      ['die Hauptstadt', 'die Hauptstädte', 'العاصمة', 'Tunis ist die Hauptstadt.', 'Tunis ist die Stadt haupt.', 'Hauptstadt كلمة مركبة واحدة، وجمعها Hauptstädte.', 'orthographie'],
       ['Wie bitte?', '—', 'عفوًا؟ (أعد من فضلك)', 'Wie bitte? Noch einmal, bitte.', 'Wie?', '‏«Wie?» وحدها تبدو حادّة؛ Wie bitte? هي صيغة الأدب.', 'register'],
       ['langsam', '—', 'ببطء', 'Sprechen Sie bitte langsam.', 'Sprechen Sie bitte mit langsam.', 'langsam صفة حال؛ لا تحتاج حرف جر قبلها.', 'lexik-kollokation'],
       ['Europa', '—', 'أوروبا', 'Deutschland liegt in Europa.', 'Deutschland liegt in der Europa.', 'أسماء القارات بلا أداة.', 'genus'],
     ],
+    extraCheck: {
+      right: 'Ich spreche Arabisch.',
+      bad: 'Ich spreche die Arabisch.',
+      why: 'اسم اللغة هنا بلا أداة.',
+      family: 'register',
+      prereq: 'cap.a0-u1-l4.s06'
+    },
     tricks: [
-      { trick: 'الدول المؤنثة قليلة ومحفوظة', wie: 'die Schweiz · die Türkei · die Slowakei · die Ukraine: كلها تنتهي بصوت ياء أو ei.', warum: 'قول «قليلة» يجعل المجموعة صغيرة تُحفظ؛ والباقي بلا أداة تلقائيًا.' , anchor: 'die Schweiz'},
-      { trick: 'aus للوطن، von للشخص', wie: 'Ich komme aus Tunesien (بلد) · Ich komme von Sara (شخص).', warum: 'العربية تقول «من» في الحالتين، والألمانية تفصل، والفصل هو الخطأ المتكرر.' , anchor: 'Ich komme aus Tunesien.'},
-      { trick: 'اسم اللغة عارٍ بلا أداة', wie: 'Ich spreche Deutsch · Ich lerne Arabisch.', warum: 'وجود أداة هنا خطأ مشهدي من الإنجليزية (the German language)، لا من الألمانية.' , anchor: 'Ich spreche Deutsch.'}
+      { trick: 'احفظ البلد مع أداته إن كانت له أداة', wie: 'die Schweiz · die Türkei · die Ukraine · die Niederlande.', warum: 'لا تستنتج الأداة من نهاية الاسم؛ احفظ هذه البلدان كعبارات كاملة، فهناك أيضًا أسماء جمع مثل die Niederlande.' , anchor: 'die Schweiz'},
+      { trick: 'aus لبلد المنشأ، von للعودة من عند شخص', wie: 'Ich komme aus Tunesien (المنشأ) · Ich komme von Sara (كنت عندها).', warum: 'المعنى هو الذي يحدد الحرف: aus يذكر الأصل هنا، وvon يصف القدوم من عند شخص.' , anchor: 'Ich komme aus Tunesien.'},
+      { trick: 'بعد sprechen وlernen: اللغة بلا أداة هنا', wie: 'Ich spreche Deutsch · Ich lerne Arabisch.', warum: 'في هاتين الجملتين البسيطتين يأتي اسم اللغة مباشرةً بلا der أو die أو das.' , anchor: 'Ich spreche Deutsch.'}
     ]
   },
 

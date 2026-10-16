@@ -174,6 +174,41 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Du bist hier.'));
 }
 
+/* ---------- audited A0 countries and languages lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a0-u1-l4'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a0-u1-l4 corrects Ö, country articles, Tunis/Tunesien and language-article claims',
+    byWord['Österreich'].why.includes('حرف Ö') &&
+      byWord['die Schweiz'].why.includes('اسم بلد مؤنث') &&
+      byWord.Tunesien.err === 'Ich komme aus der Tunesien.' &&
+      byWord.Arabisch.why.includes('في هذا التركيب') &&
+      byWord['die Hauptstadt'].why.includes('كلمة مركبة واحدة'));
+  t('Corpus lesson a0-u1-l4 replaces false ending and blanket preposition mnemonics with contextual rules',
+    tricks.some(x => x.wie.includes('die Niederlande') && x.warum.includes('لا تستنتج الأداة')) &&
+      tricks.some(x => x.trick.includes('von للعودة من عند شخص')) &&
+      tricks.some(x => x.trick.includes('بعد sprechen وlernen')) &&
+      !tricks.some(x => x.wie.includes('كلها تنتهي بصوت')));
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a0-u1-l4 aligns goal, writing, speaking, summary and fallback homework with origin plus languages',
+    lesson.schritte[0].zeigt.de.includes('sagst du, woher') &&
+      writing.frage.points.includes('kommen aus') && writing.frage.minWords === 16 &&
+      summary.zeigt.de.includes('Ich spreche') &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('ما اللغة التي تتكلمها') &&
+      homework.zeigt.de.includes('Ohne Gespräch: Schreib zwei Sätze.'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a0-u1-l4 makes 80 percent four of five with direct support and a one-sentence order check',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a0-u1-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderCheck.frage.correct.join(' ') === 'Woher kommst du?' &&
+      checks[4].frage.optionen.some(o => o.text === 'Ich spreche Arabisch.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

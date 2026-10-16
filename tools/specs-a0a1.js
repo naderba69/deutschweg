@@ -72,24 +72,38 @@ module.exports = [
     }),
 
   U('a0-u1-l4', 'A0', 'البلد واللغة', 'Länder und Sprachen', 'lexik-kollokation',
-    'Am Ende sagst du woher du kommst und welche Sprache du sprichst',
+    'Am Ende sagst du, woher du kommst und welche Sprache du sprichst',
     'في النهاية تقول من أين أنت وأي لغة تتكلم.',
     [
-      ['Ich komme aus Tunesien', 'الأصل مع kommen aus', 'aus لا in للقدوم من بلد', 'Ich komme in Tunesien', 'in هنا تعني داخلًا لا أصلًا'],
-      ['Ich komme aus Deutschland', 'اسم البلد بلا أداة في هذه الجملة', 'لا تُضف der قبل Deutschland هنا', 'Ich komme aus dem Deutschland', 'الدولة في هذا الإطار بلا أداة'],
-      ['Ich spreche Arabisch', 'اللغة بلا أداة بعد spreche', 'اللغة تُعامل كاسم علم هنا', 'Ich spreche die Arabisch', 'die زائدة'],
-      ['ein bisschen Deutsch', 'القليل يُقال ein bisschen', 'لا little Deutsch', 'ein wenig little', 'الخليط ليس ألمانيًا']
+      ['Ich komme aus Tunesien', 'مع بلد المنشأ نستعمل kommen aus', 'قل aus Tunesien، لا in Tunesien، عندما تذكر أصلك', 'Ich komme in Tunesien', 'in لا يعبّر عن بلد المنشأ هنا'],
+      ['Ich komme aus Deutschland', 'Deutschland يأتي بلا أداة في هذه الجملة', 'لا تضف dem قبل Deutschland هنا', 'Ich komme aus dem Deutschland', 'اسم Deutschland لا يأخذ أداة في هذا الاستعمال'],
+      ['Ich spreche Arabisch', 'اسم اللغة يأتي بلا أداة بعد sprechen هنا', 'في الجملة البسيطة نقول Arabisch بلا die', 'Ich spreche die Arabisch', 'die زائدة في هذا الاستعمال'],
+      ['Ich spreche ein bisschen Deutsch', 'نستعمل ein bisschen لتحديد مقدار اللغة', 'قل ein bisschen Deutsch، لا تخلط الألمانية بالإنجليزية', 'Ich spreche little Deutsch', 'little كلمة إنجليزية لا ألمانية']
     ],
     [
-      ['Ich komme aus Tunesien.', 'أنا من تونس', 'Ich komme in Tunesien', 'القدوم من بلد مع aus', 'komme'],
-      ['Ich komme aus Deutschland.', 'أنا من ألمانيا', 'Ich komme aus German', 'اسم البلد ألماني', 'Deutschland'],
-      ['Ich spreche Arabisch.', 'أتكلم العربية', 'Ich spreche die Arabisch', 'اللغة هنا بلا أداة', 'spreche'],
-      ['Ich spreche ein bisschen Deutsch.', 'أتكلم قليلًا من الألمانية', 'Ich spreche little Deutsch', 'القليل هو ein bisschen', 'bisschen']
+      ['Ich komme aus Tunesien.', 'أنا من تونس', 'Ich komme in Tunesien.', 'بلد المنشأ يأتي مع aus', 'komme'],
+      ['Ich komme aus Deutschland.', 'أنا من ألمانيا', 'Ich komme aus German.', 'اسم البلد الألماني هو Deutschland', 'Deutschland'],
+      ['Ich spreche Arabisch.', 'أتكلم العربية', 'Ich spreche die Arabisch.', 'اسم اللغة هنا بلا أداة', 'spreche'],
+      ['Ich spreche ein bisschen Deutsch.', 'أتكلم قليلًا من الألمانية', 'Ich spreche little Deutsch.', 'القليل هو ein bisschen', 'bisschen']
     ],
-    'Woher kommst du? Ich komme aus Tunesien.',
-    'Ich komme aus Tunesien.',
-    'Sage morgen Herkunft und eine Sprache.',
-    'غدًا قل بلدك ولغة واحدة.'),
+    'Woher kommst du?',
+    'Ich komme aus Tunesien. Ich spreche Arabisch und ein bisschen Deutsch.',
+    'Sag morgen, woher du kommst und welche Sprache du sprichst. Ohne Gespräch: Schreib zwei Sätze.',
+    'غدًا قل من أين أنت وأي لغة تتكلم، وإن لم تجد محادثة فاكتب جملتين.',
+    {
+      writing: {
+        zeigt: 'Herkunft und Sprachen',
+        erklaerung: 'اكتب أربع جمل عن بلد المنشأ واللغات التي تتكلمها أو تتعلمها.',
+        prompt: 'اكتب بلدك ولغتك الأولى ولغة تتعلمها ومقدار ما تتكلمه.',
+        promptDe: 'Ich komme aus … · Ich spreche … · Ich lerne … · Ich spreche ein bisschen …',
+        points: ['kommen aus', 'لغة بلا أداة', 'ein bisschen'],
+        minWords: 16
+      },
+      speakAr: 'سجّل عشرين ثانية: قل من أين أنت، وما اللغة التي تتكلمها، وما اللغة التي تتعلمها.',
+      orderSentence: 'Ich komme aus Tunesien.',
+      summaryDe: 'Ich komme aus … · Ich spreche … · ein bisschen Deutsch',
+      summaryAr: 'بلد المنشأ يأتي مع aus، واسم اللغة يأتي بلا أداة بعد sprechen في هذا الاستعمال.'
+    }),
 
   U('a0-u1-l5', 'A0', 'العائلة والجنس', 'Familie und Genus', 'genus',
     'Am Ende nennst du vier Personen der Familie mit der richtigen Artikel',
