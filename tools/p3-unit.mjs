@@ -2472,9 +2472,10 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-4', 1).key === 'الاثنين عند الثامنة والنصف' &&
       b2cq('novelle-4', 1).options.includes(b2cq('novelle-4', 1).key) &&
       b2Chapters['novelle-4'].body.includes('Montag, acht Uhr dreißig'));
-  t('Corpus B2 novelle-5 has 779 measured words and no unknown B2 tokens',
+  t('Corpus B2 novelle-5 has 793 measured words, an explicit rear roof below no upper room, and no unknown B2 tokens',
     b2Chapters['novelle-5'].title === 'المطر' &&
-      b2Chapters['novelle-5'].body.trim().split(/\s+/).length === 779 &&
+      b2Chapters['novelle-5'].body.trim().split(/\s+/).length === 793 &&
+      b2Chapters['novelle-5'].body.includes('Über dem Schlafzimmer lag nicht Leilas Wohnung, sondern nur das flache Dach zum Hof') &&
       known.coverage(b2Known, b2Chapters['novelle-5'].body).unknown.length === 0);
   t('Corpus B2 novelle-5 turns the three-day rain and roof leak into a safe documented plan, written permission, temporary cover, landlord-funded repair, rain check, and March-to-May continuity',
     b2Chapters['novelle-5'].body.startsWith('Im Winter regnete es drei graue Tage fast ohne Pause') &&
@@ -2485,7 +2486,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Chapters['novelle-5'].body.includes('dass er die gesamten Kosten übernahm') &&
       b2Chapters['novelle-5'].body.includes('Alles blieb trocken') &&
       b2Chapters['novelle-5'].body.includes('Im März öffnete Sara morgens wieder länger das Fenster') &&
-      b2Chapters['novelle-6'].body.startsWith('Im Mai war das ruhige Zimmer hell'));
+      b2Chapters['novelle-6'].body.startsWith('Im Mai fiel morgens helles Licht durch das Fenster'));
   t('Corpus B2 novelle-5 wet-roof question matches the explicit safety reason',
     b2cq('novelle-5', 0).prompt === 'لماذا لم تصعد سارة وليلى إلى السطح أثناء المطر القوي؟' &&
       b2cq('novelle-5', 0).key === 'لأن السطح المبلل لم يكن آمنًا' &&
@@ -2496,6 +2497,28 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-5', 1).key === 'المالك' &&
       b2cq('novelle-5', 1).options.includes(b2cq('novelle-5', 1).key) &&
       b2Chapters['novelle-5'].body.includes('dass er die gesamten Kosten übernahm'));
+  t('Corpus B2 novelle-6 has 804 measured words and no unknown B2 tokens',
+    b2Chapters['novelle-6'].title === 'القرار' &&
+      b2Chapters['novelle-6'].body.trim().split(/\s+/).length === 804 &&
+      known.coverage(b2Known, b2Chapters['novelle-6'].body).unknown.length === 0);
+  t('Corpus B2 novelle-6 closes the calendar clue, exam, fixed-term work and housing decisions, inspected upper room, documented key handover, and precise letter home',
+    b2Chapters['novelle-6'].body.includes('Für den, der bleibt') &&
+      b2Chapters['novelle-6'].body.includes('teilte eine Seite in vier Bereiche: Kurs, Arbeit, Wohnung und Geld') &&
+      b2Chapters['novelle-6'].body.includes('Eine Woche später kam das Ergebnis: bestanden') &&
+      b2Chapters['novelle-6'].body.includes('einen Vertrag bis Ende Januar') &&
+      b2Chapters['novelle-6'].body.includes('Sie prüfte Wasser, Licht, Fenster und Tür') &&
+      b2Chapters['novelle-6'].body.includes('Den alten Schlüssel gab sie Leila gegen eine kurze Bestätigung') &&
+      b2Chapters['novelle-6'].body.endsWith('Im Hof hörte sie bekannte Stimmen, aber aus einer neuen Richtung.'));
+  t('Corpus B2 novelle-6 six-month question matches the passed exam, work contract, and inspected room',
+    b2cq('novelle-6', 0).prompt === 'لماذا قررت سارة البقاء ستة أشهر أخرى؟' &&
+      b2cq('novelle-6', 0).key === 'لأنها نجحت ولديها عقد عمل وغرفة مفحوصة' &&
+      b2cq('novelle-6', 0).options.includes(b2cq('novelle-6', 0).key) &&
+      b2Chapters['novelle-6'].body.includes('Die Prüfung ist bestanden. Ich arbeite bis Januar weiter. Ich bleibe noch sechs Monate in Sousse'));
+  t('Corpus B2 novelle-6 old-key question matches the documented handover to Leila',
+    b2cq('novelle-6', 1).prompt === 'ماذا فعلت بالمفتاح القديم عند الانتقال؟' &&
+      b2cq('novelle-6', 1).key === 'أعادته إلى ليلى مقابل تأكيد' &&
+      b2cq('novelle-6', 1).options.includes(b2cq('novelle-6', 1).key) &&
+      b2Chapters['novelle-6'].body.includes('Den alten Schlüssel gab sie Leila gegen eine kurze Bestätigung'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
