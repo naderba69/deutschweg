@@ -2275,6 +2275,27 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a15', 1).options.includes(b2q('b2-a15', 1).key) &&
       b2Articles['b2-a15'].body.includes('ob das Projekt die veröffentlichten Ziele erfüllte') &&
       b2Articles['b2-a15'].body.includes('im Vergleich zu anderen Anträgen bewertet wurde'));
+  t('Corpus B2 b2-a16 has 639 measured words and no unknown B2 tokens',
+    b2Articles['b2-a16'].title === 'الجيران' &&
+      b2Articles['b2-a16'].body.trim().split(/\s+/).length === 639 &&
+      known.coverage(b2Known, b2Articles['b2-a16'].body).unknown.length === 0);
+  t('Corpus B2 b2-a16 connects observation and judgment, uncertain sound sources, written rules, a two-source case, a reviewed agreement, escalation, and safety coherently',
+    b2Articles['b2-a16'].body.includes('diese Ebenen zu trennen') &&
+      b2Articles['b2-a16'].body.includes('Wer die Quelle nicht sicher kennt') &&
+      b2Articles['b2-a16'].body.includes('geschriebenen Regeln des Hauses') &&
+      b2Articles['b2-a16'].body.includes('zwei verschiedene Ursachen vermischt') &&
+      b2Articles['b2-a16'].body.includes('Nach zwei Wochen wollten wir noch einmal miteinander sprechen') &&
+      b2Articles['b2-a16'].body.includes('Bei Drohungen, Gewalt oder einer direkten Gefahr'));
+  t('Corpus B2 b2-a16 source question matches sound possibly coming from another place',
+    b2q('b2-a16', 0).prompt === 'لماذا لا ينبغي توجيه اتهام فوري إلى جار بعينه؟' &&
+      b2q('b2-a16', 0).key === 'لأن مصدر الصوت قد يكون من مكان آخر' &&
+      b2q('b2-a16', 0).options.includes(b2q('b2-a16', 0).key) &&
+      b2Articles['b2-a16'].body.includes('kann wie Lärm aus der Wohnung nebenan klingen'));
+  t('Corpus B2 b2-a16 safety question matches threats, violence, or direct danger preceding a door discussion',
+    b2q('b2-a16', 1).prompt === 'متى لا يلزم بدء الأمر بنقاش مباشر عند الباب؟' &&
+      b2q('b2-a16', 1).key === 'عند وجود تهديد أو عنف أو خطر مباشر' &&
+      b2q('b2-a16', 1).options.includes(b2q('b2-a16', 1).key) &&
+      b2Articles['b2-a16'].body.includes('muss niemand zuerst an einer offenen Tür diskutieren'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
