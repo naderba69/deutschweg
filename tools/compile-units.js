@@ -714,7 +714,7 @@ function lessonOfVocab(spec, vocabRow) {
     phase: 'Zusammenfassung', type: 'verstehen',
     zeigt: { de: summaryDe },
     erklaerung: spec.summaryAr || spec.facts[0][2],
-    recap: words(summaryDe).slice(0, 6).join(' ')
+    recap: spec.summaryRecap || words(summaryDe).slice(0, 6).join(' ')
   });
 
   /* Check ×4, plus a lesson-specific fifth item where the exact 80% threshold

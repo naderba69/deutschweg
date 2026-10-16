@@ -283,25 +283,46 @@ module.exports = [
       summaryAr: 'في نصب المفرد المذكر تتغير der إلى den وein إلى einen، بينما تبقى das وdie كما هما هنا.'
     }),
 
-  U('a1-u1-l4', 'A1', 'الضمائر في النصب', 'Akkusativ Pronomen', 'kasus',
-    'Am Ende ersetzt du ein Objekt durch mich dich ihn oder sie',
-    'في النهاية تستبدل المفعول بضمير نصب.',
+  U('a1-u1-l4', 'A1', 'ضمائر حالة النصب', 'Pronomen im Akkusativ', 'kasus',
+    'Am Ende verwendest du die Akkusativpronomen mich, dich, ihn, sie, es, uns und euch',
+    'في النهاية تستعمل ضمائر النصب mich وdich وihn وsie وes وuns وeuch.',
     [
-      ['mich', 'أنا في النصب mich', 'mir للداتيف لا للنصب', 'mir sehe', 'الفعل أيضًا ناقص'],
-      ['dich', 'أنت في النصب dich', 'dir ليست نصبًا', 'dir sehe', 'dir داتيف'],
-      ['ihn', 'هو في النصب ihn', 'ihm داتيف', 'ihm sehe', 'ihm ليست ضمير نصب'],
-      ['sie bleibt sie', 'هي في النصب تبقى sie', 'لا تصبح ihra', 'ihra', 'هذه ليست صيغة ألمانية']
+      ['Siehst du mich?', 'ضمير ich يتحول إلى mich عندما يكون مفعولًا به', 'ich → mich في حالة النصب، أما mir فهو للداتيف', 'Siehst du mir?', 'sehen يأخذ هنا مفعولًا به في النصب، لذلك نقول mich لا mir'],
+      ['Ich sehe dich.', 'ضمير du يتحول إلى dich عندما يكون مفعولًا به', 'du → dich في حالة النصب، أما dir فهو للداتيف', 'Ich sehe dir.', 'مفعول sehen هنا في النصب، لذلك نقول dich لا dir'],
+      ['Ich sehe ihn.', 'ضمير er يتحول إلى ihn عندما يكون مفعولًا به', 'er → ihn في حالة النصب، أما ihm فهو للداتيف', 'Ich sehe ihm.', 'مفعول sehen هنا في النصب، لذلك نقول ihn لا ihm'],
+      ['Ich sehe sie.', 'ضمير sie المؤنث يبقى sie عندما يكون مفعولًا به', 'sie → sie في حالة النصب، أما ihr فهو للداتيف في هذا السياق', 'Ich sehe ihr.', 'مفعول sehen هنا في النصب، لذلك نقول sie لا ihr']
     ],
     [
-      ['Siehst du mich?', 'هل تراني؟', 'Siehst du mir?', 'النصب من ich هو mich', 'mich'],
-      ['Ich sehe dich.', 'أراك', 'Ich sehe dir', 'النصب من du هو dich', 'dich'],
-      ['Ich sehe ihn.', 'أراه', 'Ich sehe ihm', 'النصب من er هو ihn', 'ihn'],
-      ['Ich sehe sie.', 'أراها', 'Ich sehe ihr heute nicht', 'النصب من sie هو sie لا ihr', 'sie']
+      ['Siehst du mich?', 'هل تراني؟', 'Siehst du mir?', 'ich تتحول إلى mich في النصب', 'mich'],
+      ['Ich sehe dich.', 'أراك', 'Ich sehe dir.', 'du تتحول إلى dich في النصب', 'dich'],
+      ['Ich sehe ihn.', 'أراه', 'Ich sehe ihm.', 'er تتحول إلى ihn في النصب', 'ihn'],
+      ['Ich sehe sie.', 'أراها', 'Ich sehe ihr.', 'sie المؤنثة تبقى sie في النصب', 'sie']
     ],
-    'Siehst du mich? Ja, ich sehe dich.',
+    'Ich sehe ihn.',
     'Ich sehe dich.',
-    'Ersetze morgen ein Nomen durch ihn oder sie.',
-    'غدًا استبدل اسمًا بـ ihn أو sie.'),
+    'Schreib morgen sieben Sätze. Ersetze in jedem Satz ein Nomen durch eines dieser Pronomen und verwende jedes einmal: mich, dich, ihn, sie, es, uns, euch.',
+    'غدًا اكتب سبع جمل. في كل جملة استبدل اسمًا بضمير مختلف من هذه الضمائر: mich وdich وihn وsie وes وuns وeuch.',
+    {
+      writing: {
+        zeigt: 'Pronomen im Akkusativ',
+        erklaerung: 'اكتب سبع جمل قصيرة، واستعمل في كل جملة ضمير نصب مختلفًا من قائمة الدرس.',
+        prompt: 'اكتب جملة صحيحة مع كل من mich وdich وihn وsie وes وuns وeuch.',
+        promptDe: 'Siehst du mich? · Ich sehe dich. · Ich kenne ihn. · Ich sehe sie. · Ich habe es. · Besuchst du uns? · Ich rufe euch an.',
+        points: ['mich', 'dich', 'ihn', 'sie', 'es', 'uns', 'euch'],
+        minWords: 21,
+        frage: 'اكتب سبع جمل بضمائر نصب.',
+        familie: 'kasus',
+        hinweise: ['حدّد الفاعل والفعل أولًا، ثم اختر ضمير المفعول.', 'لا تستعمل mir أو dir أو ihm مكان ضمير النصب.']
+      },
+      imitateNearMiss: 'mir',
+      orderAr: 'رتّب جملة المفعول به، واجعل الفعل المصرف في الموضع الثاني.',
+      orderHints: ['ابدأ بـIch، ثم ضع sehe في الموضع الثاني.', 'ضع ضمير النصب dich بعد الفعل.'],
+      speakAr: 'سجّل عشرين ثانية: قل جملة قصيرة مع كل من mich وdich وihn وsie وes وuns وeuch.',
+      orderSentence: 'Ich sehe dich.',
+      summaryDe: 'ich → mich · du → dich · er → ihn · sie → sie · es → es · wir → uns · ihr → euch',
+      summaryAr: 'ضمائر النصب المستهدفة: mich وdich وihn وsie وes وuns وeuch؛ ولا نستبدلها بصيغ الداتيف mir أو dir أو ihm.',
+      summaryRecap: 'سبعة ضمائر نصب في جمل كاملة'
+    }),
 
   U('a1-u1-l5', 'A1', 'الملكية', 'Possessivartikel', 'deklination',
     'Am Ende benutzt du mein und meine im Nominativ und Akkusativ',

@@ -8,15 +8,14 @@ module.exports = {
       ['dich', '—', 'إيّاك', 'Ich sehe dich.', 'Ich sehe du.', 'du في النصب تصير dich.', 'kasus'],
       ['ihn', '—', 'إيّاه', 'Ich sehe ihn.', 'Ich sehe er.', 'er في النصب تصير ihn.', 'kasus'],
       ['sie', '—', 'إيّاها', 'Ich sehe sie.', 'Ich sehe ihr.', 'sie تبقى sie في النصب لا ihr.', 'kasus'],
-      ['es', '—', 'إيّاه (محايد)', 'Ich habe es.', 'Ich habe ihn.', 'es تبقى es في النصب.', 'kasus'],
+      ['es', '—', 'إيّاه (محايد)', 'Das Geschenk ist hier. Ich habe es.', 'Das Geschenk ist hier. Ich habe ihn.', 'عند استبدال das Geschenk يبقى الضمير المحايد es في النصب.', 'kasus', 'es'],
       ['uns', '—', 'إيّانا', 'Besuchst du uns?', 'Besuchst du wir?', 'wir في النصب تصير uns.', 'kasus'],
-      ['euch', '—', 'إيّاكم', 'Ich rufe euch an.', 'Ich rufe ihr an.', 'ihr في النصب تصير euch.', 'kasus'],
-      ['sehen', 'sieht · sah', 'يرى', 'Siehst du mich?', 'Du siehst mich?', 'في السؤال المباشر يتقدّم الفعل.', 'wortstellung', 'Siehst'],
-      ['kennen', 'kennt · kannte', 'يعرف شخصًا', 'Kennst du ihn?', 'Kennst du er?', 'بعد الفعل يأتي ضمير النصب: ihn.', 'kasus', 'Kennst'],
+      ['sehen', 'sieht · sah', 'يرى', 'Siehst du mich?', 'Sehen du mich?', 'مع du نقول siehst لا sehen.', 'konjugation', 'Siehst'],
+      ['kennen', 'kennt · kannte', 'يعرف', 'Kennst du ihn?', 'Kennst du er?', 'بعد الفعل يأتي ضمير النصب: ihn.', 'kasus', 'Kennst'],
       ['besuchen', 'besucht · besuchte', 'يزور', 'Ich besuche dich morgen.', 'Ich besuche zu dir morgen.', 'besuchen تأخذ مفعولًا بلا حرف جر.', 'kasus', 'besuche'],
       ['anrufen', 'ruft an · rief an', 'يتّصل بـ', 'Ich rufe dich an.', 'Ich rufe an dich.', 'البادئة an تبقى في الآخر.', 'wortstellung', 'an'],
       ['fragen', 'fragt · fragte', 'يسأل', 'Ich frage ihn.', 'Ich frage zu ihm.', 'fragen تأخذ مفعولًا مباشرًا: ihn.', 'kasus', 'frage'],
-      ['abholen', 'holt ab · holte ab', 'يقلّ', 'Ich hole dich ab.', 'Ich hole ab dich.', 'ab في آخر الجملة، والضمير قبلها.', 'wortstellung', 'hole'],
+      ['abholen', 'holt ab · holte ab', 'يأتي ليأخذ · يصطحب', 'Ich hole dich ab.', 'Ich hole ab dich.', 'ab في آخر الجملة، والضمير قبلها.', 'wortstellung', 'hole'],
       ['einladen', 'lädt ein · lud ein', 'يدعو', 'Ich lade dich ein.', 'Ich lade ein dich.', 'ein في الآخر، والفعل المصرّف ثانٍ.', 'wortstellung', 'lade'],
       ['lieben', 'liebt · liebte', 'يحب', 'Ich liebe dich.', 'Ich liebe du.', 'المفعول ضمير النصب dich.', 'kasus', 'liebe'],
       ['finden', 'findet · fand', 'يجد', 'Ich finde dich.', 'Ich finde du.', 'بعد الفعل dich لا du.', 'kasus', 'finde'],
@@ -24,19 +23,27 @@ module.exports = {
       ['die Nachbarin', 'die Nachbarinnen', 'الجارة', 'Ich sehe die Nachbarin.', 'Ich sehe den Nachbarin.', 'المؤنث في النصب die.', 'kasus'],
       ['das Mädchen', 'die Mädchen', 'الفتاة', 'Ich kenne das Mädchen.', 'Ich kenne den Mädchen.', 'المحايد في النصب das.', 'kasus'],
       ['die Leute', '—', 'الناس', 'Ich kenne die Leute.', 'Ich kenne den Leute.', 'الجمع في النصب die.', 'plural'],
-      ['der Gast', 'die Gäste', 'الضيف', 'Ich begrüße den Gast.', 'Ich begrüße der Gast.', 'der ← den في النصب.', 'kasus'],
+      ['der Gast', 'die Gäste', 'الضيف', 'Ich begrüße den Gast.', 'Ich begrüße der Gast.', 'في النصب المذكر تتحول der إلى den.', 'kasus'],
       ['begrüßen', 'begrüßt · begrüßte', 'يُحيّي', 'Ich begrüße dich.', 'Ich begrüße du.', 'المفعول ضمير نصب: dich.', 'kasus', 'begrüße'],
-      ['das Geschenk', 'die Geschenke', 'الهدية', 'Ich kaufe das Geschenk.', 'Ich kaufe den Geschenk.', 'المحايد لا يتغيّر.', 'kasus'],
+      ['das Geschenk', 'die Geschenke', 'الهدية', 'Ich kaufe das Geschenk.', 'Ich kaufe den Geschenk.', 'أداة التعريف المحايدة تبقى das في النصب.', 'kasus'],
       ['die Karte', 'die Karten', 'البطاقة · التذكرة', 'Ich kaufe die Karte.', 'Ich kaufe den Karte.', 'المؤنث في النصب die.', 'kasus'],
       ['die Rechnung', 'die Rechnungen', 'الفاتورة', 'Ich bezahle die Rechnung.', 'Ich bezahle den Rechnung.', 'المؤنث يبقى die.', 'kasus'],
-      ['bezahlen', 'bezahlt · bezahlte', 'يدفع', 'Ich bezahle das Essen.', 'Ich bezahle für das Essen.', 'bezahlen بلا حرف جر.', 'präposition', 'bezahle'],
+      ['bezahlen', 'bezahlt · bezahlte', 'يدفع', 'Ich bezahle das Essen.', 'Ich bezahle zu dem Essen.', 'نقول Ich bezahle das Essen مباشرة، ويمكن أيضًا Ich bezahle für das Essen؛ أما zu dem Essen فلا تصلح هنا.', 'präposition', 'bezahle'],
       ['wirklich', '—', 'حقًا', 'Ich mag ihn wirklich.', 'Ich wirklich mag ihn.', 'الظرف لا يُخرج الفعل من الموضع الثاني.', 'wortstellung'],
-      ['morgen', '—', 'غدًا', 'Ich besuche dich morgen.', 'Ich besuche morgen dich.', 'الظرف الزمني بعد المفعول الضميري.', 'wortstellung']
+      ['morgen', '—', 'غدًا', 'Ich besuche dich morgen.', 'Ich morgen besuche dich.', 'في الجملة الرئيسية الخبرية يأتي الفعل المصرف في الموضع الثاني: Ich besuche dich morgen.', 'wortstellung'],
+      ['euch', '—', 'إيّاكم', 'Ich rufe euch an.', 'Ich rufe ihr an.', 'ihr في النصب تصير euch.', 'kasus', 'euch']
     ],
+    extraCheck: {
+      right: 'Besuchst du uns?',
+      bad: 'Besuchst du wir?',
+      why: 'wir تتحول إلى uns عندما تكون مفعولًا به.',
+      family: 'kasus',
+      prereq: 'cap.a1-u1-l4.s09'
+    },
     tricks: [
-      { trick: 'الضمير يلبس ثوب المفعول', wie: 'ich ← mich · du ← dich · er ← ihn · wir ← uns.', warum: 'المتعلم ينطق ضمير الرفع في موضع المفعول؛ السلّم الصغير يثبّت الشكل الجديد.', anchor: 'Ich sehe dich.' },
-      { trick: 'sie لا تتغيّر في النصب', wie: 'Ich sehe sie. — هي هي، رفعًا ونصبًا.', warum: 'البحث عن شكل آخر لها ينتج ihr، وهي داتيف لا نصب.', anchor: 'Ich sehe sie.' },
-      { trick: 'الفعل المنفصل: الضمير في الوسط', wie: 'Ich rufe dich an. · Ich lade dich ein.', warum: 'البادئة في الآخر والمفعول قبلها، والترتيب العربي يقلب الاثنين.', anchor: 'Ich rufe dich an.' }
+      { trick: 'ضمير الرفع يتحول إلى ضمير نصب', wie: 'ich → mich · du → dich · er → ihn · wir → uns · ihr → euch.', warum: 'لا نضع ich أو du أو er أو wir أو ihr في موضع المفعول به؛ نختار صيغة النصب المناسبة.', anchor: 'Ich sehe dich.' },
+      { trick: 'sie المؤنثة لا تتغيّر في النصب', wie: 'Sie ist hier. → Ich sehe sie.', warum: 'في هذا الاستعمال تبقى sie المؤنثة كما هي؛ ihr صيغة داتيف وليست مفعول sehen هنا.', anchor: 'Ich sehe sie.' },
+      { trick: 'الفعل المنفصل: الضمير قبل البادئة', wie: 'Ich rufe dich an. · Ich lade dich ein.', warum: 'في الجملة الرئيسية تأتي البادئة في الآخر، ويأتي ضمير المفعول قبلها؛ لا تضع البادئة قبل الضمير.', anchor: 'Ich rufe dich an.' }
     ]
   },
 

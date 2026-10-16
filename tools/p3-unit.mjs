@@ -389,6 +389,50 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Ich trinke das Wasser.'));
 }
 
+/* ---------- audited A1 accusative-pronoun lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u1-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = ['mich', 'dich', 'ihn', 'sie', 'es', 'uns', 'euch'];
+  t('Corpus lesson a1-u1-l4 teaches all seven accusative pronouns through complete sentence contrasts',
+    lesson.title.de === 'Pronomen im Akkusativ' && row.title.de === lesson.title.de &&
+      row.title.ar === lesson.title.ar && targets.every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Siehst du mich?', 'Ich sehe dich.', 'Ich sehe ihn.', 'Ich sehe sie.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      byWord.es.ex === 'Das Geschenk ist hier. Ich habe es.' && byWord.uns.ex === 'Besuchst du uns?' &&
+      byWord.euch.ex === 'Ich rufe euch an.');
+  t('Corpus lesson a1-u1-l4 removes invented and falsely rejected forms and gives accurate lexical guidance',
+    !JSON.stringify(lesson).includes('ihra') &&
+      byWord.abholen.ar === 'يأتي ليأخذ · يصطحب' &&
+      byWord.bezahlen.err === 'Ich bezahle zu dem Essen.' && byWord.bezahlen.why.includes('Ich bezahle für das Essen') &&
+      byWord.sehen.err === 'Sehen du mich?' && byWord.morgen.err === 'Ich morgen besuche dich.' &&
+      tricks[0].wie.includes('ich → mich') && tricks[0].wie.includes('ihr → euch') && !tricks[0].wie.includes('←'));
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const order = lesson.schritte.find(s => s.phase === 'Übungen' && s.frage && s.frage.art === 'wortstellung');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u1-l4 aligns writing, speaking, summary, order and homework with the seven pronouns',
+    JSON.stringify(writing.frage.points) === JSON.stringify(targets) && writing.frage.minWords === 21 &&
+      targets.every(x => writing.frage.prompt.includes(x) && speaking.erklaerung.includes(x) &&
+        summary.zeigt.de.includes(x) && homework.zeigt.de.includes(x)) &&
+      summary.recap === 'سبعة ضمائر نصب في جمل كاملة' &&
+      order.frage.correct.join(' ') === 'Ich sehe dich.' && order.frage.finite === 'sehe' &&
+      order.frage.correct.filter(x => /[.!?]$/.test(x)).length === 1);
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  t('Corpus lesson a1-u1-l4 makes 80 percent four of five with five directly supported pronoun checks',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u1-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderCheck.frage.correct.join(' ') === 'Ich sehe ihn.' && orderCheck.frage.finite === 'sehe' &&
+      clozeCheck.frage.zeigt === 'Ich rufe ____ an.' && clozeCheck.frage.antworten.includes('euch') &&
+      checks[4].frage.optionen.some(o => o.text === 'Besuchst du uns?'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
