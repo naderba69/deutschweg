@@ -2253,6 +2253,28 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a14', 1).key === 'مدى توافق العرض مع قيم النادي' &&
       b2q('b2-a14', 1).options.includes(b2q('b2-a14', 1).key) &&
       b2Articles['b2-a14'].body.includes('ob das Angebot zu den Werten des Vereins passt'));
+  t('Corpus B2 b2-a15 has 593 measured words and no unknown B2 tokens',
+    b2Articles['b2-a15'].title === 'الدعم الثقافي' &&
+      b2Articles['b2-a15'].body.trim().split(/\s+/).length === 593 &&
+      known.coverage(b2Known, b2Articles['b2-a15'].body).unknown.length === 0);
+  t('Corpus B2 b2-a15 connects artistic purpose, eligible costs, application and receipt timing, a concrete theatre plan, review, partial funding, and evidence coherently',
+    b2Articles['b2-a15'].body.includes('Gute Kunst und ordentliche Unterlagen ersetzen einander nicht') &&
+      b2Articles['b2-a15'].body.includes('Vor dem Kauf eines Geräts gibt es noch keinen Beleg') &&
+      b2Articles['b2-a15'].body.includes('zwölf Workshops für Jugendliche') &&
+      b2Articles['b2-a15'].body.includes('Er garantierte jedoch keine Förderung') &&
+      b2Articles['b2-a15'].body.includes('zehn statt zwölf Workshops') &&
+      b2Articles['b2-a15'].body.includes('Zahlen allein zeigen allerdings nicht'));
+  t('Corpus B2 b2-a15 device-price question matches using the price in an offer before purchase',
+    b2q('b2-a15', 0).prompt === 'إلى ماذا يستند تقدير ثمن الجهاز قبل شرائه؟' &&
+      b2q('b2-a15', 0).key === 'إلى السعر المذكور في عرض' &&
+      b2q('b2-a15', 0).options.includes(b2q('b2-a15', 0).key) &&
+      b2Articles['b2-a15'].body.includes('zum Beispiel den Preis aus einem Angebot'));
+  t('Corpus B2 b2-a15 calendar question matches the remaining substantive and comparative funding review',
+    b2q('b2-a15', 1).prompt === 'لماذا لا يضمن التقويم الحصول على الدعم؟' &&
+      b2q('b2-a15', 1).key === 'لأن القرار يعتمد أيضًا على أهداف المشروع وكلفته ومقارنته بطلبات أخرى' &&
+      b2q('b2-a15', 1).options.includes(b2q('b2-a15', 1).key) &&
+      b2Articles['b2-a15'].body.includes('ob das Projekt die veröffentlichten Ziele erfüllte') &&
+      b2Articles['b2-a15'].body.includes('im Vergleich zu anderen Anträgen bewertet wurde'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
