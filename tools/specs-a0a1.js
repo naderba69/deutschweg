@@ -591,25 +591,49 @@ module.exports = [
       summaryRecap: 'Uhr Montag Abend Mai Sommer'
     }),
 
-  U('a1-u2-l5', 'A1', 'حروف المكان', 'Lokale Präpositionen', 'präposition',
-    'Am Ende sagst du wo etwas ist mit in an oder auf',
-    'في النهاية تقول أين الشيء بـ in أو an أو auf.',
+  U('a1-u2-l5', 'A1', 'حروف الجر المكانية', 'Lokale Präpositionen', 'präposition',
+    'Am Ende verwendest du fünf Ortsangaben in vollständigen Sätzen: in der Stadt, an der Wand, auf dem Tisch, neben der Bank und neben dem Bett.',
+    'في النهاية تستعمل خمس عبارات مكانية في جمل كاملة: in der Stadt وan der Wand وauf dem Tisch وneben der Bank وneben dem Bett.',
     [
-      ['in der Stadt', 'داخل المدينة in', 'auf der Stadt يعني على سطحها', 'auf der Stadt wohnen', 'السكن داخلها in'],
-      ['an der Wand', 'على الجدار الملاصق an', 'in der Wand يعني داخل الجدار', 'in der Wand hängt', 'التعليق an'],
-      ['auf dem Tisch', 'على السطح auf', 'an dem Tisch هنا أضعف', 'an dem Tisch liegt das Buch', 'الكتاب على السطح auf'],
-      ['neben der Apotheke', 'بجانب neben', 'لا next der', 'next der Apotheke', 'next ليست حرفًا ألمانيًا']
+      ['Ich wohne in der Stadt.', 'نصف مكان السكن بـin der Stadt', 'مع wohnen ووصف المكان الساكن نقول in der Stadt', 'Ich wohne in die Stadt.', 'مع wohnen نقول in der Stadt، لا in die Stadt'],
+      ['Das Bild hängt an der Wand.', 'الصورة المعلّقة على سطح الجدار تأتي مع an der Wand', 'مع hängen ووصف الموضع الساكن نقول an der Wand', 'Das Bild hängt an die Wand.', 'مع حالة الصورة المعلّقة نقول an der Wand، لا an die Wand'],
+      ['Das Buch liegt auf dem Tisch.', 'الكتاب الموجود على سطح الطاولة يأتي مع auf dem Tisch', 'مع liegen ووصف الموضع الساكن نقول auf dem Tisch', 'Das Buch liegt auf den Tisch.', 'مع liegen نقول auf dem Tisch، لا auf den Tisch'],
+      ['Die Apotheke ist neben der Bank.', 'موقع الصيدلية بجانب المصرف يأتي مع neben der Bank', 'مع sein ووصف الموضع الساكن نقول neben der Bank', 'Die Apotheke ist neben die Bank.', 'مع موقع الصيدلية نقول neben der Bank، لا neben die Bank']
     ],
     [
-      ['Ich wohne in der Stadt.', 'أسكن في المدينة', 'Ich wohne auf der Stadt', 'الدخول في المكان in', 'in'],
-      ['Das Bild hängt an der Wand.', 'الصورة على الجدار', 'Das Bild hängt in der Wand', 'التعليق an', 'an'],
-      ['Das Buch liegt auf dem Tisch.', 'الكتاب على الطاولة', 'Das Buch liegt an dem Tisch', 'السطح الأفقي auf', 'auf'],
-      ['Die Bank ist neben der Apotheke.', 'البنك بجانب الصيدلية', 'Die Bank ist next der Apotheke', 'بجانب هي neben', 'neben']
+      ['Ich wohne in der Stadt.', 'أسكن في المدينة', 'Ich wohne in die Stadt.', 'مع wohnen نقول in der Stadt', 'in'],
+      ['Das Bild hängt an der Wand.', 'الصورة معلّقة على الجدار', 'Das Bild hängt an die Wand.', 'مع الصورة المعلّقة نقول an der Wand', 'an'],
+      ['Das Buch liegt auf dem Tisch.', 'الكتاب موجود على الطاولة', 'Das Buch liegt auf den Tisch.', 'مع liegen نقول auf dem Tisch', 'auf'],
+      ['Die Apotheke ist neben der Bank.', 'الصيدلية بجانب المصرف', 'Die Apotheke ist neben die Bank.', 'مع الموضع الساكن نقول neben der Bank', 'neben']
     ],
-    'Das Buch liegt auf dem Tisch neben der Lampe.',
     'Das Buch liegt auf dem Tisch.',
-    'Beschreibe morgen einen Ort mit auf oder neben.',
-    'غدًا صف مكانًا بـ auf أو neben.'),
+    'Das Bild hängt an der Wand.',
+    'Schreibe morgen je einen Satz mit „in der Stadt“, „an der Wand“, „auf dem Tisch“, „neben der Bank“ und „neben dem Bett“.',
+    'غدًا اكتب جملة واحدة لكل من in der Stadt وan der Wand وauf dem Tisch وneben der Bank وneben dem Bett.',
+    {
+      writing: {
+        zeigt: 'Fünf Ortsangaben',
+        erklaerung: 'اكتب خمس جمل كاملة: مكان السكن، وصورة على الجدار، وكتابًا على الطاولة، وصيدلية بجانب المصرف، ومصباحًا بجانب السرير.',
+        prompt: 'اكتب خمس جمل تصف مواضع ساكنة بحروف الجر والأدوات المطلوبة.',
+        promptDe: 'Ich wohne in der Stadt. · Das Bild hängt an der Wand. · Das Buch liegt auf dem Tisch. · Die Apotheke ist neben der Bank. · Die Lampe steht neben dem Bett.',
+        points: ['in der Stadt', 'an der Wand', 'auf dem Tisch', 'neben der Bank', 'neben dem Bett'],
+        minWords: 27,
+        frage: 'اكتب خمس جمل للمكان باستعمال العبارات الخمس.',
+        familie: 'kasus',
+        hinweise: ['اكتب جملة ألمانية كاملة لكل موضع.', 'هذه الجمل تصف مكانًا ساكنًا؛ راقب der وdem.']
+      },
+      imitateNearMiss: 'auf',
+      transformHint: 'مع الصورة المعلّقة نقول an der Wand.',
+      orderAr: 'رتّب الجملة: عبارة Auf dem Tisch في الحقل الأول، ثم الفعل المصرف liegt، ثم الفاعل.',
+      orderHints: ['ابدأ بعبارة Auf dem Tisch كاملةً.', 'ضع liegt بعدها مباشرةً، ثم das Buch.'],
+      orderSentence: 'Auf dem Tisch liegt das Buch.',
+      checkOrderSentence: 'An der Wand hängt das Bild.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة مكان صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل خمس جمل تستعمل in der Stadt وan der Wand وauf dem Tisch وneben der Bank وneben dem Bett.',
+      summaryDe: 'in der Stadt · an der Wand · auf dem Tisch · neben der Bank · neben dem Bett',
+      summaryAr: 'في جمل الموقع الساكن هنا نستعمل der مع Stadt وWand وBank، وdem مع Tisch وBett.',
+      summaryRecap: 'Stadt Wand Tisch Bank Bett'
+    }),
 
   U('a1-u2-l6', 'A1', 'الجمع', 'Plural', 'plural',
     'Am Ende bildest du vier häufige Plurale',

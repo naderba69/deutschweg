@@ -815,6 +815,81 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Der Kurs beginnt um acht Uhr.'));
 }
 
+/* ---------- audited A1 local-prepositions lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u2-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u2-l5 states five bounded static-location frames and teaches them through complete German sentences',
+    lesson.title.de === 'Lokale Präpositionen' && lesson.title.ar === 'حروف الجر المكانية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['Ortsangaben', 'in der Stadt', 'an der Wand', 'auf dem Tisch',
+        'neben der Bank', 'neben dem Bett', 'vollständigen Sätzen']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Ich wohne in der Stadt.', 'Das Bild hängt an der Wand.',
+        'Das Buch liegt auf dem Tisch.', 'Die Apotheke ist neben der Bank.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u2-l5 keeps static location, dative forms and spatial vocabulary accurate without English or a broad Wo shortcut',
+    lesson.wortschatz.length === 28 &&
+      byWord['zwischen den Stühlen'].err === 'Der Tisch steht zwischen die Stühle.' &&
+      byWord['die Straße'].err === 'Die Straße ist zweihundert Meter lange.' &&
+      byWord['die Straße'].fam === 'deklination' && byWord['die Post'].ar === 'مكتب البريد' &&
+      byWord.hängen.ar === 'يكون معلّقًا' && byWord.stehen.ar.includes('يكون موضوعًا') &&
+      byWord['der Kühlschrank'].why.includes('im هو in dem') &&
+      tricks[0].trick === 'اربط Wo? بالفعل الساكن والعبارة الكاملة' &&
+      tricks[0].warum.includes('لا نعمم الداتيف') &&
+      tricks[1].trick.includes('den للجمع') && tricks[2].trick === 'احفظ الفعل مع موضعه' &&
+      !/(^|\W)next(\W|$)/i.test(lessonText) &&
+      !lessonText.includes('على سطحها') && !lessonText.includes('بالداتيف دائمًا'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u2-l5 aligns strict dative cloze, multiword local order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Das Buch liegt auf dem Tisch.' &&
+      imitate.frage.antworten.join(' ') === 'in' && imitate.frage.nearMiss.auf &&
+      transform.zeigt.de === 'Das Bild hängt an der Wand.' && transform.hinweise[1].includes('an der Wand') &&
+      drill.frage.zeigt === 'Das Buch liegt auf ____ Tisch.' &&
+      drill.frage.antworten.join(' ') === 'dem' && drill.frage.nearMiss.den &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'den').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Auf dem Tisch liegt das Buch.' &&
+      order.frage.finite === 'liegt' && order.frage.fields.vorfeld.join(' ') === 'Auf dem Tisch' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Auf', 'dem', 'Tisch', 'das', 'Buch.', 'liegt']).failed === 1 &&
+      writing.frage.points.length === 5 && writing.frage.minWords === 27 &&
+      ['in der Stadt', 'an der Wand', 'auf dem Tisch', 'neben der Bank', 'neben dem Bett'].every(x =>
+        [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+          .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u2-l5 makes 80 percent four of five measurable across neben der, auf dem, an der, in der and neben dem',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u2-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Die Apotheke ist neben der Bank.') &&
+      clozeCheck.frage.zeigt === 'Das Buch liegt auf ____ Tisch.' &&
+      clozeCheck.frage.antworten.join(' ') === 'dem' && clozeCheck.frage.nearMiss.den &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'den').ok &&
+      orderCheck.frage.correct.join(' ') === 'An der Wand hängt das Bild.' &&
+      orderCheck.frage.finite === 'hängt' && orderCheck.frage.fields.vorfeld.join(' ') === 'An der Wand' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['An', 'der', 'Wand', 'das', 'Bild.', 'hängt']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich wohne in der Stadt.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Die Lampe steht neben dem Bett.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
