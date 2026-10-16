@@ -242,6 +242,40 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Das ist das Kind.'));
 }
 
+/* ---------- audited A0 questions and answers lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a0-u1-l6'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a0-u1-l6 distinguishes a whole W-question phrase from one word and teaches verb-first yes/no order',
+    lesson.schritte[3].vereinfachung.regel.includes('Wie المفردة') &&
+      lesson.schritte.find(s => s.phase === 'Übungen' && s.frage && s.frage.art === 'wortstellung').erklaerung.includes('الفعل المصرف أولًا') &&
+      lesson.schritte[5].vereinfachung.regel.includes('الفعل ثم الفاعل'));
+  t('Corpus lesson a0-u1-l6 corrects wie, mit dem Verb, antworten and all three question mnemonics',
+    byWord.wie.err === 'Wie du gehst?' &&
+      byWord['die Ja/Nein-Frage'].why.includes('mit dem Verb') &&
+      byWord.antworten.why.includes('auf + Akkusativ') &&
+      tricks.some(x => x.trick === 'خريطة المكان والزمان') &&
+      tricks.some(x => x.trick === 'بعد عبارة السؤال يأتي الفعل' && x.wie.includes('أكثر من كلمة')) &&
+      tricks.find(x => x.trick === 'wann للسؤال وwenn للشرط').wie.startsWith('Wann'));
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a0-u1-l6 aligns writing, speaking, summary and fallback homework with both question types',
+    writing.frage.points.includes('سؤال نعم/لا يبدأ بالفعل') && writing.frage.minWords === 12 &&
+      summary.zeigt.de.includes('Bist du hier?') &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('ثم سؤال نعم/لا') &&
+      homework.zeigt.de.includes('Ohne Gespräch: Schreib beide Fragen.'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a0-u1-l6 makes 80 percent four of five with direct support and a one-sentence order check',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a0-u1-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderCheck.frage.correct.join(' ') === 'Wie heißt du?' &&
+      checks[4].frage.optionen.some(o => o.text === 'Wie viele Kinder hast du?'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

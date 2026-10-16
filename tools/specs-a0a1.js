@@ -140,24 +140,40 @@ module.exports = [
     }),
 
   U('a0-u1-l6', 'A0', 'السؤال والجواب', 'Fragen', 'wortstellung',
-    'Am Ende bildest du eine W-Frage und eine Ja-Nein-Frage',
-    'في النهاية تبني سؤال أداة وسؤال نعم أو لا.',
+    'Am Ende bildest du eine W-Frage und eine Ja/Nein-Frage',
+    'في النهاية تبني سؤالًا بأداة استفهام وسؤال نعم/لا.',
     [
-      ['Wie heißt du', 'أداة السؤال ثم الفعل', 'الفعل ثاني عنصر لا ثالث', 'Wie du heißt', 'الفعل لا يتأخر بعد wie'],
-      ['Woher kommst du', 'Woher ثم الفعل', 'الضمير بعد الفعل', 'Woher du kommst', 'هذا ترتيب جملة خبر لا سؤال'],
-      ['Bist du hier', 'سؤال نعم/لا يبدأ بالفعل', 'الفعل أولًا ثم الضمير', 'Du bist hier?', 'نغمة السؤال لا تكفي إن بقي الترتيب خبريًا'],
-      ['Ich heiße Sara', 'الجواب جملة خبر', 'الفعل ثانيًا', 'Heiße ich Sara', 'هذا سؤال لا جواب']
+      ['Wie heißt du?', 'في سؤال W تأتي عبارة السؤال ثم الفعل المصرف', 'مع Wie المفردة يأتي الفعل بعدها مباشرةً: Wie heißt …?', 'Wie du heißt?', 'في السؤال المباشر نقول Wie heißt du?'],
+      ['Woher kommst du?', 'بعد Woher يأتي الفعل ثم الفاعل', 'الترتيب هو Woher + kommst + du', 'Woher du kommst?', 'هذا ترتيب جملة تابعة، لا سؤال مباشر'],
+      ['Bist du hier?', 'سؤال نعم/لا يبدأ بالفعل المصرف', 'الترتيب هو الفعل ثم الفاعل', 'Du bist hier?', 'هذه جملة خبر بعلامة سؤال؛ السؤال القياسي يبدأ بـBist'],
+      ['Ich heiße Sara.', 'الجواب جملة خبر والفعل في الموضع الثاني', 'في الجواب يأتي الفاعل ثم الفعل هنا', 'Heiße ich Sara?', 'هذا سؤال نعم/لا، لا جواب']
     ],
     [
-      ['Wie heißt du?', 'ما اسمك؟', 'Wie du heißt?', 'الفعل مباشرة بعد Wie', 'heißt'],
-      ['Woher kommst du?', 'من أين أنت؟', 'Woher du kommst?', 'kommst بعد الأداة', 'kommst'],
-      ['Bist du hier?', 'هل أنت هنا؟', 'Du bist hier?', 'سؤال نعم/لا يبدأ بالفعل', 'Bist'],
-      ['Ich heiße Sara.', 'اسمي سارة', 'Heiße ich Sara.', 'الجواب لا يبدأ بالفعل المصرف هنا', 'heiße']
+      ['Wie heißt du?', 'ما اسمك؟', 'Wie du heißt?', 'في السؤال المباشر يأتي heißt بعد Wie', 'heißt'],
+      ['Woher kommst du?', 'من أين أنت؟', 'Woher du kommst?', 'في السؤال المباشر يأتي kommst بعد Woher', 'kommst'],
+      ['Bist du hier?', 'هل أنت هنا؟', 'Du bist hier?', 'سؤال نعم/لا القياسي يبدأ بالفعل', 'Bist'],
+      ['Ich heiße Sara.', 'اسمي سارة', 'Heiße ich Sara?', 'الجواب هنا يبدأ بالفاعل ثم الفعل', 'heiße']
     ],
-    'Wie heißt du? Ich heiße Sara.',
     'Wie heißt du?',
-    'Stelle morgen eine Frage mit Wie.',
-    'غدًا اسأل سؤالًا واحدًا بـ Wie.'),
+    'Woher kommst du?',
+    'Stell morgen eine W-Frage und eine Ja/Nein-Frage. Ohne Gespräch: Schreib beide Fragen.',
+    'غدًا اطرح سؤالًا بأداة استفهام وسؤال نعم/لا، وإن لم تجد محادثة فاكتب السؤالين.',
+    {
+      writing: {
+        zeigt: 'W-Frage und Ja/Nein-Frage',
+        erklaerung: 'اكتب سؤالين بأداتي استفهام مختلفتين وسؤالين نعم/لا.',
+        prompt: 'اكتب أربعة أسئلة صحيحة: سؤالين W وسؤالين نعم/لا.',
+        promptDe: 'Wie …? · Woher …? · Bist du …? · Sprichst du …?',
+        points: ['عبارة السؤال ثم الفعل', 'سؤال نعم/لا يبدأ بالفعل', 'علامة الاستفهام'],
+        minWords: 12
+      },
+      speakAr: 'سجّل عشرين ثانية: اطرح سؤالًا بـWie أو Woher، ثم سؤال نعم/لا، وأجب عنهما بإيجاز.',
+      orderSentence: 'Bist du hier?',
+      orderAr: 'رتّب سؤال نعم/لا: يأتي الفعل المصرف أولًا ثم الفاعل.',
+      orderHints: ['ابدأ بـBist، ثم ضع du.', 'علامة الاستفهام تبقى في نهاية السؤال.'],
+      summaryDe: 'Wie heißt du? · Woher kommst du? · Bist du hier? · Ich heiße …',
+      summaryAr: 'بعد عبارة W يأتي الفعل المصرف، أما سؤال نعم/لا فيبدأ بالفعل، والجواب جملة خبر.'
+    }),
 
   U('a1-u1-l1', 'A1', 'المضارع المنتظم', 'Präsens', 'konjugation',
     'Am Ende konjugierst du ein regelmäßiges Verb im Präsens',

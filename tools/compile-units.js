@@ -374,8 +374,9 @@ function orderFrage(sentence, frageText) {
   const i = finiteIndex(toks);
   if (i < 0) return null;
   const finite = toks[i];
+  const verbFirst = i === 0 && /\?$/.test(String(sentence).trim());
   return {
-    art: 'wortstellung', frage: frageText, tokens: toks, correct: toks, finite: finite,
+    art: 'wortstellung', frage: frageText, tokens: toks, correct: toks, finite: finite, verbFirst: verbFirst,
     fields: { vorfeld: toks.slice(0, i), lsk: [finite], mittelfeld: toks.slice(i + 1) },
     familie: 'wortstellung'
   };
@@ -646,9 +647,9 @@ function lessonOfVocab(spec, vocabRow) {
   push('order', {
     phase: 'Übungen', type: 'mcq',
     zeigt: { de: order.correct.join(' ') },
-    erklaerung: 'رتّب الكلمات. الفعل المصرّف ثانٍ في الجملة الرئيسية، وليس الترتيب العربي.',
+    erklaerung: spec.orderAr || 'رتّب الكلمات. الفعل المصرّف ثانٍ في الجملة الرئيسية، وليس الترتيب العربي.',
     recap: 'تمرين ٤',
-    hinweise: ['ابحث عن الفعل أولًا ثم ضعه في الموضع الثاني.', 'الفاعل يلي الفعل غالبًا هنا.'],
+    hinweise: spec.orderHints || ['ابحث عن الفعل أولًا ثم ضعه في الموضع الثاني.', 'الفاعل يلي الفعل غالبًا هنا.'],
     frage: Object.assign({ ziel: cap(n + 1) }, order)
   });
   {

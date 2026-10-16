@@ -161,18 +161,25 @@ module.exports = {
       ['woher', '—', 'من أين', 'Woher kommst du?', 'Von wo du kommst?', 'woher كلمة واحدة، والفعل ثانٍ بعدها.', 'wortstellung'],
       ['wohin', '—', 'إلى أين', 'Wohin gehst du?', 'Wohin du gehst?', 'الحركة إلى مكان تأخذ wohin، والفعل يليها مباشرة.', 'wortstellung'],
       ['wann', '—', 'متى', 'Wann kommst du?', 'Wenn kommst du?', 'wann للسؤال، وwenn للشرط أو «كلّما».', 'lexik-kollokation'],
-      ['wie', '—', 'كيف', 'Wie geht es dir?', 'Wie du geht?', 'الفعل بعد wie في الموضع الثاني: Wie geht es dir?', 'wortstellung'],
+      ['wie', '—', 'كيف', 'Wie geht es dir?', 'Wie du gehst?', 'في السؤال المباشر يأتي الفعل بعد عبارة السؤال: Wie gehst du?', 'wortstellung'],
       ['warum', '—', 'لماذا', 'Warum lernst du Deutsch?', 'Warum du lernst Deutsch?', 'بعد أداة السؤال يأتي الفعل ثم بقية الجملة.', 'wortstellung'],
       ['wie viele', '—', 'كم عدد', 'Wie viele Kinder hast du?', 'Wie viel Kinder hast du?', 'مع المعدود الجمع نقول wie viele، وwie viel لغير المعدود.', 'deklination'],
-      ['die Ja/Nein-Frage', 'die Ja/Nein-Fragen', 'سؤال نعم/لا', 'Die Ja/Nein-Frage beginnt mit dem Verb.', 'Die Ja/Nein-Frage beginnt mit das Verb.', 'بعد حرف الجر أو الظرف لا تعود الأداة المعرفة.', 'kasus'],
-      ['antworten', 'antwortet · antwortete · hat geantwortet', 'يجيب', 'Ich antworte kurz.', 'Ich antworte auf kurz.', 'antworten لا تحتاج auf إلا مع الرسالة أو السؤال صريحًا.', 'präposition', 'antworte'],
+      ['die Ja/Nein-Frage', 'die Ja/Nein-Fragen', 'سؤال نعم/لا', 'Die Ja/Nein-Frage beginnt mit dem Verb.', 'Die Ja/Nein-Frage beginnt mit das Verb.', 'حرف الجر mit يأخذ الداتيف: mit dem Verb.', 'kasus'],
+      ['antworten', 'antwortet · antwortete · hat geantwortet', 'يجيب', 'Ich antworte kurz.', 'Ich antworte auf kurz.', 'kurz ظرف يأتي بلا حرف جر؛ ونقول antworten auf + Akkusativ عند ذكر السؤال.', 'präposition', 'antworte'],
       ['fragen', 'fragt · fragte · hat gefragt', 'يسأل', 'Ich frage den Lehrer.', 'Ich frage der Lehrer.', 'الشخص المسؤول مفعول به: den Lehrer.', 'kasus', 'frage'],
       ['die Nachricht', 'die Nachrichten', 'الرسالة · الخبر', 'Ich schreibe eine Nachricht.', 'Ich schreibe ein Nachricht.', 'Nachricht مؤنث: eine Nachricht.', 'genus']
     ],
+    extraCheck: {
+      right: 'Wie viele Kinder hast du?',
+      bad: 'Wie viele Kinder du hast?',
+      why: 'بعد عبارة السؤال Wie viele Kinder يأتي الفعل hast.',
+      family: 'wortstellung',
+      prereq: 'cap.a0-u1-l6.s22'
+    },
     tricks: [
-      { trick: 'خريطة الأين الأربعة', wie: 'wo = أين ثابت · woher = من أين · wohin = إلى أين · wann = متى.', warum: 'العربية تجمعها في «أين» مع حرف، والألمانية تفصلها في كلمة واحدة لكل معنى.' , anchor: 'Woher kommst du?'},
-      { trick: 'W-Frage: الفعل يطارد الكلمة الأولى', wie: 'Wann | kommst | du؟ الفعل مباشرة بعد أداة السؤال.', warum: 'قاعدة الموضع الثاني لا تُكسر في السؤال، والخطأ يأتي من ترتيب العربية.' , anchor: 'Wann kommst du?'},
-      { trick: 'wann للسؤال وwenn للشرط', wie: 'Wann kommst du? · Wenn du kommst, lerne ich.', warum: 'حرف واحد يفصل بينهما، والمعنى يتغيّر كليًا، والخطأ هنا يفسد الجملة لا يجمّلها.' , anchor: 'Wie viele Kinder hast du?'}
+      { trick: 'خريطة المكان والزمان', wie: 'wo = أين · woher = من أين · wohin = إلى أين · wann = متى.', warum: 'wo/woher/wohin للمكان الثابت أو المصدر أو الوجهة، وwann للزمن.' , anchor: 'Woher kommst du?'},
+      { trick: 'بعد عبارة السؤال يأتي الفعل', wie: 'Wie viele Kinder | hast | du? عبارة السؤال قد تتكون من أكثر من كلمة.', warum: 'لا تعدّ الكلمات؛ حدّد عبارة السؤال كاملةً، ثم ضع الفعل المصرف بعدها.' , anchor: 'Wie viele Kinder hast du?'},
+      { trick: 'wann للسؤال وwenn للشرط', wie: 'Wann kommst du? · Wenn du kommst, lerne ich.', warum: 'wann تسأل عن الزمن، وwenn تبدأ هنا جملة شرطية؛ اختلاف الحرف يغيّر الوظيفة.' , anchor: 'Wann kommst du?'}
     ]
   }
 };

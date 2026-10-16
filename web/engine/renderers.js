@@ -45,19 +45,20 @@
 
   function scoreOrder(item, given) {
     const finite = item.finite;
-    const clause = item.clause || 'main';
+    const clause = item.verbFirst ? 'yesno' : (item.clause || 'main');
     const fields = item.fields || {};
     const finIdx = given.indexOf(finite);
     const levels = [];
     let l1 = false;
-    if (clause === 'main') l1 = finIdx === 1;
+    if (clause === 'yesno') l1 = finIdx === 0;
+    else if (clause === 'main') l1 = finIdx === 1;
     else l1 = finIdx === given.length - 1 || finIdx === 2;
     levels.push({ id: 1, name: 'موضع الفعل', pass: l1 });
     if (!l1) {
-      return {
-        credit: 0, failed: 1, levels,
-        message: 'الفعل ليس في موضعه. في الجملة الرئيسية هو الثاني. وبعد weil أو dass أو wenn أو obwohl يكون الأخير، أو — وهذا الخطأ الشائع — الثاني بعد أداة الربط.'
-      };
+      const message = clause === 'yesno'
+        ? 'سؤال نعم/لا يبدأ بالفعل المصرف، ثم يأتي الفاعل.'
+        : 'الفعل ليس في موضعه. في الجملة الرئيسية هو الثاني. وبعد weil أو dass أو wenn أو obwohl يكون الأخير، أو — وهذا الخطأ الشائع — الثاني بعد أداة الربط.';
+      return { credit: 0, failed: 1, levels, message };
     }
     let l2 = true;
     let l2msg = '';

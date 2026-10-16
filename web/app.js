@@ -292,7 +292,7 @@ function exerciseFromStep(st) {
     art, stable: true,
     /* the forms that were never used in a lesson before P3.2 */
     de: f.de, ar: f.ar, example: f.example, direction: f.direction, note: f.note,
-    tokens: f.tokens, correct: f.correct, finite: f.finite, fields: f.fields, clause: f.clause, rightBracket: f.rightBracket,
+    tokens: f.tokens, correct: f.correct, finite: f.finite, fields: f.fields, clause: f.clause, verbFirst: f.verbFirst, rightBracket: f.rightBracket,
     prompt: f.prompt, promptDe: f.promptDe, points: f.points, minWords: f.minWords,
     ziel: f.ziel,
     familie: (f.misconceptionFamilies && Object.values(f.misconceptionFamilies)[0]) || 'lexik-kollokation',
