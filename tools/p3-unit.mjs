@@ -741,6 +741,80 @@ console.log('\n— P3.2 lexical layer —\n');
       halfBad && checks[4].frage.feedback[halfBad.id].includes('2:30'));
 }
 
+/* ---------- audited A1 temporal-prepositions lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u2-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u2-l4 states five bounded temporal frames and teaches them through complete German sentences',
+    lesson.title.de === 'Temporale Präpositionen' && lesson.title.ar === 'حروف الجر الزمنية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['um acht Uhr', 'am Montag', 'am Abend', 'im Mai', 'im Sommer', 'vollständigen Sätzen']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Der Kurs beginnt um acht Uhr.', 'Der Kurs beginnt am Montag.',
+        'Der Kurs beginnt im Mai.', 'Am Abend lerne ich Deutsch.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u2-l4 keeps weekdays, months, seasons, day parts and temporal exceptions accurate without broad shortcuts',
+    lesson.wortschatz.length === 28 && byWord['der Samstag'].pl === 'die Samstage' &&
+      byWord['der Samstag'].why.includes('Sonnabend') &&
+      byWord['der Sonntag'].ex === 'Am Sonntag ist die Bank geschlossen.' &&
+      byWord['der Mittag'].ex === 'Zu Mittag esse ich in der Kantine.' &&
+      byWord['die Nacht'].ex === 'In der Nacht schlafe ich.' &&
+      byWord.geöffnet.ex === 'Das Geschäft ist am Montag geöffnet.' &&
+      byWord.frei.ar.includes('في إجازة') && byWord.regnen.ar === 'يهطل المطر' &&
+      tricks[0].trick === 'اربط كل إطار زمني بحرفه' &&
+      tricks[1].trick === 'احفظ am مع اليوم وجزء اليوم' &&
+      tricks[2].trick === 'احفظ im مع الشهر والفصل' &&
+      !lessonText.includes('قاعدة واحدة تجمع ثلاثة حروف') &&
+      !lessonText.includes('من يفكّك am') && !lessonText.includes('العربية'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u2-l4 aligns strict cloze, multiword temporal order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Der Kurs beginnt am Montag um acht Uhr.' &&
+      imitate.frage.antworten.join(' ') === 'um' && imitate.frage.nearMiss.am &&
+      transform.zeigt.de === 'Im Mai beginnt der Kurs.' && transform.hinweise[1].includes('im Mai') &&
+      drill.frage.zeigt === '____ Mai ist es warm.' && drill.frage.antworten.join(' ') === 'Im' &&
+      drill.frage.nearMiss.Am && !win.DW.renderers.judgeCloze(drill.frage, 'Am').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Am Montag beginnt der Kurs um acht Uhr.' &&
+      order.frage.finite === 'beginnt' && order.frage.fields.vorfeld.join(' ') === 'Am Montag' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Am', 'Montag', 'der', 'Kurs', 'beginnt', 'um', 'acht', 'Uhr.']).failed === 1 &&
+      writing.frage.points.length === 5 && writing.frage.minWords === 24 &&
+      ['um acht Uhr', 'am Montag', 'am Abend', 'im Mai', 'im Sommer'].every(x =>
+        [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+          .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u2-l4 makes 80 percent four of five measurable across evening, month, season, weekday and clock time',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u2-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Am Abend lerne ich Deutsch.') &&
+      clozeCheck.frage.zeigt === '____ Mai ist es warm.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Im' && clozeCheck.frage.nearMiss.Am &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Am').ok &&
+      orderCheck.frage.correct.join(' ') === 'Im Sommer ist es warm.' && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Im Sommer' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Im', 'Sommer', 'es', 'ist', 'warm.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Am Montag habe ich frei.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Der Kurs beginnt um acht Uhr.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

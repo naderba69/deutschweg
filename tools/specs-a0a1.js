@@ -547,25 +547,49 @@ module.exports = [
       summaryRecap: 'Uhr nach halb vor um'
     }),
 
-  U('a1-u2-l4', 'A1', 'حروف الزمان', 'Temporale Präpositionen', 'präposition',
-    'Am Ende benutzt du um am und im für die Zeit',
-    'في النهاية تستعمل um وam وim للزمن.',
+  U('a1-u2-l4', 'A1', 'حروف الجر الزمنية', 'Temporale Präpositionen', 'präposition',
+    'Am Ende verwendest du um acht Uhr, am Montag, am Abend, im Mai und im Sommer in vollständigen Sätzen.',
+    'في النهاية تستعمل um acht Uhr وam Montag وam Abend وim Mai وim Sommer في جمل ألمانية كاملة.',
     [
-      ['um acht', 'الساعة مع um', 'am لا للساعة', 'am acht Uhr', 'الثامنة تأخذ um'],
-      ['am Montag', 'اليوم مع am', 'im لا ليوم الأسبوع', 'im Montag', 'Montag يأخذ am'],
-      ['im Mai', 'الشهر مع im', 'am لا للشهر', 'am Mai', 'Mai يأخذ im'],
-      ['am Abend', 'جزء اليوم غالبًا am', 'لا in Abend في هذا الإطار', 'in Abend', 'الإطار الثابت am Abend']
+      ['Der Kurs beginnt um acht Uhr.', 'وقت الساعة المحدد يأتي مع um', 'مع وقت الساعة المحدد نقول um acht Uhr', 'Der Kurs beginnt am acht Uhr.', 'مع الساعة الثامنة نقول um acht Uhr، لا am acht Uhr'],
+      ['Der Kurs beginnt am Montag.', 'يوم الأسبوع يأتي مع am', 'مع اسم يوم الأسبوع نقول am Montag', 'Der Kurs beginnt im Montag.', 'مع Montag نقول am، لا im'],
+      ['Der Kurs beginnt im Mai.', 'اسم الشهر يأتي مع im', 'مع اسم الشهر نقول im Mai', 'Der Kurs beginnt am Mai.', 'مع Mai نقول im، لا am'],
+      ['Am Abend lerne ich Deutsch.', 'جزء اليوم Abend يأتي مع am', 'نقول am Abend في هذا التعبير الزمني', 'Im Abend lerne ich Deutsch.', 'نقول am Abend، لا im Abend']
     ],
     [
-      ['Der Kurs ist um acht.', 'الدورة في الثامنة', 'Der Kurs ist am acht', 'الساعة مع um', 'um'],
-      ['Ich komme am Montag.', 'آتي الاثنين', 'Ich komme im Montag', 'اليوم مع am', 'am'],
-      ['Im Mai ist es warm.', 'في مايو الجو دافئ', 'Am Mai ist es warm', 'الشهر مع im', 'Mai'],
-      ['Am Abend lerne ich.', 'مساءً أدرس', 'In Abend lerne ich', 'الإطار am Abend', 'Abend']
+      ['Der Kurs beginnt um acht Uhr.', 'تبدأ الدورة في الساعة الثامنة', 'Der Kurs beginnt am acht Uhr.', 'وقت الساعة المحدد يأتي مع um', 'um'],
+      ['Der Kurs beginnt am Montag.', 'تبدأ الدورة يوم الاثنين', 'Der Kurs beginnt im Montag.', 'يوم الأسبوع يأتي مع am', 'am'],
+      ['Der Kurs beginnt im Mai.', 'تبدأ الدورة في مايو', 'Der Kurs beginnt am Mai.', 'اسم الشهر يأتي مع im', 'im'],
+      ['Am Abend lerne ich Deutsch.', 'أدرس الألمانية مساءً', 'Im Abend lerne ich Deutsch.', 'نقول am Abend', 'Abend']
     ],
-    'Der Kurs ist um acht am Montag im Mai.',
-    'Ich komme am Montag.',
-    'Schreibe morgen um am und im je einmal.',
-    'غدًا اكتب um وam وim مرة واحدة لكل.'),
+    'Der Kurs beginnt am Montag um acht Uhr.',
+    'Im Mai beginnt der Kurs.',
+    'Schreibe morgen fünf Sätze mit um acht Uhr, am Montag, am Abend, im Mai und im Sommer.',
+    'غدًا اكتب خمس جمل تستعمل فيها um acht Uhr وam Montag وam Abend وim Mai وim Sommer.',
+    {
+      writing: {
+        zeigt: 'Fünf Zeitangaben',
+        erklaerung: 'اكتب خمس جمل كاملة: واحدة لوقت الساعة، وواحدة ليوم الأسبوع، وواحدة للمساء، وواحدة للشهر، وواحدة للفصل.',
+        prompt: 'اكتب خمس جمل كاملة بحروف الجر الزمنية المطلوبة.',
+        promptDe: 'Der Kurs beginnt um acht Uhr. · Der Kurs beginnt am Montag. · Am Abend lerne ich Deutsch. · Der Kurs beginnt im Mai. · Im Sommer ist es warm.',
+        points: ['um مع وقت الساعة', 'am مع يوم الأسبوع', 'am مع Abend', 'im مع الشهر', 'im مع الفصل'],
+        minWords: 24,
+        frage: 'اكتب خمس جمل: للساعة واليوم والمساء والشهر والفصل.',
+        familie: 'präposition',
+        hinweise: ['اكتب جملة ألمانية كاملة لكل تعبير زمني.', 'لا تبدّل um وam وim بين السياقات الخمسة.']
+      },
+      imitateNearMiss: 'am',
+      transformHint: 'مع اسم الشهر نقول im Mai.',
+      orderAr: 'رتّب الجملة: عبارة Am Montag في الحقل الأول، ثم الفعل المصرف beginnt، ثم الفاعل وبقية الوقت.',
+      orderHints: ['ابدأ بعبارة Am Montag كاملةً.', 'ضع beginnt بعدها مباشرةً، ثم der Kurs وum acht Uhr.'],
+      orderSentence: 'Am Montag beginnt der Kurs um acht Uhr.',
+      checkOrderSentence: 'Im Sommer ist es warm.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة زمنية صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل خمس جمل تستعمل um acht Uhr وam Montag وam Abend وim Mai وim Sommer.',
+      summaryDe: 'um acht Uhr · am Montag · am Abend · im Mai · im Sommer',
+      summaryAr: 'نستعمل um مع وقت الساعة، وam مع يوم الأسبوع وAbend، وim مع الشهر والفصل.',
+      summaryRecap: 'Uhr Montag Abend Mai Sommer'
+    }),
 
   U('a1-u2-l5', 'A1', 'حروف المكان', 'Lokale Präpositionen', 'präposition',
     'Am Ende sagst du wo etwas ist mit in an oder auf',
