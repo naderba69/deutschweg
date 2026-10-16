@@ -2360,6 +2360,28 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a19', 1).key === 'حتى يؤكد صاحب عمل الزوج خطيًا يومي العمل من المنزل' &&
       b2q('b2-a19', 1).options.includes(b2q('b2-a19', 1).key) &&
       b2Articles['b2-a19'].body.includes('bis der Arbeitgeber ihres Mannes die zwei Tage Arbeit zu Hause schriftlich bestätigt hatte'));
+  t('Corpus B2 b2-a20 has 726 measured words and no unknown B2 tokens',
+    b2Articles['b2-a20'].title === 'العدل في الامتحان' &&
+      b2Articles['b2-a20'].body.trim().split(/\s+/).length === 726 &&
+      known.coverage(b2Known, b2Articles['b2-a20'].body).unknown.length === 0);
+  t('Corpus B2 b2-a20 connects score models to purpose, a concrete result, transparent criteria and review, justified adjustments, diagnostic practice, and examination review coherently',
+    b2Articles['b2-a20'].body.includes('Es gibt dafür verschiedene Modelle') &&
+      b2Articles['b2-a20'].body.includes('Die Regel muss also zum Zweck passen') &&
+      b2Articles['b2-a20'].body.includes('61 im Schreiben und 74 im Sprechen') &&
+      b2Articles['b2-a20'].body.includes('Inhalt, Aufbau, Wortwahl und Grammatik') &&
+      b2Articles['b2-a20'].body.includes('wegen einer nachgewiesenen Einschränkung') &&
+      b2Articles['b2-a20'].body.includes('Ich hatte die Aufgabe nicht vollständig beantwortet') &&
+      b2Articles['b2-a20'].body.includes('Auch die Schule muss ihre Prüfung prüfen'));
+  t('Corpus B2 b2-a20 result question matches 61 in writing against a 65-point module minimum',
+    b2q('b2-a20', 0).prompt === 'لماذا لم يحقق الراوي الهدف رغم تجاوز متوسطه 70 نقطة؟' &&
+      b2q('b2-a20', 0).key === 'لأن الكتابة حصلت على 61 والمطلوب 65 في كل قسم' &&
+      b2q('b2-a20', 0).options.includes(b2q('b2-a20', 0).key) &&
+      b2Articles['b2-a20'].body.includes('In jedem der vier Module waren mindestens 65 Punkte nötig'));
+  t('Corpus B2 b2-a20 training question matches two timed texts weekly, criteria review, and feedback',
+    b2q('b2-a20', 1).prompt === 'كيف غيّر الراوي تدريبه مدة ستة أسابيع؟' &&
+      b2q('b2-a20', 1).key === 'كتب نصين أسبوعيًا تحت ضغط الوقت وراجع المعايير وتلقى تعليقًا' &&
+      b2q('b2-a20', 1).options.includes(b2q('b2-a20', 1).key) &&
+      b2Articles['b2-a20'].body.includes('Sechs Wochen lang schrieb ich zweimal pro Woche einen Text unter Zeitdruck'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
