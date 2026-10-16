@@ -2427,6 +2427,29 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-2', 1).key === 'بسبب إصلاح في الأنبوب' &&
       b2cq('novelle-2', 1).options.includes(b2cq('novelle-2', 1).key) &&
       b2Chapters['novelle-2'].body.includes('Für eine Reparatur am Rohr gab es an diesem Tag bis zum Abend kein Wasser'));
+  t('Corpus B2 novelle-3 has 808 measured words and no unknown B2 tokens',
+    b2Chapters['novelle-3'].title === 'العمل' &&
+      b2Chapters['novelle-3'].body.trim().split(/\s+/).length === 808 &&
+      known.coverage(b2Known, b2Chapters['novelle-3'].body).unknown.length === 0);
+  t('Corpus B2 novelle-3 connects the first course day, a transparent application and contract, the four-evening plan, Leila hike, calendar boundary, and original-paper task into novelle-4 coherently',
+    b2Chapters['novelle-3'].body.startsWith('Der Kurs begann um acht') &&
+      b2Chapters['novelle-3'].body.includes('Lehrerin prüfte mit ihr, ob alle Informationen klar waren, änderte aber nicht Saras Sätze') &&
+      b2Chapters['novelle-3'].body.includes('Bevor Sara unterschrieb, las sie Arbeitszeit, Lohn und Pausen noch einmal') &&
+      b2Chapters['novelle-3'].body.includes('vier Abende zum Lernen') &&
+      b2Chapters['novelle-3'].body.includes('Über den Hügeln lag grauer, dichter Nebel') &&
+      b2Chapters['novelle-3'].body.includes('erst den Kalender ansehen, dann antworten') &&
+      b2Chapters['novelle-3'].body.includes('Nur die Originale fehlten noch') &&
+      b2Chapters['novelle-4'].body.startsWith('Am Donnerstag kam die Lieferung zu spät'));
+  t('Corpus B2 novelle-3 study-evening question matches four evenings, not seven',
+    b2cq('novelle-3', 0).prompt === 'كم أمسيةً خصصت سارة لمراجعة دروسها؟' &&
+      b2cq('novelle-3', 0).key === 'أربع أمسيات' &&
+      b2cq('novelle-3', 0).options.includes(b2cq('novelle-3', 0).key) &&
+      b2Chapters['novelle-3'].body.includes('vier Abende zum Lernen'));
+  t('Corpus B2 novelle-3 calendar question matches the rule added after Saturday work',
+    b2cq('novelle-3', 1).prompt === 'ما القاعدة التي أضافتها بعد عمل يوم السبت؟' &&
+      b2cq('novelle-3', 1).key === 'أن تنظر في التقويم قبل الإجابة' &&
+      b2cq('novelle-3', 1).options.includes(b2cq('novelle-3', 1).key) &&
+      b2Chapters['novelle-3'].body.includes('Deshalb ergänzte sie eine Regel: erst den Kalender ansehen, dann antworten'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
