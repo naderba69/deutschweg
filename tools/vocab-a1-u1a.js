@@ -100,15 +100,15 @@ module.exports = {
       ['der Tisch', 'die Tische', 'الطاولة', 'Ich kaufe den Tisch.', 'Ich kaufe der Tisch.', 'المذكر في النصب den.', 'kasus'],
       ['der Stuhl', 'die Stühle', 'الكرسي', 'Er nimmt den Stuhl.', 'Er nimmt der Stuhl.', 'der يتحوّل إلى den.', 'kasus'],
       ['der Schrank', 'die Schränke', 'الخزانة', 'Ich öffne den Schrank.', 'Ich öffne der Schrank.', 'المفعول المذكر den.', 'kasus'],
-      ['der Apfel', 'die Äpfel', 'التفاحة', 'Sie isst den Apfel.', 'Sie isst der Apfel.', 'der ← den في النصب.', 'kasus'],
-      ['der Schlüssel', 'die Schlüssel', 'المفتاح', 'Ich suche den Schlüssel.', 'Ich suche der Schlüssel.', 'الأداة تتغيّر لا الاسم.', 'kasus'],
+      ['der Apfel', 'die Äpfel', 'التفاحة', 'Sie isst den Apfel.', 'Sie isst der Apfel.', 'في النصب المذكر تتحول der إلى den.', 'kasus'],
+      ['der Schlüssel', 'die Schlüssel', 'المفتاح', 'Ich suche den Schlüssel.', 'Ich suche der Schlüssel.', 'في هذا المثال تتغيّر الأداة إلى den، ويبقى الاسم Schlüssel كما هو.', 'kasus'],
       ['der Film', 'die Filme', 'الفيلم', 'Wir sehen den Film.', 'Wir sehen der Film.', 'المفعول المذكر den.', 'kasus'],
-      ['der Mantel', 'die Mäntel', 'المعطف', 'Ich nehme den Mantel.', 'Ich nehme der Mantel.', 'der ← den في النصب.', 'kasus'],
+      ['der Mantel', 'die Mäntel', 'المعطف', 'Ich nehme den Mantel.', 'Ich nehme der Mantel.', 'في النصب المذكر تتحول der إلى den.', 'kasus'],
       ['der Termin', 'die Termine', 'الموعد', 'Ich habe einen Termin.', 'Ich habe ein Termin.', 'النكرة المذكرة في النصب einen.', 'kasus'],
       ['der Lehrer', 'die Lehrer', 'المعلّم', 'Ich frage einen Lehrer.', 'Ich frage ein Lehrer.', 'einen للمذكر النكرة في النصب.', 'kasus'],
       ['der Kuchen', 'die Kuchen', 'الكعك', 'Ich backe einen Kuchen.', 'Ich backe ein Kuchen.', 'einen لا ein مع المنصوب المذكر.', 'kasus'],
       ['die Jacke', 'die Jacken', 'السترة', 'Ich kaufe die Jacke.', 'Ich kaufe den Jacke.', 'المؤنث يبقى die في النصب.', 'kasus'],
-      ['die Tasche', 'die Taschen', 'الحقيبة', 'Ich nehme die Tasche.', 'Ich nehme den Tasche.', 'die ثابتة في النصب.', 'kasus'],
+      ['die Tasche', 'die Taschen', 'الحقيبة', 'Ich nehme die Tasche.', 'Ich nehme den Tasche.', 'أداة التعريف المؤنثة تبقى die في النصب.', 'kasus'],
       ['die Zeitung', 'die Zeitungen', 'الجريدة', 'Ich lese die Zeitung.', 'Ich lese den Zeitung.', 'المؤنث لا يصير den.', 'kasus'],
       ['die Blume', 'die Blumen', 'الزهرة', 'Sie kauft die Blume.', 'Sie kauft dem Blume.', 'النصب المؤنث die لا dem.', 'kasus'],
       ['die Milch', '—', 'الحليب', 'Ich trinke die Milch.', 'Ich trinke der Milch.', 'die Milch مؤنث: die.', 'kasus'],
@@ -120,16 +120,23 @@ module.exports = {
       ['das Auto', 'die Autos', 'السيارة', 'Ich wasche das Auto.', 'Ich wasche den Auto.', 'das Auto محايد.', 'kasus'],
       ['das Handy', 'die Handys', 'الهاتف', 'Ich nehme das Handy.', 'Ich nehme den Handy.', 'المحايد das، وجمعه Handys.', 'plural'],
       ['das Foto', 'die Fotos', 'الصورة', 'Ich mache das Foto.', 'Ich mache den Foto.', 'Foto محايد، وجمعه بـ s.', 'plural'],
-      ['das Zimmer', 'die Zimmer', 'الغرفة', 'Ich putze das Zimmer.', 'Ich putze den Zimmer.', 'المحايد ثابت.', 'kasus'],
+      ['das Zimmer', 'die Zimmer', 'الغرفة', 'Ich putze das Zimmer.', 'Ich putze den Zimmer.', 'أداة التعريف المحايدة تبقى das في النصب.', 'kasus'],
       ['das Fenster', 'die Fenster', 'النافذة', 'Er schließt das Fenster.', 'Er schließt den Fenster.', 'das يبقى das في النصب.', 'kasus'],
-      ['die Schuhe', '—', 'الحذاء', 'Ich kaufe die Schuhe.', 'Ich kaufe den Schuhe.', 'الجمع في النصب die.', 'plural'],
+      ['die Schuhe', '—', 'الأحذية', 'Ich kaufe die Schuhe.', 'Ich kaufe den Schuhe.', 'الجمع في النصب die.', 'plural'],
       ['die Kinder', '—', 'الأطفال', 'Ich hole die Kinder ab.', 'Ich hole den Kinder ab.', 'جمع Kinder في النصب die.', 'plural'],
-      ['die Bluse', 'die Blusen', 'القميص النسائي', 'Ich nehme die Bluse.', 'Ich nehme den Bluse.', 'المؤنث die في النصب.', 'kasus']
+      ['die Bluse', 'die Blusen', 'البلوزة', 'Ich nehme die Bluse.', 'Ich nehme den Bluse.', 'المؤنث يبقى die في النصب.', 'kasus', 'die']
     ],
+    extraCheck: {
+      right: 'Ich trinke das Wasser.',
+      bad: 'Ich trinke den Wasser.',
+      why: 'Wasser محايد، لذلك تبقى أداة التعريف das في النصب.',
+      family: 'kasus',
+      prereq: 'cap.a1-u1-l3.s05'
+    },
     tricks: [
-      { trick: 'den وحدها تتحرّك', wie: 'der ← den، وما عدا ذلك يقف: die · das · die (جمع).', warum: 'الخطأ كله من تعميم den؛ الحركة واحدة لا أربع.', anchor: 'Ich kaufe den Tisch.' },
-      { trick: 'ein تصير einen مع المذكر', wie: 'ein Termin · ein Kuchen ← Ich habe einen Termin.', warum: 'ein لا تكشف الحالة، فالنصب يحتاج einen، وهي أول ما يُنسى.', anchor: 'Ich habe einen Termin.' },
-      { trick: 'اسأل: من يفعل وماذا يقع عليه', wie: 'Ich sehe | den Mann: الفاعل ich، والمفعول den Mann.', warum: 'العربية تفرّق بالحركة لا بالأداة، فالأداة علامة المفعول الوحيدة هنا.', anchor: 'Ich sehe den Mann.' }
+      { trick: 'في أدوات التعريف تتغير der وحدها', wie: 'der → den، بينما تبقى die · das · die (جمع) كما هي في النصب.', warum: 'هذا خاص بأدوات التعريف هنا: لا تعمم den على المؤنث أو المحايد أو الجمع.', anchor: 'Ich kaufe den Tisch.' },
+      { trick: 'ein تصير einen مع المذكر المنصوب', wie: 'ein Termin → Ich habe einen Termin · ein Kuchen → Ich backe einen Kuchen.', warum: 'مع الاسم المذكر النكرة يبيّن الحرف n في einen حالة النصب.', anchor: 'Ich habe einen Termin.' },
+      { trick: 'حدّد الفاعل ثم المفعول به', wie: 'Ich | sehe | den Mann: ich هو الفاعل وden Mann هو المفعول به.', warum: 'معنى الفعل والجملة يحددان المفعول، ثم تُظهر الأداة جنسه وحالته؛ ليست الأداة العلامة الوحيدة.', anchor: 'Ich sehe den Mann.' }
     ]
   }
 

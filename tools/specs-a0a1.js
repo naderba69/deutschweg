@@ -243,25 +243,45 @@ module.exports = [
       summaryAr: 'nicht ينفي فعلًا أو صفة هنا، وkein يتصرف قبل الاسم: kein أو keine أو keinen.'
     }),
 
-  U('a1-u1-l3', 'A1', 'المفعول به في الأداة', 'Akkusativ Artikel', 'kasus',
-    'Am Ende markierst du das Objekt mit dem richtigen Artikel',
-    'في النهاية تعلّم المفعول بالأداة الصحيحة.',
+  U('a1-u1-l3', 'A1', 'أدوات حالة النصب', 'Artikel im Akkusativ', 'kasus',
+    'Am Ende verwendest du bei Akkusativobjekten die Artikelformen den, das, die und einen',
+    'في النهاية تستعمل صيغ الأدوات den وdas وdie وeinen مع المفعول به في حالة النصب.',
     [
-      ['den Mann', 'مذكر النصب den', 'der تبقى للرفع', 'der Mann sehe', 'الترتيب والأداة معًا خطأ'],
-      ['das Wasser', 'المحايد لا يتغير في النصب', 'das لا den', 'den Wasser', 'Wasser محايد'],
-      ['die Jacke', 'المؤنث لا يتغير في النصب', 'die لا den', 'den Jacke', 'Jacke مؤنث'],
-      ['einen Termin', 'نكرة مذكر في النصب einen', 'ein لا تكفي', 'ein Termin habe', 'النصب يحتاج einen']
+      ['Ich sehe den Mann.', 'أداة التعريف للمذكر المفرد تتغير من der إلى den في حالة النصب', 'Der Mann ist hier (Nominativ) · Ich sehe den Mann (Akkusativ)', 'Ich sehe der Mann.', 'Mann مذكر ومفعول به هنا، لذلك نقول den Mann'],
+      ['Ich trinke das Wasser.', 'أداة التعريف للمحايد تبقى das في حالة النصب', 'das Wasser تبقى كما هي عندما تكون مفعولًا به', 'Ich trinke den Wasser.', 'Wasser محايد، لذلك نقول das Wasser'],
+      ['Ich kaufe die Jacke.', 'أداة التعريف للمؤنث تبقى die في حالة النصب', 'die Jacke تبقى كما هي عندما تكون مفعولًا به', 'Ich kaufe den Jacke.', 'Jacke مؤنث، لذلك نقول die Jacke'],
+      ['Ich habe einen Termin.', 'أداة التنكير للمذكر المفرد تتغير من ein إلى einen في حالة النصب', 'Ein Termin ist frei (Nominativ) · Ich habe einen Termin (Akkusativ)', 'Ich habe ein Termin.', 'Termin مذكر ومفعول به هنا، لذلك نقول einen Termin']
     ],
     [
-      ['Ich sehe den Mann.', 'أرى الرجل', 'Ich sehe der Mann', 'المفعول المذكر den', 'den'],
-      ['Ich trinke das Wasser.', 'أشرب الماء', 'Ich trinke den Wasser', 'Wasser يبقى das', 'das'],
-      ['Ich kaufe die Jacke.', 'أشتري السترة', 'Ich kaufe den Jacke', 'Jacke تبقى die', 'die'],
-      ['Ich habe einen Termin.', 'عندي موعد', 'Ich habe ein Termin', 'المذكر النكرة في النصب einen', 'einen']
+      ['Ich sehe den Mann.', 'أرى الرجل', 'Ich sehe der Mann.', 'المفعول المذكر يأخذ den', 'den'],
+      ['Ich trinke das Wasser.', 'أشرب الماء', 'Ich trinke den Wasser.', 'Wasser محايد، لذلك تبقى الأداة das', 'das'],
+      ['Ich kaufe die Jacke.', 'أشتري السترة', 'Ich kaufe den Jacke.', 'Jacke مؤنث، لذلك تبقى الأداة die', 'die'],
+      ['Ich habe einen Termin.', 'عندي موعد', 'Ich habe ein Termin.', 'المذكر النكرة يأخذ einen في النصب', 'einen']
     ],
-    'Ich sehe den Mann und ich kaufe die Jacke.',
     'Ich sehe den Mann.',
-    'Bilde morgen zwei Sätze mit den und die.',
-    'غدًا كوّن جملتين مع den وdie.'),
+    'Ich habe einen Termin.',
+    'Schreib morgen je einen Satz mit „den“, „das“, „die“ und „einen“.',
+    'غدًا اكتب جملة واحدة مع كل صيغة: den وdas وdie وeinen.',
+    {
+      writing: {
+        zeigt: 'Artikel im Akkusativ',
+        erklaerung: 'اكتب أربع جمل بمفعول به: مذكرًا معرفًا ومحايدًا معرفًا ومؤنثًا أو جمعًا معرفًا ومذكرًا نكرة.',
+        prompt: 'اكتب أربع جمل: واحدة بـden، وأخرى بـdas، وثالثة بـdie، ورابعة بـeinen.',
+        promptDe: 'Ich sehe den … · Ich kaufe das … · Ich nehme die … · Ich habe einen …',
+        points: ['den مع المذكر المعرف', 'das مع المحايد المعرف', 'die مع المؤنث أو الجمع المعرف', 'einen مع المذكر النكرة'],
+        minWords: 16,
+        frage: 'اكتب أربع جمل بمفعول به.',
+        familie: 'kasus',
+        hinweise: ['استعمل فعلًا متعديًا في كل جملة.', 'راجع جنس الاسم ثم اختر den أو das أو die أو einen.']
+      },
+      imitateNearMiss: 'der',
+      orderAr: 'رتّب جملة المفعول به، واجعل الفعل المصرف في الموضع الثاني.',
+      orderHints: ['ابدأ بـIch، ثم ضع habe في الموضع الثاني.', 'ضع einen Termin بعد الفعل.'],
+      speakAr: 'سجّل عشرين ثانية: قل أربع جمل قصيرة بمفعول به، واستعمل den وdas وdie وeinen مرةً لكل منها.',
+      orderSentence: 'Ich habe einen Termin.',
+      summaryDe: 'der → den · das → das · die (feminin/Plural) → die · ein → einen (maskulin)',
+      summaryAr: 'في نصب المفرد المذكر تتغير der إلى den وein إلى einen، بينما تبقى das وdie كما هما هنا.'
+    }),
 
   U('a1-u1-l4', 'A1', 'الضمائر في النصب', 'Akkusativ Pronomen', 'kasus',
     'Am Ende ersetzt du ein Objekt durch mich dich ihn oder sie',

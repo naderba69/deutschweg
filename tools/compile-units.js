@@ -596,7 +596,7 @@ function lessonOfVocab(spec, vocabRow) {
     frage: {
       ziel: cap(n + 1), art: 'cloze', frage: 'أكمل كما في النموذج.',
       antworten: [spec.lex[0][4]],
-      nearMiss: { [spec.lex[0][2].split(' ')[0]]: spec.lex[0][3] },
+      nearMiss: { [spec.imitateNearMiss || spec.lex[0][2].split(' ')[0]]: spec.lex[0][3] },
       feedback: { correct: spec.lex[0][3] }
     }
   });
@@ -661,7 +661,7 @@ function lessonOfVocab(spec, vocabRow) {
       recap: 'تمرين ٥: كتابة',
       hinweise: writing.hinweise || ['ابدأ بجملة النموذج ثم غيّر الاسم والبلد.', 'استعمل كلمتين على الأقل من قائمة اليوم.'],
       frage: {
-        ziel: cap(n + 1), art: 'schreiben', familie: 'wortstellung',
+        ziel: cap(n + 1), art: 'schreiben', familie: writing.familie || 'wortstellung',
         prompt: writing.prompt || 'اكتب أربع جمل قصيرة: من أنت، من أين، أين تسكن، وكلمة تعلّمتها اليوم.',
         promptDe: writing.promptDe || ('Ich heiße … · Ich komme aus … · Ich wohne in … · Ich lerne ' + items[0].de + '.'),
         points: writing.points || ['الاسم', 'البلد أو المدينة', 'كلمة من قائمة اليوم'],

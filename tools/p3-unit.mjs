@@ -348,6 +348,47 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Das ist nicht teuer.'));
 }
 
+/* ---------- audited A1 accusative-article lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u1-l3'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u1-l3 teaches the bounded den, das, die and einen accusative article forms in full sentences',
+    lesson.title.de === 'Artikel im Akkusativ' &&
+      lesson.schritte[0].zeigt.de.includes('die Artikelformen den, das, die und einen') &&
+      lesson.schritte[3].zeigt.de === 'Ich sehe den Mann.' &&
+      lesson.schritte[4].zeigt.de === 'Ich trinke das Wasser.' &&
+      lesson.schritte[5].zeigt.de === 'Ich kaufe die Jacke.' &&
+      lesson.schritte[6].zeigt.de === 'Ich habe einen Termin.');
+  t('Corpus lesson a1-u1-l3 qualifies definite and indefinite changes without claiming the article is the only object marker',
+    tricks.some(x => x.trick === 'في أدوات التعريف تتغير der وحدها' && x.wie.includes('der → den') && x.warum.includes('خاص بأدوات التعريف')) &&
+      tricks.some(x => x.trick === 'ein تصير einen مع المذكر المنصوب' && x.wie.includes('einen Kuchen')) &&
+      tricks.some(x => x.trick === 'حدّد الفاعل ثم المفعول به' && x.warum.includes('ليست الأداة العلامة الوحيدة')) &&
+      byWord['der Schlüssel'].why.includes('في هذا المثال') && byWord['die Schuhe'].ar === 'الأحذية');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const order = lesson.schritte.find(s => s.phase === 'Übungen' && s.frage && s.frage.art === 'wortstellung');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u1-l3 aligns imitation, writing, speaking, summary, word order and homework with the four article forms',
+    lesson.schritte.find(s => s.id === 's16').frage.nearMiss.der &&
+      lesson.schritte.find(s => s.id === 's17').zeigt.de === 'Ich habe einen Termin.' &&
+      writing.frage.familie === 'kasus' && writing.frage.points.length === 4 && writing.frage.minWords === 16 &&
+      writing.frage.frage === 'اكتب أربع جمل بمفعول به.' && writing.hinweise[0].includes('فعلًا متعديًا') &&
+      order.frage.correct.join(' ') === 'Ich habe einen Termin.' && order.hinweise[1].includes('einen Termin') &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('den وdas وdie وeinen') &&
+      summary.zeigt.de.includes('die (feminin/Plural)') && homework.zeigt.de.includes('„einen“'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  t('Corpus lesson a1-u1-l3 makes 80 percent four of five with direct support and one-sentence article checks',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u1-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderCheck.frage.correct.join(' ') === 'Ich sehe den Mann.' &&
+      clozeCheck.frage.zeigt === 'Ich nehme ____ Bluse.' && clozeCheck.frage.nearMiss.den &&
+      checks[4].frage.optionen.some(o => o.text === 'Ich trinke das Wasser.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
