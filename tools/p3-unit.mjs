@@ -2172,6 +2172,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a10', 1).key === 'ليتولى المهمة إذا مرض شخص' &&
       b2q('b2-a10', 1).options.includes(b2q('b2-a10', 1).key) &&
       b2Articles['b2-a10'].body.includes('eine zweite Person, die übernehmen kann, falls jemand krank wird'));
+  t('Corpus B2 b2-a11 has 516 measured words and no unknown B2 tokens',
+    b2Articles['b2-a11'].title === 'السياحة' &&
+      b2Articles['b2-a11'].body.trim().split(/\s+/).length === 516 &&
+      known.coverage(b2Known, b2Articles['b2-a11'].body).unknown.length === 0);
+  t('Corpus B2 b2-a11 connects differentiated demand, causal limits, targeted rules, shared costs, and review coherently',
+    b2Articles['b2-a11'].body.includes('Besucher ohne Übernachtung') &&
+      b2Articles['b2-a11'].body.includes('Sie beweist aber nicht, dass der Tourismus allein') &&
+      b2Articles['b2-a11'].body.includes('bevor man eine einzige Ursache nennt') &&
+      b2Articles['b2-a11'].body.includes('zusätzliche Reinigung und mehr Busse in der Saison') &&
+      b2Articles['b2-a11'].body.includes('nach einem festgelegten Zeitraum geprüft werden'));
+  t('Corpus B2 b2-a11 apartment question matches a changed street without citywide single-cause proof',
+    b2q('b2-a11', 0).prompt === 'ماذا تثبت ملاحظة الشقق الثلاث وحدها؟' &&
+      b2q('b2-a11', 0).key === 'أن الشارع تغيّر، لا أن السياحة وحدها رفعت إيجارات المدينة' &&
+      b2q('b2-a11', 0).options.includes(b2q('b2-a11', 0).key) &&
+      b2Articles['b2-a11'].body.includes('Diese Beobachtung zeigt, dass sich die Straße verändert hat'));
+  t('Corpus B2 b2-a11 overnight-fee question matches seasonal cleaning and bus service',
+    b2q('b2-a11', 1).prompt === 'فيمَ يقترح النص استخدام جزء من رسم المبيت؟' &&
+      b2q('b2-a11', 1).key === 'في تنظيف إضافي وحافلات أكثر في الموسم' &&
+      b2q('b2-a11', 1).options.includes(b2q('b2-a11', 1).key) &&
+      b2Articles['b2-a11'].body.includes('zusätzliche Reinigung und mehr Busse in der Saison finanzieren'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
