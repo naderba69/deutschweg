@@ -210,24 +210,38 @@ module.exports = [
     }),
 
   U('a1-u1-l2', 'A1', 'النفي', 'nicht und kein', 'lexik-kollokation',
-    'Am Ende verneinst du ein Verb und ein Nomen richtig',
-    'في النهاية تنفي فعلًا واسمًا بالنفي الصحيح.',
+    'Am Ende verneinst du eine Handlung, eine Eigenschaft und ein Nomen mit nicht oder kein',
+    'في النهاية تنفي فعلًا وصفةً واسمًا باستعمال nicht أو kein.',
     [
-      ['nicht vor dem Verbteil', 'nicht تنفي الفعل أو الصفة', 'kein لا تنفي الفعل', 'kein trinke', 'kein قبل اسم لا قبل فعل'],
-      ['kein vor dem Nomen', 'kein تنفي الاسم النكرة', 'nicht Kaffee تُستبدل بـ keinen Kaffee', 'nicht Kaffee', 'الاسم النكرة يُنفى بـ kein'],
-      ['keinen Kaffee', 'المذكر في النصب يأخذ keinen', 'kein لا تبقى بلا نهاية هنا', 'kein Kaffee trinke', 'الفعل أيضًا في غير موضعه'],
-      ['keine Zeit', 'Zeit مؤنث فتأخذ keine', 'لا keinen Zeit', 'keinen Zeit', 'Zeit ليست مذكرًا']
+      ['Ich trinke nicht.', 'nicht ينفي الفعل هنا', 'في هذه الجملة البسيطة يأتي nicht بعد الفعل المصرف', 'Ich kein trinke.', 'kein لا ينفي الفعل، والفعل يبقى في الموضع الثاني'],
+      ['Das ist nicht teuer.', 'nicht ينفي الصفة teuer', 'الصفة الخبرية تُنفى بـnicht، لا kein', 'Das ist kein teuer.', 'teuer صفة، لذلك نستعمل nicht'],
+      ['Ich habe keinen Kaffee.', 'kein يتصرف مع الاسم؛ المذكر المنصوب يأخذ keinen', 'Kaffee مذكر ومفعول به، لذلك keinen', 'Ich habe kein Kaffee.', 'المذكر المنصوب يحتاج keinen، لا kein'],
+      ['Ich habe keine Zeit.', 'Zeit مؤنث فتأخذ keine', 'kein يتبع جنس الاسم وحالته', 'Ich habe keinen Zeit.', 'Zeit مؤنث، لذلك نقول keine']
     ],
     [
-      ['Ich trinke nicht.', 'لا أشرب', 'Ich trinke kein', 'الفعل يُنفى بـ nicht', 'nicht'],
-      ['Ich habe keinen Kaffee.', 'ليس عندي قهوة', 'Ich habe nicht Kaffee', 'الاسم النكرة يُنفى بـ keinen', 'keinen'],
-      ['Das ist nicht teuer.', 'هذا ليس غاليًا', 'Das ist kein teuer', 'الصفة تُنفى بـ nicht', 'nicht'],
-      ['Ich habe keine Zeit.', 'ليس عندي وقت', 'Ich habe keinen Zeit', 'Zeit تأخذ keine', 'keine']
+      ['Ich trinke nicht.', 'لا أشرب', 'Ich trinke kein.', 'الفعل يُنفى بـnicht', 'nicht'],
+      ['Das ist nicht teuer.', 'هذا ليس غاليًا', 'Das ist kein teuer.', 'الصفة تُنفى بـnicht', 'nicht'],
+      ['Ich habe keinen Kaffee.', 'ليس عندي قهوة', 'Ich habe kein Kaffee.', 'Kaffee مذكر منصوب: keinen', 'keinen'],
+      ['Ich habe keine Zeit.', 'ليس عندي وقت', 'Ich habe keinen Zeit.', 'Zeit مؤنث: keine', 'keine']
     ],
-    'Ich trinke keinen Kaffee. Ich habe keine Zeit.',
+    'Ich habe keinen Kaffee.',
     'Ich habe keine Zeit.',
-    'Verneine morgen ein Verb und ein Nomen.',
-    'غدًا انفِ فعلًا واسمًا.'),
+    'Verneine morgen: Schreib zwei Sätze mit nicht und zwei mit einer Form von kein.',
+    'غدًا اكتب جملتين بـnicht وجملتين بإحدى صيغ kein.',
+    {
+      writing: {
+        zeigt: 'nicht oder kein?',
+        erklaerung: 'اكتب أربع جمل نفي: فعلًا وصفةً بـnicht، واسمين بصيغتين مناسبتين من kein.',
+        prompt: 'اكتب جملة تنفي فعلًا، وأخرى تنفي صفة، وثالثة بـkeinen، ورابعة بـkeine أو kein.',
+        promptDe: 'Ich … nicht. · Das ist nicht … · Ich habe keinen … · Ich habe keine …',
+        points: ['فعل مع nicht', 'صفة مع nicht', 'اسم مع keinen', 'اسم مع kein أو keine'],
+        minWords: 16
+      },
+      speakAr: 'سجّل عشرين ثانية: قل جملتين بـnicht وجملتين بصيغ مناسبة من kein.',
+      orderSentence: 'Das ist nicht teuer.',
+      summaryDe: 'Ich trinke nicht · nicht teuer · keinen Kaffee · keine Zeit',
+      summaryAr: 'nicht ينفي فعلًا أو صفة هنا، وkein يتصرف قبل الاسم: kein أو keine أو keinen.'
+    }),
 
   U('a1-u1-l3', 'A1', 'المفعول به في الأداة', 'Akkusativ Artikel', 'kasus',
     'Am Ende markierst du das Objekt mit dem richtigen Artikel',

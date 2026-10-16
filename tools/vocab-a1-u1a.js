@@ -52,39 +52,46 @@ module.exports = {
 
   'a1-u1-l2': {
     items: [
-      ['nicht', '—', 'ليس · لا', 'Ich trinke nicht.', 'Ich nicht trinke.', 'nicht يأتي بعد الفعل لا قبله.', 'wortstellung'],
-      ['kein', 'keine', 'لا (قبل الاسم)', 'Ich habe kein Geld.', 'Ich habe nicht Geld.', 'نفي الاسم يكون بـ kein لا بـ nicht.', 'lexik-kollokation'],
+      ['kein', 'keine', 'لا (قبل الاسم)', 'Ich habe kein Geld.', 'Ich habe nicht Geld.', 'في هذا الاستعمال يُنفى الاسم النكرة بلا أداة بـkein، لا بـnicht.', 'lexik-kollokation'],
       ['kein Problem', '—', 'لا مشكلة', 'Das ist kein Problem.', 'Das ist nicht Problem.', 'الاسم المفرد بلا أداة يُنفى بـ kein.', 'lexik-kollokation', 'kein'],
       ['nichts', '—', 'لا شيء', 'Ich sage nichts.', 'Ich sage nicht etwas.', 'nichts تنفي الشيء كله بكلمة واحدة.', 'lexik-kollokation'],
-      ['nie', '—', 'أبدًا', 'Ich trinke nie Alkohol.', 'Ich trinke nicht nie Alkohol.', 'nie لا تُجمع مع nicht؛ واحدة تكفي.', 'lexik-kollokation'],
-      ['niemand', '—', 'لا أحد', 'Niemand ist hier.', 'Nicht jemand ist hier.', 'niemand ضمير كامل ينفي وحده.', 'lexik-kollokation'],
+      ['nie', '—', 'أبدًا', 'Ich trinke nie Alkohol.', 'Ich trinke nicht nie Alkohol.', 'في النفي المحايد بمعنى «أبدًا» تكفي nie ولا نضيف nicht.', 'lexik-kollokation'],
+      ['niemand', '—', 'لا أحد', 'Niemand ist hier.', 'Nicht jemand ist hier.', 'في الجملة المحايدة يستعمل niemand وحده بمعنى «لا أحد».', 'lexik-kollokation'],
       ['noch nicht', '—', 'ليس بعد', 'Er ist noch nicht da.', 'Er ist nicht noch da.', 'الترتيب ثابت: noch vor nicht.', 'wortstellung', 'nicht'],
       ['das Geld', '—', 'النقود', 'Ich habe das Geld nicht.', 'Ich habe den Geld nicht.', 'Geld محايد: das Geld.', 'genus'],
       ['die Zeit', 'die Zeiten', 'الوقت', 'Die Zeit ist knapp.', 'Der Zeit ist knapp.', 'Zeit مؤنث: die.', 'genus'],
-      ['die Lust', '—', 'الرغبة', 'Ich habe keine Lust.', 'Ich habe nicht Lust.', 'Lust اسم، فيُنفى بـ kein.', 'lexik-kollokation'],
+      ['die Lust', '—', 'الرغبة', 'Ich habe keine Lust.', 'Ich habe nicht Lust.', 'Lust اسم بلا أداة هنا، لذلك نقول keine Lust.', 'lexik-kollokation'],
       ['die Idee', 'die Ideen', 'الفكرة', 'Das ist keine gute Idee.', 'Das ist nicht gute Idee.', 'مع الاسم يكون النفي keine.', 'lexik-kollokation'],
       ['der Hunger', '—', 'الجوع', 'Ich habe keinen Hunger.', 'Ich habe nicht Hunger.', 'Hunger مذكر، وفي النصب keinen.', 'kasus'],
       ['der Durst', '—', 'العطش', 'Hast du keinen Durst?', 'Hast du nicht Durst?', 'kein يُصرَّف كالأداة: keinen Durst.', 'kasus'],
       ['müde', '—', 'متعب', 'Ich bin nicht müde.', 'Ich bin kein müde.', 'الصفة تُنفى بـ nicht لا بـ kein.', 'deklination'],
-      ['teuer', '—', 'غالٍ', 'Das ist nicht teuer.', 'Das ist kein teuer.', 'قبل الصفة nicht، وقبل الاسم kein.', 'lexik-kollokation'],
-      ['billig', '—', 'رخيص', 'Das Brot ist nicht billig.', 'Das Brot ist kein billig.', 'الصفة الحال تُنفى بـ nicht.', 'lexik-kollokation'],
-      ['kaputt', '—', 'معطّل', 'Das Auto ist nicht kaputt.', 'Das Auto ist kein kaputt.', 'kaputt صفة حال: nicht kaputt.', 'lexik-kollokation'],
+      ['teuer', '—', 'غالٍ', 'Das ist nicht teuer.', 'Das ist kein teuer.', 'teuer صفة خبرية هنا، لذلك نقول nicht teuer.', 'lexik-kollokation'],
+      ['billig', '—', 'رخيص', 'Das Brot ist nicht billig.', 'Das Brot ist kein billig.', 'billig صفة خبرية هنا، لذلك نقول nicht billig.', 'lexik-kollokation'],
+      ['kaputt', '—', 'معطّل', 'Das Auto ist nicht kaputt.', 'Das Auto ist kein kaputt.', 'kaputt صفة خبرية هنا: nicht kaputt.', 'lexik-kollokation'],
       ['fertig', '—', 'جاهز', 'Ich bin noch nicht fertig.', 'Ich bin kein fertig.', 'الحال تُنفى بـ nicht.', 'lexik-kollokation'],
       ['der Unterricht', '—', 'الدرس', 'Heute ist kein Unterricht.', 'Heute ist nicht Unterricht.', 'اسم بلا أداة يُنفى بـ kein.', 'lexik-kollokation'],
-      ['der Tee', 'die Tees', 'الشاي', 'Ich trinke keinen Tee.', 'Ich trinke nicht Tee.', 'نفي الاسم المادي بـ kein.', 'lexik-kollokation'],
-      ['das Fleisch', '—', 'اللحم', 'Ich esse kein Fleisch.', 'Ich esse nicht Fleisch.', 'kein قبل أسماء المواد.', 'lexik-kollokation'],
+      ['der Tee', 'die Tees', 'الشاي', 'Ich trinke keinen Tee.', 'Ich trinke nicht Tee.', 'في النفي المحايد للعبارة الاسمية نقول keinen Tee.', 'lexik-kollokation'],
+      ['das Fleisch', '—', 'اللحم', 'Ich esse kein Fleisch.', 'Ich esse nicht Fleisch.', 'في النفي المحايد للاسم المادي نقول kein Fleisch.', 'lexik-kollokation'],
       ['helfen', 'hilft · half', 'يساعد', 'Ich kann dir nicht helfen.', 'Ich kann dir kein helfen.', 'الفعل يُنفى بـ nicht.', 'lexik-kollokation'],
       ['wissen', 'weiß · wusste', 'يعرف', 'Ich weiß es nicht.', 'Ich weiß es kein.', 'الأفعال تُنفى بـ nicht.', 'konjugation', 'weiß'],
-      ['verstehen', 'versteht · verstand', 'يفهم', 'Ich verstehe die Frage nicht.', 'Ich verstehe nicht die Frage.', 'nicht يأتي بعد المفعول هنا.', 'wortstellung', 'verstehe'],
-      ['gefallen', 'gefällt · gefiel', 'يُعجب', 'Das gefällt mir nicht.', 'Das nicht gefällt mir.', 'nicht في آخر الجملة بعد المفعول.', 'wortstellung', 'gefällt'],
-      ['überhaupt nicht', '—', 'لا على الإطلاق', 'Das passt mir überhaupt nicht.', 'Das passt mir nicht überhaupt.', 'تركيب ثابت: überhaupt nicht.', 'wortstellung', 'nicht'],
+      ['verstehen', 'versteht · verstand', 'يفهم', 'Ich verstehe die Frage nicht.', 'Ich nicht verstehe die Frage.', 'عند نفي الفهم كله يأتي nicht بعد المفعول هنا.', 'wortstellung', 'verstehe'],
+      ['gefallen', 'gefällt · gefiel', 'يُعجب', 'Das gefällt mir nicht.', 'Das nicht gefällt mir.', 'في هذه الجملة يأتي nicht بعد المتمم mir.', 'wortstellung', 'gefällt'],
+      ['leider', '—', 'للأسف', 'Leider habe ich keine Zeit.', 'Leider ich habe keine Zeit.', 'بعد leider يبقى الفعل في الموضع الثاني.', 'wortstellung'],
       ['mehr', '—', 'بعد · أكثر', 'Ich habe kein Geld mehr.', 'Ich habe nicht Geld mehr.', 'kein … mehr هو النفي الكامل.', 'lexik-kollokation'],
-      ['leider', '—', 'للأسف', 'Leider habe ich keine Zeit.', 'Leider ich habe keine Zeit.', 'بعد leider يبقى الفعل في الموضع الثاني.', 'wortstellung']
+      ['überhaupt nicht', '—', 'لا على الإطلاق', 'Das passt mir überhaupt nicht.', 'Das passt mir nicht überhaupt.', 'تركيب ثابت: überhaupt nicht.', 'wortstellung', 'nicht'],
+      ['nicht', '—', 'ليس · لا', 'Ich trinke nicht.', 'Ich kein trinke.', 'في هذه الجملة البسيطة ننفي الفعل بـnicht بعد الفعل المصرف؛ kein لا ينفي الفعل.', 'wortstellung'],
     ],
+    extraCheck: {
+      right: 'Das ist nicht teuer.',
+      bad: 'Das ist kein teuer.',
+      why: 'teuer صفة خبرية، لذلك تُنفى بـnicht.',
+      family: 'lexik-kollokation',
+      prereq: 'cap.a1-u1-l2.s05'
+    },
     tricks: [
-      { trick: 'قبل الاسم kein، وقبل الفعل nicht', wie: 'kein Geld · keine Zeit · nicht trinken.', warum: 'العربية تنفي الاثنين بـ «لا»، والألمانية تسأل أولًا: ما نوع الكلمة؟', anchor: 'Ich habe keine Zeit.' },
+      { trick: 'nicht للفعل والصفة، وkein للاسم النكرة هنا', wie: 'nicht trinken · nicht teuer · kein Geld · keine Zeit.', warum: 'حدّد ما تنفيه: فعلًا أو صفةً، أم اسمًا نكرةً أو بلا أداة في هذا الاستعمال.', anchor: 'Ich habe keine Zeit.' },
       { trick: 'kein يلبس نهاية الأداة', wie: 'kein · keine · keinen: على جنس الاسم وحالته.', warum: 'kein ليس كلمة جامدة، بل أداة نكرة في ثوب النفي.', anchor: 'Ich trinke keinen Tee.' },
-      { trick: 'nicht يمشي إلى آخر الجملة', wie: 'Ich verstehe die Frage nicht.', warum: 'وضع nicht قبل المفعول يفسد الإيقاع ويُلبس المعنى.', anchor: 'Ich verstehe die Frage nicht.' }
+      { trick: 'موضع nicht يتبع نطاق النفي', wie: 'Die Regel „nicht vor dem Verbteil“ gilt nicht immer: Ich verstehe die Frage nicht · Das ist nicht teuer.', warum: 'لا توجد قاعدة «دائمًا في الآخر»: يأتي nicht حيث يوضح الفعل أو الصفة أو الجزء المنفي.', anchor: 'Ich verstehe die Frage nicht.' }
     ]
   },
 

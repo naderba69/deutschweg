@@ -310,6 +310,44 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Du lernst Deutsch.'));
 }
 
+/* ---------- audited A1 nicht/kein lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u1-l2'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u1-l2 distinguishes action, predicative-adjective and noun negation with inflected kein forms',
+    lesson.schritte[0].zeigt.de.includes('eine Handlung, eine Eigenschaft und ein Nomen') &&
+      lesson.schritte[3].zeigt.de === 'Ich trinke nicht.' &&
+      lesson.schritte[4].zeigt.de === 'Das ist nicht teuer.' &&
+      lesson.schritte[5].zeigt.de === 'Ich habe keinen Kaffee.' &&
+      lesson.schritte[6].zeigt.de === 'Ich habe keine Zeit.');
+  t('Corpus lesson a1-u1-l2 qualifies nicht placement and kein noun scope instead of teaching absolute position rules',
+    tricks.some(x => x.trick === 'موضع nicht يتبع نطاق النفي' && x.warum.includes('لا توجد قاعدة «دائمًا في الآخر»')) &&
+      tricks.some(x => x.trick.includes('kein للاسم النكرة هنا') && x.warum.includes('اسمًا نكرةً أو بلا أداة')) &&
+      byWord.verstehen.err === 'Ich nicht verstehe die Frage.' &&
+      byWord.verstehen.why.includes('عند نفي الفهم كله') &&
+      byWord['der Tee'].why.includes('في النفي المحايد'));
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u1-l2 aligns writing, speaking, summary, word order and homework with both negators',
+    writing.frage.points.includes('فعل مع nicht') && writing.frage.points.includes('اسم مع keinen') && writing.frage.minWords === 16 &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('جملتين بـnicht') &&
+      summary.zeigt.de.includes('nicht teuer') && summary.zeigt.de.includes('keinen Kaffee') &&
+      lesson.schritte.find(s => s.phase === 'Übungen' && s.frage && s.frage.art === 'wortstellung').frage.correct.join(' ') === 'Das ist nicht teuer.' &&
+      homework.zeigt.de.includes('zwei Sätze mit nicht') && homework.zeigt.de.includes('zwei mit einer Form von kein'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  t('Corpus lesson a1-u1-l2 makes 80 percent four of five with direct support and focused negation checks',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u1-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderCheck.frage.correct.join(' ') === 'Ich habe keinen Kaffee.' &&
+      clozeCheck.frage.zeigt === 'Ich trinke ____.' && clozeCheck.frage.nearMiss.kein &&
+      checks[4].frage.optionen.some(o => o.text === 'Das ist nicht teuer.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
