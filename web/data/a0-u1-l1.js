@@ -1,9 +1,24 @@
 /* ============================================================
    Deutschweg — lesson data
    Lesson a0-u1-l1 : Day 1 — Alphabet, sounds, first greetings
-   Level A0 · 90 minutes · 30 steps · all 12 stages
+   Level A0 · 90 minutes · 32 steps · all 12 stages
    UI strings are Arabic. Learning content is German.
    ============================================================ */
+
+const A0_U1_L1_WORDS = [
+  { de: "Guten Morgen", pl: "—", ar: "صباح الخير", ex: "Guten Morgen, Frau Klein!", err: "Gute Morgen, Frau Klein!", why: "Morgen مذكر، وصيغة التحية الثابتة هي Guten Morgen.", fam: "deklination", blank: "Morgen" },
+  { de: "Guten Tag", pl: "—", ar: "نهارك سعيد / مرحبًا", ex: "Guten Tag, Herr Ali!", err: "Gute Tag, Herr Ali!", why: "Tag مذكر، لذلك تأتي التحية الثابتة Guten Tag.", fam: "deklination", blank: "Tag" },
+  { de: "Guten Abend", pl: "—", ar: "مساء الخير", ex: "Guten Abend, Sara!", err: "Gute Abend, Sara!", why: "Abend مذكر، وصيغة التحية هي Guten Abend.", fam: "deklination", blank: "Abend" },
+  { de: "Auf Wiedersehen", pl: "—", ar: "إلى اللقاء", ex: "Auf Wiedersehen, Frau Doktor!", err: "Auf Wieder sehen, Frau Doktor!", why: "Wiedersehen اسم في هذه العبارة الثابتة، لذلك يُكتب كلمة واحدة وبحرف كبير.", fam: "orthografie", blank: "Wiedersehen" },
+  { de: "Gute Nacht", pl: "—", ar: "تصبح على خير", ex: "Gute Nacht, bis morgen!", err: "Guten Nacht, bis morgen!", why: "Nacht مؤنث، لذلك نقول Gute Nacht بلا n.", fam: "deklination", blank: "Nacht" },
+  { de: "Tschüss", pl: "—", ar: "وداعًا / سلام", ex: "Tschüss, bis morgen!", err: "Tschüss, Frau Präsidentin!", why: "Tschüss غير رسمية؛ في لقاء رسمي أول يكون Auf Wiedersehen أكثر أمانًا.", fam: "register", blank: "Tschüss" },
+  { de: "Ich heiße …", pl: "—", ar: "اسمي…", ex: "Ich heiße Sara.", err: "Ich heiße bin Sara.", why: "heiße هو الفعل كاملًا مع ich؛ لا نضيف bin بعده.", fam: "konjugation", blank: "heiße" },
+  { de: "Wie heißt du?", pl: "—", ar: "ما اسمك؟", ex: "Hallo! Wie heißt du?", err: "Wie du heißt?", why: "في السؤال المباشر يأتي الفعل heißt قبل الفاعل du.", fam: "wortstellung", blank: "heißt" },
+  { de: "Mein Name ist …", pl: "—", ar: "اسمي هو…", ex: "Mein Name ist Omar.", err: "Meine Name ist Omar.", why: "Name مذكر، لذلك نقول mein لا meine.", fam: "genus", blank: "Name" },
+  { de: "Danke", pl: "—", ar: "شكرًا", ex: "Danke für die Hilfe!", err: "Ich sage dich Danke.", why: "Danke تكفي وحدها؛ وإذا ذُكر الشخص نقول dir لا dich.", fam: "kasus", blank: "Danke" },
+  { de: "Bitte", pl: "—", ar: "من فضلك / عفوًا / تفضل", ex: "Ein Wasser, bitte.", err: "Danke. — Bitte dich.", why: "الرد الثابت على Danke هو Bitte بلا ضمير.", fam: "lexik-kollokation", blank: "Bitte" },
+  { de: "Freut mich", pl: "—", ar: "تشرفت / يسعدني", ex: "Freut mich, Anna.", err: "Ich freut mich, Anna.", why: "الصيغة القصيرة الثابتة هي Freut mich؛ ومع ich نحتاج صياغة أخرى.", fam: "konjugation", blank: "Freut" }
+];
 
 window.DW_LESSONS = {
 
@@ -13,14 +28,15 @@ window.DW_LESSONS = {
   unit: "u1",
   title: { ar: "اليوم الأول: الأصوات والتحية الأولى" },
   minutes: 90,
+  wortschatz: A0_U1_L1_WORDS,
 
   schritte: [
 
   /* ---------- 1. ZIEL ---------- */
   {
     id: "s01", phase: "Ziel", type: "mcq",
-    zeigt: { de: "🎯 Am Ende dieser Lektion: du begrüßt jemanden auf Deutsch — und du liest jedes deutsche Wort richtig vor." },
-    erklaerung: "هدف واحد اليوم فقط: تحية صحيحة، وقراءة صحيحة. لا قواعد، ولا تصريف أفعال.",
+    zeigt: { de: "🎯 Am Ende dieser Lektion begrüßt du jemanden passend und liest geübte deutsche Wörter mit den Lautregeln vor." },
+    erklaerung: "هدف اليوم محدد: تحية مناسبة، وقراءة الكلمات المتدرَّب عليها بقواعد الصوت. لا نَعِد بقراءة كل كلمة ألمانية من درس واحد.",
     recap: "هدف اليوم: تحية + قراءة صحيحة",
     frage: {
       ziel: "cap.a0.lesson.goal",
@@ -28,7 +44,7 @@ window.DW_LESSONS = {
       frage: "ما الشيء الذي ستستطيع فعله بعد 90 دقيقة؟",
       optionen: [
         { id: "a", text: "التحدّث بطلاقة مع الألمان" },
-        { id: "b", text: "تحية شخص، وقراءة أي كلمة ألمانية بصوت صحيح" },
+        { id: "b", text: "تحية شخص، وقراءة الكلمات المتدرَّب عليها بصوت صحيح" },
         { id: "c", text: "كتابة رسالة رسمية" }
       ],
       richtig: "b",
@@ -48,7 +64,7 @@ window.DW_LESSONS = {
     audio: ["Guten Morgen!", "Guten Tag!", "Guten Abend!", "Gute Nacht!"],
     erklaerung: "استمع إلى الأربع دون أن تقرأ. لا يهمّ أن تفهم — المطلوب أن تسمع الفرق.",
     recap: "أربع تحيات: الصباح، النهار، المساء، الليل",
-    hinweise: ["الأربع تبدأ بالكلمة نفسها.", "الفرق كله في آخر الكلمة: وقت اليوم."],
+    hinweise: ["الثلاث الأولى تبدأ Guten، أما الرابعة فتبدأ Gute.", "انتبه للكلمة الأخيرة، وانتبه أيضًا إلى Guten وGute."],
     frage: {
       ziel: "cap.a0.hoeren.greetings",
       art: "mcq",
@@ -57,8 +73,8 @@ window.DW_LESSONS = {
       richtig: "b",
       misconceptionFamilies: { a: "hoerstrategie", c: "hoerstrategie" },
       feedback: {
-        b: "أربع تحيات، والفرق بينها وقت اليوم فقط.",
-        a: "أعِد الاستماع: الرابعة أُخفت قليلًا (Gute Nacht).",
+        b: "أربع عبارات؛ الثلاث الأولى للوقت، والرابعة عند النوم.",
+        a: "أعِد الاستماع: الرابعة مختلفة قليلًا: Gute Nacht لا Guten.",
         c: "أربع فقط. ليس خمسًا — الجملة الأولى والثانية تختلفان في كلمة واحدة."
       }
     }
@@ -68,7 +84,7 @@ window.DW_LESSONS = {
   {
     id: "s03", phase: "Einstieg", type: "mcq",
     zeigt: { de: "⚠ W · V · Z" },
-    erklaerung: "الألمانية تُكتب بالحروف التي تعرفها… تقريبًا. ثلاثة حروف ستخدعك اليوم. تعرّف عليها الآن، ولن تخدعك مرّة أخرى.",
+    erklaerung: "الألمانية تُكتب بالحروف التي تعرفها… تقريبًا. ثلاثة حروف ستخدعك اليوم. تعرّف عليها الآن، ثم ثبّتها بالتدريب.",
     recap: "ثلاثة حروف خادعة: W V Z",
     frage: {
       ziel: "cap.a0.einstieg.predict",
@@ -90,12 +106,12 @@ window.DW_LESSONS = {
   {
     id: "s04", phase: "Erklärung", type: "matching",
     zeigt: { de: "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z + Ä Ö Ü ß" },
-    erklaerung: "ستة وعشرون حرفًا تعرفها، وأربعة جديدة. الثلاثة الأولى حروف معدّلة (فوقها نقطتان)، والرابع بديل عن حرفين.",
+    erklaerung: "الأبجدية الأساسية فيها ستة وعشرون حرفًا لاتينيًا، وتظهر معها ä وö وü وß. النقطتان تغيّران صوت حرف العلة، وß يكتب صوت /s/ مثل ss.",
     audio: ["Mädchen", "schön", "über", "Straße"],
     vereinfachung: {
       beispiel: "ä → Mädchen · ö → schön · ü → über · ß → Straße",
-      analogie: "مثل الذال والظاء في العربية: حروف لا توجد في لغات كثيرة، وتحتاج أذنًا تتعوّد عليها.",
-      regel: "ä = ألف مفتوحة أكثر · ö = «e» بشفتين مدوّرتين · ü = «i» بشفتين مدوّرتین · ß = «س» ثقيلة، وتُكتب ss في سويسرا"
+      analogie: "هذه أصوات جديدة على كثير من المتعلمين؛ الأفضل تقليد المثال ببطء بدل استبدالها بأقرب حرف عربي.",
+      regel: "ä في Mädchen قريبة من e مفتوحة · ö = قل e مع تدوير الشفتين · ü = قل i مع تدوير الشفتين · ß = صوت /s/ ويُكتب ss في سويسرا"
     },
     hinweise: ["النقطتان فوق الحرف ليستا زينة — تغيّران الصوت.", "ß لا تُستعمل في بداية الكلمة أبدًا."],
     recap: "الحروف + ä ö ü ß",
@@ -104,10 +120,10 @@ window.DW_LESSONS = {
       art: "matching",
       frage: "صِل كل حرف بالكلمة التي فيها صوته.",
       paare: [
-        { links: "ä", rechts: "Mädchen", haken: "النقطتان تفتحان الألف: مادشِن لا مادشن." },
+        { links: "ä", rechts: "Mädchen", haken: "في Mädchen اسمع e مفتوحة، ثم ch رخوة؛ لا تحذف النقطتين." },
         { links: "ö", rechts: "schön", haken: "قل «e» وشفتاك مدوّرتان — هذا ö." },
         { links: "ü", rechts: "über", haken: "قل «i» وشفتاك مدوّرتان — هذا ü." },
-        { links: "ß", rechts: "Straße", haken: "الصوت «س» ثقيلة، والكلمة تعني «شارع»." }
+        { links: "ß", rechts: "Straße", haken: "ß هنا صوت /s/ مثل ss، والكلمة تعني «شارع»." }
       ],
       feedback: { correct: "أربعة حروف، أربعة أصوات. هذه أذنك تبدأ العمل." }
     }
@@ -116,32 +132,32 @@ window.DW_LESSONS = {
   /* ---------- 5. ERKLÄRUNG 2 : the deceptive trio (star step) ---------- */
   {
     id: "s05", phase: "Erklärung", type: "mcq",
-    zeigt: { de: "W = /v/   ·   V = /f/   ·   Z = /ts/" },
-    erklaerung: "ثلاثة حروف، ثلاث خدع. w تُنطق «ڤ» لا «و». v تُنطق «ف» لا «ڤ». z تُنطق «تس» لا «ز».",
+    zeigt: { de: "W = /v/ · V = /f/ in Vater · Z = /ts/" },
+    erklaerung: "في الكلمات المتدرَّب عليها: w صوت /v/، وv في Vater وVogel وvon صوت /f/، وz يبدأ /ts/. توجد كلمات دخيلة مثل Video قد يُنطق فيها v مثل /v/.",
     audio: ["Wasser", "Vater", "Zeit"],
     vereinfachung: {
-      beispiel: "w → Wasser (ڤاسر) · v → Vater (فاتر) · z → Zeit (تسايت)",
-      analogie: "تخيّل أن حرف الشين في العربية صار يُنطق جيمًا. هذا بالضبط حجم الخداع.",
-      regel: "لا تقرأ الألمانية بالعربية. اقرأها بالأصوات: W=ڤ · V=ف · Z=تس."
+      beispiel: "w → Wasser · v → Vater / Vogel · z → Zeit",
+      analogie: "اربط كل حرف بمثال ثابت: Wasser للصوت /v/، وVater للصوت /f/، وZeit للصوت /ts/.",
+      regel: "في هذه الأمثلة: W=/v/ · V=/f/ · Z=/ts/. افحص الكلمات الدخيلة بدل تعميم V=/f/ على كل كلمة."
     },
-    hinweise: ["الخدعة الأولى والأخطر: w.", "v في كلمات كثيرة أصلها لاتيني، وهذا سبب الالتباس."],
+    hinweise: ["الخدعة الأولى والأخطر: w.", "بعض الكلمات الدخيلة مثل Video وVase استثناء من V=/f/."],
     recap: "W=ڤ · V=ف · Z=تس",
     frage: {
       ziel: "cap.a0.aussprache.w_v_z",
       art: "mcq",
       frage: "كيف تُنطق Vogel؟",
       optionen: [
-        { id: "a", text: "«فوجل» — ف عادية، والجيم كما في «جميل»" },
-        { id: "b", text: "«ڤوجل» — بالڤ الفرنسية" },
-        { id: "c", text: "«فوغل» — بالغين" },
+        { id: "a", text: "«فوگِل» — ف في البداية وg بصوت /g/" },
+        { id: "b", text: "«ڤوگِل» — ببداية /v/" },
+        { id: "c", text: "«فوغِل» — بالغين بدل /g/" },
         { id: "d", text: "«بوجل» — بالباء" }
       ],
       richtig: "a",
       feedback: {
-        a: "v = ف، وg هنا كما في «go». Vogel تعني «طائر».",
-        b: "قرأتَ v كالفرنسية. ڤ هي حرف w في الألمانية (Wasser)، أمّا v فهي ف.",
-        c: "الغين ليست صوتًا في الألمانية القياسية. g تُنطق جيمًا كما في «go».",
-        d: "هذا نطق إسباني. في الألمانية v = ف: Vater = فاتر."
+        a: "في Vogel تبدأ v بصوت /f/، وg بصوت /g/. الكلمة تعني «طائر».",
+        b: "في Vogel تحديدًا تُنطق v بصوت /f/؛ لا تعمم ذلك على كلمات دخيلة مثل Video.",
+        c: "في Vogel الحرف g هو /g/، وليس صوت الغين.",
+        d: "الباء لا تمثل v في هذه الكلمة؛ Vogel تبدأ بصوت /f/."
       },
       misconceptionFamilies: { b: "aussprache", c: "aussprache", d: "falser-freund" }
     }
@@ -155,7 +171,7 @@ window.DW_LESSONS = {
     erklaerung: "حرفان متشابهان، وصوتان معكوسان. ei تُنطق «آي»، وie تُنطق «إي» ممدودة.",
     vereinfachung: {
       beispiel: "ei → nein (ناين) · ie → die (دي)",
-      analogie: "الألمانية تقرأ الحرفين كما تراهما: ei = ا+ي، ie = ي+ا… لكن النطق يقلبهما عليك.",
+      analogie: "احفظ الزوجين مع مثالين ثابتين: nein للصوت «آي»، وdie للصوت «إي» الطويلة.",
       regel: "احفظهما كزوج: ei = «آي» · ie = «إي» طويلة."
     },
     hinweise: ["لا تفكّر في القاعدة، بل في الزوج.", "die و nein تظهران في كل صفحة ألمانية."],
@@ -184,13 +200,13 @@ window.DW_LESSONS = {
     id: "s07", phase: "Erklärung", type: "matching",
     zeigt: { de: "eu = /ɔy/   ·   ch = /x/ oder /ç/   ·   sch = /ʃ/" },
     audio: ["heute", "ich", "Buch", "Schule"],
-    erklaerung: "ثلاثة أصوات جديدة. ch له صوتان: خفيف بعد a/o/u، وأخفّ بعد بقية الحروف.",
+    erklaerung: "ثلاث مجموعات جديدة. ch له صوت خلفي أقوى بعد a وo وu وau مثل Buch، وصوت أمامي رخو بعد e وi وä وö وü مثل ich.",
     vereinfachung: {
       beispiel: "eu → heute (هويته) · ch → ich (إِخ خفيفة) · Buch (بوخ) · sch → Schule (شوله)",
-      analogie: "ch قريبة من الخاء في العربية، لكنها أرقّ — كأنك تهمس بالخاء.",
-      regel: "sch = «ش» دائمًا · eu = «أوي» دائمًا · ch = حسب الحرف الذي قبله."
+      analogie: "ch في Buch قريبة من خاء رخوة، أما ch في ich فأمامية وأخف ولا يطابقها حرف عربي تمامًا.",
+      regel: "sch = /ʃ/ · eu غالبًا /ɔʏ/ · ch الخلفية بعد a/o/u/au، والأمامية بعد e/i/ä/ö/ü."
     },
-    hinweise: ["sch ثلاثة حروف، صوت واحد.", "لا تقلق من الفرق بين صوتي ch الآن — سيأتي في A2 بتفصيل."],
+    hinweise: ["sch ثلاثة حروف، صوت واحد.", "يكفي الآن أن تميّز Buch الخلفية من ich الأمامية وتقلدهما."],
     recap: "eu=أوي · ch=خ خفيفة · sch=ش",
     frage: {
       ziel: "cap.a0.aussprache.eu_ch_sch",
@@ -210,11 +226,11 @@ window.DW_LESSONS = {
     id: "s08", phase: "Erklärung", type: "mcq",
     zeigt: { de: "Mitte (kurz)  ↔  Miete (lang)" },
     audio: ["Mitte", "Miete"],
-    erklaerung: "الألمانية تميّز الفوكال الطويل من القصير، والكتابة تدلّك: حرفان متشابهان بعده = قصير، وحرف h بعده = طويل.",
+    erklaerung: "الألمانية تميّز حرف العلة الطويل من القصير. غالبًا يدل تكرار الحرف الساكن بعده على القِصر، وتدل ie أو h بعد حرف العلة على الطول.",
     vereinfachung: {
       beispiel: "Mitte (قصير) ↔ Miete (طويل) · ihn (طويل) ↔ in (قصير)",
-      analogie: "أنت تعرف الفرق من العربية بالفطرة: «قالَ» ليست «قال». استعمل هذه الأذن.",
-      regel: "حرفان متشابهان بعد الفوكال = قصير · h صامتة بعده = طويل."
+      analogie: "في العربية يغيّر طول الحركة المعنى أيضًا، مثل مَلَك ومالك؛ استعمل الأذن نفسها.",
+      regel: "غالبًا: ساكن مكرر بعد الحركة = قصيرة · ie أو h بعد الحركة = طويلة."
     },
     hinweise: ["في العربية الفوكال الطويل يعني فرق معنى — هنا أيضًا.", "Miete = إيجار، Mitte = وسط. معنيان مختلفان تمامًا."],
     recap: "طويل ↔ قصير يغيّر الكلمة",
@@ -235,6 +251,7 @@ window.DW_LESSONS = {
   /* ---------- 9. WORTSCHATZ 1 ---------- */
   {
     id: "s09", phase: "Wortschatz", type: "cloze",
+    wortschatz: A0_U1_L1_WORDS.slice(0, 3),
     zeigt: { de: "Guten Morgen!  ·  Guten Tag!  ·  Guten Abend!" },
     audio: ["Guten Morgen, Anna!", "Guten Tag, Herr Ben Ali!"],
     erklaerung: "كلمة «gut» تعني «جيّد»، ومعها وقت اليوم. التركيب جاهز — تُبدّل كلمة واحدة فقط.",
@@ -258,15 +275,16 @@ window.DW_LESSONS = {
   /* ---------- 10. WORTSCHATZ 2 ---------- */
   {
     id: "s10", phase: "Wortschatz", type: "mcq",
+    wortschatz: A0_U1_L1_WORDS.slice(3, 6),
     zeigt: { de: "Auf Wiedersehen!  ·  Gute Nacht!  ·  Tschüss!" },
     audio: ["Auf Wiedersehen, Frau Doktor!", "Tschüss, bis morgen!"],
-    erklaerung: "الأولى رسمية، والثانية عند النوم، والثالثة بين الأصدقاء. الفرق في المستوى لا في المعنى.",
+    erklaerung: "Auf Wiedersehen وداع رسمي، وGute Nacht تُقال عند النوم، وTschüss وداع غير رسمي. تختلف العبارة بحسب الموقف، لا بحسب الرسمية وحدها.",
     vereinfachung: {
       beispiel: "Auf Wiedersehen, Frau Doktor! · Tschüss, bis morgen!",
       analogie: "مثل الفرق بين «إلى اللقاء» و«سلام»: المعنى واحد، والمقام مختلف.",
       regel: "wieder = مرّة أخرى · sehen = يرى ⇒ «أراك مرّة أخرى»."
     },
-    hinweise: ["Gute Nacht تُقال عند الذهاب إلى النوم، لا عند المغادرة مساءً.", "Tschüss لا تُقال لمدير أو موظّف رسمي."],
+    hinweise: ["Gute Nacht تُقال عند الذهاب إلى النوم، لا عند المغادرة مساءً.", "في لقاء رسمي أول اختر Auf Wiedersehen؛ وقد تُستعمل Tschüss إذا كان أسلوب المكان غير رسمي."],
     recap: "رسمي: Auf Wiedersehen · أصدقاء: Tschüss",
     frage: {
       ziel: "cap.a0.wortschatz.farewell_register",
@@ -275,8 +293,8 @@ window.DW_LESSONS = {
       optionen: [ { id: "a", text: "Auf Wiedersehen" }, { id: "b", text: "Tschüss" } ],
       richtig: "b",
       feedback: {
-        b: "صحيح. Tschüss ودّية وبسيطة، وتُفتح بها كل المحادثات اليومية.",
-        a: "صحيحة لغويًا، لكنها جافّة جدًا مع صديق. الألمانية حسّاسة للدرجة: هذا شبه «تحت أمرك» في العربية."
+        b: "صحيح. Tschüss ودّية وبسيطة، وتُختتم بها محادثات غير رسمية كثيرة.",
+        a: "صحيحة لغويًا لكنها رسمية مع صديق مقرّب؛ Tschüss أنسب في هذا الموقف."
       },
       misconceptionFamilies: { a: "register" }
     }
@@ -285,6 +303,7 @@ window.DW_LESSONS = {
   /* ---------- 11. WORTSCHATZ 3 ---------- */
   {
     id: "s11", phase: "Wortschatz", type: "cloze",
+    wortschatz: A0_U1_L1_WORDS.slice(6, 9),
     zeigt: { de: "Ich heiße …   ·   Wie heißt du?   ·   Mein Name ist …" },
     audio: ["Ich heiße Mohamed.", "Wie heißt du?", "Mein Name ist Sara."],
     erklaerung: "هذا إطار لا جملة. غيّر الاسم فقط، واحفظ الإطار كما هو.",
@@ -301,13 +320,14 @@ window.DW_LESSONS = {
       frage: "أكمل: Wie ____ du?",
       antworten: ["heißt", "heisst"],
       nearMiss: { "heißen": "الكلمة صحيحة، لكن التصريف خاطئ: مع du تصبح heißt." },
-      feedback: { correct: "Wie heißt du? — أوّل سؤال ستسمعه في ألمانيا." }
+      feedback: { correct: "Wie heißt du? سؤال شائع عند التعارف غير الرسمي." }
     }
   },
 
   /* ---------- 12. WORTSCHATZ 4 ---------- */
   {
     id: "s12", phase: "Wortschatz", type: "matching",
+    wortschatz: A0_U1_L1_WORDS.slice(9, 12),
     zeigt: { de: "Danke.  ·  Bitte.  ·  Freut mich." },
     audio: ["Danke!", "Bitte!", "Freut mich."],
     erklaerung: "كلمة واحدة تصلح لثلاثة مواضع: Bitte تعني «من فضلك»، و«تفضّل»، و«عفوًا». والسياق يحدّد.",
@@ -336,7 +356,7 @@ window.DW_LESSONS = {
     id: "s13", phase: "Anwenden", type: "hoeren",
     zeigt: { de: "Guten Tag! — Guten Tag! — Ich heiße Sara. Wie heißt du? — Ich heiße Mohamed. Freut mich. — Freut mich." },
     audio: ["Guten Tag!", "Guten Tag!", "Ich heiße Sara. Wie heißt du?", "Ich heiße Mohamed. Freut mich.", "Freut mich."],
-    erklaerung: "خمس جمل. هذا كل ما تحتاجه للتعارف الأول — لا أكثر.",
+    erklaerung: "خمس جمل تكفي لمحادثة تعارف قصيرة وواضحة.",
     recap: "حوار التعارف: 5 جمل",
     hinweise: ["استمع مرّتين قبل أن تسأل.", "اسم «محمد» هنا هو نفسك — تخيّل الحوار معك."],
     frage: {
@@ -347,7 +367,7 @@ window.DW_LESSONS = {
       richtig: "b",
       misconceptionFamilies: { a: "hoerstrategie", c: "hoerstrategie" },
       feedback: {
-        b: "مرّتين: قالها محمد ردًّا على سارة، ثم ردّت هي. هذا التكافؤ مهمّ في الألمانية.",
+        b: "مرّتين: قالها محمد ردًّا على سارة، ثم ردّت هي. كلا الطرفين ردّ بعبارة مهذبة.",
         a: "اسمعهما آخر مرّتين: كل واحد قالها للآخر.",
         c: "مرّتان فقط. الجملة الأولى والثانية تحية متبادلة، لا Freut mich."
       }
@@ -359,7 +379,7 @@ window.DW_LESSONS = {
     id: "s14", phase: "Anwenden", type: "verstehen",
     zeigt: { de: "Sprich jetzt laut: Guten Tag! Ich heiße … . Freut mich. Wie heißt du?" },
     erklaerung: "قل الحوار بصوت عالٍ مرّتين: مرّة بدور سارة ومرّة بدور محمد. التقليد ليس وقتًا ضائعًا — هو أسرع طريق لضبط الصوت.",
-    audio: ["Guten Tag! Ich heiße سارة.", "Guten Tag! Ich heiße Mohamed. Freut mich.", "Wie heißt du?"],
+    audio: ["Guten Tag! Ich heiße Sara.", "Guten Tag! Ich heiße Mohamed. Freut mich.", "Wie heißt du?"],
     recap: "قل الحوار بصوت عالٍ مرّتين",
     hinweise: ["لا تقرأ بعينك فقط — الفم يعلّم الأذن.", "بطيء وواضح أفضل من سريع مبهم."]
   },
@@ -370,7 +390,7 @@ window.DW_LESSONS = {
     zeigt: { de: "Baue den Dialog um: anderer Name, andere Tageszeit, anderer Ton." },
     erklaerung: "تغيير الإطار يُثبت أنك لم تحفظ جملة، بل امتلكت تركيبة.",
     recap: "بدّل: الاسم · الوقت · الدرجة",
-    hinweise: ["التحية والعبارة يجب أن تتوافقا: وقت ≠ آخر.", "التسرّف يكون في التحية، لا في التعريف."],
+    hinweise: ["التحية والعبارة يجب أن تتوافقا: وقت ≠ آخر.", "درجة الرسمية تظهر في التحية؛ جملة التعريف نفسها لا تتغير."],
     frage: {
       ziel: "cap.a0.anwenden.transform_greeting",
       art: "mcq",
@@ -410,7 +430,7 @@ window.DW_LESSONS = {
       feedback: {
         a: "v = ف. Vater = أب. وأنت قلت هذا من نفسك، بلا تلميح.",
         b: "ڤ هي w. لو رأيت الماء لقلت Wasser (ڤاسر).",
-        c: "الألف والدال قصيرتان هنا: فاتَر لا فاتير."
+        c: "الحركة الأولى طويلة، لكن نهاية -er ليست «إير»: قل Vater لا فاتير."
       },
       misconceptionFamilies: { b: "aussprache", c: "aussprache" }
     }
@@ -429,7 +449,7 @@ window.DW_LESSONS = {
       frage: "أكمل: Guten ____, es ist 9 Uhr abends.",
       antworten: ["Abend"],
       nearMiss: { "Nacht": "قريب جدًا: في التاسعة مساءً التحية Guten Abend. Gute Nacht عند النوم فقط." },
-      feedback: { correct: "Guten Abend — من نحو السادسة حتى النوم." }
+      feedback: { correct: "عند التاسعة مساءً نقول Guten Abend؛ أما Gute Nacht فعند الذهاب إلى النوم." }
     }
   },
 
@@ -492,6 +512,24 @@ window.DW_LESSONS = {
     }
   },
 
+  {
+    id: "s20b", phase: "Übungen", type: "mcq",
+    zeigt: { de: "Danke" },
+    erklaerung: "استدعِ المعنى قبل قلب البطاقة، ثم انطق الكلمة مرة واحدة.",
+    recap: "بطاقة: Danke",
+    hinweise: ["حاول من الذاكرة أولًا.", "تأتي بعد مساعدة أو خدمة."],
+    frage: {
+      ziel: "cap.a0.wortschatz.danke_card",
+      art: "flashcard",
+      direction: "receptive",
+      de: "Danke",
+      ar: "شكرًا",
+      example: "Danke für die Hilfe!",
+      familie: "lexik-kollokation",
+      frage: "اقلب البطاقة: ما معنى Danke؟"
+    }
+  },
+
   /* ---------- 21. MERKHILFE 1 ---------- */
   {
     id: "s21", phase: "Merkhilfe", type: "verstehen",
@@ -500,7 +538,7 @@ window.DW_LESSONS = {
     merkhilfe: {
       trick: "إطاري — مثلّث الخداع",
       wie: "ارسم المثلّث على ورقة بيدك ثلاث مرّات، وقُل مع كل ضلع: ڤ · ف · تس.",
-      warum: "لأن اليد تنسى أقلّ من الذاكرة: الحركة تربط الشكل بالصوت، فيزول الخداع بعد تكرارين."
+      warum: "الجمع بين الرسم والنطق يعطيك مسارين للتذكّر؛ كرره عند الحاجة من دون وعد بعدد ثابت."
     },
     recap: "مثلّث: W=ڤ · V=ف · Z=تس",
     hinweise: ["لا تحفظ الحروف بالاسم (ڤيه، ڤاو، تسيت) — احفظها بالصوت.", "ارسمها الآن فعلًا، لا في خيالك فقط."]
@@ -511,11 +549,11 @@ window.DW_LESSONS = {
     id: "s22", phase: "Merkhilfe", type: "verstehen",
     zeigt: { de: "🧠 Merkhilfe 2 — ei vor ie" },
     audio: ["ei — ie", "nein — die", "heiß — sie"],
-    erklaerung: "قُلها كنشيد، ثماني مرّات بوتيرة ثابتة: «ei ← آي، ie ← إي».",
+    erklaerung: "قل الزوج ببطء أربع مرات: «ei ← آي، ie ← إي»، ثم طبّقه في الكلمات.",
     merkhilfe: {
       trick: "صوتي — نشيد الزوج",
-      wie: "ثماني تكرارات بصوت مسموع: nein — die · heiß — sie · mein — wie.",
-      warum: "لأن الحرفين المتشابهين يُخلطان فقط عند القراءة السريعة؛ الإيقاع يمنع الخلط قبل حدوثه."
+      wie: "أربع دورات بصوت مسموع: nein — die · heiß — sie · mein — wie.",
+      warum: "الإيقاع يربط كل ترتيب بمثاله، ثم تكشف الكلمات إن كان التمييز ثابتًا."
     },
     recap: "ei=آي · ie=إي — بالتكرار",
     hinweise: ["التكرار بالصوت لا بالعين.", "أضف زوجًا من عندك بعد الثمانية."]
@@ -529,7 +567,7 @@ window.DW_LESSONS = {
     merkhilfe: {
       trick: "قصّة — السيد غوت ومعطفه",
       wie: "احكِ القصّة على نفسك وأنت تُبدّل التحيات، واربط كل تحية بصورة ذهنية لها.",
-      warum: "لأن أربع كلمات متشابهة تُحفظ كشخص واحد لا كقائمة — والشخص لا يُنسى."
+      warum: "القصة تجمع العبارات الأربع في تسلسل يوم واحد، فتمنحك علامة زمنية لاسترجاع كل عبارة."
     },
     recap: "السيد غوت يبدّل التحية بالوقت",
     hinweise: ["القصّة أداة تعليمية مقصودة، لا طفولة.", "Gute Nacht = خلع المعطف والنوم."]
@@ -548,17 +586,17 @@ window.DW_LESSONS = {
   /* ---------- 25. ZUSAMMENFASSUNG ---------- */
   {
     id: "s25", phase: "Zusammenfassung", type: "verstehen",
-    zeigt: { de: "📌 W=V · V=F · Z=TS · Guten + Tageszeit" },
-    erklaerung: "أربع حقائق. هذا كلّ ما في اليوم. لا شيء آخر.",
+    zeigt: { de: "📌 Laute: W/V/Z · ei/ie · Grüße · Name" },
+    erklaerung: "راجع أصوات W/V/Z وei/ie وch/sch، ثم التحية والاسم والوداع. هذه خلاصة ما تدربت عليه.",
     recap: "W=ڤ V=ف Z=تس Guten+وقت",
-    hinweise: ["إن نسيت شيئًا، هذه القائمة تكفي.", "ستعود إليها في مراجعة الغد."]
+    hinweise: ["إن نسيت شيئًا، ارجع إلى المثال الصوتي الخاص به.", "ستعود إليها في مراجعة الغد."]
   },
 
   /* ---------- 26–29. CHECK ---------- */
   {
     id: "s26", phase: "Check", type: "mcq",
-    zeigt: { de: "✅ Check 1 / 4" },
-    erklaerung: "فحص سريع. أربعة أسئلة، والنجاح 80%.",
+    zeigt: { de: "✅ Check 1 / 5" },
+    erklaerung: "فحص سريع من خمسة أسئلة. أربع إجابات صحيحة من خمس تساوي 80%.",
     recap: "فحص 1: كلمة Zeit",
     frage: {
       ziel: "cap.a0.aussprache.zeit",
@@ -577,7 +615,7 @@ window.DW_LESSONS = {
   },
   {
     id: "s27", phase: "Check", type: "cloze",
-    zeigt: { de: "✅ Check 2 / 4" },
+    zeigt: { de: "✅ Check 2 / 5" },
     erklaerung: "",
     recap: "فحص 2: Gute ____",
     frage: {
@@ -592,7 +630,7 @@ window.DW_LESSONS = {
   },
   {
     id: "s28", phase: "Check", type: "mcq",
-    zeigt: { de: "✅ Check 3 / 4" },
+    zeigt: { de: "✅ Check 3 / 5" },
     erklaerung: "",
     recap: "فحص 3: ie الطويلة",
     frage: {
@@ -611,7 +649,7 @@ window.DW_LESSONS = {
   },
   {
     id: "s29", phase: "Check", type: "matching",
-    zeigt: { de: "✅ Check 4 / 4" },
+    zeigt: { de: "✅ Check 4 / 5" },
     erklaerung: "",
     recap: "فحص 4: التحيات وأوقاتها",
     frage: {
@@ -620,12 +658,37 @@ window.DW_LESSONS = {
       art: "matching",
       frage: "صِل التحية بوقتها.",
       paare: [
-        { links: "Guten Morgen", rechts: "صباح", haken: "من الفجر حتى ~11." },
-        { links: "Guten Tag", rechts: "نهار", haken: "من ~11 حتى المساء." },
-        { links: "Guten Abend", rechts: "مساء", haken: "من ~18 حتى النوم." },
+        { links: "Guten Morgen", rechts: "صباح", haken: "تحية الصباح قبل انتقال الموقف إلى Guten Tag." },
+        { links: "Guten Tag", rechts: "نهار", haken: "تحية النهار؛ يختلف وقت الانتقال بحسب المكان." },
+        { links: "Guten Abend", rechts: "مساء", haken: "تحية المساء، وليست عبارة النوم." },
         { links: "Gute Nacht", rechts: "ليل / نوم", haken: "عند الذهاب إلى النوم فقط." }
       ],
       feedback: { correct: "أربع تحيات، أربعة مواقع. هذا كلّ الدرس." }
+    }
+  },
+
+  {
+    id: "s29b", phase: "Check", type: "mcq",
+    zeigt: { de: "✅ Check 5 / 5" },
+    erklaerung: "",
+    recap: "فحص 5: الوداع عند النوم",
+    frage: {
+      ziel: "cap.a0.wortschatz.gute_nacht_context",
+      prereq: "cap.a0.wortschatz.farewell_register",
+      art: "mcq",
+      frage: "أي عبارة تقولها لشخص ذاهب إلى النوم؟",
+      optionen: [
+        { id: "a", text: "Gute Nacht" },
+        { id: "b", text: "Guten Abend" },
+        { id: "c", text: "Guten Morgen" }
+      ],
+      richtig: "a",
+      feedback: {
+        a: "Gute Nacht تُقال عند الذهاب إلى النوم.",
+        b: "Guten Abend تحية عند اللقاء مساءً، وليست عبارة النوم.",
+        c: "Guten Morgen تحية الصباح."
+      },
+      misconceptionFamilies: { b: "register", c: "register" }
     }
   },
 
@@ -633,9 +696,9 @@ window.DW_LESSONS = {
   {
     id: "s30", phase: "Hausaufgabe", type: "verstehen",
     zeigt: { de: "🏠 Hausaufgabe: begrüße morgen drei echte Menschen auf Deutsch." },
-    erklaerung: "لا واجب ورقي. واجبك غدًا: قل تحيتك الألمانية على ثلاثة أشخاص حقيقيين، وسجّل جملة واحدة: Ich heiße …",
-    recap: "3 تحيات حقيقية + تسجيل جملة",
-    hinweise: ["من لا يستعمل الكلمة في يومها، ينساها في يومين.", "التسجيل ليس تقييمًا — هو نقطة البداية في محفظتك."]
+    erklaerung: "لا واجب ورقي. غدًا حيِّ ثلاثة أشخاص تعرفهم بالألمانية إن أمكن؛ وإن لم يتوفر الموقف، سجّل ثلاث تحيات لمواقف مختلفة ثم جملة Ich heiße …",
+    recap: "3 تحيات أو محاكاة + تسجيل",
+    hinweise: ["الاستعمال في موقف حقيقي أو محاكاة مسجلة يساعد على تثبيت العبارة.", "التسجيل ليس تقييمًا — هو نقطة البداية في محفظتك."]
   }
 
   ]

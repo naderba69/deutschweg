@@ -19,9 +19,9 @@ let fileHard = 0;
 /* P3.2 — the lexical layer and the forms. These are cross-lesson checks: a trick
    that is repeated verbatim in every lesson is a slogan, not a memory aid. */
 const VOCAB_FLOOR = { A0: 12, A1: 14, A2: 16, B1: 20, B2: 24 };
-/* The hand-written opening lesson predates the lexical layer. It stays the one
-   declared exception until it is ported, and the exception is printed, not hidden. */
-const VOCAB_EXEMPT = new Set(['a0-u1-l1']);
+/* Explicit temporary exceptions belong here. The opening lesson has now been
+   ported to the lexical layer, so the set is intentionally empty. */
+const VOCAB_EXEMPT = new Set();
 const PENDING_VOCAB_LEVELS = new Set(['A1', 'A2', 'B1', 'B2']);
 const trickSeen = new Map();
 const FORMS = ['mcq', 'cloze', 'matching', 'hoeren', 'sprechen', 'flashcard', 'wortstellung', 'schreiben'];

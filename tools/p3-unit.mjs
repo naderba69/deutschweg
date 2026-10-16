@@ -74,6 +74,36 @@ console.log('\n— P3.2 lexical layer —\n');
   t('step cards built for the flashcard steps: ' + cardKeys.length, cardKeys.length >= 5 && Object.values(cards).every(v => v[0].de && v[0].ar && v[0].level));
 }
 
+/* ---------- audited hand-written opening lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a0-u1-l1'];
+  const vocabSteps = lesson.schritte.filter(s => s.phase === 'Wortschatz' && s.wortschatz);
+  t('Corpus lesson a0-u1-l1 carries a complete 12-item lexical layer in four three-item Wortschatz groups',
+    lesson.wortschatz.length === 12 &&
+      vocabSteps.length === 4 &&
+      vocabSteps.every(s => s.wortschatz.length === 3) &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])));
+  const source = fs.readFileSync(ROOT + '/web/data/a0-u1-l1.js', 'utf8');
+  t('Corpus lesson a0-u1-l1 teaches qualified V and ch pronunciation instead of false universal or reversed rules',
+    source.includes('V = /f/ in Vater') &&
+      source.includes('Video قد يُنطق فيها v مثل /v/') &&
+      source.includes('صوت خلفي أقوى بعد a وo وu وau مثل Buch') &&
+      source.includes('صوت أمامي رخو بعد e وi وä وö وü مثل ich') &&
+      source.includes('في Vogel الحرف g هو /g/، وليس صوت الغين'));
+  const germanLearnerStrings = lesson.schritte.flatMap(s => [s.zeigt && s.zeigt.de, ...(s.audio || [])]).filter(Boolean);
+  t('Corpus lesson a0-u1-l1 keeps German learner strings free of Arabic script and removes the impossible every-word promise',
+    germanLearnerStrings.every(x => !/[\u0600-\u06FF]/.test(x)) &&
+      !source.includes('du liest jedes deutsche Wort richtig vor') &&
+      source.includes('liest geübte deutsche Wörter mit den Lautregeln vor'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  t('Corpus lesson a0-u1-l1 makes the stated 80 percent attainable with four of five checks and supplies a real flashcard plus homework fallback',
+    checks.length === 5 &&
+      checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس تساوي 80%') &&
+      lesson.schritte.some(s => s.frage && s.frage.art === 'flashcard' && s.frage.de === 'Danke') &&
+      lesson.schritte.find(s => s.phase === 'Hausaufgabe').erklaerung.includes('وإن لم يتوفر الموقف'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

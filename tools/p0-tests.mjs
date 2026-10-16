@@ -60,8 +60,10 @@ function answer(i, forceWrong=false){
     }
     return true;
   }
+  const know = [...window.document.querySelectorAll('button')].find(b=>b.textContent==='أعرف');
   const okb = window.document.querySelector('.ok-btn');
   const simple = [...window.document.querySelectorAll('button.primary')].find(b=>b.textContent==='فهمت، تابع');
+  if (know){ know.click(); return true; }
   if (okb){ okb.disabled=false; okb.click(); return true; }
   if (simple){ simple.click(); return true; }
   return false;
