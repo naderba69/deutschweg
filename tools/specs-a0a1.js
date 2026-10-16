@@ -367,25 +367,49 @@ module.exports = [
       summaryRecap: 'المالك أولًا ثم الجنس والحالة'
     }),
 
-  U('a1-u1-l6', 'A1', 'أستطيع ويجب', 'können und müssen', 'konjugation',
-    'Am Ende sagst du was du kannst und was du musst',
-    'في النهاية تقول ما تستطيع وما يجب عليك.',
+  U('a1-u1-l6', 'A1', 'أستطيع ويجب عليّ', 'können und müssen', 'konjugation',
+    'Am Ende bildest du Aussagen mit „ich kann“, „du kannst“ und „ich muss“ sowie eine Frage mit „Kannst du ...?“.',
+    'في النهاية تكوّن جملًا خبرية مع «ich kann» و«du kannst» و«ich muss»، وسؤالًا مع «Kannst du ...؟»',
     [
-      ['ich kann', 'kann بلا نهاية مع ich', 'kannst للمخاطب', 'ich kannst', 'النهاية الزائدة خطأ'],
-      ['du kannst', 'du يأخذ kannst', 'kann وحدها لا تكفي', 'du kann', 'هذه صيغة ich أو er'],
-      ['ich muss', 'muss بلا ss الزائدة في الكتابة الحديثة', 'muß قديمة', 'ich muß', 'الإملاء الحالي muss'],
-      ['Modal plus Infinitiv', 'الفعل الثاني في الآخر بلا zu', 'لا to ولا zu', 'ich muss zu gehen', 'zu زائدة هنا']
+      ['Ich kann schwimmen.', 'مع ich نستعمل kann', 'الفعل können يتغير هنا إلى kann، ويبقى schwimmen مصدرًا', 'Ich kannst schwimmen.', 'مع ich نقول kann لا kannst'],
+      ['Du kannst bleiben.', 'مع du نستعمل kannst', 'الفعل المصرف هو kannst، ويبقى bleiben مصدرًا في آخر الجملة', 'Du kann bleiben.', 'مع du نقول kannst لا kann'],
+      ['Ich muss lernen.', 'في الإملاء القياسي الحديث نكتب muss بـss', 'muß كتابة قديمة؛ والصيغة الحالية هي muss', 'Ich muß lernen.', 'في الإملاء القياسي الحديث نكتب muss'],
+      ['Sie muss heute arbeiten.', 'بعد الفعل الناقص يأتي المصدر في آخر الجملة بلا zu', 'muss هو الفعل المصرف وarbeiten هو المصدر', 'Sie muss heute zu arbeiten.', 'بعد müssen نستعمل المصدر مباشرةً: arbeiten بلا zu']
     ],
     [
-      ['Ich kann schwimmen.', 'أستطيع السباحة', 'Ich kannst schwimmen', 'مع ich: kann', 'kann'],
-      ['Du kannst bleiben.', 'تستطيع البقاء', 'Du kann bleiben', 'مع du: kannst', 'kannst'],
-      ['Ich muss lernen.', 'يجب أن أدرس', 'Ich muß lernen', 'الإملاء muss', 'muss'],
-      ['Sie muss heute arbeiten.', 'يجب أن تعمل اليوم', 'Sie muss heute zu arbeiten', 'المصدر بلا zu', 'arbeiten']
+      ['Ich kann schwimmen.', 'أستطيع السباحة', 'Ich kannst schwimmen.', 'مع ich نقول kann', 'kann'],
+      ['Du kannst bleiben.', 'تستطيع البقاء', 'Du kann bleiben.', 'مع du نقول kannst', 'kannst'],
+      ['Ich muss lernen.', 'يجب أن أدرس', 'Ich muß lernen.', 'الإملاء القياسي الحديث هو muss', 'muss'],
+      ['Sie muss heute arbeiten.', 'يجب أن تعمل اليوم', 'Sie muss heute zu arbeiten.', 'بعد muss يأتي المصدر بلا zu', 'arbeiten']
     ],
-    'Ich kann schwimmen, aber ich muss lernen.',
+    'Ich kann schwimmen.',
     'Ich muss lernen.',
-    'Sage morgen einen Satz mit kann und einen mit muss.',
-    'غدًا قل جملة مع kann وأخرى مع muss.'),
+    'Schreibe morgen vier Sätze. Beginne drei mit „Ich kann“, „Du kannst“ und „Ich muss“; der vierte ist eine Frage mit „Kannst du ...?“.',
+    'غدًا اكتب أربع جمل: ابدأ ثلاثًا بـ«Ich kann» و«Du kannst» و«Ich muss»، واجعل الرابعة سؤالًا مع «Kannst du ...؟»',
+    {
+      writing: {
+        zeigt: 'Aussagen und Fragen mit Modalverben',
+        erklaerung: 'اكتب ست جمل: جملتين مع ich kann، وجملة مع du kannst، وسؤالًا مع Kannst du، وجملتين مع muss. ضع المصدر في آخر كل جملة.',
+        prompt: 'اكتب ست جمل صحيحة تغطي kann وkannst وmuss، ومنها سؤال واحد.',
+        promptDe: 'Ich kann schwimmen. · Ich kann heute nicht kommen. · Du kannst bleiben. · Kannst du mitkommen? · Ich muss heute lernen. · Sie muss heute arbeiten.',
+        points: ['جملة مع ich kann', 'جملة منفية مع ich kann', 'جملة مع du kannst', 'سؤال مع Kannst du', 'جملة مع ich muss', 'جملة مع sie muss'],
+        minWords: 20,
+        frage: 'اكتب ست جمل بالفعل الناقص والمصدر.',
+        familie: 'konjugation',
+        hinweise: ['صرّف kann أو kannst أو muss حسب الفاعل.', 'ضع المصدر مثل schwimmen أو bleiben أو lernen في آخر الجملة بلا zu.']
+      },
+      imitateNearMiss: 'kannst',
+      transformHint: 'مع ich نستعمل muss هنا، ويبقى lernen مصدرًا في النهاية.',
+      orderAr: 'رتّب جملة خبرية مع muss، واجعل الفعل المصرف في الموضع الثاني والمصدر في النهاية.',
+      orderHints: ['ابدأ بـIch، ثم ضع muss في الموضع الثاني.', 'ضع heute في الوسط وlernen في نهاية الجملة.'],
+      orderSentence: 'Ich muss heute lernen.',
+      checkOrderSentence: 'Kannst du mitkommen?',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل جملة مع ich kann، وأخرى مع du kannst، وثالثة مع ich muss، ثم اسأل Kannst du ...؟',
+      summaryDe: 'Aussage: Ich kann schwimmen. · Du kannst bleiben. · Ich muss lernen. · Frage: Kannst du mitkommen?',
+      summaryAr: 'الفعل الناقص هو المصرف: ich kann وdu kannst وich muss؛ ويأتي المصدر في النهاية، وفي سؤال نعم/لا يبدأ السؤال بالفعل المصرف: Kannst du ...؟',
+      summaryRecap: 'الفعل المصرف أولًا والمصدر أخيرًا'
+    }),
 
   U('a1-u2-l1', 'A1', 'أريد وأود', 'wollen und möchten', 'register',
     'Am Ende unterscheidest du wollen und möchten',

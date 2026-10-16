@@ -222,7 +222,7 @@ function lessonOf(spec, index) {
     zeigt: { de: spec.say },
     erklaerung: 'حوّل النموذج إلى جملة تقولها أنت. ليست ترجمة حرفية.',
     recap: 'تحويل لا ترجمة',
-    hinweise: ['الجملة الألمانية جاهزة في السطر.', spec.facts[0][2]],
+    hinweise: ['الجملة الألمانية جاهزة في السطر.', spec.transformHint || spec.facts[0][2]],
     frage: Object.assign({ ziel: cap(14), art: 'mcq', frage: 'أي جملة هي التحويل الصحيح؟' }, tr)
   });
   for (let i = 0; i < 5; i++) {
@@ -328,7 +328,7 @@ function blankOut(sentence, core) {
   };
 }
 
-const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|antwortet|antworte|fragt|frage|möchte|kann|muss|will|darf|mag|holt|kauf)$/i;
+const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|antwortet|antworte|fragt|frage|möchte|kann|kannst|muss|will|darf|mag|holt|kauf)$/i;
 
 /* The order exercise is scored on four levels, and level 1 needs the finite
    verb, level 3 the fields. Without them the engine could only say "wrong",
@@ -605,7 +605,7 @@ function lessonOfVocab(spec, vocabRow) {
     zeigt: { de: spec.say },
     erklaerung: 'حوّل النموذج إلى جملة تقولها أنت. ليست ترجمة حرفية.',
     recap: 'تحويل لا ترجمة',
-    hinweise: ['الجملة الألمانية جاهزة في السطر.', spec.facts[0][2]],
+    hinweise: ['الجملة الألمانية جاهزة في السطر.', spec.transformHint || spec.facts[0][2]],
     frage: Object.assign({ ziel: cap(n + 1), art: 'mcq', frage: 'أي جملة هي التحويل الصحيح؟' },
       mcq(14, spec.say, [[spec.facts[0][3], fam, spec.facts[0][4]], [spec.lex[1][2], fam, spec.lex[1][3]]]))
   });
@@ -624,14 +624,18 @@ function lessonOfVocab(spec, vocabRow) {
           [spec.lex[(i + 1) % 4][2], fam, 'هذا فخ معروف في الدرس، لكنه لا يجيب هذا البند: البند يقيس «' + f[2] + '».']]))
     });
   });
-  const drillItem = items[items.length - 1];
+  if (vocabRow.clozeItemIndex !== undefined &&
+      (!Number.isInteger(vocabRow.clozeItemIndex) || vocabRow.clozeItemIndex < 0 || vocabRow.clozeItemIndex >= items.length)) {
+    die(spec.id + ' bad clozeItemIndex ' + vocabRow.clozeItemIndex);
+  }
+  const drillItem = vocabRow.clozeItemIndex === undefined ? items[items.length - 1] : items[vocabRow.clozeItemIndex];
   const drillNearMiss = vocabRow.clozeNearMiss || String(drillItem.err).split(/\s+/).slice(-2)[0];
   {
     const b = blankOut(drillItem.ex, drillItem.blank);
     push('clozeDrill', {
       phase: 'Übungen', type: 'cloze',
       zeigt: { de: drillItem.de },
-      erklaerung: 'الكلمة الأخيرة في القائمة، داخل جملتها.',
+      erklaerung: vocabRow.clozeItemIndex === undefined ? 'الكلمة الأخيرة في القائمة، داخل جملتها.' : 'كلمة مختارة من القائمة، داخل جملتها.',
       recap: 'تمرين ٣',
       hinweise: ['الكلمة من قائمة اليوم.', drillItem.why],
       frage: {
@@ -724,7 +728,7 @@ function lessonOfVocab(spec, vocabRow) {
      grades the checklist himself. */
   const checkPlan = [
     { right: spec.facts[3][0], bad: spec.facts[3][3], why: spec.facts[3][4], family: fam, prereq: cap(7) },
-    { right: items[items.length - 1].ex, bad: items[items.length - 1].err, why: items[items.length - 1].why, prereq: named['clozeDrill'], cloze: items[items.length - 1] },
+    { right: drillItem.ex, bad: drillItem.err, why: drillItem.why, prereq: named['clozeDrill'], cloze: drillItem },
     { right: null, bad: null, why: null, prereq: named['order'] },
     { right: items[0].ex, bad: items[0].err, why: items[0].why, family: items[0].fam, prereq: named['w0'] }
   ];

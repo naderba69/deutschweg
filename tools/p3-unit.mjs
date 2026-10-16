@@ -485,6 +485,63 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Ich sehe meinen Bruder.'));
 }
 
+/* ---------- audited A1 modal-verb lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u1-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u1-l6 states a measurable kann, kannst, muss and yes/no-question goal through complete sentences',
+    lesson.title.de === 'können und müssen' && lesson.title.ar === 'أستطيع ويجب عليّ' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['ich kann', 'du kannst', 'ich muss', 'Kannst du'].every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Ich kann schwimmen.', 'Du kannst bleiben.', 'Ich muss lernen.', 'Sie muss heute arbeiten.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  t('Corpus lesson a1-u1-l6 teaches one conjugated modal plus a bare final infinitive without false bicycle, computer or genug claims',
+    byWord.können.err === 'Ich kann schwimme.' && byWord.müssen.err === 'Ich muss lerne.' &&
+      byWord.mitkommen.fam === 'konjugation' &&
+      byWord['das Fahrrad'].why.includes('mit dem Fahrrad') &&
+      byWord['der Computer'].why.includes('auf dem Computer') &&
+      byWord.genug.err === 'Ich habe genug nicht Zeit.' &&
+      tricks[0].trick === 'الفعل الناقص يحمل التصريف والمصدر يقف في الآخر' &&
+      tricks[0].warum.includes('الفعل الثاني فيبقى مصدرًا') &&
+      tricks[1].warum.includes('القدرة والواجب والإذن') &&
+      tricks[2].trick.includes('الفعل المصرف أولًا'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const cloze = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u1-l6 aligns model, imitation, transformation, cloze, writing, speaking, summary, order and homework',
+    model.zeigt.de === 'Ich kann schwimmen.' && imitate.frage.nearMiss.kannst &&
+      transform.hinweise[1].includes('muss') && transform.hinweise[1].includes('lernen') &&
+      cloze.frage.zeigt === 'Ich muss eine E-Mail ____.' && cloze.frage.nearMiss.schreibe &&
+      writing.frage.familie === 'konjugation' && writing.frage.points.length === 6 && writing.frage.minWords === 20 &&
+      ['ich kann', 'du kannst', 'ich muss', 'kannst du'].every(x =>
+        writing.frage.promptDe.toLowerCase().includes(x) && speaking.erklaerung.toLowerCase().includes(x) &&
+        summary.zeigt.de.toLowerCase().includes(x) && homework.zeigt.de.toLowerCase().includes(x)) &&
+      order.frage.frage === 'رتّب الكلمات لتكوين جملة صحيحة.' &&
+      order.frage.correct.join(' ') === 'Ich muss heute lernen.' && order.frage.finite === 'muss' &&
+      order.frage.correct.filter(x => /[.!?]$/.test(x)).length === 1);
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u1-l6 makes 80 percent four of five with five directly supported checks of modal form and sentence frame',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u1-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Sie muss heute arbeiten.') &&
+      clozeCheck.frage.zeigt === 'Ich muss eine E-Mail ____.' && clozeCheck.frage.nearMiss.schreibe &&
+      orderCheck.frage.correct.join(' ') === 'Kannst du mitkommen?' &&
+      orderCheck.frage.finite === 'Kannst' && orderCheck.frage.verbFirst === true &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich kann schwimmen.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Ich muss lernen.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

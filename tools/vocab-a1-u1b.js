@@ -95,15 +95,15 @@ module.exports = {
 
   'a1-u1-l6': {
     items: [
-      ['können', 'kann · konnte', 'يستطيع', 'Ich kann schwimmen.', 'Ich kann schwimmen ich.', 'لا ضمير مكرّر في آخر الجملة.', 'wortstellung', 'kann'],
-      ['müssen', 'muss · musste', 'يجب عليه', 'Ich muss lernen.', 'Ich muss lernen ich.', 'الضمير في الأول يكفي.', 'wortstellung', 'muss'],
+      ['können', 'kann · konnte', 'يستطيع', 'Ich kann schwimmen.', 'Ich kann schwimme.', 'بعد kann يأتي المصدر schwimmen بلا تصريف.', 'konjugation', 'kann'],
+      ['müssen', 'muss · musste', 'يجب عليه', 'Ich muss lernen.', 'Ich muss lerne.', 'بعد muss يأتي المصدر lernen بلا تصريف.', 'konjugation', 'muss'],
       ['kann', '—', 'أستطيع', 'Ich kann heute nicht kommen.', 'Ich kann heute nicht komme.', 'بعد المساعد يأتي المصدر.', 'konjugation', 'kann'],
       ['muss', '—', 'يجب', 'Sie muss heute arbeiten.', 'Sie muss heute arbeitet.', 'بعد muss مصدر: arbeiten.', 'konjugation', 'muss'],
       ['dürfen', 'darf · durfte', 'يُسمح له', 'Darf ich hier rauchen?', 'Darf ich hier rauche?', 'المصدر بعد المساعد.', 'konjugation', 'Darf'],
       ['schwimmen', 'schwimmt · schwamm', 'يسبح', 'Ich kann schwimmen.', 'Ich kann schwimme.', 'schwimmen في الآخر لا تُصرَّف.', 'konjugation'],
       ['rauchen', 'raucht · rauchte', 'يدخّن', 'Hier darf man nicht rauchen.', 'Hier darf man nicht raucht.', 'بعد dürfen يأتي المصدر.', 'konjugation'],
       ['bleiben', 'bleibt · blieb', 'يبقى', 'Du kannst bleiben.', 'Du kannst bleibst.', 'المصدر بلا نهاية بعد kannst.', 'konjugation'],
-      ['mitkommen', 'kommt mit · kam mit', 'يأتي مع', 'Kannst du mitkommen?', 'Kannst du mitkommst?', 'بعد kannst يبقى المصدر mitkommen.', 'wortstellung'],
+      ['mitkommen', 'kommt mit · kam mit', 'يأتي مع', 'Kannst du mitkommen?', 'Kannst du mitkommst?', 'بعد kannst يبقى المصدر mitkommen.', 'konjugation'],
       ['kochen', 'kocht · kochte', 'يطبخ', 'Ich muss heute kochen.', 'Ich muss heute koche.', 'المصدر في الآخر: kochen.', 'konjugation'],
       ['lesen', 'liest · las', 'يقرأ', 'Ich muss den Text lesen.', 'Ich muss den Text liest.', 'لا تصريف بعد muss.', 'konjugation'],
       ['schreiben', 'schreibt · schrieb', 'يكتب', 'Ich muss eine E-Mail schreiben.', 'Ich muss eine E-Mail schreibe.', 'المصدر في الآخر.', 'konjugation'],
@@ -111,10 +111,10 @@ module.exports = {
       ['die Hausaufgabe', 'die Hausaufgaben', 'الواجب المنزلي', 'Ich muss die Hausaufgabe machen.', 'Ich muss die Hausaufgabe macht.', 'بعد muss مصدر: machen.', 'konjugation'],
       ['die Prüfung', 'die Prüfungen', 'الامتحان', 'Ich muss für die Prüfung lernen.', 'Ich muss für die Prüfung lerne.', 'المصدر lernen لا lerne.', 'konjugation'],
       ['der Text', 'die Texte', 'النص', 'Ich kann den Text lesen.', 'Ich kann den Text lese.', 'المصدر lesen.', 'konjugation'],
-      ['das Wort', 'die Wörter', 'الكلمة', 'Ich muss das Wort lernen.', 'Ich muss das Wort ich lerne.', 'الفعل في الآخر بلا ضمير.', 'wortstellung'],
-      ['das Fahrrad', 'die Fahrräder', 'الدراجة', 'Ich kann Fahrrad fahren.', 'Ich kann mit Fahrrad fahren.', 'مهارات مثل Fahrrad fahren بلا حرف جر.', 'präposition'],
-      ['der Computer', 'die Computer', 'الحاسوب', 'Ich kann am Computer arbeiten.', 'Ich kann auf Computer arbeiten.', 'am Computer: am = an + dem.', 'präposition'],
-      ['genug', '—', 'كافٍ', 'Ich habe nicht genug Zeit.', 'Ich habe nicht Zeit genug.', 'genug قبل الاسم هنا.', 'wortstellung'],
+      ['das Wort', 'die Wörter', 'الكلمة', 'Ich muss das Wort lernen.', 'Ich muss das Wort lerne.', 'بعد muss يأتي المصدر lernen.', 'konjugation'],
+      ['das Fahrrad', 'die Fahrräder', 'الدراجة', 'Ich kann Fahrrad fahren.', 'Ich kann mit Fahrrad fahren.', 'Fahrrad fahren صحيح بلا حرف جر؛ ومع mit نحتاج dem: mit dem Fahrrad.', 'präposition'],
+      ['der Computer', 'die Computer', 'الحاسوب', 'Ich kann am Computer arbeiten.', 'Ich kann auf Computer arbeiten.', 'نقول am Computer؛ ويمكن auf dem Computer حسب المعنى، لا auf Computer بلا أداة.', 'präposition'],
+      ['genug', '—', 'كافٍ', 'Ich habe nicht genug Zeit.', 'Ich habe genug nicht Zeit.', 'في هذا التركيب نقول nicht genug Zeit.', 'wortstellung'],
       ['allein', '—', 'وحده', 'Sie kann allein fahren.', 'Sie kann fährt allein.', 'بعد können مصدر: fahren.', 'konjugation'],
       ['der Job', 'die Jobs', 'العمل', 'Ich brauche den Job.', 'Ich brauche der Job.', 'المفعول المذكر den.', 'kasus'],
       ['die Hilfe', '—', 'المساعدة', 'Ich brauche deine Hilfe.', 'Ich brauche dein Hilfe.', 'Hilfe مؤنث: deine.', 'deklination'],
@@ -124,10 +124,19 @@ module.exports = {
       ['die Klasse', 'die Klassen', 'الصف', 'Meine Klasse ist groß.', 'Mein Klasse ist groß.', 'Klasse مؤنث: meine.', 'deklination'],
       ['die Woche', 'die Wochen', 'الأسبوع', 'Ich muss diese Woche viel arbeiten.', 'Ich muss diese Woche viel arbeite.', 'المصدر arbeiten.', 'konjugation']
     ],
+    clozeItemIndex: 11,
+    clozeNearMiss: 'schreibe',
+    extraCheck: {
+      right: 'Ich muss lernen.',
+      bad: 'Ich muß lernen.',
+      why: 'في الإملاء القياسي الحديث نكتب muss بـss.',
+      family: 'konjugation',
+      prereq: 'cap.a1-u1-l6.s06'
+    },
     tricks: [
-      { trick: 'المساعد يحمل التصريف والمصدر يقف في الآخر', wie: 'Ich kann schwimmen. · Sie muss arbeiten.', warum: 'العربية تصرّف الفعل الثاني، والألمانية تمنعه؛ والخطأ يسكن في نهاية الجملة.', anchor: 'Ich kann schwimmen.' },
-      { trick: 'kann قدرة · muss واجب · darf إذن', wie: 'Ich kann lernen · ich muss lernen · ich darf lernen.', warum: 'استعمال kann لكل شيء يمحو الفرق بين القدرة والإلزام، وهو فرق يسمعه الألماني فورًا.', anchor: 'Ich muss lernen.' },
-      { trick: 'في السؤال يتقدّم المساعد', wie: 'Kannst du mitkommen? · Darf ich rauchen?', warum: 'في سؤال نعم/لا يكون المصرّف أولًا، والمصدر في الآخر.', anchor: 'Kannst du mitkommen?' }
+      { trick: 'الفعل الناقص يحمل التصريف والمصدر يقف في الآخر', wie: 'Ich kann schwimmen. · Sie muss arbeiten.', warum: 'kann أو muss يتطابق مع الفاعل، أما الفعل الثاني فيبقى مصدرًا في نهاية الجملة.', anchor: 'Ich kann schwimmen.' },
+      { trick: 'kann قدرة · muss واجب · darf إذن', wie: 'Ich kann lernen. · Ich muss lernen. · Ich darf lernen.', warum: 'اختيار الفعل الناقص يغيّر المعنى بين القدرة والواجب والإذن.', anchor: 'Ich muss lernen.' },
+      { trick: 'في سؤال نعم/لا يأتي الفعل المصرف أولًا', wie: 'Kannst du mitkommen? · Darf ich rauchen?', warum: 'في سؤال نعم/لا يكون الفعل الناقص المصرف أولًا، والمصدر في الآخر.', anchor: 'Kannst du mitkommen?' }
     ]
   }
 
