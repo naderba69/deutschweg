@@ -2450,6 +2450,28 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-3', 1).key === 'أن تنظر في التقويم قبل الإجابة' &&
       b2cq('novelle-3', 1).options.includes(b2cq('novelle-3', 1).key) &&
       b2Chapters['novelle-3'].body.includes('Deshalb ergänzte sie eine Regel: erst den Kalender ansehen, dann antworten'));
+  t('Corpus B2 novelle-4 has 734 measured words and no unknown B2 tokens',
+    b2Chapters['novelle-4'].title === 'الخطأ' &&
+      b2Chapters['novelle-4'].body.trim().split(/\s+/).length === 734 &&
+      known.coverage(b2Known, b2Chapters['novelle-4'].body).unknown.length === 0);
+  t('Corpus B2 novelle-4 turns the delayed Sfax originals into a documented deadline response, confirmed Monday appointment, process diagnosis, new buffer rules, and verified second case',
+    b2Chapters['novelle-4'].body.startsWith('Am Donnerstag kam die Lieferung zu spät') &&
+      b2Chapters['novelle-4'].body.includes('Der Wagen mit den Originalen stand noch in Sfax') &&
+      b2Chapters['novelle-4'].body.includes('Erstens nannte sie die Tatsache') &&
+      b2Chapters['novelle-4'].body.includes('Montag, acht Uhr dreißig') &&
+      b2Chapters['novelle-4'].body.includes('Der Fehler war, dass die Originale erst am Morgen des Termins beim Amt kommen sollten') &&
+      b2Chapters['novelle-4'].body.includes('Zwischen Lieferung und Termin war kein freier Tag') &&
+      b2Chapters['novelle-4'].body.includes('Diesmal fragte Sara zwei Tage vorher nach'));
+  t('Corpus B2 novelle-4 missed-appointment question matches the originals remaining in Sfax',
+    b2cq('novelle-4', 0).prompt === 'لماذا تعذر إنجاز موعد الخميس؟' &&
+      b2cq('novelle-4', 0).key === 'لأن الأوراق الأصلية بقيت في صفاقس' &&
+      b2cq('novelle-4', 0).options.includes(b2cq('novelle-4', 0).key) &&
+      b2Chapters['novelle-4'].body.includes('Der Wagen mit den Originalen stand noch in Sfax'));
+  t('Corpus B2 novelle-4 replacement-appointment question matches Monday at eight thirty',
+    b2cq('novelle-4', 1).prompt === 'متى كان الموعد البديل المؤكد؟' &&
+      b2cq('novelle-4', 1).key === 'الاثنين عند الثامنة والنصف' &&
+      b2cq('novelle-4', 1).options.includes(b2cq('novelle-4', 1).key) &&
+      b2Chapters['novelle-4'].body.includes('Montag, acht Uhr dreißig'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
