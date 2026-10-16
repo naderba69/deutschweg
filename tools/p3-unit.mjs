@@ -2472,6 +2472,30 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-4', 1).key === 'الاثنين عند الثامنة والنصف' &&
       b2cq('novelle-4', 1).options.includes(b2cq('novelle-4', 1).key) &&
       b2Chapters['novelle-4'].body.includes('Montag, acht Uhr dreißig'));
+  t('Corpus B2 novelle-5 has 779 measured words and no unknown B2 tokens',
+    b2Chapters['novelle-5'].title === 'المطر' &&
+      b2Chapters['novelle-5'].body.trim().split(/\s+/).length === 779 &&
+      known.coverage(b2Known, b2Chapters['novelle-5'].body).unknown.length === 0);
+  t('Corpus B2 novelle-5 turns the three-day rain and roof leak into a safe documented plan, written permission, temporary cover, landlord-funded repair, rain check, and March-to-May continuity',
+    b2Chapters['novelle-5'].body.startsWith('Im Winter regnete es drei graue Tage fast ohne Pause') &&
+      b2Chapters['novelle-5'].body.includes('zog das Bett von der Wand weg und nahm die Lampe aus der Nähe') &&
+      b2Chapters['novelle-5'].body.includes('machten einen Plan') &&
+      b2Chapters['novelle-5'].body.includes('Als Sara die schriftliche Erlaubnis hatte') &&
+      b2Chapters['novelle-5'].body.includes('Für den Moment deckte er die Stelle sicher ab') &&
+      b2Chapters['novelle-5'].body.includes('dass er die gesamten Kosten übernahm') &&
+      b2Chapters['novelle-5'].body.includes('Alles blieb trocken') &&
+      b2Chapters['novelle-5'].body.includes('Im März öffnete Sara morgens wieder länger das Fenster') &&
+      b2Chapters['novelle-6'].body.startsWith('Im Mai war das ruhige Zimmer hell'));
+  t('Corpus B2 novelle-5 wet-roof question matches the explicit safety reason',
+    b2cq('novelle-5', 0).prompt === 'لماذا لم تصعد سارة وليلى إلى السطح أثناء المطر القوي؟' &&
+      b2cq('novelle-5', 0).key === 'لأن السطح المبلل لم يكن آمنًا' &&
+      b2cq('novelle-5', 0).options.includes(b2cq('novelle-5', 0).key) &&
+      b2Chapters['novelle-5'].body.includes('weil es bei starkem Regen nicht sicher war'));
+  t('Corpus B2 novelle-5 repair-cost question matches the landlord paying the full amount',
+    b2cq('novelle-5', 1).prompt === 'من تحمّل تكلفة إصلاح السطح كاملة؟' &&
+      b2cq('novelle-5', 1).key === 'المالك' &&
+      b2cq('novelle-5', 1).options.includes(b2cq('novelle-5', 1).key) &&
+      b2Chapters['novelle-5'].body.includes('dass er die gesamten Kosten übernahm'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
