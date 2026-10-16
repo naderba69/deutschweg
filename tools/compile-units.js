@@ -328,7 +328,7 @@ function blankOut(sentence, core) {
   };
 }
 
-const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|antwortet|antworte|fragt|frage|möchte|möchten|kann|kannst|muss|will|willst|darf|mag|holt|kauf)$/i;
+const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|antwortet|antworte|fragt|frage|möchte|möchten|kann|kannst|muss|will|willst|rufst|darf|mag|holt|kauf)$/i;
 
 /* The order exercise is scored on four levels, and level 1 needs the finite
    verb, level 3 the fields. Without them the engine could only say "wrong",
@@ -369,23 +369,33 @@ function finiteIndex(toks) {
   return -1;
 }
 
-function orderFrage(sentence, frageText) {
+function orderFrage(sentence, frageText, rightBracket) {
   const toks = String(sentence).split(/\s+/).filter(Boolean);
   const i = finiteIndex(toks);
   if (i < 0) return null;
   const finite = toks[i];
   const verbFirst = i === 0 && /\?$/.test(String(sentence).trim());
-  return {
+  const rsk = rightBracket === undefined ? [] :
+    (Array.isArray(rightBracket) ? rightBracket.slice() : [rightBracket]);
+  if (rsk.length && toks.slice(-rsk.length).join(' ') !== rsk.join(' ')) {
+    die(currentId + ' order right bracket is not sentence-final: ' + rsk.join(' '));
+  }
+  const middleEnd = rsk.length ? toks.length - rsk.length : toks.length;
+  const fields = { vorfeld: toks.slice(0, i), lsk: [finite], mittelfeld: toks.slice(i + 1, middleEnd) };
+  if (rsk.length) fields.rsk = rsk;
+  const result = {
     art: 'wortstellung', frage: frageText, tokens: toks, correct: toks, finite: finite, verbFirst: verbFirst,
-    fields: { vorfeld: toks.slice(0, i), lsk: [finite], mittelfeld: toks.slice(i + 1) },
-    familie: 'wortstellung'
+    fields: fields, familie: 'wortstellung'
   };
+  if (rsk.length) result.rightBracket = rsk;
+  return result;
 }
 function orderSource(spec, items, skip) {
   const pool = [spec.orderSentence || spec.say, spec.model].concat(items.map(it => it.ex));
   for (const cand of pool) {
     if (skip && skip.indexOf(cand) >= 0) continue;
-    const f = orderFrage(cand, spec.orderPromptAr || 'rtb');
+    const bracket = cand === spec.orderSentence ? spec.orderRightBracket : undefined;
+    const f = orderFrage(cand, spec.orderPromptAr || 'rtb', bracket);
     if (f) return f;
   }
   return null;
@@ -415,6 +425,14 @@ function lessonOfVocab(spec, vocabRow) {
     if (!t.trick || !t.wie || !t.warum || !t.anchor) die(spec.id + ' trick incomplete');
     if (AR.test(t.anchor)) die(spec.id + ' trick anchor must be German');
   });
+
+  const clozeAnswers = (b, item) => vocabRow.strictClozeAnswers
+    ? [b.answer]
+    : [b.answer, item.blank, item.de];
+  const clozeNearMiss = (key, why, answers) =>
+    vocabRow.strictClozeAnswers && answers.some(answer => fold(answer) === fold(key))
+      ? {}
+      : { [key]: why };
 
   const fam = spec.fam;
   if (spec.factFamilies && (spec.factFamilies.length !== 4 || spec.factFamilies.some(x => !FAM.has(x)))) {
@@ -529,6 +547,8 @@ function lessonOfVocab(spec, vocabRow) {
       };
     } else if (form === 1) {
       const b = blankOut(anchor.ex, anchor.blank);
+      const answers = clozeAnswers(b, anchor);
+      const nearKey = String(anchor.err).split(/\s+/).slice(-2)[0];
       st = {
         phase: 'Wortschatz', type: 'cloze',
         zeigt: { de: anchor.de },
@@ -539,8 +559,8 @@ function lessonOfVocab(spec, vocabRow) {
         hinweise: ['اقرأ الجملة كاملة قبل الاختيار.', anchor.why],
         frage: {
           ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الفراغ بالكلمة الصحيحة من المجموعة.',
-          zeigt: b.shown, antworten: [b.answer, anchor.blank, anchor.de],
-          nearMiss: { [String(anchor.err).split(/\s+/).slice(-2)[0]]: anchor.why },
+          zeigt: b.shown, antworten: answers,
+          nearMiss: clozeNearMiss(nearKey, anchor.why, answers),
           feedback: { correct: anchor.why }
         }
       };
@@ -634,6 +654,8 @@ function lessonOfVocab(spec, vocabRow) {
   }
   const drillItem = vocabRow.clozeItemIndex === undefined ? items[items.length - 1] : items[vocabRow.clozeItemIndex];
   const drillNearMiss = vocabRow.clozeNearMiss || String(drillItem.err).split(/\s+/).slice(-2)[0];
+  const drillAnswers = b => clozeAnswers(b, drillItem)
+    .filter(answer => !vocabRow.clozeNearMiss || fold(answer) !== fold(vocabRow.clozeNearMiss));
   {
     const b = blankOut(drillItem.ex, drillItem.blank);
     push('clozeDrill', {
@@ -645,7 +667,7 @@ function lessonOfVocab(spec, vocabRow) {
       frage: {
         ziel: cap(n + 1), art: 'cloze', frage: 'أكمل الجملة بالكلمة الصحيحة.',
         zeigt: b.shown,
-        antworten: [b.answer, drillItem.blank, drillItem.de],
+        antworten: drillAnswers(b),
         nearMiss: { [drillNearMiss]: drillItem.why },
         feedback: { correct: drillItem.why }
       }
@@ -740,7 +762,7 @@ function lessonOfVocab(spec, vocabRow) {
     let st;
     if (i === 2) {
       const checkOrder = spec.checkOrderSentence
-        ? orderFrage(spec.checkOrderSentence, spec.orderPromptAr || 'rtb')
+        ? orderFrage(spec.checkOrderSentence, spec.orderPromptAr || 'rtb', spec.checkOrderRightBracket)
         : orderSource(spec, items, [order.correct.join(' ')]);
       if (!checkOrder) die(spec.id + ' has no second sentence for the check');
       st = {
@@ -759,7 +781,7 @@ function lessonOfVocab(spec, vocabRow) {
         recap: 'فحص ' + (i + 1),
         frage: {
           ziel: cap(n + 1), prereq: src.prereq, art: 'cloze', frage: 'أكمل الفراغ بلا مساعدة.',
-          zeigt: b.shown, antworten: [b.answer, src.cloze.blank, src.cloze.de],
+          zeigt: b.shown, antworten: drillAnswers(b),
           nearMiss: { [drillNearMiss]: src.cloze.why },
           feedback: { correct: src.cloze.why }
         }

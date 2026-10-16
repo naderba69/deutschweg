@@ -457,24 +457,50 @@ module.exports = [
     }),
 
   U('a1-u2-l2', 'A1', 'الأفعال المنفصلة', 'Trennbare Verben', 'wortstellung',
-    'Am Ende trennst du aufstehen und anrufen im Präsens',
-    'في النهاية تفصل الفعل في المضارع.',
+    'Am Ende bildest du Hauptsätze mit „aufstehen“, „anrufen“ und „einkaufen“ und verwendest „aufstehen“ nach „muss“ als ungetrennten Infinitiv.',
+    'في النهاية تكوّن جملًا رئيسية مع aufstehen وanrufen وeinkaufen، وتُبقي aufstehen مصدرًا متصلًا بعد muss.',
     [
-      ['ich stehe auf', 'البادئة في الآخر', 'لا تبقى ملتصقة في الجملة الرئيسية', 'ich aufstehe', 'هذا شكل القاموس لا الجملة'],
-      ['du rufst an', 'st على الفعل والبادئة أخيرًا', 'anrufst كتلة واحدة خطأ', 'du anrufst', 'البادئة تأخرت عن موضعها'],
-      ['Um acht stehe ich auf', 'البادئة تبقى أخيرة حتى مع ظرف أولًا', 'لا تعُد إلى الفعل', 'Um acht aufstehe ich', 'الفعل المصرف هو الثاني'],
-      ['aufstehen im Infinitiv', 'في القاموس والواجب تبقى ملتصقة', 'الفصل للجملة الرئيسية المصرفة', 'bitte stehe aufstehen', 'خلط الصيغتين']
+      ['Ich stehe um sieben auf.', 'في الجملة الرئيسية ينفصل aufstehen: stehe في الموضع الثاني وauf في النهاية', 'الجزء المصرف يحمل النهاية، وتأتي البادئة المنفصلة في آخر الجملة', 'Ich aufstehe um sieben.', 'في الجملة الرئيسية نقول stehe ... auf لا aufstehe'],
+      ['Du rufst mich an.', 'مع du نصرّف rufen إلى rufst ونضع an في النهاية', 'المفعول mich يأتي قبل البادئة an', 'Du anrufst mich.', 'نقول rufst ... an، ولا نبقي anrufen متصلًا هنا'],
+      ['Um acht stehe ich auf.', 'إذا بدأنا بالوقت بقي الفعل المصرف ثانيًا والبادئة في النهاية', 'Um acht يملأ الموضع الأول، ثم stehe، ثم الفاعل ich، وتبقى auf أخيرًا', 'Um acht ich stehe auf.', 'بعد ظرف البداية يأتي الفعل المصرف مباشرةً'],
+      ['Ich muss um sieben aufstehen.', 'بعد muss يبقى المصدر aufstehen متصلًا في نهاية الجملة', 'الفصل يخص الفعل المنفصل المصرف في الجملة الرئيسية؛ أما المصدر بعد muss فيبقى aufstehen', 'Ich muss um sieben stehe auf.', 'بعد muss نحتاج المصدر المتصل aufstehen']
     ],
     [
-      ['Ich stehe um sieben auf.', 'أستيقظ في السابعة', 'Ich aufstehe um sieben', 'البادئة في الآخر', 'auf'],
-      ['Du rufst mich an.', 'تتصل بي', 'Du anrufst mich', 'an في الآخر', 'an'],
-      ['Wir kaufen ein.', 'نتسوق', 'Wir einkaufen heute', 'ein في الآخر', 'ein'],
-      ['Er steht früh auf.', 'يستيقظ باكرًا', 'Er aufsteht früh', 'auf في الآخر', 'auf']
+      ['Ich stehe um sieben auf.', 'أستيقظ في السابعة', 'Ich aufstehe um sieben.', 'الفعل المصرف ثانيًا والبادئة في النهاية', 'auf'],
+      ['Du rufst mich an.', 'تتصل بي', 'Du anrufst mich.', 'مع du نقول rufst ... an', 'an'],
+      ['Um acht stehe ich auf.', 'أستيقظ في الثامنة', 'Um acht ich stehe auf.', 'بعد الوقت يأتي الفعل المصرف ثم الفاعل', 'stehe'],
+      ['Ich muss um sieben aufstehen.', 'يجب أن أستيقظ في السابعة', 'Ich muss um sieben stehe auf.', 'بعد muss يبقى المصدر aufstehen متصلًا', 'aufstehen']
     ],
-    'Ich stehe um sieben auf und du rufst mich an.',
     'Ich stehe um sieben auf.',
-    'Trenne morgen zwei Verben in einem Satz.',
-    'غدًا افصل فعلين في جملة.'),
+    'Du rufst mich an.',
+    'Schreibe morgen vier Sätze: einen mit „aufstehen“, einen mit „anrufen“, einen mit „einkaufen“ und einen mit „muss ... aufstehen“.',
+    'غدًا اكتب أربع جمل: واحدة مع aufstehen، وأخرى مع anrufen، وثالثة مع einkaufen، ورابعة مع muss ... aufstehen.',
+    {
+      writing: {
+        zeigt: 'Trennbare Verben im Hauptsatz und nach muss',
+        erklaerung: 'اكتب ست جمل: جملتين مع aufstehen، وجملة مع anrufen، وأخرى مع einkaufen، وخامسة مع aufräumen، وسادسة مع muss وaufstehen المتصل.',
+        prompt: 'اكتب ست جمل صحيحة بالأفعال المنفصلة، ومنها جملة مصدر بعد muss.',
+        promptDe: 'Ich stehe um sieben auf. · Um acht stehe ich auf. · Du rufst mich an. · Wir kaufen im Supermarkt ein. · Ich räume mein Zimmer auf. · Ich muss um sieben aufstehen.',
+        points: ['aufstehen مع الفاعل أولًا', 'aufstehen مع الوقت أولًا', 'anrufen مع du', 'einkaufen مع wir', 'aufräumen مع ich', 'المصدر aufstehen متصلًا بعد muss'],
+        minWords: 28,
+        frage: 'اكتب ست جمل بالأفعال المنفصلة.',
+        familie: 'wortstellung',
+        hinweise: ['في الجملة الرئيسية ضع الفعل المصرف في الموضع الثاني والبادئة في النهاية.', 'بعد muss ضع المصدر المتصل مثل aufstehen في نهاية الجملة.']
+      },
+      imitateNearMiss: 'aufstehe',
+      transformHint: 'مع du نقول rufst، ويأتي mich قبل البادئة an في النهاية.',
+      orderAr: 'رتّب جملة تبدأ بالوقت: الفعل المصرف ثانيًا والبادئة في النهاية.',
+      orderHints: ['ابدأ بـUm acht، ثم ضع stehe مباشرةً.', 'ضع ich بعد الفعل المصرف وauf في النهاية.'],
+      orderSentence: 'Um acht stehe ich auf.',
+      orderRightBracket: 'auf.',
+      checkOrderSentence: 'Du rufst mich an.',
+      checkOrderRightBracket: 'an.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل جملة مع aufstehen، وأخرى مع anrufen، وثالثة مع einkaufen، ثم جملة مع muss وaufstehen المتصل.',
+      summaryDe: 'Hauptsatz: Ich stehe auf. · Du rufst mich an. · Wir kaufen ein. · nach muss: Ich muss aufstehen.',
+      summaryAr: 'في الجملة الرئيسية يتصرف الجزء الفعلي ويأتي في الموضع الثاني، وتذهب البادئة إلى النهاية. بعد muss يبقى الفعل المنفصل في صيغة المصدر متصلًا: aufstehen.',
+      summaryRecap: 'المصرف ثانيًا والبادئة أخيرًا'
+    }),
 
   U('a1-u2-l3', 'A1', 'الساعة', 'Uhrzeit', 'lexik-kollokation',
     'Am Ende sagst du eine Uhrzeit mit Uhr und eine mit Viertel',

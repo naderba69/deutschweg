@@ -51,8 +51,12 @@
     const levels = [];
     let l1 = false;
     if (clause === 'yesno') l1 = finIdx === 0;
-    else if (clause === 'main') l1 = finIdx === 1;
-    else l1 = finIdx === given.length - 1 || finIdx === 2;
+    else if (clause === 'main') {
+      /* V2 counts constituents, not whitespace-separated tokens: a multiword
+         Vorfeld such as "Um acht" still occupies only the first field. */
+      const vorfeldLength = Array.isArray(fields.vorfeld) ? fields.vorfeld.length : 1;
+      l1 = finIdx === vorfeldLength;
+    } else l1 = finIdx === given.length - 1 || finIdx === 2;
     levels.push({ id: 1, name: 'موضع الفعل', pass: l1 });
     if (!l1) {
       const message = clause === 'yesno'

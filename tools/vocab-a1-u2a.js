@@ -54,9 +54,9 @@ module.exports = {
     items: [
       ['aufstehen', 'steht auf · stand auf', 'يستيقظ', 'Ich stehe um sieben auf.', 'Ich aufstehe um sieben.', 'البادئة auf تعود إلى آخر الجملة.', 'wortstellung', 'auf'],
       ['anrufen', 'ruft an · rief an', 'يتّصل بـ', 'Er ruft seine Mutter an.', 'Er ruft an seine Mutter.', 'an في الآخر، والمفعول قبله.', 'wortstellung', 'an'],
-      ['einkaufen', 'kauft ein · kaufte ein', 'يتسوّق', 'Wir kaufen im Supermarkt ein.', 'Wir einkaufen im Supermarkt.', 'في المضارع تُفصل: kaufen … ein.', 'wortstellung', 'ein'],
+      ['einkaufen', 'kauft ein · kaufte ein', 'يتسوّق', 'Wir kaufen im Supermarkt ein.', 'Wir einkaufen im Supermarkt.', 'في هذه الجملة الرئيسية بالمضارع نقول kaufen … ein.', 'wortstellung', 'ein'],
       ['anfangen', 'fängt an · fing an', 'يبدأ', 'Der Kurs fängt um neun an.', 'Der Kurs anfängt um neun.', 'البادئة an في الآخر.', 'wortstellung', 'an'],
-      ['aufhören', 'hört auf · hörte auf', 'يتوقّف', 'Der Regen hört bald auf.', 'Der Regen aufhört bald.', 'الفصل واجب في المضارع.', 'wortstellung', 'auf'],
+      ['aufhören', 'hört auf · hörte auf', 'يتوقّف', 'Der Regen hört bald auf.', 'Der Regen aufhört bald.', 'في هذه الجملة الرئيسية بالمضارع نقول hört … auf.', 'wortstellung', 'auf'],
       ['mitbringen', 'bringt mit · brachte mit', 'يجلب معه', 'Bringst du den Kuchen mit?', 'Bringst du mit den Kuchen?', 'mit في آخر الجملة.', 'wortstellung', 'mit'],
       ['einsteigen', 'steigt ein · stieg ein', 'يركب', 'Wir steigen in den Bus ein.', 'Wir einsteigen in den Bus.', 'ein في الآخر.', 'wortstellung', 'ein'],
       ['aussteigen', 'steigt aus · stieg aus', 'ينزل', 'Er steigt an der Haltestelle aus.', 'Er aussteigt an der Haltestelle.', 'aus في الآخر.', 'wortstellung', 'aus'],
@@ -66,7 +66,7 @@ module.exports = {
       ['zumachen', 'macht zu · machte zu', 'يغلق', 'Ich mache die Tür zu.', 'Ich zumache die Tür.', 'zu في الآخر.', 'wortstellung', 'zu'],
       ['anziehen', 'zieht an · zog an', 'يلبس', 'Ich ziehe die Jacke an.', 'Ich anziehe die Jacke.', 'an في الآخر.', 'wortstellung', 'an'],
       ['ausziehen', 'zieht aus · zog aus', 'يخلع', 'Er zieht die Schuhe aus.', 'Er auszieht die Schuhe.', 'aus في الآخر.', 'wortstellung', 'aus'],
-      ['vorbeikommen', 'kommt vorbei · kam vorbei', 'يمرّ بـ', 'Kommst du morgen vorbei?', 'Kommst du vorbei morgen?', 'vorbei في الآخر، والزمن قبله.', 'wortstellung', 'vorbei'],
+      ['vorbeikommen', 'kommt vorbei · kam vorbei', 'يمرّ بـ', 'Kommst du morgen vorbei?', 'Kommst du morgen vorbeikommst?', 'Kommst هو الفعل المصرف، وتأتي البادئة vorbei في النهاية بلا فعل مصرف ثانٍ.', 'wortstellung', 'vorbei'],
       ['weggehen', 'geht weg · ging weg', 'يذهب بعيدًا', 'Ich gehe jetzt weg.', 'Ich weggehe jetzt.', 'weg في الآخر.', 'wortstellung', 'weg'],
       ['der Supermarkt', 'die Supermärkte', 'السوبرماركت', 'Wir kaufen im Supermarkt ein.', 'Wir kaufen in Supermarkt ein.', 'in + dem = im.', 'präposition'],
       ['der Fernseher', 'die Fernseher', 'التلفاز', 'Der Fernseher ist kaputt.', 'Das Fernseher ist kaputt.', 'Fernseher مذكر: der.', 'genus'],
@@ -81,10 +81,20 @@ module.exports = {
       ['aufwachen', 'wacht auf · wachte auf', 'يستيقظ من النوم', 'Ich wache um sechs auf.', 'Ich aufwache um sechs.', 'auf في الآخر.', 'wortstellung', 'auf'],
       ['mitnehmen', 'nimmt mit · nahm mit', 'يأخذ معه', 'Nimm den Regenschirm mit.', 'Nimm mit den Regenschirm.', 'mit في الآخر.', 'wortstellung', 'mit']
     ],
+    strictClozeAnswers: true,
+    clozeItemIndex: 2,
+    clozeNearMiss: 'einkaufen',
+    extraCheck: {
+      right: 'Um acht stehe ich auf.',
+      bad: 'Um acht ich stehe auf.',
+      why: 'بعد Um acht يأتي الفعل المصرف stehe مباشرةً، وتبقى auf في النهاية.',
+      family: 'wortstellung',
+      prereq: 'cap.a1-u2-l2.s06'
+    },
     tricks: [
-      { trick: 'الفعل المنفصل يعود إلى بيته في الآخر', wie: 'aufstehen ← Ich stehe um sieben auf.', warum: 'الجزء المصرّف في الموضع الثاني والبادئة تسافر؛ العربية تترك الفعل كتلة واحدة.', anchor: 'Ich stehe um sieben auf.' },
-      { trick: 'مع an · auf · aus · ein ابحث عن القافلة', wie: 'anrufen · aufräumen · aussteigen · einkaufen.', warum: 'هذه البادئات أكثر البادئات فصلًا في A1، ومعرفتها بالصوت أسرع من القاعدة.', anchor: 'Wir kaufen im Supermarkt ein.' },
-      { trick: 'الساعة قبل البادئة لا بعدها', wie: 'Um sieben stehe ich auf. · Ich stehe um sieben auf.', warum: 'الظرف الأول يقلب الفاعل والفعل، فيضيع مكان البادئة إن حُفظت الجملة كوحدة.', anchor: 'Um sieben stehe ich auf.' }
+      { trick: 'من المصدر إلى الجملة: الجزء المصرف ثم البادئة', wie: 'aufstehen → Ich stehe um sieben auf.', warum: 'في الجملة الرئيسية يتصرف stehen ويأتي في الموضع الثاني، وتأتي البادئة auf في النهاية.', anchor: 'Ich stehe um sieben auf.' },
+      { trick: 'احفظ كل فعل منفصل مع جملة نموذجية', wie: 'anrufen → Ich rufe dich an. · einkaufen → Wir kaufen ein.', warum: 'جملة النموذج تُظهر موضع الجزء المصرف والبادئة، بدل الاعتماد على شكل المصدر وحده.', anchor: 'Wir kaufen im Supermarkt ein.' },
+      { trick: 'حتى مع الوقت أولًا تبقى البادئة في النهاية', wie: 'Um sieben stehe ich auf. · Ich stehe um sieben auf.', warum: 'إذا ملأ الوقت الموضع الأول، يأتي الفعل المصرف ثانيًا ثم الفاعل، وتظل البادئة في النهاية.', anchor: 'Um sieben stehe ich auf.' }
     ]
   },
 

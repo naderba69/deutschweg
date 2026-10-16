@@ -601,6 +601,75 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.feedback.a.includes('جملة نحوية'));
 }
 
+/* ---------- audited A1 separable-verbs lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u2-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u2-l2 states a bounded main-clause and modal-infinitive goal through complete sentences',
+    lesson.title.de === 'Trennbare Verben' && lesson.title.ar === 'الأفعال المنفصلة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['aufstehen', 'anrufen', 'einkaufen', 'ungetrennten Infinitiv'].every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Ich stehe um sieben auf.', 'Du rufst mich an.', 'Um acht stehe ich auf.', 'Ich muss um sieben aufstehen.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  t('Corpus lesson a1-u2-l2 teaches the finite stem, final prefix and joined infinitive without broad prefix or L1 claims',
+    byWord.vorbeikommen.err === 'Kommst du morgen vorbeikommst?' &&
+      byWord.vorbeikommen.why.includes('بلا فعل مصرف ثانٍ') &&
+      byWord.einkaufen.why.includes('هذه الجملة الرئيسية') && byWord.aufhören.why.includes('هذه الجملة الرئيسية') &&
+      tricks[0].wie === 'aufstehen → Ich stehe um sieben auf.' && !tricks[0].wie.includes('←') &&
+      tricks[0].warum.includes('الموضع الثاني') && tricks[0].warum.includes('في النهاية') &&
+      tricks[1].trick === 'احفظ كل فعل منفصل مع جملة نموذجية' &&
+      tricks[1].wie.includes('Ich rufe dich an.') && tricks[1].wie.includes('Wir kaufen ein.') &&
+      tricks[2].trick.includes('الوقت أولًا') && tricks[2].warum.includes('الفعل المصرف ثانيًا'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const cloze = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['aufstehen', 'anrufen', 'einkaufen'];
+  t('Corpus lesson a1-u2-l2 aligns model, imitation, transformation, cloze, writing, speaking, summary, order and homework',
+    model.zeigt.de === 'Ich stehe um sieben auf.' && imitate.frage.nearMiss.aufstehe &&
+      transform.hinweise[1].includes('rufst') && transform.hinweise[1].includes('an') &&
+      cloze.frage.zeigt === 'Wir kaufen im Supermarkt ____.' && cloze.frage.nearMiss.einkaufen &&
+      !cloze.frage.antworten.includes('einkaufen') && !win.DW.renderers.judgeCloze(cloze.frage, 'einkaufen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      writing.frage.familie === 'wortstellung' && writing.frage.points.length === 6 && writing.frage.minWords === 28 &&
+      ['Ich stehe um sieben auf.', 'Du rufst mich an.', 'Wir kaufen im Supermarkt ein.', 'Ich muss um sieben aufstehen.']
+        .every(x => writing.frage.promptDe.includes(x)) &&
+      targets.every(x => writing.erklaerung.includes(x) && speaking.erklaerung.includes(x) &&
+        homework.zeigt.de.includes(x)) &&
+      summary.zeigt.de.includes('Ich stehe auf.') && summary.zeigt.de.includes('Ich muss aufstehen.') &&
+      order.frage.frage === 'رتّب الكلمات لتكوين جملة صحيحة.' &&
+      order.frage.correct.join(' ') === 'Um acht stehe ich auf.' && order.frage.finite === 'stehe' &&
+      order.frage.rightBracket.join(' ') === 'auf.' && order.frage.fields.rsk.join(' ') === 'auf.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Um', 'acht', 'stehe', 'auf.', 'ich']).failed === 2 &&
+      order.frage.correct.filter(x => /[.!?]$/.test(x)).length === 1);
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u2-l2 makes 80 percent four of five across separation, joined infinitive, V2 and final-prefix checks',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u2-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich muss um sieben aufstehen.') &&
+      clozeCheck.frage.zeigt === 'Wir kaufen im Supermarkt ____.' && clozeCheck.frage.nearMiss.einkaufen &&
+      !clozeCheck.frage.antworten.includes('einkaufen') &&
+      orderCheck.frage.frage !== 'rtb' && orderCheck.frage.correct.join(' ') === 'Du rufst mich an.' &&
+      orderCheck.frage.finite === 'rufst' && orderCheck.frage.verbFirst === false &&
+      orderCheck.frage.rightBracket.join(' ') === 'an.' && orderCheck.frage.fields.rsk.join(' ') === 'an.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich stehe um sieben auf.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Um acht stehe ich auf.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
