@@ -341,8 +341,8 @@ module.exports = [
     ],
     'Das ist meine Schwester.',
     'Ich sehe meinen Bruder.',
-    'Schreibe morgen sechs Sätze: Verwende mein mit einem maskulinen und einem neutralen Nomen sowie meine, meinen, Ihr und Ihre jeweils mindestens einmal.',
-    'غدًا اكتب ست جمل: استعمل mein مرةً مع اسم مذكر ومرةً مع اسم محايد، ثم استعمل meine وmeinen وIhr وIhre مرةً على الأقل.',
+    'Schreibe morgen sechs Sätze: Verwende mein mit einem maskulinen und einem neutralen Nomen sowie meine, meinen, Ihr und Ihre jeweils mindestens einmal. Achte auf die Großschreibung.',
+    'غدًا اكتب ست جمل: استعمل mein مرةً مع اسم مذكر ومرةً مع اسم محايد، ثم استعمل meine وmeinen وIhr وIhre مرةً على الأقل، وانتبه إلى كتابة الصيغ الرسمية بحرف كبير.',
     {
       writing: {
         zeigt: 'Possessivartikel in kurzen Sätzen',
@@ -361,6 +361,7 @@ module.exports = [
       speakAr: 'سجّل عشرين ثانية: قل جملة مع mein، وأخرى مع meine، وثالثة مع meinen، ثم جملتين رسميتين مع Ihr وIhre.',
       orderSentence: 'Ich sehe meinen Bruder.',
       checkOrderSentence: 'Ihr Termin ist um zehn.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة.',
       summaryDe: 'Nominativ: mein Bruder, mein Kind · meine Schwester, meine Eltern · Akkusativ: meinen Bruder · formell: Ihr Termin, Ihre Nummer',
       summaryAr: 'جذر أداة الملكية يحدد صاحب الشيء، أما النهاية فتتبع جنس الاسم وعدده وحالته: mein أو meine، وفي النصب المذكر meinen؛ ومع Sie الرسمية نكتب Ihr وIhre بحرف كبير.',
       summaryRecap: 'المالك أولًا ثم الجنس والحالة'

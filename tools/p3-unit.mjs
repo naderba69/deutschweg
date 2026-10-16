@@ -467,6 +467,7 @@ console.log('\n— P3.2 lexical layer —\n');
       writing.frage.points.length === 6 && writing.frage.minWords === 24 &&
       targets.every(x => writing.frage.prompt.includes(x) && speaking.erklaerung.includes(x) &&
         summary.zeigt.de.includes(x) && homework.zeigt.de.includes(x)) &&
+      order.frage.frage === 'رتّب الكلمات لتكوين جملة صحيحة.' &&
       order.frage.correct.join(' ') === 'Ich sehe meinen Bruder.' && order.frage.finite === 'sehe' &&
       order.frage.correct.filter(x => /[.!?]$/.test(x)).length === 1 &&
       summary.recap === 'المالك أولًا ثم الجنس والحالة');
@@ -478,6 +479,7 @@ console.log('\n— P3.2 lexical layer —\n');
       checks.every(s => /^cap\.a1-u1-l5\.s\d+$/.test(s.frage.prereq || '')) &&
       checks[0].frage.optionen.some(o => o.text === 'Wie ist Ihre Nummer?') &&
       clozeCheck.frage.zeigt === '____ Freundin kommt aus Berlin.' && clozeCheck.frage.nearMiss.Mein &&
+      orderCheck.frage.frage === 'رتّب الكلمات لتكوين جملة صحيحة.' &&
       orderCheck.frage.correct.join(' ') === 'Ihr Termin ist um zehn.' && orderCheck.frage.finite === 'ist' &&
       checks[3].frage.optionen.some(o => o.text === 'Das ist mein Bruder.') &&
       checks[4].frage.optionen.some(o => o.text === 'Ich sehe meinen Bruder.'));

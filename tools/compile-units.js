@@ -385,7 +385,7 @@ function orderSource(spec, items, skip) {
   const pool = [spec.orderSentence || spec.say, spec.model].concat(items.map(it => it.ex));
   for (const cand of pool) {
     if (skip && skip.indexOf(cand) >= 0) continue;
-    const f = orderFrage(cand, 'rtb');
+    const f = orderFrage(cand, spec.orderPromptAr || 'rtb');
     if (f) return f;
   }
   return null;
@@ -732,7 +732,7 @@ function lessonOfVocab(spec, vocabRow) {
     let st;
     if (i === 2) {
       const checkOrder = spec.checkOrderSentence
-        ? orderFrage(spec.checkOrderSentence, 'rtb')
+        ? orderFrage(spec.checkOrderSentence, spec.orderPromptAr || 'rtb')
         : orderSource(spec, items, [order.correct.join(' ')]);
       if (!checkOrder) die(spec.id + ' has no second sentence for the check');
       st = {
