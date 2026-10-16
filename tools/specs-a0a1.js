@@ -106,24 +106,38 @@ module.exports = [
     }),
 
   U('a0-u1-l5', 'A0', 'العائلة والجنس', 'Familie und Genus', 'genus',
-    'Am Ende nennst du vier Personen der Familie mit der richtigen Artikel',
-    'في النهاية تسمّي أربعة من العائلة بالأداة الصحيحة.',
+    'Am Ende nennst du vier Familienmitglieder mit dem richtigen Artikel',
+    'في النهاية تسمّي أربعة من أفراد العائلة بالأداة الصحيحة.',
     [
-      ['der Vater', 'الأب مذكر', 'der لا يُستبدل بـ die لأن المعنى مؤنث في العربية', 'die Vater', 'Vater مذكر'],
-      ['die Mutter', 'الأم مؤنث', 'die لا der', 'der Mutter', 'Mutter مؤنث'],
-      ['das Kind', 'الطفل محايد', 'das لا يتبع جنس الطفل في الواقع', 'der Kind', 'Kind محايد'],
-      ['die Schwester', 'الأخت مؤنث', 'لا تُقاس على der Bruder', 'der Schwester', 'Schwester مؤنث']
+      ['der Vater', 'Vater اسم مذكر', 'احفظ der مع Vater', 'die Vater', 'نقول der Vater، لا die Vater'],
+      ['die Mutter', 'Mutter اسم مؤنث', 'احفظ die مع Mutter', 'der Mutter', 'نقول die Mutter، لا der Mutter'],
+      ['das Kind', 'Kind اسم محايد', 'جنس الاسم النحوي لا يصف جنس الطفل', 'der Kind', 'نقول das Kind، لا der Kind'],
+      ['die Schwester', 'Schwester اسم مؤنث', 'أداة Schwester هي die، وأداة Bruder هي der', 'der Schwester', 'نقول die Schwester، لا der Schwester']
     ],
     [
-      ['Das ist der Vater.', 'هذا الأب', 'Das ist die Vater', 'Vater يأخذ der', 'Vater'],
-      ['Das ist die Mutter.', 'هذه الأم', 'Das ist der Mutter', 'Mutter يأخذ die', 'Mutter'],
-      ['Das ist das Kind.', 'هذا الطفل', 'Das ist der Kind', 'Kind يأخذ das', 'Kind'],
-      ['Das ist die Schwester.', 'هذه الأخت', 'Das ist der Schwester', 'Schwester يأخذ die', 'Schwester']
+      ['Das ist der Vater.', 'هذا الأب', 'Das ist die Vater.', 'Vater يأخذ der', 'Vater'],
+      ['Das ist die Mutter.', 'هذه الأم', 'Das ist der Mutter.', 'Mutter يأخذ die', 'Mutter'],
+      ['Das ist das Kind.', 'هذا الطفل', 'Das ist der Kind.', 'Kind يأخذ das', 'Kind'],
+      ['Das ist die Schwester.', 'هذه الأخت', 'Das ist der Schwester.', 'Schwester يأخذ die', 'Schwester']
     ],
-    'Das ist meine Familie: der Vater und die Mutter.',
+    'Das ist meine Familie.',
     'Das ist die Mutter.',
-    'Nenne morgen drei Personen mit Artikel.',
-    'غدًا سمِّ ثلاثة أشخاص مع الأداة.'),
+    'Nenne morgen vier Familienmitglieder mit Artikel. Ohne Gespräch: Schreib die vier Wortgruppen.',
+    'غدًا سمِّ أربعة من أفراد العائلة مع أدواتهم، وإن لم تجد محادثة فاكتب المجموعات الأربع.',
+    {
+      writing: {
+        zeigt: 'Meine Familie',
+        erklaerung: 'اكتب أربع جمل قصيرة، وفي كل جملة فرد من العائلة مع أداته الصحيحة.',
+        prompt: 'اكتب أربع جمل تعرّف فيها بأربعة أفراد من العائلة.',
+        promptDe: 'Das ist der … · Das ist die … · Das ist das … · Das sind die …',
+        points: ['der', 'die', 'das', 'صيغة جمع واحدة'],
+        minWords: 16
+      },
+      speakAr: 'سجّل عشرين ثانية: سمِّ أربعة من أفراد العائلة، واستعمل der وdie وdas مرةً على الأقل.',
+      orderSentence: 'Das ist die Mutter.',
+      summaryDe: 'der Vater · die Mutter · das Kind · die Schwester',
+      summaryAr: 'احفظ أداة كل اسم معه: der Vater وdie Mutter وdas Kind وdie Schwester.'
+    }),
 
   U('a0-u1-l6', 'A0', 'السؤال والجواب', 'Fragen', 'wortstellung',
     'Am Ende bildest du eine W-Frage und eine Ja-Nein-Frage',

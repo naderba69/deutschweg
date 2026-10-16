@@ -209,6 +209,39 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Ich spreche Arabisch.'));
 }
 
+/* ---------- audited A0 family and grammatical gender lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a0-u1-l5'];
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a0-u1-l5 uses a grammatical goal and accurate article guidance for four family members',
+    lesson.schritte[0].zeigt.de === 'Am Ende nennst du vier Familienmitglieder mit dem richtigen Artikel' &&
+      lesson.schritte[3].vereinfachung.regel === 'احفظ der مع Vater' &&
+      lesson.schritte[5].vereinfachung.regel.includes('جنس الاسم النحوي'));
+  t('Corpus lesson a0-u1-l5 corrects Großeltern, singular Onkel agreement and compound/Eltern mnemonics',
+    byWord['die Großeltern'].ar.includes('الأجداد') &&
+      byWord['der Onkel'].err === 'Mein Onkel wohnen in Berlin.' &&
+      tricks.some(x => x.trick === 'رأس الاسم المركب في آخره' && x.wie.includes('الأداة والجمع يتبعان Mutter')) &&
+      tricks.some(x => x.trick === 'Eltern اسم جمع' && x.wie.includes('ein Elternteil')) &&
+      !tricks.some(x => x.warum.includes('الطريق الوحيد')));
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a0-u1-l5 aligns writing, speaking, summary and fallback homework with family articles',
+    writing.frage.points.includes('صيغة جمع واحدة') && writing.frage.minWords === 16 &&
+      summary.zeigt.de.includes('das Kind') &&
+      lesson.schritte.find(s => s.phase === 'Produktion').erklaerung.includes('أربعة من أفراد العائلة') &&
+      homework.zeigt.de.includes('Ohne Gespräch: Schreib die vier Wortgruppen.'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a0-u1-l5 makes 80 percent four of five with direct support and a one-sentence order check',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a0-u1-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      orderCheck.frage.correct.join(' ') === 'Das ist meine Familie.' &&
+      checks[4].frage.optionen.some(o => o.text === 'Das ist das Kind.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

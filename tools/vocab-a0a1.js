@@ -130,17 +130,24 @@ module.exports = {
       ['die Eltern', '—', 'الوالدان', 'Meine Eltern leben in Tunis.', 'Meine Eltern lebt in Tunis.', 'Eltern جمع فقط، والفعل جمع: leben.', 'plural'],
       ['die Geschwister', '—', 'الأشقاء', 'Ich habe zwei Geschwister.', 'Ich habe zwei Geschwister Leute.', 'Geschwister جمع فقط، بلا Leute بعدها.', 'plural'],
       ['die Großmutter', 'die Großmütter', 'الجدّة', 'Meine Großmutter ist achtzig.', 'Meine Groß Mutter ist achtzig.', 'التركيب كلمة واحدة: Großmutter، والجمع Großmütter.', 'orthographie'],
-      ['die Großeltern', '—', 'الجدّان', 'Meine Großeltern wohnen in Nabeul.', 'Meine Großeltern wohnt in Nabeul.', 'Großeltern جمع، والفعل جمع: wohnen.', 'plural'],
+      ['die Großeltern', '—', 'الأجداد · الجدّان أو الجدّتان', 'Meine Großeltern wohnen in Nabeul.', 'Meine Großeltern wohnt in Nabeul.', 'Großeltern اسم جمع، والفعل معه جمع: wohnen.', 'plural'],
       ['der Großvater', 'die Großväter', 'الجدّ', 'Mein Großvater kommt aus Nabeul.', 'Mein Groß Vater kommt aus Nabeul.', 'كلمة واحدة، والأداة der لأن Vater مذكر.', 'orthographie'],
-      ['der Onkel', 'die Onkel', 'العمّ · الخال', 'Mein Onkel wohnt in Berlin.', 'Mein Onkel wohnt in Berlin hier.', 'الظرف لا يتكرر في آخر الجملة.', 'wortstellung'],
+      ['der Onkel', 'die Onkel', 'العمّ · الخال', 'Mein Onkel wohnt in Berlin.', 'Mein Onkel wohnen in Berlin.', 'Onkel مفرد، لذلك نقول wohnt لا wohnen.', 'konjugation'],
       ['die Tante', 'die Tanten', 'العمّة · الخالة', 'Meine Tante hat zwei Kinder.', 'Meine Tante hat zwei Kind.', 'بعد العدد فوق واحد يأتي الجمع: Kinder.', 'plural'],
       ['verheiratet', '—', 'متزوّج', 'Ich bin verheiratet.', 'Ich habe verheiratet.', 'الحالة بـ sein لا بـ haben.', 'lexik-kollokation'],
       ['ledig', '—', 'أعزب', 'Sie ist ledig.', 'Sie ist ein ledig.', 'ledig صفة حال، بلا أداة قبلها.', 'deklination']
     ],
+    extraCheck: {
+      right: 'Das ist das Kind.',
+      bad: 'Das ist der Kind.',
+      why: 'Kind يأخذ das، لا der.',
+      family: 'genus',
+      prereq: 'cap.a0-u1-l5.s06'
+    },
     tricks: [
-      { trick: 'الأداة تُحفظ مع الكلمة لا مع المعنى', wie: 'der Vater · die Mutter · das Kind: ثلاث كلمات من بيت واحد بثلاث أدوات.', warum: 'المعنى العربي (أب، أم، طفل) لا يعطي الجنس؛ الحفظ بالأداة هو الطريق الوحيد.' , anchor: 'der Vater'},
-      { trick: 'التركيب يقلب رأس الكلمة', wie: 'Groß + Mutter = Großmutter، والنوع يتبع الجزء الثاني.', warum: 'الرأس في آخر المركّب، وهو الذي يحدّد الجنس والجمع، لا الجزء الأول.' , anchor: 'die Großmutter'},
-      { trick: 'die Eltern لا مفرد لها في الكلام اليومي', wie: 'الأب والأم معًا die Eltern، والفعل جمع دائمًا.', warum: 'العربية تقول «الوالدان» وهي مثنّى، والألمانية ترى فيها جمعًا، فينكسر الفعل.' , anchor: 'die Eltern'}
+      { trick: 'الأداة تُحفظ مع الكلمة لا مع المعنى', wie: 'der Vater · die Mutter · das Kind: ثلاث كلمات من بيت واحد بثلاث أدوات.', warum: 'المعنى العربي لا يكشف دائمًا الجنس النحوي الألماني؛ حفظ الأداة مع الاسم طريقة موثوقة.' , anchor: 'der Vater'},
+      { trick: 'رأس الاسم المركب في آخره', wie: 'Groß + Mutter = Großmutter؛ الأداة والجمع يتبعان Mutter.', warum: 'الجزء الأخير في المركب هو الذي يحدد الجنس والجمع: die Großmutter، die Großmütter.' , anchor: 'die Großmutter'},
+      { trick: 'Eltern اسم جمع', wie: 'الأب والأم معًا die Eltern؛ للمفرد نقول ein Elternteil أو Mutter/Vater.', warum: 'Eltern تأخذ فعلًا جمعًا: Meine Eltern wohnen …، لا wohnt.' , anchor: 'die Eltern'}
     ]
   },
 
