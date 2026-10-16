@@ -2212,6 +2212,26 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a12', 1).key === 'لتصبح الإجابات قابلة للمقارنة ولا تُخلط سرعة الكلام بالخبرة' &&
       b2q('b2-a12', 1).options.includes(b2q('b2-a12', 1).key) &&
       b2Articles['b2-a12'].body.includes('schnelles Sprechen wurde leicht mit beruflicher Erfahrung verwechselt'));
+  t('Corpus B2 b2-a13 has 504 measured words and no unknown B2 tokens',
+    b2Articles['b2-a13'].title === 'الهدر' &&
+      b2Articles['b2-a13'].body.trim().split(/\s+/).length === 504 &&
+      known.coverage(b2Known, b2Articles['b2-a13'].body).unknown.length === 0);
+  t('Corpus B2 b2-a13 connects measurement with causes, targeted household action, safety, shared responsibility, and review coherently',
+    b2Articles['b2-a13'].body.includes('warum etwas im Müll lag') &&
+      b2Articles['b2-a13'].body.includes('wählten zwei häufige Ursachen') &&
+      b2Articles['b2-a13'].body.includes('bleibt die Sicherheit wichtiger') &&
+      b2Articles['b2-a13'].body.includes('Hersteller entscheiden jedoch über Material') &&
+      b2Articles['b2-a13'].body.includes('Vergleich über mehrere Wochen'));
+  t('Corpus B2 b2-a13 reason question matches different causes needing different measures',
+    b2q('b2-a13', 0).prompt === 'لماذا يسجّل النص سبب الهدر إلى جانب الكمية؟' &&
+      b2q('b2-a13', 0).key === 'لأن الأسباب المختلفة تحتاج حلولًا مختلفة' &&
+      b2q('b2-a13', 0).options.includes(b2q('b2-a13', 0).key) &&
+      b2Articles['b2-a13'].body.includes('brauchen eine andere Lösung als zu große Portionen'));
+  t('Corpus B2 b2-a13 food-safety question matches not eating spoiled food to improve a number',
+    b2q('b2-a13', 1).prompt === 'ما الذي لا ينبغي فعله لمجرد تصغير الرقم؟' &&
+      b2q('b2-a13', 1).key === 'أكل طعام لم يعد صالحًا' &&
+      b2q('b2-a13', 1).options.includes(b2q('b2-a13', 1).key) &&
+      b2Articles['b2-a13'].body.includes('wird nicht gegessen, nur damit die Zahl kleiner wirkt'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
