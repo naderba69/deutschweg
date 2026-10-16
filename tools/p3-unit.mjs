@@ -1049,6 +1049,88 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Ich möchte bestellen.'));
 }
 
+/* ---------- audited A1 shopping lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u3-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u3-l2 states five bounded shopping utterances and teaches them through complete German sentences',
+    lesson.title.de === 'Einkaufen' && lesson.title.ar === 'التسوق' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['fünf vollständige Äußerungen', 'Was kostet das?', 'Das macht zehn Euro.',
+        'Das ist mir zu teuer.', 'Haben Sie das in Größe M?', 'Darf ich das anprobieren?']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Was kostet das?', 'Das macht zehn Euro.',
+        'Haben Sie das in Größe M?', 'Das ist mir zu teuer.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u3-l2 keeps all 28 shopping entries, Arabic meanings, price forms and regional plural guidance accurate without English shortcuts',
+    lesson.wortschatz.length === 28 &&
+      byWord['das Geschäft'].ex === 'Im Geschäft frage ich: Was kostet das?' &&
+      byWord['der Markt'].err === 'Ich kaufe auf den Markt ein Kilo Tomaten.' &&
+      byWord['der Preis'].ex === 'Auf dem Preisschild steht der Preis.' &&
+      byWord['der Euro'].why.includes('zehn Euro') &&
+      byWord['der Cent'].pl.includes('die Cent') && byWord['der Cent'].pl.includes('die Cents') &&
+      byWord['der Cent'].why.includes('غالبًا fünfzig Cent') && byWord['der Cent'].why.includes('Cents أيضًا') &&
+      byWord['die Kasse'].ar === 'صندوق الدفع' && byWord['die Kasse'].ex.includes('Wechselgeld') &&
+      byWord['die Tüte'].ex.includes('Tragetasche') && byWord['die Größe'].ex === 'Haben Sie das in Größe M?' &&
+      byWord.anprobieren.ar === 'يجرّب (ملابس)' && byWord.passen.err === 'Die Hose passt mich.' &&
+      byWord['der Einkaufswagen'].err === 'Das Einkaufswagen ist voll.' &&
+      byWord['der Gürtel'].why.includes('وجمعه die Gürtel') &&
+      tricks[0].wie === 'Was + kostet + das? = Was kostet das?' &&
+      tricks[1].wie === 'in Größe M · Kleidergröße M.' &&
+      tricks[2].wie.includes('Das ist mir zu teuer') && tricks[2].warum.includes('mich') &&
+      !['What ', ' too ', ' big', ' size ', ' ten Euro'].some(x => lessonText.includes(x)) &&
+      !lessonText.includes('Cent لا تُجمع بـ s'));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['kostet', 'zehn Euro', 'zu teuer', 'Größe M', 'anprobieren'];
+  t('Corpus lesson a1-u3-l2 aligns strict shopping clozes, one-question order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Was kostet das?' &&
+      imitate.frage.antworten.join(' ') === 'kostet' && imitate.frage.nearMiss.kosten &&
+      transform.zeigt.de === 'Darf ich das anprobieren?' && transform.hinweise[1].includes('anprobieren') &&
+      drill.frage.zeigt === 'Haben Sie das in ____ M?' &&
+      drill.frage.antworten.join(' ') === 'Größe' && drill.frage.nearMiss.Größen &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Größen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Was kostet das?' &&
+      order.frage.finite === 'kostet' && order.frage.fields.vorfeld.join(' ') === 'Was' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Was', 'das?', 'kostet']).failed === 1 &&
+      writing.frage.points.join(' ') === 'kostet zehn Euro mir zu teuer Größe M anprobieren' &&
+      writing.frage.minWords === 23 &&
+      targets.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u3-l2 makes 80 percent four of five measurable across price, total, cost, size and trying on',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u3-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Das ist mir zu teuer.') &&
+      clozeCheck.frage.zeigt === 'Haben Sie das in ____ M?' &&
+      clozeCheck.frage.antworten.join(' ') === 'Größe' && clozeCheck.frage.nearMiss.Größen &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Größen').ok &&
+      orderCheck.frage.correct.join(' ') === 'Darf ich das anprobieren?' &&
+      orderCheck.frage.finite === 'Darf' && orderCheck.frage.verbFirst === true &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'Darf', 'das', 'anprobieren?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Im Geschäft frage ich: Was kostet das?') &&
+      checks[4].frage.optionen.some(o => o.text === 'Das macht zehn Euro.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

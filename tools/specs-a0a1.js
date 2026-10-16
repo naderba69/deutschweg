@@ -724,24 +724,48 @@ module.exports = [
     }),
 
   U('a1-u3-l2', 'A1', 'التسوق', 'Einkaufen', 'lexik-kollokation',
-    'Am Ende fragst du nach dem Preis und der Größe',
-    'في النهاية تسأل عن السعر والمقاس.',
+    'Am Ende verwendest du beim Einkaufen fünf vollständige Äußerungen: „Was kostet das?“ · „Das macht zehn Euro.“ · „Das ist mir zu teuer.“ · „Haben Sie das in Größe M?“ · „Darf ich das anprobieren?“',
+    'في النهاية تستعمل عند التسوق خمس عبارات كاملة: Was kostet das? وDas macht zehn Euro. وDas ist mir zu teuer. وHaben Sie das in Größe M? وDarf ich das anprobieren?',
     [
-      ['Was kostet das', 'السعر مع kosten', 'لا What costs', 'What kostet das', 'السؤال ألماني من أوله'],
-      ['Das macht zehn Euro', 'المبلغ مع machen في الصندوق', 'لا is ten', 'Das ist ten Euro', 'الرقم والعملة ألمانيان'],
-      ['zu teuer', 'الغلاء zu teuer', 'too teuer خليط', 'too teuer für mich', 'too إنجليزية'],
-      ['Haben Sie das in groß', 'المقاس في السؤال', 'لا size big', 'Haben Sie size big', 'المقاس groß']
+      ['Was kostet das?', 'نسأل عن السعر بالفعل kostet، والفاعل das مفرد.', 'مع das نقول kostet', 'Was kosten das?', 'نقول Was kostet das، لا Was kosten das'],
+      ['Das macht zehn Euro.', 'عند الصندوق يمكن أن يذكر البائع المجموع بـmacht.', 'الفاعل Das مفرد، لذلك نقول macht', 'Das machen zehn Euro.', 'نقول Das macht، لا Das machen'],
+      ['Haben Sie das in Größe M?', 'نسأل عن المقاس بعبارة in Größe M.', 'نستعمل المفرد Größe قبل رمز المقاس', 'Haben Sie das in Größen M?', 'نقول in Größe M، لا in Größen M'],
+      ['Das ist mir zu teuer.', 'نستعمل mir مع zu teuer لقول إن السعر مرتفع بالنسبة إليّ.', 'بعد هذا الإطار نقول mir لا mich', 'Das ist mich zu teuer.', 'نقول mir zu teuer، لا mich zu teuer']
     ],
     [
-      ['Was kostet das?', 'بكم هذا؟', 'What kostet das?', 'السؤال Was kostet', 'kostet'],
-      ['Das macht zehn Euro.', 'هذا بعشرة يورو', 'Das ist ten Euro', 'المبلغ macht zehn Euro', 'zehn'],
-      ['Das ist mir zu teuer.', 'هذا غالٍ عليّ', 'Das ist mir too teuer', 'الغلاء zu teuer', 'teuer'],
-      ['Haben Sie das in groß?', 'هل عندكم المقاس الكبير؟', 'Haben Sie das in big?', 'المقاس groß', 'groß']
+      ['Was kostet das?', 'بكم هذا؟', 'Was kosten das?', 'مع das المفرد نقول kostet.', 'kostet'],
+      ['Das macht zehn Euro.', 'المجموع عشرة يورو', 'Das machen zehn Euro.', 'مع Das المفرد نقول macht.', 'macht'],
+      ['Haben Sie das in Größe M?', 'هل لديكم هذا بمقاس M؟', 'Haben Sie das in Größen M?', 'نقول in Größe M.', 'Größe'],
+      ['Das ist mir zu teuer.', 'هذا غالٍ جدًا بالنسبة إليّ', 'Das ist mich zu teuer.', 'نقول mir في هذا الإطار.', 'mir']
     ],
-    'Was kostet das? Das macht zehn Euro.',
     'Was kostet das?',
-    'Frage morgen nach einem Preis.',
-    'غدًا اسأل عن سعر.'),
+    'Darf ich das anprobieren?',
+    'Schreibe morgen fünf Sätze für einen Einkauf in einem Geschäft mit kostet, zehn Euro, zu teuer, Größe M und anprobieren.',
+    'غدًا اكتب خمس جمل لموقف تسوق في متجر مع kostet وzehn Euro وzu teuer وGröße M وanprobieren.',
+    {
+      writing: {
+        zeigt: 'Fünf Äußerungen beim Einkaufen',
+        erklaerung: 'اكتب خمس عبارات كاملة: اسأل عن السعر، واذكر المجموع، وقل إن السعر غالٍ، واسأل عن مقاس M، واطلب تجربة القطعة.',
+        prompt: 'اكتب خمس عبارات ألمانية كاملة لموقف تسوق واحد.',
+        promptDe: 'Was kostet das? · Das macht zehn Euro. · Das ist mir zu teuer. · Haben Sie das in Größe M? · Darf ich das anprobieren?',
+        points: ['kostet', 'zehn Euro', 'mir zu teuer', 'Größe M', 'anprobieren'],
+        minWords: 23,
+        frage: 'اكتب العبارات الخمس في سياق تسوق.',
+        familie: 'lexik-kollokation',
+        hinweise: ['اكتب عبارة ألمانية كاملة لكل موقف.', 'استعمل mir مع zu teuer وGröße قبل M.']
+      },
+      imitateNearMiss: 'kosten',
+      transformHint: 'بعد Darf ich يأتي المصدر anprobieren.',
+      orderAr: 'رتّب السؤال: Was ثم kostet ثم das.',
+      orderHints: ['ابدأ بـWas.', 'ضع kostet بعد Was، ثم das.'],
+      orderSentence: 'Was kostet das?',
+      checkOrderSentence: 'Darf ich das anprobieren?',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة واحدة صحيحة في المتجر.',
+      speakAr: 'سجّل عشرين ثانية: قل العبارات الخمس مع kostet وzehn Euro وmir zu teuer وGröße M وanprobieren.',
+      summaryDe: 'Was kostet das? · Das macht zehn Euro. · Das ist mir zu teuer. · Haben Sie das in Größe M? · Darf ich das anprobieren?',
+      summaryAr: 'اسأل بـWas kostet، واذكر المبلغ، واستعمل mir zu teuer وin Größe M، واطلب التجربة بـanprobieren.',
+      summaryRecap: 'kostet Euro teuer Größe anprobieren'
+    }),
 
   U('a1-u3-l3', 'A1', 'يومي', 'Tagesablauf', 'wortstellung',
     'Am Ende erzählst du drei Punkte deines Tages in der richtigen Reihenfolge',
