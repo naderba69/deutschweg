@@ -2394,7 +2394,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Chapters['novelle-1'].body.includes('Vielleicht habe Leila') &&
       b2Chapters['novelle-1'].body.includes('Sie entschied sich daher für eine Nacht in der Pension') &&
       b2Chapters['novelle-1'].body.includes('Um sieben klopfe ich wieder') &&
-      b2Chapters['novelle-2'].body.startsWith('Am nächsten Morgen stand Sara um sieben vor dem Haus'));
+      b2Chapters['novelle-2'].body.startsWith('Am nächsten Morgen stand Sara kurz vor sieben wieder vor dem Haus'));
   t('Corpus B2 novelle-1 entry question matches the promised key missing under the flat stone',
     b2cq('novelle-1', 0).prompt === 'لماذا لم تستطع سارة دخول الشقة عند وصولها؟' &&
       b2cq('novelle-1', 0).key === 'لأن المفتاح الموعود لم يكن تحت الحجر المسطح' &&
@@ -2405,6 +2405,28 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-1', 1).key === 'لأنها لم تدخل الشقة ولم يصل رد ولم ترد الانتظار خارجًا' &&
       b2cq('novelle-1', 1).options.includes(b2cq('novelle-1', 1).key) &&
       b2Chapters['novelle-1'].body.includes('weder vor der Tür schlafen noch allein bis zum Morgen durch die Straßen gehen'));
+  t('Corpus B2 novelle-2 has 704 measured words and no unknown B2 tokens',
+    b2Chapters['novelle-2'].title === 'الجارة' &&
+      b2Chapters['novelle-2'].body.trim().split(/\s+/).length === 704 &&
+      known.coverage(b2Known, b2Chapters['novelle-2'].body).unknown.length === 0);
+  t('Corpus B2 novelle-2 connects Leila and the spare key, documented room defects, a temporary water repair, the four-word calendar clue, an honest letter, water storage, and course preparation into novelle-3 coherently',
+    b2Chapters['novelle-2'].body.includes('Der Vermieter hatte ihr, bevor er aus der Stadt fuhr, einen zweiten Schlüssel gegeben') &&
+      b2Chapters['novelle-2'].body.includes('fotografierte die beiden Mängel') &&
+      b2Chapters['novelle-2'].body.includes('Für eine Reparatur am Rohr') &&
+      b2Chapters['novelle-2'].body.includes('Dort standen vier Wörter') &&
+      b2Chapters['novelle-2'].body.includes('ohne Klage, aber genau') &&
+      b2Chapters['novelle-2'].body.includes('stellte den Wecker auf halb sieben') &&
+      b2Chapters['novelle-3'].body.startsWith('Der Kurs begann um acht'));
+  t('Corpus B2 novelle-2 spare-key question matches Leila in the floor above',
+    b2cq('novelle-2', 0).prompt === 'أين كان المفتاح الثاني؟' &&
+      b2cq('novelle-2', 0).key === 'عند ليلى في الطابق الأعلى' &&
+      b2cq('novelle-2', 0).options.includes(b2cq('novelle-2', 0).key) &&
+      b2Chapters['novelle-2'].body.includes('Leila und wohnte im Stock über der Wohnung'));
+  t('Corpus B2 novelle-2 water question matches the pipe repair until evening',
+    b2cq('novelle-2', 1).prompt === 'لماذا لم يكن الماء متاحًا حتى المساء؟' &&
+      b2cq('novelle-2', 1).key === 'بسبب إصلاح في الأنبوب' &&
+      b2cq('novelle-2', 1).options.includes(b2cq('novelle-2', 1).key) &&
+      b2Chapters['novelle-2'].body.includes('Für eine Reparatur am Rohr gab es an diesem Tag bis zum Abend kein Wasser'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
