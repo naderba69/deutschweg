@@ -2382,6 +2382,29 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a20', 1).key === 'كتب نصين أسبوعيًا تحت ضغط الوقت وراجع المعايير وتلقى تعليقًا' &&
       b2q('b2-a20', 1).options.includes(b2q('b2-a20', 1).key) &&
       b2Articles['b2-a20'].body.includes('Sechs Wochen lang schrieb ich zweimal pro Woche einen Text unter Zeitdruck'));
+  const b2Chapters = Object.fromEntries(win.DW_LIBRARY.B2.novel.chapters.map(x => ['novelle-' + x.n, x]));
+  const b2cq = (id, n) => b2Chapters[id].questions[n];
+  t('Corpus B2 novelle-1 has 695 measured words and no unknown B2 tokens',
+    b2Chapters['novelle-1'].title === 'الوصول' &&
+      b2Chapters['novelle-1'].body.trim().split(/\s+/).length === 695 &&
+      known.coverage(b2Known, b2Chapters['novelle-1'].body).unknown.length === 0);
+  t('Corpus B2 novelle-1 connects the delayed arrival, promised but missing key, unanswered contact, Leila clue, safe overnight choice, written record, and next-morning return into novelle-2 coherently',
+    b2Chapters['novelle-1'].body.includes('Der Zug hatte zwei Stunden Verspätung') &&
+      b2Chapters['novelle-1'].body.includes('der Schlüssel unter einem flachen Stein neben der Tür') &&
+      b2Chapters['novelle-1'].body.includes('Vielleicht habe Leila') &&
+      b2Chapters['novelle-1'].body.includes('Sie entschied sich daher für eine Nacht in der Pension') &&
+      b2Chapters['novelle-1'].body.includes('Um sieben klopfe ich wieder') &&
+      b2Chapters['novelle-2'].body.startsWith('Am nächsten Morgen stand Sara um sieben vor dem Haus'));
+  t('Corpus B2 novelle-1 entry question matches the promised key missing under the flat stone',
+    b2cq('novelle-1', 0).prompt === 'لماذا لم تستطع سارة دخول الشقة عند وصولها؟' &&
+      b2cq('novelle-1', 0).key === 'لأن المفتاح الموعود لم يكن تحت الحجر المسطح' &&
+      b2cq('novelle-1', 0).options.includes(b2cq('novelle-1', 0).key) &&
+      b2Chapters['novelle-1'].body.includes('Unter keinem lag ein Schlüssel'));
+  t('Corpus B2 novelle-1 pension question matches no entry, no reply, and refusing to wait outside overnight',
+    b2cq('novelle-1', 1).prompt === 'لماذا اختارت قضاء ليلة في النُزل؟' &&
+      b2cq('novelle-1', 1).key === 'لأنها لم تدخل الشقة ولم يصل رد ولم ترد الانتظار خارجًا' &&
+      b2cq('novelle-1', 1).options.includes(b2cq('novelle-1', 1).key) &&
+      b2Chapters['novelle-1'].body.includes('weder vor der Tür schlafen noch allein bis zum Morgen durch die Straßen gehen'));
   const r1Order = [
     'Ich wohne in Berlin und mache heute Urlaub in einer anderen Stadt.',
     'Ich suche ein bequemes Zimmer im ersten Stock.',
