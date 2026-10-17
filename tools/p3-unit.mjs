@@ -4976,6 +4976,121 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
 }
 
+/* ---------- audited A2 clothing fit and exchange lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u4-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich ziehe heute die blaue Jacke an.',
+    'Die Hose passt mir gut.',
+    'Welche Größe haben Sie?',
+    'Kann ich das Hemd anprobieren?',
+    'Ich möchte die Jacke bitte umtauschen.'
+  ];
+  t('Corpus lesson a2-u4-l3 bounds dressing, fit, size, trying on and exchange to five clothing-store targets',
+    lesson.title.de === 'Kleidung: Passform, Anprobe und Umtausch' &&
+      lesson.title.ar === 'الملابس: المقاس والقياس والاستبدال' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الملابس والتسوق في متجر الأزياء' &&
+      row.grammar.item === 'ziehe … an · passt mir · Welche Größe …? · anprobieren · umtauschen' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === [targets[0], targets[1], targets[2], targets[4]][i]) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[3] &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende beschreibst du Kleidung mit fünf vollständigen Sätzen zum Anziehen, zur Passform, zur Größe, zum Anprobieren und zum Umtauschen');
+
+  const expectedWords = [
+    'passen', 'anziehen', 'die Größe', 'anprobieren', 'die Kleidung', 'die Hose', 'ausziehen',
+    'das Hemd', 'der Rock', 'die Jacke', 'der Mantel', 'der Schuh', 'die Socke', 'der Pullover',
+    'das T-Shirt', 'der Gürtel', 'die Tasche', 'die Mode', 'der Verkäufer', 'die Umkleidekabine',
+    'das Sonderangebot', 'der Preis', 'umtauschen', 'zurückgeben', 'die Kasse', 'die Quittung',
+    'das Kaufhaus', 'die Reinigung', 'tragen', 'schneiden', 'das Händetuch'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u4-l3 reviews all 31 entries and three nuanced mnemonics without rejecting valid clothing alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.passen.ex === targets[1] && byWord.anziehen.ex === targets[0] &&
+      byWord['die Größe'].ex === targets[2] && byWord.anprobieren.ex === targets[3] &&
+      byWord.umtauschen.ex === targets[4] && byWord.anprobieren.why.includes('probieren أوسع معنى') &&
+      byWord['der Mantel'].why.includes('warm gemacht قد تكون صحيحة') &&
+      byWord['die Socke'].why.includes('bunt gemacht ممكنة') &&
+      byWord['der Gürtel'].why.includes('zu dem Rock صحيحة أيضًا') &&
+      byWord['die Kasse'].why.includes('in der Kasse فتعني داخل صندوق النقود') &&
+      byWord['das Kaufhaus'].why.includes('In dem Kaufhaus صحيحة أيضًا') &&
+      byWord['die Reinigung'].why.includes('in der Reinigung تصف مكانًا') &&
+      byWord['das Händetuch'].why.includes('das Handtuch') &&
+      !errors.includes('Ich brauche die Größe achtunddreißig.') &&
+      !errors.includes('Kann ich das Hemd probieren?') &&
+      !errors.includes('Die Jacke ist warm gemacht.') && !errors.includes('Der Mantel ist teuer gemacht.') &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes(targets[3]) &&
+      tricks[0].wie.includes(targets[4].replace(' bitte', '')) && tricks[0].warum.includes('was du anhast') &&
+      tricks[1].wie.includes(targets[1]) && tricks[1].wie.includes('Der Rock steht dir gut.') &&
+      tricks[1].warum.includes('Die Hose passt gut') && tricks[2].wie.includes(targets[2]) &&
+      tricks[2].wie.includes('Ich brauche Größe achtunddreißig.') &&
+      tricks[2].wie.includes('Ich brauche die Größe achtunddreißig.') &&
+      tricks[2].warum.includes('Pants') && tricks[2].warum.includes('Size') && tricks[2].warum.includes('suits') &&
+      !['die Pants', 'die Size', 'Das Kleid suits dir'].some(x => errors.includes(x)) &&
+      lessonText.includes('Pants') && lessonText.includes('Size') && lessonText.includes('suits'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u4-l3 aligns strict Hose, Preis, an and anprobieren clozes, separable order and 27-word production',
+    wordCloze1.frage.zeigt === 'Die ____ passt mir gut.' && wordCloze1.frage.antworten.join(' ') === 'Hose' &&
+      wordCloze1.frage.nearMiss.Hosen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Hosen').ok &&
+      wordCloze2.frage.zeigt === 'Der ____ ist reduziert.' && wordCloze2.frage.antworten.join(' ') === 'Preis' &&
+      wordCloze2.frage.nearMiss.Preise && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Preise').ok &&
+      imitate.zeigt.de === 'Ich ziehe heute die blaue Jacke ____.' && imitate.frage.antworten.join(' ') === 'an' &&
+      imitate.frage.nearMiss.anziehen && !win.DW.renderers.judgeCloze(imitate.frage, 'anziehen').ok &&
+      drill.frage.zeigt === 'Kann ich das Hemd ____?' && drill.frage.antworten.join(' ') === 'anprobieren' &&
+      drill.frage.nearMiss.anprobiere && !win.DW.renderers.judgeCloze(drill.frage, 'anprobiere').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'ziehe' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'ziehe' &&
+      order.frage.fields.mittelfeld.join(' ') === 'heute die blaue Jacke' &&
+      order.frage.fields.rsk.join(' ') === 'an.' && order.frage.rightBracket.join(' ') === 'an.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'an.', 'ziehe', 'heute', 'die', 'blaue', 'Jacke']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 27 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[,.!?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u4-l3 makes 80 percent four of five independent across exchange, trying on, dressing, fit and size',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u4-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u4-l3.s07 | cap.a2-u4-l3.s21 | cap.a2-u4-l3.s22 | cap.a2-u4-l3.s08 | cap.a2-u4-l3.s06' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) && checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Kann ich das Hemd ____?' && clozeCheck.frage.antworten.join(' ') === 'anprobieren' &&
+      clozeCheck.frage.nearMiss.anprobiere && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'anprobiere').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'ziehe' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.rsk.join(' ') === 'an.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'an.', 'ziehe', 'heute', 'die', 'blaue', 'Jacke']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[1]) && checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

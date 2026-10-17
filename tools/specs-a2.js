@@ -906,25 +906,52 @@ module.exports = [
       summaryRecap: 'Glückwunsch Einladung Zusage Absage Uhrzeit'
     }),
 
-  U('a2-u4-l3', 'A2', 'الملابس', 'Kleidung', 'lexik-kollokation',
-    'Am Ende beschreibst du was du anhast',
-    'في النهاية تصف ما تلبس.',
+  U('a2-u4-l3', 'A2', 'الملابس: المقاس والقياس والاستبدال', 'Kleidung: Passform, Anprobe und Umtausch', 'lexik-kollokation',
+    'Am Ende beschreibst du Kleidung mit fünf vollständigen Sätzen zum Anziehen, zur Passform, zur Größe, zum Anprobieren und zum Umtauschen',
+    'في النهاية تصف الملابس بخمس جمل كاملة عن اللبس والمقاس والقياس والاستبدال.',
     [
-      ['ich ziehe an', 'اللبس ziehen an', 'البادئة أخيرًا', 'ich anziehe die Jacke', 'an في الآخر'],
-      ['die Hose', 'البنطال Hose', 'لا pants ككلمة وحيدة', 'die Pants', 'Pants إنجليزية'],
-      ['die Größe', 'المقاس Größe', 'لا size', 'die Size', 'Size إنجليزية'],
-      ['das steht dir', 'يليق stehen', 'لا it suits كترجمة', 'das suits dir', 'suits إنجليزية']
+      ['Ich ziehe heute die blaue Jacke an.', 'تصف قطعة تلبسها مع الفعل المنفصل anziehen', 'في الجملة الرئيسية ينفصل anziehen: يأتي ziehe في الموضع الثاني وan في النهاية', 'Ich anziehe heute die blaue Jacke.', 'في الجملة الرئيسية نقول ziehe … an'],
+      ['Die Hose passt mir gut.', 'تقول إن مقاس البنطال يناسبك', 'الشخص مع passen يأتي في الداتيف: mir', 'Die Hose passt mich gut.', 'بعد passen نقول mir لا mich'],
+      ['Welche Größe haben Sie?', 'تسأل بأدب عن المقاس', 'السؤال عن المقاس يستعمل الصيغة المؤنثة Welche Größe', 'Welchen Größe haben Sie?', 'Größe مؤنث؛ نقول Welche Größe لا Welchen Größe'],
+      ['Ich möchte die Jacke bitte umtauschen.', 'تطلب استبدال السترة بأدب', 'بعد möchte يأتي المصدر غير المنفصل umtauschen في آخر الجملة', 'Ich möchte die Jacke bitte umtausche.', 'بعد möchte نحتاج المصدر umtauschen']
     ],
     [
-      ['Ich ziehe die Jacke an.', 'أرتدي السترة', 'Ich anziehe die Jacke', 'an في الآخر', 'an'],
-      ['Die Hose ist blau.', 'البنطال أزرق', 'Die Pants ist blau', 'البنطال Hose', 'Hose'],
-      ['Welche Größe haben Sie?', 'ما مقاسكم؟', 'Welche Size haben Sie?', 'المقاس Größe', 'Größe'],
-      ['Das Kleid steht dir.', 'الفستان يليق بك', 'Das Kleid suits dir', 'يليق steht', 'steht']
+      ['Ich ziehe heute die blaue Jacke an.', 'أرتدي اليوم السترة الزرقاء', 'Ich anziehe heute die blaue Jacke.', 'في الجملة الرئيسية ينفصل anziehen: ziehe … an', 'an'],
+      ['Die Hose passt mir gut.', 'البنطال يناسبني جيدًا', 'Die Hose passt mich gut.', 'الشخص مع passen يأتي في الداتيف: mir', 'mir'],
+      ['Welche Größe haben Sie?', 'ما مقاسكم؟', 'Welches Größe haben Sie?', 'Größe مؤنث؛ نقول Welche Größe', 'Größe'],
+      ['Ich möchte die Jacke bitte umtauschen.', 'أود استبدال السترة من فضلك', 'Ich möchte die Jacke bitte umtausche.', 'بعد möchte يأتي المصدر umtauschen', 'umtauschen']
     ],
-    'Ich ziehe die Jacke an. Das steht dir.',
-    'Welche Größe haben Sie?',
-    'Beschreibe morgen ein Kleidungsstück.',
-    'غدًا صف قطعة لباس.'),
+    'Ich ziehe heute die blaue Jacke an. Kann ich das Hemd anprobieren?',
+    'Kann ich das Hemd anprobieren?',
+    'Wiederhole morgen die fünf Sätze: Ich ziehe heute die blaue Jacke an. Die Hose passt mir gut. Welche Größe haben Sie? Kann ich das Hemd anprobieren? Ich möchte die Jacke bitte umtauschen. Beschreibe danach ein Kleidungsstück und vergleiche zwei Kleidungsstücke.',
+    'غدًا راجع جمل اللبس والمقاس والقياس والاستبدال الخمس.',
+    {
+      factFamilies: ['wortstellung', 'kasus', 'deklination', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze im Kleidungsgeschäft',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن اللبس والمقاس والسؤال عن الحجم والقياس والاستبدال.',
+        prompt: 'اكتب جمل الملابس الخمس كاملة.',
+        promptDe: 'Ich ziehe heute die blaue Jacke an. · Die Hose passt mir gut. · Welche Größe haben Sie? · Kann ich das Hemd anprobieren? · Ich möchte die Jacke bitte umtauschen.',
+        points: ['Ich ziehe heute die blaue Jacke an.', 'Die Hose passt mir gut.', 'Welche Größe haben Sie?', 'Kann ich das Hemd anprobieren?', 'Ich möchte die Jacke bitte umtauschen.'],
+        minWords: 27,
+        frage: 'اكتب الجمل الخمس كاملة في 27 كلمة على الأقل.',
+        familie: 'lexik-kollokation',
+        hinweise: ['افصل an في الجملة الأولى واستعمل mir مع passen.', 'بعد möchte وkann يبقى umtauschen وanprobieren مصدرين في النهاية.']
+      },
+      imitateNearMiss: 'anziehen',
+      transformHint: 'بعد kann يأتي المصدر anprobieren كاملًا في نهاية السؤال.',
+      orderAr: 'رتّب جملة اللبس: Ich ثم ziehe، وبعد الوسط ضع an في النهاية.',
+      orderHints: ['ضع ziehe في الموضع الثاني بعد Ich.', 'أغلق الجملة بالبادئة an.'],
+      orderSentence: 'Ich ziehe heute die blaue Jacke an.',
+      orderRightBracket: ['an.'],
+      checkOrderSentence: 'Ich ziehe heute die blaue Jacke an.',
+      checkOrderRightBracket: ['an.'],
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة لبس صحيحة مع الفعل المنفصل.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich ziehe heute die blaue Jacke an وDie Hose passt mir gut وWelche Größe haben Sie وKann ich das Hemd anprobieren وIch möchte die Jacke bitte umtauschen.',
+      summaryDe: 'Ich ziehe heute die blaue Jacke an. · Die Hose passt mir gut. · Welche Größe haben Sie? · Kann ich das Hemd anprobieren? · Ich möchte die Jacke bitte umtauschen.',
+      summaryAr: 'راجع ziehe … an وpasst mir وWelche Größe وanprobieren وumtauschen.',
+      summaryRecap: 'anziehen Passform Größe Anprobe Umtausch'
+    }),
 
   U('a2-u4-l4', 'A2', 'الطقس', 'Wetter', 'lexik-kollokation',
     'Am Ende sagst du drei Wettersätze',

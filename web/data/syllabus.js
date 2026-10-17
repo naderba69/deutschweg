@@ -79,7 +79,7 @@
     ['العمل: البحث عن وظيفة والتقديم وساعات الدوام', 'Arbeit: Stellensuche, Bewerbung und Arbeitszeit', 'العمل والتقديم والتوظيف', 'eine Stelle in Teilzeit suchen · eine Bewerbung schreiben · den Lebenslauf mitschicken · um zehn Uhr · bei einer Firma/in der Abteilung · von … bis', 'explicit', 31, 13],
     ['الدراسة: الدورة والدرس والواجب والامتحان', 'Lernen: Kurs, Unterricht, Hausaufgaben und Prüfung', 'الدراسة وتنظيم الدورة والتقييم', 'im September · um acht Uhr · ins/in das Heft · Können Sie … erklären? · eine Prüfung bestehen', 'explicit', 36, 13],
     ['المناسبات: التهنئة والدعوة والرد', 'Feste: gratulieren, einladen und antworten', 'المناسبات والدعوات والاحتفال', 'Herzlichen Glückwunsch · lade … ein · nehme … an · Leider kann ich nicht · um sieben Uhr', 'explicit', 33, 13],
-    ['الملابس', 'Kleidung', 'الملابس', 'وصف ما ألبس', 'inductive', 31, 13],
+    ['الملابس: المقاس والقياس والاستبدال', 'Kleidung: Passform, Anprobe und Umtausch', 'الملابس والتسوق في متجر الأزياء', 'ziehe … an · passt mir · Welche Größe …? · anprobieren · umtauschen', 'explicit', 31, 13],
     ['الطقس', 'Wetter', 'الطقس', 'جملة طقس', 'inductive', 33, 13],
     ['الدعوة', 'Einladung', 'الدعوة', 'قبول واعتذار', 'inductive', 29, 13],
     ['مشكلة صغيرة', 'Ein Problem', 'حل مشكلة', 'etwas funktioniert nicht', 'inductive', 31, 13],
