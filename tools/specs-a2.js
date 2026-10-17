@@ -1,26 +1,51 @@
-function U(id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr) {
-  return { id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr };
+function U(id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr, options) {
+  return Object.assign({ id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr }, options || {});
 }
 module.exports = [
-  U('a2-u1-l1', 'A2', 'داتيف', 'Dativ', 'kasus',
-    'Am Ende markierst du den Dativ am Artikel',
-    'في النهاية تعلّم الداتيف في الأداة.',
+  U('a2-u1-l1', 'A2', 'حالة الداتيف', 'Dativ', 'kasus',
+    'Am Ende verwendest du dem, der und den in fünf vollständigen Dativsätzen',
+    'في النهاية تستعمل dem وder وden في خمس جمل داتيف كاملة.',
     [
-      ['dem Mann', 'مذكر الداتيف dem', 'den للنصب لا للإعطاء', 'den Mann geben falsch', 'den هنا حالة خطأ'],
-      ['der Frau', 'مؤنث الداتيف der', 'die تبقى للرفع والنصب', 'die Frau helfen falsch', 'die ليست داتيف'],
-      ['dem Kind', 'محايد الداتيف dem', 'das للرفع', 'das Kind geben als Dativ', 'das ليست داتيف'],
-      ['den Kindern', 'جمع الداتيف den مع n', 'die لا تكفي', 'die Kindern geben', 'الجمع في الداتيف den']
+      ['Ich helfe dem Nachbarn im Garten.', 'تستعمل dem مع الاسم المذكر بعد helfen', 'helfen يأخذ الداتيف، وNachbar يأخذ n: dem Nachbarn', 'Ich helfe die Nachbarn im Garten.', 'بعد helfen نحتاج هنا dem Nachbarn'],
+      ['Ich danke der Lehrerin für ihre Hilfe.', 'تستعمل der مع الاسم المؤنث بعد danken', 'danken يأخذ الداتيف، والمؤنث يأخذ der', 'Ich danke die Lehrerin für ihre Hilfe.', 'بعد danken نقول der Lehrerin لا die Lehrerin'],
+      ['Ich gebe dem Kind ein Buch.', 'تستعمل dem مع الاسم المحايد المستفيد من الإعطاء', 'الشخص المستفيد يأتي هنا في الداتيف: dem Kind', 'Ich gebe das Kind ein Buch.', 'المستفيد هو dem Kind لا das Kind'],
+      ['Die Wohnung gefällt den Kindern.', 'تستعمل den مع جمع الداتيف وتضيف n إلى Kinder', 'جمع الداتيف هنا den Kindern', 'Die Wohnung gefällt die Kinder.', 'مع gefallen نحتاج جمع الداتيف den Kindern']
     ],
     [
-      ['Ich helfe dem Mann.', 'أساعد الرجل', 'Ich helfe den Mann', 'المساعدة داتيف dem', 'dem'],
-      ['Ich danke der Frau.', 'أشكر المرأة', 'Ich danke die Frau', 'الشكر داتيف der', 'der'],
-      ['Ich gebe dem Kind ein Buch.', 'أعطي الطفل كتابًا', 'Ich gebe das Kind ein Buch', 'الآخذ dem', 'dem'],
-      ['Ich helfe den Kindern.', 'أساعد الأطفال', 'Ich helfe die Kindern', 'جمع الداتيف den', 'den']
+      ['Ich helfe dem Nachbarn im Garten.', 'أساعد الجار في الحديقة', 'Ich helfe die Nachbarn im Garten.', 'بعد helfen نحتاج هنا dem Nachbarn', 'dem'],
+      ['Ich danke der Lehrerin für ihre Hilfe.', 'أشكر المعلمة على مساعدتها', 'Ich danke die Lehrerin für ihre Hilfe.', 'بعد danken نستخدم الداتيف der Lehrerin', 'der'],
+      ['Ich gebe dem Kind ein Buch.', 'أعطي الطفل كتابًا', 'Ich gebe das Kind ein Buch.', 'المستفيد يأتي في الداتيف dem Kind', 'dem'],
+      ['Ich fahre mit dem Bus zur Arbeit.', 'أذهب إلى العمل بالحافلة', 'Ich fahre mit der Bus zur Arbeit.', 'mit يأخذ الداتيف، وBus مذكر: dem Bus', 'dem']
     ],
-    'Ich helfe dem Mann und ich danke der Frau.',
-    'Ich helfe dem Mann.',
-    'Bilde morgen zwei Dativ-Sätze.',
-    'غدًا كوّن جملتي داتيف.'),
+    'Ich gebe dem Kind ein Buch.',
+    'Ich gebe dem Kind ein Buch.',
+    'Wiederhole morgen die fünf Sätze: Ich helfe dem Nachbarn im Garten. Ich danke der Lehrerin für ihre Hilfe. Ich gebe dem Kind ein Buch. Die Wohnung gefällt den Kindern. Ich fahre mit dem Bus zur Arbeit.',
+    'غدًا راجع الجمل الخمس مع dem وder وden.',
+    {
+      factFamilies: ['kasus', 'kasus', 'kasus', 'kasus'],
+      writing: {
+        zeigt: 'Fünf Dativsätze',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع المذكر والمؤنث والمحايد والجمع وحرف mit.',
+        prompt: 'اكتب الجمل الخمس مستعملًا صيغ الداتيف الصحيحة.',
+        promptDe: 'Ich helfe dem Nachbarn im Garten. · Ich danke der Lehrerin für ihre Hilfe. · Ich gebe dem Kind ein Buch. · Die Wohnung gefällt den Kindern. · Ich fahre mit dem Bus zur Arbeit.',
+        points: ['Ich helfe dem Nachbarn im Garten.', 'Ich danke der Lehrerin für ihre Hilfe.', 'Ich gebe dem Kind ein Buch.', 'Die Wohnung gefällt den Kindern.', 'Ich fahre mit dem Bus zur Arbeit.'],
+        minWords: 31,
+        frage: 'اكتب الجمل الخمس كاملة مع dem Nachbarn وder Lehrerin وdem Kind وden Kindern وmit dem Bus.',
+        familie: 'kasus',
+        hinweise: ['راجع dem للمذكر والمحايد وder للمؤنث.', 'في الجمع استعمل den Kindern، وبعد mit استعمل dem Bus.']
+      },
+      imitateNearMiss: 'die',
+      transformHint: 'المستفيد يأتي في الداتيف: dem Kind.',
+      orderAr: 'رتّب جملة الإعطاء: ابدأ بـ Ich gebe ثم dem Kind ثم ein Buch.',
+      orderHints: ['ابدأ بـ Ich وضع gebe في الموضع الثاني.', 'ضع المستفيد dem Kind قبل الشيء ein Buch.'],
+      orderSentence: 'Ich gebe dem Kind ein Buch.',
+      checkOrderSentence: 'Ich gebe dem Kind ein Buch.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة إعطاء صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich helfe dem Nachbarn im Garten وIch danke der Lehrerin für ihre Hilfe وIch gebe dem Kind ein Buch وDie Wohnung gefällt den Kindern وIch fahre mit dem Bus zur Arbeit.',
+      summaryDe: 'Ich helfe dem Nachbarn im Garten. · Ich danke der Lehrerin für ihre Hilfe. · Ich gebe dem Kind ein Buch. · Die Wohnung gefällt den Kindern. · Ich fahre mit dem Bus zur Arbeit.',
+      summaryAr: 'راجع dem Nachbarn وder Lehrerin وdem Kind وden Kindern وmit dem Bus.',
+      summaryRecap: 'dem der dem den mit'
+    }),
 
   U('a2-u1-l2', 'A2', 'أفعال الداتيف', 'Dativverben', 'kasus',
     'Am Ende benutzt du helfen geben und gehören mit Dativ',

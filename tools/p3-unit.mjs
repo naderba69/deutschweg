@@ -2601,6 +2601,133 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+/* ---------- audited A2 Dativ lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u1-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich helfe dem Nachbarn im Garten.',
+    'Ich danke der Lehrerin für ihre Hilfe.',
+    'Ich gebe dem Kind ein Buch.',
+    'Die Wohnung gefällt den Kindern.',
+    'Ich fahre mit dem Bus zur Arbeit.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[2], targets[3]];
+  t('Corpus lesson a2-u1-l1 bounds Dativ to five complete targets and four directly taught article facts',
+    lesson.title.de === 'Dativ' && lesson.title.ar === 'حالة الداتيف' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الإعطاء' &&
+      row.grammar.item === 'المذكر والمؤنث والمحايد والجمع وحرف mit' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 32 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].erklaerung.includes('خمس جمل داتيف كاملة'));
+
+  const expectedWords = [
+    'helfen', 'danken', 'gefallen', 'gehören', 'der Nachbar', 'die Nachbarin', 'der Kollege',
+    'mit dem Bus', 'nach dem Essen', 'seit einem Jahr', 'von der Arbeit', 'zu dem Termin',
+    'bei der Firma', 'aus der Schweiz', 'gegenüber', 'die Möglichkeit', 'der Termin',
+    'die Antwort', 'das Ergebnis', 'der Kunde', 'die Firma', 'der Kollege aus Tunis',
+    'die Lehrerin', 'der Chef', 'das Geschenk', 'die Wohnung', 'liefern', 'nennen',
+    'beschreiben', 'der Comic', 'die Notiz', 'das Paar'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u1-l1 reviews all 32 entries and three precise mnemonics without ambiguous den or artificial falsch examples',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.helfen.ex === targets[0] && byWord.helfen.err.includes('die Nachbarn') &&
+      byWord.danken.ex === 'Ich danke der Nachbarin.' && byWord.gefallen.ex.includes('meiner Frau') &&
+      byWord.gehören.ar === 'يخصّ/يعود إلى' && byWord['der Nachbar'].err.includes('dem Nachbar') &&
+      byWord['die Nachbarin'].err.includes('die Nachbarin') &&
+      byWord['der Kollege'].err.includes('dem Kollege') && byWord['mit dem Bus'].ex === targets[4] &&
+      byWord['nach dem Essen'].ex.startsWith('Nach dem Essen') &&
+      byWord['seit einem Jahr'].ex.includes('seit einem Jahr') &&
+      byWord['von der Arbeit'].ex.includes('von der Arbeit') &&
+      byWord['zu dem Termin'].why.includes('zum') && byWord['bei der Firma'].ex.includes('Firma Huber') &&
+      byWord['aus der Schweiz'].ex.includes('aus der Schweiz') &&
+      byWord.gegenüber.ex.includes('gegenüber dem Bahnhof') &&
+      byWord['die Möglichkeit'].ex.includes('gefällt dem Chef') &&
+      byWord['der Termin'].ex === 'Der Termin passt der Kundin gut.' &&
+      byWord['der Termin'].err === 'Der Termin passt die Kundin gut.' &&
+      byWord['die Antwort'].ex.includes('gefällt der Kundin') &&
+      byWord['das Ergebnis'].ex.includes('der Gruppe') && byWord['der Kunde'].err.includes('dem Kunde') &&
+      byWord['die Firma'].ex.includes('der Firma') && byWord['der Kollege aus Tunis'].err.includes('hilft mich') &&
+      byWord['die Lehrerin'].ex === targets[1] && byWord['der Chef'].ex.includes('dem Chef') &&
+      byWord['das Geschenk'].ex.includes('gefällt der Familie') && byWord['die Wohnung'].ex === targets[3] &&
+      byWord.liefern.ex.includes('liefert mir') && byWord.nennen.ex.includes('mir den Namen') &&
+      byWord.beschreiben.ex.includes('Sie mir bitte') && byWord['der Comic'].ar === 'القصة المصوّرة' &&
+      byWord['die Notiz'].ex.includes('gehört meiner Schwester') && byWord['das Paar'].ex.includes('dem Paar') &&
+      tricks.length === 3 && tricks[0].trick.includes('dem للمذكر والمحايد') &&
+      tricks[0].warum.includes('إذا أمكن') && tricks[1].trick.includes('ثمانية حروف جرّ') &&
+      tricks[1].wie.includes('gegenüber dem Bahnhof') && tricks[1].warum.includes('zum') &&
+      tricks[2].trick.includes('helfen') && tricks[2].warum.includes('هذه الأفعال الأربعة') &&
+      !lessonText.includes('den Mann geben falsch') && !lessonText.includes('die Frau helfen falsch') &&
+      !lessonText.includes('das Kind geben als Dativ') && !lessonText.includes('Ich sage dem Termin ab.') &&
+      !lessonText.includes('سبعة حروف'));
+
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u1-l1 aligns strict clozes, simple object order, 31-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Ich danke der ____.' &&
+      wordCloze1.frage.antworten.join(' ') === 'Nachbarin' && wordCloze1.frage.nearMiss.Nachbarinnen &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Nachbarinnen').ok &&
+      wordCloze2.frage.zeigt === 'Der Kollege aus Tunis hilft ____ oft.' &&
+      wordCloze2.frage.antworten.join(' ') === 'mir' && wordCloze2.frage.nearMiss.mich &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'mich').ok &&
+      imitate.zeigt.de === 'Ich helfe ____ Nachbarn im Garten.' &&
+      imitate.frage.antworten.join(' ') === 'dem' && imitate.frage.nearMiss.die &&
+      drill.frage.zeigt === 'Ich fahre mit ____ Bus zur Arbeit.' &&
+      drill.frage.antworten.join(' ') === 'dem' && drill.frage.nearMiss.der &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'der').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'gebe' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.lsk.join(' ') === 'gebe' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'dem', 'Kind', 'gebe', 'ein', 'Buch.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 31 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u1-l1 makes 80 percent four of five measurable across plural, mit, neuter, masculine and feminine Dativ',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u1-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Ich fahre mit ____ Bus zur Arbeit.' &&
+      clozeCheck.frage.antworten.join(' ') === 'dem' && clozeCheck.frage.nearMiss.der &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'der').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'gebe' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'dem', 'Kind', 'gebe', 'ein', 'Buch.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

@@ -59,7 +59,7 @@
   ];
 
   const A2 = [
-    ['داتيف', 'Dativ', 'الإعطاء', 'نظام الداتيف', 'explicit', 32, 13],
+    ['حالة الداتيف', 'Dativ', 'الإعطاء', 'المذكر والمؤنث والمحايد والجمع وحرف mit', 'explicit', 32, 13],
     ['أفعال الداتيف', 'Dativverben', 'المساعدة', 'helfen وgeben', 'explicit', 31, 13],
     ['حروف الاتجاهين', 'Wechselpräpositionen', 'المكان والحركة', 'Wechselpräpositionen', 'explicit', 31, 13],
     ['لأن', 'weil', 'السبب', 'weil والفعل في الآخر', 'explicit', 31, 13],
