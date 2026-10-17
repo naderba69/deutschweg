@@ -2850,6 +2850,142 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+/* ---------- audited A2 two-way-preposition lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u1-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Das Bild hängt an der Wand.',
+    'Ich hänge das Bild an die Wand.',
+    'Das Buch liegt auf dem Tisch.',
+    'Ich lege das Buch auf den Tisch.',
+    'Ich stelle die Bücher ins Regal.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[3], targets[4]];
+  t('Corpus lesson a2-u1-l3 bounds two-way prepositions to five complete place and destination targets',
+    lesson.title.de === 'Wechselpräpositionen' && lesson.title.ar === 'حروف الجرّ ثنائية الحالة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'المكان والوجهة' &&
+      row.grammar.item === 'Wo + Dativ وWohin + Akkusativ مع an وauf وin' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].erklaerung.includes('الداتيف للمكان ومع النصب للوجهة'));
+
+  const expectedWords = [
+    'an der Wand', 'an die Wand', 'auf dem Tisch', 'auf den Tisch', 'in der Küche',
+    'in die Küche', 'über dem Bett', 'unter dem Tisch', 'vor der Tür', 'hinter dem Haus',
+    'neben dem Sofa', 'zwischen den Stühlen', 'hängen', 'legen', 'liegen', 'stellen', 'stehen',
+    'setzen', 'sitzen', 'stecken', 'der Schrank', 'das Regal', 'der Teppich', 'die Ecke',
+    'der Balkon', 'der Boden', 'drinnen', 'nebenan', 'die Postkarte', 'die Schere', 'das Tablet'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u1-l3 reviews all 31 entries and three precise mnemonics without the false motion rule, case table contradiction or artificial nebenan error',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['an der Wand'].ex === targets[0] &&
+      byWord['an die Wand'].ex === 'Wohin hängst du das Bild? – Ich hänge es an die Wand.' &&
+      byWord['an die Wand'].err === 'Wohin hängst du das Bild? – Ich hänge es an der Wand.' &&
+      byWord['auf dem Tisch'].ex.includes('liegt auf dem Tisch') &&
+      byWord['auf den Tisch'].ex.includes('lege den Schlüssel auf den Tisch') &&
+      byWord['in der Küche'].ex === 'Wir essen in der Küche.' &&
+      byWord['in die Küche'].err.startsWith('Wohin gehst du?') &&
+      byWord['in die Küche'].why.includes('in der Küche فتصف مكان الحركة') &&
+      byWord['über dem Bett'].ex.includes('hängt über dem Bett') &&
+      byWord['unter dem Tisch'].ex.includes('steht unter dem Tisch') &&
+      byWord['vor der Tür'].ex.includes('steht vor der Tür') &&
+      byWord['hinter dem Haus'].ex.includes('ist hinter dem Haus') &&
+      byWord['neben dem Sofa'].ex.includes('steht neben dem Sofa') &&
+      byWord['zwischen den Stühlen'].ex.includes('liegt zwischen den Stühlen') &&
+      byWord.hängen.pl.endsWith('hat gehangen') && byWord.legen.ar === 'يضع أفقيًا' &&
+      byWord.liegen.ex === targets[2] && byWord.stellen.err.includes('in der Kühlschrank') &&
+      byWord.stehen.ex.includes('steht im Kühlschrank') && byWord.setzen.ex.includes('auf den Stuhl') &&
+      byWord.sitzen.ex.includes('auf dem Stuhl') && byWord.stecken.ex.includes('steckt in der Tür') &&
+      byWord['der Schrank'].why.includes('داخل الخزانة') && byWord['das Regal'].ex === targets[4] &&
+      byWord['der Teppich'].ex.includes('liegt auf dem Boden') && byWord['die Ecke'].ex.includes('in der Ecke') &&
+      byWord['der Balkon'].ex.includes('auf dem Balkon') && byWord['der Boden'].ex.includes('auf dem Boden') &&
+      byWord.drinnen.ex.startsWith('Bei Regen') && byWord.nebenan.ex === 'Der Nachbar wohnt nebenan.' &&
+      byWord.nebenan.err === 'Der Nachbar wohnt neben an.' &&
+      byWord['die Postkarte'].ar === 'البطاقة البريدية' && byWord['die Schere'].ex.includes('auf dem Tisch') &&
+      byWord['das Tablet'].ex === 'Das Tablet liegt neben dem Sofa.' &&
+      tricks.length === 3 && tricks[0].trick.includes('حروف الجرّ ثنائية الحالة') &&
+      tricks[0].warum.includes('يخص حروف الجرّ ثنائية الحالة') &&
+      tricks[1].trick.includes('لا الحركة وحدها') && tricks[1].wie.includes('Bewegung, aber Wo') &&
+      tricks[1].warum.includes('وجود الحركة وحده لا يحدد الحالة') &&
+      tricks[2].trick.includes('am وim للداتيف') && tricks[2].wie.includes('in das = ins') &&
+      tricks[2].warum.includes('den فقد يكون مذكر النصب أو جمع الداتيف') &&
+      !lessonText.includes('الفعل المتحرك يأخذ نصبًا والساكن داتيفًا') &&
+      !lessonText.includes('في الداتيف: dem · der · dem · den') &&
+      !lessonText.includes('السكون في الشهر') && !lessonText.includes('فالتاء نصب') &&
+      !lessonText.includes('hilft immer an') &&
+      !lessonText.includes('Ich hänge das Bild an der Wand.') &&
+      !lessonText.includes('Ich lege das Buch auf dem Tisch.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u1-l3 aligns strict clozes, one destination order, 32-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Ich gehe in ____ Küche.' &&
+      wordCloze1.frage.antworten.join(' ') === 'die' && wordCloze1.frage.nearMiss.der &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'der').ok &&
+      wordCloze2.frage.zeigt === 'Ich stelle die Bücher ins ____.' &&
+      wordCloze2.frage.antworten.join(' ') === 'Regal' && wordCloze2.frage.nearMiss.Regale &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Regale').ok &&
+      imitate.zeigt.de === 'Das Bild hängt an ____ Wand.' &&
+      imitate.frage.antworten.join(' ') === 'der' && imitate.frage.nearMiss.die &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'die').ok &&
+      drill.frage.zeigt === 'Wohin hängst du das Bild? – Ich hänge es an ____ Wand.' &&
+      drill.frage.antworten.join(' ') === 'die' && drill.frage.nearMiss.der &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'der').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'lege' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.lsk.join(' ') === 'lege' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'das', 'Buch', 'lege', 'auf', 'den', 'Tisch.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 32 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u1-l3 makes 80 percent four of five measurable across ins Regal, an die, auf den, an der and auf dem',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u1-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich stelle die Bücher in den Regal.') &&
+      checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Wohin hängst du das Bild? – Ich hänge es an ____ Wand.' &&
+      clozeCheck.frage.antworten.join(' ') === 'die' && clozeCheck.frage.nearMiss.der &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'der').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'lege' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'das', 'Buch', 'lege', 'auf', 'den', 'Tisch.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'präposition' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[4].frage.misconceptionFamilies.a === 'präposition');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

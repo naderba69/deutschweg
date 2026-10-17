@@ -61,7 +61,7 @@
   const A2 = [
     ['حالة الداتيف', 'Dativ', 'الإعطاء', 'المذكر والمؤنث والمحايد والجمع وحرف mit', 'explicit', 32, 13],
     ['أفعال مع الداتيف', 'Verben mit Dativ', 'المساعدة', 'helfen وgeben وgehören وpassen وzeigen', 'explicit', 31, 13],
-    ['حروف الاتجاهين', 'Wechselpräpositionen', 'المكان والحركة', 'Wechselpräpositionen', 'explicit', 31, 13],
+    ['حروف الجرّ ثنائية الحالة', 'Wechselpräpositionen', 'المكان والوجهة', 'Wo + Dativ وWohin + Akkusativ مع an وauf وin', 'explicit', 31, 13],
     ['لأن', 'weil', 'السبب', 'weil والفعل في الآخر', 'explicit', 31, 13],
     ['أنّ', 'dass', 'النقل', 'dass', 'explicit', 31, 13],
     ['إذا', 'wenn', 'الشرط البسيط', 'wenn', 'explicit', 30, 13],

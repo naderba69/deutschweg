@@ -92,25 +92,50 @@ module.exports = [
       summaryRecap: 'helfen geben gehören passen zeigen'
     }),
 
-  U('a2-u1-l3', 'A2', 'حروف الاتجاهين', 'Wechselpräpositionen', 'präposition',
-    'Am Ende unterscheidest du Wo mit Dativ und Wohin mit Akkusativ',
-    'في النهاية تفرّق بين أين بالداتيف وإلى أين بالنصب.',
+  U('a2-u1-l3', 'A2', 'حروف الجرّ ثنائية الحالة', 'Wechselpräpositionen', 'präposition',
+    'Am Ende verwendest du an, auf und in mit Dativ für Orte und Akkusativ für Ziele',
+    'في النهاية تستعمل an وauf وin مع الداتيف للمكان ومع النصب للوجهة.',
     [
-      ['Wo: Dativ', 'المكان الثابت داتيف', 'in die Stadt bedeutet Bewegung', 'Ich bin in die Stadt', 'الثبات in der'],
-      ['Wohin: Akkusativ', 'الحركة نصب', 'in der Stadt antwortet auf Wo', 'Ich gehe in der Stadt als Ziel', 'الهدف in die'],
-      ['auf den Tisch', 'حركة إلى السطح نصب', 'auf dem Tisch ist Lage', 'Ich lege es auf dem Tisch', 'الوضع على السطح للنصب den'],
-      ['an die Wand', 'تعليق باتجاه الجدار نصب', 'an der Wand ist Lage', 'Ich hänge es an der Wand als Ziel', 'الهدف an die']
+      ['Das Bild hängt an der Wand.', 'تستعمل an مع الداتيف لوصف مكان الصورة', 'السؤال Wo? والمكان مع an يحتاجان هنا an der Wand', 'Das Bild hängt an die Wand.', 'لوصف المكان نقول an der Wand'],
+      ['Ich hänge das Bild an die Wand.', 'تستعمل an مع النصب عندما يكون الجدار وجهة الصورة', 'السؤال Wohin? والوجهة مع an يحتاجان هنا an die Wand', 'Ich hänge das Bild an den Wand.', 'Wand مؤنث؛ عندما يكون الجدار هو الوجهة نقول an die Wand'],
+      ['Ich lege das Buch auf den Tisch.', 'تستعمل auf مع النصب عندما تكون الطاولة وجهة الكتاب', 'السؤال Wohin? والوجهة مع auf يحتاجان هنا auf den Tisch', 'Ich lege das Buch auf der Tisch.', 'Tisch مذكر؛ عندما تكون الطاولة هي الوجهة نقول auf den Tisch'],
+      ['Ich stelle die Bücher ins Regal.', 'تستعمل in مع النصب عندما يكون الرف وجهة الكتب', 'ins اختصار in das، وهو نصب للوجهة هنا', 'Ich stelle die Bücher in den Regal.', 'Regal محايد؛ عندما يكون وجهة نقول in das Regal أو ins Regal']
     ],
     [
-      ['Ich bin in der Stadt.', 'أنا في المدينة', 'Ich bin in die Stadt', 'الثبات der', 'der'],
-      ['Ich gehe in die Stadt.', 'أذهب إلى المدينة', 'Ich gehe in der Stadt', 'الحركة die', 'die'],
-      ['Das Buch liegt auf dem Tisch.', 'الكتاب على الطاولة', 'Das Buch liegt auf den Tisch', 'الوضع dem', 'dem'],
-      ['Ich lege das Buch auf den Tisch.', 'أضع الكتاب على الطاولة', 'Ich lege das Buch auf dem Tisch', 'الحركة den', 'den']
+      ['Das Bild hängt an der Wand.', 'الصورة معلقة على الحائط', 'Das Bild hängt an die Wand.', 'المكان مع an يأتي هنا في الداتيف: an der Wand', 'der'],
+      ['Ich hänge das Bild an die Wand.', 'أعلّق الصورة على الحائط', 'Ich hänge das Bild an den Wand.', 'Wand مؤنث؛ الوجهة مع an تأتي هنا في النصب: an die Wand', 'die'],
+      ['Das Buch liegt auf dem Tisch.', 'الكتاب موجود على الطاولة', 'Das Buch liegt auf den Tisch.', 'المكان مع auf يأتي هنا في الداتيف: auf dem Tisch', 'dem'],
+      ['Ich lege das Buch auf den Tisch.', 'أضع الكتاب على الطاولة', 'Ich lege das Buch auf der Tisch.', 'Tisch مذكر؛ الوجهة مع auf تأتي هنا في النصب: auf den Tisch', 'den']
     ],
-    'Ich bin in der Stadt. Ich gehe in die Stadt.',
-    'Ich lege das Buch auf den Tisch.',
-    'Bilde morgen ein Wo und ein Wohin.',
-    'غدًا كوّن جملة أين وجملة إلى أين.'),
+    'Das Buch liegt auf dem Tisch.',
+    'Ich stelle die Bücher ins Regal.',
+    'Wiederhole morgen die fünf Sätze: Das Bild hängt an der Wand. Ich hänge das Bild an die Wand. Das Buch liegt auf dem Tisch. Ich lege das Buch auf den Tisch. Ich stelle die Bücher ins Regal.',
+    'غدًا راجع الجمل الخمس التي تميّز المكان من الوجهة.',
+    {
+      factFamilies: ['präposition', 'präposition', 'präposition', 'präposition'],
+      writing: {
+        zeigt: 'Fünf Sätze mit Wechselpräpositionen',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع an وauf وin في الحالة الصحيحة.',
+        prompt: 'اكتب الجمل الخمس مستعملًا الداتيف للمكان والنصب للوجهة.',
+        promptDe: 'Das Bild hängt an der Wand. · Ich hänge das Bild an die Wand. · Das Buch liegt auf dem Tisch. · Ich lege das Buch auf den Tisch. · Ich stelle die Bücher ins Regal.',
+        points: ['Das Bild hängt an der Wand.', 'Ich hänge das Bild an die Wand.', 'Das Buch liegt auf dem Tisch.', 'Ich lege das Buch auf den Tisch.', 'Ich stelle die Bücher ins Regal.'],
+        minWords: 32,
+        frage: 'اكتب الجمل الخمس كاملة: جملتا مكان وثلاث جمل وجهة.',
+        familie: 'präposition',
+        hinweise: ['اسأل Wo للمكان وWohin للوجهة.', 'راجع an der/an die وauf dem/auf den وins Regal.']
+      },
+      imitateNearMiss: 'die',
+      transformHint: 'عندما يكون الرف هو الوجهة نقول ins Regal.',
+      orderAr: 'رتّب جملة الوجهة: ابدأ بـ Ich lege ثم das Buch ثم auf den Tisch.',
+      orderHints: ['ابدأ بـ Ich وضع lege في الموضع الثاني.', 'ضع الشيء das Buch قبل الوجهة auf den Tisch.'],
+      orderSentence: 'Ich lege das Buch auf den Tisch.',
+      checkOrderSentence: 'Ich lege das Buch auf den Tisch.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة وجهة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل Das Bild hängt an der Wand وIch hänge das Bild an die Wand وDas Buch liegt auf dem Tisch وIch lege das Buch auf den Tisch وIch stelle die Bücher ins Regal.',
+      summaryDe: 'Das Bild hängt an der Wand. · Ich hänge das Bild an die Wand. · Das Buch liegt auf dem Tisch. · Ich lege das Buch auf den Tisch. · Ich stelle die Bücher ins Regal.',
+      summaryAr: 'راجع المكان an der Wand وauf dem Tisch، والوجهة an die Wand وauf den Tisch وins Regal.',
+      summaryRecap: 'Wo Dativ Wohin Akkusativ'
+    }),
 
   U('a2-u1-l4', 'A2', 'لأن', 'weil', 'wortstellung',
     'Am Ende stellst du das Verb nach weil an das Ende',
