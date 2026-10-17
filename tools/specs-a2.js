@@ -634,25 +634,50 @@ module.exports = [
       summaryRecap: 'auf an über auf an'
     }),
 
-  U('a2-u3-l3', 'A2', 'إضافة الأسماء', 'Genitiv der Namen', 'deklination',
-    'Am Ende bildest du den Besitz mit s',
-    'في النهاية تبني الملكية باسم العلم.',
+  U('a2-u3-l3', 'A2', 'حالة Genitiv للملكية ومع حروف الجر', 'Genitiv bei Besitz und Präpositionen', 'deklination',
+    'Am Ende verwendest du fünf vollständige Genitivsätze mit Namen, Nomen und Präpositionen',
+    'في النهاية تستعمل حالة Genitiv في خمس جمل كاملة مع أسماء الأشخاص والأسماء العامة وحروف الجر.',
     [
-      ['Annas Tasche', 'اسم العلم يأخذ s', 'لا Anna ihre Tasche als Standard', 'Anna ihre Tasche', 'الإضافة Annas'],
-      ['s nach dem Namen', 'الـ s ملاصقة', 'لا von كتعويض دائم في هذا الدرس', 'die Tasche von Anna als einzige Form', 'هنا الشكل Annas'],
-      ['kein Apostroph', 'لا فاصلة علوية', 'الفاصلة العلوية إنجليزية', 'Anna Tasche mit Apostroph', 'بلا فاصلة'],
-      ['Peters Buch', 'الاسم المذكر كذلك s', 'لا Peter Buch', 'Peter Buch ohne s', 'الـ s لازمة']
+      ['Annas Tasche ist hier.', 'تضيف s إلى اسم الشخص العادي للدلالة على الملكية', 'في النص العادي نكتب Annas بلا فاصلة عليا', 'Anna Tasche ist hier.', 'نحتاج s الملكية: Annas Tasche'],
+      ["Das ist Max' Fahrrad.", 'تستعمل الفاصلة العليا بعد اسم ينتهي بصوت s من دون s إضافية', "ينتهي Max بحرف x، لذلك نكتب Max' ولا نترك الاسم بلا علامة ملكية", 'Das ist Max Fahrrad.', "بعد Max نضع فاصلة عليا فقط: Max' Fahrrad"],
+      ['Das Auto meines Vaters steht hier.', 'تستعمل meines مع الاسم المذكر وتضيف s إلى Vater', 'صيغة Genitiv هنا meines Vaters', 'Das Auto meines Vater steht hier.', 'بعد meines نحتاج هنا Vaters'],
+      ['Die Namen der Gäste stehen hier.', 'تستعمل der مع جمع Genitiv', 'جمع Genitiv هنا der Gäste', 'Die Namen des Gäste stehen hier.', 'مع الجمع نقول der Gäste لا des Gäste']
     ],
     [
-      ['Annas Tasche ist hier.', 'حقيبة آنا هنا', 'Anna ihre Tasche ist hier', 'الإضافة Annas', 'Annas'],
-      ['Peters Buch liegt da.', 'كتاب بيتر هناك', 'Peter Buch liegt da', 'الإضافة Peters', 'Peters'],
-      ['Saras Schlüssel fehlt.', 'مفتاح سارة مفقود', 'Sara Schluessel mit Apostroph', 'بلا فاصلة', 'Saras'],
-      ['Das ist Leilas Heft.', 'هذا دفتر ليلى', 'Das ist Leila ihr Heft', 'الإضافة Leilas', 'Leilas']
+      ['Annas Tasche ist hier.', 'حقيبة آنا هنا', 'Anna Tasche ist hier.', 'نحتاج s الملكية: Annas Tasche', 'Annas'],
+      ["Das ist Max' Fahrrad.", 'هذه دراجة ماكس', 'Das ist Max Fahrrad.', "بعد الاسم المنتهي بـ x نكتب Max'", "Max'"],
+      ['Das Auto meines Vaters steht hier.', 'سيارة والدي هنا', 'Das Auto meines Vater steht hier.', 'نقول meines Vaters', 'Vaters'],
+      ['Die Namen der Gäste stehen hier.', 'أسماء الضيوف مكتوبة هنا', 'Die Namen des Gäste stehen hier.', 'جمع Genitiv يأخذ der: der Gäste', 'der']
     ],
-    'Annas Tasche ist hier. Peters Buch liegt da.',
-    'Annas Tasche ist hier.',
-    'Bilde morgen zwei Namen mit s.',
-    'غدًا كوّن اسمين مع s.'),
+    "Annas Tasche ist hier. Das ist Max' Fahrrad. Das Auto meines Vaters steht hier. Die Namen der Gäste stehen hier. Wegen des Regens bleiben wir hier.",
+    'Wegen des Regens bleiben wir hier.',
+    "Wiederhole morgen die fünf Sätze: Annas Tasche ist hier. Das ist Max' Fahrrad. Das Auto meines Vaters steht hier. Die Namen der Gäste stehen hier. Wegen des Regens bleiben wir hier.",
+    'غدًا راجع الجمل الخمس مع أسماء الأشخاص والأسماء العامة وwegen.',
+    {
+      factFamilies: ['deklination', 'deklination', 'kasus', 'kasus'],
+      writing: {
+        zeigt: 'Fünf Genitivsätze',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع Annas وMax’ وmeines Vaters وder Gäste وwegen des Regens.',
+        prompt: 'اكتب الجمل الخمس مستعملًا صيغ Genitiv الصحيحة.',
+        promptDe: "Annas Tasche ist hier. · Das ist Max' Fahrrad. · Das Auto meines Vaters steht hier. · Die Namen der Gäste stehen hier. · Wegen des Regens bleiben wir hier.",
+        points: ['Annas Tasche ist hier.', "Das ist Max' Fahrrad.", 'Das Auto meines Vaters steht hier.', 'Die Namen der Gäste stehen hier.', 'Wegen des Regens bleiben wir hier.'],
+        minWords: 26,
+        frage: 'اكتب الجمل الخمس كاملة بصيغ الملكية وحرف الجر الصحيحة.',
+        familie: 'deklination',
+        hinweise: ['أضف s إلى Anna، لكن ضع فاصلة عليا فقط بعد Max.', 'راجع meines Vaters وder Gäste وwegen des Regens.']
+      },
+      imitateNearMiss: 'Anna',
+      transformHint: 'بعد wegen ندرّب هنا الصيغة المعيارية des Regens.',
+      orderAr: "رتّب الجملة: Das ist ثم Max' Fahrrad.",
+      orderHints: ['ابدأ بـ Das وضع ist في الموضع الثاني.', "ضع Max' قبل Fahrrad."],
+      orderSentence: "Das ist Max' Fahrrad.",
+      checkOrderSentence: "Das ist Max' Fahrrad.",
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة ملكية صحيحة مع Max.',
+      speakAr: "سجّل عشرين ثانية: قل Annas Tasche ist hier وDas ist Max' Fahrrad وDas Auto meines Vaters steht hier وDie Namen der Gäste stehen hier وWegen des Regens bleiben wir hier.",
+      summaryDe: "Annas Tasche ist hier. · Das ist Max' Fahrrad. · Das Auto meines Vaters steht hier. · Die Namen der Gäste stehen hier. · Wegen des Regens bleiben wir hier.",
+      summaryAr: 'راجع Annas بلا فاصلة، وMax’ بفاصلة عليا، وmeines Vaters وder Gäste وdes Regens.',
+      summaryRecap: "Annas Max' meines der wegen"
+    }),
 
   U('a2-u3-l4', 'A2', 'السفر', 'Reisen', 'lexik-kollokation',
     'Am Ende reservierst du und sagst eine Verspätung',

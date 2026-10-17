@@ -73,7 +73,7 @@
     ['ماضي sein وhaben البسيط', 'Präteritum von sein und haben', 'ذكريات وأحوال في الماضي', 'sein: war/warst/waren · haben: hatte/hatten · عبارة زمنية في الموقع الأول ثم الفعل المصرف', 'explicit', 30, 13],
     ['الطلبات المهذّبة بصيغة Konjunktiv II', 'Höfliche Bitten mit Konjunktiv II', 'الطلبات المهذّبة والخدمات', 'würde + Infinitiv · Würden/Könnten/Hätten Sie …? · Das wäre …', 'explicit', 29, 13],
     ['أفعال مع حروف جر ثابتة', 'Verben mit festen Präpositionen', 'التواصل والاهتمامات والمشاركة', 'warten auf + Akk. · denken an + Akk. · sprechen über + Akk. · sich freuen auf + Akk. · teilnehmen an + Dat.', 'explicit', 31, 13],
-    ['إضافة الأسماء', 'Genitiv der Namen', 'الانتماء', 'Annas Buch', 'inductive', 29, 13],
+    ['حالة Genitiv للملكية ومع حروف الجر', 'Genitiv bei Besitz und Präpositionen', 'الملكية والانتماء وحروف الجر', 'Namen + -s / Apostroph nach s-Laut · des/meines + -(e)s · der/meiner · wegen/während/trotz/statt + Genitiv', 'explicit', 29, 13],
     ['السفر', 'Reisen', 'السفر', 'إطار الرحلة', 'inductive', 35, 13],
     ['الصحة', 'Gesundheit', 'الصحة', 'وصف عرض', 'inductive', 31, 13],
     ['العمل', 'Arbeit', 'العمل', 'وصف يوم عمل', 'inductive', 31, 13],

@@ -4291,6 +4291,113 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
 }
 
+/* ---------- audited A2 genitive lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u3-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Annas Tasche ist hier.',
+    "Das ist Max' Fahrrad.",
+    'Das Auto meines Vaters steht hier.',
+    'Die Namen der Gäste stehen hier.',
+    'Wegen des Regens bleiben wir hier.'
+  ];
+  t('Corpus lesson a2-u3-l3 bounds genitive ownership and prepositions to five complete name, noun and wegen targets',
+    lesson.title.de === 'Genitiv bei Besitz und Präpositionen' &&
+      lesson.title.ar === 'حالة Genitiv للملكية ومع حروف الجر' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الملكية والانتماء وحروف الجر' &&
+      row.grammar.item === 'Namen + -s / Apostroph nach s-Laut · des/meines + -(e)s · der/meiner · wegen/während/trotz/statt + Genitiv' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 29 &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[4] &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwendest du fünf vollständige Genitivsätze mit Namen, Nomen und Präpositionen');
+
+  const expectedWords = [
+    'das Auto meines Vaters', 'die Tasche meiner Mutter', 'das Zimmer des Kindes', 'die Namen der Gäste',
+    'wegen des Regens', 'während der Arbeit', 'trotz des Wetters', 'statt des Autos', 'der Name',
+    'die Adresse', 'die Farbe', 'der Preis', 'die Nummer', 'die Tür', 'das Ende', 'der Anfang',
+    'die Meinung', 'der Chef', 'die Eltern', 'der Bruder', 'die Schwester', 'der Freund', 'das Büro',
+    'die Straße', 'die Wohnung', 'der Kollege', 'die Vermieterin', 'die Studentin', 'die Rentnerin'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u3-l3 reviews all 29 entries and three nuanced mnemonics without rejecting von or colloquial dative alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['das Auto meines Vaters'].ex === targets[2] && byWord['das Auto meines Vaters'].err.includes('meines Vater') &&
+      byWord['die Tasche meiner Mutter'].err.includes('meiner Mutters') &&
+      byWord['das Zimmer des Kindes'].why.includes('des Kindes') && byWord['die Namen der Gäste'].ex === targets[3] &&
+      byWord['wegen des Regens'].ex === targets[4] && byWord['wegen des Regens'].why.includes('الصيغة المعيارية') &&
+      byWord['während der Arbeit'].err.includes('des Arbeit') && byWord['trotz des Wetters'].err.includes('des Wetter') &&
+      byWord['statt des Autos'].ex === 'Statt des Autos nehme ich das Fahrrad.' &&
+      byWord['die Nummer'].err.includes('des Kunde') && byWord['die Nummer'].why.includes('اسم مذكر ضعيف') &&
+      byWord['der Kollege'].err.includes('des Kollege') && byWord['der Kollege'].why.includes('اسم مذكر ضعيف') &&
+      byWord['die Eltern'].why.includes('جمع') && byWord['die Straße'].why.includes('مؤنث') &&
+      !errors.includes('Das ist das Auto von meinem Vater.') && !errors.includes('Wegen dem Regen bleiben wir hier.') &&
+      !errors.includes('Die Tasche von Anna ist hier.') && tricks.length === 3 &&
+      tricks[0].trick.includes('بعد صوت s') && tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes(targets[1]) &&
+      tricks[0].wie.includes('Annas Tasche hat keinen Apostroph.') && tricks[0].wie.includes('nicht Schluessel') &&
+      tricks[0].warum.includes('von مع الداتيف') &&
+      tricks[1].trick.includes('des/meines + -(e)s') && tricks[1].wie.includes('das Büro des Kollegen') &&
+      tricks[1].warum.includes('des Kollegen') && tricks[1].warum.includes('des Kunden') &&
+      tricks[2].trick.includes('Genitiv المعياري') && tricks[2].wie.includes('Das Auto von meinem Vater ist ebenfalls richtig.') &&
+      tricks[2].warum.includes('لا نرفضها مطلقًا'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u3-l3 aligns strict Arbeit, Freundes, Annas and Regens clozes, full Max order and 26-word production',
+    wordCloze1.frage.zeigt === 'Während der ____ telefoniere ich nicht.' && wordCloze1.frage.antworten.join(' ') === 'Arbeit' &&
+      wordCloze1.frage.nearMiss.Arbeiten && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Arbeiten').ok &&
+      wordCloze2.frage.zeigt === 'Das Auto meines ____ ist schnell.' && wordCloze2.frage.antworten.join(' ') === 'Freundes' &&
+      wordCloze2.frage.nearMiss.Freund && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Freund').ok &&
+      imitate.zeigt.de === '____ Tasche ist hier.' && imitate.frage.antworten.join(' ') === 'Annas' &&
+      imitate.frage.nearMiss.Anna && !win.DW.renderers.judgeCloze(imitate.frage, 'Anna').ok &&
+      drill.frage.zeigt === 'Wegen des ____ bleiben wir hier.' && drill.frage.antworten.join(' ') === 'Regens' &&
+      drill.frage.nearMiss.Regen && !win.DW.renderers.judgeCloze(drill.frage, 'Regen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'ist' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Das' && order.frage.fields.lsk.join(' ') === 'ist' &&
+      order.frage.fields.mittelfeld.join(' ') === "Max' Fahrrad." &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Das', "Max'", 'Fahrrad.', 'ist']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 26 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u3-l3 makes 80 percent four of five independent across plural, wegen, Max, Vaters and Annas genitives',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u3-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.antworten.join(' ') === 'Regens' && clozeCheck.frage.nearMiss.Regen &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Regen').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Das' &&
+      orderCheck.frage.fields.mittelfeld.join(' ') === "Max' Fahrrad." &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Das', "Max'", 'Fahrrad.', 'ist']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) && checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
