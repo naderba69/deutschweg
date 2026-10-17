@@ -3250,6 +3250,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
 
+/* ---------- audited A2 wenn lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u1-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Wenn ich Zeit habe, rufe ich dich an.',
+    'Wenn es regnet, nehme ich den Bus.',
+    'Wenn du Lust hast, können wir ins Kino gehen.',
+    'Wenn ich alle Hausaufgaben gemacht habe, spiele ich.',
+    'Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[2], targets[3]];
+  t('Corpus lesson a2-u1-l6 bounds wenn conditions to five complete simple, modal, Perfekt and main-clause-first targets',
+    lesson.title.de === 'Bedingungen mit wenn' && lesson.title.ar === 'الشرط بـ wenn' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الشروط والنتائج' &&
+      row.grammar.item === 'wenn: الفعل النهائي · بعد جملة wenn المتقدمة يأتي فعل الجملة الرئيسية ثم الفاعل · modal وPerfekt' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 30 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du fünf vollständige wenn-Sätze mit korrekter Verbstellung');
+
+  const expectedWords = [
+    'wenn', 'als', 'ob', 'regnen', 'die Zeit', 'die Lust', 'die Ferien',
+    'der Besuch', 'das Wochenende', 'die Kraft', 'die Geduld', 'klappen',
+    'fertig', 'müde', 'die Sonne', 'der Regen', 'die Erkältung', 'der Arzt',
+    'die Apotheke', 'der Kühlschrank', 'die Hausaufgabe', 'der Unterricht',
+    'die Fahrkarte', 'das Geschenk', 'die Nachricht', 'der Kaffee', 'erst',
+    'sonnig', 'weich', 'pro'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u1-l6 reviews all 30 entries and three precise mnemonics without if contamination or false ob and pro absolutes',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.wenn.ex === targets[1] && byWord.wenn.ar.includes('للشرط أو التكرار') &&
+      byWord.als.ex === 'Als ich klein war, wohnten wir in Tunis.' && byWord.als.why.includes('فترة ماضية واحدة') &&
+      byWord.ob.ex === 'Ich weiß nicht, ob die Apotheke offen ist.' && byWord.ob.why.includes('نعم أو لا') &&
+      byWord.regnen.ex === targets[1] && byWord['die Zeit'].ex === targets[0] &&
+      byWord['die Lust'].ex.includes('große Lust auf einen Film') && byWord['die Ferien'].ex.includes('fahren wir ans Meer') &&
+      byWord['der Besuch'].ex.includes('koche ich Kaffee') && byWord['das Wochenende'].ex.includes('schlafe ich länger') &&
+      byWord['die Kraft'].ex.includes('genug Kraft habe') && byWord['die Geduld'].ex.includes('Schritt für Schritt') &&
+      byWord.klappen.ex.includes('kommen wir pünktlich an') && byWord.fertig.ex.includes('fertig bin') &&
+      byWord.müde.ex.includes('wenn ich müde bin') && byWord['die Sonne'].ex.includes('sitzen wir draußen') &&
+      byWord['der Regen'].ex.includes('gehen wir spazieren') && byWord['die Erkältung'].ex.includes('vorbei ist') &&
+      byWord['der Arzt'].ex.includes('untersucht er mich') && byWord['die Apotheke'].ex.includes('offen ist') &&
+      byWord['der Kühlschrank'].ex.includes('leer ist') && byWord['die Hausaufgabe'].ex === targets[3] &&
+      byWord['der Unterricht'].ex.includes('fahre ich nach Hause') && byWord['die Fahrkarte'].ex === targets[4] &&
+      byWord['das Geschenk'].ex.includes('freut sich das Kind') && byWord['die Nachricht'].ex.includes('antworte ich sofort') &&
+      byWord['der Kaffee'].ex.includes('rufe ich dich an') && byWord.erst.ex.startsWith('Erst wenn') &&
+      byWord.sonnig.ex.includes('sonnig ist') && byWord.weich.ex.includes('weich ist') &&
+      byWord.pro.ex === 'Die Fahrkarte kostet zehn Euro pro Person.' &&
+      tricks.length === 3 && tricks[0].trick.includes('wenn للشرط أو التكرار') &&
+      tricks[0].trick.includes('als لمرة أو فترة واحدة في الماضي') && tricks[0].wie.includes('Als ich klein war') &&
+      tricks[1].trick.includes('فعل نهائي') && tricks[1].wie.includes(targets[0]) && tricks[1].wie.includes(targets[1]) &&
+      tricks[1].warum.includes('تشغل الخانة الأولى كلها') && tricks[1].warum.includes('nehme ich') &&
+      tricks[2].trick.includes('wenn للشرط') && tricks[2].trick.includes('wann للسؤال عن الوقت') &&
+      tricks[2].trick.includes('ob لسؤال نعم/لا غير المباشر') && tricks[2].wie.includes('oder nicht') &&
+      !lessonText.includes('If ich') && !lessonText.includes('ob لا تحتاج oder') &&
+      !lessonText.includes('pro يريد داتيف') && !lessonText.includes('Wenn der Kaffee fertig ist, rufe ich dich.') &&
+      !lessonText.includes('Wenn ich kann heute vor kann'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u1-l6 aligns strict clozes, one complete wenn order, 42-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Wenn du große ____ auf einen Film hast, können wir ins Kino gehen.' &&
+      wordCloze1.frage.antworten.join(' ') === 'Lust' && wordCloze1.frage.nearMiss.Laune &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Laune').ok &&
+      wordCloze2.frage.zeigt === 'Wenn der ____ endet, fahre ich nach Hause.' &&
+      wordCloze2.frage.antworten.join(' ') === 'Unterricht' && wordCloze2.frage.nearMiss.Unterrichten &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Unterrichten').ok &&
+      imitate.zeigt.de === 'Wenn ich Zeit ____, rufe ich dich an.' &&
+      imitate.frage.antworten.join(' ') === 'habe' && imitate.frage.nearMiss.hast &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'hast').ok &&
+      drill.frage.zeigt === 'Wenn ich alle ____ gemacht habe, spiele ich.' &&
+      drill.frage.antworten.join(' ') === 'Hausaufgaben' && drill.frage.nearMiss.Hausaufgabe &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Hausaufgabe').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[4] && order.frage.finite === 'fahre' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.lsk.join(' ') === 'fahre' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'mit', 'dem', 'Rad,', 'wenn', 'die', 'Fahrkarte', 'teuer', 'ist.', 'fahre']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 42 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u1-l6 makes 80 percent four of five measurable across Perfekt, Hausaufgaben, complete order, nehme ich and rufe ich',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u1-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Wenn ich alle Hausaufgaben habe gemacht, spiele ich.') &&
+      checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Wenn ich alle ____ gemacht habe, spiele ich.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Hausaufgaben' && clozeCheck.frage.nearMiss.Hausaufgabe &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Hausaufgabe').ok &&
+      orderCheck.frage.correct.join(' ') === targets[4] && orderCheck.frage.finite === 'fahre' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'mit', 'dem', 'Rad,', 'wenn', 'die', 'Fahrkarte', 'teuer', 'ist.', 'fahre']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

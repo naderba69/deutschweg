@@ -227,25 +227,50 @@ module.exports = [
       summaryRecap: 'dass Komma Verbende'
     }),
 
-  U('a2-u1-l6', 'A2', 'إذا', 'wenn', 'wortstellung',
-    'Am Ende bildest du einen wenn-Satz mit Verb am Ende',
-    'في النهاية تبني جملة wenn والفعل في الآخر.',
+  U('a2-u1-l6', 'A2', 'الشرط بـ wenn', 'Bedingungen mit wenn', 'wortstellung',
+    'Am Ende bildest du fünf vollständige wenn-Sätze mit korrekter Verbstellung',
+    'في النهاية تبني خمس جمل شرطية كاملة بـ wenn مع ترتيب الفعل الصحيح.',
     [
-      ['wenn plus Ende', 'wenn يرسل الفعل إلى الآخر', 'wenn ich habe Zeit خطأ', 'wenn ich habe Zeit', 'habe ليس ثانيًا'],
-      ['wenn ist nicht wann', 'wann للسؤال وwenn للشرط', 'لا خلط', 'Wann ich Zeit habe, komme ich als Frage falsch', 'الشرط wenn'],
-      ['Hauptsatz bleibt V2', 'الجملة الرئيسية تبقى V2', 'komme ich لا ich komme nach إذا تقدم الشرط', 'Wenn ich Zeit habe, ich komme', 'الفعل أول الرئيسية إن تقدم الشرط'],
-      ['kein if', 'if ليست الأداة', 'wenn هي الأداة', 'If ich Zeit habe', 'if إنجليزية']
+      ['Wenn ich Zeit habe, rufe ich dich an.', 'تضع الفعل habe في نهاية جملة wenn', 'في جملة wenn يأتي الفعل المصرف في النهاية: Zeit habe', 'Wenn ich habe Zeit, rufe ich dich an.', 'بعد wenn نقول ich Zeit habe لا ich habe Zeit'],
+      ['Wenn es regnet, nehme ich den Bus.', 'تبدأ الجملة الرئيسية بالفعل nehme عندما تتقدم جملة wenn', 'جملة wenn المتقدمة تشغل الخانة الأولى؛ لذلك يأتي الفعل المصرف بعدها مباشرة', 'Wenn es regnet, ich nehme den Bus.', 'بعد الفاصلة نقول nehme ich لا ich nehme'],
+      ['Wenn du Lust hast, können wir ins Kino gehen.', 'تحافظ على القوس الفعلي können … gehen في الجملة الرئيسية', 'بعد جملة wenn يأتي können قبل الفاعل، ويبقى المصدر gehen في نهاية الجملة الرئيسية', 'Wenn du Lust hast, wir können ins Kino gehen.', 'بعد الفاصلة نقول können wir، ويبقى gehen في النهاية'],
+      ['Wenn ich alle Hausaufgaben gemacht habe, spiele ich.', 'تضع مجموعة Perfekt gemacht habe في نهاية جملة wenn', 'في جملة wenn يأتي اسم المفعول قبل الفعل المساعد المصرف: gemacht habe', 'Wenn ich alle Hausaufgaben habe gemacht, spiele ich.', 'في جملة wenn نقول gemacht habe لا habe gemacht']
     ],
     [
-      ['Wenn ich Zeit habe, komme ich.', 'إذا كان عندي وقت آتي', 'Wenn ich habe Zeit, komme ich', 'habe في الآخر', 'habe'],
-      ['Wenn es regnet, bleibe ich.', 'إذا أمطرت أبقى', 'Wann es regnet, bleibe ich', 'الشرط wenn', 'Wenn'],
-      ['Ich komme, wenn ich kann.', 'آتي إذا استطعت', 'Ich komme, wenn ich kann heute vor kann', 'kann في الآخر', 'kann'],
-      ['Wenn du willst, gehen wir.', 'إذا أردت ذهبنا', 'If du willst, gehen wir', 'wenn لا if', 'willst']
+      ['Wenn ich Zeit habe, rufe ich dich an.', 'إذا كان لدي وقت أتصل بك', 'Wenn ich Zeit habe, ich rufe dich an.', 'بعد جملة wenn المتقدمة نقول rufe ich', 'habe'],
+      ['Wenn es regnet, nehme ich den Bus.', 'إذا نزل المطر، أستقلّ الحافلة', 'Wann es regnet, nehme ich den Bus.', 'للشرط نستعمل wenn، أما wann فللسؤال عن الوقت', 'Wenn'],
+      ['Wenn du Lust hast, können wir ins Kino gehen.', 'إذا رغبت يمكننا الذهاب إلى السينما', 'Wenn du Lust hast, kann wir ins Kino gehen.', 'مع wir نقول können، ويبقى gehen في النهاية', 'können'],
+      ['Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.', 'أذهب بالدراجة إذا كانت التذكرة غالية', 'Ich fahre mit dem Rad, wenn die Fahrkarte teuer sind.', 'الفاعل المفرد die Fahrkarte يأخذ ist', 'ist']
     ],
-    'Wenn ich Zeit habe, komme ich.',
-    'Wenn es regnet, bleibe ich.',
-    'Schreibe morgen einen wenn-Satz.',
-    'غدًا اكتب جملة wenn.'),
+    'Wenn ich Zeit habe, rufe ich dich an.',
+    'Wenn du Lust hast, können wir ins Kino gehen.',
+    'Wiederhole morgen die fünf Sätze: Wenn ich Zeit habe, rufe ich dich an. Wenn es regnet, nehme ich den Bus. Wenn du Lust hast, können wir ins Kino gehen. Wenn ich alle Hausaufgaben gemacht habe, spiele ich. Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.',
+    'غدًا راجع جمل wenn الخمس مع الفعل النهائي وترتيب الجملة الرئيسية.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf Bedingungen mit wenn',
+        erklaerung: 'اكتب جمل wenn الخمس كاملة مع ترتيب الفعل الصحيح في الجزأين.',
+        prompt: 'اكتب الجمل الخمس: شرطًا بسيطًا، وطقسًا، وجملة modal، وجملة Perfekt، وجملة تبدأ بالجزء الرئيسي.',
+        promptDe: 'Wenn ich Zeit habe, rufe ich dich an. · Wenn es regnet, nehme ich den Bus. · Wenn du Lust hast, können wir ins Kino gehen. · Wenn ich alle Hausaufgaben gemacht habe, spiele ich. · Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.',
+        points: ['Wenn ich Zeit habe, rufe ich dich an.', 'Wenn es regnet, nehme ich den Bus.', 'Wenn du Lust hast, können wir ins Kino gehen.', 'Wenn ich alle Hausaufgaben gemacht habe, spiele ich.', 'Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.'],
+        minWords: 42,
+        frage: 'اكتب جمل wenn الخمس كاملة مع ترتيب الفعل الصحيح.',
+        familie: 'wortstellung',
+        hinweise: ['اختم جملة wenn بالفعل المصرف أو بمجموعة Perfekt gemacht habe.', 'إذا تقدمت جملة wenn فابدأ الجزء الرئيسي بالفعل المصرف ثم الفاعل.']
+      },
+      imitateNearMiss: 'hast',
+      transformHint: 'بعد جملة wenn نقول können wir، ويبقى المصدر gehen في نهاية الجملة الرئيسية.',
+      orderAr: 'رتّب الجملة كاملة: الجملة الرئيسية أولًا، ثم جملة wenn المنتهية بـ teuer ist.',
+      orderHints: ['ابدأ بـ Ich fahre mit dem Rad ثم ضع الفاصلة.', 'بعد wenn رتّب die Fahrkarte teuer ist.'],
+      orderSentence: 'Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.',
+      checkOrderSentence: 'Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.',
+      orderPromptAr: 'رتّب الجملة الرئيسية وجملة wenn ترتيبًا صحيحًا.',
+      speakAr: 'سجّل عشرين ثانية: قل Wenn ich Zeit habe, rufe ich dich an وWenn es regnet, nehme ich den Bus وWenn du Lust hast, können wir ins Kino gehen وWenn ich alle Hausaufgaben gemacht habe, spiele ich وIch fahre mit dem Rad, wenn die Fahrkarte teuer ist.',
+      summaryDe: 'Wenn ich Zeit habe, rufe ich dich an. · Wenn es regnet, nehme ich den Bus. · Wenn du Lust hast, können wir ins Kino gehen. · Wenn ich alle Hausaufgaben gemacht habe, spiele ich. · Ich fahre mit dem Rad, wenn die Fahrkarte teuer ist.',
+      summaryAr: 'راجع جمل wenn الخمس: فعل نهائي، وجملة رئيسية تبدأ بالفعل، وmodal، وPerfekt، وترتيب يبدأ بالجملة الرئيسية.',
+      summaryRecap: 'wenn Verbende dann Verb Subjekt'
+    }),
 
   U('a2-u2-l1', 'A2', 'المقارنة', 'Komparativ', 'deklination',
     'Am Ende vergleichst du zwei Dinge mit als',

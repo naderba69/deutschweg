@@ -64,7 +64,7 @@
     ['حروف الجرّ ثنائية الحالة', 'Wechselpräpositionen', 'المكان والوجهة', 'Wo + Dativ وWohin + Akkusativ مع an وauf وin', 'explicit', 31, 13],
     ['التعليل بـ weil', 'Gründe mit weil', 'السبب', 'weil: الفعل المصرف في النهاية · denn: ترتيب جملة رئيسية · deshalb: بعدها الفعل المصرف مباشرة', 'explicit', 31, 13],
     ['نقل الأقوال والأفكار بـ dass', 'Aussagen mit dass', 'الأقوال والأفكار', 'dass: الفعل المصرف في النهاية مع modal وPerfekt والفعل المنفصل', 'explicit', 31, 13],
-    ['إذا', 'wenn', 'الشرط البسيط', 'wenn', 'explicit', 30, 13],
+    ['الشرط بـ wenn', 'Bedingungen mit wenn', 'الشروط والنتائج', 'wenn: الفعل النهائي · بعد جملة wenn المتقدمة يأتي فعل الجملة الرئيسية ثم الفاعل · modal وPerfekt', 'explicit', 30, 13],
     ['المقارنة', 'Komparativ', 'المقارنة', 'صيغة -er', 'inductive', 33, 13],
     ['صيغة التفضيل', 'Superlativ', 'التفضيل', 'am …sten', 'inductive', 29, 13],
     ['نهاية الصفة في الرفع', 'Adjektiv Nominativ', 'الوصف', 'نهاية الصفة في الرفع', 'explicit', 31, 13],
