@@ -5571,6 +5571,127 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
+/* ---------- audited A2 opinion, weighing, agreement and disagreement lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u5-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Meiner Meinung nach ist der Plan sinnvoll.',
+    'Der Plan ist einerseits praktisch, andererseits teuer.',
+    'Trotzdem bin ich dafür.',
+    'Da stimme ich dir zu.',
+    'Ich muss dir leider widersprechen.'
+  ];
+  t('Corpus lesson a2-u5-l2 bounds opinion, weighing, stance, agreement and disagreement to five complete sentences',
+    lesson.title.de === 'Meinung äußern: abwägen, zustimmen und widersprechen' &&
+      lesson.title.ar === 'التعبير عن الرأي: الموازنة والموافقة والاعتراض' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'التعبير عن الرأي والموازنة بين الحجج' &&
+      row.grammar.item === 'meiner Meinung nach + V2 · einerseits … andererseits · trotzdem + V2 · zustimmen/widersprechen + Dat.' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 36 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === [targets[0], targets[1], targets[3], targets[2]][i]) &&
+      lesson.schritte.find(s => s.id === 's19').zeigt.de === targets[4] &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende äußerst du deine Meinung, wägst Vorteile und Nachteile ab und stimmst zu oder widersprichst');
+
+  const expectedWords = [
+    'die Meinung', 'meiner Meinung nach', 'ich finde', 'ich glaube', 'zustimmen', 'widersprechen',
+    'recht haben', 'der Vorteil', 'der Nachteil', 'einerseits', 'andererseits', 'obwohl',
+    'trotzdem', 'deshalb', 'vielleicht', 'das Argument', 'die Diskussion', 'diskutieren',
+    'das Thema', 'die Erfahrung', 'der Grund', 'vergleichen', 'die Wahl', 'wählen',
+    'sinnvoll', 'unsinnig', 'genau', 'privat', 'selbst', 'streng', 'dafür', 'dagegen',
+    'darüber', 'egal', 'aufregen', 'streiten'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u5-l2 reviews all 36 entries and three nuanced mnemonics without rejecting valid contextual alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['die Meinung'].ex === targets[0] &&
+      byWord['meiner Meinung nach'].why.includes('nach meiner Meinung gefragt') &&
+      byWord['ich finde'].ex === 'Ich finde den Plan praktisch.' &&
+      byWord['ich glaube'].ex === 'Ich glaube, dass der Plan funktioniert.' &&
+      byWord.zustimmen.ex === targets[3] && byWord.widersprechen.ex === targets[4] &&
+      byWord['recht haben'].why.includes('Recht haben') &&
+      byWord['der Vorteil'].ex.includes('dass der Plan Zeit spart') &&
+      byWord['der Nachteil'].ex.includes('dass der Plan teuer ist') &&
+      byWord.einerseits.ex === targets[1] && byWord.einerseits.why.includes('Einerseits ist der Plan praktisch') &&
+      byWord.obwohl.ex === 'Obwohl der Plan teuer ist, bin ich dafür.' && byWord.trotzdem.ex === targets[2] &&
+      byWord['die Diskussion'].why.includes('ist lang gewesen') &&
+      byWord.diskutieren.why.includes('den Plan diskutieren') &&
+      byWord['das Thema'].why.includes('interessant gemacht') &&
+      byWord.vergleichen.why.includes('mit einem anderen vergleichen') &&
+      byWord['die Wahl'].why.includes('die Wahl schwer gemacht') &&
+      byWord.sinnvoll.why.includes('sinnvoll gemacht') &&
+      byWord.selbst.why.includes('Ich helfe mir selbst') &&
+      byWord.dagegen.why.includes('gegen den Plan') && byWord.darüber.why.includes('Wir sprechen über das') &&
+      byWord.aufregen.why.includes('Das regt mich auf') &&
+      byWord.streiten.why.includes('um Geld streiten') && byWord.streiten.why.includes('mit jemandem streiten') &&
+      !['Nach meiner Meinung gefragt', 'Du hast Recht.', 'Die Diskussion ist lang gewesen.',
+        'Wir diskutieren den Plan.', 'Jemand hat das Thema interessant gemacht.',
+        'Ich vergleiche einen Plan mit einem anderen.', 'Jemand hat mir die Wahl schwer gemacht.',
+        'Der Plan wurde sinnvoll gemacht.', 'Ich helfe mir selbst.', 'Ich bin gegen den Plan.',
+        'Wir sprechen über das.', 'Das regt mich auf.', 'Wir streiten um Geld.',
+        'Ich streite mit jemandem.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes('Ich finde den Plan praktisch.') &&
+      tricks[0].warum.includes('ist مباشرة') && tricks[1].wie.includes(targets[1]) && tricks[1].wie.includes(targets[2]) &&
+      tricks[1].warum.includes('bin بعده مباشرة') && tricks[2].wie.includes(targets[3]) && tricks[2].wie.includes(targets[4]) &&
+      tricks[2].warum.includes('الداتيف dir'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's18');
+  const drill = lesson.schritte.find(s => s.id === 's22');
+  const order = lesson.schritte.find(s => s.id === 's23');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u5-l2 aligns strict modal, comparison, opinion and separable-prefix clozes, exact weighing order and 29-word production',
+    wordCloze1.frage.zeigt === 'Ich muss dir leider ____.' && wordCloze1.frage.antworten.join(' ') === 'widersprechen' &&
+      wordCloze1.frage.nearMiss.widerspricht && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'widerspricht').ok &&
+      wordCloze2.frage.zeigt === '____ die beiden Pläne!' && wordCloze2.frage.antworten.join(' ') === 'Vergleiche' &&
+      wordCloze2.frage.nearMiss.vergleichst && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'vergleichst').ok &&
+      imitate.zeigt.de === 'Meiner ____ nach ist der Plan sinnvoll.' && imitate.frage.antworten.join(' ') === 'Meinung' &&
+      imitate.frage.nearMiss.Meinunge && !win.DW.renderers.judgeCloze(imitate.frage, 'Meinunge').ok &&
+      drill.frage.zeigt === 'Da stimme ich dir ____.' && drill.frage.antworten.join(' ') === 'zu' &&
+      drill.frage.nearMiss.zustimmen && !win.DW.renderers.judgeCloze(drill.frage, 'zustimmen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'ist' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Der Plan' && order.frage.fields.lsk.join(' ') === 'ist' &&
+      order.frage.fields.mittelfeld.join(' ') === 'einerseits praktisch, andererseits teuer.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Der', 'Plan', 'einerseits', 'ist', 'praktisch,', 'andererseits', 'teuer.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 29 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text =>
+        text.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de')))) &&
+      targets.every(x => speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de')
+        .includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u5-l2 makes 80 percent four of five independent across stance, agreement, weighing, opinion and disagreement',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u5-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u5-l2.s07 | cap.a2-u5-l2.s22 | cap.a2-u5-l2.s23 | cap.a2-u5-l2.s08 | cap.a2-u5-l2.s19' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[2]) && checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Da stimme ich dir ____.' && clozeCheck.frage.antworten.join(' ') === 'zu' &&
+      clozeCheck.frage.nearMiss.zustimmen && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'zustimmen').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Der Plan' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Der', 'Plan', 'einerseits', 'ist', 'praktisch,', 'andererseits', 'teuer.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

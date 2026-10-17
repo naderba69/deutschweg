@@ -84,7 +84,7 @@
     ['الدعوة: القبول والاعتذار والاستفسار', 'Einladung: zusagen, absagen und nachfragen', 'الرد على الدعوة وتفاصيل المناسبة', 'Danke für … · sage … zu · muss … absagen, weil … · um wie viel Uhr · mitbringen', 'explicit', 29, 13],
     ['المشكلات: العطل والفقدان والاعتذار', 'Probleme: Defekt, Verlust und Entschuldigung', 'حل المشكلات والأشياء المفقودة', 'funktioniert nicht · habe … verloren · Können Sie … reparieren? · lasse … sperren · tut mir leid', 'explicit', 31, 13],
     ['سرد الماضي: الترتيب وPerfekt', 'Vergangenheit erzählen: Reihenfolge und Perfekt', 'سرد أحداث الماضي بترتيب واضح', 'zuerst/dann/danach/plötzlich/zum Schluss · Perfekt مع haben أو sein · الفعل في الموضع الثاني', 'explicit', 31, 13],
-    ['رأي بسيط', 'Einfache Meinung', 'الرأي', 'ich finde', 'inductive', 36, 13],
+    ['التعبير عن الرأي: الموازنة والموافقة والاعتراض', 'Meinung äußern: abwägen, zustimmen und widersprechen', 'التعبير عن الرأي والموازنة بين الحجج', 'meiner Meinung nach + V2 · einerseits … andererseits · trotzdem + V2 · zustimmen/widersprechen + Dat.', 'explicit', 36, 13],
     ['رسالة أطول', 'Ein kurzer Brief', 'الرسالة', 'افتتاح وخاتمة', 'explicit', 31, 13],
     ['الهاتف', 'Telefon', 'الهاتف', 'إطار المكالمة', 'inductive', 34, 13],
     ['مراجعة A2', 'Wiederholung A2', 'المراجعة', 'جمع A2', 'explicit', 31, 13],

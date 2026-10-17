@@ -1139,25 +1139,50 @@ module.exports = [
       summaryRecap: 'zuerst dann danach plötzlich zum Schluss'
     }),
 
-  U('a2-u5-l2', 'A2', 'رأي بسيط', 'Einfache Meinung', 'lexik-kollokation',
-    'Am Ende sagst du eine Meinung und eine Einschränkung',
-    'في النهاية تقول رأيًا وتقييدًا.',
+  U('a2-u5-l2', 'A2', 'التعبير عن الرأي: الموازنة والموافقة والاعتراض', 'Meinung äußern: abwägen, zustimmen und widersprechen', 'lexik-kollokation',
+    'Am Ende äußerst du deine Meinung, wägst Vorteile und Nachteile ab und stimmst zu oder widersprichst',
+    'في النهاية تعبّر عن رأيك، وتوازن بين جانبين، ثم توافق أو تعترض.',
     [
-      ['ich finde', 'الرأي ich finde', 'لا I find that خليط', 'ich find das gut', 'find إنجليزية'],
-      ['meiner Meinung nach', 'الإطار الرسمي الخفيف', 'لا in my opinion كجملة', 'in my Meinung', 'الخليط خطأ'],
-      ['das stimmt nicht ganz', 'التقييد nicht ganz', 'لا totally false', 'das ist totally falsch', 'totally إنجليزية'],
-      ['das ist praktisch', 'الوصف praktisch', 'لا practical ككلمة', 'das ist practical', 'practical إنجليزية']
+      ['Meiner Meinung nach ist der Plan sinnvoll.', 'تقدّم رأيك بالإطار meiner Meinung nach وتحافظ على الفعل ist في الموضع الثاني', 'الإطار كله يشغل مقدمة الجملة، ولذلك يأتي ist بعده مباشرة قبل الفاعل der Plan', 'Meiner Meinung nach der Plan ist sinnvoll.', 'بعد Meiner Meinung nach يأتي الفعل المصرف ist ثم الفاعل؛ لا نؤخر الفعل إلى ما بعد der Plan'],
+      ['Der Plan ist einerseits praktisch, andererseits teuer.', 'توازن بين جانبين بالزوج einerseits … andererseits داخل جملة واحدة', 'يأتي الزوج هنا حول الصفتين praktisch وteuer بعد ist', 'Der Plan ist einerseits praktisch, andererseits er ist teuer.', 'في هذا البناء تنسّق andererseits الصفة الثانية مباشرة؛ والبديل الصحيح بجملتين هو Einerseits ist der Plan praktisch, andererseits ist er teuer'],
+      ['Da stimme ich dir zu.', 'توافق باستعمال zustimmen مع الداتيف والفعل المنفصل', 'الشخص بعد zustimmen في الداتيف dir، والبادئة zu تأتي في القوس اليميني', 'Da stimme ich dich zu.', 'نقول jemandem zustimmen: dir في الداتيف، لا dich في النصب'],
+      ['Trotzdem bin ich dafür.', 'تحافظ على موقفك بعد اعتراض باستعمال trotzdem وdafür', 'trotzdem رابط جملة رئيسية؛ يأتي بعده bin في الموضع الثاني، وdafür يعبّر عن التأييد', 'Trotzdem ich bin dafür.', 'بعد Trotzdem يأتي الفعل المصرف bin قبل الفاعل ich']
     ],
     [
-      ['Ich finde das praktisch.', 'أجده عمليًا', 'Ich find das praktisch', 'الرأي finde', 'finde'],
-      ['Meiner Meinung nach ist das gut.', 'في رأيي هذا جيد', 'In my Meinung ist das gut', 'الإطار Meiner Meinung nach', 'Meinung'],
-      ['Das stimmt nicht ganz.', 'هذا ليس صحيحًا تمامًا', 'Das ist totally falsch', 'التقييد nicht ganz', 'ganz'],
-      ['Ich finde das interessant.', 'أجده مثيرًا', 'Ich find das interesting', 'الصفة interessant', 'interessant']
+      ['Meiner Meinung nach ist der Plan sinnvoll.', 'في رأيي الخطة منطقية', 'Meiner Meinung nach der Plan ist sinnvoll.', 'بعد إطار الرأي يأتي ist في الموضع الثاني', 'Meinung'],
+      ['Ich muss dir leider widersprechen.', 'يجب أن أعترض عليك للأسف', 'Ich dir muss leider widersprechen.', 'في الجملة الرئيسية يأتي muss في الموضع الثاني بعد الفاعل Ich، ويبقى widersprechen في النهاية', 'widersprechen'],
+      ['Der Plan ist einerseits praktisch, andererseits teuer.', 'الخطة عملية من جهة، لكنها غالية من جهة أخرى', 'Dem Plan ist einerseits praktisch, andererseits teuer.', 'الفاعل Plan يأتي في الرفع: der Plan، لا dem Plan', 'andererseits'],
+      ['Da stimme ich dir zu.', 'أنا أوافقك في ذلك', 'Da stimme ich dich zu.', 'zustimmen يأخذ الداتيف dir، وتنفصل البادئة zu', 'zu']
     ],
-    'Ich finde das praktisch. Das stimmt nicht ganz.',
-    'Meiner Meinung nach ist das gut.',
-    'Sage morgen eine Meinung mit ich finde.',
-    'غدًا قل رأيًا مع ich finde.'),
+    'Meiner Meinung nach ist der Plan sinnvoll. Der Plan ist einerseits praktisch, andererseits teuer. Trotzdem bin ich dafür.',
+    'Ich muss dir leider widersprechen.',
+    'Wiederhole morgen die fünf Sätze: Meiner Meinung nach ist der Plan sinnvoll. Der Plan ist einerseits praktisch, andererseits teuer. Trotzdem bin ich dafür. Da stimme ich dir zu. Ich muss dir leider widersprechen.',
+    'غدًا راجع الجمل الخمس للرأي والموازنة والتأييد والموافقة والاعتراض.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'kasus', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf Sätze zu einer Meinung',
+        erklaerung: 'اكتب الجمل الخمس كاملة: الرأي والجانبان والموقف والموافقة والاعتراض.',
+        prompt: 'اكتب الجمل الخمس لمناقشة الخطة كاملة.',
+        promptDe: 'Meiner Meinung nach ist der Plan sinnvoll. · Der Plan ist einerseits praktisch, andererseits teuer. · Trotzdem bin ich dafür. · Da stimme ich dir zu. · Ich muss dir leider widersprechen.',
+        points: ['Meiner Meinung nach ist der Plan sinnvoll.', 'Der Plan ist einerseits praktisch, andererseits teuer.', 'Trotzdem bin ich dafür.', 'Da stimme ich dir zu.', 'Ich muss dir leider widersprechen.'],
+        minWords: 29,
+        frage: 'اكتب الجمل الخمس كاملة في 29 كلمة على الأقل.',
+        familie: 'wortstellung',
+        hinweise: ['ضع ist بعد Meiner Meinung nach، واستعمل الزوج einerseits … andererseits حول الصفتين.', 'ضع bin بعد Trotzdem، واستعمل dir مع zustimmen وwidersprechen، وضع zu في نهاية جملة الموافقة.']
+      },
+      imitateNearMiss: 'Meinunge',
+      transformHint: 'بعد muss يأتي dir في الداتيف ثم المصدر widersprechen في القوس اليميني.',
+      orderAr: 'رتّب الموازنة: Der Plan ثم ist ثم einerseits praktisch ثم andererseits teuer.',
+      orderHints: ['ابدأ بالفاعل Der Plan ثم ضع ist بعده مباشرة.', 'ضع einerseits قبل praktisch وandererseits قبل teuer.'],
+      orderSentence: 'Der Plan ist einerseits praktisch, andererseits teuer.',
+      checkOrderSentence: 'Der Plan ist einerseits praktisch, andererseits teuer.',
+      orderPromptAr: 'رتّب الكلمات لتكوين موازنة صحيحة بين كون الخطة عملية وكونها غالية.',
+      speakAr: 'سجّل عشرين ثانية: قل Meiner Meinung nach ist der Plan sinnvoll وDer Plan ist einerseits praktisch, andererseits teuer وTrotzdem bin ich dafür وDa stimme ich dir zu وIch muss dir leider widersprechen.',
+      summaryDe: 'Meiner Meinung nach ist der Plan sinnvoll. · Der Plan ist einerseits praktisch, andererseits teuer. · Trotzdem bin ich dafür. · Da stimme ich dir zu. · Ich muss dir leider widersprechen.',
+      summaryAr: 'راجع إطار الرأي وeinerseits … andererseits وtrotzdem + V2 وdafür، ثم dir مع zustimmen وwidersprechen.',
+      summaryRecap: 'Meinung Abwägung Haltung Zustimmung Widerspruch'
+    }),
 
   U('a2-u5-l3', 'A2', 'رسالة أطول', 'Ein kurzer Brief', 'register',
     'Am Ende schreibst du Anrede, Bitte und Gruß',
