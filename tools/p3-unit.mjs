@@ -3118,6 +3118,138 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
 
+/* ---------- audited A2 dass lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u1-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich denke, dass die Idee gut ist.',
+    'Ich weiß, dass der Termin morgen ist.',
+    'Er meint, dass wir warten sollen.',
+    'Sie sagt, dass sie die Rechnung bezahlt hat.',
+    'Ich hoffe, dass du morgen anrufst.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[3], targets[4]];
+  t('Corpus lesson a2-u1-l5 bounds dass clauses to five complete simple, modal, Perfekt and separable-verb targets',
+    lesson.title.de === 'Aussagen mit dass' && lesson.title.ar === 'نقل الأقوال والأفكار بـ dass' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الأقوال والأفكار' &&
+      row.grammar.item === 'dass: الفعل المصرف في النهاية مع modal وPerfekt والفعل المنفصل' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende leitest du einen dass-Satz ein und stellst das finite Verb ans Ende');
+
+  const expectedWords = [
+    'dass', 'denken', 'glauben', 'hoffen', 'sagen', 'wissen', 'finden', 'meinen',
+    'die Meinung', 'die Nachricht', 'die Wahrheit', 'die Idee', 'die Chance',
+    'das Gefühl', 'der Grund', 'das Angebot', 'die Rechnung', 'die Entscheidung',
+    'das Problem', 'die Lösung', 'der Kollege', 'die Wohnung', 'das Wetter',
+    'die Zeit', 'die Sprache', 'der Kurs', 'jemand', 'anders', 'die Sache',
+    'das Ziel', 'der Service'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u1-l5 reviews all 31 entries and three precise mnemonics without English contamination or false subordinate-clause generalizations',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.dass.ex === targets[0] && byWord.dass.ar === 'أنّ/أن' &&
+      byWord.denken.ex === targets[0] && byWord.glauben.ex.includes('dass sie recht hat') &&
+      byWord.hoffen.ex === targets[4] && byWord.hoffen.why.includes('anrufst في النهاية') &&
+      byWord.sagen.ex === targets[3] && byWord.wissen.ex === 'Ich weiß genau, dass der Termin morgen ist.' &&
+      byWord.finden.ex.includes('Wohnung zu klein ist') && byWord.meinen.ex === targets[2] &&
+      byWord.meinen.why.includes('warten قبل الفعل المصرف sollen') &&
+      byWord['die Meinung'].ex.includes('Plan zu teuer ist') &&
+      byWord['die Nachricht'].ar === 'الخبر/الرسالة' && byWord['die Nachricht'].ex.includes('Kurs ausfällt') &&
+      byWord['die Wahrheit'].ex.includes('die Wahrheit sagt') && byWord['die Idee'].ex.includes('gute Idee hat') &&
+      byWord['die Chance'].ex.includes('noch eine Chance haben') &&
+      byWord['das Gefühl'].ex === 'Ich habe das Gefühl, dass etwas nicht stimmt.' &&
+      byWord['der Grund'].ex.includes('einen guten Grund hat') && byWord['das Angebot'].ex.includes('Angebot günstig ist') &&
+      byWord['die Rechnung'].ex === targets[3] && byWord['die Entscheidung'].ex.includes('Entscheidung richtig ist') &&
+      byWord['das Problem'].ex.includes('Problem ernst ist') && byWord['die Lösung'].ex.includes('Lösung einfach ist') &&
+      byWord['der Kollege'].ex.includes('Kollege heute fehlt') && byWord['die Wohnung'].ex.includes('Wohnung noch frei ist') &&
+      byWord['das Wetter'].ex.includes('Wetter morgen besser ist') && byWord['die Zeit'].ex.includes('wenig Zeit haben') &&
+      byWord['die Sprache'].ex.includes('Sprache schön klingt') && byWord['der Kurs'].ex.includes('Kurs im Mai beginnt') &&
+      byWord.jemand.ex.includes('jemand an der Tür wartet') && byWord.anders.ex.includes('anders denkt') &&
+      byWord['die Sache'].ex.includes('Sache wichtig ist') && byWord['das Ziel'].ex.includes('Ziel wichtig ist') &&
+      byWord['der Service'].ex.includes('Service gut funktioniert') &&
+      tricks.length === 3 && tricks[0].trick.includes('فاصلة، ثم الفعل المصرف في النهاية') &&
+      tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes(targets[4]) &&
+      tricks[1].trick.includes('modal وPerfekt') && tricks[1].wie.includes(targets[2]) && tricks[1].wie.includes(targets[3]) &&
+      tricks[1].warum.includes('المصدر قبل الفعل الناقص المصرف') &&
+      tricks[1].warum.includes('اسم المفعول قبل الفعل المساعد المصرف') &&
+      tricks[2].trick === 'dass ليست das وليست ob' && tricks[2].wie.includes('dass das stimmt') &&
+      tricks[2].wie.includes('ob er kommt') && tricks[2].warum.includes('سؤال نعم/لا غير مباشر') &&
+      !lessonText.includes('كل الجمل الثانوية تدفع الفعل إلى النهاية') &&
+      !lessonText.includes('العربية تصل الرأي') && !lessonText.includes('kein dass-Satz als Frage') &&
+      !lessonText.includes('dass لا تبني سؤالًا') && !lessonText.includes('I think that') &&
+      !lessonText.includes('that das') && !lessonText.includes('richtig gestellt falsch') &&
+      !lessonText.includes('kommst heute vor dem Verb') && !lessonText.includes('ohne Komma'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u1-l5 aligns strict clozes, one Perfekt order, 34-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Ich ____ genau, dass der Termin morgen ist.' &&
+      wordCloze1.frage.antworten.join(' ') === 'weiß' && wordCloze1.frage.nearMiss.wissen &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'wissen').ok &&
+      wordCloze2.frage.zeigt === 'Sie sagt, dass die ____ noch frei ist.' &&
+      wordCloze2.frage.antworten.join(' ') === 'Wohnung' && wordCloze2.frage.nearMiss.Wohnungen &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Wohnungen').ok &&
+      imitate.zeigt.de === 'Ich denke, dass die Idee gut ____.' &&
+      imitate.frage.antworten.join(' ') === 'ist' && imitate.frage.nearMiss.sind &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'sind').ok &&
+      drill.frage.zeigt === 'Er ____, dass wir warten sollen.' &&
+      drill.frage.antworten.join(' ') === 'meint' && drill.frage.nearMiss.meinen &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'meinen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'sagt,' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Sie' &&
+      order.frage.fields.lsk.join(' ') === 'sagt,' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Sie', 'dass', 'sie', 'die', 'Rechnung', 'bezahlt', 'hat.', 'sagt,']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 34 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u1-l5 makes 80 percent four of five measurable across anrufst, meint, Perfekt order, gut ist and morgen ist',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u1-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich hoffe, dass du rufst morgen an.') &&
+      checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Er ____, dass wir warten sollen.' &&
+      clozeCheck.frage.antworten.join(' ') === 'meint' && clozeCheck.frage.nearMiss.meinen &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'meinen').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'sagt,' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Sie' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Sie', 'dass', 'sie', 'die', 'Rechnung', 'bezahlt', 'hat.', 'sagt,']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

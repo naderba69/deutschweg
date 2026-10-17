@@ -63,7 +63,7 @@
     ['أفعال مع الداتيف', 'Verben mit Dativ', 'المساعدة', 'helfen وgeben وgehören وpassen وzeigen', 'explicit', 31, 13],
     ['حروف الجرّ ثنائية الحالة', 'Wechselpräpositionen', 'المكان والوجهة', 'Wo + Dativ وWohin + Akkusativ مع an وauf وin', 'explicit', 31, 13],
     ['التعليل بـ weil', 'Gründe mit weil', 'السبب', 'weil: الفعل المصرف في النهاية · denn: ترتيب جملة رئيسية · deshalb: بعدها الفعل المصرف مباشرة', 'explicit', 31, 13],
-    ['أنّ', 'dass', 'النقل', 'dass', 'explicit', 31, 13],
+    ['نقل الأقوال والأفكار بـ dass', 'Aussagen mit dass', 'الأقوال والأفكار', 'dass: الفعل المصرف في النهاية مع modal وPerfekt والفعل المنفصل', 'explicit', 31, 13],
     ['إذا', 'wenn', 'الشرط البسيط', 'wenn', 'explicit', 30, 13],
     ['المقارنة', 'Komparativ', 'المقارنة', 'صيغة -er', 'inductive', 33, 13],
     ['صيغة التفضيل', 'Superlativ', 'التفضيل', 'am …sten', 'inductive', 29, 13],

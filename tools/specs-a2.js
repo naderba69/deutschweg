@@ -182,25 +182,50 @@ module.exports = [
       summaryRecap: 'weil Verbende denn Verbzweit'
     }),
 
-  U('a2-u1-l5', 'A2', 'أنّ', 'dass', 'wortstellung',
-    'Am Ende leitest du einen Nebensatz mit dass ein',
-    'في النهاية تفتح جملة تابعة بـ dass.',
+  U('a2-u1-l5', 'A2', 'نقل الأقوال والأفكار بـ dass', 'Aussagen mit dass', 'wortstellung',
+    'Am Ende leitest du einen dass-Satz ein und stellst das finite Verb ans Ende',
+    'في النهاية تبدأ جملة بـ dass وتضع الفعل المصرف في نهايتها.',
     [
-      ['dass plus Verb am Ende', 'dass مثل weil في الترتيب', 'dass das ist wahr خطأ', 'dass das ist wahr', 'الفعل آخرًا'],
-      ['Komma vor dass', 'الفاصلة قبل dass', 'بلا فاصلة تُضيع الحد', 'Ich denke dass das stimmt ohne Komma', 'الفاصلة جزء من الشكل'],
-      ['kein dass-Satz als Frage', 'dass لا تبني سؤالًا', 'السؤال أداة أو فعل أول', 'Dass du kommst?', 'هذا ليس سؤالًا سليمًا'],
-      ['ich denke, dass', 'الظن يُنقل بـ dass', 'لا I think that خليط', 'Ich denke, that das stimmt', 'that إنجليزية']
+      ['Ich denke, dass die Idee gut ist.', 'تنقل الفكرة جملةً ثانوية بـ dass، ويأتي الفعل المصرف ist في نهايتها', 'بعد dass نقول die Idee gut ist', 'Ich denke, dass die Idee ist gut.', 'في جملة dass يأتي ist بعد gut في النهاية'],
+      ['Ich weiß, dass der Termin morgen ist.', 'تفصل فاصلة بين الجملة الرئيسية وجملة dass اللاحقة، ويبقى ist في النهاية', 'الفاصلة تسبق dass، وmorgen يسبق ist', 'Ich weiß dass der Termin ist morgen.', 'نكتب فاصلة قبل dass ونضع ist بعد morgen'],
+      ['Sie sagt, dass sie die Rechnung bezahlt hat.', 'في Perfekt يأتي اسم المفعول bezahlt قبل الفعل المساعد المصرف hat في النهاية', 'مجموعة Perfekt في هذا المثال هي bezahlt hat', 'Sie sagt, dass sie die Rechnung hat bezahlt.', 'في جملة dass نقول bezahlt hat'],
+      ['Ich hoffe, dass du morgen anrufst.', 'يبقى الفعل المنفصل متصلًا في جملة dass ويأتي مصرفًا في النهاية', 'anrufen يصبح anrufst ولا ينفصل داخل جملة dass', 'Ich hoffe, dass du rufst morgen an.', 'بعد dass نقول dass du morgen anrufst']
     ],
     [
-      ['Ich denke, dass das stimmt.', 'أظن أن هذا صحيح', 'Ich denke, dass das ist richtig gestellt falsch', 'stimmt في الآخر', 'stimmt'],
-      ['Ich weiß, dass du kommst.', 'أعرف أنك تأتي', 'Ich weiß, dass du kommst heute vor dem Verb', 'kommst في الآخر', 'kommst'],
-      ['Sie sagt, dass sie keine Zeit hat.', 'تقول إن ليس عندها وقت', 'Sie sagt, dass sie hat keine Zeit', 'hat في الآخر', 'hat'],
-      ['Ich glaube, dass er recht hat.', 'أعتقد أنه على حق', 'Ich glaube, that er recht hat', 'dass لا that', 'dass']
+      ['Ich denke, dass die Idee gut ist.', 'أعتقد أن الفكرة جيدة', 'Ich denke, dass die Idee ist gut.', 'في جملة dass يأتي ist بعد gut في النهاية', 'ist'],
+      ['Ich weiß, dass der Termin morgen ist.', 'أعرف أن الموعد غدًا', 'Ich weiß dass der Termin ist morgen.', 'نكتب فاصلة قبل dass ونضع ist بعد morgen', 'ist'],
+      ['Er meint, dass wir warten sollen.', 'يرى أنه ينبغي لنا أن ننتظر', 'Er meint, dass wir sollen warten.', 'مع الفعل الناقص يأتي المصدر warten قبل الفعل المصرف sollen في النهاية', 'sollen'],
+      ['Sie sagt, dass sie die Rechnung bezahlt hat.', 'تقول إنها دفعت الفاتورة', 'Sie sagt, dass sie die Rechnung hat bezahlt.', 'في Perfekt يأتي bezahlt قبل الفعل المساعد المصرف hat', 'hat']
     ],
-    'Ich denke, dass das stimmt.',
-    'Ich weiß, dass du kommst.',
-    'Schreibe morgen einen dass-Satz.',
-    'غدًا اكتب جملة dass.'),
+    'Er meint, dass wir warten sollen.',
+    'Er meint, dass wir warten sollen.',
+    'Wiederhole morgen die fünf Sätze: Ich denke, dass die Idee gut ist. Ich weiß, dass der Termin morgen ist. Er meint, dass wir warten sollen. Sie sagt, dass sie die Rechnung bezahlt hat. Ich hoffe, dass du morgen anrufst.',
+    'غدًا راجع جمل dass الخمس مع الفعل المصرف في النهاية.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf Aussagen mit dass',
+        erklaerung: 'اكتب جمل dass الخمس كاملة مع ترتيب الفعل الصحيح.',
+        prompt: 'اكتب الجمل الخمس: جملتان بسيطتان، وجملة modal، وجملة Perfekt، وجملة بفعل منفصل.',
+        promptDe: 'Ich denke, dass die Idee gut ist. · Ich weiß, dass der Termin morgen ist. · Er meint, dass wir warten sollen. · Sie sagt, dass sie die Rechnung bezahlt hat. · Ich hoffe, dass du morgen anrufst.',
+        points: ['Ich denke, dass die Idee gut ist.', 'Ich weiß, dass der Termin morgen ist.', 'Er meint, dass wir warten sollen.', 'Sie sagt, dass sie die Rechnung bezahlt hat.', 'Ich hoffe, dass du morgen anrufst.'],
+        minWords: 34,
+        frage: 'اكتب جمل dass الخمس كاملة بالفعل المصرف في النهاية.',
+        familie: 'wortstellung',
+        hinweise: ['ضع فاصلة قبل dass.', 'اختم الجملة الثانوية بـ ist أو sollen أو hat أو anrufst بحسب النموذج.']
+      },
+      imitateNearMiss: 'sind',
+      transformHint: 'مع الفعل الناقص يأتي المصدر warten قبل sollen في نهاية جملة dass.',
+      orderAr: 'رتّب الجملة كاملة: الجملة الرئيسية أولًا، ثم dass، ثم bezahlt hat في النهاية.',
+      orderHints: ['ابدأ بـ Sie sagt ثم ضع الفاصلة.', 'بعد dass رتّب sie die Rechnung bezahlt hat.'],
+      orderSentence: 'Sie sagt, dass sie die Rechnung bezahlt hat.',
+      checkOrderSentence: 'Sie sagt, dass sie die Rechnung bezahlt hat.',
+      orderPromptAr: 'رتّب جملة dass مع Perfekt ترتيبًا صحيحًا.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich denke, dass die Idee gut ist وIch weiß, dass der Termin morgen ist وEr meint, dass wir warten sollen وSie sagt, dass sie die Rechnung bezahlt hat وIch hoffe, dass du morgen anrufst.',
+      summaryDe: 'Ich denke, dass die Idee gut ist. · Ich weiß, dass der Termin morgen ist. · Er meint, dass wir warten sollen. · Sie sagt, dass sie die Rechnung bezahlt hat. · Ich hoffe, dass du morgen anrufst.',
+      summaryAr: 'راجع جمل dass الخمس: فعل بسيط وmodal وPerfekt وفعل منفصل، مع الفعل المصرف في النهاية.',
+      summaryRecap: 'dass Komma Verbende'
+    }),
 
   U('a2-u1-l6', 'A2', 'إذا', 'wenn', 'wortstellung',
     'Am Ende bildest du einen wenn-Satz mit Verb am Ende',
