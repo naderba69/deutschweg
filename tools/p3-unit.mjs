@@ -2986,6 +2986,138 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'präposition');
 }
 
+/* ---------- audited A2 weil and denn lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u1-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich komme nicht, weil ich krank bin.',
+    'Ich lerne viel, weil die Prüfung morgen ist.',
+    'Er kommt früher, weil er pünktlich sein will.',
+    'Der Bus kommt später, weil ein Verkehrsunfall passiert ist.',
+    'Ich komme nicht, denn ich bin krank.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[3], targets[4]];
+  t('Corpus lesson a2-u1-l4 bounds reason clauses to five complete weil and denn targets',
+    lesson.title.de === 'Gründe mit weil' && lesson.title.ar === 'التعليل بـ weil' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'السبب' &&
+      row.grammar.item === 'weil: الفعل المصرف في النهاية · denn: ترتيب جملة رئيسية · deshalb: بعدها الفعل المصرف مباشرة' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de.includes('finiten Verb am Ende') &&
+      lesson.schritte[0].zeigt.de.includes('denn und deshalb mit Verbzweitstellung'));
+
+  const expectedWords = [
+    'weil', 'denn', 'die Prüfung', 'der Verkehr', 'die Miete', 'der Lärm', 'das Wetter',
+    'der Termin', 'die Erkältung', 'gefährlich', 'wichtig', 'pünktlich', 'bequem', 'ruhig',
+    'sauber', 'günstig', 'die Sprache', 'die Arbeit', 'der Preis', 'das Zimmer',
+    'der Unterricht', 'die Nachricht', 'das Geld', 'die Familie', 'der Verkehrsunfall',
+    'die Kinderbetreuung', 'meistens', 'endlich', 'stressig', 'der Stress', 'die Ruhe'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u1-l4 reviews all 31 entries and three precise mnemonics without word salad or L1 generalizations',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.weil.ex === targets[0] && byWord.weil.why.includes('الفعل المصرف bin') &&
+      byWord.denn.ex === targets[4] && byWord.denn.ar.includes('ترتيب الجملة الرئيسية') &&
+      byWord['die Prüfung'].ex === targets[1] && byWord['der Verkehr'].ex.includes('weil viel Verkehr ist') &&
+      byWord['die Miete'].ex.includes('Miete zu hoch ist') && byWord['der Lärm'].ex.includes('draußen viel Lärm ist') &&
+      byWord['das Wetter'].ex.includes('Wetter schlecht ist') && byWord['der Termin'].ex.includes('sage den Termin ab') &&
+      byWord['die Erkältung'].ex.includes('eine Erkältung habe') && byWord.gefährlich.ex.includes('gefährlich ist') &&
+      byWord.wichtig.ex.includes('Sache wichtig ist') && byWord.pünktlich.ex === targets[2] &&
+      byWord.pünktlich.ar.includes('في الموعد') && byWord.bequem.ex.includes('bequem ist') &&
+      byWord.ruhig.ex.includes('Straße ruhig ist') && byWord.sauber.ex.includes('sie sauber ist') &&
+      byWord.günstig.ar === 'مناسب السعر/زهيد' && byWord.günstig.ex.includes('Ticket') &&
+      byWord['die Sprache'].ex.includes('Sprache für die Arbeit brauche') &&
+      byWord['die Arbeit'].ex.includes('viel Arbeit hat') && byWord['der Preis'].ex.includes('Handy nicht') &&
+      byWord['das Zimmer'].ex.includes('es hell ist') && byWord['der Unterricht'].ex.includes('um acht beginnt') &&
+      byWord['die Nachricht'].ar === 'الخبر/الرسالة' && byWord['die Nachricht'].ex.includes('freut sich') &&
+      byWord['das Geld'].ex.includes('das Geld braucht') && byWord['die Familie'].ex.includes('große Wohnung') &&
+      byWord['der Verkehrsunfall'].ex === targets[3] && byWord['die Kinderbetreuung'].ex.includes('keine Kinderbetreuung hat') &&
+      byWord.meistens.ex.includes('weil ich kein Auto habe') && byWord.endlich.ex === 'Endlich sind die Ferien da!' &&
+      byWord.stressig.ex.includes('Woche stressig ist') && byWord['der Stress'].ex.includes('morgen eine Prüfung hat') &&
+      byWord['die Ruhe'].ex.includes('morgen früh aufstehe') &&
+      tricks.length === 3 && tricks[0].trick.includes('weil: الفعل المصرف في النهاية') &&
+      tricks[0].trick.includes('denn: ترتيب جملة رئيسية') &&
+      tricks[0].trick.includes('deshalb: بعدها الفعل المصرف مباشرة') &&
+      tricks[0].wie.includes('deshalb komme ich nicht') &&
+      tricks[1].wie.includes('arbeiten muss') && tricks[1].wie.includes('gelernt habe') &&
+      tricks[1].wie.includes('passiert ist') && tricks[1].wie.includes('sein will') &&
+      tricks[2].trick.includes('قبل جملة weil اللاحقة فاصلة') && tricks[2].wie.includes('Warum') &&
+      tricks[2].warum.includes('Weil بحرف كبير') &&
+      !lessonText.includes('العربية تصل السبب بلا ترتيب') &&
+      !lessonText.includes('العربية تبدأ بالحكم ثم تشرح') &&
+      !lessonText.includes('المساعد ثم... لا') &&
+      !lessonText.includes('weil ich habe gelernt falsch gestellt') &&
+      !lessonText.includes('deshalb bleibt V2') && !lessonText.includes('kein Verbzweit'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u1-l4 aligns strict clozes, one Perfekt order, 39-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Ich kann nicht schlafen, weil draußen viel ____ ist.' &&
+      wordCloze1.frage.antworten.join(' ') === 'Lärm' && wordCloze1.frage.nearMiss.Lärme &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Lärme').ok &&
+      wordCloze2.frage.zeigt === 'Sie freut sich, weil die ____ gut ist.' &&
+      wordCloze2.frage.antworten.join(' ') === 'Nachricht' && wordCloze2.frage.nearMiss.Nachrichten &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Nachrichten').ok &&
+      imitate.zeigt.de === 'Ich komme nicht, weil ich krank ____.' &&
+      imitate.frage.antworten.join(' ') === 'bin' && imitate.frage.nearMiss.ist &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'ist').ok &&
+      drill.frage.zeigt === 'Er kommt früher, weil er ____ sein will.' &&
+      drill.frage.antworten.join(' ') === 'pünktlich' && drill.frage.nearMiss.pünktliche &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'pünktliche').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'kommt' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Der Bus' &&
+      order.frage.fields.lsk.join(' ') === 'kommt' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Der', 'Bus', 'später,', 'weil', 'ein', 'Verkehrsunfall', 'passiert', 'ist.', 'kommt']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 39 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u1-l4 makes 80 percent four of five measurable across denn, pünktlich, Perfekt, bin and morgen ist',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u1-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich komme nicht, denn ich krank bin.') &&
+      checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Er kommt früher, weil er ____ sein will.' &&
+      clozeCheck.frage.antworten.join(' ') === 'pünktlich' && clozeCheck.frage.nearMiss.pünktliche &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'pünktliche').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'kommt' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Der Bus' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Der', 'Bus', 'später,', 'weil', 'ein', 'Verkehrsunfall', 'passiert', 'ist.', 'kommt']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

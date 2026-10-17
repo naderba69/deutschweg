@@ -137,25 +137,50 @@ module.exports = [
       summaryRecap: 'Wo Dativ Wohin Akkusativ'
     }),
 
-  U('a2-u1-l4', 'A2', 'لأن', 'weil', 'wortstellung',
-    'Am Ende stellst du das Verb nach weil an das Ende',
-    'في النهاية تضع الفعل آخرًا بعد weil.',
+  U('a2-u1-l4', 'A2', 'التعليل بـ weil', 'Gründe mit weil', 'wortstellung',
+    'Am Ende bildest du weil-Sätze mit dem finiten Verb am Ende und unterscheidest sie von denn und deshalb mit Verbzweitstellung',
+    'في النهاية تبني جمل weil بالفعل المصرف في النهاية وتميّزها عن denn وdeshalb مع الفعل في الموضع الثاني.',
     [
-      ['weil plus Verb am Ende', 'weil يرسل الفعل إلى الآخر', 'weil ich bin müde خطأ', 'weil ich bin müde', 'الفعل ليس ثانيًا بعد weil'],
-      ['kein Verbzweit', 'بعد weil لا V2', 'الفاصلة لا تُصلح الترتيب وحدها', 'Ich bleibe, weil bin ich müde', 'الضمير سبق الفعل في غير موضعه'],
-      ['deshalb bleibt V2', 'deshalb تبقي الفعل ثانيًا', 'لا تُعامَل مثل weil', 'deshalb ich müde bin', 'بعد deshalb الفعل ثاني'],
-      ['zwei Verben am Ende', 'المساعد ثم... لا، التام آخرًا بعد weil', 'الفعل المصرف آخر عنصر', 'weil ich habe gelernt falsch gestellt', 'المصروف آخرًا']
+      ['Ich komme nicht, weil ich krank bin.', 'تربط السبب بـ weil ويأتي الفعل المصرف في نهاية الجملة الثانوية', 'في الجملة الثانوية البسيطة يأتي bin بعد krank', 'Ich komme nicht, weil ich bin krank.', 'بعد weil نقول weil ich krank bin'],
+      ['Ich lerne viel, weil die Prüfung morgen ist.', 'يمكن أن يسبق الظرفُ الفعلَ المصرف في جملة weil', 'morgen يسبق ist، ويبقى ist في النهاية', 'Ich lerne viel, weil ist die Prüfung morgen.', 'بعد weil نقول weil die Prüfung morgen ist'],
+      ['Der Bus kommt später, weil ein Verkehrsunfall passiert ist.', 'في Perfekt يأتي اسم المفعول قبل الفعل المساعد المصرف في النهاية', 'في هذا المثال الترتيب passiert ist', 'Der Bus kommt später, weil ein Verkehrsunfall ist passiert.', 'في جملة weil نقول passiert ist'],
+      ['Ich komme nicht, denn ich bin krank.', 'denn تربط السبب من دون تحويل الجملة التالية إلى جملة ثانوية', 'بعد denn يبقى الفعل المصرف في الموضع الثاني: ich bin', 'Ich komme nicht, denn ich krank bin.', 'بعد denn نقول ich bin krank بترتيب الجملة الرئيسية']
     ],
     [
-      ['Ich bleibe, weil ich müde bin.', 'أبقى لأنني متعب', 'Ich bleibe, weil ich bin müde', 'bin في الآخر', 'bin'],
-      ['Ich lerne, weil ich Zeit habe.', 'أدرس لأن عندي وقتًا', 'Ich lerne, weil ich habe Zeit', 'habe في الآخر', 'habe'],
-      ['Ich komme nicht, weil ich arbeiten muss.', 'لا آتي لأنني يجب أن أعمل', 'Ich komme nicht, weil ich muss arbeiten', 'muss في الآخر', 'muss'],
-      ['Deshalb bleibe ich.', 'لذلك أبقى', 'Deshalb ich bleibe', 'بعد deshalb الفعل ثاني', 'bleibe']
+      ['Ich komme nicht, weil ich krank bin.', 'لا آتي لأنني مريض', 'Ich komme nicht, weil ich bin krank.', 'بعد weil يأتي الفعل المصرف bin في النهاية', 'bin'],
+      ['Ich lerne viel, weil die Prüfung morgen ist.', 'أدرس كثيرًا لأن الامتحان غدًا', 'Ich lerne viel, weil ist die Prüfung morgen.', 'في جملة weil يأتي ist بعد morgen في النهاية', 'ist'],
+      ['Er kommt früher, weil er pünktlich sein will.', 'يأتي أبكر لأنه يريد أن يكون في الموعد', 'Er kommt früher, weil will er pünktlich sein.', 'مع الفعل الناقص يأتي المصدر sein قبل الفعل المصرف will في النهاية', 'will'],
+      ['Der Bus kommt später, weil ein Verkehrsunfall passiert ist.', 'تأتي الحافلة متأخرة لأن حادث مرور وقع', 'Der Bus kommt später, weil ein Verkehrsunfall ist passiert.', 'في Perfekt يأتي passiert قبل الفعل المساعد المصرف ist', 'ist']
     ],
-    'Ich bleibe, weil ich müde bin. Deshalb lerne ich zu Hause.',
-    'Ich bleibe, weil ich müde bin.',
-    'Schreibe morgen einen weil-Satz.',
-    'غدًا اكتب جملة weil.'),
+    'Er kommt früher, weil er pünktlich sein will.',
+    'Ich lerne viel, weil die Prüfung morgen ist.',
+    'Wiederhole morgen die fünf Sätze: Ich komme nicht, weil ich krank bin. Ich lerne viel, weil die Prüfung morgen ist. Er kommt früher, weil er pünktlich sein will. Der Bus kommt später, weil ein Verkehrsunfall passiert ist. Ich komme nicht, denn ich bin krank.',
+    'غدًا راجع الجمل الخمس مع weil وdenn.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf Gründe mit weil und denn',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع ترتيب الفعل الصحيح بعد weil وdenn.',
+        prompt: 'اكتب الجمل الخمس: أربع جمل بـ weil وجملة واحدة بـ denn.',
+        promptDe: 'Ich komme nicht, weil ich krank bin. · Ich lerne viel, weil die Prüfung morgen ist. · Er kommt früher, weil er pünktlich sein will. · Der Bus kommt später, weil ein Verkehrsunfall passiert ist. · Ich komme nicht, denn ich bin krank.',
+        points: ['Ich komme nicht, weil ich krank bin.', 'Ich lerne viel, weil die Prüfung morgen ist.', 'Er kommt früher, weil er pünktlich sein will.', 'Der Bus kommt später, weil ein Verkehrsunfall passiert ist.', 'Ich komme nicht, denn ich bin krank.'],
+        minWords: 39,
+        frage: 'اكتب الجمل الخمس كاملة: أربع جمل سبب بـ weil وجملة سبب واحدة بـ denn.',
+        familie: 'wortstellung',
+        hinweise: ['بعد weil ضع الفعل المصرف في النهاية.', 'بعد denn أبقِ الفعل المصرف في الموضع الثاني.']
+      },
+      imitateNearMiss: 'ist',
+      transformHint: 'مع الفعل الناقص يأتي sein قبل will في نهاية جملة weil.',
+      orderAr: 'رتّب الجملة كاملة: الجملة الرئيسية أولًا، ثم weil، ثم passiert ist في النهاية.',
+      orderHints: ['ابدأ بـ Der Bus kommt später ثم ضع الفاصلة.', 'بعد weil رتّب ein Verkehrsunfall passiert ist.'],
+      orderSentence: 'Der Bus kommt später, weil ein Verkehrsunfall passiert ist.',
+      checkOrderSentence: 'Der Bus kommt später, weil ein Verkehrsunfall passiert ist.',
+      orderPromptAr: 'رتّب جملة السبب مع Perfekt ترتيبًا صحيحًا.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich komme nicht, weil ich krank bin وIch lerne viel, weil die Prüfung morgen ist وEr kommt früher, weil er pünktlich sein will وDer Bus kommt später, weil ein Verkehrsunfall passiert ist وIch komme nicht, denn ich bin krank.',
+      summaryDe: 'Ich komme nicht, weil ich krank bin. · Ich lerne viel, weil die Prüfung morgen ist. · Er kommt früher, weil er pünktlich sein will. · Der Bus kommt später, weil ein Verkehrsunfall passiert ist. · Ich komme nicht, denn ich bin krank.',
+      summaryAr: 'راجع أربع جمل weil بالفعل المصرف في النهاية، ثم قارنها بجملة denn ذات ترتيب الفعل في الموضع الثاني.',
+      summaryRecap: 'weil Verbende denn Verbzweit'
+    }),
 
   U('a2-u1-l5', 'A2', 'أنّ', 'dass', 'wortstellung',
     'Am Ende leitest du einen Nebensatz mit dass ein',

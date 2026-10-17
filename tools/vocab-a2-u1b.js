@@ -1,47 +1,62 @@
 /* Deutschweg — P3.5 lexical layer, A2 unit 1 (part b): a2-u1-l4 … a2-u1-l6.
-   weil, dass, wenn. Same row shape as tools/vocab-a0a1.js. 26 items per lesson. */
+   weil, dass, wenn. Same row shape as tools/vocab-a0a1.js. Counts follow the syllabus rows. */
 
 module.exports = {
 
   'a2-u1-l4': {
     items: [
-      ['weil', '—', 'لأنّ', 'Ich komme nicht, weil ich krank bin.', 'Ich komme nicht, weil ich bin krank.', 'بعد weil يذهب الفعل إلى النهاية.', 'wortstellung', 'weil'],
-      ['denn', '—', 'لأنّ (بترتيب عادي)', 'Ich komme nicht, denn ich bin krank.', 'Ich komme nicht, denn ich krank bin.', 'denn لا تُغيّر ترتيب الجملة.', 'wortstellung', 'denn'],
-      ['die Prüfung', 'die Prüfungen', 'الامتحان', 'Ich lerne viel, weil die Prüfung morgen ist.', 'Ich lerne viel, weil ist die Prüfung morgen.', 'الفعل في النهاية بعد weil.', 'wortstellung', 'Prüfung'],
-      ['der Verkehr', '—', 'المرور', 'Der Bus kommt später, weil der Verkehr stark ist.', 'Der Bus kommt später, weil ist der Verkehr stark.', 'الفعل في النهاية.', 'wortstellung', 'Verkehr'],
-      ['die Miete', 'die Mieten', 'الإيجار', 'Wir ziehen um, weil die Miete zu hoch ist.', 'Wir ziehen um, weil die Miete ist zu hoch.', 'الفعل في النهاية.', 'wortstellung', 'Miete'],
-      ['der Lärm', '—', 'الضجيج', 'Ich schlafe schlecht, weil der Lärm laut ist.', 'Ich schlafe schlecht, weil der Lärm ist laut.', 'الفعل في النهاية.', 'wortstellung', 'Lärm'],
-      ['das Wetter', '—', 'الطقس', 'Wir bleiben zu Hause, weil das Wetter schlecht ist.', 'Wir bleiben zu Hause, weil das Wetter ist schlecht.', 'الفعل في النهاية.', 'wortstellung', 'Wetter'],
-      ['der Termin', 'die Termine', 'الموعد', 'Ich sage ab, weil der Termin zu früh ist.', 'Ich sage ab, weil der Termin ist zu früh.', 'الفعل في النهاية.', 'wortstellung', 'Termin'],
-      ['die Erkältung', 'die Erkältungen', 'الزكام', 'Ich bleibe im Bett, weil ich eine Erkältung habe.', 'Ich bleibe im Bett, weil ich habe eine Erkältung.', 'الفعل في النهاية.', 'wortstellung', 'Erkältung'],
-      ['gefährlich', '—', 'خطير', 'Wir fahren langsam, weil die Straße gefährlich ist.', 'Wir fahren langsam, weil ist die Straße gefährlich.', 'الفعل في النهاية.', 'wortstellung', 'gefährlich'],
-      ['wichtig', '—', 'مهم', 'Ich rufe an, weil die Sache wichtig ist.', 'Ich rufe an, weil ist die Sache wichtig.', 'الفعل في النهاية.', 'wortstellung', 'wichtig'],
-      ['pünktlich', '—', 'دقيق في الوقت', 'Er kommt früher, weil er pünktlich sein will.', 'Er kommt früher, weil er will pünktlich sein.', 'الفعل المعاون بعد الفعل في النهاية.', 'wortstellung', 'pünktlich'],
-      ['bequem', '—', 'مريح', 'Ich nehme den Zug, weil er bequem ist.', 'Ich nehme den Zug, weil er ist bequem.', 'الفعل في النهاية.', 'wortstellung', 'bequem'],
-      ['ruhig', '—', 'هادئ', 'Wir wohnen dort, weil die Straße ruhig ist.', 'Wir wohnen dort, weil die Straße ist ruhig.', 'الفعل في النهاية.', 'wortstellung', 'ruhig'],
-      ['sauber', '—', 'نظيف', 'Die Wohnung gefällt mir, weil sie sauber ist.', 'Die Wohnung gefällt mir, weil sie ist sauber.', 'الفعل في النهاية.', 'wortstellung', 'sauber'],
-      ['günstig', '—', 'رخيص', 'Ich kaufe es, weil es günstig ist.', 'Ich kaufe es, weil es ist günstig.', 'الفعل في النهاية.', 'wortstellung', 'günstig'],
-      ['die Sprache', 'die Sprachen', 'اللغة', 'Ich lerne Deutsch, weil die Sprache wichtig ist.', 'Ich lerne Deutsch, weil ist die Sprache wichtig.', 'الفعل في النهاية.', 'wortstellung', 'Sprache'],
-      ['die Arbeit', 'die Arbeiten', 'العمل', 'Sie ist müde, weil die Arbeit schwer ist.', 'Sie ist müde, weil die Arbeit ist schwer.', 'الفعل في النهاية.', 'wortstellung', 'Arbeit'],
-      ['der Preis', 'die Preise', 'الثمن', 'Ich kaufe das nicht, weil der Preis hoch ist.', 'Ich kaufe das nicht, weil ist der Preis hoch.', 'الفعل في النهاية.', 'wortstellung', 'Preis'],
-      ['das Zimmer', 'die Zimmer', 'الغرفة', 'Ich nehme das Zimmer, weil es hell ist.', 'Ich nehme das Zimmer, weil es ist hell.', 'الفعل في النهاية.', 'wortstellung', 'Zimmer'],
-      ['der Unterricht', '—', 'الدرس', 'Ich bin früh da, weil der Unterricht um acht beginnt.', 'Ich bin früh da, weil der Unterricht beginnt um acht.', 'الفعل في النهاية.', 'wortstellung', 'Unterricht'],
-      ['die Nachricht', 'die Nachrichten', 'الخبر', 'Sie weint, weil die Nachricht traurig ist.', 'Sie weint, weil die Nachricht ist traurig.', 'الفعل في النهاية.', 'wortstellung', 'Nachricht'],
-      ['das Geld', '—', 'المال', 'Er arbeitet viel, weil das Geld knapp ist.', 'Er arbeitet viel, weil das Geld ist knapp.', 'الفعل في النهاية.', 'wortstellung', 'Geld'],
-      ['die Familie', 'die Familien', 'العائلة', 'Wir wohnen zusammen, weil die Familie groß ist.', 'Wir wohnen zusammen, weil die Familie ist groß.', 'الفعل في النهاية.', 'wortstellung', 'Familie'],
-      ['der Verkehrsunfall', 'die Verkehrsunfälle', 'حادث مرور', 'Der Zug hat Verspätung, weil ein Verkehrsunfall passiert ist.', 'Der Zug hat Verspätung, weil ein Verkehrsunfall ist passiert.', 'الفعل المعاون أخيرًا.', 'wortstellung', 'Verkehrsunfall'],
-      ['die Kinderbetreuung', '—', 'رعاية الأطفال', 'Sie arbeitet halbtags, weil die Kinderbetreuung fehlt.', 'Sie arbeitet halbtags, weil die Kinderbetreuung fehlt es.', 'لا ضمير زائد بعد الفعل.', 'wortstellung', 'Kinderbetreuung'],
-      ['meistens', '—', 'في الأغلب', 'Ich komme meistens mit dem Bus, weil ich kein Auto habe.', 'Ich komme meistens mit dem Bus, weil ich habe kein Auto.', 'بعد weil: الفعل في النهاية.', 'wortstellung', 'meistens'],
-      ['endlich', '—', 'أخيرًا', 'Endlich sind die Ferien da!', 'Endlich die Ferien sind da!', 'الفعل ثانيًا: sind.', 'wortstellung', 'Endlich'],
-      ['stressig', '—', 'مُجهِد', 'Ich komme nicht, weil die Woche stressig ist.', 'Ich komme nicht, weil die Woche ist stressig.', 'بعد weil الفعل في الآخر: stressig ist.', 'wortstellung', 'stressig'],
-      ['der Stress', '—', 'الضغط والتوتر', 'Er hat Stress, weil die Prüfung morgen ist.', 'Er hat Stress, weil ist die Prüfung morgen.', 'بعد weil الفعل في الآخر: morgen ist.', 'wortstellung', 'Stress'],
-      ['die Ruhe', '—', 'الهدوء', 'Ich brauche Ruhe, weil ich morgen früh aufstehe.', 'Ich brauche Ruhe, weil ich aufstehe morgen früh.', 'الفعل المنفصل في الآخر: aufstehe.', 'wortstellung', 'Ruhe'],
+      ['weil', '—', 'لأنّ', 'Ich komme nicht, weil ich krank bin.', 'Ich komme nicht, weil ich bin krank.', 'weil تُدخل جملة ثانوية؛ يأتي الفعل المصرف bin في نهايتها.', 'wortstellung', 'weil'],
+      ['denn', '—', 'لأنّ/إذ (بترتيب الجملة الرئيسية)', 'Ich komme nicht, denn ich bin krank.', 'Ich komme nicht, denn ich krank bin.', 'denn أداة عطف؛ لذلك يبقى الفعل المصرف bin في الموضع الثاني.', 'wortstellung', 'denn'],
+      ['die Prüfung', 'die Prüfungen', 'الامتحان', 'Ich lerne viel, weil die Prüfung morgen ist.', 'Ich lerne viel, weil ist die Prüfung morgen.', 'في جملة weil يأتي الفعل المصرف ist بعد morgen في النهاية.', 'wortstellung', 'Prüfung'],
+      ['der Verkehr', '—', 'حركة المرور', 'Der Bus kommt später, weil viel Verkehr ist.', 'Der Bus kommt später, weil ist viel Verkehr.', 'في الجملة الثانوية يأتي الفعل المصرف ist في النهاية.', 'wortstellung', 'Verkehr'],
+      ['die Miete', 'die Mieten', 'الإيجار', 'Wir ziehen um, weil die Miete zu hoch ist.', 'Wir ziehen um, weil die Miete ist zu hoch.', 'بعد weil يأتي الفعل المصرف ist في نهاية الجملة الثانوية.', 'wortstellung', 'Miete'],
+      ['der Lärm', '—', 'الضجيج', 'Ich kann nicht schlafen, weil draußen viel Lärm ist.', 'Ich kann nicht schlafen, weil ist draußen viel Lärm.', 'في جملة weil يأتي ist بعد عبارة المكان والاسم في النهاية.', 'wortstellung', 'Lärm'],
+      ['das Wetter', '—', 'الطقس', 'Wir bleiben zu Hause, weil das Wetter schlecht ist.', 'Wir bleiben zu Hause, weil das Wetter ist schlecht.', 'بعد weil نقول das Wetter schlecht ist.', 'wortstellung', 'Wetter'],
+      ['der Termin', 'die Termine', 'الموعد', 'Ich sage den Termin ab, weil er zu früh ist.', 'Ich sage den Termin ab, weil er ist zu früh.', 'الفعل المصرف ist يأتي في نهاية جملة weil.', 'wortstellung', 'Termin'],
+      ['die Erkältung', 'die Erkältungen', 'الزكام', 'Ich bleibe im Bett, weil ich eine Erkältung habe.', 'Ich bleibe im Bett, weil ich habe eine Erkältung.', 'بعد weil يأتي habe في النهاية.', 'wortstellung', 'Erkältung'],
+      ['gefährlich', '—', 'خطير', 'Wir fahren langsam, weil die Straße gefährlich ist.', 'Wir fahren langsam, weil ist die Straße gefährlich.', 'بعد weil نقول die Straße gefährlich ist.', 'wortstellung', 'gefährlich'],
+      ['wichtig', '—', 'مهم', 'Ich rufe an, weil die Sache wichtig ist.', 'Ich rufe an, weil ist die Sache wichtig.', 'في الجملة الثانوية يأتي ist في النهاية.', 'wortstellung', 'wichtig'],
+      ['pünktlich', '—', 'في الموعد/ملتزم بالمواعيد', 'Er kommt früher, weil er pünktlich sein will.', 'Er kommt früher, weil will er pünktlich sein.', 'مع الفعل الناقص يأتي المصدر sein قبل الفعل المصرف will في النهاية.', 'wortstellung', 'pünktlich'],
+      ['bequem', '—', 'مريح', 'Ich nehme den Zug, weil er bequem ist.', 'Ich nehme den Zug, weil er ist bequem.', 'بعد weil نقول er bequem ist.', 'wortstellung', 'bequem'],
+      ['ruhig', '—', 'هادئ', 'Wir wohnen dort, weil die Straße ruhig ist.', 'Wir wohnen dort, weil die Straße ist ruhig.', 'الفعل المصرف ist يأتي في نهاية جملة weil.', 'wortstellung', 'ruhig'],
+      ['sauber', '—', 'نظيف', 'Die Wohnung gefällt mir, weil sie sauber ist.', 'Die Wohnung gefällt mir, weil sie ist sauber.', 'بعد weil نقول sie sauber ist.', 'wortstellung', 'sauber'],
+      ['günstig', '—', 'مناسب السعر/زهيد', 'Ich kaufe das Ticket, weil es günstig ist.', 'Ich kaufe das Ticket, weil es ist günstig.', 'في جملة weil يأتي ist في النهاية.', 'wortstellung', 'günstig'],
+      ['die Sprache', 'die Sprachen', 'اللغة', 'Ich lerne Deutsch, weil ich die Sprache für die Arbeit brauche.', 'Ich lerne Deutsch, weil ich brauche die Sprache für die Arbeit.', 'بعد weil يأتي الفعل المصرف brauche في النهاية.', 'wortstellung', 'Sprache'],
+      ['die Arbeit', 'die Arbeiten', 'العمل', 'Sie ist müde, weil sie viel Arbeit hat.', 'Sie ist müde, weil sie hat viel Arbeit.', 'في جملة weil يأتي hat بعد المفعول في النهاية.', 'wortstellung', 'Arbeit'],
+      ['der Preis', 'die Preise', 'السعر', 'Ich kaufe das Handy nicht, weil der Preis zu hoch ist.', 'Ich kaufe das Handy nicht, weil ist der Preis zu hoch.', 'بعد weil نقول der Preis zu hoch ist.', 'wortstellung', 'Preis'],
+      ['das Zimmer', 'die Zimmer', 'الغرفة', 'Ich nehme das Zimmer, weil es hell ist.', 'Ich nehme das Zimmer, weil es ist hell.', 'الفعل المصرف ist يأتي في نهاية جملة weil.', 'wortstellung', 'Zimmer'],
+      ['der Unterricht', '—', 'الدرس/الحصة', 'Ich bin früh da, weil der Unterricht um acht beginnt.', 'Ich bin früh da, weil der Unterricht beginnt um acht.', 'في جملة weil يأتي الفعل المصرف beginnt بعد عبارة الوقت.', 'wortstellung', 'Unterricht'],
+      ['die Nachricht', 'die Nachrichten', 'الخبر/الرسالة', 'Sie freut sich, weil die Nachricht gut ist.', 'Sie freut sich, weil die Nachricht ist gut.', 'بعد weil نقول die Nachricht gut ist.', 'wortstellung', 'Nachricht'],
+      ['das Geld', '—', 'المال', 'Er arbeitet viel, weil er das Geld braucht.', 'Er arbeitet viel, weil er braucht das Geld.', 'في جملة weil يأتي braucht بعد المفعول في النهاية.', 'wortstellung', 'Geld'],
+      ['die Familie', 'die Familien', 'العائلة', 'Wir brauchen eine große Wohnung, weil die Familie groß ist.', 'Wir brauchen eine große Wohnung, weil die Familie ist groß.', 'الفعل المصرف ist يأتي في نهاية جملة weil.', 'wortstellung', 'Familie'],
+      ['der Verkehrsunfall', 'die Verkehrsunfälle', 'حادث مرور', 'Der Bus kommt später, weil ein Verkehrsunfall passiert ist.', 'Der Bus kommt später, weil ein Verkehrsunfall ist passiert.', 'في Perfekt يأتي اسم المفعول passiert قبل الفعل المساعد المصرف ist.', 'wortstellung', 'Verkehrsunfall'],
+      ['die Kinderbetreuung', '—', 'رعاية الأطفال', 'Sie arbeitet halbtags, weil sie nachmittags keine Kinderbetreuung hat.', 'Sie arbeitet halbtags, weil sie hat nachmittags keine Kinderbetreuung.', 'بعد weil يأتي الفعل المصرف hat في النهاية.', 'wortstellung', 'Kinderbetreuung'],
+      ['meistens', '—', 'في الأغلب', 'Ich komme meistens mit dem Bus, weil ich kein Auto habe.', 'Ich komme meistens mit dem Bus, weil ich habe kein Auto.', 'في جملة weil يأتي habe بعد المفعول في النهاية.', 'wortstellung', 'meistens'],
+      ['endlich', '—', 'أخيرًا', 'Endlich sind die Ferien da!', 'Endlich die Ferien sind da!', 'إذا بدأت الجملة الرئيسية بـ Endlich يأتي الفعل المصرف sind في الموضع الثاني.', 'wortstellung', 'Endlich'],
+      ['stressig', '—', 'مُجهِد', 'Ich komme nicht, weil die Woche stressig ist.', 'Ich komme nicht, weil die Woche ist stressig.', 'بعد weil نقول die Woche stressig ist.', 'wortstellung', 'stressig'],
+      ['der Stress', '—', 'الضغط والتوتر', 'Er hat Stress, weil er morgen eine Prüfung hat.', 'Er hat Stress, weil er hat morgen eine Prüfung.', 'في جملة weil يأتي hat بعد بقية العناصر في النهاية.', 'wortstellung', 'Stress'],
+      ['die Ruhe', '—', 'الهدوء', 'Ich brauche Ruhe, weil ich morgen früh aufstehe.', 'Ich brauche Ruhe, weil ich aufstehe morgen früh.', 'في جملة weil يبقى الفعل المنفصل متصلًا ويأتي aufstehe في النهاية.', 'wortstellung', 'Ruhe']
     ],
     tricks: [
-      { trick: 'weil ترسل الفعل إلى النهاية، وdenn تتركه ثانيًا', wie: 'Ich komme nicht, weil ich krank bin. · Ich komme nicht, denn ich bin krank.', warum: 'العربية تصل السبب بلا ترتيب، فالمتعلم يضع الفعل ثانيًا بعد weil فيكسر بنية الجملة الثانوية.', anchor: 'weil' },
-      { trick: 'الفعل المعاون هو آخر ما يُسمع: weil er pünktlich sein will', wie: 'weil ich eine Erkältung habe · weil ein Unfall passiert ist · weil er pünktlich sein will.', warum: 'في الأزمنة المركّبة يقف المعاون في النهاية، وهي علامة الجملة الثانوية الألمانية.', anchor: 'pünktlich' },
-      { trick: 'السبب أولًا في السبب والنتيجة', wie: 'Warum bleibst du zu Hause? – Weil das Wetter schlecht ist. Die Antwort beginnt mit dem Grund.', warum: 'الجواب الألماني يبدأ بالسبب المباشر، والعربية تبدأ بالحكم ثم تشرح.', anchor: 'das Wetter' }
-    ]
+      { trick: 'weil: الفعل المصرف في النهاية · denn: ترتيب جملة رئيسية · deshalb: بعدها الفعل المصرف مباشرة', wie: 'Ich komme nicht, weil ich krank bin. · Ich komme nicht, denn ich bin krank. · Ich bin krank, deshalb komme ich nicht.', warum: 'weil تبدأ جملة ثانوية، أما denn فتربط جملة رئيسية بترتيبها العادي، وdeshalb تشغل غالبًا الموضع الأول فيأتي الفعل بعدها في الموضع الثاني.', anchor: 'weil' },
+      { trick: 'عند وجود فعلين: غير المصرف قبل الفعل المصرف في نهاية جملة weil', wie: 'weil ich arbeiten muss · weil ich gelernt habe · weil ein Unfall passiert ist · weil er pünktlich sein will.', warum: 'في الأمثلة المستهدفة يأتي المصدر أو اسم المفعول قبل الفعل المصرف الأخير.', anchor: 'pünktlich' },
+      { trick: 'قبل جملة weil اللاحقة فاصلة؛ ويمكن أن يبدأ جواب Warum بـ Weil', wie: 'Ich bleibe zu Hause, weil das Wetter schlecht ist. · Warum bleibst du zu Hause? – Weil das Wetter schlecht ist.', warum: 'الفاصلة تفصل الجملة الرئيسية عن جملة weil؛ وفي الجواب المستقل تُكتب Weil بحرف كبير.', anchor: 'das Wetter' }
+    ],
+    strictClozeAnswers: true,
+    clozeItemIndex: 11,
+    clozeNearMiss: 'pünktliche',
+    wordClozeNearMisses: {
+      'der Lärm': 'Lärme',
+      'die Nachricht': 'Nachrichten'
+    },
+    extraCheck: {
+      right: 'Ich lerne viel, weil die Prüfung morgen ist.',
+      bad: 'Ich lerne viel, weil ist die Prüfung morgen.',
+      why: 'في جملة weil يأتي الفعل المصرف ist بعد morgen في النهاية.',
+      family: 'wortstellung',
+      prereq: 'cap.a2-u1-l4.s05',
+      frage: 'أي جملة تضع ist في نهاية جملة weil؟'
+    }
   },
 
   'a2-u1-l5': {
