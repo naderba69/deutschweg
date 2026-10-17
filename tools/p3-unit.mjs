@@ -5326,6 +5326,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
 
+/* ---------- audited A2 problem reporting, repair, blocking and apology lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u4-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Mein Handy funktioniert nicht.',
+    'Ich habe meinen Schlüssel verloren.',
+    'Können Sie das Fahrrad reparieren?',
+    'Ich lasse meine Karte sperren.',
+    'Das tut mir leid.'
+  ];
+  t('Corpus lesson a2-u4-l6 bounds problem handling to malfunction, loss, repair, card blocking and apology',
+    lesson.title.de === 'Probleme: Defekt, Verlust und Entschuldigung' &&
+      lesson.title.ar === 'المشكلات: العطل والفقدان والاعتذار' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'حل المشكلات والأشياء المفقودة' &&
+      row.grammar.item === 'funktioniert nicht · habe … verloren · Können Sie … reparieren? · lasse … sperren · tut mir leid' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === [targets[0], targets[1], targets[2], targets[4]][i]) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[3] &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende meldest du einen Defekt oder Verlust, bittest um eine Reparatur, lässt eine Karte sperren und entschuldigst dich');
+
+  const expectedWords = [
+    'verlieren', 'kaputt', 'reparieren', 'die Reparatur', 'finden', 'verloren', 'suchen',
+    'die Brille', 'das Portemonnaie', 'die Bank anrufen', 'sperren', 'der Diebstahl',
+    'die Polizei', 'melden', 'der Verlust', 'die Versicherung', 'der Schaden', 'die Schuld',
+    'leidtun', 'der Fehler', 'korrigieren', 'die Entschuldigung', 'das Missverständnis',
+    'die Lösung', 'der Kundendienst', 'die Beschwerde', 'das Ding', 'das Geschirr',
+    'austragen', 'der Basketball', 'sogar'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u4-l6 reviews all 31 entries and three nuanced mnemonics without rejecting valid problem alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.verlieren.ex === targets[1] && byWord.verlieren.why.includes('Mein Schlüssel ist verloren gegangen') &&
+      byWord.verlieren.why.includes('lost') && byWord.kaputt.why.includes('kaputt gemacht') && byWord.kaputt.why.includes('works') &&
+      byWord.reparieren.why.includes('reparieren lassen') && byWord.reparieren.why.includes('fixen') &&
+      byWord['die Reparatur'].why.includes('Euros') && byWord.finden.pl === 'findet · fand · hat gefunden' &&
+      byWord.verloren.ex === 'Mein Schlüssel ist verloren gegangen.' &&
+      byWord.suchen.why.includes('Ich suche nach meiner Brille') && byWord['die Brille'].why.includes('auf den Tisch') &&
+      byWord['das Portemonnaie'].why.includes('ist verloren gegangen') &&
+      byWord['die Bank anrufen'].pl === 'ruft an · rief an · hat angerufen' &&
+      byWord.sperren.ex === targets[3] && byWord.sperren.why.includes('lasse die Karte gesperrt') &&
+      byWord['der Diebstahl'].why.includes('bei der Polizei melden') &&
+      byWord['die Polizei'].why.includes('bei der Polizei anrufen') &&
+      byWord['die Versicherung'].why.includes('bezahlt den Schaden') && byWord['der Schaden'].why.includes('klein') &&
+      byWord['die Schuld'].why.includes('Ich bin nicht schuld') &&
+      byWord['der Kundendienst'].why.includes('hilft weiter من دون') &&
+      byWord.austragen.why.includes('weil der Bote die Post austrägt') &&
+      byWord['der Basketball'].pl === 'die Basketbälle' && byWord['der Basketball'].why.includes('mit dem Basketball') &&
+      !['Mein Handy ist kaputt gemacht.', 'Ich habe den Schlüssel gefunden gehabt.',
+        'Ich suche nach meiner Brille.', 'Ich lasse meine Karte gesperrt.',
+        'Die Versicherung bezahlt den Schaden.', 'Ich bin nicht schuld.',
+        'Der Kundendienst hilft weiter.', 'weil der Bote die Post austrägt'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[1]) &&
+      tricks[0].wie.includes('Mein Schlüssel ist verloren gegangen.') &&
+      tricks[0].warum.includes('haben') && tricks[0].warum.includes('sein') && tricks[0].warum.includes('كلاهما صحيح') &&
+      tricks[0].wie.includes('Ich habe ihn lost') && tricks[1].wie.includes('Ich suche meine Brille.') && tricks[1].wie.includes('Ich suche nach meiner Brille.') &&
+      tricks[1].wie.includes('Ich melde den Verlust bei der Polizei.') && tricks[1].wie.includes('Ich rufe die Bank an.') &&
+      tricks[1].warum.includes('nach + Dativ') && tricks[2].wie.includes(targets[3]) &&
+      tricks[2].wie.includes('Ich lasse das Auto reparieren.') &&
+      tricks[2].wie.includes('Ich lasse meine Karte gesperrt') && tricks[2].wie.includes('Können Sie das fixen?') &&
+      tricks[2].wie.includes('Mein Handy works nicht') && tricks[2].warum.includes('بلا zu'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u4-l6 aligns strict loss, apology, malfunction and blocking clozes, modal repair order and 23-word production',
+    wordCloze1.frage.zeigt === 'Mein Schlüssel ist ____ gegangen.' && wordCloze1.frage.antworten.join(' ') === 'verloren' &&
+      wordCloze1.frage.nearMiss.verlorene && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'verlorene').ok &&
+      wordCloze2.frage.zeigt === 'Ich schreibe eine ____.' && wordCloze2.frage.antworten.join(' ') === 'Entschuldigung' &&
+      wordCloze2.frage.nearMiss.Entschuldigungen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Entschuldigungen').ok &&
+      imitate.zeigt.de === 'Mein Handy ____ nicht.' && imitate.frage.antworten.join(' ') === 'funktioniert' &&
+      imitate.frage.nearMiss.funktionieren && !win.DW.renderers.judgeCloze(imitate.frage, 'funktionieren').ok &&
+      drill.frage.zeigt === 'Ich lasse meine Karte ____.' && drill.frage.antworten.join(' ') === 'sperren' &&
+      drill.frage.nearMiss['zu sperren'] && !win.DW.renderers.judgeCloze(drill.frage, 'zu sperren').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'Können' && order.frage.verbFirst === true &&
+      order.frage.fields.vorfeld.length === 0 && order.frage.fields.lsk.join(' ') === 'Können' &&
+      order.frage.fields.mittelfeld.join(' ') === 'Sie das Fahrrad' && order.frage.fields.rsk.join(' ') === 'reparieren?' &&
+      order.frage.rightBracket.join(' ') === 'reparieren?' && win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Sie', 'Können', 'das', 'Fahrrad', 'reparieren?']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 23 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text =>
+        text.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de')))) &&
+      targets.every(x => speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de')
+        .includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u4-l6 makes 80 percent four of five independent across apology, blocking, repair, loss and malfunction',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u4-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u4-l6.s07 | cap.a2-u4-l6.s21 | cap.a2-u4-l6.s22 | cap.a2-u4-l6.s08 | cap.a2-u4-l6.s04' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Ich lasse meine Karte ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'sperren' && clozeCheck.frage.nearMiss['zu sperren'] &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'zu sperren').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'Können' &&
+      orderCheck.frage.verbFirst === true && orderCheck.frage.fields.rsk.join(' ') === 'reparieren?' &&
+      orderCheck.frage.rightBracket.join(' ') === 'reparieren?' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Sie', 'Können', 'das', 'Fahrrad', 'reparieren?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[1]) && checks[3].frage.misconceptionFamilies.b === 'konjugation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

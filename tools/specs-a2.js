@@ -1045,25 +1045,52 @@ module.exports = [
       summaryRecap: 'Dank Zusage Absage Grund Uhrzeit Mitbringsel'
     }),
 
-  U('a2-u4-l6', 'A2', 'مشكلة صغيرة', 'Ein Problem', 'lexik-kollokation',
-    'Am Ende sagst du dass etwas nicht funktioniert',
-    'في النهاية تقول إن شيئًا لا يعمل.',
+  U('a2-u4-l6', 'A2', 'المشكلات: العطل والفقدان والاعتذار', 'Probleme: Defekt, Verlust und Entschuldigung', 'lexik-kollokation',
+    'Am Ende meldest du einen Defekt oder Verlust, bittest um eine Reparatur, lässt eine Karte sperren und entschuldigst dich',
+    'في النهاية تبلّغ عن عطل أو فقدان، وتطلب إصلاحًا، وتجعل البطاقة موقوفة، وتعتذر.',
     [
-      ['funktioniert nicht', 'العطل funktioniert nicht', 'لا works not', 'es works nicht', 'works إنجليزية'],
-      ['ich habe es verloren', 'الضياع verloren', 'لا lost', 'ich habe es lost', 'lost إنجليزية'],
-      ['können Sie das reparieren', 'الإصلاح reparieren', 'لا fix', 'können Sie das fixen', 'fix ليست الفعل هنا'],
-      ['es tut mir leid', 'الاعتذار es tut mir leid', 'لا I am sorry كجملة وحيدة', 'ich bin sorry', 'sorry إنجليزية']
+      ['Mein Handy funktioniert nicht.', 'تبلّغ عن عطل بجملة رئيسية يكون فيها funktioniert في الموضع الثاني', 'في الجملة الرئيسية يأتي الفعل المصرف funktioniert بعد الفاعل Mein Handy', 'Mein Handy nicht funktioniert.', 'نقول Mein Handy funktioniert nicht؛ الفعل المصرف في الموضع الثاني'],
+      ['Ich habe meinen Schlüssel verloren.', 'تبلّغ عن شيء أضعته باستعمال haben + verloren', 'الفعل المتعدي verlieren يبني Perfekt مع haben، والمفعول المذكر هو meinen Schlüssel', 'Ich bin meinen Schlüssel verloren.', 'مع verlieren المتعدي نقول habe … verloren؛ أما Mein Schlüssel ist verloren gegangen فتركيب صحيح مختلف'],
+      ['Können Sie das Fahrrad reparieren?', 'تطلب الإصلاح بأدب باستعمال können والمصدر في نهاية السؤال', 'بعد الفعل الناقص Können يبقى reparieren مصدرًا بلا zu في القوس اليميني', 'Können Sie das Fahrrad repariert?', 'بعد Können نحتاج المصدر reparieren لا اسم المفعول repariert'],
+      ['Das tut mir leid.', 'تعتذر باستعمال الضمير في الداتيف mir', 'التعبير leidtun يأخذ الشخص في الداتيف: mir', 'Das tut mich leid.', 'نقول Das tut mir leid؛ الشخص المتأثر يأتي في الداتيف']
     ],
     [
-      ['Das Gerät funktioniert nicht.', 'الجهاز لا يعمل', 'Das Gerät works nicht', 'العطل funktioniert', 'funktioniert'],
-      ['Ich habe es verloren.', 'أضعته', 'Ich habe es lost', 'الضياع verloren', 'verloren'],
-      ['Können Sie das reparieren?', 'هل تستطيعون إصلاحه؟', 'Können Sie das fixen?', 'الإصلاح reparieren', 'reparieren'],
-      ['Es tut mir leid.', 'آسف', 'Ich bin sorry', 'الاعتذار Es tut mir leid', 'leid']
+      ['Mein Handy funktioniert nicht.', 'هاتفي لا يعمل', 'Mein Handy nicht funktioniert.', 'الفعل المصرف funktioniert يأتي في الموضع الثاني', 'funktioniert'],
+      ['Ich habe meinen Schlüssel verloren.', 'أضعت مفتاحي', 'Ich bin meinen Schlüssel verloren.', 'verlieren المتعدي يبني Perfekt مع haben', 'verloren'],
+      ['Können Sie das Fahrrad reparieren?', 'هل يمكنكم إصلاح الدراجة؟', 'Können Sie das Fahrrad zu reparieren?', 'بعد Können يأتي المصدر reparieren بلا zu', 'reparieren'],
+      ['Ich lasse meine Karte sperren.', 'أجعل المصرف يوقف بطاقتي', 'Ich lasse meine Karte zu sperren.', 'بعد lassen يأتي المصدر sperren بلا zu', 'sperren']
     ],
-    'Das Gerät funktioniert nicht. Können Sie das reparieren?',
-    'Das Gerät funktioniert nicht.',
-    'Melde morgen ein kleines Problem in einem Satz.',
-    'غدًا أبلغ عن مشكلة صغيرة بجملة.'),
+    'Mein Handy funktioniert nicht. Können Sie es reparieren?',
+    'Ich lasse meine Karte sperren.',
+    'Wiederhole morgen die fünf Sätze: Mein Handy funktioniert nicht. Ich habe meinen Schlüssel verloren. Können Sie das Fahrrad reparieren? Ich lasse meine Karte sperren. Das tut mir leid.',
+    'غدًا راجع الجمل الخمس: العطل والفقدان وطلب الإصلاح وإيقاف البطاقة والاعتذار.',
+    {
+      factFamilies: ['wortstellung', 'konjugation', 'konjugation', 'kasus'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze zu Problemen',
+        erklaerung: 'اكتب الجمل الخمس كاملة: العطل والفقدان وطلب الإصلاح وإيقاف البطاقة والاعتذار.',
+        prompt: 'اكتب الجمل الخمس العملية لحل المشكلة كاملة.',
+        promptDe: 'Mein Handy funktioniert nicht. · Ich habe meinen Schlüssel verloren. · Können Sie das Fahrrad reparieren? · Ich lasse meine Karte sperren. · Das tut mir leid.',
+        points: ['Mein Handy funktioniert nicht.', 'Ich habe meinen Schlüssel verloren.', 'Können Sie das Fahrrad reparieren?', 'Ich lasse meine Karte sperren.', 'Das tut mir leid.'],
+        minWords: 23,
+        frage: 'اكتب الجمل الخمس كاملة في 23 كلمة على الأقل.',
+        familie: 'register',
+        hinweise: ['استعمل habe … verloren وKönnen Sie … reparieren.', 'ضع sperren بعد lassen، وقل Das tut mir leid لا mich.']
+      },
+      imitateNearMiss: 'funktionieren',
+      transformHint: 'بعد lassen يأتي المفعول meine Karte ثم المصدر sperren بلا zu.',
+      orderAr: 'رتّب سؤال الإصلاح: Können ثم Sie ثم das Fahrrad ثم reparieren.',
+      orderHints: ['ابدأ بالفعل المصرف Können ثم الفاعل Sie.', 'ضع المصدر reparieren في القوس اليميني.'],
+      orderSentence: 'Können Sie das Fahrrad reparieren?',
+      orderRightBracket: ['reparieren?'],
+      checkOrderSentence: 'Können Sie das Fahrrad reparieren?',
+      checkOrderRightBracket: ['reparieren?'],
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال إصلاح مهذب بالفعل الناقص.',
+      speakAr: 'سجّل عشرين ثانية: قل Mein Handy funktioniert nicht وIch habe meinen Schlüssel verloren وKönnen Sie das Fahrrad reparieren وIch lasse meine Karte sperren وDas tut mir leid.',
+      summaryDe: 'Mein Handy funktioniert nicht. · Ich habe meinen Schlüssel verloren. · Können Sie das Fahrrad reparieren? · Ich lasse meine Karte sperren. · Das tut mir leid.',
+      summaryAr: 'راجع funktioniert nicht وhabe … verloren وKönnen Sie … reparieren وlasse … sperren وtut mir leid.',
+      summaryRecap: 'Defekt Verlust Reparatur Sperre Entschuldigung'
+    }),
 
   U('a2-u5-l1', 'A2', 'حكاية ماضٍ', 'Vergangenheit erzählen', 'konjugation',
     'Am Ende verbindest du drei Perfekt-Sätze',
