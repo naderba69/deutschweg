@@ -994,24 +994,50 @@ module.exports = [
     }),
 
   U('a1-u4-l2', 'A1', 'عند الطبيب', 'Beim Arzt', 'lexik-kollokation',
-    'Am Ende sagst du wo es wehtut und bittest um einen Termin',
-    'في النهاية تقول أين الألم وتطلب موعدًا.',
+    'Am Ende verwendest du fünf vollständige Sätze beim Arzt: „Mir tut der Kopf weh.“ · „Ich habe Schmerzen.“ · „Ich habe eine Erkältung.“ · „Ich brauche einen Termin.“ · „Mir geht es besser.“',
+    'في النهاية تستعمل خمس جمل كاملة عند الطبيب: Mir tut der Kopf weh. وIch habe Schmerzen. وIch habe eine Erkältung. وIch brauche einen Termin. وMir geht es besser.',
     [
-      ['Mir tut der Kopf weh', 'الألم mir tut weh', 'لا I have pain in head خليط', 'Ich habe pain im Kopf', 'pain إنجليزية'],
-      ['Ich bin krank', 'المرض مع bin', 'لا ich habe krank', 'Ich habe krank', 'krank صفة مع bin'],
-      ['Ich brauche einen Termin', 'الحاجة brauchen', 'لا I need', 'Ich need einen Termin', 'need إنجليزية'],
-      ['beim Arzt', 'عند الطبيب beim', 'لا by the Arzt', 'by dem Arzt', 'by إنجليزية']
+      ['Mir tut der Kopf weh.', 'الشخص المتألم يأتي في الداتيف mir، ويأتي جزء الجسم مع tut ... weh.', 'استعمل mir للشخص وtut ... weh للألم', 'Mich tut der Kopf weh.', 'نقول Mir tut der Kopf weh، لا Mich'],
+      ['Ich habe Schmerzen.', 'Schmerzen صيغة جمع ثابتة في هذا التعبير.', 'استعمل Schmerzen بصيغة الجمع', 'Ich habe Schmerze.', 'نقول Schmerzen، لا Schmerze'],
+      ['Ich habe eine Erkältung.', 'Erkältung مؤنث؛ لذلك تأتي بعد habe بصيغة eine Erkältung.', 'استعمل eine مع Erkältung', 'Ich habe ein Erkältung.', 'نقول eine Erkältung، لا ein Erkältung'],
+      ['Ich brauche einen Termin.', 'Termin مذكر وفي النصب بعد brauche؛ لذلك نقول einen Termin.', 'استعمل einen Termin بعد brauche', 'Ich brauche ein Termin.', 'نقول einen Termin، لا ein Termin']
     ],
     [
-      ['Mir tut der Kopf weh.', 'رأسي يؤلمني', 'Ich habe pain im Kopf', 'الألم tut weh', 'Kopf'],
-      ['Ich bin krank.', 'أنا مريض', 'Ich habe krank', 'krank مع bin', 'krank'],
-      ['Ich brauche einen Termin.', 'أحتاج موعدًا', 'Ich need einen Termin', 'الحاجة brauchen', 'brauche'],
-      ['Ich gehe zum Arzt.', 'أذهب إلى الطبيب', 'Ich gehe by dem Arzt', 'الوجهة zum Arzt', 'Arzt']
+      ['Mir tut der Kopf weh.', 'رأسي يؤلمني', 'Mich tut der Kopf weh.', 'الشخص المتألم يأتي في الداتيف mir.', 'Mir'],
+      ['Ich habe Schmerzen.', 'لدي آلام', 'Ich habe Schmerze.', 'Schmerzen هي صيغة الجمع الصحيحة.', 'Schmerzen'],
+      ['Ich habe eine Erkältung.', 'لدي زكام', 'Ich habe ein Erkältung.', 'Erkältung مؤنث؛ لذلك نقول eine.', 'Erkältung'],
+      ['Ich brauche einen Termin.', 'أحتاج إلى موعد', 'Ich brauche ein Termin.', 'Termin مذكر منصوب؛ لذلك نقول einen Termin.', 'Termin']
     ],
-    'Mir tut der Kopf weh. Ich brauche einen Termin.',
+    'Mir tut der Kopf weh.',
     'Ich brauche einen Termin.',
-    'Sage morgen wo es wehtut.',
-    'غدًا قل أين الألم.'),
+    'Schreibe morgen fünf Sätze nach diesen Mustern: Mir tut der Kopf weh. Ich habe Schmerzen. Ich habe eine Erkältung. Ich brauche einen Termin. Mir geht es besser.',
+    'غدًا اكتب خمس جمل على غرار: Mir tut der Kopf weh. وIch habe Schmerzen. وIch habe eine Erkältung. وIch brauche einen Termin. وMir geht es besser.',
+    {
+      factFamilies: ['kasus', 'plural', 'genus', 'kasus'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze beim Arzt',
+        erklaerung: 'اكتب خمس جمل كاملة: صف ألم الرأس، واذكر الآلام والزكام، واطلب موعدًا، ثم قل إن حالك أفضل.',
+        prompt: 'اكتب خمس جمل ألمانية كاملة لموقف واحد عند الطبيب.',
+        promptDe: 'Mir tut der Kopf weh. · Ich habe Schmerzen. · Ich habe eine Erkältung. · Ich brauche einen Termin. · Mir geht es besser.',
+        points: ['Mir tut der Kopf weh', 'Ich habe Schmerzen', 'Ich habe eine Erkältung', 'Ich brauche einen Termin', 'Mir geht es besser'],
+        minWords: 20,
+        frage: 'اكتب الجمل الخمس في سياق طبي واضح.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل mir مع tut ... weh.', 'انتبه إلى Schmerzen وeine Erkältung وeinen Termin.']
+      },
+      imitateNearMiss: 'Mich',
+      transformHint: 'Termin مذكر منصوب بعد brauche؛ لذلك نقول einen Termin.',
+      orderAr: 'رتّب جملة ألم واحدة: Mir ثم tut، وضع weh في النهاية.',
+      orderHints: ['ابدأ بـMir ثم ضع tut.', 'ضع der Kopf في الوسط وweh في النهاية.'],
+      orderSentence: 'Mir tut der Kopf weh.',
+      orderRightBracket: 'weh.',
+      checkOrderSentence: 'Ich habe eine Erkältung.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة طبية واحدة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل الجمل الخمس واستعمل Mir tut der Kopf weh وIch habe Schmerzen وIch habe eine Erkältung وIch brauche einen Termin وMir geht es besser.',
+      summaryDe: 'Mir tut der Kopf weh. · Ich habe Schmerzen. · Ich habe eine Erkältung. · Ich brauche einen Termin. · Mir geht es besser.',
+      summaryAr: 'استعمل mir مع tut ... weh، وhaben مع الأعراض، وeinen Termin للموعد، وes في Mir geht es besser.',
+      summaryRecap: 'Kopf Schmerzen Erkältung Termin besser'
+    }),
 
   U('a1-u4-l3', 'A1', 'الطريق', 'Wegbeschreibung', 'lexik-kollokation',
     'Am Ende erklärst du einen kurzen Weg',

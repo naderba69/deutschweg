@@ -1561,6 +1561,88 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]));
 }
 
+/* ---------- audited A1 medical lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u4-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = ['Mir tut der Kopf weh.', 'Ich habe Schmerzen.',
+    'Ich habe eine Erkältung.', 'Ich brauche einen Termin.',
+    'Mir geht es besser.'];
+  t('Corpus lesson a1-u4-l2 states five bounded medical sentences and teaches the four prerequisite facts as complete German',
+    lesson.title.de === 'Beim Arzt' && lesson.title.ar === 'عند الطبيب' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'وصف الأعراض وطلب موعد وذكر التحسن' &&
+      lesson.schritte.length === 34 && lesson.schritte[0].zeigt.de.includes('fünf vollständige Sätze') &&
+      targets.every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      byWord.besser.ex === targets[4]);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u4-l2 keeps all 28 medical entries, precise Arabic, isolated corrections and three usable medical mnemonics without the former English mixtures',
+    lesson.wortschatz.length === 28 &&
+      byWord['der Hals'].ar === 'الحلق / العنق' &&
+      byWord['die Schmerzen'].ex === targets[1] && byWord['die Schmerzen'].err === 'Ich habe Schmerze.' &&
+      byWord['die Schmerzen'].why.includes('المفرد هو der Schmerz') &&
+      byWord['die Erkältung'].ex === targets[2] && byWord['die Erkältung'].why.includes('مؤنث') &&
+      byWord.wehtun.ex === 'Beim Arztbesuch sage ich, wo es wehtut.' &&
+      byWord.wehtun.why.includes('الجملة الثانوية') && byWord['die Praxis'].ex.includes('Wartezimmer') &&
+      byWord['der Husten'].why.includes('Ich habe Husten') &&
+      byWord['das Fieber'].why.includes('Ich habe Fieber') &&
+      byWord.besser.why.includes('لا نحذف es') &&
+      tricks.length === 3 && tricks[0].wie.includes('Mir tut der Bauch weh.') &&
+      tricks[1].wie.includes(targets[1]) && tricks[1].wie.includes(targets[2]) &&
+      tricks[2].wie.includes(targets[4]) && tricks[2].warum.includes('تبقى es') &&
+      !['I have pain', 'Ich habe pain', 'I need', 'Ich need', 'by the Arzt', 'by dem Arzt', '"rtb"']
+        .some(x => lessonText.toLowerCase().includes(x.toLowerCase())));
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const points = targets.map(x => x.slice(0, -1));
+  t('Corpus lesson a1-u4-l2 aligns strict clozes, one pain-sentence order, five-part writing, speaking, summary and homework',
+    imitate.frage.antworten.join(' ') === 'Mir' && imitate.frage.nearMiss.Mich &&
+      drill.frage.zeigt === 'Ich habe ____.' &&
+      drill.frage.antworten.join(' ') === 'Schmerzen' && drill.frage.nearMiss.Schmerze &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Schmerze').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'tut' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Mir' &&
+      order.frage.fields.lsk.join(' ') === 'tut' && order.frage.fields.rsk.join(' ') === 'weh.' &&
+      order.frage.rightBracket.join(' ') === 'weh.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Mir', 'der', 'Kopf', 'tut', 'weh.']).failed === 1 &&
+      writing.frage.points.join(' | ') === points.join(' | ') && writing.frage.minWords === 20 &&
+      points.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u4-l2 makes 80 percent four of five measurable across appointment, pain plural, cold, pain dative and improvement expression',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u4-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.antworten.join(' ') === 'Schmerzen' && clozeCheck.frage.nearMiss.Schmerze &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Schmerze').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'habe' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'eine', 'Erkältung.', 'habe']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
