@@ -2186,6 +2186,108 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+/* ---------- audited A1 school-and-documents lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u5-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich bin in Tunis geboren.',
+    'Bei „Familienstand“ kreuzen Sie „ledig“ an.',
+    'Die kleine Laura geht in den Kindergarten.',
+    'Wie lautet das Geburtsjahr Ihres Sohnes?',
+    'Schreiben Sie Ihren Geburtsort in das Formular.'
+  ];
+  t('Corpus lesson a1-u5-l3 bounds school and documents to five complete sentences and four directly taught facts',
+    lesson.title.de === 'Schule und Papiere' && lesson.title.ar === 'المدرسة والوثائق' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'مكان الميلاد والحالة العائلية والروضة وسنة الميلاد والاستمارة' &&
+      lesson.schritte.length === 34 && lesson.wortschatz.length === 28 &&
+      lesson.schritte[0].zeigt.de.includes('nennst du Geburtsort und Familienstand') &&
+      lesson.schritte[0].zeigt.de.includes('fragst nach dem Geburtsjahr') &&
+      lesson.schritte[0].zeigt.de.includes('sprichst über den Kindergarten') &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u5-l3 reviews all 28 entries and three corrected mnemonics without rejecting valid von, unter or full-article contexts',
+    lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord['der Kindergarten'].ex === targets[2] && byWord['der Kindergarten'].err.includes('in die Kindergarten') &&
+      byWord['der Student'].ex.includes('dem Studenten') && byWord['der Student'].why.includes('مذكر ضعيف') &&
+      byWord['das Studium'].ex.includes('in Mainz') && byWord.kennenlernen.ex === 'Wir möchten Sie kennenlernen.' &&
+      byWord.kennenlernen.err.includes('kennenzulernen') &&
+      byWord['die Führung'].ex.includes('durch das Haus') && byWord['die Führung'].err.includes('durch dem Haus') &&
+      byWord.männlich.ar === 'ذكر' && byWord.weiblich.ar === 'أنثى' &&
+      byWord['der Jugendliche'].ex.includes('moderne Kleidung') &&
+      byWord['der Familienname'].err.startsWith('Meine Familienname') &&
+      byWord['der Familienstand'].ex === targets[1] && byWord['der Familienstand'].err.endsWith('auf.') &&
+      byWord.verheiratet.ex.includes('bin verheiratet') && byWord.verheiratet.err.includes('habe verheiratet') &&
+      byWord.heiraten.ex.includes('im Mai in Polen') && byWord['die Hochzeit'].err.includes('waren') &&
+      byWord['das Geburtsjahr'].ex === targets[3] &&
+      byWord['der Geburtsort'].ex === targets[4] && byWord['der Geburtsort'].err.includes('Ihr Geburtsort') &&
+      byWord['der Raum'].ex === 'Der Unterricht ist in Raum 332.' &&
+      tricks.length === 3 && tricks[0].wie.includes('Bei „Familienstand“') &&
+      tricks[0].warum.includes('unter „Familienstand“') && tricks[0].warum.includes('قاعدة وحيدة') &&
+      tricks[1].wie.includes('Ihres Sohnes') && tricks[1].warum.includes('von Ihrem Sohn') &&
+      tricks[1].warum.includes('صحيحة أيضًا') && tricks[2].wie.includes('bin in Tunis geboren') &&
+      tricks[2].wie.includes('ist gestorben') && tricks[2].warum.includes('Perfekt') &&
+      !lessonText.includes('عبارة ثابتة في كل استمارة ألمانية') &&
+      !lessonText.includes('الوثيقة الرسمية تفضّل Genitiv على von') &&
+      !lessonText.includes('Schreiben Sie Ihren Geburtsort auf das Formular.') &&
+      !lessonText.includes('Der Unterricht ist in dem Raum 332.') &&
+      !lessonText.includes('Ich bin Student in Mainz.') &&
+      !lessonText.includes('Die Hochzeit war sehr schön gemacht.') &&
+      !lessonText.includes('Meine Oma ist schon tot gemacht.'));
+  const imitate = lesson.schritte.find(s => s.phase === 'Anwenden' && s.frage && s.frage.art === 'cloze');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u5-l3 aligns strict clozes, birth-sentence order, 31-word writing, speaking, summary and homework',
+    imitate.zeigt.de === 'Ich ____ in Tunis geboren.' &&
+      imitate.frage.antworten.join(' ') === 'bin' && imitate.frage.nearMiss.habe &&
+      drill.frage.zeigt === 'Bei „Familienstand“ kreuzen Sie „ledig“ ____.' &&
+      drill.frage.antworten.join(' ') === 'an' && drill.frage.nearMiss.auf &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'auf').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'bin' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.lsk.join(' ') === 'bin' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'in', 'Tunis', 'bin', 'geboren.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 31 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u5-l3 makes 80 percent four of five measurable across genitive, form prefix, birth order, kindergarten case and birthplace case',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u5-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Bei „Familienstand“ kreuzen Sie „ledig“ ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'an' && clozeCheck.frage.nearMiss.auf &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'auf').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'bin' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'in', 'Tunis', 'bin', 'geboren.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

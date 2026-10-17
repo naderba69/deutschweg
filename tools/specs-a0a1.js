@@ -1312,24 +1312,49 @@ module.exports = [
     }),
 
   U('a1-u5-l3', 'A1', 'المدرسة والوثائق', 'Schule und Papiere', 'kasus',
-    'Am Ende füllst du ein Formular mit Namen, Geburtsort und Familienstand',
-    'في النهاية تملأ استمارة بالاسم ومكان الميلاد والحالة العائلية.',
+    'Am Ende nennst du Geburtsort und Familienstand, fragst nach dem Geburtsjahr und sprichst über den Kindergarten',
+    'في النهاية تذكر مكان الميلاد والحالة العائلية، وتسأل عن سنة الميلاد، وتتحدث عن الروضة.',
     [
-      ['bei Familienstand', 'الاستمارة تسأل بـ bei', 'in Familienstand خطأ', 'in „Familienstand“', 'bei في الاستمارة'],
-      ['das Geburtsjahr Ihres Sohnes', 'الإضافة بـ Genitiv', 'von Ihrem Sohn في الاستمارة أقل رسمية', 'das Geburtsjahr von Ihrem Sohn', 'Genitiv في الوثائق'],
-      ['ich bin geboren', 'الميلاد بـ sein', 'habe geboren للمرأة لا للشخص', 'Ich habe in Tunis geboren', 'sein مع geboren'],
-      ['ledig ohne Artikel', 'الحالة العائلية صفة', 'ein ledig خطأ', 'ein ledig', 'ledig صفة']
+      ['Ich bin in Tunis geboren.', 'تذكر مكان الميلاد مع sein وgeboren', 'في بيانات السيرة نقول bin geboren لا habe geboren', 'Ich habe in Tunis geboren.', 'مع geboren نستعمل هنا sein: Ich bin geboren'],
+      ['Bei „Familienstand“ kreuzen Sie „ledig“ an.', 'تستعمل ankreuzen عند اختيار الحالة العائلية', 'في الأمر الرسمي ينفصل ankreuzen وتأتي an في النهاية', 'Bei „Familienstand“ kreuzen Sie „ledig“ auf.', 'الفعل هو ankreuzen، لذلك تأتي an في النهاية'],
+      ['Die kleine Laura geht in den Kindergarten.', 'تستعمل in den مع الحركة إلى روضة اسمها مذكر', 'Kindergarten مذكر، ومع الاتجاه نقول in den Kindergarten', 'Die kleine Laura geht in die Kindergarten.', 'Kindergarten مذكر؛ لذلك نقول in den لا in die'],
+      ['Wie lautet das Geburtsjahr Ihres Sohnes?', 'تسأل عن سنة ميلاد الابن بصيغة الملكية في المضاف إليه', 'بعد Geburtsjahr تأتي صيغة Genitiv: Ihres Sohnes', 'Wie lautet das Geburtsjahr Ihren Sohnes?', 'في Genitiv نقول Ihres Sohnes لا Ihren Sohnes']
     ],
     [
-      ['Ich bin in Tunis geboren.', 'وُلدت في تونس', 'Ich habe in Tunis geboren', 'sein لا haben', 'geboren'],
-      ['Meine Schwester heiratet im Mai.', 'أختي تتزوج في ماي', 'Meine Schwester heiratet in Mai', 'الشهر im', 'im'],
-      ['Der Kindergarten ist neu.', 'الروضة جديدة', 'Die Kindergarten ist neu', 'Kindergarten مذكر', 'der'],
-      ['Das ist meine Ehefrau.', 'هذه زوجتي', 'Das ist mein Ehefrau', 'Frau مؤنث', 'meine']
+      ['Ich bin in Tunis geboren.', 'وُلدت في تونس', 'Ich habe in Tunis geboren.', 'مع geboren نستعمل هنا sein', 'bin'],
+      ['Bei „Familienstand“ kreuzen Sie „ledig“ an.', 'عند خانة الحالة العائلية ضع علامة على أعزب', 'Bei „Familienstand“ kreuzen Sie „ledig“ auf.', 'الفعل ankreuzen ينفصل إلى kreuzen ... an', 'an'],
+      ['Schreiben Sie Ihren Geburtsort in das Formular.', 'اكتب مكان ميلادك في الاستمارة', 'Schreiben Sie Ihr Geburtsort in das Formular.', 'Geburtsort مفعول مباشر مذكر: Ihren Geburtsort', 'Ihren'],
+      ['Wie lautet das Geburtsjahr Ihres Sohnes?', 'ما سنة ميلاد ابنك؟', 'Wie lautet das Geburtsjahr Ihren Sohnes?', 'في Genitiv نقول Ihres Sohnes', 'Ihres']
     ],
-    'Ich bin ledig und wohne in Nabeul.',
-    'Ich bin ledig.',
-    'Schreibe morgen deinen Familienstand in einem Satz.',
-    'غدًا اكتب حالتك العائلية في جملة.'),
+    'Ich bin in Tunis geboren.',
+    'Ich bin in Tunis geboren.',
+    'Wiederhole morgen die fünf Sätze: Ich bin in Tunis geboren. Bei „Familienstand“ kreuzen Sie „ledig“ an. Die kleine Laura geht in den Kindergarten. Wie lautet das Geburtsjahr Ihres Sohnes? Schreiben Sie Ihren Geburtsort in das Formular.',
+    'غدًا راجع الجمل الخمس عن مكان الميلاد والحالة العائلية والروضة وسنة الميلاد والاستمارة.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'kasus', 'kasus'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Schule und Dokumenten',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن مكان الميلاد والحالة العائلية والروضة وسنة الميلاد والاستمارة.',
+        prompt: 'اكتب الجمل الخمس عن المدرسة والوثائق.',
+        promptDe: 'Ich bin in Tunis geboren. · Bei „Familienstand“ kreuzen Sie „ledig“ an. · Die kleine Laura geht in den Kindergarten. · Wie lautet das Geburtsjahr Ihres Sohnes? · Schreiben Sie Ihren Geburtsort in das Formular.',
+        points: ['Ich bin in Tunis geboren.', 'Bei „Familienstand“ kreuzen Sie „ledig“ an.', 'Die kleine Laura geht in den Kindergarten.', 'Wie lautet das Geburtsjahr Ihres Sohnes?', 'Schreiben Sie Ihren Geburtsort in das Formular.'],
+        minWords: 31,
+        frage: 'اكتب الجمل الخمس كاملة من دون تبديل bin وan وin den وIhres وIhren.',
+        familie: 'kasus',
+        hinweise: ['راجع bin geboren وkreuzen Sie ... an وin den Kindergarten.', 'استعمل Ihres Sohnes وIhren Geburtsort.']
+      },
+      imitateNearMiss: 'habe',
+      transformHint: 'في بيانات السيرة نقول Ich bin ... geboren.',
+      orderAr: 'رتّب جملة الميلاد: ابدأ بـ Ich ثم ضع bin قبل in Tunis geboren.',
+      orderHints: ['ابدأ بـ Ich ثم ضع الفعل bin.', 'أكمل بـ in Tunis geboren.'],
+      orderSentence: 'Ich bin in Tunis geboren.',
+      checkOrderSentence: 'Ich bin in Tunis geboren.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن مكان الميلاد.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich bin in Tunis geboren وBei „Familienstand“ kreuzen Sie „ledig“ an وDie kleine Laura geht in den Kindergarten وWie lautet das Geburtsjahr Ihres Sohnes وSchreiben Sie Ihren Geburtsort in das Formular.',
+      summaryDe: 'Ich bin in Tunis geboren. · Bei „Familienstand“ kreuzen Sie „ledig“ an. · Die kleine Laura geht in den Kindergarten. · Wie lautet das Geburtsjahr Ihres Sohnes? · Schreiben Sie Ihren Geburtsort in das Formular.',
+      summaryAr: 'راجع bin geboren وkreuzen Sie ... an وin den Kindergarten وIhres Sohnes وIhren Geburtsort.',
+      summaryRecap: 'Geburtsort Familienstand Kindergarten Geburtsjahr Formular'
+    }),
 
   U('a1-u5-l4', 'A1', 'البيت والجوار', 'Zuhause und Nachbarschaft', 'präposition',
     'Am Ende beschreibst du deine Wohnung und den Weg im Haus',
