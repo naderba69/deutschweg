@@ -5692,6 +5692,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
       checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
+/* ---------- audited A2 formal email lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u5-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Sehr geehrte Damen und Herren,',
+    'ich schreibe Ihnen wegen eines Termins.',
+    'Könnten Sie mir bitte einen neuen Termin geben?',
+    'Vielen Dank für Ihre Antwort.',
+    'Mit freundlichen Grüßen\nSara Ben Ali'
+  ];
+  t('Corpus lesson a2-u5-l3 bounds a formal email to salutation, reason, request, thanks, closing and signature',
+    lesson.title.de === 'Formelle E-Mail: Anrede, Bitte und Gruß' &&
+      lesson.title.ar === 'البريد الإلكتروني الرسمي: النداء والطلب والختام' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'كتابة بريد إلكتروني رسمي' &&
+      row.grammar.item === 'Sehr geehrte …, · Ihnen/Ihre · wegen + Genitiv · Könnten Sie …? · Mit freundlichen Grüßen' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[2] &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende schreibst du eine formelle E-Mail mit Anrede, Bitte, Dank, Gruß und Unterschrift');
+
+  const expectedWords = [
+    'Sehr geehrte Damen und Herren', 'der Brief', 'die Anrede', 'der Gruß', 'der Betreff',
+    'die Unterschrift', 'unterschreiben', 'die Bewerbung', 'formell', 'informell',
+    'Mit freundlichen Grüßen', 'Liebe', 'Lieber', 'der Absender', 'der Empfänger',
+    'die Anlage', 'der Lebenslauf', 'das Zeugnis', 'die Bitte', 'der Dank',
+    'sich bedanken', 'die Information', 'die Antwort', 'die Frist', 'die Post',
+    'die E-Mail', 'der Kontakt', 'sparen', 'schaffen', 'die Bohne', 'paar'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u5-l3 reviews all 31 entries and three nuanced mnemonics without rejecting valid registers or contextual alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['Sehr geehrte Damen und Herren'].ex === targets[0] &&
+      byWord['der Brief'].ex === 'Ich schreibe einen formellen Brief.' &&
+      byWord['die Anrede'].why.includes('am Anfang') && byWord['der Gruß'].ex === 'Viele Grüße aus Tunis!' &&
+      byWord['der Betreff'].ex === 'Im Betreff steht der Termin.' &&
+      byWord['die Unterschrift'].ex === 'Unter dem Brief steht meine Unterschrift.' &&
+      byWord.unterschreiben.why.includes('المصدر unterschreiben ثم Sie') &&
+      byWord['die Bewerbung'].why.includes('per E-Mail أو per Post') &&
+      byWord.formell.why.includes('formell formuliert') && byWord.informell.ex.includes('informelle E-Mail') &&
+      byWord['Mit freundlichen Grüßen'].ex === targets[4] && byWord['Mit freundlichen Grüßen'].why.includes('لا فاصلة') &&
+      byWord.Liebe.why.includes('شخص مقرّب') && byWord.Lieber.ex.startsWith('Lieber Tom,') &&
+      byWord['der Absender'].why.includes('die Absenderin') && byWord['der Empfänger'].why.includes('die Empfängerin') &&
+      byWord['die Anlage'].why.includes('Die Anlage schicke ich فجملة صحيحة') &&
+      byWord['der Lebenslauf'].ex === 'Ich lege den Lebenslauf bei.' &&
+      byWord['das Zeugnis'].ex === 'Das Zeugnis ist eine Anlage.' && byWord['die Bitte'].ex.includes('eine Bitte') &&
+      byWord['der Dank'].ex === targets[3] && byWord['sich bedanken'].ex === 'Ich bedanke mich für Ihre Antwort.' &&
+      byWord['die Information'].ex === 'Könnten Sie mir bitte eine Information schicken?' &&
+      byWord['die Antwort'].why.includes('auf + Akkusativ') && byWord['die Frist'].ex.endsWith('am Freitag.') &&
+      byWord['die Post'].ex.includes('mit der Post') && byWord['die E-Mail'].ex.includes('an die Firma') &&
+      byWord['der Kontakt'].ex.includes('Kontaktdaten') && byWord.sparen.why.includes('auf ein neues Fahrrad sparen') &&
+      byWord.schaffen.why.includes('Geschäft') && byWord['die Bohne'].ex.startsWith('Die Bohnen') &&
+      byWord.paar.why.includes('ein Paar') &&
+      !['Liebe Sara, ich hoffe, es geht dir gut.', 'Lieber Tom, vielen Dank für deine Nachricht.',
+        'Die Anlage schicke ich.', 'Ich spare auf ein neues Fahrrad.',
+        'Die E-Mail ist formell formuliert.', 'Ich schicke meine Bewerbung per Post.'].some(x => errors.includes(x)) &&
+      lesson.schritte.find(s => s.id === 's05').frage.feedback.c.includes('wegen einem Termin') &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes('Mit freundlichen Grüßen') &&
+      tricks[0].warum.includes('بلا فاصلة') && tricks[1].wie.includes(targets[1]) && tricks[1].wie.includes(targets[2]) &&
+      tricks[1].wie.includes(targets[3]) && tricks[1].warum.includes('Genitiv') &&
+      tricks[2].wie.includes('Die Anlage schicke ich mit.') && tricks[2].wie.includes('Ich lege den Lebenslauf bei.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u5-l3 aligns strict signature, information, salutation and closing clozes, modal order and 30-word production',
+    wordCloze1.frage.zeigt === 'Unter dem Brief steht meine ____.' && wordCloze1.frage.antworten.join(' ') === 'Unterschrift' &&
+      wordCloze1.frage.nearMiss.Unterschriften && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Unterschriften').ok &&
+      wordCloze2.frage.zeigt === 'Könnten Sie mir bitte eine ____ schicken?' && wordCloze2.frage.antworten.join(' ') === 'Information' &&
+      wordCloze2.frage.nearMiss.Informationen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Informationen').ok &&
+      imitate.zeigt.de === 'Sehr geehrte Damen und ____,' && imitate.frage.antworten.join(' ') === 'Herren' &&
+      imitate.frage.nearMiss.Herr && !win.DW.renderers.judgeCloze(imitate.frage, 'Herr').ok &&
+      drill.frage.zeigt === 'Mit ____ Grüßen\nSara Ben Ali' && drill.frage.antworten.join(' ') === 'freundlichen' &&
+      drill.frage.nearMiss.freundliche && !win.DW.renderers.judgeCloze(drill.frage, 'freundliche').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'Könnten' && order.frage.verbFirst === true &&
+      order.frage.fields.vorfeld.length === 0 && order.frage.fields.lsk.join(' ') === 'Könnten' &&
+      order.frage.fields.mittelfeld.join(' ') === 'Sie mir bitte einen neuen Termin' && order.frage.fields.rsk.join(' ') === 'geben?' &&
+      order.frage.rightBracket.join(' ') === 'geben?' && win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Sie', 'Könnten', 'mir', 'bitte', 'einen', 'neuen', 'Termin', 'geben?']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.slice(0, 4).every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text =>
+        text.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de')))) &&
+      [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de, speaking.erklaerung].every(text =>
+        text.includes('Mit freundlichen Grüßen') && text.includes('Sara Ben Ali')) &&
+      targets.slice(0, 4).every(x => speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de')
+        .includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u5-l3 makes 80 percent four of five independent across thanks, closing, request, salutation and reason',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u5-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u5-l3.s07 | cap.a2-u5-l3.s21 | cap.a2-u5-l3.s22 | cap.a2-u5-l3.s08 | cap.a2-u5-l3.s05' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'deklination' &&
+      clozeCheck.frage.zeigt === 'Mit ____ Grüßen\nSara Ben Ali' && clozeCheck.frage.antworten.join(' ') === 'freundlichen' &&
+      clozeCheck.frage.nearMiss.freundliche && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'freundliche').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'Könnten' &&
+      orderCheck.frage.verbFirst === true && orderCheck.frage.fields.rsk.join(' ') === 'geben?' &&
+      orderCheck.frage.rightBracket.join(' ') === 'geben?' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Sie', 'Könnten', 'mir', 'bitte', 'einen', 'neuen', 'Termin', 'geben?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

@@ -1184,25 +1184,52 @@ module.exports = [
       summaryRecap: 'Meinung Abwägung Haltung Zustimmung Widerspruch'
     }),
 
-  U('a2-u5-l3', 'A2', 'رسالة أطول', 'Ein kurzer Brief', 'register',
-    'Am Ende schreibst du Anrede, Bitte und Gruß',
-    'في النهاية تكتب تحية وطلبًا وختامًا.',
+  U('a2-u5-l3', 'A2', 'البريد الإلكتروني الرسمي: النداء والطلب والختام', 'Formelle E-Mail: Anrede, Bitte und Gruß', 'register',
+    'Am Ende schreibst du eine formelle E-Mail mit Anrede, Bitte, Dank, Gruß und Unterschrift',
+    'في النهاية تكتب بريدًا إلكترونيًا رسميًا فيه نداء وطلب وشكر وختام وتوقيع.',
     [
-      ['Sehr geehrte Frau', 'الرسمي يبدأ هكذا', 'Liebe Frau an eine Behörde ist falsch', 'Liebe Frau Behörde', 'المقام الرسمي Sehr geehrte'],
-      ['ich schreibe Ihnen', 'الطلب Ihnen', 'dir في الرسالة الرسمية خطأ', 'ich schreibe dir, Frau Amt', 'الرسمي Ihnen'],
-      ['mit freundlichen Grüßen', 'الختام الرسمي', 'Viele Grüße an das Amt ist zu leicht', 'Viele Grüße, das Amt', 'الختام Mit freundlichen Grüßen'],
-      ['der Betreff fehlt nicht', 'الموضوع واضح', 'لا تبدأ بالطلب بلا مخاطبة', 'Bitte sofort ohne Anrede', 'التحية أولًا']
+      ['Sehr geehrte Damen und Herren,', 'تبدأ الرسالة الرسمية إلى جهة غير معروفة بنداء صحيح وفاصلة', 'تأخذ geehrte النهاية -e مع الجمع Damen und Herren، وتأتي فاصلة بعد النداء', 'Sehr geehrter Damen und Herren,', 'نقول Sehr geehrte Damen und Herren؛ النهاية -e، وبعد النداء فاصلة'],
+      ['ich schreibe Ihnen wegen eines Termins.', 'تذكر سبب الرسالة بضمير المخاطب الرسمي وبـwegen + Genitiv', 'بعد فاصلة النداء تبدأ ich بحرف صغير؛ Ihnen رسمي، وبعد wegen نقول eines Termins في الأسلوب المعياري', 'ich schreibe Ihnen wegen einen Termin.', 'في الرسالة الرسمية المعيارية نقول wegen eines Termins؛ ويجوز wegen einem Termin في استعمال دارج، لا wegen einen Termin'],
+      ['Könnten Sie mir bitte einen neuen Termin geben?', 'تطلب موعدًا جديدًا بأدب باستعمال könnten والمصدر في القوس اليميني', 'بعد Könnten يأتي Sie ثم mir في الداتيف، ويبقى geben مصدرًا بلا zu في النهاية', 'Könnten Sie mir bitte einen neuen Termin zu geben?', 'بعد Könnten يأتي المصدر geben بلا zu في القوس اليميني'],
+      ['Vielen Dank für Ihre Antwort.', 'تشكر المخاطب الرسمي باستعمال Vielen Dank وIhre بحرف كبير', 'العبارة الثابتة Vielen Dank، والضمير الرسمي Ihre يبدأ بحرف كبير', 'Viele Dank für Ihre Antwort.', 'نقول Vielen Dank؛ تأخذ الصفة النهاية -en في هذه العبارة الثابتة']
     ],
     [
-      ['Sehr geehrte Frau Keller,', 'السيدة كيلر المحترمة', 'Liebe Frau Keller vom Amt,', 'الرسمي Sehr geehrte', 'geehrte'],
-      ['Ich schreibe Ihnen wegen des Termins.', 'أكتب إليكم بخصوص الموعد', 'Ich schreibe dir wegen des Termins', 'الرسمي Ihnen', 'Ihnen'],
-      ['Mit freundlichen Grüßen', 'مع أطيب التحيات', 'Viele Grüße ans Amt', 'الختام الرسمي', 'freundlichen'],
-      ['Sara Ben Ali', 'الاسم في الآخر', 'Unterschrift fehlt nicht', 'الختام يحمل الاسم', 'Sara']
+      ['Sehr geehrte Damen und Herren,', 'حضرات السادة المحترمين،', 'Sehr geehrte Damen und Herren.', 'بعد النداء الرسمي فاصلة لا نقطة', 'Herren'],
+      ['ich schreibe Ihnen wegen eines Termins.', 'أكتب إليكم بخصوص موعد', 'ich schreibe Ihnen für eines Termins.', 'السبب يأتي هنا مع wegen + Genitiv: wegen eines Termins', 'Ihnen'],
+      ['Könnten Sie mir bitte einen neuen Termin geben?', 'هل يمكنكم منحي موعدًا جديدًا من فضلكم؟', 'Könnten Sie mir bitte einen neuen Termin gibt?', 'بعد Könnten نحتاج المصدر geben', 'geben'],
+      ['Mit freundlichen Grüßen\nSara Ben Ali', 'مع أطيب التحيات ثم التوقيع في السطر التالي', 'Mit freundlichen Grüßen,\nSara Ben Ali', 'لا فاصلة بعد صيغة الختام؛ يأتي الاسم في السطر التالي', 'freundlichen']
     ],
-    'Sehr geehrte Frau Keller, ich schreibe Ihnen wegen des Termins.',
-    'Ich schreibe Ihnen wegen des Termins.',
-    'Schreibe morgen Anrede und Gruß.',
-    'غدًا اكتب تحية وختامًا.'),
+    'Sehr geehrte Damen und Herren, ich schreibe Ihnen wegen eines Termins. Könnten Sie mir bitte einen neuen Termin geben?',
+    'Könnten Sie mir bitte einen neuen Termin geben?',
+    'Wiederhole morgen diese formelle E-Mail:\nSehr geehrte Damen und Herren,\nich schreibe Ihnen wegen eines Termins.\nKönnten Sie mir bitte einen neuen Termin geben?\nVielen Dank für Ihre Antwort.\n\nMit freundlichen Grüßen\nSara Ben Ali',
+    'غدًا راجع النداء والسبب والطلب والشكر والختام والتوقيع في البريد الرسمي.',
+    {
+      factFamilies: ['deklination', 'kasus', 'konjugation', 'deklination'],
+      writing: {
+        zeigt: 'Eine formelle E-Mail in fünf Bausteinen',
+        erklaerung: 'اكتب اللبنات الخمس كاملة: النداء والسبب والطلب والشكر والختام مع التوقيع.',
+        prompt: 'اكتب البريد الإلكتروني الرسمي كاملًا في خمسة أجزاء.',
+        promptDe: 'Sehr geehrte Damen und Herren, · ich schreibe Ihnen wegen eines Termins. · Könnten Sie mir bitte einen neuen Termin geben? · Vielen Dank für Ihre Antwort. · Mit freundlichen Grüßen · Sara Ben Ali',
+        points: ['Sehr geehrte Damen und Herren,', 'ich schreibe Ihnen wegen eines Termins.', 'Könnten Sie mir bitte einen neuen Termin geben?', 'Vielen Dank für Ihre Antwort.', 'Mit freundlichen Grüßen\nSara Ben Ali'],
+        minWords: 30,
+        frage: 'اكتب اللبنات الخمس مع التوقيع في 30 كلمة على الأقل.',
+        familie: 'register',
+        hinweise: ['ضع فاصلة بعد النداء ثم ابدأ ich بحرف صغير، واكتب Ihnen وIhre بحرف كبير.', 'ضع geben في النهاية بلا zu، ولا تضع فاصلة بعد Mit freundlichen Grüßen؛ اكتب الاسم في السطر التالي.']
+      },
+      imitateNearMiss: 'Herr',
+      transformHint: 'بعد Könnten Sie يأتي mir في الداتيف، ثم einen neuen Termin، ثم المصدر geben بلا zu.',
+      orderAr: 'رتّب الطلب: Könnten ثم Sie ثم mir bitte ثم einen neuen Termin ثم geben.',
+      orderHints: ['ابدأ بالفعل المصرف Könnten ثم الفاعل Sie.', 'ضع المصدر geben في القوس اليميني بلا zu.'],
+      orderSentence: 'Könnten Sie mir bitte einen neuen Termin geben?',
+      orderRightBracket: ['geben?'],
+      checkOrderSentence: 'Könnten Sie mir bitte einen neuen Termin geben?',
+      checkOrderRightBracket: ['geben?'],
+      orderPromptAr: 'رتّب الكلمات لتكوين طلب رسمي مهذب لموعد جديد.',
+      speakAr: 'اقرأ البريد بصوت واضح: Sehr geehrte Damen und Herren، ثم ich schreibe Ihnen wegen eines Termins، ثم Könnten Sie mir bitte einen neuen Termin geben، ثم Vielen Dank für Ihre Antwort، وأخيرًا Mit freundlichen Grüßen وSara Ben Ali.',
+      summaryDe: 'Sehr geehrte Damen und Herren, · ich schreibe Ihnen wegen eines Termins. · Könnten Sie mir bitte einen neuen Termin geben? · Vielen Dank für Ihre Antwort. · Mit freundlichen Grüßen · Sara Ben Ali',
+      summaryAr: 'راجع فاصلة النداء وich الصغيرة وIhnen/Ihre الرسمية وwegen + Genitiv وKönnten Sie … geben وصيغة الختام بلا فاصلة.',
+      summaryRecap: 'Anrede Anlass Bitte Dank Gruß Unterschrift'
+    }),
 
   U('a2-u5-l4', 'A2', 'الهاتف', 'Telefon', 'lexik-kollokation',
     'Am Ende führst du ein kurzes Telefongespräch',
