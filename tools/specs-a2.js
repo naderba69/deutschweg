@@ -317,25 +317,50 @@ module.exports = [
       summaryRecap: 'Komparativ als so Grundform wie'
     }),
 
-  U('a2-u2-l2', 'A2', 'صيغة التفضيل', 'Superlativ', 'deklination',
-    'Am Ende bildest du den Superlativ mit am und sten',
-    'في النهاية تبني صيغة التفضيل.',
+  U('a2-u2-l2', 'A2', 'التفضيل مع am وقبل الاسم', 'Superlativ mit am und vor Nomen', 'deklination',
+    'Am Ende formulierst du fünf vollständige Superlative mit am oder vor einem Nomen',
+    'في النهاية تصوغ خمس جمل تفضيل كاملة مع am أو قبل الاسم.',
     [
-      ['am größten', 'التفضيل am plus sten', 'لا the größte als Prädikat so', 'das größte als Satz ohne am hier', 'الخبر am größten'],
-      ['am besten', 'gut تصبح am besten', 'لا am gutsten', 'am gutsten', 'الشاذ besten'],
-      ['am liebsten', 'أعلى gern هي am liebsten', 'لا am gernsten', 'am gernsten', 'الصيغة liebsten'],
-      ['der höchste Berg', 'قبل الاسم الأداة والنهاية', 'لا am höchste Berg', 'am höchste Berg', 'قبل الاسم شكل مختلف']
+      ['Der ICE fährt am schnellsten.', 'تستعمل am schnellsten لوصف طريقة القيادة من دون اسم بعدها', 'في الاستعمال الخبري أو الظرفي يأتي غالبًا am مع صيغة -(e)sten', 'Der ICE fährt am schnellste.', 'بعد am نقول schnellsten لا schnellste'],
+      ['Dieses Brot schmeckt am besten.', 'تستعمل الصيغة الشاذة am besten من gut', 'سلسلة gut هي gut – besser – am besten', 'Dieses Brot schmeckt am gutsten.', 'نقول am besten لا am gutsten'],
+      ['Ich trinke am liebsten Tee.', 'تستعمل am liebsten لأعلى درجة من التفضيل', 'سلسلة gern هي gern – lieber – am liebsten', 'Ich trinke am gernsten Tee.', 'نقول am liebsten لا am gernsten'],
+      ['Das ist der beste Film des Jahres.', 'تستعمل der beste قبل الاسم من دون am', 'قبل الاسم تأتي الصفة التفضيلية بنهاية توافق الجنس والحالة: der beste Film', 'Das ist am beste Film des Jahres.', 'قبل الاسم نقول der beste Film، لا am beste Film']
     ],
     [
-      ['Das gefällt mir am besten.', 'هذا أكثر ما يعجبني', 'Das gefällt mir am gutsten', 'الشاذ besten', 'besten'],
-      ['Er ist am größten.', 'هو الأكبر', 'Er ist am großsten falsch ohne Umlaut', 'الحركة größten', 'größten'],
-      ['Ich trinke am liebsten Wasser.', 'أفضل الماء أكثر شيء', 'Ich trinke am gernsten Wasser', 'الصيغة liebsten', 'liebsten'],
-      ['Das ist der höchste Turm.', 'هذا أعلى برج', 'Das ist am höchste Turm', 'قبل الاسم der höchste', 'höchste']
+      ['Der ICE fährt am schnellsten.', 'قطار ICE يسير بأعلى سرعة', 'Der ICE fährt am schnellste.', 'بعد am نحتاج schnellsten', 'schnellsten'],
+      ['Dieses Brot schmeckt am besten.', 'مذاق هذا الخبز هو الأفضل', 'Dieses Brot schmeckt am gutsten.', 'صيغة التفضيل من gut هي am besten', 'besten'],
+      ['Ich trinke am liebsten Tee.', 'أفضّل شرب الشاي أكثر من كل شيء', 'Ich trinke am gernsten Tee.', 'صيغة التفضيل من gern هي am liebsten', 'liebsten'],
+      ['Das ist der beste Film des Jahres.', 'هذا أفضل فيلم في السنة', 'Das ist am beste Film des Jahres.', 'قبل الاسم نقول der beste Film من دون am', 'beste']
     ],
-    'Das gefällt mir am besten.',
-    'Ich trinke am liebsten Wasser.',
-    'Bilde morgen am besten und am liebsten.',
-    'غدًا كوّن am besten وam liebsten.'),
+    'Dieses Brot schmeckt am besten.',
+    'Ich trinke am liebsten Tee.',
+    'Wiederhole morgen die fünf Sätze: Der ICE fährt am schnellsten. Dieses Brot schmeckt am besten. Ich trinke am liebsten Tee. Das Hotel hier ist am teuersten. Das ist der beste Film des Jahres.',
+    'غدًا راجع جمل التفضيل الخمس مع am والصيغة التي تسبق الاسم.',
+    {
+      factFamilies: ['deklination', 'deklination', 'deklination', 'deklination'],
+      writing: {
+        zeigt: 'Fünf Superlative mit am und vor Nomen',
+        erklaerung: 'اكتب جمل التفضيل الخمس كاملة بالصيغ الصحيحة.',
+        prompt: 'اكتب الجمل الخمس: صيغتين منتظمتين مع am، وam besten، وam liebsten، وder beste قبل الاسم.',
+        promptDe: 'Der ICE fährt am schnellsten. · Dieses Brot schmeckt am besten. · Ich trinke am liebsten Tee. · Das Hotel hier ist am teuersten. · Das ist der beste Film des Jahres.',
+        points: ['Der ICE fährt am schnellsten.', 'Dieses Brot schmeckt am besten.', 'Ich trinke am liebsten Tee.', 'Das Hotel hier ist am teuersten.', 'Das ist der beste Film des Jahres.'],
+        minWords: 28,
+        frage: 'اكتب جمل التفضيل الخمس كاملة مع am أو قبل الاسم.',
+        familie: 'deklination',
+        hinweise: ['بعد am استعمل صيغة -(e)sten المناسبة.', 'قبل الاسم استعمل الأداة ونهاية الصفة المناسبة من دون am.']
+      },
+      imitateNearMiss: 'schnellste',
+      transformHint: 'صيغة التفضيل من gern هي am liebsten.',
+      orderAr: 'رتّب جملة الفندق: ابدأ بـ Das Hotel hier ثم ist ثم am teuersten.',
+      orderHints: ['اجعل Das Hotel hier في الخانة الأولى.', 'ضع ist بعدها ثم am teuersten.'],
+      orderSentence: 'Das Hotel hier ist am teuersten.',
+      checkOrderSentence: 'Das Hotel hier ist am teuersten.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة تفضيل كاملة عن الفندق.',
+      speakAr: 'سجّل عشرين ثانية: قل Der ICE fährt am schnellsten وDieses Brot schmeckt am besten وIch trinke am liebsten Tee وDas Hotel hier ist am teuersten وDas ist der beste Film des Jahres.',
+      summaryDe: 'Der ICE fährt am schnellsten. · Dieses Brot schmeckt am besten. · Ich trinke am liebsten Tee. · Das Hotel hier ist am teuersten. · Das ist der beste Film des Jahres.',
+      summaryAr: 'راجع الجمل الخمس: am schnellsten وam besten وam liebsten وam teuersten وder beste Film.',
+      summaryRecap: 'am Superlativ der beste Film'
+    }),
 
   U('a2-u2-l3', 'A2', 'نهاية الصفة في الرفع', 'Adjektiv Nominativ', 'deklination',
     'Am Ende setzt du die Adjektivendung im Nominativ',

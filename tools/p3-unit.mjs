@@ -3505,6 +3505,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'deklination');
 }
 
+/* ---------- audited A2 superlative lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u2-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Der ICE fährt am schnellsten.',
+    'Dieses Brot schmeckt am besten.',
+    'Ich trinke am liebsten Tee.',
+    'Das Hotel hier ist am teuersten.',
+    'Das ist der beste Film des Jahres.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[2], targets[4]];
+  t('Corpus lesson a2-u2-l2 bounds superlatives to five complete am, irregular and before-noun targets',
+    lesson.title.de === 'Superlativ mit am und vor Nomen' && lesson.title.ar === 'التفضيل مع am وقبل الاسم' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar && row.theme === 'التفضيل' &&
+      row.grammar.item === 'am + -(e)sten · der/die/das + Superlativ قبل الاسم · am besten/am meisten/am liebsten' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 29 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende formulierst du fünf vollständige Superlative mit am oder vor einem Nomen');
+
+  const expectedWords = [
+    'am schnellsten', 'am billigsten', 'am besten', 'am liebsten', 'am meisten',
+    'am größten', 'der beste', 'die schönste', 'das größte', 'der schnellste',
+    'die teuerste', 'der letzte', 'die erste', 'die Meinung', 'der Erfolg',
+    'die Gesundheit', 'die Erfahrung', 'der Kaffee', 'das Essen', 'die Stadt',
+    'der Weg', 'die Arbeit', 'das Hotel', 'der Monat', 'die Uhr', 'die Regel',
+    'süß', 'sauer', 'scharf'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u2-l2 reviews all 29 entries and three precise mnemonics without a fixed-sten rule or artificial trailing-word errors',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['am schnellsten'].ex === targets[0] && byWord['am billigsten'].ex.includes('Discounter') &&
+      byWord['am besten'].ex === targets[1] && byWord['am liebsten'].ex === targets[2] &&
+      byWord['am meisten'].ex.includes('Von allen Kollegen') && byWord['am größten'].ex.includes('Von allen Zimmern') &&
+      byWord['der beste'].ex === targets[4] && byWord['die schönste'].ex.includes('die schönste Stadt') &&
+      byWord['das größte'].ex.includes('Das größte Problem') && byWord['der schnellste'].ex.includes('den schnellsten Zug') &&
+      byWord['die teuerste'].ex.includes('die teuerste Uhr') && byWord['der letzte'].ex.includes('Der letzte Bus') &&
+      byWord['die erste'].ex.includes('Die erste Stunde') && byWord['die Meinung'].ex.includes('Meiner Meinung nach') &&
+      byWord['der Erfolg'].ex.includes('der wichtigste') && byWord['die Gesundheit'].ex.includes('am wichtigsten') &&
+      byWord['die Erfahrung'].ex.includes('die meiste Erfahrung') && byWord['der Kaffee'].ex.includes('am besten') &&
+      byWord['das Essen'].ex.includes('Essen am besten') && byWord['die Stadt'].ex.includes('die schönste Stadt') &&
+      byWord['der Weg'].ex.includes('am kürzesten') && byWord['die Arbeit'].ex.includes('am schwersten') &&
+      byWord['das Hotel'].ex === targets[3] && byWord['der Monat'].ex.includes('der wärmste Monat') &&
+      byWord['die Uhr'].ex.includes('die teuerste im Geschäft') && byWord['die Regel'].ex.includes('am schwierigsten') &&
+      byWord.süß.ex.includes('am süßesten') && byWord.sauer.ex.includes('am sauersten') &&
+      byWord.scharf.ex.includes('am schärfsten') &&
+      tricks.length === 3 && tricks[0].trick.includes('يأتي غالبًا am + -(e)sten') &&
+      tricks[0].wie.includes('am schnellsten') && tricks[0].wie.includes('am süßesten') &&
+      tricks[0].warum.includes('ليست sten آليًا دائمًا') &&
+      tricks[1].trick.includes('قبل الاسم') && tricks[1].wie.includes('der beste Film') &&
+      tricks[1].wie.includes('den schnellsten Zug') && tricks[1].warum.includes('الجنس والحالة') &&
+      tricks[2].trick.includes('gut – besser – am besten') && tricks[2].trick.includes('viel – mehr – am meisten') &&
+      tricks[2].trick.includes('gern – lieber – am liebsten') &&
+      !lessonText.includes('اللاحقة en ثابتة مع am') && !lessonText.includes('لا the größte') &&
+      !lessonText.includes('Stadt es') && !lessonText.includes('Problem ist die Zeit es') &&
+      !lessonText.includes('schnellste Weg Weg') && !lessonText.includes('am höchste Berg'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u2-l2 aligns strict clozes, one complete hotel order, 28-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Von allen Zimmern ist dieses am ____.' &&
+      wordCloze1.frage.antworten.join(' ') === 'größten' && wordCloze1.frage.nearMiss.großsten &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'großsten').ok &&
+      wordCloze2.frage.zeigt === 'Von allen Aufgaben ist diese ____ am schwersten.' &&
+      wordCloze2.frage.antworten.join(' ') === 'Arbeit' && wordCloze2.frage.nearMiss.Arbeiten &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Arbeiten').ok &&
+      imitate.zeigt.de === 'Der ICE fährt am ____.' && imitate.frage.antworten.join(' ') === 'schnellsten' &&
+      imitate.frage.nearMiss.schnellste && !win.DW.renderers.judgeCloze(imitate.frage, 'schnellste').ok &&
+      drill.frage.zeigt === 'Die Soße ist am ____.' && drill.frage.antworten.join(' ') === 'schärfsten' &&
+      drill.frage.nearMiss.scharfsten && !win.DW.renderers.judgeCloze(drill.frage, 'scharfsten').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'ist' &&
+      order.frage.fields.vorfeld.join(' ') === 'Das Hotel hier' && order.frage.fields.lsk.join(' ') === 'ist' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Das', 'Hotel', 'hier', 'am', 'teuersten.', 'ist']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 28 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u2-l2 makes 80 percent four of five measurable across der beste, schärfsten, full order, schnellsten and besten',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u2-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Das ist am beste Film des Jahres.') &&
+      checks[0].frage.misconceptionFamilies.a === 'deklination' &&
+      clozeCheck.frage.antworten.join(' ') === 'schärfsten' && clozeCheck.frage.nearMiss.scharfsten &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'scharfsten').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Das Hotel hier' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Das', 'Hotel', 'hier', 'am', 'teuersten.', 'ist']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
