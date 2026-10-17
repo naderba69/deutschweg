@@ -2288,6 +2288,109 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+/* ---------- audited A1 home-and-neighborhood lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u5-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Wir haben ein Apartment gemietet und sind sehr zufrieden.',
+    'In unserer Küche fehlt noch der Herd.',
+    'Am Kiosk bekommen Sie Zeitungen.',
+    'Wir sehen heute Abend im Kino einen Film.',
+    'Am Wochenende haben wir mehrere Gäste.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[4], targets[2]];
+  t('Corpus lesson a1-u5-l4 bounds home and neighborhood to five complete sentences and four directly taught facts',
+    lesson.title.de === 'Zuhause und Nachbarschaft' && lesson.title.ar === 'البيت والجوار' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'السكن والجوار' &&
+      row.grammar.item === 'الشقة والموقد والكشك والسينما والضيوف' &&
+      lesson.schritte.length === 34 && lesson.wortschatz.length === 28 &&
+      ['Apartment', 'Herd', 'Kiosk', 'Kino', 'Gästen'].every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u5-l4 reviews all 28 entries and three qualified mnemonics without artificial appended-pronoun errors or false article and destination absolutes',
+    lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord['das Apartment'].ex === targets[0] && byWord['das Apartment'].err.includes('gemietet gemacht') &&
+      byWord['der Herd'].ex === targets[1] && byWord['der Herd'].err.includes('die Herd') &&
+      byWord['die Halle'].ex === 'Wir treffen uns in Halle B.' && byWord['die Halle'].why.includes('عادةً') &&
+      byWord['die Hausfrau'].ex.includes('kauft heute Lebensmittel ein') &&
+      byWord['die Heimat'].ex.includes('aus der Schweiz') && byWord['das Feuer'].err.startsWith('Der Feuer') &&
+      byWord['der Blick'].ex.startsWith('Vom Hotel aus') &&
+      byWord['das Doppelzimmer'].err.includes('eine Einzelzimmer') &&
+      byWord['das Einzelzimmer'].err.includes('eine Einzelzimmer') &&
+      byWord['die Halbpension'].ex.includes('mit Halbpension') && byWord['die Halbpension'].why.includes('الداتيف') &&
+      byWord['die Toilette'].err.startsWith('Wo sind') && byWord['der Kiosk'].ex.startsWith(targets[2]) &&
+      byWord['der Ausgang'].err === 'Wo sind der Ausgang?' && byWord.Achtung.de === 'Achtung' &&
+      byWord.daneben.why.includes('اسمًا أو ضميرًا') && byWord.dorthin.ex.includes('dorthin stellen') &&
+      byWord['draußen'].err.includes('in draußen') && byWord['die Flasche'].err.includes('Flaschen') &&
+      byWord['die Kreditkarte'].err.endsWith('zahle?') && byWord['die Zigarette'].ex.includes('Zigaretten') &&
+      byWord['die Lebensmittel'].ex.includes('im Supermarkt') && byWord['der Eintritt'].ex.includes('kostet fünf Euro') &&
+      byWord['das Kino'].ex === targets[3] && byWord['die Disco'].why.includes('zu يحتاج أداة') &&
+      byWord['die Gruppe'].ex.includes('um 16 Uhr') && byWord['das Thema'].ex.includes('über das Thema') &&
+      byWord['die Maschine'].ex.includes('nicht sehr breit') && byWord['der Gast'].ex === targets[4] &&
+      tricks.length === 3 && tricks[0].wie.includes('steht oft kein Artikel') &&
+      tricks[0].warum.includes('in der großen Halle') && tricks[1].wie.includes('dorthin') &&
+      tricks[2].wie.includes('Am Kiosk') && tricks[2].wie.includes('Im Kino') &&
+      tricks[2].warum.includes('beim Kiosk') && tricks[2].warum.includes('ins Kino') &&
+      tricks[2].warum.includes('zur Disco') &&
+      !lessonText.includes('die Halle B خطأ') && !lessonText.includes('الأداة الزائدة تربك السامع') &&
+      !lessonText.includes('أماكن الشراء الصغيرة لها حروفها') &&
+      !lessonText.includes('Toilette es') && !lessonText.includes('Ausgang es') &&
+      !lessonText.includes('Kreditkarte zahlen es'));
+  const imitate = lesson.schritte.find(s => s.phase === 'Anwenden' && s.frage && s.frage.art === 'cloze');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u5-l4 aligns strict clozes, kitchen order, 35-word writing, speaking, summary and homework',
+    imitate.zeigt.de === 'Wir haben ein ____ gemietet und sind sehr zufrieden.' &&
+      imitate.frage.antworten.join(' ') === 'Apartment' && imitate.frage.nearMiss.Apartments &&
+      drill.frage.zeigt === 'Am Wochenende haben wir mehrere ____.' &&
+      drill.frage.antworten.join(' ') === 'Gäste' && drill.frage.nearMiss.Gast &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Gast').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'fehlt' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'In unserer Küche' &&
+      order.frage.fields.lsk.join(' ') === 'fehlt' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['In', 'der', 'Küche', 'noch', 'fehlt', 'der', 'Herd.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 35 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u5-l4 makes 80 percent four of five measurable across kiosk, guests, stove, apartment and cinema',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u5-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Am Wochenende haben wir mehrere ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Gäste' && clozeCheck.frage.nearMiss.Gast &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Gast').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'fehlt' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'In unserer Küche' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['In', 'der', 'Küche', 'noch', 'fehlt', 'der', 'Herd.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'lexik-kollokation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[4].frage.misconceptionFamilies.a === 'präposition');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

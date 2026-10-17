@@ -1357,24 +1357,49 @@ module.exports = [
     }),
 
   U('a1-u5-l4', 'A1', 'البيت والجوار', 'Zuhause und Nachbarschaft', 'präposition',
-    'Am Ende beschreibst du deine Wohnung und den Weg im Haus',
-    'في النهاية تصف مسكنك والطريق داخل البيت.',
+    'Am Ende beschreibst du Unterkunft und Umgebung mit Apartment, Herd, Kiosk, Kino und Gästen',
+    'في النهاية تصف السكن والجوار باستعمال الشقة والموقد والكشك والسينما والضيوف.',
     [
-      ['in Halle B ohne Artikel', 'أسماء القاعات بلا أداة', 'die Halle B خطأ في العنوان', 'in der Halle B', 'بلا أداة مع الرمز'],
-      ['daneben ist die Bank', 'daneben كلمة واحدة', 'neben وحدها ناقصة', 'Neben ist die Bank', 'daneben لا neben'],
-      ['im Kino und in die Disco', 'داخل المكان im، وإلى المكان in die', 'zu Disco خطأ', 'zu Disco', 'المكان يحدد حرف الجر'],
-      ['ein Einzelzimmer', 'Zimmer محايد فيبقى ein', 'eine Einzelzimmer خطأ', 'eine Einzelzimmer', 'ein مع Zimmer']
+      ['Wir haben ein Apartment gemietet und sind sehr zufrieden.', 'تصف السكن بالفعل mieten من دون فعل زائد', 'mieten فعل كامل؛ وفي Perfekt نقول haben ... gemietet', 'Wir haben ein Apartment gemietet gemacht und sind sehr zufrieden.', 'mieten فعل كامل، لذلك لا نضيف gemacht'],
+      ['In unserer Küche fehlt noch der Herd.', 'تذكر الموقد بأداته المذكرة der', 'Herd اسم مذكر؛ لذلك نقول der Herd', 'In unserer Küche fehlt noch die Herd.', 'أداة Herd هي der لا die'],
+      ['Am Wochenende haben wir mehrere Gäste.', 'تستعمل جمع Gast بعد mehrere', 'جمع Gast هو Gäste مع ä', 'Am Wochenende haben wir mehrere Gast.', 'بعد mehrere نحتاج الجمع Gäste'],
+      ['Am Kiosk bekommen Sie Zeitungen.', 'تحدد المكان عند الكشك بصيغة am Kiosk', 'am هو an dem؛ وهو الاستعمال المقصود هنا عند الكشك', 'In Kiosk bekommen Sie Zeitungen.', 'مع Kiosk نحتاج أداة؛ وفي هذه الجملة نقول am Kiosk']
     ],
     [
-      ['Wir treffen uns in Halle B.', 'نتقابل في القاعة B', 'Wir treffen uns in der Halle B', 'بلا أداة مع B', 'Halle'],
-      ['Die Heimat ist weit.', 'الوطن بعيد', 'Der Heimat ist weit', 'Heimat مؤنث', 'die'],
-      ['Ich habe ein Doppelzimmer.', 'عندي غرفة مزدوجة', 'Ich habe eine Doppelzimmer', 'Zimmer محايد', 'ein'],
-      ['Am Kiosk gibt es Zeitungen.', 'في الكشك صحف', 'In Kiosk gibt es Zeitungen', 'am Kiosk', 'am']
+      ['Wir haben ein Apartment gemietet und sind sehr zufrieden.', 'استأجرنا شقة مفروشة ونحن راضون جدًا', 'Wir haben ein Apartments gemietet und sind sehr zufrieden.', 'بعد ein يأتي المفرد Apartment', 'Apartment'],
+      ['In unserer Küche fehlt noch der Herd.', 'ما زال الموقد ناقصًا في المطبخ', 'In unserer Küche fehlt noch die Herd.', 'Herd اسم مذكر وأداته der', 'der'],
+      ['Wir sehen heute Abend im Kino einen Film.', 'نشاهد فيلمًا في السينما مساء اليوم', 'Wir sehen heute Abend in Kino einen Film.', 'داخل السينما نقول im Kino', 'im'],
+      ['Am Wochenende haben wir mehrere Gäste.', 'لدينا عدة ضيوف في عطلة نهاية الأسبوع', 'Am Wochenende haben wir mehrere Gast.', 'جمع Gast هو Gäste', 'Gäste']
     ],
-    'Ich wohne in einer Wohnung und gehe zum Kiosk.',
-    'Ich wohne in einer Wohnung.',
-    'Beschreibe morgen dein Zimmer in drei Sätzen.',
-    'غدًا صف غرفتك في ثلاث جمل.'),
+    'Wir haben ein Apartment gemietet und sind sehr zufrieden.',
+    'Wir haben ein Apartment gemietet und sind sehr zufrieden.',
+    'Wiederhole morgen die fünf Sätze: Wir haben ein Apartment gemietet und sind sehr zufrieden. In unserer Küche fehlt noch der Herd. Am Kiosk bekommen Sie Zeitungen. Wir sehen heute Abend im Kino einen Film. Am Wochenende haben wir mehrere Gäste.',
+    'غدًا راجع الجمل الخمس عن الشقة والموقد والكشك والسينما والضيوف.',
+    {
+      factFamilies: ['lexik-kollokation', 'genus', 'plural', 'präposition'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Zuhause und Nachbarschaft',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن الشقة والموقد والكشك والسينما والضيوف.',
+        prompt: 'اكتب الجمل الخمس عن السكن والجوار.',
+        promptDe: 'Wir haben ein Apartment gemietet und sind sehr zufrieden. · In unserer Küche fehlt noch der Herd. · Am Kiosk bekommen Sie Zeitungen. · Wir sehen heute Abend im Kino einen Film. · Am Wochenende haben wir mehrere Gäste.',
+        points: ['Wir haben ein Apartment gemietet und sind sehr zufrieden.', 'In unserer Küche fehlt noch der Herd.', 'Am Kiosk bekommen Sie Zeitungen.', 'Wir sehen heute Abend im Kino einen Film.', 'Am Wochenende haben wir mehrere Gäste.'],
+        minWords: 35,
+        frage: 'اكتب الجمل الخمس كاملة من دون إضافة gemacht أو تبديل der وam وim وصيغة Gäste.',
+        familie: 'präposition',
+        hinweise: ['راجع Apartment gemietet وder Herd وam Kiosk.', 'استعمل im Kino وصيغة الجمع Gäste.']
+      },
+      imitateNearMiss: 'Apartments',
+      transformHint: 'بعد ein نحتاج المفرد Apartment، والفعل mieten لا يحتاج machen.',
+      orderAr: 'رتّب جملة المطبخ: ابدأ بـ In unserer Küche ثم ضع fehlt وبعده noch der Herd.',
+      orderHints: ['ابدأ بعبارة المكان In unserer Küche ثم ضع الفعل fehlt.', 'أكمل بـ noch der Herd.'],
+      orderSentence: 'In unserer Küche fehlt noch der Herd.',
+      checkOrderSentence: 'In unserer Küche fehlt noch der Herd.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن الموقد في المطبخ.',
+      speakAr: 'سجّل عشرين ثانية: قل Wir haben ein Apartment gemietet und sind sehr zufrieden وIn unserer Küche fehlt noch der Herd وAm Kiosk bekommen Sie Zeitungen وWir sehen heute Abend im Kino einen Film وAm Wochenende haben wir mehrere Gäste.',
+      summaryDe: 'Wir haben ein Apartment gemietet und sind sehr zufrieden. · In unserer Küche fehlt noch der Herd. · Am Kiosk bekommen Sie Zeitungen. · Wir sehen heute Abend im Kino einen Film. · Am Wochenende haben wir mehrere Gäste.',
+      summaryAr: 'راجع Apartment gemietet وder Herd وam Kiosk وim Kino وصيغة الجمع Gäste.',
+      summaryRecap: 'Apartment Herd Kiosk Kino Gäste'
+    }),
 
   U('a1-u5-l5', 'A1', 'السفر والطريق', 'Reisen und Verkehr', 'wortstellung',
     'Am Ende fragst du nach Abfahrt, Gleis und Ankunft und erzählst von einer Reise',
