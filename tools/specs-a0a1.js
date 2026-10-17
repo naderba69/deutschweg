@@ -812,24 +812,50 @@ module.exports = [
     }),
 
   U('a1-u3-l4', 'A1', 'الماضي مع haben', 'Perfekt mit haben', 'konjugation',
-    'Am Ende bildest du das Perfekt mit haben',
-    'في النهاية تبني الماضي التام مع haben.',
+    'Am Ende bildest du fünf vollständige Sätze im Perfekt mit haben: „Ich habe die Hausaufgabe gemacht.“ · „Ich habe Deutsch gelernt.“ · „Ich habe den Film gesehen.“ · „Ich habe lange telefoniert.“ · „Hast du die Musik gehört?“',
+    'في النهاية تكوّن خمس جمل كاملة بصيغة Perfekt مع haben: Ich habe die Hausaufgabe gemacht. وIch habe Deutsch gelernt. وIch habe den Film gesehen. وIch habe lange telefoniert. وHast du die Musik gehört?',
     [
-      ['ich habe gemacht', 'haben في الثاني والاسم المفعول أخيرًا', 'لا صنعتُ بفعل واحد في هذا الزمن', 'ich machte gemacht', 'خلط الزمنين'],
-      ['Partizip am Ende', 'الاسم المفعول آخر الجملة', 'لا يبقى بعد habe مباشرة إن طال المفعول', 'ich habe gemacht das', 'das يتقدم على المفعول التام'],
-      ['gelernt', 'lernen يأخذ ge- و -t', 'لا gelernen', 'ich habe gelernen', 'النهاية -t'],
-      ['kein ge bei telefonieren', 'الفعل على -ieren بلا ge', 'لا getelefoniert خطأ الانتظار', 'ich habe getelefoniert', 'الصحيح telefoniert']
+      ['Ich habe die Hausaufgabe gemacht.', 'في جملة Perfekt الخبرية يأتي habe في الموقع الثاني، ويأتي Partizip II gemacht في النهاية.', 'استعمل habe ثم ضع gemacht في النهاية', 'Ich habe die Hausaufgabe machen.', 'نقول habe ... gemacht، لا habe ... machen'],
+      ['Ich habe Deutsch gelernt.', 'الفعل المنتظم lernen يصوغ Partizip II هكذا: gelernt.', 'lernen يصبح gelernt', 'Ich habe Deutsch gelernen.', 'نقول gelernt، لا gelernen'],
+      ['Ich habe den Film gesehen.', 'الفعل القوي sehen يصوغ Partizip II هكذا: gesehen.', 'احفظ sehen ← gesehen', 'Ich habe den Film geseht.', 'نقول gesehen، لا geseht'],
+      ['Ich habe lange telefoniert.', 'الأفعال المنتهية بـ-ieren مثل telefonieren تصوغ Partizip II بلا ge-: telefoniert.', 'telefonieren يصبح telefoniert بلا ge-', 'Ich habe lange getelefoniert.', 'نقول telefoniert، لا getelefoniert']
     ],
     [
-      ['Ich habe das gemacht.', 'فعلت ذلك', 'Ich machte das gemacht', 'Perfekt: habe gemacht', 'gemacht'],
-      ['Ich habe Deutsch gelernt.', 'تعلمت الألمانية', 'Ich habe Deutsch gelernen', 'الاسم المفعول gelernt', 'gelernt'],
-      ['Hast du das gesehen?', 'هل رأيت ذلك؟', 'Hast du das sehen?', 'المفعول gesehen', 'gesehen'],
-      ['Ich habe telefoniert.', 'اتصلت', 'Ich habe getelefoniert', 'telefonieren بلا ge', 'telefoniert']
+      ['Ich habe die Hausaufgabe gemacht.', 'أنجزت الواجب المنزلي', 'Ich habe die Hausaufgabe machen.', 'بعد habe نضع gemacht في النهاية.', 'gemacht'],
+      ['Ich habe Deutsch gelernt.', 'تعلمت الألمانية', 'Ich habe Deutsch gelernen.', 'Partizip II من lernen هو gelernt.', 'gelernt'],
+      ['Ich habe den Film gesehen.', 'شاهدت الفيلم', 'Ich habe den Film geseht.', 'Partizip II من sehen هو gesehen.', 'gesehen'],
+      ['Ich habe lange telefoniert.', 'تحدثت هاتفيًا مدة طويلة', 'Ich habe lange getelefoniert.', 'الفعل المنتهي بـ-ieren يأتي بلا ge-.', 'telefoniert']
     ],
-    'Ich habe Deutsch gelernt und ich habe telefoniert.',
-    'Ich habe das gemacht.',
-    'Bilde morgen zwei Perfekt-Sätze mit haben.',
-    'غدًا كوّن جملتي Perfekt مع haben.'),
+    'Ich habe die Hausaufgabe gemacht.',
+    'Hast du die Musik gehört?',
+    'Schreibe morgen fünf Perfekt-Sätze mit Hausaufgabe gemacht, Deutsch gelernt, Film gesehen, lange telefoniert und Musik gehört.',
+    'غدًا اكتب خمس جمل Perfekt تتضمن Hausaufgabe gemacht وDeutsch gelernt وFilm gesehen وlange telefoniert وMusik gehört.',
+    {
+      writing: {
+        zeigt: 'Fünf vollständige Sätze im Perfekt mit haben',
+        erklaerung: 'اكتب خمس جمل كاملة: إنجاز الواجب، وتعلّم الألمانية، ومشاهدة فيلم، ومكالمة طويلة، وسؤالًا عما سمعه المخاطَب.',
+        prompt: 'اكتب خمس جمل ألمانية كاملة بصيغة Perfekt مع haben.',
+        promptDe: 'Ich habe die Hausaufgabe gemacht. · Ich habe Deutsch gelernt. · Ich habe den Film gesehen. · Ich habe lange telefoniert. · Hast du die Musik gehört?',
+        points: ['Hausaufgabe gemacht', 'Deutsch gelernt', 'Film gesehen', 'lange telefoniert', 'Musik gehört'],
+        minWords: 25,
+        frage: 'اكتب الجمل الخمس بصيغة Perfekt صحيحة.',
+        familie: 'konjugation',
+        hinweise: ['صرّف haben مع الفاعل.', 'ضع Partizip II في نهاية كل جملة أو سؤال.']
+      },
+      imitateNearMiss: 'machen',
+      transformHint: 'في سؤال نعم/لا يأتي Hast أولًا، ويأتي gehört في النهاية.',
+      orderAr: 'رتّب جملة واحدة: Ich ثم habe، وضع gemacht في النهاية.',
+      orderHints: ['ابدأ بـIch ثم ضع habe في الموقع الثاني.', 'ضع die Hausaufgabe في الوسط وgemacht في النهاية.'],
+      orderSentence: 'Ich habe die Hausaufgabe gemacht.',
+      orderRightBracket: 'gemacht.',
+      checkOrderSentence: 'Hast du die Musik gehört?',
+      checkOrderRightBracket: 'gehört?',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة أو سؤال Perfekt واحد صحيح.',
+      speakAr: 'سجّل عشرين ثانية: قل الجمل الخمس مع Hausaufgabe gemacht وDeutsch gelernt وFilm gesehen وlange telefoniert وMusik gehört.',
+      summaryDe: 'Ich habe die Hausaufgabe gemacht. · Ich habe Deutsch gelernt. · Ich habe den Film gesehen. · Ich habe lange telefoniert. · Hast du die Musik gehört?',
+      summaryAr: 'استعمل haben المصرف، وضع Partizip II في النهاية، واحذف ge- من أفعال -ieren مثل telefoniert.',
+      summaryRecap: 'gemacht gelernt gesehen telefoniert gehört'
+    }),
 
   U('a1-u3-l5', 'A1', 'الماضي مع sein', 'Perfekt mit sein', 'konjugation',
     'Am Ende benutzt du sein bei Bewegung und bei bleiben',

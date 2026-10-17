@@ -1218,6 +1218,96 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Dann putze ich die Zähne.'));
 }
 
+/* ---------- audited A1 Perfekt-with-haben lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u3-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u3-l4 states five bounded Perfekt sentences and teaches regular, strong and -ieren participles in complete German',
+    lesson.title.de === 'Perfekt mit haben' && lesson.title.ar === 'الماضي مع haben' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['fünf vollständige Sätze', 'Ich habe die Hausaufgabe gemacht.',
+        'Ich habe Deutsch gelernt.', 'Ich habe den Film gesehen.',
+        'Ich habe lange telefoniert.', 'Hast du die Musik gehört?']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Ich habe die Hausaufgabe gemacht.', 'Ich habe Deutsch gelernt.',
+        'Ich habe den Film gesehen.', 'Ich habe lange telefoniert.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u3-l4 keeps all 28 Perfekt entries, Arabic meanings, inseparable prefixes and accepted strong forms accurate without false auxiliary rules',
+    lesson.wortschatz.length === 28 &&
+      byWord.haben.ex === 'Ich habe die Hausaufgabe gemacht.' &&
+      byWord.haben.why.includes('machen يصوغ Perfekt مع haben') &&
+      !lessonText.includes('أفعال الحركة وحدها تأخذ sein') &&
+      byWord.gemacht.err === 'Ich habe die Hausaufgabe machen.' &&
+      byWord.gesehen.err === 'Ich habe den Film geseht.' &&
+      byWord.gehört.ex === 'Hast du die Musik gehört?' &&
+      byWord.getrunken.err === 'Ich habe Tee getrinkt.' &&
+      byWord.telefoniert.err === 'Ich habe lange getelefoniert.' &&
+      byWord.probiert.err === 'Ich habe den Kuchen geprobiert.' &&
+      byWord.besucht.why.includes('be- تمنع ge-') &&
+      byWord.erzählt.why.includes('er- تمنع ge-') &&
+      byWord['letzte Woche'].why.includes('بالمفرد') &&
+      byWord['noch nie'].ar === 'لم ... قط' &&
+      byWord.zuletzt.ex === 'Zuletzt habe ich ferngesehen.' &&
+      tricks[0].wie === 'Ich | habe | die Hausaufgabe | gemacht.' &&
+      tricks[1].wie.includes('telefonieren → telefoniert') &&
+      tricks[2].wie.includes('trinken → getrunken') && tricks[2].warum.includes('بعضها') &&
+      !['proben? لا', '"rtb"'].some(x => lessonText.includes(x)));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['Hausaufgabe gemacht', 'Deutsch gelernt', 'Film gesehen',
+    'lange telefoniert', 'Musik gehört'];
+  t('Corpus lesson a1-u3-l4 aligns strict participle clozes, one-sentence order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Ich habe die Hausaufgabe gemacht.' &&
+      imitate.frage.antworten.join(' ') === 'gemacht' && imitate.frage.nearMiss.machen &&
+      transform.zeigt.de === 'Hast du die Musik gehört?' && transform.hinweise[1].includes('gehört') &&
+      drill.frage.zeigt === 'Ich habe den Film ____.' &&
+      drill.frage.antworten.join(' ') === 'gesehen' && drill.frage.nearMiss.geseht &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'geseht').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Ich habe die Hausaufgabe gemacht.' &&
+      order.frage.finite === 'habe' && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.rsk.join(' ') === 'gemacht.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'die', 'Hausaufgabe', 'habe', 'gemacht.']).failed === 1 &&
+      writing.frage.points.join(' | ') ===
+        'Hausaufgabe gemacht | Deutsch gelernt | Film gesehen | lange telefoniert | Musik gehört' &&
+      writing.frage.minWords === 25 &&
+      targets.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u3-l4 makes 80 percent four of five measurable across gemacht, gelernt, gesehen, telefoniert and gehört',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u3-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich habe lange telefoniert.') &&
+      clozeCheck.frage.zeigt === 'Ich habe den Film ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'gesehen' && clozeCheck.frage.nearMiss.geseht &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'geseht').ok &&
+      orderCheck.frage.correct.join(' ') === 'Hast du die Musik gehört?' &&
+      orderCheck.frage.finite === 'Hast' && orderCheck.frage.verbFirst === true &&
+      orderCheck.frage.fields.rsk.join(' ') === 'gehört?' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Du', 'Hast', 'die', 'Musik', 'gehört?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich habe die Hausaufgabe gemacht.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Ich habe Deutsch gelernt.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
