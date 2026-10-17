@@ -3376,6 +3376,135 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
 
+/* ---------- audited A2 comparative lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u2-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Der Zug ist schneller als der Bus.',
+    'Die neue Wohnung ist heller als die alte.',
+    'Dieses Brot schmeckt besser als das andere.',
+    'Ich trinke lieber Tee als Kaffee.',
+    'Mein Zimmer ist so groß wie dein Zimmer.'
+  ];
+  const taughtFacts = [targets[0], targets[2], targets[3], targets[4]];
+  t('Corpus lesson a2-u2-l1 bounds comparison and equality to five complete regular, irregular, preference and so-wie targets',
+    lesson.title.de === 'Vergleiche mit als und wie' && lesson.title.ar === 'المقارنة بـ als وwie' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'المقارنة والتساوي' &&
+      row.grammar.item === 'Komparativ + als · so + Grundform + wie · besser/mehr/lieber' &&
+      lesson.schritte.length === 36 && lesson.wortschatz.length === 33 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende formulierst du fünf vollständige Vergleiche mit als und wie');
+
+  const expectedWords = [
+    'schneller', 'billiger', 'größer', 'älter', 'jünger', 'länger', 'teurer',
+    'besser', 'mehr', 'weniger', 'lieber', 'die Größe', 'der Vorteil',
+    'der Nachteil', 'bequemer', 'ruhiger', 'sauberer', 'günstiger',
+    'interessanter', 'schöner', 'als', 'wie', 'so … wie', 'die Wohnung',
+    'der Preis', 'die Zeit', 'eng', 'nett', 'der Zentimeter', 'das Kilogramm',
+    'preiswert', 'praktisch', 'toll'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u2-l1 reviews all 33 entries and three precise mnemonics without an automatic-er rule or awkward inventory comparisons',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.schneller.ex === targets[0] && byWord.billiger.ex.includes('Café am Bahnhof') &&
+      byWord.größer.ex.includes('größer als meins') && byWord.älter.ex.includes('älter als ich') &&
+      byWord.jünger.ex.includes('jünger als seine Frau') && byWord.länger.ex === 'Die Fahrt dauert länger als geplant.' &&
+      byWord.teurer.ex.includes('Wohnung ist teurer als') && byWord.besser.ex === targets[2] &&
+      byWord.mehr.ex === 'Heute habe ich mehr Zeit als gestern.' && byWord.weniger.ex.includes('weniger Arbeit als') &&
+      byWord.lieber.ex === targets[3] && byWord['die Größe'].ex.includes('in einer größeren Größe') &&
+      byWord['der Vorteil'].ex.includes('mehr Vorteile als Nachteile') &&
+      byWord['der Nachteil'].ex.includes('weniger Nachteile als') &&
+      byWord.bequemer.ex.includes('bequemer als der Stuhl') && byWord.ruhiger.ex.includes('ruhiger als die Hauptstraße') &&
+      byWord.sauberer.ex.includes('sauberer als das andere') && byWord.günstiger.ex.includes('günstiger als das Taxi') &&
+      byWord.interessanter.ex.includes('interessanter als der Film') && byWord.schöner.ex.includes('schöner als der Parkplatz') &&
+      byWord.als.ex === targets[0] && byWord.wie.ex === targets[4] && byWord['so … wie'].ex === targets[4] &&
+      byWord['die Wohnung'].ex === targets[1] && byWord['der Preis'].ex.includes('Preis im Internet') &&
+      byWord['die Zeit'].ex.includes('weniger freie Zeit als') && byWord.eng.ex.includes('enger als das Wohnzimmer') &&
+      byWord.nett.ex.includes('netter als der alte') && byWord['der Zentimeter'].ex.includes('zwei Zentimeter breiter als') &&
+      byWord['das Kilogramm'].ex.includes('ein Kilogramm schwerer als') &&
+      byWord.preiswert.ex.includes('preiswerter als das am Bahnhof') && byWord.preiswert.ar.includes('زهيد الثمن') &&
+      byWord.praktisch.ex.includes('praktischer als eine Tasche') && byWord.toll.ex.includes('toller als erwartet') &&
+      tricks.length === 3 && tricks[0].trick.includes('صيغة المقارنة + als') &&
+      tricks[0].trick.includes('so + الصفة الأصلية + wie') && tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes(targets[4]) &&
+      tricks[0].warum.includes('درجتين مختلفتين هنا') && tricks[0].warum.includes('من دون صيغة المقارنة') &&
+      tricks[1].trick.includes('غالبًا بـ-er') && tricks[1].wie.includes('groß → größer') &&
+      tricks[1].wie.includes('hoch → höher') && tricks[1].warum.includes('ليست إضافة er آلية دائمًا') &&
+      tricks[2].trick.includes('gut → besser') && tricks[2].trick.includes('viel → mehr') &&
+      tricks[2].trick.includes('gern → lieber') && tricks[2].warum.includes('ليست gerner') &&
+      !lessonText.includes('الـ er في النهاية تعني «أكثر»') &&
+      !lessonText.includes('Der Vorteil ist größer als der Preis.') &&
+      !lessonText.includes('Der Balkon ist schöner als das Fenster.') &&
+      !lessonText.includes('Die Zeit ist knapper als im Sommer.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's18');
+  const drill = lesson.schritte.find(s => s.id === 's22');
+  const order = lesson.schritte.find(s => s.id === 's23');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u2-l1 aligns strict clozes, one complete comparison order, 36-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Die Fahrt dauert ____ als geplant.' &&
+      wordCloze1.frage.antworten.join(' ') === 'länger' && wordCloze1.frage.nearMiss.lange &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'lange').ok &&
+      wordCloze2.frage.zeigt === 'Mein Zimmer ist so groß ____ dein Zimmer.' &&
+      wordCloze2.frage.antworten.join(' ') === 'wie' && wordCloze2.frage.nearMiss.als &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'als').ok &&
+      imitate.zeigt.de === 'Der Zug ist ____ als der Bus.' &&
+      imitate.frage.antworten.join(' ') === 'schneller' && imitate.frage.nearMiss.schnell &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'schnell').ok &&
+      drill.frage.zeigt === 'Ich trinke ____ Tee als Kaffee.' &&
+      drill.frage.antworten.join(' ') === 'lieber' && drill.frage.nearMiss.gerner &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'gerner').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'ist' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Die neue Wohnung' &&
+      order.frage.fields.lsk.join(' ') === 'ist' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Die', 'neue', 'Wohnung', 'heller', 'als', 'die', 'alte.', 'ist']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 36 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u2-l1 makes 80 percent four of five measurable across so-wie, lieber, full order, schneller als and besser',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u2-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Mein Zimmer ist so groß als dein Zimmer.') &&
+      checks[0].frage.misconceptionFamilies.a === 'deklination' &&
+      clozeCheck.frage.zeigt === 'Ich trinke ____ Tee als Kaffee.' &&
+      clozeCheck.frage.antworten.join(' ') === 'lieber' && clozeCheck.frage.nearMiss.gerner &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'gerner').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Die neue Wohnung' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Die', 'neue', 'Wohnung', 'heller', 'als', 'die', 'alte.', 'ist']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[4].frage.misconceptionFamilies.a === 'deklination');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

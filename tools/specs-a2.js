@@ -272,25 +272,50 @@ module.exports = [
       summaryRecap: 'wenn Verbende dann Verb Subjekt'
     }),
 
-  U('a2-u2-l1', 'A2', 'المقارنة', 'Komparativ', 'deklination',
-    'Am Ende vergleichst du zwei Dinge mit als',
-    'في النهاية تقارن شيئين بـ als.',
+  U('a2-u2-l1', 'A2', 'المقارنة بـ als وwie', 'Vergleiche mit als und wie', 'deklination',
+    'Am Ende formulierst du fünf vollständige Vergleiche mit als und wie',
+    'في النهاية تصوغ خمس مقارنات كاملة بـ als وwie.',
     [
-      ['größer als', 'المقارنة als لا wie', 'wie للمساواة', 'größer wie', 'wie هنا خطأ'],
-      ['gern, lieber', 'liebe المقارنة من gern هي lieber', 'لا gerner', 'gerner', 'الصيغة lieber'],
-      ['gut, besser', 'gut تصبح besser', 'لا guter', 'guter als', 'الشاذ besser'],
-      ['viel, mehr', 'viel تصبح mehr', 'لا vieler', 'vieler als', 'الشاذ mehr']
+      ['Der Zug ist schneller als der Bus.', 'تستعمل صيغة المقارنة schneller مع als لبيان الاختلاف', 'بعد صيغة المقارنة نستعمل als: schneller als', 'Der Zug ist schneller wie der Bus.', 'عند اختلاف الدرجتين نقول schneller als لا schneller wie'],
+      ['Dieses Brot schmeckt besser als das andere.', 'تستعمل الصيغة الشاذة besser من gut', 'صيغة المقارنة من gut هي besser، وتتبعها als عند الاختلاف', 'Dieses Brot schmeckt guter als das andere.', 'نقول besser als، لا guter als'],
+      ['Ich trinke lieber Tee als Kaffee.', 'تستعمل lieber للمفاضلة بين خيارين', 'صيغة المفاضلة من gern هي lieber: lieber Tee als Kaffee', 'Ich trinke gerner Tee als Kaffee.', 'نقول lieber لا gerner'],
+      ['Mein Zimmer ist so groß wie dein Zimmer.', 'تستعمل so مع الصفة الأصلية وwie للتساوي', 'عند تساوي الدرجتين نقول so groß wie من دون صيغة المقارنة', 'Mein Zimmer ist so groß als dein Zimmer.', 'للتساوي نقول so groß wie لا so groß als']
     ],
     [
-      ['Das ist größer als meins.', 'هذا أكبر من الذي عندي', 'Das ist größer wie meins', 'المقارنة als', 'als'],
-      ['Ich trinke lieber Tee.', 'أفضل الشاي', 'Ich trinke gerner Tee', 'المقارنة lieber', 'lieber'],
-      ['Dieser Weg ist besser.', 'هذا الطريق أفضل', 'Dieser Weg ist guter', 'الشاذ besser', 'besser'],
-      ['Ich habe mehr Zeit.', 'عندي وقت أكثر', 'Ich habe vieler Zeit', 'الشاذ mehr', 'mehr']
+      ['Der Zug ist schneller als der Bus.', 'القطار أسرع من الحافلة', 'Der Zug ist schnell als der Bus.', 'نحتاج صيغة المقارنة schneller قبل als', 'schneller'],
+      ['Dieses Brot schmeckt besser als das andere.', 'مذاق هذا الخبز أفضل من الآخر', 'Dieses Brot schmeckt guter als das andere.', 'صيغة المقارنة من gut هي besser', 'besser'],
+      ['Ich trinke lieber Tee als Kaffee.', 'أفضّل الشاي على القهوة', 'Ich trinke gern Tee als Kaffee.', 'للمفاضلة بين الخيارين نحتاج lieber لا gern', 'lieber'],
+      ['Mein Zimmer ist so groß wie dein Zimmer.', 'غرفتي بحجم غرفتك', 'Mein Zimmer ist so groß als dein Zimmer.', 'للتساوي نستعمل so … wie', 'wie']
     ],
-    'Das ist größer als meins, und ich trinke lieber Tee.',
-    'Das ist größer als meins.',
-    'Vergleiche morgen zwei Dinge mit als.',
-    'غدًا قارن شيئين بـ als.'),
+    'Der Zug ist schneller als der Bus.',
+    'Ich trinke lieber Tee als Kaffee.',
+    'Wiederhole morgen die fünf Vergleiche: Der Zug ist schneller als der Bus. Die neue Wohnung ist heller als die alte. Dieses Brot schmeckt besser als das andere. Ich trinke lieber Tee als Kaffee. Mein Zimmer ist so groß wie dein Zimmer.',
+    'غدًا راجع المقارنات الخمس مع als وso … wie والصيغ الشاذة.',
+    {
+      factFamilies: ['deklination', 'deklination', 'deklination', 'deklination'],
+      writing: {
+        zeigt: 'Fünf Vergleiche mit als und wie',
+        erklaerung: 'اكتب المقارنات الخمس كاملة مع الصيغة والأداة الصحيحتين.',
+        prompt: 'اكتب المقارنات الخمس: مقارنتين عاديتين، وbesser، وlieber، ومقارنة تساوٍ بـ so … wie.',
+        promptDe: 'Der Zug ist schneller als der Bus. · Die neue Wohnung ist heller als die alte. · Dieses Brot schmeckt besser als das andere. · Ich trinke lieber Tee als Kaffee. · Mein Zimmer ist so groß wie dein Zimmer.',
+        points: ['Der Zug ist schneller als der Bus.', 'Die neue Wohnung ist heller als die alte.', 'Dieses Brot schmeckt besser als das andere.', 'Ich trinke lieber Tee als Kaffee.', 'Mein Zimmer ist so groß wie dein Zimmer.'],
+        minWords: 36,
+        frage: 'اكتب المقارنات الخمس كاملة بـ als أو so … wie.',
+        familie: 'deklination',
+        hinweise: ['استعمل صيغة المقارنة مع als عند الاختلاف.', 'استعمل so مع الصفة الأصلية وwie عند التساوي.']
+      },
+      imitateNearMiss: 'schnell',
+      transformHint: 'صيغة المفاضلة من gern هي lieber، وتتبعها als بين الخيارين.',
+      orderAr: 'رتّب مقارنة الشقتين: الفعل ist في الموضع الثاني ثم heller als die alte.',
+      orderHints: ['ابدأ بـ Die neue Wohnung وضع ist بعدها.', 'اختم بـ heller als die alte.'],
+      orderSentence: 'Die neue Wohnung ist heller als die alte.',
+      checkOrderSentence: 'Die neue Wohnung ist heller als die alte.',
+      orderPromptAr: 'رتّب الكلمات لتكوين مقارنة كاملة بين الشقتين.',
+      speakAr: 'سجّل عشرين ثانية: قل Der Zug ist schneller als der Bus وDie neue Wohnung ist heller als die alte وDieses Brot schmeckt besser als das andere وIch trinke lieber Tee als Kaffee وMein Zimmer ist so groß wie dein Zimmer.',
+      summaryDe: 'Der Zug ist schneller als der Bus. · Die neue Wohnung ist heller als die alte. · Dieses Brot schmeckt besser als das andere. · Ich trinke lieber Tee als Kaffee. · Mein Zimmer ist so groß wie dein Zimmer.',
+      summaryAr: 'راجع المقارنات الخمس: صيغة المقارنة مع als، والصيغتان besser وlieber، والتساوي بـ so … wie.',
+      summaryRecap: 'Komparativ als so Grundform wie'
+    }),
 
   U('a2-u2-l2', 'A2', 'صيغة التفضيل', 'Superlativ', 'deklination',
     'Am Ende bildest du den Superlativ mit am und sten',
