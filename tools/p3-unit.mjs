@@ -1479,6 +1479,88 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[2]));
 }
 
+/* ---------- audited A1 housing lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u4-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = ['Unsere Wohnung ist klein.', 'Das Wohnzimmer ist hell.',
+    'Es gibt ein Bett im Schlafzimmer.', 'Wir wohnen im Erdgeschoss.',
+    'Die Wohnung hat sechzig Quadratmeter Wohnfläche.'];
+  t('Corpus lesson a1-u4-l1 states five bounded housing sentences and teaches each as complete German',
+    lesson.title.de === 'Wohnen' && lesson.title.ar === 'السكن' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'وصف الشقة والغرف والطابق والمساحة' &&
+      lesson.schritte[0].zeigt.de.includes('fünf vollständige Sätze') &&
+      targets.every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      byWord['der Quadratmeter'].ex === targets[4]);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u4-l1 keeps all 28 housing entries, Arabic meanings, compound gender and measurement guidance accurate without English shortcuts or false blanket rules',
+    lesson.wortschatz.length === 28 &&
+      byWord['die Wohnung'].ex === targets[0] &&
+      byWord['das Schlafzimmer'].ex === targets[2] &&
+      byWord['das Wohnzimmer'].ex === targets[1] &&
+      byWord['die Möbel'].ar === 'قطع الأثاث' && byWord['die Möbel'].why.includes('كلمة جمع') &&
+      byWord.gemütlich.ex === 'Die Wohnung ist sehr gemütlich.' &&
+      byWord.umziehen.why.includes('ينفصل الفعل') &&
+      byWord.mieten.why.includes('بلا für') &&
+      byWord['die Decke'].why.includes('سقف الغرفة') &&
+      byWord['das Holz'].why.includes('أنواع أو قطع') &&
+      byWord['der Quadratmeter'].why.includes('جمع Quadratmeter يبقى بلا تغيير') &&
+      tricks[0].wie.includes('das Schlafzimmer') && tricks[0].warum.includes('الجزء الأخير Zimmer') &&
+      tricks[1].wie.includes('ist klein') && tricks[1].wie.includes('ist hell') &&
+      tricks[2].wie === 'ein Quadratmeter · sechzig Quadratmeter.' &&
+      ![' there ', ' has ', ' small ', ' floor ', ' zero ', '"rtb"',
+        'العربية لا تُصرّف الصفة', 'الوحدات لا تُجمع بـ s'].some(x => lessonText.toLowerCase().includes(x.toLowerCase())));
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const points = ['unsere Wohnung ist klein', 'das Wohnzimmer ist hell',
+    'ein Bett im Schlafzimmer', 'im Erdgeschoss', 'sechzig Quadratmeter Wohnfläche'];
+  t('Corpus lesson a1-u4-l1 aligns strict clozes, one-sentence existence order, five-part writing, speaking, summary and homework',
+    imitate.frage.antworten.join(' ') === 'klein' && imitate.frage.nearMiss.kleine &&
+      drill.frage.zeigt === 'Die Wohnung hat sechzig ____ Wohnfläche.' &&
+      drill.frage.antworten.join(' ') === 'Quadratmeter' && drill.frage.nearMiss.Quadratmeters &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Quadratmeters').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'gibt' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Es' &&
+      order.frage.fields.lsk.join(' ') === 'gibt' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Es', 'ein', 'Bett', 'gibt', 'im', 'Schlafzimmer.']).failed === 1 &&
+      writing.frage.points.join(' | ') === points.join(' | ') && writing.frage.minWords === 24 &&
+      points.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u4-l1 makes 80 percent four of five measurable across floor, area, furniture, apartment and living-room descriptions',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u4-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.antworten.join(' ') === 'Quadratmeter' &&
+      clozeCheck.frage.nearMiss.Quadratmeters &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Quadratmeters').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'gibt' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Es' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Es', 'ein', 'Bett', 'gibt', 'im', 'Schlafzimmer.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

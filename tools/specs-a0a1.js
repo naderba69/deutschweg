@@ -949,24 +949,49 @@ module.exports = [
     }),
 
   U('a1-u4-l1', 'A1', 'السكن', 'Wohnen', 'lexik-kollokation',
-    'Am Ende beschreibst du ein Zimmer mit zwei Möbeln',
-    'في النهاية تصف غرفة بقطعتين.',
+    'Am Ende verwendest du fünf vollständige Sätze zum Wohnen: „Unsere Wohnung ist klein.“ · „Das Wohnzimmer ist hell.“ · „Es gibt ein Bett im Schlafzimmer.“ · „Wir wohnen im Erdgeschoss.“ · „Die Wohnung hat sechzig Quadratmeter Wohnfläche.“',
+    'في النهاية تستعمل خمس جمل كاملة عن السكن: Unsere Wohnung ist klein. وDas Wohnzimmer ist hell. وEs gibt ein Bett im Schlafzimmer. وWir wohnen im Erdgeschoss. وDie Wohnung hat sechzig Quadratmeter Wohnfläche.',
     [
-      ['ein helles Zimmer', 'الوصف بعد الأداة في هذه الجملة البسيطة يأتي لاحقًا', 'نبدأ بالاسم ثم الموضع', 'helles ein Zimmer falsch gestellt', 'الترتيب أداة ثم صفة ثم اسم'],
-      ['Es gibt ein Bett', 'الوجود مع es gibt', 'لا there gibt', 'There gibt ein Bett', 'There إنجليزية'],
-      ['die Wohnung ist klein', 'الحجم مع sein', 'لا has small', 'die Wohnung hat klein', 'الصفة مع ist'],
-      ['im Erdgeschoss', 'الطابق الأرضي إطار ثابت', 'لا in floor zero', 'im floor zero', 'الكلمة Erdgeschoss']
+      ['Unsere Wohnung ist klein.', 'بعد ist تأتي الصفة الخبرية klein بلا نهاية.', 'بعد sein لا نضيف نهاية إلى الصفة الخبرية', 'Unsere Wohnung ist kleine.', 'نقول ist klein، لا ist kleine'],
+      ['Das Wohnzimmer ist hell.', 'جنس الاسم المركب يتبع جزأه الأخير Zimmer، وهو محايد.', 'لأن Zimmer محايد نقول das Wohnzimmer', 'Der Wohnzimmer ist hell.', 'نقول das Wohnzimmer، لا der Wohnzimmer'],
+      ['Es gibt ein Bett im Schlafzimmer.', 'بعد es gibt يأتي المفعول في النصب؛ Bett محايد فيبقى ein Bett.', 'استعمل es gibt ثم ein Bett', 'Es gibt einen Bett im Schlafzimmer.', 'Bett محايد؛ لذلك نقول ein Bett'],
+      ['Wir wohnen im Erdgeschoss.', 'للموقع داخل الطابق نقول im، وهي اختصار in dem.', 'استعمل im Erdgeschoss للموقع', 'Wir wohnen in Erdgeschoss.', 'نقول im Erdgeschoss، لا in Erdgeschoss']
     ],
     [
-      ['Das Zimmer ist hell.', 'الغرفة مضيئة', 'Das Zimmer hat hell', 'الصفة مع ist', 'hell'],
-      ['Es gibt ein Bett.', 'هناك سرير', 'There gibt ein Bett', 'الوجود es gibt', 'gibt'],
-      ['Die Wohnung ist klein.', 'الشقة صغيرة', 'Die Wohnung hat klein', 'الحجم مع ist', 'klein'],
-      ['Ich wohne im Erdgeschoss.', 'أسكن في الطابق الأرضي', 'Ich wohne im floor', 'الطابق Erdgeschoss', 'Erdgeschoss']
+      ['Unsere Wohnung ist klein.', 'شقتنا صغيرة', 'Unsere Wohnung ist kleine.', 'بعد ist تأتي klein بلا نهاية.', 'klein'],
+      ['Das Wohnzimmer ist hell.', 'غرفة الجلوس مضيئة', 'Der Wohnzimmer ist hell.', 'Zimmer محايد؛ لذلك نقول das Wohnzimmer.', 'Wohnzimmer'],
+      ['Es gibt ein Bett im Schlafzimmer.', 'يوجد سرير في غرفة النوم', 'Es gibt einen Bett im Schlafzimmer.', 'Bett محايد؛ لذلك نقول ein Bett.', 'Bett'],
+      ['Wir wohnen im Erdgeschoss.', 'نسكن في الطابق الأرضي', 'Wir wohnen in Erdgeschoss.', 'للموقع نقول im Erdgeschoss.', 'Erdgeschoss']
     ],
-    'Das Zimmer ist hell. Es gibt ein Bett.',
-    'Das Zimmer ist hell.',
-    'Beschreibe morgen dein Zimmer in zwei Sätzen.',
-    'غدًا صف غرفتك في جملتين.'),
+    'Unsere Wohnung ist klein.',
+    'Das Wohnzimmer ist hell.',
+    'Schreibe morgen fünf Sätze nach diesen Mustern: Unsere Wohnung ist klein. Das Wohnzimmer ist hell. Es gibt ein Bett im Schlafzimmer. Wir wohnen im Erdgeschoss. Die Wohnung hat sechzig Quadratmeter Wohnfläche.',
+    'غدًا اكتب خمس جمل على غرار: Unsere Wohnung ist klein. وDas Wohnzimmer ist hell. وEs gibt ein Bett im Schlafzimmer. وWir wohnen im Erdgeschoss. وDie Wohnung hat sechzig Quadratmeter Wohnfläche.',
+    {
+      factFamilies: ['deklination', 'genus', 'kasus', 'präposition'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze zum Wohnen',
+        erklaerung: 'اكتب خمس جمل كاملة: صف الشقة وغرفة الجلوس، واذكر سريرًا في غرفة النوم، والطابق، والمساحة.',
+        prompt: 'اكتب خمس جمل ألمانية كاملة تصف مسكنًا واحدًا.',
+        promptDe: 'Unsere Wohnung ist klein. · Das Wohnzimmer ist hell. · Es gibt ein Bett im Schlafzimmer. · Wir wohnen im Erdgeschoss. · Die Wohnung hat sechzig Quadratmeter Wohnfläche.',
+        points: ['unsere Wohnung ist klein', 'das Wohnzimmer ist hell', 'ein Bett im Schlafzimmer', 'im Erdgeschoss', 'sechzig Quadratmeter Wohnfläche'],
+        minWords: 24,
+        frage: 'صف المسكن في خمس جمل واضحة.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل ist مع صفتي klein وhell.', 'استعمل es gibt وim للموقع.']
+      },
+      imitateNearMiss: 'kleine',
+      transformHint: 'Zimmer هو الجزء الأخير والمحايد؛ لذلك نقول das Wohnzimmer.',
+      orderAr: 'رتّب جملة وجود واحدة: Es ثم gibt، وضع المكان im Schlafzimmer في النهاية.',
+      orderHints: ['ابدأ بـEs ثم ضع gibt في الموقع الثاني.', 'ضع ein Bett قبل im Schlafzimmer.'],
+      orderSentence: 'Es gibt ein Bett im Schlafzimmer.',
+      checkOrderSentence: 'Es gibt ein Bett im Schlafzimmer.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة وجود واحدة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل الجمل الخمس واستعمل unsere Wohnung ist klein وdas Wohnzimmer ist hell وein Bett im Schlafzimmer وim Erdgeschoss وsechzig Quadratmeter Wohnfläche.',
+      summaryDe: 'Unsere Wohnung ist klein. · Das Wohnzimmer ist hell. · Es gibt ein Bett im Schlafzimmer. · Wir wohnen im Erdgeschoss. · Die Wohnung hat sechzig Quadratmeter Wohnfläche.',
+      summaryAr: 'صف الشقة وغرفة الجلوس، واستعمل es gibt للأثاث، وim للطابق، وQuadratmeter للمساحة.',
+      summaryRecap: 'Wohnung Wohnzimmer Bett Erdgeschoss Quadratmeter'
+    }),
 
   U('a1-u4-l2', 'A1', 'عند الطبيب', 'Beim Arzt', 'lexik-kollokation',
     'Am Ende sagst du wo es wehtut und bittest um einen Termin',

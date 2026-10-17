@@ -328,7 +328,7 @@ function blankOut(sentence, core) {
   };
 }
 
-const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|hast|antwortet|antworte|fragt|frage|möchte|möchten|kann|kannst|können|passt|muss|will|willst|rufst|darf|mag|holt|kauf)$/i;
+const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|lebt|hat|habe|hast|antwortet|antworte|fragt|frage|möchte|möchten|kann|kannst|können|passt|gibt|muss|will|willst|rufst|darf|mag|holt|kauf)$/i;
 
 /* The order exercise is scored on four levels, and level 1 needs the finite
    verb, level 3 the fields. Without them the engine could only say "wrong",
