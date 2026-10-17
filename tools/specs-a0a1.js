@@ -1132,24 +1132,49 @@ module.exports = [
     }),
 
   U('a1-u4-l5', 'A1', 'مراجعة A1', 'Wiederholung A1', 'pruefstrategie',
-    'Am Ende reparierst du vier typische A1-Fehler',
-    'في النهاية تُصلح أربعة أخطاء نموذجية من A1.',
+    'Am Ende korrigierst du fünf typische A1-Sätze: „Ich sehe den Mann.“ · „Ich bin zwanzig Jahre alt.“ · „Ich bin nach Hause gegangen.“ · „Dann lerne ich Deutsch.“ · „Das Buch liegt auf dem Tisch.“',
+    'في النهاية تصحّح خمس جمل نموذجية من A1: Ich sehe den Mann. وIch bin zwanzig Jahre alt. وIch bin nach Hause gegangen. وDann lerne ich Deutsch. وDas Buch liegt auf dem Tisch.',
     [
-      ['den nicht der', 'مفعول مذكر den', 'der للرفع', 'Ich sehe der Mann', 'هذا خطأ الحالة'],
-      ['bin nicht habe beim Alter', 'العمر مع bin', 'haben هنا خطأ', 'Ich habe zwanzig Jahre alt', 'alt لا يأتي هكذا'],
-      ['Perfekt mit sein bei gehen', 'gehen يأخذ sein', 'haben gegangen خطأ', 'Ich habe gegangen', 'الفعل المساعد خطأ'],
-      ['V2 nach dann', 'بعد dann الفعل ثاني', 'dann ich فعل يكسر القاعدة', 'Dann ich lerne', 'الضمير سبق الفعل']
+      ['Ich sehe den Mann.', 'Mann اسم مذكر وهو مفعول به هنا، لذلك تتغير أداة التعريف من der إلى den.', 'استعمل den مع المفعول المذكر المفرد', 'Ich sehe der Mann.', 'Mann مفعول به مذكر هنا؛ لذلك نقول den Mann'],
+      ['Ich bin zwanzig Jahre alt.', 'نعبّر عن العمر هنا بالفعل sein وبالتركيب Jahre alt.', 'قل Ich bin … Jahre alt، لا Ich habe', 'Ich habe zwanzig Jahre alt.', 'العمر في هذا التركيب يأتي مع bin، لا habe'],
+      ['Ich bin nach Hause gegangen.', 'صيغة Perfekt للفعل gehen تستعمل bin مع gegangen.', 'احفظ bin gegangen بوصفه تركيبًا واحدًا', 'Ich habe nach Hause gegangen.', 'صيغة Perfekt من gehen تستعمل sein: Ich bin gegangen'],
+      ['Das Buch liegt auf dem Tisch.', 'بعد auf نستعمل الداتيف هنا لأن الجملة تصف مكان الكتاب الثابت.', 'مع موقع الكتاب هنا نقول auf dem Tisch', 'Das Buch liegt auf den Tisch.', 'liegen يصف الموقع هنا؛ لذلك نقول auf dem Tisch']
     ],
     [
-      ['Ich sehe den Mann.', 'أرى الرجل', 'Ich sehe der Mann', 'النصب den', 'den'],
-      ['Ich bin zwanzig.', 'عمري عشرون', 'Ich habe zwanzig Jahre alt', 'العمر مع bin', 'bin'],
-      ['Ich bin gegangen.', 'ذهبت', 'Ich habe gegangen', 'gehen مع sein', 'bin'],
-      ['Dann lerne ich.', 'ثم أدرس', 'Dann ich lerne', 'الفعل ثانيًا', 'lerne']
+      ['Ich sehe den Mann.', 'أرى الرجل', 'Ich sehe der Mann.', 'Mann مفعول به مذكر؛ لذلك نقول den Mann.', 'den'],
+      ['Ich bin zwanzig Jahre alt.', 'عمري عشرون سنة', 'Ich habe zwanzig Jahre alt.', 'العمر في هذا التركيب يأتي مع bin وJahre alt.', 'bin'],
+      ['Ich bin nach Hause gegangen.', 'ذهبت إلى البيت', 'Ich habe nach Hause gegangen.', 'صيغة Perfekt من gehen تستعمل bin.', 'bin'],
+      ['Das Buch liegt auf dem Tisch.', 'الكتاب موجود على الطاولة', 'Das Buch liegt auf den Tisch.', 'مع الموقع الثابت هنا نقول auf dem Tisch.', 'dem']
     ],
-    'Ich sehe den Mann. Dann lerne ich.',
-    'Ich bin zwanzig.',
-    'Korrigiere morgen einen eigenen Satz.',
-    'غدًا صحّح جملة من عندك.'),
+    'Ich sehe den Mann.',
+    'Dann lerne ich Deutsch.',
+    'Schreibe morgen die fünf korrigierten Sätze: Ich sehe den Mann. Ich bin zwanzig Jahre alt. Ich bin nach Hause gegangen. Dann lerne ich Deutsch. Das Buch liegt auf dem Tisch.',
+    'غدًا اكتب الجمل الخمس المصححة: Ich sehe den Mann. وIch bin zwanzig Jahre alt. وIch bin nach Hause gegangen. وDann lerne ich Deutsch. وDas Buch liegt auf dem Tisch.',
+    {
+      factFamilies: ['kasus', 'lexik-kollokation', 'konjugation', 'kasus'],
+      writing: {
+        zeigt: 'Fünf korrigierte A1-Sätze',
+        erklaerung: 'اكتب الجمل الخمس الصحيحة كاملة: المفعول المذكر، والعمر، وPerfekt مع gehen، وترتيب الفعل بعد Dann، وموقع الكتاب.',
+        prompt: 'اكتب الجمل الخمس المصححة كاملة.',
+        promptDe: 'Ich sehe den Mann. · Ich bin zwanzig Jahre alt. · Ich bin nach Hause gegangen. · Dann lerne ich Deutsch. · Das Buch liegt auf dem Tisch.',
+        points: ['Ich sehe den Mann.', 'Ich bin zwanzig Jahre alt.', 'Ich bin nach Hause gegangen.', 'Dann lerne ich Deutsch.', 'Das Buch liegt auf dem Tisch.'],
+        minWords: 24,
+        frage: 'اكتب الجمل الخمس الصحيحة من دون نسخ الخطأ.',
+        familie: 'pruefstrategie',
+        hinweise: ['راجع أداة المفعول والفعل المساعد والحالة.', 'تحقق من موضع الفعل المصرف بعد Dann.']
+      },
+      imitateNearMiss: 'der',
+      transformHint: 'تأتي Dann في الحقل الأول، لذلك يأتي الفعل المصرف lerne بعدها مباشرةً.',
+      orderAr: 'رتّب جملة واحدة: ابدأ بـDann، ثم ضع lerne في الموضع الثاني.',
+      orderHints: ['ابدأ بـDann ثم ضع lerne.', 'ضع ich بعد الفعل وDeutsch في النهاية.'],
+      orderSentence: 'Dann lerne ich Deutsch.',
+      checkOrderSentence: 'Dann lerne ich Deutsch.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة واحدة صحيحة بعد Dann.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich sehe den Mann وIch bin zwanzig Jahre alt وIch bin nach Hause gegangen وDann lerne ich Deutsch وDas Buch liegt auf dem Tisch.',
+      summaryDe: 'Ich sehe den Mann. · Ich bin zwanzig Jahre alt. · Ich bin nach Hause gegangen. · Dann lerne ich Deutsch. · Das Buch liegt auf dem Tisch.',
+      summaryAr: 'راجع den للمفعول المذكر، وbin مع العمر ومع gegangen، والفعل المصرف بعد Dann، والداتيف في auf dem Tisch.',
+      summaryRecap: 'den Alter gegangen Dann Tisch'
+    }),
 
   U('a1-u4-l6', 'A1', 'شكل امتحان A1', 'Prüfungsform A1', 'pruefstrategie',
     'Am Ende kennst du die vier Teile und die Regel ohne Ausgleich',

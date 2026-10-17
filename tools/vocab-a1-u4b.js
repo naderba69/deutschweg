@@ -56,31 +56,43 @@ module.exports = {
 
   'a1-u4-l5': {
     items: [
-      ['ich wohne · du wohnst', '—', 'أنا أسكن · أنت تسكن', 'Ich wohne hier und du wohnst dort.', 'Ich wohne hier und du wohnen dort.', 'du يأخذ -st: du wohnst.', 'konjugation', 'wohnst'],
-      ['er arbeitet · wir arbeiten', '—', 'هو يعمل · نحن نعمل', 'Er arbeitet heute, wir arbeiten morgen.', 'Er arbeitet heute, wir arbeitet morgen.', 'wir يأخذ صيغة المصدر: arbeiten.', 'konjugation', 'arbeiten'],
-      ['der · den', '—', 'الرفع · النصب', 'Ich sehe den Mann.', 'Ich sehe der Mann.', 'المفعول المذكر den.', 'kasus', 'den'],
-      ['ein · einen', '—', 'نكرة رفع · نكرة نصب', 'Ich habe einen Termin.', 'Ich habe ein Termin.', 'المذكر في النصب einen.', 'kasus', 'einen'],
-      ['mein · meine', '—', 'مذكّر · مؤنث', 'Mein Bruder und meine Schwester kommen.', 'Mein Bruder und mein Schwester kommen.', 'Schwester مؤنث: meine.', 'deklination', 'meine'],
-      ['mein · meinen', '—', 'ملكية رفع · نصب', 'Ich sehe meinen Bruder.', 'Ich sehe mein Bruder.', 'المذكر في النصب meinen.', 'deklination', 'meinen'],
-      ['ich bin · du bist', '—', 'أنا · أنت مع sein', 'Du bist hier und ich bin dort.', 'Du bist hier und ich bist dort.', 'مع ich نقول bin.', 'konjugation', 'bin'],
-      ['das Alter mit sein', '—', 'العمر بـ sein', 'Ich bin zwanzig.', 'Ich habe zwanzig.', 'العمر بـ sein لا بـ haben.', 'lexik-kollokation', 'bin'],
-      ['nicht · kein', '—', 'نفي الفعل · نفي الاسم', 'Ich habe kein Geld und ich trinke nicht.', 'Ich habe nicht Geld und ich trinke kein.', 'kein للاسم وnicht للفعل.', 'lexik-kollokation', 'kein'],
-      ['keinen Kaffee', '—', 'لا قهوة (نصب)', 'Ich trinke keinen Kaffee.', 'Ich trinke nicht Kaffee.', 'نفي الاسم المذكر في النصب keinen.', 'lexik-kollokation', 'keinen'],
-      ['gegangen mit sein', '—', 'الذهاب بـ sein', 'Ich bin nach Hause gegangen.', 'Ich habe nach Hause gegangen.', 'gehen حركة: bin.', 'konjugation', 'bin'],
-      ['gemacht mit haben', '—', 'الفعل العادي بـ haben', 'Ich habe das gemacht.', 'Ich bin das gemacht.', 'machen تأخذ haben.', 'konjugation', 'habe'],
-      ['dann + Verb', '—', 'ثم + الفعل', 'Dann lerne ich.', 'Dann ich lerne.', 'دann تزيح الفاعل بعد الفعل.', 'wortstellung', 'lerne'],
-      ['am Montag', '—', 'يوم الاثنين', 'Am Montag arbeite ich.', 'In Montag arbeite ich.', 'اليوم يأخذ am.', 'präposition', 'Am'],
-      ['im Mai', '—', 'في مايو', 'Im Mai ist es warm.', 'In Mai ist es warm.', 'الشهر يأخذ im.', 'präposition', 'Im'],
-      ['um acht', '—', 'عند الثامنة', 'Der Kurs beginnt um acht.', 'Der Kurs beginnt in acht.', 'الساعة تأخذ um.', 'präposition', 'um'],
-      ['auf dem Tisch', '—', 'على الطاولة', 'Das Buch liegt auf dem Tisch.', 'Das Buch liegt auf den Tisch.', 'السكون يأخذ الداتيف.', 'kasus', 'dem'],
-      ['mich · dich', '—', 'إيّاي · إيّاك', 'Siehst du mich? Ich sehe dich.', 'Siehst du ich? Ich sehe du.', 'ضمير النصب mich، ثم dich.', 'kasus', 'mich'],
-      ['mir tut weh', '—', 'يؤلمني', 'Mir tut der Kopf weh.', 'Ich tut der Kopf weh.', 'المتألم في الداتيف: Mir.', 'kasus', 'Mir'],
-      ['geblieben mit sein', '—', 'البقاء بـ sein', 'Ich bin zu Hause geblieben.', 'Ich habe zu Hause geblieben.', 'bleiben تأخذ sein.', 'konjugation', 'bin']
+      ['der · den', '—', 'der مع Mann كفاعل · den معه كمفعول', 'Ich sehe den Mann.', 'Ich sehe der Mann.', 'Mann مفعول به مذكر هنا؛ لذلك نقول den Mann.', 'kasus', 'den'],
+      ['ein · einen', '—', 'ein مع Termin كفاعل · einen معه كمفعول', 'Ich habe einen Termin.', 'Ich habe ein Termin.', 'Termin مفعول به مذكر؛ لذلك نقول einen Termin.', 'kasus', 'einen'],
+      ['mein · meine', '—', 'أخي · أختي', 'Mein Bruder und meine Schwester kommen.', 'Mein Bruder und mein Schwester kommen.', 'Schwester اسم مؤنث؛ لذلك نقول meine Schwester.', 'deklination', 'meine'],
+      ['ich wohne · du wohnst', '—', 'أنا أسكن · أنت تسكن', 'Ich wohne hier und du wohnst dort.', 'Ich wohne hier und du wohnen dort.', 'مع du ينتهي الفعل المنتظم هنا بـ-st: du wohnst.', 'konjugation', 'wohnst'],
+      ['er arbeitet · wir arbeiten', '—', 'هو يعمل · نحن نعمل', 'Er arbeitet heute und wir arbeiten morgen.', 'Er arbeitet heute und wir arbeitet morgen.', 'مع wir نستعمل صيغة arbeiten المنتهية بـ-en.', 'konjugation', 'arbeiten'],
+      ['mein · meinen', '—', 'أخي كفاعل · أخي كمفعول به', 'Ich sehe meinen Bruder.', 'Ich sehe mein Bruder.', 'Bruder مفعول به مذكر هنا؛ لذلك نقول meinen Bruder.', 'deklination', 'meinen'],
+      ['ich bin · du bist', '—', 'أنا مع bin · أنت مع bist', 'Du bist hier und ich bin dort.', 'Du bist hier und ich bist dort.', 'مع ich نقول bin، لا bist.', 'konjugation', 'bin'],
+      ['das Alter mit sein', '—', 'العمر مع sein', 'Ich bin zwanzig Jahre alt.', 'Ich habe zwanzig Jahre alt.', 'العمر في هذا التركيب يأتي مع bin وJahre alt.', 'lexik-kollokation', 'bin'],
+      ['nicht teuer · kein Geld', '—', 'ليس غاليًا · لا أملك مالًا', 'Das ist nicht teuer, aber ich habe kein Geld.', 'Das ist kein teuer, aber ich habe nicht ein Geld.', 'في هذين المثالين ينفي nicht الصفة، وتأتي صيغة kein قبل الاسم.', 'lexik-kollokation', 'kein'],
+      ['keinen Kaffee', '—', 'لا قهوة عندي (مفعول مذكر)', 'Ich trinke keinen Kaffee.', 'Ich trinke kein Kaffee.', 'Kaffee مفعول به مذكر؛ لذلك تأتي صيغة النفي keinen.', 'deklination', 'keinen'],
+      ['gegangen mit sein', '—', 'gegangen مع sein', 'Ich bin nach Hause gegangen.', 'Ich habe nach Hause gegangen.', 'صيغة Perfekt من gehen تستعمل bin، لا habe.', 'konjugation', 'bin'],
+      ['gemacht mit haben', '—', 'gemacht مع haben', 'Ich habe das gemacht.', 'Ich bin das gemacht.', 'صيغة Perfekt من machen تستعمل habe، لا bin.', 'konjugation', 'habe'],
+      ['dann + Verb', '—', 'ثم يأتي الفعل المصرف', 'Dann lerne ich Deutsch.', 'Dann ich lerne Deutsch.', 'تشغل Dann الحقل الأول، ويأتي الفعل المصرف lerne بعدها.', 'wortstellung', 'lerne'],
+      ['am Montag', '—', 'يوم الاثنين', 'Am Montag arbeite ich.', 'In Montag arbeite ich.', 'مع يوم الأسبوع نقول هنا am Montag.', 'präposition', 'Am'],
+      ['im Mai', '—', 'في مايو', 'Im Mai ist es warm.', 'In Mai ist es warm.', 'مع الشهر نقول هنا im Mai.', 'präposition', 'Im'],
+      ['um acht Uhr', '—', 'عند الساعة الثامنة', 'Der Kurs beginnt um acht Uhr.', 'Der Kurs beginnt am acht Uhr.', 'مع وقت الساعة المحدد نقول um acht Uhr.', 'präposition', 'um'],
+      ['auf dem Tisch', '—', 'على الطاولة في موضع ثابت', 'Das Buch liegt auf dem Tisch.', 'Das Buch liegt auf den Tisch.', 'liegen يصف موقع الكتاب هنا؛ لذلك نقول auf dem Tisch.', 'kasus', 'dem'],
+      ['mich · dich', '—', 'إيّاي · إيّاك في النصب', 'Siehst du mich? Ja, ich sehe dich.', 'Siehst du mir? Ja, ich sehe dir.', 'sehen يأخذ ضمير النصب هنا: mich وdich، لا mir وdir.', 'kasus', 'mich'],
+      ['mir tut weh', '—', 'يؤلمني', 'Mir tut der Kopf weh.', 'Mich tut der Kopf weh.', 'الشخص المتألم يأتي في الداتيف هنا: Mir، لا Mich.', 'kasus', 'Mir'],
+      ['geblieben mit sein', '—', 'geblieben مع sein', 'Ich bin zu Hause geblieben.', 'Ich habe zu Hause geblieben.', 'صيغة Perfekt من bleiben تستعمل bin، لا habe.', 'konjugation', 'bin']
     ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: { 'mein · meinen': 'mein' },
+    clozeItemIndex: 10,
+    clozeNearMiss: 'habe',
+    extraCheck: {
+      right: 'Ich bin zwanzig Jahre alt.',
+      bad: 'Ich habe zwanzig Jahre alt.',
+      why: 'العمر في هذا التركيب يأتي مع bin وJahre alt.',
+      family: 'lexik-kollokation',
+      prereq: 'cap.a1-u4-l5.s05',
+      frage: 'أي جملة تعبّر عن العمر تعبيرًا صحيحًا؟'
+    },
     tricks: [
-      { trick: 'أربعة أخطاء تتكرر في A1', wie: 'den لا der · bin لا habe · gegangen مع sein · الفعل بعد dann.', warum: 'هذه الأربعة تظهر في كل تصحيح، وجمعها يجعل المراجعة أسرع.', anchor: 'Ich sehe den Mann.' },
-      { trick: 'هل الجملة مكان أم حركة؟', wie: 'Ich bin gegangen · ich habe gelernt.', warum: 'سؤال واحد يحل اختيار المساعد، وهو أغلى خطأ في A1.', anchor: 'Ich bin nach Hause gegangen.' },
-      { trick: 'فعل مصرّف واحد في الموضع الثاني', wie: 'Dann lerne ich. · Am Montag arbeite ich.', warum: 'قاعدة واحدة تكشف نصف أخطاء الترتيب في المراجعة.', anchor: 'Dann lerne ich.' }
+      { trick: 'المفعول المذكر هنا: den وeinen', wie: 'der Mann → Ich sehe den Mann. · ein Termin → Ich habe einen Termin.', warum: 'احفظ den مع أداة التعريف وeinen مع أداة التنكير في هذين المثالين، من دون تعميمهما على المؤنث أو المحايد.', anchor: 'Ich sehe den Mann.' },
+      { trick: 'احفظ المساعد مع صيغة Perfekt', wie: 'bin gegangen · bin geblieben · habe gemacht', warum: 'اختيار المساعد يُحفظ مع الفعل نفسه؛ ولا تكفي قاعدة عامة عن الحركة.', anchor: 'Ich bin nach Hause gegangen.' },
+      { trick: 'بعد Dann يأتي الفعل المصرف', wie: 'Dann lerne ich Deutsch. · Am Montag arbeite ich.', warum: 'Dann أو عبارة الوقت تشغل الحقل الأول، لذلك يأتي الفعل المصرف في الموضع الثاني.', anchor: 'Dann lerne ich Deutsch.' }
     ]
   },
 

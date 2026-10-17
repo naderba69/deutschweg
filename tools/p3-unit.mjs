@@ -1813,6 +1813,89 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
 
+/* ---------- audited A1 review lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u4-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = ['Ich sehe den Mann.', 'Ich bin zwanzig Jahre alt.',
+    'Ich bin nach Hause gegangen.', 'Dann lerne ich Deutsch.',
+    'Das Buch liegt auf dem Tisch.'];
+  t('Corpus lesson a1-u4-l5 bounds its A1 review to five corrected sentences and teaches the four prerequisite facts as complete German',
+    lesson.title.de === 'Wiederholung A1' && lesson.title.ar === 'مراجعة A1' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'تصحيح الحالة والعمر والماضي وترتيب الفعل والمكان' &&
+      lesson.schritte.length === 32 && lesson.schritte[0].zeigt.de.includes('fünf typische A1-Sätze') &&
+      targets.every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      [targets[0], targets[1], targets[2], targets[4]]
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u4-l5 keeps all 20 reviewed entries, contextual rules, isolated corrections and three usable review mnemonics',
+    lesson.wortschatz.length === 20 &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord['der · den'].ex === targets[0] && byWord['der · den'].why.includes('مفعول به مذكر') &&
+      byWord['das Alter mit sein'].ex === targets[1] &&
+      byWord['das Alter mit sein'].err === 'Ich habe zwanzig Jahre alt.' &&
+      byWord['nicht teuer · kein Geld'].why.includes('في هذين المثالين') &&
+      byWord['keinen Kaffee'].err === 'Ich trinke kein Kaffee.' &&
+      byWord['gegangen mit sein'].ex === targets[2] &&
+      byWord['gegangen mit sein'].why.includes('تستعمل bin، لا habe') &&
+      byWord['dann + Verb'].ex === targets[3] && byWord['dann + Verb'].why.includes('الحقل الأول') &&
+      byWord['auf dem Tisch'].ex === targets[4] && byWord['auf dem Tisch'].why.includes('موقع الكتاب') &&
+      byWord['mich · dich'].ex === 'Siehst du mich? Ja, ich sehe dich.' &&
+      byWord['mir tut weh'].err === 'Mich tut der Kopf weh.' &&
+      tricks.length === 3 && tricks[0].wie.includes('einen Termin') &&
+      tricks[1].wie.includes('bin geblieben') && tricks[1].warum.includes('ولا تكفي قاعدة عامة عن الحركة') &&
+      tricks[2].wie.includes(targets[3]) &&
+      !lessonText.includes('gehen حركة: bin') && !lessonText.includes('سؤال واحد يحل اختيار المساعد'));
+  const imitate = lesson.schritte.find(s => s.id === 's14');
+  const drill = lesson.schritte.find(s => s.id === 's18');
+  const order = lesson.schritte.find(s => s.id === 's19');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u4-l5 aligns strict clozes, one Dann sentence, 24-word correction writing, speaking, summary and homework',
+    imitate.frage.antworten.join(' ') === 'den' && imitate.frage.nearMiss.der &&
+      drill.frage.zeigt === 'Ich ____ nach Hause gegangen.' &&
+      drill.frage.antworten.join(' ') === 'bin' && drill.frage.nearMiss.habe &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'habe').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'lerne' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Dann' &&
+      order.frage.fields.lsk.join(' ') === 'lerne' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Dann', 'ich', 'lerne', 'Deutsch.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 24 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      ['Ich sehe den Mann', 'Ich bin zwanzig Jahre alt', 'Ich bin nach Hause gegangen',
+        'Dann lerne ich Deutsch', 'Das Buch liegt auf dem Tisch']
+        .every(x => speaking.erklaerung.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u4-l5 makes 80 percent four of five measurable across location, Perfekt, V2, masculine accusative and age',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u4-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.antworten.join(' ') === 'bin' && clozeCheck.frage.nearMiss.habe &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'habe').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'lerne' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Dann' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Dann', 'ich', 'lerne', 'Deutsch.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[4].frage.misconceptionFamilies.a === 'lexik-kollokation');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
