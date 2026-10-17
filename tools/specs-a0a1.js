@@ -1177,25 +1177,49 @@ module.exports = [
     }),
 
   U('a1-u4-l6', 'A1', 'شكل امتحان A1', 'Prüfungsform A1', 'pruefstrategie',
-    'Am Ende kennst du die vier Teile und die Regel ohne Ausgleich',
-    'في النهاية تعرف الأقسام الأربعة وقاعدة عدم التعويض.',
+    'Am Ende kennst du die vier Bereiche, die Gesamtpunktzahl, die Wiederholungen im Hören, das Buchstabieren und die Dauer der schriftlichen Prüfung',
+    'في النهاية تعرف مجالات الامتحان ومجموع النجاح وتكرار نصوص السماع والتهجئة ومدة الامتحان الكتابي.',
     [
-      ['vier Teile', 'Hörverstehen Lesen Schreiben Sprechen', 'لا جزء واحد يغطي الباقي', 'nur Schreiben zählt', 'كل قسم قائم'],
-      ['kein Ausgleich', 'درجة قسم لا تعوّض قسمًا', 'هذه قاعدة الشكل لا نصيحة', 'ein starkes Modul rettet', 'لا إنقاذ بين الأقسام'],
-      ['Hören einmal', 'الاستماع يُسمَع حسب نظام الجزء', 'لا تعتمد على إعادة غير موجودة', 'ich höre dreimal immer', 'لا تفترض ثلاث إعادات'],
-      ['buchstabieren im Sprechen', 'التهجئة جزء من التحدث في A1', 'ليست زينة', 'Buchstaben sind unwichtig', 'التهجئة تُمتحن']
+      ['Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen.', 'يمتحن Start Deutsch 1 الاستماع والقراءة والكتابة والتحدث', 'احفظ المجالات الأربعة بالترتيب', 'Nur das Schreiben zählt.', 'الامتحان لا يقتصر على الكتابة'],
+      ['Zum Bestehen braucht man insgesamt mindestens sechzig Punkte.', 'الحد الأدنى للنجاح هو 60 نقطة من مجموع 100', 'الستون مطلوبة في المجموع، لا في كل مجال', 'Man braucht sechzig Punkte in jedem Teil.', 'لا توجد ستون نقطة أصلًا في كل مجال'],
+      ['Manche Hörtexte hören Sie einmal, andere zweimal.', 'يختلف عدد مرات السماع باختلاف الجزء', 'اقرأ تعليمات كل جزء ولا تفترض عددًا واحدًا', 'Alle Hörtexte hören Sie dreimal.', 'ليست كل النصوص ثلاث مرات'],
+      ['Die schriftliche Prüfung dauert fünfundsechzig Minuten.', 'مدة Hören وLesen وSchreiben معًا 65 دقيقة', 'هذه مدة الامتحان الكتابي كله', 'Die schriftliche Prüfung dauert zwanzig Minuten.', 'عشرون دقيقة تخص Schreiben، لا الامتحان الكتابي كله']
     ],
     [
-      ['Es gibt vier Teile.', 'هناك أربعة أقسام', 'Es gibt ein Teil nur', 'الشكل أربعة أقسام', 'vier'],
-      ['Ein Teil rettet den anderen nicht.', 'قسم لا ينقذ الآخر', 'Ein starkes Modul rettet alles', 'لا تعويض', 'nicht'],
-      ['Hören hat seine eigene Zeit.', 'للسماع وقته', 'Hören ist immer dreimal', 'لا تفترض التكرار', 'Zeit'],
-      ['Buchstabieren gehört zum Sprechen.', 'التهجئة من التحدث', 'Buchstabieren ist unwichtig', 'التهجئة مطلوبة', 'Buchstabieren']
+      ['Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen.', 'يشمل الامتحان الاستماع والقراءة والكتابة والتحدث', 'Nur das Schreiben zählt.', 'الامتحان يقيس المجالات الأربعة', 'umfasst'],
+      ['Zum Bestehen braucht man insgesamt mindestens sechzig Punkte.', 'للنجاح نحتاج إلى ستين نقطة على الأقل في المجموع', 'Man braucht sechzig Punkte in jedem Teil.', 'الحد الأدنى 60 من مجموع 100', 'sechzig'],
+      ['Manche Hörtexte hören Sie einmal, andere zweimal.', 'تسمع بعض النصوص مرة وأخرى مرتين', 'Alle Hörtexte hören Sie dreimal.', 'عدد مرات السماع يتبع تعليمات الجزء', 'Hörtexte'],
+      ['Bei der Prüfung buchstabieren Sie Ihren Namen.', 'في الامتحان تتهجّى اسمك', 'Bei der Prüfung ist Buchstabieren unwichtig.', 'التهجئة مهمة في الامتحان الشفوي', 'buchstabieren']
     ],
-    'Vier Teile. Kein Ausgleich. Buchstabieren gehört dazu.',
-    'Es gibt vier Teile.',
-    'Sage morgen die vier Teile laut.',
-    'غدًا سمِّ الأقسام الأربعة بصوت عالٍ.')
-,
+    'Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen.',
+    'Bei der Prüfung buchstabieren Sie Ihren Namen.',
+    'Wiederhole morgen die fünf Sätze: Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen. Zum Bestehen braucht man insgesamt mindestens sechzig Punkte. Manche Hörtexte hören Sie einmal, andere zweimal. Bei der Prüfung buchstabieren Sie Ihren Namen. Die schriftliche Prüfung dauert fünfundsechzig Minuten.',
+    'غدًا راجع الجمل الخمس عن المجالات ومجموع النجاح والسماع والتهجئة والمدة.',
+    {
+      factFamilies: ['pruefstrategie', 'pruefstrategie', 'hoerstrategie', 'pruefstrategie'],
+      writing: {
+        zeigt: 'Fünf Sätze zur Prüfungsform',
+        erklaerung: 'اكتب خمس جمل كاملة عن مجالات الامتحان ومجموع النجاح وتكرار السماع والتهجئة والمدة الكتابية.',
+        prompt: 'اكتب الجمل الخمس عن شكل Start Deutsch 1.',
+        promptDe: 'Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen. · Zum Bestehen braucht man insgesamt mindestens sechzig Punkte. · Manche Hörtexte hören Sie einmal, andere zweimal. · Bei der Prüfung buchstabieren Sie Ihren Namen. · Die schriftliche Prüfung dauert fünfundsechzig Minuten.',
+        points: ['Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen.', 'Zum Bestehen braucht man insgesamt mindestens sechzig Punkte.', 'Manche Hörtexte hören Sie einmal, andere zweimal.', 'Bei der Prüfung buchstabieren Sie Ihren Namen.', 'Die schriftliche Prüfung dauert fünfundsechzig Minuten.'],
+        minWords: 37,
+        frage: 'اكتب الجمل الخمس كاملة من دون إضافة قاعدة تعويض بين الأقسام.',
+        familie: 'pruefstrategie',
+        hinweise: ['راجع 60 من المجموع و65 دقيقة للامتحان الكتابي.', 'ميّز بين مرة ومرتين في نصوص السماع.']
+      },
+      imitateNearMiss: 'hat',
+      transformHint: 'في الامتحان الشفوي تأتي مهمة تهجئة الاسم.',
+      orderAr: 'رتّب جملة واحدة: ضع الحقل Bei der Prüfung أولًا ثم الفعل buchstabieren.',
+      orderHints: ['ابدأ بالحقل Bei der Prüfung.', 'ضع buchstabieren بعده ثم Sie Ihren Namen.'],
+      orderSentence: 'Bei der Prüfung buchstabieren Sie Ihren Namen.',
+      checkOrderSentence: 'Bei der Prüfung buchstabieren Sie Ihren Namen.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن تهجئة الاسم في الامتحان.',
+      speakAr: 'سجّل عشرين ثانية: قل Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen وZum Bestehen braucht man insgesamt mindestens sechzig Punkte وManche Hörtexte hören Sie einmal, andere zweimal وBei der Prüfung buchstabieren Sie Ihren Namen وDie schriftliche Prüfung dauert fünfundsechzig Minuten.',
+      summaryDe: 'Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen. · Zum Bestehen braucht man insgesamt mindestens sechzig Punkte. · Manche Hörtexte hören Sie einmal, andere zweimal. · Bei der Prüfung buchstabieren Sie Ihren Namen. · Die schriftliche Prüfung dauert fünfundsechzig Minuten.',
+      summaryAr: 'راجع المجالات الأربعة، و60 نقطة من المجموع، ومرة أو مرتين في السماع، وتهجئة الاسم، و65 دقيقة للامتحان الكتابي.',
+      summaryRecap: 'vier Bereiche 60 Hören Name 65'
+    }),
 
   U('a1-u5-l1', 'A1', 'البريد والهاتف', 'Post und Telefon', 'lexik-kollokation',
     'Am Ende schreibst du eine Postkarte und verstehst eine Ansage',

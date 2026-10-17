@@ -98,25 +98,37 @@ module.exports = {
 
   'a1-u4-l6': {
     items: [
-      ['der Teil', 'die Teile', 'القسم', 'Die Prüfung hat vier Teile.', 'Die Prüfung hat vier Teil.', 'بعد vier جمع: Teile.', 'plural', 'Teile'],
-      ['das Hören', '—', 'الاستماع', 'Das Hören kommt zuerst.', 'Der Hören kommt zuerst.', 'المصدر اسمًا محايد: das.', 'genus'],
-      ['das Lesen', '—', 'القراءة', 'Das Lesen ist nicht schwer.', 'Der Lesen ist nicht schwer.', 'das Lesen محايد.', 'genus'],
-      ['das Schreiben', '—', 'الكتابة', 'Das Schreiben dauert zwanzig Minuten.', 'Der Schreiben dauert zwanzig Minuten.', 'das Schreiben محايد.', 'genus'],
-      ['das Sprechen', '—', 'التحدّث', 'Das Sprechen ist mündlich.', 'Der Sprechen ist mündlich.', 'das Sprechen محايد.', 'genus'],
-      ['der Punkt', 'die Punkte', 'النقطة', 'Sechzig Punkte sind genug.', 'Sechzig Punkt sind genug.', 'بعد العدد جمع: Punkte.', 'plural', 'Punkte'],
-      ['bestehen', 'besteht · bestand', 'ينجح', 'Man muss die Prüfung bestehen.', 'Man muss die Prüfung besteht.', 'بعد muss مصدر: bestehen.', 'konjugation'],
-      ['buchstabieren', 'buchstabiert · buchstabierte', 'يتهجّى', 'Im Sprechen müssen Sie buchstabieren.', 'Im Sprechen müssen Sie buchstabiert.', 'بعد müssen مصدر: buchstabieren.', 'konjugation'],
-      ['die Aufgabe', 'die Aufgaben', 'المهمة', 'Die Aufgabe ist leicht.', 'Der Aufgabe ist leicht.', 'Aufgabe مؤنث: die.', 'genus'],
-      ['das Ergebnis', 'die Ergebnisse', 'النتيجة', 'Das Ergebnis kommt per E-Mail.', 'Der Ergebnis kommt per E-Mail.', 'Ergebnis محايد: das.', 'genus'],
-      ['mündlich', '—', 'شفوي', 'Der Teil ist mündlich.', 'Der Teil ist mündliche.', 'الصفة بعد sein بلا نهاية.', 'deklination'],
-      ['schriftlich', '—', 'كتابي', 'Der schriftliche Teil ist lang.', 'Der schriftlich Teil ist lang.', 'الصفة قبل الاسم تأخذ -e.', 'deklination', 'schriftliche'],
-      ['der Ausweis', 'die Ausweise', 'الهوية', 'Bringen Sie Ihren Ausweis mit.', 'Bringen Sie Ihre Ausweis mit.', 'المذكر في النصب: Ihren.', 'kasus'],
-      ['die Note', 'die Noten', 'العلامة', 'Die Note ist gut.', 'Der Note ist gut.', 'Note مؤنث: die.', 'genus']
+      ['das Hören', '—', 'قسم الاستماع', 'Manche Hörtexte hören Sie einmal, andere zweimal.', 'Alle Hörtexte hören Sie dreimal.', 'عدد مرات السماع يتبع تعليمات الجزء: بعض النصوص مرة وبعضها مرتان.', 'hoerstrategie', 'hören'],
+      ['der Teil', 'die Teile', 'الجزء', 'Die Prüfung hat vier Teile.', 'Die Prüfung hat vier Teil.', 'بعد vier نستعمل الجمع Teile.', 'plural', 'Teile'],
+      ['das Lesen', '—', 'قسم القراءة', 'Das Lesen dauert fünfundzwanzig Minuten.', 'Der Lesen dauert fünfundzwanzig Minuten.', 'الفعل المصدري حين يُستعمل اسمًا هنا محايد: das Lesen.', 'genus', 'Lesen'],
+      ['das Schreiben', '—', 'قسم الكتابة', 'Das Schreiben dauert zwanzig Minuten.', 'Der Schreiben dauert zwanzig Minuten.', 'الفعل المصدري حين يُستعمل اسمًا هنا محايد: das Schreiben.', 'genus', 'Schreiben'],
+      ['das Sprechen', '—', 'قسم التحدث', 'Das Sprechen dauert etwa fünfzehn Minuten.', 'Der Sprechen dauert etwa fünfzehn Minuten.', 'الفعل المصدري حين يُستعمل اسمًا هنا محايد: das Sprechen.', 'genus', 'Sprechen'],
+      ['der Punkt', 'die Punkte', 'النقطة', 'Zum Bestehen braucht man insgesamt mindestens sechzig Punkte.', 'Man braucht sechzig Punkte in jedem Teil.', 'النجاح يبدأ من 60 نقطة في المجموع، لا من 60 في كل جزء.', 'pruefstrategie', 'Punkte'],
+      ['bestehen', 'besteht · bestand · hat bestanden', 'ينجح في الامتحان', 'Ab sechzig Punkten kann man die Prüfung bestehen.', 'Man muss jeden Teil mit sechzig Punkten bestehen.', 'في Start Deutsch 1 تُحسب 60 نقطة على الأقل من المجموع بعد أداء الأقسام.', 'pruefstrategie', 'bestehen'],
+      ['buchstabieren', 'buchstabiert · buchstabierte · hat buchstabiert', 'يتهجّى', 'Bei der Prüfung buchstabieren Sie Ihren Namen.', 'Bei der Prüfung ist Buchstabieren unwichtig.', 'تهجئة الاسم مهمة في الامتحان الشفوي.', 'pruefstrategie', 'buchstabieren'],
+      ['die Aufgabe', 'die Aufgaben', 'المهمة أو السؤال', 'Lesen Sie zuerst die Aufgabe.', 'Lesen Sie zuerst der Aufgabe.', 'Aufgabe مؤنث، وتبقى die هنا في النصب.', 'kasus', 'Aufgabe'],
+      ['das Ergebnis', 'die Ergebnisse', 'النتيجة', 'Das Ergebnis bekommen Sie nach der Prüfung.', 'Der Ergebnis bekommen Sie nach der Prüfung.', 'Ergebnis اسم محايد: das Ergebnis.', 'genus', 'Ergebnis'],
+      ['mündlich', '—', 'شفوي', 'Das Sprechen ist mündlich.', 'Das Sprechen ist mündliche.', 'الصفة بعد sein تأتي هنا بلا نهاية: mündlich.', 'deklination', 'mündlich'],
+      ['schriftlich', '—', 'كتابي', 'Die schriftliche Prüfung dauert fünfundsechzig Minuten.', 'Die schriftlich Prüfung dauert fünfundsechzig Minuten.', 'الصفة قبل Prüfung المؤنثة تأخذ هنا النهاية -e.', 'deklination', 'schriftliche'],
+      ['der Ausweis', 'die Ausweise', 'وثيقة الهوية', 'Bringen Sie Ihren Ausweis mit.', 'Bringen Sie Ihre Ausweis mit.', 'Ausweis مذكر في النصب؛ لذلك نقول Ihren Ausweis.', 'kasus', 'Ausweis'],
+      ['die Note', 'die Noten', 'العلامة', 'Die Note ist gut.', 'Der Note ist gut.', 'Note اسم مؤنث: die Note.', 'genus', 'Note']
     ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: { 'der Punkt': 'Punkt' },
+    clozeItemIndex: 5,
+    clozeNearMiss: 'Punkt',
+    extraCheck: {
+      right: 'Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen.',
+      bad: 'Nur das Schreiben zählt.',
+      why: 'يمتحن Start Deutsch 1 الاستماع والقراءة والكتابة والتحدث.',
+      family: 'pruefstrategie',
+      prereq: 'cap.a1-u4-l6.s04',
+      frage: 'أي جملة تسمّي مجالات الامتحان تسمية صحيحة؟'
+    },
     tricks: [
-      { trick: 'أربعة أقسام لا قسم واحد', wie: 'Hören · Lesen · Schreiben · Sprechen.', warum: 'الاستعداد لباب واحد لا يكفي، وهذه الخريطة أول ما يُحفظ.', anchor: 'Es gibt vier Teile.' },
-      { trick: 'لا تعويض بين الأقسام', wie: 'قسم قوي لا يرفع قسمًا ضعيفًا.', warum: 'كل قسم له حدّه، والاعتقاد بالتعويض هو سبب الرسوب الأكثر شيوعًا.', anchor: 'Ein Teil rettet den anderen nicht.' },
-      { trick: 'buchstabieren داخل Sprechen', wie: 'التهجئة تجيء في قسم التحدّث لا في قسم مستقل.', warum: 'معرفتها مقدّمًا توفّر دقائق التحضير، وهي دقائق تُحسب في الامتحان.', anchor: 'Buchstabieren gehört zum Sprechen.' }
+      { trick: 'أربعة مجالات بالترتيب', wie: 'Hören · Lesen · Schreiben · Sprechen', warum: 'احفظ أسماء المجالات الأربعة بدل اختزال الامتحان في الكتابة أو التحدث.', anchor: 'Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen.' },
+      { trick: 'النجاح: 60 من المجموع', wie: 'mindestens 60 Punkte insgesamt', warum: 'هذه عتبة مجموع من 100 في Start Deutsch 1، وليست 60 نقطة في كل جزء.', anchor: 'Zum Bestehen braucht man insgesamt mindestens sechzig Punkte.' },
+      { trick: 'السماع: مرة أو مرتين', wie: 'manche Hörtexte einmal · andere zweimal', warum: 'اتبع تعليمات الجزء؛ لا تفترض أن كل نص يُسمع العدد نفسه.', anchor: 'Manche Hörtexte hören Sie einmal, andere zweimal.' }
     ]
   }
 

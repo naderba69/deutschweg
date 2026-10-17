@@ -1896,6 +1896,99 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'lexik-kollokation');
 }
 
+/* ---------- audited A1 exam-format lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u4-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Die Prüfung umfasst Hören, Lesen, Schreiben und Sprechen.',
+    'Zum Bestehen braucht man insgesamt mindestens sechzig Punkte.',
+    'Manche Hörtexte hören Sie einmal, andere zweimal.',
+    'Bei der Prüfung buchstabieren Sie Ihren Namen.',
+    'Die schriftliche Prüfung dauert fünfundsechzig Minuten.'
+  ];
+  t('Corpus lesson a1-u4-l6 bounds Start Deutsch 1 to five accurate format sentences and four directly taught facts',
+    lesson.title.de === 'Prüfungsform A1' && lesson.title.ar === 'شكل امتحان A1' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'مجالات Start Deutsch 1 ومجموع النجاح والسماع والمدة والتهجئة' &&
+      lesson.schritte.length === 31 && lesson.wortschatz.length === 14 &&
+      lesson.schritte[0].zeigt.de.includes('vier Bereiche') &&
+      lesson.schritte[0].zeigt.de.includes('Gesamtpunktzahl') &&
+      lesson.schritte[0].zeigt.de.includes('Wiederholungen im Hören') &&
+      lesson.schritte[0].zeigt.de.includes('Dauer der schriftlichen Prüfung') &&
+      [targets[0], targets[1], targets[2], targets[4]]
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u4-l6 reviews all 14 entries and three mnemonics with the total score, part-specific listening and published durations instead of false module compensation',
+    lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord['das Hören'].ex === targets[2] && byWord['das Hören'].fam === 'hoerstrategie' &&
+      byWord['das Lesen'].ex === 'Das Lesen dauert fünfundzwanzig Minuten.' &&
+      byWord['das Schreiben'].ex === 'Das Schreiben dauert zwanzig Minuten.' &&
+      byWord['das Sprechen'].ex === 'Das Sprechen dauert etwa fünfzehn Minuten.' &&
+      byWord['der Punkt'].ex === targets[1] &&
+      byWord['der Punkt'].err === 'Man braucht sechzig Punkte in jedem Teil.' &&
+      byWord.bestehen.pl.includes('hat bestanden') && byWord.bestehen.why.includes('من المجموع') &&
+      byWord.buchstabieren.ex === targets[3] && byWord.buchstabieren.why.includes('الامتحان الشفوي') &&
+      byWord['die Aufgabe'].err === 'Lesen Sie zuerst der Aufgabe.' &&
+      byWord['das Ergebnis'].why.includes('اسم محايد') &&
+      byWord.schriftlich.ex === targets[4] && byWord.schriftlich.blank === 'schriftliche' &&
+      byWord['der Ausweis'].ex === 'Bringen Sie Ihren Ausweis mit.' &&
+      tricks.length === 3 && tricks[0].wie === 'Hören · Lesen · Schreiben · Sprechen' &&
+      tricks[1].wie === 'mindestens 60 Punkte insgesamt' && tricks[1].warum.includes('من 100') &&
+      tricks[2].wie.includes('einmal') && tricks[2].wie.includes('zweimal') &&
+      !lessonText.includes('kein Ausgleich') && !lessonText.includes('Ein Teil rettet den anderen nicht') &&
+      !lessonText.includes('Hören einmal'));
+  const imitate = lesson.schritte.find(s => s.id === 's13');
+  const drill = lesson.schritte.find(s => s.id === 's17');
+  const order = lesson.schritte.find(s => s.id === 's18');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u4-l6 aligns strict clozes, one valid V2 spelling sentence, 37-word writing, speaking, summary and homework',
+    imitate.frage.antworten.join(' ') === 'umfasst' && imitate.frage.nearMiss.hat &&
+      drill.frage.zeigt === 'Zum Bestehen braucht man insgesamt mindestens sechzig ____.' &&
+      drill.frage.antworten.join(' ') === 'Punkte' && drill.frage.nearMiss.Punkt &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Punkt').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'buchstabieren' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Bei der Prüfung' &&
+      order.frage.fields.lsk.join(' ') === 'buchstabieren' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Bei', 'der', 'Prüfung', 'Sie', 'buchstabieren', 'Ihren', 'Namen.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 37 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/\.$/, '')).every(x =>
+        speaking.erklaerung.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u4-l6 makes 80 percent four of five measurable across duration, total points, spelling, listening repetitions and exam areas',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u4-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.misconceptionFamilies.a === 'pruefstrategie' &&
+      clozeCheck.frage.zeigt === 'Zum Bestehen braucht man insgesamt mindestens sechzig ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Punkte' && clozeCheck.frage.nearMiss.Punkt &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Punkt').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'buchstabieren' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Bei der Prüfung' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Bei', 'der', 'Prüfung', 'Sie', 'buchstabieren', 'Ihren', 'Namen.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[3].frage.misconceptionFamilies.b === 'hoerstrategie' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[4].frage.misconceptionFamilies.a === 'pruefstrategie');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
