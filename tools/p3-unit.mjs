@@ -1989,6 +1989,100 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'pruefstrategie');
 }
 
+/* ---------- audited A1 post-and-telephone lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u5-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Auf dem Umschlag stehen Absender und Empfänger.',
+    'Wie lautet Ihre Postleitzahl?',
+    'Wie lautet die Vorwahl von München?',
+    'Sprechen Sie bitte auf den Anrufbeantworter.',
+    'Am Telefon sage ich „Auf Wiederhören“.'
+  ];
+  t('Corpus lesson a1-u5-l1 bounds post and telephone to five complete sentences and four directly taught facts',
+    lesson.title.de === 'Post und Telefon' && lesson.title.ar === 'البريد والهاتف' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'بيانات المظروف والرمز البريدي ومفتاح الاتصال والرسالة الهاتفية' &&
+      lesson.schritte.length === 34 && lesson.wortschatz.length === 28 &&
+      lesson.schritte[0].zeigt.de.includes('beschriftest du einen Umschlag') &&
+      lesson.schritte[0].zeigt.de.includes('Postleitzahl und Vorwahl') &&
+      lesson.schritte[0].zeigt.de.includes('telefonische Nachricht') &&
+      [targets[0], targets[1], targets[2], targets[4]]
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u5-l1 reviews all 28 entries and three corrected mnemonics without false postal layout, separable-verb, Internet or telephone absolutes',
+    lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord['der Anrufbeantworter'].ex === targets[3] && byWord['der Anrufbeantworter'].fam === 'kasus' &&
+      byWord['der Absender'].ex === targets[0] && byWord['der Absender'].err.includes('steht Absender') &&
+      byWord['die Postleitzahl'].ex === targets[1] && byWord['die Postleitzahl'].why.includes('Ihre') &&
+      byWord['die Vorwahl'].ex === targets[2] && byWord['die Vorwahl'].why.includes('مؤنث') &&
+      byWord['die Ansage'].ex.includes('Anrufbeantworter') && byWord['die Durchsage'].ex.includes('Bahnhof') &&
+      byWord['das Internet'].ex === 'Das findest du im Internet.' && byWord['das Internet'].why.includes('in dem') &&
+      byWord.anklicken.ex === 'Da musst du dieses Wort anklicken.' && byWord.anklicken.why.includes('بعد musst') &&
+      byWord.abgeben.ex === 'Ich muss meine Schlüssel abgeben.' && byWord['das Wiederhören'].ex === targets[4] &&
+      byWord['die Welt'].err === 'Es gibt viele Probleme auf die Welt.' &&
+      tricks.length === 3 && tricks[0].wie.includes('musst das Wort anklicken') &&
+      tricks[0].wie.includes('muss den Schlüssel abgeben') &&
+      tricks[1].wie.includes('Am Telefon: Auf Wiederhören') &&
+      tricks[1].wie.includes('Beim persönlichen Abschied: Auf Wiedersehen') &&
+      tricks[2].wie.includes('der Schreiber') && tricks[2].wie.includes('der Beantworter') &&
+      tricks[2].wie.includes('die Zahl') &&
+      !lessonText.includes('der Absender steht oben') && !lessonText.includes('anklicken am Ende') &&
+      !lessonText.includes('Auf Wiederhören sagt man nur ins Telefon') &&
+      !lessonText.includes('Das findest du in dem Internet.') && !lessonText.includes('(der Antworter)'));
+  const imitate = lesson.schritte.find(s => s.phase === 'Anwenden' && s.frage && s.frage.art === 'cloze');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u5-l1 aligns strict clozes, valid V2 envelope order, 29-word writing, speaking, summary and homework',
+    imitate.frage.antworten.join(' ') === 'stehen' && imitate.frage.nearMiss.steht &&
+      drill.frage.zeigt === 'Wie lautet Ihre ____?' &&
+      drill.frage.antworten.join(' ') === 'Postleitzahl' && drill.frage.nearMiss.Postleitzahle &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Postleitzahle').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'stehen' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Auf dem Umschlag' &&
+      order.frage.fields.lsk.join(' ') === 'stehen' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Auf', 'dem', 'Umschlag', 'Absender', 'und', 'Empfänger.', 'stehen']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 29 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[„“.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[„“.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u5-l1 makes 80 percent four of five measurable across telephone closing, postal code, envelope labels, answering machine and area code',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u5-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.misconceptionFamilies.a === 'register' &&
+      clozeCheck.frage.zeigt === 'Wie lautet Ihre ____?' &&
+      clozeCheck.frage.antworten.join(' ') === 'Postleitzahl' && clozeCheck.frage.nearMiss.Postleitzahle &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Postleitzahle').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'stehen' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Auf dem Umschlag' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Auf', 'dem', 'Umschlag', 'Absender', 'und', 'Empfänger.', 'stehen']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[4].frage.misconceptionFamilies.a === 'genus');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

@@ -1222,24 +1222,49 @@ module.exports = [
     }),
 
   U('a1-u5-l1', 'A1', 'البريد والهاتف', 'Post und Telefon', 'lexik-kollokation',
-    'Am Ende schreibst du eine Postkarte und verstehst eine Ansage',
-    'في النهاية تكتب بطاقة بريد وتفهم نداءً مسجّلًا.',
+    'Am Ende beschriftest du einen Umschlag, fragst nach Postleitzahl und Vorwahl und hinterlässt eine telefonische Nachricht',
+    'في النهاية تكتب بيانات مظروف، وتسأل عن الرمز البريدي ومفتاح الاتصال، وتترك رسالة هاتفية.',
     [
-      ['der Absender steht oben', 'المرسل أعلى البطاقة والمستلم تحتها', 'العكس يجعل الرسالة ترجع', 'der Empfänger steht oben', 'الترتيب ثابت في البريد الألماني'],
-      ['anklicken am Ende', 'الفعل المنفصل يبقى قطعة واحدة', 'الفصل الخاطئ يُفقد المعنى', 'klicken an', 'anklicken لا تُقسَم في النهاية'],
-      ['Auf Wiederhören am Telefon', 'في الهاتف تحية أخرى', 'Wiedersehen للوجوه فقط', 'Auf Wiedersehen am Telefon', 'التحية تتبع الوسيلة'],
-      ['im Internet', 'الإنترنت يأخذ im', 'in dem ركيكة هنا', 'in dem Internet', 'im هي الصيغة الثابتة']
+      ['Auf dem Umschlag stehen Absender und Empfänger.', 'على المظروف يظهر اسم المرسل واسم المرسل إليه', 'مع الاسمين الموصولين بـ und يأتي الفعل هنا في الجمع: stehen', 'Auf dem Umschlag steht Absender und Empfänger.', 'الفاعل مركب من اسمين، لذلك نقول stehen لا steht'],
+      ['Wie lautet Ihre Postleitzahl?', 'هذا سؤال رسمي عن الرمز البريدي', 'Postleitzahl مؤنث، لذلك نقول Ihre Postleitzahl', 'Wie lautet Ihr Postleitzahl?', 'مع الاسم المؤنث Postleitzahl نحتاج Ihre لا Ihr'],
+      ['Wie lautet die Vorwahl von München?', 'هذا سؤال عن مفتاح الاتصال بمدينة ميونخ', 'Vorwahl اسم مؤنث، لذلك أداته die', 'Wie lautet der Vorwahl von München?', 'Vorwahl مؤنث: die Vorwahl'],
+      ['Am Telefon sage ich „Auf Wiederhören“.', 'عند إنهاء مكالمة أقول Auf Wiederhören', 'استعمل Wiederhören في المكالمة وWiedersehen عند اللقاء وجهًا لوجه', 'Am Telefon sage ich „Auf Wiedersehen“.', 'في سياق المكالمة نقول Auf Wiederhören']
     ],
     [
-      ['Ich schreibe eine E-Mail.', 'أكتب بريدًا إلكترونيًا', 'Ich schreibe ein E-Mail', 'E-Mail مؤنث: eine', 'eine'],
-      ['Der Absender steht auf dem Brief.', 'المرسل على الرسالة', 'Der Sender steht auf dem Brief', 'Absender لا Sender', 'Absender'],
-      ['Bitte kreuzen Sie an.', 'من فضلك علّم في المربع', 'Bitte klicken Sie an', 'ankreuzen للاستمارة', 'kreuzen'],
-      ['Sprechen Sie auf den Anrufbeantworter.', 'تحدّث إلى جهاز الرد', 'Sprechen Sie auf dem Anrufbeantworter', 'الحركة: auf den', 'Anrufbeantworter']
+      ['Auf dem Umschlag stehen Absender und Empfänger.', 'على المظروف يظهر المرسل والمرسل إليه', 'Auf dem Umschlag steht Absender und Empfänger.', 'مع اسمين موصولين بـ und نقول stehen', 'stehen'],
+      ['Wie lautet Ihre Postleitzahl?', 'ما رمزك البريدي؟', 'Wie lautet Ihr Postleitzahl?', 'Postleitzahl مؤنث، لذلك نقول Ihre', 'Ihre'],
+      ['Wie lautet die Vorwahl von München?', 'ما مفتاح الاتصال بمدينة ميونخ؟', 'Wie lautet der Vorwahl von München?', 'Vorwahl مؤنث: die', 'die'],
+      ['Sprechen Sie bitte auf den Anrufbeantworter.', 'تحدّث من فضلك وسجّل رسالتك على جهاز الرد الآلي', 'Sprechen Sie bitte auf dem Anrufbeantworter.', 'الاتجاه إلى التسجيل على الجهاز يأخذ auf den', 'den']
     ],
-    'Ich schreibe eine E-Mail und schicke ein Fax.',
-    'Ich schreibe eine E-Mail.',
-    'Schreibe morgen eine kurze E-Mail auf Deutsch.',
-    'غدًا اكتب بريدًا إلكترونيًا قصيرًا بالألمانية.'),
+    'Auf dem Umschlag stehen Absender und Empfänger.',
+    'Sprechen Sie bitte auf den Anrufbeantworter.',
+    'Wiederhole morgen die fünf Sätze: Auf dem Umschlag stehen Absender und Empfänger. Wie lautet Ihre Postleitzahl? Wie lautet die Vorwahl von München? Sprechen Sie bitte auf den Anrufbeantworter. Am Telefon sage ich „Auf Wiederhören“.',
+    'غدًا راجع الجمل الخمس عن المرسل والمستلم والرمز البريدي ومفتاح الاتصال وجهاز الرد والتحية الهاتفية.',
+    {
+      factFamilies: ['konjugation', 'deklination', 'genus', 'register'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Post und Telefon',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن بيانات المظروف والرمز البريدي ومفتاح الاتصال وجهاز الرد والتحية الهاتفية.',
+        prompt: 'اكتب الجمل الخمس عن البريد والهاتف.',
+        promptDe: 'Auf dem Umschlag stehen Absender und Empfänger. · Wie lautet Ihre Postleitzahl? · Wie lautet die Vorwahl von München? · Sprechen Sie bitte auf den Anrufbeantworter. · Am Telefon sage ich „Auf Wiederhören“.',
+        points: ['Auf dem Umschlag stehen Absender und Empfänger.', 'Wie lautet Ihre Postleitzahl?', 'Wie lautet die Vorwahl von München?', 'Sprechen Sie bitte auf den Anrufbeantworter.', 'Am Telefon sage ich „Auf Wiederhören“.'],
+        minWords: 29,
+        frage: 'اكتب الجمل الخمس كاملة من دون تبديل Postleitzahl وVorwahl أو Wiederhören وWiedersehen.',
+        familie: 'lexik-kollokation',
+        hinweise: ['راجع Ihre Postleitzahl وdie Vorwahl.', 'استعمل auf den Anrufbeantworter وAuf Wiederhören.']
+      },
+      imitateNearMiss: 'steht',
+      transformHint: 'الرسالة تتجه إلى جهاز الرد؛ لذلك نقول auf den Anrufbeantworter.',
+      orderAr: 'رتّب جملة واحدة: ابدأ بالحقل Auf dem Umschlag ثم ضع stehen قبل الاسمين.',
+      orderHints: ['ابدأ بالحقل Auf dem Umschlag.', 'ضع stehen بعده ثم Absender und Empfänger.'],
+      orderSentence: 'Auf dem Umschlag stehen Absender und Empfänger.',
+      checkOrderSentence: 'Auf dem Umschlag stehen Absender und Empfänger.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن المرسل والمرسل إليه على المظروف.',
+      speakAr: 'سجّل عشرين ثانية: قل Auf dem Umschlag stehen Absender und Empfänger وWie lautet Ihre Postleitzahl وWie lautet die Vorwahl von München وSprechen Sie bitte auf den Anrufbeantworter وAm Telefon sage ich Auf Wiederhören.',
+      summaryDe: 'Auf dem Umschlag stehen Absender und Empfänger. · Wie lautet Ihre Postleitzahl? · Wie lautet die Vorwahl von München? · Sprechen Sie bitte auf den Anrufbeantworter. · Am Telefon sage ich „Auf Wiederhören“.',
+      summaryAr: 'راجع المرسل والمستلم على المظروف، وIhre Postleitzahl، وdie Vorwahl، وauf den Anrufbeantworter، وAuf Wiederhören في المكالمة.',
+      summaryRecap: 'Umschlag Postleitzahl Vorwahl Anrufbeantworter Wiederhören'
+    }),
 
   U('a1-u5-l2', 'A1', 'المصرف والعمل', 'Bank und Arbeit', 'präposition',
     'Am Ende erledigst du am Schalter und an der Kasse alles selbst',
