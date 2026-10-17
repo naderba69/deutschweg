@@ -1401,25 +1401,52 @@ module.exports = [
       summaryRecap: 'Apartment Herd Kiosk Kino Gäste'
     }),
 
-  U('a1-u5-l5', 'A1', 'السفر والطريق', 'Reisen und Verkehr', 'wortstellung',
-    'Am Ende fragst du nach Abfahrt, Gleis und Ankunft und erzählst von einer Reise',
-    'في النهاية تسأل عن الانطلاق والرصيف والوصول وتحكي عن رحلة.',
+  U('a1-u5-l5', 'A1', 'السفر والمواصلات', 'Reisen und Verkehr', 'wortstellung',
+    'Am Ende nennst du Abfahrt und Ankunft, fragst nach dem Bahnsteig und sprichst über Zoll und Besichtigung',
+    'في النهاية تذكر موعد الانطلاق والوصول، وتسأل عن الرصيف، وتتحدث عن الجمارك وزيارة المعالم.',
     [
-      ['der Zug fährt ab', 'الفعل المنفصل في النهاية', 'abfahren verbunden خطأ', 'Der Zug abfährt', 'ab في النهاية'],
-      ['auf welchem Bahnsteig', 'الرصيف يأخذ auf', 'in welchem Bahnsteig خطأ', 'in welchem Bahnsteig', 'auf dem Bahnsteig'],
-      ['Grad ohne Endung', 'الإعلان عن الحرارة بلا e', 'dreißig Grade', 'dreißig Grade', 'Grad بلا جمع'],
-      ['besichtigen die Stadt', 'المعالم تُزار بـ besichtigen', 'besuchen den Dom', 'besuchen den Dom', 'المعالم besichtigen']
+      ['Der Zug fährt um zwölf Uhr ab.', 'تذكر موعد انطلاق القطار بالفعل المنفصل abfahren', 'في الجملة الرئيسية ينفصل abfahren إلى fährt ... ab', 'Der Zug abfährt um zwölf Uhr.', 'في الجملة الرئيسية نقول fährt ... ab، لا abfährt'],
+      ['Auf welchem Bahnsteig fährt der Zug ab?', 'تسأل عن رصيف الانطلاق بترتيب السؤال الصحيح', 'عبارة السؤال Auf welchem Bahnsteig تسبق الفعل fährt ثم الفاعل', 'Auf welchem Bahnsteig der Zug fährt ab?', 'في السؤال المباشر يأتي fährt قبل der Zug'],
+      ['Ich möchte gern den Dom besichtigen.', 'تستعمل المصدر بعد möchte عند الحديث عن زيارة معلم', 'بعد möchte يأتي المصدر besichtigen', 'Ich möchte gern den Dom besichtige.', 'بعد möchte نقول besichtigen لا besichtige'],
+      ['Die Ankunft ist um dreizehn Uhr.', 'تذكر موعد الوصول باستعمال um مع الساعة', 'مع الساعة المحددة نقول um dreizehn Uhr', 'Die Ankunft ist in dreizehn Uhr.', 'مع الساعة المحددة نستعمل um لا in']
     ],
     [
-      ['Der Zug fährt um acht ab.', 'القطار يرحل في الثامنة', 'Der Zug abfährt um acht', 'المنفصل في النهاية', 'ab'],
-      ['Wie viel kostet das Ticket?', 'كم ثمن التذكرة', 'Wie viel das Ticket kostet?', 'السؤال يقلب الفعل', 'kostet'],
-      ['Die Sonne scheint.', 'الشمس تلمع', 'Die Sonne ist scheinen', 'scheinen فعل كامل', 'scheint'],
-      ['Wir fahren zum See.', 'نذهب إلى البحيرة', 'Wir fahren zu See', 'zum See', 'zum']
+      ['Der Zug fährt um zwölf Uhr ab.', 'ينطلق القطار في الساعة الثانية عشرة', 'Der Zug fährt um zwölf Uhr an.', 'الفعل المقصود هو abfahren، لذلك تأتي ab في النهاية', 'ab'],
+      ['Auf welchem Bahnsteig fährt der Zug ab?', 'من أي رصيف ينطلق القطار؟', 'Auf welchem Bahnsteig der Zug fährt ab?', 'في السؤال المباشر يأتي الفعل fährt قبل الفاعل', 'Bahnsteig'],
+      ['Ich möchte gern den Dom besichtigen.', 'أود زيارة الكاتدرائية وتفقدها', 'Ich möchte gern den Dom besichtige.', 'بعد möchte يأتي المصدر besichtigen', 'besichtigen'],
+      ['Wir müssen noch durch den Zoll.', 'ما زال علينا المرور عبر الجمارك', 'Wir müssen noch durch der Zoll.', 'بعد durch يأتي النصب den Zoll', 'Zoll']
     ],
-    'Der Zug fährt ab und wir fahren zum See.',
-    'Der Zug fährt um acht ab.',
-    'Erzähle morgen eine echte Reise in zwei Sätzen.',
-    'غدًا احكِ رحلة حقيقية في جملتين.'),
+    'Der Zug fährt um zwölf Uhr ab.',
+    'Der Zug fährt um zwölf Uhr ab.',
+    'Wiederhole morgen die fünf Sätze: Der Zug fährt um zwölf Uhr ab. Auf welchem Bahnsteig fährt der Zug ab? Die Ankunft ist um dreizehn Uhr. Wir müssen noch durch den Zoll. Ich möchte gern den Dom besichtigen.',
+    'غدًا راجع الجمل الخمس عن الانطلاق والرصيف والوصول والجمارك وزيارة المعالم.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'konjugation', 'präposition'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Reise und Verkehr',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن الانطلاق والرصيف والوصول والجمارك وزيارة المعالم.',
+        prompt: 'اكتب الجمل الخمس عن السفر والمواصلات.',
+        promptDe: 'Der Zug fährt um zwölf Uhr ab. · Auf welchem Bahnsteig fährt der Zug ab? · Die Ankunft ist um dreizehn Uhr. · Wir müssen noch durch den Zoll. · Ich möchte gern den Dom besichtigen.',
+        points: ['Der Zug fährt um zwölf Uhr ab.', 'Auf welchem Bahnsteig fährt der Zug ab?', 'Die Ankunft ist um dreizehn Uhr.', 'Wir müssen noch durch den Zoll.', 'Ich möchte gern den Dom besichtigen.'],
+        minWords: 32,
+        frage: 'اكتب الجمل الخمس كاملة مع ab في النهاية وfährt قبل der Zug وum وden Zoll والمصدر besichtigen.',
+        familie: 'wortstellung',
+        hinweise: ['راجع fährt ... ab وسؤال Auf welchem Bahnsteig.', 'استعمل um dreizehn Uhr وdurch den Zoll وmöchte ... besichtigen.']
+      },
+      imitateNearMiss: 'an',
+      transformHint: 'الفعل هو abfahren؛ في الجملة الرئيسية تأتي ab في النهاية.',
+      orderAr: 'رتّب سؤال الرصيف: ابدأ بـ Auf welchem Bahnsteig ثم ضع fährt قبل der Zug وab في النهاية.',
+      orderHints: ['ابدأ بعبارة السؤال Auf welchem Bahnsteig ثم ضع الفعل fährt.', 'أكمل بـ der Zug ab.'],
+      orderSentence: 'Auf welchem Bahnsteig fährt der Zug ab?',
+      checkOrderSentence: 'Auf welchem Bahnsteig fährt der Zug ab?',
+      orderRightBracket: 'ab?',
+      checkOrderRightBracket: 'ab?',
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال صحيح عن رصيف انطلاق القطار.',
+      speakAr: 'سجّل عشرين ثانية: قل Der Zug fährt um zwölf Uhr ab وAuf welchem Bahnsteig fährt der Zug ab وDie Ankunft ist um dreizehn Uhr وWir müssen noch durch den Zoll وIch möchte gern den Dom besichtigen.',
+      summaryDe: 'Der Zug fährt um zwölf Uhr ab. · Auf welchem Bahnsteig fährt der Zug ab? · Die Ankunft ist um dreizehn Uhr. · Wir müssen noch durch den Zoll. · Ich möchte gern den Dom besichtigen.',
+      summaryAr: 'راجع fährt ... ab وسؤال Bahnsteig وum dreizehn Uhr وdurch den Zoll والمصدر besichtigen.',
+      summaryRecap: 'Abfahrt Bahnsteig Ankunft Zoll Besichtigung'
+    }),
 
   U('a1-u5-l6', 'A1', 'مراجعة قائمة غوته A1', 'Wortliste A1', 'lexik-kollokation',
     'Am Ende kennst du die Wörter der amtlichen A1-Liste, die noch fehlten',

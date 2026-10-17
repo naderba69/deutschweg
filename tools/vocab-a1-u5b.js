@@ -59,40 +59,55 @@ module.exports = {
 
   'a1-u5-l5': {
     items: [
-      ['abfahren', 'fährt ab · fuhr ab · ist abgefahren', 'يرحل (القطار)', 'Der Zug fährt um zwölf Uhr ab.', 'Der Zug abfährt um zwölf Uhr.', 'المنفصل يحتاج ab في النهاية.', 'wortstellung', 'ab'],
-      ['die Abfahrt', 'die Abfahrten', 'الانطلاق', 'Vor der Abfahrt rufe ich an.', 'Vor die Abfahrt rufe ich an.', 'قبل الحدث: vor der Abfahrt.', 'kasus', 'Abfahrt'],
-      ['abfliegen', 'fliegt ab · flog ab · ist abgeflogen', 'تُقلع الطائرة', 'Wann fliegst du ab?', 'Wann du abfliegen?', 'في السؤال يأتي الفعل قبل الفاعل.', 'wortstellung', 'fliegst'],
-      ['der Abflug', 'die Abflüge', 'الإقلاع', 'Der Abflug ist um 11.20 Uhr.', 'Der Abflug ist in 11.20 Uhr.', 'الساعة: um.', 'präposition', 'Abflug'],
-      ['die Ankunft', 'die Ankünfte', 'الوصول', 'Auf dem Plan steht die Ankunft der Züge.', 'Auf dem Plan steht die Ankunft von die Züge.', 'الإضافة: der Züge.', 'kasus', 'Ankunft'],
-      ['der Bahnsteig', 'die Bahnsteige', 'الرصيف', 'Auf welchem Bahnsteig fährt der Zug? Ich bin fremd hier.', 'In welchem Bahnsteig fährt der Zug?', 'على الرصيف: auf dem Bahnsteig.', 'präposition', 'Bahnsteig'],
-      ['die S-Bahn', 'die S-Bahnen', 'قطار الضواحي', 'Ich nehme lieber die S-Bahn.', 'Ich nehme lieber die S-Bahn Zug.', 'S-Bahn قطار قائم بذاته.', 'lexik-kollokation', 'S-Bahn'],
-      ['die Straßenbahn', 'die Straßenbahnen', 'الترامواي', 'Wo fährt die Straßenbahn ab?', 'Wo die Straßenbahn abfährt?', 'في السؤال: Wo fährt ... ab?', 'wortstellung', 'Straßenbahn'],
-      ['die Autobahn', 'die Autobahnen', 'الطريق السريع', 'Wo geht es hier zur Autobahn?', 'Wo geht es hier nach Autobahn?', 'إلى الطريق السريع: zur Autobahn.', 'präposition', 'Autobahn'],
-      ['der Lkw', 'die Lkw', 'الشاحنة', 'Dieser Lkw ist sehr groß.', 'Dieser Lkw ist sehr groß gemacht.', 'groß صفة مع sein.', 'lexik-kollokation', 'Lkw'],
-      ['das Ticket', 'die Tickets', 'التذكرة', 'Wie viel kostet das Ticket für die Bahn?', 'Wie viel das Ticket kostet?', 'في السؤال: Wie viel kostet ...?', 'wortstellung', 'Ticket'],
-      ['der Ausflug', 'die Ausflüge', 'الرحلة القصيرة', 'Morgen machen wir einen Ausflug nach Heidelberg. Vielleicht fahren wir mit dem Bus.', 'Morgen machen wir ein Ausflug nach Heidelberg.', 'Ausflug مذكر: einen.', 'genus', 'Ausflug'],
-      ['die Reise', 'die Reisen', 'الرحلة', 'Wir machen eine Reise nach Österreich.', 'Wir machen ein Reise nach Österreich.', 'Reise مؤنث: eine.', 'genus', 'Reise'],
-      ['das Reisebüro', 'die Reisebüros', 'مكتب السفر', 'Mein Mann arbeitet im Reisebüro.', 'Mein Mann arbeitet in Reisebüro.', 'في المكتب: im Reisebüro.', 'präposition', 'Reisebüro'],
-      ['der Reiseführer', 'die Reiseführer', 'المرشد والكتيّب', 'Ich kaufe mir einen Reiseführer von Berlin.', 'Ich kaufe mir ein Reiseführer von Berlin.', 'Reiseführer مذكر: einen.', 'genus', 'Reiseführer'],
-      ['übernachten', 'übernachtet · übernachtete · hat übernachtet', 'يبيت', 'Du kannst bei mir übernachten.', 'Du kannst bei mir übernachten bleiben.', 'übernachten فعل كامل بلا bleiben.', 'lexik-kollokation', 'übernachten'],
-      ['der Zoll', '—', 'الجمارك', 'Wir müssen noch durch den Zoll.', 'Wir müssen noch durch der Zoll.', 'عبر الجمارك: durch den Zoll.', 'kasus', 'Zoll'],
-      ['das Gepäck', '—', 'الأمتعة', 'Wollen Sie Ihr Gepäck mitnehmen?', 'Wollen Sie Ihr Gepäck mitbringen?', 'معك من البيت mitnehmen، وإلى غيرك mitbringen.', 'falser-freund', 'Gepäck'],
-      ['die Sehenswürdigkeit', 'die Sehenswürdigkeiten', 'المعالم السياحية', 'Welche Sehenswürdigkeiten gibt es in Frankfurt?', 'Welche Sehenswürdigkeit gibt es in Frankfurt?', 'بعد welche يأتي الجمع.', 'plural', 'Sehenswürdigkeiten'],
-      ['besichtigen', 'besichtigt · besichtigte · hat besichtigt', 'يزور معالم', 'Ich möchte gern den Dom besichtigen.', 'Ich möchte gern den Dom besuchen.', 'المعالم تُزار بـ besichtigen، والأشخاص بـ besuchen.', 'falser-freund', 'besichtigen'],
-      ['die Sonne', '—', 'الشمس', 'Die Sonne scheint.', 'Die Sonne ist scheinen.', 'scheinen فعل كامل بلا sein.', 'lexik-kollokation', 'Sonne'],
-      ['der Wind', 'die Winde', 'الريح', 'Der Wind kommt aus Osten.', 'Der Wind kommt von Osten.', 'اتجاه الريح: aus Osten.', 'präposition', 'Wind'],
-      ['scheinen', 'scheint · schien · hat geschienen', 'يلمع/يبدو', 'Die Sonne scheint heute.', 'Die Sonne scheint heute ist.', 'لا فعل ثانٍ بعد scheint.', 'konjugation', 'scheint'],
-      ['das Schwimmbad', 'die Schwimmbäder', 'المسبح', 'Kommst du mit ins Schwimmbad?', 'Kommst du mit in Schwimmbad?', 'إلى المسبح: ins Schwimmbad.', 'präposition', 'Schwimmbad'],
-      ['der See', 'die Seen', 'البحيرة', 'Wir fahren zum Starnberger See.', 'Wir fahren zu Starnberger See.', 'إلى البحيرة: zum See.', 'präposition', 'See'],
-      ['wandern', 'wandert · wanderte · ist gewandert', 'يتنزّه', 'Am Wochenende wandern wir im Wald. Meistens sind wir zu Hause.', 'Am Wochenende wir wandern im Wald.', 'الفعل ثانٍ: wandern wir.', 'wortstellung', 'wandern'],
-      ['halten', 'hält · hielt · hat gehalten', 'يتوقف', 'Dieser Zug hält nicht in Rüdesheim.', 'Dieser Zug haltet nicht in Rüdesheim.', 'hält بلا e في الجذر: du hältst.', 'konjugation', 'hält'],
-      ['Grad', '—', 'درجة', 'Heute haben wir dreißig Grad.', 'Heute haben wir dreißig Grade.', 'بعد العدد تبقى Grad بلا e.', 'plural', 'Grad']
+      ['abfahren', 'fährt ab · fuhr ab · ist abgefahren', 'ينطلق (القطار)', 'Der Zug fährt um zwölf Uhr ab.', 'Der Zug abfährt um zwölf Uhr.', 'في الجملة الرئيسية ينفصل abfahren إلى fährt ... ab.', 'wortstellung', 'ab'],
+      ['die Abfahrt', 'die Abfahrten', 'الانطلاق', 'Vor der Abfahrt rufe ich an.', 'Vor die Abfahrt rufe ich an.', 'في هذا الاستعمال الزمني يأتي vor مع الداتيف: vor der Abfahrt.', 'kasus', 'Abfahrt'],
+      ['abfliegen', 'fliegt ab · flog ab · ist abgeflogen', 'يغادر بالطائرة/تُقلع الطائرة', 'Wann fliegst du ab?', 'Wann du fliegst ab?', 'في السؤال المباشر يأتي fliegst قبل du.', 'wortstellung', 'fliegst'],
+      ['der Abflug', 'die Abflüge', 'الإقلاع', 'Der Abflug ist um 11.20 Uhr.', 'Der Abflug ist in 11.20 Uhr.', 'مع الساعة المحددة نستعمل um.', 'präposition', 'Abflug'],
+      ['die Ankunft', 'die Ankünfte', 'الوصول', 'Die Ankunft ist um dreizehn Uhr.', 'Die Ankunft ist in dreizehn Uhr.', 'مع الساعة المحددة نستعمل um.', 'präposition', 'Ankunft'],
+      ['der Bahnsteig', 'die Bahnsteige', 'رصيف القطار', 'Auf welchem Bahnsteig fährt der Zug ab? Er fährt von Gleis zwei ab.', 'Auf welchem Bahnsteigs fährt der Zug ab?', 'بعد welchem يأتي هنا المفرد Bahnsteig بلا s.', 'deklination', 'Bahnsteig'],
+      ['die S-Bahn', 'die S-Bahnen', 'قطار الضواحي', 'Ich nehme lieber die S-Bahn.', 'Ich nehme lieber den S-Bahn.', 'S-Bahn مؤنث؛ في النصب نقول die S-Bahn.', 'genus', 'S-Bahn'],
+      ['die Straßenbahn', 'die Straßenbahnen', 'الترام', 'Wo fährt die Straßenbahn ab?', 'Wo die Straßenbahn fährt ab?', 'بعد Wo يأتي الفعل fährt ثم الفاعل.', 'wortstellung', 'Straßenbahn'],
+      ['die Autobahn', 'die Autobahnen', 'الطريق السريع', 'Wo geht es hier zur Autobahn?', 'Wo geht es hier nach Autobahn?', 'إلى الطريق السريع نقول zur Autobahn.', 'präposition', 'Autobahn'],
+      ['der Lkw', 'die Lkw', 'الشاحنة', 'Dieser Lkw ist sehr groß.', 'Diese Lkw ist sehr groß.', 'Lkw اسم مذكر: dieser Lkw.', 'genus', 'Lkw'],
+      ['das Ticket', 'die Tickets', 'التذكرة', 'Wie viel kostet das Ticket für die Bahn?', 'Wie viel das Ticket für die Bahn kostet?', 'في السؤال المباشر يأتي kostet قبل das Ticket.', 'wortstellung', 'Ticket'],
+      ['der Ausflug', 'die Ausflüge', 'الرحلة القصيرة', 'Morgen machen wir einen Ausflug nach Heidelberg. Vielleicht fahren wir mit dem Bus.', 'Morgen machen wir ein Ausflug nach Heidelberg.', 'Ausflug مذكر في النصب: einen Ausflug.', 'genus', 'Ausflug'],
+      ['die Reise', 'die Reisen', 'الرحلة', 'Wir machen eine Reise nach Österreich.', 'Wir machen ein Reise nach Österreich.', 'Reise مؤنث: eine Reise.', 'genus', 'Reise'],
+      ['das Reisebüro', 'die Reisebüros', 'مكتب السفر', 'Mein Mann arbeitet im Reisebüro.', 'Mein Mann arbeitet in Reisebüro.', 'داخل المكتب نقول im Reisebüro.', 'präposition', 'Reisebüro'],
+      ['der Reiseführer', 'die Reiseführer', 'الدليل السياحي/المرشد', 'Ich kaufe einen Reiseführer für Berlin.', 'Ich kaufe ein Reiseführer für Berlin.', 'Reiseführer مذكر في النصب: einen Reiseführer.', 'kasus', 'Reiseführer'],
+      ['übernachten', 'übernachtet · übernachtete · hat übernachtet', 'يبيت', 'Du kannst bei mir übernachten.', 'Du kannst bei mir übernachtet.', 'بعد kannst يأتي المصدر übernachten.', 'konjugation', 'übernachten'],
+      ['der Zoll', '—', 'الجمارك', 'Wir müssen noch durch den Zoll.', 'Wir müssen noch durch der Zoll.', 'بعد durch يأتي النصب: den Zoll.', 'kasus', 'Zoll'],
+      ['das Gepäck', '—', 'الأمتعة', 'Nehmen Sie Ihr Gepäck bitte mit.', 'Nehmen Sie Ihren Gepäck bitte mit.', 'Gepäck محايد؛ في النصب نقول Ihr Gepäck.', 'deklination', 'Gepäck'],
+      ['die Sehenswürdigkeit', 'die Sehenswürdigkeiten', 'المعلم السياحي', 'In Frankfurt besichtigen wir viele Sehenswürdigkeiten.', 'In Frankfurt besichtigen wir viele Sehenswürdigkeit.', 'بعد viele نحتاج الجمع Sehenswürdigkeiten.', 'plural', 'Sehenswürdigkeiten'],
+      ['besichtigen', 'besichtigt · besichtigte · hat besichtigt', 'يزور معلمًا ويتفقده', 'Ich möchte gern den Dom besichtigen.', 'Ich möchte gern den Dom besichtige.', 'بعد möchte يأتي المصدر besichtigen.', 'konjugation', 'besichtigen'],
+      ['die Sonne', '—', 'الشمس', 'Die Sonne scheint.', 'Die Sonne ist scheinen.', 'scheinen فعل كامل هنا ولا يحتاج ist.', 'lexik-kollokation', 'Sonne'],
+      ['der Wind', 'die Winde', 'الريح', 'Der Wind kommt aus Osten.', 'Die Wind kommt aus Osten.', 'Wind اسم مذكر: der Wind.', 'genus', 'Wind'],
+      ['scheinen', 'scheint · schien · hat geschienen', 'يشرق/يلمع/يبدو', 'Heute scheint die Sonne.', 'Heute scheinen die Sonne.', 'الفاعل المفرد die Sonne يأخذ scheint.', 'konjugation', 'scheint'],
+      ['das Schwimmbad', 'die Schwimmbäder', 'المسبح', 'Kommst du mit ins Schwimmbad?', 'Kommst du mit in Schwimmbad?', 'إلى داخل المسبح نقول ins Schwimmbad.', 'präposition', 'Schwimmbad'],
+      ['der See', 'die Seen', 'البحيرة', 'Wir fahren zum Starnberger See.', 'Wir fahren zu Starnberger See.', 'اسم البحيرة مذكر؛ هنا نقول zum Starnberger See.', 'präposition', 'See'],
+      ['wandern', 'wandert · wanderte · ist gewandert', 'يتنزّه سيرًا', 'Am Wochenende wandern wir im Wald. Meistens sind wir zu Hause.', 'Am Wochenende wir wandern im Wald.', 'بعد عبارة الزمن يأتي الفعل wandern قبل wir.', 'wortstellung', 'wandern'],
+      ['halten', 'hält · hielt · hat gehalten', 'يتوقف', 'Dieser Zug hält nicht in Rüdesheim.', 'Dieser Zug haltet nicht in Rüdesheim.', 'مع er/dieser Zug نقول hält؛ أما haltet فهي صيغة ihr.', 'konjugation', 'hält'],
+      ['Grad', '—', 'درجة', 'Heute haben wir dreißig Grad.', 'Heute haben wir dreißig Grade.', 'بعد العدد تبقى وحدة القياس Grad بلا نهاية جمع.', 'plural', 'Grad']
     ],
     tricks: [
-      { trick: 'abfahren في النهاية، وAbfahrt كاسم في البداية', wie: 'Der Zug fährt ab. Vor der Abfahrt rufe ich an. Verb getrennt, Nomen groß.', warum: 'الحدث باسمه يأخذ حرفًا، والحدث بفعله منفصلًا في النهاية؛ العربية لا تفرّق بينهما.', anchor: 'die Abfahrt' },
-      { trick: 'mitnehmen من البيت، mitbringen إلى شخص', wie: 'Ich nehme mein Gepäck mit. Bringst du mir ein Wasser mit?', warum: 'mitnehmen للشيء الذي معك، وmitbringen لما تحمله إلى غيرك؛ العربية تقول «خُذ» في الحالتين.', anchor: 'das Gepäck' },
-      { trick: 'besichtigen للمعالم، besuchen للأشخاص', wie: 'Wir besichtigen den Dom. Wir besuchen unsere Tante. Nicht vertauschen.', warum: 'المعالم تُزار بـ besichtigen والأشخاص بـ besuchen، والخلط يجعل الجملة مضحكة.', anchor: 'besichtigen' }
-    ]
+      { trick: 'الفعل abfahren ينفصل في الجملة الرئيسية، والاسم Abfahrt يبدأ بحرف كبير', wie: 'Der Zug fährt ab. Vor der Abfahrt rufe ich an. Nach dem Modalverb muss steht der Infinitiv abfahren: Der Zug muss abfahren.', warum: 'ميّز بين الفعل المصرف fährt ... ab، والمصدر المتصل abfahren بعد فعل ناقص، والاسم die Abfahrt.', anchor: 'die Abfahrt' },
+      { trick: 'mitnehmen وmitbringen يتغيران مع اتجاه النظر', wie: 'Nicht vertauschen: Ich nehme mein Gepäck zum Bahnhof mit. Bringst du mir den Reiseführer mit?', warum: 'mitnehmen يصف أخذ الشيء معك من نقطة الانطلاق، وmitbringen يصف إحضاره إلى شخص أو نقطة مرجعية؛ قد يتغير الاختيار إذا تغير منظور المتكلم.', anchor: 'das Gepäck' },
+      { trick: 'besichtigen يركز على تفقد المكان، وbesuchen أوسع', wie: 'Wir besichtigen den Dom. Wir besuchen unsere Tante. Auch einen Dom kann man besuchen.', warum: 'besichtigen مناسب لجولة تفقدية في معلم؛ besuchen يُستعمل للأشخاص والفعاليات والمؤسسات، ويمكن أيضًا استعماله لمكان، لذلك لا نرفضه مطلقًا.', anchor: 'besichtigen' }
+    ],
+    strictClozeAnswers: true,
+    clozeItemIndex: 16,
+    clozeNearMiss: 'Zolls',
+    wordClozeNearMisses: {
+      'der Bahnsteig': 'Bahnsteigs',
+      'der Wind': 'Winde'
+    },
+    extraCheck: {
+      right: 'Ich möchte gern den Dom besichtigen.',
+      bad: 'Ich möchte gern den Dom besichtige.',
+      why: 'بعد möchte يأتي المصدر besichtigen.',
+      family: 'konjugation',
+      prereq: 'cap.a1-u5-l5.s06',
+      frage: 'أي جملة تستعمل المصدر الصحيح بعد möchte؟'
+    }
   },
 
   'a1-u5-l6': {

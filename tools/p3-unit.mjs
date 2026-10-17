@@ -2391,6 +2391,113 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'präposition');
 }
 
+/* ---------- audited A1 travel-and-transport lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u5-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Der Zug fährt um zwölf Uhr ab.',
+    'Auf welchem Bahnsteig fährt der Zug ab?',
+    'Die Ankunft ist um dreizehn Uhr.',
+    'Wir müssen noch durch den Zoll.',
+    'Ich möchte gern den Dom besichtigen.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[4], targets[2]];
+  t('Corpus lesson a1-u5-l5 bounds travel and transport to five complete sentences and four directly taught facts',
+    lesson.title.de === 'Reisen und Verkehr' && lesson.title.ar === 'السفر والمواصلات' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'السفر' &&
+      row.grammar.item === 'الانطلاق والرصيف والوصول والجمارك وزيارة المعالم' &&
+      lesson.schritte.length === 34 && lesson.wortschatz.length === 28 &&
+      ['Abfahrt', 'Ankunft', 'Bahnsteig', 'Zoll', 'Besichtigung']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u5-l5 reviews all 28 entries and three qualified mnemonics without false mitbringen, besuchen, wind-direction or haltet rejections',
+    lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord.abfahren.ex === targets[0] && byWord.abfahren.err.includes('abfährt') &&
+      byWord['die Abfahrt'].ex.includes('Vor der Abfahrt') && byWord.abfliegen.err === 'Wann du fliegst ab?' &&
+      byWord['der Abflug'].ex.includes('um 11.20 Uhr') && byWord['die Ankunft'].ex === targets[2] &&
+      byWord['der Bahnsteig'].ex.startsWith(targets[1]) && byWord['der Bahnsteig'].err.includes('Bahnsteigs') &&
+      byWord['die S-Bahn'].err.includes('den S-Bahn') && byWord['die Straßenbahn'].err.startsWith('Wo die') &&
+      byWord['die Autobahn'].ex.includes('zur Autobahn') && byWord['der Lkw'].err.startsWith('Diese Lkw') &&
+      byWord['das Ticket'].ex.startsWith('Wie viel kostet') && byWord['der Ausflug'].ex.includes('Heidelberg') &&
+      byWord['die Reise'].ex.includes('nach Österreich') && byWord['das Reisebüro'].ex.includes('im Reisebüro') &&
+      byWord['der Reiseführer'].ex.includes('einen Reiseführer für Berlin') &&
+      byWord.übernachten.err.endsWith('übernachtet.') && byWord['der Zoll'].ex === targets[3] &&
+      byWord['das Gepäck'].ex === 'Nehmen Sie Ihr Gepäck bitte mit.' &&
+      byWord['die Sehenswürdigkeit'].ex.includes('In Frankfurt') &&
+      byWord.besichtigen.ex === targets[4] && byWord.besichtigen.err.endsWith('besichtige.') &&
+      byWord['die Sonne'].err.includes('ist scheinen') && byWord['der Wind'].ex.includes('aus Osten') &&
+      byWord.scheinen.err.includes('scheinen die Sonne') && byWord['das Schwimmbad'].ex.includes('ins Schwimmbad') &&
+      byWord['der See'].ex.includes('zum Starnberger See') && byWord.wandern.ex.includes('Meistens') &&
+      byWord.halten.why.includes('haltet فهي صيغة ihr') && byWord.Grad.err.endsWith('Grade.') &&
+      tricks.length === 3 && tricks[0].wie.includes('muss abfahren') &&
+      tricks[0].warum.includes('die Abfahrt') && tricks[1].wie.includes('zum Bahnhof mit') &&
+      tricks[1].warum.includes('منظور المتكلم') && tricks[2].wie.includes('Auch einen Dom kann man besuchen') &&
+      tricks[2].warum.includes('لا نرفضه مطلقًا') &&
+      !/[\u0600-\u06FF]/.test(tricks.map(x => x.wie).join(' ')) &&
+      !lessonText.includes('Wollen Sie Ihr Gepäck mitbringen?') &&
+      !lessonText.includes('Ich möchte gern den Dom besuchen.') &&
+      !lessonText.includes('Der Wind kommt von Osten.') &&
+      !lessonText.includes('Dieser Lkw ist sehr groß gemacht.') &&
+      !lessonText.includes('Die Sonne scheint heute ist.') &&
+      !lessonText.includes('Du kannst bei mir übernachten bleiben.'));
+  const imitate = lesson.schritte.find(s => s.phase === 'Anwenden' && s.frage && s.frage.art === 'cloze');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u5-l5 aligns strict clozes, platform-question order, 32-word writing, speaking, summary and homework',
+    imitate.zeigt.de === 'Der Zug fährt um zwölf Uhr ____.' &&
+      imitate.frage.antworten.join(' ') === 'ab' && imitate.frage.nearMiss.an &&
+      drill.frage.zeigt === 'Wir müssen noch durch den ____.' &&
+      drill.frage.antworten.join(' ') === 'Zoll' && drill.frage.nearMiss.Zolls &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Zolls').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'fährt' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Auf welchem Bahnsteig' &&
+      order.frage.fields.lsk.join(' ') === 'fährt' && order.frage.fields.rsk.join(' ') === 'ab?' &&
+      order.frage.rightBracket.join(' ') === 'ab?' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Auf', 'welchem', 'Bahnsteig', 'der', 'Zug', 'fährt', 'ab?']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 32 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u5-l5 makes 80 percent four of five measurable across arrival, customs, platform, departure and sightseeing',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u5-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Wir müssen noch durch den ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Zoll' && clozeCheck.frage.nearMiss.Zolls &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Zolls').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'fährt' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Auf welchem Bahnsteig' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'ab?' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Auf', 'welchem', 'Bahnsteig', 'der', 'Zug', 'fährt', 'ab?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.misconceptionFamilies.a === 'konjugation');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
