@@ -903,25 +903,50 @@ module.exports = [
       summaryRecap: 'gegangen geblieben gekommen gefahren passiert'
     }),
 
-  U('a1-u3-l6', 'A1', 'الموعد', 'Termine', 'lexik-kollokation',
-    'Am Ende schlägst du einen Termin vor und sagst ab',
-    'في النهاية تقترح موعدًا وتعتذر عنه.',
+  U('a1-u3-l6', 'A1', 'المواعيد', 'Termine', 'lexik-kollokation',
+    'Am Ende verwendest du fünf vollständige Äußerungen für Termine: „Ich möchte einen Termin machen.“ · „Passt Ihnen Dienstag um zehn Uhr?“ · „Das passt mir.“ · „Können wir den Termin verschieben?“ · „Das tut mir leid, ich muss den Termin absagen.“',
+    'في النهاية تستعمل خمس عبارات كاملة للمواعيد: Ich möchte einen Termin machen. وPasst Ihnen Dienstag um zehn Uhr? وDas passt mir. وKönnen wir den Termin verschieben? وDas tut mir leid, ich muss den Termin absagen.',
     [
-      ['Passt Ihnen der Termin', 'الاقتراح مع passen', 'لا Is the date ok خليط', 'Ist der Termin ok für Sie englisch', 'السؤال الألماني Passt'],
-      ['Das passt mir', 'القبول Das passt mir', 'لا I agree', 'Ich agree', 'Agree ليست الفعل'],
-      ['Das passt mir nicht', 'الرفض بهدوء', 'لا no way', 'No way der Termin', 'الرفض Das passt mir nicht'],
-      ['Können wir verschieben', 'التأجيل verschieben', 'لا delay the Termin', 'Können wir delay', 'delay إنجليزية']
+      ['Ich möchte einen Termin machen.', 'بعد möchte يأتي المصدر machen في نهاية الجملة.', 'بعد möchte استعمل المصدر machen', 'Ich möchte einen Termin mache.', 'نقول möchte ... machen، لا möchte ... mache'],
+      ['Das passt mir.', 'الفعل passen يأخذ الداتيف؛ لذلك نقول mir عند قبول الموعد.', 'مع passen نقول mir', 'Das passt mich.', 'نقول Das passt mir، لا Das passt mich'],
+      ['Können wir den Termin verschieben?', 'في سؤال نعم/لا يأتي Können أولًا، ويأتي المصدر verschieben في النهاية.', 'بعد Können نضع wir، ونضع verschieben في النهاية', 'Können wir den Termin verschiebe?', 'نقول können ... verschieben، لا verschiebe'],
+      ['Das tut mir leid, ich muss den Termin absagen.', 'بعد muss يأتي المصدر absagen في نهاية الجملة الثانية.', 'بعد muss استعمل المصدر absagen', 'Das tut mir leid, ich muss den Termin absage.', 'نقول muss ... absagen، لا absage']
     ],
     [
-      ['Passt Ihnen der Termin?', 'هل يناسبكم الموعد؟', 'Ist der Termin ok?', 'السؤال Passt Ihnen', 'Passt'],
-      ['Das passt mir.', 'هذا يناسبني', 'Ich agree dem Termin', 'القبول passt mir', 'passt'],
-      ['Das passt mir nicht.', 'هذا لا يناسبني', 'No way, der Termin', 'الرفض passt nicht', 'nicht'],
-      ['Können wir verschieben?', 'هل نؤجل؟', 'Können wir delay?', 'التأجيل verschieben', 'verschieben']
+      ['Ich möchte einen Termin machen.', 'أريد تحديد موعد', 'Ich möchte einen Termin mache.', 'بعد möchte يأتي المصدر machen.', 'machen'],
+      ['Das passt mir.', 'هذا الموعد يناسبني', 'Das passt mich.', 'الفعل passen يأخذ الداتيف mir.', 'mir'],
+      ['Können wir den Termin verschieben?', 'هل يمكننا تأجيل الموعد؟', 'Können wir den Termin verschiebe?', 'بعد können يأتي المصدر verschieben.', 'verschieben'],
+      ['Das tut mir leid, ich muss den Termin absagen.', 'يؤسفني ذلك، يجب أن ألغي الموعد', 'Das tut mir leid, ich muss den Termin absage.', 'بعد muss يأتي المصدر absagen.', 'absagen']
     ],
-    'Passt Ihnen Dienstag? Das passt mir nicht.',
-    'Das passt mir.',
-    'Schlage morgen einen Termin vor.',
-    'غدًا اقترح موعدًا.'),
+    'Ich möchte einen Termin machen.',
+    'Passt Ihnen Dienstag um zehn Uhr?',
+    'Schreibe morgen fünf Sätze und verwende: einen Termin machen, Passt Ihnen, Das passt mir, den Termin verschieben und den Termin absagen.',
+    'غدًا اكتب خمس جمل تتضمن einen Termin machen وPasst Ihnen وDas passt mir وden Termin verschieben وden Termin absagen.',
+    {
+      writing: {
+        zeigt: 'Fünf vollständige Äußerungen für Termine',
+        erklaerung: 'اكتب خمس عبارات كاملة: اطلب موعدًا، واسأل إن كان الثلاثاء مناسبًا، واقبل، واطلب التأجيل، ثم اعتذر عن موعد.',
+        prompt: 'اكتب خمس عبارات ألمانية كاملة لموقف مواعيد واحد.',
+        promptDe: 'Ich möchte einen Termin machen. · Passt Ihnen Dienstag um zehn Uhr? · Das passt mir. · Können wir den Termin verschieben? · Das tut mir leid, ich muss den Termin absagen.',
+        points: ['einen Termin machen', 'Passt Ihnen', 'Das passt mir', 'Termin verschieben', 'Termin absagen'],
+        minWords: 29,
+        frage: 'اكتب العبارات الخمس في سياق مواعيد واضح.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل الخطاب الرسمي Ihnen في السؤال.', 'بعد الأفعال الناقصة ضع المصدر في نهاية الجملة.']
+      },
+      imitateNearMiss: 'mache',
+      transformHint: 'في سؤال نعم/لا يأتي Passt أولًا، ثم Ihnen، ثم وقت الموعد.',
+      orderAr: 'رتّب سؤالًا واحدًا: Können ثم wir، وضع verschieben في النهاية.',
+      orderHints: ['ابدأ بـKönnen ثم ضع wir.', 'ضع den Termin في الوسط وverschieben في النهاية.'],
+      orderSentence: 'Können wir den Termin verschieben?',
+      orderRightBracket: 'verschieben?',
+      checkOrderSentence: 'Passt Ihnen Dienstag um zehn Uhr?',
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال موعد واحد صحيح.',
+      speakAr: 'سجّل عشرين ثانية: قل العبارات الخمس واستعمل einen Termin machen وPasst Ihnen وDas passt mir وden Termin verschieben وden Termin absagen.',
+      summaryDe: 'Ich möchte einen Termin machen. · Passt Ihnen Dienstag um zehn Uhr? · Das passt mir. · Können wir den Termin verschieben? · Das tut mir leid, ich muss den Termin absagen.',
+      summaryAr: 'اطلب الموعد، واسأل بـPasst Ihnen، واقبل بـpasst mir، واستعمل المصدر بعد können وmuss.',
+      summaryRecap: 'Termin Passt mir verschieben absagen'
+    }),
 
   U('a1-u4-l1', 'A1', 'السكن', 'Wohnen', 'lexik-kollokation',
     'Am Ende beschreibst du ein Zimmer mit zwei Möbeln',

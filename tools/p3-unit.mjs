@@ -1398,6 +1398,87 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Ich bin zu Hause geblieben.'));
 }
 
+/* ---------- audited A1 appointments lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u3-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = ['Ich möchte einen Termin machen.', 'Passt Ihnen Dienstag um zehn Uhr?',
+    'Das passt mir.', 'Können wir den Termin verschieben?',
+    'Das tut mir leid, ich muss den Termin absagen.'];
+  t('Corpus lesson a1-u3-l6 states five bounded appointment utterances and teaches each as complete German',
+    lesson.title.de === 'Termine' && lesson.title.ar === 'المواعيد' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'طلب موعد وقبوله وتأجيله وإلغاؤه' &&
+      lesson.schritte[0].zeigt.de.includes('fünf vollständige Äußerungen') &&
+      targets.every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      targets.every(x => lesson.schritte.some(s => s.zeigt && s.zeigt.de === x)));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u3-l6 keeps all 28 appointment entries, Arabic meanings, cases and separable verbs accurate without English shortcuts or a false proposal error',
+    lesson.wortschatz.length === 28 &&
+      byWord['einen Termin machen'].ex === 'Ich möchte einen Termin machen.' &&
+      byWord.vorschlagen.ex === 'Ich schlage Dienstag vor.' &&
+      byWord.vorschlagen.why.includes('الفعل منفصل') &&
+      byWord.verschieben.err === 'Können wir den Termin verschiebe?' &&
+      byWord.absagen.ex.includes('den Termin absagen') &&
+      byWord['die Verabredung'].ar === 'الموعد الشخصي' &&
+      byWord['das tut mir leid'].why.includes('الداتيف') &&
+      byWord['sich treffen'].ex === 'Wir treffen uns um acht Uhr.' &&
+      byWord['Wie wäre es mit'].ex === 'Wie wäre es mit einem Termin am Dienstag?' &&
+      byWord['Wie wäre es mit'].err === 'Wie wäre es mit einen Termin am Dienstag?' &&
+      byWord['Wie wäre es mit'].why.includes('الداتيف') &&
+      tricks[0].wie.includes('den Termin verschieben') && tricks[0].wie.includes('den Termin absagen') &&
+      tricks[1].wie.includes('Das passt mir.') && tricks[1].warum.includes('Ihnen وmir') &&
+      tricks[2].wie.includes('Vormittags habe ich') &&
+      !['appointment', 'suggestion', 'reschedule', '"rtb"'].some(x => lessonText.includes(x)));
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const points = ['einen Termin machen', 'Passt Ihnen', 'Das passt mir',
+    'Termin verschieben', 'Termin absagen'];
+  t('Corpus lesson a1-u3-l6 aligns strict clozes, one-question order, five-part writing, speaking, summary and homework',
+    imitate.frage.antworten.join(' ') === 'machen' && imitate.frage.nearMiss.mache &&
+      drill.frage.zeigt === 'Können wir den Termin ____?' &&
+      drill.frage.antworten.join(' ') === 'verschieben' && drill.frage.nearMiss.verschiebe &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'verschiebe').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Können wir den Termin verschieben?' &&
+      order.frage.finite === 'Können' && order.frage.verbFirst === true &&
+      order.frage.fields.vorfeld.length === 0 && order.frage.fields.lsk.join(' ') === 'Können' &&
+      order.frage.fields.rsk.join(' ') === 'verschieben?' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Wir', 'können', 'den', 'Termin', 'verschieben?']).failed === 1 &&
+      writing.frage.points.join(' | ') === points.join(' | ') && writing.frage.minWords === 29 &&
+      points.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u3-l6 makes 80 percent four of five measurable across cancellation, postponement, suitability, request and acceptance',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u3-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      clozeCheck.frage.antworten.join(' ') === 'verschieben' && clozeCheck.frage.nearMiss.verschiebe &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'verschiebe').ok &&
+      orderCheck.frage.correct.join(' ') === 'Passt Ihnen Dienstag um zehn Uhr?' &&
+      orderCheck.frage.finite === 'Passt' && orderCheck.frage.verbFirst === true &&
+      orderCheck.frage.fields.vorfeld.length === 0 && orderCheck.frage.fields.lsk.join(' ') === 'Passt' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Dienstag', 'passt', 'Ihnen', 'um', 'zehn', 'Uhr?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
