@@ -589,25 +589,50 @@ module.exports = [
       summaryRecap: 'würde würden könnten hätten wäre'
     }),
 
-  U('a2-u3-l2', 'A2', 'فعل وحرف', 'Verben mit Präposition', 'präposition',
-    'Am Ende lernst du vier Verben mit ihrer Präposition',
-    'في النهاية تتعلم أربعة أفعال مع حرفها.',
+  U('a2-u3-l2', 'A2', 'أفعال مع حروف جر ثابتة', 'Verben mit festen Präpositionen', 'präposition',
+    'Am Ende verwendest du fünf Verben mit ihrer festen Präposition in vollständigen Sätzen',
+    'في النهاية تستعمل خمسة أفعال مع حروف جرها الثابتة في جمل كاملة.',
     [
-      ['warten auf', 'warten يأخذ auf', 'لا warten für', 'warten für den Bus', 'الحرف auf'],
-      ['denken an', 'denken يأخذ an', 'لا denken über als einziges hier', 'denken über dich als Frame falsch', 'الإطار denken an'],
-      ['sprechen mit', 'التحدث مع شخص mit', 'sprechen zu أضعف هنا', 'sprechen zu dir als Standard', 'مع الشخص mit'],
-      ['sich freuen auf', 'الترقب auf', 'über للماضي لا للمستقبل هنا', 'freuen über morgen', 'الغد auf']
+      ['Ich warte auf den Bus.', 'تستعمل warten auf مع مفعول في النصب', 'في هذا التركيب نقول auf den Bus', 'Ich warte für den Bus.', 'مع warten نقول auf den Bus لا für den Bus'],
+      ['Ich denke oft an meine Familie.', 'تستعمل denken an عندما تفكر في شخص أو شيء', 'في هذا المعنى نقول an meine Familie', 'Ich denke oft meine Familie.', 'مع هذا المعنى نحتاج an: an meine Familie'],
+      ['Wir sprechen über den Film.', 'تستعمل sprechen über لذكر موضوع الحديث', 'موضوع الحديث يأتي مع über: über den Film', 'Wir sprechen den Film.', 'لذكر الموضوع نقول über den Film'],
+      ['Wir freuen uns auf den Urlaub.', 'تستعمل sich freuen auf مع شيء منتظر', 'مع wir يأتي uns، ومع الحدث القادم نقول auf den Urlaub', 'Wir freuen uns den Urlaub.', 'نحتاج الضمير uns والحرف auf']
     ],
     [
-      ['Ich warte auf den Bus.', 'أنتظر الحافلة', 'Ich warte für den Bus', 'الحرف auf', 'auf'],
-      ['Ich denke an dich.', 'أفكر فيك', 'Ich denke über dich als Frame', 'الإطار an', 'an'],
-      ['Ich spreche mit ihr.', 'أتحدث معها', 'Ich spreche zu ihr als Standard', 'مع الشخص mit', 'mit'],
-      ['Ich freue mich auf morgen.', 'أتطلع إلى الغد', 'Ich freue mich über morgen', 'المستقبل auf', 'auf']
+      ['Ich warte auf den Bus.', 'أنتظر الحافلة', 'Ich warte für den Bus.', 'مع warten نقول auf den Bus', 'auf'],
+      ['Ich denke oft an meine Familie.', 'أفكر كثيرًا في عائلتي', 'Ich denke oft meine Familie.', 'في هذا المعنى نستخدم an', 'an'],
+      ['Wir sprechen über den Film.', 'نتحدث عن الفيلم', 'Wir sprechen den Film.', 'موضوع الحديث يأتي مع über', 'über'],
+      ['Wir freuen uns auf den Urlaub.', 'نتطلع إلى العطلة', 'Wir freuen uns den Urlaub.', 'مع الشيء المنتظر نستخدم auf', 'auf']
     ],
-    'Ich warte auf den Bus und ich freue mich auf morgen.',
-    'Ich warte auf den Bus.',
-    'Bilde morgen warten auf und denken an.',
-    'غدًا كوّن warten auf وdenken an.'),
+    'Ich warte auf den Bus. Ich denke oft an meine Familie. Wir sprechen über den Film. Wir freuen uns auf den Urlaub. Ich nehme am Kurs teil.',
+    'Ich nehme am Kurs teil.',
+    'Wiederhole morgen die fünf Sätze: Ich warte auf den Bus. Ich denke oft an meine Familie. Wir sprechen über den Film. Wir freuen uns auf den Urlaub. Ich nehme am Kurs teil.',
+    'غدًا راجع الجمل الخمس مع auf وan وüber وauf وan مع الداتيف.',
+    {
+      factFamilies: ['präposition', 'präposition', 'präposition', 'präposition'],
+      writing: {
+        zeigt: 'Fünf Sätze mit festen Präpositionen',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع الفعل والحرف والحالة الصحيحة.',
+        prompt: 'اكتب الجمل الخمس: warten auf، وdenken an، وsprechen über، وsich freuen auf، وteilnehmen an.',
+        promptDe: 'Ich warte auf den Bus. · Ich denke oft an meine Familie. · Wir sprechen über den Film. · Wir freuen uns auf den Urlaub. · Ich nehme am Kurs teil.',
+        points: ['Ich warte auf den Bus.', 'Ich denke oft an meine Familie.', 'Wir sprechen über den Film.', 'Wir freuen uns auf den Urlaub.', 'Ich nehme am Kurs teil.'],
+        minWords: 27,
+        frage: 'اكتب الجمل الخمس كاملة مع حروف الجر الصحيحة.',
+        familie: 'präposition',
+        hinweise: ['احفظ الفعل مع حرف الجر كوحدة واحدة.', 'انتبه إلى Akkusativ مع auf/an/über هنا وإلى Dativ في am Kurs.']
+      },
+      imitateNearMiss: 'für',
+      transformHint: 'نقول Ich nehme am Kurs teil؛ am اختصار an dem.',
+      orderAr: 'رتّب الجملة: Wir ثم sprechen ثم über den Film.',
+      orderHints: ['ابدأ بـ Wir وضع sprechen في الموقع الثاني.', 'ضع موضوع الحديث بعد über.'],
+      orderSentence: 'Wir sprechen über den Film.',
+      checkOrderSentence: 'Wir sprechen über den Film.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة مع sprechen über.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich warte auf den Bus وIch denke oft an meine Familie وWir sprechen über den Film وWir freuen uns auf den Urlaub وIch nehme am Kurs teil.',
+      summaryDe: 'Ich warte auf den Bus. · Ich denke oft an meine Familie. · Wir sprechen über den Film. · Wir freuen uns auf den Urlaub. · Ich nehme am Kurs teil.',
+      summaryAr: 'راجع الجمل الخمس: warten auf، وdenken an، وsprechen über، وsich freuen auf، وteilnehmen an مع am.',
+      summaryRecap: 'auf an über auf an'
+    }),
 
   U('a2-u3-l3', 'A2', 'إضافة الأسماء', 'Genitiv der Namen', 'deklination',
     'Am Ende bildest du den Besitz mit s',

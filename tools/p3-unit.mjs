@@ -4182,6 +4182,115 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
 
+/* ---------- audited A2 fixed-preposition lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u3-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich warte auf den Bus.',
+    'Ich denke oft an meine Familie.',
+    'Wir sprechen über den Film.',
+    'Wir freuen uns auf den Urlaub.',
+    'Ich nehme am Kurs teil.'
+  ];
+  t('Corpus lesson a2-u3-l2 bounds fixed prepositions to five complete warten, denken, sprechen, freuen and teilnehmen targets',
+    lesson.title.de === 'Verben mit festen Präpositionen' &&
+      lesson.title.ar === 'أفعال مع حروف جر ثابتة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'التواصل والاهتمامات والمشاركة' &&
+      row.grammar.item === 'warten auf + Akk. · denken an + Akk. · sprechen über + Akk. · sich freuen auf + Akk. · teilnehmen an + Dat.' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[4] &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwendest du fünf Verben mit ihrer festen Präposition in vollständigen Sätzen');
+
+  const expectedWords = [
+    'warten auf', 'denken an', 'sprechen über', 'sich freuen auf', 'sich interessieren für', 'helfen bei',
+    'achten auf', 'bitten um', 'antworten auf', 'gehören zu', 'teilnehmen an', 'sich beschweren über',
+    'träumen von', 'schreiben an', 'sich vorbereiten auf', 'sich verabschieden von', 'die Prüfung',
+    'die Kollegen', 'der Kurs', 'die Arbeit', 'der Lärm', 'die Reise', 'das Gespräch', 'die Familie',
+    'der Urlaub', 'das Wetter', 'dabei', 'darauf', 'reden', 'ziehen', 'bauen'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u3-l2 reviews all 31 entries and three nuanced mnemonics without rejecting valid alternative frames or meanings',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['warten auf'].ex === targets[0] && byWord['denken an'].ex === targets[1] &&
+      byWord['sprechen über'].ex === targets[2] && byWord['sich freuen auf'].ex === targets[3] &&
+      byWord['teilnehmen an'].ex === targets[4] && byWord['teilnehmen an'].why.includes('am اختصار an dem') &&
+      byWord['sich interessieren für'].pl.includes('hat sich interessiert') &&
+      byWord['sich beschweren über'].pl.includes('hat sich beschwert') &&
+      byWord['sich vorbereiten auf'].pl.includes('hat sich vorbereitet') &&
+      byWord['sich verabschieden von'].pl.includes('hat sich verabschiedet') &&
+      byWord['achten auf'].de === 'achten auf' && byWord['die Kollegen'].why.includes('النصب') &&
+      byWord['schreiben an'].why.includes('Ich schreibe meiner Schwester') &&
+      byWord.bauen.why.includes('ein Haus bauen') &&
+      !errors.includes('Ich denke über das Problem nach.') && !errors.includes('Wir sprechen zu diesem Punkt.') &&
+      !errors.includes('Ich freue mich über die Nachricht.') && !errors.includes('Ich schreibe meiner Schwester.') &&
+      !errors.includes('Sie bauen ein Haus.') && tricks.length === 3 &&
+      tricks[0].trick.includes('الفعل والحرف كوحدة') && tricks[0].wie.includes('Der Frame lautet: denken an + Akkusativ.') &&
+      tricks[1].trick.includes('الحالة تخص هذا التركيب') && tricks[1].wie.includes('am Kurs') &&
+      tricks[1].warum.includes('استعمال مكاني') &&
+      tricks[2].trick.includes('sprechen über موضوعًا / mit شخص') &&
+      tricks[2].trick.includes('sich freuen auf القادم / über الحاصل') &&
+      tricks[2].wie.includes('Ich spreche mit meiner Schwester.') &&
+      tricks[2].wie.includes('Ich freue mich über die Nachricht.') && tricks[2].warum.includes('صحيحة في سياقاتها'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u3-l2 aligns strict bei, Reise, auf and am clozes, full sprechen order and 27-word production',
+    wordCloze1.frage.zeigt === 'Ich helfe ____ der Arbeit.' && wordCloze1.frage.antworten.join(' ') === 'bei' &&
+      wordCloze1.frage.nearMiss.an && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'an').ok &&
+      wordCloze2.frage.zeigt === 'Sie träumt von einer ____.' && wordCloze2.frage.antworten.join(' ') === 'Reise' &&
+      wordCloze2.frage.nearMiss.Reisen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Reisen').ok &&
+      imitate.zeigt.de === 'Ich warte ____ den Bus.' && imitate.frage.antworten.join(' ') === 'auf' &&
+      imitate.frage.nearMiss.für && !win.DW.renderers.judgeCloze(imitate.frage, 'für').ok &&
+      drill.frage.zeigt === 'Ich nehme ____ Kurs teil.' && drill.frage.antworten.join(' ') === 'am' &&
+      drill.frage.nearMiss['auf dem'] && !win.DW.renderers.judgeCloze(drill.frage, 'auf dem').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'sprechen' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Wir' && order.frage.fields.lsk.join(' ') === 'sprechen' &&
+      order.frage.fields.mittelfeld.join(' ') === 'über den Film.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Wir', 'über', 'den', 'Film.', 'sprechen']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 27 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u3-l2 makes 80 percent four of five independent across freuen, teilnehmen, sprechen, warten and denken',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u3-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.antworten.join(' ') === 'am' && clozeCheck.frage.nearMiss['auf dem'] &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'auf dem').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'sprechen' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Wir' &&
+      orderCheck.frage.fields.mittelfeld.join(' ') === 'über den Film.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Wir', 'über', 'den', 'Film.', 'sprechen']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'präposition' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
