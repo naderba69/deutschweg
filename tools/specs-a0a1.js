@@ -858,24 +858,50 @@ module.exports = [
     }),
 
   U('a1-u3-l5', 'A1', 'الماضي مع sein', 'Perfekt mit sein', 'konjugation',
-    'Am Ende benutzt du sein bei Bewegung und bei bleiben',
-    'في النهاية تستعمل sein مع الحركة ومع bleiben.',
+    'Am Ende bildest du fünf vollständige Sätze im Perfekt mit sein: „Ich bin nach Hause gegangen.“ · „Ich bin zu Hause geblieben.“ · „Er ist spät gekommen.“ · „Wir sind nach Berlin gefahren.“ · „Was ist passiert?“',
+    'في النهاية تكوّن خمس جمل كاملة بصيغة Perfekt مع sein: Ich bin nach Hause gegangen. وIch bin zu Hause geblieben. وEr ist spät gekommen. وWir sind nach Berlin gefahren. وWas ist passiert?',
     [
-      ['ich bin gegangen', 'الحركة مع sein', 'haben gegangen خطأ شائع', 'ich habe gegangen', 'gehen يأخذ sein'],
-      ['ich bin geblieben', 'bleiben يأخذ sein', 'ليس haben', 'ich habe geblieben', 'bleiben مع sein'],
-      ['du bist gekommen', 'kommen مع sein', 'bist لا hast', 'du hast gekommen', 'kommen حركة'],
-      ['Partizip am Ende', 'حتى مع sein يبقى المفعول أخيرًا', 'لا bin gegangen nach hinten falsch gestellt', 'ich bin nach Berlin gegangen richtig bleibt Ende', 'المفعول آخرًا وهذا سطر القاعدة']
+      ['Ich bin nach Hause gegangen.', 'الفعل gehen يصوغ Perfekt مع sein: bin ... gegangen.', 'استعمل bin مع gegangen', 'Ich habe nach Hause gegangen.', 'نقول bin ... gegangen، لا habe ... gegangen'],
+      ['Ich bin zu Hause geblieben.', 'الفعل bleiben يصوغ Perfekt مع sein رغم عدم وجود حركة إلى مكان آخر.', 'احفظ bleiben مع sein', 'Ich habe zu Hause geblieben.', 'نقول bin ... geblieben، لا habe ... geblieben'],
+      ['Wir sind nach Berlin gefahren.', 'عندما يدل fahren على الانتقال إلى مكان آخر نصوغ Perfekt هنا مع sein: sind ... gefahren.', 'مع wir نقول sind، ويأتي gefahren في النهاية', 'Wir haben nach Berlin gefahren.', 'في هذه الجملة نقول sind ... gefahren'],
+      ['Was ist passiert?', 'الفعل passieren يصوغ Perfekt مع sein: ist passiert.', 'احفظ ist passiert', 'Was hat passiert?', 'نقول Was ist passiert، لا Was hat passiert']
     ],
     [
-      ['Ich bin nach Hause gegangen.', 'ذهبت إلى البيت', 'Ich habe nach Hause gegangen', 'gehen مع sein', 'gegangen'],
-      ['Ich bin zu Hause geblieben.', 'بقيت في البيت', 'Ich habe zu Hause geblieben', 'bleiben مع sein', 'geblieben'],
-      ['Bist du gekommen?', 'هل أتيت؟', 'Hast du gekommen?', 'kommen مع sein', 'gekommen'],
-      ['Wir sind gefahren.', 'سافرنا', 'Wir haben gefahren', 'fahren هنا مع sein', 'gefahren']
+      ['Ich bin nach Hause gegangen.', 'ذهبت إلى البيت', 'Ich habe nach Hause gegangen.', 'gehen يصوغ Perfekt هنا مع sein.', 'gegangen'],
+      ['Ich bin zu Hause geblieben.', 'بقيت في البيت', 'Ich habe zu Hause geblieben.', 'bleiben يصوغ Perfekt مع sein.', 'geblieben'],
+      ['Wir sind nach Berlin gefahren.', 'ذهبنا إلى برلين', 'Wir haben nach Berlin gefahren.', 'مع الانتقال إلى برلين نقول sind gefahren.', 'gefahren'],
+      ['Was ist passiert?', 'ماذا حدث؟', 'Was hat passiert?', 'passieren يصوغ Perfekt مع sein.', 'passiert']
     ],
-    'Ich bin nach Hause gegangen und ich bin geblieben.',
     'Ich bin nach Hause gegangen.',
-    'Sage morgen einen Satz mit bin gegangen.',
-    'غدًا قل جملة مع bin gegangen.'),
+    'Er ist spät gekommen.',
+    'Schreibe morgen fünf Perfekt-Sätze mit nach Hause gegangen, zu Hause geblieben, spät gekommen, nach Berlin gefahren und Was ist passiert?',
+    'غدًا اكتب خمس جمل Perfekt تتضمن nach Hause gegangen وzu Hause geblieben وspät gekommen وnach Berlin gefahren وWas ist passiert?',
+    {
+      writing: {
+        zeigt: 'Fünf vollständige Sätze im Perfekt mit sein',
+        erklaerung: 'اكتب خمس جمل كاملة: الذهاب إلى البيت، والبقاء فيه، والوصول متأخرًا، والذهاب إلى برلين، والسؤال عما حدث.',
+        prompt: 'اكتب خمس جمل ألمانية كاملة بصيغة Perfekt مع sein.',
+        promptDe: 'Ich bin nach Hause gegangen. · Ich bin zu Hause geblieben. · Er ist spät gekommen. · Wir sind nach Berlin gefahren. · Was ist passiert?',
+        points: ['nach Hause gegangen', 'zu Hause geblieben', 'spät gekommen', 'nach Berlin gefahren', 'Was ist passiert'],
+        minWords: 25,
+        frage: 'اكتب الجمل الخمس بصيغة Perfekt صحيحة.',
+        familie: 'konjugation',
+        hinweise: ['صرّف sein مع الفاعل.', 'ضع Partizip II في نهاية الجملة أو السؤال.']
+      },
+      imitateNearMiss: 'gehen',
+      transformHint: 'مع er نقول ist، ويأتي gekommen في النهاية.',
+      orderAr: 'رتّب جملة واحدة: Ich ثم bin، وضع gegangen في النهاية.',
+      orderHints: ['ابدأ بـIch ثم ضع bin في الموقع الثاني.', 'ضع nach Hause في الوسط وgegangen في النهاية.'],
+      orderSentence: 'Ich bin nach Hause gegangen.',
+      orderRightBracket: 'gegangen.',
+      checkOrderSentence: 'Er ist spät gekommen.',
+      checkOrderRightBracket: 'gekommen.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة Perfekt واحدة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل الجمل الخمس مع nach Hause gegangen وzu Hause geblieben وspät gekommen وnach Berlin gefahren وWas ist passiert?',
+      summaryDe: 'Ich bin nach Hause gegangen. · Ich bin zu Hause geblieben. · Er ist spät gekommen. · Wir sind nach Berlin gefahren. · Was ist passiert?',
+      summaryAr: 'استعمل sein المصرف مع هذه الأفعال المحددة، وضع Partizip II في النهاية.',
+      summaryRecap: 'gegangen geblieben gekommen gefahren passiert'
+    }),
 
   U('a1-u3-l6', 'A1', 'الموعد', 'Termine', 'lexik-kollokation',
     'Am Ende schlägst du einen Termin vor und sagst ab',

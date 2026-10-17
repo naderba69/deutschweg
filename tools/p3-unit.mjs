@@ -1308,6 +1308,96 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Ich habe Deutsch gelernt.'));
 }
 
+/* ---------- audited A1 Perfekt-with-sein lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u3-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u3-l5 states five bounded Perfekt-with-sein sentences and teaches them as complete German',
+    lesson.title.de === 'Perfekt mit sein' && lesson.title.ar === 'الماضي مع sein' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['fünf vollständige Sätze', 'Ich bin nach Hause gegangen.',
+        'Ich bin zu Hause geblieben.', 'Er ist spät gekommen.',
+        'Wir sind nach Berlin gefahren.', 'Was ist passiert?']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Ich bin nach Hause gegangen.', 'Ich bin zu Hause geblieben.',
+        'Wir sind nach Berlin gefahren.', 'Was ist passiert?']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u3-l5 keeps all 28 travel entries, Arabic meanings and verb-specific auxiliary choices accurate without a blanket movement rule',
+    lesson.wortschatz.length === 28 &&
+      byWord.sein.ex === 'Ich bin nach Hause gegangen.' &&
+      byWord.gegangen.err === 'Ich habe nach Hause gegangen.' &&
+      byWord.gekommen.ex === 'Er ist spät gekommen.' &&
+      byWord.gefahren.why.includes('عندما يدل fahren على الانتقال') &&
+      byWord.geblieben.why.includes('bin geblieben') &&
+      byWord.gewesen.ex === 'Bist du schon in Berlin gewesen?' &&
+      byWord.aufgestanden.why.includes('aufstehen يصوغ Perfekt مع sein') &&
+      byWord.umgezogen.why.includes('بمعنى الانتقال إلى مسكن جديد') &&
+      byWord.passiert.ex === 'Was ist passiert?' &&
+      byWord.gefallen.ex === 'Der Film hat mir gefallen.' &&
+      byWord['das Flugzeug'].why.includes('بلا مفعول') &&
+      byWord['die Fahrt'].why.includes('hat gedauert') &&
+      byWord['das Hotel'].why.includes('Hotel بالمفرد') &&
+      byWord['das Taxi'].ar === 'سيارة الأجرة' &&
+      tricks[0].wie.includes('fahren → bin gefahren') && tricks[0].warum.includes('هذه الأفعال المحددة') &&
+      tricks[1].wie.includes('werden → ist geworden') &&
+      tricks[2].wie === 'Ich bin gefahren · Die Fahrt hat gedauert · Ich habe geschlafen.' &&
+      !['الحركة تأخذ sein لا haben', '"rtb"'].some(x => lessonText.includes(x)));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const targets = ['nach Hause gegangen', 'zu Hause geblieben', 'spät gekommen',
+    'nach Berlin gefahren', 'Was ist passiert'];
+  t('Corpus lesson a1-u3-l5 aligns strict participle clozes, one-sentence order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Ich bin nach Hause gegangen.' &&
+      imitate.frage.antworten.join(' ') === 'gegangen' && imitate.frage.nearMiss.gehen &&
+      transform.zeigt.de === 'Er ist spät gekommen.' && transform.hinweise[1].includes('gekommen') &&
+      drill.frage.zeigt === 'Wir sind nach Berlin ____.' &&
+      drill.frage.antworten.join(' ') === 'gefahren' && drill.frage.nearMiss.gefahrt &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'gefahrt').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Ich bin nach Hause gegangen.' &&
+      order.frage.finite === 'bin' && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.rsk.join(' ') === 'gegangen.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'nach', 'Hause', 'bin', 'gegangen.']).failed === 1 &&
+      writing.frage.points.join(' | ') ===
+        'nach Hause gegangen | zu Hause geblieben | spät gekommen | nach Berlin gefahren | Was ist passiert' &&
+      writing.frage.minWords === 25 &&
+      targets.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u3-l5 makes 80 percent four of five measurable across gegangen, geblieben, gekommen, gefahren and passiert',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u3-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Was ist passiert?') &&
+      clozeCheck.frage.zeigt === 'Wir sind nach Berlin ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'gefahren' && clozeCheck.frage.nearMiss.gefahrt &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'gefahrt').ok &&
+      orderCheck.frage.correct.join(' ') === 'Er ist spät gekommen.' &&
+      orderCheck.frage.finite === 'ist' && orderCheck.frage.verbFirst === false &&
+      orderCheck.frage.fields.rsk.join(' ') === 'gekommen.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Er', 'spät', 'ist', 'gekommen.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich bin nach Hause gegangen.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Ich bin zu Hause geblieben.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
