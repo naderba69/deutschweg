@@ -47,25 +47,50 @@ module.exports = [
       summaryRecap: 'dem der dem den mit'
     }),
 
-  U('a2-u1-l2', 'A2', 'أفعال الداتيف', 'Dativverben', 'kasus',
-    'Am Ende benutzt du helfen geben und gehören mit Dativ',
-    'في النهاية تستعمل helfen وgeben وgehören مع الداتيف.',
+  U('a2-u1-l2', 'A2', 'أفعال مع الداتيف', 'Verben mit Dativ', 'kasus',
+    'Am Ende verwendest du fünf Verben mit Dativ in vollständigen Sätzen',
+    'في النهاية تستعمل خمسة أفعال مع الداتيف في جمل كاملة.',
     [
-      ['helfen plus Dativ', 'helfen لا يأخذ نصب الشخص', 'den Mann helfen خطأ', 'Ich helfe den Mann', 'الشخص في الداتيف'],
-      ['geben hat zwei Objekte', 'الشخص داتيف والشيء نصب', 'لا تعكسهما', 'Ich gebe den Mann das Buch', 'الشخص nicht den'],
-      ['gehören plus Dativ', 'المالك داتيف', 'لا der Besitz als Nominativ allein', 'Das Buch gehört der Mann falsch', 'المالك dem'],
-      ['mir nicht mich', 'ضمير الداتيف mir', 'mich نصب', 'Das gehört mich', 'الملكية mir']
+      ['Kannst du mir bitte helfen?', 'تستعمل mir مع helfen', 'الشخص بعد helfen يأتي في الداتيف: mir', 'Kannst du mich bitte helfen?', 'بعد helfen نقول mir لا mich'],
+      ['Das Buch gehört mir.', 'تستعمل mir مع gehören لتحديد المالك', 'المالك بعد gehören يأتي في الداتيف: mir', 'Das Buch gehört mich.', 'بعد gehören نقول mir لا mich'],
+      ['Wir zeigen dem Kunden die Ware.', 'تستعمل dem Kunden للمستلم مع zeigen', 'المستلم داتيف، وKunde اسم مذكر ضعيف: dem Kunden', 'Wir zeigen dem Kunde die Ware.', 'نضيف n إلى Kunde هنا: dem Kunden'],
+      ['Der Termin passt mir gut.', 'تستعمل mir مع passen للشخص الذي يناسبه الموعد', 'الشخص بعد passen يأتي في الداتيف: mir', 'Der Termin passt mich gut.', 'بعد passen نقول mir لا mich']
     ],
     [
-      ['Kannst du mir helfen?', 'هل تستطيع مساعدتي؟', 'Kannst du mich helfen?', 'helfen مع mir', 'mir'],
-      ['Ich gebe dir das Buch.', 'أعطيك الكتاب', 'Ich gebe dich das Buch', 'الآخذ dir', 'dir'],
-      ['Das Buch gehört mir.', 'الكتاب لي', 'Das Buch gehört mich', 'gehören مع mir', 'mir'],
-      ['Ich schenke ihr eine Blume.', 'أهديها زهرة', 'Ich schenke sie eine Blume', 'الآخذ ihr', 'ihr']
+      ['Ich gebe dir das Buch.', 'أعطيك الكتاب', 'Ich gebe dich das Buch.', 'المستلم يأتي في الداتيف: dir', 'dir'],
+      ['Das Buch gehört mir.', 'الكتاب لي', 'Das Buch gehört mich.', 'المالك يأتي مع gehören في الداتيف: mir', 'mir'],
+      ['Wir zeigen dem Kunden die Ware.', 'نُري العميل البضاعة', 'Wir zeigen den Kunde die Ware.', 'المستلم يأتي مع zeigen في الداتيف: dem Kunden', 'Kunden'],
+      ['Kannst du mir bitte helfen?', 'هل تستطيع مساعدتي؟', 'Kannst du mich bitte helfen?', 'بعد helfen نستخدم mir', 'mir']
     ],
-    'Kannst du mir helfen? Ich gebe dir das Buch.',
     'Das Buch gehört mir.',
-    'Sage morgen einen Satz mit helfen und einen mit gehören.',
-    'غدًا قل جملة مع helfen وأخرى مع gehören.'),
+    'Der Termin passt mir gut.',
+    'Wiederhole morgen die fünf Sätze: Kannst du mir bitte helfen? Ich gebe dir das Buch. Das Buch gehört mir. Der Termin passt mir gut. Wir zeigen dem Kunden die Ware.',
+    'غدًا راجع الجمل الخمس مع helfen وgeben وgehören وpassen وzeigen.',
+    {
+      factFamilies: ['kasus', 'kasus', 'deklination', 'kasus'],
+      writing: {
+        zeigt: 'Fünf Sätze mit Verben und Dativ',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع mir وdir وdem Kunden.',
+        prompt: 'اكتب الجمل الخمس مستعملًا فعل الداتيف والصيغة الصحيحة.',
+        promptDe: 'Kannst du mir bitte helfen? · Ich gebe dir das Buch. · Das Buch gehört mir. · Der Termin passt mir gut. · Wir zeigen dem Kunden die Ware.',
+        points: ['Kannst du mir bitte helfen?', 'Ich gebe dir das Buch.', 'Das Buch gehört mir.', 'Der Termin passt mir gut.', 'Wir zeigen dem Kunden die Ware.'],
+        minWords: 25,
+        frage: 'اكتب الجمل الخمس كاملة مع mir وdir وdem Kunden.',
+        familie: 'kasus',
+        hinweise: ['بعد helfen وgehören وpassen استعمل mir.', 'مع geben استعمل dir، ومع zeigen استعمل dem Kunden.']
+      },
+      imitateNearMiss: 'dich',
+      transformHint: 'الشخص بعد passen يأتي في الداتيف: mir.',
+      orderAr: 'رتّب جملة الملكية: ابدأ بـ Das Buch ثم gehört ثم mir.',
+      orderHints: ['ابدأ بالشيء Das Buch وضع gehört في الموضع الثاني.', 'ضع المالك mir بعد الفعل.'],
+      orderSentence: 'Das Buch gehört mir.',
+      checkOrderSentence: 'Das Buch gehört mir.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة ملكية صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل Kannst du mir bitte helfen وIch gebe dir das Buch وDas Buch gehört mir وDer Termin passt mir gut وWir zeigen dem Kunden die Ware.',
+      summaryDe: 'Kannst du mir bitte helfen? · Ich gebe dir das Buch. · Das Buch gehört mir. · Der Termin passt mir gut. · Wir zeigen dem Kunden die Ware.',
+      summaryAr: 'راجع mir مع helfen وgehören وpassen، وdir مع geben، وdem Kunden مع zeigen.',
+      summaryRecap: 'helfen geben gehören passen zeigen'
+    }),
 
   U('a2-u1-l3', 'A2', 'حروف الاتجاهين', 'Wechselpräpositionen', 'präposition',
     'Am Ende unterscheidest du Wo mit Dativ und Wohin mit Akkusativ',
