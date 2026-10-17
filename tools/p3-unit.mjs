@@ -4630,6 +4630,122 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
 
+/* ---------- audited A2 work and application lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u3-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich suche eine Stelle in Teilzeit.',
+    'Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit.',
+    'Das Vorstellungsgespräch ist morgen um zehn Uhr.',
+    'Ich arbeite bei einer Firma in der Abteilung Verkauf.',
+    'Meine Arbeitszeit ist von neun bis fünf.'
+  ];
+  t('Corpus lesson a2-u3-l6 bounds job search, application, interview, workplace and hours to five complete work targets',
+    lesson.title.de === 'Arbeit: Stellensuche, Bewerbung und Arbeitszeit' &&
+      lesson.title.ar === 'العمل: البحث عن وظيفة والتقديم وساعات الدوام' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'العمل والتقديم والتوظيف' &&
+      row.grammar.item === 'eine Stelle in Teilzeit suchen · eine Bewerbung schreiben · den Lebenslauf mitschicken · um zehn Uhr · bei einer Firma/in der Abteilung · von … bis' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[4] &&
+      lesson.schritte.find(s => s.id === 's10').wortschatz.some(it => it.ex === targets[4]) &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende verwendest du fünf vollständige Sätze für Stellensuche, Bewerbung, Vorstellungsgespräch, Arbeitsplatz und Arbeitszeit');
+
+  const expectedWords = [
+    'die Bewerbung', 'der Lebenslauf', 'das Vorstellungsgespräch', 'die Stelle', 'die Erfahrung',
+    'die Ausbildung', 'das Gehalt', 'der Vertrag', 'die Kündigung', 'die Arbeitszeit',
+    'der Arbeitgeber', 'der Arbeitnehmer', 'die Überstunde', 'der Urlaub', 'die Kollegin', 'der Chef',
+    'die Abteilung', 'die Sitzung', 'die Aufgabe', 'die Beratung', 'der Kunde', 'das Praktikum',
+    'das Zeugnis', 'die Bewerbungsfrist', 'die Teilzeit', 'die Vollzeit', 'dringend', 'die Datei',
+    'die Werkstatt', 'online', 'das Passwort'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u3-l6 reviews all 31 entries and three nuanced mnemonics without rejecting valid work alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['die Bewerbung'].ex === targets[1] && byWord['der Lebenslauf'].why.includes('meinen Lebenslauf') &&
+      byWord['das Vorstellungsgespräch'].ex === targets[2] && byWord['die Stelle'].ex === targets[0] &&
+      byWord['die Ausbildung'].why.includes('ist in Tunis gewesen') &&
+      byWord['die Kündigung'].ar.includes('إنهاء عقد العمل') && byWord['die Kündigung'].ex.includes('reicht') &&
+      byWord['die Arbeitszeit'].ex === targets[4] && byWord['der Arbeitgeber'].why.includes('bezahlt das Gehalt') &&
+      byWord['der Arbeitnehmer'].why.includes('Recht haben') && byWord['der Chef'].why.includes('Der Chef kocht') &&
+      byWord['die Abteilung'].ex === targets[3] && byWord['die Abteilung'].why.includes('اتجاه') &&
+      byWord['der Kunde'].err === 'Der Kunde anruft jeden Tag.' && byWord['das Praktikum'].why.includes('in einer Firma') &&
+      byWord['das Zeugnis'].pl === 'die Zeugnisse' && byWord['die Werkstatt'].why.includes('Ich fahre in die Werkstatt') &&
+      !errors.includes('Meine Ausbildung ist in Tunis gewesen.') &&
+      !errors.includes('Der Arbeitgeber bezahlt das Gehalt immer.') &&
+      !errors.includes('Der Arbeitnehmer hat Recht.') && !errors.includes('Der Chef kocht immer.') &&
+      !errors.includes('Ich mache ein Praktikum in einer Firma.') &&
+      tricks.length === 3 && tricks[0].wie.includes('Auch „Ich suche einen Job in Teilzeit.“') &&
+      tricks[0].wie.includes('„Ich arbeite halbtags.“ sind richtig.') &&
+      tricks[0].wie.includes('Auch „Ich arbeite in einer Firma.“ ist richtig.') &&
+      tricks[0].wie.includes('Ich wechsle morgen in die Abteilung Verkauf.') &&
+      tricks[0].warum.includes('Stelle وJob كلمتان صحيحتان') && tricks[1].wie.includes(targets[2]) &&
+      tricks[1].wie.includes(targets[4]) && tricks[1].wie.includes('In zehn Minuten beginnt das Gespräch.') &&
+      tricks[1].warum.includes('لا ينبغي رفضها') && tricks[2].wie.includes(targets[1]) &&
+      tricks[2].wie.includes('meine Zeugnisse') && tricks[2].warum.includes('meinen Lebenslauf') &&
+      !['ich suche einen Job als einzige Form', 'zahlen تكفي', 'عند الشركة: bei'].some(x => lessonText.includes(x)));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u3-l6 aligns strict Ausbildung, Praktikum, Teilzeit and Arbeitszeit clozes, interview order and 38-word production',
+    wordCloze1.frage.zeigt === 'Meine ____ dauert drei Jahre.' && wordCloze1.frage.antworten.join(' ') === 'Ausbildung' &&
+      wordCloze1.frage.nearMiss.Ausbildungen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Ausbildungen').ok &&
+      wordCloze2.frage.zeigt === 'Ich mache ein ____ bei einer Firma.' && wordCloze2.frage.antworten.join(' ') === 'Praktikum' &&
+      wordCloze2.frage.nearMiss.Praktika && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Praktika').ok &&
+      imitate.zeigt.de === 'Ich suche eine Stelle in ____.' && imitate.frage.antworten.join(' ') === 'Teilzeit' &&
+      imitate.frage.nearMiss.Vollzeit && !win.DW.renderers.judgeCloze(imitate.frage, 'Vollzeit').ok &&
+      drill.frage.zeigt === 'Meine ____ ist von neun bis fünf.' && drill.frage.antworten.join(' ') === 'Arbeitszeit' &&
+      drill.frage.nearMiss.Arbeitszeiten && !win.DW.renderers.judgeCloze(drill.frage, 'Arbeitszeiten').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'ist' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Das Vorstellungsgespräch' && order.frage.fields.lsk.join(' ') === 'ist' &&
+      order.frage.fields.mittelfeld.join(' ') === 'morgen um zehn Uhr.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Das', 'Vorstellungsgespräch', 'morgen', 'um', 'zehn', 'Uhr.', 'ist']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 38 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[,.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[,.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u3-l6 makes 80 percent four of five independent across workplace, hours, interview, application and job search',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u3-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u3-l6.s07 | cap.a2-u3-l6.s21 | cap.a2-u3-l6.s22 | cap.a2-u3-l6.s08 | cap.a2-u3-l6.s18' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Meine ____ ist von neun bis fünf.' && clozeCheck.frage.antworten.join(' ') === 'Arbeitszeit' &&
+      clozeCheck.frage.nearMiss.Arbeitszeiten && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Arbeitszeiten').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Das Vorstellungsgespräch' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Das', 'Vorstellungsgespräch', 'morgen', 'um', 'zehn', 'Uhr.', 'ist']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[1]) && checks[3].frage.misconceptionFamilies.b === 'genus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'genus');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

@@ -769,25 +769,50 @@ module.exports = [
       summaryRecap: 'Beschwerden Termin Praxis Tabletten Besserung'
     }),
 
-  U('a2-u3-l6', 'A2', 'العمل', 'Arbeit', 'lexik-kollokation',
-    'Am Ende beschreibst du eine Arbeit in drei Sätzen',
-    'في النهاية تصف عملًا في ثلاث جمل.',
+  U('a2-u3-l6', 'A2', 'العمل: البحث عن وظيفة والتقديم وساعات الدوام', 'Arbeit: Stellensuche, Bewerbung und Arbeitszeit', 'lexik-kollokation',
+    'Am Ende verwendest du fünf vollständige Sätze für Stellensuche, Bewerbung, Vorstellungsgespräch, Arbeitsplatz und Arbeitszeit',
+    'في النهاية تستعمل خمس جمل كاملة للبحث عن وظيفة والتقديم ومقابلة العمل ومكان العمل وساعات الدوام.',
     [
-      ['ich arbeite halbtags', 'نصف الدوام halbtags', 'لا half job', 'ich arbeite half', 'half إنجليزية'],
-      ['der Chef', 'الرئيس Chef لا طبّاخ بالضرورة', 'الصديق الكاذب', 'der Chef kocht immer', 'Chef هنا رئيس'],
-      ['die Arbeit macht Spaß', 'المتعة macht Spaß', 'لا is fun', 'die Arbeit ist fun', 'fun إنجليزية'],
-      ['ich suche eine Stelle', 'الوظيفة Stelle', 'لا job ككلمة وحيدة هنا', 'ich suche einen Job als einzige Form', 'الدرس يستعمل Stelle']
+      ['Ich suche eine Stelle in Teilzeit.', 'تحدد أنك تبحث عن وظيفة بدوام جزئي', 'Stelle مؤنث، وتأتي in Teilzeit بلا أداة', 'Ich suche einen Stelle in Teilzeit.', 'نقول eine Stelle in Teilzeit'],
+      ['Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit.', 'تذكر طلب التوظيف والسيرة الذاتية في جملة واحدة', 'Bewerbung مؤنث، وLebenslauf مذكر في النصب: meinen Lebenslauf', 'Ich schreibe ein Bewerbung und schicke meinen Lebenslauf mit.', 'نقول eine Bewerbung'],
+      ['Das Vorstellungsgespräch ist morgen um zehn Uhr.', 'تحدد موعد مقابلة العمل باستعمال um مع الساعة', 'مع وقت الساعة المحدد نقول um zehn Uhr', 'Das Vorstellungsgespräch ist morgen an zehn Uhr.', 'نقول um zehn Uhr'],
+      ['Ich arbeite bei einer Firma in der Abteilung Verkauf.', 'تصف جهة العمل والقسم بحالتي الداتيف المناسبتين', 'بعد bei نقول einer Firma، وللمكان داخل القسم نقول in der Abteilung', 'Ich arbeite bei eine Firma in der Abteilung Verkauf.', 'bei يأخذ الداتيف: bei einer Firma']
     ],
     [
-      ['Ich arbeite halbtags.', 'أعمل نصف دوام', 'Ich arbeite half', 'نصف الدوام halbtags', 'halbtags'],
-      ['Mein Chef ist nett.', 'رئيسي لطيف', 'Mein Chef kocht immer', 'Chef هنا رئيس', 'Chef'],
-      ['Die Arbeit macht Spaß.', 'العمل ممتع', 'Die Arbeit ist fun', 'المتعة macht Spaß', 'Spaß'],
-      ['Ich suche eine Stelle.', 'أبحث عن وظيفة', 'Ich suche einen Job nur so', 'الكلمة Stelle', 'Stelle']
+      ['Ich suche eine Stelle in Teilzeit.', 'أبحث عن وظيفة بدوام جزئي', 'Ich suche einen Stelle in Teilzeit.', 'Stelle مؤنث؛ نقول eine Stelle', 'Teilzeit'],
+      ['Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit.', 'أكتب طلب توظيف وأرفق سيرتي الذاتية', 'Ich schreibe ein Bewerbung und schicke meinen Lebenslauf mit.', 'Bewerbung مؤنث؛ نقول eine Bewerbung', 'Lebenslauf'],
+      ['Das Vorstellungsgespräch ist morgen um zehn Uhr.', 'مقابلة العمل غدًا في الساعة العاشرة', 'Das Vorstellungsgespräch ist morgen an zehn Uhr.', 'مع الساعة المحددة نقول um zehn Uhr', 'um'],
+      ['Ich arbeite bei einer Firma in der Abteilung Verkauf.', 'أعمل لدى شركة في قسم المبيعات', 'Ich arbeite bei eine Firma in der Abteilung Verkauf.', 'بعد bei نحتاج الداتيف: einer Firma', 'einer']
     ],
-    'Ich arbeite halbtags. Die Arbeit macht Spaß.',
-    'Ich suche eine Stelle.',
-    'Beschreibe morgen deine Arbeit in zwei Sätzen.',
-    'غدًا صف عملك في جملتين.'),
+    'Ich suche eine Stelle in Teilzeit. Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit. Das Vorstellungsgespräch ist morgen um zehn Uhr. Ich arbeite bei einer Firma in der Abteilung Verkauf. Meine Arbeitszeit ist von neun bis fünf.',
+    'Meine Arbeitszeit ist von neun bis fünf.',
+    'Wiederhole morgen die fünf Sätze: Ich suche eine Stelle in Teilzeit. Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit. Das Vorstellungsgespräch ist morgen um zehn Uhr. Ich arbeite bei einer Firma in der Abteilung Verkauf. Meine Arbeitszeit ist von neun bis fünf.',
+    'غدًا راجع الجمل الخمس عن الوظيفة وطلب التوظيف والمقابلة ومكان العمل وساعات الدوام.',
+    {
+      factFamilies: ['genus', 'genus', 'präposition', 'kasus'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze über Arbeit und Bewerbung',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن البحث عن وظيفة والتقديم والمقابلة ومكان العمل وساعات الدوام.',
+        prompt: 'اكتب الجمل الخمس مستعملًا تراكيب العمل والتقديم الصحيحة.',
+        promptDe: 'Ich suche eine Stelle in Teilzeit. · Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit. · Das Vorstellungsgespräch ist morgen um zehn Uhr. · Ich arbeite bei einer Firma in der Abteilung Verkauf. · Meine Arbeitszeit ist von neun bis fünf.',
+        points: ['Ich suche eine Stelle in Teilzeit.', 'Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit.', 'Das Vorstellungsgespräch ist morgen um zehn Uhr.', 'Ich arbeite bei einer Firma in der Abteilung Verkauf.', 'Meine Arbeitszeit ist von neun bis fünf.'],
+        minWords: 38,
+        frage: 'اكتب جمل العمل والتقديم الخمس كاملة.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل eine Stelle in Teilzeit وeine Bewerbung وmeinen Lebenslauf.', 'استعمل um مع موعد المقابلة وvon … bis مع ساعات الدوام.']
+      },
+      imitateNearMiss: 'Vollzeit',
+      transformHint: 'للفترة اليومية نقول von neun bis fünf.',
+      orderAr: 'رتّب موعد المقابلة: الفعل ist في الموضع الثاني وum مع الساعة.',
+      orderHints: ['ضع ist بعد Das Vorstellungsgespräch.', 'استعمل um zehn Uhr للساعة المحددة.'],
+      orderSentence: 'Das Vorstellungsgespräch ist morgen um zehn Uhr.',
+      checkOrderSentence: 'Das Vorstellungsgespräch ist morgen um zehn Uhr.',
+      orderPromptAr: 'رتّب الكلمات لتكوين موعد مقابلة عمل كاملًا.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich suche eine Stelle in Teilzeit وIch schreibe eine Bewerbung und schicke meinen Lebenslauf mit وDas Vorstellungsgespräch ist morgen um zehn Uhr وIch arbeite bei einer Firma in der Abteilung Verkauf وMeine Arbeitszeit ist von neun bis fünf.',
+      summaryDe: 'Ich suche eine Stelle in Teilzeit. · Ich schreibe eine Bewerbung und schicke meinen Lebenslauf mit. · Das Vorstellungsgespräch ist morgen um zehn Uhr. · Ich arbeite bei einer Firma in der Abteilung Verkauf. · Meine Arbeitszeit ist von neun bis fünf.',
+      summaryAr: 'راجع Stelle in Teilzeit وBewerbung وLebenslauf وVorstellungsgespräch وbei einer Firma وvon … bis.',
+      summaryRecap: 'Stelle Bewerbung Gespräch Arbeitsplatz Arbeitszeit'
+    }),
 
   U('a2-u4-l1', 'A2', 'المدرسة', 'Schule', 'lexik-kollokation',
     'Am Ende sprichst du über einen Kurs',
