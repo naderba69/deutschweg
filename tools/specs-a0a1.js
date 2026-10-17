@@ -1267,24 +1267,49 @@ module.exports = [
     }),
 
   U('a1-u5-l2', 'A1', 'المصرف والعمل', 'Bank und Arbeit', 'präposition',
-    'Am Ende erledigst du am Schalter und an der Kasse alles selbst',
-    'في النهاية تنجز عند الشبّاك والدفع كل شيء بنفسك.',
+    'Am Ende nennst du deinen Arbeitgeber, gehst zum Schalter, überweist Geld, füllst ein Formular aus und verstehst Öffnungszeiten',
+    'في النهاية تذكر جهة عملك، وتذهب إلى الشبّاك، وتحول المال، وتملأ استمارة، وتفهم أوقات الفتح.',
     [
-      ['bei der Firma', 'العمل عند مؤسسة يأخذ bei', 'in Firma خطأ شائع', 'in der Firma arbeiten', 'bei لا in مع جهة العمل'],
-      ['am Schalter', 'عند الشبّاك am لا in', 'الموضع المحدد يأخذ an', 'in dem Schalter', 'am Schalter هي الصيغة'],
-      ['auf das Konto', 'المال يذهب إلى الحساب بـ auf', 'in das Konto خطأ', 'in das Konto', 'auf das Konto'],
-      ['ab acht Uhr offen', 'البداية من وقت: ab', 'seit للماضي المستمر', 'seit acht Uhr geöffnet', 'ab للمستقبل والفتح']
+      ['Ich arbeite bei einer Firma.', 'تستعمل bei عندما تسمّي الشركة بوصفها جهة العمل', 'بعد bei يأتي الداتيف: bei einer Firma', 'Ich arbeite bei eine Firma.', 'Firma مؤنث، وبعد bei نقول einer Firma'],
+      ['Ich gehe zum Schalter drei.', 'تستعمل zum عند الذهاب إلى شبّاك مذكر', 'zum هو اختصار zu dem في هذه العبارة', 'Ich gehe zur Schalter drei.', 'Schalter مذكر، لذلك نقول zum Schalter لا zur Schalter'],
+      ['Wir überweisen das Geld auf Ihr Konto.', 'عند تحويل المال إلى حساب نستعمل auf مع النصب', 'اتجاه التحويل هنا هو auf Ihr Konto', 'Wir überweisen das Geld in Ihr Konto.', 'مع überweisen نقول auf Ihr Konto لا in Ihr Konto'],
+      ['Die Praxis ist morgen ab acht Uhr geöffnet.', 'تحدد ab بداية وقت الفتح في المستقبل', 'مع morgen نستعمل ab لبداية الفترة، أما seit فتربط الماضي بالحاضر', 'Die Praxis ist morgen seit acht Uhr geöffnet.', 'morgen مستقبل؛ لذلك نحتاج ab لا seit']
     ],
     [
-      ['Ich arbeite bei Siemens.', 'أعمل في سيمنس', 'Ich arbeite in Siemens', 'bei للشركة', 'bei'],
-      ['Ich gehe zum Schalter.', 'أذهب إلى الشبّاك', 'Ich gehe zu dem Schalter', 'zum هي الشائع', 'zum'],
-      ['Ich fülle das Formular aus.', 'أملأ الاستمارة', 'Ich fülle das Formular', 'المنفصل يحتاج aus', 'aus'],
-      ['Ich bin arbeitslos.', 'أنا عاطل عن العمل', 'Ich bin arbeitslos gemacht', 'الصفة تكفي', 'arbeitslos']
+      ['Ich arbeite bei einer Firma.', 'أعمل لدى شركة', 'Ich arbeite bei eine Firma.', 'بعد bei يأتي الداتيف: einer Firma', 'einer'],
+      ['Ich gehe zum Schalter drei.', 'أذهب إلى الشبّاك رقم ثلاثة', 'Ich gehe zur Schalter drei.', 'Schalter مذكر، لذلك نقول zum', 'zum'],
+      ['Wir überweisen das Geld auf Ihr Konto.', 'نحوّل المال إلى حسابكم', 'Wir überweisen das Geld in Ihr Konto.', 'مع التحويل إلى الحساب نقول auf Ihr Konto', 'auf'],
+      ['Füllen Sie bitte dieses Formular aus.', 'املأ هذه الاستمارة من فضلك', 'Füllen Sie bitte dieses Formular an.', 'الفعل هو ausfüllen، لذلك تأتي aus في النهاية', 'aus']
     ],
-    'Ich arbeite bei einer Firma und gehe zum Schalter.',
-    'Ich arbeite bei Siemens.',
-    'Fülle morgen eine echte Adresse auf Deutsch aus.',
-    'غدًا املأ عنوانًا حقيقيًا بالألمانية.'),
+    'Ich arbeite bei einer Firma und gehe zum Schalter drei.',
+    'Füllen Sie bitte dieses Formular aus.',
+    'Wiederhole morgen die fünf Sätze: Ich arbeite bei einer Firma. Ich gehe zum Schalter drei. Wir überweisen das Geld auf Ihr Konto. Füllen Sie bitte dieses Formular aus. Die Praxis ist morgen ab acht Uhr geöffnet.',
+    'غدًا راجع الجمل الخمس عن جهة العمل والشبّاك والتحويل والاستمارة ووقت الفتح.',
+    {
+      factFamilies: ['kasus', 'präposition', 'präposition', 'präposition'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Bank und Arbeit',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن جهة العمل والشبّاك والتحويل والاستمارة ووقت الفتح.',
+        prompt: 'اكتب الجمل الخمس عن المصرف والعمل.',
+        promptDe: 'Ich arbeite bei einer Firma. · Ich gehe zum Schalter drei. · Wir überweisen das Geld auf Ihr Konto. · Füllen Sie bitte dieses Formular aus. · Die Praxis ist morgen ab acht Uhr geöffnet.',
+        points: ['Ich arbeite bei einer Firma.', 'Ich gehe zum Schalter drei.', 'Wir überweisen das Geld auf Ihr Konto.', 'Füllen Sie bitte dieses Formular aus.', 'Die Praxis ist morgen ab acht Uhr geöffnet.'],
+        minWords: 32,
+        frage: 'اكتب الجمل الخمس كاملة من دون تبديل bei وzum وauf وaus وab.',
+        familie: 'präposition',
+        hinweise: ['راجع bei einer Firma وzum Schalter drei.', 'استعمل auf Ihr Konto وFormular aus وmorgen ab acht Uhr.']
+      },
+      imitateNearMiss: 'eine',
+      transformHint: 'في الأمر الرسمي ينفصل ausfüllen: Füllen Sie ... aus.',
+      orderAr: 'رتّب جملة واحدة: ابدأ بـ Ich ثم ضع gehe قبل zum Schalter drei.',
+      orderHints: ['ابدأ بـ Ich ثم ضع الفعل gehe.', 'أكمل بـ zum Schalter drei.'],
+      orderSentence: 'Ich gehe zum Schalter drei.',
+      checkOrderSentence: 'Ich gehe zum Schalter drei.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن الذهاب إلى الشبّاك رقم ثلاثة.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich arbeite bei einer Firma وIch gehe zum Schalter drei وWir überweisen das Geld auf Ihr Konto وFüllen Sie bitte dieses Formular aus وDie Praxis ist morgen ab acht Uhr geöffnet.',
+      summaryDe: 'Ich arbeite bei einer Firma. · Ich gehe zum Schalter drei. · Wir überweisen das Geld auf Ihr Konto. · Füllen Sie bitte dieses Formular aus. · Die Praxis ist morgen ab acht Uhr geöffnet.',
+      summaryAr: 'راجع bei einer Firma وzum Schalter drei وauf Ihr Konto وFormular aus وmorgen ab acht Uhr.',
+      summaryRecap: 'Firma Schalter Konto Formular Öffnungszeit'
+    }),
 
   U('a1-u5-l3', 'A1', 'المدرسة والوثائق', 'Schule und Papiere', 'kasus',
     'Am Ende füllst du ein Formular mit Namen, Geburtsort und Familienstand',

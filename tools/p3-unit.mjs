@@ -2083,6 +2083,109 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'genus');
 }
 
+/* ---------- audited A1 bank-and-work lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u5-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich arbeite bei einer Firma.',
+    'Ich gehe zum Schalter drei.',
+    'Wir überweisen das Geld auf Ihr Konto.',
+    'Füllen Sie bitte dieses Formular aus.',
+    'Die Praxis ist morgen ab acht Uhr geöffnet.'
+  ];
+  t('Corpus lesson a1-u5-l2 bounds bank and work to five complete sentences and four directly taught facts',
+    lesson.title.de === 'Bank und Arbeit' && lesson.title.ar === 'المصرف والعمل' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'جهة العمل والشبّاك والتحويل والاستمارة ووقت الفتح' &&
+      lesson.schritte.length === 34 && lesson.wortschatz.length === 28 &&
+      lesson.schritte[0].zeigt.de.includes('nennst du deinen Arbeitgeber') &&
+      lesson.schritte[0].zeigt.de.includes('gehst zum Schalter') &&
+      lesson.schritte[0].zeigt.de.includes('überweist Geld') &&
+      lesson.schritte[0].zeigt.de.includes('füllst ein Formular aus') &&
+      lesson.schritte[0].zeigt.de.includes('verstehst Öffnungszeiten') &&
+      [targets[0], targets[1], targets[2], targets[4]]
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u5-l2 reviews all 28 entries and three corrected mnemonics without rejecting valid company, seit or full-article contexts',
+    lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord['das Konto'].ex === targets[2] && byWord['das Konto'].err.includes('in Ihr Konto') &&
+      byWord['der Automat'].ex.includes('am Automaten') && byWord['der Automat'].ex.includes('aussehen') &&
+      byWord['der Automat'].why.includes('مذكر ضعيف') && byWord.ausfüllen.ex === targets[3] &&
+      byWord.ausfüllen.err.endsWith('Formular an.') &&
+      byWord['der Schalter'].ex === 'Gehen Sie bitte zum Schalter drei.' &&
+      byWord['der Schalter'].err === 'Gehen Sie bitte zur Schalter drei.' &&
+      byWord['der Beamte'].ex.includes('den Beamten') && byWord['der Beamte'].why.includes('مذكر ضعيف') &&
+      byWord['die Papiere'].err.includes('Ihren Papiere') &&
+      byWord['das Praktikum'].ex.includes('bei Siemens') && byWord['das Praktikum'].err.includes('zu Siemens') &&
+      byWord['die Praxis'].ex.startsWith(targets[4]) && byWord['die Praxis'].ex.includes('ist sie offen') &&
+      byWord['die Praxis'].err.includes('morgen seit') && byWord['die Firma'].ex === targets[0] &&
+      byWord['die Firma'].why.includes('داتيف') &&
+      byWord['der Arbeitsplatz'].ex === 'An meinem Arbeitsplatz fehlt ein Drucker.' &&
+      byWord['die Anmeldung'].ex.includes('erledigst') && byWord['der Partner'].ex.includes('Partnerin') &&
+      byWord['die Party'].ex.includes('lustig') && byWord.arbeitslos.ex.includes('selbstständig') &&
+      byWord['der Verkäufer'].ex === 'Der Verkäufer arbeitet im Kaufhaus.' &&
+      tricks.length === 3 && tricks[0].wie.includes('angekreuzt') && tricks[0].wie.includes('angemeldet') &&
+      tricks[0].wie.includes('ausgefüllt') && tricks[1].wie.includes('bei einer Firma arbeiten') &&
+      tricks[1].warum.includes('in der Firma') && tricks[1].warum.includes('لا يُرفض مطلقًا') &&
+      tricks[2].wie.includes('zum Schalter (zu dem)') && tricks[2].wie.includes('zur Bäckerei (zu der)') &&
+      tricks[2].warum.includes('فتبقيان صحيحتين') &&
+      !lessonText.includes('bei لا in مع جهة العمل') && !lessonText.includes('zu dem Schalter drei') &&
+      !lessonText.includes('Die Praxis ist seit acht Uhr geöffnet.') && !lessonText.includes('Was für ein Pech') &&
+      !lessonText.includes('Mein Bruder ist selbstständig') && !lessonText.includes('Das ist normal'));
+  const imitate = lesson.schritte.find(s => s.phase === 'Anwenden' && s.frage && s.frage.art === 'cloze');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u5-l2 aligns strict clozes, valid V2 counter order, 32-word writing, speaking, summary and homework',
+    imitate.zeigt.de === 'Ich arbeite bei ____ Firma.' &&
+      imitate.frage.antworten.join(' ') === 'einer' && imitate.frage.nearMiss.eine &&
+      drill.frage.zeigt === 'Füllen Sie bitte dieses Formular ____.' &&
+      drill.frage.antworten.join(' ') === 'aus' && drill.frage.nearMiss.an &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'an').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'gehe' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.lsk.join(' ') === 'gehe' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'zum', 'Schalter', 'drei.', 'gehe']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 32 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u5-l2 makes 80 percent four of five measurable across future opening, form prefix, counter destination, transfer and employer case',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u5-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Füllen Sie bitte dieses Formular ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'aus' && clozeCheck.frage.nearMiss.an &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'an').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'gehe' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'zum', 'Schalter', 'drei.', 'gehe']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[3].frage.misconceptionFamilies.b === 'präposition' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

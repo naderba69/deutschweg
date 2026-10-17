@@ -51,7 +51,7 @@
     ['a1-u4-l6', 'A1', 'شكل امتحان A1', 'Prüfungsform A1', 'شكل الامتحان', 8, 0, 'مجالات Start Deutsch 1 ومجموع النجاح والسماع والمدة والتهجئة', 'explicit', 'lesson'],
 
     ['a1-u5-l1', 'A1', 'البريد والهاتف', 'Post und Telefon', 'المراسلة', 11, 4, 'بيانات المظروف والرمز البريدي ومفتاح الاتصال والرسالة الهاتفية', 'inductive', 'lesson'],
-    ['a1-u5-l2', 'A1', 'المصرف والعمل', 'Bank und Arbeit', 'المصرف', 11, 4, 'الخدمات وحروف جرها: bei · am · zur', 'inductive', 'lesson'],
+    ['a1-u5-l2', 'A1', 'المصرف والعمل', 'Bank und Arbeit', 'المصرف', 11, 4, 'جهة العمل والشبّاك والتحويل والاستمارة ووقت الفتح', 'inductive', 'lesson'],
     ['a1-u5-l3', 'A1', 'المدرسة والوثائق', 'Schule und Papiere', 'الوثائق', 11, 4, 'الاستمارة الرسمية: bei · Genitiv', 'explicit', 'lesson'],
     ['a1-u5-l4', 'A1', 'البيت والجوار', 'Zuhause und Nachbarschaft', 'السكن', 11, 4, 'أسماء الأماكن بلا أداة: in Halle B', 'inductive', 'lesson'],
     ['a1-u5-l5', 'A1', 'السفر والطريق', 'Reisen und Verkehr', 'السفر', 11, 4, 'المنفصل في السفر: abfahren · einsteigen', 'inductive', 'lesson'],
