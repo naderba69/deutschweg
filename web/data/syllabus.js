@@ -45,7 +45,7 @@
     ['a1-u3-l6', 'A1', 'المواعيد', 'Termine', 'المواعيد', 28, 10, 'طلب موعد وقبوله وتأجيله وإلغاؤه', 'inductive', 'lesson'],
     ['a1-u4-l1', 'A1', 'السكن', 'Wohnen', 'البيت', 28, 10, 'وصف الشقة والغرف والطابق والمساحة', 'inductive', 'lesson'],
     ['a1-u4-l2', 'A1', 'عند الطبيب', 'Beim Arzt', 'الجسم', 28, 10, 'وصف الأعراض وطلب موعد وذكر التحسن', 'inductive', 'lesson'],
-    ['a1-u4-l3', 'A1', 'الطريق', 'Wegbeschreibung', 'الاتجاه', 28, 10, 'rechts وlinks وgeradeaus', 'inductive', 'lesson'],
+    ['a1-u4-l3', 'A1', 'وصف الطريق', 'Wegbeschreibung', 'الاتجاه', 28, 10, 'إرشادات الطريق وتحديد جهة المكان', 'inductive', 'lesson'],
     ['a1-u4-l4', 'A1', 'رسالة قصيرة', 'Kurze Nachricht', 'الكتابة القصيرة', 28, 10, 'شكل الرسالة القصيرة', 'explicit', 'lesson'],
     ['a1-u4-l5', 'A1', 'مراجعة A1', 'Wiederholung A1', 'المراجعة', 20, 10, 'جمع الأنماط لا درسًا جديدًا', 'explicit', 'lesson'],
     ['a1-u4-l6', 'A1', 'شكل امتحان A1', 'Prüfungsform A1', 'شكل الامتحان', 8, 0, 'شكل Start Deutsch 1 لا محاكاة', 'explicit', 'lesson'],

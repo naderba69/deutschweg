@@ -1039,25 +1039,50 @@ module.exports = [
       summaryRecap: 'Kopf Schmerzen Erkältung Termin besser'
     }),
 
-  U('a1-u4-l3', 'A1', 'الطريق', 'Wegbeschreibung', 'lexik-kollokation',
-    'Am Ende erklärst du einen kurzen Weg',
-    'في النهاية تشرح طريقًا قصيرًا.',
+  U('a1-u4-l3', 'A1', 'وصف الطريق', 'Wegbeschreibung', 'lexik-kollokation',
+    'Am Ende verwendest du fünf vollständige Sätze für eine Wegbeschreibung: „Gehen Sie geradeaus.“ · „Biegen Sie an der Ampel links ab.“ · „Nehmen Sie die erste Straße rechts.“ · „Überqueren Sie die Brücke.“ · „Die Apotheke ist auf der linken Seite.“',
+    'في النهاية تستعمل خمس جمل كاملة لوصف الطريق: Gehen Sie geradeaus. وBiegen Sie an der Ampel links ab. وNehmen Sie die erste Straße rechts. وÜberqueren Sie die Brücke. وDie Apotheke ist auf der linken Seite.',
     [
-      ['gehen Sie geradeaus', 'مستقيم geradeaus', 'لا straight', 'gehen Sie straight', 'straight إنجليزية'],
-      ['dann links', 'ثم يسار links', 'لا left', 'dann left', 'left إنجليزية'],
-      ['die erste Straße', 'الشارع الأول erste', 'لا first street', 'die first Straße', 'first إنجليزية'],
-      ['bis zur Ampel', 'حتى الإشارة bis zur', 'لا until the', 'until zur Ampel', 'until إنجليزية']
+      ['Gehen Sie geradeaus.', 'geradeaus ظرف اتجاه يُكتب كلمة واحدة.', 'اكتب geradeaus كلمة واحدة بعد Gehen Sie', 'Gehen Sie gerade aus.', 'نقول geradeaus كلمة واحدة في هذا السياق'],
+      ['Biegen Sie an der Ampel links ab.', 'الفعل abbiegen منفصل في الأمر الرسمي: Biegen في البداية وab في النهاية.', 'ضع Biegen Sie أولًا وab في نهاية الجملة', 'Biegen Sie an der Ampel links.', 'لا تَحذف الجزء المنفصل ab من الفعل abbiegen'],
+      ['Nehmen Sie die erste Straße rechts.', 'بعد die تأتي الصفة الترتيبية في النصب بصيغة erste.', 'استعمل die erste Straße، لا die erst Straße', 'Nehmen Sie die erst Straße rechts.', 'بعد die نقول erste Straße، لا erst Straße'],
+      ['Überqueren Sie die Brücke.', 'الفعل überqueren يأخذ مفعولًا به في النصب؛ Brücke مؤنث فتبقى die Brücke.', 'استعمل die Brücke مفعولًا به بعد überqueren', 'Überqueren Sie der Brücke.', 'بعد überqueren نقول die Brücke، لا der Brücke']
     ],
     [
-      ['Gehen Sie geradeaus.', 'امضوا مستقيمًا', 'Gehen Sie straight', 'مستقيم geradeaus', 'geradeaus'],
-      ['Dann links.', 'ثم يسارًا', 'Dann left', 'يسار links', 'links'],
-      ['Die erste Straße.', 'الشارع الأول', 'Die first Straße', 'الأول erste', 'erste'],
-      ['Bis zur Ampel.', 'حتى الإشارة', 'Until zur Ampel', 'حتى bis', 'Ampel']
+      ['Gehen Sie geradeaus.', 'تابع السير إلى الأمام مباشرةً', 'Gehen Sie gerade aus.', 'geradeaus كلمة واحدة في هذا السياق.', 'geradeaus'],
+      ['Biegen Sie an der Ampel links ab.', 'انعطف يسارًا عند إشارة المرور', 'Biegen Sie an der Ampel links.', 'الفعل المنفصل abbiegen يحتاج ab في النهاية.', 'ab'],
+      ['Nehmen Sie die erste Straße rechts.', 'اسلك الشارع الأول يمينًا', 'Nehmen Sie die erst Straße rechts.', 'بعد die نقول erste Straße.', 'erste'],
+      ['Überqueren Sie die Brücke.', 'اعبر الجسر', 'Überqueren Sie der Brücke.', 'الفعل überqueren يأخذ die Brücke في النصب.', 'Brücke']
     ],
-    'Gehen Sie geradeaus. Dann links bis zur Ampel.',
     'Gehen Sie geradeaus.',
-    'Erkläre morgen einen Weg mit links oder rechts.',
-    'غدًا اشرح طريقًا بـ links أو rechts.'),
+    'Biegen Sie an der Ampel links ab.',
+    'Erklären Sie morgen einen Weg mit diesen fünf Sätzen: Gehen Sie geradeaus. Biegen Sie an der Ampel links ab. Nehmen Sie die erste Straße rechts. Überqueren Sie die Brücke. Die Apotheke ist auf der linken Seite.',
+    'غدًا اشرح طريقًا بهذه الجمل الخمس: Gehen Sie geradeaus. وBiegen Sie an der Ampel links ab. وNehmen Sie die erste Straße rechts. وÜberqueren Sie die Brücke. وDie Apotheke ist auf der linken Seite.',
+    {
+      factFamilies: ['orthographie', 'wortstellung', 'deklination', 'kasus'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze für eine Wegbeschreibung',
+        erklaerung: 'اكتب خمس جمل كاملة: اطلب السير مستقيمًا، والانعطاف يسارًا عند الإشارة، وسلوك الشارع الأول يمينًا، وعبور الجسر، ثم حدّد جهة الصيدلية.',
+        prompt: 'اكتب خمس جمل ألمانية كاملة تصف طريقًا واحدًا.',
+        promptDe: 'Gehen Sie geradeaus. · Biegen Sie an der Ampel links ab. · Nehmen Sie die erste Straße rechts. · Überqueren Sie die Brücke. · Die Apotheke ist auf der linken Seite.',
+        points: ['Gehen Sie geradeaus', 'Biegen Sie an der Ampel links ab', 'Nehmen Sie die erste Straße rechts', 'Überqueren Sie die Brücke', 'Die Apotheke ist auf der linken Seite'],
+        minWords: 27,
+        frage: 'اكتب إرشادات الطريق الخمس بترتيب واضح.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل صيغة الاحترام بالفعل أولًا في الإرشادات.', 'ضع ab في نهاية جملة abbiegen واستعمل auf der linken Seite للموقع.']
+      },
+      imitateNearMiss: 'gerade aus',
+      transformHint: 'في الأمر الرسمي يبدأ الفعل بـBiegen Sie، ويأتي الجزء المنفصل ab في النهاية.',
+      orderAr: 'رتّب جملة موقع واحدة: ابدأ بـDie Apotheke، وضع ist في الموقع الثاني وauf der linken Seite في النهاية.',
+      orderHints: ['ابدأ بـDie Apotheke ثم ضع ist.', 'رتّب عبارة المكان هكذا: auf der linken Seite.'],
+      orderSentence: 'Die Apotheke ist auf der linken Seite.',
+      checkOrderSentence: 'Die Apotheke ist auf der linken Seite.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة واحدة تحدد جهة الصيدلية.',
+      speakAr: 'سجّل عشرين ثانية: قل الجمل الخمس واستعمل Gehen Sie geradeaus وBiegen Sie an der Ampel links ab وNehmen Sie die erste Straße rechts وÜberqueren Sie die Brücke وDie Apotheke ist auf der linken Seite.',
+      summaryDe: 'Gehen Sie geradeaus. · Biegen Sie an der Ampel links ab. · Nehmen Sie die erste Straße rechts. · Überqueren Sie die Brücke. · Die Apotheke ist auf der linken Seite.',
+      summaryAr: 'ابدأ الإرشاد بالفعل في صيغة الاحترام، وافصل ab، واستعمل erste مع Straße وdie Brücke في النصب وauf der linken Seite للموقع.',
+      summaryRecap: 'geradeaus links erste Brücke Seite'
+    }),
 
   U('a1-u4-l4', 'A1', 'رسالة قصيرة', 'Kurze Nachricht', 'register',
     'Am Ende schreibst du eine kurze Nachricht mit Anrede und Gruß',

@@ -1643,6 +1643,89 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
 
+/* ---------- audited A1 directions lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u4-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = ['Gehen Sie geradeaus.', 'Biegen Sie an der Ampel links ab.',
+    'Nehmen Sie die erste Straße rechts.', 'Überqueren Sie die Brücke.',
+    'Die Apotheke ist auf der linken Seite.'];
+  t('Corpus lesson a1-u4-l3 states five bounded direction sentences and teaches the four prerequisite facts as complete German',
+    lesson.title.de === 'Wegbeschreibung' && lesson.title.ar === 'وصف الطريق' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'إرشادات الطريق وتحديد جهة المكان' &&
+      lesson.schritte.length === 34 && lesson.schritte[0].zeigt.de.includes('fünf vollständige Sätze') &&
+      targets.every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      byWord['die Seite'].ex === targets[4]);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u4-l3 keeps all 28 direction entries, precise Arabic, isolated corrections and three usable route mnemonics without the former English mixtures',
+    lesson.wortschatz.length === 28 &&
+      byWord.links.ex === targets[1] && byWord.rechts.ex === targets[2] &&
+      byWord['die Ampel'].why.includes('an der Ampel') &&
+      byWord['das Rathaus'].ar === 'مبنى البلدية / دار البلدية' &&
+      byWord.gegenüber.ex === 'Die Post ist gegenüber der Bank.' &&
+      byWord.gegenüber.why.includes('الداتيف') &&
+      byWord.weit.ex === 'Der Bahnhof ist nicht weit entfernt, sondern nur einen Kilometer.' &&
+      byWord.nah.why.includes('bei der Bank') &&
+      byWord.abbiegen.why.includes('ab في النهاية') &&
+      byWord['das Schild'].why.includes('الترس') &&
+      byWord.laufen.ar.includes('يمشي') && byWord.laufen.ar.includes('يركض') &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[2]) &&
+      tricks[1].wie.includes(targets[1]) && tricks[1].warum.includes('فعل منفصل') &&
+      tricks[2].wie.includes('auf der rechten Seite') && tricks[2].warum.includes('النهاية -en') &&
+      !['Gehen Sie straight', 'Dann left', 'Die first Straße', 'Until zur Ampel',
+        'Dann links.', 'Die erste Straße.', 'Bis zur Ampel.', '"rtb"']
+        .some(x => lessonText.toLowerCase().includes(x.toLowerCase())));
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const points = targets.map(x => x.slice(0, -1));
+  t('Corpus lesson a1-u4-l3 aligns strict clozes, one location-sentence order, five-part writing, speaking, summary and homework',
+    imitate.frage.antworten.join(' ') === 'geradeaus' && imitate.frage.nearMiss['gerade aus'] &&
+      drill.frage.zeigt === 'Nehmen Sie die ____ Straße rechts.' &&
+      drill.frage.antworten.join(' ') === 'erste' && drill.frage.nearMiss.erst &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'erst').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[4] && order.frage.finite === 'ist' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Die Apotheke' &&
+      order.frage.fields.lsk.join(' ') === 'ist' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Die', 'Apotheke', 'auf', 'der', 'linken', 'Seite.', 'ist']).failed === 1 &&
+      writing.frage.points.join(' | ') === points.join(' | ') && writing.frage.minWords === 27 &&
+      points.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u4-l3 makes 80 percent four of five measurable across bridge, first street, pharmacy side, straight ahead and left turn',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u4-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.antworten.join(' ') === 'erste' && clozeCheck.frage.nearMiss.erst &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'erst').ok &&
+      orderCheck.frage.correct.join(' ') === targets[4] && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Die Apotheke' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Die', 'Apotheke', 'auf', 'der', 'linken', 'Seite.', 'ist']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'orthographie' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
