@@ -66,7 +66,7 @@ h1{font-size:22px; margin:4px 0 14px}
   font-size:20px; font-weight:700; line-height:1.6;
   background:#f8fafc; border-inline-start:4px solid var(--brand);
   border-radius:10px; padding:12px 14px; margin:10px 0 14px;
-  word-break:break-word;
+  word-break:break-word; white-space:pre-line;
 }
 .erklaerung{margin:10px 0 14px; font-size:16.5px}
 
@@ -99,6 +99,7 @@ h1{font-size:22px; margin:4px 0 14px}
   text-align:start; background:#fff; border:1.5px solid var(--line);
   border-radius:11px; padding:13px 14px; font-size:16px;
   font-family:inherit; color:inherit; cursor:pointer; transition:.12s;
+  white-space:pre-line;
 }
 .opt:active{transform:scale(.99)}
 .opt.good{background:var(--goodbg); border-color:#4ade80; font-weight:600}
@@ -226,6 +227,6 @@ details.card summary{cursor:pointer; font-weight:700}
 .vocab-say { padding: 2px 8px; }
 .vocab-toggle { margin-top: 4px; }
 .vocab-body { margin-top: 6px; padding: 8px; background: #f8fafc; border-radius: 8px; }
-.vocab-ex { direction: ltr; unicode-bidi: isolate; }
-.vocab-err { direction: ltr; unicode-bidi: isolate; color: #b91c1c; margin-top: 4px; }
+.vocab-ex { direction: ltr; unicode-bidi: isolate; white-space: pre-line; }
+.vocab-err { direction: ltr; unicode-bidi: isolate; color: #b91c1c; margin-top: 4px; white-space: pre-line; }
 .vocab-why { color: #334155; margin-top: 4px; }

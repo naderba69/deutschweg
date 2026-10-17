@@ -1085,24 +1085,51 @@ module.exports = [
     }),
 
   U('a1-u4-l4', 'A1', 'رسالة قصيرة', 'Kurze Nachricht', 'register',
-    'Am Ende schreibst du eine kurze Nachricht mit Anrede und Gruß',
-    'في النهاية تكتب رسالة قصيرة بتحية وختام.',
+    'Am Ende schreibst du eine kurze Nachricht mit fünf Teilen: „Liebe Anna, ich komme später.“ · „Ich komme später.“ · „Kannst du morgen kommen?“ · „Ich warte auf deine Antwort.“ · „Viele Grüße“ mit deinem Namen darunter',
+    'في النهاية تكتب رسالة قصيرة من خمسة أجزاء: Liebe Anna, ich komme später. وIch komme später. وKannst du morgen kommen? وIch warte auf deine Antwort. وViele Grüße مع اسمك تحتها.',
     [
-      ['Liebe Anna', 'للصديقة Liebe', 'Sehr geehrte für eine Freundin ist steif', 'Sehr geehrte Anna als Freundin', 'المقام الصديقي Liebe'],
-      ['Kannst du kommen', 'الطلب المباشر بين الأصدقاء', 'لا Könnten Sie kommen an Anna privat', 'Könnten Sie kommen, Anna privat', 'مع الصديق du'],
-      ['Viele Grüße', 'الختام بين المعارف Viele Grüße', 'لا Mit freundlichen Grüßen an die Freundin als einzige Form', 'Mit freundlichen Grüßen, Anna privat hart', 'الختام الأخف Viele Grüße'],
-      ['der Name am Ende', 'الاسم في الآخر', 'لا تبدأ الرسالة بالاسم وحده', 'Sara, kommst du ohne Anrede', 'التحية أولًا']
+      ['Liebe Anna, ich komme später.', 'في مخاطبة صديقة نقول Liebe Anna، وتفصل الفاصلة النداء عن الجملة.', 'استعمل Liebe مع Anna، وضع فاصلة بعد الاسم', 'Lieber Anna, ich komme später.', 'مع Anna نقول Liebe، لا Lieber'],
+      ['Ich komme später.', 'في الجملة الخبرية يأتي الفعل المصرف komme في الموقع الثاني.', 'ضع komme بعد Ich مباشرةً', 'Ich später komme.', 'في الجملة الرئيسية نقول Ich komme später'],
+      ['Kannst du morgen kommen?', 'سؤال نعم/لا يبدأ بالفعل المصرف Kannst، ويأتي المصدر kommen في النهاية.', 'ابدأ بـKannst du وضع kommen في النهاية', 'Du kannst morgen kommen.', 'نحتاج سؤال نعم/لا هنا؛ لذلك يبدأ بالفعل Kannst'],
+      ['Viele Grüße\nSara', 'صيغة الختام Viele Grüße بلا فاصلة أو نقطة، ويأتي الاسم في السطر التالي.', 'اكتب Viele Grüße ثم اسمك تحته بلا فاصلة بعد Grüße', 'Viele Grüße, Sara.', 'لا نضع فاصلة بعد صيغة الختام الألمانية؛ يأتي الاسم في سطر مستقل']
     ],
     [
-      ['Liebe Anna,', 'عزيزتي آنا', 'Sehr geehrte Anna,', 'للصديقة Liebe', 'Liebe'],
-      ['Kannst du morgen kommen?', 'هل تستطيعين المجيء غدًا؟', 'Könnten Sie morgen kommen, Anna?', 'مع الصديقة du', 'Kannst'],
-      ['Viele Grüße', 'مع تحياتي', 'Mit freundlichen Grüßen an Anna privat', 'بين الأصدقاء Viele Grüße', 'Grüße'],
-      ['Sara', 'الاسم في الختام', 'Unterschrift fehlt hier nicht', 'الختام يحمل الاسم', 'Sara']
+      ['Liebe Anna, ich komme später.', 'عزيزتي آنا، سآتي لاحقًا', 'Lieber Anna, ich komme später.', 'مع Anna نقول Liebe، وبعد الاسم فاصلة.', 'Liebe'],
+      ['Ich komme später.', 'سآتي لاحقًا', 'Ich später komme.', 'الفعل komme يأتي في الموقع الثاني.', 'komme'],
+      ['Kannst du morgen kommen?', 'هل تستطيعين المجيء غدًا؟', 'Du kannst morgen kommen.', 'نحتاج سؤال نعم/لا هنا؛ لذلك يبدأ بالفعل Kannst.', 'Kannst'],
+      ['Viele Grüße\nSara', 'مع تحيات كثيرة، ثم اسم سارة في السطر التالي', 'Viele Grüße, Sara.', 'صيغة الختام بلا فاصلة، والاسم في سطر مستقل.', 'Grüße']
     ],
-    'Liebe Anna, kannst du morgen kommen? Viele Grüße, Sara.',
+    'Liebe Anna, ich komme später.',
     'Kannst du morgen kommen?',
-    'Schreibe morgen drei Zeilen an eine Freundin.',
-    'غدًا اكتب ثلاثة أسطر لصديقة.'),
+    'Schreibe morgen diese kurze Nachricht mit deinem Namen:\nLiebe Anna, ich komme später.\nKannst du morgen kommen?\nIch warte auf deine Antwort.\nViele Grüße\n[dein Name]',
+    'غدًا اكتب هذه الرسالة القصيرة باسمك: ابدأ بـLiebe Anna, ثم اكتب Ich komme später. وKannst du morgen kommen? وIch warte auf deine Antwort. واختم بـViele Grüße واكتب اسمك تحتها بلا علامة ترقيم.',
+    {
+      factFamilies: ['deklination', 'wortstellung', 'wortstellung', 'orthographie'],
+      writing: {
+        zeigt: 'Eine kurze freundschaftliche Nachricht',
+        erklaerung: 'اكتب رسالة قصيرة إلى Anna: نداءً صحيحًا، ومعلومة أنك ستأتي لاحقًا، وسؤالًا عن الغد، وطلب انتظار الجواب، ثم Viele Grüße واسمك في سطر مستقل.',
+        prompt: 'اكتب رسالة قصيرة من الأجزاء الخمسة، ثم ضع اسمك تحت صيغة الختام.',
+        promptDe: 'Liebe Anna, ich komme später. · Ich komme später. · Kannst du morgen kommen? · Ich warte auf deine Antwort. · Viele Grüße\nSara',
+        points: ['Liebe Anna', 'ich komme später', 'Kannst du morgen kommen', 'Ich warte auf deine Antwort', 'Viele Grüße'],
+        minWords: 17,
+        frage: 'اكتب الرسالة الودية القصيرة كاملة.',
+        familie: 'register',
+        hinweise: ['استعمل du مع صديقة، ولا تستعمل صيغة رسمية.', 'لا تضع فاصلة بعد Viele Grüße؛ اكتب الاسم في السطر التالي.']
+      },
+      imitateNearMiss: 'Lieber',
+      transformHint: 'سؤال نعم/لا يبدأ بـKannst، ويأتي المصدر kommen في النهاية.',
+      orderAr: 'رتّب سؤالًا واحدًا: ابدأ بـKannst ثم du، وضع kommen في النهاية.',
+      orderHints: ['ابدأ بـKannst ثم ضع du.', 'ضع morgen في الوسط وkommen في النهاية.'],
+      orderSentence: 'Kannst du morgen kommen?',
+      orderRightBracket: 'kommen?',
+      checkOrderSentence: 'Kannst du morgen kommen?',
+      checkOrderRightBracket: 'kommen?',
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال ودي واحد صحيح.',
+      speakAr: 'سجّل عشرين ثانية: اقرأ الرسالة واستعمل Liebe Anna وich komme später وKannst du morgen kommen وIch warte auf deine Antwort وViele Grüße، ثم قل اسمك.',
+      summaryDe: 'Liebe Anna, ich komme später. · Ich komme später. · Kannst du morgen kommen? · Ich warte auf deine Antwort. · Viele Grüße\nSara',
+      summaryAr: 'ابدأ بنداء ودي مع فاصلة، واكتب المعلومة والسؤال وطلب الجواب، ثم اختم بـViele Grüße والاسم في السطر التالي بلا فاصلة.',
+      summaryRecap: 'Liebe später Kannst Antwort Grüße'
+    }),
 
   U('a1-u4-l5', 'A1', 'مراجعة A1', 'Wiederholung A1', 'pruefstrategie',
     'Am Ende reparierst du vier typische A1-Fehler',

@@ -1726,6 +1726,93 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
 
+/* ---------- audited A1 short-message lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u4-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = ['Liebe Anna, ich komme später.', 'Ich komme später.',
+    'Kannst du morgen kommen?', 'Ich warte auf deine Antwort.'];
+  const closing = 'Viele Grüße\nSara';
+  t('Corpus lesson a1-u4-l4 states five bounded message elements and teaches directly supported salutation, information, question and closing forms',
+    lesson.title.de === 'Kurze Nachricht' && lesson.title.ar === 'رسالة قصيرة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.grammar.item === 'رسالة ودية بنداء ومعلومة وسؤال وختام' &&
+      lesson.schritte.length === 34 && lesson.schritte[0].zeigt.de.includes('fünf Teilen') &&
+      targets.every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      lesson.schritte[0].zeigt.de.includes('„Viele Grüße“ mit deinem Namen darunter') &&
+      targets.slice(0, 3).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[6].zeigt.de === closing);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u4-l4 keeps all 28 reviewed entries, qualified E-Mail gender, exact collocations, unambiguous corrections and three usable message mnemonics',
+    lesson.wortschatz.length === 28 &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord.Liebe.ex === targets[0] && byWord.Liebe.err.startsWith('Lieber Anna') &&
+      byWord['viele Grüße'].ex === closing && byWord['viele Grüße'].err === 'Viele Grüße, Sara.' &&
+      byWord['viele Grüße'].why.includes('لا نضع فاصلة') &&
+      byWord['warten auf'].ex === targets[3] && byWord['warten auf'].blank === 'auf' &&
+      byWord['danke für'].ex === 'Danke für deine Nachricht.' &&
+      byWord['die E-Mail'].why.includes('المعياري في ألمانيا') &&
+      byWord['die E-Mail'].why.includes('المحايد إقليميًا') &&
+      byWord['die E-Mail'].err === 'Ich schreibe einen E-Mail.' &&
+      byWord.grüßen.ex === 'Grüß deine Familie von mir.' && byWord.grüßen.err === 'Grüßen deine Familie von mir.' &&
+      !lessonText.includes('Grüß du deine Familie') &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[0]) &&
+      tricks[1].wie.includes(targets[2]) && tricks[2].wie.includes(closing));
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const css = fs.readFileSync(ROOT + '/web/styles.css', 'utf8');
+  t('Corpus lesson a1-u4-l4 aligns strict clozes, one modal-question order, 17-word writing, speaking, summary, homework and visible closing line breaks',
+    imitate.frage.antworten.join(' ') === 'Liebe' && imitate.frage.nearMiss.Lieber &&
+      drill.frage.zeigt === 'Ich warte ____ deine Antwort.' &&
+      drill.frage.antworten.join(' ') === 'auf' && drill.frage.nearMiss['für'] &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'für').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'Kannst' &&
+      order.frage.verbFirst === true && order.frage.fields.vorfeld.length === 0 &&
+      order.frage.fields.lsk.join(' ') === 'Kannst' && order.frage.fields.rsk.join(' ') === 'kommen?' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['du', 'Kannst', 'morgen', 'kommen?']).failed === 1 &&
+      writing.frage.minWords === 17 && writing.frage.points.length === 5 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      [writing.frage.promptDe, summary.zeigt.de].every(text => text.includes(closing)) &&
+      homework.zeigt.de.includes('Viele Grüße\n[dein Name]') &&
+      ['Liebe Anna', 'ich komme später', 'Kannst du morgen kommen', 'Ich warte auf deine Antwort', 'Viele Grüße']
+        .every(x => speaking.erklaerung.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))) &&
+      /\.zeigt\s*\{[^}]*white-space:pre-line/s.test(css) &&
+      /\.opt\s*\{[^}]*white-space:pre-line/s.test(css) &&
+      css.includes('.vocab-ex { direction: ltr; unicode-bidi: isolate; white-space: pre-line; }'));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u4-l4 makes 80 percent four of five measurable across closing layout, warten auf, modal question, salutation and information order',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u4-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === closing) &&
+      checks[0].frage.optionen.some(o => o.text === 'Viele Grüße, Sara.') &&
+      checks[0].frage.misconceptionFamilies.a === 'orthographie' &&
+      clozeCheck.frage.antworten.join(' ') === 'auf' && clozeCheck.frage.nearMiss['für'] &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'für').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'Kannst' &&
+      orderCheck.frage.verbFirst === true && orderCheck.frage.fields.vorfeld.length === 0 &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['du', 'Kannst', 'morgen', 'kommen?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
