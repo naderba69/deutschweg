@@ -3846,6 +3846,117 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
 }
 
+/* ---------- audited A2 reflexive-verb lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u2-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich wasche mich jeden Morgen.',
+    'Ich wasche mir die Hände.',
+    'Wir treffen uns um sechs.',
+    'Ich ziehe mich schnell an.',
+    'Ich freue mich auf den Urlaub.'
+  ];
+  const taughtFacts = targets.slice(0, 4);
+  t('Corpus lesson a2-u2-l5 bounds reflexive pronouns to five complete accusative, dative, wir, separable and fixed-preposition targets',
+    lesson.title.de === 'Reflexivverben' && lesson.title.ar === 'الأفعال الانعكاسية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar && row.theme === 'العناية والروتين الشخصي' &&
+      row.grammar.item === 'Reflexivpronomen: mich/dich/sich/uns · Akkusativ مقابل Dativ مع جزء الجسم · أفعال منفصلة وحروف ثابتة' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwendest du fünf vollständige Sätze mit reflexiven Pronomen im Akkusativ oder Dativ');
+
+  const expectedWords = [
+    'sich freuen', 'sich interessieren', 'sich ärgern', 'sich erinnern',
+    'sich entscheiden', 'sich treffen', 'sich setzen', 'sich waschen',
+    'sich anziehen', 'sich ausruhen', 'sich beeilen', 'sich langweilen',
+    'sich vorstellen', 'sich kümmern', 'sich verabreden', 'sich umziehen',
+    'sich fühlen', 'sich verletzen', 'sich unterhalten', 'sich gewöhnen',
+    'die Freizeit', 'die Musik', 'der Sport', 'der Termin', 'die Nachricht',
+    'der Urlaub', 'sich ändern', 'lassen', 'die Wäsche', 'packen', 'der Topf'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u2-l5 reviews all 31 entries and three precise mnemonics without rejecting valid non-reflexive meanings or confusing mich with mir',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['sich freuen'].ex === targets[4] && byWord['sich freuen'].why.includes('auf den Urlaub') &&
+      byWord['sich interessieren'].ex.includes('mich für Musik') && byWord['sich ärgern'].ex.includes('sich über den Lärm') &&
+      byWord['sich erinnern'].ex.includes('mich an den Tag') && byWord['sich entscheiden'].ex.includes('uns für den Zug') &&
+      byWord['sich treffen'].ex === targets[2] && byWord['sich setzen'].ex === 'Setz dich bitte hierhin.' &&
+      byWord['sich waschen'].ex === targets[1] && byWord['sich waschen'].why.includes('die Hände') &&
+      byWord['sich anziehen'].ex === targets[3] && byWord['sich ausruhen'].ex.includes('ruhe ich mich aus') &&
+      byWord['sich beeilen'].ex.startsWith('Beeil dich') && byWord['sich langweilen'].ex.includes('langweilen sich') &&
+      byWord['sich vorstellen'].err === 'Darf ich mir vorstellen?' && byWord['sich kümmern'].ex.includes('mich um die Kinder') &&
+      byWord['sich verabreden'].ex.includes('verabreden uns') && byWord['sich umziehen'].err === 'Ich ziehe mir um.' &&
+      byWord['sich umziehen'].why.includes('Ich ziehe um') && byWord['sich fühlen'].ex.includes('fühle mich gut') &&
+      byWord['sich verletzen'].ex.includes('hat sich beim Sport verletzt') && byWord['sich unterhalten'].ex.includes('uns über den Film') &&
+      byWord['sich gewöhnen'].ex.includes('mich an das Wetter') && byWord['die Freizeit'].ex.includes('interessiere ich mich') &&
+      byWord['die Musik'].ex.includes('mich für Musik') && byWord['der Sport'].ex.includes('sich für Sport') &&
+      byWord['der Termin'].ex === 'Wir treffen uns vor dem Termin.' && byWord['die Nachricht'].why.includes('خبر وصل') &&
+      byWord['der Urlaub'].why.includes('عطلة قادمة') && byWord['sich ändern'].ex.includes('ändert sich') &&
+      byWord.lassen.ex === 'Lass dich nicht ärgern!' && byWord['die Wäsche'].ex.includes('meine Wäsche') &&
+      byWord.packen.ex.includes('mir den Rucksack') && byWord['der Topf'].ex.includes('mir im Topf eine Suppe') &&
+      tricks.length === 3 && tricks[0].trick.includes('ich mich') && tricks[0].trick.includes('wir uns') &&
+      tricks[0].wie.includes('Du freust dich') && tricks[0].warum.includes('لا نستعمل sich مع ich أو wir') &&
+      tricks[1].trick.includes('mich') && tricks[1].trick.includes('mir') && tricks[1].wie.includes('die Hände') &&
+      tricks[1].warum.includes('المفعول به في النصب') && tricks[2].trick.includes('sich freuen auf') &&
+      tricks[2].trick.includes('sich interessieren für') && tricks[2].trick.includes('sich gewöhnen an') &&
+      !lesson.wortschatz.some(it => it.err === 'Ich ziehe um.') && !lessonText.includes('Wir treffen uns für den Termin.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u2-l5 aligns strict uns, mich and mir clozes, one complete wir order, 26-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Wir treffen ____ um sechs.' && wordCloze1.frage.antworten.join(' ') === 'uns' &&
+      wordCloze1.frage.nearMiss.sich && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'sich').ok &&
+      wordCloze2.frage.zeigt === 'Ich interessiere ____ für Musik.' && wordCloze2.frage.antworten.join(' ') === 'mich' &&
+      wordCloze2.frage.nearMiss.mir && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'mir').ok &&
+      imitate.zeigt.de === 'Ich wasche ____ jeden Morgen.' && imitate.frage.antworten.join(' ') === 'mich' &&
+      imitate.frage.nearMiss.mir && !win.DW.renderers.judgeCloze(imitate.frage, 'mir').ok &&
+      drill.frage.zeigt === 'Ich wasche ____ die Hände.' && drill.frage.antworten.join(' ') === 'mir' &&
+      drill.frage.nearMiss.mich && !win.DW.renderers.judgeCloze(drill.frage, 'mich').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'treffen' &&
+      order.frage.fields.vorfeld.join(' ') === 'Wir' && order.frage.fields.lsk.join(' ') === 'treffen' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Wir', 'uns', 'um', 'sechs.', 'treffen']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 26 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u2-l5 makes 80 percent four of five measurable across separable order, mir, full wir order, freuen auf and mich',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u2-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich ziehe schnell mich an.') &&
+      checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.antworten.join(' ') === 'mir' && clozeCheck.frage.nearMiss.mich &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'mich').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'treffen' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Wir' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Wir', 'uns', 'um', 'sechs.', 'treffen']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[4]) && checks[3].frage.misconceptionFamilies.b === 'präposition' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

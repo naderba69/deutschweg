@@ -452,25 +452,50 @@ module.exports = [
       summaryRecap: 'Akkusativ e en'
     }),
 
-  U('a2-u2-l5', 'A2', 'الأفعال الانعكاسية', 'Reflexiv', 'konjugation',
-    'Am Ende benutzt du mich und mir bei reflexiven Verben',
-    'في النهاية تستعمل mich وmir مع الأفعال الانعكاسية.',
+  U('a2-u2-l5', 'A2', 'الأفعال الانعكاسية', 'Reflexivverben', 'kasus',
+    'Am Ende verwendest du fünf vollständige Sätze mit reflexiven Pronomen im Akkusativ oder Dativ',
+    'في النهاية تستعمل ضمائر انعكاسية في النصب أو الداتيف ضمن خمس جمل كاملة.',
     [
-      ['ich wasche mich', 'المفعول الشخص نفسه نصب', 'nicht ich wasche mir die Hände falsch hier', 'ich wasche mir allein', 'غسل النفس mich'],
-      ['ich wasche mir die Hände', 'جزء الجسم يأخذ داتيف', 'mich die Hände خطأ', 'ich wasche mich die Hände', 'الجزء mir'],
-      ['du freust dich', 'freuen يأخذ dich', 'dir هنا خطأ', 'du freust dir', 'freuen نصب'],
-      ['kein Reflexiv vergessen', 'الضمير جزء من الفعل', 'ich freue auf dich ohne mich ناقص', 'ich freue auf dich', 'الضمير مفقود']
+      ['Ich wasche mich jeden Morgen.', 'تستعمل mich عندما يعود الفعل إلى الفاعل ولا يوجد مفعول به آخر', 'مع ich ومن دون مفعول به آخر نقول ich wasche mich', 'Ich wasche mir jeden Morgen.', 'من دون مفعول به آخر نقول mich لا mir'],
+      ['Ich wasche mir die Hände.', 'تستعمل mir عندما يكون جزء الجسم هو المفعول به في النصب', 'die Hände مفعول به في النصب، لذلك يأتي ضمير الشخص في الداتيف mir', 'Ich wasche mich die Hände.', 'مع die Hände نقول mir لا mich'],
+      ['Wir treffen uns um sechs.', 'تطابق الضمير الانعكاسي مع الفاعل wir', 'مع wir يأتي الضمير uns: Wir treffen uns', 'Wir treffen sich um sechs.', 'مع wir نقول uns لا sich'],
+      ['Ich ziehe mich schnell an.', 'تضع الضمير في الوسط وسابقة الفعل المنفصل في النهاية', 'في الجملة الرئيسية نقول ziehe mich ... an', 'Ich ziehe schnell mich an.', 'الترتيب الطبيعي هنا: Ich ziehe mich schnell an']
     ],
     [
-      ['Ich wasche mich.', 'أغتسل', 'Ich wasche mir', 'غسل النفس mich', 'mich'],
-      ['Ich wasche mir die Hände.', 'أغسل يدي', 'Ich wasche mich die Hände', 'جزء الجسم mir', 'mir'],
-      ['Du freust dich.', 'أنت تفرح', 'Du freust dir', 'freuen مع dich', 'dich'],
-      ['Ich interessiere mich für Musik.', 'أهتم بالموسيقى', 'Ich interessiere für Musik', 'الضمير مفقود', 'mich']
+      ['Ich wasche mich jeden Morgen.', 'أغتسل كل صباح', 'Ich wasche mir jeden Morgen.', 'من دون مفعول به آخر نقول mich', 'mich'],
+      ['Ich wasche mir die Hände.', 'أغسل يديّ', 'Ich wasche mich die Hände.', 'لأن die Hände مفعول به في النصب نقول mir', 'mir'],
+      ['Wir treffen uns um sechs.', 'نلتقي عند الساعة السادسة', 'Wir treffen sich um sechs.', 'مع wir نستخدم uns', 'uns'],
+      ['Ich ziehe mich schnell an.', 'أرتدي ملابسي بسرعة', 'Ich ziehe schnell mich an.', 'يأتي mich قبل الظرف وقبل السابقة النهائية an', 'mich']
     ],
-    'Ich wasche mir die Hände und ich interessiere mich für Musik.',
-    'Ich wasche mir die Hände.',
-    'Bilde morgen mich und mir je einmal.',
-    'غدًا كوّن mich وmir مرة لكل.'),
+    'Ich freue mich auf den Urlaub.',
+    'Ich freue mich auf den Urlaub.',
+    'Wiederhole morgen die fünf Sätze: Ich wasche mich jeden Morgen. Ich wasche mir die Hände. Wir treffen uns um sechs. Ich ziehe mich schnell an. Ich freue mich auf den Urlaub.',
+    'غدًا راجع الجمل الخمس مع mich وmir وuns والفعل المنفصل وحرف الجر الثابت.',
+    {
+      factFamilies: ['kasus', 'kasus', 'kasus', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf Sätze mit Reflexivpronomen',
+        erklaerung: 'اكتب الجمل الخمس كاملة بالضمير والترتيب وحرف الجر الصحيح.',
+        prompt: 'اكتب الجمل الخمس: mich من دون مفعول آخر، وmir مع جزء الجسم، وuns مع wir، وفعلًا منفصلًا، وsich freuen auf.',
+        promptDe: 'Ich wasche mich jeden Morgen. · Ich wasche mir die Hände. · Wir treffen uns um sechs. · Ich ziehe mich schnell an. · Ich freue mich auf den Urlaub.',
+        points: ['Ich wasche mich jeden Morgen.', 'Ich wasche mir die Hände.', 'Wir treffen uns um sechs.', 'Ich ziehe mich schnell an.', 'Ich freue mich auf den Urlaub.'],
+        minWords: 26,
+        frage: 'اكتب الجمل الخمس كاملة مع mich وmir وuns وan وauf.',
+        familie: 'kasus',
+        hinweise: ['طابق الضمير مع الفاعل، وميّز mich من mir عند وجود جزء من الجسم.', 'ضع سابقة الفعل المنفصل في النهاية واحفظ حرف الجر مع الفعل.']
+      },
+      imitateNearMiss: 'mir',
+      transformHint: 'مع sich freuen على حدث منتظر نقول mich auf den Urlaub.',
+      orderAr: 'رتّب الجملة: Wir ثم treffen ثم uns ثم um sechs.',
+      orderHints: ['ابدأ بـ Wir وضع treffen في الموضع الثاني.', 'ضع uns بعد الفعل ثم اختم بـ um sechs.'],
+      orderSentence: 'Wir treffen uns um sechs.',
+      checkOrderSentence: 'Wir treffen uns um sechs.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة مع wir وuns.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich wasche mich jeden Morgen وIch wasche mir die Hände وWir treffen uns um sechs وIch ziehe mich schnell an وIch freue mich auf den Urlaub.',
+      summaryDe: 'Ich wasche mich jeden Morgen. · Ich wasche mir die Hände. · Wir treffen uns um sechs. · Ich ziehe mich schnell an. · Ich freue mich auf den Urlaub.',
+      summaryAr: 'راجع الجمل الخمس: mich من دون مفعول آخر، وmir مع die Hände، وuns مع wir، وmich ... an، وmich auf den Urlaub.',
+      summaryRecap: 'mich mir uns Reflexiv'
+    }),
 
   U('a2-u2-l6', 'A2', 'ماضي sein وhaben', 'Präteritum sein/haben', 'konjugation',
     'Am Ende benutzt du war und hatte für die Vergangenheit',
