@@ -767,25 +767,49 @@ module.exports = [
       summaryRecap: 'kostet Euro teuer Größe anprobieren'
     }),
 
-  U('a1-u3-l3', 'A1', 'يومي', 'Tagesablauf', 'wortstellung',
-    'Am Ende erzählst du drei Punkte deines Tages in der richtigen Reihenfolge',
-    'في النهاية تحكي ثلاث نقاط من يومك بالترتيب.',
+  U('a1-u3-l3', 'A1', 'الروتين اليومي', 'Tagesablauf', 'wortstellung',
+    'Am Ende erzählst du deinen Tagesablauf mit fünf vollständigen Sätzen: „Zuerst stehe ich um sieben Uhr auf.“ · „Dann putze ich die Zähne.“ · „Danach fahre ich mit der U-Bahn zur Arbeit.“ · „Nach der Arbeit ruhe ich mich aus.“ · „Zum Schluss gehe ich schlafen.“',
+    'في النهاية تحكي روتينك اليومي بخمس جمل كاملة: Zuerst stehe ich um sieben Uhr auf. وDann putze ich die Zähne. وDanach fahre ich mit der U-Bahn zur Arbeit. وNach der Arbeit ruhe ich mich aus. وZum Schluss gehe ich schlafen.',
     [
-      ['zuerst', 'أولًا zuerst', 'لا first dann خليط', 'first stehe ich', 'first ليست الرابط'],
-      ['dann', 'ثم dann والفعل ثانيًا', 'dann ich stehe يكسر V2', 'dann ich stehe auf', 'الفعل يجب أن يكون ثانيًا'],
-      ['danach', 'بعد ذلك danach', 'after das خليط', 'after das lerne ich', 'after إنجليزية'],
-      ['zum Schluss', 'في النهاية zum Schluss', 'لا at the end', 'at the Schluss', 'الإطار zum Schluss']
+      ['Zuerst stehe ich um sieben Uhr auf.', 'تأتي Zuerst في الموقع الأول، والفعل المصرف stehe ثانيًا، والبادئة auf في النهاية.', 'بعد Zuerst يأتي الفعل قبل ich', 'Zuerst ich stehe um sieben Uhr auf.', 'نقول Zuerst stehe ich، لا Zuerst ich stehe'],
+      ['Dann putze ich die Zähne.', 'تملأ Dann الموقع الأول؛ لذلك يأتي الفعل putze قبل الفاعل ich.', 'بعد Dann يبقى الفعل المصرف في الموقع الثاني', 'Dann ich putze die Zähne.', 'نقول Dann putze ich، لا Dann ich putze'],
+      ['Zum Schluss gehe ich schlafen.', 'بعد Zum Schluss يأتي الفعل المصرف gehe ثم الفاعل ich، ويأتي schlafen بلا zu.', 'نقول gehe ich schlafen', 'Zum Schluss ich gehe schlafen.', 'نقول Zum Schluss gehe ich، لا Zum Schluss ich gehe'],
+      ['Danach fahre ich mit der U-Bahn zur Arbeit.', 'بعد Danach يأتي الفعل المصرف fahre قبل ich، ومع mit نستعمل der U-Bahn.', 'بعد Danach يأتي الفعل قبل ich', 'Danach ich fahre mit der U-Bahn zur Arbeit.', 'نقول Danach fahre ich، لا Danach ich fahre']
     ],
     [
-      ['Zuerst stehe ich auf.', 'أولًا أستيقظ', 'First stehe ich auf', 'أولًا zuerst', 'Zuerst'],
-      ['Dann frühstücke ich.', 'ثم أفطر', 'Dann ich frühstücke', 'الفعل ثانيًا بعد Dann', 'frühstücke'],
-      ['Danach lerne ich.', 'بعد ذلك أدرس', 'After das lerne ich', 'بعد ذلك danach', 'Danach'],
-      ['Zum Schluss schlafe ich.', 'في النهاية أنام', 'At the Schluss schlafe ich', 'الإطار Zum Schluss', 'Schluss']
+      ['Zuerst stehe ich um sieben Uhr auf.', 'أولًا أستيقظ في الساعة السابعة', 'Zuerst ich stehe um sieben Uhr auf.', 'بعد Zuerst يأتي الفعل قبل ich، وتأتي auf في النهاية.', 'Zuerst'],
+      ['Dann putze ich die Zähne.', 'ثم أنظف أسناني', 'Dann ich putze die Zähne.', 'بعد Dann نقول putze ich.', 'putze'],
+      ['Zum Schluss gehe ich schlafen.', 'في النهاية أذهب للنوم', 'Zum Schluss ich gehe schlafen.', 'بعد Zum Schluss نقول gehe ich schlafen.', 'Schluss'],
+      ['Danach fahre ich mit der U-Bahn zur Arbeit.', 'بعد ذلك أذهب إلى العمل بالمترو', 'Danach ich fahre mit der U-Bahn zur Arbeit.', 'بعد Danach نقول fahre ich، ومع mit نقول der U-Bahn.', 'Danach']
     ],
-    'Zuerst stehe ich auf. Dann frühstücke ich.',
-    'Zuerst stehe ich auf.',
-    'Erzähle morgen drei Punkte mit zuerst und dann.',
-    'غدًا احكِ ثلاث نقاط مع zuerst وdann.'),
+    'Zuerst stehe ich um sieben Uhr auf. Dann putze ich die Zähne.',
+    'Danach fahre ich mit der U-Bahn zur Arbeit.',
+    'Schreibe morgen fünf Sätze über den Ablauf deines Tages mit Zuerst, Dann, Danach, Nach der Arbeit und Zum Schluss.',
+    'غدًا اكتب خمس جمل عن سير يومك مستعملًا Zuerst وDann وDanach وNach der Arbeit وZum Schluss.',
+    {
+      writing: {
+        zeigt: 'Fünf Sätze vom Tagesbeginn bis zum Tagesende',
+        erklaerung: 'اكتب خمس جمل كاملة ومرتبة: الاستيقاظ، وتنظيف الأسنان، والذهاب إلى العمل، والراحة بعد العمل، ثم النوم.',
+        prompt: 'اكتب خمس جمل ألمانية كاملة عن روتين يومي واحد.',
+        promptDe: 'Zuerst stehe ich um sieben Uhr auf. · Dann putze ich die Zähne. · Danach fahre ich mit der U-Bahn zur Arbeit. · Nach der Arbeit ruhe ich mich aus. · Zum Schluss gehe ich schlafen.',
+        points: ['Zuerst', 'Dann', 'Danach', 'Nach der Arbeit', 'Zum Schluss'],
+        minWords: 31,
+        frage: 'اكتب الجمل الخمس بترتيب يومي واضح.',
+        familie: 'wortstellung',
+        hinweise: ['ابدأ كل مرحلة برابطها الزمني.', 'ضع الفعل المصرف مباشرة بعد الرابط، وافصل بادئة الفعل عند الحاجة.']
+      },
+      imitateNearMiss: 'Zuerste',
+      transformHint: 'بعد Danach يأتي الفعل fahre قبل ich، ومع mit نقول der U-Bahn.',
+      orderAr: 'رتّب جملة واحدة: Zuerst ثم stehe ثم ich، وضع auf في النهاية.',
+      orderHints: ['ابدأ بـZuerst ثم ضع stehe في الموقع الثاني.', 'ضع ich بعد stehe، واترك auf في نهاية الجملة.'],
+      orderSentence: 'Zuerst stehe ich um sieben Uhr auf.',
+      checkOrderSentence: 'Zum Schluss gehe ich schlafen.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة يومية واحدة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل خمس جمل عن يومك مع Zuerst وDann وDanach وNach der Arbeit وZum Schluss.',
+      summaryDe: 'Zuerst stehe ich um sieben Uhr auf. · Dann putze ich die Zähne. · Danach fahre ich mit der U-Bahn zur Arbeit. · Nach der Arbeit ruhe ich mich aus. · Zum Schluss gehe ich schlafen.',
+      summaryAr: 'رتّب اليوم باستعمال Zuerst وDann وDanach وNach der Arbeit وZum Schluss، وضع الفعل المصرف في الموقع الثاني.',
+      summaryRecap: 'Zuerst Dann Danach Arbeit Schluss'
+    }),
 
   U('a1-u3-l4', 'A1', 'الماضي مع haben', 'Perfekt mit haben', 'konjugation',
     'Am Ende bildest du das Perfekt mit haben',

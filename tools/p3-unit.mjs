@@ -1131,6 +1131,93 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === 'Das macht zehn Euro.'));
 }
 
+/* ---------- audited A1 daily-routine lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u3-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  t('Corpus lesson a1-u3-l3 states five bounded daily-routine sentences and teaches each as complete German',
+    lesson.title.de === 'Tagesablauf' && lesson.title.ar === 'الروتين اليومي' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      ['fünf vollständigen Sätzen', 'Zuerst stehe ich um sieben Uhr auf.',
+        'Dann putze ich die Zähne.', 'Danach fahre ich mit der U-Bahn zur Arbeit.',
+        'Nach der Arbeit ruhe ich mich aus.', 'Zum Schluss gehe ich schlafen.']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      ['Zuerst stehe ich um sieben Uhr auf.', 'Dann putze ich die Zähne.',
+        'Zum Schluss gehe ich schlafen.', 'Danach fahre ich mit der U-Bahn zur Arbeit.']
+        .every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u3-l3 keeps all 28 routine entries, reflexive forms, standard variants and Arabic meanings accurate without English shortcuts',
+    lesson.wortschatz.length === 28 &&
+      byWord.zuerst.ex === 'Zuerst stehe ich um sieben Uhr auf.' &&
+      byWord.dann.err === 'Dann ich putze die Zähne.' &&
+      byWord.losgehen.pl === 'geht los · ging los' && byWord.losgehen.blank === 'los' &&
+      byWord['die Zähne putzen'].pl === 'putzt die Zähne · putzte die Zähne' &&
+      byWord['sich freuen'].why.includes('sich auf etwas freuen') &&
+      byWord['die U-Bahn'].ex === 'Danach fahre ich mit der U-Bahn zur Arbeit.' &&
+      byWord['zu Fuß'].ar === 'سيرًا على الأقدام' &&
+      byWord['sich setzen'].err === 'Ich setzt mich an den Tisch.' &&
+      byWord['schlafen gehen'].pl === 'geht schlafen · ging schlafen' &&
+      byWord.sauber.err === 'Mein Zimmer ist sauberes.' &&
+      byWord.backen.pl === 'bäckt/backt · backte/buk' &&
+      byWord['das Radio'].why.includes('إقليميًا صيغة der Radio') &&
+      tricks[0].wie === 'zuerst → dann → danach → zum Schluss.' &&
+      tricks[1].wie === 'Um acht | gehe | ich | los.' &&
+      tricks[2].wie === 'Nach der Arbeit | ruhe | ich mich | aus.' &&
+      !['First stehe', 'first stehe', 'After das', 'after das',
+        'At the', 'at the', '"rtb"'].some(x => lessonText.includes(x)));
+  const model = lesson.schritte.find(s => s.id === 's15');
+  const imitate = lesson.schritte.find(s => s.id === 's16');
+  const transform = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  const markers = ['Zuerst', 'Dann', 'Danach', 'Nach der Arbeit', 'Zum Schluss'];
+  t('Corpus lesson a1-u3-l3 aligns strict routine clozes, one-sentence order, five-part writing, speaking, summary and homework',
+    model.zeigt.de === 'Zuerst stehe ich um sieben Uhr auf. Dann putze ich die Zähne.' &&
+      imitate.frage.antworten.join(' ') === 'Zuerst' && imitate.frage.nearMiss.Zuerste &&
+      transform.zeigt.de === 'Danach fahre ich mit der U-Bahn zur Arbeit.' &&
+      transform.hinweise[1].includes('der U-Bahn') &&
+      drill.frage.zeigt === 'Nach der Arbeit ____ ich mich aus.' &&
+      drill.frage.antworten.join(' ') === 'ruhe' && drill.frage.nearMiss.ruhen &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'ruhen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === 'Zuerst stehe ich um sieben Uhr auf.' &&
+      order.frage.finite === 'stehe' && order.frage.fields.vorfeld.join(' ') === 'Zuerst' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Zuerst', 'ich', 'stehe', 'um', 'sieben', 'Uhr', 'auf.']).failed === 1 &&
+      writing.frage.points.join(' | ') === 'Zuerst | Dann | Danach | Nach der Arbeit | Zum Schluss' &&
+      writing.frage.minWords === 31 &&
+      markers.every(x => [writing.frage.promptDe, speaking.erklaerung, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u3-l3 makes 80 percent four of five measurable across the five ordered routine stages',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u3-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === 'Danach fahre ich mit der U-Bahn zur Arbeit.') &&
+      clozeCheck.frage.zeigt === 'Nach der Arbeit ____ ich mich aus.' &&
+      clozeCheck.frage.antworten.join(' ') === 'ruhe' && clozeCheck.frage.nearMiss.ruhen &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'ruhen').ok &&
+      orderCheck.frage.correct.join(' ') === 'Zum Schluss gehe ich schlafen.' &&
+      orderCheck.frage.finite === 'gehe' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Zum Schluss' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Zum', 'Schluss', 'ich', 'gehe', 'schlafen.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Zuerst stehe ich um sieben Uhr auf.') &&
+      checks[4].frage.optionen.some(o => o.text === 'Dann putze ich die Zähne.'));
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
