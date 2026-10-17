@@ -77,7 +77,7 @@
     ['السفر: التذكرة وتغيير القطار والإقامة', 'Reisen: Fahrkarte, Umsteigen und Unterkunft', 'السفر والمواصلات والإقامة', 'Fahrkarte/Ticket · hin und zurück · Verspätung haben · müssen + umsteigen · ein Zimmer buchen', 'explicit', 35, 13],
     ['الصحة: الأعراض وموعد الطبيب والأدوية', 'Gesundheit: Beschwerden, Arzttermin und Medikamente', 'الصحة والرعاية الطبية', 'Mir ist schlecht · Fieber haben · einen Termin beim Arzt brauchen · dreimal täglich · sich besser fühlen', 'explicit', 31, 13],
     ['العمل: البحث عن وظيفة والتقديم وساعات الدوام', 'Arbeit: Stellensuche, Bewerbung und Arbeitszeit', 'العمل والتقديم والتوظيف', 'eine Stelle in Teilzeit suchen · eine Bewerbung schreiben · den Lebenslauf mitschicken · um zehn Uhr · bei einer Firma/in der Abteilung · von … bis', 'explicit', 31, 13],
-    ['المدرسة', 'Schule', 'التعلم', 'حديث عن دورة', 'inductive', 36, 13],
+    ['الدراسة: الدورة والدرس والواجب والامتحان', 'Lernen: Kurs, Unterricht, Hausaufgaben und Prüfung', 'الدراسة وتنظيم الدورة والتقييم', 'im September · um acht Uhr · ins/in das Heft · Können Sie … erklären? · eine Prüfung bestehen', 'explicit', 36, 13],
     ['الأعياد', 'Feste', 'الاحتفال', 'دعوة ورد', 'inductive', 33, 13],
     ['الملابس', 'Kleidung', 'الملابس', 'وصف ما ألبس', 'inductive', 31, 13],
     ['الطقس', 'Wetter', 'الطقس', 'جملة طقس', 'inductive', 33, 13],

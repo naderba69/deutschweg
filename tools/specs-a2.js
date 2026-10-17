@@ -814,25 +814,50 @@ module.exports = [
       summaryRecap: 'Stelle Bewerbung Gespräch Arbeitsplatz Arbeitszeit'
     }),
 
-  U('a2-u4-l1', 'A2', 'المدرسة', 'Schule', 'lexik-kollokation',
-    'Am Ende sprichst du über einen Kurs',
-    'في النهاية تتحدث عن دورة.',
+  U('a2-u4-l1', 'A2', 'الدراسة: الدورة والدرس والواجب والامتحان', 'Lernen: Kurs, Unterricht, Hausaufgaben und Prüfung', 'lexik-kollokation',
+    'Am Ende verwendest du fünf vollständige Sätze zu Kursbeginn, Unterrichtszeit, Hausaufgaben, einer Bitte und einem Prüfungsergebnis',
+    'في النهاية تستعمل خمس جمل كاملة عن بداية الدورة ووقت الدرس والواجب وطلب الشرح ونتيجة الامتحان.',
     [
-      ['der Kurs', 'الدورة Kurs', 'لا course', 'der Course', 'Course إنجليزية'],
-      ['die Hausaufgabe', 'الواجب Hausaufgabe', 'لا homework', 'die Homework', 'Homework إنجليزية'],
-      ['die Pause', 'الاستراحة Pause', 'لا break ككلمة وحيدة', 'die Break', 'Break إنجليزية'],
-      ['ich verstehe das nicht', 'عدم الفهم إطار ثابت', 'لا I understand not', 'ich understand das nicht', 'understand إنجليزية']
+      ['Mein Kurs beginnt im September.', 'تحدد شهر بداية الدورة باستعمال im', 'مع اسم الشهر نقول im September', 'Mein Kurs beginnt in September.', 'نقول im September'],
+      ['Der Unterricht beginnt um acht Uhr.', 'تحدد وقت بداية الدرس باستعمال um مع الساعة', 'مع الساعة المحددة نقول um acht Uhr', 'Der Unterricht beginnt an acht Uhr.', 'نقول um acht Uhr'],
+      ['Ich schreibe die Hausaufgaben ins Heft.', 'تدوّن الواجبات داخل الدفتر باستعمال ins', 'ins اختصار in das ويعبّر هنا عن الاتجاه إلى داخل الدفتر', 'Ich schreibe die Hausaufgaben in den Heft.', 'Heft محايد؛ نقول ins Heft أو in das Heft'],
+      ['Können Sie die Regel bitte noch einmal erklären?', 'تطلب شرح القاعدة مرة أخرى بصيغة مهذبة', 'بعد Können يأتي المصدر erklären في نهاية السؤال', 'Können Sie die Regel bitte noch einmal erklärt?', 'بعد modal نستخدم المصدر erklären']
     ],
     [
-      ['Der Kurs beginnt um acht.', 'تبدأ الدورة في الثامنة', 'Der Course beginnt um acht', 'الدورة Kurs', 'Kurs'],
-      ['Die Hausaufgabe ist lang.', 'الواجب طويل', 'Die Homework ist lang', 'الواجب Hausaufgabe', 'Hausaufgabe'],
-      ['In der Pause trinke ich Wasser.', 'في الاستراحة أشرب ماء', 'In der Break trinke ich Wasser', 'الاستراحة Pause', 'Pause'],
-      ['Ich verstehe das nicht.', 'لا أفهم هذا', 'Ich understand das nicht', 'الفهم verstehen', 'verstehe']
+      ['Mein Kurs beginnt im September.', 'تبدأ دورتي في سبتمبر', 'Mein Kurs beginnt in September.', 'مع الشهر نقول im September', 'Kurs'],
+      ['Der Unterricht beginnt um acht Uhr.', 'يبدأ الدرس في الساعة الثامنة', 'Der Unterricht beginnt an acht Uhr.', 'مع الساعة المحددة نقول um acht Uhr', 'Unterricht'],
+      ['Ich schreibe die Hausaufgaben ins Heft.', 'أدوّن الواجبات في الدفتر', 'Ich schreibe die Hausaufgaben ins Hefte.', 'بعد ins يأتي هنا المفرد Heft', 'Hausaufgaben'],
+      ['Können Sie die Regel bitte noch einmal erklären?', 'هل يمكنكم شرح القاعدة مرة أخرى من فضلكم؟', 'Können Sie die Regel bitte noch einmal erklärt?', 'بعد Können نستخدم المصدر erklären', 'erklären']
     ],
-    'Der Kurs beginnt um acht. Ich verstehe das nicht.',
-    'Ich verstehe das nicht.',
-    'Sage morgen einen Satz über deinen Kurs.',
-    'غدًا قل جملة عن دورتك.'),
+    'Mein Kurs beginnt im September. Der Unterricht beginnt um acht Uhr. Ich schreibe die Hausaufgaben ins Heft. Können Sie die Regel bitte noch einmal erklären? Ich habe die Prüfung bestanden.',
+    'Ich habe die Prüfung bestanden.',
+    'Wiederhole morgen die fünf Sätze: Mein Kurs beginnt im September. Der Unterricht beginnt um acht Uhr. Ich schreibe die Hausaufgaben ins Heft. Können Sie die Regel bitte noch einmal erklären? Ich habe die Prüfung bestanden.',
+    'غدًا راجع الجمل الخمس عن الدورة والدرس والواجب وطلب الشرح ونتيجة الامتحان.',
+    {
+      factFamilies: ['präposition', 'präposition', 'kasus', 'konjugation'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze über Lernen und Prüfung',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن بداية الدورة ووقت الدرس والواجب وطلب الشرح والنجاح في الامتحان.',
+        prompt: 'اكتب الجمل الخمس مستعملًا تراكيب الدراسة الصحيحة.',
+        promptDe: 'Mein Kurs beginnt im September. · Der Unterricht beginnt um acht Uhr. · Ich schreibe die Hausaufgaben ins Heft. · Können Sie die Regel bitte noch einmal erklären? · Ich habe die Prüfung bestanden.',
+        points: ['Mein Kurs beginnt im September.', 'Der Unterricht beginnt um acht Uhr.', 'Ich schreibe die Hausaufgaben ins Heft.', 'Können Sie die Regel bitte noch einmal erklären?', 'Ich habe die Prüfung bestanden.'],
+        minWords: 30,
+        frage: 'اكتب جمل الدراسة الخمس كاملة.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل im مع الشهر وum مع الساعة وins Heft مع الاتجاه.', 'ضع erklären بعد Können، واستعمل habe … bestanden للنجاح.']
+      },
+      imitateNearMiss: 'Kurse',
+      transformHint: 'في Perfekt نقول Ich habe die Prüfung bestanden.',
+      orderAr: 'رتّب وقت الدرس: الفعل beginnt في الموضع الثاني وum مع الساعة.',
+      orderHints: ['ضع beginnt بعد Der Unterricht.', 'استعمل um acht Uhr للساعة المحددة.'],
+      orderSentence: 'Der Unterricht beginnt um acht Uhr.',
+      checkOrderSentence: 'Der Unterricht beginnt um acht Uhr.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة كاملة عن وقت الدرس.',
+      speakAr: 'سجّل عشرين ثانية: قل Mein Kurs beginnt im September وDer Unterricht beginnt um acht Uhr وIch schreibe die Hausaufgaben ins Heft وKönnen Sie die Regel bitte noch einmal erklären وIch habe die Prüfung bestanden.',
+      summaryDe: 'Mein Kurs beginnt im September. · Der Unterricht beginnt um acht Uhr. · Ich schreibe die Hausaufgaben ins Heft. · Können Sie die Regel bitte noch einmal erklären? · Ich habe die Prüfung bestanden.',
+      summaryAr: 'راجع Kurs im September وUnterricht um acht Uhr وHausaufgaben ins Heft وKönnen Sie … erklären وPrüfung bestanden.',
+      summaryRecap: 'Kurs Unterricht Hausaufgaben Erklärung Prüfung'
+    }),
 
   U('a2-u4-l2', 'A2', 'الأعياد', 'Feste', 'lexik-kollokation',
     'Am Ende lädst du ein und gratulierst',
