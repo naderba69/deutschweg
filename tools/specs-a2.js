@@ -542,25 +542,52 @@ module.exports = [
       summaryRecap: 'war warst waren hatte hatten'
     }),
 
-  U('a2-u3-l1', 'A2', 'würde', 'Konjunktiv II würde', 'register',
-    'Am Ende bittest du höflich mit würde',
-    'في النهاية تطلب بأدب مع würde.',
+  U('a2-u3-l1', 'A2', 'الطلبات المهذّبة بصيغة Konjunktiv II', 'Höfliche Bitten mit Konjunktiv II', 'register',
+    'Am Ende verwendest du fünf höfliche Sätze mit würde, würden, könnten, hätten und wäre',
+    'في النهاية تستعمل خمس جمل مهذّبة مع würde وwürden وkönnten وhätten وwäre.',
     [
-      ['ich würde', 'الأدب مع würde', 'will أقسى', 'ich will sofort Sie', 'المقام مكسور'],
-      ['würden Sie', 'الرسمي würden Sie', 'würdest Sie خطأ', 'würdest Sie', 'Sie تأخذ würden'],
-      ['würde plus Infinitiv', 'المصدر في الآخر', 'لا zu إجباري هنا', 'ich würde zu kommen', 'zu زائدة'],
-      ['kein wäre für jede Bitte', 'الطلب العادي würde', 'wäre للخيال لا لكل طلب', 'ich wäre einen Kaffee', 'الطلب würde']
+      ['Ich würde gern einen Tisch reservieren.', 'تستعمل würde مع المصدر في نهاية الجملة للتعبير عن رغبة مهذّبة', 'بعد würde يأتي المصدر reservieren في النهاية من دون zu', 'Ich würde gern einen Tisch reservierte.', 'بعد würde نستخدم المصدر reservieren لا reservierte'],
+      ['Würden Sie das bitte wiederholen?', 'تبدأ سؤال الطلب الرسمي بـ Würden Sie وتضع المصدر في النهاية', 'مع Sie الرسمية نقول Würden Sie، ويأتي wiederholen في النهاية', 'Würdest Sie das bitte wiederholen?', 'مع Sie الرسمية نقول Würden لا Würdest'],
+      ['Könnten Sie bitte einen Arzt rufen?', 'تستعمل Könnten Sie لتلطيف طلب رسمي', 'مع Sie الرسمية نقول Könnten Sie، ويأتي المصدر rufen في النهاية', 'Könntest Sie bitte einen Arzt rufen?', 'مع Sie الرسمية نقول Könnten لا Könntest'],
+      ['Hätten Sie noch ein Zimmer frei?', 'تستعمل Hätten Sie للسؤال المهذّب عن توافر شيء', 'مع Sie الرسمية نقول Hätten Sie', 'Hätte Sie noch ein Zimmer frei?', 'مع Sie الرسمية نقول Hätten لا Hätte']
     ],
     [
-      ['Ich hätte gerne einen Kaffee.', 'أود قهوة', 'Ich will sofort einen Kaffee von Ihnen', 'الأدب hätte gerne', 'hätte'],
-      ['Würden Sie das wiederholen?', 'هل تعيدون ذلك؟', 'Würdest Sie das wiederholen?', 'الرسمي würden', 'Würden'],
-      ['Ich würde bleiben.', 'سأبقى لو أمكن', 'Ich würde zu bleiben', 'بلا zu', 'würde'],
-      ['Könnten Sie langsamer sprechen?', 'هل تتكلمون أبطأ؟', 'Kannst Sie langsamer sprechen?', 'الرسمي könnten', 'Könnten']
+      ['Ich würde gern einen Tisch reservieren.', 'أودّ حجز طاولة', 'Ich würde gern einen Tisch reservierte.', 'بعد würde يأتي المصدر reservieren', 'würde'],
+      ['Würden Sie das bitte wiederholen?', 'هل تتكرّمون بإعادة ذلك؟', 'Würdest Sie das bitte wiederholen?', 'مع Sie الرسمية نقول Würden', 'Würden'],
+      ['Könnten Sie bitte einen Arzt rufen?', 'هل يمكنكم استدعاء طبيب من فضلكم؟', 'Könntest Sie bitte einen Arzt rufen?', 'مع Sie الرسمية نقول Könnten', 'Könnten'],
+      ['Hätten Sie noch ein Zimmer frei?', 'هل لديكم غرفة شاغرة أخرى؟', 'Hätte Sie noch ein Zimmer frei?', 'مع Sie الرسمية نقول Hätten', 'Hätten']
     ],
-    'Würden Sie das wiederholen? Ich hätte gerne einen Kaffee.',
-    'Würden Sie das wiederholen?',
-    'Bitte morgen einmal mit würden Sie.',
-    'غدًا اطلب مرة بـ würden Sie.'),
+    'Ich würde gern einen Tisch reservieren. Würden Sie das bitte wiederholen? Könnten Sie bitte einen Arzt rufen? Hätten Sie noch ein Zimmer frei? Das wäre sehr nett von Ihnen.',
+    'Das wäre sehr nett von Ihnen.',
+    'Wiederhole morgen die fünf Sätze: Ich würde gern einen Tisch reservieren. Würden Sie das bitte wiederholen? Könnten Sie bitte einen Arzt rufen? Hätten Sie noch ein Zimmer frei? Das wäre sehr nett von Ihnen.',
+    'غدًا راجع الجمل الخمس المهذّبة مع würde وwürden وkönnten وhätten وwäre.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'konjugation'],
+      writing: {
+        zeigt: 'Fünf höfliche Sätze im Konjunktiv II',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع صيغة Konjunktiv II والمصدر في موضعهما الصحيح.',
+        prompt: 'اكتب الجمل الخمس: رغبة بـ würde، وطلبًا بـ Würden Sie، وطلبًا بـ Könnten Sie، وسؤالًا بـ Hätten Sie، وردًا بـ wäre.',
+        promptDe: 'Ich würde gern einen Tisch reservieren. · Würden Sie das bitte wiederholen? · Könnten Sie bitte einen Arzt rufen? · Hätten Sie noch ein Zimmer frei? · Das wäre sehr nett von Ihnen.',
+        points: ['Ich würde gern einen Tisch reservieren.', 'Würden Sie das bitte wiederholen?', 'Könnten Sie bitte einen Arzt rufen?', 'Hätten Sie noch ein Zimmer frei?', 'Das wäre sehr nett von Ihnen.'],
+        minWords: 29,
+        frage: 'اكتب الجمل الخمس كاملة مع würde وwürden وkönnten وhätten وwäre.',
+        familie: 'register',
+        hinweise: ['طابق صيغة الفعل مع ich أو Sie الرسمية.', 'في تراكيب würde وwürden وkönnten ضع المصدر في النهاية من دون zu.']
+      },
+      imitateNearMiss: 'würdest',
+      transformHint: 'نقول Das wäre sehr nett von Ihnen بصيغة wäre.',
+      orderAr: 'رتّب السؤال: Würden ثم Sie ثم das bitte ثم wiederholen.',
+      orderHints: ['ابدأ بالفعل Würden لأن هذا سؤال نعم/لا.', 'ضع Sie بعده واختم بالمصدر wiederholen.'],
+      orderSentence: 'Würden Sie das bitte wiederholen?',
+      orderRightBracket: 'wiederholen?',
+      checkOrderSentence: 'Würden Sie das bitte wiederholen?',
+      checkOrderRightBracket: 'wiederholen?',
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال طلب مهذّب مع Würden Sie.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich würde gern einen Tisch reservieren وWürden Sie das bitte wiederholen وKönnten Sie bitte einen Arzt rufen وHätten Sie noch ein Zimmer frei وDas wäre sehr nett von Ihnen.',
+      summaryDe: 'Ich würde gern einen Tisch reservieren. · Würden Sie das bitte wiederholen? · Könnten Sie bitte einen Arzt rufen? · Hätten Sie noch ein Zimmer frei? · Das wäre sehr nett von Ihnen.',
+      summaryAr: 'راجع الجمل الخمس: würde مع ich، وWürden/Könnten/Hätten مع Sie الرسمية، وwäre في الرد المهذّب.',
+      summaryRecap: 'würde würden könnten hätten wäre'
+    }),
 
   U('a2-u3-l2', 'A2', 'فعل وحرف', 'Verben mit Präposition', 'präposition',
     'Am Ende lernst du vier Verben mit ihrer Präposition',

@@ -4067,6 +4067,121 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
 
+/* ---------- audited A2 polite Konjunktiv II lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u3-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich würde gern einen Tisch reservieren.',
+    'Würden Sie das bitte wiederholen?',
+    'Könnten Sie bitte einen Arzt rufen?',
+    'Hätten Sie noch ein Zimmer frei?',
+    'Das wäre sehr nett von Ihnen.'
+  ];
+  const taughtFacts = targets.slice(0, 4);
+  t('Corpus lesson a2-u3-l1 bounds polite Konjunktiv II to five complete würde, würden, könnten, hätten and wäre targets',
+    lesson.title.de === 'Höfliche Bitten mit Konjunktiv II' &&
+      lesson.title.ar === 'الطلبات المهذّبة بصيغة Konjunktiv II' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar && row.theme === 'الطلبات المهذّبة والخدمات' &&
+      row.grammar.item === 'würde + Infinitiv · Würden/Könnten/Hätten Sie …? · Das wäre …' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 29 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwendest du fünf höfliche Sätze mit würde, würden, könnten, hätten und wäre');
+
+  const expectedWords = [
+    'würde', 'ich würde gern', 'könnten Sie', 'hätten Sie', 'wäre', 'die Bitte', 'die Frage', 'der Wunsch',
+    'höflich', 'die Hilfe', 'um Hilfe bitten', 'sich bedanken', 'mitkommen', 'vorbeikommen', 'mitbringen',
+    'das Geschenk', 'die Einladung', 'das Angebot', 'die Meinung', 'der Termin', 'die Rechnung',
+    'die Möglichkeit', 'das Problem', 'die Lösung', 'der Vorschlag', 'der Kaffee', 'reservieren', 'rufen', 'tauschen'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u3-l1 reviews all 29 entries and three precise mnemonics without rejecting grammatical direct indicative requests',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.würde.ex === targets[0] && byWord.würde.pl.includes('würdest') && byWord.würde.err.includes('reservierte') &&
+      byWord['ich würde gern'].ex === 'Ich würde gern einen Kaffee trinken.' &&
+      byWord['könnten Sie'].ex === targets[2] && byWord['könnten Sie'].err.startsWith('Könntest Sie') &&
+      byWord['hätten Sie'].ex === targets[3] && byWord['hätten Sie'].err.startsWith('Hätte Sie') &&
+      byWord.wäre.ex === targets[4] && byWord.wäre.err.startsWith('Das wären') &&
+      byWord['die Bitte'].ex === 'Ich hätte eine Bitte.' && byWord['die Bitte'].why.includes('مؤنث') &&
+      byWord['die Frage'].ex === 'Ich hätte eine Frage.' && byWord['der Wunsch'].ex.includes('wäre ein ruhiges Zimmer') &&
+      byWord.höflich.ex === 'Eine höfliche Frage öffnet so manche Türe.' &&
+      byWord['die Hilfe'].ex.includes('um Hilfe bitten') && byWord['um Hilfe bitten'].ex.includes('gern um Hilfe bitten') &&
+      byWord['sich bedanken'].ex === 'Ich würde mich gern bedanken.' && byWord['sich bedanken'].err.includes('mir') &&
+      byWord.mitkommen.ex === 'Würdest du mitkommen?' && byWord.mitkommen.err.endsWith('kommen mit?') &&
+      byWord.vorbeikommen.ex.includes('gern vorbeikommen') && byWord.vorbeikommen.err.includes('kommen vorbei') &&
+      byWord.mitbringen.ex.includes('einen Salat mitbringen') && byWord.mitbringen.err.includes('bringen mit') &&
+      byWord['das Geschenk'].ex.includes('Geschenk kaufen') && byWord['die Einladung'].ex.includes('Einladung gern annehmen') &&
+      byWord['das Angebot'].ex.includes('Angebot prüfen') && byWord['die Meinung'].ex.includes('Meinung ändern') &&
+      byWord['der Termin'].ex.includes('Termin verschieben') && byWord['die Rechnung'].ex.includes('Rechnung gern prüfen') &&
+      byWord['die Möglichkeit'].ex === 'Ich würde jede Möglichkeit nutzen.' &&
+      byWord['das Problem'].ex.includes('Problem sofort lösen') && byWord['die Lösung'].ex.includes('andere Lösung suchen') &&
+      byWord['der Vorschlag'].ex === 'Ich hätte einen Vorschlag.' && byWord['der Kaffee'].ex.includes('Kaffee bestellen') &&
+      byWord.reservieren.ex === targets[0] && byWord.rufen.ex === targets[2] &&
+      byWord.tauschen.ex === 'Ich würde den Sitzplatz gern mit dir tauschen.' &&
+      !errors.includes('Können Sie mir bitte helfen?') && !errors.includes('Haben Sie noch ein Zimmer frei?') &&
+      !errors.includes('Ich habe eine Frage.') && tricks.length === 3 &&
+      tricks[0].trick.includes('المصدر في النهاية من دون zu') && tricks[0].wie.includes('Ich reserviere einen Tisch') &&
+      tricks[0].wie.includes('Einladung gern annehmen') && tricks[0].warum.includes('الأفعال المنفصلة كلمة واحدة') &&
+      tricks[1].trick.includes('Würden/Könnten/Hätten + Sie') && tricks[1].wie.includes(targets[1]) &&
+      tricks[1].wie.includes(targets[2]) && tricks[1].wie.includes(targets[3]) && tricks[1].warum.includes('سؤال نعم/لا') &&
+      tricks[2].trick.includes('Indikativ قد تبقى صحيحة') && tricks[2].wie.includes('Können Sie mir helfen?') &&
+      tricks[2].wie.includes('Ich habe eine Frage') && tricks[2].warum.includes('صحيحتين نحويًا'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u3-l1 aligns strict Bitte, Möglichkeit, würde and rufen clozes, a real verb-first bracket and 29-word production',
+    wordCloze1.frage.zeigt === 'Ich hätte eine ____.' && wordCloze1.frage.antworten.join(' ') === 'Bitte' &&
+      wordCloze1.frage.nearMiss.Bitten && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Bitten').ok &&
+      wordCloze2.frage.zeigt === 'Ich würde jede ____ nutzen.' && wordCloze2.frage.antworten.join(' ') === 'Möglichkeit' &&
+      wordCloze2.frage.nearMiss.Möglichkeiten && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Möglichkeiten').ok &&
+      imitate.zeigt.de === 'Ich ____ gern einen Tisch reservieren.' && imitate.frage.antworten.join(' ') === 'würde' &&
+      imitate.frage.nearMiss.würdest && !win.DW.renderers.judgeCloze(imitate.frage, 'würdest').ok &&
+      drill.frage.zeigt === 'Könnten Sie bitte einen Arzt ____?' && drill.frage.antworten.join(' ') === 'rufen' &&
+      drill.frage.nearMiss.rufst && !win.DW.renderers.judgeCloze(drill.frage, 'rufst').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'Würden' && order.frage.verbFirst === true &&
+      order.frage.fields.vorfeld.length === 0 && order.frage.fields.lsk.join(' ') === 'Würden' &&
+      order.frage.fields.mittelfeld.join(' ') === 'Sie das bitte' && order.frage.fields.rsk.join(' ') === 'wiederholen?' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Sie', 'Würden', 'das', 'bitte', 'wiederholen?']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 29 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u3-l1 makes 80 percent four of five measurable across hätten, rufen, full Würden order, würde plus infinitive and wäre',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u3-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'konjugation' &&
+      clozeCheck.frage.antworten.join(' ') === 'rufen' && clozeCheck.frage.nearMiss.rufst &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'rufst').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'Würden' &&
+      orderCheck.frage.verbFirst === true && orderCheck.frage.fields.vorfeld.length === 0 &&
+      orderCheck.frage.fields.rsk.join(' ') === 'wiederholen?' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Sie', 'Würden', 'das', 'bitte', 'wiederholen?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'konjugation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
