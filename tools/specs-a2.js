@@ -362,25 +362,50 @@ module.exports = [
       summaryRecap: 'am Superlativ der beste Film'
     }),
 
-  U('a2-u2-l3', 'A2', 'نهاية الصفة في الرفع', 'Adjektiv Nominativ', 'deklination',
-    'Am Ende setzt du die Adjektivendung im Nominativ',
-    'في النهاية تضع نهاية الصفة في الرفع.',
+  U('a2-u2-l3', 'A2', 'نهايات الصفة في حالة الرفع', 'Adjektivendungen im Nominativ', 'deklination',
+    'Am Ende verwendest du fünf Nominativgruppen mit den richtigen Adjektivendungen',
+    'في النهاية تستعمل خمس مجموعات اسمية في حالة الرفع بنهايات الصفة الصحيحة.',
     [
-      ['der kleine Mann', 'بعد der النهاية e', 'لا der kleiner Mann', 'der kleiner Mann', 'بعد der: e'],
-      ['ein kleiner Mann', 'بعد ein النهاية er', 'لا ein kleine Mann', 'ein kleine Mann', 'بعد ein: er'],
-      ['eine kleine Frau', 'بعد eine النهاية e', 'لا eine kleiner Frau', 'eine kleiner Frau', 'المؤنث e'],
-      ['das kleine Kind', 'بعد das النهاية e', 'لا das kleiner Kind', 'das kleiner Kind', 'بعد das: e']
+      ['Der neue Kollege kommt aus Berlin.', 'تستعمل النهاية -e بعد أداة التعريف في المفرد المذكر', 'في الرفع مع der نقول der neue Kollege', 'Der neuer Kollege kommt aus Berlin.', 'بعد der نقول neue لا neuer'],
+      ['Die kleinen Kinder spielen draußen.', 'تستعمل النهاية -en مع جمع أداة التعريف', 'في الرفع مع die للجمع نقول die kleinen Kinder', 'Die kleine Kinder spielen draußen.', 'مع جمع die نقول kleinen لا kleine'],
+      ['Er ist ein guter Freund.', 'تستعمل النهاية -er مع ein والاسم المذكر في الرفع', 'لأن ein لا يُظهر علامة المذكر، تحملها الصفة: ein guter Freund', 'Er ist ein gute Freund.', 'في الرفع المذكر نقول ein guter Freund'],
+      ['Das ist ein kleines Kind.', 'تستعمل النهاية -es مع ein والاسم المحايد في الرفع', 'لأن ein لا يُظهر علامة المحايد، تحملها الصفة: ein kleines Kind', 'Das ist ein kleine Kind.', 'في الرفع المحايد نقول ein kleines Kind']
     ],
     [
-      ['Der kleine Mann wartet.', 'الرجل الصغير ينتظر', 'Der kleiner Mann wartet', 'بعد der النهاية e', 'kleine'],
-      ['Ein kleiner Mann wartet.', 'رجل صغير ينتظر', 'Ein kleine Mann wartet', 'بعد ein النهاية er', 'kleiner'],
-      ['Eine kleine Frau wartet.', 'امرأة صغيرة تنتظر', 'Eine kleiner Frau wartet', 'المؤنث kleine', 'kleine'],
-      ['Das kleine Kind wartet.', 'الطفل الصغير ينتظر', 'Das kleiner Kind wartet', 'بعد das النهاية e', 'kleine']
+      ['Der neue Kollege kommt aus Berlin.', 'الزميل الجديد قادم من برلين', 'Der neuer Kollege kommt aus Berlin.', 'بعد der في الرفع نقول neue', 'neue'],
+      ['Er ist ein guter Freund.', 'إنه صديق جيد', 'Er ist ein gute Freund.', 'في الرفع المذكر مع ein نقول guter', 'guter'],
+      ['Das ist eine gute Idee.', 'هذه فكرة جيدة', 'Das ist eine guter Idee.', 'في الرفع المؤنث مع eine نقول gute', 'gute'],
+      ['Das ist ein kleines Kind.', 'هذا طفل صغير', 'Das ist ein kleine Kind.', 'في الرفع المحايد مع ein نقول kleines', 'kleines']
     ],
-    'Der kleine Mann wartet. Ein kleiner Mann wartet.',
-    'Ein kleiner Mann wartet.',
-    'Schreibe morgen der kleine und ein kleiner.',
-    'غدًا اكتب der kleine وein kleiner.'),
+    'Der neue Kollege kommt aus Berlin.',
+    'Er ist ein guter Freund.',
+    'Wiederhole morgen die fünf Sätze: Der neue Kollege kommt aus Berlin. Die kleinen Kinder spielen draußen. Er ist ein guter Freund. Das ist eine gute Idee. Das ist ein kleines Kind.',
+    'غدًا راجع جمل الرفع الخمس مع -e و-en و-er و-es.',
+    {
+      factFamilies: ['deklination', 'deklination', 'deklination', 'deklination'],
+      writing: {
+        zeigt: 'Fünf Nominativgruppen mit Adjektiven',
+        erklaerung: 'اكتب الجمل الخمس كاملة بنهايات الصفة الصحيحة.',
+        prompt: 'اكتب الجمل الخمس: مفردًا مع der، وجمعًا مع die، ومذكرًا ومؤنثًا ومحايدًا مع ein/eine.',
+        promptDe: 'Der neue Kollege kommt aus Berlin. · Die kleinen Kinder spielen draußen. · Er ist ein guter Freund. · Das ist eine gute Idee. · Das ist ein kleines Kind.',
+        points: ['Der neue Kollege kommt aus Berlin.', 'Die kleinen Kinder spielen draußen.', 'Er ist ein guter Freund.', 'Das ist eine gute Idee.', 'Das ist ein kleines Kind.'],
+        minWords: 26,
+        frage: 'اكتب جمل الرفع الخمس كاملة بنهايات -e و-en و-er و-es.',
+        familie: 'deklination',
+        hinweise: ['بعد der في المفرد استعمل -e، ومع die للجمع استعمل -en.', 'مع ein/eine راجع guter وgute وkleines.']
+      },
+      imitateNearMiss: 'neuer',
+      transformHint: 'في الرفع المذكر مع ein نقول ein guter Freund.',
+      orderAr: 'رتّب الجملة: Das ثم ist ثم eine gute Idee.',
+      orderHints: ['ابدأ بـ Das وضع ist في الموضع الثاني.', 'اختم بالمجموعة eine gute Idee.'],
+      orderSentence: 'Das ist eine gute Idee.',
+      checkOrderSentence: 'Das ist eine gute Idee.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة رفع صحيحة مع eine.',
+      speakAr: 'سجّل عشرين ثانية: قل Der neue Kollege kommt aus Berlin وDie kleinen Kinder spielen draußen وEr ist ein guter Freund وDas ist eine gute Idee وDas ist ein kleines Kind.',
+      summaryDe: 'Der neue Kollege kommt aus Berlin. · Die kleinen Kinder spielen draußen. · Er ist ein guter Freund. · Das ist eine gute Idee. · Das ist ein kleines Kind.',
+      summaryAr: 'راجع نهايات الرفع: der neue، die kleinen، ein guter، eine gute، ein kleines.',
+      summaryRecap: 'Nominativ e en er es'
+    }),
 
   U('a2-u2-l4', 'A2', 'نهاية الصفة في النصب', 'Adjektiv Akkusativ', 'deklination',
     'Am Ende setzt du die Adjektivendung im Akkusativ',
