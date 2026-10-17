@@ -5448,6 +5448,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[3].frage.optionen.some(o => o.text === targets[1]) && checks[3].frage.misconceptionFamilies.b === 'konjugation' &&
       checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
+/* ---------- audited A2 ordered Perfekt narrative lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u5-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Zuerst bin ich früh aufgestanden.',
+    'Dann habe ich gefrühstückt.',
+    'Danach bin ich zur Arbeit gefahren.',
+    'Plötzlich hat es stark geregnet.',
+    'Zum Schluss bin ich nach Hause zurückgekommen.'
+  ];
+  t('Corpus lesson a2-u5-l1 bounds a past narrative to five ordered Perfekt events with haben and sein',
+    lesson.title.de === 'Vergangenheit erzählen: Reihenfolge und Perfekt' &&
+      lesson.title.ar === 'سرد الماضي: الترتيب وPerfekt' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'سرد أحداث الماضي بترتيب واضح' &&
+      row.grammar.item === 'zuerst/dann/danach/plötzlich/zum Schluss · Perfekt مع haben أو sein · الفعل في الموضع الثاني' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === [targets[0], targets[1], targets[2], targets[4]][i]) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[3] &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende erzählst du fünf vergangene Ereignisse in einer klaren Reihenfolge mit Perfekt');
+
+  const expectedWords = [
+    'zuerst', 'erzählen', 'die Geschichte', 'spannend', 'passieren', 'danach', 'plötzlich',
+    'zum Schluss', 'das Erlebnis', 'die Erinnerung', 'die Kindheit', 'damals', 'neulich',
+    'letztes Jahr', 'der Unfall', 'die Panne', 'das Glück', 'erleben', 'der Zufall',
+    'die Reise', 'der Abschied', 'die Begegnung', 'das Gefühl', 'die Angst', 'aufgeregt',
+    'ruhig', 'der Club', 'ausgehen', 'vergessen', 'zurückgehen', 'zurückkommen'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u5-l1 reviews all 31 entries and three nuanced mnemonics without rejecting valid past and contextual alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.zuerst.ex === targets[0] && byWord.danach.ex === targets[2] &&
+      byWord.plötzlich.ex === targets[3] && byWord['zum Schluss'].ex === targets[4] &&
+      byWord.erzählen.why.includes('jemandem etwas erzählen') &&
+      byWord['die Geschichte'].why.includes('ist spannend gewesen') &&
+      byWord.spannend.pl === 'spannender · am spannendsten' && byWord.spannend.why.includes('spannend gemacht') &&
+      byWord['das Erlebnis'].why.includes('ist toll gewesen') &&
+      byWord['die Erinnerung'].why.includes('eine gute Erinnerung') &&
+      byWord['der Unfall'].why.includes('ist auf der Autobahn gewesen') &&
+      byWord['die Reise'].why.includes('ist lang gewesen') &&
+      byWord['der Abschied'].why.includes('ist traurig gewesen') &&
+      byWord['die Begegnung'].why.includes('ist zufällig gewesen') &&
+      byWord['die Angst'].why.includes('Ich war ängstlich') &&
+      byWord.aufgeregt.why.includes('Ich habe mich sehr aufgeregt') &&
+      byWord.ruhig.pl === 'ruhiger · am ruhigsten' && byWord.ruhig.why.includes('du للتوكيد') &&
+      byWord['der Club'].why.includes('in den Club') && byWord.ausgehen.why.includes('weil wir ausgehen') &&
+      byWord.zurückgehen.why.includes('nach Hause اتجاه وzu Hause مكان') &&
+      byWord.zurückkommen.why.includes('Ich komme zurück') &&
+      !['Die Geschichte ist spannend gewesen.', 'Der Film war spannend gemacht.',
+        'Das Erlebnis ist toll gewesen.', 'Ich habe eine gute Erinnerung.',
+        'Der Unfall ist auf der Autobahn gewesen.', 'Die Reise ist lang gewesen.',
+        'Der Abschied ist traurig gewesen.', 'Die Begegnung ist zufällig gewesen.',
+        'Ich war ängstlich.', 'Ich habe mich sehr aufgeregt.', 'Bleib ruhig, du!',
+        'Früher gingen wir oft in den Club.', 'weil wir ausgehen'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && targets.every(x => tricks[0].wie.includes(x)) &&
+      tricks[0].warum.includes('الموضع الثاني') && tricks[1].wie.includes('Ich bin aufgestanden.') &&
+      tricks[1].wie.includes('Ich habe gefrühstückt.') && tricks[1].wie.includes('Es hat geregnet.') &&
+      tricks[1].wie.includes('Ich habe das Auto gefahren') && tricks[1].warum.includes('متعديًا') &&
+      tricks[2].wie.includes('Die Geschichte ist spannend gewesen') &&
+      tricks[2].wie.includes('Ich war aufgeregt.') && tricks[2].wie.includes('Ich hatte Angst.') &&
+      tricks[2].wie.includes('Wir hatten Glück.') && tricks[2].wie.includes('Ich hatte ein gutes Gefühl.') &&
+      tricks[2].warum.includes('gewesen صحيحة'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u5-l1 aligns strict sequence, encounter, participle and sudden-event clozes, Perfekt order and 27-word production',
+    wordCloze1.frage.zeigt === '____ bin ich zur Arbeit gefahren.' && wordCloze1.frage.antworten.join(' ') === 'Danach' &&
+      wordCloze1.frage.nearMiss.Danache && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Danache').ok &&
+      wordCloze2.frage.zeigt === 'Die ____ war zufällig.' && wordCloze2.frage.antworten.join(' ') === 'Begegnung' &&
+      wordCloze2.frage.nearMiss.Begegnungen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Begegnungen').ok &&
+      imitate.zeigt.de === 'Zuerst bin ich früh ____.' && imitate.frage.antworten.join(' ') === 'aufgestanden' &&
+      imitate.frage.nearMiss.aufgestandet && !win.DW.renderers.judgeCloze(imitate.frage, 'aufgestandet').ok &&
+      drill.frage.zeigt === '____ hat es stark geregnet.' && drill.frage.antworten.join(' ') === 'Plötzlich' &&
+      drill.frage.nearMiss.Plötzliche && !win.DW.renderers.judgeCloze(drill.frage, 'Plötzliche').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'bin' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Danach' && order.frage.fields.lsk.join(' ') === 'bin' &&
+      order.frage.fields.mittelfeld.join(' ') === 'ich zur Arbeit' && order.frage.fields.rsk.join(' ') === 'gefahren.' &&
+      order.frage.rightBracket.join(' ') === 'gefahren.' && win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Danach', 'ich', 'bin', 'zur', 'Arbeit', 'gefahren.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 27 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text =>
+        text.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de')))) &&
+      targets.every(x => speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de')
+        .includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u5-l1 makes 80 percent four of five independent across conclusion, sudden event, commute, start and breakfast',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u5-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u5-l1.s07 | cap.a2-u5-l1.s21 | cap.a2-u5-l1.s22 | cap.a2-u5-l1.s08 | cap.a2-u5-l1.s05' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) && checks[0].frage.misconceptionFamilies.a === 'konjugation' &&
+      clozeCheck.frage.zeigt === '____ hat es stark geregnet.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Plötzlich' && clozeCheck.frage.nearMiss.Plötzliche &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Plötzliche').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'bin' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.rsk.join(' ') === 'gefahren.' &&
+      orderCheck.frage.rightBracket.join(' ') === 'gefahren.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Danach', 'ich', 'bin', 'zur', 'Arbeit', 'gefahren.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

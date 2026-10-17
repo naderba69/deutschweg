@@ -83,7 +83,7 @@
     ['الطقس: الحالة والمدة والحرارة والتوقع', 'Wetter: Zustand, Dauer, Temperatur und Vorhersage', 'الطقس والفصول والتوقعات', 'bewölkt und windig · seit dem Morgen · im Sommer · bei zwanzig Grad · sagt … voraus', 'explicit', 33, 13],
     ['الدعوة: القبول والاعتذار والاستفسار', 'Einladung: zusagen, absagen und nachfragen', 'الرد على الدعوة وتفاصيل المناسبة', 'Danke für … · sage … zu · muss … absagen, weil … · um wie viel Uhr · mitbringen', 'explicit', 29, 13],
     ['المشكلات: العطل والفقدان والاعتذار', 'Probleme: Defekt, Verlust und Entschuldigung', 'حل المشكلات والأشياء المفقودة', 'funktioniert nicht · habe … verloren · Können Sie … reparieren? · lasse … sperren · tut mir leid', 'explicit', 31, 13],
-    ['حكاية ماضٍ', 'Vergangenheit erzählen', 'السرد', 'Perfekt متصل', 'explicit', 31, 13],
+    ['سرد الماضي: الترتيب وPerfekt', 'Vergangenheit erzählen: Reihenfolge und Perfekt', 'سرد أحداث الماضي بترتيب واضح', 'zuerst/dann/danach/plötzlich/zum Schluss · Perfekt مع haben أو sein · الفعل في الموضع الثاني', 'explicit', 31, 13],
     ['رأي بسيط', 'Einfache Meinung', 'الرأي', 'ich finde', 'inductive', 36, 13],
     ['رسالة أطول', 'Ein kurzer Brief', 'الرسالة', 'افتتاح وخاتمة', 'explicit', 31, 13],
     ['الهاتف', 'Telefon', 'الهاتف', 'إطار المكالمة', 'inductive', 34, 13],

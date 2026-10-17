@@ -1092,25 +1092,52 @@ module.exports = [
       summaryRecap: 'Defekt Verlust Reparatur Sperre Entschuldigung'
     }),
 
-  U('a2-u5-l1', 'A2', 'حكاية ماضٍ', 'Vergangenheit erzählen', 'konjugation',
-    'Am Ende verbindest du drei Perfekt-Sätze',
-    'في النهاية تربط ثلاث جمل ماضٍ.',
+  U('a2-u5-l1', 'A2', 'سرد الماضي: الترتيب وPerfekt', 'Vergangenheit erzählen: Reihenfolge und Perfekt', 'konjugation',
+    'Am Ende erzählst du fünf vergangene Ereignisse in einer klaren Reihenfolge mit Perfekt',
+    'في النهاية تسرد خمسة أحداث ماضية بترتيب واضح مستعملًا Perfekt.',
     [
-      ['zuerst bin ich aufgestanden', 'الاستيقاظ مع sein', 'haben aufgestanden خطأ', 'zuerst habe ich aufgestanden', 'aufstehen يأخذ sein'],
-      ['dann habe ich gefrühstückt', 'الفطور مع haben', 'sein gefrühstückt خطأ', 'dann bin ich gefrühstückt', 'frühstücken مع haben'],
-      ['zum Schluss bin ich ausgegangen', 'الخروج مع sein', 'haben ausgegangen خطأ', 'zum Schluss habe ich ausgegangen', 'ausgehen يأخذ sein'],
-      ['die Reihenfolge', 'الترتيب أولًا ثم أخيرًا', 'لا تقفز بلا رابط', 'ausgegangen zuerst ohne Ordnung', 'الرابط يحمل الترتيب']
+      ['Zuerst bin ich früh aufgestanden.', 'تبدأ الحكاية بـ zuerst وتبني Perfekt الفعل aufstehen مع sein', 'aufstehen فعل حركة وتغيّر حالة، ولذلك نقول bin … aufgestanden', 'Zuerst habe ich früh aufgestanden.', 'في هذا المعنى يبني aufstehen صيغة Perfekt مع sein: bin … aufgestanden'],
+      ['Dann habe ich gefrühstückt.', 'تتابع الحكاية بـ dann وتبني Perfekt الفعل frühstücken مع haben', 'frühstücken نشاط بلا انتقال، ولذلك نقول habe … gefrühstückt', 'Dann bin ich gefrühstückt.', 'يبني frühstücken صيغة Perfekt مع haben: habe … gefrühstückt'],
+      ['Danach bin ich zur Arbeit gefahren.', 'تستعمل danach ثم sein مع fahren الدال على الانتقال إلى وجهة', 'بعد danach يأتي الفعل المصرف ثانيًا، ومع الانتقال نقول bin … gefahren', 'Danach habe ich zur Arbeit gefahren.', 'عند الانتقال إلى وجهة نقول bin … gefahren؛ أما habe das Auto gefahren فتركيب متعدٍّ مختلف'],
+      ['Zum Schluss bin ich nach Hause zurückgekommen.', 'تختم الحكاية بـ zum Schluss وتستعمل sein مع zurückkommen', 'zurückkommen فعل منفصل يبني Perfekt مع sein، واسم المفعول هو zurückgekommen', 'Zum Schluss habe ich nach Hause zurückgekommen.', 'يبني zurückkommen صيغة Perfekt مع sein: bin … zurückgekommen']
     ],
     [
-      ['Zuerst bin ich aufgestanden.', 'أولًا استيقظت', 'Zuerst habe ich aufgestanden', 'aufstehen مع sein', 'aufgestanden'],
-      ['Dann habe ich gefrühstückt.', 'ثم فطرت', 'Dann bin ich gefrühstückt', 'الفطور مع haben', 'gefrühstückt'],
-      ['Zum Schluss bin ich ausgegangen.', 'في النهاية خرجت', 'Zum Schluss habe ich ausgegangen', 'ausgehen مع sein', 'ausgegangen'],
-      ['Danach habe ich gelernt.', 'بعد ذلك درست', 'Danach bin ich gelernt', 'lernen مع haben', 'gelernt']
+      ['Zuerst bin ich früh aufgestanden.', 'أولًا استيقظت مبكرًا', 'Zuerst ich bin früh aufgestanden.', 'بعد zuerst يأتي الفعل المصرف bin ثم الفاعل ich', 'aufgestanden'],
+      ['Dann habe ich gefrühstückt.', 'ثم تناولت الفطور', 'Dann ich habe gefrühstückt.', 'بعد dann يأتي الفعل المصرف habe ثم الفاعل ich', 'gefrühstückt'],
+      ['Danach bin ich zur Arbeit gefahren.', 'بعد ذلك ذهبت إلى العمل', 'Danach ich bin zur Arbeit gefahren.', 'بعد danach يأتي الفعل المصرف bin في الموضع الثاني', 'gefahren'],
+      ['Plötzlich hat es stark geregnet.', 'فجأة هطل المطر بغزارة', 'Plötzlich es hat stark geregnet.', 'بعد plötzlich يأتي الفعل المصرف hat ثم الفاعل es', 'geregnet']
     ],
-    'Zuerst bin ich aufgestanden. Dann habe ich gefrühstückt.',
-    'Zuerst bin ich aufgestanden.',
-    'Erzähle morgen drei Sätze in der Vergangenheit.',
-    'غدًا احكِ ثلاث جمل في الماضي.'),
+    'Zuerst bin ich früh aufgestanden. Dann habe ich gefrühstückt. Danach bin ich zur Arbeit gefahren.',
+    'Plötzlich hat es stark geregnet.',
+    'Wiederhole morgen die fünf Sätze: Zuerst bin ich früh aufgestanden. Dann habe ich gefrühstückt. Danach bin ich zur Arbeit gefahren. Plötzlich hat es stark geregnet. Zum Schluss bin ich nach Hause zurückgekommen.',
+    'غدًا راجع الجمل الخمس بالترتيب مع zuerst وdann وdanach وplötzlich وzum Schluss.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'konjugation'],
+      writing: {
+        zeigt: 'Fünf geordnete Sätze im Perfekt',
+        erklaerung: 'اكتب الجمل الخمس كاملة: الاستيقاظ والفطور والذهاب إلى العمل والمطر والعودة إلى البيت.',
+        prompt: 'اكتب الحكاية القصيرة ذات الأحداث الخمسة بالترتيب.',
+        promptDe: 'Zuerst bin ich früh aufgestanden. · Dann habe ich gefrühstückt. · Danach bin ich zur Arbeit gefahren. · Plötzlich hat es stark geregnet. · Zum Schluss bin ich nach Hause zurückgekommen.',
+        points: ['Zuerst bin ich früh aufgestanden.', 'Dann habe ich gefrühstückt.', 'Danach bin ich zur Arbeit gefahren.', 'Plötzlich hat es stark geregnet.', 'Zum Schluss bin ich nach Hause zurückgekommen.'],
+        minWords: 27,
+        frage: 'اكتب الجمل الخمس كاملة في 27 كلمة على الأقل.',
+        familie: 'konjugation',
+        hinweise: ['استعمل sein مع aufgestanden وgefahren وzurückgekommen.', 'استعمل haben مع gefrühstückt وgeregnet، وضع الفعل المصرف بعد رابط الترتيب.']
+      },
+      imitateNearMiss: 'aufgestandet',
+      transformHint: 'ابدأ بـ Plötzlich ثم ضع hat في الموضع الثاني، واجعل geregnet في القوس اليميني.',
+      orderAr: 'رتّب الجملة: Danach ثم bin ثم ich ثم zur Arbeit ثم gefahren.',
+      orderHints: ['ابدأ بـ Danach وضع bin في الموضع الثاني.', 'ضع اسم المفعول gefahren في القوس اليميني.'],
+      orderSentence: 'Danach bin ich zur Arbeit gefahren.',
+      orderRightBracket: ['gefahren.'],
+      checkOrderSentence: 'Danach bin ich zur Arbeit gefahren.',
+      checkOrderRightBracket: ['gefahren.'],
+      orderPromptAr: 'رتّب الكلمات لتكوين الحدث الثالث في الحكاية بصيغة Perfekt.',
+      speakAr: 'سجّل عشرين ثانية: قل Zuerst bin ich früh aufgestanden وDann habe ich gefrühstückt وDanach bin ich zur Arbeit gefahren وPlötzlich hat es stark geregnet وZum Schluss bin ich nach Hause zurückgekommen.',
+      summaryDe: 'Zuerst bin ich früh aufgestanden. · Dann habe ich gefrühstückt. · Danach bin ich zur Arbeit gefahren. · Plötzlich hat es stark geregnet. · Zum Schluss bin ich nach Hause zurückgekommen.',
+      summaryAr: 'راجع zuerst وdann وdanach وplötzlich وzum Schluss، واختر haben أو sein ثم ضع اسم المفعول في النهاية.',
+      summaryRecap: 'zuerst dann danach plötzlich zum Schluss'
+    }),
 
   U('a2-u5-l2', 'A2', 'رأي بسيط', 'Einfache Meinung', 'lexik-kollokation',
     'Am Ende sagst du eine Meinung und eine Einschränkung',
