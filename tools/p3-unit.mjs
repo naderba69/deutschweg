@@ -2498,6 +2498,109 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
 
+/* ---------- audited A1 word-list review lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a1-u5-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich gratuliere dir zum Geburtstag.',
+    'Die Farbe gefällt mir gut.',
+    'Ich mache in meiner Freizeit viel Sport.',
+    'Darf ich Sie um etwas bitten?',
+    'Die Eltern kümmern sich um ihre Kinder.'
+  ];
+  const taughtFacts = [targets[0], targets[1], targets[2], targets[4]];
+  t('Corpus lesson a1-u5-l6 bounds the A1 word-list review to five complete sentences and four directly taught facts',
+    lesson.title.de === 'Wortliste A1' && lesson.title.ar === 'مراجعة مفردات A1' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'المراجعة' &&
+      row.grammar.item === 'التهنئة والإعجاب والرياضة والطلب والعناية' &&
+      lesson.schritte.length === 34 && lesson.wortschatz.length === 28 &&
+      ['gratulieren', 'gefallen', 'Sport', 'bitten', 'kümmern']
+        .every(x => lesson.schritte[0].zeigt.de.includes(x)) &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x));
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a1-u5-l6 reviews all 28 entries and three qualified mnemonics without appended-pronoun errors or false feeling-verb, Sport and breakfast absolutes',
+    lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      byWord['der Sport'].ex === targets[2] && byWord['der Sport'].err.includes('viele Sport') &&
+      byWord['das Restaurant'].ex.includes('Hähnchen mit Pommes frites') &&
+      byWord['das Lokal'].err.includes('eine neue Lokal') && byWord['der Schinken'].err.includes('ein Schinken') &&
+      byWord['das Brötchen'].ex.startsWith('Zum Frühstück') && byWord['das Café'].err.includes('in Café') &&
+      byWord['der Appetit'].err === 'Gute Appetit!' && byWord.grillen.ex.startsWith('Heute grillen wir') &&
+      byWord['die Polizei'].err.includes('der Polizei') && byWord['das Hobby'].err.startsWith('Mein Hobbys') &&
+      byWord['die Freizeit'].ex.includes('Zurzeit') && byWord['der Mund'].ex === 'Öffnen Sie den Mund.' &&
+      byWord['das Haar'].err.includes('langer Haare') && byWord['die Farbe'].ex === targets[1] &&
+      byWord.verboten.err.startsWith('Hier sind') && byWord.erlauben.ex.startsWith('Der Arzt erlaubt mir') &&
+      byWord.empfehlen.err.includes('mich empfehlen') && byWord.bitten.ex === targets[3] &&
+      byWord['die Entschuldigung'].err.startsWith('Entschuldigungen') &&
+      byWord['der Erwachsene'].err.endsWith('für Erwachsen.') && byWord['das Lied'].err.endsWith('hören.') &&
+      byWord.lachen.err === 'Die Kinder lacht viel.' &&
+      byWord['der Glückwunsch'].err.startsWith('Herzliche Glückwunsch') &&
+      byWord.gratulieren.ex === targets[0] && byWord['das Glück'].err === 'Viele Glück!' &&
+      byWord['der Lieblingsfilm'].err.startsWith('Meine Lieblingsfilm') &&
+      byWord['sich kümmern'].ex === targets[4] && byWord['das Ausland'].ex === 'Fahren Sie ins Ausland?' &&
+      tricks.length === 3 && tricks[0].wie.includes('Nicht dich und nicht mich') &&
+      tricks[0].warum.includes('لا نعمّم') && tricks[1].wie.includes('Ich spiele Fußball') &&
+      tricks[1].warum.includes('für das Frühstück') && tricks[2].wie.startsWith(targets[4]) &&
+      !/[\u0600-\u06FF]/.test(tricks.map(x => x.wie).join(' ')) &&
+      !lessonText.includes('Restaurant es') && !lessonText.includes('Appetit dir es') &&
+      !lessonText.includes('empfehlen es') && !lessonText.includes('gern viel machen') &&
+      !lessonText.includes('den „Schwarze Augen“ es') &&
+      !lessonText.includes('أفعال المشاعر تأخذ Dativ') &&
+      !lessonText.includes('الرياضة تُصنع بـ machen لا تُلعب بـ spielen'));
+  const imitate = lesson.schritte.find(s => s.phase === 'Anwenden' && s.frage && s.frage.art === 'cloze');
+  const drill = lesson.schritte.find(s => s.id === 's20');
+  const order = lesson.schritte.find(s => s.id === 's21');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a1-u5-l6 aligns strict clozes, congratulation order, 30-word writing, speaking, summary and homework',
+    imitate.zeigt.de === 'Ich gratuliere ____ zum Geburtstag.' &&
+      imitate.frage.antworten.join(' ') === 'dir' && imitate.frage.nearMiss.dich &&
+      drill.frage.zeigt === 'Darf ich Sie um etwas ____?' &&
+      drill.frage.antworten.join(' ') === 'bitten' && drill.frage.nearMiss.bittet &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'bittet').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 &&
+        !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'gratuliere' &&
+      order.frage.verbFirst === false && order.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      order.frage.fields.lsk.join(' ') === 'gratuliere' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage,
+        ['Ich', 'dir', 'gratuliere', 'zum', 'Geburtstag.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de')
+          .includes(x.toLocaleLowerCase('de'))));
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a1-u5-l6 makes 80 percent four of five measurable across care, request, congratulation, Sport and gefallen',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks.every(s => /^cap\.a1-u5-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Darf ich Sie um etwas ____?' &&
+      clozeCheck.frage.antworten.join(' ') === 'bitten' && clozeCheck.frage.nearMiss.bittet &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'bittet').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'gratuliere' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage,
+        ['Ich', 'dir', 'gratuliere', 'zum', 'Geburtstag.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

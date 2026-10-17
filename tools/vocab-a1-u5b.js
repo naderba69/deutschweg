@@ -112,40 +112,55 @@ module.exports = {
 
   'a1-u5-l6': {
     items: [
-      ['das Restaurant', 'die Restaurants', 'المطعم', 'Wir essen heute in einem Restaurant. Die Kinder nehmen Hähnchen mit Pommes frites.', 'Wir essen heute in ein Restaurant.', 'داخل المطعم: in einem Restaurant.', 'kasus', 'Restaurant'],
-      ['das Lokal', 'die Lokale', 'المحل والمقهى', 'In unserer Straße gibt es ein neues Lokal. Das Essen dort ist wunderbar.', 'In unserer Straße gibt es ein neues Restaurant es.', 'Lokal بديل Restaurant هنا.', 'lexik-kollokation', 'Lokal'],
-      ['der Schinken', 'die Schinken', 'لحم مقدد', 'Ich möchte gern einen Schinken.', 'Ich möchte gern ein Schinken.', 'Schinken مذكر: einen.', 'genus', 'Schinken'],
-      ['das Brötchen', 'die Brötchen', 'الخبز الصغير', 'Möchtest du Brötchen zum Frühstück?', 'Möchtest du Brötchen für Frühstück?', 'مع الفطور: zum Frühstück.', 'präposition', 'Brötchen'],
-      ['das Café', 'die Cafés', 'المقهى', 'Sollen wir uns im Café treffen?', 'Sollen wir uns in Café treffen?', 'في المقهى: im Café.', 'präposition', 'Café'],
-      ['der Appetit', '—', 'الشهية', 'Guten Appetit!', 'Guten Appetit dir es!', 'العبارة قائمة بذاتها: Guten Appetit!', 'register', 'Appetit'],
-      ['grillen', 'grillt · grillte · hat gegrillt', 'يشوي', 'Heute grillen wir im Garten.', 'Heute wir grillen im Garten.', 'الفعل ثانٍ: grillen wir.', 'wortstellung', 'grillen'],
-      ['die Polizei', '—', 'الشرطة', 'Holen Sie die Polizei!', 'Holen Sie der Polizei!', 'المفعول في النصب: die Polizei.', 'kasus', 'Polizei'],
-      ['das Hobby', 'die Hobbys', 'الهواية', 'Meine Hobbys sind Lesen und Schwimmen.', 'Meine Hobbys sind zu lesen und zu schwimmen.', 'بعد sein يأتي المصدر بلا zu.', 'wortstellung', 'Hobbys'],
-      ['die Freizeit', '—', 'أوقات الفراغ', 'In meiner Freizeit spiele ich Fußball. Zurzeit habe ich aber viel zu tun.', 'In meiner Freizeit ich spiele Fußball.', 'الفعل ثانٍ في الخبر: spiele ich.', 'wortstellung', 'Freizeit'],
-      ['der Sport', '—', 'الرياضة', 'Ich mache viel Sport.', 'Ich spiele viel Sport.', 'الرياضة تُعمَل بـ machen.', 'lexik-kollokation', 'Sport'],
-      ['der Mund', 'die Münder', 'الفم', 'Öffnen Sie den Mund.', 'Öffnen Sie der Mund.', 'المفعول في النصب: den Mund.', 'kasus', 'Mund'],
-      ['das Haar', 'die Haare', 'الشعر', 'Sie hat lange Haare.', 'Sie hat lange Haar.', 'الجمع haare: lange Haare.', 'plural', 'Haare'],
-      ['die Farbe', 'die Farben', 'اللون', 'Die Farbe gefällt mir gut.', 'Die Farbe gefällt mich gut.', 'gefallen يأخذ Dativ: mir.', 'kasus', 'Farbe'],
-      ['verboten', '—', 'ممنوع', 'Hier ist Rauchen verboten, denn es ist ungesund.', 'Hier ist Rauchen verboten gemacht.', 'verboten يكفي.', 'lexik-kollokation'],
-      ['erlauben', 'erlaubt · erlaubte · hat erlaubt', 'يسمح', 'Rauchen ist hier nicht erlaubt.', 'Rauchen ist hier nicht erlauben.', 'بعد sein يأتي erlaubt.', 'konjugation', 'erlaubt'],
-      ['empfehlen', 'empfiehlt · empfahl · hat empfohlen', 'ينصح بـ', 'Welchen Wein können Sie mir empfehlen?', 'Welchen Wein können Sie mir empfehlen es?', 'لا ضمير بعد الفعل.', 'wortstellung', 'empfehlen'],
-      ['bitten', 'bittet · bat · hat gebeten', 'يرجو', 'Darf ich Sie um etwas bitten?', 'Darf ich Sie für etwas bitten?', 'الرجاء بـ um: um etwas bitten.', 'präposition', 'bitten'],
-      ['die Entschuldigung', 'die Entschuldigungen', 'الاعتذار', 'Entschuldigung! – Bitte. Bist du böse auf mich?', 'Entschuldigung du! – Bitte.', 'Entschuldigung كلمة واحدة للاعتذار.', 'register', 'Entschuldigung'],
-      ['der Erwachsene', 'die Erwachsenen', 'الراشد', 'Dieser Film ist nur für Erwachsene.', 'Dieser Film ist nur für Erwachsen.', 'الصفة المستعملة اسمًا: Erwachsene.', 'deklination', 'Erwachsene'],
-      ['das Lied', 'die Lieder', 'الأغنية', 'Ich habe das Lied schon gehört.', 'Ich habe das Lied schon hören.', 'الماضي المركّب: gehört.', 'konjugation', 'Lied'],
-      ['lachen', 'lacht · lachte · hat gelacht', 'يضحك', 'Die Kinder lachen viel.', 'Die Kinder lachen gern viel machen.', 'lachen فعل كامل بلا machen.', 'lexik-kollokation', 'lachen'],
-      ['der Glückwunsch', 'die Glückwünsche', 'التهنئة', 'Herzlichen Glückwunsch zum Geburtstag!', 'Herzliche Glückwunsch zum Geburtstag!', 'المفعول في النصب: Herzlichen Glückwunsch.', 'kasus', 'Glückwunsch'],
-      ['gratulieren', 'gratuliert · gratulierte · hat gratuliert', 'يهنّئ', 'Ich gratuliere dir!', 'Ich gratuliere dich!', 'gratulieren يأخذ Dativ: dir.', 'kasus', 'gratuliere'],
-      ['das Glück', '—', 'الحظ', 'Viel Glück! Vielleicht gewinnst du eine Reise.', 'Viele Glück!', 'Glück مفرد: viel Glück.', 'plural', 'Glück'],
-      ['der Lieblingsfilm', 'die Lieblingsfilme', 'الفيلم المفضل', 'Mein Lieblingsfilm ist „Schwarze Augen“.', 'Mein Lieblingsfilm ist den „Schwarze Augen“ es.', 'الجملة تنتهي عند الاسم.', 'wortstellung', 'Lieblingsfilm'],
-      ['sich kümmern', 'kümmert sich · kümmerte sich · hat sich gekümmert', 'يعتني بـ', 'Jede Mutter kümmert sich um ihre Kinder.', 'Jede Mutter kümmert ihre Kinder.', 'الاعتناء بـ sich kümmern um.', 'präposition', 'kümmert'],
-      ['das Ausland', '—', 'الخارج', 'Fahren Sie ins Ausland?', 'Fahren Sie nach Ausland?', 'إلى الخارج: ins Ausland.', 'präposition', 'Ausland']
+      ['der Sport', '—', 'الرياضة', 'Ich mache in meiner Freizeit viel Sport.', 'Ich mache in meiner Freizeit viele Sport.', 'في هذا السياق Sport اسم مفرد غير معدود؛ لذلك نقول viel Sport.', 'deklination', 'Sport'],
+      ['das Restaurant', 'die Restaurants', 'المطعم', 'Wir essen heute in einem Restaurant. Die Kinder nehmen Hähnchen mit Pommes frites.', 'Wir essen heute in ein Restaurant.', 'المكان الثابت يأتي هنا مع الداتيف: in einem Restaurant.', 'kasus', 'Restaurant'],
+      ['das Lokal', 'die Lokale', 'المطعم أو المقهى', 'In unserer Straße gibt es ein neues Lokal. Das Essen dort ist wunderbar.', 'In unserer Straße gibt es eine neue Lokal.', 'Lokal محايد: ein neues Lokal.', 'genus', 'Lokal'],
+      ['der Schinken', 'die Schinken', 'لحم الفخذ المُعالَج (هام)', 'Ich kaufe einen Schinken.', 'Ich kaufe ein Schinken.', 'Schinken مذكر في النصب: einen Schinken.', 'kasus', 'Schinken'],
+      ['das Brötchen', 'die Brötchen', 'قطعة خبز صغيرة', 'Zum Frühstück esse ich ein Brötchen.', 'Zur Frühstück esse ich ein Brötchen.', 'Frühstück محايد؛ مع هذا الوقت نقول zum Frühstück.', 'genus', 'Brötchen'],
+      ['das Café', 'die Cafés', 'المقهى', 'Sollen wir uns im Café treffen?', 'Sollen wir uns in Café treffen?', 'داخل المقهى نقول im Café.', 'präposition', 'Café'],
+      ['der Appetit', '—', 'الشهية', 'Guten Appetit!', 'Gute Appetit!', 'العبارة الثابتة هي Guten Appetit.', 'deklination', 'Appetit'],
+      ['grillen', 'grillt · grillte · hat gegrillt', 'يشوي', 'Heute grillen wir im Garten.', 'Heute wir grillen im Garten.', 'بعد عبارة الزمن يأتي الفعل grillen قبل wir.', 'wortstellung', 'grillen'],
+      ['die Polizei', '—', 'الشرطة', 'Holen Sie die Polizei!', 'Holen Sie der Polizei!', 'المفعول به هنا في النصب: die Polizei.', 'kasus', 'Polizei'],
+      ['das Hobby', 'die Hobbys', 'الهواية', 'Meine Hobbys sind Lesen und Schwimmen.', 'Mein Hobbys sind Lesen und Schwimmen.', 'Hobbys جمع؛ لذلك نقول meine Hobbys.', 'plural', 'Hobbys'],
+      ['die Freizeit', '—', 'وقت الفراغ', 'In meiner Freizeit spiele ich Fußball. Zurzeit habe ich aber viel zu tun.', 'In meiner Freizeit ich spiele Fußball.', 'بعد الحقل الأول يأتي الفعل spiele ثم الفاعل ich.', 'wortstellung', 'Freizeit'],
+      ['der Mund', 'die Münder', 'الفم', 'Öffnen Sie den Mund.', 'Öffnen Sie der Mund.', 'المفعول به هنا في النصب: den Mund.', 'kasus', 'Mund'],
+      ['das Haar', 'die Haare', 'الشَّعر/شعرة', 'Sie hat lange Haare.', 'Sie hat langer Haare.', 'مع الجمع Haare ومن دون أداة نقول lange Haare.', 'deklination', 'Haare'],
+      ['die Farbe', 'die Farben', 'اللون', 'Die Farbe gefällt mir gut.', 'Die Farbe gefällt mich gut.', 'الشخص الذي يعجبه الشيء يأتي مع gefallen في الداتيف: mir.', 'kasus', 'Farbe'],
+      ['verboten', '—', 'ممنوع', 'Hier ist Rauchen verboten, denn es ist ungesund.', 'Hier sind Rauchen verboten.', 'Rauchen اسم مُحوَّل من فعل وهو مفرد؛ لذلك نقول ist.', 'konjugation', 'verboten'],
+      ['erlauben', 'erlaubt · erlaubte · hat erlaubt', 'يسمح', 'Der Arzt erlaubt mir, wieder Sport zu machen.', 'Der Arzt erlauben mir, wieder Sport zu machen.', 'مع der Arzt نقول erlaubt.', 'konjugation', 'erlaubt'],
+      ['empfehlen', 'empfiehlt · empfahl · hat empfohlen', 'يوصي بـ/ينصح بـ', 'Welchen Wein können Sie mir empfehlen?', 'Welchen Wein können Sie mich empfehlen?', 'الشخص الذي يتلقى التوصية يأتي في الداتيف: mir.', 'kasus', 'empfehlen'],
+      ['bitten', 'bittet · bat · hat gebeten', 'يطلب/يرجو', 'Darf ich Sie um etwas bitten?', 'Darf ich Sie für etwas bitten?', 'التركيب هو jemanden um etwas bitten.', 'präposition', 'bitten'],
+      ['die Entschuldigung', 'die Entschuldigungen', 'عفوًا/اعتذار', 'Entschuldigung! Bist du noch böse auf mich? – Nein.', 'Entschuldigungen! Bist du noch böse auf mich? – Nein.', 'عند الاعتذار بهذه الصيغة نستعمل المفرد Entschuldigung.', 'register', 'Entschuldigung'],
+      ['der Erwachsene', 'die Erwachsenen', 'الراشد', 'Dieser Film ist nur für Erwachsene.', 'Dieser Film ist nur für Erwachsen.', 'الصفة المستعملة اسمًا تأتي هنا في الجمع: Erwachsene.', 'deklination', 'Erwachsene'],
+      ['das Lied', 'die Lieder', 'الأغنية', 'Ich habe das Lied schon gehört.', 'Ich habe das Lied schon hören.', 'في Perfekt نقول hat gehört.', 'konjugation', 'Lied'],
+      ['lachen', 'lacht · lachte · hat gelacht', 'يضحك', 'Die Kinder lachen viel.', 'Die Kinder lacht viel.', 'الفاعل الجمع die Kinder يأخذ lachen.', 'konjugation', 'lachen'],
+      ['der Glückwunsch', 'die Glückwünsche', 'التهنئة', 'Herzlichen Glückwunsch zum Geburtstag! Ich schreibe eine Glückwunschkarte.', 'Herzliche Glückwunsch zum Geburtstag!', 'العبارة الثابتة هي Herzlichen Glückwunsch.', 'deklination', 'Glückwunsch'],
+      ['gratulieren', 'gratuliert · gratulierte · hat gratuliert', 'يهنّئ', 'Ich gratuliere dir zum Geburtstag.', 'Ich gratuliere dich zum Geburtstag.', 'بعد gratulieren نستخدم الداتيف dir.', 'kasus', 'gratuliere'],
+      ['das Glück', '—', 'الحظ', 'Viel Glück! Vielleicht gewinnst du eine Reise.', 'Viele Glück!', 'Glück مفرد غير معدود هنا: viel Glück.', 'deklination', 'Glück'],
+      ['der Lieblingsfilm', 'die Lieblingsfilme', 'الفيلم المفضل', 'Mein Lieblingsfilm ist „Schwarze Augen“.', 'Meine Lieblingsfilm ist „Schwarze Augen“.', 'Lieblingsfilm مذكر: mein Lieblingsfilm.', 'genus', 'Lieblingsfilm'],
+      ['sich kümmern', 'kümmert sich · kümmerte sich · hat sich gekümmert', 'يعتني بـ', 'Die Eltern kümmern sich um ihre Kinder.', 'Die Eltern kümmern um ihre Kinder.', 'في هذا المعنى يأتي الفعل انعكاسيًا مع sich وum.', 'lexik-kollokation', 'kümmern'],
+      ['das Ausland', '—', 'الخارج', 'Fahren Sie ins Ausland?', 'Fahren Sie nach Ausland?', 'إلى الخارج نقول ins Ausland.', 'präposition', 'Ausland']
     ],
     tricks: [
-      { trick: 'gratulieren وgefallen يأخذان Dativ لا Akkusativ', wie: 'Ich gratuliere dir. Die Farbe gefällt mir. Nicht dich und nicht mich.', warum: 'أفعال المشاعر تأخذ Dativ، والعربية لا تُظهر الفرق فتقع في dich بدل dir.', anchor: 'gratulieren' },
-      { trick: 'الرياضة machen، والأغنية hören، والفطور zum Frühstück', wie: 'Ich mache Sport. Ich höre ein Lied. Brötchen zum Frühstück.', warum: 'الرياضة تُصنع بـ machen لا تُلعب بـ spielen، وهذا من أكثر ما يوقّع التراكيب العربية.', anchor: 'der Sport' },
-      { trick: 'sich kümmern um: العناية تحتاج um', wie: 'Sie kümmert sich um ihre Kinder. Er kümmert sich um die Wohnung.', warum: 'العناية فعل انعكاسي بحرف ثابت um، وحذف أحدهما يجعل الجملة ناقصة.', anchor: 'sich kümmern' }
-    ]
+      { trick: 'gratulieren وgefallen يأخذان الداتيف', wie: 'Ich gratuliere dir. Die Farbe gefällt mir. Nicht dich und nicht mich.', warum: 'هذان الفعلان تحديدًا يأخذان الشخص في الداتيف: dir وmir؛ ولا نعمّم ذلك على كل أفعال المشاعر.', anchor: 'gratulieren' },
+      { trick: 'Sport machen، لكن لعبة محددة يمكن أن تأتي مع spielen', wie: 'Ich mache Sport. Ich spiele Fußball. Zum Frühstück esse ich ein Brötchen.', warum: 'للنشاط العام نقول Sport machen أو Sport treiben، وللعبة مثل Fußball نستعمل spielen. وzum Frühstück يحدد وقت الأكل؛ أما für das Frühstück فممكن إذا قصدنا الغرض.', anchor: 'der Sport' },
+      { trick: 'sich kümmern um يحتاج الضمير الانعكاسي وum', wie: 'Die Eltern kümmern sich um ihre Kinder. Er kümmert sich um die Wohnung.', warum: 'في معنى العناية يأتي الفعل انعكاسيًا مع sich ويتصل بما نعتني به بواسطة um.', anchor: 'sich kümmern' }
+    ],
+    strictClozeAnswers: true,
+    clozeItemIndex: 17,
+    clozeNearMiss: 'bittet',
+    wordClozeNearMisses: {
+      'das Café': 'Cafés',
+      lachen: 'lacht'
+    },
+    extraCheck: {
+      right: 'Die Farbe gefällt mir gut.',
+      bad: 'Die Farbe gefällt mich gut.',
+      why: 'مع gefallen نستخدم الداتيف mir.',
+      family: 'kasus',
+      prereq: 'cap.a1-u5-l6.s05',
+      frage: 'أي جملة تستعمل الداتيف الصحيح مع gefallen؟'
+    }
   }
 
 };

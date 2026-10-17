@@ -1448,23 +1448,48 @@ module.exports = [
       summaryRecap: 'Abfahrt Bahnsteig Ankunft Zoll Besichtigung'
     }),
 
-  U('a1-u5-l6', 'A1', 'مراجعة قائمة غوته A1', 'Wortliste A1', 'lexik-kollokation',
-    'Am Ende kennst du die Wörter der amtlichen A1-Liste, die noch fehlten',
-    'في النهاية تعرف كلمات قائمة A1 الرسمية التي كانت ناقصة.',
+  U('a1-u5-l6', 'A1', 'مراجعة مفردات A1', 'Wortliste A1', 'lexik-kollokation',
+    'Am Ende bildest du fünf vollständige Sätze mit Wörtern aus der amtlichen A1-Liste: gratulieren, gefallen, Sport, bitten und sich kümmern um',
+    'في النهاية تستعمل خمس كلمات مهمة من مفردات A1 في جمل كاملة.',
     [
-      ['gratulieren dir', 'التهنئة تأخذ Dativ', 'dich خطأ', 'Ich gratuliere dich', 'gratulieren + Dativ'],
-      ['gefallen mir', 'الإعجاب يأخذ Dativ', 'mich خطأ', 'Die Farbe gefällt mich', 'gefallen + Dativ'],
-      ['Sport machen', 'الرياضة تُصنع بـ machen', 'Sport spielen خطأ', 'Sport spielen', 'machen مع Sport'],
-      ['sich kümmern um', 'العناية تحتاج um', 'kümmern ohne um', 'Er kümmert die Kinder', 'sich kümmern um']
+      ['Ich gratuliere dir zum Geburtstag.', 'تستعمل dir بعد gratulieren', 'الفعل gratulieren يأخذ الداتيف: dir', 'Ich gratuliere dich zum Geburtstag.', 'بعد gratulieren نقول dir لا dich'],
+      ['Die Farbe gefällt mir gut.', 'تستعمل mir مع gefallen', 'الشخص الذي يعجبه الشيء يأتي مع gefallen في الداتيف', 'Die Farbe gefällt mich gut.', 'مع gefallen نقول mir لا mich'],
+      ['Ich mache in meiner Freizeit viel Sport.', 'تتحدث عن الرياضة في وقت الفراغ', 'في هذا السياق نقول viel Sport لأن Sport اسم مفرد غير معدود', 'Ich mache in meiner Freizeit viele Sport.', 'نقول viel Sport لا viele Sport'],
+      ['Die Eltern kümmern sich um ihre Kinder.', 'تستعمل sich kümmern um كاملة', 'في هذا المعنى يأتي kümmern انعكاسيًا مع um', 'Die Eltern kümmern sich für ihre Kinder.', 'نقول sich um ihre Kinder kümmern، لا für']
     ],
     [
-      ['Ich gratuliere dir.', 'أهنّئك', 'Ich gratuliere dich', 'Dativ', 'dir'],
-      ['Die Farbe gefällt mir.', 'اللون يعجبني', 'Die Farbe gefällt mich', 'Dativ', 'mir'],
-      ['Ich mache Sport.', 'أمارس الرياضة', 'Ich spiele Sport', 'machen', 'Sport'],
-      ['Sie kümmert sich um die Kinder.', 'تعتني بالأطفال', 'Sie kümmert die Kinder', 'um', 'um']
+      ['Ich gratuliere dir zum Geburtstag.', 'أهنئك بعيد ميلادك', 'Ich gratuliere dich zum Geburtstag.', 'بعد gratulieren نستخدم الداتيف dir', 'dir'],
+      ['Die Farbe gefällt mir gut.', 'يعجبني اللون', 'Die Farbe gefällt mich gut.', 'مع gefallen نستخدم الداتيف mir', 'mir'],
+      ['Ich mache in meiner Freizeit viel Sport.', 'أمارس الكثير من الرياضة في وقت فراغي', 'Ich mache in meiner Freizeit viele Sport.', 'نقول viel Sport لا viele Sport', 'Sport'],
+      ['Darf ich Sie um etwas bitten?', 'هل يمكنني أن أطلب من حضرتك شيئًا؟', 'Darf ich Sie für etwas bitten?', 'التركيب هو jemanden um etwas bitten', 'bitten']
     ],
-    'Ich gratuliere dir und wünsche dir viel Glück.',
-    'Ich gratuliere dir.',
-    'Schreibe morgen eine Glückwunschkarte in zwei Sätzen.',
-    'غدًا اكتب بطاقة تهنئة في جملتين.')
+    'Ich gratuliere dir zum Geburtstag.',
+    'Ich gratuliere dir zum Geburtstag.',
+    'Wiederhole morgen die fünf Sätze: Ich gratuliere dir zum Geburtstag. Die Farbe gefällt mir gut. Ich mache in meiner Freizeit viel Sport. Darf ich Sie um etwas bitten? Die Eltern kümmern sich um ihre Kinder.',
+    'غدًا راجع الجمل الخمس عن التهنئة والإعجاب والرياضة والطلب والعناية.',
+    {
+      factFamilies: ['kasus', 'kasus', 'deklination', 'präposition'],
+      writing: {
+        zeigt: 'Fünf Sätze mit A1-Wortschatz',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن التهنئة والإعجاب والرياضة والطلب والعناية.',
+        prompt: 'اكتب الجمل الخمس مستعملًا مفردات المراجعة في سياقها.',
+        promptDe: 'Ich gratuliere dir zum Geburtstag. · Die Farbe gefällt mir gut. · Ich mache in meiner Freizeit viel Sport. · Darf ich Sie um etwas bitten? · Die Eltern kümmern sich um ihre Kinder.',
+        points: ['Ich gratuliere dir zum Geburtstag.', 'Die Farbe gefällt mir gut.', 'Ich mache in meiner Freizeit viel Sport.', 'Darf ich Sie um etwas bitten?', 'Die Eltern kümmern sich um ihre Kinder.'],
+        minWords: 30,
+        frage: 'اكتب الجمل الخمس كاملة مع dir وmir وviel Sport وum etwas bitten وsich um ihre Kinder kümmern.',
+        familie: 'kasus',
+        hinweise: ['راجع dir بعد gratulieren وmir مع gefallen.', 'استعمل viel Sport وum etwas bitten وsich kümmern um.']
+      },
+      imitateNearMiss: 'dich',
+      transformHint: 'بعد gratulieren نستخدم الداتيف dir.',
+      orderAr: 'رتّب جملة التهنئة: ابدأ بـ Ich ثم gratuliere ثم dir zum Geburtstag.',
+      orderHints: ['ابدأ بـ Ich وضع gratuliere في الموضع الثاني.', 'أكمل بـ dir zum Geburtstag.'],
+      orderSentence: 'Ich gratuliere dir zum Geburtstag.',
+      checkOrderSentence: 'Ich gratuliere dir zum Geburtstag.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة تهنئة صحيحة.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich gratuliere dir zum Geburtstag وDie Farbe gefällt mir gut وIch mache in meiner Freizeit viel Sport وDarf ich Sie um etwas bitten وDie Eltern kümmern sich um ihre Kinder.',
+      summaryDe: 'Ich gratuliere dir zum Geburtstag. · Die Farbe gefällt mir gut. · Ich mache in meiner Freizeit viel Sport. · Darf ich Sie um etwas bitten? · Die Eltern kümmern sich um ihre Kinder.',
+      summaryAr: 'راجع dir وmir وviel Sport وum etwas bitten وsich kümmern um.',
+      summaryRecap: 'gratulieren gefallen Sport bitten kümmern'
+    })
 ];
