@@ -3733,6 +3733,119 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
 }
 
+/* ---------- audited A2 accusative adjective-ending lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u2-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich kenne den neuen Kollegen.',
+    'Wir mieten die kleine Wohnung.',
+    'Wir kaufen das große Haus.',
+    'Ich sehe die alten Häuser.',
+    'Ich habe einen guten Freund.'
+  ];
+  const taughtFacts = targets.slice(0, 4);
+  t('Corpus lesson a2-u2-l4 bounds accusative adjective endings to five complete masculine, feminine, neuter and plural targets',
+    lesson.title.de === 'Adjektivendungen im Akkusativ' && lesson.title.ar === 'نهايات الصفة في حالة النصب' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar && row.theme === 'وصف الأشخاص والأشياء' &&
+      row.grammar.item === 'den/einen: -en · die/das مفرد: -e · die جمع: -en · ein محايد: -es' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwendest du fünf vollständige Akkusativgruppen mit den richtigen Adjektivendungen');
+
+  const expectedWords = [
+    'den neuen Kollegen', 'die kleine Wohnung', 'das große Haus', 'die alten Häuser',
+    'einen guten Freund', 'eine gute Idee', 'ein kleines Kind', 'keinen freien Tag',
+    'meinen alten Nachbarn', 'den roten Pullover', 'die blaue Jacke', 'das weiße Hemd',
+    'die schwarzen Schuhe', 'den freundlichen Verkäufer', 'die ruhige Straße',
+    'das billige Hotel', 'die frische Milch', 'den warmen Tee', 'das kalte Wasser',
+    'die leere Flasche', 'den neuen Job', 'die letzte Chance', 'das erste Mal',
+    'die kleinen Kinder', 'den guten Preis', 'die grüne Lampe', 'ganz', 'freiwillig',
+    'wahr', 'typisch', 'traurig'
+  ];
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u2-l4 reviews all 31 entries and three bounded mnemonics without treating every accusative form alike',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && it.fam === 'deklination' && !it.err.includes('falsch')) &&
+      byWord['den neuen Kollegen'].ex === targets[0] && byWord['die kleine Wohnung'].ex === targets[1] &&
+      byWord['das große Haus'].ex === targets[2] && byWord['die alten Häuser'].ex === targets[3] &&
+      byWord['einen guten Freund'].ex === targets[4] && byWord['eine gute Idee'].ex.includes('eine gute Idee') &&
+      byWord['ein kleines Kind'].ex.includes('ein kleines Kind') && byWord['keinen freien Tag'].ex.includes('keinen freien Tag') &&
+      byWord['meinen alten Nachbarn'].why.includes('Nachbarn') && byWord['den roten Pullover'].ex.includes('den roten Pullover') &&
+      byWord['die blaue Jacke'].ex.includes('die blaue Jacke') && byWord['das weiße Hemd'].ex.includes('das weiße Hemd') &&
+      byWord['die schwarzen Schuhe'].ex.includes('die schwarzen Schuhe') &&
+      byWord['den freundlichen Verkäufer'].ex.includes('den freundlichen Verkäufer') &&
+      byWord['die ruhige Straße'].ex.includes('die ruhige Straße') && byWord['das billige Hotel'].ex.includes('das billige Hotel') &&
+      byWord['die frische Milch'].ex.includes('die frische Milch') && byWord['den warmen Tee'].ex.includes('den warmen Tee') &&
+      byWord['das kalte Wasser'].ex.includes('das kalte Wasser') && byWord['die leere Flasche'].ex.includes('die leere Flasche') &&
+      byWord['den neuen Job'].ex.includes('den neuen Job') && byWord['die letzte Chance'].ex.includes('die letzte Chance') &&
+      byWord['das erste Mal'].ex.includes('das erste Mal') && byWord['die kleinen Kinder'].ex.includes('die kleinen Kinder') &&
+      byWord['den guten Preis'].ex.includes('den guten Preis') && byWord['die grüne Lampe'].ex.includes('die grüne Lampe') &&
+      byWord.ganz.ex.includes('den ganzen Tag') && byWord.freiwillig.ex.includes('einen freiwilligen Kurs') &&
+      byWord.wahr.ex.includes('die wahre Geschichte') && byWord.typisch.ex === 'Er stellt eine typische Frage.' &&
+      byWord.traurig.ex === 'Ich erlebe einen traurigen Moment.' &&
+      tricks.length === 3 && tricks[0].trick.includes('den/einen') && tricks[0].wie.includes('den neuen Kollegen') &&
+      tricks[0].wie.includes('einen guten Freund') && tricks[0].warum.includes('der neue') &&
+      tricks[1].trick.includes('die kleine') && tricks[1].trick.includes('das große') && tricks[1].trick.includes('die alten') &&
+      tricks[1].warum.includes('المؤنث والمحايد المفردان') && tricks[1].warum.includes('الجمع') &&
+      tricks[2].trick.includes('كلمات ein') && tricks[2].wie.includes('eine gute Idee') && tricks[2].wie.includes('ein kleines Kind') &&
+      tricks[2].warum.includes('المذكر einen') && tricks[2].warum.includes('المحايد ein') &&
+      !lessonText.includes('يتغيّر المذكر وحده') && !lessonText.includes('die وdas لا تتغيّران في النصب'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u2-l4 aligns strict clozes, one complete einen order, 25-word writing, speaking, summary and homework',
+    wordCloze1.frage.zeigt === 'Ich habe eine ____ Idee.' && wordCloze1.frage.antworten.join(' ') === 'gute' &&
+      wordCloze1.frage.nearMiss.guten && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'guten').ok &&
+      wordCloze2.frage.zeigt === 'Ich nutze die ____ Chance.' && wordCloze2.frage.antworten.join(' ') === 'letzte' &&
+      wordCloze2.frage.nearMiss.letzten && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'letzten').ok &&
+      imitate.zeigt.de === 'Ich kenne den ____ Kollegen.' && imitate.frage.antworten.join(' ') === 'neuen' &&
+      imitate.frage.nearMiss.neue && !win.DW.renderers.judgeCloze(imitate.frage, 'neue').ok &&
+      drill.frage.zeigt === 'Wir kaufen das ____ Haus.' && drill.frage.antworten.join(' ') === 'große' &&
+      drill.frage.nearMiss.großen && !win.DW.renderers.judgeCloze(drill.frage, 'großen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[4] && order.frage.finite === 'habe' &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'habe' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'einen', 'guten', 'Freund.', 'habe']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 25 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u2-l4 makes 80 percent four of five measurable across alten, große, full order, neuen and kleine',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u2-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Ich sehe die alte Häuser.') &&
+      checks[0].frage.misconceptionFamilies.a === 'deklination' &&
+      clozeCheck.frage.antworten.join(' ') === 'große' && clozeCheck.frage.nearMiss.großen &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'großen').ok &&
+      orderCheck.frage.correct.join(' ') === targets[4] && orderCheck.frage.finite === 'habe' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'einen', 'guten', 'Freund.', 'habe']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

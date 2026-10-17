@@ -68,7 +68,7 @@
     ['المقارنة بـ als وwie', 'Vergleiche mit als und wie', 'المقارنة والتساوي', 'Komparativ + als · so + Grundform + wie · besser/mehr/lieber', 'explicit', 33, 13],
     ['التفضيل مع am وقبل الاسم', 'Superlativ mit am und vor Nomen', 'التفضيل', 'am + -(e)sten · der/die/das + Superlativ قبل الاسم · am besten/am meisten/am liebsten', 'explicit', 29, 13],
     ['نهايات الصفة في حالة الرفع', 'Adjektivendungen im Nominativ', 'وصف الأشخاص والأشياء', 'der/die/das: -e مفرد و-en جمع · ein: -er/-e/-es · الصفة الخبرية بلا نهاية', 'explicit', 31, 13],
-    ['نهاية الصفة في النصب', 'Adjektiv Akkusativ', 'الوصف', 'نهاية الصفة في النصب', 'explicit', 31, 13],
+    ['نهايات الصفة في حالة النصب', 'Adjektivendungen im Akkusativ', 'وصف الأشخاص والأشياء', 'den/einen: -en · die/das مفرد: -e · die جمع: -en · ein محايد: -es', 'explicit', 31, 13],
     ['الأفعال الانعكاسية', 'Reflexiv', 'العناية', 'sich waschen', 'inductive', 31, 13],
     ['ماضي sein وhaben', 'Präteritum sein/haben', 'الخلفية', 'war وhatte', 'explicit', 30, 13],
     ['würde', 'Konjunktiv II würde', 'الأدب', 'würde', 'explicit', 29, 13],

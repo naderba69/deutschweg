@@ -407,25 +407,50 @@ module.exports = [
       summaryRecap: 'Nominativ e en er es'
     }),
 
-  U('a2-u2-l4', 'A2', 'نهاية الصفة في النصب', 'Adjektiv Akkusativ', 'deklination',
-    'Am Ende setzt du die Adjektivendung im Akkusativ',
-    'في النهاية تضع نهاية الصفة في النصب.',
+  U('a2-u2-l4', 'A2', 'نهايات الصفة في حالة النصب', 'Adjektivendungen im Akkusativ', 'deklination',
+    'Am Ende verwendest du fünf vollständige Akkusativgruppen mit den richtigen Adjektivendungen',
+    'في النهاية تستعمل خمس مجموعات اسمية في حالة النصب بنهايات الصفة الصحيحة.',
     [
-      ['den kleinen Mann', 'مذكر النصب en', 'den kleine Mann ناقص', 'den kleine Mann', 'النهاية en'],
-      ['einen kleinen Mann', 'بعد einen أيضًا en', 'einen kleine Mann خطأ', 'einen kleine Mann', 'en بعد einen'],
-      ['die kleine Frau', 'المؤنث يبقى e', 'die kleinen Frau خطأ', 'die kleinen Frau', 'المفرد e'],
-      ['das kleine Kind', 'المحايد في النصب e', 'das kleinen Kind خطأ', 'das kleinen Kind', 'e لا en']
+      ['Ich kenne den neuen Kollegen.', 'تستعمل -en بعد den مع المذكر المفرد في النصب', 'بعد den في المذكر المفرد تأتي الصفة بـ -en: den neuen Kollegen', 'Ich kenne den neue Kollegen.', 'بعد den نقول neuen لا neue'],
+      ['Wir mieten die kleine Wohnung.', 'تستعمل -e بعد die مع المؤنث المفرد في النصب', 'مع die للمؤنث المفرد تأتي الصفة بـ -e: die kleine Wohnung', 'Wir mieten die kleinen Wohnung.', 'في المؤنث المفرد نقول die kleine Wohnung'],
+      ['Wir kaufen das große Haus.', 'تستعمل -e بعد das مع المحايد المفرد في النصب', 'مع das للمحايد المفرد تأتي الصفة بـ -e: das große Haus', 'Wir kaufen das großen Haus.', 'في المحايد المفرد نقول das große Haus'],
+      ['Ich sehe die alten Häuser.', 'تستعمل -en بعد die مع الجمع في النصب', 'مع die للجمع تأتي الصفة بـ -en: die alten Häuser', 'Ich sehe die alte Häuser.', 'في الجمع نقول die alten Häuser']
     ],
     [
-      ['Ich sehe den kleinen Mann.', 'أرى الرجل الصغير', 'Ich sehe den kleine Mann', 'النصب kleinen', 'kleinen'],
-      ['Ich sehe einen kleinen Mann.', 'أرى رجلًا صغيرًا', 'Ich sehe einen kleine Mann', 'بعد einen: kleinen', 'kleinen'],
-      ['Ich sehe die kleine Frau.', 'أرى المرأة الصغيرة', 'Ich sehe die kleinen Frau', 'المؤنث kleine', 'kleine'],
-      ['Ich sehe das kleine Kind.', 'أرى الطفل الصغير', 'Ich sehe das kleinen Kind', 'المحايد kleine', 'kleine']
+      ['Ich kenne den neuen Kollegen.', 'أعرف الزميل الجديد', 'Ich kenne den neue Kollegen.', 'بعد den في المذكر المفرد نقول neuen', 'neuen'],
+      ['Wir mieten die kleine Wohnung.', 'نستأجر الشقة الصغيرة', 'Wir mieten die kleinen Wohnung.', 'مع die للمؤنث المفرد نقول kleine', 'kleine'],
+      ['Wir kaufen das große Haus.', 'نشتري البيت الكبير', 'Wir kaufen das großen Haus.', 'مع das للمحايد المفرد نقول große', 'große'],
+      ['Ich sehe die alten Häuser.', 'أرى البيوت القديمة', 'Ich sehe die alte Häuser.', 'مع die للجمع نقول alten', 'alten']
     ],
-    'Ich sehe den kleinen Mann und die kleine Frau.',
-    'Ich sehe den kleinen Mann.',
-    'Bilde morgen den kleinen und einen kleinen.',
-    'غدًا كوّن den kleinen وeinen kleinen.'),
+    'Ich habe einen guten Freund.',
+    'Ich habe einen guten Freund.',
+    'Wiederhole morgen die fünf Sätze: Ich kenne den neuen Kollegen. Wir mieten die kleine Wohnung. Wir kaufen das große Haus. Ich sehe die alten Häuser. Ich habe einen guten Freund.',
+    'غدًا راجع جمل النصب الخمس مع den/einen وdie وdas ونهايتَي -e و-en.',
+    {
+      factFamilies: ['deklination', 'deklination', 'deklination', 'deklination'],
+      writing: {
+        zeigt: 'Fünf Akkusativgruppen mit Adjektiven',
+        erklaerung: 'اكتب الجمل الخمس كاملة بنهايات الصفة الصحيحة في حالة النصب.',
+        prompt: 'اكتب الجمل الخمس: مذكرًا ومؤنثًا ومحايدًا وجمعًا مع أداة التعريف، ثم مذكرًا مع einen.',
+        promptDe: 'Ich kenne den neuen Kollegen. · Wir mieten die kleine Wohnung. · Wir kaufen das große Haus. · Ich sehe die alten Häuser. · Ich habe einen guten Freund.',
+        points: ['Ich kenne den neuen Kollegen.', 'Wir mieten die kleine Wohnung.', 'Wir kaufen das große Haus.', 'Ich sehe die alten Häuser.', 'Ich habe einen guten Freund.'],
+        minWords: 25,
+        frage: 'اكتب جمل النصب الخمس كاملة مع neuen وkleine وgroße وalten وguten.',
+        familie: 'deklination',
+        hinweise: ['في المذكر استعمل den/einen مع -en.', 'في المؤنث والمحايد المفردين استعمل -e، وفي الجمع استعمل -en.']
+      },
+      imitateNearMiss: 'neue',
+      transformHint: 'مع einen في المذكر المفرد نقول einen guten Freund.',
+      orderAr: 'رتّب الجملة: Ich ثم habe ثم einen guten Freund.',
+      orderHints: ['ابدأ بـ Ich وضع habe في الموضع الثاني.', 'اختم بالمجموعة einen guten Freund.'],
+      orderSentence: 'Ich habe einen guten Freund.',
+      checkOrderSentence: 'Ich habe einen guten Freund.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة نصب صحيحة مع einen.',
+      speakAr: 'سجّل عشرين ثانية: قل Ich kenne den neuen Kollegen وWir mieten die kleine Wohnung وWir kaufen das große Haus وIch sehe die alten Häuser وIch habe einen guten Freund.',
+      summaryDe: 'Ich kenne den neuen Kollegen. · Wir mieten die kleine Wohnung. · Wir kaufen das große Haus. · Ich sehe die alten Häuser. · Ich habe einen guten Freund.',
+      summaryAr: 'راجع نهايات النصب: den neuen، die kleine، das große، die alten، einen guten.',
+      summaryRecap: 'Akkusativ e en'
+    }),
 
   U('a2-u2-l5', 'A2', 'الأفعال الانعكاسية', 'Reflexiv', 'konjugation',
     'Am Ende benutzt du mich und mir bei reflexiven Verben',
