@@ -4516,6 +4516,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'plural');
 }
 
+/* ---------- audited A2 health lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u3-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Mir ist schlecht und ich habe Fieber.',
+    'Ich brauche einen Termin beim Arzt.',
+    'Die Praxis ist heute geschlossen.',
+    'Nehmen Sie die Tabletten dreimal täglich.',
+    'Ich fühle mich schon besser.'
+  ];
+  t('Corpus lesson a2-u3-l5 bounds symptoms, an appointment, practice hours, medication and recovery to five complete health targets',
+    lesson.title.de === 'Gesundheit: Beschwerden, Arzttermin und Medikamente' &&
+      lesson.title.ar === 'الصحة: الأعراض وموعد الطبيب والأدوية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الصحة والرعاية الطبية' &&
+      row.grammar.item === 'Mir ist schlecht · Fieber haben · einen Termin beim Arzt brauchen · dreimal täglich · sich besser fühlen' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      targets.slice(0, 3).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte.find(s => s.id === 's07').zeigt.de === targets[4] &&
+      lesson.schritte.find(s => s.id === 's09').wortschatz.some(it => it.ex === targets[3]) &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende verwendest du fünf vollständige Gesundheitssätze für Beschwerden, Arzttermin, Praxiszeiten, Medikamenteneinnahme und Besserung');
+
+  const expectedWords = [
+    'die Praxis', 'der Termin', 'die Gesundheit', 'die Sprechstunde', 'die Schmerzen', 'die Tablette',
+    'das Rezept', 'die Apotheke', 'das Medikament', 'die Untersuchung', 'untersuchen',
+    'die Krankenkasse', 'die Behandlung', 'der Patient', 'die Krankenschwester', 'das Krankenhaus',
+    'der Notarzt', 'die Verletzung', 'wehtun', 'das Fieber', 'der Husten', 'die Erkältung',
+    'sich erholen', 'die Diät', 'das Sprechzimmer', 'die Schmerztablette', 'schwach', 'weinen',
+    'stören', 'die Grippe', 'fit'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u3-l5 reviews all 31 entries and three nuanced mnemonics without rejecting valid medical alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['die Praxis'].ex === targets[2] && byWord['die Praxis'].why.includes('hat heute geschlossen') &&
+      byWord['der Termin'].ex === targets[1] && byWord['der Termin'].why.includes('bei der Ärztin') &&
+      byWord['die Sprechstunde'].ar.includes('استقبال المرضى') && byWord['die Tablette'].ex === targets[3] &&
+      byWord['die Apotheke'].why.includes('Ich gehe in die Apotheke') &&
+      byWord['die Krankenkasse'].ex === 'Die Krankenkasse bezahlt die Behandlung.' &&
+      byWord['die Krankenkasse'].why.includes('zahlt für die Behandlung') &&
+      byWord['die Behandlung'].why.includes('ist erfolgreich gewesen صحيحة أيضًا') &&
+      byWord['der Notarzt'].why.includes('nach zehn Minuten') && byWord['der Notarzt'].why.includes('السياق') &&
+      byWord.wehtun.ex === 'Mir tut der Rücken weh.' && byWord.wehtun.pl.includes('hat wehgetan') &&
+      byWord['der Husten'].ex === 'Mein Husten ist besser geworden.' &&
+      !errors.includes('Die Krankenkasse bezahlt die Behandlung immer.') &&
+      !errors.includes('Die Behandlung ist erfolgreich gewesen.') &&
+      !errors.includes('Der Notarzt kommt nach zehn Minuten.') &&
+      !errors.includes('Der Husten ist besser geblieben.') &&
+      tricks.length === 3 && tricks[0].wie.includes('Mir ist schlecht.') && tricks[0].wie.includes('Ich bin krank.') &&
+      tricks[0].warum.includes('sein أو haben') && tricks[1].wie.includes('Ich gehe zum Arzt.') &&
+      tricks[1].wie.includes('Wir fahren ins Krankenhaus.') && tricks[1].warum.includes('لا نرفض الصيغة الأخرى') &&
+      tricks[2].wie.includes('Auch „Die Praxis hat heute geschlossen.“ ist üblich.') &&
+      tricks[2].wie.includes('richtig ist Maßangaben') &&
+      !['Die Praxis ist closed', 'beim Arzt هو التركيب الثابت', '"rtb"'].some(x => lessonText.includes(x)));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u3-l5 aligns strict Tabletten, Erkältung, schlecht and Termin clozes, a formal imperative order and 30-word production',
+    wordCloze1.frage.zeigt === 'Nehmen Sie die ____ dreimal täglich.' && wordCloze1.frage.antworten.join(' ') === 'Tabletten' &&
+      wordCloze1.frage.nearMiss.Tablette && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Tablette').ok &&
+      wordCloze2.frage.zeigt === 'Ich habe eine ____.' && wordCloze2.frage.antworten.join(' ') === 'Erkältung' &&
+      wordCloze2.frage.nearMiss.Erkältungen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Erkältungen').ok &&
+      imitate.zeigt.de === 'Mir ist ____.' && imitate.frage.antworten.join(' ') === 'schlecht' &&
+      imitate.frage.nearMiss.schlechte && !win.DW.renderers.judgeCloze(imitate.frage, 'schlechte').ok &&
+      drill.frage.zeigt === 'Ich brauche einen ____ beim Arzt.' && drill.frage.antworten.join(' ') === 'Termin' &&
+      drill.frage.nearMiss.Termine && !win.DW.renderers.judgeCloze(drill.frage, 'Termine').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'Nehmen' && order.frage.verbFirst === true &&
+      order.frage.fields.vorfeld.length === 0 && order.frage.fields.lsk.join(' ') === 'Nehmen' &&
+      order.frage.fields.mittelfeld.join(' ') === 'Sie die Tabletten dreimal täglich.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Sie', 'Nehmen', 'die', 'Tabletten', 'dreimal', 'täglich.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[,.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[,.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u3-l5 makes 80 percent four of five independent across recovery, appointment, medication, practice and symptoms',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u3-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u3-l5.s07 | cap.a2-u3-l5.s21 | cap.a2-u3-l5.s22 | cap.a2-u3-l5.s08 | cap.a2-u3-l5.s04' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.antworten.join(' ') === 'Termin' && clozeCheck.frage.nearMiss.Termine &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Termine').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'Nehmen' &&
+      orderCheck.frage.verbFirst === true && orderCheck.frage.fields.vorfeld.length === 0 &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Sie', 'Nehmen', 'die', 'Tabletten', 'dreimal', 'täglich.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) && checks[3].frage.misconceptionFamilies.b === 'orthographie' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

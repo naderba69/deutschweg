@@ -328,7 +328,7 @@ function blankOut(sentence, core) {
   };
 }
 
-const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|fahre|lebt|fehlt|hat|habe|hast|sagt|antwortet|antworte|fragt|frage|möchte|möchten|kann|kannst|können|könnte|könntest|könnten|passt|gibt|tut|muss|will|willst|würde|würdest|würden|hätte|hättest|hätten|wäre|wärst|wären|rufst|darf|mag|holt|kauf)$/i;
+const FINITE = /^(ist|sind|bin|bist|seid|heißt|heiße|kommt|komme|wohnt|wohne|spricht|spreche|lerne|lernt|arbeite|arbeitet|geht|gehe|kostet|beginnt|bleibe|stehe|frühstücke|fährt|fahre|lebt|fehlt|hat|habe|hast|sagt|antwortet|antworte|fragt|frage|möchte|möchten|kann|kannst|können|könnte|könntest|könnten|passt|gibt|tut|muss|will|willst|würde|würdest|würden|hätte|hättest|hätten|wäre|wärst|wären|rufst|darf|mag|holt|kauf|nehmen)$/i;
 
 /* The order exercise is scored on four levels, and level 1 needs the finite
    verb, level 3 the fields. Without them the engine could only say "wrong",
@@ -374,7 +374,8 @@ function orderFrage(sentence, frageText, rightBracket) {
   const i = finiteIndex(toks);
   if (i < 0) return null;
   const finite = toks[i];
-  const verbFirst = i === 0 && /\?$/.test(String(sentence).trim());
+  const formalImperative = i === 0 && toks[1] && toks[1].replace(/[.,!?;:]+$/, '').toLowerCase() === 'sie';
+  const verbFirst = i === 0 && (/\?$/.test(String(sentence).trim()) || formalImperative);
   const rsk = rightBracket === undefined ? [] :
     (Array.isArray(rightBracket) ? rightBracket.slice() : [rightBracket]);
   if (rsk.length && toks.slice(-rsk.length).join(' ') !== rsk.join(' ')) {

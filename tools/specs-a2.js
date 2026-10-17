@@ -724,25 +724,50 @@ module.exports = [
       summaryRecap: 'Reise Fahrkarte Verspätung umsteigen Einzelzimmer'
     }),
 
-  U('a2-u3-l5', 'A2', 'الصحة', 'Gesundheit', 'lexik-kollokation',
-    'Am Ende beschreibst du ein Symptom und eine Besserung',
-    'في النهاية تصف عرضًا وتحسنًا.',
+  U('a2-u3-l5', 'A2', 'الصحة: الأعراض وموعد الطبيب والأدوية', 'Gesundheit: Beschwerden, Arzttermin und Medikamente', 'lexik-kollokation',
+    'Am Ende verwendest du fünf vollständige Gesundheitssätze für Beschwerden, Arzttermin, Praxiszeiten, Medikamenteneinnahme und Besserung',
+    'في النهاية تستعمل خمس جمل صحية كاملة للأعراض وموعد الطبيب وإغلاق العيادة وتناول الدواء والتحسن.',
     [
-      ['mir ist schlecht', 'الغثيان mir ist schlecht', 'لا ich bin schlecht بهذا المعنى', 'ich bin schlecht', 'المقام يغيّر المعنى'],
-      ['ich habe Fieber', 'الحمى habe Fieber', 'لا ich bin Fieber', 'ich bin Fieber', 'Fieber مع habe'],
-      ['die Praxis hat geschlossen', 'العيادة تغلق مع hat', 'لا is closed خليط', 'die Praxis ist closed', 'closed إنجليزية'],
-      ['ich fühle mich besser', 'التحسن mich besser', 'لا ich fühle besser ohne mich', 'ich fühle besser', 'الضمير مفقود']
+      ['Mir ist schlecht und ich habe Fieber.', 'تصف عرضين شائعين بإطارَي mir ist وFieber haben', 'مع schlecht للدلالة على الغثيان نقول Mir ist schlecht، ومع Fieber نستعمل haben', 'Mir bin schlecht und ich bin Fieber.', 'نقول Mir ist schlecht وich habe Fieber'],
+      ['Ich brauche einen Termin beim Arzt.', 'تطلب موعدًا عند الطبيب مع beim Arzt', 'beim اختصار bei dem مع Arzt المذكر؛ ومع Ärztin نقول bei der Ärztin', 'Ich brauche einen Termin bei der Arzt.', 'Arzt مذكر؛ نقول beim Arzt أو bei dem Arzt'],
+      ['Die Praxis ist heute geschlossen.', 'توضح أن العيادة مغلقة اليوم باستعمال geschlossen', 'geschlossen هو اسم المفعول الصحيح؛ وتستعمل الألمانية أيضًا Die Praxis hat heute geschlossen', 'Die Praxis ist heute geschließen.', 'الكتابة الصحيحة هي geschlossen'],
+      ['Ich fühle mich schon besser.', 'تصف التحسن بالفعل الانعكاسي sich fühlen', 'مع ich نحتاج الضمير mich، وschon يوضح أن التحسن بدأ', 'Ich fühle schon besser.', 'الفعل هنا انعكاسي: Ich fühle mich']
     ],
     [
-      ['Mir ist schlecht.', 'أشعر بالغثيان', 'Ich bin schlecht', 'الغثيان mir ist schlecht', 'schlecht'],
-      ['Ich habe Fieber.', 'عندي حمى', 'Ich bin Fieber', 'الحمى habe', 'Fieber'],
-      ['Die Praxis hat geschlossen.', 'العيادة أغلقت', 'Die Praxis ist closed', 'الإغلاق hat geschlossen', 'geschlossen'],
-      ['Ich fühle mich besser.', 'أشعر بتحسن', 'Ich fühle besser', 'الضمير mich', 'mich']
+      ['Mir ist schlecht.', 'أشعر بالغثيان', 'Mir bin schlecht.', 'مع Mir نستخدم ist في هذا التعبير', 'schlecht'],
+      ['Ich brauche einen Termin beim Arzt.', 'أحتاج إلى موعد عند الطبيب', 'Ich brauche einen Termin bei der Arzt.', 'Arzt مذكر؛ نقول beim Arzt', 'Termin'],
+      ['Nehmen Sie die Tabletten dreimal täglich.', 'تناول الأقراص ثلاث مرات يوميًا', 'Nehmen Sie die Tabletten dreimal Tag.', 'لبيان المعدل اليومي نقول dreimal täglich', 'Tabletten'],
+      ['Ich fühle mich schon besser.', 'أشعر بتحسن الآن', 'Ich fühle schon besser.', 'الفعل الانعكاسي مع ich يحتاج mich', 'mich']
     ],
-    'Mir ist schlecht. Ich habe Fieber.',
-    'Ich fühle mich besser.',
-    'Sage morgen ein Symptom.',
-    'غدًا قل عرضًا واحدًا.'),
+    'Mir ist schlecht und ich habe Fieber. Ich brauche einen Termin beim Arzt. Die Praxis ist heute geschlossen. Nehmen Sie die Tabletten dreimal täglich. Ich fühle mich schon besser.',
+    'Ich fühle mich schon besser.',
+    'Wiederhole morgen die fünf Sätze: Mir ist schlecht und ich habe Fieber. Ich brauche einen Termin beim Arzt. Die Praxis ist heute geschlossen. Nehmen Sie die Tabletten dreimal täglich. Ich fühle mich schon besser.',
+    'غدًا راجع الجمل الخمس عن الأعراض والموعد والعيادة والدواء والتحسن.',
+    {
+      factFamilies: ['konjugation', 'präposition', 'orthographie', 'kasus'],
+      writing: {
+        zeigt: 'Fünf vollständige Gesundheitssätze',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن الأعراض وموعد الطبيب وإغلاق العيادة وتعليمات الدواء والتحسن.',
+        prompt: 'اكتب الجمل الخمس مستعملًا التراكيب الصحية الصحيحة.',
+        promptDe: 'Mir ist schlecht und ich habe Fieber. · Ich brauche einen Termin beim Arzt. · Die Praxis ist heute geschlossen. · Nehmen Sie die Tabletten dreimal täglich. · Ich fühle mich schon besser.',
+        points: ['Mir ist schlecht und ich habe Fieber.', 'Ich brauche einen Termin beim Arzt.', 'Die Praxis ist heute geschlossen.', 'Nehmen Sie die Tabletten dreimal täglich.', 'Ich fühle mich schon besser.'],
+        minWords: 30,
+        frage: 'اكتب الجمل الصحية الخمس كاملة.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل Mir ist schlecht وFieber haben وbeim Arzt.', 'اكتب dreimal täglich ولا تنس mich مع fühle.']
+      },
+      imitateNearMiss: 'schlechte',
+      transformHint: 'مع ich نقول Ich fühle mich schon besser.',
+      orderAr: 'رتّب تعليمة الدواء: الفعل Nehmen أولًا، ثم Sie، ثم الجرعة.',
+      orderHints: ['في الأمر الرسمي يبدأ الفعل المصرف Nehmen ثم يأتي Sie.', 'ضع die Tabletten قبل dreimal täglich.'],
+      orderSentence: 'Nehmen Sie die Tabletten dreimal täglich.',
+      checkOrderSentence: 'Nehmen Sie die Tabletten dreimal täglich.',
+      orderPromptAr: 'رتّب الكلمات لتكوين تعليمة دواء رسمية كاملة.',
+      speakAr: 'سجّل عشرين ثانية: قل Mir ist schlecht und ich habe Fieber وIch brauche einen Termin beim Arzt وDie Praxis ist heute geschlossen وNehmen Sie die Tabletten dreimal täglich وIch fühle mich schon besser.',
+      summaryDe: 'Mir ist schlecht und ich habe Fieber. · Ich brauche einen Termin beim Arzt. · Die Praxis ist heute geschlossen. · Nehmen Sie die Tabletten dreimal täglich. · Ich fühle mich schon besser.',
+      summaryAr: 'راجع Mir ist schlecht وFieber haben وbeim Arzt وgeschlossen وdreimal täglich وfühle mich besser.',
+      summaryRecap: 'Beschwerden Termin Praxis Tabletten Besserung'
+    }),
 
   U('a2-u3-l6', 'A2', 'العمل', 'Arbeit', 'lexik-kollokation',
     'Am Ende beschreibst du eine Arbeit in drei Sätzen',
