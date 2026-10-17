@@ -74,7 +74,7 @@
     ['الطلبات المهذّبة بصيغة Konjunktiv II', 'Höfliche Bitten mit Konjunktiv II', 'الطلبات المهذّبة والخدمات', 'würde + Infinitiv · Würden/Könnten/Hätten Sie …? · Das wäre …', 'explicit', 29, 13],
     ['أفعال مع حروف جر ثابتة', 'Verben mit festen Präpositionen', 'التواصل والاهتمامات والمشاركة', 'warten auf + Akk. · denken an + Akk. · sprechen über + Akk. · sich freuen auf + Akk. · teilnehmen an + Dat.', 'explicit', 31, 13],
     ['حالة Genitiv للملكية ومع حروف الجر', 'Genitiv bei Besitz und Präpositionen', 'الملكية والانتماء وحروف الجر', 'Namen + -s / Apostroph nach s-Laut · des/meines + -(e)s · der/meiner · wegen/während/trotz/statt + Genitiv', 'explicit', 29, 13],
-    ['السفر', 'Reisen', 'السفر', 'إطار الرحلة', 'inductive', 35, 13],
+    ['السفر: التذكرة وتغيير القطار والإقامة', 'Reisen: Fahrkarte, Umsteigen und Unterkunft', 'السفر والمواصلات والإقامة', 'Fahrkarte/Ticket · hin und zurück · Verspätung haben · müssen + umsteigen · ein Zimmer buchen', 'explicit', 35, 13],
     ['الصحة', 'Gesundheit', 'الصحة', 'وصف عرض', 'inductive', 31, 13],
     ['العمل', 'Arbeit', 'العمل', 'وصف يوم عمل', 'inductive', 31, 13],
     ['المدرسة', 'Schule', 'التعلم', 'حديث عن دورة', 'inductive', 36, 13],

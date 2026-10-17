@@ -4398,6 +4398,124 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
 }
 
+/* ---------- audited A2 travel lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u3-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Die Reise nach Berlin war lang.',
+    'Ich möchte eine Fahrkarte nach Berlin, bitte.',
+    'Der Zug hat zwanzig Minuten Verspätung.',
+    'In Frankfurt müssen wir umsteigen.',
+    'Ich habe ein Einzelzimmer gebucht.'
+  ];
+  t('Corpus lesson a2-u3-l4 bounds tickets, delays, changing trains and accommodation to five complete travel targets',
+    lesson.title.de === 'Reisen: Fahrkarte, Umsteigen und Unterkunft' &&
+      lesson.title.ar === 'السفر: التذكرة وتغيير القطار والإقامة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'السفر والمواصلات والإقامة' &&
+      row.grammar.item === 'Fahrkarte/Ticket · hin und zurück · Verspätung haben · müssen + umsteigen · ein Zimmer buchen' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 35 &&
+      lesson.schritte.find(s => s.id === 's04').zeigt.de === targets[1] &&
+      lesson.schritte.find(s => s.id === 's05').zeigt.de === 'Ich möchte hin und zurück fahren.' &&
+      lesson.schritte.find(s => s.id === 's06').zeigt.de === targets[2] &&
+      lesson.schritte.find(s => s.id === 's07').zeigt.de === targets[3] &&
+      lesson.schritte.find(s => s.id === 's08').wortschatz.some(it => it.ex === targets[0]) &&
+      lesson.schritte.find(s => s.id === 's19').zeigt.de === targets[4] &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwendest du fünf vollständige Reisesätze für Fahrkarte, Verspätung, Umsteigen und Unterkunft');
+
+  const expectedWords = [
+    'die Reise', 'buchen', 'die Buchung', 'der Koffer', 'das Gepäck', 'der Flughafen', 'der Flug',
+    'die Verspätung', 'das Gleis', 'die Fahrkarte', 'umsteigen', 'einsteigen', 'aussteigen',
+    'die Unterkunft', 'die Jugendherberge', 'das Einzelzimmer', 'die Rezeption', 'der Schlüssel',
+    'die Grenze', 'der Zoll', 'die Sehenswürdigkeit', 'die Stadtführung', 'das Souvenir',
+    'die Landschaft', 'der Ausflug', 'die Erinnerung', 'der Rappen', 'der Kredit', 'das Rad',
+    'der Reifen', 'her', 'hin', 'unterwegs', 'vorne', 'dorther'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u3-l4 reviews all 35 entries and three nuanced mnemonics without rejecting valid travel alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['die Reise'].ex === targets[0] && byWord['die Verspätung'].ex === targets[2] &&
+      byWord['die Verspätung'].why.includes('صيغة ماضٍ صحيحة') &&
+      byWord['die Unterkunft'].why.includes('ist sauber gewesen صحيحة أيضًا') &&
+      byWord['das Gleis'].pl === 'die Gleise' && byWord['das Gleis'].ex === 'Der Zug fährt von Gleis drei ab.' &&
+      byWord['die Fahrkarte'].ex === targets[1] && byWord.umsteigen.ex === targets[3] &&
+      byWord.einsteigen.ex === 'Steigen Sie bitte ein!' && byWord.einsteigen.why.includes('البادئة ein في النهاية') &&
+      byWord['das Einzelzimmer'].ex === targets[4] &&
+      byWord['der Flughafen'].why.includes('zu dem صحيحة أيضًا') &&
+      byWord['die Sehenswürdigkeit'].ex === 'Wir besichtigen die Sehenswürdigkeiten.' &&
+      byWord.her.why.includes('نحو المتكلم') && byWord.hin.ar.includes('بعيدًا عن المتكلم') &&
+      !errors.includes('Wir fahren zu dem Flughafen.') &&
+      !errors.includes('Der Zug hat zwanzig Minuten Verspätung gehabt.') &&
+      !errors.includes('Die Unterkunft ist sauber gewesen.') &&
+      !errors.includes('Wir besuchen die Sehenswürdigkeiten.') &&
+      tricks.length === 3 && tricks[0].wie.includes('müssen wir umsteigen') &&
+      tricks[0].wie.includes('Steigen Sie bitte ein!') &&
+      tricks[1].wie.includes('Fahrkarte und Ticket sind beide richtig.') &&
+      tricks[1].warum.includes('zu dem Flughafen') && tricks[1].wie.includes('hin und zurück') &&
+      tricks[1].wie.includes('hängt von Richtung und Standpunkt ab') && tricks[1].warum.includes('وجهة نظر المتكلم') &&
+      tricks[2].wie.includes('Wir können die Sehenswürdigkeiten auch besuchen.') &&
+      tricks[2].wie.includes('Wir können auch ein Museum besuchen.') && tricks[2].warum.includes('ليس خطأً مع الأماكن') &&
+      !['der Gleis', 'الأمر المنفصل يبقى قطعة واحدة', 'besichtigen للمعالم وbesuchen للأشخاص'].some(x => lessonText.includes(x)));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's18');
+  const drill = lesson.schritte.find(s => s.id === 's22');
+  const order = lesson.schritte.find(s => s.id === 's23');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u3-l4 aligns strict Flughafen, Stadtführung, Fahrkarte and Einzelzimmer clozes, full ticket order and 29-word production',
+    wordCloze1.frage.zeigt === 'Wir fahren zum ____.' && wordCloze1.frage.antworten.join(' ') === 'Flughafen' &&
+      wordCloze1.frage.nearMiss.Flughäfen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Flughäfen').ok &&
+      wordCloze2.frage.zeigt === 'Die ____ beginnt um zehn.' && wordCloze2.frage.antworten.join(' ') === 'Stadtführung' &&
+      wordCloze2.frage.nearMiss.Stadtführungen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Stadtführungen').ok &&
+      imitate.zeigt.de === 'Ich möchte eine ____ nach Berlin, bitte.' && imitate.frage.antworten.join(' ') === 'Fahrkarte' &&
+      imitate.frage.nearMiss.Fahrkarten && !win.DW.renderers.judgeCloze(imitate.frage, 'Fahrkarten').ok &&
+      drill.frage.zeigt === 'Ich habe ein ____ gebucht.' && drill.frage.antworten.join(' ') === 'Einzelzimmer' &&
+      drill.frage.nearMiss.Einzelzimmern && !win.DW.renderers.judgeCloze(drill.frage, 'Einzelzimmern').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'möchte' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'möchte' &&
+      order.frage.fields.mittelfeld.join(' ') === 'eine Fahrkarte nach Berlin, bitte.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'eine', 'Fahrkarte', 'möchte', 'nach', 'Berlin,', 'bitte.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 29 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[,.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[,.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u3-l4 makes 80 percent four of five independent across umsteigen, Einzelzimmer, ticket order, Reise and delay',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u3-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u3-l4.s07 | cap.a2-u3-l4.s22 | cap.a2-u3-l4.s23 | cap.a2-u3-l4.s08 | cap.a2-u3-l4.s06' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'konjugation' &&
+      clozeCheck.frage.zeigt === 'Ich habe ein ____ gebucht.' && clozeCheck.frage.antworten.join(' ') === 'Einzelzimmer' &&
+      clozeCheck.frage.nearMiss.Einzelzimmern && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Einzelzimmern').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'möchte' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'eine', 'Fahrkarte', 'möchte', 'nach', 'Berlin,', 'bitte.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'plural');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

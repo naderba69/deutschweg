@@ -679,25 +679,50 @@ module.exports = [
       summaryRecap: "Annas Max' meines der wegen"
     }),
 
-  U('a2-u3-l4', 'A2', 'السفر', 'Reisen', 'lexik-kollokation',
-    'Am Ende reservierst du und sagst eine Verspätung',
-    'في النهاية تحجز وتقول إن هناك تأخيرًا.',
+  U('a2-u3-l4', 'A2', 'السفر: التذكرة وتغيير القطار والإقامة', 'Reisen: Fahrkarte, Umsteigen und Unterkunft', 'lexik-kollokation',
+    'Am Ende verwendest du fünf vollständige Reisesätze für Fahrkarte, Verspätung, Umsteigen und Unterkunft',
+    'في النهاية تستعمل خمس جمل سفر كاملة للتذكرة والتأخير وتغيير القطار والإقامة.',
     [
-      ['eine Fahrkarte', 'التذكرة Fahrkarte', 'لا ticket ككلمة وحيدة', 'ein Ticket bitte als einziges Wort', 'الكلمة Fahrkarte'],
-      ['hin und zurück', 'الذهاب والإياب إطار', 'لا go and return', 'go und return', 'الإطار hin und zurück'],
-      ['der Zug hat Verspätung', 'التأخير hat Verspätung', 'لا is late كترجمة', 'der Zug ist late', 'late إنجليزية'],
-      ['umsteigen', 'التغيير umsteigen', 'لا change train خليط', 'den Zug change', 'الفعل umsteigen']
+      ['Ich möchte eine Fahrkarte nach Berlin, bitte.', 'تطلب تذكرة إلى وجهة محددة بجملة مهذبة', 'Fahrkarte وTicket كلمتان صحيحتان؛ الجملة هنا تتدرّب على Fahrkarte', 'Ich möchte einen Fahrkarte nach Berlin, bitte.', 'Fahrkarte مؤنث؛ نقول eine Fahrkarte'],
+      ['Ich möchte hin und zurück fahren.', 'تطلب رحلة ذهاب وإياب باستعمال hin und zurück', 'بعد möchte يأتي المصدر fahren في النهاية', 'Ich möchte hin und zurück fährt.', 'بعد möchte نحتاج المصدر fahren'],
+      ['Der Zug hat zwanzig Minuten Verspätung.', 'تذكر مدة التأخير مع Verspätung haben', 'بعد zwanzig نستخدم الجمع Minuten', 'Der Zug hat zwanzig Minute Verspätung.', 'بعد العدد نقول zwanzig Minuten'],
+      ['In Frankfurt müssen wir umsteigen.', 'تذكر مكان تغيير القطار مع müssen وumsteigen', 'بعد müssen يأتي المصدر المنفصل متصلًا: umsteigen', 'In Frankfurt müssen wir umgestiegen.', 'بعد müssen نحتاج المصدر umsteigen']
     ],
     [
-      ['Eine Fahrkarte nach Berlin, bitte.', 'تذكرة إلى برلين', 'Ein Ticket nach Berlin als einziges', 'الكلمة Fahrkarte', 'Fahrkarte'],
-      ['Hin und zurück, bitte.', 'ذهابًا وإيابًا', 'Go und return, bitte', 'الإطار Hin und zurück', 'zurück'],
-      ['Der Zug hat Verspätung.', 'القطار متأخر', 'Der Zug ist late', 'التأخير Verspätung', 'Verspätung'],
-      ['Wo steigen wir um?', 'أين نغيّر؟', 'Wo change wir den Zug?', 'الفعل umsteigen', 'steigen']
+      ['Ich möchte eine Fahrkarte nach Berlin, bitte.', 'أريد تذكرة إلى برلين من فضلك', 'Ich möchte einen Fahrkarte nach Berlin, bitte.', 'Fahrkarte مؤنث: eine Fahrkarte', 'Fahrkarte'],
+      ['Ich möchte hin und zurück fahren.', 'أريد السفر ذهابًا وإيابًا', 'Ich möchte hin und zurück fährt.', 'بعد möchte يأتي المصدر fahren', 'fahren'],
+      ['Der Zug hat zwanzig Minuten Verspätung.', 'القطار متأخر عشرين دقيقة', 'Der Zug hat zwanzig Minute Verspätung.', 'بعد العدد نستخدم Minuten', 'Minuten'],
+      ['In Frankfurt müssen wir umsteigen.', 'علينا تغيير القطار في فرانكفورت', 'In Frankfurt müssen wir umgestiegen.', 'بعد müssen نستخدم المصدر umsteigen', 'umsteigen']
     ],
-    'Eine Fahrkarte nach Berlin, hin und zurück.',
-    'Der Zug hat Verspätung.',
-    'Sage morgen eine Fahrkarte und eine Verspätung.',
-    'غدًا قل تذكرة وتأخيرًا.'),
+    'Die Reise nach Berlin war lang. Ich möchte eine Fahrkarte nach Berlin, bitte. Der Zug hat zwanzig Minuten Verspätung. In Frankfurt müssen wir umsteigen. Ich habe ein Einzelzimmer gebucht.',
+    'Ich habe ein Einzelzimmer gebucht.',
+    'Wiederhole morgen die fünf Sätze: Die Reise nach Berlin war lang. Ich möchte eine Fahrkarte nach Berlin, bitte. Der Zug hat zwanzig Minuten Verspätung. In Frankfurt müssen wir umsteigen. Ich habe ein Einzelzimmer gebucht.',
+    'غدًا راجع الجمل الخمس عن الرحلة والتذكرة والتأخير وتغيير القطار والغرفة.',
+    {
+      factFamilies: ['genus', 'konjugation', 'plural', 'konjugation'],
+      writing: {
+        zeigt: 'Fünf vollständige Reisesätze',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن الرحلة والتذكرة والتأخير وتغيير القطار والإقامة.',
+        prompt: 'اكتب الجمل الخمس مستعملًا العبارات الصحيحة في سياق السفر.',
+        promptDe: 'Die Reise nach Berlin war lang. · Ich möchte eine Fahrkarte nach Berlin, bitte. · Der Zug hat zwanzig Minuten Verspätung. · In Frankfurt müssen wir umsteigen. · Ich habe ein Einzelzimmer gebucht.',
+        points: ['Die Reise nach Berlin war lang.', 'Ich möchte eine Fahrkarte nach Berlin, bitte.', 'Der Zug hat zwanzig Minuten Verspätung.', 'In Frankfurt müssen wir umsteigen.', 'Ich habe ein Einzelzimmer gebucht.'],
+        minWords: 29,
+        frage: 'اكتب الجمل الخمس كاملة بصيغ السفر الصحيحة.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل eine Fahrkarte وzwanzig Minuten Verspätung.', 'بعد müssen استعمل umsteigen، وفي الجملة الأخيرة استعمل ein Einzelzimmer gebucht.']
+      },
+      imitateNearMiss: 'Fahrkarten',
+      transformHint: 'في Perfekt نقول Ich habe ein Einzelzimmer gebucht.',
+      orderAr: 'رتّب طلب التذكرة الكامل: Ich möchte ثم eine Fahrkarte ثم nach Berlin, bitte.',
+      orderHints: ['ابدأ بـ Ich وضع möchte في الموضع الثاني.', 'ضع eine Fahrkarte قبل الوجهة nach Berlin.'],
+      orderSentence: 'Ich möchte eine Fahrkarte nach Berlin, bitte.',
+      checkOrderSentence: 'Ich möchte eine Fahrkarte nach Berlin, bitte.',
+      orderPromptAr: 'رتّب الكلمات لتكوين طلب تذكرة مهذب وكامل.',
+      speakAr: 'سجّل عشرين ثانية: قل Die Reise nach Berlin war lang وIch möchte eine Fahrkarte nach Berlin, bitte وDer Zug hat zwanzig Minuten Verspätung وIn Frankfurt müssen wir umsteigen وIch habe ein Einzelzimmer gebucht.',
+      summaryDe: 'Die Reise nach Berlin war lang. · Ich möchte eine Fahrkarte nach Berlin, bitte. · Der Zug hat zwanzig Minuten Verspätung. · In Frankfurt müssen wir umsteigen. · Ich habe ein Einzelzimmer gebucht.',
+      summaryAr: 'راجع Reise وeine Fahrkarte وMinuten Verspätung وmüssen wir umsteigen وEinzelzimmer gebucht.',
+      summaryRecap: 'Reise Fahrkarte Verspätung umsteigen Einzelzimmer'
+    }),
 
   U('a2-u3-l5', 'A2', 'الصحة', 'Gesundheit', 'lexik-kollokation',
     'Am Ende beschreibst du ein Symptom und eine Besserung',
