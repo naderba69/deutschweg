@@ -497,25 +497,50 @@ module.exports = [
       summaryRecap: 'mich mir uns Reflexiv'
     }),
 
-  U('a2-u2-l6', 'A2', 'ماضي sein وhaben', 'Präteritum sein/haben', 'konjugation',
-    'Am Ende benutzt du war und hatte für die Vergangenheit',
-    'في النهاية تستعمل war وhatte للماضي.',
+  U('a2-u2-l6', 'A2', 'ماضي sein وhaben البسيط', 'Präteritum von sein und haben', 'konjugation',
+    'Am Ende verwendest du war, warst, waren, hatte und hatten in fünf vollständigen Sätzen',
+    'في النهاية تستعمل war وwarst وwaren وhatte وhatten في خمس جمل كاملة.',
     [
-      ['ich war', 'ماضي sein هو war', 'لا ich hatte sein', 'ich hatte bin', 'الخلط بين الفعلين'],
-      ['du warst', 'مع du: warst', 'لا du war', 'du war müde', 'النهاية st'],
-      ['ich hatte', 'ماضي haben هو hatte', 'لا ich war Zeit في هذا المعنى', 'ich war Zeit', 'الوقت hatte'],
-      ['es gab', 'الوجود في الماضي gab', 'لا es war gibt', 'es war gibt ein Problem', 'الصيغة gab']
+      ['Gestern war ich krank.', 'تستعمل war مع ich وتضع الفعل في الموقع الثاني بعد Gestern', 'بعد العبارة الزمنية في البداية يأتي الفعل المصرف ثم الفاعل', 'Gestern ich war krank.', 'الترتيب الصحيح: Gestern war ich krank'],
+      ['Du warst zu Hause.', 'صيغة sein في الماضي مع du هي warst', 'تأخذ صيغة du النهاية -st: du warst', 'Du war zu Hause.', 'مع du نقول warst لا war'],
+      ['Wir waren im Kino.', 'صيغة sein في الماضي مع wir هي waren', 'يطابق الفعل الفاعل wir: wir waren', 'Wir war im Kino.', 'مع wir نقول waren لا war'],
+      ['Ich hatte keine Zeit.', 'صيغة haben في الماضي مع ich هي hatte', 'مع الاسم Zeit نستعمل haben: Ich hatte keine Zeit', 'Ich hatten keine Zeit.', 'مع ich نقول hatte لا hatten']
     ],
     [
-      ['Ich war krank.', 'كنت مريضًا', 'Ich hatte krank', 'المرض مع war', 'war'],
-      ['Du warst zu Hause.', 'كنت في البيت', 'Du war zu Hause', 'مع du: warst', 'warst'],
-      ['Ich hatte Zeit.', 'كان عندي وقت', 'Ich war Zeit', 'الوقت hatte', 'hatte'],
-      ['Es gab ein Problem.', 'كانت هناك مشكلة', 'Es war gibt ein Problem', 'الماضي gab', 'gab']
+      ['Gestern war ich krank.', 'كنت مريضًا أمس', 'Gestern ich war krank.', 'بعد Gestern يأتي الفعل war ثم الفاعل ich', 'war'],
+      ['Du warst zu Hause.', 'كنتَ / كنتِ في المنزل', 'Du war zu Hause.', 'مع du نقول warst', 'warst'],
+      ['Wir waren im Kino.', 'كنا في السينما', 'Wir war im Kino.', 'مع wir نقول waren', 'waren'],
+      ['Ich hatte keine Zeit.', 'لم يكن لديّ وقت', 'Ich hatten keine Zeit.', 'مع ich نقول hatte', 'hatte']
     ],
-    'Ich war krank und ich hatte keine Zeit.',
-    'Ich war krank.',
-    'Sage morgen war und hatte.',
-    'غدًا قل war وhatte.'),
+    'Gestern war ich krank. Du warst zu Hause. Wir waren im Kino. Ich hatte keine Zeit. Wir hatten viel Arbeit.',
+    'Wir hatten viel Arbeit.',
+    'Wiederhole morgen die fünf Sätze: Gestern war ich krank. Du warst zu Hause. Wir waren im Kino. Ich hatte keine Zeit. Wir hatten viel Arbeit.',
+    'غدًا راجع الجمل الخمس مع war وwarst وwaren وhatte وhatten.',
+    {
+      factFamilies: ['wortstellung', 'konjugation', 'konjugation', 'konjugation'],
+      writing: {
+        zeigt: 'Fünf Sätze im Präteritum',
+        erklaerung: 'اكتب الجمل الخمس كاملة مع صيغة الفعل والترتيب الصحيحين.',
+        prompt: 'اكتب الجمل الخمس: war بعد Gestern، وwarst مع du، وwaren مع wir، وhatte مع ich، وhatten مع wir.',
+        promptDe: 'Gestern war ich krank. · Du warst zu Hause. · Wir waren im Kino. · Ich hatte keine Zeit. · Wir hatten viel Arbeit.',
+        points: ['Gestern war ich krank.', 'Du warst zu Hause.', 'Wir waren im Kino.', 'Ich hatte keine Zeit.', 'Wir hatten viel Arbeit.'],
+        minWords: 20,
+        frage: 'اكتب الجمل الخمس كاملة مع war وwarst وwaren وhatte وhatten.',
+        familie: 'konjugation',
+        hinweise: ['طابق صيغة الفعل مع ich وdu وwir.', 'إذا بدأت بعبارة زمنية، ضع الفعل المصرف في الموقع الثاني.']
+      },
+      imitateNearMiss: 'hatte',
+      transformHint: 'مع wir نقول Wir hatten viel Arbeit.',
+      orderAr: 'رتّب الجملة: Wir ثم waren ثم im Kino.',
+      orderHints: ['ابدأ بـ Wir وضع waren في الموقع الثاني.', 'اختم بالمكان im Kino.'],
+      orderSentence: 'Wir waren im Kino.',
+      checkOrderSentence: 'Wir waren im Kino.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة مع wir وwaren.',
+      speakAr: 'سجّل عشرين ثانية: قل Gestern war ich krank وDu warst zu Hause وWir waren im Kino وIch hatte keine Zeit وWir hatten viel Arbeit.',
+      summaryDe: 'Gestern war ich krank. · Du warst zu Hause. · Wir waren im Kino. · Ich hatte keine Zeit. · Wir hatten viel Arbeit.',
+      summaryAr: 'راجع الجمل الخمس: war مع ich، وwarst مع du، وwaren مع wir، وhatte مع ich، وhatten مع wir.',
+      summaryRecap: 'war warst waren hatte hatten'
+    }),
 
   U('a2-u3-l1', 'A2', 'würde', 'Konjunktiv II würde', 'register',
     'Am Ende bittest du höflich mit würde',

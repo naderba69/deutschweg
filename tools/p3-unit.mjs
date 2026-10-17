@@ -3957,6 +3957,116 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+/* ---------- audited A2 Präteritum lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u2-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Gestern war ich krank.',
+    'Du warst zu Hause.',
+    'Wir waren im Kino.',
+    'Ich hatte keine Zeit.',
+    'Wir hatten viel Arbeit.'
+  ];
+  const taughtFacts = targets.slice(0, 4);
+  t('Corpus lesson a2-u2-l6 bounds the Präteritum of sein and haben to five complete war, warst, waren, hatte and hatten targets',
+    lesson.title.de === 'Präteritum von sein und haben' && lesson.title.ar === 'ماضي sein وhaben البسيط' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar && row.theme === 'ذكريات وأحوال في الماضي' &&
+      row.grammar.item === 'sein: war/warst/waren · haben: hatte/hatten · عبارة زمنية في الموقع الأول ثم الفعل المصرف' &&
+      lesson.schritte.length === 35 && lesson.wortschatz.length === 30 &&
+      taughtFacts.every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwendest du war, warst, waren, hatte und hatten in fünf vollständigen Sätzen');
+
+  const expectedWords = [
+    'war', 'waren', 'hatte', 'hatten', 'die Kindheit', 'gestern', 'früher', 'das Wetter',
+    'die Zeit', 'der Hunger', 'der Durst', 'die Angst', 'müde', 'glücklich', 'krank',
+    'der Geburtstag', 'die Schule', 'der Lehrer', 'die Arbeit', 'der Ort', 'die Wohnung',
+    'das Meer', 'der Besuch', 'die Reise', 'der Kaffee', 'die Stadt', 'der Babysitter',
+    'vorher', 'vorbei', 'manchmal'
+  ];
+  t('Corpus lesson a2-u2-l6 reviews all 30 entries and three precise mnemonics without rejecting grammatical Perfekt alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.war.ex === targets[0] && byWord.war.err === 'Gestern ich war krank.' && byWord.war.why.includes('الموقع الثاني') &&
+      byWord.waren.ex === targets[2] && byWord.waren.err === 'Wir war im Kino.' &&
+      byWord.hatte.ex === targets[3] && byWord.hatte.err === 'Ich hatten keine Zeit.' &&
+      byWord.hatten.ex === targets[4] && byWord.hatten.err === 'Wir hatte viel Arbeit.' &&
+      byWord['die Kindheit'].ex.includes('Kindheit war schön') && byWord.gestern.ex === 'Gestern war Freitag, heute ist Samstag.' &&
+      byWord.früher.ex === 'Früher waren wir oft am Meer.' && byWord['das Wetter'].err === 'Das Wetter hatte kalt.' &&
+      byWord['die Zeit'].pl === 'die Zeiten' && byWord['die Zeit'].ex === 'Ich hatte wenig Zeit.' &&
+      byWord['der Hunger'].ex.includes('hatten großen Hunger') && byWord['der Durst'].ex === 'Ich hatte Durst.' &&
+      byWord['die Angst'].ex === 'Als Kind hatte ich Angst.' && byWord.müde.ex === 'Nach der Arbeit war ich müde.' &&
+      byWord.glücklich.ex === 'Sie war sehr glücklich.' && byWord.krank.ex === 'Letzte Woche war ich krank.' &&
+      byWord['der Geburtstag'].ex.includes('war am Montag') && byWord['die Schule'].ex === 'Die Schule war klein.' &&
+      byWord['der Lehrer'].ex === 'Der Lehrer war streng.' && byWord['die Arbeit'].ex === 'Die Arbeit war schwer.' &&
+      byWord['der Ort'].ex === 'Der Ort war ruhig.' && byWord['die Wohnung'].ex.includes('war klein, aber schön') &&
+      byWord['das Meer'].ex === 'Das Meer war kalt.' && byWord['das Meer'].why.includes('المفرد Meer') &&
+      byWord['der Besuch'].ex === 'Der Besuch war kurz.' && byWord['die Reise'].ex === 'Die Reise war anstrengend.' &&
+      byWord['der Kaffee'].ex === 'Der Kaffee war heiß.' && byWord['die Stadt'].ex === 'Die Stadt war voll.' &&
+      byWord['der Babysitter'].ex === 'Als Kind hatte ich einen Babysitter.' && byWord.vorher.ex === 'Vorher war ich im Kino.' &&
+      byWord.vorbei.ex === 'Als ich kam, war das Fest schon vorbei.' &&
+      byWord.manchmal.ex === 'Manchmal war ich traurig, aber meistens war ich glücklich.' &&
+      !lesson.wortschatz.some(it => it.err.includes('gewesen') || it.err.includes('gehabt')) &&
+      tricks.length === 3 && tricks[0].trick.includes('ich war') && tricks[0].trick.includes('du warst') &&
+      tricks[0].trick.includes('wir waren') && tricks[0].trick.includes('ich hatte') && tricks[0].trick.includes('wir hatten') &&
+      tricks[0].warum.includes('bin gewesen') && tricks[0].warum.includes('صحيح أيضًا') &&
+      tricks[1].trick.includes('صفة أو مكان مع sein') && tricks[1].trick.includes('Hunger') && tricks[1].trick.includes('Zeit') &&
+      tricks[1].wie.includes('war müde') && tricks[1].wie.includes('hatte Hunger') &&
+      tricks[2].trick.includes('الموقع الثاني') && tricks[2].wie.includes('Als Kind hatte ich Angst') &&
+      tricks[2].warum.includes('الموقع الأول كله'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u2-l6 aligns strict Gestern, Meer, war and hatten clozes, one complete waren order and 20-word production',
+    wordCloze1.frage.zeigt === '____ war Freitag, heute ist Samstag.' && wordCloze1.frage.antworten.join(' ') === 'Gestern' &&
+      wordCloze1.frage.nearMiss.Heute && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Heute').ok &&
+      wordCloze2.frage.zeigt === 'Das ____ war kalt.' && wordCloze2.frage.antworten.join(' ') === 'Meer' &&
+      wordCloze2.frage.nearMiss.Meere && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Meere').ok &&
+      imitate.zeigt.de === 'Gestern ____ ich krank.' && imitate.frage.antworten.join(' ') === 'war' &&
+      imitate.frage.nearMiss.hatte && !win.DW.renderers.judgeCloze(imitate.frage, 'hatte').ok &&
+      drill.frage.zeigt === 'Wir ____ viel Arbeit.' && drill.frage.antworten.join(' ') === 'hatten' &&
+      drill.frage.nearMiss.hatte && !win.DW.renderers.judgeCloze(drill.frage, 'hatte').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'waren' &&
+      order.frage.fields.vorfeld.join(' ') === 'Wir' && order.frage.fields.lsk.join(' ') === 'waren' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Wir', 'im', 'Kino.', 'waren']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 20 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[.?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[.?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u2-l6 makes 80 percent four of five measurable across hatte, hatten, full waren order, war plus V2 and warst',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u2-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'konjugation' &&
+      clozeCheck.frage.antworten.join(' ') === 'hatten' && clozeCheck.frage.nearMiss.hatte &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'hatte').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'waren' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Wir' && orderCheck.frage.fields.lsk.join(' ') === 'waren' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Wir', 'im', 'Kino.', 'waren']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

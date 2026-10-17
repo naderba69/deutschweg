@@ -70,7 +70,7 @@
     ['نهايات الصفة في حالة الرفع', 'Adjektivendungen im Nominativ', 'وصف الأشخاص والأشياء', 'der/die/das: -e مفرد و-en جمع · ein: -er/-e/-es · الصفة الخبرية بلا نهاية', 'explicit', 31, 13],
     ['نهايات الصفة في حالة النصب', 'Adjektivendungen im Akkusativ', 'وصف الأشخاص والأشياء', 'den/einen: -en · die/das مفرد: -e · die جمع: -en · ein محايد: -es', 'explicit', 31, 13],
     ['الأفعال الانعكاسية', 'Reflexivverben', 'العناية والروتين الشخصي', 'Reflexivpronomen: mich/dich/sich/uns · Akkusativ مقابل Dativ مع جزء الجسم · أفعال منفصلة وحروف ثابتة', 'explicit', 31, 13],
-    ['ماضي sein وhaben', 'Präteritum sein/haben', 'الخلفية', 'war وhatte', 'explicit', 30, 13],
+    ['ماضي sein وhaben البسيط', 'Präteritum von sein und haben', 'ذكريات وأحوال في الماضي', 'sein: war/warst/waren · haben: hatte/hatten · عبارة زمنية في الموقع الأول ثم الفعل المصرف', 'explicit', 30, 13],
     ['würde', 'Konjunktiv II würde', 'الأدب', 'würde', 'explicit', 29, 13],
     ['فعل وحرف', 'Verben mit Präposition', 'الإطارات', 'warten auf', 'inductive', 31, 13],
     ['إضافة الأسماء', 'Genitiv der Namen', 'الانتماء', 'Annas Buch', 'inductive', 29, 13],
