@@ -953,25 +953,50 @@ module.exports = [
       summaryRecap: 'anziehen Passform Größe Anprobe Umtausch'
     }),
 
-  U('a2-u4-l4', 'A2', 'الطقس', 'Wetter', 'lexik-kollokation',
-    'Am Ende sagst du drei Wettersätze',
-    'في النهاية تقول ثلاث جمل طقس.',
+  U('a2-u4-l4', 'A2', 'الطقس: الحالة والمدة والحرارة والتوقع', 'Wetter: Zustand, Dauer, Temperatur und Vorhersage', 'lexik-kollokation',
+    'Am Ende verwendest du fünf vollständige Wettersätze für Zustand, Dauer, Jahreszeit, Temperatur und Vorhersage',
+    'في النهاية تستعمل خمس جمل طقس كاملة للحالة والمدة والفصل والحرارة والتوقع.',
     [
-      ['es regnet', 'المطر es regnet', 'لا it rains', 'it regnet', 'it إنجليزية'],
-      ['es ist bewölkt', 'الغيم bewölkt', 'لا cloudy ككلمة', 'es ist cloudy', 'cloudy إنجليزية'],
-      ['im Sommer', 'الفصل im', 'am Sommer خطأ', 'am Sommer', 'الفصل im'],
-      ['seit Stunden', 'منذ seit', 'لا since hours', 'since Stunden', 'since إنجليزية']
+      ['Heute ist es bewölkt und windig.', 'تصف حالة الطقس اليوم بصفتين', 'وصف الطقس غير الشخصي يحتاج es، وبعد Heute يأتي الفعل في الموضع الثاني', 'Heute ist bewölkt und windig.', 'نقول Heute ist es … مع الضمير es'],
+      ['Es regnet seit dem Morgen.', 'تحدد مدة المطر منذ الصباح', 'seit يأخذ الداتيف؛ Morgen مذكر فنقول seit dem Morgen', 'Es regnet seit den Morgen.', 'بعد seit نقول dem Morgen لا den Morgen'],
+      ['Im Sommer ist es oft heiß.', 'تصف طقس فصل الصيف', 'مع أسماء الفصول نقول im Sommer', 'Am Sommer ist es oft heiß.', 'مع الفصل نقول im Sommer لا am Sommer'],
+      ['Der Wetterbericht sagt für morgen Regen voraus.', 'تنقل توقع نشرة الطقس للغد', 'في الجملة الرئيسية ينفصل voraussagen: sagt … voraus', 'Der Wetterbericht voraussagt für morgen Regen.', 'في الجملة الرئيسية نقول sagt … voraus']
     ],
     [
-      ['Es regnet.', 'تمطر', 'It regnet', 'المطر Es regnet', 'regnet'],
-      ['Heute ist es bewölkt.', 'اليوم غائم', 'Heute ist es cloudy', 'الغيم bewölkt', 'bewölkt'],
-      ['Im Sommer ist es heiß.', 'في الصيف الحر شديد', 'Am Sommer ist es heiß', 'الفصل im', 'Sommer'],
-      ['Es regnet seit Stunden.', 'تمطر منذ ساعات', 'Es regnet since Stunden', 'منذ seit', 'seit']
+      ['Heute ist es bewölkt und windig.', 'اليوم غائم وعاصف', 'Heute ist bewölkt und windig.', 'وصف الطقس يحتاج es: Heute ist es …', 'bewölkt'],
+      ['Es regnet seit dem Morgen.', 'تمطر منذ الصباح', 'Es regnet seit den Morgen.', 'seit يأخذ الداتيف: seit dem Morgen', 'Morgen'],
+      ['Im Sommer ist es oft heiß.', 'يكون الجو غالبًا حارًا في الصيف', 'In Sommer ist es oft heiß.', 'مع الفصل نقول im Sommer', 'Sommer'],
+      ['Der Wetterbericht sagt für morgen Regen voraus.', 'تتوقع نشرة الطقس المطر غدًا', 'Der Wetterbericht voraussagt für morgen Regen.', 'في الجملة الرئيسية ينفصل voraussagen: sagt … voraus', 'voraus']
     ],
-    'Heute ist es bewölkt. Es regnet seit Stunden.',
-    'Es regnet.',
-    'Sage morgen drei Wettersätze.',
-    'غدًا قل ثلاث جمل طقس.'),
+    'Heute ist es bewölkt und windig. Es regnet seit dem Morgen.',
+    'Die Temperatur liegt bei zwanzig Grad.',
+    'Wiederhole morgen die fünf Sätze: Heute ist es bewölkt und windig. Es regnet seit dem Morgen. Im Sommer ist es oft heiß. Die Temperatur liegt bei zwanzig Grad. Der Wetterbericht sagt für morgen Regen voraus.',
+    'غدًا راجع جمل الطقس الخمس للحالة والمدة والفصل والحرارة والتوقع.',
+    {
+      factFamilies: ['wortstellung', 'kasus', 'präposition', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf vollständige Wettersätze',
+        erklaerung: 'اكتب الجمل الخمس كاملة عن حالة الطقس ومدته والفصل والحرارة والتوقع.',
+        prompt: 'اكتب جمل الطقس الخمس كاملة.',
+        promptDe: 'Heute ist es bewölkt und windig. · Es regnet seit dem Morgen. · Im Sommer ist es oft heiß. · Die Temperatur liegt bei zwanzig Grad. · Der Wetterbericht sagt für morgen Regen voraus.',
+        points: ['Heute ist es bewölkt und windig.', 'Es regnet seit dem Morgen.', 'Im Sommer ist es oft heiß.', 'Die Temperatur liegt bei zwanzig Grad.', 'Der Wetterbericht sagt für morgen Regen voraus.'],
+        minWords: 30,
+        frage: 'اكتب الجمل الخمس كاملة في 30 كلمة على الأقل.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل es في وصف الطقس وseit dem Morgen للمدة.', 'استعمل im Sommer وbei zwanzig Grad وافصل sagt … voraus.']
+      },
+      imitateNearMiss: 'bewölkte',
+      transformHint: 'مع قيمة الحرارة نقول bei zwanzig Grad، وتبقى Grad بلا علامة جمع.',
+      orderAr: 'رتّب جملة المطر: Es ثم regnet ثم seit dem Morgen.',
+      orderHints: ['ابدأ بـEs وضع regnet في الموضع الثاني.', 'بعد seit استعمل dem Morgen.'],
+      orderSentence: 'Es regnet seit dem Morgen.',
+      checkOrderSentence: 'Es regnet seit dem Morgen.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن مدة المطر.',
+      speakAr: 'سجّل عشرين ثانية: قل Heute ist es bewölkt und windig وEs regnet seit dem Morgen وIm Sommer ist es oft heiß وDie Temperatur liegt bei zwanzig Grad وDer Wetterbericht sagt für morgen Regen voraus.',
+      summaryDe: 'Heute ist es bewölkt und windig. · Es regnet seit dem Morgen. · Im Sommer ist es oft heiß. · Die Temperatur liegt bei zwanzig Grad. · Der Wetterbericht sagt für morgen Regen voraus.',
+      summaryAr: 'راجع es ist bewölkt وseit dem Morgen وim Sommer وbei zwanzig Grad وsagt … voraus.',
+      summaryRecap: 'Zustand Dauer Jahreszeit Temperatur Vorhersage'
+    }),
 
   U('a2-u4-l5', 'A2', 'الدعوة', 'Einladung', 'register',
     'Am Ende nimmst du eine Einladung an und sagst ab',

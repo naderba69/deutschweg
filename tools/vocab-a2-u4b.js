@@ -1,49 +1,63 @@
 /* Deutschweg — P3.5 lexical layer, A2 unit 4 (part b): a2-u4-l4 … a2-u4-l6.
-   Wetter, Einladung, ein kleines Problem. 26 items per lesson. */
+   Wetter, Einladung, ein kleines Problem; lesson-specific expanded inventories. */
 
 module.exports = {
 
   'a2-u4-l4': {
     items: [
-      ['das Wetter', '—', 'الطقس', 'Wie ist das Wetter heute?', 'Wie ist das Wetter heute es?', 'لا ضمير في السؤال.', 'wortstellung', 'Wetter'],
-      ['der Wetterbericht', 'die Wetterberichte', 'نشرة الطقس', 'Der Wetterbericht sagt Regen voraus.', 'Der Wetterbericht sagt Regen vorher.', 'voraussagen فعل واحد.', 'falser-freund', 'Wetterbericht'],
-      ['die Sonne', '—', 'الشمس', 'Die Sonne scheint den ganzen Tag.', 'Die Sonne scheint den ganze Tag.', 'النصب: ganzen.', 'kasus', 'Sonne'],
-      ['der Regen', '—', 'المطر', 'Bei Regen bleiben wir drinnen.', 'In Regen bleiben wir drinnen.', 'beim Regen أو bei Regen.', 'präposition', 'Regen'],
-      ['der Schnee', '—', 'الثلج', 'Im Winter liegt Schnee.', 'Im Winter liegt der Schnee.', 'في الوصف العام بلا أداة.', 'kasus', 'Schnee'],
-      ['der Wind', 'die Winde', 'الريح', 'Der Wind kommt aus Westen.', 'Der Wind kommt von Westen.', 'من الغرب: aus Westen.', 'präposition', 'Wind'],
-      ['die Wolke', 'die Wolken', 'السحابة', 'Die Wolken sind dunkel.', 'Die Wolke sind dunkel.', 'الجمع: Wolken.', 'plural', 'Wolken'],
-      ['der Nebel', '—', 'الضباب', 'Bei Nebel fahre ich langsam.', 'In Nebel fahre ich langsam.', 'bei للمناخ.', 'präposition', 'Nebel'],
-      ['das Gewitter', 'die Gewitter', 'العاصفة الرعدية', 'Das Gewitter kommt am Abend.', 'Das Gewitter kommt in Abend.', 'في المساء: am Abend.', 'präposition', 'Gewitter'],
-      ['der Sturm', 'die Stürme', 'العاصفة', 'Der Sturm war stark.', 'Der Sturm ist stark gewesen.', 'الماضي: war.', 'konjugation', 'Sturm'],
-      ['die Temperatur', 'die Temperaturen', 'الحرارة', 'Die Temperatur steigt.', 'Die Temperatur steigert.', 'steigen فعل قوي: steigt.', 'konjugation', 'Temperatur'],
-      ['der Grad', 'die Grade', 'الدرجة', 'Es sind zwanzig Grad.', 'Es sind zwanzig Grade.', 'بعد العدد تبقى Grad.', 'plural', 'Grad'],
-      ['warm', '—', 'دافئ', 'Heute ist es warm.', 'Heute ist es warme.', 'بعد sein بلا نهاية.', 'deklination', 'warm'],
-      ['kalt', '—', 'بارد', 'Im Winter ist es kalt.', 'Im Winter ist es kalte.', 'بلا نهاية.', 'deklination', 'kalt'],
-      ['kühl', '—', 'بارد قليلًا', 'Am Morgen ist es kühl.', 'Am Morgen ist es kühle.', 'بلا نهاية.', 'deklination', 'kühl'],
-      ['heiß', '—', 'حار جدًا', 'Im Sommer ist es heiß.', 'Im Sommer ist es heiße.', 'بلا نهاية.', 'deklination', 'heiß'],
-      ['trocken', '—', 'جاف', 'Die Straße ist trocken.', 'Die Straße ist trocken gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'trocken'],
-      ['feucht', '—', 'رطب', 'Die Luft ist feucht.', 'Die Luft ist feucht gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'feucht'],
-      ['der Schirm', 'die Schirme', 'المظلة', 'Ich brauche einen Schirm.', 'Ich brauche ein Schirm.', 'Schirm مذكر: einen.', 'genus', 'Schirm'],
-      ['die Regenjacke', 'die Regenjacken', 'جاكيت المطر', 'Nimm die Regenjacke mit!', 'Nimm die Regenjacke!', 'المنفصل: mit.', 'wortstellung', 'mit'],
-      ['die Jahreszeit', 'die Jahreszeiten', 'الفصل', 'Der Herbst ist meine liebste Jahreszeit.', 'Der Herbst ist meine liebste Jahreszeit es.', 'لا ضمير.', 'wortstellung', 'Jahreszeit'],
-      ['der Herbst', 'die Herbste', 'الخريف', 'Im Herbst regnet es viel.', 'In Herbst regnet es viel.', 'الفصل: im.', 'präposition', 'Herbst'],
-      ['der Winter', 'die Winter', 'الشتاء', 'Im Winter schneit es.', 'In Winter schneit es.', 'im.', 'präposition', 'Winter'],
-      ['schneien', 'schneit · schneite · hat geschneit', 'يُثلج', 'Es schneit seit gestern.', 'Es schneit für gestern.', 'منذ: seit.', 'präposition', 'schneit'],
-      ['der Wetterumschwung', 'die Wetterumschwünge', 'تغيّر الطقس', 'Der Wetterumschwung kommt plötzlich.', 'Der Wetterumschwung kommt plötzlich es.', 'لا ضمير.', 'wortstellung', 'Wetterumschwung'],
-      ['die Vorhersage', 'die Vorhersagen', 'التوقّع', 'Die Vorhersage ist gut.', 'Die Vorhersage ist gut gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Vorhersage'],
-      ['bewölkt', '—', 'غائم', 'Heute ist es bewölkt.', 'Heute ist es bewölkt Wetter.', 'الجملة تامة بلا Wetter.', 'lexik-kollokation', 'bewölkt'],
-      ['fallen', 'fällt · fiel · ist gefallen', 'يسقط', 'Im Herbst fallen die Blätter.', 'Im Herbst fallen die Blätter runter.', 'fallen تكفي.', 'lexik-kollokation', 'fallen'],
-      ['der Müll', '—', 'القمامة', 'Bring bitte den Müll raus!', 'Bring bitte die Müll raus!', 'Müll مذكر: den.', 'genus', 'Müll'],
-      ['der Wald', 'die Wälder', 'الغابة', 'Im Wald ist es kühl.', 'In der Wald ist es kühl.', 'المكان: im Wald.', 'präposition', 'Wald'],
-      ['der Vogel', 'die Vögel', 'الطائر', 'Der Vogel singt am Morgen.', 'Die Vogel singt am Morgen.', 'مذكر: der Vogel.', 'genus', 'Vogel'],
-      ['die Pflanze', 'die Pflanzen', 'النبتة', 'Die Pflanze braucht Wasser.', 'Der Pflanze braucht Wasser.', 'مؤنث: die Pflanze.', 'genus', 'Pflanze'],
-      ['windig', 'windiger · am windigsten', 'عاصف', 'Heute ist es windig.', 'Heute ist es windige.', 'في الخبر بلا نهاية: windig.', 'deklination', 'windig'],
+      ['heiß', '—', 'حار', 'Im Sommer ist es oft heiß.', 'Im Sommer ist es oft heiße.', 'بعد ist تأتي الصفة الخبرية بلا نهاية: heiß.', 'deklination', 'heiß'],
+      ['das Wetter', '—', 'الطقس', 'Wie ist das Wetter heute?', 'Wie sind das Wetter heute?', 'Wetter محايد ومفرد؛ نقول ist.', 'konjugation', 'Wetter'],
+      ['der Wetterbericht', 'die Wetterberichte', 'نشرة الطقس', 'Der Wetterbericht sagt für morgen Regen voraus.', 'Der Wetterbericht sagen für morgen Regen voraus.', 'Wetterbericht مفرد؛ نقول sagt. ويصح أيضًا: Der Wetterbericht sagt Regen vorher.', 'konjugation', 'Wetterbericht'],
+      ['bewölkt', '—', 'غائم', 'Heute ist es bewölkt und windig.', 'Heute ist bewölkt und windig.', 'وصف الطقس غير الشخصي يحتاج es: Heute ist es …', 'wortstellung', 'bewölkt'],
+      ['warm', '—', 'دافئ', 'Heute ist es warm.', 'Heute ist es warme.', 'بعد ist تأتي الصفة الخبرية بلا نهاية: warm.', 'deklination', 'warm'],
+      ['die Sonne', '—', 'الشمس', 'Die Sonne scheint den ganzen Tag.', 'Die Sonne scheint den ganze Tag.', 'المدة في النصب: den ganzen Tag.', 'deklination', 'Sonne'],
+      ['der Regen', '—', 'المطر', 'Bei Regen bleiben wir drinnen.', 'In Regen bleiben wir drinnen.', 'للحالة الجوية العامة نقول bei Regen؛ وim Regen صحيحة عندما يكون المعنى داخل المطر.', 'präposition', 'Regen'],
+      ['der Schnee', '—', 'الثلج', 'Im Winter liegt Schnee.', 'Im Winter liegen Schnee.', 'Schnee مفرد؛ نقول liegt. وder Schnee صحيح عند الإشارة إلى ثلج محدد.', 'konjugation', 'Schnee'],
+      ['der Wind', 'die Winde', 'الريح', 'Der Wind kommt aus Westen.', 'Der Wind kommt aus der Westen.', 'في لغة الطقس نقول aus Westen؛ كما تصح von Westen وaus dem Westen بحسب المقصود.', 'präposition', 'Wind'],
+      ['die Wolke', 'die Wolken', 'السحابة', 'Die Wolken sind dunkel.', 'Die Wolke sind dunkel.', 'Wolken جمع؛ نقول Die Wolken sind.', 'plural', 'Wolken'],
+      ['der Nebel', '—', 'الضباب', 'Bei Nebel fahre ich langsam.', 'In Nebel fahre ich langsam.', 'نقول bei Nebel للحالة العامة؛ وim Nebel صحيحة بمعنى داخل الضباب.', 'präposition', 'Nebel'],
+      ['das Gewitter', 'die Gewitter', 'العاصفة الرعدية', 'Das Gewitter kommt am Abend.', 'Das Gewitter kommt in Abend.', 'مع فترة المساء نقول am Abend.', 'präposition', 'Gewitter'],
+      ['der Sturm', 'die Stürme', 'العاصفة', 'Der Sturm war stark.', 'Der Sturm waren stark.', 'Sturm مفرد؛ نقول war. وصيغة ist stark gewesen صحيحة أيضًا.', 'konjugation', 'Sturm'],
+      ['die Temperatur', 'die Temperaturen', 'درجة الحرارة', 'Die Temperatur liegt bei zwanzig Grad.', 'Die Temperatur liegen bei zwanzig Grad.', 'Temperatur مفرد؛ نقول liegt. أما steigern فمتعدٍّ: Man kann die Temperatur aktiv steigern.', 'konjugation', 'Temperatur'],
+      ['kühl', '—', 'مائل إلى البرودة', 'Am Morgen ist es kühl.', 'Am Morgen ist es kühle.', 'بعد ist تأتي الصفة الخبرية بلا نهاية: kühl.', 'deklination', 'kühl'],
+      ['der Grad', 'die Grade', 'الدرجة', 'Die Temperatur liegt bei zwanzig Grad.', 'Die Temperatur liegt bei zwanzig Grade.', 'بعد العدد تبقى وحدة الحرارة Grad بلا علامة جمع؛ وGrade جمع صحيح في معانٍ أخرى.', 'plural', 'Grad'],
+      ['kalt', '—', 'بارد', 'Im Winter ist es kalt.', 'Im Winter ist es kalte.', 'بعد ist تأتي الصفة الخبرية بلا نهاية: kalt.', 'deklination', 'kalt'],
+      ['trocken', '—', 'جاف', 'Die Straße ist trocken.', 'Die Straße ist trockene.', 'بعد ist تأتي الصفة الخبرية بلا نهاية؛ وtrocken gemacht قد تصح في سياق تجفيف سببي.', 'deklination', 'trocken'],
+      ['feucht', '—', 'رطب', 'Die Luft ist feucht.', 'Die Luft ist feuchte.', 'بعد ist تأتي الصفة الخبرية بلا نهاية؛ وfeucht gemacht قد تصح في سياق سببي.', 'deklination', 'feucht'],
+      ['der Schirm', 'die Schirme', 'المظلة', 'Ich brauche einen Schirm.', 'Ich brauche ein Schirm.', 'Schirm مذكر وفي النصب نقول einen Schirm.', 'genus', 'Schirm'],
+      ['die Regenjacke', 'die Regenjacken', 'سترة المطر', 'Nimm die Regenjacke mit!', 'Nimm mit die Regenjacke!', 'في الأمر ينفصل mitnehmen: Nimm … mit. أما Nimm die Regenjacke! فصحيحة بمعنى خذ السترة.', 'wortstellung', 'mit'],
+      ['die Jahreszeit', 'die Jahreszeiten', 'الفصل من فصول السنة', 'Der Herbst ist meine liebste Jahreszeit.', 'Der Herbst sind meine liebste Jahreszeit.', 'Herbst مفرد؛ نقول ist.', 'konjugation', 'Jahreszeit'],
+      ['der Herbst', 'die Herbste', 'الخريف', 'Im Herbst regnet es viel.', 'In Herbst regnet es viel.', 'مع الفصل نقول im Herbst.', 'präposition', 'Herbst'],
+      ['der Winter', 'die Winter', 'الشتاء', 'Im Winter schneit es.', 'In Winter schneit es.', 'مع الفصل نقول im Winter.', 'präposition', 'Winter'],
+      ['schneien', 'schneit · schneite · hat geschneit', 'يتساقط الثلج', 'Es schneit seit gestern.', 'Es schneit für gestern.', 'نستعمل seit لبداية مستمرة إلى الآن.', 'präposition', 'schneit'],
+      ['der Wetterumschwung', 'die Wetterumschwünge', 'تغيّر مفاجئ في الطقس', 'Der Wetterumschwung kommt plötzlich.', 'Der Wetterumschwung kommen plötzlich.', 'Wetterumschwung مفرد؛ نقول kommt.', 'konjugation', 'Wetterumschwung'],
+      ['die Vorhersage', 'die Vorhersagen', 'التوقع', 'Die Vorhersage klingt gut.', 'Die Vorhersage klingen gut.', 'Vorhersage مفرد؛ نقول klingt. وgut gemacht صحيحة إذا كان المقصود جودة إعدادها.', 'konjugation', 'Vorhersage'],
+      ['fallen', 'fällt · fiel · ist gefallen', 'يسقط', 'Im Herbst fallen die Blätter.', 'Im Herbst fällt die Blätter.', 'Blätter جمع؛ نقول fallen. وصيغة fallen … runter دارجة وصحيحة.', 'konjugation', 'fallen'],
+      ['der Müll', '—', 'القمامة', 'Bring bitte den Müll raus!', 'Bring bitte die Müll raus!', 'Müll مذكر وفي النصب نقول den Müll.', 'genus', 'Müll'],
+      ['der Wald', 'die Wälder', 'الغابة', 'Im Wald ist es kühl.', 'In der Wald ist es kühl.', 'Wald مذكر؛ المكان هو im Wald أو in dem Wald.', 'präposition', 'Wald'],
+      ['der Vogel', 'die Vögel', 'الطائر', 'Der Vogel singt am Morgen.', 'Die Vogel singt am Morgen.', 'Vogel مذكر؛ نقول der Vogel.', 'genus', 'Vogel'],
+      ['die Pflanze', 'die Pflanzen', 'النبتة', 'Die Pflanze braucht Wasser.', 'Der Pflanze braucht Wasser.', 'Pflanze مؤنث؛ نقول die Pflanze.', 'genus', 'Pflanze'],
+      ['windig', 'windiger · am windigsten', 'عاصف / كثير الرياح', 'Heute ist es windig.', 'Heute ist es windige.', 'بعد ist تأتي الصفة الخبرية بلا نهاية: windig.', 'deklination', 'windig'],
     ],
     tricks: [
-      { trick: 'المناخ بحرف bei: bei Regen · bei Nebel · bei Kälte', wie: 'Bei Regen bleiben wir drinnen. Bei Nebel fahre ich langsam.', warum: 'العربية تقول «في المطر»، والألمانية تستعمل bei للحالة الجوية.', anchor: 'der Regen' },
-      { trick: 'الدرجات بلا جمع: zwanzig Grad', wie: 'Es sind zwanzig Grad. Es sind minus fünf Grad.', warum: 'العربية تجمع «درجات»، والألمانية تترك Grad بلا علامة بعد العدد.', anchor: 'der Grad' },
-      { trick: 'الوصف الجوي بلا نهاية: es ist warm · es ist kalt', wie: 'Heute ist es warm. Im Winter ist es kalt. Es ist kühl.', warum: 'بعد sein يقف الوصف بلا علامة، وإضافة e هنا خطأ يسمعه الألماني فورًا.', anchor: 'warm' }
-    ]
+      { trick: 'وصف الطقس يحتاج es والفعل في الموضع الثاني', wie: 'Heute ist es bewölkt und windig. Es regnet seit dem Morgen. Morgen soll es schneien. „It regnet“ und „es ist cloudy“ sind Sprachmischungen.', warum: 'es هو الفاعل غير الشخصي مع الطقس، وبعد Heute يأتي ist في الموضع الثاني؛ ولا نخلط it أو cloudy داخل الجملة الألمانية.', anchor: 'bewölkt' },
+      { trick: 'الفصل والظرف الجوي والمدة لكل منها حرف', wie: 'Im Sommer ist es heiß. Bei Regen bleibe ich drinnen. Im Nebel fahre ich langsam. Es regnet seit Stunden. „since Stunden“ ist ein Sprachmix.', warum: 'im مع الفصل، وbei مع حالة الطقس العامة، وim Nebel للمكان داخل الضباب، وseit مع مدة بدأت في الماضي وما زالت مستمرة.', anchor: 'der Regen' },
+      { trick: 'الحرارة والتوقع: bei … Grad · sagt … voraus', wie: 'Die Temperatur liegt bei zwanzig Grad. Die Sonne steigert die Temperatur. Der Wetterbericht sagt für morgen Regen voraus. Auch „Der Wetterbericht sagt Regen vorher.“ ist richtig. Im Winter liegt Schnee; der Schnee liegt auf den Straßen.', warum: 'قيمة الحرارة تأتي مع bei وتبقى Grad بلا جمع، وvoraussagen ينفصل؛ كما أن vorhersagen وصيغة der Schnee صحيحتان بحسب التركيب.', anchor: 'der Grad' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Sonne': 'Sonnen',
+      'die Jahreszeit': 'Jahreszeiten'
+    },
+    clozeItemIndex: 3,
+    clozeNearMiss: 'bewölkte',
+    extraCheck: {
+      right: 'Die Temperatur liegt bei zwanzig Grad.',
+      bad: 'Die Temperatur liegt mit zwanzig Grad.',
+      family: 'präposition',
+      why: 'مع قيمة الحرارة نقول bei zwanzig Grad.',
+      prereq: 'cap.a2-u4-l4.s19'
+    }
   },
 
   'a2-u4-l5': {

@@ -5091,6 +5091,124 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
 }
 
+/* ---------- audited A2 weather description and forecast lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u4-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Heute ist es bewölkt und windig.',
+    'Es regnet seit dem Morgen.',
+    'Im Sommer ist es oft heiß.',
+    'Die Temperatur liegt bei zwanzig Grad.',
+    'Der Wetterbericht sagt für morgen Regen voraus.'
+  ];
+  t('Corpus lesson a2-u4-l4 bounds condition, duration, season, temperature and forecast to five complete weather targets',
+    lesson.title.de === 'Wetter: Zustand, Dauer, Temperatur und Vorhersage' &&
+      lesson.title.ar === 'الطقس: الحالة والمدة والحرارة والتوقع' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الطقس والفصول والتوقعات' &&
+      row.grammar.item === 'bewölkt und windig · seit dem Morgen · im Sommer · bei zwanzig Grad · sagt … voraus' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 33 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === [targets[0], targets[1], targets[2], targets[4]][i]) &&
+      lesson.schritte.find(s => s.id === 's19').zeigt.de === targets[3] &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende verwendest du fünf vollständige Wettersätze für Zustand, Dauer, Jahreszeit, Temperatur und Vorhersage');
+
+  const expectedWords = [
+    'heiß', 'das Wetter', 'der Wetterbericht', 'bewölkt', 'warm', 'die Sonne', 'der Regen',
+    'der Schnee', 'der Wind', 'die Wolke', 'der Nebel', 'das Gewitter', 'der Sturm',
+    'die Temperatur', 'kühl', 'der Grad', 'kalt', 'trocken', 'feucht', 'der Schirm',
+    'die Regenjacke', 'die Jahreszeit', 'der Herbst', 'der Winter', 'schneien',
+    'der Wetterumschwung', 'die Vorhersage', 'fallen', 'der Müll', 'der Wald',
+    'der Vogel', 'die Pflanze', 'windig'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u4-l4 reviews all 33 entries and three nuanced mnemonics without rejecting valid weather alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord.heiß.ex === targets[2] && byWord['der Wetterbericht'].ex === targets[4] &&
+      byWord.bewölkt.ex === targets[0] && byWord['die Temperatur'].ex === targets[3] &&
+      byWord['der Grad'].ex === targets[3] && byWord['der Wetterbericht'].why.includes('sagt Regen vorher') &&
+      byWord['der Regen'].why.includes('im Regen صحيحة') && byWord['der Schnee'].why.includes('der Schnee صحيح') &&
+      byWord['der Wind'].why.includes('von Westen') && byWord['der Wind'].why.includes('aus dem Westen') &&
+      byWord['der Nebel'].why.includes('im Nebel صحيحة') && byWord['der Sturm'].why.includes('ist stark gewesen صحيحة') &&
+      byWord['der Grad'].why.includes('Grade جمع صحيح') && byWord['die Temperatur'].why.includes('Temperatur aktiv steigern') &&
+      byWord.trocken.why.includes('trocken gemacht قد تصح') &&
+      byWord.feucht.why.includes('feucht gemacht قد تصح') &&
+      byWord['die Regenjacke'].why.includes('Nimm die Regenjacke! فصحيحة') &&
+      byWord['die Vorhersage'].why.includes('gut gemacht صحيحة') && byWord.fallen.why.includes('fallen … runter') &&
+      byWord['der Wald'].why.includes('in dem Wald') &&
+      !['Der Wetterbericht sagt Regen vorher.', 'Im Winter liegt der Schnee.', 'Der Wind kommt von Westen.',
+        'Der Sturm ist stark gewesen.', 'Die Straße ist trocken gemacht.', 'Die Luft ist feucht gemacht.',
+        'Nimm die Regenjacke!', 'Die Vorhersage ist gut gemacht.', 'Im Herbst fallen die Blätter runter.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes('Morgen soll es schneien.') &&
+      tricks[0].wie.includes('It regnet') && tricks[0].wie.includes('es ist cloudy') &&
+      tricks[0].warum.includes('لا نخلط it أو cloudy') && tricks[1].wie.includes(targets[2].replace('oft ', '')) &&
+      tricks[1].wie.includes('Im Nebel fahre ich langsam.') && tricks[1].wie.includes('Es regnet seit Stunden.') &&
+      tricks[1].wie.includes('since Stunden') && tricks[2].wie.includes(targets[3]) && tricks[2].wie.includes(targets[4]) &&
+      tricks[2].wie.includes('Die Sonne steigert die Temperatur.') && tricks[2].wie.includes('sagt Regen vorher') &&
+      tricks[2].wie.includes('der Schnee liegt auf den Straßen') &&
+      lessonText.includes('It regnet') && lessonText.includes('cloudy') && lessonText.includes('since Stunden'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's18');
+  const drill = lesson.schritte.find(s => s.id === 's22');
+  const order = lesson.schritte.find(s => s.id === 's23');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u4-l4 aligns strict Sonne, Jahreszeit and bewölkt clozes, V2 duration order and 30-word production',
+    wordCloze1.frage.zeigt === 'Die ____ scheint den ganzen Tag.' && wordCloze1.frage.antworten.join(' ') === 'Sonne' &&
+      wordCloze1.frage.nearMiss.Sonnen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Sonnen').ok &&
+      wordCloze2.frage.zeigt === 'Der Herbst ist meine liebste ____.' &&
+      wordCloze2.frage.antworten.join(' ') === 'Jahreszeit' && wordCloze2.frage.nearMiss.Jahreszeiten &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Jahreszeiten').ok &&
+      imitate.zeigt.de === 'Heute ist es ____ und windig.' && imitate.frage.antworten.join(' ') === 'bewölkt' &&
+      imitate.frage.nearMiss.bewölkte && !win.DW.renderers.judgeCloze(imitate.frage, 'bewölkte').ok &&
+      drill.frage.zeigt === 'Heute ist es ____ und windig.' && drill.frage.antworten.join(' ') === 'bewölkt' &&
+      drill.frage.nearMiss.bewölkte && !win.DW.renderers.judgeCloze(drill.frage, 'bewölkte').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'regnet' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Es' && order.frage.fields.lsk.join(' ') === 'regnet' &&
+      order.frage.fields.mittelfeld.join(' ') === 'seit dem Morgen.' && !order.frage.fields.rsk && !order.frage.rightBracket &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Es', 'seit', 'dem', 'Morgen.', 'regnet']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[,.!?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u4-l4 makes 80 percent four of five independent across forecast, condition, duration, season and temperature',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u4-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u4-l4.s07 | cap.a2-u4-l4.s22 | cap.a2-u4-l4.s23 | cap.a2-u4-l4.s08 | cap.a2-u4-l4.s19' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) && checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Heute ist es ____ und windig.' && clozeCheck.frage.antworten.join(' ') === 'bewölkt' &&
+      clozeCheck.frage.nearMiss.bewölkte && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'bewölkte').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'regnet' &&
+      orderCheck.frage.verbFirst === false && !orderCheck.frage.fields.rsk && !orderCheck.frage.rightBracket &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Es', 'seit', 'dem', 'Morgen.', 'regnet']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[3]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
