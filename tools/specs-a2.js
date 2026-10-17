@@ -998,25 +998,52 @@ module.exports = [
       summaryRecap: 'Zustand Dauer Jahreszeit Temperatur Vorhersage'
     }),
 
-  U('a2-u4-l5', 'A2', 'الدعوة', 'Einladung', 'register',
-    'Am Ende nimmst du eine Einladung an und sagst ab',
-    'في النهاية تقبل دعوة وتعتذر.',
+  U('a2-u4-l5', 'A2', 'الدعوة: القبول والاعتذار والاستفسار', 'Einladung: zusagen, absagen und nachfragen', 'register',
+    'Am Ende beantwortest du eine Einladung mit Dank, Zusage, begründeter Absage und zwei Rückfragen',
+    'في النهاية تجيب عن دعوة بالشكر والقبول والاعتذار المعلّل وسؤالين عن التفاصيل.',
     [
-      ['kommst du mit', 'الدعوة القصيرة Kommst du mit', 'لا do you come', 'Do you come mit', 'Do إنجليزية'],
-      ['ja gerne', 'القبول Ja, gerne', 'لا yes please كمقام وحيد', 'yes, please ich komme', 'yes إنجليزية'],
-      ['leider', 'الاعتذار beginnt mit leider', 'لا sorry allein', 'sorry, nein', 'sorry ليست الإطار'],
-      ['vielen Dank für die Einladung', 'الشكر على الدعوة إطار', 'لا thanks for invite', 'thanks for die Einladung', 'thanks إنجليزية']
+      ['Vielen Dank für die Einladung!', 'تشكر على الدعوة بصيغة مهذبة', 'für يأخذ النصب؛ Einladung مؤنث فنقول für die Einladung', 'Vielen Dank für der Einladung!', 'بعد für نقول die Einladung لا der Einladung'],
+      ['Ich sage für Samstag gern zu.', 'تقبل الدعوة ليوم السبت بالفعل المنفصل zusagen', 'في الجملة الرئيسية ينفصل zusagen: sage … zu، وfür Samstag يحدد اليوم الذي تقبله', 'Ich zusage für Samstag gern.', 'نقول sage … zu في الجملة الرئيسية'],
+      ['Leider muss ich absagen, weil ich arbeiten muss.', 'تعتذر وتذكر سببًا واضحًا', 'بعد muss يأتي المصدر absagen، وفي جملة weil يأتي الفعل المصرف في النهاية', 'Leider muss ich absage, weil ich arbeiten muss.', 'بعد muss نقول absagen لا absage'],
+      ['Um wie viel Uhr beginnt die Feier?', 'تسأل عن وقت بدء المناسبة', 'السؤال عن الساعة يبدأ بـ um wie viel Uhr، ثم يأتي الفعل المصرف', 'In wie viel Uhr beginnt die Feier?', 'السؤال عن الساعة يأخذ um لا in']
     ],
     [
-      ['Kommst du mit?', 'هل تأتي معنا؟', 'Do you come mit?', 'الدعوة Kommst du mit', 'Kommst'],
-      ['Ja, gerne.', 'نعم بكل سرور', 'Yes, please', 'القبول Ja, gerne', 'gerne'],
-      ['Leider kann ich nicht.', 'للأسف لا أستطيع', 'Sorry, nein', 'الاعتذار Leider', 'Leider'],
-      ['Vielen Dank für die Einladung.', 'شكرًا على الدعوة', 'Thanks for die Einladung', 'الشكر Vielen Dank', 'Dank']
+      ['Vielen Dank für die Einladung!', 'شكرًا جزيلًا على الدعوة', 'Vielen Dank für der Einladung!', 'für يأخذ النصب: für die Einladung', 'Einladung'],
+      ['Ich sage für Samstag gern zu.', 'أوافق بسرور على دعوة السبت', 'Ich zusage für Samstag gern.', 'في الجملة الرئيسية ينفصل zusagen: sage … zu', 'zu'],
+      ['Leider muss ich absagen, weil ich arbeiten muss.', 'للأسف يجب أن أعتذر لأن عليّ العمل', 'Leider muss ich abgesagt, weil ich arbeiten muss.', 'بعد muss يأتي المصدر absagen لا اسم المفعول abgesagt', 'absagen'],
+      ['Um wie viel Uhr beginnt die Feier?', 'في أي ساعة تبدأ المناسبة؟', 'In wie viel Uhr beginnt die Feier?', 'السؤال عن الساعة هو um wie viel Uhr', 'Uhr']
     ],
-    'Kommst du mit? Leider kann ich nicht.',
-    'Vielen Dank für die Einladung.',
-    'Nimm morgen eine Einladung an oder sag ab.',
-    'غدًا اقبل دعوة أو اعتذر.'),
+    'Vielen Dank für die Einladung! Ich sage für Samstag gern zu.',
+    'Was soll ich zur Feier mitbringen?',
+    'Wiederhole morgen die fünf Sätze: Vielen Dank für die Einladung! Ich sage für Samstag gern zu. Leider muss ich absagen, weil ich arbeiten muss. Um wie viel Uhr beginnt die Feier? Was soll ich zur Feier mitbringen?',
+    'غدًا راجع جمل الشكر والقبول والاعتذار المعلّل والسؤال عن الوقت وما تحضره.',
+    {
+      factFamilies: ['kasus', 'wortstellung', 'konjugation', 'präposition'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze als Antwort auf eine Einladung',
+        erklaerung: 'اكتب الجمل الخمس كاملة: الشكر والقبول والاعتذار مع السبب والسؤالان.',
+        prompt: 'اكتب الجمل الخمس للرد على الدعوة كاملة.',
+        promptDe: 'Vielen Dank für die Einladung! · Ich sage für Samstag gern zu. · Leider muss ich absagen, weil ich arbeiten muss. · Um wie viel Uhr beginnt die Feier? · Was soll ich zur Feier mitbringen?',
+        points: ['Vielen Dank für die Einladung!', 'Ich sage für Samstag gern zu.', 'Leider muss ich absagen, weil ich arbeiten muss.', 'Um wie viel Uhr beginnt die Feier?', 'Was soll ich zur Feier mitbringen?'],
+        minWords: 32,
+        frage: 'اكتب الجمل الخمس كاملة في 32 كلمة على الأقل.',
+        familie: 'register',
+        hinweise: ['ابدأ بالشكر ثم استعمل sage … zu أو muss … absagen.', 'ضع muss في نهاية جملة weil، واستعمل um للسؤال عن الساعة.']
+      },
+      imitateNearMiss: 'Einladungen',
+      transformHint: 'بعد soll يبقى الفعل المنفصل مصدرًا واحدًا في النهاية: mitbringen.',
+      orderAr: 'رتّب جملة القبول: Ich ثم sage ثم für Samstag gern ثم zu.',
+      orderHints: ['ابدأ بـ Ich وضع sage في الموضع الثاني.', 'ضع البادئة zu في القوس اليميني.'],
+      orderSentence: 'Ich sage für Samstag gern zu.',
+      orderRightBracket: ['zu.'],
+      checkOrderSentence: 'Ich sage für Samstag gern zu.',
+      checkOrderRightBracket: ['zu.'],
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة قبول صحيحة بالفعل المنفصل zusagen.',
+      speakAr: 'سجّل عشرين ثانية: قل Vielen Dank für die Einladung وIch sage für Samstag gern zu وLeider muss ich absagen, weil ich arbeiten muss وUm wie viel Uhr beginnt die Feier وWas soll ich zur Feier mitbringen.',
+      summaryDe: 'Vielen Dank für die Einladung! · Ich sage für Samstag gern zu. · Leider muss ich absagen, weil ich arbeiten muss. · Um wie viel Uhr beginnt die Feier? · Was soll ich zur Feier mitbringen?',
+      summaryAr: 'راجع الشكر وsage … zu وmuss … absagen وweil والفعل النهائي وum wie viel Uhr وmitbringen.',
+      summaryRecap: 'Dank Zusage Absage Grund Uhrzeit Mitbringsel'
+    }),
 
   U('a2-u4-l6', 'A2', 'مشكلة صغيرة', 'Ein Problem', 'lexik-kollokation',
     'Am Ende sagst du dass etwas nicht funktioniert',

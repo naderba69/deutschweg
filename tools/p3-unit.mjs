@@ -5209,6 +5209,123 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[3]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
 }
 
+/* ---------- audited A2 invitation response and follow-up lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u4-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Vielen Dank für die Einladung!',
+    'Ich sage für Samstag gern zu.',
+    'Leider muss ich absagen, weil ich arbeiten muss.',
+    'Um wie viel Uhr beginnt die Feier?',
+    'Was soll ich zur Feier mitbringen?'
+  ];
+  t('Corpus lesson a2-u4-l5 bounds an invitation reply to thanks, acceptance, reasoned refusal and two detail questions',
+    lesson.title.de === 'Einladung: zusagen, absagen und nachfragen' &&
+      lesson.title.ar === 'الدعوة: القبول والاعتذار والاستفسار' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الرد على الدعوة وتفاصيل المناسبة' &&
+      row.grammar.item === 'Danke für … · sage … zu · muss … absagen, weil … · um wie viel Uhr · mitbringen' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 29 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[4] &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende beantwortest du eine Einladung mit Dank, Zusage, begründeter Absage und zwei Rückfragen');
+
+  const expectedWords = [
+    'die Einladung', 'annehmen', 'ablehnen', 'absagen', 'zusagen', 'die Zusage', 'die Absage',
+    'der Gastgeber', 'die Uhrzeit', 'der Ort', 'um wie viel Uhr', 'mitbringen', 'mitkommen',
+    'sich freuen auf', 'die Vorfreude', 'höflich', 'unhöflich', 'antworten', 'die Frist',
+    'der Kalender', 'das Geschenk', 'die Blumen', 'die Kleidung', 'der Anlass', 'die Tischkarte',
+    'die Dankeskarte', 'der Teller', 'das Theater', 'der Volleyball'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u4-l5 reviews all 29 entries and three nuanced mnemonics without rejecting valid invitation alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['die Einladung'].ex === targets[0] && byWord.zusagen.ex === targets[1] &&
+      byWord.absagen.ex === targets[2] && byWord['um wie viel Uhr'].ex === targets[3] &&
+      byWord.mitbringen.ex === targets[4] && byWord['der Volleyball'].pl === 'die Volleybälle' &&
+      byWord.annehmen.why.includes('Ich nehme die Einladung') &&
+      byWord['die Zusage'].why.includes('Die Zusage ist schnell gekommen صحيحة') &&
+      byWord['die Absage'].why.includes('Die Absage ist höflich gewesen صحيحة') &&
+      byWord['die Uhrzeit'].why.includes('auf der Karte') && byWord['der Ort'].why.includes('auf der Karte') &&
+      byWord.mitkommen.why.includes('Kommst du? فسؤال صحيح') &&
+      byWord['der Kalender'].why.includes('in dem Kalender') && byWord['die Blumen'].why.includes('Ich bringe Blumen') &&
+      byWord['das Theater'].why.includes('zum Theater') && byWord['der Volleyball'].why.includes('Volleybälle') &&
+      !['Ich nehme die Einladung.', 'Die Zusage ist schnell gekommen.', 'Die Absage ist höflich gewesen.',
+        'Kommst du?', 'Ich schreibe es in dem Kalender.', 'Ich bringe Blumen.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Du nimmst die Einladung an.') &&
+      tricks[0].wie.includes(targets[1]) && tricks[0].wie.includes('Ich habe bereits zugesagt.') &&
+      tricks[0].warum.includes('بعد modal') && tricks[0].warum.includes('Perfekt') &&
+      tricks[1].wie.includes(targets[0]) && tricks[1].wie.includes('Ja, gern.') && tricks[1].wie.includes('Ja, gerne.') &&
+      tricks[1].wie.includes(targets[2]) && tricks[1].wie.includes('zu antworten') &&
+      tricks[1].wie.includes('Do you come mit?') && tricks[1].wie.includes('yes, please') &&
+      tricks[1].wie.includes('sorry') && tricks[1].wie.includes('thanks for invite') &&
+      tricks[1].warum.includes('لا نضع الإنجليزية') && tricks[2].wie.includes(targets[3]) &&
+      tricks[2].wie.includes(targets[4]) && tricks[2].wie.includes('am zehnten Mai') &&
+      tricks[2].wie.includes('Volleybälle, nicht Volleyballs') &&
+      lessonText.includes('Sprachmischungen oder unvollständige Antworten'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u4-l5 aligns strict Zusage, Blumen, Einladung and absagen clozes, separable acceptance order and 32-word production',
+    wordCloze1.frage.zeigt === 'Ich freue mich über deine ____.' && wordCloze1.frage.antworten.join(' ') === 'Zusage' &&
+      wordCloze1.frage.nearMiss.Zusagen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Zusagen').ok &&
+      wordCloze2.frage.zeigt === 'Ich bringe ____ mit.' && wordCloze2.frage.antworten.join(' ') === 'Blumen' &&
+      wordCloze2.frage.nearMiss.Blume && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Blume').ok &&
+      imitate.zeigt.de === 'Vielen Dank für die ____!' && imitate.frage.antworten.join(' ') === 'Einladung' &&
+      imitate.frage.nearMiss.Einladungen && !win.DW.renderers.judgeCloze(imitate.frage, 'Einladungen').ok &&
+      drill.frage.zeigt === 'Leider muss ich ____, weil ich arbeiten muss.' && drill.frage.antworten.join(' ') === 'absagen' &&
+      drill.frage.nearMiss.absage && !win.DW.renderers.judgeCloze(drill.frage, 'absage').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'sage' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'sage' &&
+      order.frage.fields.mittelfeld.join(' ') === 'für Samstag gern' && order.frage.fields.rsk.join(' ') === 'zu.' &&
+      order.frage.rightBracket.join(' ') === 'zu.' && win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'für', 'Samstag', 'gern', 'sage', 'zu.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 32 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text =>
+        text.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de')))) &&
+      targets.every(x => speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de')
+        .includes(x.replace(/[,.!?]/g, '').toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u4-l5 makes 80 percent four of five independent across time, refusal, acceptance, thanks and bringing',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u4-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u4-l5.s07 | cap.a2-u4-l5.s21 | cap.a2-u4-l5.s22 | cap.a2-u4-l5.s08 | cap.a2-u4-l5.s18' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Leider muss ich ____, weil ich arbeiten muss.' &&
+      clozeCheck.frage.antworten.join(' ') === 'absagen' && clozeCheck.frage.nearMiss.absage &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'absage').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'sage' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.rsk.join(' ') === 'zu.' &&
+      orderCheck.frage.rightBracket.join(' ') === 'zu.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'für', 'Samstag', 'gern', 'sage', 'zu.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
