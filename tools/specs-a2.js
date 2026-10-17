@@ -859,25 +859,52 @@ module.exports = [
       summaryRecap: 'Kurs Unterricht Hausaufgaben Erklärung Prüfung'
     }),
 
-  U('a2-u4-l2', 'A2', 'الأعياد', 'Feste', 'lexik-kollokation',
-    'Am Ende lädst du ein und gratulierst',
-    'في النهاية تدعو وتهنئ.',
+  U('a2-u4-l2', 'A2', 'المناسبات: التهنئة والدعوة والرد', 'Feste: gratulieren, einladen und antworten', 'lexik-kollokation',
+    'Am Ende gratulierst du, lädst zu einer Feier ein und verwendest fünf vollständige Sätze zum Gratulieren, Einladen, Zusagen, Absagen und Nennen der Uhrzeit',
+    'في النهاية تستعمل خمس جمل كاملة للتهنئة والدعوة والقبول والاعتذار وتحديد الوقت.',
     [
-      ['Herzlichen Glückwunsch', 'التهنئة الإطار الكامل', 'لا happy birthday خليط', 'happy Geburtstag', 'happy إنجليزية'],
-      ['ich lade dich ein', 'الدعوة laden ein', 'البادئة أخيرًا', 'ich einlade dich', 'البادئة في الآخر'],
-      ['am Samstag', 'اليوم am', 'im Samstag خطأ', 'im Samstag', 'اليوم am'],
-      ['leider kann ich nicht', 'الاعتذار leider', 'لا sorry I cannot', 'sorry, ich kann nicht kommen so', 'sorry ليست الإطار']
+      ['Herzlichen Glückwunsch zum Geburtstag!', 'تهنئ شخصًا بعيد ميلاده بالصيغة الكاملة', 'في العبارة الثابتة نقول Herzlichen Glückwunsch zum Geburtstag', 'Herzliche Glückwunsch zum Geburtstag!', 'نقول Herzlichen Glückwunsch'],
+      ['Ich lade dich am Samstag zu meiner Feier ein.', 'تدعو شخصًا إلى حفلك يوم السبت', 'einladen فعل منفصل؛ يأتي lade في الموضع الثاني وein في النهاية', 'Ich einlade dich am Samstag zu meiner Feier.', 'في الجملة الرئيسية نقول lade … ein'],
+      ['Ich nehme die Einladung gern an.', 'تقبل الدعوة بالفعل المنفصل annehmen', 'في الجملة الرئيسية ينفصل annehmen: nehme … an', 'Ich annehme die Einladung gern.', 'نقول nehme … an'],
+      ['Leider kann ich am Samstag nicht kommen.', 'تعتذر عن الحضور بجملة كاملة ومهذبة', 'بعد Leider يبقى الفعل المصرف في الموضع الثاني: kann ich', 'Leider ich kann am Samstag nicht kommen.', 'بعد Leider نقول kann ich']
     ],
     [
-      ['Herzlichen Glückwunsch!', 'مبروك', 'Happy Geburtstag!', 'التهنئة Herzlichen Glückwunsch', 'Glückwunsch'],
-      ['Ich lade dich ein.', 'أدعوك', 'Ich einlade dich', 'ein في الآخر', 'ein'],
-      ['Wir feiern am Samstag.', 'نحتفل السبت', 'Wir feiern im Samstag', 'اليوم am', 'am'],
-      ['Leider kann ich nicht.', 'للأسف لا أستطيع', 'Sorry, ich kann nicht', 'الاعتذار Leider', 'Leider']
+      ['Herzlichen Glückwunsch zum Geburtstag!', 'أطيب التهاني بعيد الميلاد', 'Herzliche Glückwunsch zum Geburtstag!', 'العبارة هي Herzlichen Glückwunsch', 'Glückwunsch'],
+      ['Ich lade dich am Samstag zu meiner Feier ein.', 'أدعوك يوم السبت إلى حفلي', 'Ich einlade dich am Samstag zu meiner Feier.', 'الفعل المنفصل يأتي lade … ein', 'ein'],
+      ['Ich nehme die Einladung gern an.', 'أقبل الدعوة بسرور', 'Ich annehme die Einladung gern.', 'الفعل المنفصل يأتي nehme … an', 'Einladung'],
+      ['Leider kann ich am Samstag nicht kommen.', 'للأسف لا أستطيع الحضور يوم السبت', 'Leider kann ich am Samstag nicht kommt.', 'بعد kann يأتي المصدر kommen', 'Leider']
     ],
-    'Ich lade dich ein. Wir feiern am Samstag.',
-    'Herzlichen Glückwunsch!',
-    'Lade morgen jemanden mit einem Satz ein.',
-    'غدًا ادعُ شخصًا بجملة.'),
+    'Herzlichen Glückwunsch zum Geburtstag! Ich lade dich am Samstag zu meiner Feier ein. Ich nehme die Einladung gern an. Leider kann ich am Samstag nicht kommen. Die Feier beginnt um sieben Uhr.',
+    'Die Feier beginnt um sieben Uhr.',
+    'Wiederhole morgen die fünf Sätze: Herzlichen Glückwunsch zum Geburtstag! Ich lade dich am Samstag zu meiner Feier ein. Ich nehme die Einladung gern an. Leider kann ich am Samstag nicht kommen. Die Feier beginnt um sieben Uhr.',
+    'غدًا راجع الجمل الخمس عن التهنئة والدعوة والقبول والاعتذار ووقت الحفل.',
+    {
+      factFamilies: ['deklination', 'wortstellung', 'wortstellung', 'wortstellung'],
+      writing: {
+        zeigt: 'Fünf vollständige Sätze für eine Einladung',
+        erklaerung: 'اكتب الجمل الخمس كاملة للتهنئة والدعوة وقبولها والاعتذار وذكر وقت الحفل.',
+        prompt: 'اكتب الجمل الخمس مستعملًا تراكيب المناسبة الصحيحة.',
+        promptDe: 'Herzlichen Glückwunsch zum Geburtstag! · Ich lade dich am Samstag zu meiner Feier ein. · Ich nehme die Einladung gern an. · Leider kann ich am Samstag nicht kommen. · Die Feier beginnt um sieben Uhr.',
+        points: ['Herzlichen Glückwunsch zum Geburtstag!', 'Ich lade dich am Samstag zu meiner Feier ein.', 'Ich nehme die Einladung gern an.', 'Leider kann ich am Samstag nicht kommen.', 'Die Feier beginnt um sieben Uhr.'],
+        minWords: 32,
+        frage: 'اكتب جمل المناسبة الخمس كاملة.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل Herzlichen Glückwunsch وlade … ein وnehme … an.', 'ضع kann بعد Leider واستعمل um مع ساعة بدء الحفل.']
+      },
+      imitateNearMiss: 'Glückwünsche',
+      transformHint: 'مع وقت الساعة المحدد نقول um sieben Uhr.',
+      orderAr: 'رتّب الدعوة: lade في الموضع الثاني وein في نهاية الجملة.',
+      orderHints: ['ضع lade بعد Ich.', 'ضع البادئة ein في النهاية.'],
+      orderSentence: 'Ich lade dich am Samstag zu meiner Feier ein.',
+      orderRightBracket: ['ein.'],
+      checkOrderSentence: 'Ich lade dich am Samstag zu meiner Feier ein.',
+      checkOrderRightBracket: ['ein.'],
+      orderPromptAr: 'رتّب الكلمات لتكوين دعوة كاملة مع الفعل المنفصل.',
+      speakAr: 'سجّل عشرين ثانية: قل Herzlichen Glückwunsch zum Geburtstag وIch lade dich am Samstag zu meiner Feier ein وIch nehme die Einladung gern an وLeider kann ich am Samstag nicht kommen وDie Feier beginnt um sieben Uhr.',
+      summaryDe: 'Herzlichen Glückwunsch zum Geburtstag! · Ich lade dich am Samstag zu meiner Feier ein. · Ich nehme die Einladung gern an. · Leider kann ich am Samstag nicht kommen. · Die Feier beginnt um sieben Uhr.',
+      summaryAr: 'راجع Herzlichen Glückwunsch وlade … ein وnehme … an وLeider kann ich وum sieben Uhr.',
+      summaryRecap: 'Glückwunsch Einladung Zusage Absage Uhrzeit'
+    }),
 
   U('a2-u4-l3', 'A2', 'الملابس', 'Kleidung', 'lexik-kollokation',
     'Am Ende beschreibst du was du anhast',

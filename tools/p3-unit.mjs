@@ -4862,6 +4862,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
 
+/* ---------- audited A2 celebration and invitation lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u4-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Herzlichen Glückwunsch zum Geburtstag!',
+    'Ich lade dich am Samstag zu meiner Feier ein.',
+    'Ich nehme die Einladung gern an.',
+    'Leider kann ich am Samstag nicht kommen.',
+    'Die Feier beginnt um sieben Uhr.'
+  ];
+  t('Corpus lesson a2-u4-l2 bounds congratulations, invitation, acceptance, refusal and party time to five celebration targets',
+    lesson.title.de === 'Feste: gratulieren, einladen und antworten' &&
+      lesson.title.ar === 'المناسبات: التهنئة والدعوة والرد' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'المناسبات والدعوات والاحتفال' &&
+      row.grammar.item === 'Herzlichen Glückwunsch · lade … ein · nehme … an · Leider kann ich nicht · um sieben Uhr' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 33 &&
+      targets.slice(0, 4).every((x, i) => lesson.schritte[i + 3].zeigt.de === x) &&
+      lesson.schritte.find(s => s.id === 's19').zeigt.de === targets[4] &&
+      lesson.schritte.find(s => s.id === 's08').wortschatz.some(it => it.ex === targets[4]) &&
+      lesson.schritte[0].zeigt.de ===
+        'Am Ende gratulierst du, lädst zu einer Feier ein und verwendest fünf vollständige Sätze zum Gratulieren, Einladen, Zusagen, Absagen und Nennen der Uhrzeit');
+
+  const expectedWords = [
+    'der Glückwunsch', 'einladen', 'die Einladung', 'die Feier', 'das Fest', 'der Geburtstag',
+    'feiern', 'die Hochzeit', 'Weihnachten', 'Ostern', 'Neujahr', 'gratulieren', 'das Geschenk',
+    'schenken', 'die Blume', 'die Karte', 'die Torte', 'der Kuchen', 'die Kerze', 'das Lied',
+    'tanzen', 'der Gast', 'die Dekoration', 'das Brautpaar', 'der Jahrestag', 'das Feuerwerk',
+    'der Ball', 'der Spaß', 'singen', 'die Süßigkeit', 'das Klavier', 'der Witz', 'witzig'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  const lessonText = JSON.stringify(lesson);
+  t('Corpus lesson a2-u4-l2 reviews all 33 entries and three nuanced mnemonics without rejecting valid celebration alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['der Glückwunsch'].ex === targets[0] && byWord.einladen.ex === targets[1] &&
+      byWord['die Einladung'].ex === targets[2] && byWord['die Feier'].ex === targets[4] &&
+      byWord['die Hochzeit'].why.includes('ist schön gewesen صحيحة') &&
+      byWord.Weihnachten.de === 'Weihnachten' && byWord.Ostern.de === 'Ostern' && byWord.Neujahr.de === 'Neujahr' &&
+      byWord.Weihnachten.why.includes('an Weihnachten') && byWord.Ostern.why.includes('an Ostern') &&
+      byWord.Neujahr.why.includes('an Neujahr') && byWord['die Torte'].why.includes('süß gemacht') &&
+      byWord.tanzen.why.includes('bis zur Mitternacht') && byWord['die Dekoration'].why.includes('bunt gemacht') &&
+      byWord['der Ball'].ex === 'Am Samstag findet ein Ball im Schloss statt.' &&
+      byWord['der Ball'].why.includes('in dem Schloss صحيحة أيضًا') && byWord.singen.why.includes('für den Geburtstag') &&
+      !errors.includes('Die Hochzeit ist schön gewesen.') && !errors.includes('Die Torte ist süß gemacht.') &&
+      !errors.includes('Die Dekoration ist bunt gemacht.') && !errors.includes('Wir tanzen bis die Mitternacht.') &&
+      !errors.includes('Am Samstag ist ein Ball in dem Schloss statt.') &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[1]) && tricks[0].wie.includes(targets[2]) &&
+      tricks[0].wie.includes(targets[3]) && tricks[0].wie.includes('Ich kann leider nicht kommen.') &&
+      tricks[0].wie.includes('Sorry, ich kann nicht kommen.') && tricks[0].warum.includes('لا نرفض Sorry') &&
+      tricks[1].wie.includes(targets[0]) && tricks[1].wie.includes('Happy Birthday!') &&
+      tricks[1].warum.includes('بديل شائع') && tricks[2].wie.includes('Zu Weihnachten') &&
+      tricks[2].wie.includes('an Weihnachten') && tricks[2].wie.includes(targets[4]) &&
+      tricks[2].warum.includes('بلا أداة') &&
+      !['das Weihnachten', 'das Ostern', 'das Neujahr', 'happy Geburtstag', 'sorry, ich kann nicht kommen so'].some(x => lessonText.includes(x)));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's18');
+  const drill = lesson.schritte.find(s => s.id === 's22');
+  const order = lesson.schritte.find(s => s.id === 's23');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u4-l2 aligns strict Geburtstag, Gäste, Glückwunsch and Einladung clozes, separable invitation order and 32-word production',
+    wordCloze1.frage.zeigt === 'Herzlichen Glückwunsch zum ____!' && wordCloze1.frage.antworten.join(' ') === 'Geburtstag' &&
+      wordCloze1.frage.nearMiss.Geburtstage && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Geburtstage').ok &&
+      wordCloze2.frage.zeigt === 'Die ____ kommen um acht Uhr.' && wordCloze2.frage.antworten.join(' ') === 'Gäste' &&
+      wordCloze2.frage.nearMiss.Gast && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Gast').ok &&
+      imitate.zeigt.de === 'Herzlichen ____ zum Geburtstag!' && imitate.frage.antworten.join(' ') === 'Glückwunsch' &&
+      imitate.frage.nearMiss.Glückwünsche && !win.DW.renderers.judgeCloze(imitate.frage, 'Glückwünsche').ok &&
+      drill.frage.zeigt === 'Ich nehme die ____ gern an.' && drill.frage.antworten.join(' ') === 'Einladung' &&
+      drill.frage.nearMiss.Einladungen && !win.DW.renderers.judgeCloze(drill.frage, 'Einladungen').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'lade' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'lade' &&
+      order.frage.fields.mittelfeld.join(' ') === 'dich am Samstag zu meiner Feier' &&
+      order.frage.fields.rsk.join(' ') === 'ein.' && order.frage.rightBracket.join(' ') === 'ein.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'ein.', 'lade', 'dich', 'am', 'Samstag', 'zu', 'meiner', 'Feier']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 32 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de]
+        .every(text => text.toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de')))) &&
+      targets.map(x => x.replace(/[,.!?]/g, '')).every(x =>
+        speaking.erklaerung.replace(/[,.!?]/g, '').toLocaleLowerCase('de').includes(x.toLocaleLowerCase('de'))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u4-l2 makes 80 percent four of five independent across refusal, acceptance, invitation, congratulations and party time',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u4-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u4-l2.s07 | cap.a2-u4-l2.s22 | cap.a2-u4-l2.s23 | cap.a2-u4-l2.s08 | cap.a2-u4-l2.s19' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Ich nehme die ____ gern an.' && clozeCheck.frage.antworten.join(' ') === 'Einladung' &&
+      clozeCheck.frage.nearMiss.Einladungen && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Einladungen').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'lade' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.rsk.join(' ') === 'ein.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'ein.', 'lade', 'dich', 'am', 'Samstag', 'zu', 'meiner', 'Feier']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
+}
+
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
