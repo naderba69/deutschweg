@@ -9964,5 +9964,134 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
 }
 
+
+/* ---------- audited B1 Vorgangspassiv lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Die Straße wird repariert.',
+    'Das Haus wurde verkauft.',
+    'Die Schuhe werden in Italien hergestellt.',
+    'Der Brief wird von Anna geschrieben.',
+    'Die Brücke ist im letzten Jahr gebaut worden.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l1 precisely scopes Vorgangspassiv in present, preterite and perfect across five complete targets',
+    lesson.title.de === 'Vorgangspassiv: Präsens, Präteritum und Perfekt' &&
+      lesson.title.ar === 'المبني للمجهول الحدثي: الحاضر والماضي البسيط والماضي المركّب' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'وصف العمليات من دون إبراز الفاعل' &&
+      row.grammar.item === 'werden + Partizip II · wurde · ist … worden · von + Dativ' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du fünf vollständige Sätze im Vorgangspassiv' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'reparieren', 'bauen', 'produzieren', 'verkaufen', 'liefern', 'bestellen', 'prüfen', 'verbieten',
+    'erlauben', 'öffnen', 'schließen', 'entwickeln', 'herstellen', 'informieren', 'bezahlen', 'der Bau',
+    'die Reparatur', 'die Produktion', 'der Verkauf', 'die Lieferung', 'die Bestellung', 'die Prüfung',
+    'das Verbot', 'die Erlaubnis', 'die Einladung', 'die Information', 'die Zahlung', 'die Rechnung',
+    'der Auftrag', 'der Vertrag', 'die Ware', 'das Werk', 'der Antrag', 'die Anmeldung', 'das Ergebnis',
+    'der Vorgang', 'die Ursache', 'von', 'durch', 'worden'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l1 reviews all 40 entries and three bounded mnemonics without rejecting valid state, agent or genitive alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.reparieren.ex.includes('gerade repariert') && byWord.bauen.err.endsWith('bauen.') &&
+      byWord.produzieren.ex.includes('Fahrräder werden') && byWord.verkaufen.ex.includes('wurde gestern verkauft') &&
+      byWord.liefern.err.includes('Pakete wird') && byWord.bestellen.err.endsWith('bestellen.') &&
+      byWord.prüfen.err.endsWith('prüfen.') && byWord.verbieten.ex.includes('Rauchen wurde') &&
+      byWord.erlauben.ex.includes('für das Fest erlaubt') && byWord.öffnen.err.endsWith('geöffnen.') &&
+      byWord.schließen.ex.includes('acht Uhr geschlossen') && byWord.entwickeln.ex.includes('von zwei Studenten entwickelt') &&
+      byWord.herstellen.ex === targets[2] && byWord.informieren.err.includes('Kunden wird') &&
+      byWord.bezahlen.err.endsWith('bezahlen.') && byWord['der Bau'].err.includes('zwei Jahren') &&
+      byWord['die Reparatur'].err.includes('viele Geld') && byWord['die Produktion'].why.includes('بلا حرف جر') &&
+      byWord['der Verkauf'].why.includes('am Montag') && byWord['die Lieferung'].why.includes('لا نحتاج حرف جر') &&
+      byWord['die Bestellung'].err.includes('Bestellung sind') && byWord['die Prüfung'].err.includes('des Antrag') &&
+      byWord['das Verbot'].err.includes('seit den Januar') && byWord['die Erlaubnis'].err.endsWith('erteilen.') &&
+      byWord['die Einladung'].err.endsWith('verschicken.') && byWord['die Information'].err.includes('Informationen wird') &&
+      byWord['die Zahlung'].ex.includes('per Überweisung ausgeführt') && byWord['die Rechnung'].err.endsWith('bezahlen.') &&
+      byWord['der Auftrag'].err.endsWith('bearbeiten.') && byWord['der Vertrag'].err.endsWith('unterschreiben.') &&
+      byWord['die Ware'].err.endsWith('verpacken.') && byWord['das Werk'].err.endsWith('modernisieren.') &&
+      byWord['der Antrag'].err.endsWith('stellen.') && byWord['die Anmeldung'].err.endsWith('erwarten.') &&
+      byWord['das Ergebnis'].ex.endsWith('bekannt gegeben.') && byWord['das Ergebnis'].err.includes('bekanntgeben oder bekanntgegeben') &&
+      byWord['das Ergebnis'].why.includes('ككلمتين') && byWord['der Vorgang'].err.endsWith('dokumentieren.') &&
+      byWord['die Ursache'].err.endsWith('finden.') && byWord.von.ex === targets[3] &&
+      byWord.durch.err.includes('durch dem Hochwasser') && byWord.worden.ex === targets[4] &&
+      !['Die Straße ist repariert.', 'Die Prüfung von dem Antrag dauert drei Wochen.',
+        'Das Buch wurde mit einem Lehrer geschrieben.', 'Der Brief wird mit Anna geschrieben.',
+        'Die Stadt wurde von dem Hochwasser zerstört.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('wird repariert') && tricks[0].wie.includes('ist repariert') &&
+      tricks[0].warum.includes('الجملتان صحيحتان') && tricks[1].wie.includes('ist gebaut worden') &&
+      tricks[1].warum.includes('لا geworden') && tricks[2].wie === 'von Anna (Agens) · durch das Hochwasser (Ursache)' &&
+      tricks[2].warum.includes('Dativ') && tricks[2].warum.includes('Akkusativ'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l1 aligns five strict clozes, the perfect passive bracket and a 28-word five-target production',
+    wordCloze1.frage.zeigt === 'Das Buch wurde online ____.' && wordCloze1.frage.antworten.join(' ') === 'bestellt' &&
+      wordCloze1.frage.nearMiss.bestellen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'bestellen').ok &&
+      wordCloze2.frage.zeigt === 'Die ____ des Antrags dauert drei Wochen.' && wordCloze2.frage.antworten.join(' ') === 'Prüfung' &&
+      wordCloze2.frage.nearMiss.Prüfen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Prüfen').ok &&
+      wordCloze3.frage.zeigt === 'Der Brief wird ____ Anna geschrieben.' && wordCloze3.frage.antworten.join(' ') === 'von' &&
+      wordCloze3.frage.nearMiss.vom && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'vom').ok &&
+      imitate.zeigt.de === 'Die Straße ____ repariert.' && imitate.frage.antworten.join(' ') === 'wird' &&
+      imitate.frage.nearMiss.werden && !win.DW.renderers.judgeCloze(imitate.frage, 'werden').ok &&
+      drill.frage.zeigt === 'Die Brücke ist im letzten Jahr gebaut ____.' && drill.frage.antworten.join(' ') === 'worden' &&
+      drill.frage.nearMiss.geworden && !win.DW.renderers.judgeCloze(drill.frage, 'geworden').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[4] && order.frage.finite === 'ist' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Die Brücke' && order.frage.fields.lsk.join(' ') === 'ist' &&
+      order.frage.fields.mittelfeld.join(' ') === 'im letzten Jahr' && order.frage.fields.rsk.join(' ') === 'gebaut worden.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Die', 'Brücke', 'ist', 'gebaut', 'im', 'letzten', 'Jahr', 'worden.']).failed === 2 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 28 &&
+      targets.join(' ').split(/\s+/).length === 28 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l1 makes 80 percent four of five, independently checking von Anna, worden, perfect order, repariert and wurde verkauft',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l1.s07 | cap.b1-u1-l1.s23 | cap.b1-u1-l1.s24 | cap.b1-u1-l1.s08 | cap.b1-u1-l1.s05' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text === 'Der Brief wird vom Anna geschrieben.') &&
+      checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Die Brücke ist im letzten Jahr gebaut ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'worden' && clozeCheck.frage.nearMiss.geworden &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'geworden').ok &&
+      orderCheck.frage.correct.join(' ') === targets[4] && orderCheck.frage.finite === 'ist' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'gebaut worden.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Die', 'Brücke', 'ist', 'gebaut', 'im', 'letzten', 'Jahr', 'worden.']).failed === 2 &&
+      checks[3].frage.optionen.some(o => o.text === 'Die Straße wird gerade repariert.') &&
+      checks[3].frage.misconceptionFamilies.b === 'konjugation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

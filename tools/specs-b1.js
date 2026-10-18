@@ -1,26 +1,51 @@
-function U(id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr) {
-  return { id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr };
+function U(id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr, options) {
+  return Object.assign({ id, level, ar, de, fam, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr }, options || {});
 }
 module.exports = [
-  U('b1-u1-l1', 'B1', 'المبني للمجهول', 'Passiv', 'konjugation',
-    'Am Ende bildest du das Vorgangspassiv mit werden',
-    'في النهاية تبني المبني للمجهول بـ werden.',
+  U('b1-u1-l1', 'B1', 'المبني للمجهول الحدثي: الحاضر والماضي البسيط والماضي المركّب', 'Vorgangspassiv: Präsens, Präteritum und Perfekt', 'konjugation',
+    'Am Ende bildest du fünf vollständige Sätze im Vorgangspassiv',
+    'في النهاية تكوّن خمس جمل كاملة في المبني للمجهول الحدثي.',
     [
-      ['wird repariert', 'المجهول werden لا sein دائمًا', 'sein يصف الحالة', 'ist repariert als Vorgang', 'هذا حالة لا حدث'],
-      ['wurde verkauft', 'الماضي wurde', 'war verkauft حالة', 'war verkauft als Vorgang', 'الحدث wurde'],
-      ['das Haus wird gebaut', 'الفاعل يمكن أن يغيب', 'man bleibt nicht Pflicht', 'man baut immer statt Passiv', 'المجهول خيار'],
-      ['von dem Team', 'الفاعل إن ذُكر مع von', 'durch للوسيلة غالبًا', 'mit dem Team als Agens falsch', 'الفاعل von']
+      ['Die Straße wird repariert.', 'تصف حدثًا جاريًا في الحاضر مع مفرد', 'في الحاضر نصرف werden ثم نضع Partizip II في النهاية: wird repariert', 'Die Straße wird reparieren.', 'بعد wird نحتاج Partizip II: repariert لا المصدر reparieren'],
+      ['Das Haus wurde verkauft.', 'تنقل حدث البيع إلى الماضي البسيط', 'في الماضي البسيط يصبح wird هو wurde ويبقى Partizip II في النهاية', 'Das Haus wurde verkaufen.', 'بعد wurde نحتاج Partizip II: verkauft لا المصدر verkaufen'],
+      ['Die Schuhe werden in Italien hergestellt.', 'تطابق werden مع الجمع وتغلق الجملة باسم المفعول', 'الفاعل النحوي Die Schuhe جمع، لذلك نقول werden؛ hergestellt يأتي في النهاية', 'Die Schuhe wird in Italien hergestellt.', 'Die Schuhe جمع، لذلك نستخدم werden لا wird'],
+      ['Der Brief wird von Anna geschrieben.', 'تذكر الفاعل الحقيقي مع von عند الحاجة', 'في هذا النموذج يأتي الفاعل Anna بعد von، ثم يغلق geschrieben إطار الجملة', 'Der Brief wird vom Anna geschrieben.', 'مع الاسم Anna بلا أداة نقول von Anna، لا vom Anna']
     ],
     [
-      ['Die Straße wird repariert.', 'الشارع يُرمم', 'Die Straße ist repariert als Vorgang', 'الحدث wird', 'wird'],
-      ['Das Haus wurde verkauft.', 'بيع البيت', 'Das Haus war verkauft als Vorgang', 'الحدث wurde', 'wurde'],
-      ['Das wird hier recycelt.', 'هذا يُعاد تدويره هنا', 'Man recycelt das immer nur so', 'المجهول wird', 'recycelt'],
-      ['Der Brief wird von Anna geschrieben.', 'الرسالة تكتبها آنا', 'Der Brief wird mit Anna geschrieben', 'الفاعل von', 'von']
+      ['Die Straße wird repariert.', 'يتم إصلاح الشارع', 'Die Straße wird reparieren.', 'مع Die Straße المفرد نقول wird، وبعده يأتي Partizip II repariert', 'wird'],
+      ['Das Haus wurde verkauft.', 'تم بيع البيت', 'Das Haus wurde verkaufen.', 'بعد wurde يأتي Partizip II verkauft', 'wurde'],
+      ['Die Schuhe werden in Italien hergestellt.', 'تُصنع الأحذية في إيطاليا', 'Die Schuhe wird in Italien hergestellt.', 'Die Schuhe جمع، لذلك نستخدم werden', 'werden'],
+      ['Der Brief wird von Anna geschrieben.', 'تكتب آنا الرسالة بصيغة المجهول', 'Der Brief wird von Anna schreiben.', 'بعد wird يأتي geschrieben، والفاعل هنا مع von', 'von']
     ],
-    'Die Straße wird repariert. Das Haus wurde verkauft.',
-    'Die Straße wird repariert.',
-    'Bilde morgen wird und wurde.',
-    'غدًا كوّن wird وwurde.'),
+    'Die Straße wird repariert.', 'Die Brücke ist im letzten Jahr gebaut worden.',
+    'Wiederhole morgen die fünf Sätze: Die Straße wird repariert. Das Haus wurde verkauft. Die Schuhe werden in Italien hergestellt. Der Brief wird von Anna geschrieben. Die Brücke ist im letzten Jahr gebaut worden.',
+    'غدًا راجع جمل المبني للمجهول الخمس في الحاضر والماضي البسيط والماضي المركّب.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'präposition'],
+      imitateNearMiss: 'werden',
+      transformHint: 'في Perfekt للمجهول نستعمل sein المصرف مع Partizip II ثم worden.',
+      orderSentence: 'Die Brücke ist im letzten Jahr gebaut worden.',
+      orderRightBracket: ['gebaut', 'worden.'],
+      checkOrderSentence: 'Die Brücke ist im letzten Jahr gebaut worden.',
+      checkOrderRightBracket: ['gebaut', 'worden.'],
+      orderAr: 'رتّب Perfekt للمجهول: sein المصرف في موضع الفعل، ثم Partizip II وworden في نهاية الجملة.',
+      orderHints: ['ابدأ بالفاعل Die Brücke ثم ist.', 'أغلق الجملة بالقوس gebaut worden.'],
+      writing: {
+        zeigt: 'Fünf Passivsätze',
+        erklaerung: 'اكتب خمس جمل كاملة: حاضر مفرد، وماضٍ بسيط، وحاضر جمع، وفاعل مع von، وماضٍ مركّب مع worden.',
+        hinweise: ['ابدأ بالأسماء الخمسة المعطاة.', 'راجع الفعل المصرّف وPartizip II في كل جملة.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة باستعمال بدايات الجمل المعطاة.',
+        promptDe: 'Die Straße wird repariert. · Das Haus wurde verkauft. · Die Schuhe werden in Italien hergestellt. · Der Brief wird von Anna geschrieben. · Die Brücke ist im letzten Jahr gebaut worden.',
+        points: ['Die Straße wird repariert.', 'Das Haus wurde verkauft.', 'Die Schuhe werden in Italien hergestellt.', 'Der Brief wird von Anna geschrieben.', 'Die Brücke ist im letzten Jahr gebaut worden.'],
+        minWords: 28,
+        frage: 'اكتب جمل المبني للمجهول الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Die Straße wird repariert. Das Haus wurde verkauft. Die Schuhe werden in Italien hergestellt. Der Brief wird von Anna geschrieben. Die Brücke ist im letzten Jahr gebaut worden.',
+      summaryDe: 'Die Straße wird repariert. Das Haus wurde verkauft. Die Schuhe werden in Italien hergestellt. Der Brief wird von Anna geschrieben. Die Brücke ist im letzten Jahr gebaut worden.',
+      summaryAr: 'Vorgangspassiv يستعمل werden المصرف مع Partizip II؛ وفي Perfekt نستعمل sein + Partizip II + worden.',
+      summaryRecap: 'werden أو wurde ثم Partizip II',
+      hwHintDe: 'Prüfe: wird/werden · wurde · ist … worden.'
+    }),
 
   U('b1-u1-l2', 'B1', 'جملة الصلة', 'Relativsatz', 'wortstellung',
     'Am Ende bildest du einen Relativsatz mit Verb am Ende',

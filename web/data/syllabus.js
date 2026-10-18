@@ -101,7 +101,7 @@
   ];
 
   const B1 = [
-    ['المبني للمجهول', 'Passiv', 'الحدث لا الفاعل', 'Vorgangspassiv', 'explicit'],
+    ['المبني للمجهول الحدثي: الحاضر والماضي البسيط والماضي المركّب', 'Vorgangspassiv: Präsens, Präteritum und Perfekt', 'وصف العمليات من دون إبراز الفاعل', 'werden + Partizip II · wurde · ist … worden · von + Dativ', 'explicit'],
     ['جملة الصلة', 'Relativsatz', 'التحديد', 'Relativpronomen', 'explicit'],
     ['رغم أن', 'obwohl', 'التنازل', 'obwohl', 'explicit'],
     ['مع ذلك', 'trotzdem', 'التنازل', 'trotzdem وV2', 'explicit'],

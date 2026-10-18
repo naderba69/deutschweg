@@ -1,63 +1,75 @@
 /* Deutschweg — B1 lexical layer, unit 1 (part a): b1-u1-l1 … b1-u1-l3.
    40 items per lesson, the count the B1 rows declare (amendment B1-L1).
-
-   NOT WIRED YET, on purpose: `validate-syllabus.js` fails any level that has
-   started and sits under 80% of its own declaration, and B1 declares 1,600
-   items. These files join `VOCAB` in `compile-units.js` (through a new
-   `tools/vocab-b1.js`) only when 1,280 items — 32 of the 40 lessons — exist.
-   Until then they are audited with:
-       node tools/audit-vocab.js tools/vocab-b1-u1a.js tools/vocab-b1-u1b.js */
+   This file is wired through tools/vocab-b1.js; that aggregate entered the
+   compiler after B1 passed its 1,280-of-1,600 coverage gate. */
 
 module.exports = {
 
   'b1-u1-l1': {
     items: [
-      ['reparieren', 'repariert · reparierte · hat repariert', 'يُصلح', 'Die Straße wird repariert.', 'Die Straße wird reparieren.', 'بعد wird يأتي اسم المفعول، لا المصدر.', 'konjugation', 'repariert'],
-      ['bauen', 'baut · baute · hat gebaut', 'يبني', 'Das Haus wird gebaut.', 'Das Haus wird bauen.', 'Partizip II بعد werden.', 'konjugation', 'gebaut'],
-      ['produzieren', 'produziert · produzierte · hat produziert', 'ينتج', 'Das Auto wird in Deutschland produziert.', 'Das Auto wird in Deutschland produzieren.', 'Partizip II بعد werden.', 'konjugation', 'produziert'],
-      ['verkaufen', 'verkauft · verkaufte · hat verkauft', 'يبيع', 'Die Wohnung wurde schnell verkauft.', 'Die Wohnung wurde schnell verkaufen.', 'الماضي wurde + Partizip II.', 'konjugation', 'verkauft'],
-      ['liefern', 'liefert · lieferte · hat geliefert', 'يسلّم البضاعة', 'Die Ware wird morgen geliefert.', 'Die Ware wird morgen liefern.', 'Partizip II بعد werden.', 'konjugation', 'geliefert'],
-      ['bestellen', 'bestellt · bestellte · hat bestellt', 'يطلب', 'Das Buch wurde online bestellt.', 'Das Buch wurde online bestellen.', 'الماضي wurde + Partizip II.', 'konjugation', 'bestellt'],
-      ['prüfen', 'prüft · prüfte · hat geprüft', 'يفحص', 'Der Antrag wird gründlich geprüft.', 'Der Antrag wird gründlich prüfen.', 'Partizip II بعد werden.', 'konjugation', 'geprüft'],
-      ['verbieten', 'verbietet · verbot · hat verboten', 'يمنع', 'Rauchen wird hier verboten.', 'Rauchen wird hier verbieten.', 'Partizip II بعد werden.', 'konjugation', 'verboten'],
-      ['erlauben', 'erlaubt · erlaubte · hat erlaubt', 'يسمح', 'Parken wird hier nicht erlaubt.', 'Parken wird hier nicht erlauben.', 'Partizip II بعد werden.', 'konjugation', 'erlaubt'],
-      ['öffnen', 'öffnet · öffnete · hat geöffnet', 'يفتح', 'Das Museum wird um neun geöffnet.', 'Das Museum wird um neun geöffnen.', 'Partizip II: geöffnet بلا نون ثانية.', 'konjugation', 'geöffnet'],
-      ['schließen', 'schließt · schloss · hat geschlossen', 'يغلق', 'Die Bibliothek wird um acht geschlossen.', 'Die Bibliothek wird um acht schließen.', 'Partizip II بعد werden.', 'konjugation', 'geschlossen'],
-      ['entwickeln', 'entwickelt · entwickelte · hat entwickelt', 'يطوّر', 'Das Programm wurde von zwei Studenten entwickelt.', 'Das Programm wurde mit zwei Studenten entwickelt.', 'الفاعل مع von لا mit.', 'präposition', 'entwickelt'],
-      ['herstellen', 'stellt her · stellte her · hat hergestellt', 'يصنع', 'Die Schuhe werden in Italien hergestellt.', 'Die Schuhe werden in Italien herstellen.', 'الفعل المنفصل: hergestellt.', 'konjugation', 'hergestellt'],
-      ['informieren', 'informiert · informierte · hat informiert', 'يُخبر', 'Die Kunden werden per E-Mail informiert.', 'Die Kunden werden per E-Mail informieren.', 'Partizip II بعد werden.', 'konjugation', 'informiert'],
-      ['bezahlen', 'bezahlt · bezahlte · hat bezahlt', 'يدفع', 'Die Rechnung wird am Freitag bezahlt.', 'Die Rechnung wird am Freitag bezahlen.', 'Partizip II بعد werden.', 'konjugation', 'bezahlt'],
-      ['der Bau', 'die Bauten', 'البناء', 'Der Bau dauert zwei Jahre.', 'Der Bau dauert für zwei Jahre.', 'المدة بلا حرف جر.', 'präposition', 'Bau'],
-      ['die Reparatur', 'die Reparaturen', 'التصليح', 'Die Reparatur kostet viel Geld.', 'Die Reparatur kostet viel Gelder.', 'Geld هنا بلا جمع.', 'plural', 'Reparatur'],
-      ['die Produktion', 'die Produktionen', 'الإنتاج', 'Die Produktion läuft Tag und Nacht.', 'Die Produktion läuft in Tag und Nacht.', 'بلا حرف جر.', 'präposition', 'Produktion'],
-      ['der Verkauf', 'die Verkäufe', 'البيع', 'Der Verkauf beginnt am Montag.', 'Der Verkauf beginnt in Montag.', 'اليوم مع am.', 'präposition', 'Verkauf'],
-      ['die Lieferung', 'die Lieferungen', 'التسليم', 'Die Lieferung kommt nächste Woche.', 'Die Lieferung kommt in nächste Woche.', 'الزمن الممتد بلا حرف جر.', 'präposition', 'Lieferung'],
-      ['die Bestellung', 'die Bestellungen', 'الطلب', 'Die Bestellung ist schon unterwegs.', 'Die Bestellung ist schon in Weg.', 'unterwegs بلا حرف جر.', 'präposition', 'Bestellung'],
-      ['die Prüfung', 'die Prüfungen', 'الفحص', 'Die Prüfung des Antrags dauert drei Wochen.', 'Die Prüfung von dem Antrag dauert drei Wochen.', 'في الأسلوب الرفيع: المضاف إليه (des Antrags).', 'kasus', 'Prüfung'],
-      ['das Verbot', 'die Verbote', 'المنع', 'Das Verbot gilt seit Januar.', 'Das Verbot gilt von Januar.', 'منذ: seit لا von.', 'präposition', 'Verbot'],
-      ['die Erlaubnis', 'die Erlaubnisse', 'الإذن', 'Die Erlaubnis wird schriftlich erteilt.', 'Die Erlaubnis wird schriftlich erteilen.', 'المجهول: erteilt.', 'konjugation', 'erteilt'],
-      ['die Einladung', 'die Einladungen', 'الدعوة', 'Die Einladung wurde gestern verschickt.', 'Die Einladung wurde gestern verschicken.', 'المجهول: verschickt.', 'konjugation', 'verschickt'],
-      ['die Information', 'die Informationen', 'المعلومة', 'Die Informationen werden online veröffentlicht.', 'Die Informationen werden online veröffentlichen.', 'المجهول: veröffentlicht.', 'konjugation', 'veröffentlicht'],
-      ['die Zahlung', 'die Zahlungen', 'الدفع', 'Die Zahlung wird per Überweisung gemacht.', 'Die Zahlung wird mit Überweisung gemacht.', 'الوسيلة: per.', 'präposition', 'Zahlung'],
-      ['die Rechnung', 'die Rechnungen', 'الفاتورة', 'Die Rechnung wird sofort bezahlt.', 'Die Rechnung wird sofort bezahlen.', 'المجهول: bezahlt.', 'konjugation', 'bezahlt'],
-      ['der Auftrag', 'die Aufträge', 'التكليف', 'Der Auftrag wird sorgfältig bearbeitet.', 'Der Auftrag wird sorgfältig bearbeiten.', 'المجهول: bearbeitet.', 'konjugation', 'bearbeitet'],
-      ['der Vertrag', 'die Verträge', 'العقد', 'Der Vertrag wird morgen unterschrieben.', 'Der Vertrag wird morgen unterschreiben.', 'المجهول: unterschrieben.', 'konjugation', 'unterschrieben'],
-      ['die Ware', 'die Waren', 'البضاعة', 'Die Ware wird sorgfältig verpackt.', 'Die Ware wird sorgfältig verpacken.', 'المجهول: verpackt.', 'konjugation', 'verpackt'],
-      ['das Werk', 'die Werke', 'المصنع', 'Das Werk wird dieses Jahr modernisiert.', 'Das Werk wird dieses Jahr modernisieren.', 'المجهول: modernisiert.', 'konjugation', 'modernisiert'],
-      ['der Antrag', 'die Anträge', 'الطلب الرسمي', 'Der Antrag wird online gestellt.', 'Der Antrag wird online stellen.', 'المجهول: gestellt.', 'konjugation', 'gestellt'],
-      ['die Anmeldung', 'die Anmeldungen', 'التسجيل', 'Die Anmeldung wird bis Freitag erwartet.', 'Die Anmeldung wird bis Freitag erwarten.', 'المجهول: erwartet.', 'konjugation', 'erwartet'],
-      ['das Ergebnis', 'die Ergebnisse', 'النتيجة', 'Das Ergebnis wird morgen bekanntgegeben.', 'Das Ergebnis wird morgen bekanntgeben.', 'المجهول: bekanntgegeben.', 'konjugation', 'bekanntgegeben'],
-      ['der Vorgang', 'die Vorgänge', 'الإجراء', 'Der Vorgang wird genau dokumentiert.', 'Der Vorgang wird genau dokumentieren.', 'المجهول: dokumentiert.', 'konjugation', 'dokumentiert'],
-      ['die Ursache', 'die Ursachen', 'السبب', 'Die Ursache wurde schnell gefunden.', 'Die Ursache wurde schnell finden.', 'المجهول: gefunden.', 'konjugation', 'gefunden'],
-      ['von', '—', 'من (الفاعل)', 'Das Buch wurde von einem Lehrer geschrieben.', 'Das Buch wurde mit einem Lehrer geschrieben.', 'الفاعل العاقل مع von.', 'präposition', 'von'],
-      ['durch', '—', 'بواسطة', 'Die Stadt wurde durch das Hochwasser zerstört.', 'Die Stadt wurde von dem Hochwasser zerstört.', 'القوة الطبيعية مع durch.', 'präposition', 'durch'],
-      ['worden', '—', 'تُستعمل في مجهول الماضي المركّب', 'Die Brücke ist neu gebaut worden.', 'Die Brücke ist neu gebaut geworden.', 'في المجهول: worden لا geworden.', 'konjugation', 'worden']
+      ['reparieren', 'repariert · reparierte · hat repariert', 'يُصلح', 'Die Straße wird gerade repariert.', 'Die Straße wird gerade reparieren.', 'بعد wird يأتي Partizip II repariert، لا المصدر reparieren.', 'konjugation', 'repariert'],
+      ['bauen', 'baut · baute · hat gebaut', 'يبني', 'Das neue Haus wird am Stadtrand gebaut.', 'Das neue Haus wird am Stadtrand bauen.', 'بعد wird يأتي Partizip II gebaut في نهاية الجملة.', 'konjugation', 'gebaut'],
+      ['produzieren', 'produziert · produzierte · hat produziert', 'ينتج', 'Die Fahrräder werden in Deutschland produziert.', 'Die Fahrräder werden in Deutschland produzieren.', 'في المجهول نستخدم werden + Partizip II produziert.', 'konjugation', 'produziert'],
+      ['verkaufen', 'verkauft · verkaufte · hat verkauft', 'يبيع', 'Das Haus wurde gestern verkauft.', 'Das Haus wurde gestern verkaufen.', 'الماضي البسيط للمجهول هو wurde + Partizip II verkauft.', 'konjugation', 'verkauft'],
+      ['liefern', 'liefert · lieferte · hat geliefert', 'يسلّم البضاعة', 'Die Pakete werden morgen geliefert.', 'Die Pakete wird morgen geliefert.', 'Die Pakete جمع، لذلك نستخدم werden؛ geliefert هو Partizip II.', 'konjugation', 'geliefert'],
+      ['bestellen', 'bestellt · bestellte · hat bestellt', 'يطلب', 'Das Buch wurde online bestellt.', 'Das Buch wurde online bestellen.', 'بعد wurde يأتي Partizip II bestellt، لا المصدر bestellen.', 'konjugation', 'bestellt'],
+      ['prüfen', 'prüft · prüfte · hat geprüft', 'يفحص', 'Der Antrag wird gründlich geprüft.', 'Der Antrag wird gründlich prüfen.', 'في المجهول نضع Partizip II geprüft في نهاية الجملة.', 'konjugation', 'geprüft'],
+      ['verbieten', 'verbietet · verbot · hat verboten', 'يمنع', 'Das Rauchen wurde im Gebäude verboten.', 'Das Rauchen wurde im Gebäude verbieten.', 'بعد wurde نحتاج Partizip II verboten.', 'konjugation', 'verboten'],
+      ['erlauben', 'erlaubt · erlaubte · hat erlaubt', 'يسمح', 'Die Nutzung des Hofs wurde für das Fest erlaubt.', 'Die Nutzung des Hofs wurde für das Fest erlauben.', 'بعد wurde نحتاج Partizip II erlaubt.', 'konjugation', 'erlaubt'],
+      ['öffnen', 'öffnet · öffnete · hat geöffnet', 'يفتح', 'Das Museum wird um neun Uhr geöffnet.', 'Das Museum wird um neun Uhr geöffnen.', 'Partizip II الصحيح هو geöffnet، لا geöffnen.', 'konjugation', 'geöffnet'],
+      ['schließen', 'schließt · schloss · hat geschlossen', 'يغلق', 'Die Bibliothek wird um acht Uhr geschlossen.', 'Die Bibliothek wird um acht Uhr schließen.', 'بعد wird يأتي Partizip II geschlossen في النهاية.', 'konjugation', 'geschlossen'],
+      ['entwickeln', 'entwickelt · entwickelte · hat entwickelt', 'يطوّر', 'Das Programm wurde von zwei Studenten entwickelt.', 'Das Programm wurde von zwei Studenten entwickeln.', 'بعد wurde نحتاج entwickelt؛ von يذكر الفاعل هنا.', 'konjugation', 'entwickelt'],
+      ['herstellen', 'stellt her · stellte her · hat hergestellt', 'يصنع', 'Die Schuhe werden in Italien hergestellt.', 'Die Schuhe wird in Italien hergestellt.', 'Die Schuhe جمع، لذلك نقول werden؛ Partizip II هو hergestellt.', 'konjugation', 'hergestellt'],
+      ['informieren', 'informiert · informierte · hat informiert', 'يُخبر', 'Die Kunden werden per E-Mail informiert.', 'Die Kunden wird per E-Mail informiert.', 'Die Kunden جمع، لذلك نستخدم werden مع informiert.', 'konjugation', 'informiert'],
+      ['bezahlen', 'bezahlt · bezahlte · hat bezahlt', 'يدفع', 'Die Rechnung wird am Freitag bezahlt.', 'Die Rechnung wird am Freitag bezahlen.', 'بعد wird يأتي Partizip II bezahlt، لا المصدر bezahlen.', 'konjugation', 'bezahlt'],
+      ['der Bau', 'die Bauten', 'البناء', 'Der Bau der Brücke dauert zwei Jahre.', 'Der Bau der Brücke dauert zwei Jahren.', 'مدة الحدث تأتي هنا في Akkusativ: zwei Jahre، لا zwei Jahren.', 'kasus', 'Bau'],
+      ['die Reparatur', 'die Reparaturen', 'التصليح', 'Die Reparatur kostet viel Geld.', 'Die Reparatur kostet viele Geld.', 'Geld اسم غير معدود هنا، لذلك نقول viel Geld.', 'deklination', 'Reparatur'],
+      ['die Produktion', 'die Produktionen', 'الإنتاج', 'Die Produktion läuft Tag und Nacht.', 'Die Produktion läuft in Tag und Nacht.', 'التعبير الثابت هو Tag und Nacht بلا حرف جر.', 'präposition', 'Produktion'],
+      ['der Verkauf', 'die Verkäufe', 'البيع', 'Der Verkauf beginnt am Montag.', 'Der Verkauf beginnt in Montag.', 'مع أيام الأسبوع نستخدم am: am Montag.', 'präposition', 'Verkauf'],
+      ['die Lieferung', 'die Lieferungen', 'التسليم', 'Die Lieferung kommt nächste Woche.', 'Die Lieferung kommt in nächste Woche.', 'مع nächste Woche بوصفها زمنًا لا نحتاج حرف جر.', 'präposition', 'Lieferung'],
+      ['die Bestellung', 'die Bestellungen', 'الطلب', 'Die Bestellung ist schon unterwegs.', 'Die Bestellung sind schon unterwegs.', 'Die Bestellung مفرد، لذلك نستخدم ist لا sind.', 'konjugation', 'Bestellung'],
+      ['die Prüfung', 'die Prüfungen', 'الفحص', 'Die Prüfung des Antrags dauert drei Wochen.', 'Die Prüfung des Antrag dauert drei Wochen.', 'Genitiv المذكر هو des Antrags مع s في آخر Antrag.', 'kasus', 'Prüfung'],
+      ['das Verbot', 'die Verbote', 'المنع', 'Das Verbot gilt seit Januar.', 'Das Verbot gilt seit den Januar.', 'بعد seit يأتي Dativ؛ مع اسم الشهر هنا نقول seit Januar بلا أداة.', 'kasus', 'Verbot'],
+      ['die Erlaubnis', 'die Erlaubnisse', 'الإذن', 'Die Erlaubnis wird schriftlich erteilt.', 'Die Erlaubnis wird schriftlich erteilen.', 'في المجهول نستخدم Partizip II erteilt.', 'konjugation', 'erteilt'],
+      ['die Einladung', 'die Einladungen', 'الدعوة', 'Die Einladung wurde gestern verschickt.', 'Die Einladung wurde gestern verschicken.', 'بعد wurde يأتي Partizip II verschickt.', 'konjugation', 'verschickt'],
+      ['die Information', 'die Informationen', 'المعلومة', 'Die Informationen werden online veröffentlicht.', 'Die Informationen wird online veröffentlicht.', 'Die Informationen جمع، لذلك نستخدم werden مع veröffentlicht.', 'konjugation', 'Informationen'],
+      ['die Zahlung', 'die Zahlungen', 'الدفع', 'Die Zahlung wird per Überweisung ausgeführt.', 'Die Zahlung wird per Überweisung ausführen.', 'بعد wird نحتاج Partizip II ausgeführt في نهاية الجملة.', 'konjugation', 'Zahlung'],
+      ['die Rechnung', 'die Rechnungen', 'الفاتورة', 'Die Rechnung wird sofort bezahlt.', 'Die Rechnung wird sofort bezahlen.', 'بعد wird يأتي Partizip II bezahlt.', 'konjugation', 'Rechnung'],
+      ['der Auftrag', 'die Aufträge', 'التكليف', 'Der Auftrag wird sorgfältig bearbeitet.', 'Der Auftrag wird sorgfältig bearbeiten.', 'بعد wird يأتي Partizip II bearbeitet.', 'konjugation', 'Auftrag'],
+      ['der Vertrag', 'die Verträge', 'العقد', 'Der Vertrag wird morgen unterschrieben.', 'Der Vertrag wird morgen unterschreiben.', 'بعد wird يأتي Partizip II unterschrieben.', 'konjugation', 'Vertrag'],
+      ['die Ware', 'die Waren', 'البضاعة', 'Die Ware wird sorgfältig verpackt.', 'Die Ware wird sorgfältig verpacken.', 'بعد wird يأتي Partizip II verpackt.', 'konjugation', 'Ware'],
+      ['das Werk', 'die Werke', 'المصنع', 'Das Werk wird dieses Jahr modernisiert.', 'Das Werk wird dieses Jahr modernisieren.', 'بعد wird يأتي Partizip II modernisiert.', 'konjugation', 'Werk'],
+      ['der Antrag', 'die Anträge', 'الطلب الرسمي', 'Der Antrag wird online gestellt.', 'Der Antrag wird online stellen.', 'بعد wird يأتي Partizip II gestellt.', 'konjugation', 'Antrag'],
+      ['die Anmeldung', 'die Anmeldungen', 'التسجيل', 'Die Anmeldung wird bis Freitag erwartet.', 'Die Anmeldung wird bis Freitag erwarten.', 'بعد wird يأتي Partizip II erwartet.', 'konjugation', 'Anmeldung'],
+      ['das Ergebnis', 'die Ergebnisse', 'النتيجة', 'Das Ergebnis wird morgen bekannt gegeben.', 'Nicht so: Das Ergebnis wird morgen bekanntgeben oder bekanntgegeben.', 'الصحيح وفق الإملاء الحالي هو bekannt gegeben ككلمتين، لا bekanntgeben ولا bekanntgegeben.', 'orthographie', 'Ergebnis'],
+      ['der Vorgang', 'die Vorgänge', 'الإجراء', 'Der Vorgang wird genau dokumentiert.', 'Der Vorgang wird genau dokumentieren.', 'بعد wird يأتي Partizip II dokumentiert.', 'konjugation', 'Vorgang'],
+      ['die Ursache', 'die Ursachen', 'السبب', 'Die Ursache wurde schnell gefunden.', 'Die Ursache wurde schnell finden.', 'بعد wurde يأتي Partizip II gefunden.', 'konjugation', 'Ursache'],
+      ['von', '—', 'من (لذكر الفاعل)', 'Der Brief wird von Anna geschrieben.', 'Der Brief wird von Anna schreiben.', 'بعد wird يأتي geschrieben؛ وvon Anna يذكر الفاعل.', 'präposition', 'von'],
+      ['durch', '—', 'بواسطة أو بسبب', 'Die Stadt wurde durch das Hochwasser zerstört.', 'Die Stadt wurde durch dem Hochwasser zerstört.', 'في نموذج السبب هذا نستخدم durch، وبعده Akkusativ: das Hochwasser.', 'kasus', 'durch'],
+      ['worden', '—', 'علامة مجهول الماضي المركّب', 'Die Brücke ist im letzten Jahr gebaut worden.', 'Die Brücke ist im letzten Jahr gebaut geworden.', 'Perfekt للمجهول هو sein + Partizip II + worden، لا geworden.', 'konjugation', 'worden']
     ],
     tricks: [
-      { trick: 'المجهول = werden + اسم المفعول، والحالة تبقى وصفًا', wie: 'Die Straße wird repariert. · Die Straße ist repariert (Zustand).', warum: 'العربية تقول «يُرمَّم» بفعل واحد، فالناطق ينسى اسم المفعول أو يستعمل sein للحدث.', anchor: 'repariert' },
-      { trick: 'الفاعل مع von والوسيلة مع durch', wie: 'Der Brief wird von Anna geschrieben. · Die Stadt wird durch das Wasser zerstört.', warum: 'العربية تستعمل «بـ» للحالتين، فتصبح von وdurch واحدة في ذهن المتعلم.', anchor: 'von' },
-      { trick: 'der Bau · die Reparatur · die Lieferung — الاسم المصدري يقصر الجملة', wie: 'Die Reparatur kostet viel. · Die Lieferung kommt morgen.', warum: 'الألمانية الإدارية تكتب بالأسماء، والعربية تميل إلى الفعل، فيطول التعبير بلا داعٍ.', anchor: 'die Reparatur' }
-    ]
+      { trick: 'werden يصف الحدث، وsein يصف الحالة الناتجة', wie: 'Die Straße wird repariert. · Die Straße ist repariert.', warum: 'الجملتان صحيحتان: الأولى عملية الإصلاح، والثانية حالة الشارع بعد اكتمالها؛ لا نرفض sein بل نميّز المعنى.', anchor: 'Die Straße wird repariert.' },
+      { trick: 'الحاضر والماضي البسيط والماضي المركّب يغيّران الإطار لا Partizip II', wie: 'wird repariert · wurde verkauft · ist gebaut worden', warum: 'في Perfekt للمجهول نستعمل sein المصرف ثم Partizip II ثم worden، لا geworden.', anchor: 'Die Brücke ist im letzten Jahr gebaut worden.' },
+      { trick: 'في نموذجي الدرس: الفاعل مع von والسبب مع durch', wie: 'von Anna (Agens) · durch das Hochwasser (Ursache)', warum: 'von Anna يذكر الفاعل، وdurch das Hochwasser يبرز السبب؛ von يأخذ Dativ وdurch يأخذ Akkusativ.', anchor: 'Der Brief wird von Anna geschrieben.' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      bestellen: 'bestellen',
+      'die Prüfung': 'Prüfen',
+      von: 'vom'
+    },
+    clozeItemIndex: 39,
+    clozeNearMiss: 'geworden',
+    checkItemIndex: 0,
+    extraCheck: {
+      right: 'Das Haus wurde verkauft.',
+      bad: 'Das Haus wurde verkaufen.',
+      why: 'بعد wurde يأتي Partizip II verkauft، لا المصدر verkaufen.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u1-l1.s05',
+      frage: 'أي جملة تكوّن الماضي البسيط للمجهول بصورة صحيحة؟'
+    }
   },
 
   'b1-u1-l2': {
