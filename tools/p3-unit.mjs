@@ -10093,5 +10093,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
 
+
+/* ---------- audited B1 relative-clause lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich habe einen Nachbarn, der dort wohnt.',
+    'Das Buch, das ich lese, ist neu.',
+    'Der Kurs, den ich besuche, ist voll.',
+    'Die Frau, der ich heute helfe, ist nett.',
+    'Die Stelle, für die ich mich beworben habe, ist besetzt.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l2 precisely scopes relative clauses by gender, case, preposition and verb-final order across five targets',
+    lesson.title.de === 'Relativsätze: Kasus, Präpositionen und Verbendstellung' &&
+      lesson.title.ar === 'جمل الصلة: الحالة وحرف الجر والفعل في النهاية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'وصف الأشخاص والأشياء بدقة' &&
+      row.grammar.item === 'Relativpronomen nach Genus und Kasus · Präposition + Relativpronomen · Verb am Ende' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du fünf vollständige Relativsätze mit passendem Pronomen' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'der', 'die', 'das', 'den', 'dem', 'deren', 'dessen', 'wo', 'was', 'derjenige',
+    'der Kollege', 'die Kollegin', 'der Nachbar', 'die Nachbarschaft', 'das Unternehmen',
+    'die Abteilung', 'die Stelle', 'die Karriere', 'die Ausbildung', 'die Weiterbildung',
+    'die Fähigkeit', 'die Kenntnis', 'der Vorteil', 'der Nachteil', 'die Bedingung',
+    'die Möglichkeit', 'die Gelegenheit', 'der Zusammenhang', 'die Beziehung', 'der Eindruck',
+    'der Standpunkt', 'die Kritik', 'der Zweifel', 'das Ziel', 'die Folge', 'der Anlass',
+    'die Absicht', 'der Wunsch', 'die Erwartung', 'der Unterschied'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l2 reviews all 40 entries and three bounded mnemonics without rejecting valid payment, place or extraposition alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.der.ex === targets[0] && byWord.der.err.includes('der wohnt dort') &&
+      byWord.die.err.includes('der ich kenne') && byWord.das.ex === targets[1] && byWord.den.ex === targets[2] &&
+      byWord.dem.why.includes('Dativ') && byWord.deren.ex.includes('deren Chef') && byWord.dessen.ex.includes('dessen Buch') &&
+      byWord.wo.ex.startsWith('Dort, wo') && byWord.was.ex === 'Alles, was du sagst, ist richtig.' &&
+      byWord.derjenige.err.includes('der zuerst kommen') && byWord['der Kollege'].err.includes('der kommt aus Berlin') &&
+      byWord['die Kollegin'].err.includes('leitet sie') && byWord['der Nachbar'].why.includes('Dativ') &&
+      byWord['die Nachbarschaft'].err.includes('alle helfen') && byWord['das Unternehmen'].err.includes('baut es') &&
+      byWord['die Abteilung'].ex.includes('in der ich arbeite') && byWord['die Stelle'].ex === targets[4] &&
+      byWord['die Karriere'].err.includes('der sie plant') && byWord['die Ausbildung'].err.includes('er hat gemacht') &&
+      byWord['die Weiterbildung'].ex === 'Die Firma bezahlt die Weiterbildung.' &&
+      byWord['die Weiterbildung'].err.includes('bezahlt der Weiterbildung') &&
+      byWord['die Fähigkeit'].why.includes('مفعول به') && byWord['die Kenntnis'].ex.startsWith('Gute Deutschkenntnisse') &&
+      byWord['der Vorteil'].ex.includes('niedrige Preis') && byWord['der Nachteil'].ex.includes('lange Fahrt') &&
+      byWord['die Bedingung'].ex.includes('unter denen') && byWord['die Möglichkeit'].err.includes('bietet sie') &&
+      byWord['die Gelegenheit'].ex.startsWith('Bei dieser Gelegenheit') && byWord['der Zusammenhang'].err.includes('der du beschreibst') &&
+      byWord['die Beziehung'].err.includes('Themen bestehen') && byWord['der Eindruck'].err.includes('der ich hatte') &&
+      byWord['der Standpunkt'].err.includes('der sie vertritt') && byWord['die Kritik'].err.includes('er hat geäußert') &&
+      byWord['der Zweifel'].err.includes('der sie hat') && byWord['das Ziel'].err.includes('erreichen es') &&
+      byWord['die Folge'].ex.endsWith('sind ernst.') && byWord['der Anlass'].ex.includes('zu dem wir uns treffen') &&
+      byWord['die Absicht'].ex.includes('hinter dem Plan steht') && byWord['der Wunsch'].err.includes('der sie äußert') &&
+      byWord['die Erwartung'].err.includes('den man an mich hat') && byWord['der Unterschied'].err.includes('der man sieht') &&
+      !['Die Firma zahlt für die Weiterbildung.', 'Die Stadt, wo ich geboren bin, liegt am Meer.',
+        'Die Erwartungen, die man hat an mich, sind hoch.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('den ich besuche') && tricks[0].wie.includes('dem ich helfe') &&
+      tricks[0].wie.includes('deren Chef') && tricks[0].warum.includes('Akkusativ') && tricks[0].warum.includes('Dativ') &&
+      tricks[1].wie.includes('beworben habe') && tricks[1].wie.includes('worin die Briefe liegen') && tricks[1].warum.includes('يغلقه') &&
+      tricks[2].wie === 'Alles, was du sagst, ist richtig.' && tricks[2].warum.includes('اسم محدد'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l2 aligns five strict clozes, an explicit relative-clause bracket and a 39-word five-target production',
+    wordCloze1.frage.zeigt === 'Die Firma, ____ Chef krank ist, schließt heute.' && wordCloze1.frage.antworten.join(' ') === 'deren' &&
+      wordCloze1.frage.nearMiss.dessen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'dessen').ok &&
+      wordCloze2.frage.zeigt === 'Gute ____ sind im Beruf wichtig.' && wordCloze2.frage.antworten.join(' ') === 'Deutschkenntnisse' &&
+      wordCloze2.frage.nearMiss.Deutschkenntnis && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Deutschkenntnis').ok &&
+      wordCloze3.frage.zeigt === 'Der ____, den sie äußert, ist verständlich.' && wordCloze3.frage.antworten.join(' ') === 'Wunsch' &&
+      wordCloze3.frage.nearMiss.Wünsche && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Wünsche').ok &&
+      imitate.zeigt.de === 'Ich habe einen Nachbarn, ____ dort wohnt.' && imitate.frage.antworten.join(' ') === 'der' &&
+      imitate.frage.nearMiss.den && !win.DW.renderers.judgeCloze(imitate.frage, 'den').ok &&
+      drill.frage.zeigt === 'Der Kurs, ____ ich besuche, ist voll.' && drill.frage.antworten.join(' ') === 'den' &&
+      drill.frage.nearMiss.der && !win.DW.renderers.judgeCloze(drill.frage, 'der').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'habe' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'habe' &&
+      order.frage.fields.mittelfeld.join(' ') === 'einen Nachbarn, der dort' && order.frage.fields.rsk.join(' ') === 'wohnt.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'habe', 'einen', 'Nachbarn,', 'der', 'wohnt.', 'dort']).failed === 2 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 39 &&
+      targets.join(' ').split(/\s+/).length === 39 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l2 makes 80 percent four of five, independently checking dative der, accusative den, relative order, deren and neuter das',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l2\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l2.s07 | cap.b1-u1-l2.s23 | cap.b1-u1-l2.s24 | cap.b1-u1-l2.s09 | cap.b1-u1-l2.s05' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Der Kurs, ____ ich besuche, ist voll.' && clozeCheck.frage.antworten.join(' ') === 'den' &&
+      clozeCheck.frage.nearMiss.der && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'der').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'habe' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'wohnt.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'habe', 'einen', 'Nachbarn,', 'der', 'wohnt.', 'dort']).failed === 2 &&
+      checks[3].frage.optionen.some(o => o.text === 'Die Firma, deren Chef krank ist, schließt heute.') &&
+      checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

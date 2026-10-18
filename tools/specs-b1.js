@@ -47,25 +47,51 @@ module.exports = [
       hwHintDe: 'Prüfe: wird/werden · wurde · ist … worden.'
     }),
 
-  U('b1-u1-l2', 'B1', 'جملة الصلة', 'Relativsatz', 'wortstellung',
-    'Am Ende bildest du einen Relativsatz mit Verb am Ende',
-    'في النهاية تبني جملة صلة والفعل في الآخر.',
+  U('b1-u1-l2', 'B1', 'جمل الصلة: الحالة وحرف الجر والفعل في النهاية', 'Relativsätze: Kasus, Präpositionen und Verbendstellung', 'wortstellung',
+    'Am Ende bildest du fünf vollständige Relativsätze mit passendem Pronomen',
+    'في النهاية تكوّن خمس جمل صلة كاملة بضمير مناسب وفعل في النهاية.',
     [
-      ['der dort wohnt', 'الصلة والفعل آخرًا', 'der wohnt dort خطأ في الصلة', 'der wohnt dort', 'الفعل ليس ثانيًا'],
-      ['die Frau, der ich helfe', 'الداتيف der للمرأة', 'die ich helfe إذا كان helfen', 'die Frau, die ich helfe', 'helfen داتيف'],
-      ['das Buch, das ich lese', 'المحايد das', 'das Buch, die ich lese خطأ', 'das Buch, die ich lese', 'الأداة das'],
-      ['Komma Pflicht', 'الفاصلة قبل الصلة', 'بلا فاصلة يضيع الحد', 'der Mann der dort wohnt ohne Komma', 'الفاصلة لازمة']
+      ['Ich habe einen Nachbarn, der dort wohnt.', 'تستعمل der فاعلًا داخل جملة الصلة', 'Nachbar يحدد المذكر، ودور الضمير كفاعل يحدد Nominativ der؛ والفعل wohnt في النهاية', 'Ich habe einen Nachbarn, der dort wohnt er.', 'لا نضيف er بعد ضمير الصلة der، والفعل wohnt يبقى في النهاية'],
+      ['Das Buch, das ich lese, ist neu.', 'تستعمل das مفعولًا به يعود على اسم محايد', 'Buch محايد، والضمير مفعول به داخل الصلة، لذلك يبقى Akkusativ das', 'Das Buch, die ich lese, ist neu.', 'Buch محايد، لذلك نستخدم das لا die'],
+      ['Der Kurs, den ich besuche, ist voll.', 'تستعمل den لأن الضمير مفعول مذكر', 'Kurs مذكر، وbesuchen يحتاج مفعولًا به، لذلك نختار Akkusativ den', 'Der Kurs, der ich besuche, ist voll.', 'داخل الصلة أزور الدورة؛ لذلك نحتاج den في النصب لا der'],
+      ['Die Frau, der ich heute helfe, ist nett.', 'تستعمل der لأن helfen يطلب الداتيف', 'Frau مؤنث، ودورها بعد helfen هو Dativ، لذلك تكون أداة الصلة der', 'Die Frau, die ich heute helfe, ist nett.', 'helfen يطلب Dativ؛ المؤنث في الداتيف der لا die']
     ],
     [
-      ['Der Mann, der dort wohnt, heißt Ali.', 'الرجل الذي يسكن هناك اسمه علي', 'Der Mann, der wohnt dort, heißt Ali', 'wohnt في الآخر', 'wohnt'],
-      ['Die Frau, der ich helfe, ist nett.', 'المرأة التي أساعدها لطيفة', 'Die Frau, die ich helfe, ist nett', 'helfen مع der', 'der'],
-      ['Das Buch, das ich lese, ist neu.', 'الكتاب الذي أقرأه جديد', 'Das Buch, die ich lese, ist neu', 'المحايد das', 'das'],
-      ['Der Kurs, den ich besuche, ist voll.', 'الدورة التي أحضرها ممتلئة', 'Der Kurs, der ich besuche, ist voll', 'المفعول den', 'den']
+      ['Ich habe einen Nachbarn, der dort wohnt.', 'لدي جار يسكن هناك', 'Ich habe einen Nachbarn, der wohnt dort.', 'Nachbarn مذكر، والضمير فاعل: der؛ ثم يأتي wohnt في النهاية', 'der'],
+      ['Das Buch, das ich lese, ist neu.', 'الكتاب الذي أقرأه جديد', 'Das Buch, die ich lese, ist neu.', 'Buch محايد، لذلك نستخدم das', 'das'],
+      ['Der Kurs, den ich besuche, ist voll.', 'الدورة التي أحضرها ممتلئة', 'Der Kurs, der ich besuche, ist voll.', 'besuchen يحتاج مفعولًا مذكرًا: den', 'den'],
+      ['Die Frau, der ich heute helfe, ist nett.', 'المرأة التي أساعدها لطيفة', 'Die Frau, die ich heute helfe, ist nett.', 'helfen يطلب الداتيف: der', 'der']
     ],
-    'Der Mann, der dort wohnt, heißt Ali.',
-    'Das Buch, das ich lese, ist neu.',
-    'Schreibe morgen einen Relativsatz.',
-    'غدًا اكتب جملة صلة.'),
+    'Ich habe einen Nachbarn, der dort wohnt.',
+    'Die Stelle, für die ich mich beworben habe, ist besetzt.',
+    'Wiederhole morgen die fünf Sätze: Ich habe einen Nachbarn, der dort wohnt. Das Buch, das ich lese, ist neu. Der Kurs, den ich besuche, ist voll. Die Frau, der ich heute helfe, ist nett. Die Stelle, für die ich mich beworben habe, ist besetzt.',
+    'غدًا راجع جمل الصلة الخمس مع der وdas وden وder وfür die.',
+    {
+      factFamilies: ['wortstellung', 'kasus', 'kasus', 'kasus'],
+      imitateNearMiss: 'den',
+      transformHint: 'بعد حرف الجر für نختار die للنصب، وفي Perfekt يأتي habe في نهاية جملة الصلة.',
+      orderSentence: 'Ich habe einen Nachbarn, der dort wohnt.',
+      orderRightBracket: ['wohnt.'],
+      checkOrderSentence: 'Ich habe einen Nachbarn, der dort wohnt.',
+      checkOrderRightBracket: ['wohnt.'],
+      orderAr: 'رتّب الجملة الرئيسية ثم جملة الصلة؛ ضمير الصلة der يفتح الجزء التابع وwohnt يغلقه.',
+      orderHints: ['ضع habe في موضع الفعل في الجملة الرئيسية.', 'اترك wohnt في نهاية جملة الصلة بعد der dort.'],
+      writing: {
+        zeigt: 'Fünf Relativsätze',
+        erklaerung: 'اكتب خمس جمل صلة كاملة: der في الرفع، وdas وden في النصب، وder في الداتيف، وfür die بعد حرف الجر.',
+        hinweise: ['حدّد جنس الاسم أولًا ثم دور الضمير داخل جملة الصلة.', 'ضع الفعل المصرف في نهاية جملة الصلة قبل الفاصلة التالية أو النقطة.'],
+        prompt: 'اكتب جمل الصلة الخمس المستهدفة من الذاكرة باستعمال الضمائر المعطاة.',
+        promptDe: 'Ich habe einen Nachbarn, der dort wohnt. · Das Buch, das ich lese, ist neu. · Der Kurs, den ich besuche, ist voll. · Die Frau, der ich heute helfe, ist nett. · Die Stelle, für die ich mich beworben habe, ist besetzt.',
+        points: ['Ich habe einen Nachbarn, der dort wohnt.', 'Das Buch, das ich lese, ist neu.', 'Der Kurs, den ich besuche, ist voll.', 'Die Frau, der ich heute helfe, ist nett.', 'Die Stelle, für die ich mich beworben habe, ist besetzt.'],
+        minWords: 39,
+        frage: 'اكتب جمل الصلة الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Ich habe einen Nachbarn, der dort wohnt. Das Buch, das ich lese, ist neu. Der Kurs, den ich besuche, ist voll. Die Frau, der ich heute helfe, ist nett. Die Stelle, für die ich mich beworben habe, ist besetzt.',
+      summaryDe: 'Ich habe einen Nachbarn, der dort wohnt. Das Buch, das ich lese, ist neu. Der Kurs, den ich besuche, ist voll. Die Frau, der ich heute helfe, ist nett. Die Stelle, für die ich mich beworben habe, ist besetzt.',
+      summaryAr: 'جنس الاسم يحدد أساس ضمير الصلة، ودوره داخل الجملة التابعة يحدد الحالة؛ والفعل المصرف يأتي في النهاية.',
+      summaryRecap: 'الجنس والدور ثم الفعل أخيرًا',
+      hwHintDe: 'Prüfe: der · das · den · der · für die.'
+    }),
 
   U('b1-u1-l3', 'B1', 'رغم أن', 'obwohl', 'wortstellung',
     'Am Ende stellst du das Verb nach obwohl an das Ende',
