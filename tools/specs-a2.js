@@ -1460,25 +1460,50 @@ module.exports = [
       summaryRecap: 'Mineralwasser Portion Band Konzert Bibliothek'
     }),
 
-  U('a2-u6-l3', 'A2', 'الرياضة والطبيعة', 'Sport und Natur', 'präposition',
-    'Am Ende sprichst du über Sport und einen Tag draußen',
-    'في النهاية تتحدث عن الرياضة ويوم في الطبيعة.',
+  U('a2-u6-l3', 'A2', 'الرياضة والطبيعة: الأنشطة والسلامة', 'Sport und Natur: Aktivitäten und Sicherheit', 'präposition',
+    'Am Ende benutzt du fünf Sätze über Sport, Orte in der Natur und Sicherheit',
+    'في النهاية تستعمل خمس جمل عن الرياضة والأماكن في الطبيعة والسلامة.',
     [
-      ['Er spielt Tennis', 'اللعبة بلا أداة عند الممارسة', 'أداة زائدة', 'Er spielt das Tennis', 'اللعبة بلا أداة'],
-      ['Das Training ist auf dem Sportplatz', 'المكان: auf dem Sportplatz', 'حرف المكان الخطأ', 'Das Training ist in der Sportplatz', 'المكان: auf dem'],
-      ['Im Urlaub bin ich am Strand', 'الشاطئ: am Strand', 'حرف خطأ', 'Ich bin in dem Strand', 'am Strand'],
-      ['Sein Vater ist gestorben', 'sterben في الماضي مع sein', 'haben الخطأ', 'Sein Vater hat gestorben', 'sterben مع sein']
+      ['Ich spiele gern Tennis.', 'تذكر رياضة تمارسها', 'عند ذكر الرياضة عمومًا نقول Tennis بلا أداة', 'Ich spiele gern einen Tennis.', 'اسم الرياضة العام يأتي هنا بلا أداة: Tennis'],
+      ['Das Training ist auf dem Sportplatz.', 'تحدد مكان التدريب', 'مع المكان الثابت نقول auf dem Sportplatz بالداتيف', 'Das Training ist auf den Sportplatz.', 'بعد ist نصف مكانًا ثابتًا: auf dem Sportplatz'],
+      ['Am Wochenende jogge ich mit meinem Team im Park.', 'تصف نشاطًا في نهاية الأسبوع', 'بعد Am Wochenende يأتي الفعل jogge في الموضع الثاني', 'Am Wochenende ich jogge mit meinem Team im Park.', 'العبارة الزمنية تشغل الموضع الأول، ثم يأتي jogge'],
+      ['Im Urlaub schlafe ich in einem Zelt auf einer Insel.', 'تصف مكان المبيت في الطبيعة', 'Zelt محايد وInsel مؤنث: in einem Zelt auf einer Insel', 'Im Urlaub schlafe ich in einem Zelt auf einem Insel.', 'Insel مؤنث؛ في المكان نقول auf einer Insel']
     ],
     [
-      ['Wir trainieren einmal pro Woche.', 'نتدرب مرة كل أسبوع', 'Wir trainieren einmal in der Woche pro.', 'الترتيب: pro Woche', 'trainieren'],
-      ['Abends mache ich einen Spaziergang.', 'مساءً أتنزه', 'Abends mache ich einen Spaziergang gehen.', 'التعبير: einen Spaziergang machen', 'Spaziergang'],
-      ['Vorsicht, das Wasser ist tief!', 'انتبه، الماء عميق', 'Vorsicht, das Wasser ist tief gemacht!', 'صفة بلا gemacht', 'tief'],
-      ['Der Himmel ist blau und es gibt keine Wolken.', 'السماء زرقاء ولا سحاب', 'Der Himmel sind blau und es gibt keine Wolken.', 'المفرد: ist', 'Himmel']
+      ['Ich spiele gern Tennis.', 'أحب لعب التنس', 'Ich spiele gern einen Tennis.', 'اسم الرياضة العام يأتي بلا أداة', 'Tennis'],
+      ['Das Training ist auf dem Sportplatz.', 'التدريب في الملعب', 'Das Training ist auf den Sportplatz.', 'المكان الثابت: auf dem Sportplatz', 'Sportplatz'],
+      ['Am Wochenende jogge ich mit meinem Team im Park.', 'أهرول مع فريقي في الحديقة في نهاية الأسبوع', 'Am Wochenende ich jogge mit meinem Team im Park.', 'بعد العبارة الزمنية يأتي jogge في الموضع الثاني', 'jogge'],
+      ['Im Urlaub schlafe ich in einem Zelt auf einer Insel.', 'أنام في خيمة على جزيرة في العطلة', 'Im Urlaub schlafe ich in einem Zelt auf einem Insel.', 'Insel مؤنث: auf einer Insel', 'Insel']
     ],
-    'Wir trainieren auf dem Sportplatz.',
-    'Im Urlaub bin ich am Strand.',
-    'Schreibe morgen zwei Sätze über deinen Sport.',
-    'غدًا اكتب جملتين عن رياضتك.'),
+    'Ich spiele gern Tennis.',
+    'Bei Nebel sollte man nicht im Fluss schwimmen.',
+    'Wiederhole morgen diese fünf Sätze:\nIch spiele gern Tennis.\nDas Training ist auf dem Sportplatz.\nAm Wochenende jogge ich mit meinem Team im Park.\nIm Urlaub schlafe ich in einem Zelt auf einer Insel.\nBei Nebel sollte man nicht im Fluss schwimmen.',
+    'غدًا راجع الجمل الخمس عن الرياضة والطبيعة والسلامة.',
+    {
+      factFamilies: ['lexik-kollokation', 'kasus', 'wortstellung', 'genus'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Sport, Natur und Sicherheit',
+        erklaerung: 'اكتب الجمل الخمس عن التنس والملعب والهرولة والخيمة والسلامة عند الضباب.',
+        prompt: 'اكتب الجمل الألمانية الخمس الدقيقة عن الرياضة والطبيعة والسلامة.',
+        promptDe: 'Ich spiele gern Tennis. · Das Training ist auf dem Sportplatz. · Am Wochenende jogge ich mit meinem Team im Park. · Im Urlaub schlafe ich in einem Zelt auf einer Insel. · Bei Nebel sollte man nicht im Fluss schwimmen.',
+        points: ['Ich spiele gern Tennis.', 'Das Training ist auf dem Sportplatz.', 'Am Wochenende jogge ich mit meinem Team im Park.', 'Im Urlaub schlafe ich in einem Zelt auf einer Insel.', 'Bei Nebel sollte man nicht im Fluss schwimmen.'],
+        minWords: 37,
+        frage: 'اكتب الجمل الخمس في 37 كلمة على الأقل.',
+        familie: 'präposition',
+        hinweise: ['اكتب Tennis بلا أداة وauf dem Sportplatz.', 'ضع jogge ثانيًا واستعمل einem Zelt، einer Insel، sollte … schwimmen.']
+      },
+      imitateNearMiss: 'einen Tennis',
+      transformHint: 'بعد sollte يأتي المصدر schwimmen في النهاية؛ والمكان هو im Fluss.',
+      orderAr: 'رتّب جملة نهاية الأسبوع: العبارة الزمنية أولًا ثم jogge ثم الفاعل.',
+      orderHints: ['ضع Am Wochenende في البداية وjogge في الموضع الثاني.', 'أكمل بـ ich mit meinem Team im Park.'],
+      orderSentence: 'Am Wochenende jogge ich mit meinem Team im Park.',
+      checkOrderSentence: 'Am Wochenende jogge ich mit meinem Team im Park.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن الهرولة.',
+      speakAr: 'اقرأ واشرح الجمل الخمس: Ich spiele gern Tennis؛ Das Training ist auf dem Sportplatz؛ Am Wochenende jogge ich mit meinem Team im Park؛ Im Urlaub schlafe ich in einem Zelt auf einer Insel؛ Bei Nebel sollte man nicht im Fluss schwimmen.',
+      summaryDe: 'Ich spiele gern Tennis. · Das Training ist auf dem Sportplatz. · Am Wochenende jogge ich mit meinem Team im Park. · Im Urlaub schlafe ich in einem Zelt auf einer Insel. · Bei Nebel sollte man nicht im Fluss schwimmen.',
+      summaryAr: 'راجع اسم الرياضة بلا أداة، وداتيف المكان، وV2 بعد الزمن، وجنس Insel، والمصدر بعد sollte.',
+      summaryRecap: 'Tennis Sportplatz Team Zelt Insel Fluss'
+    }),
 
   U('a2-u6-l4', 'A2', 'السفر والمرور', 'Reisen und Verkehr', 'präposition',
     'Am Ende erzählst du von einer Reise und einem Termin auf der Straße',

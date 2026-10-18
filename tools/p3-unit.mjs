@@ -9455,5 +9455,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'genus');
 }
 
+/* ---------- audited A2 sport, nature and safety lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u6-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich spiele gern Tennis.',
+    'Das Training ist auf dem Sportplatz.',
+    'Am Wochenende jogge ich mit meinem Team im Park.',
+    'Im Urlaub schlafe ich in einem Zelt auf einer Insel.',
+    'Bei Nebel sollte man nicht im Fluss schwimmen.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u6-l3 precisely scopes sport, nature locations and safety through articleless sport, location dative, V2 and modal order',
+    lesson.title.de === 'Sport und Natur: Aktivitäten und Sicherheit' &&
+      lesson.title.ar === 'الرياضة والطبيعة: الأنشطة والسلامة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الرياضة والأماكن في الطبيعة والسلامة' &&
+      row.grammar.item === 'Sportart ohne Artikel · in/auf + Dat. am Ort · V2 nach Zeitangabe · Modalverb + Infinitiv' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende benutzt du fünf Sätze über Sport, Orte in der Natur und Sicherheit' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'joggen', 'reiten', 'das Pferd', 'der Ski', 'das Tennis', 'das Team', 'die Mannschaft', 'der Verein',
+    'der Wettbewerb', 'das Training', 'trainieren', 'sportlich', 'der Sportplatz', 'der Spaziergang',
+    'die Natur', 'natürlich', 'der Strand', 'der Fluss', 'die Insel', 'das Zelt', 'der Rucksack',
+    'der Stiefel', 'tief', 'neblig', 'der Himmel', 'sterben', 'der Traum', 'der Fan', 'aufregend',
+    'aktiv', 'fleißig', 'klug', 'intelligent', 'nervös', 'sympathisch', 'überall', 'rund',
+    'mindestens', 'wenigstens', 'nirgends'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u6-l3 reviews all 40 entries and three bounded mnemonics without rejecting valid specific, emphatic or pluperfect alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.joggen.ex === targets[2] && byWord.joggen.why.includes('الموضع الثاني') &&
+      byWord.reiten.ex.includes('reiten lernen') && byWord.reiten.err.includes('reitest lernen') &&
+      byWord['das Pferd'].err.startsWith('Amira sieht eine Pferd') && byWord['der Ski'].pl.includes('Skier') &&
+      byWord['der Ski'].why.includes('Ski fahren') && byWord['das Tennis'].ex === targets[0] &&
+      byWord['das Team'].err.includes('in einer Team') && byWord['die Mannschaft'].err.includes('trainieren') &&
+      byWord['der Verein'].why.includes('in dem Verein') && byWord['der Wettbewerb'].why.includes('an einem Wettbewerb') &&
+      byWord['das Training'].err.includes('Training beginnen') && byWord.trainieren.ex === 'Wir trainieren einmal pro Woche.' &&
+      byWord.sportlich.err === 'Steffi sind sehr sportlich.' && byWord['der Sportplatz'].ex === targets[1] &&
+      byWord['der Spaziergang'].why.includes('mache في الموضع الثاني') && byWord['die Natur'].why.includes('in der Natur') &&
+      byWord.natürlich.err === 'Natürlich wir helfen dir.' && byWord['der Strand'].why.includes('an dem Strand') &&
+      byWord['der Fluss'].ex === targets[4] && byWord['die Insel'].ex === targets[3] &&
+      byWord['das Zelt'].why.includes('in einem Zelt') && byWord['der Rucksack'].ex.includes('mitgehen') &&
+      byWord['der Rucksack'].why.includes('mitnehmen في المصدر') && byWord['der Stiefel'].why.includes('die roten Stiefel') &&
+      byWord.tief.err.includes('Rhein sind') && byWord.neblig.ex === 'Heute Morgen ist es neblig.' &&
+      byWord['der Himmel'].pl === 'die Himmel' &&
+      byWord.sterben.why.includes('ist gestorben') && byWord['der Traum'].err.includes('Berge sind') &&
+      byWord['der Fan'].why.includes('ein großer Fan') && byWord.aufregend.err.endsWith('aufregende.') &&
+      byWord.aktiv.err === 'Peter sind im Verein sehr aktiv.' && byWord.fleißig.err.includes('Ibrahim trainieren') &&
+      byWord.klug.ex.includes('bei Nebel zu Hause zu bleiben') && byWord.intelligent.err === 'Einstein waren sehr intelligent.' &&
+      byWord.nervös.ex === 'Vor dem Wettbewerb ist Lea nervös.' && byWord.sympathisch.ar.includes('محبوب') &&
+      byWord.überall.why.includes('liegt في الموضع الثاني') && byWord.rund.why.includes('rund um den See') &&
+      byWord.mindestens.err.includes('mindestens von dreimal') && byWord.wenigstens.why.includes('schwimme قبل ich') &&
+      byWord.nirgends.ar.includes('لا مكان') && byWord.nirgends.err === 'Nirgends es ist so ruhig wie hier.' &&
+      !['Möchtest du fahren lernen?', 'Amira liebt die Pferde.', 'Die Kinder machen einen Wettbewerb zusammen.',
+        'Ich nehme lieber einen Rucksack mit mir.', 'Die letzte Woche war sehr aufregend gewesen.',
+        'Das ist klug für dich.', 'Einstein war sehr intelligent gewesen.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie === 'Tennis spielen · Ski fahren' &&
+      tricks[0].warum.includes('بلا أداة') && tricks[1].wie.includes('auf dem Sportplatz') &&
+      tricks[1].wie.includes('am Strand') && tricks[1].wie.includes('im Fluss') &&
+      tricks[1].wie.includes('auf einer Insel') && tricks[2].wie === targets[4] &&
+      tricks[2].warum.includes('sollte') && tricks[2].warum.includes('schwimmen'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u6-l3 aligns five strict clozes, explicit weekend V2 order and a 37-word five-target production',
+    wordCloze1.frage.zeigt === 'Ich arbeite gern in einem ____.' && wordCloze1.frage.antworten.join(' ') === 'Team' &&
+      wordCloze1.frage.nearMiss.Teams && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Teams').ok &&
+      wordCloze2.frage.zeigt === 'Wie viel kosten die roten ____?' && wordCloze2.frage.antworten.join(' ') === 'Stiefel' &&
+      wordCloze2.frage.nearMiss.Stiefeln && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Stiefeln').ok &&
+      wordCloze3.frage.zeigt === 'Trainiere ____ dreimal pro Woche.' && wordCloze3.frage.antworten.join(' ') === 'mindestens' &&
+      wordCloze3.frage.nearMiss['mindestens von'] && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'mindestens von').ok &&
+      imitate.frage.antworten.join(' ') === 'Tennis' && imitate.frage.nearMiss['einen Tennis'] &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'einen Tennis').ok &&
+      drill.frage.zeigt === 'Bei Nebel sollte man nicht im ____ schwimmen.' && drill.frage.antworten.join(' ') === 'Fluss' &&
+      drill.frage.nearMiss.Flüsse && !win.DW.renderers.judgeCloze(drill.frage, 'Flüsse').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'jogge' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Am Wochenende' && order.frage.fields.lsk.join(' ') === 'jogge' &&
+      order.frage.fields.mittelfeld.join(' ') === 'ich mit meinem Team im Park.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Am', 'Wochenende', 'ich', 'jogge', 'mit', 'meinem', 'Team', 'im', 'Park.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 37 &&
+      targets.join(' ').split(/\s+/).length === 37 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u6-l3 makes 80 percent four of five, independently checking Insel, Fluss, weekend V2, Tennis and Sportplatz',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u6-l3\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u6-l3.s07 | cap.a2-u6-l3.s23 | cap.a2-u6-l3.s24 | cap.a2-u6-l3.s09 | cap.a2-u6-l3.s05' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'genus' &&
+      clozeCheck.frage.zeigt === 'Bei Nebel sollte man nicht im ____ schwimmen.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Fluss' && clozeCheck.frage.nearMiss.Flüsse &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Flüsse').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'jogge' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Am Wochenende' && orderCheck.frage.fields.lsk.join(' ') === 'jogge' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Am', 'Wochenende', 'ich', 'jogge', 'mit', 'meinem', 'Team', 'im', 'Park.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'konjugation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
