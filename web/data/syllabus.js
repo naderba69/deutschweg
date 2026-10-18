@@ -104,7 +104,7 @@
     ['المبني للمجهول الحدثي: الحاضر والماضي البسيط والماضي المركّب', 'Vorgangspassiv: Präsens, Präteritum und Perfekt', 'وصف العمليات من دون إبراز الفاعل', 'werden + Partizip II · wurde · ist … worden · von + Dativ', 'explicit'],
     ['جمل الصلة: الحالة وحرف الجر والفعل في النهاية', 'Relativsätze: Kasus, Präpositionen und Verbendstellung', 'وصف الأشخاص والأشياء بدقة', 'Relativpronomen nach Genus und Kasus · Präposition + Relativpronomen · Verb am Ende', 'explicit'],
     ['جمل التنازل مع obwohl: الفعل في النهاية وقلب الجملة الرئيسية', 'Konzessivsätze mit obwohl: Verbendstellung und Hauptsatzinversion', 'التعبير عن تناقض بين ظرف ونتيجة', 'obwohl + Verb am Ende · vorangestellter Nebensatz + Verb zuerst · trotzdem/allerdings + V2 · trotz + Genitiv · zwar … aber / einerseits … andererseits', 'explicit'],
-    ['مع ذلك', 'trotzdem', 'التنازل', 'trotzdem وV2', 'explicit'],
+    ['النتيجة والسبب: موضع الفعل مع deshalb وdenn وweil', 'Folge und Grund: Verbstellung mit deshalb, denn und weil', 'ربط السبب بالنتيجة والتعليل', 'deshalb/deswegen/daher/folglich + V2 · denn في الموضع صفر بلا قلب · weil + Verb am Ende', 'explicit'],
     ['لكي', 'damit und um zu', 'الغاية', 'damit وum zu', 'explicit'],
     ['المصدر مع zu', 'Infinitiv mit zu', 'النية', 'Infinitiv mit zu', 'explicit'],
     ['لو كان', 'Irrealis', 'الخيال', 'Konjunktiv II irreal', 'explicit'],

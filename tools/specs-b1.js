@@ -138,25 +138,52 @@ module.exports = [
       hwHintDe: 'Prüfe: regnet, gehe · regnet · arbeiten muss, komme · geschlafen hat, ist · trotzdem gehe.'
     }),
 
-  U('b1-u1-l4', 'B1', 'مع ذلك', 'trotzdem', 'wortstellung',
-    'Am Ende benutzt du trotzdem mit Verbzweit',
-    'في النهاية تستعمل trotzdem والفعل ثانيًا.',
+  U('b1-u1-l4', 'B1', 'النتيجة والسبب: موضع الفعل مع deshalb وdenn وweil', 'Folge und Grund: Verbstellung mit deshalb, denn und weil', 'wortstellung',
+    'Am Ende verbindest du Ursache und Folge in fünf vollständigen Sätzen',
+    'في النهاية تصل السبب بالنتيجة في خمس جمل كاملة مع deshalb وdeswegen وdaher وdenn وweil وترتيب صحيح للفعل.',
     [
-      ['trotzdem plus V2', 'trotzdem لا ترسل الفعل إلى الآخر', 'trotzdem ich gehe خطأ', 'trotzdem ich gehe', 'الفعل ثاني'],
-      ['obwohl ist anders', 'obwohl آخرًا وtrotzdem ثانيًا', 'لا تُنسخ القاعدة', 'trotzdem ich müde bin', 'هذا ترتيب obwohl'],
-      ['Punkt oder Komma', 'جملة جديدة ممكنة', 'الرابط لا يبتلع الفعل', 'Es regnet, trotzdem gehe ich richtig mit V2', 'الشكل سليم إن بقي الفعل ثانيًا'],
-      ['dennoch ähnlich', 'dennoch أيضًا V2', 'لا نهاية الجملة', 'dennoch ich bleibe', 'الفعل ثاني']
+      ['Ich war krank, deshalb bin ich zu Hause geblieben.', 'تصل سببًا (المرض) بنتيجة (البقاء في المنزل) مع deshalb وتقلب الفاعل بعد الفعل', 'deshalb ظرف نتيجة يشغل الموضع الأول في جملته؛ فيأتي الفعل المصرف bin ثانيًا، والفاعل ich بعده، وPartizip II هو geblieben في النهاية', 'Ich war krank, deshalb ich bin zu Hause geblieben.', 'بعد deshalb يأتي الفعل المصرف bin في الموضع الثاني قبل الفاعل ich، لا بعد الفاعل'],
+      ['Der Zug fiel aus, deswegen kam ich später.', 'تصل إلغاء القطار بنتيجته في الماضي البسيط مع deswegen', 'deswegen مرادف كتابي لـdeshalb: الموضع الأول، ثم kam ثانيًا، ثم الفاعل ich', 'Der Zug fiel aus, deswegen ich kam später.', 'بعد deswegen يأتي kam قبل الفاعل ich'],
+      ['Es regnete stark, daher blieben wir im Hotel.', 'تصل المطر الشديد بنتيجته مع daher وفعل جمع في الماضي', 'daher أيضًا ظرف نتيجة في الموضع الأول؛ الفعل blieben ثانٍ والفاعل الجمع wir بعده', 'Es regnete stark, daher wir blieben im Hotel.', 'بعد daher يأتي blieben قبل wir، لأن الظرف شغل الموضع الأول'],
+      ['Ich bleibe zu Hause, denn ich bin krank.', 'تعلّل البقاء في المنزل بـdenn دون تغيير ترتيب الفاعل والفعل', 'denn رابط تعليل في الموضع صفر: لا يُحسب موضعًا، فتبقى الجملة بعده جملة رئيسية بترتيبها العادي ich bin', 'Ich bleibe zu Hause, denn bin ich krank.', 'denn لا يقلب الترتيب كما تفعل deshalb؛ نقول denn ich bin krank']
     ],
     [
-      ['Es regnet, trotzdem gehe ich.', 'تمطر ومع ذلك أذهب', 'Es regnet, trotzdem ich gehe', 'gehe ثانيًا', 'gehe'],
-      ['Ich bin müde, trotzdem lerne ich.', 'أنا متعب ومع ذلك أدرس', 'Ich bin müde, trotzdem ich lerne', 'lerne ثانيًا', 'lerne'],
-      ['Der Kurs ist teuer, trotzdem buche ich.', 'الدورة غالية ومع ذلك أحجز', 'Der Kurs ist teuer, trotzdem ich buche', 'buche ثانيًا', 'buche'],
-      ['Es ist spät, dennoch bleibe ich.', 'الوقت متأخر ومع ذلك أبقى', 'Es ist spät, dennoch ich bleibe', 'bleibe ثانيًا', 'bleibe']
+      ['Ich war krank, deshalb bin ich zu Hause geblieben.', 'كنت مريضًا، لذلك بقيت في المنزل', 'Ich war krank, deshalb ich bin zu Hause geblieben.', 'بعد deshalb يأتي bin قبل ich', 'bin'],
+      ['Der Zug fiel aus, deswegen kam ich später.', 'أُلغيت رحلة القطار، لهذا السبب تأخرت', 'Der Zug fiel aus, deswegen ich kam später.', 'بعد deswegen يأتي kam قبل ich', 'kam'],
+      ['Es regnete stark, daher blieben wir im Hotel.', 'أمطرت بشدة، لذلك بقينا في الفندق', 'Es regnete stark, daher wir blieben im Hotel.', 'بعد daher يأتي blieben قبل wir', 'blieben'],
+      ['Ich bleibe zu Hause, denn ich bin krank.', 'أبقى في المنزل لأنني مريض', 'Ich bleibe zu Hause, denn bin ich krank.', 'بعد denn يبقى ich قبل bin بلا قلب', 'ich']
     ],
-    'Es regnet. Trotzdem gehe ich.',
-    'Trotzdem lerne ich.',
-    'Schreibe morgen trotzdem mit V2.',
-    'غدًا اكتب trotzdem والفعل ثانيًا.'),
+    'Ich war krank, deshalb bin ich zu Hause geblieben.',
+    'Ich bleibe zu Hause, weil ich krank bin.',
+    'Wiederhole morgen die fünf Sätze: Ich war krank, deshalb bin ich zu Hause geblieben. Der Zug fiel aus, deswegen kam ich später. Es regnete stark, daher blieben wir im Hotel. Ich bleibe zu Hause, denn ich bin krank. Ich bleibe zu Hause, weil ich krank bin.',
+    'غدًا راجع الجمل الخمس وقارن موضع الفعل بعد deshalb وdenn وweil.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'ich',
+      transformHint: 'denn في الموضع صفر فيبقى ترتيب الجملة الرئيسية (denn ich bin …)، أما weil فيرسل الفعل المصرف إلى النهاية (weil ich krank bin).',
+      orderSentence: 'Deshalb bin ich zu Hause geblieben.',
+      orderRightBracket: ['geblieben.'],
+      checkOrderSentence: 'Deshalb bin ich zu Hause geblieben.',
+      checkOrderRightBracket: ['geblieben.'],
+      orderAr: 'رتّب جملة النتيجة: Deshalb أولًا، ثم الفعل المصرف bin، ثم الفاعل، وgeblieben في النهاية.',
+      orderPromptAr: 'رتّب الجملة واضعًا bin بعد Deshalb مباشرة وgeblieben. في النهاية.',
+      orderHints: ['ضع bin مباشرة بعد Deshalb لأن الظرف شغل الموضع الأول.', 'أغلق الجملة باسم المفعول geblieben.'],
+      writing: {
+        zeigt: 'Fünf Sätze mit Folge und Grund',
+        erklaerung: 'اكتب الجمل الخمس كاملة: نتيجة مع deshalb، وأخرى مع deswegen، وثالثة مع daher، ثم تعليل مع denn بلا قلب، وأخيرًا weil مع الفعل في النهاية.',
+        hinweise: ['بعد ظرف النتيجة ضع الفعل المصرف قبل الفاعل.', 'بعد denn أبقِ الفاعل قبل الفعل، وبعد weil أرسل الفعل إلى النهاية.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة مع الحفاظ على موضع الفعل الصحيح في كل واحدة.',
+        promptDe: 'Ich war krank, deshalb bin ich zu Hause geblieben. · Der Zug fiel aus, deswegen kam ich später. · Es regnete stark, daher blieben wir im Hotel. · Ich bleibe zu Hause, denn ich bin krank. · Ich bleibe zu Hause, weil ich krank bin.',
+        points: ['Ich war krank, deshalb bin ich zu Hause geblieben.', 'Der Zug fiel aus, deswegen kam ich später.', 'Es regnete stark, daher blieben wir im Hotel.', 'Ich bleibe zu Hause, denn ich bin krank.', 'Ich bleibe zu Hause, weil ich krank bin.'],
+        minWords: 41,
+        frage: 'اكتب جمل النتيجة والسبب الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Ich war krank, deshalb bin ich zu Hause geblieben. Der Zug fiel aus, deswegen kam ich später. Es regnete stark, daher blieben wir im Hotel. Ich bleibe zu Hause, denn ich bin krank. Ich bleibe zu Hause, weil ich krank bin.',
+      summaryDe: 'Ich war krank, deshalb bin ich zu Hause geblieben. Der Zug fiel aus, deswegen kam ich später. Es regnete stark, daher blieben wir im Hotel. Ich bleibe zu Hause, denn ich bin krank. Ich bleibe zu Hause, weil ich krank bin.',
+      summaryAr: 'ظروف النتيجة deshalb وdeswegen وdaher وfolglich تحتل الموضع الأول فيأتي الفعل المصرف ثانيًا والفاعل بعده. denn في الموضع صفر فلا يقلب الترتيب، وweil يرسل الفعل المصرف إلى نهاية جملته.',
+      summaryRecap: 'deshalb ثانيًا، denn صفر، weil أخيرًا',
+      hwHintDe: 'Prüfe: deshalb bin · deswegen kam · daher blieben · denn ich bin · weil … bin.'
+    }),
 
   U('b1-u1-l5', 'B1', 'لكي', 'damit und um zu', 'wortstellung',
     'Am Ende unterscheidest du damit und um zu',

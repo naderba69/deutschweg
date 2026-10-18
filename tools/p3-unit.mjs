@@ -10350,5 +10350,130 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+
+/* ---------- audited B1 cause-and-result connector lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich war krank, deshalb bin ich zu Hause geblieben.',
+    'Der Zug fiel aus, deswegen kam ich später.',
+    'Es regnete stark, daher blieben wir im Hotel.',
+    'Ich bleibe zu Hause, denn ich bin krank.',
+    'Ich bleibe zu Hause, weil ich krank bin.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l4 precisely scopes result-adverb inversion, denn without inversion and verb-final weil across five targets',
+    lesson.title.de === 'Folge und Grund: Verbstellung mit deshalb, denn und weil' &&
+      lesson.title.ar === 'النتيجة والسبب: موضع الفعل مع deshalb وdenn وweil' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'ربط السبب بالنتيجة والتعليل' &&
+      row.grammar.item === 'deshalb/deswegen/daher/folglich + V2 · denn في الموضع صفر بلا قلب · weil + Verb am Ende' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verbindest du Ursache und Folge in fünf vollständigen Sätzen' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'deshalb', 'deswegen', 'daher', 'folglich', 'also', 'denn', 'verursachen', 'bewirken',
+    'verhindern', 'vermeiden', 'reduzieren', 'verringern', 'erweitern', 'verbessern', 'verändern',
+    'ermöglichen', 'abhängen', 'beitragen', 'die Folge', 'die Wirkung', 'die Ursache', 'der Effekt',
+    'die Konsequenz', 'der Einfluss', 'die Maßnahme', 'der Plan', 'der Beschluss', 'die Entscheidung',
+    'die Entwicklung', 'die Veränderung', 'die Verbesserung', 'die Erweiterung', 'der Zusammenhang',
+    'die Auswirkung', 'der Vorteil', 'der Nachteil', 'die Lösung', 'das Problem', 'die Schwierigkeit',
+    'der Zweck'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l4 reviews all 40 entries and three bounded mnemonics without rejecting grammatical perfect or von-dative alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.deshalb.ex === targets[0] && byWord.deswegen.ex === targets[1] &&
+      byWord.daher.ex === targets[2] && byWord.denn.ex === targets[3] &&
+      byWord.denn.err.includes('denn bin ich') && byWord.denn.why.includes('الموضع صفر') &&
+      byWord['die Folge'].why.includes('Nominativ') && !byWord['die Folge'].why.includes('einen langen') &&
+      byWord['die Wirkung'].err.includes('des Medikament ist') &&
+      byWord['der Effekt'].err.startsWith('Das Effekt') &&
+      byWord['der Beschluss'].ar !== byWord['die Entscheidung'].ar &&
+      byWord['die Entwicklung'].err.includes('von die Stadt') &&
+      byWord['die Veränderung'].err.includes('betrifft allen') &&
+      byWord['die Auswirkung'].err.includes('schwer abschätzen') &&
+      byWord['das Problem'].err.includes('lässt sich zu lösen') &&
+      byWord['abhängen'].ex.includes('hängt von der Qualität ab') &&
+      byWord['der Zweck'].ex.includes('heiligt') &&
+      !['Die Entscheidung ist richtig gewesen.', 'Die Verbesserung ist nötig gewesen.',
+        'Die Entwicklung von der Stadt ist schnell.', 'Die Wirkung von dem Medikament ist stark.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].trick.includes('والفعل ثانيًا') &&
+      tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes(targets[1]) &&
+      tricks[1].wie.includes('Einfluss auf die Entscheidung') &&
+      tricks[2].trick.includes('اسم النتيجة') && !tricks[2].trick.includes('اسم المفعول'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l4 aligns five strict learning clozes, an explicit result-clause field order and a 41-word five-target production',
+    wordCloze1.frage.zeigt === 'Ich bleibe zu Hause, ____ ich bin krank.' && wordCloze1.frage.antworten.join(' ') === 'denn' &&
+      wordCloze1.frage.nearMiss.weil && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'weil').ok &&
+      wordCloze2.frage.zeigt === 'Der ____ war sofort sichtbar.' && wordCloze2.frage.antworten.join(' ') === 'Effekt' &&
+      wordCloze2.frage.nearMiss.Effekte && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Effekte').ok &&
+      wordCloze3.frage.zeigt === 'Das ____ lässt sich lösen.' && wordCloze3.frage.antworten.join(' ') === 'Problem' &&
+      wordCloze3.frage.nearMiss.Probleme && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Probleme').ok &&
+      imitate.zeigt.de === 'Ich war krank, deshalb ____ ich zu Hause geblieben.' && imitate.frage.antworten.join(' ') === 'bin' &&
+      imitate.frage.nearMiss.ich && !win.DW.renderers.judgeCloze(imitate.frage, 'ich').ok &&
+      drill.frage.zeigt === 'Der Zug fiel aus, ____ kam ich später.' && drill.frage.antworten.join(' ') === 'deswegen' &&
+      drill.frage.nearMiss.weil && !win.DW.renderers.judgeCloze(drill.frage, 'weil').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا bin بعد Deshalb مباشرة وgeblieben. في النهاية.' &&
+      order.frage.correct.join(' ') === 'Deshalb bin ich zu Hause geblieben.' && order.frage.finite === 'bin' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Deshalb' && order.frage.fields.lsk.join(' ') === 'bin' &&
+      order.frage.fields.mittelfeld.join(' ') === 'ich zu Hause' && order.frage.fields.rsk.join(' ') === 'geblieben.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Deshalb', 'ich', 'bin', 'zu', 'Hause', 'geblieben.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 41 &&
+      targets.join(' ').split(/\s+/).length === 41 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l4 makes 80 percent four of five, independently checking denn, deswegen, result order, deshalb perfect and verb-final weil',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l4\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l4.s07 | cap.b1-u1-l4.s23 | cap.b1-u1-l4.s24 | cap.b1-u1-l4.s08 | cap.b1-u1-l4.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('denn bin ich')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Der Zug fiel aus, ____ kam ich später.' &&
+      clozeCheck.frage.antworten.join(' ') === 'deswegen' && clozeCheck.frage.nearMiss.weil &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'weil').ok &&
+      orderCheck.frage.correct.join(' ') === 'Deshalb bin ich zu Hause geblieben.' && orderCheck.frage.finite === 'bin' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Deshalb' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Deshalb', 'ich', 'bin', 'zu', 'Hause', 'geblieben.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) &&
+      checks[3].frage.optionen.some(o => o.text.includes('deshalb ich bin')) &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('weil ich bin krank')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
