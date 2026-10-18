@@ -10591,5 +10591,120 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich versuche jeden Tag Deutsch zu lernen.',
+    'Es ist wichtig, pünktlich zu sein.',
+    'Ich habe Lust, ins Kino zu gehen.',
+    'Ich muss heute länger arbeiten.',
+    'Ich habe vor, meine Freunde einzuladen.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l6 precisely scopes the zu-infinitive after verbs, es-ist adjectives and nouns, its separable infix and the modal exception across five targets',
+    lesson.title.de === 'Infinitiv mit zu nach Verb, Adjektiv und Nomen — und kein zu nach Modalverben' &&
+      lesson.title.ar === 'المصدر مع zu بعد الفعل والصفة والاسم — وبلا zu بعد الأفعال الناقصة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'النية والرغبة والتقييم' &&
+      row.grammar.item === 'zu-Infinitiv nach Verben · es ist + Adjektiv + zu · Nomen + zu · zu im trennbaren Verb · kein zu nach Modalverben' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du vier Sätze mit dem zu-Infinitiv und einen Modalsatz ohne zu' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'anfangen', 'aufhören', 'versuchen', 'vergessen', 'vorhaben', 'planen', 'beschließen', 'hoffen',
+    'scheinen', 'pflegen', 'beabsichtigen', 'erwarten', 'bitten', 'empfehlen', 'verbieten', 'erlauben',
+    'die Absicht', 'die Möglichkeit', 'die Gelegenheit', 'die Hoffnung', 'die Angst', 'die Lust',
+    'die Pflicht', 'das Recht', 'der Wunsch', 'der Plan', 'die Aufgabe', 'die Schwierigkeit',
+    'wichtig', 'nötig', 'möglich', 'schwierig', 'leicht', 'sinnvoll', 'verboten', 'erlaubt',
+    'bereit', 'froh', 'stolz', 'gewohnt'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l6 reviews all 40 entries and three bounded mnemonics without rejecting comma-free zu-infinitive groups as errors',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.anfangen.err === 'Ich fange an, Deutsch lernen.' &&
+      byWord.anfangen.why.includes('لا حذف الفاصلة') &&
+      byWord.vorhaben.err === 'Ich habe vor, umziehen.' && byWord.vorhaben.why.includes('umzuziehen') &&
+      byWord.pflegen.ar === 'من عادته أن يفعل' && byWord.pflegen.why.includes('الاعتياد') &&
+      byWord['der Plan'].ex.includes('ein Haus zu bauen') &&
+      byWord['die Aufgabe'].ex.includes('alles zu prüfen') &&
+      byWord['die Schwierigkeit'].ex.includes('ehrlich zu antworten') &&
+      byWord.empfehlen.ex.includes('empfehle dir') && byWord['stolz'].ex.includes('geschafft zu haben') &&
+      !['Ich fange an Deutsch zu lernen.', 'Er hört auf zu rauchen.', 'Ich versuche früher zu kommen.',
+        'Vergiss nicht die Tür zu schließen!', 'Ich habe vor umzuziehen.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('früher zu kommen') && tricks[0].warum.includes('تحتاج zu') &&
+      tricks[1].wie.includes('ehrlich zu sein') && tricks[2].wie.includes('anzufangen'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l6 aligns five strict learning clozes, an explicit final zu-infinitive bracket and a 31-word five-target production',
+    wordCloze1.frage.zeigt === 'Wir ____, im Sommer zu reisen.' && wordCloze1.frage.antworten.join(' ') === 'planen' &&
+      wordCloze1.frage.nearMiss.plant && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'plant').ok &&
+      wordCloze2.frage.zeigt === 'Ich habe ____, ins Kino zu gehen.' && wordCloze2.frage.antworten.join(' ') === 'Lust' &&
+      wordCloze2.frage.nearMiss.Lusten && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Lusten').ok &&
+      wordCloze3.frage.zeigt === 'Ich bin ____, dich zu sehen.' && wordCloze3.frage.antworten.join(' ') === 'froh' &&
+      wordCloze3.frage.nearMiss.frohe && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'frohe').ok &&
+      imitate.zeigt.de === 'Ich versuche jeden Tag Deutsch ____ lernen.' && imitate.frage.antworten.join(' ') === 'zu' &&
+      imitate.frage.nearMiss.to && !win.DW.renderers.judgeCloze(imitate.frage, 'to').ok &&
+      drill.frage.zeigt === 'Es besteht die Möglichkeit zu ____.' && drill.frage.antworten.join(' ') === 'wechseln' &&
+      drill.frage.nearMiss.wechselt && !win.DW.renderers.judgeCloze(drill.frage, 'wechselt').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا versuche بعد Ich وzu lernen. في النهاية.' &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'versuche' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'versuche' &&
+      order.frage.fields.mittelfeld.join(' ') === 'jeden Tag Deutsch' && order.frage.fields.rsk.join(' ') === 'zu lernen.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'jeden', 'Tag', 'versuche', 'Deutsch', 'zu', 'lernen.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 31 &&
+      targets.join(' ').split(/\s+/).length === 31 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l6 makes 80 percent four of five, independently checking the modal exception, noun-zu cloze, bracket order, es-ist adjective and zu-infix',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l6\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l6.s07 | cap.b1-u1-l6.s23 | cap.b1-u1-l6.s24 | cap.b1-u1-l6.s16 | cap.b1-u1-l6.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('länger zu arbeiten')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Es besteht die Möglichkeit zu ____.' &&
+      clozeCheck.frage.antworten.join(' ') === 'wechseln' && clozeCheck.frage.nearMiss.wechselt &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'wechselt').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'versuche' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'zu lernen.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'jeden', 'Tag', 'versuche', 'Deutsch', 'zu', 'lernen.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text.includes('verboten, hier zu rauchen')) &&
+      checks[3].frage.optionen.some(o => o.text.includes('verboten hier rauchen')) &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('zu einladen')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

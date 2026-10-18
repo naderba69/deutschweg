@@ -106,7 +106,7 @@
     ['جمل التنازل مع obwohl: الفعل في النهاية وقلب الجملة الرئيسية', 'Konzessivsätze mit obwohl: Verbendstellung und Hauptsatzinversion', 'التعبير عن تناقض بين ظرف ونتيجة', 'obwohl + Verb am Ende · vorangestellter Nebensatz + Verb zuerst · trotzdem/allerdings + V2 · trotz + Genitiv · zwar … aber / einerseits … andererseits', 'explicit'],
     ['النتيجة والسبب: موضع الفعل مع deshalb وdenn وweil', 'Folge und Grund: Verbstellung mit deshalb, denn und weil', 'ربط السبب بالنتيجة والتعليل', 'deshalb/deswegen/daher/folglich + V2 · denn في الموضع صفر بلا قلب · weil + Verb am Ende', 'explicit'],
     ['جمل الغاية مع um … zu وdamit: الفاعل نفسه أو فاعل جديد', 'Finalsätze mit um … zu und damit: gleiches oder neues Subjekt', 'التعبير عن الغاية والهدف', 'um … zu bei gleichem Subjekt · damit + Verb am Ende bei neuem Subjekt · zu im trennbaren Verb · vorangestellte Finalangabe + V2', 'explicit'],
-    ['المصدر مع zu', 'Infinitiv mit zu', 'النية', 'Infinitiv mit zu', 'explicit'],
+    ['المصدر مع zu بعد الفعل والصفة والاسم — وبلا zu بعد الأفعال الناقصة', 'Infinitiv mit zu nach Verb, Adjektiv und Nomen — und kein zu nach Modalverben', 'النية والرغبة والتقييم', 'zu-Infinitiv nach Verben · es ist + Adjektiv + zu · Nomen + zu · zu im trennbaren Verb · kein zu nach Modalverben', 'explicit'],
     ['لو كان', 'Irrealis', 'الخيال', 'Konjunktiv II irreal', 'explicit'],
     ['تصريف n', 'n-Deklination', 'الناس', 'n-Deklination', 'explicit'],
     ['المستقبل', 'Futur', 'الخطة', 'werden', 'explicit'],

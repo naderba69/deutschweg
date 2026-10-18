@@ -140,16 +140,16 @@ module.exports = {
 
   'b1-u1-l6': {
     items: [
-      ['anfangen', 'fängt an · fing an · hat angefangen', 'يبدأ', 'Ich fange an, Deutsch zu lernen.', 'Ich fange an Deutsch zu lernen.', 'الفاصلة قبل zu.', 'orthographie', 'an'],
-      ['aufhören', 'hört auf · hörte auf · hat aufgehört', 'يتوقّف', 'Er hört auf, zu rauchen.', 'Er hört auf zu rauchen.', 'الفاصلة قبل zu.', 'orthographie', 'auf'],
-      ['versuchen', 'versucht · versuchte · hat versucht', 'يحاول', 'Ich versuche, früher zu kommen.', 'Ich versuche früher zu kommen.', 'الفاصلة قبل zu.', 'orthographie', 'versuche'],
-      ['vergessen', 'vergisst · vergaß · hat vergessen', 'ينسى', 'Vergiss nicht, die Tür zu schließen!', 'Vergiss nicht die Tür zu schließen!', 'الفاصلة قبل zu.', 'orthographie', 'Vergiss'],
-      ['vorhaben', 'hat vor · hatte vor · hat vorgehabt', 'ينوي', 'Ich habe vor, umzuziehen.', 'Ich habe vor umzuziehen.', 'الفاصلة قبل zu.', 'orthographie', 'vor'],
+      ['anfangen', 'fängt an · fing an · hat angefangen', 'يبدأ', 'Ich fange an, Deutsch zu lernen.', 'Ich fange an, Deutsch lernen.', 'بعد anfangen يلزم zu قبل المصدر: Deutsch zu lernen؛ الخطأ حذف zu لا حذف الفاصلة.', 'wortstellung', 'an'],
+      ['aufhören', 'hört auf · hörte auf · hat aufgehört', 'يتوقّف', 'Er hört auf, zu rauchen.', 'Er hört auf rauchen.', 'aufhören يحتاج zu قبل المصدر: zu rauchen.', 'wortstellung', 'auf'],
+      ['versuchen', 'versucht · versuchte · hat versucht', 'يحاول', 'Ich versuche, früher zu kommen.', 'Ich versuche früher kommen.', 'versuchen يحتاج zu قبل المصدر في النهاية: früher zu kommen.', 'wortstellung', 'versuche'],
+      ['vergessen', 'vergisst · vergaß · hat vergessen', 'ينسى', 'Vergiss nicht, die Tür zu schließen!', 'Vergiss nicht, die Tür schließen!', 'vergessen يحتاج zu قبل المصدر: die Tür zu schließen.', 'wortstellung', 'Vergiss'],
+      ['vorhaben', 'hat vor · hatte vor · hat vorgehabt', 'ينوي', 'Ich habe vor, umzuziehen.', 'Ich habe vor, umziehen.', 'zu داخل مصدر الفعل المنفصل umziehen: umzuziehen.', 'wortstellung', 'vor'],
       ['planen', 'plant · plante · hat geplant', 'يخطّط', 'Wir planen, im Sommer zu reisen.', 'Wir planen im Sommer reisen.', 'zu + مصدر.', 'wortstellung', 'planen'],
       ['beschließen', 'beschließt · beschloss · hat beschlossen', 'يقرّر', 'Sie hat beschlossen, zu bleiben.', 'Sie hat beschlossen bleiben.', 'zu + مصدر.', 'wortstellung', 'beschlossen'],
       ['hoffen', 'hofft · hoffte · hat gehofft', 'يأمل', 'Ich hoffe, dich bald zu sehen.', 'Ich hoffe dich bald sehen.', 'zu + مصدر.', 'wortstellung', 'hoffe'],
       ['scheinen', 'scheint · schien · hat geschienen', 'يبدو', 'Er scheint müde zu sein.', 'Er scheint müde sein.', 'zu + مصدر.', 'wortstellung', 'scheint'],
-      ['pflegen', 'pflegt · pflegte · hat gepflegt', 'يعهد إلى نفسه بـ', 'Sie pflegt früh aufzustehen.', 'Sie pflegt früh aufstehen.', 'zu + مصدر منطمر.', 'wortstellung', 'pflegt'],
+      ['pflegen', 'pflegt · pflegte · hat gepflegt', 'من عادته أن يفعل', 'Sie pflegt früh aufzustehen.', 'Sie pflegt früh aufstehen.', 'zu داخل الفعل المنفصل: aufzustehen؛ وpflegen هنا بمعنى الاعتياد، وهو استعمال رسمي.', 'wortstellung', 'pflegt'],
       ['beabsichtigen', 'beabsichtigt · beabsichtigte · hat beabsichtigt', 'يعتزم', 'Wir beabsichtigen, zu investieren.', 'Wir beabsichtigen investieren.', 'zu + مصدر.', 'wortstellung', 'beabsichtigen'],
       ['erwarten', 'erwartet · erwartete · hat erwartet', 'يتوقّع', 'Man erwartet von mir, pünktlich zu sein.', 'Man erwartet von mir pünktlich sein.', 'zu + مصدر.', 'wortstellung', 'erwartet'],
       ['bitten', 'bittet · bat · hat gebeten', 'يطلب من', 'Ich bitte dich, mir zu helfen.', 'Ich bitte dich mir helfen.', 'zu + مصدر.', 'wortstellung', 'bitte'],
@@ -165,9 +165,9 @@ module.exports = {
       ['die Pflicht', 'die Pflichten', 'الواجب', 'Es ist meine Pflicht, das zu melden.', 'Es ist meine Pflicht das melden.', 'zu + مصدر.', 'wortstellung', 'Pflicht'],
       ['das Recht', 'die Rechte', 'الحق', 'Du hast das Recht, zu widersprechen.', 'Du hast das Recht widersprechen.', 'zu + مصدر.', 'wortstellung', 'Recht'],
       ['der Wunsch', 'die Wünsche', 'الرغبة', 'Der Wunsch zu reisen bleibt.', 'Der Wunsch reisen bleibt.', 'zu + مصدر.', 'wortstellung', 'Wunsch'],
-      ['der Plan', 'die Pläne', 'الخطة', 'Der Plan zu bauen liegt vor.', 'Der Plan bauen liegt vor.', 'zu + مصدر.', 'wortstellung', 'Plan'],
-      ['die Aufgabe', 'die Aufgaben', 'المهمة', 'Meine Aufgabe ist es, zu prüfen.', 'Meine Aufgabe ist prüfen.', 'es + zu.', 'wortstellung', 'Aufgabe'],
-      ['die Schwierigkeit', 'die Schwierigkeiten', 'الصعوبة', 'Die Schwierigkeit zu antworten ist groß.', 'Die Schwierigkeit antworten ist groß.', 'zu + مصدر.', 'wortstellung', 'Schwierigkeit'],
+      ['der Plan', 'die Pläne', 'الخطة', 'Der Plan, ein Haus zu bauen, liegt vor.', 'Der Plan ein Haus bauen liegt vor.', 'zu + مصدر.', 'wortstellung', 'Plan'],
+      ['die Aufgabe', 'die Aufgaben', 'المهمة', 'Meine Aufgabe ist es, alles zu prüfen.', 'Meine Aufgabe ist es, alles prüfen.', 'es + zu.', 'wortstellung', 'Aufgabe'],
+      ['die Schwierigkeit', 'die Schwierigkeiten', 'الصعوبة', 'Die Schwierigkeit, ehrlich zu antworten, ist groß.', 'Die Schwierigkeit ehrlich antworten ist groß.', 'zu + مصدر.', 'wortstellung', 'Schwierigkeit'],
       ['wichtig', '—', 'مهم', 'Es ist wichtig, ehrlich zu sein.', 'Es ist wichtig ehrlich sein.', 'zu + مصدر.', 'wortstellung', 'wichtig'],
       ['nötig', '—', 'ضروري', 'Es ist nötig, das zu wiederholen.', 'Es ist nötig das wiederholen.', 'zu + مصدر.', 'wortstellung', 'nötig'],
       ['möglich', '—', 'ممكن', 'Es ist möglich, später zu kommen.', 'Es ist möglich später kommen.', 'zu + مصدر.', 'wortstellung', 'möglich'],
@@ -177,7 +177,7 @@ module.exports = {
       ['verboten', '—', 'ممنوع', 'Es ist verboten, hier zu rauchen.', 'Es ist verboten hier rauchen.', 'zu + مصدر.', 'wortstellung', 'verboten'],
       ['erlaubt', '—', 'مسموح', 'Es ist erlaubt, hier zu parken.', 'Es ist erlaubt hier parken.', 'zu + مصدر.', 'wortstellung', 'erlaubt'],
       ['bereit', '—', 'مستعد', 'Ich bin bereit, das zu übernehmen.', 'Ich bin bereit das übernehmen.', 'zu + مصدر.', 'wortstellung', 'bereit'],
-      ['froh', '—', 'سعيد', 'Ich bin froh, dich zu sehen.', 'Ich bin froh dich sehen.', 'zu + مصدر.', 'wortstellung', 'froh'],
+      ['froh', '—', 'سعيد', 'Ich bin froh, dich zu sehen.', 'Ich bin froh dich sehen.', 'الصفة الخبرية بلا نهاية: froh لا frohe؛ والفعل الثاني zu + مصدر.', 'wortstellung', 'froh'],
       ['stolz', '—', 'فخور', 'Sie ist stolz, das geschafft zu haben.', 'Sie ist stolz das geschafft haben.', 'zu + مصدر تام.', 'wortstellung', 'stolz'],
       ['gewohnt', '—', 'معتاد', 'Ich bin gewohnt, früh aufzustehen.', 'Ich bin gewohnt früh aufstehen.', 'zu + مصدر.', 'wortstellung', 'gewohnt']
     ],
@@ -185,7 +185,24 @@ module.exports = {
       { trick: 'الأفعال التي تأخذ zu: versuchen · vergessen · hoffen · planen · anfangen · aufhören', wie: 'Ich versuche, früher zu kommen. · Ich hoffe, dich bald zu sehen.', warum: 'العربية تصل الفعلين بلا فاصل، والألمانية تحتاج zu قبل المصدر الثاني.', anchor: 'versuchen' },
       { trick: 'الصفة + zu: es ist wichtig, ehrlich zu sein', wie: 'Es ist wichtig, ehrlich zu sein. · Es ist verboten, hier zu rauchen.', warum: 'التركيب بلا فاعل ظاهر (es)، والعربية تقول «من المهم أن تكون صادقًا».', anchor: 'wichtig' },
       { trick: 'الفعل المنفصل ينفصل حول zu: an|zufangen · auf|zustehen', wie: 'Es ist schwer, früh anzufangen. · Ich bin gewohnt, früh aufzustehen.', warum: 'an + zu + fangen — الوصل الذي لا مقابل له في العربية، ويُنسى كثيرًا.', anchor: 'anfangen' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'planen': 'plant',
+      'die Lust': 'Lusten',
+      'froh': 'frohe'
+    },
+    clozeItemIndex: 17,
+    clozeNearMiss: 'wechselt',
+    checkItemIndex: 34,
+    extraCheck: {
+      right: 'Ich habe vor, meine Freunde einzuladen.',
+      bad: 'Ich habe vor, meine Freunde zu einladen.',
+      why: 'مع الفعل المنفصل einladen تدخل zu بين البادئة والجذر: einzuladen، لا قبل الفعل كاملًا zu einladen.',
+      family: 'wortstellung',
+      prereq: 'cap.b1-u1-l6.s20',
+      frage: 'أي جملة تضع zu داخل مصدر الفعل المنفصل؟'
+    }
   }
 
 };

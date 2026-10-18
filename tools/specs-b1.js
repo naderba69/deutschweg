@@ -232,25 +232,52 @@ module.exports = [
       hwHintDe: 'Prüfe: gleicher Handelnder → um … zu arbeiten · neuer Handelnder → damit … verstehen · studieren kann · anzukommen. Damit mit gleichem Subjekt ist möglich, aber oft umständlich.'
     }),
 
-  U('b1-u1-l6', 'B1', 'المصدر مع zu', 'Infinitiv mit zu', 'wortstellung',
-    'Am Ende benutzt du zu vor dem Infinitiv',
-    'في النهاية تستعمل zu قبل المصدر.',
+  U('b1-u1-l6', 'B1', 'المصدر مع zu بعد الفعل والصفة والاسم — وبلا zu بعد الأفعال الناقصة', 'Infinitiv mit zu nach Verb, Adjektiv und Nomen — und kein zu nach Modalverben', 'wortstellung',
+    'Am Ende bildest du vier Sätze mit dem zu-Infinitiv und einen Modalsatz ohne zu',
+    'في النهاية تكوّن أربع جمل بالمصدر مع zu وجملة بفعل ناقص بلا zu، بترتيب صحيح.',
     [
-      ['vorhaben zu', 'vorhaben يأخذ zu', 'بلا zu ناقص', 'ich habe vor umziehen', 'zu مفقود'],
-      ['zu am Ende', 'zu والمصدر آخرًا', 'لا في الوسط بلا داعٍ', 'ich habe zu vor umziehen falsch', 'المصدر آخرًا'],
-      ['trennbar: einzuladen', 'zu داخل الفعل المنفصل', 'لا zu einladen', 'ich habe vor zu einladen', 'zu داخل الكلمة'],
-      ['kein zu nach Modal', 'بعد الفعل الناقص بلا zu', 'ich muss zu gehen خطأ', 'ich muss zu gehen', 'بعد muss بلا zu']
+      ['Ich versuche jeden Tag Deutsch zu lernen.', 'تعبّر عن محاولتك تعلّم الألمانية كل يوم', 'أفعال مثل versuchen وvergessen وhoffen تأخذ فعلًا ثانيًا في صيغة zu + مصدر، وتقف مجموعة المصدر في نهاية الجملة', 'Ich versuche jeden Tag Deutsch lernen.', 'بعد versuchen نحتاج zu قبل المصدر: Deutsch zu lernen'],
+      ['Es ist wichtig, pünktlich zu sein.', 'تقيّم الالتزام بالموعد مع es ist', 'مع es ist والصفة (wichtig و nötig و verboten) يأتي الفعل في صيغة zu + مصدر؛ والمصدر من sein هو sein لا صيغة مصرفة', 'Es ist wichtig, pünktlich sein.', 'بعد الصفة مع es ist يلزم zu: pünktlich zu sein'],
+      ['Ich habe Lust, ins Kino zu gehen.', 'تعبّر عن رغبتك في الذهاب إلى السينما', 'أسماء مثل die Lust وdie Absicht وdie Gelegenheit يتبعها مصدر مع zu يبيّن مضمون الرغبة أو الفرصة', 'Ich habe Lust ins Kino gehen.', 'بعد الاسم Lust يلزم zu قبل المصدر: ins Kino zu gehen'],
+      ['Ich muss heute länger arbeiten.', 'تعبّر عن واجبك أن تعمل اليوم وقتًا أطول', 'بعد الأفعال الناقصة (müssen و können و dürfen و wollen) يأتي المصدر في نهاية الجملة بلا zu أبدًا', 'Ich muss heute länger zu arbeiten.', 'بعد muss لا توجد zu: الصيغة الصحيحة länger arbeiten، على عكس to في الإنجليزية']
     ],
     [
-      ['Ich habe vor, umzuziehen.', 'أنوي الانتقال', 'Ich habe vor umziehen', 'zu داخل umziehen', 'umzuziehen'],
-      ['Ich versuche, pünktlich zu sein.', 'أحاول أن أكون في الوقت', 'Ich versuche, pünktlich sein', 'zu مفقود', 'zu'],
-      ['Es ist wichtig, das zu sagen.', 'من المهم قول هذا', 'Es ist wichtig, das sagen', 'zu مفقود', 'zu'],
-      ['Ich muss gehen.', 'يجب أن أذهب', 'Ich muss zu gehen', 'بعد muss بلا zu', 'muss']
+      ['Ich versuche jeden Tag Deutsch zu lernen.', 'أحاول أن أتعلم الألمانية كل يوم', 'Ich versuche jeden Tag Deutsch lernen.', 'بعد versuchen لا يقف المصدر وحده: zu lernen في النهاية', 'zu'],
+      ['Es ist wichtig, pünktlich zu sein.', 'من المهم أن أكون في الموعد', 'Es ist wichtig, pünktlich sein.', 'مع es ist والصفة: zu sein، والمصدر من sein هو sein', 'sein'],
+      ['Ich habe Lust, ins Kino zu gehen.', 'أرغب في الذهاب إلى السينما', 'Ich habe Lust ins Kino gehen.', 'الاسم Lust يشرحه مصدر مع zu: ins Kino zu gehen', 'gehen'],
+      ['Ich muss heute länger arbeiten.', 'يجب أن أعمل اليوم وقتًا أطول', 'Ich muss heute länger zu arbeiten.', 'بعد muss يأتي المصدر arbeiten بلا zu، رغم to في الإنجليزية', 'arbeiten']
     ],
-    'Ich habe vor, umzuziehen.',
-    'Ich versuche, pünktlich zu sein.',
-    'Bilde morgen zwei Sätze mit zu.',
-    'غدًا كوّن جملتين مع zu.'),
+    'Ich versuche jeden Tag Deutsch zu lernen.',
+    'Ich habe vor, meine Freunde einzuladen.',
+    'Wiederhole morgen die fünf Sätze: Ich versuche jeden Tag Deutsch zu lernen. Es ist wichtig, pünktlich zu sein. Ich habe Lust, ins Kino zu gehen. Ich muss heute länger arbeiten. Ich habe vor, meine Freunde einzuladen.',
+    'غدًا راجع الجمل الخمس وعلّم موضع zu في كل جملة، ولماذا تغيب بعد muss.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'to',
+      transformHint: 'إذا صار الفعل المنفصل einladen مصدرًا مع zu دخلت zu داخل الكلمة بين البادئة ein والجذر laden: einzuladen؛ الشكل zu einladen خطأ.',
+      orderSentence: 'Ich versuche jeden Tag Deutsch zu lernen.',
+      orderRightBracket: ['zu', 'lernen.'],
+      checkOrderSentence: 'Ich versuche jeden Tag Deutsch zu lernen.',
+      checkOrderRightBracket: ['zu', 'lernen.'],
+      orderAr: 'رتّب الجملة الرئيسية بالفعل versuche ثانيًا، ثم أكمل مجموعة المصدر واجعل zu lernen في النهاية.',
+      orderPromptAr: 'رتّب الجملة واضعًا versuche بعد Ich وzu lernen. في النهاية.',
+      orderHints: ['ضع versuche في الموضع الثاني بعد Ich.', 'أغلق الجملة بالمصدر مع zu: zu lernen.'],
+      writing: {
+        zeigt: 'Fünf Sätze: vier mit zu, einer ohne',
+        erklaerung: 'اكتب خمس جمل كاملة: فعل مع zu، وes ist مع صفة، واسم مع zu، وفعل ناقص بلا zu، وفعل منفصل تدخل zu داخله.',
+        hinweise: ['اسأل أولًا: ما الذي يفتح مجموعة المصدر هنا — فعل مثل versuchen، أم es ist مع صفة، أم اسم مثل Lust؟', 'ضع zu قبل المصدر في نهاية الجملة، وداخله مع الفعل المنفصل، ولا تضعها بعد muss.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة مع وضع zu في موضعها أو حذفها بعد الفعل الناقص.',
+        promptDe: 'Ich versuche jeden Tag Deutsch zu lernen. · Es ist wichtig, pünktlich zu sein. · Ich habe Lust, ins Kino zu gehen. · Ich muss heute länger arbeiten. · Ich habe vor, meine Freunde einzuladen.',
+        points: ['Ich versuche jeden Tag Deutsch zu lernen.', 'Es ist wichtig, pünktlich zu sein.', 'Ich habe Lust, ins Kino zu gehen.', 'Ich muss heute länger arbeiten.', 'Ich habe vor, meine Freunde einzuladen.'],
+        minWords: 31,
+        frage: 'اكتب الجمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Ich versuche jeden Tag Deutsch zu lernen. Es ist wichtig, pünktlich zu sein. Ich habe Lust, ins Kino zu gehen. Ich muss heute länger arbeiten. Ich habe vor, meine Freunde einzuladen.',
+      summaryDe: 'Ich versuche jeden Tag Deutsch zu lernen. Es ist wichtig, pünktlich zu sein. Ich habe Lust, ins Kino zu gehen. Ich muss heute länger arbeiten. Ich habe vor, meine Freunde einzuladen.',
+      summaryAr: 'المصدر مع zu في نهاية الجملة بعد أفعال مثل versuchen، وبعد es ist مع الصفات، وبعد أسماء مثل Lust؛ تدخل zu داخل الفعل المنفصل (einzuladen)، وتغيب تمامًا بعد muss.',
+      summaryRecap: 'zu في النهاية، ولا بعد muss',
+      hwHintDe: 'Prüfe: Verb, Adjektiv oder Nomen davor → zu + Infinitiv am Ende. Ist das Verb trennbar, steht zu innen: einzuladen. Nach einem Modal wie muss fehlt zu ganz.'
+    }),
 
   U('b1-u1-l7', 'B1', 'لو كان', 'Irrealis', 'konjugation',
     'Am Ende bildest du einen irrealen wenn-Satz',
