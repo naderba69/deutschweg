@@ -1595,23 +1595,49 @@ module.exports = [
       summaryRecap: 'Stelle Bewerbung Frage Bescheid Termin Rückmeldung'
     }),
 
-  U('a2-u6-l6', 'A2', 'الناس والمشاعر', 'Menschen und Gefühle', 'deklination',
-    'Am Ende beschreibst du Personen und deine Familie genau',
-    'في النهاية تصف أشخاصًا وعائلتك بدقة.',
+  U('a2-u6-l6', 'A2', 'وصف الناس: المهنة والأصل والعائلة والمشاعر', 'Menschen beschreiben: Beruf, Herkunft, Familie und Gefühle', 'deklination',
+    'Am Ende benutzt du fünf Sätze über Beruf, Herkunft, Familie und Gefühle',
+    'في النهاية تستعمل خمس جمل عن المهنة والأصل والعائلة والمشاعر.',
     [
-      ['Er ist Angestellter', 'المذكر في الرفع ينتهي بـ er', 'نهاية خطأ', 'Er ist Angestellter bei einer Bank und Angestellte', 'المذكر: Angestellter'],
-      ['ein berühmter Fußballspieler', 'الصفة قبل الاسم تُصرَّف', 'الصفة مجردة', 'ein berühmt Fußballspieler', 'مذكر رفع: berühmter'],
-      ['Der Mechaniker repariert den Motor', 'الفاعل der والمفعول به den', 'الحالة الخطأ', 'Der Mechaniker repariert der Motor', 'النصب: den Motor'],
-      ['Ich habe mich in sie verliebt', 'verlieben مع in', 'حرف خطأ', 'Ich habe mich für sie verliebt', 'in + النصب']
+      ['Er ist Angestellter bei einer Bank.', 'تذكر مهنة رجل', 'اسم المهنة يأتي هنا بلا أداة، وصيغة المذكر هي Angestellter', 'Er ist Angestellte bei einer Bank.', 'مع Er نقول Angestellter بالنهاية -er'],
+      ['Sie ist Österreicherin und wohnt in Wien.', 'تذكر أصل امرأة ومكان سكنها', 'اسم الأصل المؤنث هو Österreicherin ويأتي هنا بلا أداة', 'Sie ist Österreicher und wohnt in Wien.', 'مع Sie نقول Österreicherin بالنهاية -in'],
+      ['Thomas Müller ist ein berühmter Fußballspieler.', 'تصف شخصًا مشهورًا', 'قبل الاسم المذكر مع ein تأخذ الصفة النهاية -er', 'Thomas Müller ist ein berühmt Fußballspieler.', 'نقول ein berühmter Fußballspieler'],
+      ['Meine Eltern sind geschieden.', 'تصف حالة عائلية', 'الصفة geschieden تأتي هنا مع sein', 'Meine Eltern haben geschieden.', 'نقول sind geschieden لا haben geschieden']
     ],
     [
-      ['Meine Eltern sind geschieden.', 'والداي مطلقان', 'Meine Eltern haben geschieden.', 'geschieden مع sein', 'geschieden'],
-      ['Fußball ist bei vielen Menschen beliebt.', 'كرة القدم محبوبة عند كثيرين', 'Fußball ist für viele Menschen beliebt.', 'beliebt bei', 'beliebt'],
-      ['Sie ist Österreicherin und wohnt in Wien.', 'هي نمساوية وتسكن في فيينا', 'Sie ist eine Österreicherin Frau.', 'بلا Frau زائدة', 'Österreicherin'],
-      ['Ich bin froh, dass du kommen kannst.', 'أنا مسرور أنك تستطيع القدوم', 'Ich habe froh, dass du kommen kannst.', 'froh مع sein', 'froh']
+      ['Er ist Angestellter bei einer Bank.', 'هو موظف في بنك', 'Er ist Angestellte bei einer Bank.', 'صيغة المذكر بلا أداة هي Angestellter', 'Angestellter'],
+      ['Sie ist Österreicherin und wohnt in Wien.', 'هي نمساوية وتسكن في فيينا', 'Sie ist Österreicher und wohnt in Wien.', 'صيغة المرأة هي Österreicherin', 'Österreicherin'],
+      ['Thomas Müller ist ein berühmter Fußballspieler.', 'توماس مولر لاعب كرة قدم مشهور', 'Thomas Müller ist ein berühmt Fußballspieler.', 'الصفة قبل الاسم المذكر: berühmter', 'berühmter'],
+      ['Meine Eltern sind geschieden.', 'والداي مطلقان', 'Meine Eltern haben geschieden.', 'geschieden تأتي هنا مع sind', 'geschieden']
     ],
-    'Meine Eltern sind geschieden.',
-    'Mein Cousin ist ein berühmter Musiker.',
-    'Schreibe morgen zwei Sätze über deine Familie.',
-    'غدًا اكتب جملتين عن عائلتك.')
+    'Er ist Angestellter bei einer Bank.',
+    'Ich bin froh, dass du kommen kannst.',
+    'Wiederhole morgen diese fünf Sätze:\nEr ist Angestellter bei einer Bank.\nSie ist Österreicherin und wohnt in Wien.\nThomas Müller ist ein berühmter Fußballspieler.\nMeine Eltern sind geschieden.\nIch bin froh, dass du kommen kannst.',
+    'غدًا راجع الجمل الخمس عن المهنة والأصل والعائلة والمشاعر.',
+    {
+      factFamilies: ['deklination', 'deklination', 'deklination', 'konjugation'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Beruf, Herkunft, Familie und Gefühlen',
+        erklaerung: 'اكتب الجمل الخمس عن الموظف والأصل النمساوي والشخص المشهور وحالة الوالدين والشعور بالفرح.',
+        prompt: 'اكتب الجمل الألمانية الخمس الدقيقة لوصف الناس والعائلة والمشاعر.',
+        promptDe: 'Er ist Angestellter bei einer Bank. · Sie ist Österreicherin und wohnt in Wien. · Thomas Müller ist ein berühmter Fußballspieler. · Meine Eltern sind geschieden. · Ich bin froh, dass du kommen kannst.',
+        points: ['Er ist Angestellter bei einer Bank.', 'Sie ist Österreicherin und wohnt in Wien.', 'Thomas Müller ist ein berühmter Fußballspieler.', 'Meine Eltern sind geschieden.', 'Ich bin froh, dass du kommen kannst.'],
+        minWords: 30,
+        frage: 'اكتب الجمل الخمس في 30 كلمة على الأقل.',
+        familie: 'deklination',
+        hinweise: ['استعمل Angestellter وÖsterreicherin بلا أداة، وein berühmter Fußballspieler.', 'استعمل sind geschieden وbin froh، وضع kannst في نهاية جملة dass.']
+      },
+      imitateNearMiss: 'Angestellte',
+      transformHint: 'بعد dass يأتي الفعل المصرف kannst في نهاية الجملة التابعة.',
+      orderAr: 'رتّب جملة الشعور: Ich bin froh، ثم dass du kommen kannst.',
+      orderHints: ['ابدأ بـ Ich bin froh ثم الفاصلة وdass.', 'في الجملة التابعة ضع du kommen ثم kannst في النهاية.'],
+      orderSentence: 'Ich bin froh, dass du kommen kannst.',
+      checkOrderSentence: 'Ich bin froh, dass du kommen kannst.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن الشعور بالفرح.',
+      speakAr: 'اقرأ واشرح الجمل الخمس: Er ist Angestellter bei einer Bank؛ Sie ist Österreicherin und wohnt in Wien؛ Thomas Müller ist ein berühmter Fußballspieler؛ Meine Eltern sind geschieden؛ Ich bin froh, dass du kommen kannst.',
+      summaryDe: 'Er ist Angestellter bei einer Bank. · Sie ist Österreicherin und wohnt in Wien. · Thomas Müller ist ein berühmter Fußballspieler. · Meine Eltern sind geschieden. · Ich bin froh, dass du kommen kannst.',
+      summaryAr: 'راجع صيغة المهنة والأصل بلا أداة، ونهاية الصفة -er، وsein مع الحالة والشعور، والفعل النهائي بعد dass.',
+      summaryRecap: 'Angestellter Österreicherin berühmter Eltern geschieden froh'
+    })
+
 ];

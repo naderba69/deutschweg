@@ -97,7 +97,7 @@
     ['الرياضة والطبيعة: الأنشطة والسلامة', 'Sport und Natur: Aktivitäten und Sicherheit', 'الرياضة والأماكن في الطبيعة والسلامة', 'Sportart ohne Artikel · in/auf + Dat. am Ort · V2 nach Zeitangabe · Modalverb + Infinitiv', 'explicit', 40, 13],
     ['السفر والمرور: وسائل النقل والطريق والعودة', 'Reisen und Verkehr: Verkehrsmittel, Weg und Rückfahrt', 'وسائل النقل والسؤال عن الطريق والعودة', 'mit + Dat. beim Verkehrsmittel · nach/zu bei Zielen · fragen nach + Dat. · Perfekt · trennbares Verb', 'explicit', 40, 13],
     ['العمل والمكتب: التقديم والموعد والرد', 'Arbeit und Büro: Bewerbung, Termin und Rückmeldung', 'التقديم إلى وظيفة وتنظيم الموعد وتلقي الرد', 'sich informieren über + Akk. · sich bewerben um + Akk. · beantworten + Akk. · Bescheid bekommen · Modalverb + Infinitiv', 'explicit', 40, 13],
-    ['الناس والمشاعر', 'Menschen und Gefühle', 'الناس', 'وصف الأشخاص', 'inductive', 40, 13]
+    ['وصف الناس: المهنة والأصل والعائلة والمشاعر', 'Menschen beschreiben: Beruf, Herkunft, Familie und Gefühle', 'وصف المهنة والأصل والعائلة والمشاعر', 'Beruf/Herkunft ohne Artikel · substantiviertes Adjektiv · Adjektivendung -er · sein + Adjektiv · dass + Verb am Ende', 'explicit', 40, 13]
   ];
 
   const B1 = [

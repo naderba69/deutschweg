@@ -9836,5 +9836,133 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+/* ---------- audited A2 people, family and feelings lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u6-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Er ist Angestellter bei einer Bank.',
+    'Sie ist Österreicherin und wohnt in Wien.',
+    'Thomas Müller ist ein berühmter Fußballspieler.',
+    'Meine Eltern sind geschieden.',
+    'Ich bin froh, dass du kommen kannst.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u6-l6 precisely scopes describing people through profession, origin, an attributed person, family status and feeling',
+    lesson.title.de === 'Menschen beschreiben: Beruf, Herkunft, Familie und Gefühle' &&
+      lesson.title.ar === 'وصف الناس: المهنة والأصل والعائلة والمشاعر' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'وصف المهنة والأصل والعائلة والمشاعر' &&
+      row.grammar.item === 'Beruf/Herkunft ohne Artikel · substantiviertes Adjektiv · Adjektivendung -er · sein + Adjektiv · dass + Verb am Ende' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende benutzt du fünf Sätze über Beruf, Herkunft, Familie und Gefühle' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'ansehen', 'ausgeben', 'aussprechen', 'das Gegenteil', 'besonders', 'beliebt', 'berühmt', 'froh',
+    'fantastisch', 'faul', 'lila', 'rosa', 'geschieden', 'der Cousin', 'die Cousine', 'der Enkel',
+    'die Enkelin', 'der Angestellte', 'die Angestellte', 'der Auszubildende', 'die Auszubildende',
+    'der Autor', 'der Friseur', 'die Handwerkerin', 'der Hausmann', 'der Mechaniker', 'das Model',
+    'die Musikerin', 'der Sänger', 'die Österreicherin', 'österreichisch', 'die Schweizerin',
+    'schweizerisch', 'tschüs', 'sich verlieben', 'langweilig', 'furchtbar', 'blöd', 'dumm', 'wurscht'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u6-l6 reviews all 40 entries and three bounded mnemonics without rejecting valid comparisons, meanings or article variants',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.ansehen.why.includes('بلا zu') && byWord.ausgeben.ex.endsWith('Bücher ausgibt.') &&
+      byWord.ausgeben.err.endsWith('Bücher gibt aus.') && byWord.aussprechen.ex === 'Wie spricht man das Wort aus?' &&
+      byWord['das Gegenteil'].why.includes('von + Dativ') &&
+      byWord.besonders.err.includes('besondere günstig') && byWord.beliebt.why.includes('bei vielen Menschen') &&
+      byWord.berühmt.ex === targets[2] && byWord.froh.ex === targets[4] &&
+      byWord.fantastisch.why.includes('sieht … aus') && byWord.faul.err === 'Heute wir sind faul.' &&
+      byWord.lila.err.includes('lilas Kleid') && byWord.rosa.err.includes('rosas Bluse') &&
+      byWord.geschieden.ex === targets[3] && byWord['der Cousin'].err.includes('Cousin wohnen') &&
+      byWord['die Cousine'].err.includes('Cousine kommen') && byWord['der Enkel'].err.includes('Enkel sind') &&
+      byWord['die Enkelin'].why.includes('der Großmutter') && byWord['der Angestellte'].ex === targets[0] &&
+      byWord['die Angestellte'].ex === 'Sie ist Angestellte bei einer Bank.' &&
+      byWord['der Auszubildende'].err.includes('Auszubildende lernen') &&
+      byWord['die Auszubildende'].err.includes('Auszubildende arbeiten') &&
+      byWord['der Autor'].err.startsWith('Der Autoren') && byWord['der Friseur'].err.includes('Friseur schneiden') &&
+      byWord['die Handwerkerin'].err.includes('Handwerkerin bauen') && byWord['der Hausmann'].err.includes('kümmert um') &&
+      byWord['der Mechaniker'].why.includes('den Motor') && byWord['das Model'].why.includes('wie ein Model') &&
+      byWord['die Musikerin'].err.includes('Musikerin spielen') && byWord['der Sänger'].err.includes('Sänger singen') &&
+      byWord['die Österreicherin'].ex === targets[1] && byWord.österreichisch.err.includes('österreichisch Spezialität') &&
+      byWord['die Schweizerin'].err.includes('Nachbarin sind') && byWord.schweizerisch.ex.includes('schweizerischer Käse') &&
+      byWord.tschüs.ex.includes('Beim Abschied') && byWord['sich verlieben'].why.includes('in jemanden verlieben') &&
+      byWord.langweilig.ex.startsWith('Mir ist') && byWord.langweilig.why.includes('ich bin langweilig') &&
+      byWord.furchtbar.err.includes('furchtbare langweilig') && byWord.blöd.err.includes('blöd Idee') &&
+      byWord.dumm.err.endsWith('von ich.') && byWord.wurscht.why.includes(' المعياري egal') &&
+      !['Sie arbeitet wie ein Model.', 'Die Musikerin spielt die Geige gut.',
+        'Der Sänger singt in dem Konzert mit.', 'Sie ist eine Österreicherin.',
+        'Unsere Nachbarin ist eine Schweizerin.', 'Ich bin langweilig.',
+        'Das war dumm für mich.', 'Die Wand ist eine rosa Farbe.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Er ist Angestellter.') &&
+      tricks[0].wie.includes('Sie ist Österreicherin.') && tricks[0].warum.includes('للجنس') &&
+      tricks[1].wie === 'Angestellter · ein berühmter Fußballspieler' && tricks[1].warum.includes('-er') &&
+      tricks[2].wie.includes('sind geschieden') && tricks[2].wie.includes('dass du kommen kannst') &&
+      tricks[2].warum.includes('في النهاية'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u6-l6 aligns five strict clozes, explicit dass-clause order and a 30-word five-target production',
+    wordCloze1.frage.zeigt === 'Fußball ist bei vielen Menschen ____.' && wordCloze1.frage.antworten.join(' ') === 'beliebt' &&
+      wordCloze1.frage.nearMiss.beliebte && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'beliebte').ok &&
+      wordCloze2.frage.zeigt === 'Der ____ liest aus seinem Buch.' && wordCloze2.frage.antworten.join(' ') === 'Autor' &&
+      wordCloze2.frage.nearMiss.Autoren && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Autoren').ok &&
+      wordCloze3.frage.zeigt === 'Das ist eine ____ Idee.' && wordCloze3.frage.antworten.join(' ') === 'blöde' &&
+      wordCloze3.frage.nearMiss.blöd && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'blöd').ok &&
+      imitate.zeigt.de === 'Er ist ____ bei einer Bank.' && imitate.frage.antworten.join(' ') === 'Angestellter' &&
+      imitate.frage.nearMiss.Angestellte && !win.DW.renderers.judgeCloze(imitate.frage, 'Angestellte').ok &&
+      drill.frage.zeigt === 'Sie ist ____ und wohnt in Wien.' && drill.frage.antworten.join(' ') === 'Österreicherin' &&
+      drill.frage.nearMiss.Österreicher && !win.DW.renderers.judgeCloze(drill.frage, 'Österreicher').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[4] && order.frage.finite === 'bin' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'bin' &&
+      order.frage.fields.mittelfeld.join(' ') === 'froh, dass du kommen kannst.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'bin', 'froh,', 'dass', 'du', 'kannst.', 'kommen']).failed === 4 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.join(' ').split(/\s+/).length === 30 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u6-l6 makes 80 percent four of five, independently checking geschieden, Österreicherin, dass order, berühmter and Angestellter',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u6-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u6-l6.s07 | cap.a2-u6-l6.s23 | cap.a2-u6-l6.s24 | cap.a2-u6-l6.s09 | cap.a2-u6-l6.s04' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'konjugation' &&
+      clozeCheck.frage.zeigt === 'Sie ist ____ und wohnt in Wien.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Österreicherin' && clozeCheck.frage.nearMiss.Österreicher &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Österreicher').ok &&
+      orderCheck.frage.correct.join(' ') === targets[4] && orderCheck.frage.finite === 'bin' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheck.frage.fields.lsk.join(' ') === 'bin' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'bin', 'froh,', 'dass', 'du', 'kannst.', 'kommen']).failed === 4 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'deklination');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
