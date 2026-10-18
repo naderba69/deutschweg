@@ -5815,6 +5815,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'deklination' &&
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
+/* ---------- audited A2 formal telephone lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u5-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Guten Tag, Sara Ben Ali am Apparat.',
+    'Könnte ich bitte Herrn Bauer sprechen?',
+    'Herr Bauer ist gerade nicht da.',
+    'Kann ich ihm etwas ausrichten?',
+    'Ja, ich bitte um einen Rückruf.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u5-l4 bounds a formal call to identification, requested person, absence, message and callback',
+    lesson.title.de === 'Formelles Telefonat: nach einer Person fragen und um Rückruf bitten' &&
+      lesson.title.ar === 'مكالمة رسمية: طلب شخص وطلب إعادة الاتصال' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'إجراء مكالمة رسمية وطلب إعادة الاتصال' &&
+      row.grammar.item === 'am Apparat · Könnte ich bitte Herrn … sprechen? · nicht da · jemandem etwas ausrichten · um Rückruf bitten' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 34 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende führst du ein formelles Telefongespräch, fragst nach Herrn Bauer und bittest um einen Rückruf' &&
+      lesson.schritte.find(s => s.id === 's17').zeigt.de === targets[0] + ' ' + targets[1]);
+
+  const expectedWords = [
+    'der Apparat', 'das Telefon', 'anrufen', 'zurückrufen', 'das Handy', 'die Nummer',
+    'die Vorwahl', 'die Nachricht', 'der Anrufbeantworter', 'erreichen', 'besetzt', 'die Leitung',
+    'sich melden', 'warten', 'der Moment', 'verbinden', 'die Durchwahl', 'das Gespräch',
+    'die Rechnung', 'der Vertrag', 'die Auskunft', 'die Warteschleife', 'kostenlos',
+    'sich entschuldigen', 'die Störung', 'der Rückruf', 'die SMS', 'das Mobiltelefon',
+    'die Homepage', 'herunterladen', 'surfen', 'planen', 'die Person', 'die Mail'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u5-l4 reviews all 34 entries and three nuanced mnemonics while retaining valid telephone and contextual alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['der Apparat'].ex === targets[0] && byWord['der Apparat'].why.includes('Hier spricht Sara Ben Ali') &&
+      byWord['das Telefon'].ex === 'Das Telefon klingelt.' && byWord.anrufen.ex.endsWith('später an.') &&
+      byWord.anrufen.why.includes('jemanden rufen') && byWord.zurückrufen.ex.includes('ruft Sie morgen zurück') &&
+      byWord['das Handy'].why.includes('Mein Handy ist aus') && byWord['die Nummer'].why.includes('الداتيف: mir') &&
+      byWord['die Vorwahl'].why.includes('für Tunis') && byWord['die Nachricht'].why.includes('غير منفصل') &&
+      byWord['der Anrufbeantworter'].ex.includes('auf den Anrufbeantworter') &&
+      byWord.erreichen.why.includes('النصب: ihn') && byWord.besetzt.ex === 'Die Leitung ist besetzt.' &&
+      byWord['die Leitung'].why.includes('جودة الاتصال ضعيفة') && byWord['sich melden'].ex.includes('melde mich') &&
+      byWord.warten.ex === 'Bitte warten Sie einen Moment.' && byWord['der Moment'].ex === 'Einen Moment, bitte.' &&
+      byWord.verbinden.ex === 'Ich verbinde Sie mit Herrn Bauer.' && byWord['die Durchwahl'].ex.includes('Ihre Durchwahl') &&
+      byWord['das Gespräch'].why.includes('ist kurz gewesen') && byWord['die Rechnung'].why.includes('mit der Post') &&
+      byWord['der Vertrag'].why.includes('für ein Jahr') && byWord['die Auskunft'].ex === 'Die Auskunft ist kostenlos.' &&
+      byWord['die Warteschleife'].ex === 'Ich bin in der Warteschleife.' &&
+      byWord['die Warteschleife'].why.includes('Ich hänge in der Warteschleife') &&
+      byWord.kostenlos.why.includes('الصفة الخبرية') && byWord['sich entschuldigen'].ex.includes('entschuldige mich') &&
+      byWord['die Störung'].ex === 'Entschuldigung für die Störung.' &&
+      byWord['der Rückruf'].ex === targets[4] && byWord['der Rückruf'].why.includes('um etwas bitten') &&
+      byWord['die SMS'].ex.startsWith('Schick mir') && byWord['das Mobiltelefon'].why.includes('Handy') &&
+      byWord['die Homepage'].ex.startsWith('Auf der Homepage') && byWord.herunterladen.why.includes('lade … runter') &&
+      byWord.surfen.ex === 'Ich surfe im Internet.' && byWord.planen.why.includes('eine Reise in Wien') &&
+      byWord['die Person'].why.includes('Person مؤنث') && byWord['die Mail'].why.includes('E-Mail') &&
+      !['Hier spricht Sara Ben Ali.', 'Ich rufe Herrn Bauer.', 'Mein Handy ist aus.',
+        'Die Vorwahl für Tunis ist 71.', 'Das Gespräch ist kurz gewesen.',
+        'Die Rechnung kommt mit der Post.', 'Der Vertrag läuft für ein Jahr.',
+        'Ich hänge in der Warteschleife.', 'Schick mir bitte eine SMS.',
+        'Ich lade die Datei runter.', 'Wir planen eine Reise in Wien.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[0]) && tricks[0].wie.includes(targets[1]) &&
+      tricks[0].warum.includes('Hier spricht') && tricks[0].warum.includes('Herr') &&
+      tricks[1].wie.includes(targets[2]) && tricks[1].wie.includes(targets[3]) && tricks[1].warum.includes('داتيف') &&
+      tricks[2].wie.includes(targets[4]) && tricks[2].wie.includes('ruft Sie morgen zurück') &&
+      tricks[2].warum.includes('um einen Rückruf bitten'));
+
+  const numberCloze = lesson.schritte.find(s => s.id === 's09');
+  const holdCloze = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's18');
+  const callbackCloze = lesson.schritte.find(s => s.id === 's22');
+  const order = lesson.schritte.find(s => s.id === 's23');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u5-l4 aligns strict number, hold, identification and callback clozes, modal order and 30-word role production',
+    numberCloze.frage.zeigt === 'Können Sie mir Ihre ____ geben?' && numberCloze.frage.antworten.join(' ') === 'Nummer' &&
+      numberCloze.frage.nearMiss.Nummern && !win.DW.renderers.judgeCloze(numberCloze.frage, 'Nummern').ok &&
+      holdCloze.frage.zeigt === 'Ich bin in der ____.' && holdCloze.frage.antworten.join(' ') === 'Warteschleife' &&
+      holdCloze.frage.nearMiss.Warteschleifen && !win.DW.renderers.judgeCloze(holdCloze.frage, 'Warteschleifen').ok &&
+      imitate.zeigt.de === 'Guten Tag, Sara Ben Ali am ____.' && imitate.frage.antworten.join(' ') === 'Apparat' &&
+      imitate.frage.nearMiss.Apparaten && !win.DW.renderers.judgeCloze(imitate.frage, 'Apparaten').ok &&
+      callbackCloze.frage.zeigt === 'Ja, ich bitte um einen ____.' && callbackCloze.frage.antworten.join(' ') === 'Rückruf' &&
+      callbackCloze.frage.nearMiss.Rückrufe && !win.DW.renderers.judgeCloze(callbackCloze.frage, 'Rückrufe').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'Kann' && order.frage.verbFirst === true &&
+      order.frage.fields.vorfeld.length === 0 && order.frage.fields.lsk.join(' ') === 'Kann' &&
+      order.frage.fields.mittelfeld.join(' ') === 'ich ihm etwas' && order.frage.fields.rsk.join(' ') === 'ausrichten?' &&
+      order.frage.rightBracket.join(' ') === 'ausrichten?' && win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'Kann', 'ihm', 'etwas', 'ausrichten?']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.join(' ').split(/\s+/).length === 30 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u5-l4 makes 80 percent four of five independent across message, callback, requested person, identification and absence',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u5-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u5-l4.s07 | cap.a2-u5-l4.s22 | cap.a2-u5-l4.s23 | cap.a2-u5-l4.s08 | cap.a2-u5-l4.s06' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Ja, ich bitte um einen ____.' && clozeCheck.frage.antworten.join(' ') === 'Rückruf' &&
+      clozeCheck.frage.nearMiss.Rückrufe && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Rückrufe').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'Könnte' &&
+      orderCheck.frage.verbFirst === true && orderCheck.frage.fields.mittelfeld.join(' ') === 'ich bitte Herrn Bauer' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'sprechen?' && orderCheck.frage.rightBracket.join(' ') === 'sprechen?' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'Könnte', 'bitte', 'Herrn', 'Bauer', 'sprechen?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'präposition' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

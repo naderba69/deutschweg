@@ -1231,25 +1231,52 @@ module.exports = [
       summaryRecap: 'Anrede Anlass Bitte Dank Gruß Unterschrift'
     }),
 
-  U('a2-u5-l4', 'A2', 'الهاتف', 'Telefon', 'lexik-kollokation',
-    'Am Ende führst du ein kurzes Telefongespräch',
-    'في النهاية تجري مكالمة قصيرة.',
+  U('a2-u5-l4', 'A2', 'مكالمة رسمية: طلب شخص وطلب إعادة الاتصال', 'Formelles Telefonat: nach einer Person fragen und um Rückruf bitten', 'lexik-kollokation',
+    'Am Ende führst du ein formelles Telefongespräch, fragst nach Herrn Bauer und bittest um einen Rückruf',
+    'في النهاية تطلب التحدث إلى السيد باور هاتفيًا وتطلب منه إعادة الاتصال.',
     [
-      ['am Apparat', 'التعريف على الخط', 'لا this is speaking خليط', 'hier spricht als this is', 'الإطار am Apparat'],
-      ['einen Moment', 'الانتظار einen Moment', 'لا one moment كخليط', 'one Moment bitte', 'one إنجليزية'],
-      ['er ist nicht da', 'الغياب ist nicht da', 'لا he is not', 'er ist not da', 'not إنجليزية'],
-      ['kann ich etwas ausrichten', 'تبليغ الرسالة ausrichten', 'لا tell him', 'kann ich ihm tell', 'tell إنجليزية']
+      ['Guten Tag, Sara Ben Ali am Apparat.', 'تفتتح المكالمة الرسمية بتحية ثم تعرّف بنفسك', 'في الهاتف تعني am Apparat أن المتكلم على الخط؛ ويصح أيضًا Hier spricht Sara Ben Ali', 'Guten Tag, Sara Ben Ali in Apparat.', 'التعبير الثابت هو am Apparat، أي an dem Apparat'],
+      ['Könnte ich bitte Herrn Bauer sprechen?', 'تطلب التحدث إلى شخص بأدب باستعمال Konjunktiv II', 'بعد könnte يأتي الفاعل ich، ويبقى المصدر sprechen في النهاية؛ وHerr يأخذ -n في النصب: Herrn Bauer', 'Könnte ich bitte Herr Bauer sprechen?', 'نقول Herrn Bauer في النصب؛ Herr اسم مذكر ضعيف'],
+      ['Herr Bauer ist gerade nicht da.', 'يبيّن موظف الاستقبال أن الشخص غير موجود الآن', 'الفاعل المفرد Herr Bauer يأخذ ist، والتعبير nicht da يعني غير موجود', 'Herr Bauer sind gerade nicht da.', 'مع Herr Bauer المفرد نقول ist لا sind'],
+      ['Kann ich ihm etwas ausrichten?', 'يعرض موظف الاستقبال تبليغ رسالة للشخص الغائب', 'في jemandem etwas ausrichten يكون الشخص في الداتيف ihm، ويبقى المصدر ausrichten في النهاية بعد kann', 'Kann ich ihn etwas ausrichten?', 'المتلقي هنا داتيف: ihm؛ أما etwas فهو الشيء المبلّغ']
     ],
     [
-      ['Sara am Apparat.', 'سارة على الخط', 'Sara speaking hier', 'الإطار am Apparat', 'Apparat'],
-      ['Einen Moment, bitte.', 'لحظة من فضلك', 'One Moment, bitte', 'الانتظار Einen Moment', 'Moment'],
-      ['Er ist gerade nicht da.', 'هو ليس هنا الآن', 'Er ist not da', 'الغياب nicht da', 'nicht'],
-      ['Kann ich etwas ausrichten?', 'هل أبلغ رسالة؟', 'Kann ich ihm tell?', 'التبليغ ausrichten', 'ausrichten']
+      ['Guten Tag, Sara Ben Ali am Apparat.', 'مرحبًا، سارة بن علي على الخط', 'Guten Tag, Sara Ben Ali in Apparat.', 'نقول am Apparat؛ ويصح أيضًا Hier spricht Sara Ben Ali', 'Apparat'],
+      ['Könnte ich bitte Herrn Bauer sprechen?', 'هل يمكنني التحدث إلى السيد باور من فضلك؟', 'Könnte ich bitte Herr Bauer sprechen?', 'Herr يأخذ -n في النصب: Herrn Bauer', 'Herrn'],
+      ['Herr Bauer ist gerade nicht da.', 'السيد باور غير موجود الآن', 'Herr Bauer ist gerade kein da.', 'نفي الوجود هنا هو nicht da لا kein da', 'ist'],
+      ['Kann ich ihm etwas ausrichten?', 'هل يمكنني أن أبلغه شيئًا؟', 'Kann ich ihn etwas ausrichten?', 'الشخص الذي نبلّغه يأخذ الداتيف: ihm', 'ihm']
     ],
-    'Sara am Apparat. Einen Moment, bitte.',
-    'Kann ich etwas ausrichten?',
-    'Übe morgen vier Telefon-Sätze laut.',
-    'غدًا تدرّب على أربع جمل هاتف.'),
+    'Guten Tag, Sara Ben Ali am Apparat. Könnte ich bitte Herrn Bauer sprechen?',
+    'Kann ich ihm etwas ausrichten?',
+    'Übe morgen dieses formelle Telefonat:\nGuten Tag, Sara Ben Ali am Apparat.\nKönnte ich bitte Herrn Bauer sprechen?\nHerr Bauer ist gerade nicht da.\nKann ich ihm etwas ausrichten?\nJa, ich bitte um einen Rückruf.',
+    'غدًا راجع التعريف بالنفس وطلب الشخص وذكر غيابه وعرض تبليغ رسالة وطلب إعادة الاتصال.',
+    {
+      factFamilies: ['präposition', 'deklination', 'konjugation', 'kasus'],
+      writing: {
+        zeigt: 'Ein formelles Telefonat in fünf Sätzen',
+        erklaerung: 'اكتب الأدوار الخمسة كاملة: التعريف بالنفس وطلب الشخص وذكر غيابه وعرض تبليغ رسالة وطلب إعادة الاتصال.',
+        prompt: 'اكتب المكالمة الرسمية في خمس جمل متتابعة.',
+        promptDe: 'Guten Tag, Sara Ben Ali am Apparat. · Könnte ich bitte Herrn Bauer sprechen? · Herr Bauer ist gerade nicht da. · Kann ich ihm etwas ausrichten? · Ja, ich bitte um einen Rückruf.',
+        points: ['Guten Tag, Sara Ben Ali am Apparat.', 'Könnte ich bitte Herrn Bauer sprechen?', 'Herr Bauer ist gerade nicht da.', 'Kann ich ihm etwas ausrichten?', 'Ja, ich bitte um einen Rückruf.'],
+        minWords: 30,
+        frage: 'اكتب الجمل الخمس في 30 كلمة على الأقل.',
+        familie: 'register',
+        hinweise: ['عرّف بنفسك بـam Apparat، ثم اطلب Herrn Bauer بصيغة könnte المهذبة.', 'استعمل ihm مع ausrichten وum einen Rückruf مع bitten.']
+      },
+      imitateNearMiss: 'Apparaten',
+      transformHint: 'مع ausrichten يأتي الشخص في الداتيف ihm، ويبقى المصدر في نهاية سؤال modal.',
+      orderAr: 'رتّب السؤال: Kann ثم ich ثم ihm ثم etwas ثم ausrichten.',
+      orderHints: ['ابدأ بالفعل المصرف Kann ثم الفاعل ich.', 'ضع ihm في الداتيف، والمصدر ausrichten في القوس اليميني.'],
+      orderSentence: 'Kann ich ihm etwas ausrichten?',
+      orderRightBracket: ['ausrichten?'],
+      checkOrderSentence: 'Könnte ich bitte Herrn Bauer sprechen?',
+      checkOrderRightBracket: ['sprechen?'],
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال هاتفي مهذب كامل.',
+      speakAr: 'مثّل المكالمة كاملة بصوتين: Guten Tag, Sara Ben Ali am Apparat؛ Könnte ich bitte Herrn Bauer sprechen؛ Herr Bauer ist gerade nicht da؛ Kann ich ihm etwas ausrichten؛ Ja, ich bitte um einen Rückruf.',
+      summaryDe: 'Guten Tag, Sara Ben Ali am Apparat. · Könnte ich bitte Herrn Bauer sprechen? · Herr Bauer ist gerade nicht da. · Kann ich ihm etwas ausrichten? · Ja, ich bitte um einen Rückruf.',
+      summaryAr: 'راجع am Apparat وHerrn Bauer وnicht da وداتيف ihm وbitten um einen Rückruf.',
+      summaryRecap: 'Vorstellung Person Abwesenheit Nachricht Rückruf'
+    }),
 
   U('a2-u5-l5', 'A2', 'مراجعة A2', 'Wiederholung A2', 'pruefstrategie',
     'Am Ende reparierst du weil, Dativ und Perfekt',
