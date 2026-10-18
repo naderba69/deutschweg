@@ -373,25 +373,52 @@ module.exports = [
       hwHintDe: 'Prüfe den Fall: Nominativ → der Student ohne Endung · Akkusativ, Dativ, Genitiv → den/dem/des Studenten. Nur der Herr hat ein n: dem Herrn. Und das Herz: dem Herzen, aber das Herz.'
     }),
 
-  U('b1-u2-l1', 'B1', 'المستقبل', 'Futur', 'konjugation',
-    'Am Ende sagst du eine feste Absicht mit werden',
-    'في النهاية تقول قصدًا ثابتًا مع werden.',
+  U('b1-u2-l1', 'B1', 'المستقبل الأول مع werden: الخطط والوعود والتوقعات', 'Futur I mit werden: Pläne, Versprechen und Vorhersagen', 'konjugation',
+    'Am Ende bildest du fünf Sätze im Futur I mit werden — als Plan, Vorhersage und Frage',
+    'في النهاية تكوّن خمس جمل في المستقبل الأول مع werden: خطة وتوقعًا ووعدًا وسؤالًا.',
     [
-      ['ich werde', 'werden للقصد أو المستقبل', 'will أضعف للخطة المحايدة', 'ich will das morgen erledigen als Plan neutral', 'الخطة werde'],
-      ['Infinitiv am Ende', 'المصدر آخرًا', 'لا بعد werde مباشرة إن طال المفعول', 'ich werde erledigen das morgen', 'das يتقدم'],
-      ['kein will als Futur', 'will رغبة لا زمن', 'لا تُستعمل لكل مستقبل', 'morgen will die Straße repariert', 'المجهول المستقبل wird'],
-      ['es wird regnen', 'التوقع wird', 'لا it will rain', 'es will regnen', 'will ليست التوقع']
+      ['Ich werde die Aufgabe morgen erledigen.', 'تعبّر عن خطتك لإنهاء المهمة غدًا', 'المستقبل الأول: صيغة werden في الموضع الثاني (werde) والمصدر erledigen في نهاية الجملة بعد المفعول والزمان', 'Ich werde erledigen die Aufgabe morgen.', 'المصدر لا يأتي بعد werde مباشرة؛ مكانه نهاية الجملة: die Aufgabe morgen erledigen'],
+      ['Es wird morgen den ganzen Tag regnen.', 'تتوقّع مطرًا طوال الغد', 'للتوقعات والطقس نستعمل es wird + مصدر؛ will تعبّر عن إرادة شخص ولا تناسب السماء', 'Es will morgen den ganzen Tag regnen.', 'للطقس: es wird regnen؛ will إنجليزية الأصل هنا (it will) وليست الصيغة الألمانية'],
+      ['Sie wird dich heute Abend anrufen.', 'تعد بأنها ستتصل بك هذا المساء', 'المصدر المنفصل يبقى كتلة واحدة في نهاية الجملة: anrufen؛ الانفصال يحدث مع الفعل المصرف فقط (ruft … an)', 'Sie wird dich heute Abend rufen an.', 'المصدر لا ينفصل: الصيغة anrufen كاملة في النهاية'],
+      ['Wirst du mir morgen helfen?', 'تسأل بأدب عن مساعدة غدًا', 'سؤال المستقبل يبدأ بـwirst (صيغة du من werden) ويغلق بالمصدر helfen قبل علامة الاستفهام', 'Wirst du mir morgen hilfst?', 'بعد wirst لا يُصرَّف الفعل الثاني بل يبقى مصدرًا: helfen']
     ],
     [
-      ['Ich werde das morgen erledigen.', 'سأنهي هذا غدًا', 'Ich werde erledigen das morgen', 'المصدر آخرًا', 'erledigen'],
-      ['Es wird regnen.', 'ستمطر', 'Es will regnen', 'التوقع wird', 'wird'],
-      ['Wir werden pünktlich sein.', 'سنكون في الوقت', 'Wir werden sein pünktlich', 'sein آخرًا', 'sein'],
-      ['Sie wird anrufen.', 'ستتصل', 'Sie will anrufen als Futur', 'المستقبل wird', 'wird']
+      ['Ich werde die Aufgabe morgen erledigen.', 'سأنهي المهمة غدًا', 'Ich werde erledigen die Aufgabe morgen.', 'werden في الموضع الثاني والمصدر erledigen في النهاية', 'werde'],
+      ['Es wird morgen den ganzen Tag regnen.', 'ستمطر غدًا طوال اليوم', 'Es will morgen den ganzen Tag regnen.', 'توقع الطقس بـes wird لا بـwill', 'wird'],
+      ['Sie wird dich heute Abend anrufen.', 'ستتصل بك هذا المساء', 'Sie wird dich heute Abend rufen an.', 'المصدر المنفصل يبقى موحدًا في النهاية: anrufen', 'anrufen'],
+      ['Wirst du mir morgen helfen?', 'هل ستساعدني غدًا؟', 'Wirst du mir morgen hilfst?', 'السؤال يبدأ بـWirst وينتهي بالمصدر helfen', 'helfen']
     ],
-    'Ich werde das morgen erledigen.',
-    'Es wird regnen.',
-    'Sage morgen zwei Sätze mit werden.',
-    'غدًا قل جملتين مع werden.'),
+    'Ich werde die Aufgabe morgen erledigen.',
+    'Nächstes Jahr werden wir nach Deutschland reisen.',
+    'Wiederhole morgen die fünf Sätze: Ich werde die Aufgabe morgen erledigen. Es wird morgen den ganzen Tag regnen. Sie wird dich heute Abend anrufen. Wirst du mir morgen helfen? Nächstes Jahr werden wir nach Deutschland reisen.',
+    'غدًا راجع الجمل الخمس وتحقّق في كل واحدة من صيغة werden في موضعها والمصدر في النهاية.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'will',
+      transformHint: 'إذا بدأت الجملة بعبارة زمنية مثل Nächstes Jahr شغلت الموضع الأول، فيأتي الفعل المساعد werden ثانيًا قبل الفاعل: werden wir.',
+      orderSentence: 'Ich werde die Aufgabe morgen erledigen.',
+      orderRightBracket: ['erledigen.'],
+      checkOrderSentence: 'Ich werde die Aufgabe morgen erledigen.',
+      checkOrderRightBracket: ['erledigen.'],
+      orderAr: 'رتّب الجملة واضعًا werde ثانيًا والمصدر erledigen في النهاية بعد المفعول والزمان.',
+      orderPromptAr: 'رتّب الجملة واضعًا werde بعد Ich وerledigen. في النهاية.',
+      orderHints: ['ضع werde في الموضع الثاني بعد Ich.', 'أغلق الجملة بالمصدر وحده: erledigen.'],
+      writing: {
+        zeigt: 'Fünf Sätze im Futur I',
+        erklaerung: 'اكتب خمس جمل كاملة في المستقبل الأول: خطة بمصدر نهائي، وتوقع طقس مع es wird، ووعد بمصدر منفصل موحّد، وسؤال يبدأ بـWirst، وجملة بعبارة زمنية متقدمة مع القلب.',
+        hinweise: ['اختر صيغة werden بحسب الفاعل: werde (ich) وwirst (du) وwird (er/sie/es) وwerden (wir/sie).', 'المصدر دائمًا في نهاية الجملة — حتى المنفصل منه يبقى كتلة واحدة: anrufen.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة مع صيغة werden الصحيحة والمصدر في النهاية.',
+        promptDe: 'Ich werde die Aufgabe morgen erledigen. · Es wird morgen den ganzen Tag regnen. · Sie wird dich heute Abend anrufen. · Wirst du mir morgen helfen? · Nächstes Jahr werden wir nach Deutschland reisen.',
+        points: ['Ich werde die Aufgabe morgen erledigen.', 'Es wird morgen den ganzen Tag regnen.', 'Sie wird dich heute Abend anrufen.', 'Wirst du mir morgen helfen?', 'Nächstes Jahr werden wir nach Deutschland reisen.'],
+        minWords: 31,
+        frage: 'اكتب الجمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Ich werde die Aufgabe morgen erledigen. Es wird morgen den ganzen Tag regnen. Sie wird dich heute Abend anrufen. Wirst du mir morgen helfen? Nächstes Jahr werden wir nach Deutschland reisen.',
+      summaryDe: 'Ich werde die Aufgabe morgen erledigen. Es wird morgen den ganzen Tag regnen. Sie wird dich heute Abend anrufen. Wirst du mir morgen helfen? Nächstes Jahr werden wir nach Deutschland reisen.',
+      summaryAr: 'المستقبل الأول = werden مصرّفة في الموضع الثاني + مصدر في نهاية الجملة؛ للتوقع es wird (لا will)، والمصدر المنفصل لا ينقسم (anrufen)، والسؤال يبدأ بـWirst، وبعد عبارة زمنية متقدمة يسبق werden الفاعل.',
+      summaryRecap: 'werden ثانيًا والمصدر أخيرًا',
+      hwHintDe: 'Prüfe: Futur heißt werden in Position zwei und der Infinitiv ganz am Ende — auch trennbar in einem Stück: anrufen. Wetter: es wird, nicht es will.'
+    }),
 
   U('b1-u2-l2', 'B1', 'سرد الماضي', 'Präteritum erzählen', 'konjugation',
     'Am Ende erzählst du eine kurze Geschichte im Präteritum',

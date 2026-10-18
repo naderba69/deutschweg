@@ -10943,5 +10943,122 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u2-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich werde die Aufgabe morgen erledigen.',
+    'Es wird morgen den ganzen Tag regnen.',
+    'Sie wird dich heute Abend anrufen.',
+    'Wirst du mir morgen helfen?',
+    'Nächstes Jahr werden wir nach Deutschland reisen.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u2-l1 precisely scopes Futur I with werden second, infinitive final, es wird predictions, unsplit separable infinitive, wirst questions and time-first inversion across five targets',
+    lesson.title.de === 'Futur I mit werden: Pläne, Versprechen und Vorhersagen' &&
+      lesson.title.ar === 'المستقبل الأول مع werden: الخطط والوعود والتوقعات' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الخطط والتوقعات للمستقبل' &&
+      row.grammar.item === 'werden + Infinitiv am Satzende · Vorhersage mit es wird (nicht will) · trennbarer Infinitiv ungeteilt · Frage mit wirst · Inversion nach vorangestellter Zeit' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du fünf Sätze im Futur I mit werden — als Plan, Vorhersage und Frage' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'werden', 'die Zukunft', 'die Prognose', 'die Vorhersage', 'der Fortschritt', 'die Technik',
+    'die Technologie', 'die Wissenschaft', 'die Forschung', 'der Trend', 'die Tendenz', 'die Statistik',
+    'die Zahl', 'der Anteil', 'das Wachstum', 'der Rückgang', 'der Anstieg', 'die Bevölkerung',
+    'die Generation', 'die Rente', 'das Einkommen', 'der Arbeitsplatz', 'die Digitalisierung',
+    'die Automatisierung', 'der Roboter', 'die Maschine', 'der Klimawandel', 'die Energie',
+    'die Solarenergie', 'das Elektroauto', 'die Batterie', 'die Erfindung', 'der Erfinder',
+    'die Erwartung', 'die Aussicht', 'die Unsicherheit', 'die Sicherheit', 'der Wandel',
+    'die Welt', 'die Natur'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u2-l1 reviews all 40 entries and three bounded mnemonics without manufactured es or gemacht appendages and without rejecting grammatical von-dative genitive paraphrases',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.werden.err === 'Morgen es wird regnen.' &&
+      byWord['der Anteil'].err.includes('von die Frauen') && byWord['der Anteil'].why.includes('von den Frauen') &&
+      byWord['die Solarenergie'].err.includes('hat billiger geworden') &&
+      byWord['die Erfindung'].err.includes('die Welt verändern') &&
+      byWord['der Erfinder'].err.includes('berühmt geworden') &&
+      byWord['der Arbeitsplatz'].err.includes('wird verschwinden') &&
+      byWord['die Batterie'].err.includes('haltet lange') &&
+      !errors.some(e => e.endsWith(' es.')) && !errors.some(e => e.endsWith(' gemacht.')) &&
+      !['Der Anteil von den Frauen steigt.', 'Der Anstieg von den Preisen ist deutlich.',
+        'Das Einkommen von der Familie sinkt.', 'Diese Erfindung hat die Welt verändert gehabt.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Morgen regnet es') && tricks[0].warum.includes('زائدة') &&
+      tricks[1].wie.includes('Anteil der Frauen steigt') && tricks[2].wie.includes('dürfte morgen regnen'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l1 aligns five strict learning clozes, an explicit werde-to-erledigen bracket and a 31-word five-target production',
+    wordCloze1.frage.zeigt === 'Die ____ hilft uns täglich.' && wordCloze1.frage.antworten.join(' ') === 'Technik' &&
+      wordCloze1.frage.nearMiss.Techniken && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Techniken').ok &&
+      wordCloze2.frage.zeigt === 'Viele ____ werden verschwinden.' && wordCloze2.frage.antworten.join(' ') === 'Arbeitsplätze' &&
+      wordCloze2.frage.nearMiss.Arbeitsplatz && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Arbeitsplatz').ok &&
+      wordCloze3.frage.zeigt === 'Der ____ braucht Zeit.' && wordCloze3.frage.antworten.join(' ') === 'Wandel' &&
+      wordCloze3.frage.nearMiss.Wandeln && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Wandeln').ok &&
+      imitate.zeigt.de === 'Ich ____ die Aufgabe morgen erledigen.' && imitate.frage.antworten.join(' ') === 'werde' &&
+      imitate.frage.nearMiss.will && !win.DW.renderers.judgeCloze(imitate.frage, 'will').ok &&
+      drill.frage.zeigt === 'Morgen ____ es regnen.' && drill.frage.antworten.join(' ') === 'wird' &&
+      drill.frage.nearMiss.will && !win.DW.renderers.judgeCloze(drill.frage, 'will').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا werde بعد Ich وerledigen. في النهاية.' &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'werde' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'werde' &&
+      order.frage.fields.mittelfeld.join(' ') === 'die Aufgabe morgen' && order.frage.fields.rsk.join(' ') === 'erledigen.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'die', 'Aufgabe', 'werde', 'morgen', 'erledigen.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 31 &&
+      targets.join(' ').split(/\s+/).length === 31 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l1 makes 80 percent four of five, independently checking wirst questions, es wird cloze, bracket order, in-der-Zukunft case and time-first inversion',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u2-l1\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l1.s07 | cap.b1-u2-l1.s23 | cap.b1-u2-l1.s24 | cap.b1-u2-l1.s08 | cap.b1-u2-l1.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('morgen hilfst')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheck.frage.zeigt === 'Morgen ____ es regnen.' &&
+      clozeCheck.frage.antworten.join(' ') === 'wird' && clozeCheck.frage.nearMiss.will &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'will').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'werde' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'erledigen.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'die', 'Aufgabe', 'werde', 'morgen', 'erledigen.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text.includes('In der Zukunft arbeiten wir anders')) &&
+      checks[3].frage.optionen.some(o => o.text.includes('In die Zukunft arbeiten')) &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('Nächstes Jahr wir werden')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

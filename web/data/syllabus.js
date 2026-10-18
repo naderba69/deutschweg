@@ -109,7 +109,7 @@
     ['المصدر مع zu بعد الفعل والصفة والاسم — وبلا zu بعد الأفعال الناقصة', 'Infinitiv mit zu nach Verb, Adjektiv und Nomen — und kein zu nach Modalverben', 'النية والرغبة والتقييم', 'zu-Infinitiv nach Verben · es ist + Adjektiv + zu · Nomen + zu · zu im trennbaren Verb · kein zu nach Modalverben', 'explicit'],
     ['الخيال الشرطي (Irrealis) مع hätte وwäre وwürde — والطلب المهذب', 'Irrealis mit Konjunktiv II: hätte, wäre, würde und höfliches könnte', 'الأمنيات والشروط غير الواقعية', 'irrealer wenn-Satz mit hätte/wäre am Ende · Antwort mit würde + Infinitiv und Inversion · würde lieber · höfliches könnte · Kurzform reiste', 'explicit'],
     ['تصريف n: النهاية en مع den وdem وdes — والرفع وحده بلا نهاية', 'n-Deklination: -en nach den, dem und des — nur der Nominativ ohne Endung', 'الناس والمهن والحيوانات', 'schwache Maskulina: Nominativ ohne Endung · Akkusativ/Dativ/Genitiv mit -en · der Herr mit -n · das Herz als Ausnahme', 'explicit'],
-    ['المستقبل', 'Futur', 'الخطة', 'werden', 'explicit'],
+    ['المستقبل الأول مع werden: الخطط والوعود والتوقعات', 'Futur I mit werden: Pläne, Versprechen und Vorhersagen', 'الخطط والتوقعات للمستقبل', 'werden + Infinitiv am Satzende · Vorhersage mit es wird (nicht will) · trennbarer Infinitiv ungeteilt · Frage mit wirst · Inversion nach vorangestellter Zeit', 'explicit'],
     ['سرد الماضي', 'Präteritum erzählen', 'السرد', 'Präteritum السردي', 'explicit'],
     ['الإضافة', 'Genitiv', 'الانتماء', 'Genitiv', 'explicit'],
     ['الصفة كاملة', 'Adjektivdeklination', 'الوصف', 'نهايات الصفة الثلاثة', 'explicit'],
