@@ -105,7 +105,7 @@
     ['جمل الصلة: الحالة وحرف الجر والفعل في النهاية', 'Relativsätze: Kasus, Präpositionen und Verbendstellung', 'وصف الأشخاص والأشياء بدقة', 'Relativpronomen nach Genus und Kasus · Präposition + Relativpronomen · Verb am Ende', 'explicit'],
     ['جمل التنازل مع obwohl: الفعل في النهاية وقلب الجملة الرئيسية', 'Konzessivsätze mit obwohl: Verbendstellung und Hauptsatzinversion', 'التعبير عن تناقض بين ظرف ونتيجة', 'obwohl + Verb am Ende · vorangestellter Nebensatz + Verb zuerst · trotzdem/allerdings + V2 · trotz + Genitiv · zwar … aber / einerseits … andererseits', 'explicit'],
     ['النتيجة والسبب: موضع الفعل مع deshalb وdenn وweil', 'Folge und Grund: Verbstellung mit deshalb, denn und weil', 'ربط السبب بالنتيجة والتعليل', 'deshalb/deswegen/daher/folglich + V2 · denn في الموضع صفر بلا قلب · weil + Verb am Ende', 'explicit'],
-    ['لكي', 'damit und um zu', 'الغاية', 'damit وum zu', 'explicit'],
+    ['جمل الغاية مع um … zu وdamit: الفاعل نفسه أو فاعل جديد', 'Finalsätze mit um … zu und damit: gleiches oder neues Subjekt', 'التعبير عن الغاية والهدف', 'um … zu bei gleichem Subjekt · damit + Verb am Ende bei neuem Subjekt · zu im trennbaren Verb · vorangestellte Finalangabe + V2', 'explicit'],
     ['المصدر مع zu', 'Infinitiv mit zu', 'النية', 'Infinitiv mit zu', 'explicit'],
     ['لو كان', 'Irrealis', 'الخيال', 'Konjunktiv II irreal', 'explicit'],
     ['تصريف n', 'n-Deklination', 'الناس', 'n-Deklination', 'explicit'],

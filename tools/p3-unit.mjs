@@ -10475,5 +10475,121 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+
+/* ---------- audited B1 purpose-clause lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich lerne Deutsch, um in Deutschland zu arbeiten.',
+    'Sie spricht langsam, damit alle sie verstehen.',
+    'Ich spare Geld, damit meine Tochter studieren kann.',
+    'Ich fahre früh los, um pünktlich anzukommen.',
+    'Um gesund zu bleiben, mache ich jeden Tag Sport.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l5 precisely scopes um zu with same subject, verb-final damit and the zu-infix across five targets',
+    lesson.title.de === 'Finalsätze mit um … zu und damit: gleiches oder neues Subjekt' &&
+      lesson.title.ar === 'جمل الغاية مع um … zu وdamit: الفاعل نفسه أو فاعل جديد' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'التعبير عن الغاية والهدف' &&
+      row.grammar.item === 'um … zu bei gleichem Subjekt · damit + Verb am Ende bei neuem Subjekt · zu im trennbaren Verb · vorangestellte Finalangabe + V2' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du fünf vollständige Finalsätze mit um … zu und damit' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'damit', 'um', 'erreichen', 'ermöglichen', 'erleichtern', 'unterstützen', 'fördern', 'verstärken',
+    'sparen', 'verdienen', 'investieren', 'organisieren', 'vorbereiten', 'sich interessieren', 'helfen',
+    'dienen', 'nutzen', 'vermeiden', 'das Ziel', 'der Zweck', 'die Absicht', 'das Motiv', 'der Grund',
+    'die Begründung', 'die Folge', 'die Maßnahme', 'die Möglichkeit', 'die Gelegenheit', 'die Aufgabe',
+    'das Verbot', 'die Erlaubnis', 'die Übung', 'die Geduld', 'die Zeit', 'das Geld', 'der Kontakt',
+    'das Ergebnis', 'die Gesundheit', 'die Umwelt', 'die Prüfung'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l5 reviews all 40 entries and three bounded mnemonics without rejecting grammatical ohne-article or von-dative alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.damit.ex.includes('die Prüfung bestehe') && byWord.um.ex.includes('in Berlin zu studieren') &&
+      byWord['ermöglichen'].why.includes('ein sicheres Sprechen') &&
+      byWord['der Zweck'].err.includes('von die Reise') && byWord['der Zweck'].why.includes('von der Reise') &&
+      byWord['die Begründung'].why.includes('ohne eine Begründung') &&
+      byWord['die Erlaubnis'].err.includes('nicht zu fahren') &&
+      byWord['die Maßnahme'].ex.includes('eine Maßnahme, um Strom zu sparen') &&
+      byWord['die Gesundheit'].ex.includes('Um gesund zu bleiben') &&
+      !['Ohne eine Begründung akzeptiere ich das nicht.', 'Ohne die Erlaubnis darfst du nicht fahren.',
+        'Der Zweck von der Reise ist ein Termin.', 'Ich habe keine Zeit zu warten.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('um zu bestehen') && tricks[0].warum.includes('وحدة الفاعل') &&
+      tricks[1].wie.includes('anzukommen') && tricks[2].trick.includes('الفاصلة'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l5 aligns five strict learning clozes, an explicit final-infinitive bracket and a 39-word five-target production',
+    wordCloze1.frage.zeigt === 'Die Firma ____ ihre Mitarbeiter.' && wordCloze1.frage.antworten.join(' ') === 'unterstützt' &&
+      wordCloze1.frage.nearMiss['unterstützen'] && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'unterstützen').ok &&
+      wordCloze2.frage.zeigt === 'Das ____ ist unklar.' && wordCloze2.frage.antworten.join(' ') === 'Motiv' &&
+      wordCloze2.frage.nearMiss.Motive && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Motive').ok &&
+      wordCloze3.frage.zeigt === 'Um gesund zu ____, bewegt er sich täglich.' && wordCloze3.frage.antworten.join(' ') === 'bleiben' &&
+      wordCloze3.frage.nearMiss.bleibt && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'bleibt').ok &&
+      imitate.zeigt.de === 'Ich lerne Deutsch, um in Deutschland ____ arbeiten.' && imitate.frage.antworten.join(' ') === 'zu' &&
+      imitate.frage.nearMiss.to && !win.DW.renderers.judgeCloze(imitate.frage, 'to').ok &&
+      drill.frage.zeigt === 'Ich lerne Deutsch, ____ in Berlin zu studieren.' && drill.frage.antworten.join(' ') === 'um' &&
+      drill.frage.nearMiss.damit && !win.DW.renderers.judgeCloze(drill.frage, 'damit').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا lerne بعد Ich وzu arbeiten. في النهاية.' &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'lerne' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'lerne' &&
+      order.frage.fields.mittelfeld.join(' ') === 'Deutsch, um in Deutschland' && order.frage.fields.rsk.join(' ') === 'zu arbeiten.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'Deutsch,', 'lerne', 'um', 'in', 'Deutschland', 'zu', 'arbeiten.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 39 &&
+      targets.join(' ').split(/\s+/).length === 39 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l5 makes 80 percent four of five, independently checking zu-infix, um, bracket order, verb-final damit and fronted inversion',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l5\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l5.s07 | cap.b1-u1-l5.s23 | cap.b1-u1-l5.s24 | cap.b1-u1-l5.s08 | cap.b1-u1-l5.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('zu ankommen')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Ich lerne Deutsch, ____ in Berlin zu studieren.' &&
+      clozeCheck.frage.antworten.join(' ') === 'um' && clozeCheck.frage.nearMiss.damit &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'damit').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'lerne' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'zu arbeiten.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'Deutsch,', 'lerne', 'um', 'in', 'Deutschland', 'zu', 'arbeiten.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text.includes('die Prüfung bestehe')) &&
+      checks[3].frage.optionen.some(o => o.text.includes('bestehe die Prüfung')) &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('bleiben, ich mache')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

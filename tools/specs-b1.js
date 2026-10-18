@@ -185,25 +185,52 @@ module.exports = [
       hwHintDe: 'Prüfe: deshalb bin · deswegen kam · daher blieben · denn ich bin · weil … bin.'
     }),
 
-  U('b1-u1-l5', 'B1', 'لكي', 'damit und um zu', 'wortstellung',
-    'Am Ende unterscheidest du damit und um zu',
-    'في النهاية تفرّق بين damit وum zu.',
+  U('b1-u1-l5', 'B1', 'جمل الغاية مع um … zu وdamit: الفاعل نفسه أو فاعل جديد', 'Finalsätze mit um … zu und damit: gleiches oder neues Subjekt', 'wortstellung',
+    'Am Ende bildest du fünf vollständige Finalsätze mit um … zu und damit',
+    'في النهاية تكوّن خمس جمل غاية كاملة مع um … zu وdamit بحسب الفاعل وبترتيب صحيح.',
     [
-      ['damit neuer Subjekt', 'damit إذا تغيّر الفاعل', 'um zu لا يحتمل فاعلًا ثانيًا', 'um zu sie versteht', 'فاعل ثانٍ يحتاج damit'],
-      ['um zu gleicher Subjekt', 'um zu إذا بقي الفاعل', 'damit ممكن لكن um zu أخف', 'damit ich arbeite ich selbst umständlich', 'الفاعل نفسه um zu'],
-      ['zu plus Infinitiv', 'zu قبل المصدر', 'لا to', 'um to arbeiten', 'to إنجليزية'],
-      ['damit Verb am Ende', 'بعد damit الفعل آخرًا', 'لا V2', 'damit sie versteht mich vor dem Verb', 'versteht آخرًا']
+      ['Ich lerne Deutsch, um in Deutschland zu arbeiten.', 'تعبّر عن غايتك أنت من تعلم الألمانية مع um … zu', 'عندما يكون فاعل الجملة الرئيسية وفاعل الغاية شخصًا واحدًا نستعمل um ثم مصدرًا مع zu في النهاية', 'Ich lerne Deutsch, um in Deutschland arbeiten.', 'في تركيب um … zu لا بد من zu قبل المصدر arbeiten'],
+      ['Sie spricht langsam, damit alle sie verstehen.', 'تعبّر عن غاية تخص أشخاصًا آخرين مع damit', 'عندما يختلف فاعل الغاية (alle) عن فاعل الرئيسية (sie) نستعمل damit مع جملة كاملة فعلها المصرف verstehen في النهاية', 'Sie spricht langsam, damit alle verstehen sie.', 'بعد damit يأتي الفعل المصرف verstehen في النهاية، بعد المفعول sie'],
+      ['Ich spare Geld, damit meine Tochter studieren kann.', 'تضع المصدر قبل الفعل الناقص داخل جملة damit', 'في جملة damit مع فعل ناقص يأتي المصدر studieren قبل الفعل المصرف kann في النهاية', 'Ich spare Geld, damit meine Tochter kann studieren.', 'في الجملة التابعة نقول studieren kann، لا kann studieren'],
+      ['Ich fahre früh los, um pünktlich anzukommen.', 'تدخل zu داخل مصدر فعل منفصل', 'مع الفعل المنفصل ankommen تدخل zu بين البادئة والجذر فتصير anzukommen، وبادئة الفعل في الرئيسية losfahren تذهب إلى النهاية', 'Ich fahre früh los, um pünktlich zu ankommen.', 'الصيغة الصحيحة anzukommen: zu بين an وkommen، لا قبل الفعل كاملًا']
     ],
     [
-      ['Ich lerne Deutsch, damit ich arbeiten kann.', 'أتعلم الألمانية كي أستطيع العمل', 'Ich lerne Deutsch, um zu sie arbeitet', 'فاعل ثانٍ damit', 'damit'],
-      ['Ich lerne Deutsch, um zu arbeiten.', 'أتعلم الألمانية لكي أعمل', 'Ich lerne Deutsch, um to arbeiten', 'zu لا to', 'zu'],
-      ['Sie spricht laut, damit er sie hört.', 'تتكلم بصوت عالٍ كي يسمعها', 'Sie spricht laut, um zu er hört', 'فاعل ثانٍ damit', 'hört'],
-      ['Ich spare, um zu reisen.', 'أوفّر لكي أسافر', 'Ich spare, damit ich reise als einzige Form hier', 'الفاعل نفسه um zu', 'um']
+      ['Ich lerne Deutsch, um in Deutschland zu arbeiten.', 'أتعلم الألمانية لكي أعمل في ألمانيا', 'Ich lerne Deutsch, um in Deutschland arbeiten.', 'الفاعل نفسه: um … zu، وzu قبل arbeiten', 'zu'],
+      ['Sie spricht langsam, damit alle sie verstehen.', 'تتكلم ببطء كي يفهمها الجميع', 'Sie spricht langsam, damit alle verstehen sie.', 'فاعل الغاية مختلف (alle): damit والفعل أخيرًا', 'verstehen'],
+      ['Ich spare Geld, damit meine Tochter studieren kann.', 'أوفّر المال كي تستطيع ابنتي الدراسة', 'Ich spare Geld, damit meine Tochter kann studieren.', 'داخل damit نقول studieren kann', 'kann'],
+      ['Ich fahre früh los, um pünktlich anzukommen.', 'أنطلق مبكرًا لكي أصل في الوقت', 'Ich fahre früh los, um pünktlich zu ankommen.', 'zu داخل الفعل المنفصل: anzukommen', 'anzukommen']
     ],
-    'Ich lerne Deutsch, um zu arbeiten.',
-    'Ich lerne Deutsch, damit ich arbeiten kann.',
-    'Bilde morgen damit und um zu.',
-    'غدًا كوّن damit وum zu.'),
+    'Ich lerne Deutsch, um in Deutschland zu arbeiten.',
+    'Um gesund zu bleiben, mache ich jeden Tag Sport.',
+    'Wiederhole morgen die fünf Sätze: Ich lerne Deutsch, um in Deutschland zu arbeiten. Sie spricht langsam, damit alle sie verstehen. Ich spare Geld, damit meine Tochter studieren kann. Ich fahre früh los, um pünktlich anzukommen. Um gesund zu bleiben, mache ich jeden Tag Sport.',
+    'غدًا راجع الجمل الخمس وحدّد في كل واحدة هل فاعل الغاية هو نفسه أم شخص مختلف.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'to',
+      transformHint: 'إذا تقدمت مجموعة um … zu شغلت الموضع الأول، فيبدأ الفعل المصرف الجملة الرئيسية قبل الفاعل: mache ich.',
+      orderSentence: 'Ich lerne Deutsch, um in Deutschland zu arbeiten.',
+      orderRightBracket: ['zu', 'arbeiten.'],
+      checkOrderSentence: 'Ich lerne Deutsch, um in Deutschland zu arbeiten.',
+      checkOrderRightBracket: ['zu', 'arbeiten.'],
+      orderAr: 'رتّب الجملة الرئيسية أولًا بالفعل lerne ثانيًا، ثم أكمل مجموعة الغاية واجعل zu arbeiten في النهاية.',
+      orderPromptAr: 'رتّب الجملة واضعًا lerne بعد Ich وzu arbeiten. في النهاية.',
+      orderHints: ['ضع lerne في الموضع الثاني من الجملة الرئيسية.', 'أغلق مجموعة الغاية بالمصدر مع zu: zu arbeiten.'],
+      writing: {
+        zeigt: 'Fünf Finalsätze',
+        erklaerung: 'اكتب خمس جمل غاية كاملة: um … zu مع فاعل واحد، وdamit مع فاعل مختلف، وdamit مع فعل ناقص، ومصدر فعل منفصل zu داخله، وجملة غاية متقدمة.',
+        hinweise: ['حدّد فاعل الغاية أولًا: هو نفسه فاعل الرئيسية أم شخص آخر؟', 'ضع الفاصلة قبل um وdamit، وzu قبل المصدر أو داخله مع الفعل المنفصل.'],
+        prompt: 'اكتب جمل الغاية الخمس المستهدفة من الذاكرة مع اختيار الرابط الصحيح وترتيب الأفعال.',
+        promptDe: 'Ich lerne Deutsch, um in Deutschland zu arbeiten. · Sie spricht langsam, damit alle sie verstehen. · Ich spare Geld, damit meine Tochter studieren kann. · Ich fahre früh los, um pünktlich anzukommen. · Um gesund zu bleiben, mache ich jeden Tag Sport.',
+        points: ['Ich lerne Deutsch, um in Deutschland zu arbeiten.', 'Sie spricht langsam, damit alle sie verstehen.', 'Ich spare Geld, damit meine Tochter studieren kann.', 'Ich fahre früh los, um pünktlich anzukommen.', 'Um gesund zu bleiben, mache ich jeden Tag Sport.'],
+        minWords: 39,
+        frage: 'اكتب جمل الغاية الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Ich lerne Deutsch, um in Deutschland zu arbeiten. Sie spricht langsam, damit alle sie verstehen. Ich spare Geld, damit meine Tochter studieren kann. Ich fahre früh los, um pünktlich anzukommen. Um gesund zu bleiben, mache ich jeden Tag Sport.',
+      summaryDe: 'Ich lerne Deutsch, um in Deutschland zu arbeiten. Sie spricht langsam, damit alle sie verstehen. Ich spare Geld, damit meine Tochter studieren kann. Ich fahre früh los, um pünktlich anzukommen. Um gesund zu bleiben, mache ich jeden Tag Sport.',
+      summaryAr: 'um … zu عندما يكون الفاعل واحدًا، وdamit مع جملة كاملة فعلها المصرف أخير عندما يختلف الفاعل؛ وzu تدخل داخل الفعل المنفصل (anzukommen)، والفاصلة قبل um وdamit لازمة.',
+      summaryRecap: 'نفس الفاعل um zu، غيره damit',
+      hwHintDe: 'Prüfe: gleicher Handelnder → um … zu arbeiten · neuer Handelnder → damit … verstehen · studieren kann · anzukommen. Damit mit gleichem Subjekt ist möglich, aber oft umständlich.'
+    }),
 
   U('b1-u1-l6', 'B1', 'المصدر مع zu', 'Infinitiv mit zu', 'wortstellung',
     'Am Ende benutzt du zu vor dem Infinitiv',
