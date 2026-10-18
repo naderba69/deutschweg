@@ -1278,25 +1278,52 @@ module.exports = [
       summaryRecap: 'Vorstellung Person Abwesenheit Nachricht Rückruf'
     }),
 
-  U('a2-u5-l5', 'A2', 'مراجعة A2', 'Wiederholung A2', 'pruefstrategie',
-    'Am Ende reparierst du weil, Dativ und Perfekt',
-    'في النهاية تُصلح weil والداتيف والماضي.',
+  U('a2-u5-l5', 'A2', 'تدريب قواعد A2: ترتيب الجملة والحالات وPerfekt والمقارنة', 'A2-Grammatiktraining: Satzbau, Fälle, Perfekt und Vergleich', 'pruefstrategie',
+    'Am Ende korrigierst du fünf A2-Sätze zu Satzbau, Kasus, Perfekt und Vergleich',
+    'في النهاية تصحّح خمس جمل A2 في ترتيب الجملة والحالات وPerfekt والمقارنة.',
     [
-      ['weil am Ende', 'بعد weil الفعل آخرًا', 'V2 بعد weil خطأ', 'weil ich bin müde', 'الترتيب خطأ'],
-      ['Dativ bei helfen', 'helfen يأخذ داتيف', 'den helfen خطأ', 'ich helfe den Mann', 'الحالة خطأ'],
-      ['sein bei gehen', 'gehen يأخذ sein', 'haben gegangen خطأ', 'ich habe gegangen', 'المساعد خطأ'],
-      ['auf plus Akkusativ bei Wohin', 'الحركة نصب', 'auf dem كهدف خطأ', 'ich lege es auf dem Tisch', 'الحركة den']
+      ['Ich bleibe zu Hause, weil ich krank bin.', 'تضع الفعل المصرف في نهاية الجملة الثانوية مع weil', 'في الجملة الثانوية التي تبدأ بـweil يأتي الفعل المصرف bin في النهاية', 'Ich bleibe zu Hause, weil ich bin krank.', 'بعد weil نقول weil ich krank bin؛ لا نستعمل ترتيب الجملة الرئيسية'],
+      ['Ich helfe dem Mann.', 'تستعمل الداتيف مع الفعل helfen', 'helfen يأخذ الشخص في الداتيف: der Mann يصبح dem Mann', 'Ich helfe den Mann.', 'نقول jemandem helfen؛ لذلك dem Mann لا den Mann'],
+      ['Gestern bin ich nach Hause gegangen.', 'تبني Perfekt للفعل gehen باستعمال sein والقوس اليميني', 'في هذا الاستعمال غير المتعدي للحركة يأخذ gehen الفعل المساعد sein، ويأتي gegangen في النهاية', 'Gestern habe ich nach Hause gegangen.', 'نقول bin … gegangen في هذه الجملة، لا habe … gegangen'],
+      ['Ich lege das Buch auf den Tisch.', 'تميّز اتجاه الحركة بـauf + Akkusativ', 'السؤال Wohin وحركة legen إلى هدف يأخذان النصب: auf den Tisch؛ أما المكان الثابت فيكون auf dem Tisch', 'Ich lege das Buch auf dem Tisch.', 'مع legen إلى هدف نقول auf den Tisch؛ ويصح auf dem Tisch مع مكان ثابت مثل Das Buch liegt auf dem Tisch']
     ],
     [
-      ['Ich bleibe, weil ich müde bin.', 'أبقى لأنني متعب', 'Ich bleibe, weil ich bin müde', 'bin في الآخر', 'bin'],
-      ['Ich helfe dem Mann.', 'أساعد الرجل', 'Ich helfe den Mann', 'helfen مع dem', 'dem'],
-      ['Ich bin gegangen.', 'ذهبت', 'Ich habe gegangen', 'gehen مع sein', 'bin'],
-      ['Ich lege es auf den Tisch.', 'أضعه على الطاولة', 'Ich lege es auf dem Tisch', 'الحركة den', 'den']
+      ['Ich bleibe zu Hause, weil ich krank bin.', 'أبقى في البيت لأنني مريض', 'Ich bleibe zu Hause, weil ich bin krank.', 'بعد weil يأتي الفعل المصرف في النهاية', 'bin'],
+      ['Ich helfe dem Mann.', 'أساعد الرجل', 'Ich helfe den Mann.', 'helfen يأخذ الداتيف: dem Mann', 'dem'],
+      ['Gestern bin ich nach Hause gegangen.', 'ذهبت إلى البيت أمس', 'Gestern bin ich nach Hause gegeht.', 'اسم المفعول من gehen هو gegangen لا gegeht', 'bin'],
+      ['Ich lege das Buch auf den Tisch.', 'أضع الكتاب على الطاولة', 'Ich lege das Buch auf dem Tisch.', 'الاتجاه يأخذ النصب: auf den Tisch؛ أما المكان الثابت فيأخذ الداتيف', 'den']
     ],
-    'Ich bleibe, weil ich müde bin. Ich helfe dem Mann.',
+    'Ich bleibe zu Hause, weil ich krank bin. Ich helfe dem Mann.',
     'Ich helfe dem Mann.',
-    'Korrigiere morgen einen weil-Satz.',
-    'غدًا صحّح جملة weil.'),
+    'Korrigiere morgen diese fünf Sätze:\nIch bleibe zu Hause, weil ich krank bin.\nIch helfe dem Mann.\nGestern bin ich nach Hause gegangen.\nIch lege das Buch auf den Tisch.\nDer Wind ist stärker als gestern.',
+    'غدًا راجع جملة weil والداتيف وPerfekt والاتجاه والمقارنة في الجمل الخمس.',
+    {
+      factFamilies: ['wortstellung', 'kasus', 'konjugation', 'kasus'],
+      writing: {
+        zeigt: 'Fünf korrigierte A2-Sätze',
+        erklaerung: 'اكتب الجمل الخمس الصحيحة: جملة weil والداتيف وPerfekt والاتجاه والمقارنة.',
+        prompt: 'اكتب خمس جمل صحيحة تغطي القواعد الخمس.',
+        promptDe: 'Ich bleibe zu Hause, weil ich krank bin. · Ich helfe dem Mann. · Gestern bin ich nach Hause gegangen. · Ich lege das Buch auf den Tisch. · Der Wind ist stärker als gestern.',
+        points: ['Ich bleibe zu Hause, weil ich krank bin.', 'Ich helfe dem Mann.', 'Gestern bin ich nach Hause gegangen.', 'Ich lege das Buch auf den Tisch.', 'Der Wind ist stärker als gestern.'],
+        minWords: 31,
+        frage: 'اكتب الجمل الخمس في 31 كلمة على الأقل.',
+        familie: 'pruefstrategie',
+        hinweise: ['ضع bin في نهاية جملة weil واستعمل dem Mann مع helfen.', 'استعمل bin … gegangen وauf den Tisch وstärker als.']
+      },
+      imitateNearMiss: 'ist',
+      transformHint: 'helfen يأخذ الداتيف: dem Mann.',
+      orderAr: 'رتّب جملة Perfekt: Gestern ثم bin ثم ich ثم nach Hause ثم gegangen.',
+      orderHints: ['بعد Gestern يأتي الفعل المصرف bin في الموضع الثاني.', 'ضع اسم المفعول gegangen في القوس اليميني.'],
+      orderSentence: 'Gestern bin ich nach Hause gegangen.',
+      orderRightBracket: ['gegangen.'],
+      checkOrderSentence: 'Gestern bin ich nach Hause gegangen.',
+      checkOrderRightBracket: ['gegangen.'],
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة Perfekt صحيحة.',
+      speakAr: 'اقرأ الجمل الخمس واشرح التصحيح: Ich bleibe zu Hause, weil ich krank bin؛ Ich helfe dem Mann؛ Gestern bin ich nach Hause gegangen؛ Ich lege das Buch auf den Tisch؛ Der Wind ist stärker als gestern.',
+      summaryDe: 'Ich bleibe zu Hause, weil ich krank bin. · Ich helfe dem Mann. · Gestern bin ich nach Hause gegangen. · Ich lege das Buch auf den Tisch. · Der Wind ist stärker als gestern.',
+      summaryAr: 'راجع الفعل النهائي مع weil وداتيف helfen وsein مع gegangen ونصب الاتجاه وKomparativ مع als.',
+      summaryRecap: 'Nebensatz Dativ Perfekt Richtung Vergleich'
+    }),
 
   U('a2-u5-l6', 'A2', 'شكل امتحان A2', 'Prüfungsform A2', 'pruefstrategie',
     'Am Ende kennst du die Form und schreibst keinen Ausgleich',

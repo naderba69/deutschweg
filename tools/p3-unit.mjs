@@ -5937,6 +5937,124 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'präposition' &&
       checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'konjugation');
 }
+/* ---------- audited A2 five-target grammar review ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u5-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich bleibe zu Hause, weil ich krank bin.',
+    'Ich helfe dem Mann.',
+    'Gestern bin ich nach Hause gegangen.',
+    'Ich lege das Buch auf den Tisch.',
+    'Der Wind ist stärker als gestern.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u5-l5 precisely scopes five A2 targets: subordinate order, helfen plus dative, sein-Perfekt, directional auf and comparison',
+    lesson.title.de === 'A2-Grammatiktraining: Satzbau, Fälle, Perfekt und Vergleich' &&
+      lesson.title.ar === 'تدريب قواعد A2: ترتيب الجملة والحالات وPerfekt والمقارنة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'تصحيح خمس قواعد أساسية في A2' &&
+      row.grammar.item === 'weil + Verb am Ende · helfen + Dativ · sein + gegangen · auf + Akk. bei Richtung · Komparativ + als' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 31 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte.find(s => s.id === 's21').frage.zeigt === 'Der Wind ist ____ als gestern.' &&
+      lesson.schritte[0].zeigt.de === 'Am Ende korrigierst du fünf A2-Sätze zu Satzbau, Kasus, Perfekt und Vergleich' &&
+      lesson.schritte.find(s => s.id === 's17').zeigt.de === 'Ich bleibe zu Hause, weil ich krank ____.' &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[1]);
+
+  const expectedWords = [
+    'der Dativ', 'der Akkusativ', 'die Präposition', 'der Nebensatz', 'das Verb',
+    'die Endung', 'der Artikel', 'das Adjektiv', 'die Vergangenheit', 'das Perfekt',
+    'das Präteritum', 'der Komparativ', 'der Superlativ', 'die Konjunktion', 'der Satz',
+    'die Bedeutung', 'das Beispiel', 'die Regel', 'der Fehler', 'korrigieren', 'wiederholen',
+    'die Übung', 'die Wiederholung', 'üben', 'nützlich', 'die Prüfung', 'das E-Book',
+    'der Blog', 'stark', 'das Produkt', 'die Qualität'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u5-l5 reviews all 31 entries and three nuanced mnemonics, fixes der Dativ and retains valid contextual alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch')) &&
+      byWord['der Dativ'].ex === targets[1] && byWord['der Dativ'].err === 'Ich helfe den Mann.' &&
+      byWord['der Dativ'].why.includes('der Dativ لا das Dativ') &&
+      byWord['der Akkusativ'].why.includes('für يأخذ Akkusativ') &&
+      byWord['der Nebensatz'].why.includes('الجملة الثانوية مع weil') &&
+      byWord['das Verb'].why.includes('الموضع الثاني') && byWord['das Adjektiv'].why.includes('بلا نهاية') &&
+      byWord['das Perfekt'].why.includes('فعل مساعد وPartizip II') &&
+      byWord['das Präteritum'].why.includes('sein وhaben') &&
+      byWord['der Komparativ'].why.includes('-er وals') && byWord['der Superlativ'].ex.includes('Am stärksten') &&
+      byWord['die Konjunktion'].why.includes('weil') && byWord.wiederholen.ex === 'Wiederholen Sie bitte die Regel.' &&
+      byWord['die Übung'].why.includes('Die Übung ist nützlich gewesen') &&
+      byWord['die Prüfung'].why.includes('in der nächsten Woche') &&
+      byWord['das E-Book'].why.includes('in dem Zug') && byWord['der Blog'].why.includes('ein Blog für Reisende') &&
+      byWord.stark.ex === targets[4] && byWord.stark.why.includes('مع als') &&
+      !['Das Buch liegt auf dem Tisch.', 'Die Übung ist nützlich gewesen.',
+        'Die Prüfung ist in der nächsten Woche.', 'Ich lese ein E-Book in dem Zug.',
+        'Sie schreibt einen Blog für Reisende.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes(targets[1]) && tricks[0].wie.includes(targets[3]) &&
+      tricks[0].warum.includes('Dativ') && tricks[0].warum.includes('Akkusativ') &&
+      tricks[1].wie.includes(targets[0]) && tricks[1].wie.includes(targets[2]) &&
+      tricks[1].warum.includes('bin … gegangen') && tricks[2].wie.includes(targets[4]) &&
+      tricks[2].warum.includes('stärker مع als'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u5-l5 aligns strict inflection and clause clozes, explicit Perfekt order and a 31-word five-target production',
+    wordCloze1.frage.zeigt === 'Das Adjektiv bekommt hier die ____ -en.' &&
+      wordCloze1.frage.antworten.join(' ') === 'Endung' && wordCloze1.frage.nearMiss.Endungen &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Endungen').ok &&
+      wordCloze2.frage.zeigt === 'Diese ____ ist nützlich.' &&
+      wordCloze2.frage.antworten.join(' ') === 'Übung' && wordCloze2.frage.nearMiss['Übungen'] &&
+      !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Übungen').ok &&
+      imitate.frage.antworten.join(' ') === 'bin' && imitate.frage.nearMiss.ist &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'ist').ok &&
+      drill.frage.zeigt === 'Der Wind ist ____ als gestern.' && drill.frage.antworten.join(' ') === 'stärker' &&
+      drill.frage.nearMiss.stärkere && !win.DW.renderers.judgeCloze(drill.frage, 'stärkere').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'bin' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Gestern' && order.frage.fields.lsk.join(' ') === 'bin' &&
+      order.frage.fields.mittelfeld.join(' ') === 'ich nach Hause' && order.frage.fields.rsk.join(' ') === 'gegangen.' &&
+      order.frage.rightBracket.join(' ') === 'gegangen.' && win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Gestern', 'ich', 'bin', 'nach', 'Hause', 'gegangen.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 31 &&
+      targets.join(' ').split(/\s+/).length === 31 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u5-l5 makes 80 percent four of five, independently checking direction, comparison, Perfekt, helfen plus dative and weil order',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u5-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u5-l5.s07 | cap.a2-u5-l5.s21 | cap.a2-u5-l5.s22 | cap.a2-u5-l5.s08 | cap.a2-u5-l5.s04' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Der Wind ist ____ als gestern.' && clozeCheck.frage.antworten.join(' ') === 'stärker' &&
+      clozeCheck.frage.nearMiss.stärkere && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'stärkere').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'bin' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.lsk.join(' ') === 'bin' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'gegangen.' && orderCheck.frage.rightBracket.join(' ') === 'gegangen.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Gestern', 'ich', 'bin', 'nach', 'Hause', 'gegangen.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[3].frage.optionen.some(o => o.text === 'Ich helfe den Mann.') &&
+      checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'wortstellung');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

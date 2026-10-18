@@ -87,7 +87,7 @@
     ['التعبير عن الرأي: الموازنة والموافقة والاعتراض', 'Meinung äußern: abwägen, zustimmen und widersprechen', 'التعبير عن الرأي والموازنة بين الحجج', 'meiner Meinung nach + V2 · einerseits … andererseits · trotzdem + V2 · zustimmen/widersprechen + Dat.', 'explicit', 36, 13],
     ['البريد الإلكتروني الرسمي: النداء والطلب والختام', 'Formelle E-Mail: Anrede, Bitte und Gruß', 'كتابة بريد إلكتروني رسمي', 'Sehr geehrte …, · Ihnen/Ihre · wegen + Genitiv · Könnten Sie …? · Mit freundlichen Grüßen', 'explicit', 31, 13],
     ['مكالمة رسمية: طلب شخص وطلب إعادة الاتصال', 'Formelles Telefonat: nach einer Person fragen und um Rückruf bitten', 'إجراء مكالمة رسمية وطلب إعادة الاتصال', 'am Apparat · Könnte ich bitte Herrn … sprechen? · nicht da · jemandem etwas ausrichten · um Rückruf bitten', 'explicit', 34, 13],
-    ['مراجعة A2', 'Wiederholung A2', 'المراجعة', 'جمع A2', 'explicit', 31, 13],
+    ['تدريب قواعد A2: ترتيب الجملة والحالات وPerfekt والمقارنة', 'A2-Grammatiktraining: Satzbau, Fälle, Perfekt und Vergleich', 'تصحيح خمس قواعد أساسية في A2', 'weil + Verb am Ende · helfen + Dativ · sein + gegangen · auf + Akk. bei Richtung · Komparativ + als', 'explicit', 31, 13],
     ['شكل امتحان A2', 'Prüfungsform A2', 'شكل الامتحان', 'شكل Goethe A2 لا محاكاة', 'explicit', 30, 13],
     /* The Goethe-A2-list unit: the words the official list carries and the app
        did not have yet (tools/goethe-a2-gap.txt). 35 words per lesson, then 2–4 more in the promotion round, so every
