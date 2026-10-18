@@ -9709,5 +9709,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
 }
 
+/* ---------- audited A2 application, appointment and response lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u6-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich informiere mich über die Stelle.',
+    'Ich bewerbe mich um eine Stelle.',
+    'Können Sie meine Frage beantworten?',
+    'Ich bekomme nächste Woche Bescheid.',
+    'Können wir einen Termin vereinbaren?'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u6-l5 precisely scopes office communication through information, application, a question, response and appointment',
+    lesson.title.de === 'Arbeit und Büro: Bewerbung, Termin und Rückmeldung' &&
+      lesson.title.ar === 'العمل والمكتب: التقديم والموعد والرد' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'التقديم إلى وظيفة وتنظيم الموعد وتلقي الرد' &&
+      row.grammar.item === 'sich informieren über + Akk. · sich bewerben um + Akk. · beantworten + Akk. · Bescheid bekommen · Modalverb + Infinitiv' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende benutzt du fünf Sätze für Bewerbung, Termin und Rückmeldung' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'abschließen', 'beantworten', 'beenden', 'begründen', 'beraten', 'berichten', 'der Bescheid',
+    'sich bewerben', 'die Chefin', 'kündigen', 'der Mitarbeiter', 'das Programm', 'das Projekt',
+    'der Workshop', 'rechnen', 'die Reihe', 'organisieren', 'die Situation', 'der Unterschied',
+    'versuchen', 'vereinbaren', 'die Veranstaltung', 'sich eintragen', 'sich informieren',
+    'die Schülerin', 'die Baustelle', 'der Titel', 'das Interview', 'die Sendung', 'aktuell',
+    'chatten', 'die Webseite', 'übersetzen', 'zuhören', 'das Interesse', 'unbedingt', 'eigentlich',
+    'außerdem', 'deutlich', 'schwierig'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u6-l5 reviews all 40 entries and three bounded mnemonics without rejecting valid alternative frames or meanings',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.abschließen.err.endsWith('abschließen.') && byWord.beantworten.ex === targets[2] &&
+      byWord.beantworten.why.includes('antworten') && byWord.beenden.err.endsWith('beendet.') &&
+      byWord.begründen.err.includes('über Ihre Entscheidung') && byWord.beraten.err.includes('einem neuen Mitarbeiter') &&
+      byWord.berichten.ex === 'Die Chefin berichtet über das Projekt.' && byWord['der Bescheid'].ex === targets[3] &&
+      byWord['sich bewerben'].ex === targets[1] && byWord['sich bewerben'].why.includes('für أيضًا') &&
+      byWord['die Chefin'].err.startsWith('Der Chefin') && byWord.kündigen.ex.includes('Arbeitsvertrag gekündigt') &&
+      byWord['der Mitarbeiter'].err.includes('sieben Mitarbeitern') && byWord['das Programm'].err.startsWith('Die Programm') &&
+      byWord['das Projekt'].why.includes('an einem neuen Projekt') && byWord['der Workshop'].err.includes('ein Workshop') &&
+      byWord.rechnen.ex.startsWith('Sarah muss') && byWord.rechnen.err.endsWith('rechnet.') &&
+      byWord['die Reihe'].why.includes('in der dritten Reihe') &&
+      byWord.organisieren.ex === 'Wir organisieren einen Workshop.' && byWord['die Situation'].err.includes('diesen Situation') &&
+      byWord['der Unterschied'].why.includes('zwischen den beiden Kursen') && byWord.versuchen.ex.includes('zu übersetzen') &&
+      byWord.vereinbaren.ex === targets[4] && byWord['die Veranstaltung'].err.includes('einen Veranstaltung') &&
+      byWord['sich eintragen'].why.includes('sich بعد Sie') && byWord['sich informieren'].ex === targets[0] &&
+      byWord['die Schülerin'].err.startsWith('Ein Schülerin') && byWord['die Baustelle'].err.includes('ein großer Baustelle') &&
+      byWord['der Titel'].why.includes('den Titel') && byWord['das Interview'].ex.includes('Interview später anhören') &&
+      byWord['die Sendung'].err.includes('für Jugendlichen') && byWord.aktuell.err.includes('das aktuell Kinoprogramm') &&
+      byWord.chatten.why.includes('mit seinen Kollegen') && byWord['die Webseite'].why.includes('auf der Webseite') &&
+      byWord.übersetzen.err.endsWith('übersetzt?') && byWord.zuhören.why.includes('der Chefin') &&
+      byWord['das Interesse'].why.includes('an der Stelle') && byWord.unbedingt.err.endsWith('anrufst.') &&
+      byWord.eigentlich.err === 'Eigentlich ich arbeite am Sonntag.' && byWord.außerdem.err.includes('die Firma organisiert') &&
+      byWord.deutlich.err.endsWith('deutliche.') && byWord.schwierig.err.includes('schwierig Aufgabe') &&
+      !['Ich informiere über die Stelle.', 'Ich bewerbe mich für eine Stelle.',
+        'Können Sie auf meine Frage antworten?', 'Ich erhalte nächste Woche einen Bescheid.',
+        'Wir machen ein Projekt für unsere Stadt.', 'Was ist der Unterschied von A zu B?',
+        'Im Radio kommt ein Interview von dem Sänger.', 'Sie informiert die Bewerber über die Stelle.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('sich über die Stelle informieren') &&
+      tricks[0].wie.includes('sich um eine Stelle bewerben') && tricks[0].warum.includes('النصب') &&
+      tricks[1].wie === 'eine Frage beantworten · Bescheid bekommen · einen Termin vereinbaren' &&
+      tricks[1].warum.includes('بلا فعل زائد') && tricks[2].wie.includes('Können Sie … beantworten?') &&
+      tricks[2].wie.includes('Können wir … vereinbaren?') && tricks[2].warum.includes('في النهاية'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u6-l5 aligns five strict clozes, explicit modal question order and a 27-word five-target production',
+    wordCloze1.frage.zeigt === 'Die Chefin ____ über das Projekt.' && wordCloze1.frage.antworten.join(' ') === 'berichtet' &&
+      wordCloze1.frage.nearMiss.berichten && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'berichten').ok &&
+      wordCloze2.frage.zeigt === 'Am Freitag gibt es eine ____ im Büro.' && wordCloze2.frage.antworten.join(' ') === 'Veranstaltung' &&
+      wordCloze2.frage.nearMiss.Veranstaltungen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Veranstaltungen').ok &&
+      wordCloze3.frage.zeigt === '____ organisiert die Firma einen Workshop.' && wordCloze3.frage.antworten.join(' ') === 'Außerdem' &&
+      wordCloze3.frage.nearMiss.Außer && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Außer').ok &&
+      imitate.zeigt.de === 'Ich ____ mich über die Stelle.' && imitate.frage.antworten.join(' ') === 'informiere' &&
+      imitate.frage.nearMiss.informieren && !win.DW.renderers.judgeCloze(imitate.frage, 'informieren').ok &&
+      drill.frage.zeigt === 'Ich ____ mich um eine Stelle.' && drill.frage.antworten.join(' ') === 'bewerbe' &&
+      drill.frage.nearMiss.bewerben && !win.DW.renderers.judgeCloze(drill.frage, 'bewerben').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[4] && order.frage.finite === 'Können' && order.frage.verbFirst === true &&
+      order.frage.fields.vorfeld.length === 0 && order.frage.fields.lsk.join(' ') === 'Können' &&
+      order.frage.fields.mittelfeld.join(' ') === 'wir einen Termin vereinbaren?' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Wir', 'Können', 'einen', 'Termin', 'vereinbaren?']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 27 &&
+      targets.join(' ').split(/\s+/).length === 27 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u6-l5 makes 80 percent four of five, independently checking Bescheid, Bewerbung, appointment order, beantworten and informieren',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u6-l5\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u6-l5.s07 | cap.a2-u6-l5.s23 | cap.a2-u6-l5.s24 | cap.a2-u6-l5.s08 | cap.a2-u6-l5.s04' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'lexik-kollokation' &&
+      clozeCheck.frage.zeigt === 'Ich ____ mich um eine Stelle.' && clozeCheck.frage.antworten.join(' ') === 'bewerbe' &&
+      clozeCheck.frage.nearMiss.bewerben && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'bewerben').ok &&
+      orderCheck.frage.correct.join(' ') === targets[4] && orderCheck.frage.finite === 'Können' && orderCheck.frage.verbFirst === true &&
+      orderCheck.frage.fields.vorfeld.length === 0 && orderCheck.frage.fields.lsk.join(' ') === 'Können' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Wir', 'Können', 'einen', 'Termin', 'vereinbaren?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[2]) && checks[3].frage.misconceptionFamilies.b === 'lexik-kollokation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

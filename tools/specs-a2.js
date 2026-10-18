@@ -1550,25 +1550,50 @@ module.exports = [
       summaryRecap: 'Schiff Motorroller Touristin Weg Zug Rückfahrt'
     }),
 
-  U('a2-u6-l5', 'A2', 'العمل والمكتب', 'Arbeit und Büro', 'lexik-kollokation',
-    'Am Ende schreibst du eine Bewerbung in drei Sätzen',
-    'في النهاية تكتب طلب تقديم في ثلاث جمل.',
+  U('a2-u6-l5', 'A2', 'العمل والمكتب: التقديم والموعد والرد', 'Arbeit und Büro: Bewerbung, Termin und Rückmeldung', 'lexik-kollokation',
+    'Am Ende benutzt du fünf Sätze für Bewerbung, Termin und Rückmeldung',
+    'في النهاية تستعمل خمس جمل للتقديم والموعد والرد.',
     [
-      ['Können Sie meine Frage beantworten?', 'الفعل بلا حرف جرّ', 'حرف زائد', 'Können Sie auf meine Frage beantworten?', 'beantworten بلا حرف'],
-      ['Sie bekommt Bescheid.', 'التعبير: Bescheid bekommen', 'ترجمة حرفية', 'Sie bekommt einen Bescheid gegeben', 'التعبير الثابت'],
-      ['Ich bewerbe mich um eine Stelle.', 'um مع التقديم على وظيفة', 'حرف خطأ', 'Ich bewerbe mich für eine Stelle', 'um eine Stelle'],
-      ['Das ist das aktuelle Kinoprogramm.', 'الصفة قبل الاسم', 'الموضع الخطأ', 'Das ist das Kinoprogramm aktuell', 'الصفة قبل الاسم']
+      ['Ich informiere mich über die Stelle.', 'تستعلم عن الوظيفة', 'sich informieren يأتي هنا مع über والنصب', 'Ich informiere mich über der Stelle.', 'نقول über die Stelle؛ über يأخذ هنا النصب'],
+      ['Ich bewerbe mich um eine Stelle.', 'تتقدم إلى وظيفة', 'sich bewerben يأتي هنا مع um والنصب', 'Ich bewerbe mich um einer Stelle.', 'بعد um نقول eine Stelle بالنصب'],
+      ['Können Sie meine Frage beantworten?', 'تطلب إجابة مهذبة', 'beantworten يأخذ السؤال مباشرة بلا حرف جر', 'Können Sie auf meine Frage beantworten?', 'نقول eine Frage beantworten؛ أما antworten فيأتي مع auf'],
+      ['Ich bekomme nächste Woche Bescheid.', 'تذكر موعد الرد', 'التعبير الثابت هو Bescheid bekommen', 'Ich mache nächste Woche Bescheid.', 'نقول Bescheid bekommen لا Bescheid machen']
     ],
     [
-      ['Können wir einen Termin vereinbaren?', 'هل يمكننا الاتفاق على موعد؟', 'Können wir einen Termin vereinbaren machen?', 'مركب كامل', 'vereinbaren'],
-      ['Ich informiere mich über die Prüfung.', 'أستعلم عن الامتحان', 'Ich informiere über die Prüfung.', 'الضمير الانعكاسي: mich', 'informiere'],
-      ['Luis chattet gern mit seinen Freunden.', 'لويس يدردش مع أصدقائه', 'Luis chattet gern zu seinen Freunden.', 'mit + الداتيف', 'chattet'],
-      ['Was ist der Unterschied zwischen den Kursen?', 'ما الفرق بين الدورات؟', 'Was ist der Unterschied von den Kursen?', 'zwischen + الداتيف', 'Unterschied']
+      ['Ich informiere mich über die Stelle.', 'أستعلم عن الوظيفة', 'Ich informiere mich über der Stelle.', 'über يأخذ هنا النصب: über die Stelle', 'informiere'],
+      ['Ich bewerbe mich um eine Stelle.', 'أتقدم إلى وظيفة', 'Ich bewerbe mich um einer Stelle.', 'um يأخذ النصب: um eine Stelle', 'bewerbe'],
+      ['Können Sie meine Frage beantworten?', 'هل يمكنكم الإجابة عن سؤالي؟', 'Können Sie auf meine Frage beantworten?', 'beantworten يأخذ meine Frage مباشرة', 'beantworten'],
+      ['Ich bekomme nächste Woche Bescheid.', 'سأتلقى الرد في الأسبوع القادم', 'Ich mache nächste Woche Bescheid.', 'التعبير هو Bescheid bekommen لا Bescheid machen', 'Bescheid']
     ],
-    'Ich bewerbe mich um eine Stelle.',
+    'Können Sie meine Frage beantworten?',
     'Können wir einen Termin vereinbaren?',
-    'Schreibe morgen einen Satz mit Bescheid und einen mit Termin.',
-    'غدًا اكتب جملة مع Bescheid وأخرى مع Termin.'),
+    'Wiederhole morgen diese fünf Sätze:\nIch informiere mich über die Stelle.\nIch bewerbe mich um eine Stelle.\nKönnen Sie meine Frage beantworten?\nIch bekomme nächste Woche Bescheid.\nKönnen wir einen Termin vereinbaren?',
+    'غدًا راجع الجمل الخمس عن التقديم والموعد والرد.',
+    {
+      factFamilies: ['kasus', 'kasus', 'lexik-kollokation', 'lexik-kollokation'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Bewerbung, Termin und Rückmeldung',
+        erklaerung: 'اكتب الجمل الخمس عن الاستعلام والتقديم والسؤال والرد والموعد.',
+        prompt: 'اكتب الجمل الألمانية الخمس الدقيقة عن التقديم والموعد والرد.',
+        promptDe: 'Ich informiere mich über die Stelle. · Ich bewerbe mich um eine Stelle. · Können Sie meine Frage beantworten? · Ich bekomme nächste Woche Bescheid. · Können wir einen Termin vereinbaren?',
+        points: ['Ich informiere mich über die Stelle.', 'Ich bewerbe mich um eine Stelle.', 'Können Sie meine Frage beantworten?', 'Ich bekomme nächste Woche Bescheid.', 'Können wir einen Termin vereinbaren?'],
+        minWords: 27,
+        frage: 'اكتب الجمل الخمس في 27 كلمة على الأقل.',
+        familie: 'lexik-kollokation',
+        hinweise: ['استعمل sich über etwas informieren وsich um eine Stelle bewerben.', 'ضع beantworten وvereinbaren في نهاية السؤال، واستعمل Bescheid bekommen.']
+      },
+      imitateNearMiss: 'informieren',
+      transformHint: 'في السؤال يأتي Können أولًا، ويبقى المصدر vereinbaren في النهاية.',
+      orderAr: 'رتّب سؤال الموعد: Können أولًا، ثم wir، والمصدر vereinbaren في النهاية.',
+      orderHints: ['ابدأ بالفعل المصرف Können ثم wir.', 'ضع einen Termin في الوسط وvereinbaren في النهاية.'],
+      orderSentence: 'Können wir einen Termin vereinbaren?',
+      checkOrderSentence: 'Können wir einen Termin vereinbaren?',
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال مهذب صحيح عن الموعد.',
+      speakAr: 'اقرأ واشرح الجمل الخمس: Ich informiere mich über die Stelle؛ Ich bewerbe mich um eine Stelle؛ Können Sie meine Frage beantworten؛ Ich bekomme nächste Woche Bescheid؛ Können wir einen Termin vereinbaren؟',
+      summaryDe: 'Ich informiere mich über die Stelle. · Ich bewerbe mich um eine Stelle. · Können Sie meine Frage beantworten? · Ich bekomme nächste Woche Bescheid. · Können wir einen Termin vereinbaren?',
+      summaryAr: 'راجع الضمير الانعكاسي مع über وum، والمفعول المباشر، وBescheid bekommen، والمصدر بعد Können.',
+      summaryRecap: 'Stelle Bewerbung Frage Bescheid Termin Rückmeldung'
+    }),
 
   U('a2-u6-l6', 'A2', 'الناس والمشاعر', 'Menschen und Gefühle', 'deklination',
     'Am Ende beschreibst du Personen und deine Familie genau',
