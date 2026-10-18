@@ -646,25 +646,50 @@ module.exports = [
       hwHintDe: 'Die Kette: direkte Frage → indirekt: „Kommt er?" → ob er kommt · „Wann beginnt der Kurs?" → wann der Kurs beginnt. Das W-Wort bleibt, das Verb wandert ans Ende.'
     }),
 
-  U('b1-u2-l7', 'B1', 'الظن', 'Vermutung', 'register',
-    'Am Ende markierst du eine Vermutung mit könnte oder wohl',
-    'في النهاية تعلّم الظن بـ könnte أو wohl.',
+  U('b1-u2-l7', 'B1', 'الظن والاحتمال: könnte وwohl وvielleicht — درجات اليقين', 'Vermutung: könnte, wohl, vielleicht — Sicherheit stufen', 'register',
+    'Am Ende drückst du eine Vermutung in Stufen aus: könnte, wohl, vielleicht und wahrscheinlich',
+    'في النهاية تعبّر عن ظنك بدرجات: könnte وwohl وvielleicht وwahrscheinlich.',
     [
-      ['könnte', 'könnte ظن لا حقيقة', 'ist يغلق الظن', 'er ist sicher unterwegs als Vermutung', 'اليقين ليس ظنًا'],
-      ['wohl', 'wohl تخفف الجملة', 'بلاها تصبح خبرًا', 'er ist unterwegs als sichere Nachricht', 'wohl تحمي الظن'],
-      ['vielleicht', 'vielleicht ممكن', 'لا maybe', 'maybe er kommt', 'maybe إنجليزية'],
-      ['ich bin nicht sicher', 'حد الظن يُقال', 'لا أدّعِ المعرفة', 'ich weiß es genau obwohl nicht', 'الحد جزء من الصدق']
+      ['Er könnte noch unterwegs sein.', 'تخمن أنه ربما في الطريق بعد', 'könnte (صيغة التخفيف من können) تعلّم الاحتمال دون جزم، والمصدر sein يأتي في نهاية الجملة', 'Er könnte noch unterwegs ist.', 'بعد könnte يجيء المصدر sein أخيرًا لا ist المصرفة'],
+      ['Sie ist wohl schon zu Hause.', 'تقول إنها في الغالب في البيت', 'wohl أداة تخفيف تجلس في وسط الجملة بعد الفعل مباشرة، فتخفف الخبر إلى ترجيح لا يقين', 'Sie wohl ist schon zu Hause.', 'الفعل ist ثانٍ ثم تجيء wohl: Sie ist wohl …'],
+      ['Vielleicht kommt er morgen später.', 'تقول إنه ربما يأتي متأخرًا غدًا', 'Vielleicht في الموضع الأول كغيرها من الظروف فيقدَّم الفعل kommt على الفاعل er', 'Vielleicht er kommt morgen später.', 'بعد ظرف متقدم: الفعل قبل الفاعل (kommt er)'],
+      ['Wahrscheinlich regnet es morgen den ganzen Tag.', 'تتوقع مطر الغد على الأرجح', 'Wahrscheinlich درجة أعلى من vielleicht، وتأخذ الموضع الأول مع تقديم الفعل regnet على es', 'Wahrscheinlich es regnet morgen den ganzen Tag.', 'الظرف المتقدم يشغل الموضع الأول فالفعل ثانٍ: regnet es']
     ],
     [
-      ['Er könnte unterwegs sein.', 'ربما هو في الطريق', 'Er ist sicher unterwegs', 'الظن könnte', 'könnte'],
-      ['Sie ist wohl zu Hause.', 'أغلب الظن أنها في البيت', 'Sie ist zu Hause als Tatsache hier', 'wohl يحفظ الظن', 'wohl'],
-      ['Vielleicht kommt er später.', 'ربما يأتي لاحقًا', 'Maybe kommt er später', 'vielleicht لا maybe', 'Vielleicht'],
-      ['Ich bin nicht sicher.', 'لست متأكدًا', 'Ich weiß es genau', 'الحد ليس يقينًا', 'sicher']
+      ['Er könnte noch unterwegs sein.', 'ربما هو في الطريق بعد', 'Er könnte noch unterwegs ist.', 'könnte للظن والمصدر sein في النهاية', 'könnte'],
+      ['Sie ist wohl schon zu Hause.', 'أغلب الظن أنها في البيت الآن', 'Sie wohl ist schon zu Hause.', 'الفعل ثانٍ وwohl بعده في الوسط', 'wohl'],
+      ['Vielleicht kommt er morgen später.', 'ربما يأتي غدًا متأخرًا', 'Vielleicht er kommt morgen später.', 'بعد Vielleicht المتقدمة: الفعل قبل الفاعل', 'Vielleicht'],
+      ['Wahrscheinlich regnet es morgen den ganzen Tag.', 'الأرجح أن يمطر غدًا طوال النهار', 'Wahrscheinlich es regnet morgen den ganzen Tag.', 'الظرف المتقدم ثم الفعل: regnet es', 'Wahrscheinlich']
     ],
-    'Er könnte unterwegs sein. Ich bin nicht sicher.',
-    'Ich bin nicht sicher.',
-    'Sage morgen eine Vermutung mit könnte.',
-    'غدًا قل ظنًا مع könnte.'),
+    'Er könnte noch unterwegs sein.',
+    'Ich vermute, dass sie den Zug verpasst hat.',
+    'Wiederhole morgen die fünf Sätze: Er könnte noch unterwegs sein. Sie ist wohl schon zu Hause. Vielleicht kommt er morgen später. Wahrscheinlich regnet es morgen den ganzen Tag. Ich vermute, dass sie den Zug verpasst hat.',
+    'غدًا أعد الجمل الخمس وقارن قوة كل علامة ظن.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'können',
+      transformHint: 'في جملة الختام يُدخَل الظن بفعل كامل: Ich vermute, dass … فيأتي المساعد hat في نهاية الجملة الثانوية بعد verpasst.',
+      orderSentence: 'Vielleicht kommt er morgen später.',
+      checkOrderSentence: 'Wahrscheinlich regnet es morgen den ganzen Tag.',
+      orderAr: 'رتّب جملة الظن: ظرف الاحتمال Vielleicht أولًا ثم الفعل kommt في الموضع الثاني قبل الفاعل er.',
+      orderPromptAr: 'رتّب الجملة واضعًا Vielleicht أولًا وkommt في الموضع الثاني.',
+      orderHints: ['ظرف الاحتمال Vielleicht يشغل الموضع الأول.', 'الفعل kommt في الموضع الثاني قبل الفاعل er.'],
+      writing: {
+        zeigt: 'Fünf Sätze mit Vermutung in Stufen',
+        erklaerung: 'اكتب الجمل الخمس كاملة: احتمال مع Er könnte والمصدر sein أخيرًا، وترجيح مع wohl بعد الفعل، وإمكان مع Vielleicht وقلب kommt er، وأرجحية مع Wahrscheinlich وregnet es، وتخمين بفعل كامل Ich vermute, dass … hat.',
+        hinweise: ['اختر الدرجة الصادقة: könnte/vielleicht احتمال، وwohl/wahrscheinlich ترجيح أقوى.', 'الظرف متقدمًا يقلب الترتيب دائمًا: Vielleicht kommt er لا er kommt (وليست maybe الإنجليزية).'],
+        prompt: 'اكتب جمل الظن الخمس المستهدفة من الذاكرة مع علامة الدرجة وترتيب الكلمات الصحيح.',
+        promptDe: 'Er könnte noch unterwegs sein. · Sie ist wohl schon zu Hause. · Vielleicht kommt er morgen später. · Wahrscheinlich regnet es morgen den ganzen Tag. · Ich vermute, dass sie den Zug verpasst hat.',
+        points: ['Er könnte noch unterwegs sein.', 'Sie ist wohl schon zu Hause.', 'Vielleicht kommt er morgen später.', 'Wahrscheinlich regnet es morgen den ganzen Tag.', 'Ich vermute, dass sie den Zug verpasst hat.'],
+        minWords: 31,
+        frage: 'اكتب جمل الظن الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Er könnte noch unterwegs sein. Sie ist wohl schon zu Hause. Vielleicht kommt er morgen später. Wahrscheinlich regnet es morgen den ganzen Tag. Ich vermute, dass sie den Zug verpasst hat.',
+      summaryDe: 'Er könnte noch unterwegs sein. Sie ist wohl schon zu Hause. Vielleicht kommt er morgen später. Wahrscheinlich regnet es morgen den ganzen Tag. Ich vermute, dass sie den Zug verpasst hat.',
+      summaryAr: 'الظن درجات: könnte + مصدر أخيرًا للاحتمال، وwohl بعد الفعل للترجيح، وVielleicht وWahrscheinlich متقدمتين مع تقديم الفعل على الفاعل، وich vermute, dass … بفعل أخير في الثانوية.',
+      summaryRecap: 'ظن بدرجات: könnte، wohl، vielleicht',
+      hwHintDe: 'Die Stufen: sicherlich · wahrscheinlich · wohl · vielleicht · kaum. Nicht „maybe" wie im Englischen; ohne wohl klingt „Sie ist zu Hause" wie eine sichere Nachricht — mit wohl bleibt es eine Vermutung.'
+    }),
 
   U('b1-u2-l8', 'B1', 'قراءة رقم', 'Statistik', 'pruefstrategie',
     'Am Ende beschreibst du eine Zahl bevor du sie deutest',

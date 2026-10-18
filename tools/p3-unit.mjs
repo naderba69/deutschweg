@@ -11633,5 +11633,122 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u2-l7'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Er könnte noch unterwegs sein.',
+    'Sie ist wohl schon zu Hause.',
+    'Vielleicht kommt er morgen später.',
+    'Wahrscheinlich regnet es morgen den ganzen Tag.',
+    'Ich vermute, dass sie den Zug verpasst hat.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u2-l7 precisely scopes graded supposition with koennte plus infinitive, mid-field wohl, fronted adverbs with inversion and a dass clause across five targets',
+    lesson.title.de === 'Vermutung: könnte, wohl, vielleicht — Sicherheit stufen' &&
+      lesson.title.ar === 'الظن والاحتمال: könnte وwohl وvielleicht — درجات اليقين' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'درجات اليقين والتوقع' &&
+      row.grammar.item === 'könnte + Infinitiv am Ende (Möglichkeit) · wohl im Mittelfeld nach dem Verb · Vielleicht/Wahrscheinlich vorangestellt mit Inversion · ich vermute, dass … mit Verbende' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende drückst du eine Vermutung in Stufen aus: könnte, wohl, vielleicht und wahrscheinlich' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'vermuten', 'annehmen', 'schätzen', 'bezweifeln', 'befürchten', 'erwarten', 'vielleicht',
+    'möglicherweise', 'vermutlich', 'wahrscheinlich', 'unwahrscheinlich', 'offenbar',
+    'anscheinend', 'scheinbar', 'angeblich', 'tatsächlich', 'wirklich', 'kaum', 'sicherlich',
+    'bestimmt', 'zweifellos', 'die Vermutung', 'die Annahme', 'der Verdacht', 'die Ahnung',
+    'die Wahrscheinlichkeit', 'die Befürchtung', 'der Schein', 'die Sicherheit', 'die Gewissheit',
+    'die Unsicherheit', 'der Zweifel', 'die Skepsis', 'das Vorurteil', 'die Tatsache',
+    'der Irrtum', 'das Gerücht', 'die Quelle', 'der Beweis', 'die Schlussfolgerung'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u2-l7 reviews all 40 entries and three bounded mnemonics without manufactured appendages, keeping inversion and verb-final supposition frames as the genuine error axes',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.vermuten.err === 'Ich vermute, dass er ist zu Hause.' &&
+      byWord.annehmen.err === 'Ich nehme an, dass kommt sie.' &&
+      byWord.vielleicht.err === 'Vielleicht er kommt später.' &&
+      byWord.vermutlich.err === 'Vermutlich er hat den Zug verpasst.' &&
+      byWord['das Gerücht'].err === 'Das Gerücht verbreitet sich gestern schnell.' &&
+      !['Ich schätze, wir sind zwanzig Leute es.', 'Das ist unwahrscheinlich gemacht.',
+        'Meine Vermutung war richtig gemacht.', 'Das Gerücht hat sich schnell verbreitet gehabt.',
+        'Die Quelle ist nicht bekannt gemacht.', 'Der Zweifel bleibt es.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Vermutlich kommt sie.') &&
+      tricks[1].wie.includes('Ich nehme an, dass sie kommt.') &&
+      tricks[2].wie.includes('Angeblich war er krank.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l7 aligns five strict learning clozes, sound inversion order fields and a 31-word five-target production',
+    wordCloze1.frage.zeigt === 'Wir ____, dass die Preise steigen.' && wordCloze1.frage.antworten.join(' ') === 'erwarten' &&
+      wordCloze1.frage.nearMiss.erwartet && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'erwartet').ok &&
+      wordCloze2.frage.zeigt === 'Meine ____ war richtig.' && wordCloze2.frage.antworten.join(' ') === 'Vermutung' &&
+      wordCloze2.frage.nearMiss.Vermutungen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Vermutungen').ok &&
+      wordCloze3.frage.zeigt === 'Die ____ ist nicht bekannt.' && wordCloze3.frage.antworten.join(' ') === 'Quelle' &&
+      wordCloze3.frage.nearMiss.Quellen && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Quellen').ok &&
+      imitate.zeigt.de === 'Er ____ noch unterwegs sein.' && imitate.frage.antworten.join(' ') === 'könnte' &&
+      imitate.frage.nearMiss['können'] && !win.DW.renderers.judgeCloze(imitate.frage, 'können').ok &&
+      drill.frage.zeigt === 'Ich ____, dass er zu Hause ist.' && drill.frage.antworten.join(' ') === 'vermute' &&
+      drill.frage.nearMiss.vermutet && !win.DW.renderers.judgeCloze(drill.frage, 'vermutet').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا Vielleicht أولًا وkommt في الموضع الثاني.' &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'kommt' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Vielleicht' && order.frage.fields.lsk.join(' ') === 'kommt' &&
+      order.frage.fields.mittelfeld.join(' ') === 'er morgen später.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Vielleicht', 'er', 'kommt', 'morgen', 'später.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 31 &&
+      targets.join(' ').split(/\s+/).length === 31 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l7 makes 80 percent four of five, independently checking probable inversion, vermute cloze, fronted-adverb order, vermutlich inversion and dass verb-final order',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u2-l7\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l7.s07 | cap.b1-u2-l7.s23 | cap.b1-u2-l7.s24 | cap.b1-u2-l7.s10 | cap.b1-u2-l7.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('Wahrscheinlich es regnet')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Ich ____, dass er zu Hause ist.' &&
+      clozeCheck.frage.antworten.join(' ') === 'vermute' && clozeCheck.frage.nearMiss.vermutet &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'vermutet').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'regnet' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Wahrscheinlich' && orderCheck.frage.fields.lsk.join(' ') === 'regnet' &&
+      orderCheck.frage.fields.mittelfeld.join(' ') === 'es morgen den ganzen Tag.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Wahrscheinlich', 'es', 'regnet', 'morgen', 'den', 'ganzen', 'Tag.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Vermutlich hat er den Zug verpasst.') &&
+      checks[3].frage.optionen.some(o => o.text === 'Vermutlich er hat den Zug verpasst.') &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('dass sie hat den Zug verpasst')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
