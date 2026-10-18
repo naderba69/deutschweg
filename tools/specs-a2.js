@@ -1505,25 +1505,50 @@ module.exports = [
       summaryRecap: 'Tennis Sportplatz Team Zelt Insel Fluss'
     }),
 
-  U('a2-u6-l4', 'A2', 'السفر والمرور', 'Reisen und Verkehr', 'präposition',
-    'Am Ende erzählst du von einer Reise und einem Termin auf der Straße',
-    'في النهاية تحكي عن رحلة وموعد في الطريق.',
+  U('a2-u6-l4', 'A2', 'السفر والمرور: وسائل النقل والطريق والعودة', 'Reisen und Verkehr: Verkehrsmittel, Weg und Rückfahrt', 'präposition',
+    'Am Ende benutzt du fünf Sätze über Verkehrsmittel, Wege und die Rückfahrt',
+    'في النهاية تستعمل خمس جمل عن وسائل النقل والطريق والعودة.',
     [
-      ['Ich habe die Führerscheinprüfung bestanden', 'التركيب يبقى كلمة واحدة', 'كلمتان منفصلتان', 'Ich habe die Prüfung von Führerschein bestanden', 'التركيب: Führerscheinprüfung'],
-      ['Wir fahren mit dem Schiff nach Köln', 'المدن مع nach', 'حرف خطأ', 'Wir fahren mit dem Schiff zu Köln', 'المدن: nach'],
-      ['Oskar fährt zur Arbeit', 'zur = zu der', 'الصيغة الكاملة', 'Oskar fährt zu der Arbeit', 'التعبير: zur Arbeit'],
-      ['Das Spiel findet bei Regen statt', 'الفعل المنفصل: findet … statt', 'الفصل الخطأ', 'Das Spiel stattfindet bei Regen', 'statt في النهاية']
+      ['Wir fahren mit dem Schiff nach Köln.', 'تذكر وسيلة النقل والوجهة', 'وسيلة النقل تأتي مع mit والداتيف، والمدينة مع nach', 'Wir fahren mit das Schiff zu Köln.', 'نقول mit dem Schiff وnach Köln'],
+      ['Oskar fährt mit dem Motorroller zur Arbeit.', 'تصف الطريق إلى العمل', 'zur اختصار zu der، ووسيلة النقل تأتي مع mit dem', 'Oskar fährt mit den Motorroller zu der Arbeit.', 'نقول mit dem Motorroller؛ وzur Arbeit هي الصيغة المألوفة'],
+      ['Eine Touristin fragt nach dem Weg.', 'تطلب إرشادًا إلى الطريق', 'الفعل fragen يأتي هنا مع nach والداتيف', 'Eine Touristin fragt für den Weg.', 'التعبير هو nach dem Weg fragen'],
+      ['Ich habe den Zug verpasst.', 'تذكر مشكلة في الرحلة', 'Perfekt هو habe مع Partizip II verpasst في النهاية', 'Ich habe den Zug verpassen.', 'بعد habe نحتاج Partizip II: verpasst']
     ],
     [
-      ['Ich habe den Zug verpasst.', 'فوّت القطار', 'Ich habe den Zug verpasst gemacht.', 'مركب كامل', 'verpasst'],
-      ['Ich gehe gern auf den Flohmarkt.', 'أذهب إلى سوق المستعمل', 'Ich gehe gern in den Flohmarkt.', 'حرف المكان: auf', 'Flohmarkt'],
-      ['Verreist ihr in den Ferien?', 'هل تسافرون في العطلة؟', 'Verreist ihr in die Ferien?', 'التعبير: in den Ferien', 'Verreist'],
-      ['Welche Verkehrsmittel benutzen Sie oft?', 'أي وسائل نقل تستعملون كثيرًا؟', 'Welche Verkehrsmittel benutzen Sie oft mit?', 'بلا mit زائدة', 'Verkehrsmittel']
+      ['Wir fahren mit dem Schiff nach Köln.', 'نسافر بالسفينة إلى كولونيا', 'Wir fahren mit das Schiff nach Köln.', 'mit يأخذ الداتيف: mit dem Schiff', 'Schiff'],
+      ['Oskar fährt mit dem Motorroller zur Arbeit.', 'يذهب أوسكار إلى العمل بالدراجة الصغيرة', 'Oskar fährt mit den Motorroller zur Arbeit.', 'Motorroller مذكر؛ بعد mit نقول dem Motorroller', 'Motorroller'],
+      ['Eine Touristin fragt nach dem Weg.', 'سائحة تسأل عن الطريق', 'Eine Touristin fragt für den Weg.', 'السؤال عن الطريق: nach dem Weg fragen', 'Touristin'],
+      ['Ich habe den Zug verpasst.', 'فوّتُ القطار', 'Ich habe den Zug verpassen.', 'Perfekt يحتاج verpasst لا المصدر verpassen', 'verpasst']
     ],
     'Wir fahren mit dem Schiff nach Köln.',
-    'Ich habe den Zug verpasst.',
-    'Schreibe morgen drei Sätze über deine letzte Reise.',
-    'غدًا اكتب ثلاث جمل عن آخر رحلة لك.'),
+    'Wann fahrt ihr nach Hause zurück?',
+    'Wiederhole morgen diese fünf Sätze:\nWir fahren mit dem Schiff nach Köln.\nOskar fährt mit dem Motorroller zur Arbeit.\nEine Touristin fragt nach dem Weg.\nIch habe den Zug verpasst.\nWann fahrt ihr nach Hause zurück?',
+    'غدًا راجع الجمل الخمس عن وسائل النقل والطريق والعودة.',
+    {
+      factFamilies: ['präposition', 'kasus', 'präposition', 'konjugation'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Verkehrsmitteln, Weg und Rückfahrt',
+        erklaerung: 'اكتب الجمل الخمس عن السفينة والطريق إلى العمل والسؤال عن الطريق وفوات القطار والعودة.',
+        prompt: 'اكتب الجمل الألمانية الخمس الدقيقة عن السفر والمرور.',
+        promptDe: 'Wir fahren mit dem Schiff nach Köln. · Oskar fährt mit dem Motorroller zur Arbeit. · Eine Touristin fragt nach dem Weg. · Ich habe den Zug verpasst. · Wann fahrt ihr nach Hause zurück?',
+        points: ['Wir fahren mit dem Schiff nach Köln.', 'Oskar fährt mit dem Motorroller zur Arbeit.', 'Eine Touristin fragt nach dem Weg.', 'Ich habe den Zug verpasst.', 'Wann fahrt ihr nach Hause zurück?'],
+        minWords: 31,
+        frage: 'اكتب الجمل الخمس في 31 كلمة على الأقل.',
+        familie: 'präposition',
+        hinweise: ['استعمل mit dem، nach Köln، zur Arbeit، nach dem Weg.', 'اختم verpasst وzurück في موضعهما الصحيح.']
+      },
+      imitateNearMiss: 'Schiffes',
+      transformHint: 'بعد Wann يأتي الفعل fahrt، ويبقى الجزء zurück في النهاية.',
+      orderAr: 'رتّب سؤال العودة: Wann ثم fahrt ثم الفاعل، وzurück في النهاية.',
+      orderHints: ['ابدأ بـ Wann ثم ضع fahrt قبل ihr.', 'أكمل بـ nach Hause zurück.'],
+      orderSentence: 'Wann fahrt ihr nach Hause zurück?',
+      checkOrderSentence: 'Wann fahrt ihr nach Hause zurück?',
+      orderPromptAr: 'رتّب الكلمات لتكوين سؤال صحيح عن العودة.',
+      speakAr: 'اقرأ واشرح الجمل الخمس: Wir fahren mit dem Schiff nach Köln؛ Oskar fährt mit dem Motorroller zur Arbeit؛ Eine Touristin fragt nach dem Weg؛ Ich habe den Zug verpasst؛ Wann fahrt ihr nach Hause zurück؟',
+      summaryDe: 'Wir fahren mit dem Schiff nach Köln. · Oskar fährt mit dem Motorroller zur Arbeit. · Eine Touristin fragt nach dem Weg. · Ich habe den Zug verpasst. · Wann fahrt ihr nach Hause zurück?',
+      summaryAr: 'راجع mit مع الداتيف، وnach وzur للوجهة، وfragen nach، وPerfekt، وفصل zurückfahren.',
+      summaryRecap: 'Schiff Motorroller Touristin Weg Zug Rückfahrt'
+    }),
 
   U('a2-u6-l5', 'A2', 'العمل والمكتب', 'Arbeit und Büro', 'lexik-kollokation',
     'Am Ende schreibst du eine Bewerbung in drei Sätzen',

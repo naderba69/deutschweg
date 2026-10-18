@@ -9582,5 +9582,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+/* ---------- audited A2 travel, traffic and return lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u6-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Wir fahren mit dem Schiff nach Köln.',
+    'Oskar fährt mit dem Motorroller zur Arbeit.',
+    'Eine Touristin fragt nach dem Weg.',
+    'Ich habe den Zug verpasst.',
+    'Wann fahrt ihr nach Hause zurück?'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u6-l4 precisely scopes travel and traffic through transport, destinations, directions, Perfekt and the return bracket',
+    lesson.title.de === 'Reisen und Verkehr: Verkehrsmittel, Weg und Rückfahrt' &&
+      lesson.title.ar === 'السفر والمرور: وسائل النقل والطريق والعودة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'وسائل النقل والسؤال عن الطريق والعودة' &&
+      row.grammar.item === 'mit + Dat. beim Verkehrsmittel · nach/zu bei Zielen · fragen nach + Dat. · Perfekt · trennbares Verb' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende benutzt du fünf Sätze über Verkehrsmittel, Wege und die Rückfahrt' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'der Fotoapparat', 'fotografieren', 'der Führerschein', 'die Fundsachen', 'der Fahrplan',
+    'die Ermäßigung', 'das Einkaufszentrum', 'der Motor', 'der Motorroller', 'das Schiff',
+    'der Stadtplan', 'die Tour', 'der Tourist', 'die Touristin', 'das Verkehrsmittel', 'verreisen',
+    'verpassen', 'unternehmen', 'der Flohmarkt', 'stattfinden', 'Karneval', 'Silvester', 'nachts',
+    'der Werktag', 'der Rentner', 'der Tipp', 'raten', 'schimpfen', 'Luxemburg', 'der Luxemburger',
+    'die Luxemburgerin', 'luxemburgisch', 'der Europäer', 'die Europäerin', 'europäisch', 'drüben',
+    'außerhalb', 'vorwärts', 'wahrscheinlich', 'zurückfahren'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u6-l4 reviews all 40 entries and three bounded mnemonics without rejecting valid full, directional or regional alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord['der Fotoapparat'].err.includes('ein Fotoapparat') && byWord.fotografieren.ex.startsWith('In Köln fotografiere') &&
+      byWord['der Führerschein'].ex.includes('Führerscheinprüfung') && byWord['die Fundsachen'].why.includes('bei den Fundsachen') &&
+      byWord['der Fahrplan'].err.startsWith('Die neue Fahrplan') && byWord['die Ermäßigung'].err.includes('einen Ermäßigung') &&
+      byWord['das Einkaufszentrum'].why.includes('in das Einkaufszentrum') && byWord['der Motor'].err.includes('Busse') &&
+      byWord['der Motorroller'].ex === targets[1] && byWord['das Schiff'].ex === targets[0] &&
+      byWord['der Stadtplan'].err.includes('ein Stadtplan') && byWord['die Tour'].why.includes('in den Bergen') &&
+      byWord['der Tourist'].pl === 'die Touristen' && byWord['die Touristin'].ex === targets[2] &&
+      byWord['das Verkehrsmittel'].why.includes('welches Verkehrsmittel') && byWord.verreisen.err.includes('In dem Ferien') &&
+      byWord.verpassen.ex === targets[3] && byWord.unternehmen.why.includes('لا نضيف إليه machen') &&
+      byWord['der Flohmarkt'].why.includes('auf den Flohmarkt') && byWord.stattfinden.err.includes('stattfindet') &&
+      byWord.Karneval.err.includes('feiert viele Menschen') && byWord.Silvester.err === 'Silvester wir feiern zu Hause.' &&
+      byWord.nachts.why.includes('الموضع الثاني') && byWord['der Werktag'].ex.includes('an Werktagen') &&
+      byWord['der Rentner'].why.includes('بلا einen') && byWord['der Tipp'].why.includes('Tipp geben') &&
+      byWord.raten.err.includes('Sie mich') && byWord.schimpfen.why.includes('über die Verspätung') &&
+      byWord.Luxemburg.ex.includes('grenzt an Deutschland und Belgien') && byWord['der Luxemburger'].err.includes('helfen') &&
+      byWord['die Luxemburgerin'].err.includes('erklären') && byWord.luxemburgisch.ex.includes('Luxemburgisch und Deutsch') &&
+      byWord['der Europäer'].ex.includes('in Brüssel') && byWord['der Europäer'].err.includes('arbeitet') &&
+      byWord['die Europäerin'].err.includes('sind Europäerin') &&
+      byWord.europäisch.ex.includes('europäisches Land') && byWord.drüben.err === 'Drüben die Haltestelle ist.' &&
+      byWord.außerhalb.why.includes('außerhalb von der Stadt') && byWord.vorwärts.err.includes('Bus fahren') &&
+      byWord.wahrscheinlich.ex.includes('wenn ihr zurückfahrt') && byWord.wahrscheinlich.err.startsWith('Wahrscheinlich es regnet') &&
+      byWord.zurückfahren.ex === targets[4] &&
+      !['Ich mache gern Fotos.', 'Wir fahren mit dem Schiff zu einem Hafen.', 'Oskar fährt zu der Arbeit.',
+        'Wir fahren durch die Berge.', 'Verreist ihr in die Ferien?', 'In der Nacht ist es hier ruhig.',
+        'Er ist ein Europäer.', 'Sie ist eine Europäerin.', 'Wir wohnen außerhalb von der Stadt.',
+        'Der Zug fährt zurück.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie === 'mit dem Schiff · mit dem Motorroller' &&
+      tricks[0].warum.includes('بعد mit') && tricks[1].wie === 'nach Köln · zur Arbeit · nach Hause' &&
+      tricks[1].warum.includes('zu der') && tricks[2].wie.includes('habe den Zug verpasst') &&
+      tricks[2].wie.includes('fahrt ihr nach Hause zurück') && tricks[2].warum.includes('في النهاية'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u6-l4 aligns five strict clozes, explicit return order and a 31-word five-target production',
+    wordCloze1.frage.zeigt === 'Für Gruppen gibt es eine ____.' && wordCloze1.frage.antworten.join(' ') === 'Ermäßigung' &&
+      wordCloze1.frage.nearMiss.Ermäßigungen && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Ermäßigungen').ok &&
+      wordCloze2.frage.zeigt === '____ feiern wir zu Hause.' && wordCloze2.frage.antworten.join(' ') === 'Silvester' &&
+      wordCloze2.frage.nearMiss.Silvestern && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Silvestern').ok &&
+      wordCloze3.frage.zeigt === 'Der Bus fährt langsam ____.' && wordCloze3.frage.antworten.join(' ') === 'vorwärts' &&
+      wordCloze3.frage.nearMiss.vorwärtst && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'vorwärtst').ok &&
+      imitate.zeigt.de === 'Wir fahren mit dem ____ nach Köln.' && imitate.frage.antworten.join(' ') === 'Schiff' &&
+      imitate.frage.nearMiss.Schiffes && !win.DW.renderers.judgeCloze(imitate.frage, 'Schiffes').ok &&
+      drill.frage.zeigt === 'Oskar fährt mit dem ____ zur Arbeit.' && drill.frage.antworten.join(' ') === 'Motorroller' &&
+      drill.frage.nearMiss.Motorrollers && !win.DW.renderers.judgeCloze(drill.frage, 'Motorrollers').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[4] && order.frage.finite === 'fahrt' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Wann' && order.frage.fields.lsk.join(' ') === 'fahrt' &&
+      order.frage.fields.mittelfeld.join(' ') === 'ihr nach Hause zurück?' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Wann', 'ihr', 'fahrt', 'nach', 'Hause', 'zurück?']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 31 &&
+      targets.join(' ').split(/\s+/).length === 31 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u6-l4 makes 80 percent four of five, independently checking Zug, Motorroller, return order, Schiff and asking the way',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u6-l4\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u6-l4.s07 | cap.a2-u6-l4.s23 | cap.a2-u6-l4.s24 | cap.a2-u6-l4.s10 | cap.a2-u6-l4.s06' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'konjugation' &&
+      clozeCheck.frage.zeigt === 'Oskar fährt mit dem ____ zur Arbeit.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Motorroller' && clozeCheck.frage.nearMiss.Motorrollers &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Motorrollers').ok &&
+      orderCheck.frage.correct.join(' ') === targets[4] && orderCheck.frage.finite === 'fahrt' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Wann' && orderCheck.frage.fields.lsk.join(' ') === 'fahrt' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Wann', 'ihr', 'fahrt', 'nach', 'Hause', 'zurück?']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'präposition');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
