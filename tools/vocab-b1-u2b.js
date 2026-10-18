@@ -161,31 +161,48 @@ module.exports = {
       ['sich erkundigen', 'erkundigt sich · erkundigte sich · hat sich erkundigt', 'يستفسر', 'Ich erkundige mich, wann der Kurs beginnt.', 'Ich erkundige wann der Kurs beginnt.', 'الضمير mich لازم.', 'konjugation', 'erkundige'],
       ['nachfragen', 'fragt nach · fragte nach · hat nachgefragt', 'يستفسر مرة أخرى', 'Ich frage noch einmal nach.', 'Ich frage noch einmal.', 'المنفصل: nach.', 'wortstellung', 'nach'],
       ['anfragen', 'fragt an · fragte an · hat angefragt', 'يراسل للاستفسار', 'Wir fragen beim Amt an.', 'Wir fragen beim Amt.', 'المنفصل: an.', 'wortstellung', 'an'],
-      ['wissen wollen', 'will wissen · wollte wissen · hat wissen wollen', 'يريد أن يعرف', 'Sie will wissen, ob wir kommen.', 'Sie will wissen, ob wir kommen es.', 'لا ضمير زائد.', 'wortstellung', 'wissen'],
+      ['wissen wollen', 'will wissen · wollte wissen · hat wissen wollen', 'يريد أن يعرف', 'Sie will wissen, ob wir kommen.', 'Sie will wissen, ob kommen wir.', 'بعد ob الفعل في النهاية لا ثانيًا.', 'wortstellung', 'wissen'],
       ['ahnen', 'ahnt · ahnte · hat geahnt', 'يحدس', 'Ich ahne, dass es schwierig wird.', 'Ich ahne, dass es wird schwierig.', 'الفعل في النهاية.', 'wortstellung', 'ahne'],
       ['vermuten', 'vermutet · vermutete · hat vermutet', 'يظنّ', 'Ich vermute, dass er zu Hause ist.', 'Ich vermute, dass er ist zu Hause.', 'الفعل في النهاية.', 'wortstellung', 'vermute'],
-      ['erklären', 'erklärt · erklärte · hat erklärt', 'يشرح', 'Der Lehrer erklärt, wie es funktioniert.', 'Der Lehrer erklärt, wie es funktioniert es.', 'لا ضمير زائد.', 'wortstellung', 'erklärt'],
+      ['erklären', 'erklärt · erklärte · hat erklärt', 'يشرح', 'Der Lehrer erklärt, wie es funktioniert.', 'Der Lehrer erklärt, wie funktioniert es.', 'في السؤال غير المباشر الفعل في النهاية.', 'wortstellung', 'erklärt'],
       ['mitteilen', 'teilt mit · teilte mit · hat mitgeteilt', 'يبلّغ', 'Er teilt mir mit, dass er später kommt.', 'Er teilt mir mit, dass er kommt später.', 'الفعل في النهاية.', 'wortstellung', 'mit'],
       ['berichten', 'berichtet · berichtete · hat berichtet', 'يخبر', 'Die Zeitung berichtet, was gestern geschah.', 'Die Zeitung berichtet, was geschah gestern.', 'الفعل في النهاية.', 'wortstellung', 'berichtet'],
       ['antworten', 'antwortet · antwortete · hat geantwortet', 'يجيب', 'Er antwortet, dass er nicht kommen kann.', 'Er antwortet, dass er kann nicht kommen.', 'الفعل في النهاية.', 'wortstellung', 'antwortet'],
       ['erwidern', 'erwidert · erwiderte · hat erwidert', 'يردّ', 'Sie erwidert, dass sie müde ist.', 'Sie erwidert, dass sie ist müde.', 'الفعل في النهاية.', 'wortstellung', 'erwidert'],
-      ['bestätigen', 'bestätigt · bestätigte · hat bestätigt', 'يؤكّد', 'Er bestätigt, dass er kommt.', 'Er bestätigt, dass er kommt es.', 'لا ضمير زائد.', 'wortstellung', 'bestätigt'],
+      ['bestätigen', 'bestätigt · bestätigte · hat bestätigt', 'يؤكّد', 'Er bestätigt, dass er kommt.', 'Er bestätigt, dass kommt er.', 'بعد dass الفعل في النهاية.', 'wortstellung', 'bestätigt'],
       ['verneinen', 'verneint · verneinte · hat verneint', 'ينفي', 'Er verneint, dass er das gesagt hat.', 'Er verneint, dass er hat das gesagt.', 'الفعل في النهاية.', 'wortstellung', 'verneint'],
       ['klären', 'klärt · klärte · hat geklärt', 'يجلّي', 'Wir klären, wer dafür zuständig ist.', 'Wir klären, wer ist dafür zuständig.', 'الفعل في النهاية.', 'wortstellung', 'klären'],
-      ['die Frage', 'die Fragen', 'السؤال', 'Ich habe eine Frage zur Anmeldung.', 'Ich habe eine Frage über die Anmeldung.', 'إلى: zu + داتيف.', 'präposition', 'Frage'],
-      ['das Rätsel', 'die Rätsel', 'اللغز', 'Das Rätsel bleibt ungelöst.', 'Das Rätsel bleibt ungelöst gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Rätsel'],
-      ['das Geheimnis', 'die Geheimnisse', 'السر', 'Sie hat mir das Geheimnis verraten.', 'Sie hat mir das Geheimnis verraten gemacht.', 'الصيغة تكفي.', 'lexik-kollokation', 'Geheimnis'],
-      ['die Neugier', '—', 'الفضول', 'Neugier ist hier erlaubt.', 'Neugier ist hier erlaubt gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Neugier'],
-      ['der Hinweis', 'die Hinweise', 'الإشارة', 'Der Hinweis war hilfreich.', 'Der Hinweis war hilfreich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Hinweis'],
-      ['die Erklärung', 'die Erklärungen', 'الشرح', 'Seine Erklärung war verständlich.', 'Seine Erklärung war verständlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Erklärung'],
+      ['die Frage', 'die Fragen', 'السؤال', 'Ich habe eine Frage zur Anmeldung.', 'Ich habe eine Frage bei der Anmeldung.', 'حرف الجر إلى مع الداتيف: zur Anmeldung.', 'präposition', 'Frage'],
+      ['das Rätsel', 'die Rätsel', 'اللغز', 'Das Rätsel bleibt ungelöst.', 'Das Rätsel bleiben ungelöst.', 'الفعل مصرف مع المفرد المحايد: bleibt.', 'konjugation', 'Rätsel'],
+      ['das Geheimnis', 'die Geheimnisse', 'السر', 'Sie hat mir das Geheimnis verraten.', 'Sie haben mir das Geheimnis verraten.', 'الفعل المساعد مع Sie مفردًا (هي): hat لا haben.', 'konjugation', 'Geheimnis'],
+      ['die Neugier', '—', 'الفضول', 'Neugier ist hier erlaubt.', 'Neugier sind hier erlaubt.', 'الفاعل مفرد: ist لا sind.', 'konjugation', 'Neugier'],
+      ['der Hinweis', 'die Hinweise', 'الإشارة', 'Der Hinweis war hilfreich.', 'Der Hinweis waren hilfreich.', 'الفعل مع المفرد في الماضي: war لا waren.', 'konjugation', 'Hinweis'],
+      ['die Erklärung', 'die Erklärungen', 'الشرح', 'Seine Erklärung war verständlich.', 'Seine Erklärung waren verständlich.', 'الفعل مع المفرد المؤنث في الماضي: war لا waren.', 'konjugation', 'Erklärung'],
       ['die Umfrage', 'die Umfragen', 'الاستبيان', 'Die Umfrage zeigt ein klares Bild.', 'Die Umfrage zeigt ein klar Bild.', 'الصفة: klares.', 'deklination', 'Umfrage'],
-      ['die Auskunft', 'die Auskünfte', 'المعلومة الرسمية', 'Die Auskunft erhalten Sie am Schalter.', 'Die Auskunft erhalten Sie am Schalter es.', 'لا ضمير زائد.', 'wortstellung', 'Auskunft']
+      ['die Auskunft', 'die Auskünfte', 'المعلومة الرسمية', 'Die Auskunft erhalten Sie am Schalter.', 'Die Auskunft erhaltet Sie am Schalter.', 'الفعل مع Sie الرسمية: erhalten لا erhaltet.', 'konjugation', 'Auskunft']
     ],
     tricks: [
       { trick: 'السؤال غير المباشر: الفعل في النهاية، وسؤال بلا أداة يبدأ بـ ob', wie: 'Ich weiß nicht, ob er kommt. · Er fragt, wann der Kurs beginnt.', warum: 'العربية تنقل السؤال بترتيبه نفسه؛ الألمانية تقلب الجملة إلى ترتيب خبري بأداة استفهام.', anchor: 'ob' },
       { trick: 'حرف الجر يسأل عن شيء: woran · womit · worüber', wie: 'Ich weiß nicht, woran es liegt. · Er fragt, womit ich fahre.', warum: 'wo + حرف الجر يبني أداة السؤال عن غير العاقل، والعربية تسأل «بماذا» بلا تركيب.', anchor: 'woran' },
       { trick: 'السؤال المهذب: Können Sie mir sagen, …? — الفعل في النهاية', wie: 'Können Sie mir sagen, wann der Kurs beginnt?', warum: 'العربية تقول «هل يمكن أن تخبرني متى يبدأ؟» بالفعل ثانٍ بعد «متى»، والألمانية تدفعه آخرًا.', anchor: 'wann' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'wie': 'was',
+      'wissen wollen': 'weiß',
+      'die Erklärung': 'Erklärungen'
+    },
+    clozeItemIndex: 3,
+    clozeNearMiss: 'wenn',
+    checkItemIndex: 6,
+    extraCheck: {
+      right: 'Ich habe vergessen, wo ich geparkt habe.',
+      bad: 'Ich habe vergessen, wo habe ich geparkt.',
+      why: 'في السؤال غير المباشر يقف الفعل المساعد habe في نهاية الجملة الثانوية بعد اسم المفعول geparkt.',
+      family: 'wortstellung',
+      prereq: 'cap.b1-u2-l6.s20',
+      frage: 'أي جملة فيها الفعل في نهاية السؤال غير المباشر؟'
+    }
   }
 
 };

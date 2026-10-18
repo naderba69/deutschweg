@@ -11517,5 +11517,121 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u2-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich weiß nicht, ob er heute kommt.',
+    'Sie fragt, wann der Kurs beginnt.',
+    'Kannst du mir sagen, wo der Bahnhof ist?',
+    'Er will wissen, wie viel das Ticket kostet.',
+    'Ich habe vergessen, wo ich geparkt habe.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u2-l6 precisely scopes indirect questions with ob for yes-no questions, retained W-words and verb-final order across five targets',
+    lesson.title.de === 'Indirekte Fragen: ob und W-Wörter mit Verb am Ende' &&
+      lesson.title.ar === 'السؤال غير المباشر: ob وأدوات السؤال مع فعل في النهاية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الاستفسار والنقل' &&
+      row.grammar.item === 'Ja/Nein-Frage mit ob · W-Frage bleibt (wann, wo, wie viel) · Verb am Ende statt Verbzweit · Komma davor · höflich: Kannst du mir sagen, …?' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende verwandelst du Fragen in indirekte Fragen mit ob oder W-Wort und Verb am Ende' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'ob', 'wer', 'was', 'wann', 'wo', 'wie', 'warum', 'wieso', 'weshalb', 'welcher',
+    'wie viel', 'wie lange', 'wie oft', 'wohin', 'woher', 'womit', 'woran', 'fragen',
+    'sich erkundigen', 'nachfragen', 'anfragen', 'wissen wollen', 'ahnen', 'vermuten',
+    'erklären', 'mitteilen', 'berichten', 'antworten', 'erwidern', 'bestätigen', 'verneinen',
+    'klären', 'die Frage', 'das Rätsel', 'das Geheimnis', 'die Neugier', 'der Hinweis',
+    'die Erklärung', 'die Umfrage', 'die Auskunft'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u2-l6 reviews all 40 entries and three bounded mnemonics without manufactured es or gemacht appendages, keeping verb-second order after ob and W-words as the genuine error',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.ob.err === 'Ich weiß nicht, ob kommt er.' &&
+      byWord.warum.err === 'Sie fragt, warum komme ich zu spät.' &&
+      byWord.welcher.err === 'Ich weiß nicht, welcher Zug ist schneller.' &&
+      byWord['wissen wollen'].err === 'Sie will wissen, ob kommen wir.' &&
+      byWord.bestätigen.err === 'Er bestätigt, dass kommt er.' &&
+      !['Sie will wissen, ob wir kommen es.', 'Er bestätigt, dass er kommt es.',
+        'Der Lehrer erklärt, wie es funktioniert es.', 'Das Rätsel bleibt ungelöst gemacht.',
+        'Die Auskunft erhalten Sie am Schalter es.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Ich weiß nicht, ob er kommt.') &&
+      tricks[1].wie.includes('Ich weiß nicht, woran es liegt.') &&
+      tricks[2].wie.includes('Können Sie mir sagen, wann der Kurs beginnt?'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l6 aligns five strict learning clozes, sound fronted-question order fields and a 36-word five-target production',
+    wordCloze1.frage.zeigt === 'Er erklärt, ____ die Maschine funktioniert.' && wordCloze1.frage.antworten.join(' ') === 'wie' &&
+      wordCloze1.frage.nearMiss.was && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'was').ok &&
+      wordCloze2.frage.zeigt === 'Sie will ____, ob wir kommen.' && wordCloze2.frage.antworten.join(' ') === 'wissen' &&
+      wordCloze2.frage.nearMiss['weiß'] && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'weiß').ok &&
+      wordCloze3.frage.zeigt === 'Seine ____ war verständlich.' && wordCloze3.frage.antworten.join(' ') === 'Erklärung' &&
+      wordCloze3.frage.nearMiss['Erklärungen'] && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Erklärungen').ok &&
+      imitate.zeigt.de === 'Ich weiß nicht, ob er heute ____.' && imitate.frage.antworten.join(' ') === 'kommt' &&
+      imitate.frage.nearMiss.kommen && !win.DW.renderers.judgeCloze(imitate.frage, 'kommen').ok &&
+      drill.frage.zeigt === 'Können Sie mir sagen, ____ der Kurs beginnt?' && drill.frage.antworten.join(' ') === 'wann' &&
+      drill.frage.nearMiss.wenn && !win.DW.renderers.judgeCloze(drill.frage, 'wenn').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا سؤال Wann أولًا وsagt بعد الفاصلة مباشرة.' &&
+      order.frage.correct.join(' ') === 'Wann er gestern kam, sagt sie nicht.' && order.frage.finite === 'sagt' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Wann er gestern kam,' && order.frage.fields.lsk.join(' ') === 'sagt' &&
+      order.frage.fields.mittelfeld.join(' ') === 'sie nicht.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Wann', 'er', 'gestern', 'kam,', 'sie', 'sagt', 'nicht.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 36 &&
+      targets.join(' ').split(/\s+/).length === 36 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l6 makes 80 percent four of five, independently checking wie viel order, wann cloze, fronted ob-clause order, warum order and Perfekt verb-final order',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u2-l6\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l6.s07 | cap.b1-u2-l6.s23 | cap.b1-u2-l6.s24 | cap.b1-u2-l6.s09 | cap.b1-u2-l6.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('wie viel kostet das Ticket')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Können Sie mir sagen, ____ der Kurs beginnt?' &&
+      clozeCheck.frage.antworten.join(' ') === 'wann' && clozeCheck.frage.nearMiss.wenn &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'wenn').ok &&
+      orderCheck.frage.correct.join(' ') === 'Ob sie morgen bleibt, sagt er heute.' && orderCheck.frage.finite === 'sagt' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Ob sie morgen bleibt,' && orderCheck.frage.fields.lsk.join(' ') === 'sagt' &&
+      orderCheck.frage.fields.mittelfeld.join(' ') === 'er heute.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ob', 'sie', 'morgen', 'bleibt,', 'er', 'sagt', 'heute.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Sie fragt, warum ich zu spät komme.') &&
+      checks[3].frage.optionen.some(o => o.text === 'Sie fragt, warum komme ich zu spät.') &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('wo habe ich geparkt')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

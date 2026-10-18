@@ -114,7 +114,7 @@
     ['الإضافة (Genitiv): des Mannes وder Frau — والانتماء مع wegen وtrotz', 'Genitiv: des Mannes, der Frau – Zugehörigkeit mit wegen und trotz', 'الملكية والانتماء والسبب', 'Maskulin/Neutrum: des + -(e)s (des Mannes, des Hauses) · Feminin/Plural: der ohne Endung (der Frau) · wegen/trotz + Genitiv · Mengenwörter (die Hälfte, ein Drittel) + Genitiv · in der Nähe des', 'explicit'],
     ['تصريف الصفة: النهايات بعد der وein وبلا أداة — gute وguter وgutem', 'Adjektivdeklination: Endungen nach der, ein und ohne Artikel', 'الوصف الدقيق', 'schwach nach der/die/das: -e (der gute) und -en (den teuren) · gemischt nach ein: guter/gutes · stark ohne Artikel: gutem im Dativ · Plural nach die immer -en', 'explicit'],
     ['als أم wenn؟ مرة في الماضي أو كل مرة', 'Als oder wenn? Einmal damals oder jedes Mal', 'أحداث الماضي والعادات', 'als für einmal Vergangenes (Als ich klein war) · wenn wiederholt, Gegenwart und Zukunft · Verb am Ende im Nebensatz (ankam, bin) · Inversion nach vorangestelltem Nebensatz · wann als Fragewort', 'explicit'],
-    ['السؤال غير المباشر', 'Indirekte Frage', 'النقل', 'ob وW في الآخر', 'explicit'],
+    ['السؤال غير المباشر: ob وأدوات السؤال مع فعل في النهاية', 'Indirekte Fragen: ob und W-Wörter mit Verb am Ende', 'الاستفسار والنقل', 'Ja/Nein-Frage mit ob · W-Frage bleibt (wann, wo, wie viel) · Verb am Ende statt Verbzweit · Komma davor · höflich: Kannst du mir sagen, …?', 'explicit'],
     ['الظن', 'Vermutung', 'الدرجة', 'könnte وwohl', 'explicit'],
     ['قراءة رقم', 'Statistik', 'الأرقام', 'قراءة رسم بسيط', 'explicit'],
     ['طلب عمل', 'Bewerbung', 'العمل', 'شكل الطلب', 'explicit'],

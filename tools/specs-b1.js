@@ -601,25 +601,50 @@ module.exports = [
       hwHintDe: 'Die Kette: Als ich klein war, lebte ich … (einmal, Vergangenheit) · Wenn ich Zeit habe, rufe ich an (jedes Mal) · Ich weiß nicht, wann … (Frage). Im Nebensatz steht das Verb am Ende: ankam, bin.'
     }),
 
-  U('b1-u2-l6', 'B1', 'السؤال غير المباشر', 'Indirekte Frage', 'wortstellung',
-    'Am Ende stellst du eine indirekte Frage mit Verb am Ende',
-    'في النهاية تبني سؤالًا غير مباشر والفعل في الآخر.',
+  U('b1-u2-l6', 'B1', 'السؤال غير المباشر: ob وأدوات السؤال مع فعل في النهاية', 'Indirekte Fragen: ob und W-Wörter mit Verb am Ende', 'wortstellung',
+    'Am Ende verwandelst du Fragen in indirekte Fragen mit ob oder W-Wort und Verb am Ende',
+    'في النهاية تحوّل الأسئلة إلى غير مباشرة مع ob أو أداة سؤال وفعل في النهاية.',
     [
-      ['ob am Ende', 'ob للسؤال بلا أداة', 'الفعل آخرًا', 'ob er kommt heute vor kommt', 'kommt آخرًا'],
-      ['kein Verbzweit', 'بعد ob لا V2', 'ob kommt er خطأ', 'ich weiß nicht, ob kommt er', 'الضمير قبل الفعل'],
-      ['W-Wort bleibt', 'أداة السؤال تبقى والفعل آخرًا', 'wie heißt er في النقل يتغير الترتيب', 'ich weiß nicht, wie heißt er', 'heißt آخرًا'],
-      ['Komma', 'الفاصلة قبل السؤال غير المباشر', 'بلاها يضيع الحد', 'ich weiß nicht ob er kommt', 'الفاصلة لازمة']
+      ['Ich weiß nicht, ob er heute kommt.', 'تنقل سؤال نعم/لا عن مجيئه', 'سؤال بلا أداة استفهام يبدأ بـob بعد الفاصلة، ويقف الفعل kommt في نهاية الجملة الثانوية لا ثانيًا كما في السؤال المباشر', 'Ich weiß nicht, ob kommt er heute.', 'بعد ob لا قلب: الفاعل قبل الفعل الأخير (ob er … kommt)'],
+      ['Sie fragt, wann der Kurs beginnt.', 'تنقل سؤالها عن وقت بداية الدورة', 'أداة السؤال wann تبقى في أول الجملة الثانوية والفعل beginnt يتأخر إلى النهاية', 'Sie fragt, wann beginnt der Kurs.', 'في النقل لا يقف الفعل ثانيًا: wann der Kurs beginnt'],
+      ['Kannst du mir sagen, wo der Bahnhof ist?', 'تسأل بلطف عن مكان المحطة', 'السؤال المهذب بسؤال رئيسي وسؤال منقول: wo تبقى والفعل ist أخيرًا، وعلامة الاستفهام للجملة الرئيسة', 'Kannst du mir sagen, wo ist der Bahnhof?', 'حتى بعد سؤال مهذب: wo der Bahnhof ist بالفعل أخيرًا'],
+      ['Er will wissen, wie viel das Ticket kostet.', 'تنقل رغبته في معرفة السعر', 'wie viel أداة السؤال عن الكم تبقى وبعدها الفاعل فالفعل kostet في النهاية', 'Er will wissen, wie viel kostet das Ticket.', 'بعد wie viel: الفاعل das Ticket ثم kostet أخيرًا']
     ],
     [
-      ['Ich weiß nicht, ob er kommt.', 'لا أعرف إن كان سيأتي', 'Ich weiß nicht, ob kommt er', 'kommt آخرًا', 'kommt'],
-      ['Ich weiß nicht, wie er heißt.', 'لا أعرف ما اسمه', 'Ich weiß nicht, wie heißt er', 'heißt آخرًا', 'heißt'],
-      ['Sie fragt, wann der Zug fährt.', 'تسأل متى يتحرك القطار', 'Sie fragt, wann fährt der Zug', 'fährt آخرًا', 'fährt'],
-      ['Kannst du sagen, wo er wohnt?', 'هل تقول أين يسكن؟', 'Kannst du sagen, wo wohnt er?', 'wohnt آخرًا', 'wohnt']
+      ['Ich weiß nicht, ob er heute kommt.', 'لا أعرف إن كان سيأتي اليوم', 'Ich weiß nicht, ob kommt er heute.', 'ob ثم الفاعل فالفعل في النهاية: kommt', 'kommt'],
+      ['Sie fragt, wann der Kurs beginnt.', 'تسأل متى تبدأ الدورة', 'Sie fragt, wann beginnt der Kurs.', 'wann تبقى والفعل أخيرًا: beginnt', 'beginnt'],
+      ['Kannst du mir sagen, wo der Bahnhof ist?', 'هل تقول لي أين المحطة؟', 'Kannst du mir sagen, wo ist der Bahnhof?', 'في السؤال المنقول: ist في النهاية', 'ist'],
+      ['Er will wissen, wie viel das Ticket kostet.', 'يريد أن يعرف كم ثمن التذكرة', 'Er will wissen, wie viel kostet das Ticket.', 'بعد wie viel: kostet في النهاية', 'kostet']
     ],
-    'Ich weiß nicht, ob er kommt.',
-    'Ich weiß nicht, wie er heißt.',
-    'Bilde morgen ob und wie indirekt.',
-    'غدًا كوّن ob وwie غير مباشرين.'),
+    'Ich weiß nicht, ob er heute kommt.',
+    'Ich habe vergessen, wo ich geparkt habe.',
+    'Wiederhole morgen die fünf Sätze: Ich weiß nicht, ob er heute kommt. Sie fragt, wann der Kurs beginnt. Kannst du mir sagen, wo der Bahnhof ist? Er will wissen, wie viel das Ticket kostet. Ich habe vergessen, wo ich geparkt habe.',
+    'غدًا أعد الجمل الخمس ولاحظ الفعل الأخير في كل سؤال منقول.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'kommen',
+      transformHint: 'في جملة الختام أيضًا يقف فعل السؤال المنقول أخيرًا: wo ich geparkt habe — اسم المفعول قبل المساعد habe في النهاية.',
+      orderSentence: 'Wann er gestern kam, sagt sie nicht.',
+      checkOrderSentence: 'Ob sie morgen bleibt, sagt er heute.',
+      orderAr: 'رتّب الجملة: سؤال منقول متقدم بفعله kam أخيرًا في جزئه، ثم الفعل الرئيسي sagt بعد الفاصلة.',
+      orderPromptAr: 'رتّب الجملة واضعًا سؤال Wann أولًا وsagt بعد الفاصلة مباشرة.',
+      orderHints: ['الجملة الثانوية Wann er gestern kam تشغل الموضع الأول كله.', 'الفعل الرئيسي sagt يأتي مباشرة بعد الفاصلة قبل الفاعل sie.'],
+      writing: {
+        zeigt: 'Fünf indirekte Fragen',
+        erklaerung: 'اكتب الجمل الخمس كاملة: سؤال نعم/لا منقول بـob والفعل kommt أخيرًا، وسؤال مع wann وbeginnt أخيرًا، وسؤال مهذب عن المكان مع ist أخيرًا، وسؤال سعر مع wie viel وkostet أخيرًا، وسؤال منقول مع geparkt habe.',
+        hinweise: ['لا أداة في السؤال الأصلي؟ ضع ob. توجد أداة (wann وwo وwie viel)؟ أبقِها.', 'انقل ترتيب الجملة لا السؤال: فاعل ثم بقية ثم الفعل في النهاية، ولا تنسَ الفاصلة قبل الجزء المنقول.'],
+        prompt: 'اكتب الأسئلة المنقولة الخمسة المستهدفة من الذاكرة مع الفعل الأخير في كل جزء ثانوي.',
+        promptDe: 'Ich weiß nicht, ob er heute kommt. · Sie fragt, wann der Kurs beginnt. · Kannst du mir sagen, wo der Bahnhof ist? · Er will wissen, wie viel das Ticket kostet. · Ich habe vergessen, wo ich geparkt habe.',
+        points: ['Ich weiß nicht, ob er heute kommt.', 'Sie fragt, wann der Kurs beginnt.', 'Kannst du mir sagen, wo der Bahnhof ist?', 'Er will wissen, wie viel das Ticket kostet.', 'Ich habe vergessen, wo ich geparkt habe.'],
+        minWords: 36,
+        frage: 'اكتب الأسئلة غير المباشرة الخمسة كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich weiß nicht, ob er heute kommt. Sie fragt, wann der Kurs beginnt. Kannst du mir sagen, wo der Bahnhof ist? Er will wissen, wie viel das Ticket kostet. Ich habe vergessen, wo ich geparkt habe.',
+      summaryDe: 'Ich weiß nicht, ob er heute kommt. Sie fragt, wann der Kurs beginnt. Kannst du mir sagen, wo der Bahnhof ist? Er will wissen, wie viel das Ticket kostet. Ich habe vergessen, wo ich geparkt habe.',
+      summaryAr: 'السؤال غير المباشر: سؤال نعم/لا يُنقل بـob، وسؤال بأداة تُبقي أداته (wann وwo وwie viel)، وفي الجزء المنقول يقف الفعل أخيرًا بلا ترتيب السؤال المباشر، مع فاصلة قبله.',
+      summaryRecap: 'سؤال غير مباشر: الفعل أخيرًا',
+      hwHintDe: 'Die Kette: direkte Frage → indirekt: „Kommt er?" → ob er kommt · „Wann beginnt der Kurs?" → wann der Kurs beginnt. Das W-Wort bleibt, das Verb wandert ans Ende.'
+    }),
 
   U('b1-u2-l7', 'B1', 'الظن', 'Vermutung', 'register',
     'Am Ende markierst du eine Vermutung mit könnte oder wohl',
