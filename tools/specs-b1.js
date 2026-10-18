@@ -556,25 +556,50 @@ module.exports = [
       hwHintDe: 'Die Kette: der gute Plan · ein guter Plan · den teuren Wagen · mit gutem Plan — guter Plan, schlechte Zeit. Nach der steht -e oder -en, nach ein zeigt das Adjektiv den Kasus (-er, -es), ohne Artikel trägt es alles allein (-em im Dativ).'
     }),
 
-  U('b1-u2-l5', 'B1', 'als وwenn', 'als und wenn', 'wortstellung',
-    'Am Ende unterscheidest du als einmal und wenn wiederholt',
-    'في النهاية تفرّق بين مرة واحدة وتكرار.',
+  U('b1-u2-l5', 'B1', 'als أم wenn؟ مرة في الماضي أو كل مرة', 'Als oder wenn? Einmal damals oder jedes Mal', 'wortstellung',
+    'Am Ende wählst du als für einmal Vergangenheit und wenn für Wiederholung, mit dem Verb am Satzende',
+    'في النهاية تختار als لحدث ماضٍ واحد وwenn للتكرار، مع فعل أخير في الجملة الثانوية.',
     [
-      ['als einmal', 'als للمرة في الماضي', 'wenn هنا خطأ', 'wenn ich klein war einmal', 'المرة als'],
-      ['wenn wiederholt', 'wenn للتكرار أو الحاضر', 'als لا للحاضر', 'als ich krank bin', 'الحاضر wenn'],
-      ['Verb am Ende', 'كلاهما يرسل الفعل إلى الآخر', 'als ich war klein خطأ', 'als ich war klein', 'war آخرًا'],
-      ['wann ist Frage', 'wann سؤال لا سرد', 'لا تخلط', 'wann ich klein war, lebte ich', 'السرد als']
+      ['Als ich klein war, lebte ich in Tunis.', 'تحكي أين عشت في طفولتك الماضية', 'als لفترة أو حدث واحد منتهٍ في الماضي؛ والفعل الرئيسي lebte يأتي مباشرة بعد الجملة الثانوية قبل الفاعل', 'Wenn ich klein war, lebte ich in Tunis.', 'طفولتك فترة واحدة ماضية: als لا wenn'],
+      ['Als sie gestern ankam, regnete es stark.', 'تروي حدثًا واحدًا حدث أمس', 'في جملة als يقف الفعل أخيرًا ويلتصق المنفصل: ankam في نهاية الجملة الثانوية', 'Als sie gestern kam an, regnete es stark.', 'الفعل المنفصل يلتصق في نهاية الثانوية: ankam لا kam an'],
+      ['Wenn ich Zeit habe, rufe ich dich an.', 'تعد بالاتصال عند توفر الوقت', 'wenn للحاضر والمستقبل ولكل مرة؛ وبعد الجملة الثانوية المتقدمة يأتي فعل الرئيسية rufe قبل الفاعل', 'Als ich Zeit habe, rufe ich dich an.', 'als للماضي فقط؛ هنا حاضر ومستقبل: wenn'],
+      ['Ich bleibe zu Hause, wenn ich krank bin.', 'تصف عادتك عن المرض', 'wenn للمتكرر؛ وحين تأتي الجملة الثانوية ثانية يقف فعلها bin أخيرًا وتبقى الرئيسية بترتيبها', 'Ich bleibe zu Hause, wenn ich bin krank.', 'في جملة wenn الفعل أخيرًا: wenn ich krank bin']
     ],
     [
-      ['Als ich klein war, lebte ich hier.', 'عندما كنت صغيرًا عشت هنا', 'Wenn ich klein war, lebte ich hier einmal', 'المرة als', 'Als'],
-      ['Wenn ich krank bin, bleibe ich.', 'كلما مرضت أبقى', 'Als ich krank bin, bleibe ich', 'التكرار wenn', 'Wenn'],
-      ['Als sie ankam, regnete es.', 'عندما وصلت أمطرت', 'Als sie ankam es regnete ohne Komma und Ende', 'الترتيب والفاصلة', 'ankam'],
-      ['Wenn er Zeit hat, ruft er an.', 'كلما كان عنده وقت يتصل', 'Wann er Zeit hat, ruft er an', 'التكرار wenn', 'Wenn']
+      ['Als ich klein war, lebte ich in Tunis.', 'عندما كنت صغيرًا عشت في تونس', 'Wenn ich klein war, lebte ich in Tunis.', 'حدث ماضٍ واحد: als والفعل الرئيسي قبل الفاعل', 'Als'],
+      ['Als sie gestern ankam, regnete es stark.', 'عندما وصلت أمس أمطرت بشدة', 'Als sie gestern kam an, regnete es stark.', 'الفعل أخيرًا في الثانوية والمنفصل ملتصق: ankam', 'ankam'],
+      ['Wenn ich Zeit habe, rufe ich dich an.', 'عندما يكون عندي وقت أتصل بك', 'Als ich Zeit habe, rufe ich dich an.', 'حاضر ومستقبل: wenn وفعل الرئيسية ثانٍ', 'Wenn'],
+      ['Ich bleibe zu Hause, wenn ich krank bin.', 'أبقى في البيت كلما مرضت', 'Ich bleibe zu Hause, wenn ich bin krank.', 'فعل الجملة الثانوية أخيرًا: krank bin', 'bin']
     ],
-    'Als ich klein war, lebte ich hier.',
-    'Wenn ich krank bin, bleibe ich.',
-    'Bilde morgen als und wenn.',
-    'غدًا كوّن als وwenn.'),
+    'Als ich klein war, lebte ich in Tunis.',
+    'Ich weiß nicht, wann der Zug ankommt.',
+    'Wiederhole morgen die fünf Sätze: Als ich klein war, lebte ich in Tunis. Als sie gestern ankam, regnete es stark. Wenn ich Zeit habe, rufe ich dich an. Ich bleibe zu Hause, wenn ich krank bin. Ich weiß nicht, wann der Zug ankommt.',
+    'غدًا أعد الجمل الخمس ولاحظ موضع الفعل في كل جملة ثانوية.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'Wenn',
+      transformHint: 'في جملة الختام wann كلمة سؤال عن الوقت داخل جملة ثانوية يقف فعلها أخيرًا: wann der Zug ankommt؛ ليست أداة سرد ماضٍ مثل als.',
+      orderSentence: 'Als ich klein war, lebten wir in Tunis.',
+      checkOrderSentence: 'Als sie gestern ankam, regnete es stark.',
+      orderAr: 'رتّب جملة الطفولة: جملة als كاملة أولًا بفعلها war أخيرًا، ثم الفعل الرئيسي lebten قبل الفاعل wir.',
+      orderPromptAr: 'رتّب الجملة واضعًا جملة Als أولًا وlebten بعد الفاصلة مباشرة.',
+      orderHints: ['جملة als الثانوية تشغل الموضع الأول وفعلها war في نهايتها.', 'بعد الفاصلة يبدأ الرئيسي بالفعل lebten قبل الفاعل wir.'],
+      writing: {
+        zeigt: 'Fünf Sätze mit als, wenn und wann',
+        erklaerung: 'اكتب الجمل الخمس كاملة: طفولة واحدة مع Als وlebte، وحدث أمس مع ankam أخيرًا، ووعد مع Wenn وrufe، وعادة مع wenn في الآخر وbin أخيرًا، وسؤال غير مباشر مع wann.',
+        hinweise: ['اسأل أولًا: مرة واحدة في الماضي (als) أم كل مرة/حاضر/مستقبل (wenn)؟', 'فعل الجملة الثانوية أخيرًا دائمًا، والمنفصل ملتصق: ankam لا kam an.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة مع الأداة الصحيحة وفعل أخير في كل جملة ثانوية.',
+        promptDe: 'Als ich klein war, lebte ich in Tunis. · Als sie gestern ankam, regnete es stark. · Wenn ich Zeit habe, rufe ich dich an. · Ich bleibe zu Hause, wenn ich krank bin. · Ich weiß nicht, wann der Zug ankommt.',
+        points: ['Als ich klein war, lebte ich in Tunis.', 'Als sie gestern ankam, regnete es stark.', 'Wenn ich Zeit habe, rufe ich dich an.', 'Ich bleibe zu Hause, wenn ich krank bin.', 'Ich weiß nicht, wann der Zug ankommt.'],
+        minWords: 38,
+        frage: 'اكتب جمل als وwenn الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Als ich klein war, lebte ich in Tunis. Als sie gestern ankam, regnete es stark. Wenn ich Zeit habe, rufe ich dich an. Ich bleibe zu Hause, wenn ich krank bin. Ich weiß nicht, wann der Zug ankommt.',
+      summaryDe: 'Als ich klein war, lebte ich in Tunis. Als sie gestern ankam, regnete es stark. Wenn ich Zeit habe, rufe ich dich an. Ich bleibe zu Hause, wenn ich krank bin. Ich weiß nicht, wann der Zug ankommt.',
+      summaryAr: 'als لحدث أو فترة واحدة منتهية في الماضي، وwenn للحاضر والمستقبل ولكل مرة؛ في الجملة الثانوية يقف الفعل أخيرًا (والمنفصل ملتصق)، وإن تقدّمت الثانوية بدأ الرئيسي بفعله قبل الفاعل؛ وwann سؤال عن الوقت.',
+      summaryRecap: 'als للماضي وwenn للتكرار',
+      hwHintDe: 'Die Kette: Als ich klein war, lebte ich … (einmal, Vergangenheit) · Wenn ich Zeit habe, rufe ich an (jedes Mal) · Ich weiß nicht, wann … (Frage). Im Nebensatz steht das Verb am Ende: ankam, bin.'
+    }),
 
   U('b1-u2-l6', 'B1', 'السؤال غير المباشر', 'Indirekte Frage', 'wortstellung',
     'Am Ende stellst du eine indirekte Frage mit Verb am Ende',

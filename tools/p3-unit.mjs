@@ -11403,5 +11403,119 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
+
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u2-l5'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Als ich klein war, lebte ich in Tunis.',
+    'Als sie gestern ankam, regnete es stark.',
+    'Wenn ich Zeit habe, rufe ich dich an.',
+    'Ich bleibe zu Hause, wenn ich krank bin.',
+    'Ich weiß nicht, wann der Zug ankommt.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u2-l5 precisely scopes als for single past events, wenn for repetition and present, verb-final subordinate clauses and wann questions across five targets',
+    lesson.title.de === 'Als oder wenn? Einmal damals oder jedes Mal' &&
+      lesson.title.ar === 'als أم wenn؟ مرة في الماضي أو كل مرة' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'أحداث الماضي والعادات' &&
+      row.grammar.item === 'als für einmal Vergangenes (Als ich klein war) · wenn wiederholt, Gegenwart und Zukunft · Verb am Ende im Nebensatz (ankam, bin) · Inversion nach vorangestelltem Nebensatz · wann als Fragewort' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende wählst du als für einmal Vergangenheit und wenn für Wiederholung, mit dem Verb am Satzende' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'als', 'wenn', 'wann', 'sobald', 'bevor', 'nachdem', 'während', 'seitdem', 'solange',
+    'ehe', 'bis', 'falls', 'sofern', 'sowie', 'der Zeitraum', 'der Zeitpunkt', 'der Augenblick',
+    'das Jahrzehnt', 'das Jahrhundert', 'die Dauer', 'die Gewohnheit', 'die Routine',
+    'der Alltag', 'das Ereignis', 'der Vorfall', 'die Jugend', 'das Alter', 'der Werdegang',
+    'vergehen', 'dauern', 'stattfinden', 'sich erinnern', 'sich gewöhnen', 'verpassen',
+    'rechtzeitig', 'pünktlich', 'kürzlich', 'regelmäßig', 'allmählich', 'gelegentlich'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u2-l5 reviews all 40 entries and three bounded mnemonics without manufactured es or gemacht appendages and without rejecting the grammatical von-dative paraphrase',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.als.err === 'Wenn ich klein war, wohnten wir in Nabeul.' &&
+      byWord.bevor.err === 'Bevor ich gehe, ich räume auf.' &&
+      byWord.nachdem.why.includes('Plusquamperfekt') &&
+      byWord['die Dauer'].err === 'Die Dauer des Kurs beträgt sechs Monate.' &&
+      byWord['der Vorfall'].err === 'Der Vorfall ereignet sich gestern.' &&
+      !errors.some(e => e.endsWith(' es.')) && !errors.some(e => e.endsWith(' gemacht.')) &&
+      !['Die Dauer von dem Kurs beträgt sechs Monate.', 'Der Vorfall hat sich nachts ereignet gehabt.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Als ich in Tunis war, regnete es täglich.') &&
+      tricks[1].wie.includes('Als ich klein war, wohnten wir in Nabeul.') &&
+      tricks[2].wie.includes('Nachdem ich gegessen hatte, ging ich los.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l5 aligns five strict learning clozes, sound fronted-clause order fields and a 38-word five-target production',
+    wordCloze1.frage.zeigt === '____ ich gegessen hatte, ging ich los.' && wordCloze1.frage.antworten.join(' ') === 'Nachdem' &&
+      wordCloze1.frage.nearMiss.Nach && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Nach').ok &&
+      wordCloze2.frage.zeigt === 'Die tägliche ____ hilft mir.' && wordCloze2.frage.antworten.join(' ') === 'Routine' &&
+      wordCloze2.frage.nearMiss.Routinen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Routinen').ok &&
+      wordCloze3.frage.zeigt === 'Ich übe ____.' && wordCloze3.frage.antworten.join(' ') === 'regelmäßig' &&
+      wordCloze3.frage.nearMiss['regelmäßigen'] && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'regelmäßigen').ok &&
+      imitate.zeigt.de === '____ ich klein war, lebte ich in Tunis.' && imitate.frage.antworten.join(' ') === 'Als' &&
+      imitate.frage.nearMiss.Wenn && !win.DW.renderers.judgeCloze(imitate.frage, 'Wenn').ok &&
+      drill.frage.zeigt === '____ ich klein war, wohnten wir in Nabeul.' && drill.frage.antworten.join(' ') === 'Als' &&
+      drill.frage.nearMiss.Wenn && !win.DW.renderers.judgeCloze(drill.frage, 'Wenn').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا جملة Als أولًا وlebten بعد الفاصلة مباشرة.' &&
+      order.frage.correct.join(' ') === 'Als ich klein war, lebten wir in Tunis.' && order.frage.finite === 'lebten' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Als ich klein war,' && order.frage.fields.lsk.join(' ') === 'lebten' &&
+      order.frage.fields.mittelfeld.join(' ') === 'wir in Tunis.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Als', 'ich', 'klein', 'war,', 'wir', 'lebten', 'in', 'Tunis.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 38 &&
+      targets.join(' ').split(/\s+/).length === 38 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l5 makes 80 percent four of five, independently checking verb-final wenn clause, Als cloze, fronted-clause order, bevor inversion and wann question word',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u2-l5\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l5.s07 | cap.b1-u2-l5.s23 | cap.b1-u2-l5.s24 | cap.b1-u2-l5.s09 | cap.b1-u2-l5.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('wenn ich bin krank')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck.frage.zeigt === '____ ich klein war, wohnten wir in Nabeul.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Als' && clozeCheck.frage.nearMiss.Wenn &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Wenn').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'regnete' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Als sie gestern ankam,' && orderCheck.frage.fields.lsk.join(' ') === 'regnete' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Als', 'sie', 'gestern', 'ankam,', 'es', 'regnete', 'stark.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Bevor ich gehe, räume ich auf.') &&
+      checks[3].frage.optionen.some(o => o.text === 'Bevor ich gehe, ich räume auf.') &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('als der Zug ankommt')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
