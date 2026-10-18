@@ -10706,5 +10706,125 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l7'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ich würde dich besuchen, wenn ich mehr Zeit hätte.',
+    'Wenn ich reich wäre, würde ich ein Haus kaufen.',
+    'Ich würde lieber zu Hause bleiben.',
+    'Könntest du mir bitte das Fenster öffnen?',
+    'Wenn ich reich wäre, reiste ich viel.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l7 precisely scopes irrealis with hätte and wäre verb-final, würde answers, polite könnte and the short form reiste across five targets',
+    lesson.title.de === 'Irrealis mit Konjunktiv II: hätte, wäre, würde und höfliches könnte' &&
+      lesson.title.ar === 'الخيال الشرطي (Irrealis) مع hätte وwäre وwürde — والطلب المهذب' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الأمنيات والشروط غير الواقعية' &&
+      row.grammar.item === 'irrealer wenn-Satz mit hätte/wäre am Ende · Antwort mit würde + Infinitiv und Inversion · würde lieber · höfliches könnte · Kurzform reiste' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du vier irreale Sätze mit hätte, wäre und würde und eine höfliche Bitte mit könntest' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'wäre', 'hätte', 'würde', 'könnte', 'müsste', 'dürfte', 'sollte', 'wollte', 'wenn', 'anstatt',
+    'sonst', 'beinahe', 'fast', 'eigentlich', 'lieber', 'kaum', 'die Bedingung', 'die Möglichkeit',
+    'der Wunsch', 'die Hoffnung', 'der Traum', 'die Wirklichkeit', 'die Realität', 'der Vorschlag',
+    'der Rat', 'das Bedauern', 'die Entschuldigung', 'die Ausrede', 'die Vernunft', 'die Fantasie',
+    'die Vorstellung', 'die Alternative', 'die Chance', 'die Warnung', 'die Verantwortung',
+    'die Freiheit', 'der Erfolg', 'das Pech', 'die Schuld', 'die Sorge'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l7 reviews all 40 entries and three bounded mnemonics without manufactured gewesen or gemacht appendages and without rejecting grammatical alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.würde.err.includes('helfen würde') &&
+      byWord['die Entschuldigung'].err === 'Ohne Entschuldigung ich gehe nicht.' &&
+      byWord['die Entschuldigung'].why.includes('ohne eine Entschuldigung') &&
+      byWord.fast.err === 'Ich hätte fast vergessen, dich anrufen.' &&
+      byWord['die Chance'].err === 'Du hätte eine Chance gehabt.' &&
+      byWord['die Wirklichkeit'].why.includes('in Realität') &&
+      byWord['das Pech'].why.includes('Glück') &&
+      byWord.wenn.err.includes('sein würde') &&
+      !['Kannst du mir bitte helfen gewesen?', 'Ich muss früher aufstehen gewesen.',
+        'Du sollst mehr schlafen gewesen.', 'Das darf stimmen gewesen.',
+        'Es gibt noch eine Möglichkeit gewesen.', 'Er hätte kaum Zeit gehabt gemacht.',
+        'Die Realität sieht anders aus gemacht.', 'Am Ende siegte die Vernunft gemacht.',
+        'Ohne eine Entschuldigung gehe ich nicht.', 'Ich würde gern mit dem Zug fahren.',
+        'Das ist mein Traum geworden.', 'Ich werde dir gern helfen.',
+        'Ich hätte fast vergessen dich anzurufen.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('wäre ich gekommen') && tricks[0].warum.includes('تفرّق') &&
+      tricks[1].wie.includes('als ob er alles wüsste') && tricks[2].wie.includes('hätte mehr lernen sollen'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l7 aligns five strict learning clozes, an explicit würde-to-hätte bracket and a 38-word five-target production',
+    wordCloze1.frage.zeigt === 'Das ____ stimmen.' && wordCloze1.frage.antworten.join(' ') === 'dürfte' &&
+      wordCloze1.frage.nearMiss.darf && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'darf').ok &&
+      wordCloze2.frage.zeigt === 'In ____ ist alles anders.' && wordCloze2.frage.antworten.join(' ') === 'Wirklichkeit' &&
+      wordCloze2.frage.nearMiss['Realität'] && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Realität').ok &&
+      wordCloze3.frage.zeigt === 'So ein ____ hätte ich nicht erwartet.' && wordCloze3.frage.antworten.join(' ') === 'Pech' &&
+      wordCloze3.frage.nearMiss['Glück'] && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Glück').ok &&
+      imitate.zeigt.de === 'Ich würde dich besuchen, wenn ich mehr Zeit ____.' && imitate.frage.antworten.join(' ') === 'hätte' &&
+      imitate.frage.nearMiss.habe && !win.DW.renderers.judgeCloze(imitate.frage, 'habe').ok &&
+      drill.frage.zeigt === 'Wenn ich Zeit ____, käme ich mit.' && drill.frage.antworten.join(' ') === 'hätte' &&
+      drill.frage.nearMiss.habe && !win.DW.renderers.judgeCloze(drill.frage, 'habe').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا würde بعد Ich وhätte. في النهاية.' &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'würde' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'würde' &&
+      order.frage.fields.mittelfeld.join(' ') === 'dich besuchen, wenn ich mehr Zeit' && order.frage.fields.rsk.join(' ') === 'hätte.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'dich', 'würde', 'besuchen,', 'wenn', 'ich', 'mehr', 'Zeit', 'hätte.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 38 &&
+      targets.join(' ').split(/\s+/).length === 38 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l7 makes 80 percent four of five, independently checking polite könnte, hätte cloze, bracket order, wenn without double würde and fronted-condition inversion',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l7\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l7.s07 | cap.b1-u1-l7.s23 | cap.b1-u1-l7.s24 | cap.b1-u1-l7.s10 | cap.b1-u1-l7.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('Fenster öffnest')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheck.frage.zeigt === 'Wenn ich Zeit ____, käme ich mit.' &&
+      clozeCheck.frage.antworten.join(' ') === 'hätte' && clozeCheck.frage.nearMiss.habe &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'habe').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'würde' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'hätte.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'dich', 'würde', 'besuchen,', 'wenn', 'ich', 'mehr', 'Zeit', 'hätte.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text.includes('Wenn ich du wäre')) &&
+      checks[3].frage.optionen.some(o => o.text.includes('sein würde')) &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('wäre, ich reiste')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

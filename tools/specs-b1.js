@@ -279,25 +279,52 @@ module.exports = [
       hwHintDe: 'Prüfe: Verb, Adjektiv oder Nomen davor → zu + Infinitiv am Ende. Ist das Verb trennbar, steht zu innen: einzuladen. Nach einem Modal wie muss fehlt zu ganz.'
     }),
 
-  U('b1-u1-l7', 'B1', 'لو كان', 'Irrealis', 'konjugation',
-    'Am Ende bildest du einen irrealen wenn-Satz',
-    'في النهاية تبني جملة لو غير واقعية.',
+  U('b1-u1-l7', 'B1', 'الخيال الشرطي (Irrealis) مع hätte وwäre وwürde — والطلب المهذب', 'Irrealis mit Konjunktiv II: hätte, wäre, würde und höfliches könnte', 'konjugation',
+    'Am Ende bildest du vier irreale Sätze mit hätte, wäre und würde und eine höfliche Bitte mit könntest',
+    'في النهاية تكوّن أربع جمل خيال شرطية بـhätte وwäre وwürde وطلبًا مهذبًا بـkönntest.',
     [
-      ['wenn ich Zeit hätte', 'غير الواقع hätte', 'habe يجعله واقعًا', 'wenn ich Zeit habe, käme ich als Irreal gemischt', 'الخيال hätte'],
-      ['käme ich', 'الجواب Konjunktiv', 'komme يبقى واقعًا', 'dann komme ich sicher', 'الخيال käme'],
-      ['wäre schön', 'wäre للحالة', 'ist واقع', 'es ist schön, wenn ich Zeit hätte gemischt', 'الخيال wäre'],
-      ['kein would', 'would ليست الصيغة', 'würde أو الشكل الخاص', 'ich would kommen', 'would إنجليزية']
+      ['Ich würde dich besuchen, wenn ich mehr Zeit hätte.', 'تعبّر عن زيارة تتمنى لو كان عندك وقت أكثر', 'في الشرط غير الواقعي نضع hätte (صيغة الخيال من haben) في نهاية جملة wenn، والجواب في الرئيسية würde + مصدر', 'Ich würde dich besuchen, wenn ich mehr Zeit habe.', 'مع habe يصير الشرط واقعيًا ويناقض würde الافتراضية؛ للخيال hätte في نهاية جملة wenn'],
+      ['Wenn ich reich wäre, würde ich ein Haus kaufen.', 'تتخيّل نفسك غنيًا تشتري بيتًا', 'مع sein صيغة الخيال wäre في نهاية جملة wenn، وإذا تقدمت جملة الشرط بدأ الجواب بـwürde قبل الفاعل ich', 'Wenn ich reich bin, würde ich ein Haus kaufen.', 'bin صيغة الواقع وتناقض würde الافتراضية؛ صيغة الخيال من sein هي wäre'],
+      ['Ich würde lieber zu Hause bleiben.', 'تعبّر عن تفضيلك البقاء في البيت', 'würde + lieber تعبّر عن تفضيل: würde في الموضع الثاني، وlieber بعده، والمصدر bleiben في النهاية', 'Ich würde lieber zu Hause bleibt.', 'بعد würde يأتي المصدر bleiben لا الصيغة المصرفة bleibt'],
+      ['Könntest du mir bitte das Fenster öffnen?', 'تطلب بأدب فتح النافذة', 'الطلب المهذب يبدأ بـkönntest (صيغة الخيال من können) ويغلق بالمصدر öffnen قبل علامة الاستفهام', 'Könntest du mir bitte das Fenster öffnest?', 'بعد könntest لا يُصرَّف الفعل الثاني بل يبقى مصدرًا: das Fenster öffnen']
     ],
     [
-      ['Wenn ich Zeit hätte, käme ich.', 'لو كان عندي وقت لجئت', 'Wenn ich Zeit habe, komme ich sicher', 'الخيال hätte', 'hätte'],
-      ['Es wäre schön.', 'سيكون جميلًا', 'Es ist schön als Irreal', 'الخيال wäre', 'wäre'],
-      ['Ich würde bleiben.', 'لبقيت', 'Ich would bleiben', 'would ليست الصيغة', 'würde'],
-      ['Wenn ich reich wäre, reiste ich.', 'لو كنت غنيًا لسافرت', 'Wenn ich reich bin, reiste ich', 'الخيال wäre', 'wäre']
+      ['Ich würde dich besuchen, wenn ich mehr Zeit hätte.', 'لزرتك لو كان عندي وقت أكثر', 'Ich würde dich besuchen, wenn ich mehr Zeit habe.', 'في جملة wenn غير الواقعية: hätte في النهاية، لا habe', 'hätte'],
+      ['Wenn ich reich wäre, würde ich ein Haus kaufen.', 'لو كنت غنيًا لاشتريت بيتًا', 'Wenn ich reich bin, würde ich ein Haus kaufen.', 'صيغة الخيال من sein هي wäre، والجواب المتأخر يبدأ بـwürde قبل ich', 'wäre'],
+      ['Ich würde lieber zu Hause bleiben.', 'أفضّل أن أبقى في البيت', 'Ich would lieber zu Hause bleiben.', 'would إنجليزية؛ الألمانية: würde في الموضع الثاني والمصدر في النهاية', 'würde'],
+      ['Könntest du mir bitte das Fenster öffnen?', 'هلّا فتحت لي النافذة من فضلك؟', 'Könntest du mir bitte das Fenster öffnest?', 'الطلب المهذب: Könntest في البداية والمصدر öffnen في النهاية', 'öffnen']
     ],
-    'Wenn ich Zeit hätte, käme ich.',
-    'Es wäre schön.',
-    'Bilde morgen einen irrealen Satz.',
-    'غدًا كوّن جملة خيال.'),
+    'Ich würde dich besuchen, wenn ich mehr Zeit hätte.',
+    'Wenn ich reich wäre, reiste ich viel.',
+    'Wiederhole morgen die fünf irrealen Sätze: Ich würde dich besuchen, wenn ich mehr Zeit hätte. Wenn ich reich wäre, würde ich ein Haus kaufen. Ich würde lieber zu Hause bleiben. Könntest du mir bitte das Fenster öffnen? Wenn ich reich wäre, reiste ich viel.',
+    'غدًا راجع الجمل الخمس وميّز في كل شرط هل هو ممكن حقًا أم خيال مع hätte وwäre.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'habe',
+      transformHint: 'لبعض الأفعال الشائعة صيغة خيال قصيرة بدل würde + مصدر: reiste (من reisen) وkäme وwüsste؛ وتبقى جملة الجواب تبدأ بالفعل بعد جملة wenn المتقدمة: reiste ich.',
+      orderSentence: 'Ich würde dich besuchen, wenn ich mehr Zeit hätte.',
+      orderRightBracket: ['hätte.'],
+      checkOrderSentence: 'Ich würde dich besuchen, wenn ich mehr Zeit hätte.',
+      checkOrderRightBracket: ['hätte.'],
+      orderAr: 'رتّب الجملة الرئيسية بالفعل würde ثانيًا والمصدر besuchen قبل الفاصلة، وأنهِ جملة wenn بـhätte.',
+      orderPromptAr: 'رتّب الجملة واضعًا würde بعد Ich وhätte. في النهاية.',
+      orderHints: ['ضع würde في الموضع الثاني والمصدر besuchen قبل الفاصلة.', 'أغلق جملة الشرط بصيغة الخيال hätte. في آخر الجملة كلها.'],
+      writing: {
+        zeigt: 'Fünf Sätze: viermal Irrealis, einmal Bitte',
+        erklaerung: 'اكتب خمس جمل كاملة: شرط خيالي بـhätte، وشرط متقدم بـwäre وجواب بـwürde قبل الفاعل، وتفضيل بـwürde lieber، وطلب مهذب بـkönntest، وصيغة قصيرة reiste بعد شرط متقدم.',
+        hinweise: ['قرّر أولًا: هل الوضع ممكن حقًا (habe وbin) أم خيال (hätte وwäre)؟ لا تخلط الصيغتين في الجملة الواحدة.', 'في جملة wenn يذهب hätte وwäre إلى النهاية، وفي الجواب يبدأ würde أو reiste قبل الفاعل إذا تقدم الشرط.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة مع صيغ الخيال الصحيحة وترتيب الأفعال.',
+        promptDe: 'Ich würde dich besuchen, wenn ich mehr Zeit hätte. · Wenn ich reich wäre, würde ich ein Haus kaufen. · Ich würde lieber zu Hause bleiben. · Könntest du mir bitte das Fenster öffnen? · Wenn ich reich wäre, reiste ich viel.',
+        points: ['Ich würde dich besuchen, wenn ich mehr Zeit hätte.', 'Wenn ich reich wäre, würde ich ein Haus kaufen.', 'Ich würde lieber zu Hause bleiben.', 'Könntest du mir bitte das Fenster öffnen?', 'Wenn ich reich wäre, reiste ich viel.'],
+        minWords: 38,
+        frage: 'اكتب الجمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Ich würde dich besuchen, wenn ich mehr Zeit hätte. Wenn ich reich wäre, würde ich ein Haus kaufen. Ich würde lieber zu Hause bleiben. Könntest du mir bitte das Fenster öffnen? Wenn ich reich wäre, reiste ich viel.',
+      summaryDe: 'Ich würde dich besuchen, wenn ich mehr Zeit hätte. Wenn ich reich wäre, würde ich ein Haus kaufen. Ich würde lieber zu Hause bleiben. Könntest du mir bitte das Fenster öffnen? Wenn ich reich wäre, reiste ich viel.',
+      summaryAr: 'للخيال: hätte من haben وwäre من sein في نهاية جملة wenn، والجواب würde + مصدر؛ وإذا تقدم الشرط بدأ الجواب بالفعل (würde ich وreiste ich)، وkönntest تجعل الطلب مهذبًا.',
+      summaryRecap: 'الخيال: hätte وwäre وwürde',
+      hwHintDe: 'Prüfe: real möglich → habe/bin · irreal → hätte/wäre am Ende des wenn-Satzes, Antwort mit würde. Nie gemischt: „habe … würde“ in einem Satz geht nicht. Kurzformen: käme · wüsste · gäbe · reiste statt würde + Infinitiv.'
+    }),
 
   U('b1-u1-l8', 'B1', 'تصريف n', 'n-Deklination', 'deklination',
     'Am Ende markierst du den Studenten im Dativ und Akkusativ',
