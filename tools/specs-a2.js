@@ -1370,25 +1370,50 @@ module.exports = [
       summaryRecap: 'Teile Dauer Hören Punkte Sprechen'
     }),
 
-  U('a2-u6-l1', 'A2', 'الجسم والملابس', 'Körper und Kleidung', 'genus',
-    'Am Ende benutzt du zehn neue Alltagswörter im Satz',
-    'في النهاية تستعمل عشر كلمات يومية جديدة داخل جملة.',
+  U('a2-u6-l1', 'A2', 'الجسم والملابس والعناية', 'Körper, Kleidung und Pflege', 'kasus',
+    'Am Ende benutzt du Alltagswörter in fünf Sätzen über Körper, Kleidung und Pflege',
+    'في النهاية تتحدث في خمس جمل عن الجسم والملابس والعناية.',
     [
-      ['das Gesicht waschen', 'الوجه يُغسل مع مفعول صريح لا ضمير انعكاسي', 'الضمير الانعكاسي الخطأ', 'Wasch dich das Gesicht', 'المفعول به: das Gesicht'],
-      ['die Jeans passt', 'الجينز مؤنث في الألمانية', 'الجنس الخطأ', 'Der Jeans passt nicht', 'الأداة die تحدد الجنس'],
-      ['einen Zettel für mich', 'Zettel مذكر، فالنصب einen', 'النصب الخطأ', 'ein Zettel für mich', 'مذكر: einen Zettel'],
-      ['eine Creme für die Hände', 'الكريم مع für لا مع zu', 'الحرف الخطأ', 'eine Creme zu den Händen', 'الصيغة الثابتة: für die Hände']
+      ['Wasch dir bitte das Gesicht!', 'تستعمل تركيب أعضاء الجسم مع ضمير الداتيف', 'مع عضو الجسم نقول dir للداتيف وdas Gesicht مفعولًا مباشرًا', 'Wasch dich bitte das Gesicht!', 'في هذا التركيب نقول dir للداتيف، ويبقى das Gesicht مفعولًا في النصب'],
+      ['Die Jeans passt mir nicht.', 'تصف ملاءمة قطعة ملابس', 'الفعل passen يأخذ الشخص في الداتيف: mir', 'Die Jeans passt mich nicht.', 'مع passen نقول mir لا mich'],
+      ['Er trägt heute einen Anzug.', 'تصف ما يرتديه شخص', 'Anzug مذكر، وفي النصب نقول einen Anzug', 'Er trägt heute ein Anzug.', 'بعد tragen نحتاج النصب: einen Anzug'],
+      ['Ich suche eine Creme für die Hände.', 'تطلب منتجًا للعناية باليدين', 'حرف الجر für يأخذ النصب: für die Hände', 'Ich suche eine Creme zu den Händen.', 'للغرض نقول für die Hände لا zu den Händen']
     ],
     [
-      ['Ich habe keine Ahnung.', 'ليست لدي فكرة', 'Ich habe keine Idee gehabt.', 'التعبير الثابت: keine Ahnung', 'Ahnung'],
-      ['Das Parfüm riecht gut.', 'رائحة العطر طيبة', 'Die Parfüm riecht gut.', 'محايد: das Parfüm', 'Parfüm'],
-      ['Ich merke mir die Zahlen gut.', 'أحفظ الأرقام جيدًا', 'Ich merke die Zahlen mir gut.', 'الترتيب: mir … merken', 'merke'],
-      ['Rauchen ist schädlich für die Gesundheit.', 'التدخين ضار بالصحة', 'Rauchen ist schädlich zu der Gesundheit.', 'الحرف الثابت: für', 'schädlich']
+      ['Wasch dir bitte das Gesicht!', 'اغسل وجهك من فضلك', 'Wasch dich bitte das Gesicht!', 'مع عضو الجسم نقول dir للداتيف وdas Gesicht مفعولًا مباشرًا', 'dir'],
+      ['Die Jeans passt mir nicht.', 'هذا الجينز لا يناسبني', 'Die Jeans passt mich nicht.', 'الفعل passen يأخذ الداتيف: mir', 'mir'],
+      ['Er trägt heute einen Anzug.', 'هو يرتدي اليوم بدلة', 'Er trägt heute ein Anzug.', 'Anzug مذكر، وفي النصب نقول einen Anzug', 'einen'],
+      ['Ich suche eine Creme für die Hände.', 'أبحث عن كريم لليدين', 'Ich suche eine Creme zu den Händen.', 'للغرض نقول für die Hände', 'für']
     ],
-    'Die Jeans passt mir nicht, ich brauche eine neue.',
-    'Mein Anzug ist zu dick.',
-    'Schreibe morgen drei Sätze über deine Kleidung.',
-    'غدًا اكتب ثلاث جمل عن ملابسك.'),
+    'Wasch dir bitte das Gesicht!',
+    'Rauchen ist schädlich für die Gesundheit.',
+    'Wiederhole morgen diese fünf Sätze:\nWasch dir bitte das Gesicht!\nDie Jeans passt mir nicht.\nEr trägt heute einen Anzug.\nIch suche eine Creme für die Hände.\nRauchen ist schädlich für die Gesundheit.',
+    'غدًا راجع الجمل الخمس عن الجسم والملابس والعناية والصحة.',
+    {
+      factFamilies: ['kasus', 'kasus', 'kasus', 'präposition'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Körper, Kleidung und Pflege',
+        erklaerung: 'اكتب الجمل الخمس عن غسل الوجه وملاءمة الجينز والبدلة والكريم والصحة.',
+        prompt: 'اكتب الجمل الألمانية الخمس الدقيقة عن الجسم والملابس والعناية.',
+        promptDe: 'Wasch dir bitte das Gesicht! · Die Jeans passt mir nicht. · Er trägt heute einen Anzug. · Ich suche eine Creme für die Hände. · Rauchen ist schädlich für die Gesundheit.',
+        points: ['Wasch dir bitte das Gesicht!', 'Die Jeans passt mir nicht.', 'Er trägt heute einen Anzug.', 'Ich suche eine Creme für die Hände.', 'Rauchen ist schädlich für die Gesundheit.'],
+        minWords: 28,
+        frage: 'اكتب الجمل الخمس في 28 كلمة على الأقل.',
+        familie: 'kasus',
+        hinweise: ['استعمل dir مع Gesicht وmir مع passen وeinen مع Anzug.', 'اختم بجملتي für die Hände وschädlich für die Gesundheit.']
+      },
+      imitateNearMiss: 'dich',
+      transformHint: 'تأتي schädlich مع für، ثم يأخذ für النصب.',
+      orderAr: 'رتّب جملة اللباس: ابدأ بـ Er ثم trägt ثم heute einen Anzug.',
+      orderHints: ['ابدأ بالفاعل Er وضع trägt في الموضع الثاني.', 'أكمل بـ heute einen Anzug.'],
+      orderSentence: 'Er trägt heute einen Anzug.',
+      checkOrderSentence: 'Er trägt heute einen Anzug.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن البدلة.',
+      speakAr: 'اقرأ واشرح الجمل الخمس: Wasch dir bitte das Gesicht؛ Die Jeans passt mir nicht؛ Er trägt heute einen Anzug؛ Ich suche eine Creme für die Hände؛ Rauchen ist schädlich für die Gesundheit.',
+      summaryDe: 'Wasch dir bitte das Gesicht! · Die Jeans passt mir nicht. · Er trägt heute einen Anzug. · Ich suche eine Creme für die Hände. · Rauchen ist schädlich für die Gesundheit.',
+      summaryAr: 'راجع داتيف dir وmir، ونصب einen Anzug، وfür مع العناية والصحة.',
+      summaryRecap: 'Gesicht Jeans Anzug Creme Gesundheit'
+    }),
 
   U('a2-u6-l2', 'A2', 'الطعام والموسيقى', 'Essen und Musik', 'lexik-kollokation',
     'Am Ende bestellst du ein Gericht und sprichst über Musik',

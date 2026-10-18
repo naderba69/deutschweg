@@ -6177,6 +6177,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'pruefstrategie' &&
       checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'hoerstrategie');
 }
+/* ---------- audited A2 body, clothing and care lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u6-l1'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Wasch dir bitte das Gesicht!',
+    'Die Jeans passt mir nicht.',
+    'Er trägt heute einen Anzug.',
+    'Ich suche eine Creme für die Hände.',
+    'Rauchen ist schädlich für die Gesundheit.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u6-l1 precisely scopes body, clothing and care through body-part dative, passen dative, clothing accusative and für',
+    lesson.title.de === 'Körper, Kleidung und Pflege' && lesson.title.ar === 'الجسم والملابس والعناية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'التحدث عن الجسم والملابس والعناية' &&
+      row.grammar.item === 'sich (Dat.) das Gesicht waschen · passen + Dat. · einen Anzug tragen · für + Akk. · schädlich für' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende benutzt du Alltagswörter in fünf Sätzen über Körper, Kleidung und Pflege' &&
+      lesson.schritte.find(s => s.id === 's19').zeigt.de === 'Wasch ____ bitte das Gesicht!' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'das Blatt', 'die Geldbörse', 'das Gesicht', 'die Jeans', 'die Kamera', 'die Kette',
+    'die Kosmetik', 'die Lüge', 'lügen', 'die Mailbox', 'die E-Mail', 'das Parfüm',
+    'das Poster', 'der Ring', 'das Stockwerk', 'die Tafel', 'das Taschengeld', 'der Zettel',
+    'einpacken', 'herstellen', 'wechseln', 'der Anzug', 'dick', 'dünn', 'blond', 'die Creme',
+    'das Mittel', 'die Krankheit', 'der Körper', 'schädlich', 'schwanger', 'die Ahnung',
+    'merken', 'aufpassen', 'die Menge', 'hässlich', 'vorsichtig', 'notwendig', 'super', 'direkt'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u6-l1 reviews all 40 entries and three nuanced mnemonics without rejecting valid regional, register or contextual alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord['das Blatt'].why.includes('Papierblatt') && byWord['die Geldbörse'].why.includes('liegt') &&
+      byWord['das Gesicht'].ex === targets[0] && byWord['das Gesicht'].why.includes('dir للداتيف') &&
+      byWord['die Jeans'].ex === targets[1] && byWord['die Jeans'].why.includes('passen') &&
+      byWord['die Kamera'].why.includes('die Kamera') && byWord['die Kette'].ex === 'Die Kette ist aus Gold.' &&
+      byWord['die Kosmetik'].err === 'Kosmetik kaufen ich im Erdgeschoss.' && byWord['die Lüge'].why.includes('eine Lüge') &&
+      byWord.lügen.why.includes('المصدر lügen') && byWord['die Mailbox'].ex.includes('auf die Mailbox') &&
+      byWord['die E-Mail'].why.includes('das E-Mail') && byWord['die E-Mail'].err.includes('dich') &&
+      byWord['das Parfüm'].why.includes('das Parfüm') && byWord['das Poster'].why.includes('hängt') &&
+      byWord['der Ring'].ex === 'Ich habe meinen Ring verloren.' && byWord['das Stockwerk'].why.includes('dritten') &&
+      byWord['die Tafel'].ex.includes('an die Tafel') && byWord['das Taschengeld'].why.includes('wie viel') &&
+      byWord['der Zettel'].why.includes('einen Zettel') && byWord.einpacken.why.includes('Pack … ein') &&
+      byWord.herstellen.why.includes('stellen … her') && byWord.wechseln.why.includes('ändern يعني') &&
+      byWord['der Anzug'].ex === targets[2] && byWord.dick.ex === 'Ich bin zu dick.' &&
+      byWord.dünn.ex === 'Er ist groß und dünn.' && byWord.blond.ex === 'Lisa hat blonde Haare.' &&
+      byWord['die Creme'].ex === targets[3] && byWord['das Mittel'].why.includes('bei لوصف الاستعمال') &&
+      byWord['die Krankheit'].why.includes('welche Krankheit') &&
+      byWord['der Körper'].why.includes('meinen Körper') && byWord.schädlich.ex === targets[4] &&
+      byWord.schwanger.ex === 'Lena ist schwanger.' && byWord['die Ahnung'].err === 'Ich hatte keinen Ahnung.' &&
+      byWord.merken.why.includes('الداتيف: mir') && byWord.aufpassen.why.includes('passt … auf') &&
+      byWord['die Menge'].why.includes('eine Menge an Zeit') && byWord.hässlich.why.includes('hässliche Sofa') &&
+      byWord.vorsichtig.why.includes('mit + Dativ') && byWord.notwendig.why.includes('بلا نهاية') &&
+      byWord.super.err === 'Dein Kleid sind super!' && byWord.direkt.ex === 'Tragen Sie die Creme direkt auf die Haut auf.' &&
+      !['Ich bin zu fett.', 'Er ist groß und schwach.', 'Ich habe keine Ahnung gehabt.',
+        'Ich schreibe dir ein E-Mail.', 'Wir haben noch eine Menge an Zeit.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie === targets[0] && tricks[0].warum.includes('dir للداتيف') &&
+      tricks[1].wie.includes('passt mir') && tricks[1].wie.includes('einen Anzug') &&
+      tricks[1].warum.includes('الداتيف') && tricks[1].warum.includes('النصب') &&
+      tricks[2].wie.includes('für die Hände') && tricks[2].wie.includes('für die Gesundheit'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u6-l1 aligns strict vocabulary and case clozes, explicit Anzug order and a 28-word five-target production',
+    wordCloze1.frage.zeigt === 'Die ____ ist aus Gold.' && wordCloze1.frage.antworten.join(' ') === 'Kette' &&
+      wordCloze1.frage.nearMiss.Ketten && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Ketten').ok &&
+      wordCloze2.frage.zeigt === 'Er trägt heute einen ____.' && wordCloze2.frage.antworten.join(' ') === 'Anzug' &&
+      wordCloze2.frage.nearMiss.Anzüge && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Anzüge').ok &&
+      wordCloze3.frage.zeigt === 'Für den Antrag ist eine Unterschrift ____.' &&
+      wordCloze3.frage.antworten.join(' ') === 'notwendig' && wordCloze3.frage.nearMiss.notwendige &&
+      !win.DW.renderers.judgeCloze(wordCloze3.frage, 'notwendige').ok &&
+      imitate.frage.antworten.join(' ') === 'dir' && imitate.frage.nearMiss.dich &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'dich').ok &&
+      drill.frage.zeigt === 'Rauchen ist ____ für die Gesundheit.' && drill.frage.antworten.join(' ') === 'schädlich' &&
+      drill.frage.nearMiss.schädliche && !win.DW.renderers.judgeCloze(drill.frage, 'schädliche').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'trägt' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Er' && order.frage.fields.lsk.join(' ') === 'trägt' &&
+      order.frage.fields.mittelfeld.join(' ') === 'heute einen Anzug.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Er', 'heute', 'trägt', 'einen', 'Anzug.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 28 &&
+      targets.join(' ').split(/\s+/).length === 28 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u6-l1 makes 80 percent four of five, independently checking für, schädlich, Anzug, body-part dative and passen dative',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u6-l1\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u6-l1.s07 | cap.a2-u6-l1.s23 | cap.a2-u6-l1.s24 | cap.a2-u6-l1.s08 | cap.a2-u6-l1.s05' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'präposition' &&
+      clozeCheck.frage.zeigt === 'Rauchen ist ____ für die Gesundheit.' &&
+      clozeCheck.frage.antworten.join(' ') === 'schädlich' && clozeCheck.frage.nearMiss.schädliche &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'schädliche').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'trägt' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Er' && orderCheck.frage.fields.lsk.join(' ') === 'trägt' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Er', 'heute', 'trägt', 'einen', 'Anzug.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();

@@ -705,7 +705,10 @@ function lessonOfVocab(spec, vocabRow) {
       }
     });
   }
-  {
+  /* Forty authored entries require ten vocabulary groups. When such a lesson
+     also carries the audited fifth check, that measurement takes the slot of
+     the third fact drill so the lesson remains inside the 36-step contract. */
+  if (!(vocabRow.extraCheck && groups.length >= 10)) {
     const f = spec.facts[2];
     push(null, {
       phase: 'Übungen', type: 'mcq',
@@ -756,11 +759,24 @@ function lessonOfVocab(spec, vocabRow) {
      is part of the audited pedagogy. No hints inside a check: a hint would
      corrupt the measurement. No writing inside a check either: the learner
      grades the checklist himself. */
+  if (vocabRow.checkItemIndex !== undefined &&
+      (!Number.isInteger(vocabRow.checkItemIndex) || vocabRow.checkItemIndex < 0 || vocabRow.checkItemIndex >= items.length)) {
+    die(spec.id + ' bad checkItemIndex ' + vocabRow.checkItemIndex);
+  }
+  const checkItemIndex = vocabRow.checkItemIndex === undefined ? 0 : vocabRow.checkItemIndex;
+  const checkItem = items[checkItemIndex];
+  let checkGroupIndex = -1;
+  for (let i = 0, at = 0; i < groups.length; i++) {
+    const next = at + groups[i].length;
+    if (checkItemIndex >= at && checkItemIndex < next) { checkGroupIndex = i; break; }
+    at = next;
+  }
+  if (checkGroupIndex < 0) die(spec.id + ' check item has no vocabulary group');
   const checkPlan = [
     { right: spec.facts[3][0], bad: spec.facts[3][3], why: spec.facts[3][4], family: factFamily(3), prereq: cap(7) },
     { right: drillItem.ex, bad: drillItem.err, why: drillItem.why, prereq: named['clozeDrill'], cloze: drillItem },
     { right: null, bad: null, why: null, prereq: named['order'] },
-    { right: items[0].ex, bad: items[0].err, why: items[0].why, family: items[0].fam, prereq: named['w0'] }
+    { right: checkItem.ex, bad: checkItem.err, why: checkItem.why, family: checkItem.fam, prereq: named['w' + checkGroupIndex] }
   ];
   checkPlan.forEach((src, i) => {
     let st;
