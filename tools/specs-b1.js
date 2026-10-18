@@ -511,25 +511,50 @@ module.exports = [
       hwHintDe: 'Merke die Kette des/der + Name: des Mannes, des Hauses, der Frau. Mengenwörter stehen mit Genitiv: „Ein Drittel der Schüler fehlt"; gesprochen hört man auch „von den Schülern", geschrieben bleibt der Genitiv.'
     }),
 
-  U('b1-u2-l4', 'B1', 'الصفة كاملة', 'Adjektivdeklination', 'deklination',
-    'Am Ende setzt du die Endung nach der, ein und ohne Artikel',
-    'في النهاية تضع النهاية بعد der وein وبلا أداة.',
+  U('b1-u2-l4', 'B1', 'تصريف الصفة: النهايات بعد der وein وبلا أداة — gute وguter وgutem', 'Adjektivdeklination: Endungen nach der, ein und ohne Artikel', 'deklination',
+    'Am Ende setzt du die Adjektivendung nach der, ein und ohne Artikel richtig',
+    'في النهاية تضع نهاية الصفة صحيحة بعد der وein وبلا أداة.',
     [
-      ['der gute Plan', 'بعد der النهاية e', 'der guter Plan خطأ', 'der guter Plan', 'بعد der: e'],
-      ['ein guter Plan', 'بعد ein النهاية er', 'ein gute Plan خطأ', 'ein gute Plan', 'بعد ein: er'],
-      ['guter Plan', 'بلا أداة er', 'gute Plan بلا أداة خطأ في المذكر', 'gute Plan ohne Artikel', 'بلا أداة guter'],
-      ['mit gutem Plan', 'بعد mit الداتيف em', 'mit guter Plan خطأ', 'mit guter Plan', 'الداتيف gutem']
+      ['Der gute Plan überzeugt den Chef.', 'تصف خطة جيدة مقنعة', 'بعد أداة التعريف der تأخذ الصفة النهاية الضعيفة -e في رفع المذكر: der gute Plan لأن العلامة على الأداة', 'Der guter Plan überzeugt den Chef.', 'بعد der لا تجيء النهاية القوية: gute لا guter'],
+      ['Ein guter Plan fehlt uns noch.', 'تقول إن الخطة الجيدة لا تزال ناقصة', 'بعد ein في رفع المذكر لا تحمل الأداة علامة، فالصفة تظهرها: ein guter Plan بـ-er', 'Ein gute Plan fehlt uns noch.', 'بعد ein في رفع المذكر: guter لا gute'],
+      ['Er kauft den teuren Wagen morgen.', 'تروي شراءه السيارة الغالية غدًا', 'في نصب المذكر بعد den تأخذ الصفة النهاية الضعيفة -en: den teuren Wagen', 'Er kauft den teure Wagen morgen.', 'بعد den: teuren لا teure'],
+      ['Mit gutem Plan starten wir.', 'تعلن البدء بخطة جيدة', 'بلا أداة بعد mit (داتيف) تحمل الصفة علامة الداتيف القوية كاملة: mit gutem Plan بـ-em', 'Mit guten Plan starten wir.', 'بلا أداة في الداتيف: gutem لا guten']
     ],
     [
-      ['Der gute Plan überzeugt.', 'الخطة الجيدة تقنع', 'Der guter Plan überzeugt', 'بعد der: gute', 'gute'],
-      ['Ein guter Plan fehlt.', 'تنقص خطة جيدة', 'Ein gute Plan fehlt', 'بعد ein: guter', 'guter'],
-      ['Guter Plan, schlechte Zeit.', 'خطة جيدة ووقت سيئ', 'Gute Plan, schlechte Zeit', 'بلا أداة Guter', 'Guter'],
-      ['Mit gutem Plan starten wir.', 'نبدأ بخطة جيدة', 'Mit guter Plan starten wir', 'الداتيف gutem', 'gutem']
+      ['Der gute Plan überzeugt den Chef.', 'الخطة الجيدة تقنع المدير', 'Der guter Plan überzeugt den Chef.', 'بعد der النهاية الضعيفة: gute', 'gute'],
+      ['Ein guter Plan fehlt uns noch.', 'ما زالت تنقصنا خطة جيدة', 'Ein gute Plan fehlt uns noch.', 'بعد ein في رفع المذكر: guter', 'guter'],
+      ['Er kauft den teuren Wagen morgen.', 'يشتري السيارة الغالية غدًا', 'Er kauft den teure Wagen morgen.', 'بعد den في النصب: teuren', 'teuren'],
+      ['Mit gutem Plan starten wir.', 'نبدأ بخطة جيدة', 'Mit guten Plan starten wir.', 'بلا أداة في الداتيف: gutem', 'gutem']
     ],
-    'Der gute Plan überzeugt. Ein guter Plan fehlt.',
-    'Mit gutem Plan starten wir.',
-    'Schreibe morgen drei Endungen.',
-    'غدًا اكتب ثلاث نهايات.'),
+    'Der gute Plan überzeugt den Chef.',
+    'Die neuen Studenten lernen sehr schnell.',
+    'Wiederhole morgen die fünf Sätze: Der gute Plan überzeugt den Chef. Ein guter Plan fehlt uns noch. Er kauft den teuren Wagen morgen. Mit gutem Plan starten wir. Die neuen Studenten lernen sehr schnell.',
+    'غدًا أعد الجمل الخمس وانطق نهاية كل صفة بوضوح.',
+    {
+      factFamilies: ['deklination', 'deklination', 'deklination', 'deklination'],
+      imitateNearMiss: 'guter',
+      transformHint: 'في جملة الختام أيضًا تحكم الأداة die مع الجمع النهاية الضعيفة -en دائمًا: die neuen Studenten.',
+      orderSentence: 'Mit gutem Plan starten wir.',
+      checkOrderSentence: 'Morgen kaufen wir den teuren Wagen.',
+      orderAr: 'رتّب جملة البدء: عبارة Mit gutem Plan أولًا ثم الفعل starten في الموضع الثاني قبل الفاعل wir.',
+      orderPromptAr: 'رتّب الجملة واضعًا Mit gutem Plan أولًا وstarten في الموضع الثاني.',
+      orderHints: ['عبارة الأداة Mit gutem Plan تشغل الموضع الأول ونهايتها -em.', 'الفعل starten في الموضع الثاني قبل الفاعل wir.'],
+      writing: {
+        zeigt: 'Fünf Sätze mit Adjektivendungen',
+        erklaerung: 'اكتب الجمل الخمس كاملة بنهاياتها: der gute في رفع المذكر، وein guter بعد الأداة النكرة، وden teuren في النصب، وmit gutem في الداتيف بلا أداة، وdie neuen مع الجمع.',
+        hinweise: ['اسأل أولًا: ما قبلك — der أم ein أم لا شيء؟ الأداة تقرر النهاية.', 'لا تترك صفة نعتيّة بلا نهاية أبدًا؛ العارية (der gut Plan) خطأ دائمًا.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة مع نهاية الصفة الصحيحة في كل موضع.',
+        promptDe: 'Der gute Plan überzeugt den Chef. · Ein guter Plan fehlt uns noch. · Er kauft den teuren Wagen morgen. · Mit gutem Plan starten wir. · Die neuen Studenten lernen sehr schnell.',
+        points: ['Der gute Plan überzeugt den Chef.', 'Ein guter Plan fehlt uns noch.', 'Er kauft den teuren Wagen morgen.', 'Mit gutem Plan starten wir.', 'Die neuen Studenten lernen sehr schnell.'],
+        minWords: 29,
+        frage: 'اكتب جمل الصفة الخمس كاملة بنهاياتها.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Der gute Plan überzeugt den Chef. Ein guter Plan fehlt uns noch. Er kauft den teuren Wagen morgen. Mit gutem Plan starten wir. Die neuen Studenten lernen sehr schnell.',
+      summaryDe: 'Der gute Plan überzeugt den Chef. Ein guter Plan fehlt uns noch. Er kauft den teuren Wagen morgen. Mit gutem Plan starten wir. Die neuen Studenten lernen sehr schnell.',
+      summaryAr: 'تصريف الصفة: بعد der/die/das النهاية الضعيفة (-e في رفع المفرد ونصب المؤنث والمحايد، و-en في غير ذلك والجمع)، وبعد ein تظهر الصفة العلامة الغائبة (guter وgutes)، وبلا أداة تحمل الصفة العلامة كاملة (gutem في الداتيف).',
+      summaryRecap: 'نهايات الصفة: gute، guter، gutem',
+      hwHintDe: 'Die Kette: der gute Plan · ein guter Plan · den teuren Wagen · mit gutem Plan — guter Plan, schlechte Zeit. Nach der steht -e oder -en, nach ein zeigt das Adjektiv den Kasus (-er, -es), ohne Artikel trägt es alles allein (-em im Dativ).'
+    }),
 
   U('b1-u2-l5', 'B1', 'als وwenn', 'als und wenn', 'wortstellung',
     'Am Ende unterscheidest du als einmal und wenn wiederholt',

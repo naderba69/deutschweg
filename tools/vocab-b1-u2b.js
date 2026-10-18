@@ -24,7 +24,7 @@ module.exports = {
       ['schön', '—', 'جميل', 'Das schöne Wetter bleibt.', 'Das schön Wetter bleibt.', 'بعد das: schöne.', 'deklination', 'schöne'],
       ['hässlich', '—', 'قبيح', 'Das hässliche Gebäude wird abgerissen.', 'Das hässlich Gebäude wird abgerissen.', 'بعد das: hässliche.', 'deklination', 'hässliche'],
       ['sauber', '—', 'نظيف', 'In einer sauberen Stadt lebt man besser.', 'In einer sauber Stadt lebt man besser.', 'بعد einer: sauberen.', 'deklination', 'sauberen'],
-      ['schmutzig', '—', 'متسخ', 'Die schmutzigen Schuhe bleiben draußen.', 'Die schmutzig Schuhe bleiben draußen.', 'الجمع بلا أداة أو مع die: schmutzigen.', 'deklination', 'schmutzigen'],
+      ['schmutzig', '—', 'متسخ', 'Die schmutzigen Schuhe bleiben draußen.', 'Die schmutzig Schuhe bleiben draußen.', 'الجمع بعد die: schmutzigen؛ وبلا أداة: schmutzige.', 'deklination', 'schmutzigen'],
       ['ruhig', '—', 'هادئ', 'Ein ruhiges Zimmer kostet mehr.', 'Ein ruhig Zimmer kostet mehr.', 'بعد ein: ruhiges.', 'deklination', 'ruhiges'],
       ['laut', '—', 'صاخب', 'Der laute Motor stört alle.', 'Der laut Motor stört alle.', 'بعد der: laute.', 'deklination', 'laute'],
       ['freundlich', '—', 'ودود', 'Die freundliche Bedienung gefällt mir.', 'Die freundlich Bedienung gefällt mir.', 'بعد die: freundliche.', 'deklination', 'freundliche'],
@@ -48,10 +48,27 @@ module.exports = {
       ['bequem', '—', 'مريح', 'Ein bequemes Sofa kostet viel.', 'Ein bequem Sofa kostet viel.', 'بعد ein: bequemes.', 'deklination', 'bequemes']
     ],
     tricks: [
-      { trick: 'بعد der/die/das تأخذ الصفة نهاية ضعيفة: -e في المفرد المرفوع، -en في غيره', wie: 'das alte Haus · den alten Wagen · dem alten Mann · der alten Frau.', warum: 'الأداة المعرفة تحمل علامة الحالة، فتُخفَّف الصفة؛ والعربية لا نهاية فيها أصلًا.', anchor: 'neuen' },
+      { trick: 'بعد der/die/das تأخذ الصفة نهاية ضعيفة: -e في رفع المفرد ونصب المؤنث والمحايد، و-en فيما عدا ذلك والجمع كله', wie: 'das alte Haus · den alten Wagen · dem alten Mann · der alten Frau.', warum: 'الأداة المعرفة تحمل علامة الحالة، فتُخفَّف الصفة؛ والعربية لا نهاية فيها أصلًا.', anchor: 'neuen' },
       { trick: 'بعد ein/eine تأخذ الصفة علامة الحالة إذا غابت عن الأداة', wie: 'ein neues Auto · einen neuen Wagen · einem neuen Wagen.', warum: 'ein لا يُظهر الحالة في المذكر والمحايد، فالصفة تظهرها نيابةً عنه.', anchor: 'ein gutes' },
       { trick: 'بلا أداة تحمل الصفة كل العلامات: großes Haus · große Häuser · großer Mann', wie: 'Gesunde Ernährung ist wichtig. · Ein kluger Kopf findet eine Lösung.', warum: 'حذف الأداة في الألمانية يُلزم بدفع العلامة إلى الصفة، وقد يحذفها الناطق العربي ظنًّا أنها زائدة.', anchor: 'Gesunde' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'gut': 'gute',
+      'freundlich': 'freundlichen',
+      'sicher': 'sichere'
+    },
+    clozeItemIndex: 6,
+    clozeNearMiss: 'schlechten',
+    checkItemIndex: 3,
+    extraCheck: {
+      right: 'Die neuen Studenten lernen sehr schnell.',
+      bad: 'Die neue Studenten lernen sehr schnell.',
+      why: 'الصفة مع الجمع بعد die تأخذ دائمًا النهاية الضعيفة -en: die neuen Studenten لا die neue.',
+      family: 'deklination',
+      prereq: 'cap.b1-u2-l4.s20',
+      frage: 'أي جملة فيها نهاية الصفة الصحيحة مع الجمع بعد die؟'
+    }
   },
 
   'b1-u2-l5': {

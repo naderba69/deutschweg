@@ -11292,5 +11292,116 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
+
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u2-l4'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Der gute Plan überzeugt den Chef.',
+    'Ein guter Plan fehlt uns noch.',
+    'Er kauft den teuren Wagen morgen.',
+    'Mit gutem Plan starten wir.',
+    'Die neuen Studenten lernen sehr schnell.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u2-l4 precisely scopes adjective endings after der, ein and without article across weak, mixed and strong patterns in five targets',
+    lesson.title.de === 'Adjektivdeklination: Endungen nach der, ein und ohne Artikel' &&
+      lesson.title.ar === 'تصريف الصفة: النهايات بعد der وein وبلا أداة — gute وguter وgutem' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الوصف الدقيق' &&
+      row.grammar.item === 'schwach nach der/die/das: -e (der gute) und -en (den teuren) · gemischt nach ein: guter/gutes · stark ohne Artikel: gutem im Dativ · Plural nach die immer -en' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende setzt du die Adjektivendung nach der, ein und ohne Artikel richtig' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'neu', 'alt', 'jung', 'groß', 'klein', 'gut', 'schlecht', 'teuer', 'billig', 'lang',
+    'kurz', 'hoch', 'tief', 'breit', 'schmal', 'schön', 'hässlich', 'sauber', 'schmutzig',
+    'ruhig', 'laut', 'freundlich', 'höflich', 'ehrlich', 'fleißig', 'faul', 'klug', 'dumm',
+    'stark', 'schwach', 'reich', 'arm', 'gesund', 'krank', 'glücklich', 'traurig',
+    'wichtig', 'sicher', 'gefährlich', 'bequem'
+  ];
+  t('Corpus lesson b1-u2-l4 reviews all 40 adjective entries and three bounded mnemonics, keeping the bare undeclined adjective as the genuine error form throughout',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      lesson.wortschatz.every(it => !it.ex.includes(' ' + it.de + ' ') || it.de === 'neu') &&
+      byWord.neu.err === 'Ich kaufe den neu Wagen.' &&
+      byWord.groß.ex === 'Er wohnt in einem großen Haus.' && byWord.groß.err === 'Er wohnt in einem groß Haus.' &&
+      byWord.hoch.ex === 'Der hohe Turm ist alt.' && byWord.hoch.why.includes('hohe') &&
+      byWord.schmutzig.why.includes('schmutzige') &&
+      byWord.gesund.ex === 'Gesunde Ernährung ist wichtig.' &&
+      byWord.schlecht.ex === 'Bei schlechtem Wetter bleiben wir hier.' &&
+      tricks.length === 3 && tricks[0].trick.includes('der/die/das') && tricks[0].wie.includes('dem alten Mann') &&
+      tricks[1].wie.includes('ein neues Auto') && tricks[2].wie.includes('Gesunde Ernährung ist wichtig.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l4 aligns five strict ending clozes, sound order fields and a 29-word five-target production',
+    wordCloze1.frage.zeigt === 'Das ist ein ____ Zeichen.' && wordCloze1.frage.antworten.join(' ') === 'gutes' &&
+      wordCloze1.frage.nearMiss.gute && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'gute').ok &&
+      wordCloze2.frage.zeigt === 'Die ____ Bedienung gefällt mir.' && wordCloze2.frage.antworten.join(' ') === 'freundliche' &&
+      wordCloze2.frage.nearMiss.freundlichen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'freundlichen').ok &&
+      wordCloze3.frage.zeigt === 'Ein ____ Weg ist besser.' && wordCloze3.frage.antworten.join(' ') === 'sicherer' &&
+      wordCloze3.frage.nearMiss.sichere && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'sichere').ok &&
+      imitate.zeigt.de === 'Der ____ Plan überzeugt den Chef.' && imitate.frage.antworten.join(' ') === 'gute' &&
+      imitate.frage.nearMiss.guter && !win.DW.renderers.judgeCloze(imitate.frage, 'guter').ok &&
+      drill.frage.zeigt === 'Bei ____ Wetter bleiben wir hier.' && drill.frage.antworten.join(' ') === 'schlechtem' &&
+      drill.frage.nearMiss.schlechten && !win.DW.renderers.judgeCloze(drill.frage, 'schlechten').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا Mit gutem Plan أولًا وstarten في الموضع الثاني.' &&
+      order.frage.correct.join(' ') === targets[3] && order.frage.finite === 'starten' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Mit gutem Plan' && order.frage.fields.lsk.join(' ') === 'starten' &&
+      order.frage.fields.mittelfeld.join(' ') === 'wir.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Mit', 'gutem', 'Plan', 'wir.', 'starten']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 29 &&
+      targets.join(' ').split(/\s+/).length === 29 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l4 makes 80 percent four of five, independently checking strong dative phrase, schlechtem cloze, inversion order, einem grossen case and plural weak ending',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u2-l4\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l4.s07 | cap.b1-u2-l4.s23 | cap.b1-u2-l4.s24 | cap.b1-u2-l4.s08 | cap.b1-u2-l4.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('Mit guten Plan starten')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheck.frage.zeigt === 'Bei ____ Wetter bleiben wir hier.' &&
+      clozeCheck.frage.antworten.join(' ') === 'schlechtem' && clozeCheck.frage.nearMiss.schlechten &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'schlechten').ok &&
+      orderCheck.frage.correct.join(' ') === 'Morgen kaufen wir den teuren Wagen.' && orderCheck.frage.finite === 'kaufen' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Morgen' && orderCheck.frage.fields.lsk.join(' ') === 'kaufen' &&
+      orderCheck.frage.fields.mittelfeld.join(' ') === 'wir den teuren Wagen.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Morgen', 'wir', 'kaufen', 'den', 'teuren', 'Wagen.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Er wohnt in einem großen Haus.') &&
+      checks[3].frage.optionen.some(o => o.text === 'Er wohnt in einem groß Haus.') &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('Die neue Studenten lernen')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);
