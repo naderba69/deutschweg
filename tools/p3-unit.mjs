@@ -11992,6 +11992,126 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB1[4].frage.optionen.some(o => o.text === 'Über eine Einladung zum Gespräch ich würde mich freuen.') &&
       Object.values(checksB1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 
+
+  const lessonB2 = win.DW_LESSONS['b1-u3-l2'];
+  const rowB2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB2.id);
+  const byWordB2 = Object.fromEntries(lessonB2.wortschatz.map(it => [it.de, it]));
+  const tricksB2 = lessonB2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB2 = [
+    'Ich beschwere mich über die späte Lieferung.',
+    'Die Ware kam zwei Wochen zu spät.',
+    'Ich bitte Sie um eine Rückerstattung.',
+    'Bitte prüfen Sie den Fall noch einmal.',
+    'Ich setze Ihnen eine Frist von zwei Wochen.'
+  ];
+  t('Corpus lesson b1-u3-l2 precisely scopes the formal complaint with fixed prepositions, dated fact, polite request, formal imperative and deadline across five targets',
+    lessonB2.title.de === 'Beschwerde: beschweren über, Tatsache und Bitte um' &&
+      lessonB2.title.ar === 'الشكوى الرسمية: الشكوى بالحرف والواقعة والمطلب' &&
+      rowB2.title.de === lessonB2.title.de && rowB2.title.ar === lessonB2.title.ar &&
+      rowB2.theme === 'خدمة العملاء والشكوى' &&
+      rowB2.grammar.item === 'sich beschweren über + Akkusativ · zwei Wochen zu spät (Maß) · bitten Sie um + Akkusativ · prüfen Sie (Höflichkeitsbefehl) · eine Frist von zwei Wochen setzen' &&
+      rowB2.grammar.method === 'explicit' && lessonB2.schritte.length === 36 && lessonB2.wortschatz.length === 40 &&
+      lessonB2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB2[i]) &&
+      lessonB2.schritte[0].zeigt.de === 'Am Ende schreibst du eine sachliche Beschwerde in fünf Sätzen: Grund, Tatsache, Bitte, Prüfung und Frist' &&
+      lessonB2.schritte.find(s => s.id === 's20').zeigt.de === targetsB2[4]);
+
+  const expectedWordsB2 = [
+    'sich beschweren', 'die Beschwerde', 'die Reklamation', 'reklamieren', 'beanstanden',
+    'sich ärgern', 'der Ärger', 'die Unzufriedenheit', 'die Enttäuschung',
+    'das Missverständnis', 'der Mangel', 'der Fehler', 'der Schaden', 'die Lieferung',
+    'die Frist', 'die Garantie', 'die Gewährleistung', 'der Umtausch', 'umtauschen',
+    'zurückgeben', 'erstatten', 'die Rückerstattung', 'der Betrag', 'die Rechnung',
+    'die Gutschrift', 'der Kunde', 'der Kundendienst', 'die Hotline', 'die Antwort',
+    'die Entschuldigung', 'sich entschuldigen', 'die Ursache', 'beheben', 'lösen',
+    'klären', 'prüfen', 'die Forderung', 'fordern', 'die Frist setzen', 'der Anwalt'
+  ];
+  const errorsB2 = lessonB2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l2 reviews all 40 entries and three bounded mnemonics without manufactured appendages or grammatical von-dative and duration foils, keeping agreement and case as the genuine error axes',
+    Object.keys(byWordB2).join(' | ') === expectedWordsB2.join(' | ') &&
+      lessonB2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB2['sich beschweren'].err === 'Ich beschwere mich für den Lärm.' &&
+      byWordB2['die Unzufriedenheit'].err === 'Die Unzufriedenheit von die Kunden wächst.' &&
+      byWordB2['die Garantie'].err === 'Die Garantie gelten zwei Jahre.' &&
+      byWordB2['die Frist'].err === 'Die Frist ist ablaufen.' &&
+      byWordB2['die Ursache'].err === 'Die Ursache war ein Computerfehlers.' &&
+      byWordB2['der Anwalt'].err === 'Wenn nichts passiert, ich gehe zum Anwalt.' &&
+      !['Die Reklamation ist berechtigt gemacht.', 'Der Ärger war schnell vorbei gemacht.',
+        'Die Enttäuschung war groß gemacht.', 'Da liegt ein Missverständnis vor es.',
+        'Die Lieferung kam zu spät es.', 'Der Umtausch ist kostenlos gemacht.',
+        'Die Rechnung ist falsch gemacht.', 'Der Kunde hat immer recht es.',
+        'Der Kundendienst ist schwer erreichbar gemacht.', 'Die Hotline ist rund um die Uhr offen es.',
+        'Die Ursache war ein Computerfehler gemacht.', 'Wir beheben den Fehler sofort gemacht.',
+        'Wir klären den Fall heute es.', 'Die Forderung ist berechtigt gemacht.',
+        'Die Unzufriedenheit von den Kunden wächst.', 'Die Garantie gilt für zwei Jahre.']
+        .some(x => errorsB2.includes(x)) &&
+      tricksB2.length === 3 && tricksB2[0].wie.includes('Ich setze eine Frist von zwei Wochen.') &&
+      tricksB2[1].wie.includes('Ich bitte um Entschuldigung.') &&
+      tricksB2[2].wie.includes('Wir erstatten Ihnen den Betrag.'));
+
+  const wordClozeAB2 = lessonB2.schritte.find(s => s.id === 's09');
+  const wordClozeBB2 = lessonB2.schritte.find(s => s.id === 's13');
+  const wordClozeCB2 = lessonB2.schritte.find(s => s.id === 's17');
+  const imitateB2 = lessonB2.schritte.find(s => s.id === 's19');
+  const drillB2 = lessonB2.schritte.find(s => s.id === 's23');
+  const orderB2 = lessonB2.schritte.find(s => s.id === 's24');
+  const writingB2 = lessonB2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB2 = lessonB2.schritte.find(s => s.phase === 'Produktion');
+  const summaryB2 = lessonB2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB2 = lessonB2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l2 aligns five strict learning clozes, sound formal-imperative order fields and a 35-word five-target production',
+    wordClozeAB2.frage.zeigt === 'Ich ____ mich über den Fehler.' && wordClozeAB2.frage.antworten.join(' ') === 'ärgere' &&
+      wordClozeAB2.frage.nearMiss['ärgert'] && !win.DW.renderers.judgeCloze(wordClozeAB2.frage, 'ärgert').ok &&
+      wordClozeBB2.frage.zeigt === 'Die ____ dauert eine Woche.' && wordClozeBB2.frage.antworten.join(' ') === 'Rückerstattung' &&
+      wordClozeBB2.frage.nearMiss.Rückerstattungen && !win.DW.renderers.judgeCloze(wordClozeBB2.frage, 'Rückerstattungen').ok &&
+      wordClozeCB2.frage.zeigt === 'Wir ____ eine Rückerstattung.' && wordClozeCB2.frage.antworten.join(' ') === 'fordern' &&
+      wordClozeCB2.frage.nearMiss.fordert && !win.DW.renderers.judgeCloze(wordClozeCB2.frage, 'fordert').ok &&
+      imitateB2.zeigt.de === 'Ich ____ mich über die späte Lieferung.' && imitateB2.frage.antworten.join(' ') === 'beschwere' &&
+      imitateB2.frage.nearMiss.beschwerst && !win.DW.renderers.judgeCloze(imitateB2.frage, 'beschwerst').ok &&
+      drillB2.frage.zeigt === 'Die Firma ____ sich für den Fehler.' && drillB2.frage.antworten.join(' ') === 'entschuldigt' &&
+      drillB2.frage.nearMiss.entschuldigen && !win.DW.renderers.judgeCloze(drillB2.frage, 'entschuldigen').ok &&
+      lessonB2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB2.frage.frage === 'رتّب الجملة واضعًا الظرف أولًا والفعل في الموضع الثاني قبل الفاعل.' &&
+      orderB2.frage.correct.join(' ') === targetsB2[3] && orderB2.frage.finite === 'prüfen' && orderB2.frage.verbFirst === false &&
+      orderB2.frage.fields.vorfeld.join(' ') === 'Bitte' && orderB2.frage.fields.lsk.join(' ') === 'prüfen' &&
+      orderB2.frage.fields.mittelfeld.join(' ') === 'Sie den Fall noch einmal.' &&
+      win.DW.order.score(orderB2.frage, orderB2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB2.frage, ['Bitte', 'Sie', 'prüfen', 'den', 'Fall', 'noch', 'einmal.']).credit < 1 &&
+      writingB2.frage.points.join(' | ') === targetsB2.join(' | ') && writingB2.frage.minWords === 35 &&
+      targetsB2.join(' ').split(/\s+/).length === 35 &&
+      targetsB2.every(x => [writingB2.frage.promptDe, summaryB2.zeigt.de, homeworkB2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB2.every(x => norm(speakingB2.erklaerung).includes(norm(x))));
+
+  const checksB2 = lessonB2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB2 = checksB2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB2 = checksB2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l2 makes 80 percent four of five, independently checking formal imperative, entschuldigt cloze, reflexive complaint order, deadline item and own deadline preposition',
+    checksB2.length === 5 && checksB2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB2.every(s => /^cap\.b1-u3-l2\.s\d+$/.test(s.frage.prereq || '')) && checksB2.every(s => !s.hinweise) &&
+      checksB2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l2.s07 | cap.b1-u3-l2.s23 | cap.b1-u3-l2.s24 | cap.b1-u3-l2.s17 | cap.b1-u3-l2.s20' &&
+      new Set(checksB2.map(s => s.frage.prereq)).size === 5 &&
+      checksB2[0].frage.optionen.some(o => o.text === targetsB2[3]) &&
+      checksB2[0].frage.optionen.some(o => o.text === 'Bitte Sie prüfen den Fall noch einmal.') &&
+      Object.values(checksB2[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckB2.frage.zeigt === 'Die Firma ____ sich für den Fehler.' &&
+      clozeCheckB2.frage.antworten.join(' ') === 'entschuldigt' && clozeCheckB2.frage.nearMiss.entschuldigen &&
+      !win.DW.renderers.judgeCloze(clozeCheckB2.frage, 'entschuldigen').ok &&
+      orderCheckB2.frage.correct.join(' ') === targetsB2[0] && orderCheckB2.frage.finite === 'beschwere' &&
+      orderCheckB2.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheckB2.frage.fields.lsk.join(' ') === 'beschwere' &&
+      orderCheckB2.frage.fields.mittelfeld.join(' ') === 'mich über die späte Lieferung.' &&
+      win.DW.order.score(orderCheckB2.frage, orderCheckB2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB2.frage, ['Ich', 'mich', 'beschwere', 'über', 'die', 'späte', 'Lieferung.']).credit < 1 &&
+      checksB2[3].frage.optionen.some(o => o.text === 'Wir setzen Ihnen eine Frist von zwei Wochen.') &&
+      checksB2[3].frage.optionen.some(o => o.text === 'Wir setzen Ihnen eine Frist für zwei Wochen.') &&
+      Object.values(checksB2[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksB2[4].frage.optionen.some(o => o.text === targetsB2[4]) &&
+      checksB2[4].frage.optionen.some(o => o.text === 'Ich setze Ihnen eine Frist für zwei Wochen.') &&
+      Object.values(checksB2[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

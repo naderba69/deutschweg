@@ -782,25 +782,50 @@ module.exports = [
       hwHintDe: 'Schreibe es wie in der Firma: nicht „apply" oder „attached", sondern „ich bewerbe mich" und „Anbei sende ich Ihnen …". Nach dem Komma der Anrede geht es klein weiter: „Sehr geehrte Damen und Herren, ich …".'
     }),
 
-  U('b1-u3-l2', 'B1', 'شكوى', 'Beschwerde', 'register',
-    'Am Ende bittest du um eine Lösung ohne Beleidigung',
-    'في النهاية تطلب حلًا بلا إهانة.',
+  U('b1-u3-l2', 'B1', 'الشكوى الرسمية: الشكوى بالحرف والواقعة والمطلب', 'Beschwerde: beschweren über, Tatsache und Bitte um', 'register',
+    'Am Ende schreibst du eine sachliche Beschwerde in fünf Sätzen: Grund, Tatsache, Bitte, Prüfung und Frist',
+    'في النهاية تكتب شكوى رسمية كاملة في خمس جمل: السبب والواقعة والمطلب وطلب الفحص والأجل.',
     [
-      ['ich möchte mich beschweren', 'الشكوى إطار', 'لا you are bad', 'Sie sind schlecht', 'الإهانة ليست شكوى'],
-      ['die Lieferung kam zu spät', 'الواقعة أولًا', 'الرأي قبل الواقعة يضعف', 'ich finde Sie unfähig zuerst', 'الواقعة أولًا'],
-      ['ich bitte um eine Lösung', 'الطلب bitten um', 'لا I demand', 'ich demand eine Lösung', 'demand إنجليزية'],
-      ['der Ton bleibt sachlich', 'النبرة موضوعية', 'الصراخ لا يرفع الدرجة', 'das ist eine Frechheit als einziger Satz', 'النبرة جزء من المهمة']
+      ['Ich beschwere mich über die späte Lieferung.', 'تصرح بموضوع شكواك رسميًا', 'sich beschweren مربوط دائمًا بـüber + النصب والانعكاسي mich يلحق الفعل', 'Ich beschwere mich für die späte Lieferung.', 'حرف الشكوى الثابت: über لا für'],
+      ['Die Ware kam zwei Wochen zu spät.', 'تثبت الواقعة بلا مبالغة', 'مقياس التأخر يأتي قبل الظرف: zwei Wochen zu spät، والماضي kam بلا ضمير موضوع', 'Die Ware kam zwei Wochen spät zu.', 'الترتيب الثابت: zwei Wochen zu spät'],
+      ['Ich bitte Sie um eine Rückerstattung.', 'تطلب رد المبلغ بأدب صريح', 'bitten يأخذ مخاطبًا كبيرًا (Sie) ثم um + المطلوب: bitte Sie um', 'Ich bitte Sie für eine Rückerstattung.', 'إطار الطلب: bitten um لا für'],
+      ['Bitte prüfen Sie den Fall noch einmal.', 'تطلب إعادة فحص ملفك', 'الأمر الرسمي: فعل أولًا prüfen ثم الضمير الكبير Sie ثانيًا: prüfen Sie', 'Bitte Sie prüfen den Fall noch einmal.', 'الأمر الرسمي يبدأ بالفعل: prüfen Sie لا الفاعل قبله']
     ],
     [
-      ['Ich möchte mich beschweren.', 'أود أن أشتكي', 'Sie sind schlecht', 'الشكوى إطار لا إهانة', 'beschweren'],
-      ['Die Lieferung kam zu spät.', 'وصل التسليم متأخرًا', 'Ich finde Sie unfähig', 'الواقعة أولًا', 'spät'],
-      ['Ich bitte um eine Lösung.', 'أطلب حلًا', 'Ich demand eine Lösung', 'الطلب bitte um', 'bitte'],
-      ['Der Ton bleibt sachlich.', 'النبرة تبقى موضوعية', 'Das ist eine Frechheit', 'النبرة جزء من الشكوى', 'sachlich']
+      ['Ich beschwere mich über die späte Lieferung.', 'أشتكي من التأخر في التسليم', 'Ich beschwere mich für die späte Lieferung.', 'الشكوى مع über أعلى الفعل', 'beschwere'],
+      ['Die Ware kam zwei Wochen zu spät.', 'وصلت البضاعة متأخرة أسبوعين', 'Die Ware kam zwei Wochen spät zu.', 'الواقعة كاملة بمقياسها', 'spät'],
+      ['Ich bitte Sie um eine Rückerstattung.', 'أطلب منكم رد المبلغ', 'Ich bitte Sie für eine Rückerstattung.', 'المطلب بأدب: bitte Sie um', 'bitte'],
+      ['Bitte prüfen Sie den Fall noch einmal.', 'افحصوا ملفي من جديد', 'Bitte Sie prüfen den Fall noch einmal.', 'الأمر الرسمي: prüfen Sie den Fall', 'prüfen']
     ],
-    'Die Lieferung kam zu spät. Ich bitte um eine Lösung.',
-    'Ich bitte um eine Lösung.',
-    'Schreibe morgen Tatsache und Bitte.',
-    'غدًا اكتب واقعة وطلبًا.'),
+    'Ich beschwere mich über die späte Lieferung.',
+    'Ich setze Ihnen eine Frist von zwei Wochen.',
+    'Wiederhole morgen die fünf Sätze: Ich beschwere mich über die späte Lieferung. Die Ware kam zwei Wochen zu spät. Ich bitte Sie um eine Rückerstattung. Bitte prüfen Sie den Fall noch einmal. Ich setze Ihnen eine Frist von zwei Wochen.',
+    'غدًا أعد الشكوى كاملة ولاحظ الحروف الثابتة وصيغة الأمر الرسمي.',
+    {
+      factFamilies: ['präposition', 'wortstellung', 'präposition', 'wortstellung'],
+      imitateNearMiss: 'beschwerst',
+      transformHint: 'في جملة الختام الأجل إعلان حاسم لا تهديد: Ich setze Ihnen eine Frist von zwei Wochen — المدة هنا مقدارًا بـvon، والنبرة تبقى مهنية بلا اتهام.',
+      orderSentence: 'Bitte prüfen Sie den Fall noch einmal.',
+      checkOrderSentence: 'Ich beschwere mich über die späte Lieferung.',
+      orderAr: 'رتّب جملة الأمر الرسمي: Bitte أولًا ثم الفعل prüfen في الموضع الثاني قبل الضمير الكبير Sie.',
+      orderPromptAr: 'رتّب الجملة واضعًا الظرف أولًا والفعل في الموضع الثاني قبل الفاعل.',
+      orderHints: ['Bitte تشغل الموضع الأول فالفعل prüfen قبل Sie في الأمر الرسمي.', 'Sie تبقى كبيرة بعد الفعل دائمًا.'],
+      writing: {
+        zeigt: 'Eine Beschwerde in fünf Sätzen',
+        erklaerung: 'اكتب شكوى كاملة في خمس جمل: سبب بحرف über الثابت، وواقعة مؤرخة بالمقياس، ومطلب بـ bitte Sie um، وأمر رسمي بـ prüfen Sie، وأجل حاسم بـ Frist von.',
+        hinweise: ['الترتيب هو الرسالة: سبب، ثم واقعة، ثم مطلب، ثم فحص، ثم أجل — لا إهانة تبني حلًا.', 'حروف هذا الدرس ثابتة: beschweren über وbitten um وsetze eine Frist von.'],
+        prompt: 'اكتب جمل الشكوى الخمس المستهدفة من الذاكرة مع الحروف الثابتة وصيغة الأمر الرسمية.',
+        promptDe: 'Ich beschwere mich über die späte Lieferung. · Die Ware kam zwei Wochen zu spät. · Ich bitte Sie um eine Rückerstattung. · Bitte prüfen Sie den Fall noch einmal. · Ich setze Ihnen eine Frist von zwei Wochen.',
+        points: ['Ich beschwere mich über die späte Lieferung.', 'Die Ware kam zwei Wochen zu spät.', 'Ich bitte Sie um eine Rückerstattung.', 'Bitte prüfen Sie den Fall noch einmal.', 'Ich setze Ihnen eine Frist von zwei Wochen.'],
+        minWords: 35,
+        frage: 'اكتب جمل الشكوى الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich beschwere mich über die späte Lieferung. Die Ware kam zwei Wochen zu spät. Ich bitte Sie um eine Rückerstattung. Bitte prüfen Sie den Fall noch einmal. Ich setze Ihnen eine Frist von zwei Wochen.',
+      summaryDe: 'Ich beschwere mich über die späte Lieferung. Die Ware kam zwei Wochen zu spät. Ich bitte Sie um eine Rückerstattung. Bitte prüfen Sie den Fall noch einmal. Ich setze Ihnen eine Frist von zwei Wochen.',
+      summaryAr: 'شكوى رسمية من خمس خطوات: موضوع الشكوى بـüber ثابتة، وواقعة بمقياس التأخر، ومطلب بـbitte Sie um، وأمر رسمي بالفعل قبل Sie، وأخيرًا أجل حاسم بمقدار von.',
+      summaryRecap: 'الشكوى المهذبة بخمس خطوات',
+      hwHintDe: 'Sachlich wirkt mehr als laut: Nicht „I demand ..." und kein Satz wie „Das ist eine Frechheit" ist schon eine Beschwerde. Die Beschwerde nennt den Grund, die Tatsache und die Bitte — sachlich und ohne Beleidigung.'
+    }),
 
   U('b1-u3-l3', 'B1', 'البيئة', 'Umwelt', 'lexik-kollokation',
     'Am Ende nennst du eine Gewohnheit und eine Folge',
