@@ -1325,25 +1325,50 @@ module.exports = [
       summaryRecap: 'Nebensatz Dativ Perfekt Richtung Vergleich'
     }),
 
-  U('a2-u5-l6', 'A2', 'شكل امتحان A2', 'Prüfungsform A2', 'pruefstrategie',
-    'Am Ende kennst du die Form und schreibst keinen Ausgleich',
-    'في النهاية تعرف الشكل ولا تعوّض بين الأقسام.',
+  U('a2-u5-l6', 'A2', 'شهادة Goethe A2 للبالغين: الأقسام والمدة وقواعد النجاح', 'Goethe-Zertifikat A2 für Erwachsene: Teile, Dauer und Bestehensregeln', 'pruefstrategie',
+    'Am Ende erklärst du fünf Fakten zu Teilen, Dauer, Hören, Punkten und Sprechen',
+    'في النهاية تشرح خمس حقائق عن الأقسام والمدة والسماع والنقاط والتحدث.',
     [
-      ['vier Module', 'أربعة أقسام مستقلة', 'لا درجة واحدة كلية تنقذ', 'eine Gesamtnote rettet', 'لا إنقاذ'],
-      ['Schreiben ist eine Aufgabe mit Form', 'الكتابة لها شكل', 'ليست فقرة بلا مخاطبة', 'ein Text ohne Form reicht', 'الشكل جزء من الدرجة'],
-      ['Hören einmal planen', 'لا تعتمد على إعادة غير موعودة', 'الخطة قبل الصوت', 'ich warte auf die dritte Wiederholung', 'لا تفترض التكرار'],
-      ['Sprechen ist Dialog', 'التحدث حوار لا مونولوج فقط', 'الشريك جزء من المهمة', 'ich rede allein immer', 'الحوار مطلوب']
+      ['Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen.', 'تسمّي أقسام الامتحان الأربعة', 'هذه Prüfungsteile وليست أربعة Module مستقلة', 'Die Prüfung hat vier unabhängige Module.', 'في A2 نقول أربعة Prüfungsteile؛ وتُجمع الدرجات ضمن امتحان كتابي وآخر شفهي'],
+      ['Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten.', 'تذكر مدة الامتحان الكتابي التقريبية', 'Lesen وHören وSchreiben تستغرق معًا نحو تسعين دقيقة', 'Für die schriftliche Prüfung hat man insgesamt etwa sechzig Minuten.', 'الأجزاء الكتابية الثلاثة تستغرق نحو 90 دقيقة لا 60'],
+      ['Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal.', 'تميّز عدد مرات السماع بحسب الجزء', 'في Hören تُسمع نصوص الجزء الثاني مرة واحدة، ونصوص الأجزاء الأخرى مرتين', 'Im Hören hören Sie alle Texte zweimal.', 'لا تفترض عددًا واحدًا: Teil 2 مرة واحدة، والأجزاء الأخرى مرتان'],
+      ['Das Sprechen findet in der Regel zu zweit statt.', 'تتعرف إلى صيغة التحدث المعتادة', 'Sprechen يكون عادة امتحانًا ثنائيًا', 'Das Sprechen findet immer allein statt.', 'يُجرى Sprechen عادة مع مشارك ثانٍ، لا منفردًا دائمًا']
     ],
     [
-      ['Ein Modul rettet das andere nicht.', 'قسم لا ينقذ الآخر', 'Eine Gesamtnote rettet alles', 'لا تعويض', 'nicht'],
-      ['Die Form gehört zur Aufgabe.', 'الشكل جزء من المهمة', 'Ein Text ohne Form reicht', 'الشكل مطلوب', 'Form'],
-      ['Plane das Hören vor dem Ton.', 'خطّط للسماع قبل الصوت', 'Ich warte auf die dritte Wiederholung', 'لا تفترض الإعادة', 'vor'],
-      ['Sprechen ist auch Dialog.', 'التحدث حوار أيضًا', 'Ich rede allein immer', 'الحوار جزء من القسم', 'Dialog']
+      ['Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen.', 'للامتحان أربعة أقسام: القراءة والاستماع والكتابة والتحدث', 'Die Prüfung hat nur drei Teile.', 'للصيغة أربعة أجزاء لا ثلاثة', 'Teile'],
+      ['Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten.', 'للامتحان الكتابي نحو تسعين دقيقة إجمالًا', 'Für die schriftliche Prüfung hat man insgesamt etwa sechzig Minuten.', 'المدة الكتابية التقريبية تسعون دقيقة', 'neunzig'],
+      ['Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal.', 'في الاستماع تسمع نصوص الجزء الثاني مرة وسائر النصوص مرتين', 'Die Texte in Teil zwei hört man zweimal.', 'Teil zwei مرة واحدة، وسائر الأجزاء مرتان', 'einmal'],
+      ['Das Sprechen findet in der Regel zu zweit statt.', 'يُجرى التحدث عادة بمشاركة شخصين', 'Das Sprechen findet immer allein statt.', 'Sprechen يكون في العادة امتحانًا ثنائيًا', 'zweit']
     ],
-    'Vier Module. Kein Ausgleich. Sprechen ist Dialog.',
-    'Ein Modul rettet das andere nicht.',
-    'Sage morgen die Ausgleich-Regel.',
-    'غدًا قل قاعدة عدم التعويض.'),
+    'Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen.',
+    'Das Sprechen findet in der Regel zu zweit statt.',
+    'Wiederhole morgen diese fünf Sätze:\nDie Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen.\nFür die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten.\nIm Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal.\nZum Bestehen braucht man insgesamt mindestens sechzig Punkte, davon mindestens fünfundvierzig schriftlich und mindestens fünfzehn mündlich.\nDas Sprechen findet in der Regel zu zweit statt.',
+    'غدًا راجع الجمل الخمس عن الأقسام والمدة والسماع وحدود النجاح وصيغة التحدث.',
+    {
+      factFamilies: ['pruefstrategie', 'pruefstrategie', 'hoerstrategie', 'pruefstrategie'],
+      writing: {
+        zeigt: 'Fünf Fakten zum Goethe-Zertifikat A2',
+        erklaerung: 'اكتب الحقائق الخمس عن الأقسام والمدة وتكرار السماع وحدود النجاح وصيغة التحدث.',
+        prompt: 'اكتب الجمل الخمس الدقيقة عن شكل امتحان Goethe A2 للبالغين.',
+        promptDe: 'Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen. · Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten. · Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal. · Zum Bestehen braucht man insgesamt mindestens sechzig Punkte, davon mindestens fünfundvierzig schriftlich und mindestens fünfzehn mündlich. · Das Sprechen findet in der Regel zu zweit statt.',
+        points: ['Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen.', 'Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten.', 'Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal.', 'Zum Bestehen braucht man insgesamt mindestens sechzig Punkte, davon mindestens fünfundvierzig schriftlich und mindestens fünfzehn mündlich.', 'Das Sprechen findet in der Regel zu zweit statt.'],
+        minWords: 58,
+        frage: 'اكتب الحقائق الخمس في 58 كلمة على الأقل.',
+        familie: 'pruefstrategie',
+        hinweise: ['اذكر أربعة Teile ونحو 90 دقيقة للأجزاء الكتابية.', 'ميّز Teil zwei في السماع، ثم اكتب 60 إجمالًا و45 كتابيًا و15 شفهيًا وصيغة التحدث الثنائية.']
+      },
+      imitateNearMiss: 'Module',
+      transformHint: 'الأجزاء الكتابية الثلاثة تستغرق معًا نحو تسعين دقيقة.',
+      orderAr: 'رتّب جملة المدة: ابدأ بـ Für die schriftliche Prüfung ثم hat man ثم insgesamt etwa neunzig Minuten.',
+      orderHints: ['ضع Für die schriftliche Prüfung في الحقل الأول ثم hat.', 'أكمل بـ man insgesamt etwa neunzig Minuten.'],
+      orderSentence: 'Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten.',
+      checkOrderSentence: 'Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن مدة الامتحان الكتابي.',
+      speakAr: 'اشرح الجمل الخمس: Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen؛ Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten؛ Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal؛ Zum Bestehen braucht man insgesamt mindestens sechzig Punkte, davon mindestens fünfundvierzig schriftlich und mindestens fünfzehn mündlich؛ Das Sprechen findet in der Regel zu zweit statt.',
+      summaryDe: 'Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen. · Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten. · Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal. · Zum Bestehen braucht man insgesamt mindestens sechzig Punkte, davon mindestens fünfundvierzig schriftlich und mindestens fünfzehn mündlich. · Das Sprechen findet in der Regel zu zweit statt.',
+      summaryAr: 'راجع الأجزاء الأربعة والمدة الكتابية وتكرار السماع وحدود 60/100 و45/75 و15/25 وصيغة التحدث الثنائية.',
+      summaryRecap: 'Teile Dauer Hören Punkte Sprechen'
+    }),
 
   U('a2-u6-l1', 'A2', 'الجسم والملابس', 'Körper und Kleidung', 'genus',
     'Am Ende benutzt du zehn neue Alltagswörter im Satz',

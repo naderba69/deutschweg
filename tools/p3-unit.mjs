@@ -6055,6 +6055,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[3].frage.misconceptionFamilies.b === 'kasus' &&
       checks[4].frage.optionen.some(o => o.text === targets[0]) && checks[4].frage.misconceptionFamilies.a === 'wortstellung');
 }
+/* ---------- audited A2 adult exam-format lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u5-l6'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Die Prüfung hat vier Teile: Lesen, Hören, Schreiben und Sprechen.',
+    'Für die schriftliche Prüfung hat man insgesamt etwa neunzig Minuten.',
+    'Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal.',
+    'Zum Bestehen braucht man insgesamt mindestens sechzig Punkte, davon mindestens fünfundvierzig schriftlich und mindestens fünfzehn mündlich.',
+    'Das Sprechen findet in der Regel zu zweit statt.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u5-l6 precisely scopes the adult Goethe A2 parts, written duration, listening repeats, dual pass thresholds and pair speaking',
+    lesson.title.de === 'Goethe-Zertifikat A2 für Erwachsene: Teile, Dauer und Bestehensregeln' &&
+      lesson.title.ar === 'شهادة Goethe A2 للبالغين: الأقسام والمدة وقواعد النجاح' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'بنية امتحان Goethe A2 للبالغين وقواعد النجاح' &&
+      row.grammar.item === 'vier Prüfungsteile · schriftlich ca. 90 Min. · Hören: Teil 2 einmal, sonst zweimal · 60/100 + 45/75 schriftlich + 15/25 mündlich · Sprechen zu zweit' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 35 && lesson.wortschatz.length === 30 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === [targets[0], targets[1], targets[2], targets[4]][i]) &&
+      lesson.schritte.find(s => s.id === 's21').frage.zeigt.includes('mindestens sechzig ____') &&
+      lesson.schritte[0].zeigt.de === 'Am Ende erklärst du fünf Fakten zu Teilen, Dauer, Hören, Punkten und Sprechen' &&
+      lesson.schritte.find(s => s.id === 's17').zeigt.de === 'Die Prüfung hat vier ____: Lesen, Hören, Schreiben und Sprechen.' &&
+      lesson.schritte.find(s => s.id === 's18').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'der Teil', 'die Aufgabe', 'das Hören', 'das Lesen', 'das Schreiben', 'das Sprechen',
+    'mündlich', 'schriftlich', 'bestehen', 'das Prozent', 'die Note', 'das Ergebnis',
+    'der Punkt', 'der Antwortbogen', 'ankreuzen', 'die Zeit', 'die Uhr', 'die Anweisung',
+    'das Beispiel', 'die Lösung', 'richtig', 'falsch', 'die Wiederholung', 'die Prüfungsangst',
+    'die Vorbereitung', 'der Erfolg', 'prüfen', 'renovieren', 'raus', 'zurücklaufen'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u5-l6 reviews all 30 entries and three nuanced mnemonics, replacing false independent-module and blanket-listening claims',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err && !it.err.includes('falsch gemacht')) &&
+      byWord['der Teil'].ex === targets[0] && byWord['der Teil'].why.includes('أربعة Module مستقلة') &&
+      byWord['die Aufgabe'].why.includes('die Aufgabe') && byWord['das Hören'].ex === targets[2] &&
+      byWord['das Hören'].fam === 'hoerstrategie' && byWord['das Lesen'].ex.includes('dreißig Minuten') &&
+      byWord['das Schreiben'].ex === 'Das Schreiben dauert dreißig Minuten.' &&
+      byWord['das Sprechen'].ex === targets[4] && byWord.mündlich.why.includes('15 من 25') &&
+      byWord.schriftlich.why.includes('75 نقطة') && byWord.bestehen.why.includes('muss man') &&
+      byWord['das Prozent'].why.includes('الحدين الكتابي والشفهي') &&
+      byWord['die Note'].ex === 'Eine Gesamtnote allein zeigt die drei Mindestgrenzen nicht.' &&
+      byWord['die Note'].why.includes('im أو auf dem Zeugnis') &&
+      byWord['das Ergebnis'].ex.includes('Punktzahl') && byWord['der Punkt'].ex === targets[3] &&
+      byWord['der Punkt'].why.includes('60/100') && byWord['der Punkt'].why.includes('45/75') && byWord['der Punkt'].why.includes('15/25') &&
+      byWord['der Antwortbogen'].ex === 'Füllen Sie den Antwortbogen aus.' &&
+      byWord.ankreuzen.ex === 'Kreuzen Sie die richtige Antwort an.' && byWord['die Zeit'].why.includes('المفرد') &&
+      byWord['die Uhr'].ex.includes('auf die Uhr') && byWord['die Anweisung'].err.includes('den Anweisung') &&
+      byWord['das Beispiel'].why.includes('محايد') && byWord['die Lösung'].why.includes('dem Lösungsschlüssel') &&
+      byWord.richtig.ex === 'Nur eine Antwort ist richtig.' && byWord.falsch.ex === 'Diese Antwort ist falsch.' &&
+      byWord['die Wiederholung'].ex === 'Nur in Teil zwei gibt es keine Wiederholung.' &&
+      byWord['die Prüfungsangst'].ex.includes('hilft eine gute Vorbereitung') &&
+      byWord['die Vorbereitung'].ex.includes('Modellsatz') && byWord['der Erfolg'].ex.includes('zum Erfolg') &&
+      byWord.prüfen.ex === 'Prüfen Sie am Ende den Antwortbogen.' &&
+      byWord.renovieren.why.includes('wir يأخذ renovieren') && byWord.raus.why.includes('hinaus أو heraus') &&
+      byWord.zurücklaufen.pl.includes('ist zurückgelaufen') &&
+      !['Die Note steht auf dem Zeugnis.', 'Das Sprechen findet in der Regel zu zweit statt.',
+        'Im Hören hören Sie die Texte in Teil zwei einmal und sonst zweimal.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Lesen · Hören · Schreiben = schriftlich') &&
+      tricks[0].warum.includes('75 نقطة') && tricks[0].warum.includes('25 نقطة') &&
+      tricks[1].wie.includes('60/100') && tricks[1].wie.includes('45/75') && tricks[1].wie.includes('15/25') &&
+      tricks[1].warum.includes('لا يكفي مجموع 60 وحده') && tricks[2].wie.includes('Teil zwei: einmal') &&
+      tricks[2].wie.includes('die anderen Teile: zweimal'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const imitate = lesson.schritte.find(s => s.id === 's17');
+  const drill = lesson.schritte.find(s => s.id === 's21');
+  const order = lesson.schritte.find(s => s.id === 's22');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u5-l6 aligns strict format clozes, explicit written-duration order and a 58-word five-fact production',
+    wordCloze1.frage.zeigt === 'Das ____ findet in der Regel zu zweit statt.' &&
+      wordCloze1.frage.antworten.join(' ') === 'Sprechen' && wordCloze1.frage.nearMiss.Schreiben &&
+      !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Schreiben').ok &&
+      wordCloze2.frage.zeigt === 'Diese Antwort ist ____.' && wordCloze2.frage.antworten.join(' ') === 'falsch' &&
+      wordCloze2.frage.nearMiss.falsche && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'falsche').ok &&
+      imitate.frage.antworten.join(' ') === 'Teile' && imitate.frage.nearMiss.Module &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'Module').ok &&
+      drill.frage.zeigt === 'Zum Bestehen braucht man insgesamt mindestens sechzig ____, davon mindestens fünfundvierzig schriftlich und mindestens fünfzehn mündlich.' &&
+      drill.frage.antworten.join(' ') === 'Punkte' && drill.frage.nearMiss.Punkt &&
+      !win.DW.renderers.judgeCloze(drill.frage, 'Punkt').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[1] && order.frage.finite === 'hat' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Für die schriftliche Prüfung' && order.frage.fields.lsk.join(' ') === 'hat' &&
+      order.frage.fields.mittelfeld.join(' ') === 'man insgesamt etwa neunzig Minuten.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Für', 'die', 'schriftliche', 'Prüfung', 'man', 'hat', 'insgesamt', 'etwa', 'neunzig', 'Minuten.']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 58 &&
+      targets.join(' ').split(/\s+/).length === 58 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u5-l6 makes 80 percent four of five, independently checking pair speaking, thresholds, duration, four parts and listening repeats',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u5-l6\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u5-l6.s07 | cap.a2-u5-l6.s21 | cap.a2-u5-l6.s22 | cap.a2-u5-l6.s08 | cap.a2-u5-l6.s06' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[4]) && checks[0].frage.misconceptionFamilies.a === 'pruefstrategie' &&
+      clozeCheck.frage.zeigt.includes('mindestens sechzig ____') && clozeCheck.frage.antworten.join(' ') === 'Punkte' &&
+      clozeCheck.frage.nearMiss.Punkt && !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Punkt').ok &&
+      orderCheck.frage.correct.join(' ') === targets[1] && orderCheck.frage.finite === 'hat' &&
+      orderCheck.frage.verbFirst === false && orderCheck.frage.fields.vorfeld.join(' ') === 'Für die schriftliche Prüfung' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Für', 'die', 'schriftliche', 'Prüfung', 'man', 'hat', 'insgesamt', 'etwa', 'neunzig', 'Minuten.']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'pruefstrategie' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) && checks[4].frage.misconceptionFamilies.a === 'hoerstrategie');
+}
 /* ---------- A1 — the second slice of the lexical layer ---------- */
 {
   const { window: win } = boot();
