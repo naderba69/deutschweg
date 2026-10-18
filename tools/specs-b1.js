@@ -872,25 +872,50 @@ module.exports = [
       hwHintDe: 'Nicht aus dem Englischen: nicht „sort the trash" oder „sorten", sondern den Müll trennen; nicht „saven" und nicht „save money" wörtlich für Wasser — sparen. Und auch kein „throw away", „throwen" oder „wegthrowen": Das echte Verb heißt wegwerfen: Wirf weniger weg!'
     }),
 
-  U('b1-u3-l4', 'B1', 'الإعلام', 'Medien', 'pruefstrategie',
-    'Am Ende trennst du Nachricht und Meinung',
-    'في النهاية تفصل الخبر عن الرأي.',
+  U('b1-u3-l4', 'B1', 'الإعلام: التقرير بالحرف ونسب الرأي وفحص المصدر', 'Medien: berichten über, meinen und Quellen prüfen', 'pruefstrategie',
+    'Am Ende beschreibst du Medien in fünf Sätzen: Bericht, Meldung, Meinung, Quelle und Falschmeldung',
+    'في النهاية تصف عالم الإعلام في خمس جمل: التقرير والخبر العاجل ونسب الرأي وفحص المصدر والخبر الكاذب.',
     [
-      ['der Autor meint', 'الرأي يُنسب', 'لا النص يقول كحقيقة إن كان رأيًا', 'der Text beweist die Meinung', 'الرأي ليس برهانًا'],
-      ['die Schlagzeile', 'العنوان قد يعد بأكثر', 'لا تصدق العنوان وحده', 'die Schlagzeile ist der Text', 'العنوان ليس النص'],
-      ['zusammenfassen', 'التلخيص قبل الحكم', 'الحكم أولًا يضيع المهمة', 'ich urteile vor der Zusammenfassung', 'التلخيص أولًا'],
-      ['Quelle nennen', 'المصدر يُذكر', 'بلا مصدر لا قوة', 'ich habe das irgendwo gelesen', 'المصدر محدد']
+      ['Die Medien berichten über die Wahlen.', 'تعرف بما تغطيه الوسائل', 'berichten مربوط بـ über + النصب والفاعل الجمع تليه الصيغة الجمع', 'Die Medien berichten für die Wahlen.', 'حرف التقرير الثابت: über لا für'],
+      ['Im Radio kam die Meldung zuerst.', 'تحكي أول مذيع للخبر', 'العبارة المتقدمة Im Radio تشغل الموضع الأول فالفعل kam ثانيًا قبل الفاعل المؤنث', 'Im Radio die Meldung kam zuerst.', 'القلب بعد العبارة: kam die Meldung لا الفاعل قبل الفعل'],
+      ['Der Autor meint, dass das riskant ist.', 'تنسب الرأي إلى صاحبه', 'meint ينسب الحكم، وفعل جملة dass في النهاية: dass das riskant ist بفعل أخير', 'Der Autor meint, dass das ist riskant.', 'بعد dass يقع الفعل أخيرًا: riskant ist'],
+      ['Man muss jede Quelle prüfen.', 'تعلن قاعدة نقد المصدر', 'modal بوجوب عام: man muss + مصدر في النهاية prüfen', 'Man musst jede Quelle prüfen.', 'مع man مفرد غائب: muss لا musst']
     ],
     [
-      ['Der Autor meint, dass das riskant ist.', 'يرى الكاتب أن هذا خطر', 'Der Text beweist die Meinung', 'الرأي يُنسب', 'meint'],
-      ['Die Schlagzeile ist nicht der Text.', 'العنوان ليس النص', 'Die Schlagzeile ist der ganze Text', 'العنوان وعد لا نص', 'Schlagzeile'],
-      ['Zuerst fasse ich zusammen.', 'أولًا ألخص', 'Zuerst urteile ich', 'التلخيص قبل الحكم', 'Zuerst'],
-      ['Die Quelle heißt nicht irgendwo.', 'المصدر ليس مكانًا مبهمًا', 'Ich habe das irgendwo gelesen', 'المصدر محدد', 'Quelle']
+      ['Die Medien berichten über die Wahlen.', 'تغطي الوسائل الانتخابات', 'Die Medien berichten für die Wahlen.', 'التقرير مع über ثابت', 'berichten'],
+      ['Im Radio kam die Meldung zuerst.', 'ورد الخبر العاجل في المذياع أولًا', 'Im Radio die Meldung kam zuerst.', 'الأسبقية مع القلب: kam die Meldung', 'kam'],
+      ['Der Autor meint, dass das riskant ist.', 'يرى الكاتب أن هذا خطر', 'Der Autor meint, dass das ist riskant.', 'الرأي منسوب بـmeint مع فعل نهائي', 'meint'],
+      ['Man muss jede Quelle prüfen.', 'يجب فحص كل مصدر', 'Man musst jede Quelle prüfen.', 'واجب الفحص بصيغة man muss', 'muss']
     ],
-    'Zuerst fasse ich zusammen. Der Autor meint, dass das riskant ist.',
-    'Die Schlagzeile ist nicht der Text.',
-    'Trenne morgen eine Tatsache von einer Meinung.',
-    'غدًا افصل واقعة عن رأي.'),
+    'Die Medien berichten über die Wahlen.',
+    'Die Falschmeldung verbreitete sich schnell.',
+    'Wiederhole morgen die fünf Sätze: Die Medien berichten über die Wahlen. Im Radio kam die Meldung zuerst. Der Autor meint, dass das riskant ist. Man muss jede Quelle prüfen. Die Falschmeldung verbreitete sich schnell.',
+    'غدًا أعد وصف الإعلام كاملًا ولاحظ القلب والفعل الأخير بعد dass.',
+    {
+      factFamilies: ['präposition', 'wortstellung', 'wortstellung', 'konjugation'],
+      imitateNearMiss: 'berichtet',
+      transformHint: 'في جملة الختام الفعل انعكاسي وبالسرد: Die Falschmeldung verbreitete sich schnell — الضمير sich لا يسقط وصيغة الماضي verbreitete.',
+      orderSentence: 'Über den Unfall berichtet der Sender heute.',
+      checkOrderSentence: 'Jede Quelle muss man prüfen.',
+      orderAr: 'رتّب جملة التقرير: عبارة Über den Unfall المتقدمة أولًا ثم الفعل berichtet ثانيًا قبل الفاعل der Sender.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني قبل الفاعل.',
+      orderHints: ['العبارة المتقدمة تشغل الموضع الأول فالفعل ثانيًا.', 'الفاعل المؤجل لا يسبق فعله.'],
+      writing: {
+        zeigt: 'Medien in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل عن الإعلام: خبر بـberichten وüber، وأسبقية إذاعية بقلب بعد im Radio، ورأي منسوب بفعل أخير بعد dass، وقاعدة فحص بصيغة man muss، وانتشار خبر كاذب بماضٍ وانعكاس.',
+        hinweise: ['نقد وسيلة الإعلام يبدأ بتفكيكها: من يتولى التقرير؟ أين صدر أولًا؟ هل الرأي منسوب؟ ثم المصدر والخبر الكاذب.', 'ثوابت هذا الدرس: berichten über وواردات im وصيغة man muss وفعل أخير بعد dass.'],
+        prompt: 'اكتب جمل الإعلام الخمس المستهدفة من الذاكرة مع الحرف الثابت والقلب والفعل الأخير بعد dass.',
+        promptDe: 'Die Medien berichten über die Wahlen. · Im Radio kam die Meldung zuerst. · Der Autor meint, dass das riskant ist. · Man muss jede Quelle prüfen. · Die Falschmeldung verbreitete sich schnell.',
+        points: ['Die Medien berichten über die Wahlen.', 'Im Radio kam die Meldung zuerst.', 'Der Autor meint, dass das riskant ist.', 'Man muss jede Quelle prüfen.', 'Die Falschmeldung verbreitete sich schnell.'],
+        minWords: 29,
+        frage: 'اكتب جمل الإعلام الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Medien berichten über die Wahlen. Im Radio kam die Meldung zuerst. Der Autor meint, dass das riskant ist. Man muss jede Quelle prüfen. Die Falschmeldung verbreitete sich schnell.',
+      summaryDe: 'Die Medien berichten über die Wahlen. Im Radio kam die Meldung zuerst. Der Autor meint, dass das riskant ist. Man muss jede Quelle prüfen. Die Falschmeldung verbreitete sich schnell.',
+      summaryAr: 'الإعلام في خمس خطوات: تقرير بحرف über ثابت، وخبر يصل أولًا بقلب بعد العبارة المكانية، ورأي منسوب إلى صاحبه بفعل أخير بعد dass، وقاعدة man muss قبل التصديق، وانتشار خبر كاذب بماضٍ وانعكاس sich.',
+      summaryRecap: 'نقد الإعلام في خمس خطوات',
+      hwHintDe: 'Nicht „irgendwo gelesen" — nenne die Quelle. Überprüfe, ob der Text eine Tatsache oder eine Meinung bringt, und trage die Reihenfolge nach: erst die Quelle prüfen, dann urteilen.'
+    }),
 
   U('b1-u3-l5', 'B1', 'التكوين', 'Ausbildung', 'lexik-kollokation',
     'Am Ende vergleichst du zwei Wege',

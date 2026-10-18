@@ -12237,6 +12237,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB3[4].frage.optionen.some(o => o.text === 'Die Temperaturen steigt jedes Jahr weiter.') &&
       Object.values(checksB3[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 
+
+  const lessonB4 = win.DW_LESSONS['b1-u3-l4'];
+  const rowB4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB4.id);
+  const byWordB4 = Object.fromEntries(lessonB4.wortschatz.map(it => [it.de, it]));
+  const tricksB4 = lessonB4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB4 = [
+    'Die Medien berichten über die Wahlen.',
+    'Im Radio kam die Meldung zuerst.',
+    'Der Autor meint, dass das riskant ist.',
+    'Man muss jede Quelle prüfen.',
+    'Die Falschmeldung verbreitete sich schnell.'
+  ];
+  t('Corpus lesson b1-u3-l4 precisely scopes media literacy with fixed berichten-preposition, fronted phrase inversion, dass-clause verb-final, man-muss source rule and reflexive spread across five targets',
+    lessonB4.title.de === 'Medien: berichten über, meinen und Quellen prüfen' &&
+      lessonB4.title.ar === 'الإعلام: التقرير بالحرف ونسب الرأي وفحص المصدر' &&
+      rowB4.title.de === lessonB4.title.de && rowB4.title.ar === lessonB4.title.ar &&
+      rowB4.theme === 'الأخبار والتحليل' &&
+      rowB4.grammar.item === 'berichten über + Akkusativ · im Radio (Inversion) · der Autor meint, dass … (Verbende) · man muss Quellen prüfen · sich verbreiten (Präteritum)' &&
+      rowB4.grammar.method === 'explicit' && lessonB4.schritte.length === 36 && lessonB4.wortschatz.length === 40 &&
+      lessonB4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB4[i]) &&
+      lessonB4.schritte[0].zeigt.de === 'Am Ende beschreibst du Medien in fünf Sätzen: Bericht, Meldung, Meinung, Quelle und Falschmeldung' &&
+      lessonB4.schritte.find(s => s.id === 's20').zeigt.de === targetsB4[4]);
+
+  const expectedWordsB4 = [
+    'die Medien', 'die Presse', 'die Zeitung', 'die Zeitschrift', 'die Nachrichten',
+    'die Meldung', 'der Bericht', 'der Artikel', 'die Schlagzeile', 'die Überschrift',
+    'die Quelle', 'der Journalist', 'der Reporter', 'der Leser', 'die Auflage',
+    'die Reichweite', 'der Sender', 'das Fernsehen', 'das Radio', 'das Internet',
+    'die Webseite', 'der Beitrag', 'die Sendung', 'das Interview', 'die Werbung',
+    'die Meinungsfreiheit', 'die Zensur', 'die Information', 'die Falschmeldung',
+    'die Manipulation', 'die Kritik', 'der Einfluss', 'beeinflussen', 'informieren',
+    'berichten', 'veröffentlichen', 'recherchieren', 'kommentieren', 'die Diskussion',
+    'der Kommentar'
+  ];
+  const errorsB4 = lessonB4.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l4 reviews all 40 entries and three bounded mnemonics without manufactured appendages or grammatical dative foils, keeping agreement case and tense as genuine error axes',
+    Object.keys(byWordB4).join(' | ') === expectedWordsB4.join(' | ') &&
+      lessonB4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB4['die Überschrift'].err === 'Die Überschrift passt nicht zu den Text.' &&
+      byWordB4['die Quelle'].err === 'Man musst die Quelle prüfen.' &&
+      byWordB4['die Reichweite'].err === 'Die Reichweite von der Sender ist groß.' &&
+      byWordB4['der Einfluss'].err === 'Der Einfluss von die Medien wächst.' &&
+      byWordB4['die Falschmeldung'].err === 'Die Falschmeldung verbreitet sich gestern schnell.' &&
+      byWordB4.berichten.err === 'Der Sender berichtet die Wahlen.' &&
+      byWordB4['die Zensur'].err === 'Zensur ist in vielen Länder verboten.' &&
+      !['Der Bericht ist sachlich gemacht.', 'Die Schlagzeile war reißerisch gemacht.',
+        'Die Überschrift passt nicht zu dem Text.', 'Man muss die Quelle prüfen es.',
+        'Die Leser schreiben viele Briefe es.', 'Die Reichweite von dem Sender ist groß.',
+        'Der Sender zeigt den Film heute es.', 'Die Webseite lädt langsam es.',
+        'Die Werbung nervt viele es.', 'Die Informationen muss man prüfen es.',
+        'Die Falschmeldung hat sich schnell verbreitet gehabt.',
+        'Manipulation erkennt man nicht sofort es.', 'Die Kritik war berechtigt gemacht.',
+        'Der Einfluss von den Medien wächst.', 'Der Journalist recherchiert gründlich es.',
+        'Die Diskussion läuft sachlich es.', 'Sein Kommentar war unfair gemacht.']
+        .some(x => errorsB4.includes(x)) &&
+      tricksB4.length === 3 && tricksB4[0].wie.includes('Der Sender berichtet über die Wahlen.') &&
+      tricksB4[1].wie.includes('Die Falschmeldung verbreitete sich schnell.') &&
+      tricksB4[2].wie.includes('Im Radio kam die Meldung zuerst.'));
+
+  const wordClozeAB4 = lessonB4.schritte.find(s => s.id === 's09');
+  const wordClozeBB4 = lessonB4.schritte.find(s => s.id === 's13');
+  const wordClozeCB4 = lessonB4.schritte.find(s => s.id === 's17');
+  const imitateB4 = lessonB4.schritte.find(s => s.id === 's19');
+  const drillB4 = lessonB4.schritte.find(s => s.id === 's23');
+  const orderB4 = lessonB4.schritte.find(s => s.id === 's24');
+  const writingB4 = lessonB4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB4 = lessonB4.schritte.find(s => s.phase === 'Produktion');
+  const summaryB4 = lessonB4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB4 = lessonB4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l4 aligns five strict learning clozes, sound fronted-preposition order fields and a 29-word five-target production',
+    wordClozeAB4.frage.zeigt === 'Die ____ kam zuerst im Radio.' && wordClozeAB4.frage.antworten.join(' ') === 'Meldung' &&
+      wordClozeAB4.frage.nearMiss.Meldungen && !win.DW.renderers.judgeCloze(wordClozeAB4.frage, 'Meldungen').ok &&
+      wordClozeBB4.frage.zeigt === 'Der ____ war gut recherchiert.' && wordClozeBB4.frage.antworten.join(' ') === 'Beitrag' &&
+      wordClozeBB4.frage.nearMiss['Beiträge'] && !win.DW.renderers.judgeCloze(wordClozeBB4.frage, 'Beiträge').ok &&
+      wordClozeCB4.frage.zeigt === 'Viele ____ den Artikel online.' && wordClozeCB4.frage.antworten.join(' ') === 'kommentieren' &&
+      wordClozeCB4.frage.nearMiss.kommentiert && !win.DW.renderers.judgeCloze(wordClozeCB4.frage, 'kommentiert').ok &&
+      imitateB4.zeigt.de === 'Die Medien ____ über die Wahlen.' && imitateB4.frage.antworten.join(' ') === 'berichten' &&
+      imitateB4.frage.nearMiss.berichtet && !win.DW.renderers.judgeCloze(imitateB4.frage, 'berichtet').ok &&
+      drillB4.frage.zeigt === 'Der Sender ____ über die Wahlen.' && drillB4.frage.antworten.join(' ') === 'berichtet' &&
+      drillB4.frage.nearMiss.berichten && !win.DW.renderers.judgeCloze(drillB4.frage, 'berichten').ok &&
+      lessonB4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني قبل الفاعل.' &&
+      orderB4.frage.correct.join(' ') === 'Über den Unfall berichtet der Sender heute.' && orderB4.frage.finite === 'berichtet' && orderB4.frage.verbFirst === false &&
+      orderB4.frage.fields.vorfeld.join(' ') === 'Über den Unfall' && orderB4.frage.fields.lsk.join(' ') === 'berichtet' &&
+      orderB4.frage.fields.mittelfeld.join(' ') === 'der Sender heute.' &&
+      win.DW.order.score(orderB4.frage, orderB4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB4.frage, ['Über', 'den', 'Unfall', 'der', 'Sender', 'berichtet', 'heute.']).credit < 1 &&
+      writingB4.frage.points.join(' | ') === targetsB4.join(' | ') && writingB4.frage.minWords === 29 &&
+      targetsB4.join(' ').split(/\s+/).length === 29 &&
+      targetsB4.every(x => [writingB4.frage.promptDe, summaryB4.zeigt.de, homeworkB4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB4.every(x => norm(speakingB4.erklaerung).includes(norm(x))));
+
+  const checksB4 = lessonB4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB4 = checksB4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB4 = checksB4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l4 makes 80 percent four of five, independently checking man-muss agreement, berichtet cloze, fronted object order, dative plural and reflexive spread',
+    checksB4.length === 5 && checksB4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB4.every(s => /^cap\.b1-u3-l4\.s\d+$/.test(s.frage.prereq || '')) && checksB4.every(s => !s.hinweise) &&
+      checksB4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l4.s07 | cap.b1-u3-l4.s23 | cap.b1-u3-l4.s24 | cap.b1-u3-l4.s14 | cap.b1-u3-l4.s20' &&
+      new Set(checksB4.map(s => s.frage.prereq)).size === 5 &&
+      checksB4[0].frage.optionen.some(o => o.text === targetsB4[3]) &&
+      checksB4[0].frage.optionen.some(o => o.text === 'Man musst jede Quelle prüfen.') &&
+      Object.values(checksB4[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckB4.frage.zeigt === 'Der Sender ____ über die Wahlen.' &&
+      clozeCheckB4.frage.antworten.join(' ') === 'berichtet' && clozeCheckB4.frage.nearMiss.berichten &&
+      !win.DW.renderers.judgeCloze(clozeCheckB4.frage, 'berichten').ok &&
+      orderCheckB4.frage.correct.join(' ') === 'Jede Quelle muss man prüfen.' && orderCheckB4.frage.finite === 'muss' &&
+      orderCheckB4.frage.fields.vorfeld.join(' ') === 'Jede Quelle' && orderCheckB4.frage.fields.lsk.join(' ') === 'muss' &&
+      orderCheckB4.frage.fields.mittelfeld.join(' ') === 'man prüfen.' &&
+      win.DW.order.score(orderCheckB4.frage, orderCheckB4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB4.frage, ['Jede', 'Quelle', 'man', 'muss', 'prüfen.']).credit < 1 &&
+      checksB4[3].frage.optionen.some(o => o.text === 'Zensur ist in vielen Ländern verboten.') &&
+      checksB4[3].frage.optionen.some(o => o.text === 'Zensur ist in vielen Länder verboten.') &&
+      Object.values(checksB4[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checksB4[4].frage.optionen.some(o => o.text === targetsB4[4]) &&
+      checksB4[4].frage.optionen.some(o => o.text === 'Die Falschmeldung verbreitete schnell.') &&
+      Object.values(checksB4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

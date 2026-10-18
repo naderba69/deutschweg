@@ -120,7 +120,7 @@
     ['كتابة طلب العمل: التحية والمرفق وجملة الختام', 'Bewerbung schreiben: Anrede, Anhang und Schlusssatz', 'طلب التوظيف الرسمي', 'Sehr geehrte + Komma + Kleinschreibung · sich bewerben um + Akkusativ · Anbei sende ich Ihnen … (Inversion) · mitbringen / sich vorstellen getrennt am Satzende · Über … würde ich mich freuen', 'explicit'],
     ['الشكوى الرسمية: الشكوى بالحرف والواقعة والمطلب', 'Beschwerde: beschweren über, Tatsache und Bitte um', 'خدمة العملاء والشكوى', 'sich beschweren über + Akkusativ · zwei Wochen zu spät (Maß) · bitten Sie um + Akkusativ · prüfen Sie (Höflichkeitsbefehl) · eine Frist von zwei Wochen setzen', 'explicit'],
     ['البيئة: فرز النفايات والتوفير والاستغناء', 'Umwelt: Müll trennen, sparen und verzichten', 'عادات صديقة للبيئة', 'Müll trennen in drei Tonnen · bleiben + Zeitmaß · verzichten auf + Akkusativ · So sparen wir (Inversion) · Temperaturen steigen (Folge)', 'explicit'],
-    ['الإعلام', 'Medien', 'الإعلام', 'تلخيص خبر', 'explicit'],
+    ['الإعلام: التقرير بالحرف ونسب الرأي وفحص المصدر', 'Medien: berichten über, meinen und Quellen prüfen', 'الأخبار والتحليل', 'berichten über + Akkusativ · im Radio (Inversion) · der Autor meint, dass … (Verbende) · man muss Quellen prüfen · sich verbreiten (Präteritum)', 'explicit'],
     ['التكوين', 'Ausbildung', 'التعلم', 'مقارنة مسارين', 'explicit'],
     ['المدينة', 'Stadt', 'السكن', 'ميزة وعيوب حي', 'explicit'],
     ['التأمين', 'Versicherung', 'البيروقراطية', 'Anmeldung بخط عريض', 'explicit'],
