@@ -827,25 +827,50 @@ module.exports = [
       hwHintDe: 'Sachlich wirkt mehr als laut: Nicht „I demand ..." und kein Satz wie „Das ist eine Frechheit" ist schon eine Beschwerde. Die Beschwerde nennt den Grund, die Tatsache und die Bitte — sachlich und ohne Beleidigung.'
     }),
 
-  U('b1-u3-l3', 'B1', 'البيئة', 'Umwelt', 'lexik-kollokation',
-    'Am Ende nennst du eine Gewohnheit und eine Folge',
-    'في النهاية تسمّي عادة ونتيجة.',
+  U('b1-u3-l3', 'B1', 'البيئة: فرز النفايات والتوفير والاستغناء', 'Umwelt: Müll trennen, sparen und verzichten', 'lexik-kollokation',
+    'Am Ende nennst du vier Umwelt-Gewohnheiten und eine Klimafolge in fünf Sätzen',
+    'في النهاية تسمي أربع عادات بيئية ونتيجة مناخية في خمس جمل كاملة.',
     [
-      ['Müll trennen', 'الفرز trennen', 'لا sort the trash خليط', 'den Müll sorten', 'sorten ليست الفعل'],
-      ['sparen', 'التوفير sparen', 'لا save money خليط', 'Geld saven', 'saven ليست الفعل'],
-      ['wegwerfen', 'الرمي wegwerfen', 'لا throw away', 'wegthrowen', 'الفعل wegwerfen'],
-      ['die Folge', 'النتيجة تُقال بعد العادة', 'لا قفز إلى الشعار', 'die Umwelt ist wichtig ohne Folge', 'النتيجة مطلوبة']
+      ['Wir trennen den Müll in drei Tonnen.', 'تعلن فرز نفايات منزلك', 'فعل الفرز بأدواته هو trennen + النصب، ووصف الوعاء مع in + النصب لحاويات الفرز: in drei Tonnen', 'Wir trennen den Mülls in drei Tonnen.', 'النصب بلا نهاية ملكية: den Müll لا Mülls'],
+      ['Der Plastik bleibt Jahrhunderte in der Natur.', 'تشير إلى بقاء البلاستيك الطويل', 'الادعاء بصيغة البقاء bleibt قبل مقدار الزمن Jahrhunderte والمكان بداتيف: in der Natur', 'Der Plastik bleiben Jahrhunderte in der Natur.', 'الفعل مفرد مع der: bleibt لا bleiben'],
+      ['Beim Einkaufen verzichten wir auf Plastiktüten.', 'تعلن الاستغناء عن الأكياس عند التسوق', 'verzichten مرتبط بـauf + النصب، وعبارة الزمن المتقدمة Beim Einkaufen تضع الفعل قبل الفاعل wir', 'Beim Einkaufen verzichten wir Plastiktüten.', 'حرف الاستغناء لازم: verzichten auf لا بلا حرف'],
+      ['So sparen wir Wasser und Strom.', 'تربط العادتين بنتيجة التوفير', 'So المتقدمة تحجز الموضع الأول فالفعل ثانيًا قبل الفاعل wir', 'So wir sparen Wasser und Strom.', 'القلب بعد So: So sparen wir لا نبدأ بالفاعل']
     ],
     [
-      ['Wir trennen den Müll.', 'نفرز النفايات', 'Wir sorten den Müll', 'الفرز trennen', 'trennen'],
-      ['Wir sparen Energie.', 'نوفّر الطاقة', 'Wir saven Energie', 'التوفير sparen', 'sparen'],
-      ['Man sollte weniger wegwerfen.', 'ينبغي أن نرمِ أقل', 'Man sollte weniger throwen', 'الرمي wegwerfen', 'wegwerfen'],
-      ['Die Folge ist weniger Müll.', 'النتيجة نفايات أقل', 'Die Umwelt ist wichtig nur so', 'النتيجة مطلوبة', 'Folge']
+      ['Wir trennen den Müll in drei Tonnen.', 'نفرز النفايات في ثلاث حاويات', 'Wir trennen den Mülls in drei Tonnen.', 'الفرز يعني trennen', 'trennen'],
+      ['Der Plastik bleibt Jahrhunderte in der Natur.', 'يبقى البلاستيك قرونًا في الطبيعة', 'Der Plastik bleiben Jahrhunderte in der Natur.', 'البقاء الطويل بـbleibt مفردًا', 'bleibt'],
+      ['Beim Einkaufen verzichten wir auf Plastiktüten.', 'عند التسوق نستغني عن الأكياس البلاستيكية', 'Beim Einkaufen verzichten wir Plastiktüten.', 'الاستغناء بحرف auf ثابت', 'auf'],
+      ['So sparen wir Wasser und Strom.', 'هكذا نوفر الماء والكهرباء', 'So wir sparen Wasser und Strom.', 'التوفير بعد So بالقلب', 'sparen']
     ],
-    'Wir trennen den Müll. Die Folge ist weniger Abfall.',
-    'Wir sparen Energie.',
-    'Sage morgen Gewohnheit und Folge.',
-    'غدًا قل عادة ونتيجة.'),
+    'Wir trennen den Müll in drei Tonnen.',
+    'Die Temperaturen steigen jedes Jahr weiter.',
+    'Wiederhole morgen die fünf Sätze: Wir trennen den Müll in drei Tonnen. Der Plastik bleibt Jahrhunderte in der Natur. Beim Einkaufen verzichten wir auf Plastiktüten. So sparen wir Wasser und Strom. Die Temperaturen steigen jedes Jahr weiter.',
+    'غدًا أعد سرد العادات والنتيجة مع الانتباه إلى القلب وحرف الاستغناء.',
+    {
+      factFamilies: ['kasus', 'konjugation', 'präposition', 'wortstellung'],
+      imitateNearMiss: 'trennt',
+      transformHint: 'في جملة الختام النتيجة حقيقة لا شعار: Die Temperaturen steigen jedes Jahr weiter — وفاق الفعل جمعًا فاعله الجمع.',
+      orderSentence: 'So sparen wir Wasser und Strom.',
+      checkOrderSentence: 'Der Plastik bleibt Jahrhunderte in der Natur.',
+      orderAr: 'رتّب جملة التوفير: So أولًا ثم الفعل sparen في الموضع الثاني قبل الفاعل wir.',
+      orderPromptAr: 'رتّب الجملة واضعًا الكلمة الأولى في الموضع الأول والفعل في الموضع الثاني قبل الفاعل.',
+      orderHints: ['So تشغل الموضع الأول فالفعل قبل wir.', 'wir تأتي بعد الفعل رأسًا.'],
+      writing: {
+        zeigt: 'Umwelt in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل بيئية: عادة فرز بتريبها، وحقيقة بقاء البلاستيك، واستغناء بحرف ثابت عند التسوق، وسبب التوفير بالقلب بعد So، ونتيجة مناخية بفعل جمع.',
+        hinweise: ['العادات لها أفعالها الأولى: trennen وsparen وverzichten auf — والنتيجة تضيء من دون شعار.', 'لا تخلط الإنجليزية: ليست „sorten" ولا „saven"؛ الفعل الألماني وحدته كاملة.'],
+        prompt: 'اكتب جمل البيئة الخمس المستهدفة من الذاكرة مع القلب وحرف الاستغناء والاتساق العددي.',
+        promptDe: 'Wir trennen den Müll in drei Tonnen. · Der Plastik bleibt Jahrhunderte in der Natur. · Beim Einkaufen verzichten wir auf Plastiktüten. · So sparen wir Wasser und Strom. · Die Temperaturen steigen jedes Jahr weiter.',
+        points: ['Wir trennen den Müll in drei Tonnen.', 'Der Plastik bleibt Jahrhunderte in der Natur.', 'Beim Einkaufen verzichten wir auf Plastiktüten.', 'So sparen wir Wasser und Strom.', 'Die Temperaturen steigen jedes Jahr weiter.'],
+        minWords: 32,
+        frage: 'اكتب جمل البيئة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Wir trennen den Müll in drei Tonnen. Der Plastik bleibt Jahrhunderte in der Natur. Beim Einkaufen verzichten wir auf Plastiktüten. So sparen wir Wasser und Strom. Die Temperaturen steigen jedes Jahr weiter.',
+      summaryDe: 'Wir trennen den Müll in drei Tonnen. Der Plastik bleibt Jahrhunderte in der Natur. Beim Einkaufen verzichten wir auf Plastiktüten. So sparen wir Wasser und Strom. Die Temperaturen steigen jedes Jahr weiter.',
+      summaryAr: 'البيئة في خمس جمل: فرز بفعل trennen، وحقيقة بقاء البلاستيك قرونًا، واستغناء عن الأكياس عند التسوق بحرفه الثابت auf، وتوفير يعلنه القلب بعد So، وارتفاع سنوي للحرارة كنتيجة مناخية.',
+      summaryRecap: 'عادات بيئية بخمس خطوات',
+      hwHintDe: 'Nicht aus dem Englischen: nicht „sort the trash" oder „sorten", sondern den Müll trennen; nicht „saven" und nicht „save money" wörtlich für Wasser — sparen. Und auch kein „throw away", „throwen" oder „wegthrowen": Das echte Verb heißt wegwerfen: Wirf weniger weg!'
+    }),
 
   U('b1-u3-l4', 'B1', 'الإعلام', 'Medien', 'pruefstrategie',
     'Am Ende trennst du Nachricht und Meinung',

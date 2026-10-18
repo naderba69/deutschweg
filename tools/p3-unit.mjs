@@ -12112,6 +12112,131 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB2[4].frage.optionen.some(o => o.text === 'Ich setze Ihnen eine Frist für zwei Wochen.') &&
       Object.values(checksB2[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 
+
+  const lessonB3 = win.DW_LESSONS['b1-u3-l3'];
+  const rowB3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB3.id);
+  const byWordB3 = Object.fromEntries(lessonB3.wortschatz.map(it => [it.de, it]));
+  const tricksB3 = lessonB3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB3 = [
+    'Wir trennen den Müll in drei Tonnen.',
+    'Der Plastik bleibt Jahrhunderte in der Natur.',
+    'Beim Einkaufen verzichten wir auf Plastiktüten.',
+    'So sparen wir Wasser und Strom.',
+    'Die Temperaturen steigen jedes Jahr weiter.'
+  ];
+  t('Corpus lesson b1-u3-l3 precisely scopes everyday environment with sorting, plastic persistence, auf-preposition, So-inversion and climate consequence across five targets',
+    lessonB3.title.de === 'Umwelt: Müll trennen, sparen und verzichten' &&
+      lessonB3.title.ar === 'البيئة: فرز النفايات والتوفير والاستغناء' &&
+      rowB3.title.de === lessonB3.title.de && rowB3.title.ar === lessonB3.title.ar &&
+      rowB3.theme === 'عادات صديقة للبيئة' &&
+      rowB3.grammar.item === 'Müll trennen in drei Tonnen · bleiben + Zeitmaß · verzichten auf + Akkusativ · So sparen wir (Inversion) · Temperaturen steigen (Folge)' &&
+      rowB3.grammar.method === 'explicit' && lessonB3.schritte.length === 36 && lessonB3.wortschatz.length === 40 &&
+      lessonB3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB3[i]) &&
+      lessonB3.schritte[0].zeigt.de === 'Am Ende nennst du vier Umwelt-Gewohnheiten und eine Klimafolge in fünf Sätzen' &&
+      lessonB3.schritte.find(s => s.id === 's20').zeigt.de === targetsB3[4]);
+
+  const expectedWordsB3 = [
+    'die Umwelt', 'der Umweltschutz', 'der Klimawandel', 'der Müll', 'die Mülltrennung',
+    'der Abfall', 'der Plastik', 'das Recycling', 'die Energie', 'der Strom',
+    'die Sonnenenergie', 'die Windkraft', 'erneuerbar', 'das Wasser', 'der Verbrauch',
+    'verbrauchen', 'sparen', 'schützen', 'verschmutzen', 'die Verschmutzung', 'die Luft',
+    'das Klima', 'die Temperatur', 'die Trockenheit', 'das Hochwasser',
+    'die Wetterkatastrophe', 'die Dürre', 'die Ernte', 'der Boden', 'der Artenschutz',
+    'die Art', 'der Wald', 'das Meer', 'der Küstenstreifen', 'das Verbot',
+    'die Vorschrift', 'die Maßnahme', 'nachhaltig', 'bewusst', 'verzichten'
+  ];
+  const errorsB3 = lessonB3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l3 reviews all 40 entries and three bounded mnemonics without twenty-three manufactured appendages, fixing the Artenschutz gender and keeping verb agreement and auxiliary as genuine error axes',
+    Object.keys(byWordB3).join(' | ') === expectedWordsB3.join(' | ') &&
+      lessonB3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB3['die Umwelt'].err === 'Wir müssen die Umwelt schützt.' &&
+      byWordB3['die Verschmutzung'].err === 'Die Verschmutzung von die Luft ist gefährlich.' &&
+      byWordB3['der Verbrauch'].err === 'Der Verbrauch hat gesunken.' &&
+      byWordB3['der Artenschutz'].err === 'Artenschutz sei Tierschutz.' &&
+      byWordB3['die Windkraft'].err === 'Die Windkraft wachst schnell.' &&
+      byWordB3['das Wasser'].err === 'Wasser sind knapp.' &&
+      byWordB3['das Hochwasser'].err === 'Das Hochwasser zerstört gestern die Felder.' &&
+      !['Wir müssen die Umwelt schützen es.', 'Der Klimawandel ist eine Tatsache gemacht.',
+        'Die Mülltrennung ist hier Pflicht gemacht.', 'Plastik braucht Jahrhunderte es.',
+        'Recycling spart Energie es.', 'Der Strom wird teurer es.',
+        'Die Sonnenenergie ist unerschöpflich gemacht.', 'Die Windkraft wächst schnell es.',
+        'Wasser ist knapp es.', 'Der Verbrauch ist gesunken gemacht.',
+        'Die Verschmutzung von der Luft ist gefährlich.', 'Die Luft ist hier sauber gemacht.',
+        'Die Temperaturen steigen es.', 'Das Hochwasser hat die Felder zerstört gehabt.',
+        'Die Wetterkatastrophen nehmen zu es.', 'Die Ernte war schlecht gemacht.',
+        'Der Boden verliert Wasser es.', 'Artenschutz ist Tierschutz es.',
+        'Viele Arten verschwinden es.', 'Das Meer ist voller Plastik gemacht.',
+        'Die Vorschrift ist neu gemacht.', 'Die Maßnahme greift langsam es.',
+        'Ich lebe bewusst es.']
+        .some(x => errorsB3.includes(x)) &&
+      tricksB3.length === 3 && tricksB3[0].wie.includes('Wir verzichten auf Plastiktüten.') &&
+      tricksB3[1].wie.includes('Der Verbrauch ist gesunken.') &&
+      tricksB3[2].wie.includes('Erneuerbare Energien sind wichtig.'));
+
+  const wordClozeAB3 = lessonB3.schritte.find(s => s.id === 's09');
+  const wordClozeBB3 = lessonB3.schritte.find(s => s.id === 's13');
+  const wordClozeCB3 = lessonB3.schritte.find(s => s.id === 's17');
+  const imitateB3 = lessonB3.schritte.find(s => s.id === 's19');
+  const drillB3 = lessonB3.schritte.find(s => s.id === 's23');
+  const orderB3 = lessonB3.schritte.find(s => s.id === 's24');
+  const writingB3 = lessonB3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB3 = lessonB3.schritte.find(s => s.phase === 'Produktion');
+  const summaryB3 = lessonB3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB3 = lessonB3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l3 aligns five strict learning clozes, sound So-inversion order fields and a 32-word five-target production',
+    wordClozeAB3.frage.zeigt === 'Der ____ wird abgeholt.' && wordClozeAB3.frage.antworten.join(' ') === 'Abfall' &&
+      wordClozeAB3.frage.nearMiss.Abfälle && !win.DW.renderers.judgeCloze(wordClozeAB3.frage, 'Abfälle').ok &&
+      wordClozeBB3.frage.zeigt === 'Das ____ hat sich verändert.' && wordClozeBB3.frage.antworten.join(' ') === 'Klima' &&
+      wordClozeBB3.frage.nearMiss.Klimas && !win.DW.renderers.judgeCloze(wordClozeBB3.frage, 'Klimas').ok &&
+      wordClozeCB3.frage.zeigt === '____ Wirtschaften ist nötig.' && wordClozeCB3.frage.antworten.join(' ') === 'Nachhaltiges' &&
+      wordClozeCB3.frage.nearMiss.Nachhaltig && !win.DW.renderers.judgeCloze(wordClozeCB3.frage, 'Nachhaltig').ok &&
+      imitateB3.zeigt.de === 'Wir ____ den Müll in drei Tonnen.' && imitateB3.frage.antworten.join(' ') === 'trennen' &&
+      imitateB3.frage.nearMiss.trennt && !win.DW.renderers.judgeCloze(imitateB3.frage, 'trennt').ok &&
+      drillB3.frage.zeigt === 'Der Müll wird ____.' && drillB3.frage.antworten.join(' ') === 'getrennt' &&
+      drillB3.frage.nearMiss.trennen && !win.DW.renderers.judgeCloze(drillB3.frage, 'trennen').ok &&
+      lessonB3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB3.frage.frage === 'رتّب الجملة واضعًا الكلمة الأولى في الموضع الأول والفعل في الموضع الثاني قبل الفاعل.' &&
+      orderB3.frage.correct.join(' ') === targetsB3[3] && orderB3.frage.finite === 'sparen' && orderB3.frage.verbFirst === false &&
+      orderB3.frage.fields.vorfeld.join(' ') === 'So' && orderB3.frage.fields.lsk.join(' ') === 'sparen' &&
+      orderB3.frage.fields.mittelfeld.join(' ') === 'wir Wasser und Strom.' &&
+      win.DW.order.score(orderB3.frage, orderB3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB3.frage, ['So', 'wir', 'sparen', 'Wasser', 'und', 'Strom.']).credit < 1 &&
+      writingB3.frage.points.join(' | ') === targetsB3.join(' | ') && writingB3.frage.minWords === 32 &&
+      targetsB3.join(' ').split(/\s+/).length === 32 &&
+      targetsB3.every(x => [writingB3.frage.promptDe, summaryB3.zeigt.de, homeworkB3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB3.every(x => norm(speakingB3.erklaerung).includes(norm(x))));
+
+  const checksB3 = lessonB3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB3 = checksB3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB3 = checksB3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l3 makes 80 percent four of five, independently checking So inversion, getrennt passive cloze, noun-subject order, geschuetzt passive and plural temperature agreement',
+    checksB3.length === 5 && checksB3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB3.every(s => /^cap\.b1-u3-l3\.s\d+$/.test(s.frage.prereq || '')) && checksB3.every(s => !s.hinweise) &&
+      checksB3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l3.s07 | cap.b1-u3-l3.s23 | cap.b1-u3-l3.s24 | cap.b1-u3-l3.s15 | cap.b1-u3-l3.s20' &&
+      new Set(checksB3.map(s => s.frage.prereq)).size === 5 &&
+      checksB3[0].frage.optionen.some(o => o.text === targetsB3[3]) &&
+      checksB3[0].frage.optionen.some(o => o.text === 'So wir sparen Wasser und Strom.') &&
+      Object.values(checksB3[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckB3.frage.zeigt === 'Der Müll wird ____.' &&
+      clozeCheckB3.frage.antworten.join(' ') === 'getrennt' && clozeCheckB3.frage.nearMiss.trennen &&
+      !win.DW.renderers.judgeCloze(clozeCheckB3.frage, 'trennen').ok &&
+      orderCheckB3.frage.correct.join(' ') === targetsB3[1] && orderCheckB3.frage.finite === 'bleibt' &&
+      orderCheckB3.frage.fields.vorfeld.join(' ') === 'Der Plastik' && orderCheckB3.frage.fields.lsk.join(' ') === 'bleibt' &&
+      orderCheckB3.frage.fields.mittelfeld.join(' ') === 'Jahrhunderte in der Natur.' &&
+      win.DW.order.score(orderCheckB3.frage, orderCheckB3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB3.frage, ['Der', 'Plastik', 'Jahrhunderte', 'bleibt', 'in', 'der', 'Natur.']).credit < 1 &&
+      checksB3[3].frage.optionen.some(o => o.text === 'Der Wald wird geschützt.') &&
+      checksB3[3].frage.optionen.some(o => o.text === 'Der Wald wird schützen.') &&
+      Object.values(checksB3[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksB3[4].frage.optionen.some(o => o.text === targetsB3[4]) &&
+      checksB3[4].frage.optionen.some(o => o.text === 'Die Temperaturen steigt jedes Jahr weiter.') &&
+      Object.values(checksB3[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

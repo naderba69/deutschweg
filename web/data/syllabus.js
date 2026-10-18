@@ -119,7 +119,7 @@
     ['وصف الإحصاء: الرقم والارتفاع والمقارنة', 'Statistik beschreiben: Zahl, Anstieg und Vergleich', 'الرسوم والأرقام', 'Grafik nennen: die Zahl der Gäste (Genitiv) · gestiegen/gesunken mit sein · im Vergleich zum Vorjahr + Komparativ · Anteil macht … Prozent aus · keine Ursache ohne Quelle', 'explicit'],
     ['كتابة طلب العمل: التحية والمرفق وجملة الختام', 'Bewerbung schreiben: Anrede, Anhang und Schlusssatz', 'طلب التوظيف الرسمي', 'Sehr geehrte + Komma + Kleinschreibung · sich bewerben um + Akkusativ · Anbei sende ich Ihnen … (Inversion) · mitbringen / sich vorstellen getrennt am Satzende · Über … würde ich mich freuen', 'explicit'],
     ['الشكوى الرسمية: الشكوى بالحرف والواقعة والمطلب', 'Beschwerde: beschweren über, Tatsache und Bitte um', 'خدمة العملاء والشكوى', 'sich beschweren über + Akkusativ · zwei Wochen zu spät (Maß) · bitten Sie um + Akkusativ · prüfen Sie (Höflichkeitsbefehl) · eine Frist von zwei Wochen setzen', 'explicit'],
-    ['البيئة', 'Umwelt', 'البيئة', 'رأي في عادة بيئية', 'explicit'],
+    ['البيئة: فرز النفايات والتوفير والاستغناء', 'Umwelt: Müll trennen, sparen und verzichten', 'عادات صديقة للبيئة', 'Müll trennen in drei Tonnen · bleiben + Zeitmaß · verzichten auf + Akkusativ · So sparen wir (Inversion) · Temperaturen steigen (Folge)', 'explicit'],
     ['الإعلام', 'Medien', 'الإعلام', 'تلخيص خبر', 'explicit'],
     ['التكوين', 'Ausbildung', 'التعلم', 'مقارنة مسارين', 'explicit'],
     ['المدينة', 'Stadt', 'السكن', 'ميزة وعيوب حي', 'explicit'],
