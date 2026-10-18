@@ -465,25 +465,51 @@ module.exports = [
       hwHintDe: 'Lies die Geschichte wie eine Romanzeile am Stück: lebte · gab es · ging · kam · bat · blieb. Nicht mit Perfekt mischen: „hat hier gelebt", „hat begonnen" oder „hat geendet" gehört ins Gespräch, nicht in die Erzählung.'
     }),
 
-  U('b1-u2-l3', 'B1', 'الإضافة', 'Genitiv', 'deklination',
-    'Am Ende benutzt du wegen des und trotz des',
-    'في النهاية تستعمل wegen des وtrotz des.',
+  U('b1-u2-l3', 'B1', 'الإضافة (Genitiv): des Mannes وder Frau — والانتماء مع wegen وtrotz', 'Genitiv: des Mannes, der Frau – Zugehörigkeit mit wegen und trotz', 'kasus',
+    'Am Ende bildest du Genitivformen: des Mannes, der Frau, wegen des Wetters und trotz des Regens',
+    'في النهاية تكوّن صيغ الإضافة: des Mannes وder Frau وwegen des Wetters وtrotz des Regens.',
     [
-      ['wegen des Wetters', 'wegen يأخذ الإضافة', 'wegen dem مسموع لا هذا الدرس', 'wegen dem Wetter', 'الدرس des'],
-      ['trotz des Regens', 'trotz كذلك', 'trotz dem ليس هدف الدرس', 'trotz dem Regen', 'الدرس des'],
-      ['des Mannes', 'المذكر es', 'des Mann ناقص', 'des Mann', 'النهاية es'],
-      ['der Frau', 'المؤنث der في الإضافة', 'die Frau bleibt nicht', 'wegen die Frau', 'الإضافة der']
+      ['Das Auto des Mannes ist neu.', 'تصف سيارة الرجل الجديدة', 'إضافة المذكر: الأداة des ونهاية -(e)s على الاسم نفسه: des Mannes', 'Das Auto des Mann ist neu.', 'علامة الإضافة للمذكر مزدوجة: des Mannes لا des Mann'],
+      ['Die Tasche der Frau ist schwer.', 'تصف حقيبة المرأة الثقيلة', 'إضافة المؤنث: der ويبقى الاسم بلا أي نهاية: der Frau', 'Die Tasche der Fraus ist schwer.', 'لا -s مع المؤنث: der Frau لا der Fraus'],
+      ['Wegen des Wetters bleiben wir zu Hause.', 'تشرح لماذا تبقون في البيت', 'wegen في الألمانية المكتوبة تأخذ Genitiv: wegen des Wetters؛ والعبارة المتقدمة تجعل الفعل bleiben في الموضع الثاني قبل الفاعل', 'Wegen die Wetter bleiben wir zu Hause.', 'بعد wegen لا يأتي الرفع die Wetter؛ المكتوب القياسي Genitiv: des Wetters'],
+      ['Trotz des Regens gehen wir spazieren.', 'تروي نزهة رغم المطر', 'trotz كذلك تأخذ Genitiv في الكتابة: trotz des Regens بنهاية -s على الاسم Regen', 'Trotz des Regen gehen wir spazieren.', 'الاسم بعد des يحتاج نهايته: Regens لا Regen']
     ],
     [
-      ['Wegen des Wetters bleiben wir.', 'بسبب الطقس نبقى', 'Wegen dem Wetter bleiben wir', 'الدرس des', 'des'],
-      ['Trotz des Regens gehen wir.', 'رغم المطر نذهب', 'Trotz dem Regen gehen wir', 'الدرس des', 'des'],
-      ['Das Auto des Mannes ist neu.', 'سيارة الرجل جديدة', 'Das Auto des Mann ist neu', 'النهاية es', 'Mannes'],
-      ['Die Tasche der Frau ist schwer.', 'حقيبة المرأة ثقيلة', 'Die Tasche die Frau ist schwer', 'الإضافة der', 'der']
+      ['Das Auto des Mannes ist neu.', 'سيارة الرجل جديدة', 'Das Auto des Mann ist neu.', 'إضافة المذكر: des Mannes بنهاية -es على الاسم', 'Mannes'],
+      ['Die Tasche der Frau ist schwer.', 'حقيبة المرأة ثقيلة', 'Die Tasche der Fraus ist schwer.', 'إضافة المؤنث: der Frau بلا نهاية', 'Frau'],
+      ['Wegen des Wetters bleiben wir zu Hause.', 'بسبب الطقس نبقى في البيت', 'Wegen die Wetter bleiben wir zu Hause.', 'wegen + Genitiv: des Wetters والفعل ثانٍ', 'des'],
+      ['Trotz des Regens gehen wir spazieren.', 'رغم المطر نخرج للنزهة', 'Trotz des Regen gehen wir spazieren.', 'trotz + Genitiv: des Regens', 'Regens']
     ],
-    'Wegen des Wetters bleiben wir.',
-    'Trotz des Regens gehen wir.',
-    'Bilde morgen wegen des und trotz des.',
-    'غدًا كوّن wegen des وtrotz des.'),
+    'Das Auto des Mannes ist neu.',
+    'Die Hälfte der Arbeit ist schon fertig.',
+    'Wiederhole morgen die fünf Sätze: Das Auto des Mannes ist neu. Die Tasche der Frau ist schwer. Wegen des Wetters bleiben wir zu Hause. Trotz des Regens gehen wir spazieren. Die Hälfte der Arbeit ist schon fertig.',
+    'غدًا أعد الجمل الخمس ولاحظ علامة الإضافة في كل اسم.',
+    {
+      factFamilies: ['kasus', 'kasus', 'kasus', 'kasus'],
+      imitateNearMiss: 'Mann',
+      transformHint: 'في جملة الختام أيضًا يأتي Genitiv بعد أسماء الكم مباشرة بلا «من»: Die Hälfte der Arbeit؛ والفعل ist يوافق Hälfte المفردة.',
+      orderSentence: 'Wegen des Wetters bleiben wir zu Hause.',
+      checkOrderSentence: 'Trotz des Regens gehen wir spazieren.',
+      checkOrderRightBracket: ['spazieren.'],
+      orderAr: 'رتّب جملة السبب: عبارة Wegen des Wetters أولًا ثم الفعل bleiben في الموضع الثاني قبل الفاعل wir.',
+      orderPromptAr: 'رتّب الجملة واضعًا Wegen des Wetters أولًا وbleiben في الموضع الثاني.',
+      orderHints: ['عبارة السبب Wegen des Wetters تشغل الموضع الأول.', 'الفعل bleiben في الموضع الثاني قبل الفاعل wir.'],
+      writing: {
+        zeigt: 'Fünf Sätze mit Genitiv',
+        erklaerung: 'اكتب الجمل الخمس كاملة: إضافة مذكر مع des Mannes، وإضافة مؤنث مع der Frau، وسبب مع wegen des Wetters، وتنازل مع trotz des Regens، وكمية مع Die Hälfte der Arbeit.',
+        hinweise: ['المذكر والمحايد: des + نهاية (e)s على الاسم (des Mannes لا des Mann).', 'المؤنث والجمع: der فقط بلا نهاية على الاسم (der Frau لا der Fraus).'],
+        prompt: 'اكتب جمل الإضافة الخمس المستهدفة من الذاكرة مع علامة Genitiv الصحيحة في كل اسم.',
+        promptDe: 'Das Auto des Mannes ist neu. · Die Tasche der Frau ist schwer. · Wegen des Wetters bleiben wir zu Hause. · Trotz des Regens gehen wir spazieren. · Die Hälfte der Arbeit ist schon fertig.',
+        points: ['Das Auto des Mannes ist neu.', 'Die Tasche der Frau ist schwer.', 'Wegen des Wetters bleiben wir zu Hause.', 'Trotz des Regens gehen wir spazieren.', 'Die Hälfte der Arbeit ist schon fertig.'],
+        minWords: 32,
+        frage: 'اكتب جمل الإضافة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Das Auto des Mannes ist neu. Die Tasche der Frau ist schwer. Wegen des Wetters bleiben wir zu Hause. Trotz des Regens gehen wir spazieren. Die Hälfte der Arbeit ist schon fertig.',
+      summaryDe: 'Das Auto des Mannes ist neu. Die Tasche der Frau ist schwer. Wegen des Wetters bleiben wir zu Hause. Trotz des Regens gehen wir spazieren. Die Hälfte der Arbeit ist schon fertig.',
+      summaryAr: 'الإضافة Genitiv: المذكر والمحايد des + نهاية (e)s على الاسم (des Mannes)، والمؤنث والجمع der بلا نهاية (der Frau)، وحرفا wegen وtrotz يأخذان Genitiv في الكتابة، وأسماء الكم مثله (die Hälfte der Arbeit).',
+      summaryRecap: 'Genitiv: des Mannes وder Frau',
+      hwHintDe: 'Merke die Kette des/der + Name: des Mannes, des Hauses, der Frau. Mengenwörter stehen mit Genitiv: „Ein Drittel der Schüler fehlt"; gesprochen hört man auch „von den Schülern", geschrieben bleibt der Genitiv.'
+    }),
 
   U('b1-u2-l4', 'B1', 'الصفة كاملة', 'Adjektivdeklination', 'deklination',
     'Am Ende setzt du die Endung nach der, ein und ohne Artikel',

@@ -11175,5 +11175,122 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u2-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Das Auto des Mannes ist neu.',
+    'Die Tasche der Frau ist schwer.',
+    'Wegen des Wetters bleiben wir zu Hause.',
+    'Trotz des Regens gehen wir spazieren.',
+    'Die Hälfte der Arbeit ist schon fertig.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u2-l3 precisely scopes Genitiv with des plus noun ending for masculine and neuter, bare der for feminine and plural, wegen and trotz plus Genitiv and quantity nouns across five targets',
+    lesson.title.de === 'Genitiv: des Mannes, der Frau – Zugehörigkeit mit wegen und trotz' &&
+      lesson.title.ar === 'الإضافة (Genitiv): des Mannes وder Frau — والانتماء مع wegen وtrotz' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الملكية والانتماء والسبب' &&
+      row.grammar.item === 'Maskulin/Neutrum: des + -(e)s (des Mannes, des Hauses) · Feminin/Plural: der ohne Endung (der Frau) · wegen/trotz + Genitiv · Mengenwörter (die Hälfte, ein Drittel) + Genitiv · in der Nähe des' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du Genitivformen: des Mannes, der Frau, wegen des Wetters und trotz des Regens' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'der Besitzer', 'der Eigentümer', 'die Bedeutung', 'der Wert', 'die Qualität', 'die Menge',
+    'die Hälfte', 'das Drittel', 'der Teil', 'die Mehrheit', 'die Minderheit', 'der Rest',
+    'die Summe', 'der Preis', 'die Kosten', 'der Gewinn', 'der Verlust', 'die Schulden',
+    'das Eigentum', 'der Beginn', 'die Mitte', 'die Nähe', 'die Ferne', 'die Grenze',
+    'der Rand', 'die Seite', 'die Richtung', 'der Zweck', 'die Ursache', 'die Folge',
+    'die Absicht', 'der Grund', 'das Ziel', 'die Meinung', 'die Aufgabe', 'das Ergebnis',
+    'die Entscheidung', 'die Entwicklung', 'die Verantwortung', 'der Vorteil'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u2-l3 reviews all 40 entries and three bounded mnemonics without rejecting grammatical von-dative paraphrases, keeping only missing genitive endings and wrong case after von as errors',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord['der Besitzer'].err === 'Der Besitzer des Haus wohnt in Berlin.' &&
+      byWord['die Bedeutung'].err === 'Die Bedeutung des Wort ist wichtig.' &&
+      byWord['der Preis'].err.includes('von das Auto') && byWord['der Preis'].why.includes('des Autos') &&
+      byWord['das Ergebnis'].err.includes('der Prüfungs') &&
+      byWord['die Hälfte'].err.includes('von die Arbeit') &&
+      byWord['das Drittel'].why.includes('von den Schülern') &&
+      !['Der Besitzer von dem Haus wohnt in Berlin.', 'Die Entwicklung von der Stadt ist schnell.',
+        'Ein Drittel von den Schülern fehlt.', 'Der Preis von dem Auto ist gefallen.',
+        'Die Hälfte von der Arbeit ist fertig.', 'Die Bedeutung von dem Wort ist wichtig.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Der Preis des Autos') &&
+      tricks[1].warum.includes('der Fraus') && tricks[2].wie.includes('Ein Drittel der Schüler fehlt.'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l3 aligns five strict genitive clozes, sound inversion fields and a 32-word five-target production',
+    wordCloze1.frage.zeigt === 'Die Menge des ____ reicht nicht.' && wordCloze1.frage.antworten.join(' ') === 'Wassers' &&
+      wordCloze1.frage.nearMiss.Wasser && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Wasser').ok &&
+      wordCloze2.frage.zeigt === 'In der Nähe des ____ gibt es Cafés.' && wordCloze2.frage.antworten.join(' ') === 'Bahnhofs' &&
+      wordCloze2.frage.nearMiss.Bahnhof && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Bahnhof').ok &&
+      wordCloze3.frage.zeigt === 'Die Entwicklung der ____ ist schnell.' && wordCloze3.frage.antworten.join(' ') === 'Stadt' &&
+      wordCloze3.frage.nearMiss.Stadts && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Stadts').ok &&
+      imitate.zeigt.de === 'Das Auto des ____ ist neu.' && imitate.frage.antworten.join(' ') === 'Mannes' &&
+      imitate.frage.nearMiss.Mann && !win.DW.renderers.judgeCloze(imitate.frage, 'Mann').ok &&
+      drill.frage.zeigt === 'Der Besitzer des ____ wohnt in Berlin.' && drill.frage.antworten.join(' ') === 'Hauses' &&
+      drill.frage.nearMiss.Haus && !win.DW.renderers.judgeCloze(drill.frage, 'Haus').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا Wegen des Wetters أولًا وbleiben في الموضع الثاني.' &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'bleiben' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Wegen des Wetters' && order.frage.fields.lsk.join(' ') === 'bleiben' &&
+      order.frage.fields.mittelfeld.join(' ') === 'wir zu Hause.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Wegen', 'des', 'Wetters', 'wir', 'bleiben', 'zu', 'Hause.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 32 &&
+      targets.join(' ').split(/\s+/).length === 32 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l3 makes 80 percent four of five, independently checking trotz ending, Hauses cloze, inversion order with right bracket, von case and quantity genitive',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u2-l3\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l3.s07 | cap.b1-u2-l3.s23 | cap.b1-u2-l3.s24 | cap.b1-u2-l3.s11 | cap.b1-u2-l3.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('Trotz des Regen gehen')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheck.frage.zeigt === 'Der Besitzer des ____ wohnt in Berlin.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Hauses' && clozeCheck.frage.nearMiss.Haus &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Haus').ok &&
+      orderCheck.frage.correct.join(' ') === targets[3] && orderCheck.frage.finite === 'gehen' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Trotz des Regens' && orderCheck.frage.fields.lsk.join(' ') === 'gehen' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'spazieren.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Trotz', 'des', 'Regens', 'wir', 'gehen', 'spazieren.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Der Preis des Autos ist gefallen.') &&
+      checks[3].frage.optionen.some(o => o.text === 'Der Preis von das Auto ist gefallen.') &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('Die Hälfte von die Arbeit')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

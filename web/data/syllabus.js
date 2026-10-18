@@ -111,7 +111,7 @@
     ['تصريف n: النهاية en مع den وdem وdes — والرفع وحده بلا نهاية', 'n-Deklination: -en nach den, dem und des — nur der Nominativ ohne Endung', 'الناس والمهن والحيوانات', 'schwache Maskulina: Nominativ ohne Endung · Akkusativ/Dativ/Genitiv mit -en · der Herr mit -n · das Herz als Ausnahme', 'explicit'],
     ['المستقبل الأول مع werden: الخطط والوعود والتوقعات', 'Futur I mit werden: Pläne, Versprechen und Vorhersagen', 'الخطط والتوقعات للمستقبل', 'werden + Infinitiv am Satzende · Vorhersage mit es wird (nicht will) · trennbarer Infinitiv ungeteilt · Frage mit wirst · Inversion nach vorangestellter Zeit', 'explicit'],
     ['سرد الماضي بـPräteritum: صيغة -te والأفعال القوية ging وkam وblieb', 'Präteritum erzählen: schwache -te-Formen und starke Verben (ging, kam, blieb)', 'حكاية قصيرة في الماضي', 'schwach -te (lebte) · stark: ging/kam/sprach/bat/blieb · es gab + Akkusativ · Erzählkette und Inversion nach Zeitangabe · Modalverben konnte/musste/durfte ohne ge-', 'explicit'],
-    ['الإضافة', 'Genitiv', 'الانتماء', 'Genitiv', 'explicit'],
+    ['الإضافة (Genitiv): des Mannes وder Frau — والانتماء مع wegen وtrotz', 'Genitiv: des Mannes, der Frau – Zugehörigkeit mit wegen und trotz', 'الملكية والانتماء والسبب', 'Maskulin/Neutrum: des + -(e)s (des Mannes, des Hauses) · Feminin/Plural: der ohne Endung (der Frau) · wegen/trotz + Genitiv · Mengenwörter (die Hälfte, ein Drittel) + Genitiv · in der Nähe des', 'explicit'],
     ['الصفة كاملة', 'Adjektivdeklination', 'الوصف', 'نهايات الصفة الثلاثة', 'explicit'],
     ['als وwenn', 'als und wenn', 'الزمن', 'als مرة وwenn تكرار', 'explicit'],
     ['السؤال غير المباشر', 'Indirekte Frage', 'النقل', 'ob وW في الآخر', 'explicit'],
