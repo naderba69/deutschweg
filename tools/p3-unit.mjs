@@ -11060,5 +11060,120 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u2-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Früher lebte eine alte Frau in einem kleinen Dorf.',
+    'Neben ihrem Haus gab es einen großen Garten.',
+    'Jeden Morgen ging sie in den Garten.',
+    'Eines Tages kam ein fremder Mann und bat um Brot.',
+    'Am Ende blieb er den ganzen Winter im Dorf.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u2-l2 precisely scopes narrative Praeteritum with weak -te forms, strong vowel changes, es gab plus accusative and time-first inversion across five targets',
+    lesson.title.de === 'Präteritum erzählen: schwache -te-Formen und starke Verben (ging, kam, blieb)' &&
+      lesson.title.ar === 'سرد الماضي بـPräteritum: صيغة -te والأفعال القوية ging وkam وblieb' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'حكاية قصيرة في الماضي' &&
+      row.grammar.item === 'schwach -te (lebte) · stark: ging/kam/sprach/bat/blieb · es gab + Akkusativ · Erzählkette und Inversion nach Zeitangabe · Modalverben konnte/musste/durfte ohne ge-' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende erzählst du eine kurze Geschichte in fünf Sätzen im Präteritum' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'gab', 'ging', 'kam', 'sah', 'nahm', 'sprach', 'fand', 'blieb', 'hieß', 'bat', 'rief', 'hielt',
+    'lag', 'stand', 'trat', 'trug', 'wusste', 'konnte', 'musste', 'durfte', 'begann', 'endete',
+    'dauerte', 'geschah', 'ereignete sich', 'der Anfang', 'das Ende', 'der Höhepunkt',
+    'die Handlung', 'die Figur', 'der Held', 'die Erzählung', 'der Roman', 'der Autor',
+    'die Szene', 'die Spannung', 'der Konflikt', 'die Moral', 'der Erzähler', 'das Kapitel'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u2-l2 reviews all 40 entries and three bounded mnemonics without rejecting grammatical Perfekt forms, keeping only genuine strong-form, auxiliary and agreement errors',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.gab.err === 'Er gebte mir das Buch zurück.' &&
+      byWord.sprach.err === 'Er sprechte leise mit dem Arzt.' &&
+      byWord.bat.err === 'Er bittete mich um Hilfe.' &&
+      byWord.ging.why.includes('ist gegangen') && byWord.kam.why.includes('ist gekommen') &&
+      byWord.blieb.why.includes('ist geblieben') && byWord.geschah.why.includes('ist geschehen') &&
+      byWord['der Held'].err.includes('von die Geschichte') &&
+      !errors.some(e => e.endsWith(' es.')) && !errors.some(e => e.endsWith(' gemacht.')) &&
+      !['Sie hat den Zug nach Berlin genommen.', 'Er hat leise mit dem Arzt gesprochen.',
+        'Niemand hat die Antwort gewusst.', 'Der Held von der Geschichte ist ein Kind.',
+        'Die Moral von der Geschichte ist klar.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Er kam an, sah sie und blieb stehen.') &&
+      tricks[1].wie.includes('Er konnte nicht kommen.') && tricks[2].wie.includes('am Ende siegte die Vernunft'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l2 aligns five strict learning clozes, sound inversion fields and a 43-word five-target production',
+    wordCloze1.frage.zeigt === 'Er ____ leise mit dem Arzt.' && wordCloze1.frage.antworten.join(' ') === 'sprach' &&
+      wordCloze1.frage.nearMiss.sprechte && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'sprechte').ok &&
+      wordCloze2.frage.zeigt === 'Die Reise ____ in Sfax.' && wordCloze2.frage.antworten.join(' ') === 'endete' &&
+      wordCloze2.frage.nearMiss.endet && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'endet').ok &&
+      wordCloze3.frage.zeigt === 'Die ____ der Geschichte ist klar.' && wordCloze3.frage.antworten.join(' ') === 'Moral' &&
+      wordCloze3.frage.nearMiss.Moralen && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Moralen').ok &&
+      imitate.zeigt.de === 'Früher ____ eine alte Frau in einem kleinen Dorf.' && imitate.frage.antworten.join(' ') === 'lebte' &&
+      imitate.frage.nearMiss.lebt && !win.DW.renderers.judgeCloze(imitate.frage, 'lebt').ok &&
+      drill.frage.zeigt === 'Sie ____ langsam nach Hause.' && drill.frage.antworten.join(' ') === 'ging' &&
+      drill.frage.nearMiss.gehte && !win.DW.renderers.judgeCloze(drill.frage, 'gehte').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا Früher أولًا وlebte في الموضع الثاني.' &&
+      order.frage.correct.join(' ') === 'Früher lebte sie in einem kleinen Dorf.' && order.frage.finite === 'lebte' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Früher' && order.frage.fields.lsk.join(' ') === 'lebte' &&
+      order.frage.fields.mittelfeld.join(' ') === 'sie in einem kleinen Dorf.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Früher', 'sie', 'lebte', 'in', 'einem', 'kleinen', 'Dorf.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 43 &&
+      targets.join(' ').split(/\s+/).length === 43 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l2 makes 80 percent four of five, independently checking bat chain, ging cloze, inversion order, geschah auxiliary and closing inversion',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u2-l2\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l2.s07 | cap.b1-u2-l2.s23 | cap.b1-u2-l2.s24 | cap.b1-u2-l2.s13 | cap.b1-u2-l2.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('und bittete um Brot')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheck.frage.zeigt === 'Sie ____ langsam nach Hause.' &&
+      clozeCheck.frage.antworten.join(' ') === 'ging' && clozeCheck.frage.nearMiss.gehte &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'gehte').ok &&
+      orderCheck.frage.correct.join(' ') === 'Später arbeitete sie im Garten.' && orderCheck.frage.finite === 'arbeitete' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Später' && orderCheck.frage.fields.lsk.join(' ') === 'arbeitete' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Später', 'sie', 'arbeitete', 'im', 'Garten.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === 'Was geschah danach?') &&
+      checks[3].frage.optionen.some(o => o.text === 'Was hat danach geschehen?') &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('Am Ende er blieb')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

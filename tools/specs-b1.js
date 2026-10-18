@@ -420,25 +420,50 @@ module.exports = [
       hwHintDe: 'Prüfe: Futur heißt werden in Position zwei und der Infinitiv ganz am Ende — auch trennbar in einem Stück: anrufen. Wetter: es wird, nicht es will.'
     }),
 
-  U('b1-u2-l2', 'B1', 'سرد الماضي', 'Präteritum erzählen', 'konjugation',
-    'Am Ende erzählst du eine kurze Geschichte im Präteritum',
-    'في النهاية تحكي حكاية قصيرة في الماضي السردي.',
+  U('b1-u2-l2', 'B1', 'سرد الماضي بـPräteritum: صيغة -te والأفعال القوية ging وkam وblieb', 'Präteritum erzählen: schwache -te-Formen und starke Verben (ging, kam, blieb)', 'konjugation',
+    'Am Ende erzählst du eine kurze Geschichte in fünf Sätzen im Präteritum',
+    'في النهاية تحكي حكاية قصيرة من خمس جمل في الماضي السردي.',
     [
-      ['lebte', 'السرد يعيش lebte', 'Perfekt للحوار والماضي السردي للخلفية', 'hat gelebt als Erzählung allein', 'السرد lebte'],
-      ['ging', 'gehen السردي ging', 'bin gegangen حوار', 'ist gegangen als Romanzeile', 'السرد ging'],
-      ['es gab', 'الوجود gab', 'hat gegeben أقل سردًا هنا', 'es hat gegeben ein Haus', 'السرد gab'],
-      ['die Kette', 'الجمل تتصل بلا deshalb في كل سطر', 'لا تكرار الرابط', 'deshalb deshalb ging sie', 'الرابط مرة لا في كل جملة']
+      ['Früher lebte eine alte Frau in einem kleinen Dorf.', 'تبدأ حكايتك بامرأة عاشت سابقًا في قرية صغيرة', 'الأفعال المنتظمة في الماضي السردي تنتهي بـ-te: lebte؛ وبعد ظرف الافتتاح Früher يأتي الفعل في الموضع الثاني قبل الفاعل', 'Früher lebt eine alte Frau in einem kleinen Dorf.', 'حكاية عن زمن مضى تحتاج lebte لا lebt الحاضرة'],
+      ['Neben ihrem Haus gab es einen großen Garten.', 'تصف ما كان موجودًا بجانب بيتها', 'للوجود في الماضي: es gab + مفعول في النصب (einen großen Garten)؛ وgab هي صيغة الماضي من geben', 'Neben ihrem Haus gab es ein großer Garten.', 'بعد es gab يأتي الاسم في النصب: einen großen Garten لا ein großer Garten'],
+      ['Jeden Morgen ging sie in den Garten.', 'تصف عادة المرأة كل صباح', 'الأفعال القوية تتغير حركتها في الماضي: gehen تصبح ging؛ وبعد العبارة الزمنية يأتي الفعل قبل الفاعل (ging sie)', 'Jeden Morgen gehte sie in den Garten.', 'لا توجد صيغة gehte؛ ماضي gehen هو ging'],
+      ['Eines Tages kam ein fremder Mann und bat um Brot.', 'تروي ذروة الحكاية: رجل غريب جاء وطلب خبزًا', 'في سلسلة الأحداث تتوالى أفعال قوية بصيغ خاصة: kommen → kam وbitten → bat، والفعل الثاني يشارك الأول فاعلَه بلا فاعل جديد', 'Eines Tages kam ein fremder Mann und bittete um Brot.', 'bitten في الماضي bat لا bittete']
     ],
     [
-      ['Früher lebte sie auf dem Land.', 'سابقًا كانت تعيش في الريف', 'Früher hat sie auf dem Land gelebt als Erzählung', 'السرد lebte', 'lebte'],
-      ['Sie ging jeden Tag zur Schule.', 'كانت تذهب كل يوم إلى المدرسة', 'Sie ist jeden Tag gegangen als Erzählung', 'السرد ging', 'ging'],
-      ['Es gab ein kleines Haus.', 'كان هناك بيت صغير', 'Es hat gegeben ein kleines Haus', 'السرد gab', 'gab'],
-      ['Dann kam der Winter.', 'ثم جاء الشتاء', 'Dann ist der Winter gekommen als Erzählung', 'السرد kam', 'kam']
+      ['Früher lebte eine alte Frau in einem kleinen Dorf.', 'سابقًا عاشت امرأة عجوز في قرية صغيرة', 'Früher lebt eine alte Frau in einem kleinen Dorf.', 'بعد Früher فعل السرد lebte في الموضع الثاني قبل الفاعل', 'lebte'],
+      ['Neben ihrem Haus gab es einen großen Garten.', 'بجانب بيتها كانت حديقة كبيرة', 'Neben ihrem Haus gab es ein großer Garten.', 'es gab يتبعها اسم في النصب: einen großen Garten', 'gab'],
+      ['Jeden Morgen ging sie in den Garten.', 'كل صباح كانت تذهب إلى الحديقة', 'Jeden Morgen gehte sie in den Garten.', 'ماضي gehen هو ging لا صيغة مصنوعة gehte', 'ging'],
+      ['Eines Tages kam ein fremder Mann und bat um Brot.', 'ذات يوم جاء رجل غريب وطلب خبزًا', 'Eines Tages kam ein fremder Mann und bittete um Brot.', 'فعلان قويان في السلسلة: kam وbat', 'bat']
     ],
-    'Früher lebte sie auf dem Land. Es gab ein kleines Haus.',
-    'Früher lebte sie auf dem Land.',
-    'Erzähle morgen vier kurze Präteritum-Sätze.',
-    'غدًا احكِ أربع جمل ماضٍ سردي.'),
+    'Früher lebte eine alte Frau in einem kleinen Dorf.',
+    'Am Ende blieb er den ganzen Winter im Dorf.',
+    'Wiederhole morgen die Geschichte: Früher lebte eine alte Frau in einem kleinen Dorf. Neben ihrem Haus gab es einen großen Garten. Jeden Morgen ging sie in den Garten. Eines Tages kam ein fremder Mann und bat um Brot. Am Ende blieb er den ganzen Winter im Dorf.',
+    'غدًا أعد حكاية المرأة العجوز كاملة ولاحظ صيغة الماضي في كل فعل.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'lebt',
+      transformHint: 'في جملة الختام أيضًا تشغل Am Ende الموضع الأول فيأتي فعل الماضي blieb قبل الفاعل er؛ وصيغة blieb من bleiben قوية بلا ge- ولا مساعد.',
+      orderSentence: 'Früher lebte sie in einem kleinen Dorf.',
+      checkOrderSentence: 'Später arbeitete sie im Garten.',
+      orderAr: 'رتّب مطلع الحكاية: ظرف الافتتاح Früher أولًا ثم فعل الماضي lebte قبل الفاعل sie.',
+      orderPromptAr: 'رتّب الجملة واضعًا Früher أولًا وlebte في الموضع الثاني.',
+      orderHints: ['العبارة الزمنية Früher تشغل الموضع الأول.', 'فعل الماضي lebte في الموضع الثاني قبل الفاعل sie.'],
+      writing: {
+        zeigt: 'Eine Geschichte in fünf Sätzen',
+        erklaerung: 'اكتب حكاية المرأة العجوز في خمس جمل كاملة بالماضي السردي: مطلع مع lebte بعد Früher، ووصف وجود مع es gab، وعادة مع ging، وذروة مع kam وbat، وختام مع blieb بعد Am Ende.',
+        hinweise: ['أبقِ الزمن واحدًا في الحكاية كلها: Präteritum بلا خلط بالماضي التام (hat ge-…) أو بالحاضر.', 'صيغ قوية تُحفظ كما هي: ging وkam وbat وblieb — لا تصنع gehte أو bittete.'],
+        prompt: 'اكتب جمل الحكاية الخمس المستهدفة من الذاكرة مع صيغة الماضي الصحيحة لكل فعل.',
+        promptDe: 'Früher lebte eine alte Frau in einem kleinen Dorf. · Neben ihrem Haus gab es einen großen Garten. · Jeden Morgen ging sie in den Garten. · Eines Tages kam ein fremder Mann und bat um Brot. · Am Ende blieb er den ganzen Winter im Dorf.',
+        points: ['Früher lebte eine alte Frau in einem kleinen Dorf.', 'Neben ihrem Haus gab es einen großen Garten.', 'Jeden Morgen ging sie in den Garten.', 'Eines Tages kam ein fremder Mann und bat um Brot.', 'Am Ende blieb er den ganzen Winter im Dorf.'],
+        minWords: 43,
+        frage: 'اكتب جمل الحكاية الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية واحكِ القصة كاملة: Früher lebte eine alte Frau in einem kleinen Dorf. Neben ihrem Haus gab es einen großen Garten. Jeden Morgen ging sie in den Garten. Eines Tages kam ein fremder Mann und bat um Brot. Am Ende blieb er den ganzen Winter im Dorf.',
+      summaryDe: 'Früher lebte eine alte Frau in einem kleinen Dorf. Neben ihrem Haus gab es einen großen Garten. Jeden Morgen ging sie in den Garten. Eines Tages kam ein fremder Mann und bat um Brot. Am Ende blieb er den ganzen Winter im Dorf.',
+      summaryAr: 'السرد بالماضي Präteritum: المنتظم ينتهي بـ-te (lebte)، والقوي تتغير حركته (ging وkam وsprach وbat وblieb)، والوجود بـes gab + نصب، وبعد عبارة زمنية متقدمة يأتي الفعل قبل الفاعل.',
+      summaryRecap: 'قصة بالماضي: lebte، ging، blieb',
+      hwHintDe: 'Lies die Geschichte wie eine Romanzeile am Stück: lebte · gab es · ging · kam · bat · blieb. Nicht mit Perfekt mischen: „hat hier gelebt", „hat begonnen" oder „hat geendet" gehört ins Gespräch, nicht in die Erzählung.'
+    }),
 
   U('b1-u2-l3', 'B1', 'الإضافة', 'Genitiv', 'deklination',
     'Am Ende benutzt du wegen des und trotz des',
