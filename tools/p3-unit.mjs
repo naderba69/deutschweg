@@ -11865,6 +11865,133 @@ console.log('\n— P3.2 lexical layer —\n');
       checks8[4].frage.optionen.some(o => o.text === 'Die Quelle nennt keine Ursache für der Rückgang.') &&
       Object.values(checks8[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 
+
+  const lessonB1 = win.DW_LESSONS['b1-u3-l1'];
+  const rowB1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB1.id);
+  const byWordB1 = Object.fromEntries(lessonB1.wortschatz.map(it => [it.de, it]));
+  const tricksB1 = lessonB1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB1 = [
+    'Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle.',
+    'Anbei sende ich Ihnen meinen Lebenslauf.',
+    'Ich bringe fünf Jahre Erfahrung mit.',
+    'Gern stelle ich mich in einem Gespräch vor.',
+    'Über eine Einladung zum Gespräch würde ich mich freuen.'
+  ];
+  t('Corpus lesson b1-u3-l1 precisely scopes the application template with formal greeting, um-frame, attachment inversion, separable experience verbs and polite closing across five targets',
+    lessonB1.title.de === 'Bewerbung schreiben: Anrede, Anhang und Schlusssatz' &&
+      lessonB1.title.ar === 'كتابة طلب العمل: التحية والمرفق وجملة الختام' &&
+      rowB1.title.de === lessonB1.title.de && rowB1.title.ar === lessonB1.title.ar &&
+      rowB1.theme === 'طلب التوظيف الرسمي' &&
+      rowB1.grammar.item === 'Sehr geehrte + Komma + Kleinschreibung · sich bewerben um + Akkusativ · Anbei sende ich Ihnen … (Inversion) · mitbringen / sich vorstellen getrennt am Satzende · Über … würde ich mich freuen' &&
+      rowB1.grammar.method === 'explicit' && lessonB1.schritte.length === 36 && lessonB1.wortschatz.length === 40 &&
+      lessonB1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB1[i]) &&
+      lessonB1.schritte[0].zeigt.de === 'Am Ende schreibst du eine Bewerbung in fünf Sätzen: Anrede, Anlage, Erfahrung, Vorstellung und Schlusssatz' &&
+      lessonB1.schritte.find(s => s.id === 's20').zeigt.de === targetsB1[4]);
+
+  const expectedWordsB1 = [
+    'sich bewerben', 'die Bewerbung', 'das Bewerbungsschreiben', 'der Lebenslauf',
+    'das Anschreiben', 'das Zeugnis', 'die Stelle', 'der Arbeitsplatz', 'die Anzeige',
+    'die Ausschreibung', 'die Voraussetzung', 'die Anforderung', 'die Erfahrung',
+    'die Kenntnis', 'die Qualifikation', 'die Ausbildung', 'das Studium',
+    'die Berufserfahrung', 'die Motivation', 'die Stärke', 'die Schwäche',
+    'die Teamfähigkeit', 'die Zuverlässigkeit', 'die Flexibilität', 'der Arbeitgeber',
+    'der Arbeitnehmer', 'der Chef', 'die Geschäftsleitung', 'die Abteilung',
+    'das Vorstellungsgespräch', 'das Gehalt', 'der Lohn', 'die Kündigung', 'der Vertrag',
+    'die Probezeit', 'sich vorstellen', 'einladen', 'absagen', 'zusagen', 'überzeugen'
+  ];
+  const errorsB1 = lessonB1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l1 reviews all 40 entries and three bounded mnemonics without twenty-two manufactured es or gemacht appendages, keeping agreement case and separable participles as the genuine error axes',
+    Object.keys(byWordB1).join(' | ') === expectedWordsB1.join(' | ') &&
+      lessonB1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB1['die Bewerbung'].err === 'Meine Bewerbung sind schon raus.' &&
+      byWordB1['der Lebenslauf'].err === 'Der Lebenslauf musst lückenlos sein.' &&
+      byWordB1['die Voraussetzung'].err === 'Die Voraussetzung ist ein Führerscheins.' &&
+      byWordB1['der Arbeitgeber'].err === 'Der Arbeitgeber zahlen die Versicherung.' &&
+      byWordB1.einladen.err === 'Die Firma hat mich zum Gespräch geladen ein.' &&
+      byWordB1['sich vorstellen'].err === 'Im Gespräch stelle ich mich kurz.' &&
+      byWordB1['sich bewerben'].err === 'Ich bewerbe mich für eine Stelle als Koch.' &&
+      !['Meine Bewerbung ist schon raus es.', 'Das Bewerbungsschreiben ist zu lang gemacht.',
+        'Der Lebenslauf muss lückenlos gemacht sein.', 'Die Zeugnisse liegen bei es.',
+        'Der Arbeitsplatz ist gut erreichbar gemacht.', 'Die Voraussetzung ist ein Führerschein gemacht.',
+        'Die Anforderungen sind hoch gemacht.', 'Seine Qualifikation passt genau es.',
+        'Berufserfahrung ist mir wichtig gemacht.', 'Meine Motivation ist die Sprache gemacht.',
+        'Meine Stärke ist die Geduld gemacht.', 'Über Schwächen spricht man ungern es.',
+        'Teamfähigkeit wird vorausgesetzt gemacht.', 'Zuverlässigkeit ist hier Pflicht gemacht.',
+        'Flexibilität wird erwartet gemacht.', 'Der Arbeitgeber zahlt für die Versicherung.',
+        'Die Arbeitnehmer fordern mehr Lohn es.', 'Der Chef liest jede Bewerbung es.',
+        'Die Geschäftsleitung entscheidet morgen es.', 'Das Vorstellungsgespräch war anstrengend gemacht.',
+        'Das Gehalt ist verhandelbar gemacht.', 'Die Kündigung kam überraschend gemacht.',
+        'Der Vertrag läuft unbefristet es.']
+        .some(x => errorsB1.includes(x)) &&
+      tricksB1.length === 3 && tricksB1[0].trick.includes('die Bewerbungsunterlagen gehören dazu') &&
+      tricksB1[1].wie.includes('Sehr geehrte Frau Müller') &&
+      tricksB1[2].wie.includes('Die Firma hat mich eingeladen.'));
+
+  const wordClozeAB1 = lessonB1.schritte.find(s => s.id === 's09');
+  const wordClozeBB1 = lessonB1.schritte.find(s => s.id === 's13');
+  const wordClozeCB1 = lessonB1.schritte.find(s => s.id === 's17');
+  const imitateB1 = lessonB1.schritte.find(s => s.id === 's19');
+  const drillB1 = lessonB1.schritte.find(s => s.id === 's23');
+  const orderB1 = lessonB1.schritte.find(s => s.id === 's24');
+  const writingB1 = lessonB1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB1 = lessonB1.schritte.find(s => s.phase === 'Produktion');
+  const summaryB1 = lessonB1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB1 = lessonB1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l1 aligns five strict learning clozes, sound fronted-attachment order fields and a 40-word five-target production',
+    wordClozeAB1.frage.zeigt === 'Die ____ liegen bei.' && wordClozeAB1.frage.antworten.join(' ') === 'Zeugnisse' &&
+      wordClozeAB1.frage.nearMiss.Zeugnis && !win.DW.renderers.judgeCloze(wordClozeAB1.frage, 'Zeugnis').ok &&
+      wordClozeBB1.frage.zeigt === '____ wird vorausgesetzt.' && wordClozeBB1.frage.antworten.join(' ') === 'Teamfähigkeit' &&
+      wordClozeBB1.frage.nearMiss.Teamfähigkeiten && !win.DW.renderers.judgeCloze(wordClozeBB1.frage, 'Teamfähigkeiten').ok &&
+      wordClozeCB1.frage.zeigt === 'Er hat den Termin ____.' && wordClozeCB1.frage.antworten.join(' ') === 'abgesagt' &&
+      wordClozeCB1.frage.nearMiss.sagen && !win.DW.renderers.judgeCloze(wordClozeCB1.frage, 'sagen').ok &&
+      imitateB1.zeigt.de === 'Sehr geehrte Damen und Herren, ich ____ mich um die Stelle.' && imitateB1.frage.antworten.join(' ') === 'bewerbe' &&
+      imitateB1.frage.nearMiss.bewerben && !win.DW.renderers.judgeCloze(imitateB1.frage, 'bewerben').ok &&
+      drillB1.frage.zeigt === 'Sie hat sofort ____.' && drillB1.frage.antworten.join(' ') === 'zugesagt' &&
+      drillB1.frage.nearMiss.sagen && !win.DW.renderers.judgeCloze(drillB1.frage, 'sagen').ok &&
+      lessonB1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB1.frage.frage === 'رتّب الجملة واضعًا الظرف أولًا والفعل في الموضع الثاني قبل الفاعل.' &&
+      orderB1.frage.correct.join(' ') === targetsB1[1] && orderB1.frage.finite === 'sende' && orderB1.frage.verbFirst === false &&
+      orderB1.frage.fields.vorfeld.join(' ') === 'Anbei' && orderB1.frage.fields.lsk.join(' ') === 'sende' &&
+      orderB1.frage.fields.mittelfeld.join(' ') === 'ich Ihnen meinen Lebenslauf.' &&
+      win.DW.order.score(orderB1.frage, orderB1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB1.frage, ['Anbei', 'ich', 'sende', 'Ihnen', 'meinen', 'Lebenslauf.']).credit < 1 &&
+      writingB1.frage.points.join(' | ') === targetsB1.join(' | ') && writingB1.frage.minWords === 40 &&
+      targetsB1.join(' ').split(/\s+/).length === 40 &&
+      targetsB1.every(x => [writingB1.frage.promptDe, summaryB1.zeigt.de, homeworkB1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB1.every(x => norm(speakingB1.erklaerung).includes(norm(x))));
+
+  const checksB1 = lessonB1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB1 = checksB1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB1 = checksB1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l1 makes 80 percent four of five, independently checking separable vorstellen, zugesagt cloze, fronted adverb order with vor bracket, perfect participle and closing verb-second',
+    checksB1.length === 5 && checksB1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB1.every(s => /^cap\.b1-u3-l1\.s\d+$/.test(s.frage.prereq || '')) && checksB1.every(s => !s.hinweise) &&
+      checksB1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l1.s07 | cap.b1-u3-l1.s23 | cap.b1-u3-l1.s24 | cap.b1-u3-l1.s17 | cap.b1-u3-l1.s20' &&
+      new Set(checksB1.map(s => s.frage.prereq)).size === 5 &&
+      checksB1[0].frage.optionen.some(o => o.text === targetsB1[3]) &&
+      checksB1[0].frage.optionen.some(o => o.text === 'Gern stelle ich mich in einem Gespräch.') &&
+      Object.values(checksB1[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckB1.frage.zeigt === 'Sie hat sofort ____.' &&
+      clozeCheckB1.frage.antworten.join(' ') === 'zugesagt' && clozeCheckB1.frage.nearMiss.sagen &&
+      !win.DW.renderers.judgeCloze(clozeCheckB1.frage, 'sagen').ok &&
+      orderCheckB1.frage.correct.join(' ') === targetsB1[3] && orderCheckB1.frage.finite === 'stelle' &&
+      orderCheckB1.frage.fields.vorfeld.join(' ') === 'Gern' && orderCheckB1.frage.fields.lsk.join(' ') === 'stelle' &&
+      orderCheckB1.frage.fields.mittelfeld.join(' ') === 'ich mich in einem Gespräch' &&
+      orderCheckB1.frage.fields.rsk.join(' ') === 'vor.' &&
+      win.DW.order.score(orderCheckB1.frage, orderCheckB1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB1.frage, ['Gern', 'ich', 'stelle', 'mich', 'in', 'einem', 'Gespräch', 'vor.']).credit < 1 &&
+      checksB1[3].frage.optionen.some(o => o.text === 'Seine Erfahrung hat uns überzeugt.') &&
+      checksB1[3].frage.optionen.some(o => o.text === 'Seine Erfahrung hat uns überzeugen.') &&
+      Object.values(checksB1[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksB1[4].frage.optionen.some(o => o.text === targetsB1[4]) &&
+      checksB1[4].frage.optionen.some(o => o.text === 'Über eine Einladung zum Gespräch ich würde mich freuen.') &&
+      Object.values(checksB1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

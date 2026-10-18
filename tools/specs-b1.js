@@ -736,25 +736,51 @@ module.exports = [
       hwHintDe: 'Beschreibe zuerst, deute später. Nicht aus dem Englischen: kein „went up", sondern „ist gestiegen". Gesprochen hört man „von den Preisen", in der Beschreibung steht der Genitiv: die Entwicklung der Preise.'
     }),
 
-  U('b1-u3-l1', 'B1', 'طلب عمل', 'Bewerbung', 'register',
-    'Am Ende nennst du die Stelle und den Anhang',
-    'في النهاية تسمّي الوظيفة والمرفق.',
+  U('b1-u3-l1', 'B1', 'كتابة طلب العمل: التحية والمرفق وجملة الختام', 'Bewerbung schreiben: Anrede, Anhang und Schlusssatz', 'register',
+    'Am Ende schreibst du eine Bewerbung in fünf Sätzen: Anrede, Anlage, Erfahrung, Vorstellung und Schlusssatz',
+    'في النهاية تكتب طلب عمل كاملًا في خمس جمل: التحية والمرفق والخبرة والتقديم الذاتي وجملة الختام.',
     [
-      ['ich bewerbe mich', 'الطلب sich bewerben', 'لا I apply', 'ich apply mich', 'apply إنجليزية'],
-      ['um die Stelle', 'um لا für في هذا الإطار', 'für die Stelle أضعف هنا', 'ich bewerbe mich für die Stelle', 'الإطار um'],
-      ['anbei', 'المرفق anbei', 'لا attached خليط', 'attached ist der Lebenslauf', 'attached إنجليزية'],
-      ['Sehr geehrte', 'التحية الرسمية', 'Hallo an die Firma falsch', 'Hallo Firma', 'المقام Sehr geehrte']
+      ['Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle.', 'تفتح بالتحية الرسمية وتتقدّم إلى الوظيفة', 'التحية الرسمية Sehr geehrte وبعد الفاصلة يستمر الحرف صغيرًا، وإطار التقدم sich bewerben um لا für', 'Sehr geehrte Damen und Herren, ich bewerbe mich für die Stelle.', 'الإطار الثابت: bewerbe mich um لا für'],
+      ['Anbei sende ich Ihnen meinen Lebenslauf.', 'تذكر المرفق وترسله', 'Anbei المتقدمة تشغل الموضع الأول فالفعل sende ثانٍ قبل الفاعل، وIhnen داتيف المخاطب الرسمي الكبير', 'Anbei ich sende Ihnen meinen Lebenslauf.', 'القلب بعد Anbei: Anbei sende ich لا ich قبله'],
+      ['Ich bringe fünf Jahre Erfahrung mit.', 'تعلن سنوات خبرتك', 'mitbringen المنفصل: bringe … mit في نهاية الجملة، والكمية بلا أداة: fünf Jahre Erfahrung', 'Ich bringe fünf Jahre Erfahrung.', 'البادئة المنفصلة mit أخيرًا: bringe mit'],
+      ['Gern stelle ich mich in einem Gespräch vor.', 'تعرض تقديم نفسك في المقابلة', 'sich vorstellen المنفصل: stelle … vor، وGern المتقدمة تجعل الفعل قبل الفاعل ich والانعكاسي mich', 'Gern stelle ich mich in einem Gespräch.', 'البادئة المنفصلة vor أخيرًا: stelle vor']
     ],
     [
-      ['Ich bewerbe mich um die Stelle.', 'أتقدم إلى الوظيفة', 'Ich bewerbe mich für die Stelle', 'الإطار um', 'um'],
-      ['Anbei sende ich meinen Lebenslauf.', 'أرفق سيرتي', 'Attached sende ich meinen Lebenslauf', 'المرفق Anbei', 'Anbei'],
-      ['Sehr geehrte Damen und Herren,', 'السادة المحترمون', 'Hallo Firma,', 'التحية الرسمية', 'geehrte'],
-      ['Mit freundlichen Grüßen', 'مع التحية', 'Viele Grüße an die Firma', 'الختام الرسمي', 'freundlichen']
+      ['Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle.', 'السيدات والسادة المحترمون، أتقدم إلى الوظيفة', 'Sehr geehrte Damen und Herren, ich bewerbe mich für die Stelle.', 'التحية والإطار: bewerbe mich um die Stelle', 'bewerbe'],
+      ['Anbei sende ich Ihnen meinen Lebenslauf.', 'أرفق لكم سيرتي الذاتية', 'Anbei ich sende Ihnen meinen Lebenslauf.', 'المرفق مع القلب: Anbei sende ich Ihnen', 'sende'],
+      ['Ich bringe fünf Jahre Erfahrung mit.', 'أجلب معي خمس سنوات من الخبرة', 'Ich bringe fünf Jahre Erfahrung.', 'الخبرة مع mitbringen المنفصل', 'mit'],
+      ['Gern stelle ich mich in einem Gespräch vor.', 'يسعدني تقديم نفسي في المقابلة', 'Gern stelle ich mich in einem Gespräch.', 'التقديم الذاتي مع stelle … vor المنفصل', 'vor']
     ],
-    'Ich bewerbe mich um die Stelle. Anbei der Lebenslauf.',
-    'Ich bewerbe mich um die Stelle.',
-    'Schreibe morgen Anrede und um die Stelle.',
-    'غدًا اكتب التحية وum die Stelle.'),
+    'Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle.',
+    'Über eine Einladung zum Gespräch würde ich mich freuen.',
+    'Wiederhole morgen die fünf Sätze: Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle. Anbei sende ich Ihnen meinen Lebenslauf. Ich bringe fünf Jahre Erfahrung mit. Gern stelle ich mich in einem Gespräch vor. Über eine Einladung zum Gespräch würde ich mich freuen.',
+    'غدًا أعد طلب العمل كاملًا ولاحظ البادئات المنفصلة وموضع الفعل.',
+    {
+      factFamilies: ['präposition', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'bewerben',
+      transformHint: 'في جملة الختام تحكم العبارة المتقدمة في الترتيب: Über eine Einladung zum Gespräch würde ich mich freuen — الفعل würde ثانٍ قبل ich والضمير الانعكاسي mich قبل المصدر freuen أخيرًا.',
+      orderSentence: 'Anbei sende ich Ihnen meinen Lebenslauf.',
+      checkOrderSentence: 'Gern stelle ich mich in einem Gespräch vor.',
+      checkOrderRightBracket: 'vor.',
+      orderAr: 'رتّب جملة المرفق: Anbei أولًا ثم الفعل sende ثانيًا قبل الفاعل ich وضمير الداتيف الرسمي Ihnen.',
+      orderPromptAr: 'رتّب الجملة واضعًا الظرف أولًا والفعل في الموضع الثاني قبل الفاعل.',
+      orderHints: ['Anbei تشغل الموضع الأول فالفعل يأتي قبل ich.', 'بقاء Ihnen رسميًا وكبيرًا بعد الفاعل.'],
+      writing: {
+        zeigt: 'Eine Bewerbung in fünf Sätzen',
+        erklaerung: 'اكتب طلب عمل كاملًا في خمس جمل: تحية رسمية بعد فاصلتها حرف صغير، وتقدم بإطار um، ومرفق بقلب بعد Anbei، وسنوات خبرة بفعل منفصل، وتقديم ذاتي، وختام مهذب بعضو متقدم وفعل ثانٍ.',
+        hinweise: ['القالب أولًا: التحية ثم التقديم ثم المرفق — وكل فعل منفصل يرسل بادئته إلى نهاية جملته.', 'أخطاء القالب الألماني الشائعة من العربية: für بدل um، وسقوط mit/vor، وغياب القلب بعد عضو متقدم.'],
+        prompt: 'اكتب جمل طلب العمل الخمس المستهدفة من الذاكرة مع البادئات والقلب الصحيحين.',
+        promptDe: 'Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle. · Anbei sende ich Ihnen meinen Lebenslauf. · Ich bringe fünf Jahre Erfahrung mit. · Gern stelle ich mich in einem Gespräch vor. · Über eine Einladung zum Gespräch würde ich mich freuen.',
+        points: ['Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle.', 'Anbei sende ich Ihnen meinen Lebenslauf.', 'Ich bringe fünf Jahre Erfahrung mit.', 'Gern stelle ich mich in einem Gespräch vor.', 'Über eine Einladung zum Gespräch würde ich mich freuen.'],
+        minWords: 40,
+        frage: 'اكتب جمل طلب العمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle. Anbei sende ich Ihnen meinen Lebenslauf. Ich bringe fünf Jahre Erfahrung mit. Gern stelle ich mich in einem Gespräch vor. Über eine Einladung zum Gespräch würde ich mich freuen.',
+      summaryDe: 'Sehr geehrte Damen und Herren, ich bewerbe mich um die Stelle. Anbei sende ich Ihnen meinen Lebenslauf. Ich bringe fünf Jahre Erfahrung mit. Gern stelle ich mich in einem Gespräch vor. Über eine Einladung zum Gespräch würde ich mich freuen.',
+      summaryAr: 'طلب العمل قالب من خمس جمل: تحية رسمية يتقدم بها بـum، ومرفق يرسل بقلب بعد Anbei، وخبرة تعلنها بـmitbringen المنفصل، وتقديم ذاتي بـstelle … vor، وختام مهذب يبقي الفعل في الموضع الثاني بعد عضو متقدم.',
+      summaryRecap: 'قالب الطلب الكامل بخمس جمل',
+      hwHintDe: 'Schreibe es wie in der Firma: nicht „apply" oder „attached", sondern „ich bewerbe mich" und „Anbei sende ich Ihnen …". Nach dem Komma der Anrede geht es klein weiter: „Sehr geehrte Damen und Herren, ich …".'
+    }),
 
   U('b1-u3-l2', 'B1', 'شكوى', 'Beschwerde', 'register',
     'Am Ende bittest du um eine Lösung ohne Beleidigung',
