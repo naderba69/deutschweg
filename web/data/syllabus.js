@@ -121,7 +121,7 @@
     ['الشكوى الرسمية: الشكوى بالحرف والواقعة والمطلب', 'Beschwerde: beschweren über, Tatsache und Bitte um', 'خدمة العملاء والشكوى', 'sich beschweren über + Akkusativ · zwei Wochen zu spät (Maß) · bitten Sie um + Akkusativ · prüfen Sie (Höflichkeitsbefehl) · eine Frist von zwei Wochen setzen', 'explicit'],
     ['البيئة: فرز النفايات والتوفير والاستغناء', 'Umwelt: Müll trennen, sparen und verzichten', 'عادات صديقة للبيئة', 'Müll trennen in drei Tonnen · bleiben + Zeitmaß · verzichten auf + Akkusativ · So sparen wir (Inversion) · Temperaturen steigen (Folge)', 'explicit'],
     ['الإعلام: التقرير بالحرف ونسب الرأي وفحص المصدر', 'Medien: berichten über, meinen und Quellen prüfen', 'الأخبار والتحليل', 'berichten über + Akkusativ · im Radio (Inversion) · der Autor meint, dass … (Verbende) · man muss Quellen prüfen · sich verbreiten (Präteritum)', 'explicit'],
-    ['التكوين', 'Ausbildung', 'التعلم', 'مقارنة مسارين', 'explicit'],
+    ['التكوين والدراسة: مقارنة مسارين', 'Ausbildung und Studium: zwei Wege vergleichen', 'مسارات التعليم', 'dauern + Zeitangabe ohne Präposition · beginnen im Monat · einerseits / andererseits + Verbzweit · bestehen mit haben', 'explicit'],
     ['المدينة', 'Stadt', 'السكن', 'ميزة وعيوب حي', 'explicit'],
     ['التأمين', 'Versicherung', 'البيروقراطية', 'Anmeldung بخط عريض', 'explicit'],
     ['الاستهلاك', 'Konsum', 'الشراء', 'قرار شراء معلّل', 'explicit'],

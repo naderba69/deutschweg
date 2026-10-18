@@ -12360,6 +12360,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB4[4].frage.optionen.some(o => o.text === 'Die Falschmeldung verbreitete schnell.') &&
       Object.values(checksB4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 
+
+  const lessonB5 = win.DW_LESSONS['b1-u3-l5'];
+  const rowB5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB5.id);
+  const byWordB5 = Object.fromEntries(lessonB5.wortschatz.map(it => [it.de, it]));
+  const tricksB5 = lessonB5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB5 = [
+    'Die Ausbildung dauert drei Jahre.',
+    'Das Studium beginnt im Oktober.',
+    'Einerseits ist die Ausbildung praktisch.',
+    'Andererseits kostet das Studium viel Zeit.',
+    'Ich habe die Prüfung bestanden.'
+  ];
+  t('Corpus lesson b1-u3-l5 precisely scopes the education comparison with bare duration, month contraction, twin fronted-link inversions and haben-success across five targets',
+    lessonB5.title.de === 'Ausbildung und Studium: zwei Wege vergleichen' &&
+      lessonB5.title.ar === 'التكوين والدراسة: مقارنة مسارين' &&
+      rowB5.title.de === lessonB5.title.de && rowB5.title.ar === lessonB5.title.ar &&
+      rowB5.theme === 'مسارات التعليم' &&
+      rowB5.grammar.item === 'dauern + Zeitangabe ohne Präposition · beginnen im Monat · einerseits / andererseits + Verbzweit · bestehen mit haben' &&
+      rowB5.grammar.method === 'explicit' && lessonB5.schritte.length === 36 && lessonB5.wortschatz.length === 40 &&
+      lessonB5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB5[i]) &&
+      lessonB5.schritte[0].zeigt.de === 'Am Ende vergleichst du Ausbildung und Studium in fünf Sätzen und nennst einen Prüfungserfolg' &&
+      lessonB5.schritte.find(s => s.id === 's20').zeigt.de === targetsB5[4]);
+
+  const expectedWordsB5 = [
+    'die Bildung', 'die Ausbildung', 'die Weiterbildung', 'die Fortbildung', 'das Studium',
+    'die Universität', 'die Hochschule', 'die Fachhochschule', 'der Studiengang', 'das Fach',
+    'das Seminar', 'die Vorlesung', 'der Dozent', 'der Professor', 'der Student',
+    'der Auszubildende', 'die Prüfung', 'die Note', 'das Zeugnis', 'der Abschluss',
+    'die Note verbessern', 'bestehen', 'durchfallen', 'wiederholen', 'lernen', 'lehren',
+    'unterrichten', 'die Kenntnis', 'die Fähigkeit', 'die Begabung', 'die Motivation',
+    'das Stipendium', 'die Zulassung', 'die Anmeldung', 'das Semester',
+    'die Voraussetzung', 'die Bildungspolitik', 'das Bildungssystem', 'der Unterricht',
+    'die Hausaufgabe'
+  ];
+  const errorsB5 = lessonB5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l5 reviews all 40 entries and three bounded mnemonics without nineteen manufactured appendages or the valid paying-for foil, keeping agreement and auxiliary as genuine error axes',
+    Object.keys(byWordB5).join(' | ') === expectedWordsB5.join(' | ') &&
+      lessonB5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB5['die Weiterbildung'].err === 'Die Firma zahlen die Weiterbildung.' &&
+      byWordB5['der Dozent'].err === 'Der Dozent erklären sehr klar.' &&
+      byWordB5.wiederholen.err === 'Ich müsse die Prüfung wiederholen.' &&
+      byWordB5['die Kenntnis'].err === 'Seine Kenntnisse ist erstaunlich.' &&
+      byWordB5['der Student'].err === 'Die Studenten lernt für die Prüfung.' &&
+      byWordB5.durchfallen.err === 'Er hat zweimal durchgefallen.' &&
+      byWordB5['die Voraussetzung'].err === 'Die Voraussetzung ist ein Abschlusss.' &&
+      !['Die Firma zahlt für die Weiterbildung.', 'Die Hochschule ist bekannt gemacht.',
+        'Die Fachhochschule ist praxisnah gemacht.', 'Der Studiengang ist zulassungsbeschränkt gemacht.',
+        'Mein bestes Fach ist Mathematik es.', 'Das Seminar ist freiwillig gemacht.',
+        'Der Dozent erklärt sehr klar es.', 'Der Professor forscht in Berlin es.',
+        'Die Studenten lernen für die Prüfung es.', 'Der Auszubildende verdient wenig es.',
+        'Gute Noten öffnen Türen es.', 'Ich muss die Prüfung wiederholen es.',
+        'Man lernt nie aus es.', 'Seine Kenntnisse sind erstaunlich gemacht.',
+        'Er bekommt ein Stipendium es.', 'Die Anmeldung ist bis Freitag möglich gemacht.',
+        'Die Voraussetzung ist ein Abschluss gemacht.', 'Das Bildungssystem ist unterschiedlich gemacht.',
+        'Der Unterricht beginnt pünktlich es.', 'Die Hausaufgaben sind freiwillig gemacht.']
+        .some(x => errorsB5.includes(x)) &&
+      tricksB5.length === 3 && tricksB5[0].wie.includes('Die Firma zahlt die Weiterbildung.') &&
+      tricksB5[1].wie.includes('Ich habe die Prüfung bestanden.') &&
+      tricksB5[2].wie.includes('Er unterrichtet Mathematik.'));
+
+  const wordClozeAB5 = lessonB5.schritte.find(s => s.id === 's09');
+  const wordClozeBB5 = lessonB5.schritte.find(s => s.id === 's13');
+  const wordClozeCB5 = lessonB5.schritte.find(s => s.id === 's17');
+  const imitateB5 = lessonB5.schritte.find(s => s.id === 's19');
+  const drillB5 = lessonB5.schritte.find(s => s.id === 's23');
+  const orderB5 = lessonB5.schritte.find(s => s.id === 's24');
+  const writingB5 = lessonB5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB5 = lessonB5.schritte.find(s => s.phase === 'Produktion');
+  const summaryB5 = lessonB5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB5 = lessonB5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l5 aligns five strict learning clozes, sound einerseits-inversion order fields and a 26-word five-target production',
+    wordClozeAB5.frage.zeigt === 'Die ____ liegt am Stadtrand.' && wordClozeAB5.frage.antworten.join(' ') === 'Universität' &&
+      wordClozeAB5.frage.nearMiss['Universitäten'] && !win.DW.renderers.judgeCloze(wordClozeAB5.frage, 'Universitäten').ok &&
+      wordClozeBB5.frage.zeigt === 'Ich habe die Prüfung ____.' && wordClozeBB5.frage.antworten.join(' ') === 'bestanden' &&
+      wordClozeBB5.frage.nearMiss.bestehen && !win.DW.renderers.judgeCloze(wordClozeBB5.frage, 'bestehen').ok &&
+      wordClozeCB5.frage.zeigt === 'Das ____ ist unterschiedlich.' && wordClozeCB5.frage.antworten.join(' ') === 'Bildungssystem' &&
+      wordClozeCB5.frage.nearMiss.Bildungssysteme && !win.DW.renderers.judgeCloze(wordClozeCB5.frage, 'Bildungssysteme').ok &&
+      imitateB5.zeigt.de === 'Die Ausbildung ____ drei Jahre.' && imitateB5.frage.antworten.join(' ') === 'dauert' &&
+      imitateB5.frage.nearMiss.dauerst && !win.DW.renderers.judgeCloze(imitateB5.frage, 'dauerst').ok &&
+      drillB5.frage.zeigt === 'Er ist zweimal ____.' && drillB5.frage.antworten.join(' ') === 'durchgefallen' &&
+      drillB5.frage.nearMiss.fallen && !win.DW.renderers.judgeCloze(drillB5.frage, 'fallen').ok &&
+      lessonB5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB5.frage.frage === 'رتّب الجملة واضعًا الرابط أولًا والفعل في الموضع الثاني قبل الفاعل.' &&
+      orderB5.frage.correct.join(' ') === targetsB5[2] && orderB5.frage.finite === 'ist' && orderB5.frage.verbFirst === false &&
+      orderB5.frage.fields.vorfeld.join(' ') === 'Einerseits' && orderB5.frage.fields.lsk.join(' ') === 'ist' &&
+      orderB5.frage.fields.mittelfeld.join(' ') === 'die Ausbildung praktisch.' &&
+      win.DW.order.score(orderB5.frage, orderB5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB5.frage, ['Einerseits', 'die', 'Ausbildung', 'ist', 'praktisch.']).credit < 1 &&
+      writingB5.frage.points.join(' | ') === targetsB5.join(' | ') && writingB5.frage.minWords === 26 &&
+      targetsB5.join(' ').split(/\s+/).length === 26 &&
+      targetsB5.every(x => [writingB5.frage.promptDe, summaryB5.zeigt.de, homeworkB5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB5.every(x => norm(speakingB5.erklaerung).includes(norm(x))));
+
+  const checksB5 = lessonB5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB5 = checksB5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB5 = checksB5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l5 makes 80 percent four of five, independently checking andererseits inversion, durchgefallen cloze, andererseits order, passive participle and haben-success',
+    checksB5.length === 5 && checksB5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB5.every(s => /^cap\.b1-u3-l5\.s\d+$/.test(s.frage.prereq || '')) && checksB5.every(s => !s.hinweise) &&
+      checksB5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l5.s07 | cap.b1-u3-l5.s23 | cap.b1-u3-l5.s24 | cap.b1-u3-l5.s12 | cap.b1-u3-l5.s20' &&
+      new Set(checksB5.map(s => s.frage.prereq)).size === 5 &&
+      checksB5[0].frage.optionen.some(o => o.text === targetsB5[3]) &&
+      checksB5[0].frage.optionen.some(o => o.text === 'Andererseits das Studium kostet viel Zeit.') &&
+      Object.values(checksB5[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckB5.frage.zeigt === 'Er ist zweimal ____.' &&
+      clozeCheckB5.frage.antworten.join(' ') === 'durchgefallen' && clozeCheckB5.frage.nearMiss.fallen &&
+      !win.DW.renderers.judgeCloze(clozeCheckB5.frage, 'fallen').ok &&
+      orderCheckB5.frage.correct.join(' ') === targetsB5[3] && orderCheckB5.frage.finite === 'kostet' &&
+      orderCheckB5.frage.fields.vorfeld.join(' ') === 'Andererseits' && orderCheckB5.frage.fields.lsk.join(' ') === 'kostet' &&
+      orderCheckB5.frage.fields.mittelfeld.join(' ') === 'das Studium viel Zeit.' &&
+      win.DW.order.score(orderCheckB5.frage, orderCheckB5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB5.frage, ['Andererseits', 'das', 'Studium', 'kostet', 'viel', 'Zeit.']).credit < 1 &&
+      checksB5[3].frage.optionen.some(o => o.text === 'Die Prüfung wird schriftlich gemacht.') &&
+      checksB5[3].frage.optionen.some(o => o.text === 'Die Prüfung wird schriftlich machen.') &&
+      Object.values(checksB5[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksB5[4].frage.optionen.some(o => o.text === targetsB5[4]) &&
+      checksB5[4].frage.optionen.some(o => o.text === 'Ich bin die Prüfung bestanden.') &&
+      Object.values(checksB5[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

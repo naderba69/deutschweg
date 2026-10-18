@@ -917,25 +917,50 @@ module.exports = [
       hwHintDe: 'Nicht „irgendwo gelesen" — nenne die Quelle. Überprüfe, ob der Text eine Tatsache oder eine Meinung bringt, und trage die Reihenfolge nach: erst die Quelle prüfen, dann urteilen.'
     }),
 
-  U('b1-u3-l5', 'B1', 'التكوين', 'Ausbildung', 'lexik-kollokation',
-    'Am Ende vergleichst du zwei Wege',
-    'في النهاية تقارن مسارين.',
+  U('b1-u3-l5', 'B1', 'التكوين والدراسة: مقارنة مسارين', 'Ausbildung und Studium: zwei Wege vergleichen', 'lexik-kollokation',
+    'Am Ende vergleichst du Ausbildung und Studium in fünf Sätzen und nennst einen Prüfungserfolg',
+    'في النهاية تقارن التكوين والدراسة الجامعية في خمس جمل وتعلن نجاحًا في امتحان.',
     [
-      ['die Ausbildung', 'التكوين Ausbildung', 'لا formation خليط', 'die Formation', 'Formation ليست الكلمة'],
-      ['das Studium', 'الدراسة الجامعية Studium', 'لا study كاسم وحيد', 'das Study', 'Study إنجليزية'],
-      ['einerseits', 'من جهة einerseits', 'لا on one hand خليط', 'on one hand das Studium', 'on one hand إنجليزية'],
-      ['andererseits', 'من جهة أخرى', 'لا but also كرابط وحيد', 'but also die Ausbildung', 'but إنجليزية']
+      ['Die Ausbildung dauert drei Jahre.', 'تذكر مدة التكوين المهني', 'قياس المدة يأتي بلا حرف جر: dauert drei Jahre لا für', 'Die Ausbildung dauert für drei Jahre.', 'المدة مباشرة: dauert + مقدار بلا حرف'],
+      ['Das Studium beginnt im Oktober.', 'تعلن موعد بدء الدراسة', 'الشهر مع in المدموج في الأداة المعرفة: im Oktober لا in وحده', 'Das Studium beginnt in Oktober.', 'الشهر بـim لا بـin وحده'],
+      ['Einerseits ist die Ausbildung praktisch.', 'تزن مزيتها العملية', 'Einerseits المتقدمة تشغل الموضع الأول فالفعل ist ثانيًا قبل الفاعل', 'Einerseits die Ausbildung ist praktisch.', 'القلب بعد Einerseits: ist قبل die Ausbildung'],
+      ['Andererseits kostet das Studium viel Zeit.', 'تنبّه من كلفة الدراسة زمنًا', 'Andererseits المتقدمة تُحدث القلب نفسه: kostet قبل das Studium', 'Andererseits das Studium kostet viel Zeit.', 'القلب بعد Andererseits: kostet قبل das Studium']
     ],
     [
-      ['Die Ausbildung dauert drei Jahre.', 'التكوين يستغرق ثلاث سنوات', 'Die Formation dauert drei Jahre', 'الكلمة Ausbildung', 'Ausbildung'],
-      ['Das Studium ist länger.', 'الدراسة الجامعية أطول', 'Das Study ist länger', 'الكلمة Studium', 'Studium'],
-      ['Einerseits ist die Ausbildung praktisch.', 'من جهة التكوين عملي', 'On one hand ist sie praktisch', 'الرابط Einerseits', 'Einerseits'],
-      ['Andererseits fehlt die Zeit.', 'من جهة أخرى الوقت ناقص', 'But also fehlt die Zeit', 'الرابط Andererseits', 'Andererseits']
+      ['Die Ausbildung dauert drei Jahre.', 'التكوين يستغرق ثلاث سنوات', 'Die Ausbildung dauert für drei Jahre.', 'المدة بلا حرف جر: dauert drei Jahre', 'dauert'],
+      ['Das Studium beginnt im Oktober.', 'الدراسة تبدأ في أكتوبر', 'Das Studium beginnt in Oktober.', 'البداية في الشهر: im Oktober', 'beginnt'],
+      ['Einerseits ist die Ausbildung praktisch.', 'من جهة التكوين عملي', 'Einerseits die Ausbildung ist praktisch.', 'من جهة مع القلب: Einerseits ist', 'Einerseits'],
+      ['Andererseits kostet das Studium viel Zeit.', 'من جهة أخرى تبذل الدراسة وقتًا كثيرًا', 'Andererseits das Studium kostet viel Zeit.', 'من جهة أخرى مع القلب: kostet das Studium', 'Andererseits']
     ],
-    'Einerseits ist die Ausbildung praktisch. Andererseits fehlt die Zeit.',
     'Die Ausbildung dauert drei Jahre.',
-    'Vergleiche morgen zwei Wege.',
-    'غدًا قارن مسارين.'),
+    'Ich habe die Prüfung bestanden.',
+    'Wiederhole morgen die fünf Sätze: Die Ausbildung dauert drei Jahre. Das Studium beginnt im Oktober. Einerseits ist die Ausbildung praktisch. Andererseits kostet das Studium viel Zeit. Ich habe die Prüfung bestanden.',
+    'غدًا قارن المسارين كاملًا وانتبه إلى القلب عند الرابطين.',
+    {
+      factFamilies: ['präposition', 'präposition', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'dauerst',
+      transformHint: 'في جملة الختام الفعل المساعد يحكم الحكم على النجاح: Ich habe die Prüfung bestanden — النجاح مع hat لا مع bin.',
+      orderSentence: 'Einerseits ist die Ausbildung praktisch.',
+      checkOrderSentence: 'Andererseits kostet das Studium viel Zeit.',
+      orderAr: 'رتّب شق المقارنة الأول: Einerseits أولًا ثم الفعل ist ثانيًا قبل الفاعل die Ausbildung.',
+      orderPromptAr: 'رتّب الجملة واضعًا الرابط أولًا والفعل في الموضع الثاني قبل الفاعل.',
+      orderHints: ['الرابط المتقدم يشغل الموضع الأول فيأتي الفعل قبله.', 'الفاعل يليه بعد الفعل في هذا الترتيب.'],
+      writing: {
+        zeigt: 'Zwei Wege in fünf Sätzen',
+        erklaerung: 'اكتب مقارنة كاملة في خمس جمل: مدة التكوين بلا حرف جر، وبدء الدراسة بـim وشهر، وشقا الميزان برابطين متقدمين مع القلب، وختام بنتيجة امتحان بمساعد haben.',
+        hinweise: ['المقارنة لا تبدأ بالرأي: مدة وبداية أولًا ثم الميزان بالرابطين — كل شق منهما يقلب الجملة.', 'الأفعال هنا من أسماء ثابتة: dauern وbeginnen وbestehen مع haben.'],
+        prompt: 'اكتب جمل المقارنة الخمس المستهدفة من الذاكرة مع القلب وغياب حرف الجر عن المدة.',
+        promptDe: 'Die Ausbildung dauert drei Jahre. · Das Studium beginnt im Oktober. · Einerseits ist die Ausbildung praktisch. · Andererseits kostet das Studium viel Zeit. · Ich habe die Prüfung bestanden.',
+        points: ['Die Ausbildung dauert drei Jahre.', 'Das Studium beginnt im Oktober.', 'Einerseits ist die Ausbildung praktisch.', 'Andererseits kostet das Studium viel Zeit.', 'Ich habe die Prüfung bestanden.'],
+        minWords: 26,
+        frage: 'اكتب جمل المقارنة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Ausbildung dauert drei Jahre. Das Studium beginnt im Oktober. Einerseits ist die Ausbildung praktisch. Andererseits kostet das Studium viel Zeit. Ich habe die Prüfung bestanden.',
+      summaryDe: 'Die Ausbildung dauert drei Jahre. Das Studium beginnt im Oktober. Einerseits ist die Ausbildung praktisch. Andererseits kostet das Studium viel Zeit. Ich habe die Prüfung bestanden.',
+      summaryAr: 'مقارنة المسارين في خمس جمل: مدة التكوين بصيغته بلا حرف جر، وبداية الدراسة في شهرها بـim، وشقّا وزن متقدمان يقلبان الفعل قبل الفاعل، وخاتمة بنتيجة امتحان بالمساعد haben.',
+      summaryRecap: 'موازنة المسارين بخمس خطوات',
+      hwHintDe: 'Nicht „die Formation", nicht „das Study" und nicht „on one hand / but also" wörtlich ins Deutsche tragen. Sage es so ab: Einerseits ist die Ausbildung praktisch, andererseits kostet das Studium viel Zeit.'
+    }),
 
   U('b1-u3-l6', 'B1', 'المدينة', 'Stadt', 'lexik-kollokation',
     'Am Ende nennst du einen Vorteil und einen Nachteil',
