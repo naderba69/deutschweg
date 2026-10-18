@@ -691,25 +691,50 @@ module.exports = [
       hwHintDe: 'Die Stufen: sicherlich · wahrscheinlich · wohl · vielleicht · kaum. Nicht „maybe" wie im Englischen; ohne wohl klingt „Sie ist zu Hause" wie eine sichere Nachricht — mit wohl bleibt es eine Vermutung.'
     }),
 
-  U('b1-u2-l8', 'B1', 'قراءة رقم', 'Statistik', 'pruefstrategie',
-    'Am Ende beschreibst du eine Zahl bevor du sie deutest',
-    'في النهاية تصف الرقم قبل أن تؤوّله.',
+  U('b1-u2-l8', 'B1', 'وصف الإحصاء: الرقم والارتفاع والمقارنة', 'Statistik beschreiben: Zahl, Anstieg und Vergleich', 'pruefstrategie',
+    'Am Ende beschreibst du eine Statistik in fünf Sätzen, ohne eine Ursache zu erfinden',
+    'في النهاية تصف إحصاءً في خمس جمل كاملة دون أن تخترع سببًا.',
     [
-      ['die Zahl ist gestiegen', 'الارتفاع gestiegen', 'لا went up', 'die Zahl went up', 'went إنجليزية'],
-      ['im Vergleich', 'المقارنة im Vergleich', 'لا compared to خليط', 'compared zum Vorjahr', 'compared إنجليزية'],
-      ['zuerst beschreiben', 'الوصف قبل الرأي', 'الرأي أولًا يخسر المهمة', 'ich finde die Zahl schlecht zuerst', 'الوصف أولًا'],
-      ['keine Ursache ohne Quelle', 'السبب لا يُخترع', 'الرسم لا يقول السبب وحده', 'die Grafik beweist die Ursache', 'لا سبب بلا مصدر']
+      ['Die Grafik zeigt die Zahl der Gäste pro Monat.', 'تخبر بما يعرضه الرسم أصلًا', 'أولًا موضوع الرسم بالمضاف إليه Genitiv: die Zahl der Gäste (لا von die)', 'Die Grafik zeigt die Zahl von die Gäste pro Monat.', 'المضاف بالGenitiv: der Gäste لا von die Gäste'],
+      ['Die Preise sind deutlich gestiegen.', 'تعلن ارتفاع الأسعار بوضوح', 'steigen فعل حركة يأخذ sein في الماضي: sind gestiegen، وdeutlich تبيان للحجم قبل أي تأويل', 'Die Preise haben deutlich gestiegen.', 'gestiegen مع sein لا haben'],
+      ['Im Vergleich zum Vorjahr ist die Zahl kleiner.', 'تقارن الرقم بالعام الماضي', 'صيغة المقارنة الثابتة im Vergleich zum … تفتح الجملة، ثم ist قبل الفاعل، والصفة المقارنة kleiner', 'Im Vergleich zu Vorjahr ist die Zahl kleiner.', 'مع الاسم المعرفة: zum Vorjahr لا zu فقط'],
+      ['Der Anteil der Frauen macht vierzig Prozent aus.', 'تقول كم يشكل نصيب النساء', 'النصيب مع ausmachen المنفصل: macht … aus، وProzent بعد الرقم بلا صيغة جمع', 'Der Anteil der Frauen macht vierzig Prozent.', 'بادئة ausmachen المنفصلة أخيرًا: macht … aus']
     ],
     [
-      ['Die Zahl ist gestiegen.', 'ارتفع الرقم', 'Die Zahl went up', 'الارتفاع gestiegen', 'gestiegen'],
-      ['Im Vergleich zum Vorjahr.', 'مقارنة بالعام السابق', 'Compared zum Vorjahr', 'المقارنة Im Vergleich', 'Vergleich'],
-      ['Zuerst beschreibe ich die Zahl.', 'أولًا أصف الرقم', 'Zuerst sage ich meine Meinung', 'الوصف قبل الرأي', 'Zuerst'],
-      ['Die Quelle nennt keine Ursache.', 'المصدر لا يذكر سببًا', 'Die Grafik beweist die Ursache', 'لا سبب بلا مصدر', 'Ursache']
+      ['Die Grafik zeigt die Zahl der Gäste pro Monat.', 'يعرض الرسم عدد الضيوف في الشهر', 'Die Grafik zeigt die Zahl von die Gäste pro Monat.', 'الموضوع بالGenitiv: zeigt die Zahl der Gäste', 'zeigt'],
+      ['Die Preise sind deutlich gestiegen.', 'ارتفعت الأسعار بوضوح', 'Die Preise haben deutlich gestiegen.', 'الارتفاع مع sein: sind gestiegen', 'gestiegen'],
+      ['Im Vergleich zum Vorjahr ist die Zahl kleiner.', 'مقارنة بالعام السابق الرقم أصغر', 'Im Vergleich zu Vorjahr ist die Zahl kleiner.', 'صيغة المقارنة الثابتة: im Vergleich zum', 'Vergleich'],
+      ['Der Anteil der Frauen macht vierzig Prozent aus.', 'يشكل نصيب النساء أربعين بالمئة', 'Der Anteil der Frauen macht vierzig Prozent.', 'النصيب مع macht … aus المنفصلة', 'aus']
     ],
-    'Die Zahl ist gestiegen. Die Quelle nennt keine Ursache.',
-    'Zuerst beschreibe ich die Zahl.',
-    'Beschreibe morgen eine Zahl ohne Ursache.',
-    'غدًا صف رقمًا بلا سبب.'),
+    'Die Grafik zeigt die Zahl der Gäste pro Monat.',
+    'Die Quelle nennt keine Ursache für den Rückgang.',
+    'Wiederhole morgen die fünf Sätze: Die Grafik zeigt die Zahl der Gäste pro Monat. Die Preise sind deutlich gestiegen. Im Vergleich zum Vorjahr ist die Zahl kleiner. Der Anteil der Frauen macht vierzig Prozent aus. Die Quelle nennt keine Ursache für den Rückgang.',
+    'غدًا أعد وصف الإحصاء كاملًا ولاحظ فعل كل تغيّر.',
+    {
+      factFamilies: ['kasus', 'konjugation', 'präposition', 'wortstellung'],
+      imitateNearMiss: 'zeigen',
+      transformHint: 'في جملة الختام الخاتمة الصادقة: Die Quelle nennt keine Ursache … — المصدر يُسمّى والسبب الغائب لا يُخترع، وحرف für يتبعه نصب: für den Rückgang.',
+      orderSentence: 'Im Vergleich zum Vorjahr ist die Zahl kleiner.',
+      checkOrderSentence: 'Im Vergleich zum Vorjahr stiegen die Preise leicht.',
+      orderAr: 'رتّب جملة المقارنة: عبارة Im Vergleich zum Vorjahr أولًا ثم الفعل ist في الموضع الثاني قبل الفاعل die Zahl.',
+      orderPromptAr: 'رتّب الجملة واضعًا Im Vergleich zum Vorjahr أولًا والفعل في الموضع الثاني قبل الفاعل.',
+      orderHints: ['عبارة المقارنة Im Vergleich zum Vorjahr تشغل الموضع الأول.', 'الفعل ist في الموضع الثاني قبل الفاعل die Zahl.'],
+      writing: {
+        zeigt: 'Eine Statistik in fünf Sätzen',
+        erklaerung: 'اكتب وصف الإحصاء في خمس جمل كاملة: موضوع الرسم بالمضاف إليه، وارتفاع مع sind gestiegen، ومقارنة مع im Vergleich zum Vorjahr والصفة المقارنة، ونصيب مع macht … aus، وخاتمة بالمصدر بلا سبب مخترع.',
+        hinweise: ['الوصف قبل التأويل: ماذا يبين الرسم وكيف تغير الرقم ثم المقارنة — ولا سبب إن لم يذكره المصدر.', 'أفعال التغير تنقسم: gestiegen/gesunken مع sein، وzugenommen/abgenommen مع haben.'],
+        prompt: 'اكتب جمل وصف الإحصاء الخمس المستهدفة من الذاكرة مع الأفعال المساعدة والبادئات الصحيحة.',
+        promptDe: 'Die Grafik zeigt die Zahl der Gäste pro Monat. · Die Preise sind deutlich gestiegen. · Im Vergleich zum Vorjahr ist die Zahl kleiner. · Der Anteil der Frauen macht vierzig Prozent aus. · Die Quelle nennt keine Ursache für den Rückgang.',
+        points: ['Die Grafik zeigt die Zahl der Gäste pro Monat.', 'Die Preise sind deutlich gestiegen.', 'Im Vergleich zum Vorjahr ist die Zahl kleiner.', 'Der Anteil der Frauen macht vierzig Prozent aus.', 'Die Quelle nennt keine Ursache für den Rückgang.'],
+        minWords: 38,
+        frage: 'اكتب جمل وصف الإحصاء الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Grafik zeigt die Zahl der Gäste pro Monat. Die Preise sind deutlich gestiegen. Im Vergleich zum Vorjahr ist die Zahl kleiner. Der Anteil der Frauen macht vierzig Prozent aus. Die Quelle nennt keine Ursache für den Rückgang.',
+      summaryDe: 'Die Grafik zeigt die Zahl der Gäste pro Monat. Die Preise sind deutlich gestiegen. Im Vergleich zum Vorjahr ist die Zahl kleiner. Der Anteil der Frauen macht vierzig Prozent aus. Die Quelle nennt keine Ursache für den Rückgang.',
+      summaryAr: 'وصف الإحصاء بخطوات: موضوع الرسم بالGenitiv، والتغيّر بفعل مساعد صحيح (sind gestiegen)، والمقارنة بـim Vergleich zum Vorjahr مع صفة مقارنة، والنصيب بـmacht … Prozent aus، وخاتمة تذكر المصدر بلا سبب مخترع.',
+      summaryRecap: 'وصف الرقم قبل الحكم عليه',
+      hwHintDe: 'Beschreibe zuerst, deute später. Nicht aus dem Englischen: kein „went up", sondern „ist gestiegen". Gesprochen hört man „von den Preisen", in der Beschreibung steht der Genitiv: die Entwicklung der Preise.'
+    }),
 
   U('b1-u3-l1', 'B1', 'طلب عمل', 'Bewerbung', 'register',
     'Am Ende nennst du die Stelle und den Anhang',

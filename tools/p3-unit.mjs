@@ -11748,6 +11748,123 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[4]) &&
       checks[4].frage.optionen.some(o => o.text.includes('dass sie hat den Zug verpasst')) &&
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lesson8 = win.DW_LESSONS['b1-u2-l8'];
+  const row8 = win.DW_SYLLABUS.lessons.find(it => it.id === lesson8.id);
+  const byWord8 = Object.fromEntries(lesson8.wortschatz.map(it => [it.de, it]));
+  const tricks8 = lesson8.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets8 = [
+    'Die Grafik zeigt die Zahl der Gäste pro Monat.',
+    'Die Preise sind deutlich gestiegen.',
+    'Im Vergleich zum Vorjahr ist die Zahl kleiner.',
+    'Der Anteil der Frauen macht vierzig Prozent aus.',
+    'Die Quelle nennt keine Ursache für den Rückgang.'
+  ];
+  t('Corpus lesson b1-u2-l8 precisely scopes chart description with genitive topic, sein-change verbs, comparison phrase, share with ausmachen and source discipline across five targets',
+    lesson8.title.de === 'Statistik beschreiben: Zahl, Anstieg und Vergleich' &&
+      lesson8.title.ar === 'وصف الإحصاء: الرقم والارتفاع والمقارنة' &&
+      row8.title.de === lesson8.title.de && row8.title.ar === lesson8.title.ar &&
+      row8.theme === 'الرسوم والأرقام' &&
+      row8.grammar.item === 'Grafik nennen: die Zahl der Gäste (Genitiv) · gestiegen/gesunken mit sein · im Vergleich zum Vorjahr + Komparativ · Anteil macht … Prozent aus · keine Ursache ohne Quelle' &&
+      row8.grammar.method === 'explicit' && lesson8.schritte.length === 36 && lesson8.wortschatz.length === 40 &&
+      lesson8.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson8.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets8[i]) &&
+      lesson8.schritte[0].zeigt.de === 'Am Ende beschreibst du eine Statistik in fünf Sätzen, ohne eine Ursache zu erfinden' &&
+      lesson8.schritte.find(s => s.id === 's20').zeigt.de === targets8[4]);
+
+  const expectedWords8 = [
+    'die Grafik', 'das Diagramm', 'die Tabelle', 'die Abbildung', 'die Achse', 'die Säule',
+    'der Balken', 'die Kurve', 'der Prozentsatz', 'der Durchschnitt', 'das Verhältnis',
+    'der Vergleich', 'die Erhebung', 'die Auswertung', 'die Quelle', 'die Steigerung',
+    'der Zuwachs', 'die Abnahme', 'der Rückgang', 'das Maximum', 'das Minimum', 'der Anteil',
+    'die Mehrheit', 'die Minderheit', 'steigen', 'sinken', 'zunehmen', 'abnehmen', 'betragen',
+    'ausmachen', 'entsprechen', 'sich verdoppeln', 'sich halbieren', 'konstant', 'leicht',
+    'deutlich', 'erheblich', 'im Vergleich zu', 'gegenüber', 'durchschnittlich'
+  ];
+  const errors8 = lesson8.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u2-l8 reviews all 40 entries and three bounded mnemonics without grammatical von-dative or manufactured appendages, keeping auxiliary choice and separable ausmachen as the genuine error axes',
+    Object.keys(byWord8).join(' | ') === expectedWords8.join(' | ') &&
+      lesson8.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson8.wortschatz.every(it => it.ex !== it.err) &&
+      byWord8['die Grafik'].err === 'Die Grafik zeigt die Entwicklung von die Preise.' &&
+      byWord8['der Anteil'].err === 'Der Anteil von die Frauen wächst.' &&
+      byWord8.steigen.err === 'Die Preise haben stark gestiegen.' &&
+      byWord8.sinken.err === 'Die Zahl hat leicht gesunken.' &&
+      byWord8.ausmachen.err === 'Der Anteil macht zwanzig Prozent.' &&
+      byWord8.durchschnittlich.err === 'Durchschnittlich es kommen täglich hundert Gäste.' &&
+      !['Die Grafik zeigt die Entwicklung von den Preisen.', 'Der Anteil von den Frauen wächst.',
+        'Der Prozentsatz ist gesunken gemacht.', 'Die Auswertung läuft noch es.',
+        'Als Quelle nennt der Text das Statistikamt es.', 'Der Zuwachs ist deutlich gemacht.',
+        'Die Mehrheit hat zugestimmt gehabt.', 'Eine Minderheit hat abgelehnt gehabt.',
+        'Im Vergleich mit 2024 ist die Zahl kleiner.', 'Die Zahl bleibt konstant gemacht.',
+        'Der Unterschied ist deutlich gemacht.', 'Durchschnittlich kommen hundert Gäste täglich es.']
+        .some(x => errors8.includes(x)) &&
+      tricks8.length === 3 && tricks8[0].wie.includes('Die Preise sind gestiegen.') &&
+      tricks8[1].wie.includes('Gegenüber dem Vorjahr') &&
+      tricks8[2].wie.includes('Die Summe beträgt tausend Euro.'));
+
+  const wordClozeA8 = lesson8.schritte.find(s => s.id === 's09');
+  const wordClozeB8 = lesson8.schritte.find(s => s.id === 's13');
+  const wordClozeC8 = lesson8.schritte.find(s => s.id === 's17');
+  const imitate8 = lesson8.schritte.find(s => s.id === 's19');
+  const drill8 = lesson8.schritte.find(s => s.id === 's23');
+  const order8 = lesson8.schritte.find(s => s.id === 's24');
+  const writing8 = lesson8.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking8 = lesson8.schritte.find(s => s.phase === 'Produktion');
+  const summary8 = lesson8.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework8 = lesson8.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u2-l8 aligns five strict learning clozes, sound fronted-comparison order fields and a 38-word five-target production',
+    wordClozeA8.frage.zeigt === 'Die blaue ____ zeigt 2025.' && wordClozeA8.frage.antworten.join(' ') === 'Säule' &&
+      wordClozeA8.frage.nearMiss['Säulen'] && !win.DW.renderers.judgeCloze(wordClozeA8.frage, 'Säulen').ok &&
+      wordClozeB8.frage.zeigt === 'Der ____ der Frauen wächst.' && wordClozeB8.frage.antworten.join(' ') === 'Anteil' &&
+      wordClozeB8.frage.nearMiss.Anteile && !win.DW.renderers.judgeCloze(wordClozeB8.frage, 'Anteile').ok &&
+      wordClozeC8.frage.zeigt === 'Im ____ zu 2024 ist die Zahl kleiner.' && wordClozeC8.frage.antworten.join(' ') === 'Vergleich' &&
+      wordClozeC8.frage.nearMiss.Vergleiche && !win.DW.renderers.judgeCloze(wordClozeC8.frage, 'Vergleiche').ok &&
+      imitate8.zeigt.de === 'Die Grafik ____ die Zahl der Gäste pro Monat.' && imitate8.frage.antworten.join(' ') === 'zeigt' &&
+      imitate8.frage.nearMiss.zeigen && !win.DW.renderers.judgeCloze(imitate8.frage, 'zeigen').ok &&
+      drill8.frage.zeigt === 'Die Preise sind stark ____.' && drill8.frage.antworten.join(' ') === 'gestiegen' &&
+      drill8.frage.nearMiss.steigt && !win.DW.renderers.judgeCloze(drill8.frage, 'steigt').ok &&
+      lesson8.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order8.frage.frage === 'رتّب الجملة واضعًا Im Vergleich zum Vorjahr أولًا والفعل في الموضع الثاني قبل الفاعل.' &&
+      order8.frage.correct.join(' ') === targets8[2] && order8.frage.finite === 'ist' && order8.frage.verbFirst === false &&
+      order8.frage.fields.vorfeld.join(' ') === 'Im Vergleich zum Vorjahr' && order8.frage.fields.lsk.join(' ') === 'ist' &&
+      order8.frage.fields.mittelfeld.join(' ') === 'die Zahl kleiner.' &&
+      win.DW.order.score(order8.frage, order8.frage.correct).credit === 1 &&
+      win.DW.order.score(order8.frage, ['Im', 'Vergleich', 'zum', 'Vorjahr', 'die', 'Zahl', 'ist', 'kleiner.']).credit < 1 &&
+      writing8.frage.points.join(' | ') === targets8.join(' | ') && writing8.frage.minWords === 38 &&
+      targets8.join(' ').split(/\s+/).length === 38 &&
+      targets8.every(x => [writing8.frage.promptDe, summary8.zeigt.de, homework8.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets8.every(x => norm(speaking8.erklaerung).includes(norm(x))));
+
+  const checks8 = lesson8.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck8 = checks8.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck8 = checks8.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u2-l8 makes 80 percent four of five, independently checking separable ausmachen, gestiegen cloze, comparison past order, gesunken auxiliary and source accusative',
+    checks8.length === 5 && checks8[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks8[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks8.every(s => /^cap\.b1-u2-l8\.s\d+$/.test(s.frage.prereq || '')) && checks8.every(s => !s.hinweise) &&
+      checks8.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u2-l8.s07 | cap.b1-u2-l8.s23 | cap.b1-u2-l8.s24 | cap.b1-u2-l8.s14 | cap.b1-u2-l8.s20' &&
+      new Set(checks8.map(s => s.frage.prereq)).size === 5 &&
+      checks8[0].frage.optionen.some(o => o.text === targets8[3]) &&
+      checks8[0].frage.optionen.some(o => o.text === 'Der Anteil der Frauen macht vierzig Prozent.') &&
+      Object.values(checks8[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck8.frage.zeigt === 'Die Preise sind stark ____.' &&
+      clozeCheck8.frage.antworten.join(' ') === 'gestiegen' && clozeCheck8.frage.nearMiss.steigt &&
+      !win.DW.renderers.judgeCloze(clozeCheck8.frage, 'steigt').ok &&
+      orderCheck8.frage.correct.join(' ') === 'Im Vergleich zum Vorjahr stiegen die Preise leicht.' && orderCheck8.frage.finite === 'stiegen' &&
+      orderCheck8.frage.fields.vorfeld.join(' ') === 'Im Vergleich zum Vorjahr' && orderCheck8.frage.fields.lsk.join(' ') === 'stiegen' &&
+      orderCheck8.frage.fields.mittelfeld.join(' ') === 'die Preise leicht.' &&
+      win.DW.order.score(orderCheck8.frage, orderCheck8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck8.frage, ['Im', 'Vergleich', 'zum', 'Vorjahr', 'die', 'Preise', 'stiegen', 'leicht.']).credit < 1 &&
+      checks8[3].frage.optionen.some(o => o.text === 'Die Zahl ist leicht gesunken.') &&
+      checks8[3].frage.optionen.some(o => o.text === 'Die Zahl hat leicht gesunken.') &&
+      Object.values(checks8[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checks8[4].frage.optionen.some(o => o.text === targets8[4]) &&
+      checks8[4].frage.optionen.some(o => o.text === 'Die Quelle nennt keine Ursache für der Rückgang.') &&
+      Object.values(checks8[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

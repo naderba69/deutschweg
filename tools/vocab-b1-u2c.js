@@ -73,7 +73,7 @@ module.exports = {
 
   'b1-u2-l8': {
     items: [
-      ['die Grafik', 'die Grafiken', 'الرسم البياني', 'Die Grafik zeigt die Entwicklung der Preise.', 'Die Grafik zeigt die Entwicklung von den Preisen.', 'Genitiv أفضل.', 'kasus', 'Grafik'],
+      ['die Grafik', 'die Grafiken', 'الرسم البياني', 'Die Grafik zeigt die Entwicklung der Preise.', 'Die Grafik zeigt die Entwicklung von die Preise.', 'المضاف إليه بالGenitiv: der Preise؛ ومع von يلزم الداتيف (von den Preisen) لا von die.', 'kasus', 'Grafik'],
       ['das Diagramm', 'die Diagramme', 'المخطط', 'Das Diagramm ist leicht zu lesen.', 'Das Diagramm ist leicht lesen.', 'zu + مصدر.', 'wortstellung', 'Diagramm'],
       ['die Tabelle', 'die Tabellen', 'الجدول', 'Die Tabelle enthält alle Zahlen.', 'Die Tabelle enthält alle Zahl.', 'الجمع: Zahlen.', 'plural', 'Tabelle'],
       ['die Abbildung', 'die Abbildungen', 'الصورة التوضيحية', 'In der Abbildung sieht man zwei Kurven.', 'In die Abbildung sieht man zwei Kurven.', 'in + داتيف.', 'kasus', 'Abbildung'],
@@ -81,22 +81,22 @@ module.exports = {
       ['die Säule', 'die Säulen', 'العمود', 'Die blaue Säule zeigt 2025.', 'Die blau Säule zeigt 2025.', 'الصفة: blaue.', 'deklination', 'Säule'],
       ['der Balken', 'die Balken', 'الشريط', 'Der längste Balken gehört zu Berlin.', 'Der längste Balken gehört nach Berlin.', 'zu لا nach في الإسناد.', 'präposition', 'Balken'],
       ['die Kurve', 'die Kurven', 'المنحنى', 'Die Kurve steigt stark an.', 'Die Kurve steigt stark.', 'المنفصل: an.', 'wortstellung', 'an'],
-      ['der Prozentsatz', 'die Prozentsätze', 'النسبة المئوية', 'Der Prozentsatz ist gesunken.', 'Der Prozentsatz ist gesunken gemacht.', 'الصيغة تكفي.', 'lexik-kollokation', 'Prozentsatz'],
+      ['der Prozentsatz', 'die Prozentsätze', 'النسبة المئوية', 'Der Prozentsatz ist gesunken.', 'Der Prozentsatz sind gesunken.', 'الفعل المساعد مع المفرد: ist gesunken لا sind.', 'konjugation', 'Prozentsatz'],
       ['der Durchschnitt', 'die Durchschnitte', 'المتوسط', 'Der Durchschnitt liegt bei zwanzig.', 'Der Durchschnitt liegt in zwanzig.', 'bei لا in.', 'präposition', 'Durchschnitt'],
       ['das Verhältnis', 'die Verhältnisse', 'النسبة', 'Das Verhältnis ist zwei zu eins.', 'Das Verhältnis ist zwei zu ein.', 'zwei zu eins ثابتة.', 'lexik-kollokation', 'Verhältnis'],
       ['der Vergleich', 'die Vergleiche', 'المقارنة', 'Der Vergleich mit 2020 lohnt sich.', 'Der Vergleich zu 2020 lohnt sich.', 'mit لا zu هنا.', 'präposition', 'Vergleich'],
       ['die Erhebung', 'die Erhebungen', 'الجمع (بيانات)', 'Die Erhebung dauerte sechs Monate.', 'Die Erhebung dauerte für sechs Monate.', 'بلا حرف جر.', 'präposition', 'Erhebung'],
-      ['die Auswertung', 'die Auswertungen', 'التحليل', 'Die Auswertung läuft noch.', 'Die Auswertung läuft noch es.', 'لا ضمير زائد.', 'wortstellung', 'Auswertung'],
-      ['die Quelle', 'die Quellen', 'المصدر', 'Als Quelle nennt der Text das Statistikamt.', 'Als Quelle nennt der Text das Statistikamt es.', 'لا ضمير زائد.', 'wortstellung', 'Quelle'],
+      ['die Auswertung', 'die Auswertungen', 'التحليل', 'Die Auswertung läuft noch.', 'Die Auswertung laufen noch.', 'الفعل مع المفرد المؤنث: läuft لا laufen.', 'konjugation', 'Auswertung'],
+      ['die Quelle', 'die Quellen', 'المصدر', 'Als Quelle nennt der Text das Statistikamt.', 'Als Quelle nennt der Text das Statistikamtes.', 'المفعول في النصب: das Statistikamt لا صيغة الإضافة Statistikamtes.', 'kasus', 'Quelle'],
       ['die Steigerung', 'die Steigerungen', 'الزيادة', 'Die Steigerung beträgt zehn Prozent.', 'Die Steigerung beträgt zehn Prozente.', 'Prozent بلا جمع بعد الرقم.', 'plural', 'Steigerung'],
-      ['der Zuwachs', 'die Zuwächse', 'النموّ', 'Der Zuwachs ist deutlich.', 'Der Zuwachs ist deutlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Zuwachs'],
+      ['der Zuwachs', 'die Zuwächse', 'النموّ', 'Der Zuwachs ist deutlich.', 'Der Zuwachs sind deutlich.', 'الفاعل مفرد: ist لا sind.', 'konjugation', 'Zuwachs'],
       ['die Abnahme', 'die Abnahmen', 'النقصان', 'Die Abnahme begann im Herbst.', 'Die Abnahme begann in Herbst.', 'im Herbst.', 'präposition', 'Abnahme'],
       ['der Rückgang', 'die Rückgänge', 'التراجع', 'Der Rückgang betrifft die Jugend.', 'Der Rückgang betrifft für die Jugend.', 'بلا حرف جر.', 'kasus', 'Rückgang'],
       ['das Maximum', 'die Maxima', 'الحد الأقصى', 'Das Maximum lag bei neunzig Prozent.', 'Das Maximum lag in neunzig Prozent.', 'bei.', 'präposition', 'Maximum'],
       ['das Minimum', 'die Minima', 'الحد الأدنى', 'Das Minimum wurde im Winter erreicht.', 'Das Minimum wurde in Winter erreicht.', 'im Winter.', 'präposition', 'Minimum'],
-      ['der Anteil', 'die Anteile', 'النصيب', 'Der Anteil der Frauen wächst.', 'Der Anteil von den Frauen wächst.', 'Genitiv أفضل.', 'kasus', 'Anteil'],
-      ['die Mehrheit', 'die Mehrheiten', 'الأغلبية', 'Die Mehrheit stimmte zu.', 'Die Mehrheit hat zugestimmt gehabt.', 'السرد: stimmte zu.', 'konjugation', 'Mehrheit'],
-      ['die Minderheit', 'die Minderheiten', 'الأقلية', 'Eine Minderheit lehnte ab.', 'Eine Minderheit hat abgelehnt gehabt.', 'السرد: lehnte ab.', 'konjugation', 'Minderheit'],
+      ['der Anteil', 'die Anteile', 'النصيب', 'Der Anteil der Frauen wächst.', 'Der Anteil von die Frauen wächst.', 'المضاف إليه بالGenitiv: der Frauen؛ ومع von يلزم الداتيف لا von die.', 'kasus', 'Anteil'],
+      ['die Mehrheit', 'die Mehrheiten', 'الأغلبية', 'Die Mehrheit stimmte zu.', 'Die Mehrheit stimmt gestern zu.', 'مع gestern الماضي: stimmte zu لا الحاضر.', 'konjugation', 'Mehrheit'],
+      ['die Minderheit', 'die Minderheiten', 'الأقلية', 'Eine Minderheit lehnte ab.', 'Eine Minderheit lehnt gestern ab.', 'مع gestern الماضي: lehnte ab لا الحاضر.', 'konjugation', 'Minderheit'],
       ['steigen', 'steigt · stieg · ist gestiegen', 'يرتفع', 'Die Preise sind stark gestiegen.', 'Die Preise haben stark gestiegen.', 'steigen مع sein.', 'konjugation', 'gestiegen'],
       ['sinken', 'sinkt · sank · ist gesunken', 'ينخفض', 'Die Zahl ist leicht gesunken.', 'Die Zahl hat leicht gesunken.', 'sinken مع sein.', 'konjugation', 'gesunken'],
       ['zunehmen', 'nimmt zu · nahm zu · hat zugenommen', 'يزيد', 'Die Bevölkerung hat zugenommen.', 'Die Bevölkerung ist zugenommen.', 'zunehmen مع haben.', 'konjugation', 'zugenommen'],
@@ -106,19 +106,36 @@ module.exports = {
       ['entsprechen', 'entspricht · entsprach · hat entsprochen', 'يقابل', 'Das entspricht etwa zwei Dritteln.', 'Das entspricht etwa zwei Drittel.', 'داتيف بعد entsprechen.', 'kasus', 'entspricht'],
       ['sich verdoppeln', 'verdoppelt sich · verdoppelte sich · hat sich verdoppelt', 'يتضاعف', 'Die Zahl hat sich verdoppelt.', 'Die Zahl hat verdoppelt.', 'الانعكاس: sich verdoppelt.', 'konjugation', 'verdoppelt'],
       ['sich halbieren', 'halbiert sich · halbierte sich · hat sich halbiert', 'ينتصف', 'Der Anteil hat sich halbiert.', 'Der Anteil hat halbiert.', 'الانعكاس: sich halbiert.', 'konjugation', 'halbiert'],
-      ['konstant', '—', 'ثابت', 'Die Zahl bleibt konstant.', 'Die Zahl bleibt konstant gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'konstant'],
+      ['konstant', '—', 'ثابت', 'Die Zahl bleibt konstant.', 'Die Zahl bleiben konstant.', 'الفعل مع المفرد المؤنث: bleibt لا bleiben.', 'konjugation', 'konstant'],
       ['leicht', '—', 'طفيف', 'Der Anteil ist leicht gestiegen.', 'Der Anteil ist leicht gestiegen geworden.', 'بلا geworden.', 'konjugation', 'leicht'],
-      ['deutlich', '—', 'واضح', 'Der Unterschied ist deutlich.', 'Der Unterschied ist deutlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'deutlich'],
+      ['deutlich', '—', 'واضح', 'Der Unterschied ist deutlich.', 'Der Unterschied sind deutlich.', 'الفاعل مفرد: ist لا sind.', 'konjugation', 'deutlich'],
       ['erheblich', '—', 'معتبر', 'Die Kosten sind erheblich gestiegen.', 'Die Kosten sind erheblich steigen.', 'Partizip II بعد sein.', 'konjugation', 'erheblich'],
-      ['im Vergleich zu', '—', 'بالمقارنة مع', 'Im Vergleich zu 2024 ist die Zahl kleiner.', 'Im Vergleich mit 2024 ist die Zahl kleiner.', 'الصيغة الثابتة: im Vergleich zu.', 'präposition', 'Vergleich'],
+      ['im Vergleich zu', '—', 'بالمقارنة مع', 'Im Vergleich zu 2024 ist die Zahl kleiner.', 'Im Vergleich zu dem 2024 ist die Zahl kleiner.', 'مع رقم السنة مباشرة بلا أداة: im Vergleich zu 2024.', 'kasus', 'Vergleich'],
       ['gegenüber', '—', 'مقابل', 'Gegenüber dem Vorjahr stieg die Zahl.', 'Gegenüber von dem Vorjahr stieg die Zahl.', 'gegenüber + داتيف بلا von.', 'kasus', 'Gegenüber'],
-      ['durchschnittlich', '—', 'في المتوسط', 'Durchschnittlich kommen täglich hundert Gäste.', 'Durchschnittlich kommen hundert Gäste täglich es.', 'لا ضمير زائد.', 'wortstellung', 'durchschnittlich']
+      ['durchschnittlich', '—', 'في المتوسط', 'Durchschnittlich kommen täglich hundert Gäste.', 'Durchschnittlich es kommen täglich hundert Gäste.', 'الظرف المتقدم يشغل الموضع الأول فالفعل kommen ثانٍ قبل الفاعل الضمني.', 'wortstellung', 'durchschnittlich']
     ],
     tricks: [
       { trick: 'قراءة الرسم: steigen · sinken · zunehmen · abnehmen، وكل منها مع فعله المساعد', wie: 'Die Preise sind gestiegen. · Die Nachfrage hat abgenommen.', warum: 'steigen وsinken يأخذان sein، والعربية لا فرق عندها، فيخطئ الناطق بـ haben.', anchor: 'steigen' },
       { trick: 'المقارنة لها صيغتان ثابتتان: im Vergleich zu · gegenüber dem Vorjahr', wie: 'Im Vergleich zu 2024 … · Gegenüber dem Vorjahr …', warum: 'العربية تقول «مقارنة بـ»، والألمانية تختار بين zu وgegenüber + داتيف.', anchor: 'im Vergleich zu' },
       { trick: 'الأرقام في النص: betragen · ausmachen · entsprechen — بلا حرف جر', wie: 'Die Summe beträgt tausend Euro. · Das entspricht zwei Dritteln.', warum: 'العربية تقول «يبلغ إلى/يشكّل من»، والألمانية تصل الفعل بالمفعول مباشرة.', anchor: 'betragen' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Säule': 'Säulen',
+      'der Anteil': 'Anteile',
+      'im Vergleich zu': 'Vergleiche'
+    },
+    clozeItemIndex: 24,
+    clozeNearMiss: 'steigt',
+    checkItemIndex: 25,
+    extraCheck: {
+      right: 'Die Quelle nennt keine Ursache für den Rückgang.',
+      bad: 'Die Quelle nennt keine Ursache für der Rückgang.',
+      why: 'für تأخذ النصب: für den Rückgang لا der؛ وبلا سبب في المصدر لا يُخترع سبب.',
+      family: 'kasus',
+      prereq: 'cap.b1-u2-l8.s20',
+      frage: 'أي جملة تذكر المصدر وسبب غائب بحالة صحيحة؟'
+    }
   }
 
 };
