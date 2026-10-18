@@ -12484,6 +12484,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB5[4].frage.optionen.some(o => o.text === 'Ich bin die Prüfung bestanden.') &&
       Object.values(checksB5[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 
+
+  const lessonB6 = win.DW_LESSONS['b1-u3-l6'];
+  const rowB6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB6.id);
+  const byWordB6 = Object.fromEntries(lessonB6.wortschatz.map(it => [it.de, it]));
+  const tricksB6 = lessonB6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB6 = [
+    'Unser Viertel liegt am Stadtrand.',
+    'Der Bus fährt alle zehn Minuten.',
+    'Der Vorteil ist die ruhige Lage.',
+    'Der Nachteil ist die teure Miete.',
+    'Die Mietpreise steigen jedes Jahr stark.'
+  ];
+  t('Corpus lesson b1-u3-l6 precisely scopes the district with contracted place, preposition-free frequency, paired advantage-disadvantage weak adjectives and a rent trend across five targets',
+    lessonB6.title.de === 'Stadt: Lage, Verkehr, Vorteil und Nachteil' &&
+      lessonB6.title.ar === 'المدينة: الموقع والنقل والحسنات والمساوئ' &&
+      rowB6.title.de === lessonB6.title.de && rowB6.title.ar === lessonB6.title.ar &&
+      rowB6.theme === 'الحي والسكن' &&
+      rowB6.grammar.item === 'liegen am Stadtrand · alle zehn Minuten ohne Präposition · der Vorteil ist die ruhige Lage · der Nachteil ist die teure Miete · Mietpreise steigen' &&
+      rowB6.grammar.method === 'explicit' && lessonB6.schritte.length === 36 && lessonB6.wortschatz.length === 40 &&
+      lessonB6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB6[i]) &&
+      lessonB6.schritte[0].zeigt.de === 'Am Ende beschreibst du ein Stadtviertel in fünf Sätzen: Lage, Verkehr, Vorteil, Nachteil und Mieten' &&
+      lessonB6.schritte.find(s => s.id === 's20').zeigt.de === targetsB6[4]);
+
+  const expectedWordsB6 = [
+    'die Stadt', 'das Dorf', 'die Gegend', 'das Viertel', 'der Stadtteil', 'das Zentrum',
+    'der Stadtrand', 'die Vorstadt', 'das Rathaus', 'die Verwaltung', 'die Infrastruktur',
+    'der Verkehr', 'die Verkehrsmittel', 'der Bus', 'die Straßenbahn', 'die U-Bahn',
+    'der Bahnhof', 'der Flughafen', 'die Haltestelle', 'der Fahrplan', 'die Fahrkarte',
+    'der Mietpreis', 'die Miete', 'der Wohnraum', 'die Wohnung', 'der Vermieter',
+    'der Mieter', 'der Platz', 'die Grünfläche', 'der Park', 'der Spielplatz',
+    'die Nachbarschaft', 'die Sicherheit', 'die Kriminalität', 'die Umwelt',
+    'die Lebensqualität', 'die Einwohner', 'umziehen', 'sich anpassen', 'die Miete erhöhen'
+  ];
+  const errorsB6 = lessonB6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l6 reviews all 40 entries and three bounded mnemonics without twenty-six manufactured appendages or the valid ticket-duration foil, keeping agreement and strong-verb form as genuine error axes and the anpassen note on the true suffix error',
+    Object.keys(byWordB6).join(' | ') === expectedWordsB6.join(' | ') &&
+      lessonB6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB6['die Stadt'].err === 'Die Stadt wachst schnell.' &&
+      byWordB6['die Vorstadt'].err === 'Die Vorstadt ist rasant gewachst.' &&
+      byWordB6['die Fahrkarte'].err === 'Die Fahrkarte gelten zwei Stunden.' &&
+      byWordB6['die Fahrkarte'].why.includes('وتجوز أيضًا مع für') &&
+      byWordB6['die Miete erhöhen'].err === 'Der Vermieter willt die Miete erhöhen.' &&
+      byWordB6['sich anpassen'].why.includes('بلا an لاحقة') &&
+      byWordB6['die Einwohner'].err === 'Die Einwohner der Stadt wächst langsam.' &&
+      !['Die Stadt wächst schnell es.', 'Die Gegend ist sehr ruhig gemacht.',
+        'Das Viertel ist multikulturell gemacht.', 'Das Zentrum ist teuer gemacht.',
+        'Die Vorstadt wächst rasant es.', 'Der Verkehr ist am Morgen dicht gemacht.',
+        'Die Verkehrsmittel sind günstig gemacht.', 'Die Straßenbahn hält hier nicht es.',
+        'Die U-Bahn ist schneller es.', 'Der Flughafen liegt weit es.',
+        'Die Haltestelle ist gleich dort es.', 'Die Fahrkarte gilt für zwei Stunden.',
+        'Die Mietpreise steigen stark es.', 'Die Miete frisst mein Gehalt es.',
+        'Wohnraum ist knapp gemacht.', 'Die Wohnung ist zu teuer gemacht.',
+        'Der Vermieter erhöht die Miete es.', 'Die Mieter protestieren es.',
+        'Der Platz ist voll gemacht.', 'Die Grünflächen sind wichtig gemacht.',
+        'Der Park ist abends belebt gemacht.', 'Der Spielplatz braucht Reparaturen es.',
+        'Die Nachbarschaft hilft einander es.', 'Die Sicherheit ist nachts ein Thema gemacht.',
+        'Die Einwohner der Stadt wachsen langsam es.', 'Der Vermieter will die Miete erhöhen es.']
+        .some(x => errorsB6.includes(x)) &&
+      tricksB6.length === 3 && tricksB6[0].wie.includes('am Stadtrand') &&
+      tricksB6[1].wie.includes('Der Fahrplan hat sich geändert.') &&
+      tricksB6[2].wie.includes('Die Mietpreise steigen'));
+
+  const wordClozeAB6 = lessonB6.schritte.find(s => s.id === 's09');
+  const wordClozeBB6 = lessonB6.schritte.find(s => s.id === 's13');
+  const wordClozeCB6 = lessonB6.schritte.find(s => s.id === 's17');
+  const imitateB6 = lessonB6.schritte.find(s => s.id === 's19');
+  const drillB6 = lessonB6.schritte.find(s => s.id === 's23');
+  const orderB6 = lessonB6.schritte.find(s => s.id === 's24');
+  const writingB6 = lessonB6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB6 = lessonB6.schritte.find(s => s.phase === 'Produktion');
+  const summaryB6 = lessonB6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB6 = lessonB6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l6 aligns five strict learning clozes, sound subject-first order fields and a 29-word five-target production',
+    wordClozeAB6.frage.zeigt === 'Das ____ ist teuer.' && wordClozeAB6.frage.antworten.join(' ') === 'Zentrum' &&
+      wordClozeAB6.frage.nearMiss.Zentren && !win.DW.renderers.judgeCloze(wordClozeAB6.frage, 'Zentren').ok &&
+      wordClozeBB6.frage.zeigt === 'Die ____ steigen stark.' && wordClozeBB6.frage.antworten.join(' ') === 'Mietpreise' &&
+      wordClozeBB6.frage.nearMiss.Mietpreis && !win.DW.renderers.judgeCloze(wordClozeBB6.frage, 'Mietpreis').ok &&
+      wordClozeCB6.frage.zeigt === 'Wir sind letztes Jahr ____.' && wordClozeCB6.frage.antworten.join(' ') === 'umgezogen' &&
+      wordClozeCB6.frage.nearMiss.umziehen && !win.DW.renderers.judgeCloze(wordClozeCB6.frage, 'umziehen').ok &&
+      imitateB6.zeigt.de === 'Unser Viertel ____ am Stadtrand.' && imitateB6.frage.antworten.join(' ') === 'liegt' &&
+      imitateB6.frage.nearMiss.legen && !win.DW.renderers.judgeCloze(imitateB6.frage, 'legen').ok &&
+      drillB6.frage.zeigt === 'Ich habe mich schnell ____.' && drillB6.frage.antworten.join(' ') === 'angepasst' &&
+      drillB6.frage.nearMiss.anpassen && !win.DW.renderers.judgeCloze(drillB6.frage, 'anpassen').ok &&
+      lessonB6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderB6.frage.correct.join(' ') === targetsB6[1] && orderB6.frage.finite === 'fährt' && orderB6.frage.verbFirst === false &&
+      orderB6.frage.fields.vorfeld.join(' ') === 'Der Bus' && orderB6.frage.fields.lsk.join(' ') === 'fährt' &&
+      orderB6.frage.fields.mittelfeld.join(' ') === 'alle zehn Minuten.' &&
+      win.DW.order.score(orderB6.frage, orderB6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB6.frage, ['Der', 'Bus', 'alle', 'zehn', 'Minuten.', 'fährt']).credit < 1 &&
+      writingB6.frage.points.join(' | ') === targetsB6.join(' | ') && writingB6.frage.minWords === 29 &&
+      targetsB6.join(' ').split(/\s+/).length === 29 &&
+      targetsB6.every(x => [writingB6.frage.promptDe, summaryB6.zeigt.de, homeworkB6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB6.every(x => norm(speakingB6.erklaerung).includes(norm(x))));
+
+  const checksB6 = lessonB6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB6 = checksB6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB6 = checksB6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l6 makes 80 percent four of five, independently checking weak adjective after die, angepasst cloze, fronted-time order, passive participle and plural rent agreement',
+    checksB6.length === 5 && checksB6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB6.every(s => /^cap\.b1-u3-l6\.s\d+$/.test(s.frage.prereq || '')) && checksB6.every(s => !s.hinweise) &&
+      checksB6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l6.s07 | cap.b1-u3-l6.s23 | cap.b1-u3-l6.s24 | cap.b1-u3-l6.s12 | cap.b1-u3-l6.s20' &&
+      new Set(checksB6.map(s => s.frage.prereq)).size === 5 &&
+      checksB6[0].frage.optionen.some(o => o.text === targetsB6[3]) &&
+      checksB6[0].frage.optionen.some(o => o.text === 'Der Nachteil ist die teueres Miete.') &&
+      Object.values(checksB6[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheckB6.frage.zeigt === 'Ich habe mich schnell ____.' &&
+      clozeCheckB6.frage.antworten.join(' ') === 'angepasst' && clozeCheckB6.frage.nearMiss.anpassen &&
+      !win.DW.renderers.judgeCloze(clozeCheckB6.frage, 'anpassen').ok &&
+      orderCheckB6.frage.correct.join(' ') === 'Am Morgen ist der Verkehr sehr dicht.' && orderCheckB6.frage.finite === 'ist' &&
+      orderCheckB6.frage.fields.vorfeld.join(' ') === 'Am Morgen' && orderCheckB6.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckB6.frage.fields.mittelfeld.join(' ') === 'der Verkehr sehr dicht.' &&
+      win.DW.order.score(orderCheckB6.frage, orderCheckB6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB6.frage, ['Am', 'Morgen', 'der', 'Verkehr', 'ist', 'sehr', 'dicht.']).credit < 1 &&
+      checksB6[3].frage.optionen.some(o => o.text === 'Der Bahnhof wird modernisiert.') &&
+      checksB6[3].frage.optionen.some(o => o.text === 'Der Bahnhof wird modernisieren.') &&
+      Object.values(checksB6[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksB6[4].frage.optionen.some(o => o.text === targetsB6[4]) &&
+      checksB6[4].frage.optionen.some(o => o.text === 'Die Mietpreise steigt jedes Jahr stark.') &&
+      Object.values(checksB6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

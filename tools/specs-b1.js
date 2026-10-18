@@ -962,25 +962,50 @@ module.exports = [
       hwHintDe: 'Nicht „die Formation", nicht „das Study" und nicht „on one hand / but also" wörtlich ins Deutsche tragen. Sage es so ab: Einerseits ist die Ausbildung praktisch, andererseits kostet das Studium viel Zeit.'
     }),
 
-  U('b1-u3-l6', 'B1', 'المدينة', 'Stadt', 'lexik-kollokation',
-    'Am Ende nennst du einen Vorteil und einen Nachteil',
-    'في النهاية تسمّي حسنة ومساوئ.',
+  U('b1-u3-l6', 'B1', 'المدينة: الموقع والنقل والحسنات والمساوئ', 'Stadt: Lage, Verkehr, Vorteil und Nachteil', 'lexik-kollokation',
+    'Am Ende beschreibst du ein Stadtviertel in fünf Sätzen: Lage, Verkehr, Vorteil, Nachteil und Mieten',
+    'في النهاية تصف حيًّا كاملًا في خمس جمل: الموقع والنقل والحسنة والمساوئ والإيجارات.',
     [
-      ['der Vorteil', 'الحسنة Vorteil', 'لا advantage ككلمة', 'der Advantage', 'Advantage إنجليزية'],
-      ['der Nachteil', 'المساوئ Nachteil', 'لا disadvantage', 'der Disadvantage', 'Disadvantage إنجليزية'],
-      ['die Lage', 'الموقع Lage', 'لا location ككلمة وحيدة', 'die Location ist gut', 'Location إنجليزية'],
-      ['der Lärm', 'الضجيج Lärm', 'لا noise', 'der Noise', 'Noise إنجليزية']
+      ['Unser Viertel liegt am Stadtrand.', 'تحدد موقع حيك في المدينة', 'المكان بـan + الداتيف المدموج: am Stadtrand لا in عارية', 'Unser Viertel liegt in Stadtrand.', 'المكان الثابت: am Stadtrand لا in وحدها'],
+      ['Der Bus fährt alle zehn Minuten.', 'تحكي عن تردد الحافلة', 'قياس التكرار يأتي مفعولًا زمنيًا بلا حرف جر: alle zehn Minuten لا in', 'Der Bus fährt in alle zehn Minuten.', 'قياس التكرار بلا حرف: alle zehn Minuten'],
+      ['Der Vorteil ist die ruhige Lage.', 'تسمّي حسنة حيك', 'خارطة التعبير: Der Vorteil ist + مرفوع، والصفة بعد الأداة المعرفة المؤنثة تنتهي ضعيفة: ruhige', 'Der Vorteil ist die ruhigen Lage.', 'الصفة بعد die المفرد ضعيفة: ruhige لا ruhigen'],
+      ['Der Nachteil ist die teure Miete.', 'تسمّي مساوئ الحي بصدق', 'القالب الناقد المشابه: Der Nachteil ist … والصفة مع اسم مؤنث مفرد قليلة النهاية: teure', 'Der Nachteil ist die teueres Miete.', 'الصفة بعد die ضعيفة: teure لا المحايدة teueres']
     ],
     [
-      ['Der Vorteil ist die Lage.', 'الحسنة هي الموقع', 'Der Advantage ist die Lage', 'الحسنة Vorteil', 'Vorteil'],
-      ['Der Nachteil ist der Lärm.', 'المساوئ هي الضجيج', 'Der Disadvantage ist der Lärm', 'المساوئ Nachteil', 'Nachteil'],
-      ['Die Lage ist ruhig.', 'الموقع هادئ', 'Die Location ist ruhig', 'الموقع Lage', 'Lage'],
-      ['Der Lärm stört mich.', 'الضجيج يزعجني', 'Der Noise stört mich', 'الضجيج Lärm', 'Lärm']
+      ['Unser Viertel liegt am Stadtrand.', 'حيّنا في أطراف المدينة', 'Unser Viertel liegt in Stadtrand.', 'المكان الثابت بـam Stadtrand', 'liegt'],
+      ['Der Bus fährt alle zehn Minuten.', 'الحافلة تغادر كل عشر دقائق', 'Der Bus fährt in alle zehn Minuten.', 'قياس التكرار بلا حرف', 'fährt'],
+      ['Der Vorteil ist die ruhige Lage.', 'الحسنة هي الموقع الهادئ', 'Der Vorteil ist die ruhigen Lage.', 'الحسنة بما يتصل بالموقع: ruhige Lage', 'ruhige'],
+      ['Der Nachteil ist die teure Miete.', 'العيب هو الإيجار الغالي', 'Der Nachteil ist die teueres Miete.', 'العيب بما يتصل بالإيجار: teure Miete', 'teure']
     ],
-    'Der Vorteil ist die Lage. Der Nachteil ist der Lärm.',
-    'Der Nachteil ist der Lärm.',
-    'Nenne morgen Vorteil und Nachteil.',
-    'غدًا سمِّ حسنة ومساوئ.'),
+    'Unser Viertel liegt am Stadtrand.',
+    'Die Mietpreise steigen jedes Jahr stark.',
+    'Wiederhole morgen die fünf Sätze: Unser Viertel liegt am Stadtrand. Der Bus fährt alle zehn Minuten. Der Vorteil ist die ruhige Lage. Der Nachteil ist die teure Miete. Die Mietpreise steigen jedes Jahr stark.',
+    'غدًا أعد وصف الحي ولاحظ المواضع وصفة الصفة التالية للأداة.',
+    {
+      factFamilies: ['präposition', 'präposition', 'deklination', 'deklination'],
+      imitateNearMiss: 'legen',
+      transformHint: 'في جملة الختام ارتفاع الإيجار العام: Die Mietpreise steigen jedes Jahr stark — فاعل جمع بفعل جمع ومقياس زمني بلا حرف جر أيضًا.',
+      orderSentence: 'Der Bus fährt alle zehn Minuten.',
+      checkOrderSentence: 'Am Morgen ist der Verkehr sehr dicht.',
+      orderAr: 'رتّب جملة الحافلة: الفاعل أولًا ثم الفعل fährt في الموضع الثاني قبل مقياس الوقت.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل ثابت مهما بدأت الجملة.', 'مقاييس الوقت تأتي بلا حرف جر هنا.'],
+      writing: {
+        zeigt: 'Ein Viertel in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل عن حي: موقعه على الأطراف بـam، ومواعيد حافلة بلا حرف جر، ووصفين متعادلين (حسنة ومساوئ) بصفة صحيحة بعد الأداة، وختام باتجاه الإيجارات.',
+        hinweise: ['وصف حي قابل للقياس: أين يقع؟ كيف تصل؟ ما حسنه وعيبه؟ أين يتجه السعر؟', 'الأوصاف بعد die ضعيفة النهاية: ruhige/teure لا تُكتب بالمفرد القوي.'],
+        prompt: 'اكتب جمل الحي الخمس المستهدفة من الذاكرة مع موضع الفعل وصفة الصفة الصحيحة.',
+        promptDe: 'Unser Viertel liegt am Stadtrand. · Der Bus fährt alle zehn Minuten. · Der Vorteil ist die ruhige Lage. · Der Nachteil ist die teure Miete. · Die Mietpreise steigen jedes Jahr stark.',
+        points: ['Unser Viertel liegt am Stadtrand.', 'Der Bus fährt alle zehn Minuten.', 'Der Vorteil ist die ruhige Lage.', 'Der Nachteil ist die teure Miete.', 'Die Mietpreise steigen jedes Jahr stark.'],
+        minWords: 29,
+        frage: 'اكتب جمل الحي الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Unser Viertel liegt am Stadtrand. Der Bus fährt alle zehn Minuten. Der Vorteil ist die ruhige Lage. Der Nachteil ist die teure Miete. Die Mietpreise steigen jedes Jahr stark.',
+      summaryDe: 'Unser Viertel liegt am Stadtrand. Der Bus fährt alle zehn Minuten. Der Vorteil ist die ruhige Lage. Der Nachteil ist die teure Miete. Die Mietpreise steigen jedes Jahr stark.',
+      summaryAr: 'الحي في خمس جمل: موقع على الأطراف بتركيب am، ووتيرة مواصلات بلا حرف جر، وحسنة في موقع هادئ ومساوئ في إيجار غال بصفة ضعيفة النهاية، وأخيرًا اتجاه للإيجارات بصيغة الجمع.',
+      summaryRecap: 'وصف الحي بخمس خطوات',
+      hwHintDe: 'Sprich echt: nicht „the Advantage" oder „Disadvantage", nicht „die Location" und nicht „der Noise" — deutsch heißen die vier Dinge Vorteil, Nachteil, Lage und Lärm. Der Vorteil ist die Lage.'
+    }),
 
   U('b1-u3-l7', 'B1', 'التأمين', 'Versicherung', 'lexik-kollokation',
     'Am Ende sagst du Anmeldung und Versicherung in einem Satz',
