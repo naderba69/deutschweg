@@ -10218,5 +10218,137 @@ console.log('\n— P3.2 lexical layer —\n');
       checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'kasus');
 }
 
+
+/* ---------- audited B1 concessive-clause lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l3'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Obwohl es regnet, gehe ich spazieren.',
+    'Ich gehe spazieren, obwohl es regnet.',
+    'Obwohl ich heute arbeiten muss, komme ich später mit.',
+    'Obwohl er wenig geschlafen hat, ist er pünktlich gekommen.',
+    'Es regnet, trotzdem gehe ich spazieren.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l3 precisely scopes obwohl verb-final order, fronted-clause inversion and the trotzdem V2 contrast across five targets',
+    lesson.title.de === 'Konzessivsätze mit obwohl: Verbendstellung und Hauptsatzinversion' &&
+      lesson.title.ar === 'جمل التنازل مع obwohl: الفعل في النهاية وقلب الجملة الرئيسية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'التعبير عن تناقض بين ظرف ونتيجة' &&
+      row.grammar.item === 'obwohl + Verb am Ende · vorangestellter Nebensatz + Verb zuerst · trotzdem/allerdings + V2 · trotz + Genitiv · zwar … aber / einerseits … andererseits' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du fünf vollständige Gegensätze mit obwohl und trotzdem' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'obwohl', 'obgleich', 'trotzdem', 'trotz', 'zwar', 'allerdings', 'widersprechen', 'zustimmen',
+    'ablehnen', 'akzeptieren', 'bezweifeln', 'begründen', 'kritisieren', 'verteidigen', 'verzichten',
+    'sich bemühen', 'berücksichtigen', 'einwenden', 'der Widerspruch', 'der Einwand', 'die Begründung',
+    'die Ausnahme', 'die Regel', 'die Schwierigkeit', 'die Mühe', 'der Aufwand', 'das Risiko',
+    'die Gefahr', 'der Mut', 'die Geduld', 'das Interesse', 'die Rücksicht', 'die Kritik', 'der Zweifel',
+    'die Meinung', 'die Ansicht', 'der Grund', 'die Folge', 'der Zweck', 'andererseits'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l3 reviews all 40 entries and three bounded mnemonics without rejecting grammatical dative, ellipsis or viewpoint alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord.obwohl.ex === targets[1] && byWord.obwohl.err.includes('obwohl regnet es') &&
+      byWord.obgleich.err.includes('er arbeitete weiter') && byWord.trotzdem.ex === targets[4] &&
+      byWord.trotzdem.why.includes('الموضع الثاني') && byWord.trotz.err.includes('des Regen') &&
+      byWord.zwar.ex.includes('Zwar ist der Kurs') && byWord.allerdings.err.includes('allerdings er ist') &&
+      byWord.widersprechen.why.includes('Dativ') && byWord.zustimmen.why.includes('Dativ') &&
+      byWord.ablehnen.ex.includes('lehnt den Vorschlag ab') && byWord.akzeptieren.why.includes('Akkusativ') &&
+      byWord.bezweifeln.why.includes('zweifeln') && byWord.begründen.why.includes('Akkusativ') &&
+      byWord.kritisieren.err.includes('dem Plan') && byWord.verteidigen.err.includes('ihrer Meinung') &&
+      byWord.verzichten.ex.includes('auf das Auto') && byWord['sich bemühen'].why.includes('um + Akkusativ') &&
+      byWord.berücksichtigen.err.includes('deiner Erfahrung') && byWord.einwenden.err.includes('Plan ist teuer') &&
+      byWord['der Widerspruch'].ex.includes('in deiner Aussage') && byWord['der Einwand'].why.includes('gegen') &&
+      byWord['die Begründung'].ex.includes('für die Entscheidung') && byWord['die Ausnahme'].ex.includes('von der Regel') &&
+      byWord['die Regel'].ex.startsWith('In der Regel') && byWord['die Schwierigkeit'].why.includes('mit') &&
+      byWord['die Mühe'].ex === 'Er gibt sich viel Mühe.' && byWord['der Aufwand'].ex.includes('größer als') &&
+      byWord['das Risiko'].ex.includes('Trotz des Risikos') && byWord['die Gefahr'].why.includes('Partizip II') &&
+      byWord['der Mut'].ex === 'Dazu braucht man Mut.' && byWord['die Geduld'].why.includes('الموضع الثاني') &&
+      byWord['das Interesse'].ex.includes('an der Stelle') && byWord['die Rücksicht'].why.includes('Rücksicht nehmen auf') &&
+      byWord['die Kritik'].pl === 'die Kritiken' && byWord['die Kritik'].ex.includes('Kritik am Plan') &&
+      byWord['der Zweifel'].why.includes('Dativ') && byWord['die Meinung'].ex.includes('anderer Meinung bin') &&
+      byWord['die Ansicht'].ex.startsWith('Meiner Ansicht nach') && byWord['der Grund'].ex.startsWith('Aus welchem Grund') &&
+      byWord['die Folge'].err.includes('eine Folgen') && byWord['der Zweck'].ex.startsWith('Zu diesem Zweck') &&
+      byWord.andererseits.ex === 'Einerseits ist es teuer, andererseits ist es bequem.' &&
+      !['Trotz dem Regen sind wir gefahren.', 'Einerseits ist es teuer, andererseits bequem.',
+        'Nach meiner Ansicht ist das falsch.', 'Wir nehmen Rücksicht auf den Nachbarn.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('obwohl es regnet') && tricks[0].wie.includes('trotzdem gehe ich') &&
+      tricks[0].warum.includes('الموضع الثاني') && tricks[1].wie === targets[0] && tricks[1].warum.includes('gehe ثم ich') &&
+      tricks[2].wie.includes('arbeiten muss') && tricks[2].wie.includes('geschlafen hat') &&
+      tricks[2].warum.includes('لا muss arbeiten ولا hat geschlafen'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l3 aligns five strict learning clozes, an explicit fronted subordinate clause and a 36-word five-target production',
+    wordCloze1.frage.zeigt === 'Der Kurs ist teuer, ____ ist er gut.' && wordCloze1.frage.antworten.join(' ') === 'allerdings' &&
+      wordCloze1.frage.nearMiss.obwohl && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'obwohl').ok &&
+      wordCloze2.frage.zeigt === 'Das ist eine ____ von der Regel.' && wordCloze2.frage.antworten.join(' ') === 'Ausnahme' &&
+      wordCloze2.frage.nearMiss.Ausnahmen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Ausnahmen').ok &&
+      wordCloze3.frage.zeigt === 'Das ist eine ____ der Entscheidung.' && wordCloze3.frage.antworten.join(' ') === 'Folge' &&
+      wordCloze3.frage.nearMiss.Folgen && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Folgen').ok &&
+      imitate.zeigt.de === 'Obwohl es regnet, ____ ich spazieren.' && imitate.frage.antworten.join(' ') === 'gehe' &&
+      imitate.frage.nearMiss.trotzdem && !win.DW.renderers.judgeCloze(imitate.frage, 'trotzdem').ok &&
+      drill.frage.zeigt === 'Es regnet, ____ gehe ich spazieren.' && drill.frage.antworten.join(' ') === 'trotzdem' &&
+      drill.frage.nearMiss.obwohl && !win.DW.renderers.judgeCloze(drill.frage, 'obwohl').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب جملة التنازل مع وضع regnet قبل الفاصلة وgehe بعدها.' &&
+      order.frage.correct.join(' ') === targets[0] && order.frage.finite === 'gehe' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Obwohl es regnet,' && order.frage.fields.lsk.join(' ') === 'gehe' &&
+      order.frage.fields.mittelfeld.join(' ') === 'ich spazieren.' && !order.frage.fields.rsk &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Obwohl', 'es', 'regnet,', 'ich', 'gehe', 'spazieren.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 36 &&
+      targets.join(' ').split(/\s+/).length === 36 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l3 makes 80 percent four of five, independently checking perfect, trotzdem, inversion, final regnet and modal order',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l3\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l3.s07 | cap.b1-u1-l3.s23 | cap.b1-u1-l3.s24 | cap.b1-u1-l3.s08 | cap.b1-u1-l3.s06' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('wenig hat geschlafen')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheck.frage.zeigt === 'Es regnet, ____ gehe ich spazieren.' &&
+      clozeCheck.frage.antworten.join(' ') === 'trotzdem' && clozeCheck.frage.nearMiss.obwohl &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'obwohl').ok &&
+      orderCheck.frage.correct.join(' ') === targets[0] && orderCheck.frage.finite === 'gehe' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Obwohl es regnet,' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Obwohl', 'es', 'regnet,', 'ich', 'gehe', 'spazieren.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[1]) &&
+      checks[3].frage.optionen.some(o => o.text.includes('obwohl regnet es')) &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checks[4].frage.optionen.some(o => o.text === targets[2]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('heute muss arbeiten')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

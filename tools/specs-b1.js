@@ -93,25 +93,50 @@ module.exports = [
       hwHintDe: 'Prüfe: der · das · den · der · für die.'
     }),
 
-  U('b1-u1-l3', 'B1', 'رغم أن', 'obwohl', 'wortstellung',
-    'Am Ende stellst du das Verb nach obwohl an das Ende',
-    'في النهاية تضع الفعل آخرًا بعد obwohl.',
+  U('b1-u1-l3', 'B1', 'جمل التنازل مع obwohl: الفعل في النهاية وقلب الجملة الرئيسية', 'Konzessivsätze mit obwohl: Verbendstellung und Hauptsatzinversion', 'wortstellung',
+    'Am Ende bildest du fünf vollständige Gegensätze mit obwohl und trotzdem',
+    'في النهاية تكوّن خمس جمل تنازل كاملة باستعمال obwohl وtrotzdem وترتيب صحيح.',
     [
-      ['obwohl plus Ende', 'obwohl يرسل الفعل إلى الآخر', 'obwohl es regnet ich gehe خطأ الترتيب', 'obwohl es regnet, ich gehe', 'بعد تقدم obwohl الفعل أول الرئيسية'],
-      ['Gegensatz', 'obwohl للتنازل لا للسبب', 'weil لا تحمل التنازل', 'weil es regnet, gehe ich trotzdem als obwohl', 'التنازل obwohl'],
-      ['kein trotz dass', 'لا trotz dass', 'obwohl هي الأداة', 'trotz dass es regnet', 'trotz dass ليست الأداة'],
-      ['Hauptsatz V2 oder Verb-erst', 'إن تقدم obwohl فالفعل أول الرئيسية', 'الضمير لا يسبق الفعل', 'Obwohl es regnet, ich gehe', 'الفعل أولًا']
+      ['Obwohl es regnet, gehe ich spazieren.', 'تقدّم جملة obwohl يجعل الفعل المصرف في نهايتها، ثم يبدأ الفعل الجملة الرئيسية', 'regnet يغلق الجملة التابعة، وgehe يأتي مباشرة بعد الفاصلة لأن الجملة التابعة تشغل الموضع الأول', 'Obwohl es regnet, ich gehe spazieren.', 'بعد جملة obwohl المتقدمة تبدأ الجملة الرئيسية بالفعل gehe لا بالضمير ich'],
+      ['Ich gehe spazieren, obwohl es regnet.', 'إذا جاءت جملة obwohl بعد الرئيسية بقي فعلها المصرف في النهاية', 'الجملة الرئيسية مستقلة أولًا، ثم تُغلق الجملة التابعة بالفعل regnet', 'Ich gehe spazieren, obwohl regnet es.', 'بعد obwohl يأتي الفاعل es قبل الفعل المصرف النهائي regnet'],
+      ['Obwohl ich heute arbeiten muss, komme ich später mit.', 'مع الفعل الناقص يأتي المصدر قبله ويغلق الفعل الناقص الجملة التابعة', 'في جملة obwohl نقول arbeiten muss، وبعد الفاصلة يبدأ الفعل komme الجملة الرئيسية', 'Obwohl ich heute muss arbeiten, komme ich später mit.', 'في الجملة التابعة يأتي المصدر arbeiten قبل الفعل المصرف muss في النهاية'],
+      ['Obwohl er wenig geschlafen hat, ist er pünktlich gekommen.', 'في Perfekt يأتي Partizip II ثم الفعل المساعد في نهاية جملة obwohl', 'geschlafen hat يغلق الجملة التابعة، وبعدها تبدأ الرئيسية بالفعل المساعد ist', 'Obwohl er wenig hat geschlafen, ist er pünktlich gekommen.', 'في جملة obwohl يأتي geschlafen قبل الفعل المساعد النهائي hat']
     ],
     [
-      ['Obwohl es regnet, gehe ich.', 'رغم المطر أذهب', 'Obwohl es regnet, wir bleiben sitzen', 'gehe أول الرئيسية', 'gehe'],
-      ['Obwohl ich müde bin, lerne ich.', 'رغم التعب أدرس', 'Obwohl ich bin müde, lerne ich', 'bin في الآخر', 'bin'],
-      ['Ich gehe, obwohl es regnet.', 'أذهب رغم المطر', 'Ich gehe, weil es regnet als Gegensatz', 'التنازل obwohl', 'obwohl'],
-      ['Obwohl sie wenig Zeit hat, hilft sie.', 'رغم ضيق الوقت تساعد', 'Trotz dass sie wenig Zeit hat, hilft sie', 'الأداة obwohl', 'Obwohl']
+      ['Obwohl es regnet, gehe ich spazieren.', 'رغم أن المطر يهطل، أذهب للتنزه', 'Obwohl es regnet, ich gehe spazieren.', 'بعد الجملة التابعة المتقدمة يأتي gehe قبل ich', 'gehe'],
+      ['Ich gehe spazieren, obwohl es regnet.', 'أذهب للتنزه رغم أن المطر يهطل', 'Ich gehe spazieren, obwohl regnet es.', 'في جملة obwohl يأتي regnet في النهاية', 'regnet'],
+      ['Obwohl ich heute arbeiten muss, komme ich später mit.', 'رغم أن عليّ العمل اليوم، سأنضم إليكم لاحقًا', 'Obwohl ich heute muss arbeiten, komme ich später mit.', 'في التابعة نقول arbeiten muss', 'muss'],
+      ['Obwohl er wenig geschlafen hat, ist er pünktlich gekommen.', 'رغم أنه نام قليلًا، وصل في الوقت', 'Obwohl er wenig hat geschlafen, ist er pünktlich gekommen.', 'في التابعة نقول geschlafen hat', 'hat']
     ],
-    'Obwohl es regnet, gehe ich.',
-    'Obwohl ich müde bin, lerne ich.',
-    'Schreibe morgen einen obwohl-Satz.',
-    'غدًا اكتب جملة obwohl.'),
+    'Obwohl es regnet, gehe ich spazieren.',
+    'Es regnet, trotzdem gehe ich spazieren.',
+    'Wiederhole morgen die fünf Sätze: Obwohl es regnet, gehe ich spazieren. Ich gehe spazieren, obwohl es regnet. Obwohl ich heute arbeiten muss, komme ich später mit. Obwohl er wenig geschlafen hat, ist er pünktlich gekommen. Es regnet, trotzdem gehe ich spazieren.',
+    'غدًا راجع الجمل الخمس وقارن الفعل النهائي بعد obwohl بالفعل الثاني بعد trotzdem.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'trotzdem',
+      transformHint: 'obwohl تفتح جملة تابعة وفعلها في النهاية، أما trotzdem فهو ظرف ويأتي بعده الفعل في الموضع الثاني.',
+      orderSentence: 'Obwohl es regnet, gehe ich spazieren.',
+      checkOrderSentence: 'Obwohl es regnet, gehe ich spazieren.',
+      orderAr: 'رتّب جملة obwohl أولًا، ثم ابدأ الجملة الرئيسية بالفعل gehe مباشرة بعد الفاصلة.',
+      orderPromptAr: 'رتّب جملة التنازل مع وضع regnet قبل الفاصلة وgehe بعدها.',
+      orderHints: ['اترك regnet في نهاية الجملة التابعة قبل الفاصلة.', 'بعد الفاصلة ضع gehe قبل ich لأن التابعة شغلت الموضع الأول.'],
+      writing: {
+        zeigt: 'Fünf Konzessivsätze',
+        erklaerung: 'اكتب الجمل الخمس كاملة: جملة obwohl متقدمة، وأخرى متأخرة، وجملة مع modal، وجملة في Perfekt، ثم جملة trotzdem مع V2.',
+        hinweise: ['ضع الفعل المصرف في نهاية كل جملة تبدأ بـobwohl.', 'إذا تقدمت التابعة فابدأ الرئيسية بالفعل؛ وبعد trotzdem اجعل الفعل ثانيًا.'],
+        prompt: 'اكتب جمل التنازل الخمس المستهدفة من الذاكرة مع الحفاظ على ترتيب الأفعال.',
+        promptDe: 'Obwohl es regnet, gehe ich spazieren. · Ich gehe spazieren, obwohl es regnet. · Obwohl ich heute arbeiten muss, komme ich später mit. · Obwohl er wenig geschlafen hat, ist er pünktlich gekommen. · Es regnet, trotzdem gehe ich spazieren.',
+        points: ['Obwohl es regnet, gehe ich spazieren.', 'Ich gehe spazieren, obwohl es regnet.', 'Obwohl ich heute arbeiten muss, komme ich später mit.', 'Obwohl er wenig geschlafen hat, ist er pünktlich gekommen.', 'Es regnet, trotzdem gehe ich spazieren.'],
+        minWords: 36,
+        frage: 'اكتب جمل التنازل الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Obwohl es regnet, gehe ich spazieren. Ich gehe spazieren, obwohl es regnet. Obwohl ich heute arbeiten muss, komme ich später mit. Obwohl er wenig geschlafen hat, ist er pünktlich gekommen. Es regnet, trotzdem gehe ich spazieren.',
+      summaryDe: 'Obwohl es regnet, gehe ich spazieren. Ich gehe spazieren, obwohl es regnet. Obwohl ich heute arbeiten muss, komme ich später mit. Obwohl er wenig geschlafen hat, ist er pünktlich gekommen. Es regnet, trotzdem gehe ich spazieren.',
+      summaryAr: 'obwohl تجعل الفعل المصرف في نهاية التابعة؛ وإذا تقدمت التابعة بدأت الرئيسية بالفعل. trotzdem وallerdings يحافظان على V2، وtrotz يتبعه اسم، وفي نماذجنا تربط الروابط الزوجية جملتين رئيسيتين وتحافظ كل منهما على V2.',
+      summaryRecap: 'obwohl أخيرًا، trotzdem ثانيًا',
+      hwHintDe: 'Prüfe: regnet, gehe · regnet · arbeiten muss, komme · geschlafen hat, ist · trotzdem gehe.'
+    }),
 
   U('b1-u1-l4', 'B1', 'مع ذلك', 'trotzdem', 'wortstellung',
     'Am Ende benutzt du trotzdem mit Verbzweit',
