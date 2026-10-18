@@ -1415,25 +1415,50 @@ module.exports = [
       summaryRecap: 'Gesicht Jeans Anzug Creme Gesundheit'
     }),
 
-  U('a2-u6-l2', 'A2', 'الطعام والموسيقى', 'Essen und Musik', 'lexik-kollokation',
-    'Am Ende bestellst du ein Gericht und sprichst über Musik',
-    'في النهاية تطلب طبقًا وتتحدث عن الموسيقى.',
+  U('a2-u6-l2', 'A2', 'الطعام والموسيقى ووقت الفراغ', 'Essen, Musik und Freizeit', 'kasus',
+    'Am Ende benutzt du fünf Sätze, wenn du bestellst und über Musik und Freizeit sprichst',
+    'في النهاية تطلب وتتحدث بخمس جمل عن الموسيقى ووقت الفراغ.',
     [
-      ['Ein Glas Mineralwasser', 'الكمية تُذكر بلا حرف', 'حرف زائد', 'ein Glas von Mineralwasser', 'الكمية بلا حرف'],
-      ['Ich esse kein Schweinefleisch', 'اللحم غير الحيوان: Schwein ثم Schweinefleisch', 'الخلط بين الحيوان واللحم', 'Ich esse kein Schwein', 'الطعام: Schweinefleisch'],
-      ['Für das Konzert gibt es Karten', 'für مع النصب', 'الحالة الخطأ', 'Für dem Konzert gibt es Karten', 'für + النصب: das'],
-      ['Er spielt in einer Band', 'في الداتيف einer Band', 'الحالة الخطأ', 'in ein Band', 'الداتيف: einer']
+      ['Ein Glas Mineralwasser, bitte!', 'تطلب كمية من مشروب', 'بعد اسم الكمية نقول ein Glas Mineralwasser بلا von', 'Ein Glas von Mineralwasser, bitte!', 'في طلب المحتوى نقول ein Glas Mineralwasser بلا von'],
+      ['Ich nehme eine kleine Portion Eis.', 'تطلب حصة صغيرة من طعام', 'Portion مؤنث، لذلك نقول eine kleine Portion', 'Ich nehme einen kleinen Portion Eis.', 'Portion مؤنث: eine kleine Portion'],
+      ['Er spielt in einer Band.', 'تذكر نشاطًا موسيقيًا', 'المكان الثابت مع in يأخذ الداتيف: in einer Band', 'Er spielt in ein Band.', 'نقول in einer Band بالداتيف'],
+      ['Für das Konzert gibt es noch Karten.', 'تسأل عن تذاكر حفل', 'حرف الجر für يأخذ النصب: für das Konzert', 'Für dem Konzert gibt es noch Karten.', 'بعد für نقول das Konzert لا dem Konzert']
     ],
     [
-      ['Ich nehme eine kleine Portion Eis.', 'آخذ حصة صغيرة من المثلجات', 'Ich nehme einen kleinen Portion Eis.', 'Portion مؤنث: eine kleine', 'Portion'],
-      ['Den Rest gebe ich dir später.', 'البقية أعطيك إياها لاحقًا', 'Den Rest gebe ich dir später es.', 'بلا ضمير زائد', 'Rest'],
-      ['Die Wurst ist mir zu fett.', 'النقانق دهنية أكثر من اللازم', 'Die Wurst ist mir zu dick.', 'للطعام fett لا dick', 'fett'],
-      ['In der Bibliothek darf man nicht laut sprechen.', 'في المكتبة لا كلام بصوت عال', 'In die Bibliothek darf man nicht laut sprechen.', 'المكان: in der', 'Bibliothek']
+      ['Ein Glas Mineralwasser, bitte!', 'كأس ماء معدني من فضلك', 'Ein Glas von Mineralwasser, bitte!', 'بعد اسم الكمية لا نضع von', 'Mineralwasser'],
+      ['Ich nehme eine kleine Portion Eis.', 'سآخذ حصة صغيرة من المثلجات', 'Ich nehme einen kleinen Portion Eis.', 'Portion مؤنث: eine kleine Portion', 'Portion'],
+      ['Er spielt in einer Band.', 'هو يعزف في فرقة موسيقية', 'Er spielt in ein Band.', 'المكان الثابت: in einer Band', 'einer'],
+      ['Für das Konzert gibt es noch Karten.', 'ما زالت هناك تذاكر للحفل', 'Für dem Konzert gibt es noch Karten.', 'für يأخذ النصب: für das Konzert', 'das']
     ],
-    'Ich nehme eine kleine Portion Eis.',
-    'Die Band spielt heute im Konzert.',
-    'Bestelle morgen ein Gericht mit einer Portion.',
-    'غدًا اطلب طبقًا مع حصة.'),
+    'Ein Glas Mineralwasser, bitte!',
+    'In der Bibliothek darf man nicht laut sprechen.',
+    'Wiederhole morgen diese fünf Sätze:\nEin Glas Mineralwasser, bitte!\nIch nehme eine kleine Portion Eis.\nEr spielt in einer Band.\nFür das Konzert gibt es noch Karten.\nIn der Bibliothek darf man nicht laut sprechen.',
+    'غدًا راجع الجمل الخمس عن الطلب والموسيقى والمكتبة.',
+    {
+      factFamilies: ['lexik-kollokation', 'genus', 'kasus', 'kasus'],
+      writing: {
+        zeigt: 'Fünf Sätze zu Essen, Musik und Freizeit',
+        erklaerung: 'اكتب الجمل الخمس عن الماء والحصة والفرقة والحفل والمكتبة.',
+        prompt: 'اكتب الجمل الألمانية الخمس الدقيقة عن الطلب ووقت الفراغ.',
+        promptDe: 'Ein Glas Mineralwasser, bitte! · Ich nehme eine kleine Portion Eis. · Er spielt in einer Band. · Für das Konzert gibt es noch Karten. · In der Bibliothek darf man nicht laut sprechen.',
+        points: ['Ein Glas Mineralwasser, bitte!', 'Ich nehme eine kleine Portion Eis.', 'Er spielt in einer Band.', 'Für das Konzert gibt es noch Karten.', 'In der Bibliothek darf man nicht laut sprechen.'],
+        minWords: 30,
+        frage: 'اكتب الجمل الخمس في 30 كلمة على الأقل.',
+        familie: 'kasus',
+        hinweise: ['اكتب Glas بلا von وeine kleine Portion.', 'استعمل in einer Band وfür das Konzert وin der Bibliothek.']
+      },
+      imitateNearMiss: 'von Mineralwasser',
+      transformHint: 'في المكان الثابت نقول in der Bibliothek، وبعد modal يأتي المصدر sprechen في النهاية.',
+      orderAr: 'رتّب جملة الموسيقى: ابدأ بـ Er ثم spielt ثم in einer Band.',
+      orderHints: ['ابدأ بالفاعل Er وضع spielt في الموضع الثاني.', 'أكمل بالمكان in einer Band.'],
+      orderSentence: 'Er spielt in einer Band.',
+      checkOrderSentence: 'Er spielt in einer Band.',
+      orderPromptAr: 'رتّب الكلمات لتكوين جملة صحيحة عن الفرقة.',
+      speakAr: 'اقرأ واشرح الجمل الخمس: Ein Glas Mineralwasser, bitte؛ Ich nehme eine kleine Portion Eis؛ Er spielt in einer Band؛ Für das Konzert gibt es noch Karten؛ In der Bibliothek darf man nicht laut sprechen.',
+      summaryDe: 'Ein Glas Mineralwasser, bitte! · Ich nehme eine kleine Portion Eis. · Er spielt in einer Band. · Für das Konzert gibt es noch Karten. · In der Bibliothek darf man nicht laut sprechen.',
+      summaryAr: 'راجع تركيب الكمية وجنس Portion وداتيف المكان ونصب für والمصدر بعد modal.',
+      summaryRecap: 'Mineralwasser Portion Band Konzert Bibliothek'
+    }),
 
   U('a2-u6-l3', 'A2', 'الرياضة والطبيعة', 'Sport und Natur', 'präposition',
     'Am Ende sprichst du über Sport und einen Tag draußen',

@@ -9322,5 +9322,138 @@ console.log('\n— P3.2 lexical layer —\n');
     measures.length >= 8 && unguarded.length === 0, unguarded.join(' '));
 }
 
+/* ---------- audited A2 food, music and leisure lesson ---------- */
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['a2-u6-l2'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Ein Glas Mineralwasser, bitte!',
+    'Ich nehme eine kleine Portion Eis.',
+    'Er spielt in einer Band.',
+    'Für das Konzert gibt es noch Karten.',
+    'In der Bibliothek darf man nicht laut sprechen.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson a2-u6-l2 precisely scopes ordering and leisure through quantity, Portion gender, location dative, für accusative and modal order',
+    lesson.title.de === 'Essen, Musik und Freizeit' && lesson.title.ar === 'الطعام والموسيقى ووقت الفراغ' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الطلب والحديث عن أنشطة وقت الفراغ' &&
+      row.grammar.item === 'Mengenangabe ohne von · eine kleine Portion · in + Dat. am Ort · für + Akk. · Modalverb + Infinitiv' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((s, i) => s.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende benutzt du fünf Sätze, wenn du bestellst und über Musik und Freizeit sprichst' &&
+      lesson.schritte.find(s => s.id === 's19').zeigt.de === 'Ein Glas ____, bitte!' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'das Mineralwasser', 'die Portion', 'der Rest', 'das Gericht', 'der Hamburger', 'die Pizza',
+    'die Schokolade', 'die Süßigkeiten', 'das Schwein', 'das Rind', 'fett', 'braten',
+    'die Cafeteria', 'das Festival', 'die Band', 'das Konzert', 'die Gitarre', 'das Instrument',
+    'romantisch', 'die Rose', 'der Star', 'die Kultur', 'die Bibliothek', 'der Krimi', 'basteln',
+    'zeichnen', 'sammeln', 'das Plakat', 'der Zirkus', 'der Zoo', 'die Ausstellung', 'das Schloss',
+    'der Rundgang', 'komisch', 'schrecklich', 'einige', 'verschieden', 'außer', 'sonst', 'total'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson a2-u6-l2 reviews all 40 entries and three nuanced mnemonics without rejecting valid specific, directional or stylistic alternatives',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord['das Mineralwasser'].ex === targets[0] && byWord['das Mineralwasser'].why.includes('بلا von') &&
+      byWord['die Portion'].ex === targets[1] && byWord['die Portion'].why.includes('eine kleine Portion') &&
+      byWord['der Rest'].why.includes('لا نضيف') && byWord['das Gericht'].why.includes('ein Gericht') &&
+      byWord['der Hamburger'].ex === 'Ich nehme einen Hamburger ohne Salat.' &&
+      byWord['die Pizza'].why.includes('المفرد المؤنث') && byWord['die Schokolade'].err === 'Julia lieben Schokolade.' &&
+      byWord['die Süßigkeiten'].err === 'Ich mag keinen Süßigkeiten.' &&
+      byWord['das Schwein'].ex === 'Schweinefleisch kommt von einem Schwein.' &&
+      byWord['das Schwein'].err === 'Schweinefleisch kommt von ein Schwein.' && byWord['das Rind'].why.includes('von dem') &&
+      byWord.fett.err === 'Die Wurst sind mir zu fett.' && byWord.braten.why.includes('فلا نضيف machen') &&
+      byWord['die Cafeteria'].ex.includes('in die Cafeteria') && byWord['die Cafeteria'].err.includes('in den Cafeteria') &&
+      byWord['das Festival'].err.includes('sind ein Festival') &&
+      byWord['die Band'].ex === targets[2] && byWord['das Konzert'].ex === targets[3] &&
+      byWord['die Gitarre'].why.includes('المصدر spielen') && byWord['das Instrument'].why.includes('المفرد Instrument') &&
+      byWord.romantisch.why.includes('Romantik فاسم') && byWord['die Rose'].why.includes('الجمع Rosen') &&
+      byWord['der Star'].err === 'Diese Sängerin sind ein Star.' &&
+      byWord['die Kultur'].err === 'Kulturen ist für Jana ein wichtiges Thema.' && byWord['die Kultur'].why.includes('Kultur مفرد') &&
+      byWord['die Bibliothek'].ex === targets[4] && byWord['die Bibliothek'].err.includes('In den Bibliothek') &&
+      byWord['der Krimi'].why.includes('الجمع Krimis') && byWord.basteln.why.includes('فلا نضيف gemacht') &&
+      byWord.zeichnen.err === 'Er zeichnet gern Tieren.' && byWord.sammeln.err === 'Peter sammeln Briefmarken.' &&
+      byWord['das Plakat'].why.includes('ein Plakat') && byWord['der Zirkus'].ex.includes('viele Menschen') &&
+      byWord['der Zoo'].ex === 'Wir besuchen am Sonntag den Zoo.' &&
+      byWord['die Ausstellung'].err.includes('in den Ausstellung') && byWord['die Ausstellung'].why.includes('zur Ausstellung') &&
+      byWord['das Schloss'].why.includes('ein Schloss') && byWord['der Rundgang'].why.includes('beginnt') &&
+      byWord.komisch.err === 'Das Essen schmeckt komische.' && byWord.komisch.why.includes('بلا نهاية') &&
+      byWord.schrecklich.err === 'Ich finde den Film schreckliche.' &&
+      byWord.einige.why.includes('الجمع Gäste') && byWord.verschieden.pl === '—' &&
+      byWord.außer.why.includes('تستثني Tom') && byWord.sonst.why.includes('الموضع الثاني') &&
+      byWord.total.why.includes('دارجة نسبيًا') &&
+      !['Julia liebt eine Schokolade.', 'Ich mag keine Süßigkeit.', 'Ich esse kein Schwein.',
+        'Die Wurst ist mir zu dick.', 'Diese Sängerin ist ein Stern.', 'Jana interessiert sich für die Kultur.',
+        'Er malt gern Tiere mit Stift.', 'Peter sammelt die Briefmarken zusammen.',
+        'Gehen wir morgen zu der Ausstellung?', 'Ich finde den Film schrecklich gut.',
+        'Iss jetzt, oder wird es kalt.'].some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('Glas Mineralwasser') && tricks[0].wie.includes('Portion Eis') &&
+      tricks[1].wie.includes('in einer Band') && tricks[1].wie.includes('in der Bibliothek') &&
+      tricks[1].wie.includes('in die Cafeteria') && tricks[2].wie === targets[3] &&
+      tricks[2].warum.includes('für') && tricks[2].warum.includes('das Konzert'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson a2-u6-l2 aligns strict vocabulary and quantity clozes, explicit Band order and a 30-word five-target production',
+    wordCloze1.frage.zeigt === 'Ich nehme eine ____ mit viel Käse.' && wordCloze1.frage.antworten.join(' ') === 'Pizza' &&
+      wordCloze1.frage.nearMiss.Pizzas && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Pizzas').ok &&
+      wordCloze2.frage.zeigt === '____ ist für Jana ein wichtiges Thema.' && wordCloze2.frage.antworten.join(' ') === 'Kultur' &&
+      wordCloze2.frage.nearMiss.Kulturen && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Kulturen').ok &&
+      wordCloze3.frage.zeigt === '____ Tom kommen alle.' && wordCloze3.frage.antworten.join(' ') === 'Außer' &&
+      wordCloze3.frage.nearMiss.Sonst && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Sonst').ok &&
+      imitate.frage.antworten.join(' ') === 'Mineralwasser' && imitate.frage.nearMiss['von Mineralwasser'] &&
+      !win.DW.renderers.judgeCloze(imitate.frage, 'von Mineralwasser').ok &&
+      drill.frage.zeigt === 'In der ____ darf man nicht laut sprechen.' && drill.frage.antworten.join(' ') === 'Bibliothek' &&
+      drill.frage.nearMiss.Bibliotheken && !win.DW.renderers.judgeCloze(drill.frage, 'Bibliotheken').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'spielt' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Er' && order.frage.fields.lsk.join(' ') === 'spielt' &&
+      order.frage.fields.mittelfeld.join(' ') === 'in einer Band.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Er', 'in', 'einer', 'Band.', 'spielt']).failed === 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.join(' ').split(/\s+/).length === 30 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson a2-u6-l2 makes 80 percent four of five, independently checking für, Bibliothek, Band, quantity and Portion gender',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.a2-u6-l2\.s\d+$/.test(s.frage.prereq || '')) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.a2-u6-l2.s07 | cap.a2-u6-l2.s23 | cap.a2-u6-l2.s24 | cap.a2-u6-l2.s08 | cap.a2-u6-l2.s05' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) && checks[0].frage.misconceptionFamilies.a === 'kasus' &&
+      clozeCheck.frage.zeigt === 'In der ____ darf man nicht laut sprechen.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Bibliothek' && clozeCheck.frage.nearMiss.Bibliotheken &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Bibliotheken').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'spielt' &&
+      orderCheck.frage.fields.vorfeld.join(' ') === 'Er' && orderCheck.frage.fields.lsk.join(' ') === 'spielt' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Er', 'in', 'einer', 'Band.', 'spielt']).failed === 1 &&
+      checks[3].frage.optionen.some(o => o.text === targets[0]) && checks[3].frage.misconceptionFamilies.b === 'lexik-kollokation' &&
+      checks[4].frage.optionen.some(o => o.text === targets[1]) && checks[4].frage.misconceptionFamilies.a === 'genus');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

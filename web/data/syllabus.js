@@ -93,7 +93,7 @@
        did not have yet (tools/goethe-a2-gap.txt). 35 words per lesson, then 2–4 more in the promotion round, so every
        row declares its own receptive count instead of the A2 default 26. */
     ['الجسم والملابس والعناية', 'Körper, Kleidung und Pflege', 'التحدث عن الجسم والملابس والعناية', 'sich (Dat.) das Gesicht waschen · passen + Dat. · einen Anzug tragen · für + Akk. · schädlich für', 'explicit', 40, 13],
-    ['الطعام والموسيقى', 'Essen und Musik', 'الطعام والترفيه', 'الكمية والطلب', 'inductive', 40, 13],
+    ['الطعام والموسيقى ووقت الفراغ', 'Essen, Musik und Freizeit', 'الطلب والحديث عن أنشطة وقت الفراغ', 'Mengenangabe ohne von · eine kleine Portion · in + Dat. am Ort · für + Akk. · Modalverb + Infinitiv', 'explicit', 40, 13],
     ['الرياضة والطبيعة', 'Sport und Natur', 'الرياضة والخارج', 'اللعبة والمكان', 'inductive', 40, 13],
     ['السفر والمرور', 'Reisen und Verkehr', 'السفر', 'إطار الرحلة والموعد', 'inductive', 40, 13],
     ['العمل والمكتب', 'Arbeit und Büro', 'العمل', 'إطار المكتب والطلب', 'inductive', 40, 13],
