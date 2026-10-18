@@ -108,7 +108,7 @@
     ['جمل الغاية مع um … zu وdamit: الفاعل نفسه أو فاعل جديد', 'Finalsätze mit um … zu und damit: gleiches oder neues Subjekt', 'التعبير عن الغاية والهدف', 'um … zu bei gleichem Subjekt · damit + Verb am Ende bei neuem Subjekt · zu im trennbaren Verb · vorangestellte Finalangabe + V2', 'explicit'],
     ['المصدر مع zu بعد الفعل والصفة والاسم — وبلا zu بعد الأفعال الناقصة', 'Infinitiv mit zu nach Verb, Adjektiv und Nomen — und kein zu nach Modalverben', 'النية والرغبة والتقييم', 'zu-Infinitiv nach Verben · es ist + Adjektiv + zu · Nomen + zu · zu im trennbaren Verb · kein zu nach Modalverben', 'explicit'],
     ['الخيال الشرطي (Irrealis) مع hätte وwäre وwürde — والطلب المهذب', 'Irrealis mit Konjunktiv II: hätte, wäre, würde und höfliches könnte', 'الأمنيات والشروط غير الواقعية', 'irrealer wenn-Satz mit hätte/wäre am Ende · Antwort mit würde + Infinitiv und Inversion · würde lieber · höfliches könnte · Kurzform reiste', 'explicit'],
-    ['تصريف n', 'n-Deklination', 'الناس', 'n-Deklination', 'explicit'],
+    ['تصريف n: النهاية en مع den وdem وdes — والرفع وحده بلا نهاية', 'n-Deklination: -en nach den, dem und des — nur der Nominativ ohne Endung', 'الناس والمهن والحيوانات', 'schwache Maskulina: Nominativ ohne Endung · Akkusativ/Dativ/Genitiv mit -en · der Herr mit -n · das Herz als Ausnahme', 'explicit'],
     ['المستقبل', 'Futur', 'الخطة', 'werden', 'explicit'],
     ['سرد الماضي', 'Präteritum erzählen', 'السرد', 'Präteritum السردي', 'explicit'],
     ['الإضافة', 'Genitiv', 'الانتماء', 'Genitiv', 'explicit'],

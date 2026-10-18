@@ -75,18 +75,18 @@ module.exports = {
     items: [
       ['der Junge', 'die Jungen', 'الفتى', 'Ich kenne den Jungen gut.', 'Ich kenne den Junge gut.', 'n-Deklination: den Jungen.', 'deklination', 'Jungen'],
       ['der Herr', 'die Herren', 'السيد', 'Ich habe dem Herrn geholfen.', 'Ich habe dem Herr geholfen.', 'n-Deklination: dem Herrn.', 'deklination', 'Herrn'],
-      ['der Mensch', 'die Menschen', 'الإنسان', 'Wir helfen den Menschen.', 'Wir helfen den Menschen es.', 'لا ضمير زائد.', 'deklination', 'Menschen'],
+      ['der Mensch', 'die Menschen', 'الإنسان', 'Wir helfen dem Menschen.', 'Wir helfen dem Mensch.', 'n-Deklination: dem Menschen.', 'deklination', 'Menschen'],
       ['der Student', 'die Studenten', 'الطالب', 'Ich treffe den Studenten morgen.', 'Ich treffe den Student morgen.', 'n-Deklination: den Studenten.', 'deklination', 'Studenten'],
-      ['der Journalist', 'die Journalisten', 'الصحفي', 'Der Journalist fragt den Politiker.', 'Der Journalist fragt den Politiker es.', 'لا ضمير زائد.', 'deklination', 'Journalist'],
+      ['der Journalist', 'die Journalisten', 'الصحفي', 'Der Politiker fragt den Journalisten.', 'Der Politiker fragt den Journalist.', 'n-Deklination: den Journalisten.', 'deklination', 'Journalisten'],
       ['der Präsident', 'die Präsidenten', 'الرئيس', 'Wir wählen den Präsidenten.', 'Wir wählen den Präsident.', 'n-Deklination: den Präsidenten.', 'deklination', 'Präsidenten'],
       ['der Name', 'die Namen', 'الاسم', 'Ich habe den Namen vergessen.', 'Ich habe den Name vergessen.', 'n-Deklination: den Namen.', 'deklination', 'Namen'],
-      ['der Gedanke', 'die Gedanken', 'الفكرة', 'Dieser Gedanke gefällt mir.', 'Dieser Gedanke gefällt mir es.', 'لا ضمير زائد.', 'deklination', 'Gedanke'],
-      ['der Wille', 'die Willen', 'الإرادة', 'Der Wille fehlt ihm.', 'Der Wille fehlt ihm es.', 'لا ضمير زائد.', 'deklination', 'Wille'],
+      ['der Gedanke', 'die Gedanken', 'الفكرة', 'Dieser Gedanke gefällt mir.', 'Dieser Gedanken gefällt mir.', 'في الرفع بلا en: dieser Gedanke.', 'deklination', 'Gedanke'],
+      ['der Wille', 'die Willen', 'الإرادة', 'Der Wille fehlt ihm.', 'Der Willen fehlt ihm.', 'في الرفع بلا en: der Wille.', 'deklination', 'Wille'],
       ['der Friede', 'die Frieden', 'السلام', 'Wir wünschen uns den Frieden.', 'Wir wünschen uns den Friede.', 'n-Deklination: den Frieden.', 'deklination', 'Frieden'],
       ['der Buchstabe', 'die Buchstaben', 'الحرف', 'Schreib den Buchstaben deutlich!', 'Schreib den Buchstabe deutlich!', 'n-Deklination: den Buchstaben.', 'deklination', 'Buchstaben'],
-      ['der Funke', 'die Funken', 'الشرارة', 'Der Funke sprang über.', 'Der Funke sprang über es.', 'لا ضمير زائد.', 'deklination', 'Funke'],
-      ['der Glaube', 'die Glauben', 'الإيمان', 'Der Glaube gibt ihm Kraft.', 'Der Glaube gibt ihm Kraft es.', 'لا ضمير زائد.', 'deklination', 'Glaube'],
-      ['der Nachkomme', 'die Nachkommen', 'الذريّة', 'Die Nachkommen leben in Deutschland.', 'Die Nachkommen leben in Deutschland es.', 'لا ضمير زائد.', 'deklination', 'Nachkommen'],
+      ['der Funke', 'die Funken', 'الشرارة', 'Der Funke sprang über.', 'Der Funken sprang über.', 'في الرفع بلا en: der Funke.', 'deklination', 'Funke'],
+      ['der Glaube', 'die Glauben', 'الإيمان', 'Der Glaube gibt ihm Kraft.', 'Der Glauben gibt ihm Kraft.', 'في الرفع بلا en: der Glaube.', 'deklination', 'Glaube'],
+      ['der Nachkomme', 'die Nachkommen', 'الذريّة', 'Die Nachkommen leben in Deutschland.', 'Die Nachkomme leben in Deutschland.', 'الجمع أيضًا بـen: die Nachkommen.', 'deklination', 'Nachkommen'],
       ['der Bauer', 'die Bauern', 'الفلاح', 'Ich helfe dem Bauern.', 'Ich helfe dem Bauer.', 'n-Deklination: dem Bauern.', 'deklination', 'Bauern'],
       ['der Zeuge', 'die Zeugen', 'الشاهد', 'Der Richter hört den Zeugen.', 'Der Richter hört den Zeuge.', 'n-Deklination: den Zeugen.', 'deklination', 'Zeugen'],
       ['der Experte', 'die Experten', 'الخبير', 'Wir fragen den Experten.', 'Wir fragen den Experte.', 'n-Deklination: den Experten.', 'deklination', 'Experten'],
@@ -99,26 +99,43 @@ module.exports = {
       ['der Nachbar', 'die Nachbarn', 'الجار', 'Wir haben den Nachbarn eingeladen.', 'Wir haben den Nachbar eingeladen.', 'n-Deklination: den Nachbarn.', 'deklination', 'Nachbarn'],
       ['der Löwe', 'die Löwen', 'الأسد', 'Der Dompteur füttert den Löwen.', 'Der Dompteur füttert den Löwe.', 'n-Deklination: den Löwen.', 'deklination', 'Löwen'],
       ['der Bär', 'die Bären', 'الدب', 'Wir sehen den Bären im Zoo.', 'Wir sehen den Bär im Zoo.', 'n-Deklination: den Bären.', 'deklination', 'Bären'],
-      ['der Affe', 'die Affen', 'القرد', 'Der Affe frisst eine Banane.', 'Der Affe frisst eine Banane es.', 'لا ضمير زائد.', 'deklination', 'Affe'],
+      ['der Affe', 'die Affen', 'القرد', 'Der Affe frisst eine Banane.', 'Der Affen frisst eine Banane.', 'في الرفع بلا en: der Affe.', 'deklination', 'Affe'],
       ['der Hase', 'die Hasen', 'الأرنب', 'Der Hund jagt den Hasen.', 'Der Hund jagt den Hase.', 'n-Deklination: den Hasen.', 'deklination', 'Hasen'],
-      ['der Riese', 'die Riesen', 'العملاق', 'Der Riese trägt den Baum.', 'Der Riese trägt den Baum es.', 'لا ضمير زائد.', 'deklination', 'Riese'],
+      ['der Riese', 'die Riesen', 'العملاق', 'Der Riese trägt den Baum.', 'Der Riesen trägt den Baum.', 'في الرفع بلا en: der Riese.', 'deklination', 'Riese'],
       ['der Kamerad', 'die Kameraden', 'الرفيق', 'Ich vertraue dem Kameraden.', 'Ich vertraue dem Kamerad.', 'n-Deklination: dem Kameraden.', 'deklination', 'Kameraden'],
       ['der Soldat', 'die Soldaten', 'الجندي', 'Der Offizier befiehlt dem Soldaten.', 'Der Offizier befiehlt dem Soldat.', 'n-Deklination: dem Soldaten.', 'deklination', 'Soldaten'],
-      ['der Demokrat', 'die Demokraten', 'الديمقراطي', 'Der Demokrat verteidigt die Freiheit.', 'Der Demokrat verteidigt die Freiheit es.', 'لا ضمير زائد.', 'deklination', 'Demokrat'],
+      ['der Demokrat', 'die Demokraten', 'الديمقراطي', 'Der Demokrat verteidigt die Freiheit.', 'Der Demokraten verteidigt die Freiheit.', 'في الرفع بلا en: der Demokrat.', 'deklination', 'Demokrat'],
       ['der Diplomat', 'die Diplomaten', 'الدبلوماسي', 'Wir sprechen mit dem Diplomaten.', 'Wir sprechen mit dem Diplomat.', 'n-Deklination: dem Diplomaten.', 'deklination', 'Diplomaten'],
       ['der Fotograf', 'die Fotografen', 'المصوّر', 'Ich danke dem Fotografen.', 'Ich danke dem Fotograf.', 'n-Deklination: dem Fotografen.', 'deklination', 'Fotografen'],
       ['der Architekt', 'die Architekten', 'المهندس المعماري', 'Der Bauherr lobt den Architekten.', 'Der Bauherr lobt den Architekt.', 'n-Deklination: den Architekten.', 'deklination', 'Architekten'],
       ['der Assistent', 'die Assistenten', 'المساعد', 'Der Professor ruft den Assistenten.', 'Der Professor ruft den Assistent.', 'n-Deklination: den Assistenten.', 'deklination', 'Assistenten'],
       ['der Praktikant', 'die Praktikanten', 'المتدرّب', 'Die Firma sucht einen Praktikanten.', 'Die Firma sucht einen Praktikant.', 'n-Deklination: einen Praktikanten.', 'deklination', 'Praktikanten'],
-      ['der Doktorand', 'die Doktoranden', 'طالب الدكتوراه', 'Der Doktorand schreibt an seiner Arbeit.', 'Der Doktorand schreibt an seiner Arbeit es.', 'لا ضمير زائد.', 'deklination', 'Doktorand'],
-      ['das Herz', 'die Herzen', 'القلب', 'Ihr Herz schlägt schnell.', 'Ihr Herz schlägt schnell es.', 'لا ضمير زائد.', 'deklination', 'Herz'],
-      ['der Vetter', 'die Vettern', 'ابن العم', 'Ich besuche meinen Vetter in Sfax.', 'Ich besuche meinen Vetter in Sfax es.', 'لا ضمير زائد.', 'deklination', 'Vetter']
+      ['der Doktorand', 'die Doktoranden', 'طالب الدكتوراه', 'Der Doktorand schreibt an seiner Arbeit.', 'Der Doktoranden schreibt an seiner Arbeit.', 'في الرفع بلا en: der Doktorand؛ النهاية en في النصب والداتيف والملكية فقط.', 'deklination', 'Doktorand'],
+      ['das Herz', 'die Herzen', 'القلب', 'Ihr Herz schlägt schnell.', 'Ihr Herzen schlägt schnell.', 'Herz حالة خاصة: في الرفع والنصب بلا en (ihr Herz)؛ النهاية في الداتيف والملكية فقط: dem Herzen · des Herzens.', 'deklination', 'Herz'],
+      ['der Vetter', 'die Vettern', 'ابن العم', 'Ich besuche meinen Vetter in Sfax.', 'Ich besuche meinen Vettern in Sfax.', 'انتبه: der Vetter ليس من أسماء n؛ يبقى Vetter في النصب فلا تعمّم en.', 'deklination', 'Vetter']
     ],
     tricks: [
       { trick: 'n-Deklination: الرجل ينتهي بـ en في النصب والداتيف والملكية', wie: 'der Kollege → den Kollegen · dem Kollegen · des Kollegen', warum: 'العربية تُبقي الاسم كما هو، فالناطق يقول «den Kollege» ويكسر القاعدة.', anchor: 'Kollegen' },
       { trick: 'العلامة الوحيدة في الفاعل: der Junge · der Name — Nominativ بلا n', wie: 'Der Junge kommt. · Aber: Ich sehe den Jungen.', warum: 'القاعدة تُنسى لأن الفاعل يبدو سليمًا؛ الموضع الثاني هو الذي يكشف الخطأ.', anchor: 'Jungen' },
-      { trick: 'das Herz شاذ: dem Herzen · das Herz', wie: 'Das Herz ist stark. · Der Arzt hört dem Herzen zu.', warum: 'قلب واحد في القائمة المحايدة، ويُعامل معاملة الرجال في الحالتين.', anchor: 'Herzen' }
-    ]
+      { trick: 'das Herz شاذ: dem Herzen · das Herz', wie: 'Das Herz ist stark. · Der Arzt hört dem Herzen zu.', warum: 'قلب واحد في القائمة المحايدة، ويأخذ en في الداتيف والملكية كأسماء n: dem Herzen · des Herzens.', anchor: 'Herzen' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Präsident': 'Präsident',
+      'der Philosoph': 'Philosoph',
+      'der Doktorand': 'Doktoranden'
+    },
+    clozeItemIndex: 11,
+    clozeNearMiss: 'Funken',
+    checkItemIndex: 6,
+    extraCheck: {
+      right: 'Ich danke dem Herrn für die Hilfe.',
+      bad: 'Ich danke dem Herren für die Hilfe.',
+      why: 'der Herr يأخذ n واحدة في الداتيف: dem Herrn؛ أما Herren فجمع (die Herren) لا مفرد.',
+      family: 'deklination',
+      prereq: 'cap.b1-u1-l8.s20',
+      frage: 'أي جملة تعطي Herr نهاية n واحدة في الداتيف؟'
+    }
   }
 
 };

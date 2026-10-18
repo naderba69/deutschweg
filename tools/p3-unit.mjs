@@ -10826,5 +10826,122 @@ console.log('\n— P3.2 lexical layer —\n');
       Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
+{
+  const { window: win } = boot();
+  const lesson = win.DW_LESSONS['b1-u1-l8'];
+  const row = win.DW_SYLLABUS.lessons.find(it => it.id === lesson.id);
+  const byWord = Object.fromEntries(lesson.wortschatz.map(it => [it.de, it]));
+  const tricks = lesson.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targets = [
+    'Der Student lernt jeden Tag Deutsch.',
+    'Ich sehe den Studenten jeden Tag.',
+    'Ich muss dem Studenten helfen.',
+    'Das Buch des Studenten liegt hier.',
+    'Ich danke dem Herrn für die Hilfe.'
+  ];
+  const norm = text => text.replace(/[,.!?·:]/g, '').toLocaleLowerCase('de');
+  t('Corpus lesson b1-u1-l8 precisely scopes n-declension with a bare nominative, -en in accusative dative and genitive and the single-n Herrn across five targets',
+    lesson.title.de === 'n-Deklination: -en nach den, dem und des — nur der Nominativ ohne Endung' &&
+      lesson.title.ar === 'تصريف n: النهاية en مع den وdem وdes — والرفع وحده بلا نهاية' &&
+      row.title.de === lesson.title.de && row.title.ar === lesson.title.ar &&
+      row.theme === 'الناس والمهن والحيوانات' &&
+      row.grammar.item === 'schwache Maskulina: Nominativ ohne Endung · Akkusativ/Dativ/Genitiv mit -en · der Herr mit -n · das Herz als Ausnahme' &&
+      row.grammar.method === 'explicit' && lesson.schritte.length === 36 && lesson.wortschatz.length === 40 &&
+      lesson.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lesson.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targets[i]) &&
+      lesson.schritte[0].zeigt.de === 'Am Ende bildest du fünf Sätze mit n-Nomen in allen vier Fällen — und den Herrn mit einem n' &&
+      lesson.schritte.find(s => s.id === 's20').zeigt.de === targets[4]);
+
+  const expectedWords = [
+    'der Junge', 'der Herr', 'der Mensch', 'der Student', 'der Journalist', 'der Präsident',
+    'der Name', 'der Gedanke', 'der Wille', 'der Friede', 'der Buchstabe', 'der Funke',
+    'der Glaube', 'der Nachkomme', 'der Bauer', 'der Zeuge', 'der Experte', 'der Kunde',
+    'der Patient', 'der Polizist', 'der Tourist', 'der Philosoph', 'der Kollege', 'der Nachbar',
+    'der Löwe', 'der Bär', 'der Affe', 'der Hase', 'der Riese', 'der Kamerad', 'der Soldat',
+    'der Demokrat', 'der Diplomat', 'der Fotograf', 'der Architekt', 'der Assistent',
+    'der Praktikant', 'der Doktorand', 'das Herz', 'der Vetter'
+  ];
+  const errors = lesson.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u1-l8 reviews all 40 entries and three bounded mnemonics without manufactured es-appendages and keeps Vetter outside the n-class',
+    Object.keys(byWord).join(' | ') === expectedWords.join(' | ') &&
+      lesson.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lesson.wortschatz.every(it => it.ex !== it.err) &&
+      byWord['der Mensch'].ex === 'Wir helfen dem Menschen.' && byWord['der Mensch'].err === 'Wir helfen dem Mensch.' &&
+      byWord['der Journalist'].ex.includes('fragt den Journalisten') &&
+      byWord['der Funke'].err === 'Der Funken sprang über.' &&
+      byWord['der Nachkomme'].err === 'Die Nachkomme leben in Deutschland.' &&
+      byWord['der Herr'].ex.includes('dem Herrn') &&
+      byWord['das Herz'].why.includes('dem Herzen') &&
+      byWord['der Vetter'].err.includes('meinen Vettern') && byWord['der Vetter'].why.includes('ليس من أسماء n') &&
+      !errors.some(e => e.endsWith(' es.')) &&
+      !['Wir helfen den Menschen es.', 'Ich besuche meinen Vetter in Sfax es.',
+        'Der Journalist fragt den Politiker es.']
+        .some(x => errors.includes(x)) &&
+      tricks.length === 3 && tricks[0].wie.includes('des Kollegen') &&
+      tricks[1].wie.includes('Ich sehe den Jungen') &&
+      tricks[2].wie.includes('dem Herzen zu') && tricks[2].warum.includes('des Herzens'));
+
+  const wordCloze1 = lesson.schritte.find(s => s.id === 's09');
+  const wordCloze2 = lesson.schritte.find(s => s.id === 's13');
+  const wordCloze3 = lesson.schritte.find(s => s.id === 's17');
+  const imitate = lesson.schritte.find(s => s.id === 's19');
+  const drill = lesson.schritte.find(s => s.id === 's23');
+  const order = lesson.schritte.find(s => s.id === 's24');
+  const writing = lesson.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speaking = lesson.schritte.find(s => s.phase === 'Produktion');
+  const summary = lesson.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homework = lesson.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u1-l8 aligns five strict learning clozes, an explicit muss-to-helfen bracket around dem Studenten and a 30-word five-target production',
+    wordCloze1.frage.zeigt === 'Wir wählen den ____.' && wordCloze1.frage.antworten.join(' ') === 'Präsidenten' &&
+      wordCloze1.frage.nearMiss['Präsident'] && !win.DW.renderers.judgeCloze(wordCloze1.frage, 'Präsident').ok &&
+      wordCloze2.frage.zeigt === 'Ich lese den ____ gern.' && wordCloze2.frage.antworten.join(' ') === 'Philosophen' &&
+      wordCloze2.frage.nearMiss.Philosoph && !win.DW.renderers.judgeCloze(wordCloze2.frage, 'Philosoph').ok &&
+      wordCloze3.frage.zeigt === 'Der ____ schreibt an seiner Arbeit.' && wordCloze3.frage.antworten.join(' ') === 'Doktorand' &&
+      wordCloze3.frage.nearMiss.Doktoranden && !win.DW.renderers.judgeCloze(wordCloze3.frage, 'Doktoranden').ok &&
+      imitate.zeigt.de === 'Der ____ lernt jeden Tag Deutsch.' && imitate.frage.antworten.join(' ') === 'Student' &&
+      imitate.frage.nearMiss.Studenten && !win.DW.renderers.judgeCloze(imitate.frage, 'Studenten').ok &&
+      drill.frage.zeigt === 'Der ____ sprang über.' && drill.frage.antworten.join(' ') === 'Funke' &&
+      drill.frage.nearMiss.Funken && !win.DW.renderers.judgeCloze(drill.frage, 'Funken').ok &&
+      lesson.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      order.frage.frage === 'رتّب الجملة واضعًا muss بعد Ich وhelfen. في النهاية.' &&
+      order.frage.correct.join(' ') === targets[2] && order.frage.finite === 'muss' && order.frage.verbFirst === false &&
+      order.frage.fields.vorfeld.join(' ') === 'Ich' && order.frage.fields.lsk.join(' ') === 'muss' &&
+      order.frage.fields.mittelfeld.join(' ') === 'dem Studenten' && order.frage.fields.rsk.join(' ') === 'helfen.' &&
+      win.DW.order.score(order.frage, order.frage.correct).credit === 1 &&
+      win.DW.order.score(order.frage, ['Ich', 'dem', 'Studenten', 'muss', 'helfen.']).credit < 1 &&
+      writing.frage.points.join(' | ') === targets.join(' | ') && writing.frage.minWords === 30 &&
+      targets.join(' ').split(/\s+/).length === 30 &&
+      targets.every(x => [writing.frage.promptDe, summary.zeigt.de, homework.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targets.every(x => norm(speaking.erklaerung).includes(norm(x))));
+
+  const checks = lesson.schritte.filter(s => s.phase === 'Check');
+  const clozeCheck = checks.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheck = checks.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u1-l8 makes 80 percent four of five, independently checking genitive des Studenten, bare-nominative cloze, dative bracket order, accusative den Namen and single-n Herrn',
+    checks.length === 5 && checks[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checks[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checks.every(s => /^cap\.b1-u1-l8\.s\d+$/.test(s.frage.prereq || '')) && checks.every(s => !s.hinweise) &&
+      checks.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u1-l8.s07 | cap.b1-u1-l8.s23 | cap.b1-u1-l8.s24 | cap.b1-u1-l8.s09 | cap.b1-u1-l8.s20' &&
+      new Set(checks.map(s => s.frage.prereq)).size === 5 &&
+      checks[0].frage.optionen.some(o => o.text === targets[3]) &&
+      checks[0].frage.optionen.some(o => o.text.includes('des Student liegt')) &&
+      Object.values(checks[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheck.frage.zeigt === 'Der ____ sprang über.' &&
+      clozeCheck.frage.antworten.join(' ') === 'Funke' && clozeCheck.frage.nearMiss.Funken &&
+      !win.DW.renderers.judgeCloze(clozeCheck.frage, 'Funken').ok &&
+      orderCheck.frage.correct.join(' ') === targets[2] && orderCheck.frage.finite === 'muss' &&
+      orderCheck.frage.fields.rsk.join(' ') === 'helfen.' &&
+      win.DW.order.score(orderCheck.frage, orderCheck.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheck.frage, ['Ich', 'dem', 'Studenten', 'muss', 'helfen.']).credit < 1 &&
+      checks[3].frage.optionen.some(o => o.text.includes('den Namen vergessen')) &&
+      checks[3].frage.optionen.some(o => o.text.includes('den Name vergessen')) &&
+      Object.values(checks[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checks[4].frage.optionen.some(o => o.text === targets[4]) &&
+      checks[4].frage.optionen.some(o => o.text.includes('dem Herren')) &&
+      Object.values(checks[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
 process.exit(fail ? 1 : 0);

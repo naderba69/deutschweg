@@ -326,25 +326,52 @@ module.exports = [
       hwHintDe: 'Prüfe: real möglich → habe/bin · irreal → hätte/wäre am Ende des wenn-Satzes, Antwort mit würde. Nie gemischt: „habe … würde“ in einem Satz geht nicht. Kurzformen: käme · wüsste · gäbe · reiste statt würde + Infinitiv.'
     }),
 
-  U('b1-u1-l8', 'B1', 'تصريف n', 'n-Deklination', 'deklination',
-    'Am Ende markierst du den Studenten im Dativ und Akkusativ',
-    'في النهاية تعلّم Student في الداتيف والنصب.',
+  U('b1-u1-l8', 'B1', 'تصريف n: النهاية en مع den وdem وdes — والرفع وحده بلا نهاية', 'n-Deklination: -en nach den, dem und des — nur der Nominativ ohne Endung', 'deklination',
+    'Am Ende bildest du fünf Sätze mit n-Nomen in allen vier Fällen — und den Herrn mit einem n',
+    'في النهاية تكوّن خمس جمل بأسماء n في الحالات الأربع، ومع Herrn بنون واحدة.',
     [
-      ['den Studenten', 'النصب en', 'den Student ناقص', 'den Student', 'النهاية en'],
-      ['dem Studenten', 'الداتيف en أيضًا', 'dem Student ناقص', 'dem Student', 'en في الداتيف'],
-      ['der Student', 'الرفع بلا en', 'der Studenten im Nominativ falsch', 'der Studenten wartet', 'الرفع Student'],
-      ['der Name', 'Name من العائلة نفسها', 'den Name ناقص', 'den Name', 'النصب Namen']
+      ['Der Student lernt jeden Tag Deutsch.', 'تتحدث عن الطالب فاعلًا في الجملة', 'أسماء n المذكرة تبقى في الرفع (Nominativ) بلا نهاية: der Student؛ النهاية en لا تظهر إلا في بقية الحالات', 'Der Studenten lernt jeden Tag Deutsch.', 'الطالب هنا فاعل في الرفع: der Student؛ صيغة Studenten للنصب والداتيف والملكية'],
+      ['Ich sehe den Studenten jeden Tag.', 'تقول إنك ترى الطالب كل يوم', 'في النصب (Akkusativ) يأخذ اسم n النهاية en: den Studenten — وهكذا den Jungen وden Kollegen وden Kunden', 'Ich sehe den Student jeden Tag.', 'المفعول به في النصب يحتاج النهاية: den Studenten لا den Student'],
+      ['Ich muss dem Studenten helfen.', 'تقول إنك مضطر لمساعدة الطالب', 'في الداتيف (Dativ) أيضًا en: dem Studenten؛ والفعل helfen يطلب الداتيف أصلًا', 'Ich muss dem Student helfen.', 'بعد dem تبقى النهاية en: dem Studenten'],
+      ['Das Buch des Studenten liegt hier.', 'تقول إن كتاب الطالب موجود هنا', 'في الملكية (Genitiv) أيضًا en: des Studenten — فصيغة واحدة بـen للنصب والداتيف والملكية', 'Das Buch des Student liegt hier.', 'بعد أداة الملكية des أيضًا: des Studenten']
     ],
     [
-      ['Ich sehe den Studenten.', 'أرى الطالب', 'Ich sehe den Student', 'النصب Studenten', 'Studenten'],
-      ['Ich helfe dem Studenten.', 'أساعد الطالب', 'Ich helfe dem Student', 'الداتيف Studenten', 'Studenten'],
-      ['Der Student wartet.', 'الطالب ينتظر', 'Der Studenten wartet', 'الرفع Student', 'Student'],
-      ['Ich kenne den Namen.', 'أعرف الاسم', 'Ich kenne den Name', 'النصب Namen', 'Namen']
+      ['Der Student lernt jeden Tag Deutsch.', 'يتعلم الطالب الألمانية كل يوم', 'Der Studenten lernt jeden Tag Deutsch.', 'في الرفع يبقى اسم n بلا نهاية: der Student', 'Student'],
+      ['Ich sehe den Studenten jeden Tag.', 'أرى الطالب كل يوم', 'Ich sehe den Student jeden Tag.', 'في النصب يأخذ اسم n النهاية en: den Studenten', 'Studenten'],
+      ['Ich muss dem Studenten helfen.', 'يجب أن أساعد الطالب', 'Ich muss dem Student helfen.', 'في الداتيف أيضًا en: dem Studenten، وhelfen يطلب الداتيف', 'Studenten'],
+      ['Das Buch des Studenten liegt hier.', 'كتاب الطالب موجود هنا', 'Das Buch des Student liegt hier.', 'في الملكية أيضًا en: des Studenten', 'Studenten']
     ],
-    'Der Student wartet. Ich sehe den Studenten.',
-    'Ich helfe dem Studenten.',
-    'Bilde morgen Nominativ und Akkusativ.',
-    'غدًا كوّن الرفع والنصب.'),
+    'Der Student lernt jeden Tag Deutsch.',
+    'Ich danke dem Herrn für die Hilfe.',
+    'Wiederhole morgen die fünf Sätze: Der Student lernt jeden Tag Deutsch. Ich sehe den Studenten jeden Tag. Ich muss dem Studenten helfen. Das Buch des Studenten liegt hier. Ich danke dem Herrn für die Hilfe.',
+    'غدًا راجع الجمل الخمس وسمِّ حالة اسم n في كل واحدة: رفع أم نصب أم داتيف أم ملكية.',
+    {
+      factFamilies: ['deklination', 'deklination', 'deklination', 'deklination'],
+      imitateNearMiss: 'Studenten',
+      transformHint: 'der Herr لا يأخذ en كاملة بل n واحدة في كل الحالات ما عدا الرفع: den Herrn وdem Herrn وdes Herrn؛ الشكل Herren بالمفرد خطأ (هو جمع مع die).',
+      orderSentence: 'Ich muss dem Studenten helfen.',
+      orderRightBracket: ['helfen.'],
+      checkOrderSentence: 'Ich muss dem Studenten helfen.',
+      checkOrderRightBracket: ['helfen.'],
+      orderAr: 'رتّب الجملة واضعًا muss ثانيًا والمصدر helfen في النهاية، وعبارة الداتيف dem Studenten بينهما.',
+      orderPromptAr: 'رتّب الجملة واضعًا muss بعد Ich وhelfen. في النهاية.',
+      orderHints: ['ضع muss في الموضع الثاني وhelfen. في النهاية.', 'عبارة الداتيف كاملة النهاية: dem Studenten.'],
+      writing: {
+        zeigt: 'Fünf Sätze, vier Fälle',
+        erklaerung: 'اكتب خمس جمل كاملة: طالب فاعل بلا نهاية، وطالب مفعول به بـen، وطالب في الداتيف بـen، وكتاب طالب في الملكية بـen، وسيد في الداتيف بنون واحدة.',
+        hinweise: ['حدّد وظيفة الاسم أولًا: فاعل (رفع) أم مفعول مباشر (نصب) أم بعد helfen أو حرف داتيف أم ملكية بعد des؟', 'القاعدة العملية: en في كل الحالات ما عدا الرفع، وHerrn بنون واحدة دائمًا خارج الرفع.'],
+        prompt: 'اكتب الجمل الخمس المستهدفة من الذاكرة مع نهاية اسم n المناسبة لكل حالة.',
+        promptDe: 'Der Student lernt jeden Tag Deutsch. · Ich sehe den Studenten jeden Tag. · Ich muss dem Studenten helfen. · Das Buch des Studenten liegt hier. · Ich danke dem Herrn für die Hilfe.',
+        points: ['Der Student lernt jeden Tag Deutsch.', 'Ich sehe den Studenten jeden Tag.', 'Ich muss dem Studenten helfen.', 'Das Buch des Studenten liegt hier.', 'Ich danke dem Herrn für die Hilfe.'],
+        minWords: 30,
+        frage: 'اكتب الجمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل عشرين ثانية وقل الجمل الخمس: Der Student lernt jeden Tag Deutsch. Ich sehe den Studenten jeden Tag. Ich muss dem Studenten helfen. Das Buch des Studenten liegt hier. Ich danke dem Herrn für die Hilfe.',
+      summaryDe: 'Der Student lernt jeden Tag Deutsch. Ich sehe den Studenten jeden Tag. Ich muss dem Studenten helfen. Das Buch des Studenten liegt hier. Ich danke dem Herrn für die Hilfe.',
+      summaryAr: 'أسماء n (der Student وder Kollege وder Junge وder Kunde…) بلا نهاية في الرفع فقط، وبـen في النصب والداتيف والملكية: den وdem وdes Studenten — أما der Herr فيأخذ n واحدة: dem Herrn.',
+      summaryRecap: 'الرفع وحده بلا en',
+      hwHintDe: 'Prüfe den Fall: Nominativ → der Student ohne Endung · Akkusativ, Dativ, Genitiv → den/dem/des Studenten. Nur der Herr hat ein n: dem Herrn. Und das Herz: dem Herzen, aber das Herz.'
+    }),
 
   U('b1-u2-l1', 'B1', 'المستقبل', 'Futur', 'konjugation',
     'Am Ende sagst du eine feste Absicht mit werden',
