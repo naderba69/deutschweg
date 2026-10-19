@@ -15538,6 +15538,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksF6[4].frage.optionen.some(o => o.text === targetsF6[4]) &&
       checksF6[4].frage.optionen.some(o => o.text === 'Viele Produkte heißen bio oder öko-.') &&
       Object.values(checksF6[4].frage.misconceptionFamilies).join(' ') === 'orthographie');
+
+  const lessonG1 = win.DW_LESSONS['b1-u7-l1'];
+  const rowG1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonG1.id);
+  const byWordG1 = Object.fromEntries(lessonG1.wortschatz.map(it => [it.de, it]));
+  const tricksG1 = lessonG1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsG1 = [
+    'Die Firma bildet jedes Jahr zwei Lehrlinge aus.',
+    'Wir besprechen den Plan am Montag.',
+    'Alle beteiligen sich an der Planung.',
+    'Der Betriebsrat vertritt uns.',
+    'Ich bin für die Termine verantwortlich.'
+  ];
+  t('Corpus lesson b1-u7-l1 precisely scopes five workplace moves splitting a separable verb, taking a direct object after besprechen, joining with sich beteiligen an plus dative, representing with a direct object and being verantwortlich für',
+    lessonG1.title.de === 'Im Betrieb: ausbilden, besprechen und sich beteiligen' &&
+      lessonG1.title.ar === 'في المؤسسة: ausbilden وbesprechen وsich beteiligen' &&
+      rowG1.title.de === lessonG1.title.de && rowG1.title.ar === lessonG1.title.ar &&
+      rowG1.theme === 'العمل' &&
+      rowG1.grammar.item === 'bildet … aus · besprechen den Plan · sich an der Planung beteiligen · vertritt uns · verantwortlich für' &&
+      rowG1.grammar.method === 'explicit' && lessonG1.schritte.length === 36 && lessonG1.wortschatz.length === 40 &&
+      lessonG1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonG1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsG1[i]) &&
+      lessonG1.schritte[0].zeigt.de === 'Am Ende sprichst du über Ausbildung, Besprechung und Vertretung im Betrieb — in fünf Sätzen' &&
+      lessonG1.schritte.find(s => s.id === 's20').zeigt.de === targetsG1[4]);
+
+  const expectedWordsG1 = [
+    'anstrengen', 'die Arbeitserlaubnis', 'die Arbeitsstelle', 'ausbilden', 'beachten', 'behindern',
+    'benötigen', 'beschäftigen', 'besprechen', 'beteiligen', 'betreuen', 'der Betreuer',
+    'der Betriebsrat', 'das Diplom', 'duzen', 'einrichten', 'die Gewerkschaft', 'das Gewissen',
+    'der Handel', 'der Lehrling', 'die Mahnung', 'die Matura', 'die Mehrwertsteuer', 'das Personal',
+    'der Personenstand', 'das Referat', 'siezen', 'die Tätigkeit', 'der Terminkalender', 'überprüfen',
+    'verpflichten', 'die Versichertenkarte', 'der Wissenschaftler', 'zuverlässig', 'die Konferenz', 'der Ersatz',
+    'pauschal', 'offiziell', 'verantwortlich', 'besorgen'
+  ];
+  const errorsG1 = lessonG1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u7-l1 reviews all 40 entries and three bounded mnemonics without fifteen manufactured appendages, without branding valid für durations or für das as errors, and without teaching that anstrengen is inseparable',
+    Object.keys(byWordG1).join(' | ') === expectedWordsG1.join(' | ') &&
+      lessonG1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonG1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordG1['anstrengen'].err === 'Die Arbeit anstrengt ihn.' &&
+      byWordG1['anstrengen'].why.includes('an في نهاية الجملة') &&
+      byWordG1['siezen'].ex === 'Er siezt die Kundin.' &&
+      byWordG1['siezen'].err === 'Er siezt auf die Kundin.' &&
+      byWordG1['verantwortlich'].err === 'Wer ist verantwortliche dafür?' &&
+      byWordG1['der Lehrling'].err === 'Der Lehrling lernt drei Jahr.' &&
+      byWordG1['das Diplom'].err === 'Das Diplom gilt in beiden Länder.' &&
+      !['Die Arbeit strengt ihn an es.', 'Ohne Arbeitserlaubnis darf er nicht arbeiten dürfen.',
+        'Der Betriebsrat hat ein Mitspracherecht es.', 'Mein Chef duzt alle im Team du.',
+        'Sein Gewissen lässt ihm keine Ruhe es.', 'Der Handel wächst langsam auf.',
+        'Der Lehrling lernt für drei Jahre.', 'Die Mehrwertsteuer ist im Preis enthalten es.',
+        'Er siezt die Kundin mit du.', 'Seine Tätigkeit ist körperlich schwer gemacht.',
+        'Im Terminkalender ist kein Platz es.', 'Sie ist sehr zuverlässig gemacht.',
+        'Der Preis gilt pauschal gemacht.', 'Die Antwort ist offiziell gemacht.',
+        'Wer ist verantwortlich für das?']
+        .some(x => errorsG1.includes(x)) &&
+      tricksG1.length === 3 && tricksG1[0].wie.includes('Die Arbeit strengt ihn an.') &&
+      !tricksG1[0].trick.includes('غير منفصل') &&
+      tricksG1[1].wie.includes('Wir besprechen den Plan.') &&
+      tricksG1[2].wie.includes('an der Planung'));
+
+  const wordClozeAG1 = lessonG1.schritte.find(s => s.id === 's09');
+  const wordClozeBG1 = lessonG1.schritte.find(s => s.id === 's13');
+  const wordClozeCG1 = lessonG1.schritte.find(s => s.id === 's17');
+  const imitateG1 = lessonG1.schritte.find(s => s.id === 's19');
+  const drillG1 = lessonG1.schritte.find(s => s.id === 's23');
+  const orderG1 = lessonG1.schritte.find(s => s.id === 's24');
+  const writingG1 = lessonG1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingG1 = lessonG1.schritte.find(s => s.phase === 'Produktion');
+  const summaryG1 = lessonG1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkG1 = lessonG1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u7-l1 aligns five strict learning clozes, sound bildet fields with a sentence-final aus bracket and a 30-word five-target production',
+    wordClozeAG1.frage.zeigt === 'Der Lärm ____ die Arbeit.' && wordClozeAG1.frage.antworten.join(' ') === 'behindert' &&
+      wordClozeAG1.frage.nearMiss.behindern && !win.DW.renderers.judgeCloze(wordClozeAG1.frage, 'behindern').ok &&
+      wordClozeBG1.frage.zeigt === 'Nach der ____ begann sie zu studieren.' && wordClozeBG1.frage.antworten.join(' ') === 'Matura' &&
+      wordClozeBG1.frage.nearMiss.Maturas && !win.DW.renderers.judgeCloze(wordClozeBG1.frage, 'Maturas').ok &&
+      wordClozeCG1.frage.zeigt === 'Die Antwort ist ____.' && wordClozeCG1.frage.antworten.join(' ') === 'offiziell' &&
+      wordClozeCG1.frage.nearMiss.offizielle && !win.DW.renderers.judgeCloze(wordClozeCG1.frage, 'offizielle').ok &&
+      imitateG1.zeigt.de === 'Die Firma ____ jedes Jahr zwei Lehrlinge aus.' && imitateG1.frage.antworten.join(' ') === 'bildet' &&
+      imitateG1.frage.nearMiss.ausbildet && !win.DW.renderers.judgeCloze(imitateG1.frage, 'ausbildet').ok &&
+      drillG1.frage.zeigt === 'Die Firma ____ jedes Jahr zwei Lehrlinge aus.' && drillG1.frage.antworten.join(' ') === 'bildet' &&
+      drillG1.frage.nearMiss.ausbildet && !win.DW.renderers.judgeCloze(drillG1.frage, 'ausbildet').ok &&
+      lessonG1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderG1.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderG1.frage.correct.join(' ') === targetsG1[0] && orderG1.frage.finite === 'bildet' && orderG1.frage.verbFirst === false &&
+      orderG1.frage.fields.vorfeld.join(' ') === 'Die Firma' && orderG1.frage.fields.lsk.join(' ') === 'bildet' &&
+      orderG1.frage.fields.mittelfeld.join(' ') === 'jedes Jahr zwei Lehrlinge' &&
+      orderG1.frage.fields.rsk.join(' ') === 'aus.' &&
+      win.DW.order.score(orderG1.frage, orderG1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderG1.frage, ['Die', 'bildet', 'Firma', 'jedes', 'Jahr', 'zwei', 'Lehrlinge', 'aus.']).credit < 1 &&
+      writingG1.frage.points.join(' | ') === targetsG1.join(' | ') && writingG1.frage.minWords === 30 &&
+      targetsG1.join(' ').split(/\s+/).length === 30 &&
+      targetsG1.every(x => [writingG1.frage.promptDe, summaryG1.zeigt.de, homeworkG1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsG1.every(x => norm(speakingG1.erklaerung).includes(norm(x))) &&
+      (homeworkG1.hinweise || []).join(' ').includes('Trennbare Verben schieben ihre Vorsilbe ans Satzende'));
+
+  const checksG1 = lessonG1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckG1 = checksG1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckG1 = checksG1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u7-l1 makes 80 percent four of five, independently checking direct-object vertreten, the split bildet and besprechen order, dative plural Ländern and verantwortlich für',
+    checksG1.length === 5 && checksG1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksG1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksG1.every(s => /^cap\.b1-u7-l1\.s\d+$/.test(s.frage.prereq || '')) && checksG1.every(s => !s.hinweise) &&
+      checksG1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u7-l1.s07 | cap.b1-u7-l1.s23 | cap.b1-u7-l1.s24 | cap.b1-u7-l1.s11 | cap.b1-u7-l1.s20' &&
+      new Set(checksG1.map(s => s.frage.prereq)).size === 5 &&
+      checksG1[0].frage.optionen.some(o => o.text === targetsG1[3]) &&
+      checksG1[0].frage.optionen.some(o => o.text === 'Der Betriebsrat vertritt auf uns.') &&
+      Object.values(checksG1[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckG1.frage.zeigt === 'Die Firma ____ jedes Jahr zwei Lehrlinge aus.' &&
+      clozeCheckG1.frage.antworten.join(' ') === 'bildet' && clozeCheckG1.frage.nearMiss.ausbildet &&
+      !win.DW.renderers.judgeCloze(clozeCheckG1.frage, 'ausbildet').ok &&
+      orderCheckG1.frage.correct.join(' ') === targetsG1[1] && orderCheckG1.frage.finite === 'besprechen' &&
+      orderCheckG1.frage.fields.vorfeld.join(' ') === 'Wir' && orderCheckG1.frage.fields.lsk.join(' ') === 'besprechen' &&
+      orderCheckG1.frage.fields.mittelfeld.join(' ') === 'den Plan am Montag.' &&
+      win.DW.order.score(orderCheckG1.frage, orderCheckG1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckG1.frage, ['Wir', 'den', 'besprechen', 'Plan', 'am', 'Montag.']).credit < 1 &&
+      checksG1[3].frage.optionen.some(o => o.text === 'Das Diplom gilt in beiden Ländern.') &&
+      checksG1[3].frage.optionen.some(o => o.text === 'Das Diplom gilt in beiden Länder.') &&
+      Object.values(checksG1[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksG1[4].frage.optionen.some(o => o.text === targetsG1[4]) &&
+      checksG1[4].frage.optionen.some(o => o.text === 'Ich bin die Termine verantwortlich.') &&
+      Object.values(checksG1[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

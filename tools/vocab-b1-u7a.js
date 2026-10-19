@@ -8,8 +8,8 @@ module.exports = {
 
   'b1-u7-l1': {
     items: [
-      ['anstrengen', '—', 'يُتعب', 'Die Arbeit strengt ihn an.', 'Die Arbeit strengt ihn an es.', 'anstrengen فعل غير منفصل، ولا ضمير زائد.', 'wortstellung', 'strengt'],
-      ['die Arbeitserlaubnis', 'die Arbeitserlaubnisse', 'تصريح العمل', 'Ohne Arbeitserlaubnis darf er nicht arbeiten.', 'Ohne Arbeitserlaubnis darf er nicht arbeiten dürfen.', 'الفعل المساعد مع المصدر في الآخر.', 'wortstellung', 'Arbeitserlaubnis'],
+      ['anstrengen', '—', 'يُتعب', 'Die Arbeit strengt ihn an.', 'Die Arbeit anstrengt ihn.', 'فعل منفصل: strengt … an والقسيمة an في نهاية الجملة.', 'wortstellung', 'strengt'],
+      ['die Arbeitserlaubnis', 'die Arbeitserlaubnisse', 'تصريح العمل', 'Ohne Arbeitserlaubnis darf er nicht arbeiten.', 'Ohne Arbeitserlaubnis darf er nicht zu arbeiten.', 'بعد darf يأتي المصدر arbeiten في الآخر بلا zu.', 'wortstellung', 'Arbeitserlaubnis'],
       ['die Arbeitsstelle', 'die Arbeitsstellen', 'مكان العمل', 'Sie sucht eine neue Arbeitsstelle.', 'Sie sucht auf eine neue Arbeitsstelle.', 'suchen بلا حرف جر.', 'präposition', 'Arbeitsstelle'],
       ['ausbilden', '—', 'يدرّب', 'Die Firma bildet jedes Jahr zwei Lehrlinge aus.', 'Die Firma ausbildet jedes Jahr zwei Lehrlinge.', 'الفعل المنفصل: bildet … aus.', 'wortstellung', 'bildet'],
       ['beachten', '—', 'يراعي', 'Bitte beachten Sie die Regeln!', 'Bitte beachten Sie auf die Regeln!', 'beachten بلا حرف جر.', 'präposition', 'beachten'],
@@ -20,40 +20,57 @@ module.exports = {
       ['beteiligen', '—', 'يُشرك', 'Alle beteiligen sich an der Planung.', 'Alle beteiligen sich die Planung.', 'sich beteiligen an + داتيف.', 'präposition', 'beteiligen'],
       ['betreuen', '—', 'يواكب/يرعى', 'Eine Kollegin betreut die Neuen.', 'Eine Kollegin betreut auf die Neuen.', 'betreuen بلا حرف جر.', 'präposition', 'betreut'],
       ['der Betreuer', 'die Betreuer', 'المشرف', 'Der Betreuer erklärt den Ablauf.', 'Der Betreuer erklärt über den Ablauf.', 'erklären بلا حرف جر.', 'präposition', 'Betreuer'],
-      ['der Betriebsrat', 'die Betriebsräte', 'مجلس العمال', 'Der Betriebsrat hat ein Mitspracherecht.', 'Der Betriebsrat hat ein Mitspracherecht es.', 'لا ضمير زائد.', 'wortstellung', 'Betriebsrat'],
+      ['der Betriebsrat', 'die Betriebsräte', 'مجلس العمال', 'Der Betriebsrat hat ein Mitspracherecht.', 'Der Betriebsrat hat einem Mitspracherecht.', 'haben مع النصب: ein Mitspracherecht (محايد) لا einem.', 'kasus', 'Betriebsrat'],
       ['das Diplom', 'die Diplome', 'الدبلوم', 'Das Diplom gilt in beiden Ländern.', 'Das Diplom gilt in beiden Länder.', 'beiden Länder خطأ: beiden Ländern.', 'kasus', 'Diplom'],
-      ['duzen', '—', 'يقول du له', 'Mein Chef duzt alle im Team.', 'Mein Chef duzt alle im Team du.', 'لا ضمير زائد.', 'wortstellung', 'duzt'],
+      ['duzen', '—', 'يقول du له', 'Mein Chef duzt alle im Team.', 'Mein Chef duzen alle im Team.', 'الفاعل mein Chef مفرد: duzt لا duzen.', 'konjugation', 'duzt'],
       ['einrichten', '—', 'يجهّز/ينشئ', 'Wir richten ein neues Büro ein.', 'Wir einrichten ein neues Büro.', 'الفعل المنفصل: richten … ein.', 'wortstellung', 'richten'],
       ['die Gewerkschaft', 'die Gewerkschaften', 'النقابة', 'Die Gewerkschaft vertritt die Arbeiter.', 'Die Gewerkschaft vertritt auf die Arbeiter.', 'vertreten بلا حرف جر.', 'präposition', 'Gewerkschaft'],
-      ['das Gewissen', 'das Gewissen', 'الضمير (الأخلاقي)', 'Sein Gewissen lässt ihm keine Ruhe.', 'Sein Gewissen lässt ihm keine Ruhe es.', 'لا ضمير زائد.', 'wortstellung', 'Gewissen'],
-      ['der Handel', '—', 'التجارة', 'Der Handel wächst langsam.', 'Der Handel wächst langsam auf.', 'wachsen بلا حرف جر.', 'präposition', 'Handel'],
-      ['der Lehrling', 'die Lehrlinge', 'المتدرّب المهني', 'Der Lehrling lernt drei Jahre.', 'Der Lehrling lernt für drei Jahre.', 'مدة بلا حرف جر.', 'präposition', 'Lehrling'],
+      ['das Gewissen', 'das Gewissen', 'الضمير (الأخلاقي)', 'Sein Gewissen lässt ihm keine Ruhe.', 'Sein Gewissen lässt ihn keine Ruhe.', 'jemandem keine Ruhe lassen: الشخص بالداتيف ihm لا ihn.', 'kasus', 'Gewissen'],
+      ['der Handel', '—', 'التجارة', 'Der Handel wächst langsam.', 'Der Handel wachst langsam.', 'wachsen فعل قوي يغيّر صوته: er wächst.', 'konjugation', 'Handel'],
+      ['der Lehrling', 'die Lehrlinge', 'المتدرّب المهني', 'Der Lehrling lernt drei Jahre.', 'Der Lehrling lernt drei Jahr.', 'بعد العدد يأتي الجمع: drei Jahre — والمدة هنا بلا حرف جر.', 'plural', 'Lehrling'],
       ['die Mahnung', 'die Mahnungen', 'الإشعار/التذكير بالدفع', 'Nach der Mahnung zahlte er sofort.', 'Nach der Mahnung er zahlte sofort.', 'بعد nach يأتي الفعل أولًا.', 'wortstellung', 'Mahnung'],
       ['die Matura', 'die Maturas', 'الثانوية العامة (النمسا/سويسرا)', 'Nach der Matura begann sie zu studieren.', 'Nach der Matura begann sie studieren.', 'zu + مصدر: zu studieren.', 'konjugation', 'Matura'],
-      ['die Mehrwertsteuer', 'die Mehrwertsteuern', 'ضريبة القيمة المضافة', 'Die Mehrwertsteuer ist im Preis enthalten.', 'Die Mehrwertsteuer ist im Preis enthalten es.', 'لا ضمير زائد.', 'wortstellung', 'Mehrwertsteuer'],
+      ['die Mehrwertsteuer', 'die Mehrwertsteuern', 'ضريبة القيمة المضافة', 'Die Mehrwertsteuer ist im Preis enthalten.', 'Die Mehrwertsteuer ist im Preis enthaltene.', 'الخبر بعد ist بلا نهاية: enthalten لا enthaltene.', 'deklination', 'Mehrwertsteuer'],
       ['das Personal', '—', 'الموظفون', 'Das Personal wechselt oft.', 'Das Personal wechseln oft.', 'das Personal مفرد: wechselt.', 'konjugation', 'Personal'],
       ['der Personenstand', 'die Personenstände', 'الحالة المدنية', 'Der Personenstand steht im Formular.', 'Der Personenstand steht in das Formular.', 'في: in + داتيف (im).', 'kasus', 'Personenstand'],
       ['das Referat', 'die Referate', 'العرض/التقرير', 'Sie hält ein Referat über die Studie.', 'Sie hält ein Referat für die Studie.', 'über لا für.', 'präposition', 'Referat'],
-      ['siezen', '—', 'يخاطب بـSie', 'Die Kundin siezt er.', 'Er siezt die Kundin mit du.', 'الخاطب السيدة: siezt.', 'register', 'siezt'],
-      ['die Tätigkeit', 'die Tätigkeiten', 'النشاط/المهمة', 'Seine Tätigkeit ist körperlich schwer.', 'Seine Tätigkeit ist körperlich schwer gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Tätigkeit'],
-      ['der Terminkalender', 'die Terminkalender', 'مفكرة المواعيد', 'Im Terminkalender ist kein Platz.', 'Im Terminkalender ist kein Platz es.', 'لا ضمير زائد.', 'wortstellung', 'Terminkalender'],
+      ['siezen', '—', 'يخاطب بـSie', 'Er siezt die Kundin.', 'Er siezt auf die Kundin.', 'siezen يأخذ الشخص مفعولًا مباشرًا بلا حرف جر.', 'präposition', 'siezt'],
+      ['die Tätigkeit', 'die Tätigkeiten', 'النشاط/المهمة', 'Seine Tätigkeit ist körperlich schwer.', 'Seine Tätigkeit ist körperlich schwere.', 'الصفة خبرًا بعد ist بلا نهاية: schwer.', 'deklination', 'Tätigkeit'],
+      ['der Terminkalender', 'die Terminkalender', 'مفكرة المواعيد', 'Im Terminkalender ist kein Platz.', 'Im Terminkalender kein Platz ist.', 'الفعل المنتهي ist في الموضع الثاني، لا في آخر الجملة.', 'wortstellung', 'Terminkalender'],
       ['überprüfen', '—', 'يتحقّق من', 'Wir überprüfen die Daten jede Woche.', 'Wir überprüfen auf die Daten jede Woche.', 'überprüfen بلا حرف جر.', 'präposition', 'überprüfen'],
       ['verpflichten', '—', 'يُلزم', 'Der Vertrag verpflichtet beide Seiten.', 'Der Vertrag verpflichtet auf beide Seiten.', 'verpflichten بلا حرف جر.', 'präposition', 'verpflichtet'],
       ['die Versichertenkarte', 'die Versichertenkarten', 'بطاقة التأمين', 'Die Versichertenkarte braucht jede Patientin.', 'Die Versichertenkarte brauchen jede Patientin.', 'الفعل مفرد: braucht.', 'konjugation', 'Versichertenkarte'],
       ['der Wissenschaftler', 'die Wissenschaftler', 'العالم (الباحث)', 'Der Wissenschaftler erklärt die Zahlen.', 'Der Wissenschaftler erklärt auf die Zahlen.', 'erklären بلا حرف جر.', 'präposition', 'Wissenschaftler'],
-      ['zuverlässig', '—', 'موثوق', 'Sie ist sehr zuverlässig.', 'Sie ist sehr zuverlässig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'zuverlässig'],
+      ['zuverlässig', '—', 'موثوق', 'Sie ist sehr zuverlässig.', 'Sie ist sehr zuverlässige.', 'الصفة خبرًا بعد ist بلا نهاية: zuverlässig.', 'deklination', 'zuverlässig'],
       ['die Konferenz', 'die Konferenzen', 'المؤتمر', 'Die Konferenz beginnt um neun.', 'Die Konferenz beginnt auf neun.', 'مع الساعة: um.', 'präposition', 'Konferenz'],
       ['der Ersatz', '—', 'البديل', 'Für das Teil gibt es keinen Ersatz.', 'Für das Teil gibt es keinen Ersatz für.', 'kein Ersatz für مرّة واحدة.', 'präposition', 'Ersatz'],
-      ['pauschal', '—', 'إجمالي/جزافي', 'Der Preis gilt pauschal.', 'Der Preis gilt pauschal gemacht.', 'الحال تكفي.', 'lexik-kollokation', 'pauschal'],
-      ['offiziell', '—', 'رسمي', 'Die Antwort ist offiziell.', 'Die Antwort ist offiziell gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'offiziell'],
-      ['verantwortlich', '—', 'مسؤول', 'Wer ist verantwortlich dafür?', 'Wer ist verantwortlich für das?', 'verantwortlich dafür.', 'präposition', 'verantwortlich'],
+      ['pauschal', '—', 'إجمالي/جزافي', 'Der Preis gilt pauschal.', 'Der Preis gelten pauschal.', 'الفاعل der Preis مفرد: gilt لا gelten.', 'konjugation', 'pauschal'],
+      ['offiziell', '—', 'رسمي', 'Die Antwort ist offiziell.', 'Die Antwort ist offizielle.', 'الصفة خبرًا بعد ist بلا نهاية: offiziell.', 'deklination', 'offiziell'],
+      ['verantwortlich', '—', 'مسؤول', 'Wer ist verantwortlich dafür?', 'Wer ist verantwortliche dafür?', 'الصفة خبرًا بلا نهاية: verantwortlich — ومع الشيء نقول dafür.', 'deklination', 'verantwortlich'],
       ['besorgen', '—', 'يوفّر/يحضر', 'Ich besorge die Unterlagen heute.', 'Ich besorge für die Unterlagen heute.', 'besorgen بلا حرف جر.', 'präposition', 'besorge']
     ],
     tricks: [
-      { trick: 'الأفعال المنفصلة في سياق العمل: ausbilden · einrichten · anstrengen (والأخير غير منفصل)', wie: 'Die Firma bildet aus. · Wir richten ein. · Die Arbeit strengt ihn an — لا تُفصل.', warum: 'الناطق يخلط الفعل غير المنفصل بالمنفصل، فينقل an إلى الآخر حيث لا موضع لها.', anchor: 'bildet aus' },
+      { trick: 'الأفعال المنفصلة في سياق العمل: ausbilden · einrichten · anstrengen — قسيمتها في آخر الجملة', wie: 'Die Firma bildet aus. · Wir richten ein. · Die Arbeit strengt ihn an.', warum: 'القسيمة تُفصل عن الفعل المصرّف وتغلق الجملة؛ إلصاقها بالفعل (ausbildet) خطأ يُخفي بنية الجملة.', anchor: 'bildet aus' },
       { trick: 'أفعال بلا حرف جر: beachten · benötigen · besprechen · überprüfen', wie: 'Wir besprechen den Plan. · Wir überprüfen die Daten.', warum: 'العربية تقول «نناقش في» و«نتحقق من»، فتُضاف über/auf بلا حاجة.', anchor: 'besprechen' },
       { trick: 'sich beteiligen an + داتيف · verantwortlich für · Ersatz für', wie: 'Sie beteiligt sich an der Planung. · Er ist verantwortlich für die Lieferung.', warum: 'حرف الجر جزء من التعبير لا ترجمة للعربية، ويُحفظ داخل جملته.', anchor: 'beteiligt sich an' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'behindern': 'behindern',
+      'die Matura': 'Maturas',
+      'offiziell': 'offizielle'
+    },
+    clozeItemIndex: 3,
+    clozeNearMiss: 'ausbildet',
+    checkItemIndex: 13,
+    extraCheck: {
+      right: 'Ich bin für die Termine verantwortlich.',
+      bad: 'Ich bin die Termine verantwortlich.',
+      why: 'verantwortlich يثبت مع für والنصب: für die Termine.',
+      family: 'präposition',
+      prereq: 'cap.b1-u7-l1.s20',
+      frage: 'أي جملة تثبت فيها verantwortlich مع حرفها؟'
+    }
   },
 
   'b1-u7-l2': {

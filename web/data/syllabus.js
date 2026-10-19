@@ -152,7 +152,7 @@
     ['الاشتقاق: Autorin وBesserung وFreiheit', 'Wortbildung: Autorin, Besserung und Freiheit', 'المفردات', 'die Autorin liest · die Autorinnen lesen · die Besserung · die Freiheit · bio- oder öko-', 'explicit'],
     /* Unit 7 — amendment B1-L3: the material step grew the promotion pool to 371
        entries and a unit holds 240 slots, so unit 7 carries the first 240. */
-    ['في المؤسسة', 'Im Betrieb', 'العمل', 'bildet … aus und besprechen', 'explicit'],
+    ['في المؤسسة: ausbilden وbesprechen وsich beteiligen', 'Im Betrieb: ausbilden, besprechen und sich beteiligen', 'العمل', 'bildet … aus · besprechen den Plan · sich an der Planung beteiligen · vertritt uns · verantwortlich für', 'explicit'],
     ['في الطريق', 'Unterwegs', 'المرور', 'an die Küste und am Ufer', 'explicit'],
     ['البيت والحرفة', 'Haus und Handwerk', 'السكن', 'im Keller und wurde beschädigt', 'explicit'],
     ['الصحة والمشاعر', 'Gesundheit und Gefühle', 'الصحة', 'tut weh und gegen Grippe', 'explicit'],

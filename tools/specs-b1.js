@@ -2100,25 +2100,51 @@ module.exports = [
    step, and one unit holds 240 headword slots (6 x 40), so unit 7 carries 240 of them:
    Betrieb · Verkehr · Haus und Handwerk · Gesundheit und Gefühle · Geld, Geräte und
    Post · Kultur und Sprache. The remaining 131 wait in tools/goethe-b1-candidates.txt. */
-  U('b1-u7-l1', 'B1', 'في المؤسسة', 'Im Betrieb', 'lexik-kollokation',
-    'Am Ende beschreibst du deine Arbeitsstelle und ihre Regeln',
-    'في النهاية تصف مكان عملك وقواعده.',
+  U('b1-u7-l1', 'B1', 'في المؤسسة: ausbilden وbesprechen وsich beteiligen', 'Im Betrieb: ausbilden, besprechen und sich beteiligen', 'lexik-kollokation',
+    'Am Ende sprichst du über Ausbildung, Besprechung und Vertretung im Betrieb — in fünf Sätzen',
+    'في النهاية تتحدث عن التدريب والاجتماع والتمثيل في المؤسسة في خمس جمل.',
     [
-      ['Die Firma bildet jedes Jahr aus.', 'الفعل المنفصل في الآخر', 'Trennbares Verb: bildet … aus', 'Die Firma ausbildet jedes Jahr.', 'bildet … aus'],
-      ['Wir besprechen den Plan.', 'besprechen بلا حرف جر', 'kein über nach besprechen', 'Wir besprechen über den Plan.', 'بلا über'],
-      ['Sie beteiligt sich an der Planung.', 'sich beteiligen an', 'feste Präposition: an', 'Sie beteiligt sich die Planung.', 'an + داتيف'],
-      ['Wer ist dafür verantwortlich?', 'verantwortlich dafür', 'verantwortlich für + Akkusativ', 'Wer ist verantwortlich für das?', 'dafür في السؤال']
+      ['Die Firma bildet jedes Jahr zwei Lehrlinge aus.', 'تصف تدريب المؤسسة للمتدرّبين', 'ausbilden فعل منفصل: bildet في الموضع الثاني وقسيمة aus تغلق الجملة في الآخر', 'Die Firma ausbildet jedes Jahr zwei Lehrlinge.', 'المنفصل: bildet … aus'],
+      ['Wir besprechen den Plan am Montag.', 'تعلن مناقشة خطة في الاجتماع', 'besprechen يأخذ المفعول مباشرة: besprechen den Plan — بلا über قبله', 'Wir besprechen über den Plan am Montag.', 'besprechen بلا über'],
+      ['Alle beteiligen sich an der Planung.', 'تقول إن الجميع يشارك في التخطيط', 'sich beteiligen يثبت مع an والداتيف: sich an der Planung beteiligen', 'Alle beteiligen sich die Planung.', 'an + داتيف: an der'],
+      ['Der Betriebsrat vertritt uns.', 'تسمّي من يمثّلكم في المؤسسة', 'vertreten يأخذ من يمثّله مفعولًا مباشرًا: vertritt uns — بلا auf', 'Der Betriebsrat vertritt auf uns.', 'vertreten بلا auf']
     ],
     [
-      ['Die Firma bildet zwei Lehrlinge aus.', 'الشركة تدرّب متدرّبين', 'Die Firma ausbildet zwei Lehrlinge.', 'bildet … aus.', 'aus'],
-      ['Wir besprechen den Plan am Montag.', 'نناقش الخطة الاثنين', 'Wir besprechen über den Plan.', 'بلا über.', 'besprechen'],
-      ['Sie beteiligt sich an der Planung.', 'تشارك في التخطيط', 'Sie beteiligt sich die Planung.', 'an + داتيف.', 'an der'],
-      ['Der Betriebsrat vertritt uns.', 'مجلس العمال يمثّلنا', 'Der Betriebsrat vertritt auf uns.', 'بلا auf.', 'vertritt']
+      ['Die Firma bildet jedes Jahr zwei Lehrlinge aus.', 'الشركة تدرّب متدرّبين كل عام', 'Die Firma ausbildet jedes Jahr zwei Lehrlinge.', 'الفعل المنفصل: bildet … aus.', 'bildet'],
+      ['Wir besprechen den Plan am Montag.', 'نناقش الخطة يوم الاثنين', 'Wir besprechen über den Plan.', 'besprechen بمفعول مباشر، بلا über.', 'besprechen'],
+      ['Alle beteiligen sich an der Planung.', 'يشارك الجميع في التخطيط', 'Alle beteiligen sich die Planung.', 'sich beteiligen an + داتيف: an der.', 'an der'],
+      ['Der Betriebsrat vertritt uns.', 'مجلس العمال يمثّلنا', 'Der Betriebsrat vertritt auf uns.', 'vertreten بمفعول مباشر، بلا auf.', 'vertritt']
     ],
-    'Die Firma bildet jedes Jahr zwei Lehrlinge aus. Wir besprechen den Plan.',
+    'Die Firma bildet jedes Jahr zwei Lehrlinge aus. Alle beteiligen sich an der Planung.',
     'Ich bin für die Termine verantwortlich.',
-    'Beschreibe morgen drei Regeln deiner Arbeitsstelle.',
-    'غدًا صف ثلاث قواعد من مكان عملك.'),
+    'Wiederhole morgen die fünf Sätze: Die Firma bildet jedes Jahr zwei Lehrlinge aus. Wir besprechen den Plan am Montag. Alle beteiligen sich an der Planung. Der Betriebsrat vertritt uns. Ich bin für die Termine verantwortlich.',
+    'غدًا أعد جمل المؤسسة الخمس ولاحظ قسيمة aus وثبات حروف الجر.',
+    {
+      factFamilies: ['wortstellung', 'präposition', 'präposition', 'präposition'],
+      imitateNearMiss: 'ausbildet',
+      transformHint: 'في جملة الختام تقول عن نفسك: Ich bin für die Termine verantwortlich — صفة verantwortlich تثبت مع für والمفعول المنصوب.',
+      orderSentence: 'Die Firma bildet jedes Jahr zwei Lehrlinge aus.',
+      orderRightBracket: ['aus.'],
+      checkOrderSentence: 'Wir besprechen den Plan am Montag.',
+      orderAr: 'رتّب جملة التدريب: الفعل المصرّف bildet ثانيًا وقسيمة aus. تغلق الجملة في آخرها.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Firma هو الموضع الأول وحده.', 'القسيمة aus. لا تلتحم بالفعل؛ تغلق الجملة في الآخر.'],
+      writing: {
+        zeigt: 'Im Betrieb in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: تدريب بفعل منفصل، ومناقشة خطة بمفعول مباشر، ومشاركة بـan والداتيف، وتمثيل بمفعول مباشر، ومسؤولية بـverantwortlich für.',
+        hinweise: ['القسيمة aus تغلق جملة ausbilden في آخرها.', 'sich beteiligen يثبت مع an والداتيف، وverantwortlich مع für والنصب.'],
+        prompt: 'اكتب جمل المؤسسة الخمس المستهدفة من الذاكرة مع القسيمة وحروف الجر الصحيحة.',
+        promptDe: 'Die Firma bildet jedes Jahr zwei Lehrlinge aus. · Wir besprechen den Plan am Montag. · Alle beteiligen sich an der Planung. · Der Betriebsrat vertritt uns. · Ich bin für die Termine verantwortlich.',
+        points: ['Die Firma bildet jedes Jahr zwei Lehrlinge aus.', 'Wir besprechen den Plan am Montag.', 'Alle beteiligen sich an der Planung.', 'Der Betriebsrat vertritt uns.', 'Ich bin für die Termine verantwortlich.'],
+        minWords: 30,
+        frage: 'اكتب جمل المؤسسة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Firma bildet jedes Jahr zwei Lehrlinge aus. Wir besprechen den Plan am Montag. Alle beteiligen sich an der Planung. Der Betriebsrat vertritt uns. Ich bin für die Termine verantwortlich.',
+      summaryDe: 'Die Firma bildet jedes Jahr zwei Lehrlinge aus. Wir besprechen den Plan am Montag. Alle beteiligen sich an der Planung. Der Betriebsrat vertritt uns. Ich bin für die Termine verantwortlich.',
+      summaryAr: 'أفعال المؤسسة تُحفظ مع بنائها: ausbilden بقسيمة منفصلة في الآخر، وbesprechen وvertreten بمفعول مباشر، وsich beteiligen an مع الداتيف، وverantwortlich für مع النصب.',
+      summaryRecap: 'حرف الجر جزء من الفعل',
+      hwHintDe: 'Trennbare Verben schieben ihre Vorsilbe ans Satzende: Die Firma bildet jedes Jahr zwei Lehrlinge aus. Verben wie besprechen und vertreten nehmen ihr Objekt direkt, sich beteiligen steht fest mit an und Dativ, und nach verantwortlich folgt für mit Akkusativ.'
+    }),
 
   U('b1-u7-l2', 'B1', 'في الطريق', 'Unterwegs', 'präposition',
     'Am Ende beschreibst du einen Weg mit den richtigen Präpositionen',
