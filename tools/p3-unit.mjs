@@ -14064,6 +14064,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE2[4].frage.optionen.some(o => o.text === targetsE2[4]) &&
       checksE2[4].frage.optionen.some(o => o.text === 'Ich wäre Sie sehr dankbar.') &&
       Object.values(checksE2[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonE3 = win.DW_LESSONS['b1-u5-l3'];
+  const rowE3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE3.id);
+  const byWordE3 = Object.fromEntries(lessonE3.wortschatz.map(it => [it.de, it]));
+  const tricksE3 = lessonE3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE3 = [
+    'Im Gegensatz zu Tunesien ist die Versicherung Pflicht.',
+    'Nicht alles ist gleich.',
+    'Während die einen sparen, geben die anderen aus.',
+    'Der Vergleich zeigt große Unterschiede.',
+    'Die Grenze ist das Alter.'
+  ];
+  t('Corpus lesson b1-u5-l3 precisely scopes five system-comparison moves framing a Gegensatz with inversion, denying full equality, balancing with an inverted während clause, reporting plural differences and naming a nominative limit',
+    lessonE3.title.de === 'Vergleich: Gegensatz, Unterschied und Grenze' &&
+      lessonE3.title.ar === 'المقارنة: المقابلة والفرق والحد' &&
+      rowE3.title.de === lessonE3.title.de && rowE3.title.ar === lessonE3.title.ar &&
+      rowE3.theme === 'المجتمع' &&
+      rowE3.grammar.item === 'im Gegensatz zu + Inversion · nicht alles ist gleich · während mit Inversion · große Unterschiede · die Grenze ist' &&
+      rowE3.grammar.method === 'explicit' && lessonE3.schritte.length === 36 && lessonE3.wortschatz.length === 40 &&
+      lessonE3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE3[i]) &&
+      lessonE3.schritte[0].zeigt.de === 'Am Ende vergleichst du zwei Systeme mit Gegensatz, während-Satz und genannter Grenze in fünf Sätzen' &&
+      lessonE3.schritte.find(s => s.id === 's20').zeigt.de === targetsE3[4]);
+
+  const expectedWordsE3 = [
+    'das System', 'das Bildungssystem', 'das Gesundheitssystem', 'das Steuersystem', 'das Schulsystem', 'der Vergleich',
+    'vergleichen', 'der Unterschied', 'die Ähnlichkeit', 'der Vorteil', 'der Nachteil',
+    'im Gegensatz zu', 'im Vergleich zu', 'dagegen', 'hingegen', 'während',
+    'einerseits', 'andererseits', 'die Grundlage', 'die Gesellschaft', 'die Politik',
+    'die Politik verdient', 'die Reform', 'die Verwaltung', 'die Bürokratie', 'der Beamte',
+    'die Steuer', 'die Krankenkasse', 'die Versicherung', 'die Rente',
+    'die Arbeitslosigkeit', 'der Arbeitsmarkt', 'die Wirtschaft', 'das Wachstum',
+    'die Krise', 'der Haushalt', 'der Bürger', 'die Demokratie',
+    'die Beteiligung', 'die Transparenz'
+  ];
+  const errorsE3 = lessonE3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l3 reviews all 40 entries and three bounded mnemonics without fourteen manufactured appendages and with honest im-Vergleich-mit, von-plus-dative, zahlen-für and double-perfect explanations',
+    Object.keys(byWordE3).join(' | ') === expectedWordsE3.join(' | ') &&
+      lessonE3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE3['im Vergleich zu'].err === 'Im Vergleich zu früher die Kinder lernen mehr.' &&
+      byWordE3['im Vergleich zu'].why.includes('im Vergleich mit') &&
+      byWordE3['die Grundlage'].err === 'Bildung ist die Grundlage von die Demokratie.' &&
+      byWordE3['die Krankenkasse'].err === 'Die Krankenkasse zahlt der Behandlung.' &&
+      byWordE3['die Gesellschaft'].why.includes('hat sich verändert') &&
+      byWordE3['die Zinseszinsen'] === undefined &&
+      byWordE3['die Politik verdient'].ex === 'Diese Frage verdient Aufmerksamkeit.' &&
+      !['Das Bildungssystem unterscheidet sich stark es.', 'Das Gesundheitssystem ist teuer gemacht.',
+        'Das Steuersystem ist kompliziert gemacht.', 'Das Schulsystem ist dreigliedrig gemacht.',
+        'Der Unterschied ist deutlich gemacht.', 'Die Ähnlichkeit überrascht es.',
+        'Jedes System hat Vorteile es.', 'Die Politik reagiert langsam es.',
+        'Die Verwaltung arbeitet langsam es.', 'Die Rente reicht kaum es.',
+        'Die Arbeitslosigkeit sinkt langsam es.', 'Die Wirtschaft wächst wieder es.',
+        'Das Wachstum bleibt schwach gemacht.', 'Der Haushalt muss sparen es.']
+        .some(x => errorsE3.includes(x)) &&
+      tricksE3.length === 3 && tricksE3[0].wie.includes('dort dagegen mit Karte') &&
+      tricksE3[1].wie.includes('Die Bürokratie kostet Zeit') &&
+      tricksE3[2].wie.includes('ist das hier gratis'));
+
+  const wordClozeAE3 = lessonE3.schritte.find(s => s.id === 's09');
+  const wordClozeBE3 = lessonE3.schritte.find(s => s.id === 's13');
+  const wordClozeCE3 = lessonE3.schritte.find(s => s.id === 's17');
+  const imitateE3 = lessonE3.schritte.find(s => s.id === 's19');
+  const drillE3 = lessonE3.schritte.find(s => s.id === 's23');
+  const orderE3 = lessonE3.schritte.find(s => s.id === 's24');
+  const writingE3 = lessonE3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE3 = lessonE3.schritte.find(s => s.phase === 'Produktion');
+  const summaryE3 = lessonE3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE3 = lessonE3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l3 aligns five strict learning clozes, sound Gegensatz order fields and a 30-word five-target production',
+    wordClozeAE3.frage.zeigt === 'Der ____ zeigt große Unterschiede.' && wordClozeAE3.frage.antworten.join(' ') === 'Vergleich' &&
+      wordClozeAE3.frage.nearMiss.Vergleiche && !win.DW.renderers.judgeCloze(wordClozeAE3.frage, 'Vergleiche').ok &&
+      wordClozeBE3.frage.zeigt === 'Diese Frage ____ Aufmerksamkeit.' && wordClozeBE3.frage.antworten.join(' ') === 'verdient' &&
+      wordClozeBE3.frage.nearMiss.verdienen && !win.DW.renderers.judgeCloze(wordClozeBE3.frage, 'verdienen').ok &&
+      wordClozeCE3.frage.zeigt === 'Die ____ lebt von Beteiligung.' && wordClozeCE3.frage.antworten.join(' ') === 'Demokratie' &&
+      wordClozeCE3.frage.nearMiss.Demokratien && !win.DW.renderers.judgeCloze(wordClozeCE3.frage, 'Demokratien').ok &&
+      imitateE3.zeigt.de === 'Im Gegensatz zu Tunesien ist die ____ Pflicht.' && imitateE3.frage.antworten.join(' ') === 'Versicherung' &&
+      imitateE3.frage.nearMiss.Versicherungen && !win.DW.renderers.judgeCloze(imitateE3.frage, 'Versicherungen').ok &&
+      drillE3.frage.zeigt === 'Die ____ sind gesunken.' && drillE3.frage.antworten.join(' ') === 'Steuern' &&
+      drillE3.frage.nearMiss.Steuer && !win.DW.renderers.judgeCloze(drillE3.frage, 'Steuer').ok &&
+      lessonE3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE3.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE3.frage.correct.join(' ') === targetsE3[0] && orderE3.frage.finite === 'ist' && orderE3.frage.verbFirst === false &&
+      orderE3.frage.fields.vorfeld.join(' ') === 'Im Gegensatz zu Tunesien' && orderE3.frage.fields.lsk.join(' ') === 'ist' &&
+      orderE3.frage.fields.mittelfeld.join(' ') === 'die Versicherung Pflicht.' &&
+      win.DW.order.score(orderE3.frage, orderE3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE3.frage, ['Im', 'Gegensatz', 'zu', 'Tunesien', 'die', 'Versicherung', 'ist', 'Pflicht.']).credit < 1 &&
+      writingE3.frage.points.join(' | ') === targetsE3.join(' | ') && writingE3.frage.minWords === 30 &&
+      targetsE3.join(' ').split(/\s+/).length === 30 &&
+      targetsE3.every(x => [writingE3.frage.promptDe, summaryE3.zeigt.de, homeworkE3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE3.every(x => norm(speakingE3.erklaerung).includes(norm(x))) &&
+      (homeworkE3.hinweise || []).join(' ').includes('„Compared to“ ist Englisch') &&
+      (homeworkE3.hinweise || []).join(' ').includes('von den Bürgern'));
+
+  const checksE3 = lessonE3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE3 = checksE3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE3 = checksE3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l3 makes 80 percent four of five, independently checking plural differences, sunk-tax agreement and Grenze order, cost-dative and sein-nominative closure',
+    checksE3.length === 5 && checksE3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE3.every(s => /^cap\.b1-u5-l3\.s\d+$/.test(s.frage.prereq || '')) && checksE3.every(s => !s.hinweise) &&
+      checksE3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l3.s07 | cap.b1-u5-l3.s23 | cap.b1-u5-l3.s24 | cap.b1-u5-l3.s10 | cap.b1-u5-l3.s20' &&
+      new Set(checksE3.map(s => s.frage.prereq)).size === 5 &&
+      checksE3[0].frage.optionen.some(o => o.text === targetsE3[3]) &&
+      checksE3[0].frage.optionen.some(o => o.text === 'Der Vergleich zeigt große Unterschied.') &&
+      Object.values(checksE3[0].frage.misconceptionFamilies).join(' ') === 'plural' &&
+      clozeCheckE3.frage.zeigt === 'Die ____ sind gesunken.' &&
+      clozeCheckE3.frage.antworten.join(' ') === 'Steuern' && clozeCheckE3.frage.nearMiss.Steuer &&
+      !win.DW.renderers.judgeCloze(clozeCheckE3.frage, 'Steuer').ok &&
+      orderCheckE3.frage.correct.join(' ') === targetsE3[4] && orderCheckE3.frage.finite === 'ist' &&
+      orderCheckE3.frage.fields.vorfeld.join(' ') === 'Die Grenze' && orderCheckE3.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckE3.frage.fields.mittelfeld.join(' ') === 'das Alter.' &&
+      win.DW.order.score(orderCheckE3.frage, orderCheckE3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE3.frage, ['Die', 'das', 'ist', 'Alter.', 'Grenze']).credit < 1 &&
+      checksE3[3].frage.optionen.some(o => o.text === 'Der Nachteil liegt in den Kosten.') &&
+      checksE3[3].frage.optionen.some(o => o.text === 'Der Nachteil liegt in die Kosten.') &&
+      Object.values(checksE3[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksE3[4].frage.optionen.some(o => o.text === targetsE3[4]) &&
+      checksE3[4].frage.optionen.some(o => o.text === 'Die Grenze ist dem Alter.') &&
+      Object.values(checksE3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

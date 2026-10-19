@@ -1547,25 +1547,50 @@ module.exports = [
       hwHintDe: 'Der Infinitiv steht am Ende des Hauptsatzes, und eine Bitte klingt nie wie ein Befehl: „Dürfte ich …?“ öffnet Türen, die ein Befehl schließt.'
     }),
 
-  U('b1-u5-l3', 'B1', 'مقارنة أنظمة', 'Vergleich', 'pruefstrategie',
-    'Am Ende vergleichst du mit einer Grenze',
-    'في النهاية تقارن بحد.',
+  U('b1-u5-l3', 'B1', 'المقارنة: المقابلة والفرق والحد', 'Vergleich: Gegensatz, Unterschied und Grenze', 'pruefstrategie',
+    'Am Ende vergleichst du zwei Systeme mit Gegensatz, während-Satz und genannter Grenze in fünf Sätzen',
+    'في النهاية تقارن نظامين بالمقابلة وبجملة بينما وبحدٍّ مسمّى في خمس جمل.',
     [
-      ['im Vergleich zu', 'المقارنة إطار', 'لا compared to', 'compared to Tunesien', 'compared إنجليزية'],
-      ['nicht alles gleich', 'التشابه ليس تطابقًا', 'كل شيء نفسه كسل', 'alles ist gleich', 'الحد يحمي المقارنة'],
-      ['ein Punkt', 'نقطة واحدة تكفي', 'عشر نقاط تضيّع', 'zehn Unterschiede ohne Satz', 'نقطة ثم جملة'],
-      ['die Grenze nennen', 'أين تتوقف المقارنة', 'بلا حد تصبح دعوى', 'der Vergleich gilt für alles', 'الحد لازم']
+      ['Im Gegensatz zu Tunesien ist die Versicherung Pflicht.', 'تقابل نظامين بإطار صريح', 'إطار المقابلة im Gegensatz zu لا mit، وبعده الفعل ثانٍ: ist die Versicherung قبل الفاعل', 'Im Gegensatz mit Tunesien ist die Versicherung Pflicht.', 'المقابلة بـzu: im Gegensatz zu'],
+      ['Nicht alles ist gleich.', 'تنفي التطابق الكامل', 'alles فاعل مفرد بفعل مفرد: alles ist لا sind، والنفي قبل alles', 'Nicht alles sind gleich.', 'مفرد: alles ist'],
+      ['Während die einen sparen, geben die anderen aus.', 'توازن سلوكين متقابلين', 'في جملة während الفعل أخيرًا (sparen)، وفي الرئيسية ينقلب الترتيب: geben die anderen وقسيمة aus تغلق الجملة', 'Während die einen sparen, die anderen geben aus.', 'قلب بعد بينما: geben die anderen'],
+      ['Der Vergleich zeigt große Unterschiede.', 'تعلن نتيجة المقارنة', 'نتيجة المقارنة فروق جمع: große Unterschiede نهاية جمع لا اسم مفرد بعد große', 'Der Vergleich zeigt große Unterschied.', 'جمع: große Unterschiede']
     ],
     [
-      ['Im Vergleich zu Tunesien ist das anders.', 'مقارنة بتونس هذا مختلف', 'Compared to Tunesien ist das anders', 'الإطار Im Vergleich', 'Vergleich'],
-      ['Nicht alles ist gleich.', 'ليس كل شيء متشابهًا', 'Alles ist gleich', 'الحد يحمي المقارنة', 'gleich'],
-      ['Ein Punkt reicht.', 'نقطة واحدة تكفي', 'Zehn Unterschiede ohne Satz', 'نقطة ثم جملة', 'Punkt'],
-      ['Die Grenze ist das Alter.', 'الحد هو العمر', 'Der Vergleich gilt für alles', 'الحد لازم', 'Grenze']
+      ['Im Gegensatz zu Tunesien ist die Versicherung Pflicht.', 'على عكس تونس، التأمين واجب', 'Im Gegensatz mit Tunesien ist die Versicherung Pflicht.', 'مقابلة بإطار zu وقلب: ist die Versicherung', 'Versicherung'],
+      ['Nicht alles ist gleich.', 'ليس كل شيء متطابقًا', 'Nicht alles sind gleich.', 'الحد من التعميم: Nicht alles ist', 'gleich'],
+      ['Während die einen sparen, geben die anderen aus.', 'بينما يدّخر البعض ينفق الآخرون', 'Während die einen sparen, die anderen geben aus.', 'موازنة بـwährend وقسيمة أخيرة: geben … aus', 'aus'],
+      ['Der Vergleich zeigt große Unterschiede.', 'المقارنة تُظهر فروقًا كبيرة', 'Der Vergleich zeigt große Unterschied.', 'نتيجة بجمع: große Unterschiede', 'Unterschiede']
     ],
-    'Im Vergleich zu Tunesien ist das anders. Die Grenze ist das Alter.',
-    'Nicht alles ist gleich.',
-    'Vergleiche morgen mit einer Grenze.',
-    'غدًا قارن مع حد.'),
+    'Im Gegensatz zu Tunesien ist die Versicherung Pflicht.',
+    'Die Grenze ist das Alter.',
+    'Wiederhole morgen die fünf Sätze: Im Gegensatz zu Tunesien ist die Versicherung Pflicht. Nicht alles ist gleich. Während die einen sparen, geben die anderen aus. Der Vergleich zeigt große Unterschiede. Die Grenze ist das Alter.',
+    'غدًا أعد جمل المقارنة الخمس ولاحظ القلب بعد التمهيد وalles ist والقلب بعد während وخبر sein في الرفع.',
+    {
+      factFamilies: ['präposition', 'konjugation', 'wortstellung', 'plural'],
+      imitateNearMiss: 'Versicherungen',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Die Grenze ist das Alter — خبر sein في الرفع، فالحدّ يُسمَّى باسم لا يُوصف بجملة.',
+      orderSentence: 'Im Gegensatz zu Tunesien ist die Versicherung Pflicht.',
+      checkOrderSentence: 'Die Grenze ist das Alter.',
+      orderAr: 'رتّب جملة المقابلة: عبارة Im Gegensatz zu Tunesien أولًا ثم ist في الموضع الثاني قبل die Versicherung.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['العبارة المتقدّمة كاملة في الموضع الأول، والفعل وحيد في الثاني.', 'الفاعل يأتي بعد الفعل عند التقديم: ist die Versicherung.'],
+      writing: {
+        zeigt: 'Vergleich in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تقارن نظامين بحدٍّ: مقابلة بـim Gegensatz zu وقلب، ونفي تطابق بـalles ist، وموازنة بـwährend مع قلب الرئيسية، ونتيجة بجمع Unterschiede، وحدٍّ يُسمّى بخبر sein رفعًا.',
+        hinweise: ['إطار المقارنة بـzu لا mit، والفعل ثانٍ بعد كل تمهيد.', 'لا تعمّم: سمِّ الحدّ (Die Grenze ist …).'],
+        prompt: 'اكتب جمل المقارنة الخمس المستهدفة من الذاكرة مع إطارات المقابلة والقلب والحد المسمّى.',
+        promptDe: 'Im Gegensatz zu Tunesien ist die Versicherung Pflicht. · Nicht alles ist gleich. · Während die einen sparen, geben die anderen aus. · Der Vergleich zeigt große Unterschiede. · Die Grenze ist das Alter.',
+        points: ['Im Gegensatz zu Tunesien ist die Versicherung Pflicht.', 'Nicht alles ist gleich.', 'Während die einen sparen, geben die anderen aus.', 'Der Vergleich zeigt große Unterschiede.', 'Die Grenze ist das Alter.'],
+        minWords: 30,
+        frage: 'اكتب جمل المقارنة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Im Gegensatz zu Tunesien ist die Versicherung Pflicht. Nicht alles ist gleich. Während die einen sparen, geben die anderen aus. Der Vergleich zeigt große Unterschiede. Die Grenze ist das Alter.',
+      summaryDe: 'Im Gegensatz zu Tunesien ist die Versicherung Pflicht. Nicht alles ist gleich. Während die einen sparen, geben die anderen aus. Der Vergleich zeigt große Unterschiede. Die Grenze ist das Alter.',
+      summaryAr: 'مقارنة في خمس جمل: مقابلة بإطار zu والقلب، ونفي تطابق، وموازنة بـwährend، ونتيجة بفروق جمع، وحدٍّ مسمّى بخبر رفع.',
+      summaryRecap: 'قارن بحدٍّ مسمى أولًا',
+      hwHintDe: '„Compared to“ ist Englisch: Deutsch sagt „im Vergleich zu“. Die Beteiligung von den Bürgern zeigt: Ohne genannte Grenze bleibt jeder Vergleich eine Behauptung.'
+    }),
 
   U('b1-u5-l4', 'B1', 'مشكلة عمل', 'Arbeitsproblem', 'pruefstrategie',
     'Am Ende schlägst du eine Lösung vor',
