@@ -15660,6 +15660,127 @@ console.log('\n— P3.2 lexical layer —\n');
       checksG1[4].frage.optionen.some(o => o.text === targetsG1[4]) &&
       checksG1[4].frage.optionen.some(o => o.text === 'Ich bin die Termine verantwortlich.') &&
       Object.values(checksG1[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
+  const lessonG2 = win.DW_LESSONS['b1-u7-l2'];
+  const rowG2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonG2.id);
+  const byWordG2 = Object.fromEntries(lessonG2.wortschatz.map(it => [it.de, it]));
+  const tricksG2 = lessonG2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsG2 = [
+    'Wir fahren an die Küste.',
+    'Das Boot liegt am Ufer.',
+    'Die Zuschauer warten auf den Anfang.',
+    'Ich winke dem Fahrer.',
+    'Der Zug steht am Perron zwei.'
+  ];
+  t('Corpus lesson b1-u7-l2 precisely scopes five on-the-road moves taking direction with an plus accusative, position with an plus dative, fixed warten auf, a dative person after winken and a static train am Perron',
+    lessonG2.title.de === 'Unterwegs: an die Küste und am Ufer' &&
+      lessonG2.title.ar === 'في الطريق: an die Küste وam Ufer' &&
+      rowG2.title.de === lessonG2.title.de && rowG2.title.ar === lessonG2.title.ar &&
+      rowG2.theme === 'المرور' &&
+      rowG2.grammar.item === 'an die Küste · am Ufer · warten auf · winken dem Fahrer · am Perron' &&
+      rowG2.grammar.method === 'explicit' && lessonG2.schritte.length === 36 && lessonG2.wortschatz.length === 40 &&
+      lessonG2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonG2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsG2[i]) &&
+      lessonG2.schritte[0].zeigt.de === 'Am Ende beschreibst du Wege und Orte unterwegs mit an, auf und dem Dativ — in fünf Sätzen' &&
+      lessonG2.schritte.find(s => s.id === 's20').zeigt.de === targetsG2[4]);
+
+  const expectedWordsG2 = [
+    'das Benzin', 'die Bremse', 'bremsen', 'die Einbahnstraße', 'die Fahrbahn', 'das Fahrzeug',
+    'der Führerausweis', 'der Fußgänger', 'die Fußgängerzone', 'die Geschwindigkeit', 'die Geschwindigkeitsbeschränkung', 'der Hauptbahnhof',
+    'hupen', 'das Kraftfahrzeug', 'der Laster', 'das Motorrad', 'der Notausgang', 'parkieren',
+    'der Perron', 'der Radfahrer', 'der Stau', 'die Tankstelle', 'die Tram', 'überholen',
+    'die Umleitung', 'winken', 'die Eisenbahn', 'der Speisewagen', 'das Boot', 'das Kennzeichen',
+    'der Dieb', 'die Zeugin', 'die Strafe', 'strafbar', 'der Alarm', 'schauen',
+    'zuschauen', 'der Zuschauer', 'springen', 'die Kiste'
+  ];
+  const errorsG2 = lessonG2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u7-l2 reviews all 40 entries and three bounded mnemonics without twenty-one manufactured appendages and without branding uncontracted von dem or in dem or the particle-free Perron claim as errors',
+    Object.keys(byWordG2).join(' | ') === expectedWordsG2.join(' | ') &&
+      lessonG2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonG2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordG2['das Benzin'].err === 'Das Benzin hat teurer geworden.' &&
+      byWordG2['der Hauptbahnhof'].err === 'Der Zug fährt vom Hauptbahnhof an.' &&
+      byWordG2['das Boot'].err === 'Das Boot liegt an das Ufer.' &&
+      byWordG2['hupen'].err === 'Hinter mich hupt jemand.' &&
+      byWordG2['der Dieb'].err === 'Der Dieb wurde fangen.' &&
+      !['Das Benzin ist teurer geworden es.', 'In der Einbahnstraße darf man nicht wenden auf.',
+        'Die Fahrbahn ist nass gemacht.', 'Den Führerausweis muss man dabei haben es.',
+        'In der Fußgängerzone fahren keine Autos auf.', 'Die Geschwindigkeit war zu hoch gemacht.',
+        'Der Zug fährt von dem Hauptbahnhof ab.', 'Hinter mir hupt jemand auf.',
+        'Kraftfahrzeuge dürfen hier nicht halten es.', 'Das Motorrad parkt in dem Rand.',
+        'Der Notausgang liegt hinten es.', 'Hier darf man nicht parkieren lassen.',
+        'Der Zug steht auf Perron zwei.', 'Im Stau steht man lange auf.',
+        'Wegen der Baustelle gilt eine Umleitung es.', 'Im Speisewagen trinken wir Kaffee auf.',
+        'Das Boot liegt in dem Ufer.', 'Die Strafe ist hoch gemacht.',
+        'Das ist strafbar gemacht.', 'Der Alarm läutete umsonst auf.',
+        'Die Kiste steht in dem Flur auf.']
+        .some(x => errorsG2.includes(x)) &&
+      tricksG2.length === 3 && tricksG2[0].wie.includes('Das Boot liegt am Ufer.') &&
+      tricksG2[1].wie.includes('Ich winke dem Fahrer.') &&
+      tricksG2[2].wie.includes('am Perron'));
+
+  const wordClozeAG2 = lessonG2.schritte.find(s => s.id === 's09');
+  const wordClozeBG2 = lessonG2.schritte.find(s => s.id === 's13');
+  const wordClozeCG2 = lessonG2.schritte.find(s => s.id === 's17');
+  const imitateG2 = lessonG2.schritte.find(s => s.id === 's19');
+  const drillG2 = lessonG2.schritte.find(s => s.id === 's23');
+  const orderG2 = lessonG2.schritte.find(s => s.id === 's24');
+  const writingG2 = lessonG2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingG2 = lessonG2.schritte.find(s => s.phase === 'Produktion');
+  const summaryG2 = lessonG2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkG2 = lessonG2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u7-l2 aligns five strict learning clozes, sound fahren order fields and a 26-word five-target production',
+    wordClozeAG2.frage.zeigt === 'Das ____ steht vor dem Haus.' && wordClozeAG2.frage.antworten.join(' ') === 'Fahrzeug' &&
+      wordClozeAG2.frage.nearMiss.Fahrzeuge && !win.DW.renderers.judgeCloze(wordClozeAG2.frage, 'Fahrzeuge').ok &&
+      wordClozeBG2.frage.zeigt === 'Die ____ ist heute zu.' && wordClozeBG2.frage.antworten.join(' ') === 'Tankstelle' &&
+      wordClozeBG2.frage.nearMiss.Tankstellen && !win.DW.renderers.judgeCloze(wordClozeBG2.frage, 'Tankstellen').ok &&
+      wordClozeCG2.frage.zeigt === 'Die ____ warten auf den Anfang.' && wordClozeCG2.frage.antworten.join(' ') === 'Zuschauer' &&
+      wordClozeCG2.frage.nearMiss.Zuschauern && !win.DW.renderers.judgeCloze(wordClozeCG2.frage, 'Zuschauern').ok &&
+      imitateG2.zeigt.de === 'Wir fahren an ____ Küste.' && imitateG2.frage.antworten.join(' ') === 'die' &&
+      imitateG2.frage.nearMiss.der && !win.DW.renderers.judgeCloze(imitateG2.frage, 'der').ok &&
+      drillG2.frage.zeigt === 'Die Kinder ____ beim Bau zu.' && drillG2.frage.antworten.join(' ') === 'schauen' &&
+      drillG2.frage.nearMiss.zuschauen && !win.DW.renderers.judgeCloze(drillG2.frage, 'zuschauen').ok &&
+      lessonG2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderG2.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderG2.frage.correct.join(' ') === targetsG2[0] && orderG2.frage.finite === 'fahren' && orderG2.frage.verbFirst === false &&
+      orderG2.frage.fields.vorfeld.join(' ') === 'Wir' && orderG2.frage.fields.lsk.join(' ') === 'fahren' &&
+      orderG2.frage.fields.mittelfeld.join(' ') === 'an die Küste.' &&
+      win.DW.order.score(orderG2.frage, orderG2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderG2.frage, ['Wir', 'an', 'fahren', 'die', 'Küste.']).credit < 1 &&
+      writingG2.frage.points.join(' | ') === targetsG2.join(' | ') && writingG2.frage.minWords === 26 &&
+      targetsG2.join(' ').split(/\s+/).length === 26 &&
+      targetsG2.every(x => [writingG2.frage.promptDe, summaryG2.zeigt.de, homeworkG2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsG2.every(x => norm(speakingG2.erklaerung).includes(norm(x))) &&
+      (homeworkG2.hinweise || []).join(' ').includes('Richtung fragt Wohin'));
+
+  const checksG2 = lessonG2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckG2 = checksG2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckG2 = checksG2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u7-l2 makes 80 percent four of five, independently checking dative winken, the split schauen and warten order, static hinter mir and the static am Perron',
+    checksG2.length === 5 && checksG2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksG2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksG2.every(s => /^cap\.b1-u7-l2\.s\d+$/.test(s.frage.prereq || '')) && checksG2.every(s => !s.hinweise) &&
+      checksG2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u7-l2.s07 | cap.b1-u7-l2.s23 | cap.b1-u7-l2.s24 | cap.b1-u7-l2.s11 | cap.b1-u7-l2.s20' &&
+      new Set(checksG2.map(s => s.frage.prereq)).size === 5 &&
+      checksG2[0].frage.optionen.some(o => o.text === targetsG2[3]) &&
+      checksG2[0].frage.optionen.some(o => o.text === 'Ich winke auf den Fahrer.') &&
+      Object.values(checksG2[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckG2.frage.zeigt === 'Die Kinder ____ beim Bau zu.' &&
+      clozeCheckG2.frage.antworten.join(' ') === 'schauen' && clozeCheckG2.frage.nearMiss.zuschauen &&
+      !win.DW.renderers.judgeCloze(clozeCheckG2.frage, 'zuschauen').ok &&
+      orderCheckG2.frage.correct.join(' ') === targetsG2[2] && orderCheckG2.frage.finite === 'warten' &&
+      orderCheckG2.frage.fields.vorfeld.join(' ') === 'Die Zuschauer' && orderCheckG2.frage.fields.lsk.join(' ') === 'warten' &&
+      orderCheckG2.frage.fields.mittelfeld.join(' ') === 'auf den Anfang.' &&
+      win.DW.order.score(orderCheckG2.frage, orderCheckG2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckG2.frage, ['Die', 'warten', 'Zuschauer', 'auf', 'den', 'Anfang.']).credit < 1 &&
+      checksG2[3].frage.optionen.some(o => o.text === 'Hinter mir hupt jemand.') &&
+      checksG2[3].frage.optionen.some(o => o.text === 'Hinter mich hupt jemand.') &&
+      Object.values(checksG2[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksG2[4].frage.optionen.some(o => o.text === targetsG2[4]) &&
+      checksG2[4].frage.optionen.some(o => o.text === 'Der Zug steht an den Perron zwei.') &&
+      Object.values(checksG2[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

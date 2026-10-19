@@ -2146,25 +2146,50 @@ module.exports = [
       hwHintDe: 'Trennbare Verben schieben ihre Vorsilbe ans Satzende: Die Firma bildet jedes Jahr zwei Lehrlinge aus. Verben wie besprechen und vertreten nehmen ihr Objekt direkt, sich beteiligen steht fest mit an und Dativ, und nach verantwortlich folgt für mit Akkusativ.'
     }),
 
-  U('b1-u7-l2', 'B1', 'في الطريق', 'Unterwegs', 'präposition',
-    'Am Ende beschreibst du einen Weg mit den richtigen Präpositionen',
-    'في النهاية تصف طريقًا بحروف الجر الصحيحة.',
+  U('b1-u7-l2', 'B1', 'في الطريق: an die Küste وam Ufer', 'Unterwegs: an die Küste und am Ufer', 'präposition',
+    'Am Ende beschreibst du Wege und Orte unterwegs mit an, auf und dem Dativ — in fünf Sätzen',
+    'في النهاية تصف طرقًا وأماكن في الطريق بـan وauf والداتيف في خمس جمل.',
     [
-      ['Wir fahren an die Küste.', 'الجهة إلى: an + Akkusativ', 'Richtung mit Akkusativ', 'Wir fahren an der Küste.', 'الجهة die Küste'],
-      ['Das Boot liegt am Ufer.', 'الموضع: an + Dativ', 'Ort mit Dativ', 'Das Boot liegt an das Ufer.', 'الموضع dem Ufer'],
-      ['Die Zuschauer warten auf den Anfang.', 'warten auf', 'feste Präposition: auf', 'Die Zuschauer warten den Anfang.', 'warten auf'],
-      ['Der Zug steht am Perron.', 'Perron صيغة سويسرية', 'schweizerisch: Perron statt Bahnsteig', 'Der Zug steht auf Perron.', 'am Perron']
+      ['Wir fahren an die Küste.', 'تحدّد جهة سفر إلى الساحل', 'الجهة تسأل Wohin فتأخذ an مع النصب: an die Küste', 'Wir fahren an der Küste.', 'الجهة: an die'],
+      ['Das Boot liegt am Ufer.', 'تحدّد موضع قارب عند الشاطئ', 'الموضع يسأل Wo فيأخذ an مع الداتيف مدمجة: am Ufer', 'Das Boot liegt an das Ufer.', 'الموضع: am'],
+      ['Die Zuschauer warten auf den Anfang.', 'تقول إن المشاهدين ينتظرون البداية', 'warten يثبت مع auf والمفعول: warten auf den Anfang', 'Die Zuschauer warten den Anfang.', 'warten auf'],
+      ['Ich winke dem Fahrer.', 'تلوّح لسائق', 'winken يأخذ الشخص بالداتيف بلا حرف جر: winke dem Fahrer', 'Ich winke auf den Fahrer.', 'winken + داتيف']
     ],
     [
-      ['Wir fahren an die Küste.', 'نسافر إلى الساحل', 'Wir fahren an der Küste.', 'الجهة an die.', 'an die'],
-      ['Das Boot liegt am Ufer.', 'القارب على الشاطئ', 'Das Boot liegt an das Ufer.', 'الموضع am.', 'am Ufer'],
-      ['Ich winke dem Fahrer.', 'ألوّح للسائق', 'Ich winke auf den Fahrer.', 'winken + داتيف.', 'dem Fahrer'],
-      ['Er bremst vor der Kreuzung.', 'يفرمل قبل التقاطع', 'Er bremst auf die Kreuzung.', 'bremsen بلا حرف.', 'bremst']
+      ['Wir fahren an die Küste.', 'نسافر إلى الساحل', 'Wir fahren an der Küste.', 'الجهة Wohin مع النصب: an die.', 'die'],
+      ['Das Boot liegt am Ufer.', 'القارب راسٍ عند الشاطئ', 'Das Boot liegt an das Ufer.', 'الموضع Wo مع الداتيف: am.', 'am'],
+      ['Die Zuschauer warten auf den Anfang.', 'المشاهدون ينتظرون البداية', 'Die Zuschauer warten den Anfang.', 'warten auf ثابتة مع الفعل.', 'auf'],
+      ['Ich winke dem Fahrer.', 'ألوّح للسائق', 'Ich winke auf den Fahrer.', 'winken + داتيف بلا حرف.', 'dem']
     ],
     'Wir fahren an die Küste. Das Boot liegt am Ufer.',
-    'Der Radfahrer überholt mich.',
-    'Beschreibe morgen deinen Weg zur Arbeit.',
-    'غدًا صف طريقك إلى العمل.'),
+    'Der Zug steht am Perron zwei.',
+    'Wiederhole morgen die fünf Sätze: Wir fahren an die Küste. Das Boot liegt am Ufer. Die Zuschauer warten auf den Anfang. Ich winke dem Fahrer. Der Zug steht am Perron zwei.',
+    'غدًا أعد جمل الطريق الخمس واسأل في كل واحدة: Wohin أم Wo؟',
+    {
+      factFamilies: ['kasus', 'kasus', 'präposition', 'kasus'],
+      imitateNearMiss: 'der',
+      transformHint: 'في جملة الختام لفظ سويسري للرصيف: Der Zug steht am Perron zwei — القطار ثابت فالداتيف مع an مدمجة am.',
+      orderSentence: 'Wir fahren an die Küste.',
+      checkOrderSentence: 'Die Zuschauer warten auf den Anfang.',
+      orderAr: 'رتّب جملة الجهة إلى الساحل: الفعل fahren في الموضع الثاني وan die Küste. بعده.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Wir هو الموضع الأول وحده.', 'عبارة الجهة an die Küste. تغلق الجملة بعد الفعل.'],
+      writing: {
+        zeigt: 'Unterwegs in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: جهة بـan والنصب، وموضع بـan والداتيف، وانتظار بـwarten auf، وتلويح بداتيف الشخص، وقطار ثابت عند الرصيف السويسري.',
+        hinweise: ['Wohin يعني النصب: an die.', 'Wo يعني الداتيف: am — وwarten يثبت مع auf.'],
+        prompt: 'اكتب جمل الطريق الخمس المستهدفة من الذاكرة مع الحالة الصحيحة بعد an.',
+        promptDe: 'Wir fahren an die Küste. · Das Boot liegt am Ufer. · Die Zuschauer warten auf den Anfang. · Ich winke dem Fahrer. · Der Zug steht am Perron zwei.',
+        points: ['Wir fahren an die Küste.', 'Das Boot liegt am Ufer.', 'Die Zuschauer warten auf den Anfang.', 'Ich winke dem Fahrer.', 'Der Zug steht am Perron zwei.'],
+        minWords: 26,
+        frage: 'اكتب جمل الطريق الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Wir fahren an die Küste. Das Boot liegt am Ufer. Die Zuschauer warten auf den Anfang. Ich winke dem Fahrer. Der Zug steht am Perron zwei.',
+      summaryDe: 'Wir fahren an die Küste. Das Boot liegt am Ufer. Die Zuschauer warten auf den Anfang. Ich winke dem Fahrer. Der Zug steht am Perron zwei.',
+      summaryAr: 'في الطريق تفرّق الحالة: الجهة Wohin مع an والنصب، والموضع Wo مع an والداتيف (am)، وبعض الأفعال تثبت بحرفها أو بالداتيف.',
+      summaryRecap: 'جهة نصب وموضع داتيف',
+      hwHintDe: 'Richtung fragt Wohin und nimmt den Akkusativ: Wir fahren an die Küste. Ein Ort fragt Wo und nimmt den Dativ: Das Boot liegt am Ufer. Feste Verbindungen wie warten auf lernst du immer zusammen mit ihrem Verb, und der Person winkt man ohne Präposition im Dativ.'
+    }),
 
   U('b1-u7-l3', 'B1', 'البيت والحرفة', 'Haus und Handwerk', 'kasus',
     'Am Ende beschreibst du eine Reparatur im Haus',
