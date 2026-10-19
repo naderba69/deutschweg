@@ -14186,6 +14186,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE3[4].frage.optionen.some(o => o.text === targetsE3[4]) &&
       checksE3[4].frage.optionen.some(o => o.text === 'Die Grenze ist dem Alter.') &&
       Object.values(checksE3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonE4 = win.DW_LESSONS['b1-u5-l4'];
+  const rowE4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE4.id);
+  const byWordE4 = Object.fromEntries(lessonE4.wortschatz.map(it => [it.de, it]));
+  const tricksE4 = lessonE4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE4 = [
+    'Die Belastung ist zu hoch.',
+    'Ich spreche das Problem direkt an.',
+    'So lösen wir den Konflikt.',
+    'Wir brauchen einen Kompromiss.',
+    'Die Vereinbarung gilt ab morgen.'
+  ];
+  t('Corpus lesson b1-u5-l4 precisely scopes five work-problem moves naming a singular overload, addressing the problem with a final separable particle, solving with inversion after So, choosing an accusative compromise and dating an agreement with ab',
+    lessonE4.title.de === 'Arbeitsproblem: Belastung, Gespräch und Kompromiss' &&
+      lessonE4.title.ar === 'مشكلة عمل: العبء والحوار والحل الوسط' &&
+      rowE4.title.de === lessonE4.title.de && rowE4.title.ar === lessonE4.title.ar &&
+      rowE4.theme === 'العمل' &&
+      rowE4.grammar.item === 'die Belastung ist zu hoch · ansprechen mit an · so lösen wir · einen Kompromiss · gilt ab morgen' &&
+      rowE4.grammar.method === 'explicit' && lessonE4.schritte.length === 36 && lessonE4.wortschatz.length === 40 &&
+      lessonE4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE4[i]) &&
+      lessonE4.schritte[0].zeigt.de === 'Am Ende schlägst du zur Belastung einen Kompromiss vor und sicherst ihn in fünf Sätzen' &&
+      lessonE4.schritte.find(s => s.id === 's20').zeigt.de === targetsE4[4]);
+
+  const expectedWordsE4 = [
+    'das Problem', 'der Konflikt', 'die Auseinandersetzung', 'die Spannung', 'der Streit', 'sich streiten',
+    'der Kollege', 'die Kollegin', 'der Vorgesetzte', 'die Abteilung', 'die Besprechung',
+    'die Sitzung', 'die Aufgabe', 'die Zuständigkeit', 'die Überstunde', 'die Belastung',
+    'der Druck', 'das Burnout', 'die Kündigung', 'kündigen', 'die Lösung',
+    'lösen', 'das Gespräch suchen', 'ansprechen', 'die Rückmeldung', 'die Kritik',
+    'der Vorwurf', 'die Schuld', 'sich entschuldigen', 'die Vereinbarung',
+    'der Kompromiss', 'die Mediation', 'die Teamarbeit', 'das Vertrauen',
+    'der Respekt', 'die Rücksicht', 'der Ausgleich', 'die Anerkennung',
+    'die Work-Life-Balance', 'das Betriebsklima'
+  ];
+  const errorsE4 = lessonE4.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l4 reviews all 40 entries and three bounded mnemonics without twenty-one manufactured appendages and with a corrected masculine der-Konflikt lemma and an honest comparative note',
+    Object.keys(byWordE4).join(' | ') === expectedWordsE4.join(' | ') &&
+      lessonE4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE4['das Konflikt'] === undefined &&
+      byWordE4['der Konflikt'].ex === 'Der Konflikt belastet das Team.' &&
+      byWordE4['die Anerkennung'].why.includes('so groß wie') &&
+      byWordE4['ansprechen'].err === 'Spreche das Problem direkt an.' &&
+      byWordE4['der Kollege'].err === 'Ein Kollegen beschwert sich ständig.' &&
+      byWordE4['die Krankenversicherungspflicht'] === undefined &&
+      byWordE4['die Besprechung'].err === 'Die Besprechung dauert für eine Stunde.' &&
+      !['Das Problem muss man ansprechen es.', 'Die Auseinandersetzung war unnötig gemacht.',
+        'Die Spannung im Team wächst es.', 'Der Streit eskaliert schnell es.',
+        'Ein Kollege beschwert sich ständig es.', 'Die Abteilung arbeitet unter Druck es.',
+        'Die Überstunden häufen sich es.', 'Die Belastung ist zu hoch gemacht.',
+        'Der Druck nimmt zu es.', 'Burnout ist ein ernstes Thema gemacht.',
+        'Die Kündigung war die letzte Lösung gemacht.', 'Sprich das Problem direkt du an.',
+        'Kritik sollte sachlich bleiben gemacht.', 'Der Vorwurf war nicht fair gemacht.',
+        'Eine Mediation kann helfen es.', 'Teamarbeit spart Zeit es.',
+        'Vertrauen muss man aufbauen es.', 'Respekt ist die Grundlage gemacht.',
+        'Der Ausgleich zwischen Arbeit und Familie fehlt es.', 'Work-Life-Balance ist kein Luxus es.',
+        'Das Betriebsklima ist wichtig gemacht.']
+        .some(x => errorsE4.includes(x)) &&
+      tricksE4.length === 3 && tricksE4[0].wie.includes('Sprich das Problem direkt an') &&
+      tricksE4[1].wie.includes('bei mir für den Fehler') &&
+      tricksE4[2].wie.includes('die Überstunden häufen sich'));
+
+  const wordClozeAE4 = lessonE4.schritte.find(s => s.id === 's09');
+  const wordClozeBE4 = lessonE4.schritte.find(s => s.id === 's13');
+  const wordClozeCE4 = lessonE4.schritte.find(s => s.id === 's17');
+  const imitateE4 = lessonE4.schritte.find(s => s.id === 's19');
+  const drillE4 = lessonE4.schritte.find(s => s.id === 's23');
+  const orderE4 = lessonE4.schritte.find(s => s.id === 's24');
+  const writingE4 = lessonE4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE4 = lessonE4.schritte.find(s => s.phase === 'Produktion');
+  const summaryE4 = lessonE4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE4 = lessonE4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l4 aligns five strict learning clozes, sound ansprechen order fields and a 25-word five-target production',
+    wordClozeAE4.frage.zeigt === 'Sie ____ sich über die Aufgaben.' && wordClozeAE4.frage.antworten.join(' ') === 'streiten' &&
+      wordClozeAE4.frage.nearMiss.streitet && !win.DW.renderers.judgeCloze(wordClozeAE4.frage, 'streitet').ok &&
+      wordClozeBE4.frage.zeigt === 'So ____ wir den Konflikt.' && wordClozeBE4.frage.antworten.join(' ') === 'lösen' &&
+      wordClozeBE4.frage.nearMiss.löst && !win.DW.renderers.judgeCloze(wordClozeBE4.frage, 'löst').ok &&
+      wordClozeCE4.frage.zeigt === '____ motiviert mehr als Geld.' && wordClozeCE4.frage.antworten.join(' ') === 'Anerkennung' &&
+      wordClozeCE4.frage.nearMiss.Anerkennungen && !win.DW.renderers.judgeCloze(wordClozeCE4.frage, 'Anerkennungen').ok &&
+      imitateE4.zeigt.de === 'Die ____ ist zu hoch.' && imitateE4.frage.antworten.join(' ') === 'Belastung' &&
+      imitateE4.frage.nearMiss.Belastungen && !win.DW.renderers.judgeCloze(imitateE4.frage, 'Belastungen').ok &&
+      drillE4.frage.zeigt === 'Die ____ sind unklar verteilt.' && drillE4.frage.antworten.join(' ') === 'Aufgaben' &&
+      drillE4.frage.nearMiss.Aufgabe && !win.DW.renderers.judgeCloze(drillE4.frage, 'Aufgabe').ok &&
+      lessonE4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE4.frage.correct.join(' ') === targetsE4[1] && orderE4.frage.finite === 'spreche' && orderE4.frage.verbFirst === false &&
+      orderE4.frage.fields.vorfeld.join(' ') === 'Ich' && orderE4.frage.fields.lsk.join(' ') === 'spreche' &&
+      orderE4.frage.fields.mittelfeld.join(' ') === 'das Problem direkt an.' &&
+      win.DW.order.score(orderE4.frage, orderE4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE4.frage, ['Ich', 'das', 'spreche', 'Problem', 'an.', 'direkt']).credit < 1 &&
+      writingE4.frage.points.join(' | ') === targetsE4.join(' | ') && writingE4.frage.minWords === 25 &&
+      targetsE4.join(' ').split(/\s+/).length === 25 &&
+      targetsE4.every(x => [writingE4.frage.promptDe, summaryE4.zeigt.de, homeworkE4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE4.every(x => norm(speakingE4.erklaerung).includes(norm(x))) &&
+      (homeworkE4.hinweise || []).join(' ').includes('„I suggest“ ist Englisch') &&
+      (homeworkE4.hinweise || []).join(' ').includes('schlagen wir etwas vor'));
+
+  const checksE4 = lessonE4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE4 = checksE4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE4 = checksE4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l4 makes 80 percent four of five, independently checking accusative compromise, distributed-task plural and overload order, Rücksicht-auf and ab-morgen closure',
+    checksE4.length === 5 && checksE4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE4.every(s => /^cap\.b1-u5-l4\.s\d+$/.test(s.frage.prereq || '')) && checksE4.every(s => !s.hinweise) &&
+      checksE4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l4.s07 | cap.b1-u5-l4.s23 | cap.b1-u5-l4.s24 | cap.b1-u5-l4.s16 | cap.b1-u5-l4.s20' &&
+      new Set(checksE4.map(s => s.frage.prereq)).size === 5 &&
+      checksE4[0].frage.optionen.some(o => o.text === targetsE4[3]) &&
+      checksE4[0].frage.optionen.some(o => o.text === 'Wir brauchen ein Kompromiss.') &&
+      Object.values(checksE4[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckE4.frage.zeigt === 'Die ____ sind unklar verteilt.' &&
+      clozeCheckE4.frage.antworten.join(' ') === 'Aufgaben' && clozeCheckE4.frage.nearMiss.Aufgabe &&
+      !win.DW.renderers.judgeCloze(clozeCheckE4.frage, 'Aufgabe').ok &&
+      orderCheckE4.frage.correct.join(' ') === targetsE4[0] && orderCheckE4.frage.finite === 'ist' &&
+      orderCheckE4.frage.fields.vorfeld.join(' ') === 'Die Belastung' && orderCheckE4.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckE4.frage.fields.mittelfeld.join(' ') === 'zu hoch.' &&
+      win.DW.order.score(orderCheckE4.frage, orderCheckE4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE4.frage, ['Die', 'zu', 'ist', 'hoch.', 'Belastung']).credit < 1 &&
+      checksE4[3].frage.optionen.some(o => o.text === 'Nimm Rücksicht auf die Kollegen!') &&
+      checksE4[3].frage.optionen.some(o => o.text === 'Nimm Rücksicht für die Kollegen!') &&
+      Object.values(checksE4[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksE4[4].frage.optionen.some(o => o.text === targetsE4[4]) &&
+      checksE4[4].frage.optionen.some(o => o.text === 'Die Vereinbarung gilt von morgen.') &&
+      Object.values(checksE4[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

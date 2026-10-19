@@ -1592,25 +1592,50 @@ module.exports = [
       hwHintDe: '„Compared to“ ist Englisch: Deutsch sagt „im Vergleich zu“. Die Beteiligung von den Bürgern zeigt: Ohne genannte Grenze bleibt jeder Vergleich eine Behauptung.'
     }),
 
-  U('b1-u5-l4', 'B1', 'مشكلة عمل', 'Arbeitsproblem', 'pruefstrategie',
-    'Am Ende schlägst du eine Lösung vor',
-    'في النهاية تقترح حلًا.',
+  U('b1-u5-l4', 'B1', 'مشكلة عمل: العبء والحوار والحل الوسط', 'Arbeitsproblem: Belastung, Gespräch und Kompromiss', 'pruefstrategie',
+    'Am Ende schlägst du zur Belastung einen Kompromiss vor und sicherst ihn in fünf Sätzen',
+    'في النهاية تقترح للعبء حلًّا وسطًا وتثبّته في خمس جمل.',
     [
-      ['das Problem zuerst', 'المشكلة قبل الحل', 'الحل بلا مشكلة فراغ', 'nur die Lösung ohne Problem', 'المشكلة أولًا'],
-      ['ich schlage vor', 'الاقتراح schlagen vor', 'لا I suggest خليط', 'ich suggest eine Lösung', 'suggest إنجليزية'],
-      ['die Verantwortung', 'المسؤولية تُسمّى', 'لا إلقاء بلا جملة', 'das ist nicht meine Schuld nur so', 'المسؤولية جملة'],
-      ['eine Alternative', 'بديل واحد يكفي', 'ثلاثة بلا قرار تضيّع', 'drei Ideen ohne Wahl', 'بديل ثم قرار']
+      ['Die Belastung ist zu hoch.', 'تسمّي العبء الزائد', 'العبء فاعل مفرد بفعل مفرد: Die Belastung ist لا sind، والوصف zu hoch ثابت', 'Die Belastung sind zu hoch.', 'مفرد: Die Belastung ist'],
+      ['Ich spreche das Problem direkt an.', 'تخاطب المشكلة مباشرة', 'ansprechen منفصل: spreche … an وقسيمته an تغلق الجملة لا تلتصق بالفعل في المقدمة', 'Ich anspreche das Problem direkt.', 'منفصل أخيرًا: spreche … an'],
+      ['So lösen wir den Konflikt.', 'تعلن طريق الحل', 'بعد So الفعل ثانٍ والفاعل بعده: lösen wir لا wir lösen، والمفعول den Konflikt مذكر منصوب', 'So wir lösen den Konflikt.', 'قلب بعد So: lösen wir'],
+      ['Wir brauchen einen Kompromiss.', 'تختار الحل الوسط', 'المفعول مذكر منصوب: einen Kompromiss لا صورة رفع ein بعد brauchen', 'Wir brauchen ein Kompromiss.', 'نصب مذكر: einen Kompromiss']
     ],
     [
-      ['Das Problem ist die Frist.', 'المشكلة هي الأجل', 'Nur die Lösung ohne Problem', 'المشكلة أولًا', 'Problem'],
-      ['Ich schlage vor, dass wir warten.', 'أقترح أن ننتظر', 'Ich suggest, dass wir warten', 'الاقتراح schlage vor', 'schlage'],
-      ['Ich übernehme die Verantwortung.', 'أتحمل المسؤولية', 'Das ist nicht meine Schuld nur so', 'المسؤولية جملة', 'Verantwortung'],
-      ['Wir brauchen eine Alternative.', 'نحتاج بديلًا', 'Drei Ideen ohne Wahl', 'بديل ثم قرار', 'Alternative']
+      ['Die Belastung ist zu hoch.', 'العبء عالٍ جدًّا', 'Die Belastung sind zu hoch.', 'تشخيص الحمل: Die Belastung ist', 'Belastung'],
+      ['Ich spreche das Problem direkt an.', 'أخاطب المشكلة مباشرة', 'Ich anspreche das Problem direkt.', 'معالجة مباشرة منفصلة: spreche … an', 'Problem'],
+      ['So lösen wir den Konflikt.', 'هكذا نحلّ النزاع', 'So wir lösen den Konflikt.', 'حل بقلب: lösen wir', 'lösen'],
+      ['Wir brauchen einen Kompromiss.', 'نحتاج حلًّا وسطًا', 'Wir brauchen ein Kompromiss.', 'اختيار بنصب: einen Kompromiss', 'Kompromiss']
     ],
-    'Das Problem ist die Frist. Ich schlage vor, dass wir warten.',
-    'Ich schlage vor, dass wir warten.',
-    'Nenne morgen Problem und Lösung.',
-    'غدًا سمِّ مشكلة وحلًا.'),
+    'Die Belastung ist zu hoch.',
+    'Die Vereinbarung gilt ab morgen.',
+    'Wiederhole morgen die fünf Sätze: Die Belastung ist zu hoch. Ich spreche das Problem direkt an. So lösen wir den Konflikt. Wir brauchen einen Kompromiss. Die Vereinbarung gilt ab morgen.',
+    'غدًا أعد جمل مشكلة العمل الخمس ولاحظ مفرد العبء وقسيمة an والقلب بعد So ونصب الحل الوسط وab morgen.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'wortstellung', 'kasus'],
+      imitateNearMiss: 'Belastungen',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Die Vereinbarung gilt ab morgen — بدء السريان بـab لا von وحدها.',
+      orderSentence: 'Ich spreche das Problem direkt an.',
+      checkOrderSentence: 'Die Belastung ist zu hoch.',
+      orderAr: 'رتّب جملة المخاطبة: Ich أولًا ثم spreche في الموضع الثاني وقسيمة an في النهاية.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفعل المصرّف spreche وحيد في الموضع الثاني بعد Ich.', 'قسيمة ansprechen تغلق الجملة: spreche … an.'],
+      writing: {
+        zeigt: 'Arbeitsproblem in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تدير مشكلة عمل: عبء بفعل مفرد، ومخاطبة مباشرة بقسيمة أخيرة، وحلًّا بقلب بعد So، وحلًّا وسطًا بنصب مذكر، واتفاقًا يسري ab morgen.',
+        hinweise: ['عيّن المشكلة قبل الحل واختر حلًّا وسطًا واحدًا.', 'قسيمة an أخيرًا وبدء السريان ab لا von.'],
+        prompt: 'اكتب جمل مشكلة العمل الخمس المستهدفة من الذاكرة مع القسيمة والقلب والنصب.',
+        promptDe: 'Die Belastung ist zu hoch. · Ich spreche das Problem direkt an. · So lösen wir den Konflikt. · Wir brauchen einen Kompromiss. · Die Vereinbarung gilt ab morgen.',
+        points: ['Die Belastung ist zu hoch.', 'Ich spreche das Problem direkt an.', 'So lösen wir den Konflikt.', 'Wir brauchen einen Kompromiss.', 'Die Vereinbarung gilt ab morgen.'],
+        minWords: 25,
+        frage: 'اكتب جمل مشكلة العمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Belastung ist zu hoch. Ich spreche das Problem direkt an. So lösen wir den Konflikt. Wir brauchen einen Kompromiss. Die Vereinbarung gilt ab morgen.',
+      summaryDe: 'Die Belastung ist zu hoch. Ich spreche das Problem direkt an. So lösen wir den Konflikt. Wir brauchen einen Kompromiss. Die Vereinbarung gilt ab morgen.',
+      summaryAr: 'مشكلة عمل في خمس جمل: عبء عالٍ بفعل مفرد، ومخاطبة بقسيمة، وحل بقلب، وحلّ وسط بنصب، واتفاق يسري من الغد.',
+      summaryRecap: 'مشكلة فحوار فحلّ أولًا',
+      hwHintDe: '„I suggest“ ist Englisch: Auf Deutsch schlagen wir etwas vor — „Ich schlage vor, dass wir warten“ trägt weiter als jeder Vorwurf.'
+    }),
 
   U('b1-u5-l5', 'B1', 'صحة عامة', 'Gesundheitssystem', 'lexik-kollokation',
     'Am Ende sagst du Termin und Versicherung in einem Zusammenhang',

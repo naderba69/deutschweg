@@ -136,7 +136,7 @@
     ['نص الرأي: الواقعة والتقييم والشاهد', 'Kommentar: Tatsache, Wertung und Beleg', 'القراءة', 'das ist eine Tatsache · eine Wertung · der Ton bleibt sachlich · ein Beispiel macht es greifbar · ohne Beleg', 'explicit'],
     ['الشرط المهذب: الطلب والسؤال والشكر', 'Höfliche Bedingung: Bitte, Frage und Dank', 'الأدب', 'ich hätte eine Bitte · könnten Sie · dürfte ich ohne zu · falls mit Inversion · wäre Ihnen dankbar', 'explicit'],
     ['المقارنة: المقابلة والفرق والحد', 'Vergleich: Gegensatz, Unterschied und Grenze', 'المجتمع', 'im Gegensatz zu + Inversion · nicht alles ist gleich · während mit Inversion · große Unterschiede · die Grenze ist', 'explicit'],
-    ['مشكلة عمل', 'Arbeitsproblem', 'العمل', 'اقتراح حل', 'explicit'],
+    ['مشكلة عمل: العبء والحوار والحل الوسط', 'Arbeitsproblem: Belastung, Gespräch und Kompromiss', 'العمل', 'die Belastung ist zu hoch · ansprechen mit an · so lösen wir · einen Kompromiss · gilt ab morgen', 'explicit'],
     ['صحة عامة', 'Gesundheitssystem', 'الصحة', 'موعد وتأمين بجملة', 'explicit'],
     ['مراجعة B1', 'Wiederholung B1', 'المراجعة', 'جمع الوصلات', 'explicit'],
     ['شكل امتحان B1', 'Prüfungsform B1', 'شكل الامتحان', 'شكل Goethe B1 لا محاكاة', 'explicit'],
