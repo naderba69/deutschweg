@@ -1097,25 +1097,50 @@ module.exports = [
       hwHintDe: 'Nicht „ich can das leisten“, nicht „es ist worth“ und nicht „not only“ wörtlich tragen, und der Beleg ist kein „Receipt“: sich etwas leisten, es lohnt sich und nicht nur, sondern auch — so heißt es auf Deutsch.'
     }),
 
-  U('b1-u4-l1', 'B1', 'التطوع', 'Ehrenamt', 'lexik-kollokation',
-    'Am Ende beschreibst du eine Erfahrung',
-    'في النهاية تصف تجربة.',
+  U('b1-u4-l1', 'B1', 'التطوع: الالتزام والمشاركة والمساعدة', 'Ehrenamt: sich engagieren, teilnehmen und helfen', 'lexik-kollokation',
+    'Am Ende stellst du deine Freiwilligenarbeit in fünf Sätzen vor: Engagement, Teilnahme, Hilfe, Sammeln und Dauer',
+    'في النهاية تقدّم عملك التطوعي في خمس جمل: الالتزام بحرفه، والمشاركة بمنفصلها، والمساعدة بداتيفها، والجمع بغايته، ومدة جارية منذ بدئها.',
     [
-      ['ehrenamtlich', 'التطوع ehrenamtlich', 'لا volunteer كصفة وحيدة', 'ich arbeite volunteer', 'volunteer إنجليزية'],
-      ['der Verein', 'الجمعية Verein', 'لا club ككلمة وحيدة هنا', 'der Club als einzige Form', 'الدرس Verein'],
-      ['aus eigener Erfahrung', 'من التجربة إطار', 'لا from my experience خليط', 'from meiner Erfahrung', 'from إنجليزية'],
-      ['das habe ich erlebt', 'العام erlebt', 'لا I lived this خليط', 'ich lived das', 'lived إنجليزية']
+      ['Sie engagiert sich für den Tierschutz.', 'تعلن التزام متطوّعة بقضية', 'الفعل انعكاسي بضميره وبحرفه: sich engagieren für + نصب، ولا يصح بلا ضمير الانعكاس', 'Sie engagiert für den Tierschutz.', 'الانعكاس والحرف معًا: engagiert sich für'],
+      ['Ich nehme an dem Kurs teil.', 'تسجّل مشاركتك في نشاط', 'teilnehmen يقترن بحرف وداتيف ورأسه المنفصل أخيرًا: an dem Kurs teilnehmen، لا بمفعول نصب مباشر', 'Ich nehme den Kurs teil.', 'الشيء المشترك فيه: an + داتيف، والجزء المنفصل teil في الختام'],
+      ['Wir helfen den Nachbarn beim Umzug.', 'تمدّ يدًا لجار عمليًا', 'helfen يجرّ متلقّي المساعدة بالداتيف لا النصب: den Nachbarn (جمع الداتيف)', 'Wir helfen die Nachbarn beim Umzug.', 'المساعَد مع helfen دائمًا داتيف: den Nachbarn'],
+      ['Die Initiative sammelt Geld für Kinder.', 'تصف حملة تبرّعات ومستفيديها', 'المستفيد من الجمع بحرف الغاية والمستقبلين: sammeln für + نصب، لا zu', 'Die Initiative sammelt Geld zu Kindern.', 'جمع «من أجل» المستفيدين: für Kinder، لا zu']
     ],
     [
-      ['Ich arbeite ehrenamtlich.', 'أعمل تطوعًا', 'Ich arbeite volunteer', 'التطوع ehrenamtlich', 'ehrenamtlich'],
-      ['Der Verein sucht Hilfe.', 'الجمعية تبحث عن مساعدة', 'Der Club sucht Hilfe als einzige Form', 'الجمعية Verein', 'Verein'],
-      ['Aus eigener Erfahrung sage ich das.', 'أقول هذا من تجربتي', 'From meiner Erfahrung sage ich das', 'الإطار Aus eigener Erfahrung', 'Erfahrung'],
-      ['Das habe ich selbst erlebt.', 'عشت هذا بنفسي', 'Ich lived das selbst', 'التجربة erlebt', 'erlebt']
+      ['Sie engagiert sich für den Tierschutz.', 'هي ملتزمة بحماية الحيوان', 'Sie engagiert für den Tierschutz.', 'الالتزام الانعكاسي بضميره: engagiert sich für', 'sich'],
+      ['Ich nehme an dem Kurs teil.', 'أشارك في الدورة', 'Ich nehme den Kurs teil.', 'المشاركة مبنية: an dem Kurs teil', 'teil'],
+      ['Wir helfen den Nachbarn beim Umzug.', 'نساعد الجيران في الانتقال', 'Wir helfen die Nachbarn beim Umzug.', 'المساعَد داتيف: den Nachbarn', 'den'],
+      ['Die Initiative sammelt Geld für Kinder.', 'المبادرة تجمع المال للأطفال', 'Die Initiative sammelt Geld zu Kindern.', 'غاية الجمع بحرف المستفيدين: für Kinder', 'für']
     ],
-    'Ich arbeite ehrenamtlich. Das habe ich selbst erlebt.',
-    'Aus eigener Erfahrung sage ich das.',
-    'Beschreibe morgen eine Erfahrung in zwei Sätzen.',
-    'غدًا صف تجربة في جملتين.'),
+    'Sie engagiert sich für den Tierschutz.',
+    'Das Projekt läuft seit zwei Jahren.',
+    'Wiederhole morgen die fünf Sätze: Sie engagiert sich für den Tierschutz. Ich nehme an dem Kurs teil. Wir helfen den Nachbarn beim Umzug. Die Initiative sammelt Geld für Kinder. Das Projekt läuft seit zwei Jahren.',
+    'غدًا أعد جمل التطوّع الخمس ولاحظ ضمير الانعكاس وحرفي an وfür وداتيف المساعَد وseit للمدة الجارية.',
+    {
+      factFamilies: ['konjugation', 'präposition', 'kasus', 'präposition'],
+      imitateNearMiss: 'uns',
+      transformHint: 'في جملة الختام مدة مشروع لم تنتهِ بعد: Das Projekt läuft seit zwei Jahren — للمدة التي بدأت وما تزال جارية نستعمل seit مع فعل الحاضر.',
+      orderSentence: 'Wir helfen den Nachbarn beim Umzug.',
+      checkOrderSentence: 'Sie engagiert sich für den Tierschutz.',
+      orderAr: 'رتّب جملة المساعدة: الفاعل أولًا ثم الفعل helfen في الموضع الثاني قبل متلقّي المساعدة بالداتيف.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل المصرّف ثابت في الجملة الرئيسية.', 'متوسط الجملة يحمل متلقّي المساعدة: den Nachbarn.'],
+      writing: {
+        zeigt: 'Meine Freiwilligenarbeit in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تقدّم عملك التطوعي: التزام قضية بضمير وحرف، ومشاركة برأس منفصل، ومساعدة بداتيف، وجمع بحرف غاية، وختام بمدة مشروع جارية.',
+        hinweise: ['كل جملة تُثبت تركيبًا قابلًا للقياس: sich · an dem · den Nachbarn · für · seit.', 'لا تنصب متلقّي helfen ولا تحذف ضمير الالتزام الانعكاسي.'],
+        prompt: 'اكتب جمل التطوّع الخمس المستهدفة من الذاكرة مع ضمير الالتزام وحرفَي المشاركة والغاية وسلامة الداتيف.',
+        promptDe: 'Sie engagiert sich für den Tierschutz. · Ich nehme an dem Kurs teil. · Wir helfen den Nachbarn beim Umzug. · Die Initiative sammelt Geld für Kinder. · Das Projekt läuft seit zwei Jahren.',
+        points: ['Sie engagiert sich für den Tierschutz.', 'Ich nehme an dem Kurs teil.', 'Wir helfen den Nachbarn beim Umzug.', 'Die Initiative sammelt Geld für Kinder.', 'Das Projekt läuft seit zwei Jahren.'],
+        minWords: 30,
+        frage: 'اكتب جمل التطوع الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Sie engagiert sich für den Tierschutz. Ich nehme an dem Kurs teil. Wir helfen den Nachbarn beim Umzug. Die Initiative sammelt Geld für Kinder. Das Projekt läuft seit zwei Jahren.',
+      summaryDe: 'Sie engagiert sich für den Tierschutz. Ich nehme an dem Kurs teil. Wir helfen den Nachbarn beim Umzug. Die Initiative sammelt Geld für Kinder. Das Projekt läuft seit zwei Jahren.',
+      summaryAr: 'التطوّع في خمس جمل: التزام انعكاسي بضمير وحرف للسبب، ومشاركة بـan وداتيف مع رأس منفصل ختامي، ومساعدة تلزم داتيف المتلقّي، وجمع بغاية بحرف für، ومشروع مستمر منذ عامين بـseit.',
+      summaryRecap: 'تطوع موثّق بخمس خطوات',
+      hwHintDe: 'Nicht „I work as a volunteer“, nicht „from my experience“ und nicht „I lived that“ wörtlich ins Deutsche tragen: ehrenamtlich arbeiten, aus eigener Erfahrung sagen und etwas selbst erlebt haben — so sagt man es auf Deutsch.'
+    }),
 
   U('b1-u4-l2', 'B1', 'رحلة معقدة', 'Reiseplanung', 'lexik-kollokation',
     'Am Ende nennst du einen Plan und eine Alternative',

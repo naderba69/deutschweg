@@ -125,7 +125,7 @@
     ['المدينة: الموقع والنقل والحسنات والمساوئ', 'Stadt: Lage, Verkehr, Vorteil und Nachteil', 'الحي والسكن', 'liegen am Stadtrand · alle zehn Minuten ohne Präposition · der Vorteil ist die ruhige Lage · der Nachteil ist die teure Miete · Mietpreise steigen', 'explicit'],
     ['التأمين: العقد والقسط والتبليغ عن الضرر', 'Versicherung: Vertrag, Beitrag und Schadensmeldung', 'المال والتأمين', 'Krankenversicherung ist Pflicht · den Schaden decken/melden ohne Präposition · haften für + Akkusativ · Vertrag läuft bis + Jahr', 'explicit'],
     ['الاستهلاك: مقارنة الأسعار والشراء الذكي', 'Konsum: Preise vergleichen und klug kaufen', 'الشراء', 'Preise sind gestiegen (Perfekt mit sein) · größer als + Nominativ · zehn Prozent Rabatt ohne von · mit Karte zahlen · achten auf + Akkusativ', 'explicit'],
-    ['التطوع', 'Ehrenamt', 'المجتمع', 'وصف تجربة', 'explicit'],
+    ['التطوع: الالتزام والمشاركة والمساعدة', 'Ehrenamt: sich engagieren, teilnehmen und helfen', 'المجتمع', 'sich engagieren für · teilnehmen an + Dativ · helfen + Dativ · sammeln für · seit + Dativ', 'explicit'],
     ['رحلة معقدة', 'Reiseplanung', 'السفر', 'خطة ببدائل', 'explicit'],
     ['تعليل الرأي', 'Meinung begründen', 'الحجاج', 'لأن ومثال', 'explicit'],
     ['التلخيص', 'Zusammenfassung', 'القراءة', 'تلخيص فقرة', 'explicit'],

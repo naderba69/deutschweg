@@ -12847,6 +12847,123 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB8[4].frage.optionen.some(o => o.text === 'Die Verbraucher achten für den Preis.') &&
       Object.values(checksB8[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 
+
+  const lessonD1 = win.DW_LESSONS['b1-u4-l1'];
+  const rowD1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD1.id);
+  const byWordD1 = Object.fromEntries(lessonD1.wortschatz.map(it => [it.de, it]));
+  const tricksD1 = lessonD1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD1 = [
+    'Sie engagiert sich für den Tierschutz.',
+    'Ich nehme an dem Kurs teil.',
+    'Wir helfen den Nachbarn beim Umzug.',
+    'Die Initiative sammelt Geld für Kinder.',
+    'Das Projekt läuft seit zwei Jahren.'
+  ];
+  t('Corpus lesson b1-u4-l1 precisely scopes a volunteering portrait with reflexive engagement, governed participation, dative helping, purpose gathering and the ongoing seit-duration across five targets',
+    lessonD1.title.de === 'Ehrenamt: sich engagieren, teilnehmen und helfen' &&
+      lessonD1.title.ar === 'التطوع: الالتزام والمشاركة والمساعدة' &&
+      rowD1.title.de === lessonD1.title.de && rowD1.title.ar === lessonD1.title.ar &&
+      rowD1.theme === 'المجتمع' &&
+      rowD1.grammar.item === 'sich engagieren für · teilnehmen an + Dativ · helfen + Dativ · sammeln für · seit + Dativ' &&
+      rowD1.grammar.method === 'explicit' && lessonD1.schritte.length === 36 && lessonD1.wortschatz.length === 40 &&
+      lessonD1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD1[i]) &&
+      lessonD1.schritte[0].zeigt.de === 'Am Ende stellst du deine Freiwilligenarbeit in fünf Sätzen vor: Engagement, Teilnahme, Hilfe, Sammeln und Dauer' &&
+      lessonD1.schritte.find(s => s.id === 's20').zeigt.de === targetsD1[4]);
+
+  const expectedWordsD1 = [
+    'das Ehrenamt', 'das Engagement', 'die Freiwilligenarbeit', 'der Freiwillige', 'die Initiative',
+    'das Projekt', 'der Verein', 'das Mitglied', 'die Gemeinschaft', 'die Solidarität',
+    'die Unterstützung', 'die Spende', 'spenden', 'sich engagieren', 'helfen', 'unterstützen',
+    'teilnehmen', 'mitmachen', 'organisieren', 'sammeln', 'gewinnen', 'der Gewinn', 'die Aktion',
+    'das Fest', 'die Nachbarschaftshilfe', 'der Nachbar', 'die Pflicht', 'die Verantwortung',
+    'übernehmen', 'die Leitung', 'der Einsatz', 'die Feuerwehr', 'das Rote Kreuz',
+    'die Umweltgruppe', 'der Baum', 'die Kleidersammlung', 'die Hilfe', 'gemeinnützig',
+    'freiwillig', 'ehrenamtlich'
+  ];
+  const errorsD1 = lessonD1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l1 reviews all 40 entries and three bounded mnemonics without thirteen manufactured appendages, grammatical article pseudo-errors or the bis-zu overgeneralisation, keeping agreement, dative, reflexive and prepositional government as genuine error axes',
+    Object.keys(byWordD1).join(' | ') === expectedWordsD1.join(' | ') &&
+      lessonD1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD1['das Mitglied'].err === 'Ich bin Mitglied im Sportvereins.' &&
+      byWordD1['die Hilfe'].err === 'Ohne der Hilfe schaffen wir das nicht.' &&
+      byWordD1['der Einsatz'].why.includes('bis zur Mitternacht') &&
+      byWordD1['das Engagement'].err === 'Sein Engagement beeindrucken alle.' &&
+      byWordD1['ehrenamtlich'].err === 'Er arbeiten ehrenamtlich.' &&
+      !['Sein Engagement beeindruckt alle es.', 'Ich bin ein Mitglied im Sportverein.',
+        'Die Gemeinschaft hilft sich gegenseitig es.', 'Solidarität ist in Krisen wichtig gemacht.',
+        'Die Unterstützung kam schnell es.', 'Die Spende ist steuerlich absetzbar gemacht.',
+        'Nachbarschaftshilfe ist bei uns normal gemacht.', 'Die Umweltgruppe pflanzt Bäume es.',
+        'Ohne die Hilfe schaffen wir das nicht.', 'Der Verein ist gemeinnützig gemacht.',
+        'Die Arbeit ist freiwillig gemacht.', 'Er arbeitet ehrenamtlich es.']
+        .some(x => errorsD1.includes(x)) &&
+      tricksD1.length === 3 && tricksD1[0].wie.includes('Ich nehme an dem Kurs teil.') &&
+      tricksD1[1].wie.includes('hundert Mitglieder') &&
+      tricksD1[2].wie.includes('Machst du mit?'));
+
+  const wordClozeAD1 = lessonD1.schritte.find(s => s.id === 's09');
+  const wordClozeBD1 = lessonD1.schritte.find(s => s.id === 's13');
+  const wordClozeCD1 = lessonD1.schritte.find(s => s.id === 's17');
+  const imitateD1 = lessonD1.schritte.find(s => s.id === 's19');
+  const drillD1 = lessonD1.schritte.find(s => s.id === 's23');
+  const orderD1 = lessonD1.schritte.find(s => s.id === 's24');
+  const writingD1 = lessonD1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD1 = lessonD1.schritte.find(s => s.phase === 'Produktion');
+  const summaryD1 = lessonD1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD1 = lessonD1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l1 aligns five strict learning clozes, sound subject-first order fields and a 30-word five-target production',
+    wordClozeAD1.frage.zeigt === 'Das ____ läuft seit zwei Jahren.' && wordClozeAD1.frage.antworten.join(' ') === 'Projekt' &&
+      wordClozeAD1.frage.nearMiss.Projekte && !win.DW.renderers.judgeCloze(wordClozeAD1.frage, 'Projekte').ok &&
+      wordClozeBD1.frage.zeigt === 'Der ____ geht an die Schule.' && wordClozeBD1.frage.antworten.join(' ') === 'Gewinn' &&
+      wordClozeBD1.frage.nearMiss.Gewinne && !win.DW.renderers.judgeCloze(wordClozeBD1.frage, 'Gewinne').ok &&
+      wordClozeCD1.frage.zeigt === 'Der Verein ist ____.' && wordClozeCD1.frage.antworten.join(' ') === 'gemeinnützig' &&
+      wordClozeCD1.frage.nearMiss.gemeinnütziger && !win.DW.renderers.judgeCloze(wordClozeCD1.frage, 'gemeinnütziger').ok &&
+      imitateD1.zeigt.de === 'Sie engagiert ____ für den Tierschutz.' && imitateD1.frage.antworten.join(' ') === 'sich' &&
+      imitateD1.frage.nearMiss.uns && !win.DW.renderers.judgeCloze(imitateD1.frage, 'uns').ok &&
+      drillD1.frage.zeigt === 'Das Fest findet im Hof ____.' && drillD1.frage.antworten.join(' ') === 'statt' &&
+      drillD1.frage.nearMiss.stattfinden && !win.DW.renderers.judgeCloze(drillD1.frage, 'stattfinden').ok &&
+      lessonD1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD1.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD1.frage.correct.join(' ') === targetsD1[2] && orderD1.frage.finite === 'helfen' && orderD1.frage.verbFirst === false &&
+      orderD1.frage.fields.vorfeld.join(' ') === 'Wir' && orderD1.frage.fields.lsk.join(' ') === 'helfen' &&
+      orderD1.frage.fields.mittelfeld.join(' ') === 'den Nachbarn beim Umzug.' &&
+      win.DW.order.score(orderD1.frage, orderD1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD1.frage, ['Wir', 'den', 'Nachbarn', 'helfen', 'beim', 'Umzug.']).credit < 1 &&
+      writingD1.frage.points.join(' | ') === targetsD1.join(' | ') && writingD1.frage.minWords === 30 &&
+      targetsD1.join(' ').split(/\s+/).length === 30 &&
+      targetsD1.every(x => [writingD1.frage.promptDe, summaryD1.zeigt.de, homeworkD1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD1.every(x => norm(speakingD1.erklaerung).includes(norm(x))));
+
+  const checksD1 = lessonD1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD1 = checksD1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD1 = checksD1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l1 makes 80 percent four of five, independently checking governed sammeln für, separable stattfinden cloze, reflexive order, governed teilnehmen an and the ongoing seit duration',
+    checksD1.length === 5 && checksD1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD1.every(s => /^cap\.b1-u4-l1\.s\d+$/.test(s.frage.prereq || '')) && checksD1.every(s => !s.hinweise) &&
+      checksD1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l1.s07 | cap.b1-u4-l1.s23 | cap.b1-u4-l1.s24 | cap.b1-u4-l1.s12 | cap.b1-u4-l1.s20' &&
+      new Set(checksD1.map(s => s.frage.prereq)).size === 5 &&
+      checksD1[0].frage.optionen.some(o => o.text === targetsD1[3]) &&
+      checksD1[0].frage.optionen.some(o => o.text === 'Die Initiative sammelt Geld zu Kindern.') &&
+      Object.values(checksD1[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckD1.frage.zeigt === 'Das Fest findet im Hof ____.' &&
+      clozeCheckD1.frage.antworten.join(' ') === 'statt' && clozeCheckD1.frage.nearMiss.stattfinden &&
+      !win.DW.renderers.judgeCloze(clozeCheckD1.frage, 'stattfinden').ok &&
+      orderCheckD1.frage.correct.join(' ') === targetsD1[0] && orderCheckD1.frage.finite === 'engagiert' &&
+      orderCheckD1.frage.fields.vorfeld.join(' ') === 'Sie' && orderCheckD1.frage.fields.lsk.join(' ') === 'engagiert' &&
+      orderCheckD1.frage.fields.mittelfeld.join(' ') === 'sich für den Tierschutz.' &&
+      win.DW.order.score(orderCheckD1.frage, orderCheckD1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD1.frage, ['Sie', 'sich', 'engagiert', 'für', 'den', 'Tierschutz.']).credit < 1 &&
+      checksD1[3].frage.optionen.some(o => o.text === targetsD1[1]) &&
+      checksD1[3].frage.optionen.some(o => o.text === 'Ich nehme den Kurs teil.') &&
+      Object.values(checksD1[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksD1[4].frage.optionen.some(o => o.text === targetsD1[4]) &&
+      checksD1[4].frage.optionen.some(o => o.text === 'Das Projekt läuft von zwei Jahren.') &&
+      Object.values(checksD1[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

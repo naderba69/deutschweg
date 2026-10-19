@@ -7,17 +7,17 @@ module.exports = {
   'b1-u4-l1': {
     items: [
       ['das Ehrenamt', 'die Ehrenämter', 'العمل التطوعي', 'Sie hat ein Ehrenamt bei der Feuerwehr.', 'Sie hat ein Ehrenamt in der Feuerwehr.', 'bei (الجهة) لا in.', 'präposition', 'Ehrenamt'],
-      ['das Engagement', 'die Engagements', 'الالتزام التطوعي', 'Sein Engagement beeindruckt alle.', 'Sein Engagement beeindruckt alle es.', 'لا ضمير زائد.', 'wortstellung', 'Engagement'],
+      ['das Engagement', 'die Engagements', 'الالتزام التطوعي', 'Sein Engagement beeindruckt alle.', 'Sein Engagement beeindrucken alle.', 'فاعل مفرد وفعل مفرد: beeindruckt.', 'konjugation', 'Engagement'],
       ['die Freiwilligenarbeit', '—', 'العمل التطوعي', 'Freiwilligenarbeit ist nicht bezahlt.', 'Freiwilligenarbeit ist nicht bezahlen.', 'الصفة + Partizip II.', 'konjugation', 'Freiwilligenarbeit'],
       ['der Freiwillige', 'die Freiwilligen', 'المتطوّع', 'Die Freiwilligen arbeiten am Wochenende.', 'Die Freiwillige arbeiten am Wochenende.', 'الجمع مع die: Freiwilligen.', 'deklination', 'Freiwilligen'],
       ['die Initiative', 'die Initiativen', 'المبادرة', 'Die Initiative sammelt Geld für Kinder.', 'Die Initiative sammelt Geld zu Kindern.', 'für لا zu.', 'präposition', 'Initiative'],
       ['das Projekt', 'die Projekte', 'المشروع', 'Das Projekt läuft seit zwei Jahren.', 'Das Projekt läuft von zwei Jahren.', 'منذ: seit.', 'präposition', 'Projekt'],
       ['der Verein', 'die Vereine', 'الجمعية', 'Der Verein hat hundert Mitglieder.', 'Der Verein hat hundert Mitglied.', 'الجمع: Mitglieder.', 'plural', 'Verein'],
-      ['das Mitglied', 'die Mitglieder', 'العضو', 'Ich bin Mitglied im Sportverein.', 'Ich bin ein Mitglied im Sportverein.', 'بلا أداة في هذه العبارة.', 'lexik-kollokation', 'Mitglied'],
-      ['die Gemeinschaft', 'die Gemeinschaften', 'الجماعة', 'Die Gemeinschaft hilft sich gegenseitig.', 'Die Gemeinschaft hilft sich gegenseitig es.', 'لا ضمير زائد.', 'wortstellung', 'Gemeinschaft'],
-      ['die Solidarität', '—', 'التضامن', 'Solidarität ist in Krisen wichtig.', 'Solidarität ist in Krisen wichtig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Solidarität'],
-      ['die Unterstützung', 'die Unterstützungen', 'الدعم', 'Die Unterstützung kam schnell.', 'Die Unterstützung kam schnell es.', 'لا ضمير زائد.', 'wortstellung', 'Unterstützung'],
-      ['die Spende', 'die Spenden', 'التبرّع', 'Die Spende ist steuerlich absetzbar.', 'Die Spende ist steuerlich absetzbar gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Spende'],
+      ['das Mitglied', 'die Mitglieder', 'العضو', 'Ich bin Mitglied im Sportverein.', 'Ich bin Mitglied im Sportvereins.', 'im تطلب الداتيف: im Sportverein؛ والانتماء بعد bin يُقال غالبًا بلا أداة: Ich bin Mitglied.', 'kasus', 'Mitglied'],
+      ['die Gemeinschaft', 'die Gemeinschaften', 'الجماعة', 'Die Gemeinschaft hilft sich gegenseitig.', 'Die Gemeinschaft helfen sich gegenseitig.', 'فاعل مفرد وفعل مفرد: hilft.', 'konjugation', 'Gemeinschaft'],
+      ['die Solidarität', '—', 'التضامن', 'Solidarität ist in Krisen wichtig.', 'Solidarität sind in Krisen wichtig.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Solidarität'],
+      ['die Unterstützung', 'die Unterstützungen', 'الدعم', 'Die Unterstützung kam schnell.', 'Die Unterstützung kamen schnell.', 'فاعل مفرد وفعل مفرد: kam؛ kommen قوي.', 'konjugation', 'Unterstützung'],
+      ['die Spende', 'die Spenden', 'التبرّع', 'Die Spende ist steuerlich absetzbar.', 'Die Spende sind steuerlich absetzbar.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Spende'],
       ['spenden', 'spendet · spendete · hat gespendet', 'يتبرّع', 'Wir spenden Kleidung für die Flutopfer.', 'Wir spenden Kleidung zu den Flutopfern.', 'für لا zu.', 'präposition', 'spenden'],
       ['sich engagieren', 'engagiert sich · engagierte sich · hat sich engagiert', 'يلتزم/ينخرط', 'Sie engagiert sich für den Tierschutz.', 'Sie engagiert für den Tierschutz.', 'الضمير sich لازم.', 'konjugation', 'engagiert'],
       ['helfen', 'hilft · half · hat geholfen', 'يساعد', 'Wir helfen den Nachbarn beim Umzug.', 'Wir helfen die Nachbarn beim Umzug.', 'helfen + داتيف.', 'kasus', 'helfen'],
@@ -30,28 +30,45 @@ module.exports = {
       ['der Gewinn', 'die Gewinne', 'المكسب', 'Der Gewinn geht an die Schule.', 'Der Gewinn geht zu der Schule.', 'an + نصب (الجهة).', 'präposition', 'Gewinn'],
       ['die Aktion', 'die Aktionen', 'الحملة', 'Die Aktion dauert eine Woche.', 'Die Aktion dauert für eine Woche.', 'بلا حرف جر.', 'präposition', 'Aktion'],
       ['das Fest', 'die Feste', 'الحفل', 'Das Fest findet im Hof statt.', 'Das Fest findet im Hof.', 'stattfinden يحتاج statt.', 'wortstellung', 'statt'],
-      ['die Nachbarschaftshilfe', '—', 'مساعدة الجيران', 'Nachbarschaftshilfe ist bei uns normal.', 'Nachbarschaftshilfe ist bei uns normal gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Nachbarschaftshilfe'],
+      ['die Nachbarschaftshilfe', '—', 'مساعدة الجيران', 'Nachbarschaftshilfe ist bei uns normal.', 'Nachbarschaftshilfe sind bei uns normal.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Nachbarschaftshilfe'],
       ['der Nachbar', 'die Nachbarn', 'الجار', 'Die Nachbarn gießen die Blumen.', 'Die Nachbarn gießen für die Blumen.', 'بلا حرف جر.', 'kasus', 'Nachbarn'],
       ['die Pflicht', 'die Pflichten', 'الواجب', 'Es ist meine Pflicht zu helfen.', 'Es ist meine Pflicht helfen.', 'zu + مصدر.', 'wortstellung', 'Pflicht'],
       ['die Verantwortung', 'die Verantwortungen', 'المسؤولية', 'Wir übernehmen Verantwortung.', 'Wir übernehmen für Verantwortung.', 'بلا حرف جر.', 'kasus', 'Verantwortung'],
       ['übernehmen', 'übernimmt · übernahm · hat übernommen', 'يتولّى', 'Er übernimmt die Leitung der Gruppe.', 'Er übernimmt für die Leitung der Gruppe.', 'بلا حرف جر.', 'kasus', 'übernimmt'],
       ['die Leitung', 'die Leitungen', 'القيادة', 'Die Leitung liegt bei ihr.', 'Die Leitung liegt in ihr.', 'bei لا in.', 'präposition', 'Leitung'],
-      ['der Einsatz', 'die Einsätze', 'المشاركة الميدانية', 'Der Einsatz dauert bis Mitternacht.', 'Der Einsatz dauert bis zu Mitternacht.', 'bis mitternacht بلا zu.', 'präposition', 'Einsatz'],
+      ['der Einsatz', 'die Einsätze', 'المشاركة الميدانية', 'Der Einsatz dauert bis Mitternacht.', 'Der Einsatz dauert bis zu Mitternacht.', 'bis Mitternacht بلا zu، ومع zu تأتي الأداة: bis zur Mitternacht.', 'präposition', 'Einsatz'],
       ['die Feuerwehr', 'die Feuerwehren', 'الإطفاء', 'Die Feuerwehr kam in fünf Minuten.', 'Die Feuerwehr kam in fünf Minute.', 'الجمع: Minuten.', 'plural', 'Feuerwehr'],
       ['das Rote Kreuz', '—', 'الهلال الأحمر', 'Das Rote Kreuz sucht Helfer.', 'Das Rote Kreuz sucht für Helfer.', 'بلا حرف جر.', 'kasus', 'Kreuz'],
-      ['die Umweltgruppe', 'die Umweltgruppen', 'المجموعة البيئية', 'Die Umweltgruppe pflanzt Bäume.', 'Die Umweltgruppe pflanzt Bäume es.', 'لا ضمير زائد.', 'wortstellung', 'Umweltgruppe'],
+      ['die Umweltgruppe', 'die Umweltgruppen', 'المجموعة البيئية', 'Die Umweltgruppe pflanzt Bäume.', 'Die Umweltgruppe pflanzen Bäume.', 'فاعل مفرد وفعل مفرد: pflanzt.', 'konjugation', 'Umweltgruppe'],
       ['der Baum', 'die Bäume', 'الشجرة', 'Wir pflanzen jeden Frühling Bäume.', 'Wir pflanzen jeden Frühling Baum.', 'الجمع: Bäume.', 'plural', 'Bäume'],
       ['die Kleidersammlung', 'die Kleidersammlungen', 'جمع الملابس', 'Die Kleidersammlung ist im Mai.', 'Die Kleidersammlung ist in Mai.', 'im.', 'präposition', 'Kleidersammlung'],
-      ['die Hilfe', 'die Hilfen', 'المساعدة', 'Ohne Hilfe schaffen wir das nicht.', 'Ohne die Hilfe schaffen wir das nicht.', 'بعد ohne بلا أداة.', 'kasus', 'Hilfe'],
-      ['gemeinnützig', '—', 'ذو نفع عام', 'Der Verein ist gemeinnützig.', 'Der Verein ist gemeinnützig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'gemeinnützig'],
-      ['freiwillig', '—', 'طوعي', 'Die Arbeit ist freiwillig.', 'Die Arbeit ist freiwillig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'freiwillig'],
-      ['ehrenamtlich', '—', 'بصفة تطوعية', 'Er arbeitet ehrenamtlich.', 'Er arbeitet ehrenamtlich es.', 'لا ضمير زائد.', 'wortstellung', 'ehrenamtlich']
+      ['die Hilfe', 'die Hilfen', 'المساعدة', 'Ohne Hilfe schaffen wir das nicht.', 'Ohne der Hilfe schaffen wir das nicht.', 'ohne + نصب: Ohne Hilfe؛ وبدون أداة عندما تكون المساعدة عامة.', 'kasus', 'Hilfe'],
+      ['gemeinnützig', '—', 'ذو نفع عام', 'Der Verein ist gemeinnützig.', 'Der Verein sind gemeinnützig.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'gemeinnützig'],
+      ['freiwillig', '—', 'طوعي', 'Die Arbeit ist freiwillig.', 'Die Arbeit sind freiwillig.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'freiwillig'],
+      ['ehrenamtlich', '—', 'بصفة تطوعية', 'Er arbeitet ehrenamtlich.', 'Er arbeiten ehrenamtlich.', 'مع er الفعل بنهاية -t: arbeitet.', 'konjugation', 'ehrenamtlich']
     ],
     tricks: [
       { trick: 'sich engagieren für · teilnehmen an · helfen + داتيف', wie: 'Sie engagiert sich für den Tierschutz. · Ich nehme an dem Kurs teil.', warum: 'العربية تصل «يشارك/يتطوّع» بالمفعول مباشرة، والألمانية تربط كل فعل بحرفه.', anchor: 'sich engagieren' },
       { trick: 'Aktivität und Gremium: der Verein · das Mitglied · die Leitung · der Einsatz', wie: 'Der Verein hat hundert Mitglieder. · Die Leitung liegt bei ihr.', warum: 'مفردات العمل الجمعوي نظام مغلق، وترجمته الحرفية من العربية تُنتج «membre de l\'association» لا «Mitglied im Verein».', anchor: 'der Verein' },
       { trick: 'الأفعال المنفصلة في العمل التطوعي: teilnehmen · mitmachen · stattfinden', wie: 'Ich nehme am Kurs teil. · Machst du mit?', warum: 'البادئة المنفصلة تُؤجّل إلى النهاية، والعربية لا تفصل الفعل فتُنسى البادئة.', anchor: 'mitmachen' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'das Projekt': 'Projekte',
+      'der Gewinn': 'Gewinne',
+      'gemeinnützig': 'gemeinnütziger'
+    },
+    clozeItemIndex: 23,
+    clozeNearMiss: 'stattfinden',
+    checkItemIndex: 16,
+    extraCheck: {
+      right: 'Das Projekt läuft seit zwei Jahren.',
+      bad: 'Das Projekt läuft von zwei Jahren.',
+      why: 'منذ (لمدة ما تزال جارية): seit + داتيف لا von.',
+      family: 'präposition',
+      prereq: 'cap.b1-u4-l1.s20',
+      frage: 'أي جملة يصح فيها حرف بدء المدة الجارية؟'
+    }
   },
 
   'b1-u4-l2': {
