@@ -14681,6 +14681,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE7[4].frage.optionen.some(o => o.text === targetsE7[4]) &&
       checksE7[4].frage.optionen.some(o => o.text === 'Die Zeit wird nicht verlängern.') &&
       Object.values(checksE7[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonE8 = win.DW_LESSONS['b1-u5-l8'];
+  const rowE8 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE8.id);
+  const byWordE8 = Object.fromEntries(lessonE8.wortschatz.map(it => [it.de, it]));
+  const tricksE8 = lessonE8.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE8 = [
+    'Ein Argument braucht ein Beispiel.',
+    'Zuerst beschreibe ich die Grafik.',
+    'Ich nenne die Gegenposition.',
+    'Immer und nie sind schwach.',
+    'Die Argumentation muss schlüssig sein.'
+  ];
+  t('Corpus lesson b1-u5-l8 precisely scopes five bridge-to-B2 moves supporting an argument with a neuter accusative example, describing before interpreting with inversion after Zuerst, naming a feminine accusative counterposition, pluralizing conjoined absolutes and closing on a coherent singular standard',
+    lessonE8.title.de === 'Übergang zu B2: Argument, Beispiel und Gegenposition' &&
+      lessonE8.title.ar === 'الجسر إلى B2: الحجة والمثال والموقف المقابل' &&
+      rowE8.title.de === lessonE8.title.de && rowE8.title.ar === lessonE8.title.ar &&
+      rowE8.theme === 'الحدود' &&
+      rowE8.grammar.item === 'ein Argument braucht ein Beispiel · zuerst beschreibe ich · die Gegenposition · immer und nie sind schwach · muss schlüssig sein' &&
+      rowE8.grammar.method === 'explicit' && lessonE8.schritte.length === 36 && lessonE8.wortschatz.length === 40 &&
+      lessonE8.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE8.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE8[i]) &&
+      lessonE8.schritte[0].zeigt.de === 'Am Ende sagst du ehrlich, was für B2 noch fehlt — in fünf Sätzen' &&
+      lessonE8.schritte.find(s => s.id === 's20').zeigt.de === targetsE8[4]);
+
+  const expectedWordsE8 = [
+    'der Übergang', 'das Niveau', 'die Fertigkeit', 'der Aufbau', 'die Argumentation', 'die Schlüssigkeit',
+    'die Abstraktion', 'das Sachthema', 'die Fachsprache', 'der Fachbegriff', 'die Grafik beschreiben',
+    'die Tendenz', 'die Prognose', 'die Ursache', 'die Folge', 'die Maßnahme',
+    'der Vorschlag', 'die Bewertung', 'die Stellungnahme', 'die Erörterung',
+    'die Zusammenfassung', 'die Notiz', 'das Zitat', 'die Quelle', 'der Zusammenhang',
+    'die Schlussfolgerung', 'das Fazit', 'die Einleitung', 'der Hauptteil',
+    'der Stil', 'der Wortschatz', 'die Redemittel', 'der Konnektor',
+    'die Nominalisierung', 'das Passiv', 'die indirekte Rede', 'die Textarbeit',
+    'die Aussage', 'das Argument', 'weiterkommen'
+  ];
+  const errorsE8 = lessonE8.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l8 reviews all 40 entries and three bounded mnemonics without twenty manufactured appendages and with an honest von-plus-dative explanation',
+    Object.keys(byWordE8).join(' | ') === expectedWordsE8.join(' | ') &&
+      lessonE8.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE8.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE8['der Aufbau'].err === 'Der Aufbau von das Text ist logisch.' &&
+      byWordE8['der Aufbau'].why.includes('des Textes') &&
+      byWordE8['die Bewertung'].err === 'Die Bewertung hängt vom Kontext.' &&
+      byWordE8['der Vorschlag'].err === 'Mein Vorschlag wäre einen Pilotprojekt.' &&
+      byWordE8['die Argumentationskette'] === undefined &&
+      byWordE8['weiterkommen'].err === 'So du kommst schneller weiter.' &&
+      !['Der Übergang zu B2 ist fließend gemacht.', 'Die vier Fertigkeiten sind gleich wichtig gemacht.',
+        'Die Argumentation muss schlüssig gemacht sein.', 'Abstraktion fällt vielen schwer es.',
+        'Die Fachsprache ist schwer gemacht.', 'Beschreibe die Grafik zuerst du!',
+        'Die Tendenz zeigt nach oben es.', 'Die Prognose ist vorsichtig gemacht.',
+        'Mehrere Ursachen spielen zusammen es.', 'Die Folgen sind schwer absehbar gemacht.',
+        'Welche Maßnahmen wären sinnvoll es?', 'Mein Vorschlag ist ein Pilotprojekt gewesen.',
+        'Gib die Quelle korrekt du an!', 'Die Schlussfolgerung ist logisch gemacht.',
+        'Der Hauptteil ist der längste gemacht.', 'Der Stil wird sachlicher es.',
+        'Nominalisierungen klingen sachlich es.', 'Das Passiv ist typisch für B2 es.',
+        'Seine Aussage ist missverständlich gemacht.', 'Das Argument ist schwach gemacht.']
+        .some(x => errorsE8.includes(x)) &&
+      tricksE8.length === 3 && tricksE8[0].wie.includes('in B2 analysierst du') &&
+      tricksE8[1].wie.includes('Das Passiv ist typisch für B2') &&
+      tricksE8[2].wie.includes('Beschreibe zuerst die Grafik'));
+
+  const wordClozeAE8 = lessonE8.schritte.find(s => s.id === 's09');
+  const wordClozeBE8 = lessonE8.schritte.find(s => s.id === 's13');
+  const wordClozeCE8 = lessonE8.schritte.find(s => s.id === 's17');
+  const imitateE8 = lessonE8.schritte.find(s => s.id === 's19');
+  const drillE8 = lessonE8.schritte.find(s => s.id === 's23');
+  const orderE8 = lessonE8.schritte.find(s => s.id === 's24');
+  const writingE8 = lessonE8.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE8 = lessonE8.schritte.find(s => s.phase === 'Produktion');
+  const summaryE8 = lessonE8.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE8 = lessonE8.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l8 aligns five strict learning clozes, sound Zuerst order fields and a 24-word five-target production',
+    wordClozeAE8.frage.zeigt === 'An der ____ fehlt es noch.' && wordClozeAE8.frage.antworten.join(' ') === 'Schlüssigkeit' &&
+      wordClozeAE8.frage.nearMiss.Schlüssigkeiten && !win.DW.renderers.judgeCloze(wordClozeAE8.frage, 'Schlüssigkeiten').ok &&
+      wordClozeBE8.frage.zeigt === '____ helfen beim Sprechen.' && wordClozeBE8.frage.antworten.join(' ') === 'Notizen' &&
+      wordClozeBE8.frage.nearMiss.Notiz && !win.DW.renderers.judgeCloze(wordClozeBE8.frage, 'Notiz').ok &&
+      wordClozeCE8.frage.zeigt === 'Seine ____ ist missverständlich.' && wordClozeCE8.frage.antworten.join(' ') === 'Aussage' &&
+      wordClozeCE8.frage.nearMiss.Aussagen && !win.DW.renderers.judgeCloze(wordClozeCE8.frage, 'Aussagen').ok &&
+      imitateE8.zeigt.de === 'Ein Argument braucht ein ____.' && imitateE8.frage.antworten.join(' ') === 'Beispiel' &&
+      imitateE8.frage.nearMiss.Beispiele && !win.DW.renderers.judgeCloze(imitateE8.frage, 'Beispiele').ok &&
+      drillE8.frage.zeigt === 'Die Bewertung hängt vom Kontext ____.' && drillE8.frage.antworten.join(' ') === 'ab' &&
+      drillE8.frage.nearMiss.abhängen && !win.DW.renderers.judgeCloze(drillE8.frage, 'abhängen').ok &&
+      lessonE8.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE8.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE8.frage.correct.join(' ') === targetsE8[1] && orderE8.frage.finite === 'beschreibe' && orderE8.frage.verbFirst === false &&
+      orderE8.frage.fields.vorfeld.join(' ') === 'Zuerst' && orderE8.frage.fields.lsk.join(' ') === 'beschreibe' &&
+      orderE8.frage.fields.mittelfeld.join(' ') === 'ich die Grafik.' &&
+      win.DW.order.score(orderE8.frage, orderE8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE8.frage, ['Zuerst', 'ich', 'beschreibe', 'die', 'Grafik.']).credit < 1 &&
+      writingE8.frage.points.join(' | ') === targetsE8.join(' | ') && writingE8.frage.minWords === 24 &&
+      targetsE8.join(' ').split(/\s+/).length === 24 &&
+      targetsE8.every(x => [writingE8.frage.promptDe, summaryE8.zeigt.de, homeworkE8.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE8.every(x => norm(speakingE8.erklaerung).includes(norm(x))) &&
+      (homeworkE8.hinweise || []).join(' ').includes('Ein Beispiel trägt weiter') &&
+      (homeworkE8.hinweise || []).join(' ').includes('wirklich folgt'));
+
+  const checksE8 = lessonE8.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE8 = checksE8.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE8 = checksE8.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l8 makes 80 percent four of five, independently checking plural absolutes, abhängen particle and Gegenposition order, fronted-accusative context and singular-muss closure',
+    checksE8.length === 5 && checksE8[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE8[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE8.every(s => /^cap\.b1-u5-l8\.s\d+$/.test(s.frage.prereq || '')) && checksE8.every(s => !s.hinweise) &&
+      checksE8.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l8.s07 | cap.b1-u5-l8.s23 | cap.b1-u5-l8.s24 | cap.b1-u5-l8.s14 | cap.b1-u5-l8.s20' &&
+      new Set(checksE8.map(s => s.frage.prereq)).size === 5 &&
+      checksE8[0].frage.optionen.some(o => o.text === targetsE8[3]) &&
+      checksE8[0].frage.optionen.some(o => o.text === 'Immer und nie ist schwach.') &&
+      Object.values(checksE8[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckE8.frage.zeigt === 'Die Bewertung hängt vom Kontext ____.' &&
+      clozeCheckE8.frage.antworten.join(' ') === 'ab' && clozeCheckE8.frage.nearMiss.abhängen &&
+      !win.DW.renderers.judgeCloze(clozeCheckE8.frage, 'abhängen').ok &&
+      orderCheckE8.frage.correct.join(' ') === targetsE8[2] && orderCheckE8.frage.finite === 'nenne' &&
+      orderCheckE8.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheckE8.frage.fields.lsk.join(' ') === 'nenne' &&
+      orderCheckE8.frage.fields.mittelfeld.join(' ') === 'die Gegenposition.' &&
+      win.DW.order.score(orderCheckE8.frage, orderCheckE8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE8.frage, ['Ich', 'die', 'nenne', 'Gegenposition.']).credit < 1 &&
+      checksE8[3].frage.optionen.some(o => o.text === 'Den Zusammenhang muss man erkennen.') &&
+      checksE8[3].frage.optionen.some(o => o.text === 'Der Zusammenhang muss man erkennen.') &&
+      Object.values(checksE8[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksE8[4].frage.optionen.some(o => o.text === targetsE8[4]) &&
+      checksE8[4].frage.optionen.some(o => o.text === 'Die Argumentation müssen schlüssig sein.') &&
+      Object.values(checksE8[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

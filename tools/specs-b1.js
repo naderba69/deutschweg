@@ -1772,25 +1772,50 @@ module.exports = [
       hwHintDe: 'Wer einen Inhaltspunkt weglässt, verschenkt ihn: Lies die Aufgabe zu Ende — die Zeit dafür ist schon eingerechnet, und kein Modul kauft den Punkt zurück.'
     }),
 
-  U('b1-u5-l8', 'B1', 'جسر إلى B2', 'Übergang', 'pruefstrategie',
-    'Am Ende sagst du was für B2 noch nicht reicht',
-    'في النهاية تقول ما لا يكفي لـ B2.',
+  U('b1-u5-l8', 'B1', 'الجسر إلى B2: الحجة والمثال والموقف المقابل', 'Übergang zu B2: Argument, Beispiel und Gegenposition', 'pruefstrategie',
+    'Am Ende sagst du ehrlich, was für B2 noch fehlt — in fünf Sätzen',
+    'في النهاية تقول بصدق ما ينقصك لـ B2 في خمس جمل.',
     [
-      ['ein Argument reicht nicht', 'B2 يريد حجة ومثالًا وحدًا', 'رأي بلا سند لا يكفي', 'ich finde das gut reicht', 'السند ناقص'],
-      ['Beschreibung vor Deutung', 'الوصف قبل التأويل', 'الرأي أولًا يخسر الرسم', 'ich deute bevor ich beschreibe', 'الوصف أولًا'],
-      ['die Gegenposition', 'الموقف المقابل يُذكر', 'التجاهل ليس قوة', 'ich ignoriere die andere Seite', 'المقابل جزء من الحجة'],
-      ['kein Absolut', 'دائمًا وأبدًا تضعف', 'الحد أقوى', 'das ist immer so', 'المطلق ضعيف']
+      ['Ein Argument braucht ein Beispiel.', 'تدعم الحجة بمثال', 'brauchen يأخذ مفعولًا محايدًا منصوبًا: ein Beispiel لا einem كأن الفعل داتيفي', 'Ein Argument braucht einem Beispiel.', 'نصب بعد brauchen: ein Beispiel'],
+      ['Zuerst beschreibe ich die Grafik.', 'تصف قبل أن تفسّر', 'بعد Zuerst المتقدم ينقلب الترتيب — الفعل في الموضع الثاني ثم الفاعل: beschreibe ich لا ich beschreibe', 'Zuerst ich beschreibe die Grafik.', 'قلب بعد الظرف: beschreibe ich'],
+      ['Ich nenne die Gegenposition.', 'تذكر الموقف المقابل', 'المفعول به مؤنث منصوب: die Gegenposition — der هنا مضافة أو داتيف لا مفعولًا', 'Ich nenne der Gegenposition.', 'نصب مؤنث: die Gegenposition'],
+      ['Immer und nie sind schwach.', 'ترفض التعميم المطلق', 'فاعلان معطوفان فعلاهما جمع: Immer und nie sind لا ist', 'Immer und nie ist schwach.', 'جمع بالعطف: sind']
     ],
     [
-      ['Ein Argument braucht ein Beispiel.', 'الحجة تحتاج مثالًا', 'Ich finde das gut reicht', 'السند ناقص', 'Beispiel'],
-      ['Zuerst beschreibe ich.', 'أولًا أصف', 'Ich deute bevor ich beschreibe', 'الوصف قبل التأويل', 'Zuerst'],
-      ['Ich nenne die Gegenposition.', 'أذكر الموقف المقابل', 'Ich ignoriere die andere Seite', 'المقابل جزء من الحجة', 'Gegenposition'],
-      ['Immer und nie sind schwach.', 'دائمًا وأبدًا ضعيفان', 'Das ist immer so', 'المطلق ضعيف', 'schwach']
+      ['Ein Argument braucht ein Beispiel.', 'الحجة تحتاج مثالًا', 'Ein Argument braucht einem Beispiel.', 'سند بنصب محايد: ein Beispiel', 'Beispiel'],
+      ['Zuerst beschreibe ich die Grafik.', 'أولًا أصف الرسم', 'Zuerst ich beschreibe die Grafik.', 'وصف بقلب: beschreibe ich', 'Grafik'],
+      ['Ich nenne die Gegenposition.', 'أذكر الموقف المقابل', 'Ich nenne der Gegenposition.', 'مقابل بنصب: die Gegenposition', 'Gegenposition'],
+      ['Immer und nie sind schwach.', 'دائمًا وأبدًا ضعيفان', 'Immer und nie ist schwach.', 'ضد المطلق بجمع: sind schwach', 'schwach']
     ],
-    'Ein Argument braucht ein Beispiel. Immer und nie sind schwach.',
-    'Ich nenne die Gegenposition.',
-    'Sage morgen was für B2 noch fehlt.',
-    'غدًا قل ما ينقص لـ B2.'),/* Unit 6 — amendment B1-L2 (DECISIONS-PENDING.md item 25). The sixth unit exists
+    'Ein Argument braucht ein Beispiel.',
+    'Die Argumentation muss schlüssig sein.',
+    'Wiederhole morgen die fünf Sätze: Ein Argument braucht ein Beispiel. Zuerst beschreibe ich die Grafik. Ich nenne die Gegenposition. Immer und nie sind schwach. Die Argumentation muss schlüssig sein.',
+    'غدًا أعد جمل الجسر إلى B2 الخمس ولاحظ النصب بعد brauchen والقلب بعد Zuerst ونصب المؤنث والعطف بالجمع.',
+    {
+      factFamilies: ['kasus', 'wortstellung', 'kasus', 'konjugation'],
+      imitateNearMiss: 'Beispiele',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Die Argumentation muss schlüssig sein — في B2 الحجة لا تُسمع بصوت مرتفع، بل تُثبت باتساقها الداخلي.',
+      orderSentence: 'Zuerst beschreibe ich die Grafik.',
+      checkOrderSentence: 'Ich nenne die Gegenposition.',
+      orderAr: 'رتّب جملة الوصف: Zuerst أولًا ثم beschreibe في الموضع الثاني قبل ich.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الظرف المتقدّم Zuerst هو الموضع الأول وحده.', 'الفاعل ich يأتي بعد الفعل عند تقديم ظرف: beschreibe ich.'],
+      writing: {
+        zeigt: 'Brücke zu B2 in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تعبر بك إلى B2: حجة بمثال بنصب محايد، ووصفًا قبل التأويل بقلب بعد Zuerst، وموقفًا مقابلًا بنصب مؤنث، ورفضًا للإطلاق بسندين معطوفين بفعل جمع، وخاتمة بأن الحجاج يجب أن يكون متماسكًا.',
+        hinweise: ['كل موقف بلا مثال يُقرأ رأيًا؛ أرفقه بـBeispiel.', 'الترتيب المنهجي: وصفٌ ثم استدلالٌ ثم مقابلٌ ثم خلاصة متماسكة.'],
+        prompt: 'اكتب جمل الجسر إلى B2 الخمس المستهدفة من الذاكرة مع النصب والقلب والعطف بالجمع.',
+        promptDe: 'Ein Argument braucht ein Beispiel. · Zuerst beschreibe ich die Grafik. · Ich nenne die Gegenposition. · Immer und nie sind schwach. · Die Argumentation muss schlüssig sein.',
+        points: ['Ein Argument braucht ein Beispiel.', 'Zuerst beschreibe ich die Grafik.', 'Ich nenne die Gegenposition.', 'Immer und nie sind schwach.', 'Die Argumentation muss schlüssig sein.'],
+        minWords: 24,
+        frage: 'اكتب جمل الجسر إلى B2 الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ein Argument braucht ein Beispiel. Zuerst beschreibe ich die Grafik. Ich nenne die Gegenposition. Immer und nie sind schwach. Die Argumentation muss schlüssig sein.',
+      summaryDe: 'Ein Argument braucht ein Beispiel. Zuerst beschreibe ich die Grafik. Ich nenne die Gegenposition. Immer und nie sind schwach. Die Argumentation muss schlüssig sein.',
+      summaryAr: 'جسر B2 في خمس جمل: سندٌ بمثال، ووصفٌ يسبق التأويل، ومقابلٌ مذكور، ولا تعميم مطلق، وحجة متماسكة.',
+      summaryRecap: 'اعبر بصدق إلى B2',
+      hwHintDe: 'Ein Beispiel trägt weiter als „immer“ und „nie“: Beschreibe die Grafik, nenne die Tendenz — und prüfe am Ende, ob deine Schlussfolgerung wirklich folgt.'
+    }),/* Unit 6 — amendment B1-L2 (DECISIONS-PENDING.md item 25). The sixth unit exists
    because of the B1 match: tools/goethe-b1-candidates.txt holds 219 entries the
    learner already MEETS in the material and no word list names. A B1 lesson holds
    40 words (the compiler's ceiling), so 219 + the 21 entries the new lessons carry
