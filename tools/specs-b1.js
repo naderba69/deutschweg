@@ -1052,25 +1052,50 @@ module.exports = [
       hwHintDe: 'Nicht „die Registration“, nicht „die Insurance“ und nicht „das Formular ist not complete“ wörtlich ins Deutsche tragen: die Anmeldung heißt Anmeldung, die Versicherung bleibt Versicherung, und was im Formular fehlt, heißt unvollständig.'
     }),
 
-  U('b1-u3-l8', 'B1', 'الاستهلاك', 'Konsum', 'lexik-kollokation',
-    'Am Ende begründest du eine Kaufentscheidung',
-    'في النهاية تعلّل قرار شراء.',
+  U('b1-u3-l8', 'B1', 'الاستهلاك: مقارنة الأسعار والشراء الذكي', 'Konsum: Preise vergleichen und klug kaufen', 'lexik-kollokation',
+    'Am Ende begründest du eine Kaufentscheidung in fünf Sätzen: Preise, Nachfrage, Rabatt, Zahlung und Verbraucherblick',
+    'في النهاية تعلّل قرار شراء في خمس جمل: ارتفاع الأسعار، والطلب مقابل العرض، والخصم، والدفع، وعين المستهلك.',
     [
-      ['sich leisten', 'القدرة المادية sich leisten', 'لا can buy كإطار', 'ich can das leisten', 'can إنجليزية'],
-      ['es lohnt sich', 'يستحق es lohnt sich', 'لا it is worth خليط', 'es ist worth', 'worth إنجليزية'],
-      ['der Beleg', 'الإيصال Beleg', 'لا receipt ككلمة وحيدة', 'der Receipt', 'Receipt إنجليزية'],
-      ['nicht nur sondern auch', 'التوسيع ليس فقط بل أيضًا', 'لا not only خليط', 'not only der Preis', 'not only إنجليزية']
+      ['Die Preise sind stark gestiegen.', 'تستند إلى موجة غلاء', 'steigen فعل تغيّر: Perfekt مع sein وPartizip II في النهاية: sind gestiegen', 'Die Preise sind stark steigen.', 'بعد sind اسم المفعول: gestiegen لا المصدر steigen'],
+      ['Die Nachfrage ist größer als das Angebot.', 'تقارن طلبًا بعرض', 'بعد صفة التفضيل نكتب في الألمانية القياسية als: größer als das Angebot', 'Die Nachfrage ist größer wie das Angebot.', 'أفعل التفضيل مع als لا wie'],
+      ['Es gibt zehn Prozent Rabatt.', 'تذكر عرض خصم', 'مقياس النسبة يلي الاسم بلا حرف جر: zehn Prozent Rabatt', 'Es gibt zehn Prozent von Rabatt.', 'النسبة مربوطة بالاسم بلا von: Prozent Rabatt'],
+      ['Ich zahle mit Karte.', 'تحدد وسيلة دفعك', 'الدفع بالبطاقة عبارة ثابتة بلا أداة: mit Karte zahlen', 'Ich zahle mit die Karte.', 'mit Karte عبارة كاملة؛ وبأداة يأتي الداتيف: mit der Karte']
     ],
     [
-      ['Ich kann mir das leisten.', 'أقدر على هذا ماديًا', 'Ich can mir das leisten', 'القدرة leisten', 'leisten'],
-      ['Es lohnt sich nicht.', 'هذا لا يستحق', 'Es ist worth nicht', 'الإطار lohnt sich', 'lohnt'],
-      ['Haben Sie einen Beleg?', 'هل عندكم إيصال؟', 'Haben Sie einen Receipt?', 'الإيصال Beleg', 'Beleg'],
-      ['Nicht nur der Preis zählt.', 'ليس السعر وحده', 'Not only der Preis zählt', 'الإطار Nicht nur', 'nur']
+      ['Die Preise sind stark gestiegen.', 'الأسعار ارتفعت كثيرًا', 'Die Preise sind stark steigen.', 'سعر يصعد بـsein واسم مفعول: sind gestiegen', 'gestiegen'],
+      ['Die Nachfrage ist größer als das Angebot.', 'الطلب أكبر من العرض', 'Die Nachfrage ist größer wie das Angebot.', 'المقارنة القياسية بـals', 'größer'],
+      ['Es gibt zehn Prozent Rabatt.', 'يوجد خصم عشرة بالمئة', 'Es gibt zehn Prozent von Rabatt.', 'الخصم بالنسبة بلا von: Prozent Rabatt', 'Rabatt'],
+      ['Ich zahle mit Karte.', 'أدفع بالبطاقة', 'Ich zahle mit die Karte.', 'عبارة الدفع الثابتة: mit Karte', 'Karte']
     ],
-    'Ich kann mir das leisten. Nicht nur der Preis zählt.',
-    'Haben Sie einen Beleg?',
-    'Begründe morgen einen Kauf in zwei Sätzen.',
-    'غدًا علّل شراءً في جملتين.'),
+    'Die Preise sind stark gestiegen.',
+    'Die Verbraucher achten auf den Preis.',
+    'Wiederhole morgen die fünf Sätze: Die Preise sind stark gestiegen. Die Nachfrage ist größer als das Angebot. Es gibt zehn Prozent Rabatt. Ich zahle mit Karte. Die Verbraucher achten auf den Preis.',
+    'غدًا أعد جمل الشراء الخمس ولاحظ أفعل التفضيل بـals والنسبة بلا von وحرف achten الثابت.',
+    {
+      factFamilies: ['konjugation', 'kasus', 'kasus', 'kasus'],
+      imitateNearMiss: 'steigen',
+      transformHint: 'في جملة الختام عين المستهلكين على السعر: Die Verbraucher achten auf den Preis — achten بحرف ثابت: auf + نصب.',
+      orderSentence: 'Die Nachfrage ist größer als das Angebot.',
+      checkOrderSentence: 'Die Verbraucher achten auf den Preis.',
+      orderAr: 'رتّب جملة المقارنة: الفاعل أولًا ثم الفعل ist في الموضع الثاني قبل عبارة المقارنة.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل المصرّف ثابت في الجملة الرئيسية.', 'عبارة المقارنة تأتي كاملة بعد الفعل: als das Angebot.'],
+      writing: {
+        zeigt: 'Eine Kaufentscheidung in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تعلّل قرار شراء: أسعار صاعدة بـPerfekt مع sein، وطلب أكبر بمقارنة als، وخصم بلا von، ودفع بالعبارة الثابتة، وخاتمة بعين المستهلكين على السعر.',
+        hinweise: ['كل جملة حجة واحدة في القرار.', 'راجع als بعد أفعل التفضيل وحذف von من الخصم.'],
+        prompt: 'اكتب جمل الشراء الخمس المستهدفة من الذاكرة بالمقارنة والخصم والدفع الصحيحة.',
+        promptDe: 'Die Preise sind stark gestiegen. · Die Nachfrage ist größer als das Angebot. · Es gibt zehn Prozent Rabatt. · Ich zahle mit Karte. · Die Verbraucher achten auf den Preis.',
+        points: ['Die Preise sind stark gestiegen.', 'Die Nachfrage ist größer als das Angebot.', 'Es gibt zehn Prozent Rabatt.', 'Ich zahle mit Karte.', 'Die Verbraucher achten auf den Preis.'],
+        minWords: 27,
+        frage: 'اكتب جمل الشراء الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Preise sind stark gestiegen. Die Nachfrage ist größer als das Angebot. Es gibt zehn Prozent Rabatt. Ich zahle mit Karte. Die Verbraucher achten auf den Preis.',
+      summaryDe: 'Die Preise sind stark gestiegen. Die Nachfrage ist größer als das Angebot. Es gibt zehn Prozent Rabatt. Ich zahle mit Karte. Die Verbraucher achten auf den Preis.',
+      summaryAr: 'الاستهلاك في خمس جمل: أسعار ارتفعت بـsein واسم مفعول، وطلب أكبر بـals القياسية، وخصم بلا von، ودفع بلا أداة، وعين المستهلك بحرف achten الثابت.',
+      summaryRecap: 'قرار شراء بخمس خطوات',
+      hwHintDe: 'Nicht „ich can das leisten“, nicht „es ist worth“ und nicht „not only“ wörtlich tragen, und der Beleg ist kein „Receipt“: sich etwas leisten, es lohnt sich und nicht nur, sondern auch — so heißt es auf Deutsch.'
+    }),
 
   U('b1-u4-l1', 'B1', 'التطوع', 'Ehrenamt', 'lexik-kollokation',
     'Am Ende beschreibst du eine Erfahrung',

@@ -124,7 +124,7 @@
     ['التكوين والدراسة: مقارنة مسارين', 'Ausbildung und Studium: zwei Wege vergleichen', 'مسارات التعليم', 'dauern + Zeitangabe ohne Präposition · beginnen im Monat · einerseits / andererseits + Verbzweit · bestehen mit haben', 'explicit'],
     ['المدينة: الموقع والنقل والحسنات والمساوئ', 'Stadt: Lage, Verkehr, Vorteil und Nachteil', 'الحي والسكن', 'liegen am Stadtrand · alle zehn Minuten ohne Präposition · der Vorteil ist die ruhige Lage · der Nachteil ist die teure Miete · Mietpreise steigen', 'explicit'],
     ['التأمين: العقد والقسط والتبليغ عن الضرر', 'Versicherung: Vertrag, Beitrag und Schadensmeldung', 'المال والتأمين', 'Krankenversicherung ist Pflicht · den Schaden decken/melden ohne Präposition · haften für + Akkusativ · Vertrag läuft bis + Jahr', 'explicit'],
-    ['الاستهلاك', 'Konsum', 'الشراء', 'قرار شراء معلّل', 'explicit'],
+    ['الاستهلاك: مقارنة الأسعار والشراء الذكي', 'Konsum: Preise vergleichen und klug kaufen', 'الشراء', 'Preise sind gestiegen (Perfekt mit sein) · größer als + Nominativ · zehn Prozent Rabatt ohne von · mit Karte zahlen · achten auf + Akkusativ', 'explicit'],
     ['التطوع', 'Ehrenamt', 'المجتمع', 'وصف تجربة', 'explicit'],
     ['رحلة معقدة', 'Reiseplanung', 'السفر', 'خطة ببدائل', 'explicit'],
     ['تعليل الرأي', 'Meinung begründen', 'الحجاج', 'لأن ومثال', 'explicit'],

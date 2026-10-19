@@ -12729,6 +12729,124 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB7[4].frage.optionen.some(o => o.text === 'Der Vertrag läuft zu 2027.') &&
       Object.values(checksB7[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 
+
+  const lessonB8 = win.DW_LESSONS['b1-u3-l8'];
+  const rowB8 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB8.id);
+  const byWordB8 = Object.fromEntries(lessonB8.wortschatz.map(it => [it.de, it]));
+  const tricksB8 = lessonB8.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB8 = [
+    'Die Preise sind stark gestiegen.',
+    'Die Nachfrage ist größer als das Angebot.',
+    'Es gibt zehn Prozent Rabatt.',
+    'Ich zahle mit Karte.',
+    'Die Verbraucher achten auf den Preis.'
+  ];
+  t('Corpus lesson b1-u3-l8 precisely scopes one purchase decision with sein-perfect price rise, standard als comparison, bare discount, bare card idiom and governed achten auf across five targets',
+    lessonB8.title.de === 'Konsum: Preise vergleichen und klug kaufen' &&
+      lessonB8.title.ar === 'الاستهلاك: مقارنة الأسعار والشراء الذكي' &&
+      rowB8.title.de === lessonB8.title.de && rowB8.title.ar === lessonB8.title.ar &&
+      rowB8.theme === 'الشراء' &&
+      rowB8.grammar.item === 'Preise sind gestiegen (Perfekt mit sein) · größer als + Nominativ · zehn Prozent Rabatt ohne von · mit Karte zahlen · achten auf + Akkusativ' &&
+      rowB8.grammar.method === 'explicit' && lessonB8.schritte.length === 36 && lessonB8.wortschatz.length === 40 &&
+      lessonB8.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB8.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB8[i]) &&
+      lessonB8.schritte[0].zeigt.de === 'Am Ende begründest du eine Kaufentscheidung in fünf Sätzen: Preise, Nachfrage, Rabatt, Zahlung und Verbraucherblick' &&
+      lessonB8.schritte.find(s => s.id === 's20').zeigt.de === targetsB8[4]);
+
+  const expectedWordsB8 = [
+    'der Konsum', 'der Verbraucher', 'die Verbraucherzentrale', 'das Angebot', 'die Nachfrage',
+    'der Preis', 'die Preiserhöhung', 'der Rabatt', 'der Ausverkauf', 'die Rechnung', 'die Quittung',
+    'das Bargeld', 'die Karte', 'die Überweisung', 'das Konto', 'die Bank', 'die Gebühr',
+    'die Schulden', 'der Kredit', 'die Zinsen', 'sparen', 'ausgeben', 'die Ausgabe', 'das Einkommen',
+    'die Kaufkraft', 'die Werbung', 'der Kunde', 'der Verkauf', 'die Ware', 'die Qualität',
+    'der Betrug', 'die Täuschung', 'das Geschäft', 'der Supermarkt', 'der Markt', 'die Tüte',
+    'die Verpackung', 'das Sonderangebot', 'der Gutschein', 'gültig'
+  ];
+  const errorsB8 = lessonB8.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l8 reviews all 40 entries and three bounded mnemonics without fourteen manufactured or grammatical pseudo-errors, keeping agreement, n-declension, strong-verb and duration case as genuine error axes and both sparen governors honestly open',
+    Object.keys(byWordB8).join(' | ') === expectedWordsB8.join(' | ') &&
+      lessonB8.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB8.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB8['sparen'].err === 'Wir spart für ein Haus.' &&
+      byWordB8['sparen'].why.includes('وبـauf') &&
+      byWordB8['der Kredit'].err === 'Der Kredit läuft zehn Jahren.' &&
+      byWordB8['der Kunde'].err === 'Der Kunden ist König.' &&
+      byWordB8['die Qualität'].err === 'Die Qualität lasst nach.' &&
+      byWordB8['die Karte'].why.includes('mit der Karte') &&
+      !['Bargeld braucht man selten es.', 'Die Gebühr ist zu hoch gemacht.',
+        'Viele Familien haben Schulden es.', 'Der Kredit läuft für zehn Jahre.',
+        'Wir sparen auf ein Haus.', 'Das Einkommen reicht nicht es.',
+        'Die Kaufkraft sinkt es.', 'Der Kunde ist König es.',
+        'Der Verkauf läuft gut es.', 'Die Qualität lässt nach es.',
+        'Die Täuschung war perfekt gemacht.', 'Der Supermarkt ist rund um die Uhr offen es.',
+        'Der Gutschein ist ein Jahr gültig gemacht.', 'Der Ausweis ist noch gültig gemacht.']
+        .some(x => errorsB8.includes(x)) &&
+      tricksB8.length === 3 && tricksB8[0].wie.includes('Es gibt zehn Prozent Rabatt') &&
+      tricksB8[1].wie.includes('Wir sparen für ein Haus') &&
+      tricksB8[2].wie.includes('Der Betrug fiel erst später auf.'));
+
+  const wordClozeAB8 = lessonB8.schritte.find(s => s.id === 's09');
+  const wordClozeBB8 = lessonB8.schritte.find(s => s.id === 's13');
+  const wordClozeCB8 = lessonB8.schritte.find(s => s.id === 's17');
+  const imitateB8 = lessonB8.schritte.find(s => s.id === 's19');
+  const drillB8 = lessonB8.schritte.find(s => s.id === 's23');
+  const orderB8 = lessonB8.schritte.find(s => s.id === 's24');
+  const writingB8 = lessonB8.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB8 = lessonB8.schritte.find(s => s.phase === 'Produktion');
+  const summaryB8 = lessonB8.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB8 = lessonB8.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l8 aligns five strict learning clozes, sound subject-first order fields and a 27-word five-target production',
+    wordClozeAB8.frage.zeigt === 'Die ____ sind stark gestiegen.' && wordClozeAB8.frage.antworten.join(' ') === 'Preise' &&
+      wordClozeAB8.frage.nearMiss.Preis && !win.DW.renderers.judgeCloze(wordClozeAB8.frage, 'Preis').ok &&
+      wordClozeBB8.frage.zeigt === 'Ich gebe zu viel Geld ____.' && wordClozeBB8.frage.antworten.join(' ') === 'aus' &&
+      wordClozeBB8.frage.nearMiss.ausgeben && !win.DW.renderers.judgeCloze(wordClozeBB8.frage, 'ausgeben').ok &&
+      wordClozeCB8.frage.zeigt === 'Das ____ gilt nur heute.' && wordClozeCB8.frage.antworten.join(' ') === 'Sonderangebot' &&
+      wordClozeCB8.frage.nearMiss.Sonderangebote && !win.DW.renderers.judgeCloze(wordClozeCB8.frage, 'Sonderangebote').ok &&
+      imitateB8.zeigt.de === 'Die Preise sind stark ____.' && imitateB8.frage.antworten.join(' ') === 'gestiegen' &&
+      imitateB8.frage.nearMiss.steigen && !win.DW.renderers.judgeCloze(imitateB8.frage, 'steigen').ok &&
+      drillB8.frage.zeigt === 'Die Zinsen sind ____.' && drillB8.frage.antworten.join(' ') === 'gestiegen' &&
+      drillB8.frage.nearMiss.steigen && !win.DW.renderers.judgeCloze(drillB8.frage, 'steigen').ok &&
+      lessonB8.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB8.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderB8.frage.correct.join(' ') === targetsB8[1] && orderB8.frage.finite === 'ist' && orderB8.frage.verbFirst === false &&
+      orderB8.frage.fields.vorfeld.join(' ') === 'Die Nachfrage' && orderB8.frage.fields.lsk.join(' ') === 'ist' &&
+      orderB8.frage.fields.mittelfeld.join(' ') === 'größer als das Angebot.' &&
+      win.DW.order.score(orderB8.frage, orderB8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB8.frage, ['Die', 'Nachfrage', 'größer', 'als', 'das', 'Angebot.', 'ist']).credit < 1 &&
+      writingB8.frage.points.join(' | ') === targetsB8.join(' | ') && writingB8.frage.minWords === 27 &&
+      targetsB8.join(' ').split(/\s+/).length === 27 &&
+      targetsB8.every(x => [writingB8.frage.promptDe, summaryB8.zeigt.de, homeworkB8.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB8.every(x => norm(speakingB8.erklaerung).includes(norm(x))));
+
+  const checksB8 = lessonB8.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB8 = checksB8.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB8 = checksB8.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l8 makes 80 percent four of five, independently checking bare mit Karte, gestiegen cloze, subject-first order, standard als comparison and governed achten auf',
+    checksB8.length === 5 && checksB8[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB8[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB8.every(s => /^cap\.b1-u3-l8\.s\d+$/.test(s.frage.prereq || '')) && checksB8.every(s => !s.hinweise) &&
+      checksB8.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l8.s07 | cap.b1-u3-l8.s23 | cap.b1-u3-l8.s24 | cap.b1-u3-l8.s09 | cap.b1-u3-l8.s20' &&
+      new Set(checksB8.map(s => s.frage.prereq)).size === 5 &&
+      checksB8[0].frage.optionen.some(o => o.text === targetsB8[3]) &&
+      checksB8[0].frage.optionen.some(o => o.text === 'Ich zahle mit die Karte.') &&
+      Object.values(checksB8[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckB8.frage.zeigt === 'Die Zinsen sind ____.' &&
+      clozeCheckB8.frage.antworten.join(' ') === 'gestiegen' && clozeCheckB8.frage.nearMiss.steigen &&
+      !win.DW.renderers.judgeCloze(clozeCheckB8.frage, 'steigen').ok &&
+      orderCheckB8.frage.correct.join(' ') === targetsB8[4] && orderCheckB8.frage.finite === 'achten' &&
+      orderCheckB8.frage.fields.vorfeld.join(' ') === 'Die Verbraucher' && orderCheckB8.frage.fields.lsk.join(' ') === 'achten' &&
+      orderCheckB8.frage.fields.mittelfeld.join(' ') === 'auf den Preis.' &&
+      win.DW.order.score(orderCheckB8.frage, orderCheckB8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB8.frage, ['Die', 'Verbraucher', 'auf', 'den', 'Preis.', 'achten']).credit < 1 &&
+      checksB8[3].frage.optionen.some(o => o.text === targetsB8[1]) &&
+      checksB8[3].frage.optionen.some(o => o.text === 'Die Nachfrage ist größer wie das Angebot.') &&
+      Object.values(checksB8[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksB8[4].frage.optionen.some(o => o.text === targetsB8[4]) &&
+      checksB8[4].frage.optionen.some(o => o.text === 'Die Verbraucher achten für den Preis.') &&
+      Object.values(checksB8[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
