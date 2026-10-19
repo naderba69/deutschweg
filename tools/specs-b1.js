@@ -1823,25 +1823,50 @@ module.exports = [
    is the B1 grammar the earlier five units did not name: Pronominaladverbien,
    Partizip als Adjektiv, zweiteilige Konnektoren, Passiv mit Modalverben,
    Nominalstil, Wortbildung. */
-  U('b1-u6-l1', 'B1', 'الضمائر الظرفية', 'Pronominaladverbien', 'präposition',
-    'Am Ende benutzt du darauf und worüber statt auf das',
-    'في النهاية تستعمل darauf وworüber بدل auf das.',
+  U('b1-u6-l1', 'B1', 'الضمائر الظرفية: darauf وdaran وworüber', 'Pronominaladverbien: darauf, daran und worüber', 'präposition',
+    'Am Ende fragst und antwortest du mit worüber, darauf und daran — in fünf Sätzen',
+    'في النهاية تسأل وتجيب بـworüber وdarauf وdaran في خمس جمل.',
     [
-      ['Ich warte darauf.', 'الضمير الظرفي يشير إلى شيء ذُكر', 'Präposition + Sache → da(r) + Präposition', 'Ich warte auf das.', 'للشيء darauf لا auf das'],
-      ['Worüber sprecht ihr?', 'السؤال عن شيء: wo(r) + حرف', 'wo + Präposition → worüber', 'Über was sprecht ihr?', 'السؤال worüber'],
-      ['Ich denke daran.', 'denken an يصبح daran', 'Verb + Präposition → Pronominaladverb', 'Ich denke an das.', 'daran'],
-      ['Ich helfe ihm.', 'للأشخاص حرف + ضمير شخصي', 'Person → Präposition + Pronomen', 'Ich helfe daran.', 'الأشخاص an ihn']
+      ['Ich warte darauf.', 'تشير إلى شيء مذكور بضمير ظرفي', 'warten auf + شيء مذكور يصبح darauf في كلمة واحدة — حرف الفعل نفسه لا ترجمة عربية', 'Ich warte auf das.', 'للشيء darauf لا auf das'],
+      ['Worüber sprecht ihr gerade?', 'تسأل عن شيء بحرف جر', 'السؤال عن شيء: wo(r) + حرف — worüber، وتدخل r قبل حرف متحرك', 'Über was sprecht ihr gerade?', 'السؤال worüber لا Über was'],
+      ['Ich denke oft daran.', 'تستبدل an + شيء بـdaran', 'denken an + شيء يصبح daran — حرف الفعل an يبقى داخل الضمير الظرفي', 'Ich denke oft an das.', 'daran لا an das'],
+      ['Ich helfe ihm.', 'تستعمل الضمير الشخصي للأشخاص', 'للأشخاص لا يوجد ضمير ظرفي: helfen يأخذ شخصًا في الداتيف ihm — daran للأشياء فقط', 'Ich helfe daran.', 'للشخص ihm لا daran']
     ],
     [
-      ['Ich warte darauf.', 'أنتظر ذلك', 'Ich warte auf das.', 'للشيء ضمير ظرفي.', 'darauf'],
-      ['Worüber sprecht ihr?', 'عن ماذا تتحدثون؟', 'Über was sprecht ihr als Frage?', 'السؤال worüber.', 'Worüber'],
-      ['Ich denke daran.', 'أفكر في ذلك', 'Ich denke an das.', 'daran مع denken.', 'daran'],
-      ['Ich helfe ihm.', 'أساعده', 'Ich helfe daran.', 'الأشخاص ضمير شخصي.', 'ihm']
+      ['Ich warte darauf.', 'أنتظر ذلك', 'Ich warte auf das.', 'للشيء ضمير ظرفي: darauf.', 'darauf'],
+      ['Worüber sprecht ihr gerade?', 'عن ماذا تتحدثون الآن؟', 'Über was sprecht ihr gerade?', 'السؤال worüber.', 'Worüber'],
+      ['Ich denke oft daran.', 'أفكّر في ذلك غالبًا', 'Ich denke oft an das.', 'denken an يصبح daran.', 'daran'],
+      ['Ich helfe ihm.', 'أساعده', 'Ich helfe daran.', 'للشخص ضمير شخصي: ihm.', 'ihm']
     ],
-    'Ich warte darauf. Worüber sprecht ihr?',
-    'Ich denke oft daran.',
-    'Notiere drei Sätze mit darauf.',
-    'غدًا اكتب ثلاث جمل بـdarauf.'),
+    'Ich warte darauf. Worüber sprecht ihr gerade?',
+    'Darauf warte ich schon lange.',
+    'Wiederhole morgen die fünf Sätze: Ich warte darauf. Worüber sprecht ihr gerade? Ich denke oft daran. Ich helfe ihm. Darauf warte ich schon lange.',
+    'غدًا أعد جمل الضمائر الظرفية الخمس ولاحظ الفرق بين الشيء والشخص.',
+    {
+      factFamilies: ['präposition', 'präposition', 'präposition', 'kasus'],
+      imitateNearMiss: 'worauf',
+      transformHint: 'في جملة الختام الحركة الأخيرة: Darauf warte ich schon lange — الضمير الظرفي يستطيع افتتاح الجملة، وعندها يبقى الفعل ثانيًا ويأتي الفاعل بعده.',
+      orderSentence: 'Darauf warte ich schon lange.',
+      checkOrderSentence: 'Ich denke oft daran.',
+      orderAr: 'رتّب جملة التقديم: Darauf أولًا ثم warte في الموضع الثاني قبل ich.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الضمير الظرفي المتقدّم Darauf هو الموضع الأول وحده.', 'الفاعل ich يأتي بعد الفعل عند التقديم: warte ich.'],
+      writing: {
+        zeigt: 'Pronominaladverbien in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: إشارة إلى شيء بـdarauf، وسؤالًا بـworüber، وتفكيرًا بـdaran، ومساعدة شخص بـihm، وخاتمة بتقديم الضمير الظرفي على الفعل.',
+        hinweise: ['حرف الفعل يبقى داخل الضمير الظرفي: warten auf تصبح darauf.', 'للأشخاص ضمير شخصي لا ضمير ظرفي: ihm.'],
+        prompt: 'اكتب جمل الضمائر الظرفية الخمس المستهدفة من الذاكرة مع السؤال والشخص والتقديم.',
+        promptDe: 'Ich warte darauf. · Worüber sprecht ihr gerade? · Ich denke oft daran. · Ich helfe ihm. · Darauf warte ich schon lange.',
+        points: ['Ich warte darauf.', 'Worüber sprecht ihr gerade?', 'Ich denke oft daran.', 'Ich helfe ihm.', 'Darauf warte ich schon lange.'],
+        minWords: 19,
+        frage: 'اكتب جمل الضمائر الظرفية الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich warte darauf. Worüber sprecht ihr gerade? Ich denke oft daran. Ich helfe ihm. Darauf warte ich schon lange.',
+      summaryDe: 'Ich warte darauf. Worüber sprecht ihr gerade? Ich denke oft daran. Ich helfe ihm. Darauf warte ich schon lange.',
+      summaryAr: 'للشيء da(r) + حرف، وللسؤال wo(r) + حرف، وللشخص ضمير شخصي — والضمير الظرفي يقدَّم مع بقاء الفعل ثانيًا.',
+      summaryRecap: 'للشيء darauf وللشخص ihm',
+      hwHintDe: 'Das Pronominaladverb ersetzt Präposition und Sache in einem Wort: Ich warte darauf, nicht auf das. Bei Personen bleibt das Personalpronomen: Ich warte auf ihn. Frage mit worüber und antworte mit darüber.'
+    }),
 
   U('b1-u6-l2', 'B1', 'اسم الفاعل والمفعول كصفة', 'Partizip als Adjektiv', 'deklination',
     'Am Ende beschreibst du mit spannend und gespannt richtig',

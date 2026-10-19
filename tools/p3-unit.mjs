@@ -14805,6 +14805,131 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE8[4].frage.optionen.some(o => o.text === targetsE8[4]) &&
       checksE8[4].frage.optionen.some(o => o.text === 'Die Argumentation müssen schlüssig sein.') &&
       Object.values(checksE8[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonF1 = win.DW_LESSONS['b1-u6-l1'];
+  const rowF1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonF1.id);
+  const byWordF1 = Object.fromEntries(lessonF1.wortschatz.map(it => [it.de, it]));
+  const tricksF1 = lessonF1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsF1 = [
+    'Ich warte darauf.',
+    'Worüber sprecht ihr gerade?',
+    'Ich denke oft daran.',
+    'Ich helfe ihm.',
+    'Darauf warte ich schon lange.'
+  ];
+  t('Corpus lesson b1-u6-l1 precisely scopes five pronominal-adverb moves referring to a thing with darauf, asking with worüber, thinking with daran, keeping a personal dative pronoun for people and fronting the adverb with inversion',
+    lessonF1.title.de === 'Pronominaladverbien: darauf, daran und worüber' &&
+      lessonF1.title.ar === 'الضمائر الظرفية: darauf وdaran وworüber' &&
+      rowF1.title.de === lessonF1.title.de && rowF1.title.ar === lessonF1.title.ar &&
+      rowF1.theme === 'الإشارة إلى شيء' &&
+      rowF1.grammar.item === 'warte darauf · worüber sprecht ihr · denke oft daran · helfe ihm · darauf warte ich' &&
+      rowF1.grammar.method === 'explicit' && lessonF1.schritte.length === 36 && lessonF1.wortschatz.length === 40 &&
+      lessonF1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonF1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsF1[i]) &&
+      lessonF1.schritte[0].zeigt.de === 'Am Ende fragst und antwortest du mit worüber, darauf und daran — in fünf Sätzen' &&
+      lessonF1.schritte.find(s => s.id === 's20').zeigt.de === targetsF1[4]);
+
+  const expectedWordsF1 = [
+    'der Bildschirm', 'die Tastatur', 'die Taste', 'das Video', 'installieren', 'bedienen',
+    'klicken', 'der Klick', 'empfangen', 'das Kabel', 'digital', 'das Zeichen',
+    'der Ordner', 'die Liste', 'die Reihenfolge', 'markieren', 'ordnen', 'testen',
+    'starten', 'stoppen', 'die Form', 'das Detail', 'die Schrift', 'verpacken',
+    'funktionieren', 'die Kontrolle', 'die Klingel', 'der Dialog', 'die Planung',
+    'die Aktivität', 'die Station', 'die Beschreibung', 'analysieren', 'die Studie',
+    'die Biologie', 'erkennen', 'worüber', 'drin', 'mitten', 'Daten'
+  ];
+  const errorsF1 = lessonF1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u6-l1 reviews all 40 entries and three bounded mnemonics without twenty-two manufactured appendages and with the lesson carrying its own worüber foil',
+    Object.keys(byWordF1).join(' | ') === expectedWordsF1.join(' | ') &&
+      lessonF1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonF1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordF1['worüber'].err === 'Über was sprecht ihr gerade?' &&
+      byWordF1['worüber'].why.includes('Darüber') &&
+      byWordF1['der Ordner'].err === 'Der Ordner steht in das Regal.' &&
+      byWordF1['installieren'].err === 'Ich installiert die neue App morgen.' &&
+      byWordF1['die Biologie'].err === 'Biologie war seine Lieblingsfach.' &&
+      byWordF1['Daten'].err === 'Die Daten ist sicher.' &&
+      byWordF1['die Daten'] === undefined &&
+      byWordF1['mitten'].err === 'Das Café liegt mitten in die Stadt.' &&
+      !['Der Bildschirm ist zu hell gemacht.', 'Die Taste links ist kaputt gemacht.',
+        'Ich installiere die neue App morgen an.', 'Ich empfange die Nachricht heute Abend von.',
+        'Die Schule arbeitet heute digital gemacht.', 'Der Ordner steht in dem Regal auf.',
+        'Die Liste ist noch offen gemacht.', 'Die Reihenfolge stimmt nicht es.',
+        'Die Form ist einfach gemacht.', 'Ein Detail fehlt noch es.',
+        'Die Schrift ist zu klein gemacht.', 'Der Aufzug funktioniert wieder es.',
+        'Die Klingel ist laut gemacht.', 'Der Dialog war höflich gemacht.',
+        'Die Planung läuft seit Januar es.', 'Die nächste Station heißt West es.',
+        'Die Beschreibung ist genau gemacht.', 'Biologie war sein Lieblingsfach es.',
+        'Worüber sprecht ihr gerade es?', 'Der Schlüssel ist drin in.',
+        'Das Café liegt mitten auf der Stadt.', 'Die Daten sind sicher gemacht.']
+        .some(x => errorsF1.includes(x)) &&
+      tricksF1.length === 3 && tricksF1[0].wie.includes('Ich warte darauf') &&
+      tricksF1[1].wie.includes('Ich warte auf ihn') &&
+      tricksF1[2].wie.includes('Ich klicke auf den Knopf'));
+
+  const wordClozeAF1 = lessonF1.schritte.find(s => s.id === 's09');
+  const wordClozeBF1 = lessonF1.schritte.find(s => s.id === 's13');
+  const wordClozeCF1 = lessonF1.schritte.find(s => s.id === 's17');
+  const imitateF1 = lessonF1.schritte.find(s => s.id === 's19');
+  const drillF1 = lessonF1.schritte.find(s => s.id === 's23');
+  const orderF1 = lessonF1.schritte.find(s => s.id === 's24');
+  const writingF1 = lessonF1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingF1 = lessonF1.schritte.find(s => s.phase === 'Produktion');
+  const summaryF1 = lessonF1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkF1 = lessonF1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u6-l1 aligns five strict learning clozes, sound fronted-Darauf order fields and a 19-word five-target production',
+    wordClozeAF1.frage.zeigt === 'Er ____ das Gerät ohne Hilfe.' && wordClozeAF1.frage.antworten.join(' ') === 'bedient' &&
+      wordClozeAF1.frage.nearMiss.bedienen && !win.DW.renderers.judgeCloze(wordClozeAF1.frage, 'bedienen').ok &&
+      wordClozeBF1.frage.zeigt === 'Ein ____ fehlt noch.' && wordClozeBF1.frage.antworten.join(' ') === 'Detail' &&
+      wordClozeBF1.frage.nearMiss.Details && !win.DW.renderers.judgeCloze(wordClozeBF1.frage, 'Details').ok &&
+      wordClozeCF1.frage.zeigt === 'Der Schlüssel ist ____.' && wordClozeCF1.frage.antworten.join(' ') === 'drin' &&
+      wordClozeCF1.frage.nearMiss['in'] && !win.DW.renderers.judgeCloze(wordClozeCF1.frage, 'in').ok &&
+      imitateF1.zeigt.de === 'Ich warte ____.' && imitateF1.frage.antworten.join(' ') === 'darauf' &&
+      imitateF1.frage.nearMiss.worauf && !win.DW.renderers.judgeCloze(imitateF1.frage, 'worauf').ok &&
+      drillF1.frage.zeigt === '____ sprecht ihr gerade?' && drillF1.frage.antworten.join(' ') === 'Worüber' &&
+      drillF1.frage.nearMiss['Darüber'] && !win.DW.renderers.judgeCloze(drillF1.frage, 'Darüber').ok &&
+      lessonF1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderF1.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderF1.frage.correct.join(' ') === targetsF1[4] && orderF1.frage.finite === 'warte' && orderF1.frage.verbFirst === false &&
+      orderF1.frage.fields.vorfeld.join(' ') === 'Darauf' && orderF1.frage.fields.lsk.join(' ') === 'warte' &&
+      orderF1.frage.fields.mittelfeld.join(' ') === 'ich schon lange.' &&
+      win.DW.order.score(orderF1.frage, orderF1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderF1.frage, ['Darauf', 'ich', 'warte', 'schon', 'lange.']).credit < 1 &&
+      writingF1.frage.points.join(' | ') === targetsF1.join(' | ') && writingF1.frage.minWords === 19 &&
+      targetsF1.join(' ').split(/\s+/).length === 19 &&
+      targetsF1.every(x => [writingF1.frage.promptDe, summaryF1.zeigt.de, homeworkF1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsF1.every(x => norm(speakingF1.erklaerung).includes(norm(x))) &&
+      (homeworkF1.hinweise || []).join(' ').includes('Das Pronominaladverb ersetzt') &&
+      (homeworkF1.hinweise || []).join(' ').includes('antworte mit darüber'));
+
+  const checksF1 = lessonF1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckF1 = checksF1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckF1 = checksF1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u6-l1 makes 80 percent four of five, independently checking the personal pronoun, the worüber question and daran order, klicken-auf government and fronted-adverb inversion',
+    checksF1.length === 5 && checksF1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksF1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksF1.every(s => /^cap\.b1-u6-l1\.s\d+$/.test(s.frage.prereq || '')) && checksF1.every(s => !s.hinweise) &&
+      checksF1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u6-l1.s07 | cap.b1-u6-l1.s23 | cap.b1-u6-l1.s24 | cap.b1-u6-l1.s09 | cap.b1-u6-l1.s20' &&
+      new Set(checksF1.map(s => s.frage.prereq)).size === 5 &&
+      checksF1[0].frage.optionen.some(o => o.text === targetsF1[3]) &&
+      checksF1[0].frage.optionen.some(o => o.text === 'Ich helfe daran.') &&
+      Object.values(checksF1[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckF1.frage.zeigt === '____ sprecht ihr gerade?' &&
+      clozeCheckF1.frage.antworten.join(' ') === 'Worüber' && clozeCheckF1.frage.nearMiss['Darüber'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckF1.frage, 'Darüber').ok &&
+      orderCheckF1.frage.correct.join(' ') === targetsF1[2] && orderCheckF1.frage.finite === 'denke' &&
+      orderCheckF1.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheckF1.frage.fields.lsk.join(' ') === 'denke' &&
+      orderCheckF1.frage.fields.mittelfeld.join(' ') === 'oft daran.' &&
+      win.DW.order.score(orderCheckF1.frage, orderCheckF1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckF1.frage, ['Ich', 'oft', 'denke', 'daran.']).credit < 1 &&
+      checksF1[3].frage.optionen.some(o => o.text === 'Bitte klicke auf den grünen Knopf.') &&
+      checksF1[3].frage.optionen.some(o => o.text === 'Bitte klicke den grünen Knopf.') &&
+      Object.values(checksF1[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksF1[4].frage.optionen.some(o => o.text === targetsF1[4]) &&
+      checksF1[4].frage.optionen.some(o => o.text === 'Darauf ich warte schon lange.') &&
+      Object.values(checksF1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
