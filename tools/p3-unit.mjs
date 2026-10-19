@@ -14559,6 +14559,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE6[4].frage.optionen.some(o => o.text === targetsE6[4]) &&
       checksE6[4].frage.optionen.some(o => o.text === 'Ich wiederhole die Regeln in jeden Tag.') &&
       Object.values(checksE6[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
+  const lessonE7 = win.DW_LESSONS['b1-u5-l7'];
+  const rowE7 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE7.id);
+  const byWordE7 = Object.fromEntries(lessonE7.wortschatz.map(it => [it.de, it]));
+  const tricksE7 = lessonE7.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE7 = [
+    'Die Prüfung besteht aus vier Teilen.',
+    'Ein Modul rettet das andere nicht.',
+    'Jeder Inhaltspunkt zählt.',
+    'Im Sprechen arbeitet man zu zweit.',
+    'Die Zeit wird nicht verlängert.'
+  ];
+  t('Corpus lesson b1-u5-l7 precisely scopes five exam-form moves composing four parts with aus, denying cross-module rescue in statement order, counting every content point singularly, pairing speaking work under a contracted im with inversion and closing with an unextendable passive clock',
+    lessonE7.title.de === 'Prüfungsform B1: Teile, Ausgleich und Zeit' &&
+      lessonE7.title.ar === 'شكل امتحان B1: الأقسام والتعويض والوقت' &&
+      rowE7.title.de === lessonE7.title.de && rowE7.title.ar === lessonE7.title.ar &&
+      rowE7.theme === 'شكل الامتحان' &&
+      rowE7.grammar.item === 'besteht aus vier Teilen · kein Ausgleich · jeder Inhaltspunkt zählt · im Sprechen zu zweit · Zeit wird nicht verlängert' &&
+      rowE7.grammar.method === 'explicit' && lessonE7.schritte.length === 36 && lessonE7.wortschatz.length === 40 &&
+      lessonE7.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE7.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE7[i]) &&
+      lessonE7.schritte[0].zeigt.de === 'Am Ende kennst du die Form: vier Teile, kein Ausgleich, jeder Punkt und die feste Zeit in fünf Sätzen' &&
+      lessonE7.schritte.find(s => s.id === 's20').zeigt.de === targetsE7[4]);
+
+  const expectedWordsE7 = [
+    'die Prüfung', 'die Prüfungsordnung', 'das Niveau', 'der Prüfungsteil', 'die Aufgabe', 'die Anweisung',
+    'das Beispiel', 'die Zeit', 'der Teil', 'das Hören', 'das Lesen',
+    'das Schreiben', 'das Sprechen', 'der Anteil', 'die Punktzahl', 'der Punkt',
+    'das Ergebnis', 'das Zeugnis', 'das Zertifikat', 'die Anmeldung', 'die Gebühr',
+    'die Prüfungsangst', 'die Vorbereitung', 'der Übungstest', 'die Uhr',
+    'der Kandidat', 'der Prüfer', 'der Beisitzer', 'die Bewertung', 'das Kriterium',
+    'die Flüssigkeit', 'die Aussprache', 'die Grammatik', 'der Wortschatz',
+    'die Struktur', 'die Aufgabe lösen', 'die Zeit einteilen',
+    'die Antwort übertragen', 'das Blatt', 'bestehen'
+  ];
+  const errorsE7 = lessonE7.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l7 reviews all 40 entries and three bounded mnemonics without sixteen manufactured appendages and with honest in-plus-future, von-plus-dative and comparative explanations',
+    Object.keys(byWordE7).join(' | ') === expectedWordsE7.join(' | ') &&
+      lessonE7.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE7.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE7['das Ergebnis'].err === 'Das Ergebnis kommt nach vier Woche.' &&
+      byWordE7['die Struktur'].err === 'Die Struktur von das Text muss klar sein.' &&
+      byWordE7['die Struktur'].why.includes('des Textes') &&
+      byWordE7['bestehen'].err === 'Wer sechzig Prozent hat, er besteht.' &&
+      byWordE7['die Punktevergabe'] === undefined &&
+      byWordE7['die Gebühr'].err === 'Die Gebühr beträgt für zweihundert Euro.' &&
+      !['Die Prüfungsordnung erklärt alles es.', 'Jeder Prüfungsteil zählt gleich viel es.',
+        'Die Aufgabe drei ist schwierig gemacht.', 'Lies die Anweisung genau du!',
+        'Das Beispiel zeigt, was gemeint ist es.', 'Die Zeit ist knapp bemessen gemacht.',
+        'Das Zeugnis gilt weltweit es.', 'Das Zertifikat ist lebenslang gültig gemacht.',
+        'Ein Übungstest zeigt den Stand es.', 'Achte auf die Uhr du!',
+        'Der Beisitzer macht Notizen es.', 'Die Kriterien sind bekannt gemacht.',
+        'Ein breiter Wortschatz hilft es.', 'Löse zuerst die leichten Aufgaben du!',
+        'Teile deine Zeit gut du ein!', 'Wer sechzig Prozent hat, besteht es.']
+        .some(x => errorsE7.includes(x)) &&
+      tricksE7.length === 3 && tricksE7[0].wie.includes('sechzig Prozent') &&
+      tricksE7[1].wie.includes('Löse zuerst die leichten Aufgaben') &&
+      tricksE7[2].wie.includes('Die Struktur muss klar sein'));
+
+  const wordClozeAE7 = lessonE7.schritte.find(s => s.id === 's09');
+  const wordClozeBE7 = lessonE7.schritte.find(s => s.id === 's13');
+  const wordClozeCE7 = lessonE7.schritte.find(s => s.id === 's17');
+  const imitateE7 = lessonE7.schritte.find(s => s.id === 's19');
+  const drillE7 = lessonE7.schritte.find(s => s.id === 's23');
+  const orderE7 = lessonE7.schritte.find(s => s.id === 's24');
+  const writingE7 = lessonE7.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE7 = lessonE7.schritte.find(s => s.phase === 'Produktion');
+  const summaryE7 = lessonE7.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE7 = lessonE7.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l7 aligns five strict learning clozes, sound Sprechen order fields and a 26-word five-target production',
+    wordClozeAE7.frage.zeigt === 'Lies die ____ genau!' && wordClozeAE7.frage.antworten.join(' ') === 'Anweisung' &&
+      wordClozeAE7.frage.nearMiss.Anweisungen && !win.DW.renderers.judgeCloze(wordClozeAE7.frage, 'Anweisungen').ok &&
+      wordClozeBE7.frage.zeigt === 'Gegen ____ helfen Routinen.' && wordClozeBE7.frage.antworten.join(' ') === 'Prüfungsangst' &&
+      wordClozeBE7.frage.nearMiss.Prüfungsängste && !win.DW.renderers.judgeCloze(wordClozeBE7.frage, 'Prüfungsängste').ok &&
+      wordClozeCE7.frage.zeigt === '____ die Antworten auf den Bogen.' && wordClozeCE7.frage.antworten.join(' ') === 'Übertrage' &&
+      wordClozeCE7.frage.nearMiss.Übertragen && !win.DW.renderers.judgeCloze(wordClozeCE7.frage, 'Übertragen').ok &&
+      imitateE7.zeigt.de === 'Die ____ besteht aus vier Teilen.' && imitateE7.frage.antworten.join(' ') === 'Prüfung' &&
+      imitateE7.frage.nearMiss.Prüfungen && !win.DW.renderers.judgeCloze(imitateE7.frage, 'Prüfungen').ok &&
+      drillE7.frage.zeigt === 'Für jede Aufgabe gibt es einen ____.' && drillE7.frage.antworten.join(' ') === 'Punkt' &&
+      drillE7.frage.nearMiss.Punkte && !win.DW.renderers.judgeCloze(drillE7.frage, 'Punkte').ok &&
+      lessonE7.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE7.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE7.frage.correct.join(' ') === targetsE7[3] && orderE7.frage.finite === 'arbeitet' && orderE7.frage.verbFirst === false &&
+      orderE7.frage.fields.vorfeld.join(' ') === 'Im Sprechen' && orderE7.frage.fields.lsk.join(' ') === 'arbeitet' &&
+      orderE7.frage.fields.mittelfeld.join(' ') === 'man zu zweit.' &&
+      win.DW.order.score(orderE7.frage, orderE7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE7.frage, ['Im', 'Sprechen', 'man', 'arbeitet', 'zu', 'zweit.']).credit < 1 &&
+      writingE7.frage.points.join(' | ') === targetsE7.join(' | ') && writingE7.frage.minWords === 26 &&
+      targetsE7.join(' ').split(/\s+/).length === 26 &&
+      targetsE7.every(x => [writingE7.frage.promptDe, summaryE7.zeigt.de, homeworkE7.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE7.every(x => norm(speakingE7.erklaerung).includes(norm(x))) &&
+      (homeworkE7.hinweise || []).join(' ').includes('Wer einen Inhaltspunkt weglässt') &&
+      (homeworkE7.hinweise || []).join(' ').includes('kein Modul kauft den Punkt zurück'));
+
+  const checksE7 = lessonE7.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE7 = checksE7.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE7 = checksE7.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l7 makes 80 percent four of five, independently checking contracted speaking section, singular point and besteht-aus order, door-dative and passive-participle closure',
+    checksE7.length === 5 && checksE7[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE7[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE7.every(s => /^cap\.b1-u5-l7\.s\d+$/.test(s.frage.prereq || '')) && checksE7.every(s => !s.hinweise) &&
+      checksE7.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l7.s07 | cap.b1-u5-l7.s23 | cap.b1-u5-l7.s24 | cap.b1-u5-l7.s14 | cap.b1-u5-l7.s20' &&
+      new Set(checksE7.map(s => s.frage.prereq)).size === 5 &&
+      checksE7[0].frage.optionen.some(o => o.text === targetsE7[3]) &&
+      checksE7[0].frage.optionen.some(o => o.text === 'In Sprechen arbeitet man zu zweit.') &&
+      Object.values(checksE7[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckE7.frage.zeigt === 'Für jede Aufgabe gibt es einen ____.' &&
+      clozeCheckE7.frage.antworten.join(' ') === 'Punkt' && clozeCheckE7.frage.nearMiss.Punkte &&
+      !win.DW.renderers.judgeCloze(clozeCheckE7.frage, 'Punkte').ok &&
+      orderCheckE7.frage.correct.join(' ') === targetsE7[0] && orderCheckE7.frage.finite === 'besteht' &&
+      orderCheckE7.frage.fields.vorfeld.join(' ') === 'Die Prüfung' && orderCheckE7.frage.fields.lsk.join(' ') === 'besteht' &&
+      orderCheckE7.frage.fields.mittelfeld.join(' ') === 'aus vier Teilen.' &&
+      win.DW.order.score(orderCheckE7.frage, orderCheckE7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE7.frage, ['Die', 'aus', 'besteht', 'Prüfung', 'vier', 'Teilen.']).credit < 1 &&
+      checksE7[3].frage.optionen.some(o => o.text === 'Die Kandidaten warten vor der Tür.') &&
+      checksE7[3].frage.optionen.some(o => o.text === 'Die Kandidaten warten vor die Tür.') &&
+      Object.values(checksE7[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksE7[4].frage.optionen.some(o => o.text === targetsE7[4]) &&
+      checksE7[4].frage.optionen.some(o => o.text === 'Die Zeit wird nicht verlängern.') &&
+      Object.values(checksE7[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

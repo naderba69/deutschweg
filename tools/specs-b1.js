@@ -1727,25 +1727,50 @@ module.exports = [
       hwHintDe: 'Drei Verb-Endstellungen schützen fast jeden Satz: obwohl …, der …, damit … — wer sie im Schlaf kann, verliert in der Prüfung keine Punkte mehr.'
     }),
 
-  U('b1-u5-l7', 'B1', 'شكل امتحان B1', 'Prüfungsform B1', 'pruefstrategie',
-    'Am Ende kennst du die Form und schreibst keinen Ausgleich',
-    'في النهاية تعرف الشكل ولا تعوّض بين الأقسام.',
+  U('b1-u5-l7', 'B1', 'شكل امتحان B1: الأقسام والتعويض والوقت', 'Prüfungsform B1: Teile, Ausgleich und Zeit', 'pruefstrategie',
+    'Am Ende kennst du die Form: vier Teile, kein Ausgleich, jeder Punkt und die feste Zeit in fünf Sätzen',
+    'في النهاية تعرف الشكل: أربعة أقسام بلا تعويض ونقطة ومحتوى ووقت ثابت في خمس جمل.',
     [
-      ['vier Module', 'أربعة أقسام', 'لا درجة كلية تنقذ', 'eine Note rettet alle', 'لا إنقاذ'],
-      ['Schreiben hat Punkte', 'نقاط المحتوى تُغطى كلها', 'نقطة ناقصة قد تكلف المهمة', 'ein Punkt fehlt und ist egal', 'النقطة ليست تافهة'],
-      ['Sprechen ist zu zweit', 'التحدث مع شريك', 'لا مونولوج فقط', 'ich rede allein die ganze Zeit', 'الشريك جزء من المهمة'],
-      ['die Zeit ist fest', 'الوقت لا يُمدد', 'لا خمس دقائق إضافية', 'ich nehme extra Zeit', 'الوقت حد']
+      ['Die Prüfung besteht aus vier Teilen.', 'تعدّ أقسام الامتحان', 'مكوّن الشيء بـaus: besteht aus vier Teilen لا von التي للأصل', 'Die Prüfung besteht von vier Teilen.', 'المكوّن: besteht aus'],
+      ['Ein Modul rettet das andere nicht.', 'تنفي إنقاذ قسمٍ قسمًا', 'ترتيب الخبر: فاعل ففعل فمفعول (rettet das andere) لا فعل أخير في الرئيسية', 'Ein Modul das andere rettet nicht.', 'الفعل ثانٍ: rettet das andere'],
+      ['Jeder Inhaltspunkt zählt.', 'تؤكد قيمة كل نقطة', 'jeder فاعل مفرد بفعل مفرد: Jeder Inhaltspunkt zählt لا zählen', 'Jeder Inhaltspunkt zählen.', 'مفرد: Jeder … zählt'],
+      ['Im Sprechen arbeitet man zu zweit.', 'تصف قسم التحدث', 'النشاط المؤسسي بـim مدمجة: Im Sprechen وبعدها الفعل ثانٍ: arbeitet man', 'In Sprechen arbeitet man zu zweit.', 'مدمج: Im Sprechen']
     ],
     [
-      ['Ein Modul rettet das andere nicht.', 'قسم لا ينقذ الآخر', 'Eine Note rettet alle', 'لا تعويض', 'nicht'],
-      ['Jeder Inhaltspunkt zählt.', 'كل نقطة محتوى تُحسب', 'Ein Punkt fehlt und ist egal', 'النقطة ليست تافهة', 'zählt'],
-      ['Sprechen ist auch zu zweit.', 'التحدث مع شريك أيضًا', 'Ich rede allein die ganze Zeit', 'الشريك جزء من القسم', 'zweit'],
-      ['Die Zeit wird nicht verlängert.', 'الوقت لا يُمدد', 'Ich nehme extra Zeit', 'الوقت حد', 'verlängert']
+      ['Die Prüfung besteht aus vier Teilen.', 'الامتحان يتألف من أربعة أقسام', 'Die Prüfung besteht von vier Teilen.', 'تأليف بـaus: besteht aus', 'Prüfung'],
+      ['Ein Modul rettet das andere nicht.', 'قسم لا ينقذ الآخر', 'Ein Modul das andere rettet nicht.', 'لا تعويض بترتيب خبر: rettet das andere', 'nicht'],
+      ['Jeder Inhaltspunkt zählt.', 'كل نقطة محتوى تُحسب', 'Jeder Inhaltspunkt zählen.', 'عدّ بمفرد: Inhaltspunkt zählt', 'zählt'],
+      ['Im Sprechen arbeitet man zu zweit.', 'في التحدث يعمل المرء بشريك', 'In Sprechen arbeitet man zu zweit.', 'قسم مدمج وقلب: arbeitet man', 'Sprechen']
     ],
-    'Vier Module. Kein Ausgleich. Jeder Inhaltspunkt zählt.',
-    'Ein Modul rettet das andere nicht.',
-    'Sage morgen die Ausgleich-Regel.',
-    'غدًا قل قاعدة عدم التعويض.'),
+    'Die Prüfung besteht aus vier Teilen.',
+    'Die Zeit wird nicht verlängert.',
+    'Wiederhole morgen die fünf Sätze: Die Prüfung besteht aus vier Teilen. Ein Modul rettet das andere nicht. Jeder Inhaltspunkt zählt. Im Sprechen arbeitet man zu zweit. Die Zeit wird nicht verlängert.',
+    'غدًا أعد جمل شكل الامتحان الخمس ولاحظ aus للمكوّن والفعل الثاني ومفرد jeder والدمج Im والمجهول wird verlängert.',
+    {
+      factFamilies: ['präposition', 'wortstellung', 'konjugation', 'präposition'],
+      imitateNearMiss: 'Prüfungen',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Die Zeit wird nicht verlängert — مجهول بلا فاعل، والوقت لا ينتظر أحدًا.',
+      orderSentence: 'Im Sprechen arbeitet man zu zweit.',
+      checkOrderSentence: 'Die Prüfung besteht aus vier Teilen.',
+      orderAr: 'رتّب جملة قسم التحدث: Im Sprechen أولًا ثم arbeitet في الموضع الثاني قبل man.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['العبارة المتقدّمة Im Sprechen كلها موضع أول.', 'الفاعل man يأتي بعد الفعل عند التقديم: arbeitet man.'],
+      writing: {
+        zeigt: 'Prüfungsform in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تصف شكل امتحان B1: تأليفًا بـaus وأربعة أقسام، ونفي تعويض بترتيب خبر، وقيمة كل نقطة بفعل مفرد، وتحدثًا بشريك مع دمج Im والقلب، ووقتًا لا يُمدّد بمجهول.',
+        hinweise: ['المكوّنات بـaus لا von، وكل قسم يُقيَّم وحده.', 'الوقت يغلق الجمل بالمجهول: wird nicht verlängert.'],
+        prompt: 'اكتب جمل شكل امتحان B1 الخمس المستهدفة من الذاكرة مع aus والترتيب والدمج والمجهول.',
+        promptDe: 'Die Prüfung besteht aus vier Teilen. · Ein Modul rettet das andere nicht. · Jeder Inhaltspunkt zählt. · Im Sprechen arbeitet man zu zweit. · Die Zeit wird nicht verlängert.',
+        points: ['Die Prüfung besteht aus vier Teilen.', 'Ein Modul rettet das andere nicht.', 'Jeder Inhaltspunkt zählt.', 'Im Sprechen arbeitet man zu zweit.', 'Die Zeit wird nicht verlängert.'],
+        minWords: 26,
+        frage: 'اكتب جمل شكل امتحان B1 الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Prüfung besteht aus vier Teilen. Ein Modul rettet das andere nicht. Jeder Inhaltspunkt zählt. Im Sprechen arbeitet man zu zweit. Die Zeit wird nicht verlängert.',
+      summaryDe: 'Die Prüfung besteht aus vier Teilen. Ein Modul rettet das andere nicht. Jeder Inhaltspunkt zählt. Im Sprechen arbeitet man zu zweit. Die Zeit wird nicht verlängert.',
+      summaryAr: 'شكل الامتحان في خمس جمل: أربعة أقسام بـaus، وبلا تعويض، وكل نقطة محسوبة، وتحدث بشريك، ووقت لا يمتد.',
+      summaryRecap: 'الشكل قبل المحاكاة أولًا',
+      hwHintDe: 'Wer einen Inhaltspunkt weglässt, verschenkt ihn: Lies die Aufgabe zu Ende — die Zeit dafür ist schon eingerechnet, und kein Modul kauft den Punkt zurück.'
+    }),
 
   U('b1-u5-l8', 'B1', 'جسر إلى B2', 'Übergang', 'pruefstrategie',
     'Am Ende sagst du was für B2 noch nicht reicht',

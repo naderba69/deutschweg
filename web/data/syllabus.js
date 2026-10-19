@@ -139,7 +139,7 @@
     ['مشكلة عمل: العبء والحوار والحل الوسط', 'Arbeitsproblem: Belastung, Gespräch und Kompromiss', 'العمل', 'die Belastung ist zu hoch · ansprechen mit an · so lösen wir · einen Kompromiss · gilt ab morgen', 'explicit'],
     ['النظام الصحي: الموعد والإحالة والوصفة', 'Gesundheitssystem: Termin, Überweisung und Rezept', 'الصحة', 'ich brauche einen Termin · die Praxis öffnet um acht · Überweisung zum Facharzt · ohne Rezept · die Versicherung ist Pflicht', 'explicit'],
     ['مراجعة B1: المجهول وobwohl وجملة الصلة', 'Wiederholung B1: Passiv, obwohl und Relativsatz', 'المراجعة', 'wird repariert · obwohl mit Inversion · Relativsatz Verb zuletzt · damit · jeden Tag', 'explicit'],
-    ['شكل امتحان B1', 'Prüfungsform B1', 'شكل الامتحان', 'شكل Goethe B1 لا محاكاة', 'explicit'],
+    ['شكل امتحان B1: الأقسام والتعويض والوقت', 'Prüfungsform B1: Teile, Ausgleich und Zeit', 'شكل الامتحان', 'besteht aus vier Teilen · kein Ausgleich · jeder Inhaltspunkt zählt · im Sprechen zu zweit · Zeit wird nicht verlängert', 'explicit'],
     ['جسر إلى B2', 'Übergang', 'الحدود', 'ما لا يكفي لـ B2', 'explicit'],
     /* Unit 6 — amendment B1-L2: the B1 match found 219 entries the learner already
        meets in the material and no word list names (tools/goethe-b1-candidates.txt),
