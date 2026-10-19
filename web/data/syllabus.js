@@ -131,7 +131,7 @@
     ['التلخيص: الجوهري بكلماتك الخاصة', 'Zusammenfassung: das Wesentliche in eigenen Worten', 'القراءة', 'die Einleitung nennt das Thema · jeder Absatz eine Hauptidee · am Anfang · die Quelle angeben · der Schluss fasst zusammen', 'explicit'],
     ['الحوار: الموافقة والاعتراض والاتفاق', 'Diskussion: zustimmen, widersprechen, sich einigen', 'النقاش', 'zustimmen + Dativ und zu · einen anderen Vorschlag · Lassen Sie mich ausreden · sich geeinigt · sachlich bleiben', 'explicit'],
     ['الرسالة الرسمية: الموضوع والنداء والطلب والختام', 'Formeller Brief: Betreff, Anrede, Anliegen, Gruß', 'الكتابة', 'der Betreff steht über dem Text · Ich bitte Sie um · am Freitag · im Anhang finden Sie · danke Ihnen', 'explicit'],
-    ['عرض', 'Präsentation', 'التحدّث', 'هيكل ثلاث دقائق', 'explicit'],
+    ['العرض: الهيكلة والإلقاء والردّ على الأسئلة', 'Präsentation: gliedern, vortragen, Fragen beantworten', 'التحدّث', 'dauert zehn Minuten · am Schluss fasse ich zusammen · sprich deutlich · alle Fragen beantworten · danke für Ihre Aufmerksamkeit', 'explicit'],
     ['الاستماع لمقابلة', 'Interview', 'السماع', 'التقاط موقف', 'explicit'],
     ['نص رأي', 'Kommentar', 'القراءة', 'تمييز الواقعة من الرأي', 'explicit'],
     ['شرط مهذب', 'Höfliche Bedingung', 'الأدب', 'wenn + würde', 'explicit'],

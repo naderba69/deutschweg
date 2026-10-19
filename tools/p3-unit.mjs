@@ -13573,6 +13573,126 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD6[4].frage.optionen.some(o => o.text === targetsD6[4]) &&
       checksD6[4].frage.optionen.some(o => o.text === 'Ich danke Sie für Ihre Hilfe.') &&
       Object.values(checksD6[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+  const lessonD7 = win.DW_LESSONS['b1-u4-l7'];
+  const rowD7 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD7.id);
+  const byWordD7 = Object.fromEntries(lessonD7.wortschatz.map(it => [it.de, it]));
+  const tricksD7 = lessonD7.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD7 = [
+    'Die Präsentation dauert zehn Minuten.',
+    'Am Schluss fasse ich zusammen.',
+    'Sprich deutlich und langsam.',
+    'Ich beantworte gern alle Fragen.',
+    'Vielen Dank für Ihre Aufmerksamkeit.'
+  ];
+  t('Corpus lesson b1-u4-l7 precisely scopes five presentation moves with bare duration, inverted separable summary, vowel-shift imperative, direct question objects and feminine-accusative thanks',
+    lessonD7.title.de === 'Präsentation: gliedern, vortragen, Fragen beantworten' &&
+      lessonD7.title.ar === 'العرض: الهيكلة والإلقاء والردّ على الأسئلة' &&
+      rowD7.title.de === lessonD7.title.de && rowD7.title.ar === lessonD7.title.ar &&
+      rowD7.theme === 'التحدّث' &&
+      rowD7.grammar.item === 'dauert zehn Minuten · am Schluss fasse ich zusammen · sprich deutlich · alle Fragen beantworten · danke für Ihre Aufmerksamkeit' &&
+      rowD7.grammar.method === 'explicit' && lessonD7.schritte.length === 36 && lessonD7.wortschatz.length === 40 &&
+      lessonD7.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD7.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD7[i]) &&
+      lessonD7.schritte[0].zeigt.de === 'Am Ende gliederst du eine Präsentation in fünf Sätzen: Dauer, Schluss, Stimme, Fragen und Dank' &&
+      lessonD7.schritte.find(s => s.id === 's20').zeigt.de === targetsD7[4]);
+
+  const expectedWordsD7 = [
+    'die Präsentation', 'präsentieren', 'der Vortrag', 'der Referent', 'die Folie', 'die Gliederung',
+    'der Einstieg', 'der Schluss', 'der Höhepunkt', 'das Handout', 'der Zuhörer', 'das Publikum',
+    'der Blickkontakt', 'die Stimme', 'die Körpersprache', 'die Gestik', 'das Lampenfieber',
+    'aufgeregt', 'ruhig', 'deutlich', 'der Ablauf', 'die Zeitplanung', 'die Diskussion',
+    'die Rückfrage', 'beantworten', 'erläutern', 'veranschaulichen', 'das Diagramm', 'die Statistik',
+    'der Beleg', 'die Quelle', 'die Zusammenfassung', 'die Kernaussage', 'das Ziel', 'die Zielgruppe',
+    'ansprechen', 'überzeugen', 'der Eindruck', 'vorbereiten', 'üben'
+  ];
+  const errorsD7 = lessonD7.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l7 reviews all 40 entries and three bounded mnemonics without twenty manufactured appendages, honest on comparative als and the ohne-article accent',
+    Object.keys(byWordD7).join(' | ') === expectedWordsD7.join(' | ') &&
+      lessonD7.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD7.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD7['das Diagramm'].why.includes('mehr als') &&
+      byWordD7['der Beleg'].err === 'Ohne ein Beleg wirkt die Zahl schwach.' &&
+      byWordD7['der Beleg'].why.includes('einen Beleg') &&
+      byWordD7['die Präsentation'].err === 'Die Präsentation dauert für zehn Minuten.' &&
+      byWordD7['die Zielgruppe'].err === 'Die Zielgruppe sind Student.' &&
+      !['Die Folien sind schlicht gemacht.', 'Die Gliederung steht auf Folie zwei es.',
+        'Der Einstieg muss fesseln es.', 'Der Höhepunkt ist die Demo gemacht.',
+        'Blickkontakt ist wichtig gemacht.', 'Die Stimme muss klar gemacht sein.',
+        'Körpersprache wirkt stark es.', 'Seine Gestik ist ruhig gemacht.',
+        'Ich bin vor jeder Rede aufgeregt gemacht.', 'Bleib ruhig du und atme tief.',
+        'Sprich deutlich und langsam du.', 'Der Ablauf ist klar gemacht.',
+        'Die Zeitplanung war knapp gemacht.', 'Rückfragen sind willkommen gemacht.',
+        'Können Sie das genauer erläutern es?', 'Zum Schluss kommt eine kurze Zusammenfassung es.',
+        'Die Kernaussage muss man behalten es.', 'Die Zielgruppe sind Studierende es.',
+        'Der erste Eindruck zählt es.', 'Ich übe den Vortrag dreimal es.']
+        .some(x => errorsD7.includes(x)) &&
+      tricksD7.length === 3 && tricksD7[0].wie.includes('am Schluss fasse ich zusammen') &&
+      tricksD7[1].wie.includes('Ein Beispiel veranschaulicht die Idee') &&
+      tricksD7[2].wie.includes('Sprich deutlich und langsam'));
+
+  const wordClozeAD7 = lessonD7.schritte.find(s => s.id === 's09');
+  const wordClozeBD7 = lessonD7.schritte.find(s => s.id === 's13');
+  const wordClozeCD7 = lessonD7.schritte.find(s => s.id === 's17');
+  const imitateD7 = lessonD7.schritte.find(s => s.id === 's19');
+  const drillD7 = lessonD7.schritte.find(s => s.id === 's23');
+  const orderD7 = lessonD7.schritte.find(s => s.id === 's24');
+  const writingD7 = lessonD7.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD7 = lessonD7.schritte.find(s => s.phase === 'Produktion');
+  const summaryD7 = lessonD7.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD7 = lessonD7.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l7 aligns five strict learning clozes, sound fronted Am Schluss order fields and a 24-word five-target production',
+    wordClozeAD7.frage.zeigt === 'Die ____ steht auf Folie zwei.' && wordClozeAD7.frage.antworten.join(' ') === 'Gliederung' &&
+      wordClozeAD7.frage.nearMiss.Gliederungen && !win.DW.renderers.judgeCloze(wordClozeAD7.frage, 'Gliederungen').ok &&
+      wordClozeBD7.frage.zeigt === 'Die ____ war knapp.' && wordClozeBD7.frage.antworten.join(' ') === 'Zeitplanung' &&
+      wordClozeBD7.frage.nearMiss.Zeitplanungen && !win.DW.renderers.judgeCloze(wordClozeBD7.frage, 'Zeitplanungen').ok &&
+      wordClozeCD7.frage.zeigt === 'Der erste ____ zählt.' && wordClozeCD7.frage.antworten.join(' ') === 'Eindruck' &&
+      wordClozeCD7.frage.nearMiss['Eindrücke'] && !win.DW.renderers.judgeCloze(wordClozeCD7.frage, 'Eindrücke').ok &&
+      imitateD7.zeigt.de === 'Die ____ dauert zehn Minuten.' && imitateD7.frage.antworten.join(' ') === 'Präsentation' &&
+      imitateD7.frage.nearMiss['Präsentationen'] && !win.DW.renderers.judgeCloze(imitateD7.frage, 'Präsentationen').ok &&
+      drillD7.frage.zeigt === 'Ich spreche die Zuhörer direkt ____.' && drillD7.frage.antworten.join(' ') === 'an' &&
+      drillD7.frage.nearMiss.ansprechen && !win.DW.renderers.judgeCloze(drillD7.frage, 'ansprechen').ok &&
+      lessonD7.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD7.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD7.frage.correct.join(' ') === targetsD7[1] && orderD7.frage.finite === 'fasse' && orderD7.frage.verbFirst === false &&
+      orderD7.frage.fields.vorfeld.join(' ') === 'Am Schluss' && orderD7.frage.fields.lsk.join(' ') === 'fasse' &&
+      orderD7.frage.fields.mittelfeld.join(' ') === 'ich zusammen.' &&
+      win.DW.order.score(orderD7.frage, orderD7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD7.frage, ['Am', 'ich', 'fasse', 'zusammen.', 'Schluss']).credit < 1 &&
+      writingD7.frage.points.join(' | ') === targetsD7.join(' | ') && writingD7.frage.minWords === 24 &&
+      targetsD7.join(' ').split(/\s+/).length === 24 &&
+      targetsD7.every(x => [writingD7.frage.promptDe, summaryD7.zeigt.de, homeworkD7.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD7.every(x => norm(speakingD7.erklaerung).includes(norm(x))) &&
+      (homeworkD7.hinweise || []).join(' ').includes('Gliedere laut vor der Prüfung') &&
+      (homeworkD7.hinweise || []).join(' ').includes('nicht „für zehn Minuten“'));
+
+  const checksD7 = lessonD7.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD7 = checksD7.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD7 = checksD7.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l7 makes 80 percent four of five, independently checking direct Fragen, particle cloze and bare-duration order, masculine Beleg and dative-free thanks',
+    checksD7.length === 5 && checksD7[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD7[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD7.every(s => /^cap\.b1-u4-l7\.s\d+$/.test(s.frage.prereq || '')) && checksD7.every(s => !s.hinweise) &&
+      checksD7.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l7.s07 | cap.b1-u4-l7.s23 | cap.b1-u4-l7.s24 | cap.b1-u4-l7.s15 | cap.b1-u4-l7.s20' &&
+      new Set(checksD7.map(s => s.frage.prereq)).size === 5 &&
+      checksD7[0].frage.optionen.some(o => o.text === targetsD7[3]) &&
+      checksD7[0].frage.optionen.some(o => o.text === 'Ich beantworte gern auf alle Fragen.') &&
+      Object.values(checksD7[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckD7.frage.zeigt === 'Ich spreche die Zuhörer direkt ____.' &&
+      clozeCheckD7.frage.antworten.join(' ') === 'an' && clozeCheckD7.frage.nearMiss.ansprechen &&
+      !win.DW.renderers.judgeCloze(clozeCheckD7.frage, 'ansprechen').ok &&
+      orderCheckD7.frage.correct.join(' ') === targetsD7[0] && orderCheckD7.frage.finite === 'dauert' &&
+      orderCheckD7.frage.fields.vorfeld.join(' ') === 'Die Präsentation' && orderCheckD7.frage.fields.lsk.join(' ') === 'dauert' &&
+      orderCheckD7.frage.fields.mittelfeld.join(' ') === 'zehn Minuten.' &&
+      win.DW.order.score(orderCheckD7.frage, orderCheckD7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD7.frage, ['Die', 'zehn', 'dauert', 'Minuten.', 'Präsentation']).credit < 1 &&
+      checksD7[3].frage.optionen.some(o => o.text === 'Ohne Beleg wirkt die Zahl schwach.') &&
+      checksD7[3].frage.optionen.some(o => o.text === 'Ohne ein Beleg wirkt die Zahl schwach.') &&
+      Object.values(checksD7[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksD7[4].frage.optionen.some(o => o.text === targetsD7[4]) &&
+      checksD7[4].frage.optionen.some(o => o.text === 'Vielen Dank für Ihren Aufmerksamkeit.') &&
+      Object.values(checksD7[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

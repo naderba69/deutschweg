@@ -1367,25 +1367,50 @@ module.exports = [
       hwHintDe: 'Nicht „I want you to reply“ wörtlich in den Brief tragen: statt want heißt es höflich „Ich bitte Sie um eine kurze Rückmeldung“ — want ist Alltagssprache, bitten um ist Briefform.'
     }),
 
-  U('b1-u4-l7', 'B1', 'عرض', 'Präsentation', 'pruefstrategie',
-    'Am Ende gliederst du drei Minuten',
-    'في النهاية تقسّم ثلاث دقائق.',
+  U('b1-u4-l7', 'B1', 'العرض: الهيكلة والإلقاء والردّ على الأسئلة', 'Präsentation: gliedern, vortragen, Fragen beantworten', 'pruefstrategie',
+    'Am Ende gliederst du eine Präsentation in fünf Sätzen: Dauer, Schluss, Stimme, Fragen und Dank',
+    'في النهاية تهيكل عرضًا في خمس جمل: المدة والملخص الختامي والصوت والردّ على الأسئلة والشكر.',
     [
-      ['drei Teile', 'مقدمة ومتن وخاتمة', 'لا خمس مقدمات', 'fünf Einleitungen', 'ثلاثة أجزاء'],
-      ['die Zeit nennen', 'الوقت يُحترم', 'عشر دقائق ليست ثلاثًا', 'ich rede zehn Minuten', 'الحد ثلاث'],
-      ['ein Beispiel', 'مثال واحد يكفي', 'خمسة أمثلة تضيّع الخاتمة', 'fünf Beispiele ohne Schluss', 'مثال ثم خاتمة'],
-      ['Gibt es Fragen', 'الختام يفتح السؤال', 'لا انقطاع بلا خاتمة', 'ich stoppe ohne Schluss', 'الخاتمة لازمة']
+      ['Die Präsentation dauert zehn Minuten.', 'تعلن مدة العرض بلا حرف جرّ', 'المدة تلي dauert بإعرابها من دون حرف جرّ: dauert zehn Minuten لا für ولا حرف آخر', 'Die Präsentation dauert für zehn Minuten.', 'المدة بلا حرف جرّ: dauert zehn Minuten'],
+      ['Am Schluss fasse ich zusammen.', 'تلخّص في الختام بفعل منفصل وقلب', 'الختام مقدّمًا يقلب ich، وبآخر الجملة تلتحم القسيمة: fasse ich zusammen', 'Am Schluss ich fasse zusammen.', 'القلب بعد Am Schluss: fasse ich لا ich fasse'],
+      ['Sprich deutlich und langsam.', 'تُسمع الكلام بوضوح', 'الأمر بصوت متبدّل وحاليتان بلا إعراب: sprich ثم deutlich und langsam', 'Spreche deutlich und langsam.', 'الأمر بتبديل الصوت: sprich'],
+      ['Ich beantworte gern alle Fragen.', 'تبدي استعدادك للأسئلة', 'الإجابة فعلها متعدٍّ مباشرة من دون أداة ولا حرف: beantworte alle Fragen', 'Ich beantworte gern auf alle Fragen.', 'مفعول مباشر: alle Fragen لا حرف auf']
     ],
     [
-      ['Einleitung, Hauptteil, Schluss.', 'مقدمة ومتن وخاتمة', 'Fünf Einleitungen', 'ثلاثة أجزاء', 'Schluss'],
-      ['Ich habe drei Minuten.', 'عندي ثلاث دقائق', 'Ich rede zehn Minuten', 'الحد ثلاث', 'drei'],
-      ['Ein Beispiel reicht.', 'مثال واحد يكفي', 'Fünf Beispiele ohne Schluss', 'مثال ثم خاتمة', 'Beispiel'],
-      ['Gibt es dazu Fragen?', 'هل هناك أسئلة؟', 'Ich stoppe ohne Schluss', 'الخاتمة قبل السؤال', 'Fragen']
+      ['Die Präsentation dauert zehn Minuten.', 'العرض يدوم عشر دقائق', 'Die Präsentation dauert für zehn Minuten.', 'المدة بلا حرف جرّ: dauert', 'Präsentation'],
+      ['Am Schluss fasse ich zusammen.', 'في الختام ألخّص', 'Am Schluss ich fasse zusammen.', 'تلخيص منفصل أخيرًا: zusammen', 'Schluss'],
+      ['Sprich deutlich und langsam.', 'تحدّث بوضوح وبطء', 'Spreche deutlich und langsam.', 'الوضوح بلا نهاية: deutlich', 'deutlich'],
+      ['Ich beantworte gern alle Fragen.', 'أجيب بيسر على كل الأسئلة', 'Ich beantworte gern auf alle Fragen.', 'كل الأسئلة بمفعول مباشر: Fragen', 'Fragen']
     ],
-    'Einleitung, Hauptteil, Schluss. Ich habe drei Minuten.',
-    'Ich habe drei Minuten.',
-    'Gliedere morgen eine Drei-Minuten-Rede.',
-    'غدًا قسّم حديثًا من ثلاث دقائق.'),
+    'Die Präsentation dauert zehn Minuten.',
+    'Vielen Dank für Ihre Aufmerksamkeit.',
+    'Wiederhole morgen die fünf Sätze: Die Präsentation dauert zehn Minuten. Am Schluss fasse ich zusammen. Sprich deutlich und langsam. Ich beantworte gern alle Fragen. Vielen Dank für Ihre Aufmerksamkeit.',
+    'غدًا أعد جمل العرض الخمس ولاحظ المدة بلا حرف جرّ والقلب بعد Am Schluss والمفعول المباشر.',
+    {
+      factFamilies: ['präposition', 'wortstellung', 'konjugation', 'kasus'],
+      imitateNearMiss: 'Präsentationen',
+      transformHint: 'في جملة الشكر الفائدة الأخيرة: Vielen Dank für Ihre Aufmerksamkeit — الملكية المؤنثة منصوبة Ihre.',
+      orderSentence: 'Am Schluss fasse ich zusammen.',
+      checkOrderSentence: 'Die Präsentation dauert zehn Minuten.',
+      orderAr: 'رتّب جملة التلخيص الختامي: Am Schluss أولًا ثم الفعل fasse في الموضع الثاني قبل فاعله ich.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['تقديم Am Schluss يضع الفعل قبل فاعله: fasse ich.', 'قسيمة zusammenfassen تغلق الجملة: fasse … zusammen.'],
+      writing: {
+        zeigt: 'Eine Präsentation in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تهيكل عرضًا: مدة من دون حرف مدة، وخلاصة في الختام بفعل منفصل مقلوب، وأمر لتوضيح الصوت وبطئه، ووعد بإجابة كل الأسئلة بمفعول مباشر، وشكر بختام صحيح الضمير.',
+        hinweise: ['مدة العرض تُباشر: dauern لا für ولا in.', 'القلب بعد العناصر المقدّمة يحفظ موضع الفعل الثاني.'],
+        prompt: 'اكتب جمل العرض الخمس المستهدفة من الذاكرة مع المدة بلا حرف جرّ والتلخيص المنفصل.',
+        promptDe: 'Die Präsentation dauert zehn Minuten. · Am Schluss fasse ich zusammen. · Sprich deutlich und langsam. · Ich beantworte gern alle Fragen. · Vielen Dank für Ihre Aufmerksamkeit.',
+        points: ['Die Präsentation dauert zehn Minuten.', 'Am Schluss fasse ich zusammen.', 'Sprich deutlich und langsam.', 'Ich beantworte gern alle Fragen.', 'Vielen Dank für Ihre Aufmerksamkeit.'],
+        minWords: 24,
+        frage: 'اكتب جمل العرض الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Präsentation dauert zehn Minuten. Am Schluss fasse ich zusammen. Sprich deutlich und langsam. Ich beantworte gern alle Fragen. Vielen Dank für Ihre Aufmerksamkeit.',
+      summaryDe: 'Die Präsentation dauert zehn Minuten. Am Schluss fasse ich zusammen. Sprich deutlich und langsam. Ich beantworte gern alle Fragen. Vielen Dank für Ihre Aufmerksamkeit.',
+      summaryAr: 'هيكل عرض في خمس جمل: مدة من دون حرف مدة، وتلخيص في الختام بفعل منفصل مقلوب، وصوت واضح بطيء بأمر متبدّل الصوت، وردّ على كل الأسئلة بمفعول مباشر، وشكر بضمير ملكية منصوبة.',
+      summaryRecap: 'عرض في خمس حركات',
+      hwHintDe: 'Gliedere laut vor der Prüfung: Einstieg, Höhepunkt, Schluss — und nenne die Dauer ohne für: „Die Präsentation dauert zehn Minuten“, nicht „für zehn Minuten“.'
+    }),
 
   U('b1-u4-l8', 'B1', 'الاستماع لمقابلة', 'Interview', 'hoerstrategie',
     'Am Ende fängst du eine Haltung nicht nur ein Wort',
