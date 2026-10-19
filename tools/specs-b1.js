@@ -1457,25 +1457,50 @@ module.exports = [
       hwHintDe: 'Ein unbekanntes Wort im Gespräch stoppt dich nicht: Stelle lieber eine Rückfrage — „Darf ich auch eine Frage stellen?“ zeigt Interesse und kostet keine Haltung.'
     }),
 
-  U('b1-u5-l1', 'B1', 'نص رأي', 'Kommentar', 'pruefstrategie',
-    'Am Ende trennst du Tatsache und Wertung',
-    'في النهاية تفصل الواقعة عن التقييم.',
+  U('b1-u5-l1', 'B1', 'نص الرأي: الواقعة والتقييم والشاهد', 'Kommentar: Tatsache, Wertung und Beleg', 'pruefstrategie',
+    'Am Ende trennst du Tatsache, Wertung, Ton und Beleg in fünf Sätzen',
+    'في النهاية تفصل الواقعة عن التقييم وتصف النبرة وتدلّ على الشاهد في خمس جمل.',
     [
-      ['Tatsache', 'الواقعة تُثبت', 'التقييم لا يُثبتها', 'die Wertung ist eine Tatsache', 'التقييم ليس واقعة'],
-      ['Wertung', 'التقييم يُنسب', 'لا يُقدَّم كخبر', 'der Autor berichtet seine Wertung als Fakt', 'التقييم رأي'],
-      ['der Titel', 'العنوان قد يبالغ', 'لا تغنِ عن النص', 'der Titel reicht', 'العنوان لا يكفي'],
-      ['ein Beleg', 'الشاهد يقوّي', 'بلا شاهد يبقى الادعاء ضعيفًا', 'ohne Beleg ist es stark', 'بلا شاهد لا قوة']
+      ['Das ist eine Tatsache.', 'تسمّي الواقعة القابلة للإثبات', 'الواقعة رابطها مفرد: Das ist eine Tatsache، والفاعل Das مفرد بفعل ist لا جمع sind', 'Das sind eine Tatsache.', 'رابط مفرد: Das ist'],
+      ['Das ist eine Wertung.', 'تسمي التقييم النابع من رأي', 'التقييم اسم مؤنث: eine Wertung، لا صورة مذكّرة ein بعد das ist', 'Das ist ein Wertung.', 'مؤنث: eine Wertung'],
+      ['Der Ton bleibt sachlich.', 'تصف لهجة النص بالموضوعية', 'الصفة خبرية بعد bleiben بلا إعراب: bleibt sachlich، لا نهاية صفة مبدئية قبل اسم قادم', 'Der Ton bleibt sachliche.', 'الخبر بلا نهاية: sachlich'],
+      ['Ein Beispiel macht es greifbar.', 'يدل المثال على الدليل', 'ضمير es يأتي مباشرة قبل الوصف: macht es greifbar، ولا ينفصل عن فعله بالوصف في النهاية', 'Ein Beispiel macht greifbar es.', 'ضمير es قبل الوصف: es greifbar']
     ],
     [
-      ['Das ist eine Tatsache.', 'هذه واقعة', 'Die Wertung ist eine Tatsache', 'التقييم ليس واقعة', 'Tatsache'],
-      ['Das ist eine Wertung.', 'هذا تقييم', 'Der Autor berichtet die Wertung als Fakt', 'التقييم رأي', 'Wertung'],
-      ['Der Titel reicht nicht.', 'العنوان لا يكفي', 'Der Titel reicht', 'العنوان وعد', 'nicht'],
-      ['Ohne Beleg bleibt es schwach.', 'بلا شاهد يبقى ضعيفًا', 'Ohne Beleg ist es stark', 'الشاهد يقوّي', 'Beleg']
+      ['Das ist eine Tatsache.', 'هذه واقعة', 'Das sind eine Tatsache.', 'واقعة مثبتة برابط مفرد: ist eine Tatsache', 'Tatsache'],
+      ['Das ist eine Wertung.', 'هذا تقييم', 'Das ist ein Wertung.', 'تقييم برأي: eine Wertung', 'Wertung'],
+      ['Der Ton bleibt sachlich.', 'اللهجة تبقى موضوعية', 'Der Ton bleibt sachliche.', 'نبرة بلا مبالغة: sachlich', 'sachlich'],
+      ['Ein Beispiel macht es greifbar.', 'مثال يجعله ملموسًا', 'Ein Beispiel macht greifbar es.', 'الملموس بمثال: Ein Beispiel', 'Beispiel']
     ],
-    'Das ist eine Wertung. Ohne Beleg bleibt es schwach.',
-    'Der Titel reicht nicht.',
-    'Markiere morgen eine Tatsache und eine Wertung.',
-    'غدًا علّم واقعة وتقييمًا.'),
+    'Das ist eine Tatsache.',
+    'Ohne Beleg bleibt es Meinung.',
+    'Wiederhole morgen die fünf Sätze: Das ist eine Tatsache. Das ist eine Wertung. Der Ton bleibt sachlich. Ein Beispiel macht es greifbar. Ohne Beleg bleibt es Meinung.',
+    'غدًا أعد جمل نص الرأي الخمس ولاحظ فروق الرابطة والجنس والصفة بلا نهاية وضمير es.',
+    {
+      factFamilies: ['konjugation', 'genus', 'deklination', 'wortstellung'],
+      imitateNearMiss: 'Tatsachen',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Ohne Beleg bleibt es Meinung — بدون أداة بعد ohne يبقى الادعاء رأيًا.',
+      orderSentence: 'Ein Beispiel macht es greifbar.',
+      checkOrderSentence: 'Der Ton bleibt sachlich.',
+      orderAr: 'رتّب جملة المثال: Ein Beispiel أولًا ثم الفعل macht في الموضع الثاني قبل الضمير es.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفعل المصرّف وحيد في الموضع الثاني بعد Ein Beispiel.', 'ضمير es لا يبتعد عن فعله في وسط الجملة: macht es.'],
+      writing: {
+        zeigt: 'Meinungstext in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تبني نص رأي منظمًا: واقعة برابط مفرد، وتقييم مؤنث، ولهجة موضوعية بلا نهاية للصفة، ومثال يجعله ملموسًا، وخاتمة بأن غياب الشاهد يبقيه رأيًا.',
+        hinweise: ['اسند الرأي إلى الواقعة، ونصّف النبرة sachlich.', 'ضمير es بعد فعله مباشرة.'],
+        prompt: 'اكتب جمل نص الرأي الخمس المستهدفة من الذاكرة مع فروق الرابطة والجنس والوصف بلا نهاية.',
+        promptDe: 'Das ist eine Tatsache. · Das ist eine Wertung. · Der Ton bleibt sachlich. · Ein Beispiel macht es greifbar. · Ohne Beleg bleibt es Meinung.',
+        points: ['Das ist eine Tatsache.', 'Das ist eine Wertung.', 'Der Ton bleibt sachlich.', 'Ein Beispiel macht es greifbar.', 'Ohne Beleg bleibt es Meinung.'],
+        minWords: 22,
+        frage: 'اكتب جمل نص الرأي الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Das ist eine Tatsache. Das ist eine Wertung. Der Ton bleibt sachlich. Ein Beispiel macht es greifbar. Ohne Beleg bleibt es Meinung.',
+      summaryDe: 'Das ist eine Tatsache. Das ist eine Wertung. Der Ton bleibt sachlich. Ein Beispiel macht es greifbar. Ohne Beleg bleibt es Meinung.',
+      summaryAr: 'نص رأي في خمس جمل: واقعة برابط مفرد، وتقييم مؤنث، ونبرة موضوعية بلا نهاية للصفة، ومثال ملموس في وسط الجملة، وخاتمة بأن الشاهد يرفع الرأي إلى حجة.',
+      summaryRecap: 'واقعة وتقييم وشاهد أولًا',
+      hwHintDe: 'Ein „Fakt“ verkauft sich schnell: Der Autor berichtet seine Wertung nie als Fakt — prüfe immer, ob ein Beleg folgt.'
+    }),
 
   U('b1-u5-l2', 'B1', 'شرط مهذب', 'Höfliche Bedingung', 'register',
     'Am Ende verbindest du wenn mit würde',

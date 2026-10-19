@@ -13814,6 +13814,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD8[4].frage.optionen.some(o => o.text === targetsD8[4]) &&
       checksD8[4].frage.optionen.some(o => o.text === 'Ich bedanke für das Gespräch.') &&
       Object.values(checksD8[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+  const lessonE1 = win.DW_LESSONS['b1-u5-l1'];
+  const rowE1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE1.id);
+  const byWordE1 = Object.fromEntries(lessonE1.wortschatz.map(it => [it.de, it]));
+  const tricksE1 = lessonE1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE1 = [
+    'Das ist eine Tatsache.',
+    'Das ist eine Wertung.',
+    'Der Ton bleibt sachlich.',
+    'Ein Beispiel macht es greifbar.',
+    'Ohne Beleg bleibt es Meinung.'
+  ];
+  t('Corpus lesson b1-u5-l1 precisely scopes five opinion-text moves separating a singular-copula fact from a feminine evaluation, an undeclined neutral tone, a tangible example and an evidence demand',
+    lessonE1.title.de === 'Kommentar: Tatsache, Wertung und Beleg' &&
+      lessonE1.title.ar === 'نص الرأي: الواقعة والتقييم والشاهد' &&
+      rowE1.title.de === lessonE1.title.de && rowE1.title.ar === lessonE1.title.ar &&
+      rowE1.theme === 'القراءة' &&
+      rowE1.grammar.item === 'das ist eine Tatsache · eine Wertung · der Ton bleibt sachlich · ein Beispiel macht es greifbar · ohne Beleg' &&
+      rowE1.grammar.method === 'explicit' && lessonE1.schritte.length === 36 && lessonE1.wortschatz.length === 40 &&
+      lessonE1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE1[i]) &&
+      lessonE1.schritte[0].zeigt.de === 'Am Ende trennst du Tatsache, Wertung, Ton und Beleg in fünf Sätzen' &&
+      lessonE1.schritte.find(s => s.id === 's20').zeigt.de === targetsE1[4]);
+
+  const expectedWordsE1 = [
+    'der Kommentar', 'kommentieren', 'die Meinung', 'die Behauptung', 'die These', 'das Argument',
+    'der Beweis', 'der Beleg', 'die Statistik', 'das Beispiel', 'der Vergleich', 'der Widerspruch',
+    'die Schlussfolgerung', 'die Stellungnahme', 'das Fazit', 'die Einleitung', 'der Hauptteil',
+    'der Schluss', 'das Thema', 'die Überschrift', 'die Zeitschrift', 'der Leserbrief',
+    'kritisieren', 'loben', 'befürworten', 'ablehnen', 'der Vorschlag', 'vernünftig',
+    'übertreiben', 'die Übertreibung', 'sachlich', 'emotional', 'der Ton', 'die Wortwahl',
+    'der Stil', 'der Leser', 'die Öffentlichkeit', 'die Debatte', 'die Meinungsfreiheit',
+    'der Standpunkt'
+  ];
+  const errorsE1 = lessonE1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l1 reviews all 40 entries and three bounded mnemonics without twenty-two manufactured appendages and with honest ohne and double-perfect explanations',
+    Object.keys(byWordE1).join(' | ') === expectedWordsE1.join(' | ') &&
+      lessonE1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE1['der Beleg'].err === 'Ohne ein Beleg bleibt es eine Meinung.' &&
+      byWordE1['der Beleg'].why.includes('einen Beleg') &&
+      byWordE1['der Leser'].err === 'Die Leser haben empört reagiert gehabt.' &&
+      byWordE1['der Leser'].why.includes('haben reagiert') &&
+      byWordE1['das Verzeichnis'] === undefined &&
+      byWordE1['sachlich'].err === 'Bleib sachliche!' &&
+      byWordE1['das Argument'].err === 'Dieses Argument überzeugen mich.' &&
+      !['Die Behauptung bleibt unbewiesen gemacht.', 'Die These ist gewagt gemacht.',
+        'Dieses Argument überzeugt mich es.', 'Der Beweis fehlt es.',
+        'Ein Beispiel macht es greifbar es.', 'Der Vergleich hinkt es.',
+        'Da steckt ein Widerspruch drin es.', 'Die Schlussfolgerung ist voreilig gemacht.',
+        'Die Stellungnahme war knapp gemacht.', 'Das Fazit überrascht nicht es.',
+        'Der Schluss wiederholt die These es.', 'Die Überschrift macht neugierig es.',
+        'Der Leserbrief ist kurz und klar gemacht.', 'Sein Vorschlag ist vernünftig gemacht.',
+        'Der Autor übertreibt maßlos es.', 'Die Übertreibung schwächt den Text es.',
+        'Bleib sachlich du!', 'Die Debatte wurde emotional gemacht.',
+        'Der Ton macht die Musik es.', 'Die Wortwahl ist entscheidend gemacht.',
+        'Der Stil ist klar und knapp gemacht.', 'Meinungsfreiheit ist ein Grundrecht es.']
+        .some(x => errorsE1.includes(x)) &&
+      tricksE1.length === 3 && tricksE1[0].wie.includes('im Hauptteil die Argumente') &&
+      tricksE1[1].wie.includes('stützt sich auf eine Statistik') &&
+      tricksE1[2].wie.includes('vermeide Übertreibungen'));
+
+  const wordClozeAE1 = lessonE1.schritte.find(s => s.id === 's09');
+  const wordClozeBE1 = lessonE1.schritte.find(s => s.id === 's13');
+  const wordClozeCE1 = lessonE1.schritte.find(s => s.id === 's17');
+  const imitateE1 = lessonE1.schritte.find(s => s.id === 's19');
+  const drillE1 = lessonE1.schritte.find(s => s.id === 's23');
+  const orderE1 = lessonE1.schritte.find(s => s.id === 's24');
+  const writingE1 = lessonE1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE1 = lessonE1.schritte.find(s => s.phase === 'Produktion');
+  const summaryE1 = lessonE1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE1 = lessonE1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l1 aligns five strict learning clozes, sound Ein Beispiel order fields and a 22-word five-target production',
+    wordClozeAE1.frage.zeigt === 'Dieses ____ überzeugt mich.' && wordClozeAE1.frage.antworten.join(' ') === 'Argument' &&
+      wordClozeAE1.frage.nearMiss.Argumente && !win.DW.renderers.judgeCloze(wordClozeAE1.frage, 'Argumente').ok &&
+      wordClozeBE1.frage.zeigt === 'Der ____ ist kurz und klar.' && wordClozeBE1.frage.antworten.join(' ') === 'Leserbrief' &&
+      wordClozeBE1.frage.nearMiss.Leserbriefe && !win.DW.renderers.judgeCloze(wordClozeBE1.frage, 'Leserbriefe').ok &&
+      wordClozeCE1.frage.zeigt === 'Die ____ läuft seit Wochen.' && wordClozeCE1.frage.antworten.join(' ') === 'Debatte' &&
+      wordClozeCE1.frage.nearMiss.Debatten && !win.DW.renderers.judgeCloze(wordClozeCE1.frage, 'Debatten').ok &&
+      imitateE1.zeigt.de === 'Das ist eine ____.' && imitateE1.frage.antworten.join(' ') === 'Tatsache' &&
+      imitateE1.frage.nearMiss.Tatsachen && !win.DW.renderers.judgeCloze(imitateE1.frage, 'Tatsachen').ok &&
+      drillE1.frage.zeigt === 'Ich lehne den Plan ____.' && drillE1.frage.antworten.join(' ') === 'ab' &&
+      drillE1.frage.nearMiss.ablehnen && !win.DW.renderers.judgeCloze(drillE1.frage, 'ablehnen').ok &&
+      lessonE1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE1.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE1.frage.correct.join(' ') === targetsE1[3] && orderE1.frage.finite === 'macht' && orderE1.frage.verbFirst === false &&
+      orderE1.frage.fields.vorfeld.join(' ') === 'Ein Beispiel' && orderE1.frage.fields.lsk.join(' ') === 'macht' &&
+      orderE1.frage.fields.mittelfeld.join(' ') === 'es greifbar.' &&
+      win.DW.order.score(orderE1.frage, orderE1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE1.frage, ['Ein', 'es', 'macht', 'greifbar.', 'Beispiel']).credit < 1 &&
+      writingE1.frage.points.join(' | ') === targetsE1.join(' | ') && writingE1.frage.minWords === 22 &&
+      targetsE1.join(' ').split(/\s+/).length === 22 &&
+      targetsE1.every(x => [writingE1.frage.promptDe, summaryE1.zeigt.de, homeworkE1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE1.every(x => norm(speakingE1.erklaerung).includes(norm(x))) &&
+      (homeworkE1.hinweise || []).join(' ').includes('Ein „Fakt“ verkauft sich schnell') &&
+      (homeworkE1.hinweise || []).join(' ').includes('ob ein Beleg folgt'));
+
+  const checksE1 = lessonE1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE1 = checksE1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE1 = checksE1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l1 makes 80 percent four of five, independently checking pronoun-before-predicate, ablehnen particle and tone order, darüber and masculine-after-ohne closure',
+    checksE1.length === 5 && checksE1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE1.every(s => /^cap\.b1-u5-l1\.s\d+$/.test(s.frage.prereq || '')) && checksE1.every(s => !s.hinweise) &&
+      checksE1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l1.s07 | cap.b1-u5-l1.s23 | cap.b1-u5-l1.s24 | cap.b1-u5-l1.s17 | cap.b1-u5-l1.s20' &&
+      new Set(checksE1.map(s => s.frage.prereq)).size === 5 &&
+      checksE1[0].frage.optionen.some(o => o.text === targetsE1[3]) &&
+      checksE1[0].frage.optionen.some(o => o.text === 'Ein Beispiel macht greifbar es.') &&
+      Object.values(checksE1[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckE1.frage.zeigt === 'Ich lehne den Plan ____.' &&
+      clozeCheckE1.frage.antworten.join(' ') === 'ab' && clozeCheckE1.frage.nearMiss.ablehnen &&
+      !win.DW.renderers.judgeCloze(clozeCheckE1.frage, 'ablehnen').ok &&
+      orderCheckE1.frage.correct.join(' ') === targetsE1[2] && orderCheckE1.frage.finite === 'bleibt' &&
+      orderCheckE1.frage.fields.vorfeld.join(' ') === 'Der Ton' && orderCheckE1.frage.fields.lsk.join(' ') === 'bleibt' &&
+      orderCheckE1.frage.fields.mittelfeld.join(' ') === 'sachlich.' &&
+      win.DW.order.score(orderCheckE1.frage, orderCheckE1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE1.frage, ['Der', 'sachlich.', 'bleibt', 'Ton']).credit < 1 &&
+      checksE1[3].frage.optionen.some(o => o.text === 'Die Öffentlichkeit diskutiert darüber.') &&
+      checksE1[3].frage.optionen.some(o => o.text === 'Die Öffentlichkeit diskutiert über das.') &&
+      Object.values(checksE1[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksE1[4].frage.optionen.some(o => o.text === targetsE1[4]) &&
+      checksE1[4].frage.optionen.some(o => o.text === 'Ohne ein Beleg bleibt es Meinung.') &&
+      Object.values(checksE1[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

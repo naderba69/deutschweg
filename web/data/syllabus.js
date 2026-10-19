@@ -133,7 +133,7 @@
     ['الرسالة الرسمية: الموضوع والنداء والطلب والختام', 'Formeller Brief: Betreff, Anrede, Anliegen, Gruß', 'الكتابة', 'der Betreff steht über dem Text · Ich bitte Sie um · am Freitag · im Anhang finden Sie · danke Ihnen', 'explicit'],
     ['العرض: الهيكلة والإلقاء والردّ على الأسئلة', 'Präsentation: gliedern, vortragen, Fragen beantworten', 'التحدّث', 'dauert zehn Minuten · am Schluss fasse ich zusammen · sprich deutlich · alle Fragen beantworten · danke für Ihre Aufmerksamkeit', 'explicit'],
     ['مقابلة العمل: التقديم والقوة والخبرة', 'Das Vorstellungsgespräch: vorstellen, Stärke und Erfahrung', 'السماع', 'Ich stelle mich kurz vor · Meine Stärke ist · fünf Jahre Erfahrung · Verantwortung übernehmen · bedanke mich', 'explicit'],
-    ['نص رأي', 'Kommentar', 'القراءة', 'تمييز الواقعة من الرأي', 'explicit'],
+    ['نص الرأي: الواقعة والتقييم والشاهد', 'Kommentar: Tatsache, Wertung und Beleg', 'القراءة', 'das ist eine Tatsache · eine Wertung · der Ton bleibt sachlich · ein Beispiel macht es greifbar · ohne Beleg', 'explicit'],
     ['شرط مهذب', 'Höfliche Bedingung', 'الأدب', 'wenn + würde', 'explicit'],
     ['مقارنة أنظمة', 'Vergleich', 'المجتمع', 'مقارنة بلدين بحد', 'explicit'],
     ['مشكلة عمل', 'Arbeitsproblem', 'العمل', 'اقتراح حل', 'explicit'],
