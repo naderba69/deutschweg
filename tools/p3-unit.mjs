@@ -14436,6 +14436,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE5[4].frage.optionen.some(o => o.text === targetsE5[4]) &&
       checksE5[4].frage.optionen.some(o => o.text === 'Der Versicherung ist Pflicht.') &&
       Object.values(checksE5[4].frage.misconceptionFamilies).join(' ') === 'genus');
+
+  const lessonE6 = win.DW_LESSONS['b1-u5-l6'];
+  const rowE6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE6.id);
+  const byWordE6 = Object.fromEntries(lessonE6.wortschatz.map(it => [it.de, it]));
+  const tricksE6 = lessonE6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE6 = [
+    'Die Straße wird repariert.',
+    'Obwohl es regnet, gehe ich.',
+    'Der Mann, der dort wohnt, heißt Ali.',
+    'Ich erkläre es, damit sie es versteht.',
+    'Ich wiederhole die Regeln jeden Tag.'
+  ];
+  t('Corpus lesson b1-u5-l6 precisely scopes five B1-review moves building a process passive with wird and Partizip II, inverting after fronted obwohl, finishing a relative clause verb-last, aiming at a second subject with damit and routinizing a bare repeated adverbial',
+    lessonE6.title.de === 'Wiederholung B1: Passiv, obwohl und Relativsatz' &&
+      lessonE6.title.ar === 'مراجعة B1: المجهول وobwohl وجملة الصلة' &&
+      rowE6.title.de === lessonE6.title.de && rowE6.title.ar === lessonE6.title.ar &&
+      rowE6.theme === 'المراجعة' &&
+      rowE6.grammar.item === 'wird repariert · obwohl mit Inversion · Relativsatz Verb zuletzt · damit · jeden Tag' &&
+      rowE6.grammar.method === 'explicit' && lessonE6.schritte.length === 36 && lessonE6.wortschatz.length === 40 &&
+      lessonE6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE6[i]) &&
+      lessonE6.schritte[0].zeigt.de === 'Am Ende reparierst du Passiv, obwohl, Relativsatz und damit in fünf Sätzen' &&
+      lessonE6.schritte.find(s => s.id === 's20').zeigt.de === targetsE6[4]);
+
+  const expectedWordsE6 = [
+    'die Wiederholung', 'wiederholen', 'das Passiv', 'der Relativsatz', 'der Konjunktiv', 'der Genitiv',
+    'die Deklination', 'das Präteritum', 'der Nebensatz', 'die Konjunktion', 'die Wortstellung',
+    'der Wortschatz', 'die Aussprache', 'die Grammatik', 'der Fehler', 'die Übung',
+    'die Aufgabe', 'das Niveau', 'die Prüfung', 'der Teil', 'das Hören',
+    'das Lesen', 'das Schreiben', 'das Sprechen', 'die Flüssigkeit', 'die Sicherheit',
+    'das Selbstvertrauen', 'die Strategie', 'die Notiz', 'der Schlüssel', 'das Schlüsselwort',
+    'die Zusammenfassung', 'der Fortschritt', 'das Ziel', 'die Routine',
+    'die Motivation', 'die Geduld', 'das Stichwort', 'prüfen', 'verbessern'
+  ];
+  const errorsE6 = lessonE6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l6 reviews all 40 entries and three bounded mnemonics without nineteen manufactured appendages and with an honest von-plus-dative explanation',
+    Object.keys(byWordE6).join(' | ') === expectedWordsE6.join(' | ') &&
+      lessonE6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE6['die Deklination'].err === 'Die Deklination von das Adjektiv ist schwierig.' &&
+      byWordE6['die Deklination'].why.includes('des Adjektivs') &&
+      byWordE6['die Prüfung'].err === 'Die Prüfung besteht von vier Teilen.' &&
+      byWordE6['das Ziel'].err === 'Setzt dir realistische Ziele!' &&
+      byWordE6['die Passivkonstruktion'] === undefined &&
+      byWordE6['das Passiv'].err === 'Das Passiv wird mit werden bilden.' &&
+      !['Die Wiederholung festigt alles es.', 'Der Konjunktiv klingt höflicher es.',
+        'Der Genitiv wirkt schriftlich es.', 'Das Präteritum steht in Erzählungen es.',
+        'Die Wortstellung ist entscheidend gemacht.', 'Mein Wortschatz wächst langsam es.',
+        'Die Aussprache ist noch unsicher gemacht.', 'Die Grammatik ist kein Selbstzweck es.',
+        'Die Aufgabe war schwer gemacht.', 'Das Niveau steigt langsam es.',
+        'Der erste Teil ist am leichtesten gemacht.', 'Eine Zusammenfassung ordnet das Gelernte es.',
+        'Der Fortschritt ist messbar gemacht.', 'Setz dir realistische Ziele du!',
+        'Eine feste Routine hilft es.', 'Die Motivation schwankt es.',
+        'Geduld ist die halbe Arbeit es.', 'Prüfe deine Antworten noch einmal du!',
+        'Ich verbessere meine Fehler für.']
+        .some(x => errorsE6.includes(x)) &&
+      tricksE6.length === 3 && tricksE6[0].wie.includes('Beim Schreiben achte ich auf die Struktur') &&
+      tricksE6[1].wie.includes('jeden Tag') &&
+      tricksE6[2].wie.includes('Der Fortschritt ist messbar'));
+
+  const wordClozeAE6 = lessonE6.schritte.find(s => s.id === 's09');
+  const wordClozeBE6 = lessonE6.schritte.find(s => s.id === 's13');
+  const wordClozeCE6 = lessonE6.schritte.find(s => s.id === 's17');
+  const imitateE6 = lessonE6.schritte.find(s => s.id === 's19');
+  const drillE6 = lessonE6.schritte.find(s => s.id === 's23');
+  const orderE6 = lessonE6.schritte.find(s => s.id === 's24');
+  const writingE6 = lessonE6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE6 = lessonE6.schritte.find(s => s.phase === 'Produktion');
+  const summaryE6 = lessonE6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE6 = lessonE6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l6 aligns five strict learning clozes, sound obwohl-fronting order fields and a 29-word five-target production',
+    wordClozeAE6.frage.zeigt === 'Der ____ wirkt schriftlich.' && wordClozeAE6.frage.antworten.join(' ') === 'Genitiv' &&
+      wordClozeAE6.frage.nearMiss.Genitive && !win.DW.renderers.judgeCloze(wordClozeAE6.frage, 'Genitive').ok &&
+      wordClozeBE6.frage.zeigt === 'Beim ____ suche ich Schlüsselwörter.' && wordClozeBE6.frage.antworten.join(' ') === 'Lesen' &&
+      wordClozeBE6.frage.nearMiss.Lesens && !win.DW.renderers.judgeCloze(wordClozeBE6.frage, 'Lesens').ok &&
+      wordClozeCE6.frage.zeigt === 'Ich notiere nur ____.' && wordClozeCE6.frage.antworten.join(' ') === 'Stichworte' &&
+      wordClozeCE6.frage.nearMiss.Stichwort && !win.DW.renderers.judgeCloze(wordClozeCE6.frage, 'Stichwort').ok &&
+      imitateE6.zeigt.de === 'Die Straße ____ repariert.' && imitateE6.frage.antworten.join(' ') === 'wird' &&
+      imitateE6.frage.nearMiss.werden && !win.DW.renderers.judgeCloze(imitateE6.frage, 'werden').ok &&
+      drillE6.frage.zeigt === 'Im ____ steht das Verb am Ende.' && drillE6.frage.antworten.join(' ') === 'Nebensatz' &&
+      drillE6.frage.nearMiss.Nebensätze && !win.DW.renderers.judgeCloze(drillE6.frage, 'Nebensätze').ok &&
+      lessonE6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE6.frage.correct.join(' ') === targetsE6[1] && orderE6.frage.finite === 'gehe' && orderE6.frage.verbFirst === false &&
+      orderE6.frage.fields.vorfeld.join(' ') === 'Obwohl es regnet,' && orderE6.frage.fields.lsk.join(' ') === 'gehe' &&
+      orderE6.frage.fields.mittelfeld.join(' ') === 'ich.' &&
+      win.DW.order.score(orderE6.frage, orderE6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE6.frage, ['Obwohl', 'es', 'regnet,', 'ich.', 'gehe']).credit < 1 &&
+      writingE6.frage.points.join(' | ') === targetsE6.join(' | ') && writingE6.frage.minWords === 29 &&
+      targetsE6.join(' ').split(/\s+/).length === 29 &&
+      targetsE6.every(x => [writingE6.frage.promptDe, summaryE6.zeigt.de, homeworkE6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE6.every(x => norm(speakingE6.erklaerung).includes(norm(x))) &&
+      (homeworkE6.hinweise || []).join(' ').includes('Drei Verb-Endstellungen') &&
+      (homeworkE6.hinweise || []).join(' ').includes('damit'));
+
+  const checksE6 = lessonE6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE6 = checksE6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE6 = checksE6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l6 makes 80 percent four of five, independently checking verb-final damit, singular Nebensatz and routine order, besteht-aus and bare-jeden-Tag closure',
+    checksE6.length === 5 && checksE6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE6.every(s => /^cap\.b1-u5-l6\.s\d+$/.test(s.frage.prereq || '')) && checksE6.every(s => !s.hinweise) &&
+      checksE6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l6.s07 | cap.b1-u5-l6.s23 | cap.b1-u5-l6.s24 | cap.b1-u5-l6.s12 | cap.b1-u5-l6.s20' &&
+      new Set(checksE6.map(s => s.frage.prereq)).size === 5 &&
+      checksE6[0].frage.optionen.some(o => o.text === targetsE6[3]) &&
+      checksE6[0].frage.optionen.some(o => o.text === 'Ich erkläre es, damit sie versteht es.') &&
+      Object.values(checksE6[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckE6.frage.zeigt === 'Im ____ steht das Verb am Ende.' &&
+      clozeCheckE6.frage.antworten.join(' ') === 'Nebensatz' && clozeCheckE6.frage.nearMiss.Nebensätze &&
+      !win.DW.renderers.judgeCloze(clozeCheckE6.frage, 'Nebensätze').ok &&
+      orderCheckE6.frage.correct.join(' ') === targetsE6[4] && orderCheckE6.frage.finite === 'wiederhole' &&
+      orderCheckE6.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheckE6.frage.fields.lsk.join(' ') === 'wiederhole' &&
+      orderCheckE6.frage.fields.mittelfeld.join(' ') === 'die Regeln jeden Tag.' &&
+      win.DW.order.score(orderCheckE6.frage, orderCheckE6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE6.frage, ['Ich', 'die', 'wiederhole', 'Regeln', 'Tag.', 'jeden']).credit < 1 &&
+      checksE6[3].frage.optionen.some(o => o.text === 'Die Prüfung besteht aus vier Teilen.') &&
+      checksE6[3].frage.optionen.some(o => o.text === 'Die Prüfung besteht von vier Teilen.') &&
+      Object.values(checksE6[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksE6[4].frage.optionen.some(o => o.text === targetsE6[4]) &&
+      checksE6[4].frage.optionen.some(o => o.text === 'Ich wiederhole die Regeln in jeden Tag.') &&
+      Object.values(checksE6[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

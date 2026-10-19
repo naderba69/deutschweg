@@ -1682,25 +1682,50 @@ module.exports = [
       hwHintDe: '„Clinic“ und „Date“ sind Englisch: Die Praxis öffnet um acht, und ein Termin ist kein Date — sage: „Ich brauche einen Termin.“'
     }),
 
-  U('b1-u5-l6', 'B1', 'مراجعة B1', 'Wiederholung B1', 'pruefstrategie',
-    'Am Ende reparierst du Passiv, obwohl und Relativsatz',
-    'في النهاية تُصلح المجهول وobwohl وجملة الصلة.',
+  U('b1-u5-l6', 'B1', 'مراجعة B1: المجهول وobwohl وجملة الصلة', 'Wiederholung B1: Passiv, obwohl und Relativsatz', 'pruefstrategie',
+    'Am Ende reparierst du Passiv, obwohl, Relativsatz und damit in fünf Sätzen',
+    'في النهاية تُصلح المجهول وobwohl وجملة الصلة وdamit في خمس جمل.',
     [
-      ['werden nicht sein', 'الحدث wird', 'ist حالة', 'die Straße ist repariert als Vorgang', 'المساعد خطأ'],
-      ['obwohl am Ende', 'بعد obwohl الفعل آخرًا', 'V2 خطأ', 'obwohl ich gehe trotzdem', 'الترتيب خطأ'],
-      ['Relativsatz am Ende', 'الصلة والفعل آخرًا', 'der wohnt dort خطأ', 'der Mann, der wohnt dort', 'الترتيب خطأ'],
-      ['damit nicht um zu', 'فاعل ثانٍ damit', 'um zu لا يحتمل فاعلًا جديدًا', 'um zu sie versteht', 'الأداة خطأ']
+      ['Die Straße wird repariert.', 'تصف حدثًا مبنيًّا للمجهول', 'المجهول الحدثي: wird + Partizip II (repariert) لا المصدر reparieren بعد wird', 'Die Straße wird reparieren.', 'مجهول: wird repariert'],
+      ['Obwohl es regnet, gehe ich.', 'تثبت رغم العائق', 'في جملة obwohl الفعل أخيرًا (regnet)، وفي الرئيسية ينقلب الترتيب: gehe ich لا ich gehe', 'Obwohl es regnet, ich gehe.', 'قلب بعد obwohl: gehe ich'],
+      ['Der Mann, der dort wohnt, heißt Ali.', 'تصف شخصًا بجملة صلة', 'في الصلة الفعل أخيرًا بعد الضمير: der dort wohnt لا der wohnt dort، ثم يعود فعل الرئيسية', 'Der Mann, der wohnt dort, heißt Ali.', 'الصلة أخيرًا: der dort wohnt'],
+      ['Ich erkläre es, damit sie es versteht.', 'تشرح ليحصل فهم غيرك', 'الغاية بفاعل جديد مع damit والفعل أخيرًا: damit sie es versteht — بفاعل واحد كنت ستقول um … zu', 'Ich erkläre es, damit sie versteht es.', 'فعل أخيرًا مع damit: versteht']
     ],
     [
-      ['Die Straße wird repariert.', 'الشارع يُرمم', 'Die Straße ist repariert als Vorgang', 'الحدث wird', 'wird'],
-      ['Obwohl es regnet, gehe ich.', 'رغم المطر أذهب', 'Obwohl es regnet, ich gehe', 'gehe أول الرئيسية', 'gehe'],
-      ['Der Mann, der dort wohnt, heißt Ali.', 'الرجل الذي يسكن هناك اسمه علي', 'Der Mann, der wohnt dort, heißt Ali', 'wohnt آخرًا', 'wohnt'],
-      ['Ich erkläre es, damit sie es versteht.', 'أشرحه كي تفهمه', 'Ich erkläre es, um zu sie versteht', 'فاعل ثانٍ damit', 'damit']
+      ['Die Straße wird repariert.', 'الشارع يُرمّم', 'Die Straße wird reparieren.', 'مجهول حدثي: wird repariert', 'wird'],
+      ['Obwohl es regnet, gehe ich.', 'رغم المطر أذهب', 'Obwohl es regnet, ich gehe.', 'تحدٍّ بقلب: gehe ich', 'gehe'],
+      ['Der Mann, der dort wohnt, heißt Ali.', 'الرجل الذي يسكن هناك اسمه علي', 'Der Mann, der wohnt dort, heißt Ali.', 'صلة بفعل أخير: der dort wohnt', 'wohnt'],
+      ['Ich erkläre es, damit sie es versteht.', 'أشرحه كي تفهمه', 'Ich erkläre es, damit sie versteht es.', 'غاية بفاعل ثانٍ: damit … versteht', 'damit']
     ],
-    'Obwohl es regnet, gehe ich. Die Straße wird repariert.',
     'Die Straße wird repariert.',
-    'Korrigiere morgen obwohl und einen Relativsatz.',
-    'غدًا صحّح obwohl وجملة صلة.'),
+    'Ich wiederhole die Regeln jeden Tag.',
+    'Wiederhole morgen die fünf Sätze: Die Straße wird repariert. Obwohl es regnet, gehe ich. Der Mann, der dort wohnt, heißt Ali. Ich erkläre es, damit sie es versteht. Ich wiederhole die Regeln jeden Tag.',
+    'غدًا أعد جمل المراجعة الخمس ولاحظ Partizip II والقلب بعد obwohl وفعل الصلة الأخير وdamit وظرف jeden Tag.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'werden',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: jeden Tag ظرف تكرار بلا حرف جر — in هنا تخدعك كأنها مدة.',
+      orderSentence: 'Obwohl es regnet, gehe ich.',
+      checkOrderSentence: 'Ich wiederhole die Regeln jeden Tag.',
+      orderAr: 'رتّب جملة التحدي: جملة Obwohl كلها أولًا ثم gehe في الموضع الثاني قبل ich.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الجملة الفرعية المتقدّمة كلها موضع أول واحد.', 'بعدها ينقلب الترتيب: gehe ich لا ich gehe.'],
+      writing: {
+        zeigt: 'Wiederholung in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تراجع أهم تراكيب B1: مجهول بـwird وPartizip II، وobwohl بقلب الرئيسية، وصلة بفعل أخير، وغاية بـdamit لفاعل ثانٍ، وروتين بظرف jeden Tag بلا حرف.',
+        hinweise: ['الثانويات (obwohl والصلة وdamit) فعلها أخيرًا دائمًا.', 'المجهول يحتاج werden لا sein وحده لحدث يُصنع الآن.'],
+        prompt: 'اكتب جمل مراجعة B1 الخمس المستهدفة من الذاكرة مع المجهول والقلب والفعل الأخير.',
+        promptDe: 'Die Straße wird repariert. · Obwohl es regnet, gehe ich. · Der Mann, der dort wohnt, heißt Ali. · Ich erkläre es, damit sie es versteht. · Ich wiederhole die Regeln jeden Tag.',
+        points: ['Die Straße wird repariert.', 'Obwohl es regnet, gehe ich.', 'Der Mann, der dort wohnt, heißt Ali.', 'Ich erkläre es, damit sie es versteht.', 'Ich wiederhole die Regeln jeden Tag.'],
+        minWords: 29,
+        frage: 'اكتب جمل مراجعة B1 الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Straße wird repariert. Obwohl es regnet, gehe ich. Der Mann, der dort wohnt, heißt Ali. Ich erkläre es, damit sie es versteht. Ich wiederhole die Regeln jeden Tag.',
+      summaryDe: 'Die Straße wird repariert. Obwohl es regnet, gehe ich. Der Mann, der dort wohnt, heißt Ali. Ich erkläre es, damit sie es versteht. Ich wiederhole die Regeln jeden Tag.',
+      summaryAr: 'مراجعة B1 في خمس جمل: مجهول يصنع حدثًا، وقلب بعد obwohl، وصلة بفعل أخير، وغاية بـdamit، وروتين يومي بلا حرف.',
+      summaryRecap: 'راجع التراكيب أولًا',
+      hwHintDe: 'Drei Verb-Endstellungen schützen fast jeden Satz: obwohl …, der …, damit … — wer sie im Schlaf kann, verliert in der Prüfung keine Punkte mehr.'
+    }),
 
   U('b1-u5-l7', 'B1', 'شكل امتحان B1', 'Prüfungsform B1', 'pruefstrategie',
     'Am Ende kennst du die Form und schreibst keinen Ausgleich',

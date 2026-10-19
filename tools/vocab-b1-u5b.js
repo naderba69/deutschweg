@@ -140,26 +140,26 @@ module.exports = {
 
   'b1-u5-l6': {
     items: [
-      ['die Wiederholung', 'die Wiederholungen', 'المراجعة', 'Die Wiederholung festigt alles.', 'Die Wiederholung festigt alles es.', 'لا ضمير زائد.', 'wortstellung', 'Wiederholung'],
+      ['die Wiederholung', 'die Wiederholungen', 'المراجعة', 'Die Wiederholung festigt alles.', 'Die Wiederholung festigen alles.', 'فاعل مفرد وفعل مفرد: festigt.', 'konjugation', 'Wiederholung'],
       ['wiederholen', 'wiederholt · wiederholte · hat wiederholt', 'يراجع', 'Ich wiederhole die Regeln jeden Tag.', 'Ich wiederhole die Regeln in jeden Tag.', 'بلا حرف جر.', 'präposition', 'wiederhole'],
       ['das Passiv', '—', 'المبني للمجهول', 'Das Passiv wird mit werden gebildet.', 'Das Passiv wird mit werden bilden.', 'المجهول: gebildet.', 'konjugation', 'Passiv'],
       ['der Relativsatz', 'die Relativsätze', 'جملة الصلة', 'Der Relativsatz steht nach dem Komma.', 'Der Relativsatz steht in dem Komma.', 'nach لا in.', 'präposition', 'Relativsatz'],
-      ['der Konjunktiv', 'die Konjunktive', 'صيغة الشرط', 'Der Konjunktiv klingt höflicher.', 'Der Konjunktiv klingt höflicher es.', 'لا ضمير زائد.', 'wortstellung', 'Konjunktiv'],
-      ['der Genitiv', 'die Genitive', 'الإضافة', 'Der Genitiv wirkt schriftlich.', 'Der Genitiv wirkt schriftlich es.', 'لا ضمير زائد.', 'wortstellung', 'Genitiv'],
-      ['die Deklination', 'die Deklinationen', 'التصريف الاسمي', 'Die Deklination des Adjektivs ist schwierig.', 'Die Deklination von dem Adjektiv ist schwierig.', 'Genitiv أفضل.', 'kasus', 'Deklination'],
-      ['das Präteritum', '—', 'الماضي البسيط', 'Das Präteritum steht in Erzählungen.', 'Das Präteritum steht in Erzählungen es.', 'لا ضمير زائد.', 'wortstellung', 'Präteritum'],
+      ['der Konjunktiv', 'die Konjunktive', 'صيغة الشرط', 'Der Konjunktiv klingt höflicher.', 'Der Konjunktiv klingen höflicher.', 'فاعل مفرد وفعل مفرد: klingt.', 'konjugation', 'Konjunktiv'],
+      ['der Genitiv', 'die Genitive', 'الإضافة', 'Der Genitiv wirkt schriftlich.', 'Der Genitiv wirken schriftlich.', 'فاعل مفرد وفعل مفرد: wirkt.', 'konjugation', 'Genitiv'],
+      ['die Deklination', 'die Deklinationen', 'التصريف الاسمي', 'Die Deklination des Adjektivs ist schwierig.', 'Die Deklination von das Adjektiv ist schwierig.', 'von لا يقبل الرفع: von dem Adjektiv — والأفصح كتابةً: des Adjektivs.', 'kasus', 'Deklination'],
+      ['das Präteritum', '—', 'الماضي البسيط', 'Das Präteritum steht in Erzählungen.', 'Der Präteritum steht in Erzählungen.', 'محايد: Das Präteritum.', 'genus', 'Präteritum'],
       ['der Nebensatz', 'die Nebensätze', 'الجملة الثانوية', 'Im Nebensatz steht das Verb am Ende.', 'In Nebensatz steht das Verb am Ende.', 'im.', 'präposition', 'Nebensatz'],
       ['die Konjunktion', 'die Konjunktionen', 'أداة الربط', 'Die Konjunktion verbindet zwei Sätze.', 'Die Konjunktion verbindet zwei Satz.', 'الجمع: Sätze.', 'plural', 'Konjunktion'],
-      ['die Wortstellung', '—', 'ترتيب الكلمات', 'Die Wortstellung ist entscheidend.', 'Die Wortstellung ist entscheidend gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Wortstellung'],
-      ['der Wortschatz', '—', 'المفردات', 'Mein Wortschatz wächst langsam.', 'Mein Wortschatz wächst langsam es.', 'لا ضمير زائد.', 'wortstellung', 'Wortschatz'],
-      ['die Aussprache', '—', 'النطق', 'Die Aussprache ist noch unsicher.', 'Die Aussprache ist noch unsicher gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Aussprache'],
-      ['die Grammatik', 'die Grammatiken', 'القواعد', 'Die Grammatik ist kein Selbstzweck.', 'Die Grammatik ist kein Selbstzweck es.', 'لا ضمير زائد.', 'wortstellung', 'Grammatik'],
+      ['die Wortstellung', '—', 'ترتيب الكلمات', 'Die Wortstellung ist entscheidend.', 'Die Wortstellung ist entscheidende.', 'الصفة الخبرية بلا نهاية: entscheidend.', 'deklination', 'Wortstellung'],
+      ['der Wortschatz', '—', 'المفردات', 'Mein Wortschatz wächst langsam.', 'Mein Wortschatz wachsen langsam.', 'فاعل مفرد وفعل مفرد: wächst.', 'konjugation', 'Wortschatz'],
+      ['die Aussprache', '—', 'النطق', 'Die Aussprache ist noch unsicher.', 'Die Aussprache sind noch unsicher.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Aussprache'],
+      ['die Grammatik', 'die Grammatiken', 'القواعد', 'Die Grammatik ist kein Selbstzweck.', 'Die Grammatik ist keinen Selbstzweck.', 'خبر sein في الرفع: kein Selbstzweck.', 'kasus', 'Grammatik'],
       ['der Fehler', 'die Fehler', 'الخطأ', 'Diesen Fehler mache ich nicht mehr.', 'Diese Fehler mache ich nicht mehr.', 'المفعول مذكر: diesen.', 'kasus', 'Fehler'],
       ['die Übung', 'die Übungen', 'التمرين', 'Die Übung macht den Meister.', 'Die Übung macht der Meister.', 'المفعول: den Meister.', 'kasus', 'Übung'],
-      ['die Aufgabe', 'die Aufgaben', 'المهمة', 'Die Aufgabe war schwer.', 'Die Aufgabe war schwer gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Aufgabe'],
-      ['das Niveau', 'die Niveaus', 'المستوى', 'Das Niveau steigt langsam.', 'Das Niveau steigt langsam es.', 'لا ضمير زائد.', 'wortstellung', 'Niveau'],
+      ['die Aufgabe', 'die Aufgaben', 'المهمة', 'Die Aufgabe war schwer.', 'Die Aufgabe war schweren.', 'الصفة الخبرية بلا نهاية: schwer.', 'deklination', 'Aufgabe'],
+      ['das Niveau', 'die Niveaus', 'المستوى', 'Das Niveau steigt langsam.', 'Die Niveau steigt langsam.', 'محايد: Das Niveau.', 'genus', 'Niveau'],
       ['die Prüfung', 'die Prüfungen', 'الامتحان', 'Die Prüfung besteht aus vier Teilen.', 'Die Prüfung besteht von vier Teilen.', 'aus لا von (المكوّن).', 'präposition', 'Prüfung'],
-      ['der Teil', 'die Teile', 'القسم', 'Der erste Teil ist am leichtesten.', 'Der erste Teil ist am leichtesten gemacht.', 'الصيغة تكفي.', 'lexik-kollokation', 'Teil'],
+      ['der Teil', 'die Teile', 'القسم', 'Der erste Teil ist am leichtesten.', 'Der erste Teil ist am leichteste.', 'التفضيل الظرفي: am leichtesten.', 'deklination', 'Teil'],
       ['das Hören', '—', 'الاستماع', 'Beim Hören notiere ich Stichworte.', 'In Hören notiere ich Stichworte.', 'beim.', 'präposition', 'Hören'],
       ['das Lesen', '—', 'القراءة', 'Beim Lesen suche ich Schlüsselwörter.', 'In Lesen suche ich Schlüsselwörter.', 'beim.', 'präposition', 'Lesen'],
       ['das Schreiben', '—', 'الكتابة', 'Beim Schreiben achte ich auf die Struktur.', 'In Schreiben achte ich auf die Struktur.', 'beim.', 'präposition', 'Schreiben'],
@@ -171,21 +171,38 @@ module.exports = {
       ['die Notiz', 'die Notizen', 'الملاحظة', 'Ich mache mir kurze Notizen.', 'Ich mache mir kurze Notiz.', 'الجمع: Notizen.', 'plural', 'Notizen'],
       ['der Schlüssel', 'die Schlüssel', 'المفتاح', 'Der Schlüssel liegt auf dem Tisch.', 'Der Schlüssel liegt in dem Tisch.', 'auf لا in (السطح).', 'präposition', 'Schlüssel'],
       ['das Schlüsselwort', 'die Schlüsselwörter', 'الكلمة المفتاحية', 'Markiere die Schlüsselwörter!', 'Markiere die Schlüsselwort!', 'الجمع: Schlüsselwörter.', 'plural', 'Schlüsselwörter'],
-      ['die Zusammenfassung', 'die Zusammenfassungen', 'التلخيص', 'Eine Zusammenfassung ordnet das Gelernte.', 'Eine Zusammenfassung ordnet das Gelernte es.', 'لا ضمير زائد.', 'wortstellung', 'Zusammenfassung'],
-      ['der Fortschritt', 'die Fortschritte', 'التقدّم', 'Der Fortschritt ist messbar.', 'Der Fortschritt ist messbar gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Fortschritt'],
-      ['das Ziel', 'die Ziele', 'الهدف', 'Setz dir realistische Ziele!', 'Setz dir realistische Ziele du!', 'التعليمة بلا ضمير.', 'wortstellung', 'Ziele'],
-      ['die Routine', 'die Routinen', 'الروتين', 'Eine feste Routine hilft.', 'Eine feste Routine hilft es.', 'لا ضمير زائد.', 'wortstellung', 'Routine'],
-      ['die Motivation', '—', 'الحافز', 'Die Motivation schwankt.', 'Die Motivation schwankt es.', 'لا ضمير زائد.', 'wortstellung', 'Motivation'],
-      ['die Geduld', '—', 'الصبر', 'Geduld ist die halbe Arbeit.', 'Geduld ist die halbe Arbeit es.', 'لا ضمير زائد.', 'wortstellung', 'Geduld'],
+      ['die Zusammenfassung', 'die Zusammenfassungen', 'التلخيص', 'Eine Zusammenfassung ordnet das Gelernte.', 'Eine Zusammenfassung ordnen das Gelernte.', 'فاعل مفرد وفعل مفرد: ordnet.', 'konjugation', 'Zusammenfassung'],
+      ['der Fortschritt', 'die Fortschritte', 'التقدّم', 'Der Fortschritt ist messbar.', 'Der Fortschritt ist messbare.', 'الصفة الخبرية بلا نهاية: messbar.', 'deklination', 'Fortschritt'],
+      ['das Ziel', 'die Ziele', 'الهدف', 'Setz dir realistische Ziele!', 'Setzt dir realistische Ziele!', 'أمر المفرد: setz مع dir — لا صورة أنتم setzt.', 'konjugation', 'Ziele'],
+      ['die Routine', 'die Routinen', 'الروتين', 'Eine feste Routine hilft.', 'Eine feste Routine helfen.', 'فاعل مفرد وفعل مفرد: hilft.', 'konjugation', 'Routine'],
+      ['die Motivation', '—', 'الحافز', 'Die Motivation schwankt.', 'Die Motivation schwanken.', 'فاعل مفرد وفعل مفرد: schwankt.', 'konjugation', 'Motivation'],
+      ['die Geduld', '—', 'الصبر', 'Geduld ist die halbe Arbeit.', 'Geduld sind die halbe Arbeit.', 'فاعل مفرد: ist لا sind.', 'konjugation', 'Geduld'],
       ['das Stichwort', 'die Stichworte', 'الكلمة المفتاحية', 'Ich notiere nur Stichworte.', 'Ich notiere nur Stichwort.', 'الجمع: Stichworte.', 'plural', 'Stichworte'],
-      ['prüfen', 'prüft · prüfte · hat geprüft', 'يفحص', 'Prüfe deine Antworten noch einmal!', 'Prüfe deine Antworten noch einmal du!', 'التعليمة بلا ضمير.', 'wortstellung', 'Prüfe'],
-      ['verbessern', 'verbessert · verbesserte · hat verbessert', 'يحسّن', 'Ich verbessere meine Fehler.', 'Ich verbessere meine Fehler für.', 'بلا حرف جر.', 'kasus', 'verbessere']
+      ['prüfen', 'prüft · prüfte · hat geprüft', 'يفحص', 'Prüfe deine Antworten noch einmal!', 'Prüfst deine Antworten noch einmal!', 'الأمر للمفرد بلا -st: prüfe.', 'konjugation', 'Prüfe'],
+      ['verbessern', 'verbessert · verbesserte · hat verbessert', 'يحسّن', 'Ich verbessere meine Fehler.', 'Ich verbessere für meine Fehler.', 'مفعول مباشر بلا für: meine Fehler verbessern.', 'präposition', 'verbessere']
     ],
     tricks: [
       { trick: 'أربعة أقسام في B1: Hören · Lesen · Schreiben · Sprechen — ولكل قسم استراتيجيته', wie: 'Beim Hören notiere ich Stichworte. Beim Schreiben achte ich auf die Struktur.', warum: 'الامتحان الألماني يقيس الأقسام الأربعة منفصلة، والعربية تذاكر القواعد وحدها فتُهمل التوزيع.', anchor: 'das Hören' },
       { trick: 'المراجعة اليومية تكسب بالروتين لا بالمزاج: die Routine · die Notiz · die Wiederholung', wie: 'Eine feste Routine hilft. Ich wiederhole die Regeln jeden Tag.', warum: 'الاستمرارية الصغيرة هي الفارق في B1، والعربية تخطّط للمراجعة الكبرى ثم تتوقف.', anchor: 'die Routine' },
       { trick: 'اللغة تُبنى بالخروج من الفشل: der Fehler · verbessern · der Fortschritt', wie: 'Ich verbessere meine Fehler. Der Fortschritt ist messbar.', warum: 'الخطأ في العربية عيب يُخفى، وفي منهج B1 هو المادة الأولى للتصحيح.', anchor: 'der Fehler' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Genitiv': 'Genitive',
+      'das Lesen': 'Lesens',
+      'das Stichwort': 'Stichwort'
+    },
+    clozeItemIndex: 8,
+    clozeNearMiss: 'Nebensätze',
+    checkItemIndex: 18,
+    extraCheck: {
+      right: 'Ich wiederhole die Regeln jeden Tag.',
+      bad: 'Ich wiederhole die Regeln in jeden Tag.',
+      why: 'الظرف المتكرر بلا حرف: jeden Tag — in هنا مدّة لا ظرف تكرار.',
+      family: 'präposition',
+      prereq: 'cap.b1-u5-l6.s20',
+      frage: 'أي جملة تقول (كل يوم) بلا حرف زائد؟'
+    }
   }
 
 };
