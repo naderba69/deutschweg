@@ -76,7 +76,7 @@ module.exports = {
   'b1-u6-l6': {
     items: [
       ['der Abt', 'die Äbte', 'رئيس الدير', 'Der Abt leitet das Kloster.', 'Der Abt leitet auf das Kloster.', 'leiten بلا حرف جر.', 'präposition', 'Abt'],
-      ['die Autorin', 'die Autorinnen', 'المؤلفة', 'Die Autorin liest heute.', 'Die Autorin liest heute es.', 'لا ضمير زائد.', 'wortstellung', 'Autorin'],
+      ['die Autorin', 'die Autorinnen', 'المؤلفة', 'Die Autorin liest heute.', 'Die Autor liest heute.', 'مؤنث المهنة بـ-in: die Autorin لا Autor.', 'orthographie', 'Autorin'],
       ['die Beamtin', 'die Beamtinnen', 'الموظفة', 'Die Beamtin prüft den Antrag.', 'Die Beamtin prüft auf den Antrag.', 'prüfen بلا حرف جر.', 'präposition', 'Beamtin'],
       ['der Direktor', 'die Direktoren', 'المدير', 'Der Direktor unterschreibt den Brief.', 'Der Direktor unterschreibt auf den Brief.', 'unterschreiben بلا حرف جر.', 'präposition', 'Direktor'],
       ['die Doktorin', 'die Doktorinnen', 'الطبيبة', 'Die Doktorin erklärt die Diagnose.', 'Die Doktorin erklärt über die Diagnose.', 'erklären بلا حرف جر.', 'präposition', 'Doktorin'],
@@ -91,36 +91,53 @@ module.exports = {
       ['der Schauspieler', 'die Schauspieler', 'الممثل', 'Der Schauspieler lernt den Text.', 'Der Schauspieler lernt auf den Text.', 'lernen بلا حرف جر.', 'präposition', 'Schauspieler'],
       ['die Schauspielerin', 'die Schauspielerinnen', 'الممثلة', 'Die Schauspielerin steht auf der Bühne.', 'Die Schauspielerin steht auf die Bühne.', 'auf + داتيف: der Bühne.', 'kasus', 'Schauspielerin'],
       ['der Künstler', 'die Künstler', 'الفنان', 'Der Künstler malt ein Bild.', 'Der Künstler malt auf ein Bild.', 'malen بلا حرف جر.', 'präposition', 'Künstler'],
-      ['die Künstlerin', 'die Künstlerinnen', 'الفنانة', 'Die Künstlerin stellt aus.', 'Die Künstlerin stellt auf.', 'ausstellen يحتاج مفعولًا به.', 'wortstellung', 'Künstlerin'],
+      ['die Künstlerin', 'die Künstlerinnen', 'الفنانة', 'Die Künstlerin stellt aus.', 'Die Künstlerin stellt auf.', 'للعرض الفني: ausstellen بـaus لا auf.', 'wortstellung', 'Künstlerin'],
       ['der Briefträger', 'die Briefträger', 'ساعي البريد', 'Der Briefträger bringt ein Paket.', 'Der Briefträger bringt auf ein Paket.', 'bringen بلا حرف جر.', 'präposition', 'Briefträger'],
       ['der Richter', 'die Richter', 'القاضي', 'Der Richter liest das Urteil.', 'Der Richter liest auf das Urteil.', 'lesen بلا حرف جر.', 'präposition', 'Richter'],
       ['der Sieger', 'die Sieger', 'الفائز', 'Der Sieger bekommt einen Pokal.', 'Der Sieger bekommt auf einen Pokal.', 'bekommen بلا حرف جر.', 'präposition', 'Sieger'],
-      ['der König', 'die Könige', 'الملك', 'Der König wohnt im Schloss.', 'Der König wohnt in dem Schloss auf.', 'في = in + داتيف بلا auf.', 'präposition', 'König'],
-      ['der Anbieter', 'die Anbieter', 'المزوّد', 'Der Anbieter wechselt oft.', 'Der Anbieter wechselt oft es.', 'لا ضمير زائد.', 'wortstellung', 'Anbieter'],
-      ['die Leiter', 'die Leitern', 'السلّم', 'Die Leiter steht im Keller.', 'Die Leiter steht in dem Keller auf.', 'في = in بلا auf.', 'präposition', 'Leiter'],
+      ['der König', 'die Könige', 'الملك', 'Der König wohnt im Schloss.', 'Der König wohnt in das Schloss.', 'الوضع مع in داتيف: im Schloss لا in das.', 'kasus', 'König'],
+      ['der Anbieter', 'die Anbieter', 'المزوّد', 'Der Anbieter wechselt oft.', 'Der Anbieter wechseln oft.', 'فاعل مفرد: wechselt — والمذكّر Anbieter والمؤنّثة Anbieterin.', 'konjugation', 'Anbieter'],
+      ['die Leiter', 'die Leitern', 'السلّم', 'Die Leiter steht im Keller.', 'Die Leiter steht in den Keller.', 'الوضع مع in داتيف: im Keller لا in den.', 'kasus', 'Leiter'],
       ['der Sekretär', 'die Sekretäre', 'السكرتير', 'Der Sekretär macht den Termin.', 'Der Sekretär macht auf den Termin.', 'machen بلا حرف جر.', 'präposition', 'Sekretär'],
-      ['die Praktikantin', 'die Praktikantinnen', 'المتدرّبة', 'Die Praktikantin lernt viel.', 'Die Praktikantin lernt viel es.', 'لا ضمير زائد.', 'wortstellung', 'Praktikantin'],
+      ['die Praktikantin', 'die Praktikantinnen', 'المتدرّبة', 'Die Praktikantin lernt viel.', 'Die Praktikantin lernen viel.', 'فاعل مفرد: lernt لا lernen.', 'konjugation', 'Praktikantin'],
       ['bio-', '—', 'سابقة: عضوي', 'Viele Produkte heißen bio- oder öko-.', 'Viele Produkte heißen bio oder öko-.', 'السابقة تُكتب بشرطة: bio-.', 'orthographie', 'bio-'],
-      ['herein-', '—', 'سابقة: إلى الداخل', 'Die Vorsilbe herein- bedeutet nach drinnen.', 'Die Vorsilbe herein bedeutet nach drinnen.', 'السابقة بشرطة: herein-.', 'orthographie', 'herein-'],
-      ['schwieger-', '—', 'سابقة: القرابة بالمصاهرة', 'Die Vorsilbe schwieger- steht vor Vater oder Mutter.', 'Die Vorsilbe schwieger steht vor Vater oder Mutter.', 'السابقة بشرطة: schwieger-.', 'orthographie', 'schwieger-'],
-      ['spezial-', '—', 'سابقة: خاص', 'Das Wort spezial- gilt nur für einen Fall.', 'Das Wort spezial gilt nur für einen Fall.', 'السابقة بشرطة: spezial-.', 'orthographie', 'spezial-'],
-      ['-weise', '—', 'لاحقة: بطريقة', 'Viele Adverbien enden auf -weise.', 'Viele Adverbien enden auf weise.', 'اللاحقة بشرطة: -weise.', 'orthographie', '-weise'],
-      ['die Religion', 'die Religionen', 'الدين', 'Die Religion spielt eine Rolle.', 'Die Religion spielt eine Rolle es.', 'لا ضمير زائد.', 'wortstellung', 'Religion'],
+      ['herein-', '—', 'سابقة: إلى الداخل', 'Die Vorsilbe herein- bedeutet nach drinnen.', 'Die Vorsilbe herein- bedeuten nach drinnen.', 'فاعل مفرد: bedeutet لا bedeuten — والسابقة تُذكر بشرطة: herein-.', 'konjugation', 'herein-'],
+      ['schwieger-', '—', 'سابقة: القرابة بالمصاهرة', 'Die Vorsilbe schwieger- steht vor Vater oder Mutter.', 'Die Vorsilbe schwieger- stehen vor Vater oder Mutter.', 'فاعل مفرد: steht لا stehen — والسابقة بشرطة: schwieger-.', 'konjugation', 'schwieger-'],
+      ['spezial-', '—', 'سابقة: خاص', 'Das Wort spezial- gilt nur für einen Fall.', 'Das Wort spezial- gelten nur für einen Fall.', 'فاعل مفرد: gilt لا gelten — والسابقة بشرطة: spezial-.', 'konjugation', 'spezial-'],
+      ['-weise', '—', 'لاحقة: بطريقة', 'Viele Adverbien enden auf -weise.', 'Viele Adverbien endet auf -weise.', 'فاعل جمع: enden لا endet — واللاحقة بشرطة: -weise.', 'konjugation', '-weise'],
+      ['die Religion', 'die Religionen', 'الدين', 'Die Religion spielt eine Rolle.', 'Die Religion spielen eine Rolle.', 'فاعل مفرد: spielt لا spielen.', 'konjugation', 'Religion'],
       ['das Talent', 'die Talente', 'الموهبة', 'Das Talent braucht Übung.', 'Das Talent braucht auf Übung.', 'brauchen بلا حرف جر.', 'präposition', 'Talent'],
-      ['der Sieg', 'die Siege', 'النصر', 'Der Sieg war verdient.', 'Der Sieg war verdient gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Sieg'],
-      ['siegen', '—', 'ينتصر', 'Unsere Mannschaft siegt klar.', 'Unsere Mannschaft siegt auf klar.', 'siegen بلا حرف جر.', 'präposition', 'siegt'],
-      ['erfolgreich', '—', 'ناجح', 'Der Versuch war erfolgreich.', 'Der Versuch war erfolgreich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'erfolgreich'],
-      ['das Billett', 'die Billette', 'التذكرة (النمسا/سويسرا)', 'Das Billett gilt zwei Stunden.', 'Das Billett gilt für zwei Stunden.', 'gelten بلا حرف جر.', 'präposition', 'Billett'],
-      ['ausfallen', '—', 'يُلغى', 'Der Zug fällt heute aus.', 'Der Zug fällt heute aus es.', 'لا ضمير زائد.', 'wortstellung', 'fällt'],
-      ['verschwinden', '—', 'يختفي', 'Die Datei verschwindet plötzlich.', 'Die Datei verschwindet plötzlich auf.', 'verschwinden بلا حرف جر.', 'präposition', 'verschwindet'],
-      ['verlaufen', '—', 'يسير/يمضي', 'Die Prüfung verläuft ruhig.', 'Die Prüfung verläuft ruhig auf.', 'verlaufen بلا حرف جر.', 'präposition', 'verläuft'],
-      ['wachsen', '—', 'ينمو', 'Die Stadt wächst schnell.', 'Die Stadt wächst schnell auf.', 'wachsen بلا حرف جر.', 'präposition', 'wächst']
+      ['der Sieg', 'die Siege', 'النصر', 'Der Sieg war verdient.', 'Der Sieg war verdiente.', 'الصفة الخبرية بلا نهاية: verdient.', 'deklination', 'Sieg'],
+      ['siegen', '—', 'ينتصر', 'Unsere Mannschaft siegt klar.', 'Unsere Mannschaft siegen klar.', 'فاعل مفرد: siegt لا siegen.', 'konjugation', 'siegt'],
+      ['erfolgreich', '—', 'ناجح', 'Der Versuch war erfolgreich.', 'Der Versuch war erfolgreiche.', 'الصفة الخبرية بلا نهاية: erfolgreich.', 'deklination', 'erfolgreich'],
+      ['das Billett', 'die Billette', 'التذكرة (النمسا/سويسرا)', 'Das Billett gilt zwei Stunden.', 'Das Billett gilt zwei Stunde.', 'الجمع بعد zwei: Stunden لا Stunde — والمدة مع gelten بلا حرف أو بـfür.', 'plural', 'Billett'],
+      ['ausfallen', '—', 'يُلغى', 'Der Zug fällt heute aus.', 'Der Zug fällt heute ausfallen.', 'ausfallen منفصل: fällt … aus لا المصدر الكامل.', 'konjugation', 'fällt'],
+      ['verschwinden', '—', 'يختفي', 'Die Datei verschwindet plötzlich.', 'Die Datei verschwinden plötzlich.', 'فاعل مفرد: verschwindet لا المصدر verschwinden.', 'konjugation', 'verschwindet'],
+      ['verlaufen', '—', 'يسير/يمضي', 'Die Prüfung verläuft ruhig.', 'Die Prüfung verlaufen ruhig.', 'فاعل مفرد: verläuft لا verlaufen.', 'konjugation', 'verläuft'],
+      ['wachsen', '—', 'ينمو', 'Die Stadt wächst schnell.', 'Die Stadt wachsen schnell.', 'فاعل مفرد: wächst لا wachsen.', 'konjugation', 'wächst']
     ],
     tricks: [
       { trick: 'مؤنث المهنة: -in في المفرد و-innen في الجمع', wie: 'Die Autorin liest. · Die Autorinnen lesen. · die Polizistin → die Polizistinnen', warum: 'العربية تكتفي بلفظ «ة» بلا تغيير في الكلمة، والألمانية تُطيل الجمع مرّتين.', anchor: 'die Autorin' },
       { trick: 'الاشتقاق: من الفعل أو الصفة إلى اسم (-ung · -heit · -keit)', wie: 'bessern → die Besserung · frei → die Freiheit.', warum: 'النص الرسمي يسمّي الحدث باسمه، والطالب العربي يحفظ الفعل ولا يجد الاسم.', anchor: 'die Besserung' },
       { trick: 'الشرطة ليست زخرفة: bio- · schwieger- · -weise', wie: 'bio- oder öko- · die Vorsilbe schwieger- · Adverbien auf -weise', warum: 'القائمة الرسمية تكتب السابقة واللاحقة بشرطة، وحذفها يجعل الصيغة غير المعتمدة.', anchor: 'bio-' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Journalistin': 'Journalistinnen',
+      'der Anbieter': 'Anbieterin',
+      'verschwinden': 'verschwinden'
+    },
+    clozeItemIndex: 1,
+    clozeNearMiss: 'Autorinnen',
+    checkItemIndex: 14,
+    extraCheck: {
+      right: 'Viele Produkte heißen bio- oder öko-.',
+      bad: 'Viele Produkte heißen bio oder öko-.',
+      why: 'السابقة عند ذكرها وحدها تُكتب بشرطة: bio- لا bio.',
+      family: 'orthographie',
+      prereq: 'cap.b1-u6-l6.s20',
+      frage: 'أي جملة تُكتب فيها السابقة بشرطتها المعتمدة؟'
+    }
   }
 
 };

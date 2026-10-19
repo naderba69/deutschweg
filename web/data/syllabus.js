@@ -149,7 +149,7 @@
     ['الروابط المزدوجة: entweder … oder وje … desto وsondern', 'Zweiteilige Konnektoren: entweder oder, je desto, sondern auch', 'الربط', 'entweder du rufst an oder · je mehr desto besser · nicht sondern · sowohl als auch · nicht nur sondern auch', 'explicit'],
     ['المجهول مع أفعال المساعدة: muss repariert werden', 'Passiv mit Modalverben: muss repariert werden', 'الحدث', 'muss repariert werden · kann saniert werden · man repariert · ist repariert · müssen bezahlt werden', 'explicit'],
     ['الأسلوب الاسمي: beim Ausfüllen والإضافة', 'Nominalstil: beim Ausfüllen und Genitiv', 'الكتابة الرسمية', 'beim Ausfüllen des Formulars · die Höhe des Turms · der Schutz der Daten · nach dem Prüfen · zur Anmeldung', 'explicit'],
-    ['الاشتقاق', 'Wortbildung', 'المفردات', 'in وung وheit', 'explicit'],
+    ['الاشتقاق: Autorin وBesserung وFreiheit', 'Wortbildung: Autorin, Besserung und Freiheit', 'المفردات', 'die Autorin liest · die Autorinnen lesen · die Besserung · die Freiheit · bio- oder öko-', 'explicit'],
     /* Unit 7 — amendment B1-L3: the material step grew the promotion pool to 371
        entries and a unit holds 240 slots, so unit 7 carries the first 240. */
     ['في المؤسسة', 'Im Betrieb', 'العمل', 'bildet … aus und besprechen', 'explicit'],

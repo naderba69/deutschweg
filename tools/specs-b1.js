@@ -2050,25 +2050,50 @@ module.exports = [
       hwHintDe: 'Die Verwaltung schreibt nominal: statt „wenn ich ausfülle“ heißt es Beim Ausfüllen des Formulars. Das Genitivattribut wie des Turms und der Daten ersetzt im Amtstext die von-Gruppe, und wer einem Verein beitreten will, beginnt mit der Anmeldung.'
     }),
 
-  U('b1-u6-l6', 'B1', 'الاشتقاق', 'Wortbildung', 'orthographie',
-    'Am Ende bildest du Berufsnamen und Nomen aus Verben',
-    'في النهاية تصوغ أسماء المهن والأسماء من الأفعال.',
+  U('b1-u6-l6', 'B1', 'الاشتقاق: Autorin وBesserung وFreiheit', 'Wortbildung: Autorin, Besserung und Freiheit', 'orthographie',
+    'Am Ende bildest du Berufsnamen mit -in und Nomen mit -ung und -heit — in fünf Sätzen',
+    'في النهاية تصوغ أسماء المهن بـ-in والأسماء بـ-ung و-heit في خمس جمل.',
     [
-      ['Die Autorin liest heute.', 'مؤنث المهنة بـ-in', 'weibliche Form -in, Plural -innen', 'Die Autorinnen liest heute.', 'الجمع -innen'],
-      ['bessern und die Besserung', 'الاسم من الفعل بـ-ung', 'Verb + -ung = Nomen mit die', 'der Besserung', 'die Besserung'],
-      ['frei und die Freiheit', 'الاسم من الصفة بـ-heit', 'Adjektiv + -heit = Nomen mit die', 'die Frei ohne -heit', 'die Freiheit'],
-      ['bio- oder öko-', 'السابقة بشرطة', 'Präfix mit Bindestrich', 'bio oder öko ohne Bindestrich', 'bio-']
+      ['Die Autorin liest heute.', 'تصوغ مؤنث المهنة', 'مؤنث المهنة يأخذ -in مع الأداة die: der Autor → die Autorin', 'Die Autor liest heute.', 'المؤنثة بـ-in'],
+      ['Die Autorinnen lesen heute.', 'تجمع مؤنث المهنة', 'جمع -in هو -innen ويأخذ فعل جمع: Die Autorinnen lesen', 'Die Autorinnen liest heute.', 'الجمع -innen بفعل جمع'],
+      ['Die Besserung kommt langsam.', 'تشتق اسم حدث من فعل', 'لاحقة -ung تصنع من الفعل اسمًا مؤنثًا دائمًا: bessern → die Besserung', 'Der Besserung kommt langsam.', '-ung دائمًا die'],
+      ['Die Freiheit ist wichtig.', 'تشتق اسمًا من صفة', 'لاحقة -heit تصنع من الصفة اسمًا مؤنثًا: frei → die Freiheit — والصفة وحدها لا تقوم اسمًا', 'Die Frei ist wichtig.', 'الاسم Freiheit لا Frei']
     ],
     [
-      ['Die Autorin liest heute.', 'المؤلفة تقرأ اليوم', 'Die Autorin liest heute es.', 'لا ضمير زائد.', 'Autorin'],
-      ['Die Besserung kommt langsam.', 'التحسّن يأتي ببطء', 'Die Besserung kommt langsam es.', 'لا ضمير زائد.', 'Besserung'],
-      ['Die Freiheit ist wichtig.', 'الحرية مهمة', 'Die Freiheit ist wichtig gemacht.', 'الصفة تكفي.', 'Freiheit'],
-      ['Viele Produkte heißen bio-.', 'منتجات كثيرة تُسمّى عضوية', 'Viele Produkte heißen bio.', 'السابقة بشرطة.', 'bio-']
+      ['Die Autorin liest heute.', 'المؤلفة تقرأ اليوم', 'Die Autor liest heute.', 'مؤنث المهنة بـ-in: Autorin.', 'Autorin'],
+      ['Die Autorinnen lesen heute.', 'المؤلفات يقرأن اليوم', 'Die Autorinnen liest heute.', 'الجمع -innen بفعل جمع: lesen.', 'Autorinnen'],
+      ['Die Besserung kommt langsam.', 'التحسّن يأتي ببطء', 'Der Besserung kommt langsam.', 'أسماء -ung مؤنثة دائمًا: die.', 'Besserung'],
+      ['Die Freiheit ist wichtig.', 'الحرية مهمة', 'Die Frei ist wichtig.', '-heit تصنع الاسم من الصفة.', 'Freiheit']
     ],
     'Die Autorin liest heute. Die Besserung kommt langsam.',
-    'Die Freiheit ist wichtig.',
-    'Bilde fünf Berufsnamen mit -in.',
-    'غدًا كوّن خمسة أسماء مهن بـ-in.'),
+    'Viele Produkte heißen bio- oder öko-.',
+    'Wiederhole morgen die fünf Sätze: Die Autorin liest heute. Die Autorinnen lesen heute. Die Besserung kommt langsam. Die Freiheit ist wichtig. Viele Produkte heißen bio- oder öko-.',
+    'غدًا أعد جمل الاشتقاق الخمس ولاحظ -in و-innen و-ung و-heit والشرطة.',
+    {
+      factFamilies: ['orthographie', 'konjugation', 'kasus', 'orthographie'],
+      imitateNearMiss: 'Autor',
+      transformHint: 'في جملة الختام علامة القوائم الرسمية: Viele Produkte heißen bio- oder öko- — الشرطة جزء من كتابة السابقة حين تُذكر وحدها.',
+      orderSentence: 'Die Autorin liest heute.',
+      checkOrderSentence: 'Die Besserung kommt langsam.',
+      orderAr: 'رتّب جملة المؤلفة: Die Autorin أولًا ثم liest في الموضع الثاني.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل بصيغة -in هو الموضع الأول وحده.', 'الظرف heute يغلق الجملة بعد الفعل.'],
+      writing: {
+        zeigt: 'Wortbildung in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: مؤنث مهنة بـ-in، وجمعها بـ-innen، واسم حدث بـ-ung، واسمًا من صفة بـ-heit، وخاتمة بسابقتين بشرطة.',
+        hinweise: ['أسماء -ung و-heit مؤنثة دائمًا: die.', 'جمع مؤنث المهنة مضاعفة: -innen مع فعل جمع.'],
+        prompt: 'اكتب جمل الاشتقاق الخمس المستهدفة من الذاكرة مع اللواحق والشرطات الصحيحة.',
+        promptDe: 'Die Autorin liest heute. · Die Autorinnen lesen heute. · Die Besserung kommt langsam. · Die Freiheit ist wichtig. · Viele Produkte heißen bio- oder öko-.',
+        points: ['Die Autorin liest heute.', 'Die Autorinnen lesen heute.', 'Die Besserung kommt langsam.', 'Die Freiheit ist wichtig.', 'Viele Produkte heißen bio- oder öko-.'],
+        minWords: 22,
+        frage: 'اكتب جمل الاشتقاق الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Autorin liest heute. Die Autorinnen lesen heute. Die Besserung kommt langsam. Die Freiheit ist wichtig. Viele Produkte heißen bio- oder öko-.',
+      summaryDe: 'Die Autorin liest heute. Die Autorinnen lesen heute. Die Besserung kommt langsam. Die Freiheit ist wichtig. Viele Produkte heißen bio- oder öko-.',
+      summaryAr: 'اللواحق تصنع الكلمات: -in للمؤنث و-innen لجمعها، و-ung و-heit لأسماء مؤنثة، والسابقة بشرطة عند ذكرها.',
+      summaryRecap: 'اللاحقة تقرر الجنس',
+      hwHintDe: 'Die weibliche Form endet auf -in, der Plural auf -innen. Aus bessern wird die Besserung, und ein Präfix wie bio- steht allein mit Bindestrich. Neue Wörter lassen sich so aus bekannten Bausteinen selbst zusammensetzen und sofort verstehen.'
+    }),
 
 /* Unit 7 — amendment B1-L3 (DECISIONS-PENDING.md item 27). The B1 pool (entries the
    learner meets in the material and no word list names) grew to 371 after the material

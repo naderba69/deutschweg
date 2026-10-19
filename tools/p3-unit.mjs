@@ -15416,6 +15416,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksF5[4].frage.optionen.some(o => o.text === targetsF5[4]) &&
       checksF5[4].frage.optionen.some(o => o.text === 'Zum Anmeldung brauchen Sie ein Passwort.') &&
       Object.values(checksF5[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonF6 = win.DW_LESSONS['b1-u6-l6'];
+  const rowF6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonF6.id);
+  const byWordF6 = Object.fromEntries(lessonF6.wortschatz.map(it => [it.de, it]));
+  const tricksF6 = lessonF6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsF6 = [
+    'Die Autorin liest heute.',
+    'Die Autorinnen lesen heute.',
+    'Die Besserung kommt langsam.',
+    'Die Freiheit ist wichtig.',
+    'Viele Produkte heißen bio- oder öko-.'
+  ];
+  t('Corpus lesson b1-u6-l6 precisely scopes five word-formation moves feminizing a profession with -in, pluralizing it with -innen, deriving an -ung noun, deriving an -heit noun and hyphenating a cited prefix',
+    lessonF6.title.de === 'Wortbildung: Autorin, Besserung und Freiheit' &&
+      lessonF6.title.ar === 'الاشتقاق: Autorin وBesserung وFreiheit' &&
+      rowF6.title.de === lessonF6.title.de && rowF6.title.ar === lessonF6.title.ar &&
+      rowF6.theme === 'المفردات' &&
+      rowF6.grammar.item === 'die Autorin liest · die Autorinnen lesen · die Besserung · die Freiheit · bio- oder öko-' &&
+      rowF6.grammar.method === 'explicit' && lessonF6.schritte.length === 36 && lessonF6.wortschatz.length === 40 &&
+      lessonF6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonF6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsF6[i]) &&
+      lessonF6.schritte[0].zeigt.de === 'Am Ende bildest du Berufsnamen mit -in und Nomen mit -ung und -heit — in fünf Sätzen' &&
+      lessonF6.schritte.find(s => s.id === 's20').zeigt.de === targetsF6[4]);
+
+  const expectedWordsF6 = [
+    'der Abt', 'die Autorin', 'die Beamtin', 'der Direktor', 'die Doktorin', 'die Journalistin',
+    'die Kellnerin', 'die Köchin', 'der Studierende', 'der Krankenpfleger', 'die Mechanikerin', 'die Polizistin',
+    'die Sängerin', 'der Schauspieler', 'die Schauspielerin', 'der Künstler', 'die Künstlerin', 'der Briefträger',
+    'der Richter', 'der Sieger', 'der König', 'der Anbieter', 'die Leiter', 'der Sekretär',
+    'die Praktikantin', 'bio-', 'herein-', 'schwieger-', 'spezial-', '-weise',
+    'die Religion', 'das Talent', 'der Sieg', 'siegen', 'erfolgreich', 'das Billett',
+    'ausfallen', 'verschwinden', 'verlaufen', 'wachsen'
+  ];
+  const errorsF6 = lessonF6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u6-l6 reviews all 40 entries and three bounded mnemonics without eighteen manufactured appendages and without branding valid gelten-für durations or unhyphenated running-text prefixes as errors',
+    Object.keys(byWordF6).join(' | ') === expectedWordsF6.join(' | ') &&
+      lessonF6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonF6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordF6['die Autorin'].err === 'Die Autor liest heute.' &&
+      byWordF6['das Billett'].err === 'Das Billett gilt zwei Stunde.' &&
+      byWordF6['das Billett'].why.includes('Stunden') &&
+      byWordF6['der König'].err === 'Der König wohnt in das Schloss.' &&
+      byWordF6['die Künstlerin'].err === 'Die Künstlerin stellt auf.' &&
+      byWordF6['herein-'].err === 'Die Vorsilbe herein- bedeuten nach drinnen.' &&
+      byWordF6['der Lehrer'] === undefined &&
+      !['Die Autorin liest heute es.', 'Der König wohnt in dem Schloss auf.',
+        'Der Anbieter wechselt oft es.', 'Die Leiter steht in dem Keller auf.',
+        'Die Praktikantin lernt viel es.', 'Die Vorsilbe herein bedeutet nach drinnen.',
+        'Die Vorsilbe schwieger steht vor Vater oder Mutter.', 'Das Wort spezial gilt nur für einen Fall.',
+        'Viele Adverbien enden auf weise.', 'Die Religion spielt eine Rolle es.',
+        'Der Sieg war verdient gemacht.', 'Unsere Mannschaft siegt auf klar.',
+        'Der Versuch war erfolgreich gemacht.', 'Das Billett gilt für zwei Stunden.',
+        'Der Zug fällt heute aus es.', 'Die Datei verschwindet plötzlich auf.',
+        'Die Prüfung verläuft ruhig auf.', 'Die Stadt wächst schnell auf.']
+        .some(x => errorsF6.includes(x)) &&
+      tricksF6.length === 3 && tricksF6[0].wie.includes('Die Autorinnen lesen') &&
+      tricksF6[1].wie.includes('die Freiheit') &&
+      tricksF6[2].wie.includes('bio- oder öko-'));
+
+  const wordClozeAF6 = lessonF6.schritte.find(s => s.id === 's09');
+  const wordClozeBF6 = lessonF6.schritte.find(s => s.id === 's13');
+  const wordClozeCF6 = lessonF6.schritte.find(s => s.id === 's17');
+  const imitateF6 = lessonF6.schritte.find(s => s.id === 's19');
+  const drillF6 = lessonF6.schritte.find(s => s.id === 's23');
+  const orderF6 = lessonF6.schritte.find(s => s.id === 's24');
+  const writingF6 = lessonF6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingF6 = lessonF6.schritte.find(s => s.phase === 'Produktion');
+  const summaryF6 = lessonF6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkF6 = lessonF6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u6-l6 aligns five strict learning clozes, sound liest order fields and a 22-word five-target production',
+    wordClozeAF6.frage.zeigt === 'Die ____ schreibt einen Bericht.' && wordClozeAF6.frage.antworten.join(' ') === 'Journalistin' &&
+      wordClozeAF6.frage.nearMiss.Journalistinnen && !win.DW.renderers.judgeCloze(wordClozeAF6.frage, 'Journalistinnen').ok &&
+      wordClozeBF6.frage.zeigt === 'Der ____ wechselt oft.' && wordClozeBF6.frage.antworten.join(' ') === 'Anbieter' &&
+      wordClozeBF6.frage.nearMiss.Anbieterin && !win.DW.renderers.judgeCloze(wordClozeBF6.frage, 'Anbieterin').ok &&
+      wordClozeCF6.frage.zeigt === 'Die Datei ____ plötzlich.' && wordClozeCF6.frage.antworten.join(' ') === 'verschwindet' &&
+      wordClozeCF6.frage.nearMiss.verschwinden && !win.DW.renderers.judgeCloze(wordClozeCF6.frage, 'verschwinden').ok &&
+      imitateF6.zeigt.de === 'Die ____ liest heute.' && imitateF6.frage.antworten.join(' ') === 'Autorin' &&
+      imitateF6.frage.nearMiss.Autor && !win.DW.renderers.judgeCloze(imitateF6.frage, 'Autor').ok &&
+      drillF6.frage.zeigt === 'Die ____ liest heute.' && drillF6.frage.antworten.join(' ') === 'Autorin' &&
+      drillF6.frage.nearMiss.Autorinnen && !win.DW.renderers.judgeCloze(drillF6.frage, 'Autorinnen').ok &&
+      lessonF6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderF6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderF6.frage.correct.join(' ') === targetsF6[0] && orderF6.frage.finite === 'liest' && orderF6.frage.verbFirst === false &&
+      orderF6.frage.fields.vorfeld.join(' ') === 'Die Autorin' && orderF6.frage.fields.lsk.join(' ') === 'liest' &&
+      orderF6.frage.fields.mittelfeld.join(' ') === 'heute.' &&
+      win.DW.order.score(orderF6.frage, orderF6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderF6.frage, ['Die', 'liest', 'Autorin', 'heute.']).credit < 1 &&
+      writingF6.frage.points.join(' | ') === targetsF6.join(' | ') && writingF6.frage.minWords === 22 &&
+      targetsF6.join(' ').split(/\s+/).length === 22 &&
+      targetsF6.every(x => [writingF6.frage.promptDe, summaryF6.zeigt.de, homeworkF6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsF6.every(x => norm(speakingF6.erklaerung).includes(norm(x))) &&
+      (homeworkF6.hinweise || []).join(' ').includes('Die weibliche Form endet auf -in') &&
+      (homeworkF6.hinweise || []).join(' ').includes('selbst zusammensetzen'));
+
+  const checksF6 = lessonF6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckF6 = checksF6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckF6 = checksF6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u6-l6 makes 80 percent four of five, independently checking the -heit noun, the singular Autorin and Besserung order, position case after auf and the cited-prefix hyphen',
+    checksF6.length === 5 && checksF6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksF6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksF6.every(s => /^cap\.b1-u6-l6\.s\d+$/.test(s.frage.prereq || '')) && checksF6.every(s => !s.hinweise) &&
+      checksF6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u6-l6.s07 | cap.b1-u6-l6.s23 | cap.b1-u6-l6.s24 | cap.b1-u6-l6.s11 | cap.b1-u6-l6.s20' &&
+      new Set(checksF6.map(s => s.frage.prereq)).size === 5 &&
+      checksF6[0].frage.optionen.some(o => o.text === targetsF6[3]) &&
+      checksF6[0].frage.optionen.some(o => o.text === 'Die Frei ist wichtig.') &&
+      Object.values(checksF6[0].frage.misconceptionFamilies).join(' ') === 'orthographie' &&
+      clozeCheckF6.frage.zeigt === 'Die ____ liest heute.' &&
+      clozeCheckF6.frage.antworten.join(' ') === 'Autorin' && clozeCheckF6.frage.nearMiss.Autorinnen &&
+      !win.DW.renderers.judgeCloze(clozeCheckF6.frage, 'Autorinnen').ok &&
+      orderCheckF6.frage.correct.join(' ') === targetsF6[2] && orderCheckF6.frage.finite === 'kommt' &&
+      orderCheckF6.frage.fields.vorfeld.join(' ') === 'Die Besserung' && orderCheckF6.frage.fields.lsk.join(' ') === 'kommt' &&
+      orderCheckF6.frage.fields.mittelfeld.join(' ') === 'langsam.' &&
+      win.DW.order.score(orderCheckF6.frage, orderCheckF6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckF6.frage, ['Die', 'kommt', 'Besserung', 'langsam.']).credit < 1 &&
+      checksF6[3].frage.optionen.some(o => o.text === 'Die Schauspielerin steht auf der Bühne.') &&
+      checksF6[3].frage.optionen.some(o => o.text === 'Die Schauspielerin steht auf die Bühne.') &&
+      Object.values(checksF6[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksF6[4].frage.optionen.some(o => o.text === targetsF6[4]) &&
+      checksF6[4].frage.optionen.some(o => o.text === 'Viele Produkte heißen bio oder öko-.') &&
+      Object.values(checksF6[4].frage.misconceptionFamilies).join(' ') === 'orthographie');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
