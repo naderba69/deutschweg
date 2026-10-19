@@ -1277,25 +1277,50 @@ module.exports = [
       hwHintDe: 'Nicht „in short“ und nicht „that means“ wörtlich ins Deutsche tragen: „In short, that means the text warns“ heißt auf Deutsch: Kurz gesagt warnt der Text — kurz gesagt statt in short, das heißt statt that means.'
     }),
 
-  U('b1-u4-l5', 'B1', 'الحوار', 'Diskussion', 'register',
-    'Am Ende stimmst du teilweise zu und widersprichst',
-    'في النهاية توافق جزئيًا وتعارض.',
+  U('b1-u4-l5', 'B1', 'الحوار: الموافقة والاعتراض والاتفاق', 'Diskussion: zustimmen, widersprechen, sich einigen', 'register',
+    'Am Ende führst du eine Diskussion in fünf Sätzen: zustimmen, Vorschlag, ausreden, sich einigen, sachlich bleiben',
+    'في النهاية تدير حوارًا في خمس جمل: موافقة بداتيف، واقتراح آخر، واستكمال كلام، واتفاق، وبقاء موضوعي.',
     [
-      ['teilweise', 'الموافقة الجزئية', 'لا كل شيء أو لا شيء', 'ich stimme allem zu', 'الجزئي أدق'],
-      ['da bin ich anderer Meinung', 'المعارضة إطار', 'لا you are wrong', 'du liegst immer falsch', 'الإهانة ليست حجة'],
-      ['einen Kompromiss finden', 'الوسط finden', 'لا middle خليط', 'wir finden die middle', 'middle إنجليزية'],
-      ['lassen Sie mich ausreden', 'إكمال الكلام حق', 'المقاطعة ليست قوة', 'ich unterbreche immer', 'الإكمال أولى']
+      ['Da stimme ich dir zu.', 'تعلن الموافقة على شخص بداتيف', 'zustimmen يأخذ الشخص داتيف ويغلق بقسيمته zu في النهاية: stimme dir … zu، والقلب بعد Da يبقي الفعل ثانيًا', 'Da stimme ich dich zu.', 'الموافقة بداتيف الشخص: dir لا dich'],
+      ['Ich habe einen anderen Vorschlag.', 'تقدّم اقتراحًا بديلًا للمقبولية', 'المفعول مذكر نصب كامل: einen anderen Vorschlag، لا اختصار ولا رفع', 'Ich habe ein anderer Vorschlag.', 'النصب المذكر: einen anderen Vorschlag'],
+      ['Lassen Sie mich bitte ausreden.', 'تحمي دورك في الكلام', 'lassen + محلول نصب + مصدر: mich ausreden، والأمر المهذّب برأس مصدر Lassen Sie', 'Lasst Sie mich bitte ausreden.', 'أمر Sie بالمصدر: Lassen Sie لا صيغة ihr'],
+      ['Wir haben uns schnell geeinigt.', 'تعلن الاتفاق بعد الحوار', 'انعكاسي بالماضي: uns بعد المساعد ولا يُحذف الضمير: haben uns geeinigt', 'Wir uns haben schnell geeinigt.', 'القلب يضع المساعد ثانيًا: Wir haben uns']
     ],
     [
-      ['Da stimme ich teilweise zu.', 'أوافق على هذا جزئيًا', 'Ich stimme allem zu', 'الجزئي أدق', 'teilweise'],
-      ['Da bin ich anderer Meinung.', 'أنا على رأي آخر', 'Du liegst immer falsch', 'المعارضة بلا إهانة', 'anderer'],
-      ['Können wir einen Kompromiss finden?', 'هل نجد حلًا وسطًا؟', 'Können wir die middle finden?', 'الوسط Kompromiss', 'Kompromiss'],
-      ['Lassen Sie mich ausreden.', 'دعوني أكمل', 'Ich unterbreche immer', 'الإكمال أولى', 'ausreden']
+      ['Da stimme ich dir zu.', 'في هذا أوافقك', 'Da stimme ich dich zu.', 'الموافقة بداتيف: stimme dir zu', 'dir'],
+      ['Ich habe einen anderen Vorschlag.', 'لدي اقتراح آخر', 'Ich habe ein anderer Vorschlag.', 'اقتراح آخر بنصب مذكر: einen anderen', 'anderen'],
+      ['Lassen Sie mich bitte ausreden.', 'دعوني أكمل من فضلكم', 'Lasst Sie mich bitte ausreden.', 'استكمال الكلام بالمصدر: ausreden', 'ausreden'],
+      ['Wir haben uns schnell geeinigt.', 'اتفقنا بسرعة', 'Wir uns haben schnell geeinigt.', 'الاتفاق بانعكاس النفع: haben uns geeinigt', 'geeinigt']
     ],
-    'Da stimme ich teilweise zu. Da bin ich anderer Meinung.',
-    'Lassen Sie mich ausreden.',
-    'Übe morgen Zustimmung und Widerspruch.',
-    'غدًا تدرّب على الموافقة والمعارضة.'),
+    'Da stimme ich dir zu.',
+    'Bleiben wir bitte sachlich.',
+    'Wiederhole morgen die fünf Sätze: Da stimme ich dir zu. Ich habe einen anderen Vorschlag. Lassen Sie mich bitte ausreden. Wir haben uns schnell geeinigt. Bleiben wir bitte sachlich.',
+    'غدًا أعد جمل الحوار الخمس ولاحظ داتيف الموافقة والانعكاس والصفة بلا نهاية.',
+    {
+      factFamilies: ['kasus', 'deklination', 'konjugation', 'wortstellung'],
+      imitateNearMiss: 'dich',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Bleiben wir bitte sachlich — الصفة خبرية بعد bleiben فلا نهاية لها.',
+      orderSentence: 'Da stimme ich dir zu.',
+      checkOrderSentence: 'Wir haben uns schnell geeinigt.',
+      orderAr: 'رتّب جملة الموافقة: Da أولًا ثم الفعل stimme في الموضع الثاني قبل ich وقبل القسيمة zu الخاتمة.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['تقدّم Da يقلب الفاعل والفعل فيبقى الفعل ثانيًا.', 'قسيمة zustimmen تغلق الجملة: stimme … zu.'],
+      writing: {
+        zeigt: 'Eine Diskussion in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تدير حوارًا: موافقة بداتيف وقسيمة خاتمة، واقتراح آخر بنصب مذكر، وطلب استكمال كلام بصيغة مهذّبة، وإعلان اتفاق انعكاسي، وختام بصفة بلا نهاية.',
+        hinweise: ['الموافقة والاعتراض على الأشخاص بالداتيف لا النصب.', 'الصفة الخبرية بعد bleiben لا تُعرب: sachlich.'],
+        prompt: 'اكتب جمل الحوار الخمس المستهدفة من الذاكرة مع داتيف الموافقة والقسيمة الخاتمة.',
+        promptDe: 'Da stimme ich dir zu. · Ich habe einen anderen Vorschlag. · Lassen Sie mich bitte ausreden. · Wir haben uns schnell geeinigt. · Bleiben wir bitte sachlich.',
+        points: ['Da stimme ich dir zu.', 'Ich habe einen anderen Vorschlag.', 'Lassen Sie mich bitte ausreden.', 'Wir haben uns schnell geeinigt.', 'Bleiben wir bitte sachlich.'],
+        minWords: 24,
+        frage: 'اكتب جمل الحوار الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Da stimme ich dir zu. Ich habe einen anderen Vorschlag. Lassen Sie mich bitte ausreden. Wir haben uns schnell geeinigt. Bleiben wir bitte sachlich.',
+      summaryDe: 'Da stimme ich dir zu. Ich habe einen anderen Vorschlag. Lassen Sie mich bitte ausreden. Wir haben uns schnell geeinigt. Bleiben wir bitte sachlich.',
+      summaryAr: 'الحوار في خمس جمل: موافقة بداتيف الشخص وقسيمة zu خاتمة، واقتراح بنصب مذكر، واستكمال كلام بلطف رسمي، واتفاق بانعكاس uns، وختام بصفة خبرية بلا نهاية.',
+      summaryRecap: 'حوار في خمس حركات',
+      hwHintDe: 'Nicht „we find the middle“ und nicht „du liegst falsch“ als Waffe: sachlich heißt es „Wir finden einen Kompromiss“, und statt „du liegst immer falsch“ sagt man „Da stimme ich dir nicht zu“ — Widerspruch ohne Beleidigung.'
+    }),
 
   U('b1-u4-l6', 'B1', 'الرسالة الرسمية', 'Formeller Brief', 'register',
     'Am Ende schreibst du Anrede, Anliegen und Gruß',

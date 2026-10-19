@@ -129,7 +129,7 @@
     ['تخطيط الرحلة: الحجز والتبديل والوصول', 'Reiseplanung: buchen, umsteigen und ankommen', 'السفر', 'buchen + Akkusativ · ist bestätigt · fährt um … ab · sind umgestiegen (sein) · dauert + Dauer', 'explicit'],
     ['تعليل الرأي: الموقف والموازنة والاعتراض', 'Meinung begründen: Position, Abwägung und Widerspruch', 'الحجاج', 'Meiner Meinung nach · müssen … abwägen · einerseits/andererseits + Inversion · widersprechen + Dativ', 'explicit'],
     ['التلخيص: الجوهري بكلماتك الخاصة', 'Zusammenfassung: das Wesentliche in eigenen Worten', 'القراءة', 'die Einleitung nennt das Thema · jeder Absatz eine Hauptidee · am Anfang · die Quelle angeben · der Schluss fasst zusammen', 'explicit'],
-    ['الحوار', 'Diskussion', 'النقاش', 'موافقة جزئية', 'explicit'],
+    ['الحوار: الموافقة والاعتراض والاتفاق', 'Diskussion: zustimmen, widersprechen, sich einigen', 'النقاش', 'zustimmen + Dativ und zu · einen anderen Vorschlag · Lassen Sie mich ausreden · sich geeinigt · sachlich bleiben', 'explicit'],
     ['الرسالة الرسمية', 'Formeller Brief', 'الكتابة', 'افتتاح رسمي', 'explicit'],
     ['عرض', 'Präsentation', 'التحدّث', 'هيكل ثلاث دقائق', 'explicit'],
     ['الاستماع لمقابلة', 'Interview', 'السماع', 'التقاط موقف', 'explicit'],

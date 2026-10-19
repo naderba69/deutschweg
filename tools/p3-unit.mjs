@@ -13325,6 +13325,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD4[4].frage.optionen.some(o => o.text === targetsD4[4]) &&
       checksD4[4].frage.optionen.some(o => o.text === 'Der Schluss fassen alles zusammen.') &&
       Object.values(checksD4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+  const lessonD5 = win.DW_LESSONS['b1-u4-l5'];
+  const rowD5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD5.id);
+  const byWordD5 = Object.fromEntries(lessonD5.wortschatz.map(it => [it.de, it]));
+  const tricksD5 = lessonD5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD5 = [
+    'Da stimme ich dir zu.',
+    'Ich habe einen anderen Vorschlag.',
+    'Lassen Sie mich bitte ausreden.',
+    'Wir haben uns schnell geeinigt.',
+    'Bleiben wir bitte sachlich.'
+  ];
+  t('Corpus lesson b1-u4-l5 precisely scopes five discussion moves with dative agreement, counter-proposal accusative, polite lassen infinitive, reflexive accord and undeclined sachlich predicate',
+    lessonD5.title.de === 'Diskussion: zustimmen, widersprechen, sich einigen' &&
+      lessonD5.title.ar === 'الحوار: الموافقة والاعتراض والاتفاق' &&
+      rowD5.title.de === lessonD5.title.de && rowD5.title.ar === lessonD5.title.ar &&
+      rowD5.theme === 'النقاش' &&
+      rowD5.grammar.item === 'zustimmen + Dativ und zu · einen anderen Vorschlag · Lassen Sie mich ausreden · sich geeinigt · sachlich bleiben' &&
+      rowD5.grammar.method === 'explicit' && lessonD5.schritte.length === 36 && lessonD5.wortschatz.length === 40 &&
+      lessonD5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD5[i]) &&
+      lessonD5.schritte[0].zeigt.de === 'Am Ende führst du eine Diskussion in fünf Sätzen: zustimmen, Vorschlag, ausreden, sich einigen, sachlich bleiben' &&
+      lessonD5.schritte.find(s => s.id === 's20').zeigt.de === targetsD5[4]);
+
+  const expectedWordsD5 = [
+    'das Gespräch', 'das Interview', 'die Diskussion', 'die Debatte', 'die Meinung', 'das Wort',
+    'die Antwort', 'die Frage', 'die Nachfrage', 'das Argument', 'unterbrechen', 'das Wort ergreifen',
+    'schweigen', 'die Stille', 'zuhören', 'nachfragen', 'zustimmen', 'widersprechen', 'sich einigen',
+    'der Kompromiss', 'die Lösung', 'der Vorschlag', 'vorschlagen', 'die Anregung', 'der Einwand',
+    'einwenden', 'die Rede', 'der Redner', 'das Publikum', 'der Zuhörer', 'die Rückmeldung',
+    'die Kritik', 'sachlich', 'höflich', 'deutlich', 'deuten', 'die Absicht', 'das Missverständnis',
+    'klären', 'die Rücksicht'
+  ];
+  const errorsD5 = lessonD5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l5 reviews all 40 entries and three bounded mnemonics without twenty-nine manufactured appendages, keeping agreement, case, auxiliary and reflexive drops as genuine error axes',
+    Object.keys(byWordD5).join(' | ') === expectedWordsD5.join(' | ') &&
+      lessonD5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD5['das Wort'].err === 'Ich bin das Wort vergessen.' &&
+      byWordD5['sich einigen'].err === 'Wir haben schnell geeinigt.' &&
+      byWordD5['das Wort ergreifen'].err === 'Darf ich das Wort greifen?' &&
+      byWordD5['die Debatte'].why.includes('bis zur Mitternacht') &&
+      byWordD5['schweigen'].why.includes('hat geschwiegen') &&
+      byWordD5['das Publikum'].err === 'Das Publikum hat lange geklatscht gehabt.' &&
+      !['Das Gespräch war sehr lang gemacht.', 'Das Interview läuft live es.',
+        'Die Diskussion war hitzig gemacht.', 'Ich habe das Wort vergessen gemacht.',
+        'Die Antwort war überzeugend gemacht.', 'Die Frage war schwer gemacht.',
+        'Die Nachfrage kam sofort es.', 'Sein Argument ist stark gemacht.',
+        'Bitte unterbrich mich nicht du.', 'Darf ich das Wort ergreifen es?',
+        'Eine kurze Stille folgte es.', 'Ich frage lieber nach es.',
+        'Wir haben uns schnell geeinigt auf.', 'Dein Vorschlag ist gut gemacht.',
+        'Ich schlage vor, dass wir warten es.', 'Danke für die Anregung es.',
+        'Sein Einwand ist berechtigt gemacht.', 'Seine Rede war kurz gemacht.',
+        'Der Redner spricht frei es.', 'Die Zuhörer waren aufmerksam gemacht.',
+        'Danke für die Rückmeldung es.', 'Kritik muss man aushalten es.',
+        'Bleiben wir sachlich du!', 'Bitte bleiben Sie höflich es.',
+        'Sprich bitte deutlich du!', 'Er deutet die Zahlen anders es.',
+        'Seine Absicht war klar gemacht.', 'Da liegt ein Missverständnis vor es.',
+        'Wir müssen das klären es.']
+        .some(x => errorsD5.includes(x)) &&
+      tricksD5.length === 3 && tricksD5[0].wie.includes('Darf ich das Wort ergreifen?') &&
+      tricksD5[1].wie.includes('Wir haben uns auf einen Termin geeinigt') &&
+      tricksD5[2].wie.includes('Er schwieg lange'));
+
+  const wordClozeAD5 = lessonD5.schritte.find(s => s.id === 's09');
+  const wordClozeBD5 = lessonD5.schritte.find(s => s.id === 's13');
+  const wordClozeCD5 = lessonD5.schritte.find(s => s.id === 's17');
+  const imitateD5 = lessonD5.schritte.find(s => s.id === 's19');
+  const drillD5 = lessonD5.schritte.find(s => s.id === 's23');
+  const orderD5 = lessonD5.schritte.find(s => s.id === 's24');
+  const writingD5 = lessonD5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD5 = lessonD5.schritte.find(s => s.phase === 'Produktion');
+  const summaryD5 = lessonD5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD5 = lessonD5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l5 aligns five strict learning clozes, sound Da fronting order fields and a 24-word five-target production',
+    wordClozeAD5.frage.zeigt === 'Ich habe das ____ vergessen.' && wordClozeAD5.frage.antworten.join(' ') === 'Wort' &&
+      wordClozeAD5.frage.nearMiss['Wörter'] && !win.DW.renderers.judgeCloze(wordClozeAD5.frage, 'Wörter').ok &&
+      wordClozeBD5.frage.zeigt === 'Dein ____ ist gut.' && wordClozeBD5.frage.antworten.join(' ') === 'Vorschlag' &&
+      wordClozeBD5.frage.nearMiss['Vorschläge'] && !win.DW.renderers.judgeCloze(wordClozeBD5.frage, 'Vorschläge').ok &&
+      wordClozeCD5.frage.zeigt === 'Da liegt ein ____ vor.' && wordClozeCD5.frage.antworten.join(' ') === 'Missverständnis' &&
+      wordClozeCD5.frage.nearMiss['Missverständnisse'] && !win.DW.renderers.judgeCloze(wordClozeCD5.frage, 'Missverständnisse').ok &&
+      imitateD5.zeigt.de === 'Da stimme ich ____ zu.' && imitateD5.frage.antworten.join(' ') === 'dir' &&
+      imitateD5.frage.nearMiss.dich && !win.DW.renderers.judgeCloze(imitateD5.frage, 'dich').ok &&
+      drillD5.frage.zeigt === 'Ich schlage ____, dass wir warten.' && drillD5.frage.antworten.join(' ') === 'vor' &&
+      drillD5.frage.nearMiss.vorschlagen && !win.DW.renderers.judgeCloze(drillD5.frage, 'vorschlagen').ok &&
+      lessonD5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD5.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD5.frage.correct.join(' ') === targetsD5[0] && orderD5.frage.finite === 'stimme' && orderD5.frage.verbFirst === false &&
+      orderD5.frage.fields.vorfeld.join(' ') === 'Da' && orderD5.frage.fields.lsk.join(' ') === 'stimme' &&
+      orderD5.frage.fields.mittelfeld.join(' ') === 'ich dir zu.' &&
+      win.DW.order.score(orderD5.frage, orderD5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD5.frage, ['Da', 'ich', 'stimme', 'zu.', 'dir']).credit < 1 &&
+      writingD5.frage.points.join(' | ') === targetsD5.join(' | ') && writingD5.frage.minWords === 24 &&
+      targetsD5.join(' ').split(/\s+/).length === 24 &&
+      targetsD5.every(x => [writingD5.frage.promptDe, summaryD5.zeigt.de, homeworkD5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD5.every(x => norm(speakingD5.erklaerung).includes(norm(x))) &&
+      (homeworkD5.hinweise || []).join(' ').includes('the middle') &&
+      (homeworkD5.hinweise || []).join(' ').includes('du liegst immer falsch'));
+
+  const checksD5 = lessonD5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD5 = checksD5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD5 = checksD5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l5 makes 80 percent four of five, independently checking reflexive verb second, proposal particle and order, dative listening and undeclined predicate',
+    checksD5.length === 5 && checksD5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD5.every(s => /^cap\.b1-u4-l5\.s\d+$/.test(s.frage.prereq || '')) && checksD5.every(s => !s.hinweise) &&
+      checksD5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l5.s07 | cap.b1-u4-l5.s23 | cap.b1-u4-l5.s24 | cap.b1-u4-l5.s11 | cap.b1-u4-l5.s20' &&
+      new Set(checksD5.map(s => s.frage.prereq)).size === 5 &&
+      checksD5[0].frage.optionen.some(o => o.text === targetsD5[3]) &&
+      checksD5[0].frage.optionen.some(o => o.text === 'Wir uns haben schnell geeinigt.') &&
+      Object.values(checksD5[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckD5.frage.zeigt === 'Ich schlage ____, dass wir warten.' &&
+      clozeCheckD5.frage.antworten.join(' ') === 'vor' && clozeCheckD5.frage.nearMiss.vorschlagen &&
+      !win.DW.renderers.judgeCloze(clozeCheckD5.frage, 'vorschlagen').ok &&
+      orderCheckD5.frage.correct.join(' ') === targetsD5[3] && orderCheckD5.frage.finite === 'haben' &&
+      orderCheckD5.frage.fields.vorfeld.join(' ') === 'Wir' && orderCheckD5.frage.fields.lsk.join(' ') === 'haben' &&
+      orderCheckD5.frage.fields.mittelfeld.join(' ') === 'uns schnell geeinigt.' &&
+      win.DW.order.score(orderCheckD5.frage, orderCheckD5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD5.frage, ['Wir', 'uns', 'haben', 'geeinigt.', 'schnell']).credit < 1 &&
+      checksD5[3].frage.optionen.some(o => o.text === 'Hör mir bitte zu!') &&
+      checksD5[3].frage.optionen.some(o => o.text === 'Hör mich bitte zu!') &&
+      Object.values(checksD5[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksD5[4].frage.optionen.some(o => o.text === targetsD5[4]) &&
+      checksD5[4].frage.optionen.some(o => o.text === 'Bleiben wir bitte sachliche.') &&
+      Object.values(checksD5[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
