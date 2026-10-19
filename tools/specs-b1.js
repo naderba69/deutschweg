@@ -1232,25 +1232,50 @@ module.exports = [
       hwHintDe: 'Nicht „for example“ und nicht „I disagree“ wörtlich ins Deutsche tragen: „For example, this is wrong“ heißt „Das überzeugt mich nicht, weil …“ — mit Beispiel und Grund auf Deutsch.'
     }),
 
-  U('b1-u4-l4', 'B1', 'التلخيص', 'Zusammenfassung', 'pruefstrategie',
-    'Am Ende fasst du einen Absatz in zwei Sätzen zusammen',
-    'في النهاية تلخص فقرة في جملتين.',
+  U('b1-u4-l4', 'B1', 'التلخيص: الجوهري بكلماتك الخاصة', 'Zusammenfassung: das Wesentliche in eigenen Worten', 'pruefstrategie',
+    'Am Ende fasst du einen Text in fünf Sätzen zusammen: Thema, Absätze, Hauptidee, Quelle und Schluss',
+    'في النهاية تلخّص نصًا في خمس جمل: موقف المقدمة، وفقرة لكل فكرة، وموضع الفكرة، وذكر المصدر، وخاتمة تجمع الكل.',
     [
-      ['kurz gesagt', 'التلخيص kurz gesagt', 'لا in short خليط', 'in short das Thema', 'in short إنجليزية'],
-      ['mit anderen Worten', 'الإعادة بأدوات أخرى', 'لا نفس الجمل', 'dieselben Sätze noch einmal', 'التلخيص ليس نسخًا'],
-      ['das heißt', 'المعنى das heißt', 'لا that means خليط', 'that means die Folge', 'that means إنجليزية'],
-      ['keine neue Meinung', 'التلخيص لا يضيف رأيًا', 'الرأي مهمة أخرى', 'meiner Meinung nach im Summary', 'التلخيص بلا حكم جديد']
+      ['Die Einleitung nennt das Thema.', 'تسمي وظيفة مقدمة النص', 'nennen متعدٍّ بمفعول نصب مباشر: nennt das Thema، والمقدمة تسمي لا تشرح', 'Die Einleitung nennt dem Thema.', 'مفعول nennen بالنصب: das Thema لا dem'],
+      ['Jeder Absatz hat eine Hauptidee.', 'تختصر بنية الفقرات', 'كل فقرة تحمل فكرة رئيسية واحدة، والفكرة مؤنثة: eine Hauptidee', 'Jeder Absatz hat ein Hauptidee.', 'الفكرة مؤنثة: eine Hauptidee'],
+      ['Die Hauptidee steht am Anfang.', 'تحدد أين تُقرأ الفكرة', 'الثبات المكاني بحرف مدموج: steht am Anfang، لا in عارية', 'Die Hauptidee steht in Anfang.', 'الموضع الثابت: am Anfang'],
+      ['Geben Sie die Quelle an.', 'تُلزم بذكر مصدر النص', 'angeben منفصل: جزؤه المصرّف أولًا في الأمر المهذّب والجزء an في النهاية', 'Geben Sie die Quelle.', 'الذكر بجزء منفصل من الفعل: die Quelle an']
     ],
     [
-      ['Kurz gesagt, der Text warnt.', 'باختصار النص يحذّر', 'In short der Text warnt', 'الإطار Kurz gesagt', 'Kurz'],
-      ['Mit anderen Worten, die Zeit fehlt.', 'بعبارة أخرى الوقت ناقص', 'Dieselben Sätze noch einmal', 'التلخيص ليس نسخًا', 'anderen'],
-      ['Das heißt, wir brauchen einen Plan.', 'هذا يعني أننا نحتاج خطة', 'That means wir brauchen einen Plan', 'الإطار Das heißt', 'heißt'],
-      ['Ich füge keine neue Meinung hinzu.', 'لا أضيف رأيًا جديدًا', 'Meiner Meinung nach ist das schlecht im Summary', 'التلخيص بلا حكم جديد', 'keine']
+      ['Die Einleitung nennt das Thema.', 'المقدمة تسمي الموضوع', 'Die Einleitung nennt dem Thema.', 'التسمية بمفعول مباشر: nennt das Thema', 'nennt'],
+      ['Jeder Absatz hat eine Hauptidee.', 'كل فقرة لها فكرة رئيسية', 'Jeder Absatz hat ein Hauptidee.', 'فكرة واحدة للفقرة: eine Hauptidee', 'Hauptidee'],
+      ['Die Hauptidee steht am Anfang.', 'الفكرة الرئيسية في البداية', 'Die Hauptidee steht in Anfang.', 'موضع الفكرة بالدمج: am Anfang', 'Anfang'],
+      ['Geben Sie die Quelle an.', 'اذكر المصدر من فضلك', 'Geben Sie die Quelle.', 'الذكر بالجزء المنفصل أخيرًا: an', 'an']
     ],
-    'Kurz gesagt, der Text warnt. Das heißt, wir brauchen einen Plan.',
-    'Kurz gesagt, der Text warnt.',
-    'Fasse morgen einen Absatz in zwei Sätzen zusammen.',
-    'غدًا لخّص فقرة في جملتين.'),
+    'Die Einleitung nennt das Thema.',
+    'Der Schluss fasst alles zusammen.',
+    'Wiederhole morgen die fünf Sätze: Die Einleitung nennt das Thema. Jeder Absatz hat eine Hauptidee. Die Hauptidee steht am Anfang. Geben Sie die Quelle an. Der Schluss fasst alles zusammen.',
+    'غدًا أعد جمل التلخيص الخمس ولاحظ مفعول التسمية والفكرة المؤنثة والجزء المنفصل في الختام.',
+    {
+      factFamilies: ['kasus', 'deklination', 'präposition', 'wortstellung'],
+      imitateNearMiss: 'nennen',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Der Schluss fasst alles zusammen — zusammen جزء من الفعل نفسه ويغلق الجملة.',
+      orderSentence: 'Jeder Absatz hat eine Hauptidee.',
+      checkOrderSentence: 'Der Schluss fasst alles zusammen.',
+      orderAr: 'رتّب جملة الفقرة: الفاعل أولًا ثم الفعل hat في الموضع الثاني قبل الفكرة.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل المصرّف ثابت في الجملة الرئيسية.', 'مفعول الحيازة في متوسط الجملة: eine Hauptidee.'],
+      writing: {
+        zeigt: 'Ein Text in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تلخص نصًا: مقدمة تسمي الموضوع، وفقرة تحمل فكرة مؤنثة واحدة، وفكرة في بدايتها، وأمر مهذّب لذكر المصدر، وخاتمة جامعة.',
+        hinweise: ['الملخص محايد: بنية النص لا رأيك أنت.', 'اذكر المصدر ولا تنس الجزء المنفصل an في النهاية.'],
+        prompt: 'اكتب جمل التلخيص الخمس المستهدفة من الذاكرة مع مفعول التسمية والجزء المنفصل في الختام.',
+        promptDe: 'Die Einleitung nennt das Thema. · Jeder Absatz hat eine Hauptidee. · Die Hauptidee steht am Anfang. · Geben Sie die Quelle an. · Der Schluss fasst alles zusammen.',
+        points: ['Die Einleitung nennt das Thema.', 'Jeder Absatz hat eine Hauptidee.', 'Die Hauptidee steht am Anfang.', 'Geben Sie die Quelle an.', 'Der Schluss fasst alles zusammen.'],
+        minWords: 25,
+        frage: 'اكتب جمل التلخيص الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Einleitung nennt das Thema. Jeder Absatz hat eine Hauptidee. Die Hauptidee steht am Anfang. Geben Sie die Quelle an. Der Schluss fasst alles zusammen.',
+      summaryDe: 'Die Einleitung nennt das Thema. Jeder Absatz hat eine Hauptidee. Die Hauptidee steht am Anfang. Geben Sie die Quelle an. Der Schluss fasst alles zusammen.',
+      summaryAr: 'التلخيص في خمس جمل: مقدمة تسمي الموضوع بمفعول مباشر، وفقرة بفكرة مؤنثة واحدة، وفكرة ثابتة في البداية بـam، وأمر مهذّب لذكر المصدر بجزء منفصل، وخاتمة تجمع الكل.',
+      summaryRecap: 'نص موجز بخمس خطوات',
+      hwHintDe: 'Nicht „in short“ und nicht „that means“ wörtlich ins Deutsche tragen: „In short, that means the text warns“ heißt auf Deutsch: Kurz gesagt warnt der Text — kurz gesagt statt in short, das heißt statt that means.'
+    }),
 
   U('b1-u4-l5', 'B1', 'الحوار', 'Diskussion', 'register',
     'Am Ende stimmst du teilweise zu und widersprichst',

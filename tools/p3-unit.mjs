@@ -13202,6 +13202,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD3[4].frage.optionen.some(o => o.text === 'Ich muss dich widersprechen.') &&
       Object.values(checksD3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 
+
+  const lessonD4 = win.DW_LESSONS['b1-u4-l4'];
+  const rowD4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD4.id);
+  const byWordD4 = Object.fromEntries(lessonD4.wortschatz.map(it => [it.de, it]));
+  const tricksD4 = lessonD4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD4 = [
+    'Die Einleitung nennt das Thema.',
+    'Jeder Absatz hat eine Hauptidee.',
+    'Die Hauptidee steht am Anfang.',
+    'Geben Sie die Quelle an.',
+    'Der Schluss fasst alles zusammen.'
+  ];
+  t('Corpus lesson b1-u4-l4 precisely scopes a neutral five-sentence summary with naming object, one idea per paragraph, fixed am-position, separated source verb and closing sentence',
+    lessonD4.title.de === 'Zusammenfassung: das Wesentliche in eigenen Worten' &&
+      lessonD4.title.ar === 'التلخيص: الجوهري بكلماتك الخاصة' &&
+      rowD4.title.de === lessonD4.title.de && rowD4.title.ar === lessonD4.title.ar &&
+      rowD4.theme === 'القراءة' &&
+      rowD4.grammar.item === 'die Einleitung nennt das Thema · jeder Absatz eine Hauptidee · am Anfang · die Quelle angeben · der Schluss fasst zusammen' &&
+      rowD4.grammar.method === 'explicit' && lessonD4.schritte.length === 36 && lessonD4.wortschatz.length === 40 &&
+      lessonD4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD4[i]) &&
+      lessonD4.schritte[0].zeigt.de === 'Am Ende fasst du einen Text in fünf Sätzen zusammen: Thema, Absätze, Hauptidee, Quelle und Schluss' &&
+      lessonD4.schritte.find(s => s.id === 's20').zeigt.de === targetsD4[4]);
+
+  const expectedWordsD4 = [
+    'zusammenfassen', 'die Zusammenfassung', 'der Inhalt', 'das Wesentliche', 'der Absatz',
+    'der Satz', 'die Hauptidee', 'das Thema', 'der Kern', 'die Kernaussage', 'hervorheben',
+    'betonen', 'erwähnen', 'nennen', 'beschreiben', 'schildern', 'darstellen', 'die Darstellung',
+    'der Überblick', 'die Gliederung', 'die Einleitung', 'der Schluss', 'der Hauptteil',
+    'die Quelle', 'angeben', 'zitieren', 'das Zitat', 'die Stellungnahme', 'Stellung nehmen',
+    'die Aussage', 'die Behauptung', 'das Ergebnis', 'die Schlussfolgerung', 'schließen',
+    'der Text', 'die Überschrift', 'die Sprache', 'der Stil', 'verständlich', 'kompliziert'
+  ];
+  const errorsD4 = lessonD4.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l4 reviews all 40 entries and three bounded mnemonics without eighteen manufactured appendages or the von-plus-dative pseudo-error, keeping agreement, case and clause-final order as genuine error axes',
+    Object.keys(byWordD4).join(' | ') === expectedWordsD4.join(' | ') &&
+      lessonD4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD4['der Kern'].err === 'Der Kern von den Aussage ist klar.' &&
+      byWordD4['der Kern'].why.includes('von der Aussage') &&
+      byWordD4['beschreiben'].err === 'Beschreibt Sie den Weg kurz.' &&
+      byWordD4['schließen'].err === 'Daraus schließe ich, dass klappt es.' &&
+      byWordD4['der Satz'].err === 'Der letzte Satz fassen alles zusammen.' &&
+      byWordD4['das Thema'].err === 'Das Thema sind aktuell.' &&
+      byWordD4['die Schlussfolgerung'].err === 'Diese Schlussfolgerung sind gewagt.' &&
+      !['Der Kern von der Aussage ist klar.', 'Der letzte Satz fasst alles zusammen es.',
+        'Das Thema ist aktuell gemacht.', 'Die Kernaussage ist einfach gemacht.',
+        'Beschreiben Sie den Weg kurz es.', 'Die Darstellung ist sachlich gemacht.',
+        'Die Gliederung fehlt noch es.', 'Die Einleitung ist zu lang gemacht.',
+        'Der Schluss fasst alles zusammen es.', 'Der Hauptteil ist der längste gemacht.',
+        'Die Quelle muss man angeben es.', 'Das Zitat ist zu lang gemacht.',
+        'Die Behauptung ist unbewiesen gemacht.', 'Diese Schlussfolgerung ist gewagt gemacht.',
+        'Daraus schließe ich, dass es klappt es.', 'Die Überschrift verrät zu viel es.',
+        'Die Sprache ist einfach und klar gemacht.', 'Der Stil ist sachlich gemacht.',
+        'Die Erklärung ist zu kompliziert gemacht.']
+        .some(x => errorsD4.includes(x)) &&
+      tricksD4.length === 3 && tricksD4[0].wie.includes('der Schluss fasst zusammen') &&
+      tricksD4[1].wie.includes('Nennen Sie drei Beispiele') &&
+      tricksD4[2].wie.includes('Er zitiert den Autor wörtlich'));
+
+  const wordClozeAD4 = lessonD4.schritte.find(s => s.id === 's09');
+  const wordClozeBD4 = lessonD4.schritte.find(s => s.id === 's13');
+  const wordClozeCD4 = lessonD4.schritte.find(s => s.id === 's17');
+  const imitateD4 = lessonD4.schritte.find(s => s.id === 's19');
+  const drillD4 = lessonD4.schritte.find(s => s.id === 's23');
+  const orderD4 = lessonD4.schritte.find(s => s.id === 's24');
+  const writingD4 = lessonD4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD4 = lessonD4.schritte.find(s => s.phase === 'Produktion');
+  const summaryD4 = lessonD4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD4 = lessonD4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l4 aligns five strict learning clozes, sound entity prefield order fields and a 25-word five-target production',
+    wordClozeAD4.frage.zeigt === 'Der letzte ____ fasst alles zusammen.' && wordClozeAD4.frage.antworten.join(' ') === 'Satz' &&
+      wordClozeAD4.frage.nearMiss['Sätze'] && !win.DW.renderers.judgeCloze(wordClozeAD4.frage, 'Sätze').ok &&
+      wordClozeBD4.frage.zeigt === 'Der ____ fasst alles zusammen.' && wordClozeBD4.frage.antworten.join(' ') === 'Schluss' &&
+      wordClozeBD4.frage.nearMiss['Schlüsse'] && !win.DW.renderers.judgeCloze(wordClozeBD4.frage, 'Schlüsse').ok &&
+      wordClozeCD4.frage.zeigt === 'Der ____ ist sachlich.' && wordClozeCD4.frage.antworten.join(' ') === 'Stil' &&
+      wordClozeCD4.frage.nearMiss.Stile && !win.DW.renderers.judgeCloze(wordClozeCD4.frage, 'Stile').ok &&
+      imitateD4.zeigt.de === 'Die Einleitung ____ das Thema.' && imitateD4.frage.antworten.join(' ') === 'nennt' &&
+      imitateD4.frage.nearMiss.nennen && !win.DW.renderers.judgeCloze(imitateD4.frage, 'nennen').ok &&
+      drillD4.frage.zeigt === 'Fassen Sie den Text kurz ____.' && drillD4.frage.antworten.join(' ') === 'zusammen' &&
+      drillD4.frage.nearMiss.zusammenfassen && !win.DW.renderers.judgeCloze(drillD4.frage, 'zusammenfassen').ok &&
+      lessonD4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD4.frage.correct.join(' ') === targetsD4[1] && orderD4.frage.finite === 'hat' && orderD4.frage.verbFirst === false &&
+      orderD4.frage.fields.vorfeld.join(' ') === 'Jeder Absatz' && orderD4.frage.fields.lsk.join(' ') === 'hat' &&
+      orderD4.frage.fields.mittelfeld.join(' ') === 'eine Hauptidee.' &&
+      win.DW.order.score(orderD4.frage, orderD4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD4.frage, ['Jeder', 'eine', 'Absatz', 'Hauptidee.', 'hat']).credit < 1 &&
+      writingD4.frage.points.join(' | ') === targetsD4.join(' | ') && writingD4.frage.minWords === 25 &&
+      targetsD4.join(' ').split(/\s+/).length === 25 &&
+      targetsD4.every(x => [writingD4.frage.promptDe, summaryD4.zeigt.de, homeworkD4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD4.every(x => norm(speakingD4.erklaerung).includes(norm(x))) &&
+      (homeworkD4.hinweise || []).join(' ').includes('in short') &&
+      (homeworkD4.hinweise || []).join(' ').includes('Kurz gesagt warnt der Text'));
+
+  const checksD4 = lessonD4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD4 = checksD4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD4 = checksD4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l4 makes 80 percent four of five, independently checking angeben separation, zusammen cloze and order, bare morgen and singular fasst agreement',
+    checksD4.length === 5 && checksD4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD4.every(s => /^cap\.b1-u4-l4\.s\d+$/.test(s.frage.prereq || '')) && checksD4.every(s => !s.hinweise) &&
+      checksD4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l4.s07 | cap.b1-u4-l4.s23 | cap.b1-u4-l4.s24 | cap.b1-u4-l4.s14 | cap.b1-u4-l4.s20' &&
+      new Set(checksD4.map(s => s.frage.prereq)).size === 5 &&
+      checksD4[0].frage.optionen.some(o => o.text === targetsD4[3]) &&
+      checksD4[0].frage.optionen.some(o => o.text === 'Geben Sie die Quelle.') &&
+      Object.values(checksD4[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckD4.frage.zeigt === 'Fassen Sie den Text kurz ____.' &&
+      clozeCheckD4.frage.antworten.join(' ') === 'zusammen' && clozeCheckD4.frage.nearMiss.zusammenfassen &&
+      !win.DW.renderers.judgeCloze(clozeCheckD4.frage, 'zusammenfassen').ok &&
+      orderCheckD4.frage.correct.join(' ') === targetsD4[4] && orderCheckD4.frage.finite === 'fasst' &&
+      orderCheckD4.frage.fields.vorfeld.join(' ') === 'Der Schluss' && orderCheckD4.frage.fields.lsk.join(' ') === 'fasst' &&
+      orderCheckD4.frage.fields.mittelfeld.join(' ') === 'alles zusammen.' &&
+      win.DW.order.score(orderCheckD4.frage, orderCheckD4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD4.frage, ['Der', 'alles', 'Schluss', 'zusammen.', 'fasst']).credit < 1 &&
+      checksD4[3].frage.optionen.some(o => o.text === 'Die Stellungnahme kommt morgen.') &&
+      checksD4[3].frage.optionen.some(o => o.text === 'Die Stellungnahme kommt in morgen.') &&
+      Object.values(checksD4[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksD4[4].frage.optionen.some(o => o.text === targetsD4[4]) &&
+      checksD4[4].frage.optionen.some(o => o.text === 'Der Schluss fassen alles zusammen.') &&
+      Object.values(checksD4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

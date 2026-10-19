@@ -128,7 +128,7 @@
     ['التطوع: الالتزام والمشاركة والمساعدة', 'Ehrenamt: sich engagieren, teilnehmen und helfen', 'المجتمع', 'sich engagieren für · teilnehmen an + Dativ · helfen + Dativ · sammeln für · seit + Dativ', 'explicit'],
     ['تخطيط الرحلة: الحجز والتبديل والوصول', 'Reiseplanung: buchen, umsteigen und ankommen', 'السفر', 'buchen + Akkusativ · ist bestätigt · fährt um … ab · sind umgestiegen (sein) · dauert + Dauer', 'explicit'],
     ['تعليل الرأي: الموقف والموازنة والاعتراض', 'Meinung begründen: Position, Abwägung und Widerspruch', 'الحجاج', 'Meiner Meinung nach · müssen … abwägen · einerseits/andererseits + Inversion · widersprechen + Dativ', 'explicit'],
-    ['التلخيص', 'Zusammenfassung', 'القراءة', 'تلخيص فقرة', 'explicit'],
+    ['التلخيص: الجوهري بكلماتك الخاصة', 'Zusammenfassung: das Wesentliche in eigenen Worten', 'القراءة', 'die Einleitung nennt das Thema · jeder Absatz eine Hauptidee · am Anfang · die Quelle angeben · der Schluss fasst zusammen', 'explicit'],
     ['الحوار', 'Diskussion', 'النقاش', 'موافقة جزئية', 'explicit'],
     ['الرسالة الرسمية', 'Formeller Brief', 'الكتابة', 'افتتاح رسمي', 'explicit'],
     ['عرض', 'Präsentation', 'التحدّث', 'هيكل ثلاث دقائق', 'explicit'],
