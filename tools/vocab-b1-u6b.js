@@ -80,7 +80,7 @@ module.exports = {
       ['der Handwerker', 'die Handwerker', 'الحرفي', 'Der Handwerker wird bezahlt.', 'Der Handwerker wird bezahlen.', 'المجهول: bezahlt.', 'konjugation', 'Handwerker'],
       ['das Gebäude', 'die Gebäude', 'المبنى', 'Das Gebäude wurde 1990 gebaut.', 'Das Gebäude wurde 1990 bauen.', 'المجهول الماضي: gebaut.', 'konjugation', 'Gebäude'],
       ['der Gang', 'die Gänge', 'الممر', 'Der Gang muss gefegt werden.', 'Der Gang muss fegen werden.', 'مصدر المجهول: gefegt werden.', 'konjugation', 'Gang'],
-      ['der Hof', 'die Höfe', 'الساحة', 'Der Hof wird jeden Tag geputzt.', 'Der Hof wird jeden Tag putzen.', 'المجهول: geputzt.', 'konjugation', 'Hof'],
+      ['der Hof', 'die Höfe', 'الساحة', 'Der Hof wird jeden Tag geputzt.', 'Der Hof wird jeden Tag putzen.', 'المجهول: geputzt — والفاعل مفرد بعد Der: Hof لا Höfe.', 'konjugation', 'Hof'],
       ['das Dach', 'die Dächer', 'السقف', 'Das Dach kann repariert werden.', 'Das Dach kann reparieren werden.', 'مصدر المجهول: repariert werden.', 'konjugation', 'Dach'],
       ['der Turm', 'die Türme', 'البرج', 'Der Turm soll saniert werden.', 'Der Turm soll sanieren werden.', 'مصدر المجهول: saniert werden.', 'konjugation', 'Turm'],
       ['das Feld', 'die Felder', 'الحقل', 'Das Feld wird im Herbst gepflügt.', 'Das Feld wird im Herbst pflügen.', 'المجهول: gepflügt.', 'konjugation', 'Feld'],
@@ -120,7 +120,24 @@ module.exports = {
       { trick: 'المجهول مع المساعد: muss · soll · kann + اسم المفعول + werden', wie: 'Die Straße muss repariert werden. · Das Dach kann saniert werden.', warum: 'العربية تقول «يجب ترميمها» بفعل واحد، فيسقط werden أو يبقى الفعل صيغة أصلية.', anchor: 'repariert werden' },
       { trick: 'المساعد يدفع الفعل إلى الآخر: Partizip ثم werden', wie: 'Der Betrieb muss morgen modernisiert werden.', warum: 'الألمانية تُبقي الفعل الرئيسي آخرًا مع المساعد، والعربية تلصقه بالمساعد.', anchor: 'modernisiert werden' },
       { trick: 'بديلان للمجهول: man + الفعل، أو sein + اسم المفعول للحالة', wie: 'Man repariert die Straße. · Die Straße ist repariert.', warum: 'ist يصف حالة وwird يصف حدثًا، والعربية تقول «مُرمَّمة» للحالتين.', anchor: 'ist repariert' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Hof': 'Höfe',
+      'heben': 'heben',
+      'gründen': 'gründen'
+    },
+    clozeItemIndex: 17,
+    clozeNearMiss: 'brennen',
+    checkItemIndex: 29,
+    extraCheck: {
+      right: 'Die Rechnungen müssen heute bezahlt werden.',
+      bad: 'Die Rechnungen muss heute bezahlt werden.',
+      why: 'فاعل جمع: müssen لا muss.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u6-l4.s20',
+      frage: 'أي جملة يتفق فيها فعل المساعدة مع الفاعل الجمع؟'
+    }
   }
 
 };

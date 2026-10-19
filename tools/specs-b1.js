@@ -1958,25 +1958,52 @@ module.exports = [
       hwHintDe: 'Ein zweiteiliger Konnektor ist ein Vertrag aus zwei Teilen: Entweder verlangt ein Oder, je verlangt ein desto und sowohl ein als auch. Wer den zweiten Teil vergisst, lässt den Satz unfertig in der Luft hängen.'
     }),
 
-  U('b1-u6-l4', 'B1', 'المجهول مع أفعال المساعدة', 'Passiv mit Modalverben', 'konjugation',
-    'Am Ende sagst du muss repariert werden statt muss reparieren',
-    'في النهاية تقول muss repariert werden لا muss reparieren.',
+  U('b1-u6-l4', 'B1', 'المجهول مع أفعال المساعدة: muss repariert werden', 'Passiv mit Modalverben: muss repariert werden', 'konjugation',
+    'Am Ende bildest du das Passiv mit muss, kann und werden — in fünf Sätzen',
+    'في النهاية تكوّن المجهول بـmuss وkann وwerden في خمس جمل.',
     [
-      ['Die Straße muss repariert werden.', 'المساعد + اسم المفعول + werden', 'Modalverb + Partizip II + werden', 'Die Straße muss reparieren werden.', 'repariert لا reparieren'],
-      ['Das Dach kann saniert werden.', 'kann للمكن', 'können + Partizip II + werden', 'Das Dach kann sanieren werden.', 'saniert'],
-      ['Man repariert die Straße.', 'بديل المجهول: man', 'man + 3. Person Singular', 'Man reparieren die Straße.', 'man مع مفرد'],
-      ['Die Straße ist repariert.', 'sein يصف الحالة لا الحدث', 'Zustandspassiv = sein + Partizip II', 'Die Straße wird repariert als Zustand', 'الحالة ist']
+      ['Die Straße muss heute repariert werden.', 'تفرض إجراءً لازمًا بالمجهول', 'المساعد muss مصرّف في الموضع الثاني، واسم المفعول ثم werden آخرًا: muss … repariert werden', 'Die Straße muss heute reparieren werden.', 'اسم المفعول repariert لا المصدر'],
+      ['Das Dach kann morgen saniert werden.', 'تصف إجراءً ممكنًا بالمجهول', 'kann كالمساعد muss: الفعل الرئيسي اسم مفعول قبل werden لا مصدرًا', 'Das Dach kann morgen sanieren werden.', 'saniert لا sanieren'],
+      ['Man repariert die Straße.', 'تستعمل man بديلًا نشطًا للمجهول', 'man فاعل عام يأخذ فعلًا مفردًا دائمًا: Man repariert لا reparieren', 'Man reparieren die Straße.', 'man مع فعل مفرد'],
+      ['Die Straße ist repariert.', 'تصف حالة منتهية لا حدثًا جاريًا', 'sein + اسم المفعول يصف الحالة الناتجة بعد انتهاء العمل لا الحدث نفسه', 'Die Straße ist reparieren.', 'للحالة: ist repariert']
     ],
     [
-      ['Die Straße muss repariert werden.', 'الشارع يجب أن يُرمَّم', 'Die Straße muss reparieren werden.', 'repariert werden.', 'repariert'],
-      ['Das Dach kann saniert werden.', 'السقف يمكن ترميمه', 'Das Dach kann sanieren werden.', 'saniert werden.', 'saniert'],
-      ['Man repariert die Straße.', 'يُرمَّم الشارع (بديل)', 'Man reparieren die Straße.', 'man مع الفعل المفرد.', 'repariert'],
-      ['Die Straße ist repariert.', 'الشارع مُرمَّم (حالة)', 'Die Straße ist reparieren.', 'حالة: repariert.', 'repariert']
+      ['Die Straße muss heute repariert werden.', 'الشارع يجب أن يُصلَح اليوم', 'Die Straße muss heute reparieren werden.', 'اسم المفعول قبل werden: repariert.', 'repariert'],
+      ['Das Dach kann morgen saniert werden.', 'السقف يمكن ترميمه غدًا', 'Das Dach kann morgen sanieren werden.', 'اسم المفعول قبل werden: saniert.', 'saniert'],
+      ['Man repariert die Straße.', 'يُصلَح الشارع (بصيغة man)', 'Man reparieren die Straße.', 'man تأخذ فعلًا مفردًا: repariert.', 'repariert'],
+      ['Die Straße ist repariert.', 'الشارع مُصلَح (حالة)', 'Die Straße ist reparieren.', 'الحالة بـist + اسم المفعول.', 'ist']
     ],
-    'Die Straße muss repariert werden. Das Dach kann saniert werden.',
-    'Die Rechnung muss bezahlt werden.',
-    'Sage drei Sätze mit muss und werden.',
-    'غدًا قل ثلاث جمل بـmuss … werden.'),
+    'Die Straße muss heute repariert werden. Das Dach kann morgen saniert werden.',
+    'Die Rechnungen müssen heute bezahlt werden.',
+    'Wiederhole morgen die fünf Sätze: Die Straße muss heute repariert werden. Das Dach kann morgen saniert werden. Man repariert die Straße. Die Straße ist repariert. Die Rechnungen müssen heute bezahlt werden.',
+    'غدًا أعد جمل المجهول مع المساعدات الخمس ولاحظ اسم المفعول قبل werden.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'reparieren',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Die Rechnungen müssen heute bezahlt werden — مع فاعل جمع يصبح المساعد müssen ويبقى اسم المفعول قبل werden.',
+      orderSentence: 'Die Straße muss heute repariert werden.',
+      orderRightBracket: ['repariert', 'werden.'],
+      checkOrderSentence: 'Das Dach kann morgen saniert werden.',
+      checkOrderRightBracket: ['saniert', 'werden.'],
+      orderAr: 'رتّب جملة المجهول: الفاعل أولًا ثم muss ثم الظرف وأغلق بـrepariert werden.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Straße هو الموضع الأول وحده.', 'قفل الجملة اسم المفعول ثم werden آخرًا: repariert werden.'],
+      writing: {
+        zeigt: 'Passiv mit Modalverben in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: إلزامًا بـmuss، وإمكانًا بـkann، وبديل man النشط، وحالة منتهية بـist، وخاتمة بفاعل جمع مع müssen — واسم المفعول قبل werden دائمًا.',
+        hinweise: ['المساعد مُصرّف في الموضع الثاني واسم المفعول + werden في النهاية.', 'للحالة المنتهية ist + اسم المفعول بلا werden.'],
+        prompt: 'اكتب جمل المجهول مع المساعدات الخمس المستهدفة من الذاكرة مع اسم المفعول قبل werden.',
+        promptDe: 'Die Straße muss heute repariert werden. · Das Dach kann morgen saniert werden. · Man repariert die Straße. · Die Straße ist repariert. · Die Rechnungen müssen heute bezahlt werden.',
+        points: ['Die Straße muss heute repariert werden.', 'Das Dach kann morgen saniert werden.', 'Man repariert die Straße.', 'Die Straße ist repariert.', 'Die Rechnungen müssen heute bezahlt werden.'],
+        minWords: 26,
+        frage: 'اكتب جمل المجهول مع أفعال المساعدة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Straße muss heute repariert werden. Das Dach kann morgen saniert werden. Man repariert die Straße. Die Straße ist repariert. Die Rechnungen müssen heute bezahlt werden.',
+      summaryDe: 'Die Straße muss heute repariert werden. Das Dach kann morgen saniert werden. Man repariert die Straße. Die Straße ist repariert. Die Rechnungen müssen heute bezahlt werden.',
+      summaryAr: 'المساعد يُصرَّف ثانيًا وتُقفل الجملة باسم المفعول ثم werden، وman بديل نشط، وist + اسم المفعول للحالة.',
+      summaryRecap: 'اسم المفعول قبل werden دائمًا',
+      hwHintDe: 'Das Modalverb steht an zweiter Stelle, das Partizip mit werden schließt den Satz: Die Straße muss heute repariert werden. Ist der Vorgang fertig, beschreibt ist repariert nur noch den Zustand danach.'
+    }),
 
   U('b1-u6-l5', 'B1', 'الأسلوب الاسمي', 'Nominalstil', 'kasus',
     'Am Ende schreibst du beim Ausfüllen des Formulars statt einer wenn-Konstruktion',

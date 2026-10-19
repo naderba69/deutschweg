@@ -15181,6 +15181,117 @@ console.log('\n— P3.2 lexical layer —\n');
       checksF3[4].frage.optionen.some(o => o.text === targetsF3[4]) &&
       checksF3[4].frage.optionen.some(o => o.text === 'Nicht nur du lernst, aber auch ich lerne.') &&
       Object.values(checksF3[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lessonF4 = win.DW_LESSONS['b1-u6-l4'];
+  const rowF4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonF4.id);
+  const byWordF4 = Object.fromEntries(lessonF4.wortschatz.map(it => [it.de, it]));
+  const tricksF4 = lessonF4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsF4 = [
+    'Die Straße muss heute repariert werden.',
+    'Das Dach kann morgen saniert werden.',
+    'Man repariert die Straße.',
+    'Die Straße ist repariert.',
+    'Die Rechnungen müssen heute bezahlt werden.'
+  ];
+  t('Corpus lesson b1-u6-l4 precisely scopes five modal-passive moves obliging with muss, enabling with kann, switching to the man alternative, stating the finished state with ist and pluralizing the modal over a plural subject',
+    lessonF4.title.de === 'Passiv mit Modalverben: muss repariert werden' &&
+      lessonF4.title.ar === 'المجهول مع أفعال المساعدة: muss repariert werden' &&
+      rowF4.title.de === lessonF4.title.de && rowF4.title.ar === lessonF4.title.ar &&
+      rowF4.theme === 'الحدث' &&
+      rowF4.grammar.item === 'muss repariert werden · kann saniert werden · man repariert · ist repariert · müssen bezahlt werden' &&
+      rowF4.grammar.method === 'explicit' && lessonF4.schritte.length === 36 && lessonF4.wortschatz.length === 40 &&
+      lessonF4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonF4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsF4[i]) &&
+      lessonF4.schritte[0].zeigt.de === 'Am Ende bildest du das Passiv mit muss, kann und werden — in fünf Sätzen' &&
+      lessonF4.schritte.find(s => s.id === 's20').zeigt.de === targetsF4[4]);
+
+  const expectedWordsF4 = [
+    'die Fabrik', 'der Betrieb', 'der Handwerker', 'das Gebäude', 'der Gang', 'der Hof',
+    'das Dach', 'der Turm', 'das Feld', 'die Strecke', 'die Fähre', 'die Stiege',
+    'der Stern', 'das Gold', 'die Bürste', 'das Tuch', 'gießen', 'brennen',
+    'kleben', 'werfen', 'fangen', 'heben', 'retten', 'zerstören',
+    'beschädigen', 'die Soße', 'die Speise', 'die Kanne', 'die Kantine', 'der Alkohol',
+    'abheben', 'anerkennen', 'anwenden', 'erledigen', 'ersetzen', 'verteilen',
+    'trennen', 'gründen', 'ausrichten', 'hinweisen'
+  ];
+  t('Corpus lesson b1-u6-l4 reviews all 40 entries and three bounded mnemonics whose foils are uniformly genuine infinitive-for-participle substitutions with no manufactured appendage anywhere',
+    Object.keys(byWordF4).join(' | ') === expectedWordsF4.join(' | ') &&
+      lessonF4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonF4.wortschatz.every(it => it.ex !== it.err && it.fam === 'konjugation') &&
+      lessonF4.wortschatz.every(it => !/ gemacht[.!?]$/.test(it.err) && !/ es[.!?]$/.test(it.err) && !/ du[.!?]$/.test(it.err)) &&
+      byWordF4['die Fabrik'].err === 'Die Fabrik wird morgen schließen.' &&
+      byWordF4['der Alkohol'].err === 'Alkohol darf hier nicht verkaufen werden.' &&
+      byWordF4['heben'].err === 'Die Kiste muss heben werden.' &&
+      byWordF4['hinweisen'].err === 'Auf die Gefahr wird hinweisen.' &&
+      byWordF4['gründen'].err === 'Die Firma wurde 2010 gründen.' &&
+      byWordF4['werden'] === undefined &&
+      tricksF4.length === 3 && tricksF4[0].wie.includes('Die Straße muss repariert werden') &&
+      tricksF4[1].wie.includes('modernisiert werden') &&
+      tricksF4[2].wie.includes('Man repariert die Straße'));
+
+  const wordClozeAF4 = lessonF4.schritte.find(s => s.id === 's09');
+  const wordClozeBF4 = lessonF4.schritte.find(s => s.id === 's13');
+  const wordClozeCF4 = lessonF4.schritte.find(s => s.id === 's17');
+  const imitateF4 = lessonF4.schritte.find(s => s.id === 's19');
+  const drillF4 = lessonF4.schritte.find(s => s.id === 's23');
+  const orderF4 = lessonF4.schritte.find(s => s.id === 's24');
+  const writingF4 = lessonF4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingF4 = lessonF4.schritte.find(s => s.phase === 'Produktion');
+  const summaryF4 = lessonF4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkF4 = lessonF4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u6-l4 aligns five strict learning clozes, sound muss order fields with a participle-werden right bracket and a 26-word five-target production',
+    wordClozeAF4.frage.zeigt === 'Der ____ wird jeden Tag geputzt.' && wordClozeAF4.frage.antworten.join(' ') === 'Hof' &&
+      wordClozeAF4.frage.nearMiss['Höfe'] && !win.DW.renderers.judgeCloze(wordClozeAF4.frage, 'Höfe').ok &&
+      wordClozeBF4.frage.zeigt === 'Die Kiste muss ____ werden.' && wordClozeBF4.frage.antworten.join(' ') === 'gehoben' &&
+      wordClozeBF4.frage.nearMiss.heben && !win.DW.renderers.judgeCloze(wordClozeBF4.frage, 'heben').ok &&
+      wordClozeCF4.frage.zeigt === 'Die Firma wurde 2010 ____.' && wordClozeCF4.frage.antworten.join(' ') === 'gegründet' &&
+      wordClozeCF4.frage.nearMiss['gründen'] && !win.DW.renderers.judgeCloze(wordClozeCF4.frage, 'gründen').ok &&
+      imitateF4.zeigt.de === 'Die Straße muss heute ____ werden.' && imitateF4.frage.antworten.join(' ') === 'repariert' &&
+      imitateF4.frage.nearMiss.reparieren && !win.DW.renderers.judgeCloze(imitateF4.frage, 'reparieren').ok &&
+      drillF4.frage.zeigt === 'Der Ton muss ____ werden.' && drillF4.frage.antworten.join(' ') === 'gebrannt' &&
+      drillF4.frage.nearMiss.brennen && !win.DW.renderers.judgeCloze(drillF4.frage, 'brennen').ok &&
+      lessonF4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderF4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderF4.frage.correct.join(' ') === targetsF4[0] && orderF4.frage.finite === 'muss' && orderF4.frage.verbFirst === false &&
+      orderF4.frage.fields.vorfeld.join(' ') === 'Die Straße' && orderF4.frage.fields.lsk.join(' ') === 'muss' &&
+      orderF4.frage.fields.mittelfeld.join(' ') === 'heute' && orderF4.frage.fields.rsk.join(' ') === 'repariert werden.' &&
+      win.DW.order.score(orderF4.frage, orderF4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderF4.frage, ['Die', 'Straße', 'heute', 'muss', 'repariert', 'werden.']).credit < 1 &&
+      writingF4.frage.points.join(' | ') === targetsF4.join(' | ') && writingF4.frage.minWords === 26 &&
+      targetsF4.join(' ').split(/\s+/).length === 26 &&
+      targetsF4.every(x => [writingF4.frage.promptDe, summaryF4.zeigt.de, homeworkF4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsF4.every(x => norm(speakingF4.erklaerung).includes(norm(x))) &&
+      (homeworkF4.hinweise || []).join(' ').includes('Das Modalverb steht an zweiter Stelle') &&
+      (homeworkF4.hinweise || []).join(' ').includes('nur noch den Zustand danach'));
+
+  const checksF4 = lessonF4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckF4 = checksF4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckF4 = checksF4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u6-l4 makes 80 percent four of five, independently checking the finished state, the gebrannt participle and kann order with its bracket, the negated darf passive and plural müssen agreement',
+    checksF4.length === 5 && checksF4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksF4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksF4.every(s => /^cap\.b1-u6-l4\.s\d+$/.test(s.frage.prereq || '')) && checksF4.every(s => !s.hinweise) &&
+      checksF4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u6-l4.s07 | cap.b1-u6-l4.s23 | cap.b1-u6-l4.s24 | cap.b1-u6-l4.s15 | cap.b1-u6-l4.s20' &&
+      new Set(checksF4.map(s => s.frage.prereq)).size === 5 &&
+      checksF4[0].frage.optionen.some(o => o.text === targetsF4[3]) &&
+      checksF4[0].frage.optionen.some(o => o.text === 'Die Straße ist reparieren.') &&
+      Object.values(checksF4[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckF4.frage.zeigt === 'Der Ton muss ____ werden.' &&
+      clozeCheckF4.frage.antworten.join(' ') === 'gebrannt' && clozeCheckF4.frage.nearMiss.brennen &&
+      !win.DW.renderers.judgeCloze(clozeCheckF4.frage, 'brennen').ok &&
+      orderCheckF4.frage.correct.join(' ') === targetsF4[1] && orderCheckF4.frage.finite === 'kann' &&
+      orderCheckF4.frage.fields.vorfeld.join(' ') === 'Das Dach' && orderCheckF4.frage.fields.lsk.join(' ') === 'kann' &&
+      orderCheckF4.frage.fields.mittelfeld.join(' ') === 'morgen' && orderCheckF4.frage.fields.rsk.join(' ') === 'saniert werden.' &&
+      win.DW.order.score(orderCheckF4.frage, orderCheckF4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckF4.frage, ['Das', 'Dach', 'morgen', 'kann', 'saniert', 'werden.']).credit < 1 &&
+      checksF4[3].frage.optionen.some(o => o.text === 'Alkohol darf hier nicht verkauft werden.') &&
+      checksF4[3].frage.optionen.some(o => o.text === 'Alkohol darf hier nicht verkaufen werden.') &&
+      Object.values(checksF4[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksF4[4].frage.optionen.some(o => o.text === targetsF4[4]) &&
+      checksF4[4].frage.optionen.some(o => o.text === 'Die Rechnungen muss heute bezahlt werden.') &&
+      Object.values(checksF4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
