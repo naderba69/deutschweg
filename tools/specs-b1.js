@@ -1412,25 +1412,50 @@ module.exports = [
       hwHintDe: 'Gliedere laut vor der Prüfung: Einstieg, Höhepunkt, Schluss — und nenne die Dauer ohne für: „Die Präsentation dauert zehn Minuten“, nicht „für zehn Minuten“.'
     }),
 
-  U('b1-u4-l8', 'B1', 'الاستماع لمقابلة', 'Interview', 'hoerstrategie',
-    'Am Ende fängst du eine Haltung nicht nur ein Wort',
-    'في النهاية تلتقط موقفًا لا كلمة فقط.',
+  U('b1-u4-l8', 'B1', 'مقابلة العمل: التقديم والقوة والخبرة', 'Das Vorstellungsgespräch: vorstellen, Stärke und Erfahrung', 'hoerstrategie',
+    'Am Ende führst du ein Vorstellungsgespräch in fünf Sätzen: vorstellen, Stärke, Erfahrung, Verantwortung und Dank',
+    'في النهاية تدير مقابلة عمل في خمس جمل: تقدّم نفسك، وتذكر قوتك وخبرتك، وتتحمل المسؤولية، وتشكر.',
     [
-      ['die Haltung', 'الموقف أهم من كلمة غريبة', 'الكلمة المجهولة لا توقف الكل', 'ein unbekanntes Wort stoppt mich', 'الموقف أولًا'],
-      ['vor dem zweiten Hören', 'السؤال يُقرأ قبل الإعادة', 'لا سمع بلا سؤال', 'ich höre ohne Frage', 'السؤال قبل الإعادة'],
-      ['nicht das Gefühl', 'الإحساس ليس جوابًا', 'السؤال يحدد', 'ich antworte nach Gefühl', 'السؤال لا الإحساس'],
-      ['eine Notiz', 'ملاحظة قصيرة', 'لا جملة كاملة أثناء الصوت', 'ich schreibe alles mit', 'ملاحظة لا نسخ']
+      ['Ich stelle mich kurz vor.', 'تقدّم نفسك بفعل منفصل وانعكاس', 'التقديم يُبنى بقسيمة خاتمة وانعكاس: stelle mich … vor، والقسم vor لا يُحذف من المعنى', 'Ich stelle mich kurz.', 'القسم الأخير: mich … vor'],
+      ['Meine Stärke ist die Geduld.', 'تسمي نقطة قوتك', 'فاعل مفرد وفعل مفرد: Meine Stärke ist، ولا يجمع الرابط بعد فاعل واحد', 'Meine Stärke sind die Geduld.', 'فاعل مفرد وفعل مفرد: ist'],
+      ['Ich habe fünf Jahre Erfahrung.', 'تقرأ خبرتك بسنوات مباشرة', 'مدة الخبرة بحال بلا حرف: habe fünf Jahre Erfahrung، فالعدد والسنوات مفعول مباشر', 'Ich habe für fünf Jahre Erfahrung.', 'مدة الخبرة بلا für: fünf Jahre Erfahrung'],
+      ['Ich übernehme gern Verantwortung.', 'تتحمل المسؤولية بمفعول مباشر', 'الفعل يتعدى مباشرة إلى المسؤولية من دون حرف: übernehme Verantwortung', 'Ich übernehme gern für Verantwortung.', 'مفعول مباشر: Verantwortung لا für']
     ],
     [
-      ['Ich suche die Haltung.', 'أبحث عن الموقف', 'Ein unbekanntes Wort stoppt mich', 'الموقف أهم من كلمة', 'Haltung'],
-      ['Ich lese die Frage vor dem zweiten Hören.', 'أقرأ السؤال قبل السماع الثاني', 'Ich höre ohne Frage', 'السؤال قبل الإعادة', 'vor'],
-      ['Ich prüfe die Frage, nicht das Gefühl.', 'أفحص السؤال لا الإحساس', 'Ich antworte nach Gefühl', 'السؤال لا الإحساس', 'Frage'],
-      ['Ich notiere ein Wort.', 'أدوّن كلمة', 'Ich schreibe alles mit', 'ملاحظة لا نسخ', 'notiere']
+      ['Ich stelle mich kurz vor.', 'أقدّم نفسي باختصار', 'Ich stelle mich kurz.', 'التقديم الانعكاسي: mich … vor', 'vor'],
+      ['Meine Stärke ist die Geduld.', 'قوتي هي الصبر', 'Meine Stärke sind die Geduld.', 'القوة المفردة: Meine Stärke', 'Stärke'],
+      ['Ich habe fünf Jahre Erfahrung.', 'عندي خبرة خمس سنوات', 'Ich habe für fünf Jahre Erfahrung.', 'خبرة سنوات بلا حرف: Erfahrung', 'Erfahrung'],
+      ['Ich übernehme gern Verantwortung.', 'أتولى المسؤولية بيسر', 'Ich übernehme gern für Verantwortung.', 'مسؤولية مباشرة: Verantwortung', 'Verantwortung']
     ],
-    'Ich lese die Frage vor dem zweiten Hören.',
-    'Ich suche die Haltung.',
-    'Höre morgen einmal und notiere die Haltung.',
-    'غدًا استمع مرة ودوّن الموقف.'),
+    'Ich stelle mich kurz vor.',
+    'Ich bedanke mich für das Gespräch.',
+    'Wiederhole morgen die fünf Sätze: Ich stelle mich kurz vor. Meine Stärke ist die Geduld. Ich habe fünf Jahre Erfahrung. Ich übernehme gern Verantwortung. Ich bedanke mich für das Gespräch.',
+    'غدًا أعد جمل مقابلة العمل الخمس ولاحظ التقديم الانعكاسي ومدة الخبرة العارية من الحروف.',
+    {
+      factFamilies: ['wortstellung', 'konjugation', 'präposition', 'kasus'],
+      imitateNearMiss: 'vorstellen',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Ich bedanke mich für das Gespräch — الانعكاس mich جزء من الفعل نفسه.',
+      orderSentence: 'Ich stelle mich kurz vor.',
+      checkOrderSentence: 'Meine Stärke ist die Geduld.',
+      orderAr: 'رتّب جملة التقديم: ich أولًا ثم الفعل stelle في الموضع الثاني قبل انعكاس mich.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل المصرّف ثابت في الجملة الرئيسية.', 'قسيمة vorstellen تغلق الجملة: stelle mich … vor.'],
+      writing: {
+        zeigt: 'Ein Interview in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تدير مقابلة عمل: تقديمًا انعكاسيًا بقسيمة أخيرة، وادّعاء قوة بصفة مفردة، وخبرة بمدة بلا حرف جرّ، وتحمّل مسؤولية بمفعول مباشر، وشكر بانعكاس.',
+        hinweise: ['التقديم والشكر انعكاسيان: stelle mich vor وbedanke mich.', 'المدة تتصل مباشرة: fünf Jahre بلا für.'],
+        prompt: 'اكتب جمل مقابلة العمل الخمس المستهدفة من الذاكرة مع التقديم الانعكاسي والقسم الأخير.',
+        promptDe: 'Ich stelle mich kurz vor. · Meine Stärke ist die Geduld. · Ich habe fünf Jahre Erfahrung. · Ich übernehme gern Verantwortung. · Ich bedanke mich für das Gespräch.',
+        points: ['Ich stelle mich kurz vor.', 'Meine Stärke ist die Geduld.', 'Ich habe fünf Jahre Erfahrung.', 'Ich übernehme gern Verantwortung.', 'Ich bedanke mich für das Gespräch.'],
+        minWords: 25,
+        frage: 'اكتب جمل مقابلة العمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich stelle mich kurz vor. Meine Stärke ist die Geduld. Ich habe fünf Jahre Erfahrung. Ich übernehme gern Verantwortung. Ich bedanke mich für das Gespräch.',
+      summaryDe: 'Ich stelle mich kurz vor. Meine Stärke ist die Geduld. Ich habe fünf Jahre Erfahrung. Ich übernehme gern Verantwortung. Ich bedanke mich für das Gespräch.',
+      summaryAr: 'مقابلة العمل في خمس جمل: تقديم انعكاسي بقسيمة أخيرة، وقوة بصيغة رابط مفردة، وخبرة بمدة بلا حرف، ومسؤولية بمفعول مباشر، وشكر بانعكاس إلزامي.',
+      summaryRecap: 'مقابلة في خمس جمل',
+      hwHintDe: 'Ein unbekanntes Wort im Gespräch stoppt dich nicht: Stelle lieber eine Rückfrage — „Darf ich auch eine Frage stellen?“ zeigt Interesse und kostet keine Haltung.'
+    }),
 
   U('b1-u5-l1', 'B1', 'نص رأي', 'Kommentar', 'pruefstrategie',
     'Am Ende trennst du Tatsache und Wertung',

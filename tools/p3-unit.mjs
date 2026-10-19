@@ -13693,6 +13693,127 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD7[4].frage.optionen.some(o => o.text === targetsD7[4]) &&
       checksD7[4].frage.optionen.some(o => o.text === 'Vielen Dank für Ihren Aufmerksamkeit.') &&
       Object.values(checksD7[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+  const lessonD8 = win.DW_LESSONS['b1-u4-l8'];
+  const rowD8 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD8.id);
+  const byWordD8 = Object.fromEntries(lessonD8.wortschatz.map(it => [it.de, it]));
+  const tricksD8 = lessonD8.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD8 = [
+    'Ich stelle mich kurz vor.',
+    'Meine Stärke ist die Geduld.',
+    'Ich habe fünf Jahre Erfahrung.',
+    'Ich übernehme gern Verantwortung.',
+    'Ich bedanke mich für das Gespräch.'
+  ];
+  t('Corpus lesson b1-u4-l8 precisely scopes five job-interview moves with reflexive separable self-introduction, singular strength copula, bare experience duration, direct responsibility object and reflexive thanks',
+    lessonD8.title.de === 'Das Vorstellungsgespräch: vorstellen, Stärke und Erfahrung' &&
+      lessonD8.title.ar === 'مقابلة العمل: التقديم والقوة والخبرة' &&
+      rowD8.title.de === lessonD8.title.de && rowD8.title.ar === lessonD8.title.ar &&
+      rowD8.theme === 'السماع' &&
+      rowD8.grammar.item === 'Ich stelle mich kurz vor · Meine Stärke ist · fünf Jahre Erfahrung · Verantwortung übernehmen · bedanke mich' &&
+      rowD8.grammar.method === 'explicit' && lessonD8.schritte.length === 36 && lessonD8.wortschatz.length === 40 &&
+      lessonD8.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD8.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD8[i]) &&
+      lessonD8.schritte[0].zeigt.de === 'Am Ende führst du ein Vorstellungsgespräch in fünf Sätzen: vorstellen, Stärke, Erfahrung, Verantwortung und Dank' &&
+      lessonD8.schritte.find(s => s.id === 's20').zeigt.de === targetsD8[4]);
+
+  const expectedWordsD8 = [
+    'das Vorstellungsgespräch', 'sich vorstellen', 'der Bewerber', 'die Bewerbung', 'die Stelle',
+    'die Qualifikation', 'die Erfahrung', 'die Stärke', 'die Schwäche', 'die Motivation',
+    'der Werdegang', 'die Ausbildung', 'die Berufserfahrung', 'die Aufgabe', 'die Verantwortung',
+    'das Gehalt', 'die Arbeitszeit', 'die Kündigungsfrist', 'der Vertrag', 'die Einarbeitung',
+    'die Fortbildung', 'die Aufstiegschance', 'das Unternehmen', 'die Abteilung', 'der Vorgesetzte',
+    'das Team', 'die Zusammenarbeit', 'der Kollege', 'die Frage stellen', 'die Rückfrage',
+    'die Zusage', 'die Absage', 'sich bedanken', 'verabschieden', 'pünktlich', 'die Kleidung',
+    'der Eindruck', 'selbstbewusst', 'vorbereiten', 'die Gehaltsvorstellung'
+  ];
+  const errorsD8 = lessonD8.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l8 reviews all 40 entries and three bounded mnemonics without eighteen manufactured appendages or the von-plus-dative pseudo-error',
+    Object.keys(byWordD8).join(' | ') === expectedWordsD8.join(' | ') &&
+      lessonD8.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD8.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD8['die Aufgabe'].err === 'Die Aufgaben von die Stelle sind klar.' &&
+      byWordD8['die Aufgabe'].why.includes('von der Stelle') &&
+      byWordD8['die Aufgabe'].why.includes('der Stelle') &&
+      byWordD8['die Kündigungsfrist'].err === 'Die Kündigungsfrist beträgt für drei Monate.' &&
+      byWordD8['das Vorstellungsgespräch'].err === 'Das Vorstellungsgespräch waren angenehm.' &&
+      !['Das Vorstellungsgespräch war angenehm gemacht.', 'Die Stelle ist noch frei gemacht.',
+        'Ihre Qualifikation passt gut es.', 'Meine Stärke ist die Geduld gemacht.',
+        'Meine Motivation ist die neue Aufgabe gemacht.', 'Ihr Werdegang ist ungewöhnlich gemacht.',
+        'Die Aufgaben von der Stelle sind klar.', 'Die Arbeitszeit ist flexibel gemacht.',
+        'Die Aufstiegschancen sind gut gemacht.', 'Das Unternehmen hat Standorte in Europa es.',
+        'Mein Vorgesetzter ist sehr erfahren gemacht.', 'Die Zusammenarbeit läuft gut es.',
+        'Die Kollegen sind hilfsbereit gemacht.', 'Darf ich auch eine Frage stellen es?',
+        'Eine Absage ist kein Weltuntergang es.', 'Die Kleidung sollte seriös gemacht sein.',
+        'Ein guter Eindruck bleibt es.', 'Antworte selbstbewusst, aber ehrlich du.',
+        'Bereite typische Fragen du vor.']
+        .some(x => errorsD8.includes(x)) &&
+      tricksD8.length === 3 && tricksD8[0].wie.includes('Was sind Ihre Stärken und Schwächen?') &&
+      tricksD8[1].wie.includes('ich komme aus Nabeul') &&
+      tricksD8[2].wie.includes('Die Einarbeitung dauert zwei Wochen'));
+
+  const wordClozeAD8 = lessonD8.schritte.find(s => s.id === 's09');
+  const wordClozeBD8 = lessonD8.schritte.find(s => s.id === 's13');
+  const wordClozeCD8 = lessonD8.schritte.find(s => s.id === 's17');
+  const imitateD8 = lessonD8.schritte.find(s => s.id === 's19');
+  const drillD8 = lessonD8.schritte.find(s => s.id === 's23');
+  const orderD8 = lessonD8.schritte.find(s => s.id === 's24');
+  const writingD8 = lessonD8.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD8 = lessonD8.schritte.find(s => s.phase === 'Produktion');
+  const summaryD8 = lessonD8.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD8 = lessonD8.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l8 aligns five strict learning clozes, sound reflexive order fields and a 25-word five-target production',
+    wordClozeAD8.frage.zeigt === 'Ihre ____ passt gut.' && wordClozeAD8.frage.antworten.join(' ') === 'Qualifikation' &&
+      wordClozeAD8.frage.nearMiss.Qualifikationen && !win.DW.renderers.judgeCloze(wordClozeAD8.frage, 'Qualifikationen').ok &&
+      wordClozeBD8.frage.zeigt === 'Die ____ sind gut.' && wordClozeBD8.frage.antworten.join(' ') === 'Aufstiegschancen' &&
+      wordClozeBD8.frage.nearMiss.Aufstiegschance && !win.DW.renderers.judgeCloze(wordClozeBD8.frage, 'Aufstiegschance').ok &&
+      wordClozeCD8.frage.zeigt === 'Antworte ____, aber ehrlich.' && wordClozeCD8.frage.antworten.join(' ') === 'selbstbewusst' &&
+      wordClozeCD8.frage.nearMiss.selbstbewusstes && !win.DW.renderers.judgeCloze(wordClozeCD8.frage, 'selbstbewusstes').ok &&
+      imitateD8.zeigt.de === 'Ich stelle mich kurz ____.' && imitateD8.frage.antworten.join(' ') === 'vor' &&
+      imitateD8.frage.nearMiss.vorstellen && !win.DW.renderers.judgeCloze(imitateD8.frage, 'vorstellen').ok &&
+      drillD8.frage.zeigt === 'Stellen Sie sich bitte kurz ____.' && drillD8.frage.antworten.join(' ') === 'vor' &&
+      drillD8.frage.nearMiss.vorstellen && !win.DW.renderers.judgeCloze(drillD8.frage, 'vorstellen').ok &&
+      lessonD8.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD8.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD8.frage.correct.join(' ') === targetsD8[0] && orderD8.frage.finite === 'stelle' && orderD8.frage.verbFirst === false &&
+      orderD8.frage.fields.vorfeld.join(' ') === 'Ich' && orderD8.frage.fields.lsk.join(' ') === 'stelle' &&
+      orderD8.frage.fields.mittelfeld.join(' ') === 'mich kurz vor.' &&
+      win.DW.order.score(orderD8.frage, orderD8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD8.frage, ['Ich', 'mich', 'stelle', 'vor.', 'kurz']).credit < 1 &&
+      writingD8.frage.points.join(' | ') === targetsD8.join(' | ') && writingD8.frage.minWords === 25 &&
+      targetsD8.join(' ').split(/\s+/).length === 25 &&
+      targetsD8.every(x => [writingD8.frage.promptDe, summaryD8.zeigt.de, homeworkD8.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD8.every(x => norm(speakingD8.erklaerung).includes(norm(x))) &&
+      (homeworkD8.hinweise || []).join(' ').includes('Ein unbekanntes Wort') &&
+      (homeworkD8.hinweise || []).join(' ').includes('eine Rückfrage'));
+
+  const checksD8 = lessonD8.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD8 = checksD8.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD8 = checksD8.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l8 makes 80 percent four of five, independently checking direct Verantwortung, Vorstellung particle and strength order, contracted zum and reflexive mich',
+    checksD8.length === 5 && checksD8[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD8[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD8.every(s => /^cap\.b1-u4-l8\.s\d+$/.test(s.frage.prereq || '')) && checksD8.every(s => !s.hinweise) &&
+      checksD8.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l8.s07 | cap.b1-u4-l8.s23 | cap.b1-u4-l8.s24 | cap.b1-u4-l8.s16 | cap.b1-u4-l8.s20' &&
+      new Set(checksD8.map(s => s.frage.prereq)).size === 5 &&
+      checksD8[0].frage.optionen.some(o => o.text === targetsD8[3]) &&
+      checksD8[0].frage.optionen.some(o => o.text === 'Ich übernehme gern für Verantwortung.') &&
+      Object.values(checksD8[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckD8.frage.zeigt === 'Stellen Sie sich bitte kurz ____.' &&
+      clozeCheckD8.frage.antworten.join(' ') === 'vor' && clozeCheckD8.frage.nearMiss.vorstellen &&
+      !win.DW.renderers.judgeCloze(clozeCheckD8.frage, 'vorstellen').ok &&
+      orderCheckD8.frage.correct.join(' ') === targetsD8[1] && orderCheckD8.frage.finite === 'ist' &&
+      orderCheckD8.frage.fields.vorfeld.join(' ') === 'Meine Stärke' && orderCheckD8.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckD8.frage.fields.mittelfeld.join(' ') === 'die Geduld.' &&
+      win.DW.order.score(orderCheckD8.frage, orderCheckD8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD8.frage, ['Meine', 'die', 'ist', 'Geduld.', 'Stärke']).credit < 1 &&
+      checksD8[3].frage.optionen.some(o => o.text === 'Sei pünktlich zum Gespräch.') &&
+      checksD8[3].frage.optionen.some(o => o.text === 'Sei pünktlich zu das Gespräch.') &&
+      Object.values(checksD8[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksD8[4].frage.optionen.some(o => o.text === targetsD8[4]) &&
+      checksD8[4].frage.optionen.some(o => o.text === 'Ich bedanke für das Gespräch.') &&
+      Object.values(checksD8[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
