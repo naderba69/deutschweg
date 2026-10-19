@@ -2005,25 +2005,50 @@ module.exports = [
       hwHintDe: 'Das Modalverb steht an zweiter Stelle, das Partizip mit werden schließt den Satz: Die Straße muss heute repariert werden. Ist der Vorgang fertig, beschreibt ist repariert nur noch den Zustand danach.'
     }),
 
-  U('b1-u6-l5', 'B1', 'الأسلوب الاسمي', 'Nominalstil', 'kasus',
-    'Am Ende schreibst du beim Ausfüllen des Formulars statt einer wenn-Konstruktion',
-    'في النهاية تكتب beim Ausfüllen des Formulars بدل جملة بـwenn.',
+  U('b1-u6-l5', 'B1', 'الأسلوب الاسمي: beim Ausfüllen والإضافة', 'Nominalstil: beim Ausfüllen und Genitiv', 'kasus',
+    'Am Ende ersetzt du die wenn-Konstruktion durch den Nominalstil — in fünf Sätzen',
+    'في النهاية تستبدل جملة wenn بالأسلوب الاسمي في خمس جمل.',
     [
-      ['Beim Ausfüllen des Formulars hilft die Sekretärin.', 'الاسم يحمل الحدث', 'bei + Substantivierung + Genitiv', 'Wenn ich ausfülle hilft die Sekretärin ohne Komma', 'الصيغة الاسمية'],
-      ['Die Höhe des Turms ist bekannt.', 'الجينيتيف يربط بدل von', 'Nomen + Genitiv statt von + Dativ', 'Die Höhe von dem Turm ist bekannt.', 'الإضافة'],
-      ['Der Schutz der Daten gilt.', 'النص الرسمي يسمّي الحماية باسمها', 'Genitivattribut', 'Der Schutz von den Daten gilt.', 'der Daten'],
-      ['Nach dem Prüfen kommt die Antwort.', 'nach + اسم مصدري', 'nach + Substantivierung', 'Nach dem wir prüfen kommt die Antwort.', 'nach dem Prüfen']
+      ['Beim Ausfüllen des Formulars hilft die Sekretärin.', 'تختصر جملة ظرفية باسم حدث', 'beim + اسم مصدري بحرف كبير يختصر جملة wenn كاملة، ومفعوله يلحقه مضافًا: des Formulars — والفعل يبقى ثانيًا', 'Beim Ausfüllen des Formulars die Sekretärin hilft.', 'الفعل ثانٍ: hilft قبل الفاعل'],
+      ['Die Höhe des Turms ist bekannt.', 'تربط اسمين بالإضافة', 'النص الرسمي يفضّل الإضافة على von: des Turms — وvon نفسها تطلب الداتيف لا الرفع', 'Die Höhe von das Turm ist bekannt.', 'الإضافة des Turms'],
+      ['Der Schutz der Daten ist wichtig.', 'تسمّي مفهومًا رسميًا برأس واحد', 'رأس العبارة مفرد (Schutz) وجمع المضاف لا يغيّر اتفاق الفعل: ist لا sind', 'Der Schutz der Daten sind wichtig.', 'الرأس مفرد: ist'],
+      ['Nach dem Prüfen kommt die Antwort.', 'ترتّب حدثًا بعد حدث باسمين', 'nach + اسم مصدري في الداتيف مع الأداة: nach dem Prüfen — الأداة لا تسقط', 'Nach Prüfen kommt die Antwort.', 'nach dem Prüfen']
     ],
     [
-      ['Beim Ausfüllen des Formulars hilft die Sekretärin.', 'عند ملء الاستمارة تساعد السكرتيرة', 'Wenn ich ausfülle hilft die Sekretärin.', 'الصيغة الاسمية beim + اسم.', 'Ausfüllen'],
-      ['Die Höhe des Turms ist bekannt.', 'ارتفاع البرج معروف', 'Die Höhe von dem Turm ist bekannt.', 'الإضافة des Turms.', 'des Turms'],
-      ['Der Schutz der Daten gilt.', 'حماية البيانات نافذة', 'Der Schutz von den Daten gilt.', 'der Daten لا von den.', 'der Daten'],
-      ['Nach dem Prüfen kommt die Antwort.', 'بعد الفحص يأتي الجواب', 'Nach dem wir prüfen kommt die Antwort.', 'nach dem Prüfen.', 'Prüfen']
+      ['Beim Ausfüllen des Formulars hilft die Sekretärin.', 'عند ملء الاستمارة تساعد السكرتيرة', 'Beim Ausfüllen des Formulars die Sekretärin hilft.', 'الفعل ثانٍ بعد الجار المتقدّم.', 'Formulars'],
+      ['Die Höhe des Turms ist bekannt.', 'ارتفاع البرج معروف', 'Die Höhe von das Turm ist bekannt.', 'الإضافة: des Turms.', 'Turms'],
+      ['Der Schutz der Daten ist wichtig.', 'حماية البيانات مهمة', 'Der Schutz der Daten sind wichtig.', 'الرأس مفرد: ist.', 'Daten'],
+      ['Nach dem Prüfen kommt die Antwort.', 'بعد الفحص يأتي الجواب', 'Nach Prüfen kommt die Antwort.', 'الأداة لازمة: nach dem Prüfen.', 'Prüfen']
     ],
     'Beim Ausfüllen des Formulars hilft die Sekretärin. Die Höhe des Turms ist bekannt.',
-    'Der Schutz der Daten ist wichtig.',
-    'Schreibe drei Sätze im Nominalstil.',
-    'غدًا اكتب ثلاث جمل بالأسلوب الاسمي.'),
+    'Zur Anmeldung brauchen Sie ein Passwort.',
+    'Wiederhole morgen die fünf Sätze: Beim Ausfüllen des Formulars hilft die Sekretärin. Die Höhe des Turms ist bekannt. Der Schutz der Daten ist wichtig. Nach dem Prüfen kommt die Antwort. Zur Anmeldung brauchen Sie ein Passwort.',
+    'غدًا أعد جمل الأسلوب الاسمي الخمس ولاحظ الإضافة والفعل الثاني بعد الجار المتقدّم.',
+    {
+      factFamilies: ['wortstellung', 'kasus', 'konjugation', 'kasus'],
+      imitateNearMiss: 'Formular',
+      transformHint: 'في جملة الختام الصيغة الإدارية الأخيرة: Zur Anmeldung brauchen Sie ein Passwort — حرف الغاية zu مدمجًا مع اسم بـ-ung يختصر جملة غاية كاملة.',
+      orderSentence: 'Nach dem Prüfen kommt die Antwort.',
+      checkOrderSentence: 'Der Schutz der Daten ist wichtig.',
+      orderAr: 'رتّب جملة التسلسل: Nach dem Prüfen أولًا ثم kommt قبل die Antwort.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الجار الاسمي المتقدّم Nach dem Prüfen هو الموضع الأول وحده.', 'الفاعل die Antwort يأتي بعد الفعل عند التقديم: kommt die Antwort.'],
+      writing: {
+        zeigt: 'Nominalstil in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل بالأسلوب الاسمي: حدث بـbeim + اسم مصدري وإضافة، وربط اسمين بالإضافة، ومفهومًا رسميًا برأس مفرد، وتسلسلًا بـnach dem، وخاتمة غاية بـzur مع اسم بـ-ung.',
+        hinweise: ['الاسم المصدري يُكتب بحرف كبير: das Ausfüllen.', 'بعد جار متقدّم يبقى الفعل ثانيًا ويأتي الفاعل بعده.'],
+        prompt: 'اكتب جمل الأسلوب الاسمي الخمس المستهدفة من الذاكرة مع الإضافة والأدوات الصحيحة.',
+        promptDe: 'Beim Ausfüllen des Formulars hilft die Sekretärin. · Die Höhe des Turms ist bekannt. · Der Schutz der Daten ist wichtig. · Nach dem Prüfen kommt die Antwort. · Zur Anmeldung brauchen Sie ein Passwort.',
+        points: ['Beim Ausfüllen des Formulars hilft die Sekretärin.', 'Die Höhe des Turms ist bekannt.', 'Der Schutz der Daten ist wichtig.', 'Nach dem Prüfen kommt die Antwort.', 'Zur Anmeldung brauchen Sie ein Passwort.'],
+        minWords: 31,
+        frage: 'اكتب جمل الأسلوب الاسمي الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Beim Ausfüllen des Formulars hilft die Sekretärin. Die Höhe des Turms ist bekannt. Der Schutz der Daten ist wichtig. Nach dem Prüfen kommt die Antwort. Zur Anmeldung brauchen Sie ein Passwort.',
+      summaryDe: 'Beim Ausfüllen des Formulars hilft die Sekretärin. Die Höhe des Turms ist bekannt. Der Schutz der Daten ist wichtig. Nach dem Prüfen kommt die Antwort. Zur Anmeldung brauchen Sie ein Passwort.',
+      summaryAr: 'النص الرسمي يختصر الجمل في أسماء: beim مع اسم مصدري، وإضافة بدل von، وفعلٌ ثانٍ بعد كل جار متقدّم.',
+      summaryRecap: 'الاسم يحمل الحدث',
+      hwHintDe: 'Die Verwaltung schreibt nominal: statt „wenn ich ausfülle“ heißt es Beim Ausfüllen des Formulars. Das Genitivattribut wie des Turms und der Daten ersetzt im Amtstext die von-Gruppe, und wer einem Verein beitreten will, beginnt mit der Anmeldung.'
+    }),
 
   U('b1-u6-l6', 'B1', 'الاشتقاق', 'Wortbildung', 'orthographie',
     'Am Ende bildest du Berufsnamen und Nomen aus Verben',

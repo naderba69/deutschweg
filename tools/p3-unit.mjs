@@ -15292,6 +15292,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksF4[4].frage.optionen.some(o => o.text === targetsF4[4]) &&
       checksF4[4].frage.optionen.some(o => o.text === 'Die Rechnungen muss heute bezahlt werden.') &&
       Object.values(checksF4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonF5 = win.DW_LESSONS['b1-u6-l5'];
+  const rowF5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonF5.id);
+  const byWordF5 = Object.fromEntries(lessonF5.wortschatz.map(it => [it.de, it]));
+  const tricksF5 = lessonF5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsF5 = [
+    'Beim Ausfüllen des Formulars hilft die Sekretärin.',
+    'Die Höhe des Turms ist bekannt.',
+    'Der Schutz der Daten ist wichtig.',
+    'Nach dem Prüfen kommt die Antwort.',
+    'Zur Anmeldung brauchen Sie ein Passwort.'
+  ];
+  t('Corpus lesson b1-u6-l5 precisely scopes five nominal-style moves compressing a clause with beim plus a nominalized verb, joining nouns by genitive, keeping singular agreement on the head noun, sequencing with nach dem and aiming with zur plus an -ung noun',
+    lessonF5.title.de === 'Nominalstil: beim Ausfüllen und Genitiv' &&
+      lessonF5.title.ar === 'الأسلوب الاسمي: beim Ausfüllen والإضافة' &&
+      rowF5.title.de === lessonF5.title.de && rowF5.title.ar === lessonF5.title.ar &&
+      rowF5.theme === 'الكتابة الرسمية' &&
+      rowF5.grammar.item === 'beim Ausfüllen des Formulars · die Höhe des Turms · der Schutz der Daten · nach dem Prüfen · zur Anmeldung' &&
+      rowF5.grammar.method === 'explicit' && lessonF5.schritte.length === 36 && lessonF5.wortschatz.length === 40 &&
+      lessonF5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonF5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsF5[i]) &&
+      lessonF5.schritte[0].zeigt.de === 'Am Ende ersetzt du die wenn-Konstruktion durch den Nominalstil — in fünf Sätzen' &&
+      lessonF5.schritte.find(s => s.id === 's20').zeigt.de === targetsF5[4]);
+
+  const expectedWordsF5 = [
+    'das Abitur', 'das Urteil', 'das Gesetz', 'der Schutz', 'die Tat', 'die Theorie',
+    'die Herkunft', 'die Höhe', 'der Zustand', 'zuständig', 'innerhalb', 'halbtags',
+    'der Tagesablauf', 'das Zuhause', 'das Heim', 'heim', 'die Besserung', 'fließend',
+    'bieten', 'enthalten', 'entstehen', 'ereignen', 'fassen', 'führen',
+    'geschehen', 'greifen', 'gründlich', 'hinterlassen', 'leiten', 'niedrig',
+    'protestieren', 'rückwärts', 'steil', 'treten', 'unterscheiden', 'wiegen',
+    'zählen', 'verlangen', 'das Dokument', 'die Urkunde'
+  ];
+  const errorsF5 = lessonF5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u6-l5 reviews all 40 entries and three bounded mnemonics without twenty manufactured appendages and without branding von-plus-dative, innerhalb-von, plain bieten or rely-on zählen as errors',
+    Object.keys(byWordF5).join(' | ') === expectedWordsF5.join(' | ') &&
+      lessonF5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonF5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordF5['der Schutz'].err === 'Der Schutz der Daten sind wichtig.' &&
+      byWordF5['der Schutz'].why.includes('der Daten') &&
+      byWordF5['der Zustand'].err === 'Der Zustand von das Haus ist schlecht.' &&
+      byWordF5['der Zustand'].why.includes('des Hauses') &&
+      byWordF5['innerhalb'].err === 'Innerhalb eine Woche kommt die Antwort.' &&
+      byWordF5['bieten'].err === 'Die Firma bietet Kurse anbieten.' &&
+      byWordF5['zählen'].err === 'Wir zählt die Stimmen.' &&
+      byWordF5['das Genitiv'] === undefined &&
+      !['Nach dem Abitur beginnt das Studium es.', 'Das Gesetz gilt seit Januar es.',
+        'Der Schutz von den Daten ist wichtig.', 'Die Tat bleibt strafbar gemacht.',
+        'Die Herkunft von dem Wort ist klar.', 'Die Höhe von dem Turm ist bekannt.',
+        'Der Zustand von dem Haus ist schlecht.', 'Innerhalb von einer Woche kommt die Antwort.',
+        'Sie arbeitet halbtags gemacht.', 'Der Tagesablauf ist streng gemacht.',
+        'Das Zuhause ist ruhig gemacht.', 'Die Firma bietet Kurse.',
+        'Was ist hier geschehen es?', 'Die Regel greift hier nicht auf.',
+        'Er prüft gründlich gemacht.', 'Die Kosten sind niedrig gemacht.',
+        'Der Wagen fährt rückwärts gemacht.', 'Der Weg ist steil gemacht.',
+        'Wir zählen auf die Stimmen.', 'Das Dokument ist gültig gemacht.']
+        .some(x => errorsF5.includes(x)) &&
+      tricksF5.length === 3 && tricksF5[0].wie.includes('Beim Ausfüllen des Formulars') &&
+      tricksF5[1].wie.includes('Die Höhe des Turms') &&
+      tricksF5[2].wie.includes('Der Text enthält drei Fehler'));
+
+  const wordClozeAF5 = lessonF5.schritte.find(s => s.id === 's09');
+  const wordClozeBF5 = lessonF5.schritte.find(s => s.id === 's13');
+  const wordClozeCF5 = lessonF5.schritte.find(s => s.id === 's17');
+  const imitateF5 = lessonF5.schritte.find(s => s.id === 's19');
+  const drillF5 = lessonF5.schritte.find(s => s.id === 's23');
+  const orderF5 = lessonF5.schritte.find(s => s.id === 's24');
+  const writingF5 = lessonF5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingF5 = lessonF5.schritte.find(s => s.phase === 'Produktion');
+  const summaryF5 = lessonF5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkF5 = lessonF5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u6-l5 aligns five strict learning clozes, sound fronted-phrase order fields and a 31-word five-target production',
+    wordClozeAF5.frage.zeigt === 'Die ____ erklärt vieles.' && wordClozeAF5.frage.antworten.join(' ') === 'Theorie' &&
+      wordClozeAF5.frage.nearMiss.Theorien && !win.DW.renderers.judgeCloze(wordClozeAF5.frage, 'Theorien').ok &&
+      wordClozeBF5.frage.zeigt === 'Der Unfall ____ sich nachts.' && wordClozeBF5.frage.antworten.join(' ') === 'ereignete' &&
+      wordClozeBF5.frage.nearMiss.ereignen && !win.DW.renderers.judgeCloze(wordClozeBF5.frage, 'ereignen').ok &&
+      wordClozeCF5.frage.zeigt === 'Der Chef ____ Geduld.' && wordClozeCF5.frage.antworten.join(' ') === 'verlangt' &&
+      wordClozeCF5.frage.nearMiss.verlangen && !win.DW.renderers.judgeCloze(wordClozeCF5.frage, 'verlangen').ok &&
+      imitateF5.zeigt.de === 'Beim Ausfüllen des ____ hilft die Sekretärin.' && imitateF5.frage.antworten.join(' ') === 'Formulars' &&
+      imitateF5.frage.nearMiss.Formular && !win.DW.renderers.judgeCloze(imitateF5.frage, 'Formular').ok &&
+      drillF5.frage.zeigt === 'Die ____ des Turms ist bekannt.' && drillF5.frage.antworten.join(' ') === 'Höhe' &&
+      drillF5.frage.nearMiss['Höhen'] && !win.DW.renderers.judgeCloze(drillF5.frage, 'Höhen').ok &&
+      lessonF5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderF5.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderF5.frage.correct.join(' ') === targetsF5[3] && orderF5.frage.finite === 'kommt' && orderF5.frage.verbFirst === false &&
+      orderF5.frage.fields.vorfeld.join(' ') === 'Nach dem Prüfen' && orderF5.frage.fields.lsk.join(' ') === 'kommt' &&
+      orderF5.frage.fields.mittelfeld.join(' ') === 'die Antwort.' &&
+      win.DW.order.score(orderF5.frage, orderF5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderF5.frage, ['Nach', 'dem', 'Prüfen', 'die', 'kommt', 'Antwort.']).credit < 1 &&
+      writingF5.frage.points.join(' | ') === targetsF5.join(' | ') && writingF5.frage.minWords === 31 &&
+      targetsF5.join(' ').split(/\s+/).length === 31 &&
+      targetsF5.every(x => [writingF5.frage.promptDe, summaryF5.zeigt.de, homeworkF5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsF5.every(x => norm(speakingF5.erklaerung).includes(norm(x))) &&
+      (homeworkF5.hinweise || []).join(' ').includes('Genitivattribut') &&
+      (homeworkF5.hinweise || []).join(' ').includes('beitreten will'));
+
+  const checksF5 = lessonF5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckF5 = checksF5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckF5 = checksF5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u6-l5 makes 80 percent four of five, independently checking the nach-dem article, the Höhe head and Schutz order, the separable anbieten particle and the feminine zur contraction',
+    checksF5.length === 5 && checksF5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksF5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksF5.every(s => /^cap\.b1-u6-l5\.s\d+$/.test(s.frage.prereq || '')) && checksF5.every(s => !s.hinweise) &&
+      checksF5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u6-l5.s07 | cap.b1-u6-l5.s23 | cap.b1-u6-l5.s24 | cap.b1-u6-l5.s12 | cap.b1-u6-l5.s20' &&
+      new Set(checksF5.map(s => s.frage.prereq)).size === 5 &&
+      checksF5[0].frage.optionen.some(o => o.text === targetsF5[3]) &&
+      checksF5[0].frage.optionen.some(o => o.text === 'Nach Prüfen kommt die Antwort.') &&
+      Object.values(checksF5[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckF5.frage.zeigt === 'Die ____ des Turms ist bekannt.' &&
+      clozeCheckF5.frage.antworten.join(' ') === 'Höhe' && clozeCheckF5.frage.nearMiss['Höhen'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckF5.frage, 'Höhen').ok &&
+      orderCheckF5.frage.correct.join(' ') === targetsF5[2] && orderCheckF5.frage.finite === 'ist' &&
+      orderCheckF5.frage.fields.vorfeld.join(' ') === 'Der Schutz der Daten' && orderCheckF5.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckF5.frage.fields.mittelfeld.join(' ') === 'wichtig.' &&
+      win.DW.order.score(orderCheckF5.frage, orderCheckF5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckF5.frage, ['Der', 'Schutz', 'ist', 'der', 'Daten', 'wichtig.']).credit < 1 &&
+      checksF5[3].frage.optionen.some(o => o.text === 'Die Firma bietet Kurse an.') &&
+      checksF5[3].frage.optionen.some(o => o.text === 'Die Firma bietet Kurse anbieten.') &&
+      Object.values(checksF5[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksF5[4].frage.optionen.some(o => o.text === targetsF5[4]) &&
+      checksF5[4].frage.optionen.some(o => o.text === 'Zum Anmeldung brauchen Sie ein Passwort.') &&
+      Object.values(checksF5[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
