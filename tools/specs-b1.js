@@ -1142,25 +1142,50 @@ module.exports = [
       hwHintDe: 'Nicht „I work as a volunteer“, nicht „from my experience“ und nicht „I lived that“ wörtlich ins Deutsche tragen: ehrenamtlich arbeiten, aus eigener Erfahrung sagen und etwas selbst erlebt haben — so sagt man es auf Deutsch.'
     }),
 
-  U('b1-u4-l2', 'B1', 'رحلة معقدة', 'Reiseplanung', 'lexik-kollokation',
-    'Am Ende nennst du einen Plan und eine Alternative',
-    'في النهاية تسمّي خطة وبديلًا.',
+  U('b1-u4-l2', 'B1', 'تخطيط الرحلة: الحجز والتبديل والوصول', 'Reiseplanung: buchen, umsteigen und ankommen', 'lexik-kollokation',
+    'Am Ende beschreibst du eine komplexe Reise in fünf Sätzen: Buchung, Bestätigung, Abfahrt, Umstieg und Fahrtdauer',
+    'في النهاية تصف رحلة مركّبة في خمس جمل: الحجز بمفعوله، وتأكيده باسم مفعول، وانطلاق بجزء منفصل، وتبديل بمساعد صحيح، ومدة بلا حرف جر.',
     [
-      ['der Plan', 'الخطة أولًا', 'البديل بلا خطة فراغ', 'nur die Alternative ohne Plan', 'الخطة أولًا'],
-      ['falls', 'البديل falls', 'لا if', 'if der Zug ausfällt', 'if إنجليزية'],
-      ['ausfallen', 'الإلغاء ausfallen', 'لا cancel خليط', 'der Zug cancelt', 'cancelt ليست الفعل'],
-      ['wir brauchen eine Alternative', 'البديل يُسمّى', 'لا we need another', 'wir need eine Alternative', 'need إنجليزية']
+      ['Ich buche den Flug online.', 'تحجز رحلتك الجوية', 'buchen متعدٍّ بمفعول مباشر في النصب، ولا تستعمل für لوصف الوسيلة: online وصف للحجز بلا حرف جر', 'Ich buche den Flug für online.', 'الحجز بمفعول مباشر: den Flug buchen'],
+      ['Die Buchung ist bestätigt.', 'تُعلن تأكيد الحجز', 'وصف حالة الحجز يُبنى بـsein وPartizip II في النهاية: ist bestätigt، لا بالمصدر', 'Die Buchung ist bestätigen.', 'بعد ist اسم المفعول: bestätigt'],
+      ['Der Zug fährt um sieben ab.', 'تسمّي موعد انطلاق القطار', 'abfahren فعل منفصل: جزؤه المصرّف في الموضع الثاني (fährt) وجزؤه ab في النهاية، ووقت الساعة مع um', 'Der Zug fährt in sieben ab.', 'وقت الساعة مع um: um sieben'],
+      ['Wir sind in Frankfurt umgestiegen.', 'تحكي تبديلًا للقطار', 'umsteigen من عائلة steigen، وكلها في الماضي المركّب مع sein لا haben: sind umgestiegen', 'Wir haben in Frankfurt umgestiegen.', 'تبديل القطار حدث/حركة مع sein: sind']
     ],
     [
-      ['Der Plan ist der frühe Zug.', 'الخطة هي القطار المبكر', 'Nur die Alternative ohne Plan', 'الخطة أولًا', 'Plan'],
-      ['Falls der Zug ausfällt, nehmen wir den Bus.', 'إن أُلغي القطار نأخذ الحافلة', 'If der Zug ausfällt, nehmen wir den Bus', 'falls لا if', 'Falls'],
-      ['Der Zug kann ausfallen.', 'قد يُلغى القطار', 'Der Zug kann canceln', 'الإلغاء ausfallen', 'ausfallen'],
-      ['Wir brauchen eine Alternative.', 'نحتاج بديلًا', 'Wir need eine Alternative', 'الحاجة brauchen', 'brauchen']
+      ['Ich buche den Flug online.', 'أحجز الرحلة الجوية عبر الإنترنت', 'Ich buche den Flug für online.', 'الحجز بمفعول مباشر: den Flug buchen', 'buche'],
+      ['Die Buchung ist bestätigt.', 'الحجز مؤكَّد', 'Die Buchung ist bestätigen.', 'حالة التأكيد باسم المفعول: bestätigt', 'bestätigt'],
+      ['Der Zug fährt um sieben ab.', 'القطار ينطلق في السابعة', 'Der Zug fährt in sieben ab.', 'الانطلاق بجزء منفصل أخير ووقت مع um', 'ab'],
+      ['Wir sind in Frankfurt umgestiegen.', 'بدّلنا القطار في فرانكفورت', 'Wir haben in Frankfurt umgestiegen.', 'التبديل بماضٍ مع sein: sind umgestiegen', 'sind']
     ],
-    'Der Plan ist der frühe Zug. Falls er ausfällt, nehmen wir den Bus.',
-    'Wir brauchen eine Alternative.',
-    'Nenne morgen Plan und Alternative.',
-    'غدًا سمِّ خطة وبديلًا.'),
+    'Ich buche den Flug online.',
+    'Die Fahrt dauert vier Stunden.',
+    'Wiederhole morgen die fünf Sätze: Ich buche den Flug online. Die Buchung ist bestätigt. Der Zug fährt um sieben ab. Wir sind in Frankfurt umgestiegen. Die Fahrt dauert vier Stunden.',
+    'غدًا أعد جمل الرحلة الخمس ولاحظ مفعول الحجز المباشر واسم مفعوله والجزء المنفصل أخيرًا وsein مع عائلة steigen.',
+    {
+      factFamilies: ['kasus', 'konjugation', 'präposition', 'konjugation'],
+      imitateNearMiss: 'buchen',
+      transformHint: 'في جملة الختام مدة الرحلة: Die Fahrt dauert vier Stunden — بعد dauern تأتي المدة قياسًا مباشرًا بلا حرف جر: dauert vier Stunden.',
+      orderSentence: 'Ich buche den Flug online.',
+      checkOrderSentence: 'Der Zug fährt um sieben ab.',
+      orderAr: 'رتّب جملة الحجز: الفاعل أولًا ثم الفعل buche في الموضع الثاني قبل الرحلة المحجوزة.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل المصرّف ثابت في الجملة الرئيسية.', 'مفعول الحجز المباشر في متوسط الجملة: den Flug.'],
+      writing: {
+        zeigt: 'Eine Reise in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل عن رحلة: حجز بمفعول مباشر، وتأكيد باسم مفعول، وانطلاق بجزء منفصل ووقت، وتبديل بماضٍ مع sein، وختام بمدة بلا حرف جر.',
+        hinweise: ['كل جملة تُثبت تركيبًا قابلًا للقياس: den Flug · bestätigt · fährt … ab · sind umgestiegen.', 'لا تضع المصدر حيث يلزم اسم المفعول بعد ist، ولا haben مع عائلة steigen.'],
+        prompt: 'اكتب جمل الرحلة الخمس المستهدفة من الذاكرة مع اسم المفعول والجزء المنفصل والمساعد الصحيح.',
+        promptDe: 'Ich buche den Flug online. · Die Buchung ist bestätigt. · Der Zug fährt um sieben ab. · Wir sind in Frankfurt umgestiegen. · Die Fahrt dauert vier Stunden.',
+        points: ['Ich buche den Flug online.', 'Die Buchung ist bestätigt.', 'Der Zug fährt um sieben ab.', 'Wir sind in Frankfurt umgestiegen.', 'Die Fahrt dauert vier Stunden.'],
+        minWords: 25,
+        frage: 'اكتب جمل الرحلة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich buche den Flug online. Die Buchung ist bestätigt. Der Zug fährt um sieben ab. Wir sind in Frankfurt umgestiegen. Die Fahrt dauert vier Stunden.',
+      summaryDe: 'Ich buche den Flug online. Die Buchung ist bestätigt. Der Zug fährt um sieben ab. Wir sind in Frankfurt umgestiegen. Die Fahrt dauert vier Stunden.',
+      summaryAr: 'الرحلة في خمس جمل: حجز رحلة جوية بمفعول مباشر، وتأكيد باسم المفعول bestätigt، وانطلاق قطار بجزء منفصل ووقت um، وتبديل في فرانكفورت بماضٍ مع sein، ومدة Fahrt بلا حرف جر.',
+      summaryRecap: 'رحلة موثقة بخمس خطوات',
+      hwHintDe: 'Nicht mit „if“ die Bedingung beginnen (das heißt falls), der Zug „cancelt“ nicht und kann auch nicht „canceln“ — das heißt ausfallen; und aus „we need“ wird nicht „wir need“, sondern wir brauchen eine Alternative.'
+    }),
 
   U('b1-u4-l3', 'B1', 'تعليل الرأي', 'Meinung begründen', 'pruefstrategie',
     'Am Ende stützt du eine Meinung mit einem Beispiel',

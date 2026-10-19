@@ -12964,6 +12964,126 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD1[4].frage.optionen.some(o => o.text === 'Das Projekt läuft von zwei Jahren.') &&
       Object.values(checksD1[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 
+
+  const lessonD2 = win.DW_LESSONS['b1-u4-l2'];
+  const rowD2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD2.id);
+  const byWordD2 = Object.fromEntries(lessonD2.wortschatz.map(it => [it.de, it]));
+  const tricksD2 = lessonD2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD2 = [
+    'Ich buche den Flug online.',
+    'Die Buchung ist bestätigt.',
+    'Der Zug fährt um sieben ab.',
+    'Wir sind in Frankfurt umgestiegen.',
+    'Die Fahrt dauert vier Stunden.'
+  ];
+  t('Corpus lesson b1-u4-l2 precisely scopes one complex journey with direct booking, confirmed state participle, detached departure, sein-perfect change and bare duration across five targets',
+    lessonD2.title.de === 'Reiseplanung: buchen, umsteigen und ankommen' &&
+      lessonD2.title.ar === 'تخطيط الرحلة: الحجز والتبديل والوصول' &&
+      rowD2.title.de === lessonD2.title.de && rowD2.title.ar === lessonD2.title.ar &&
+      rowD2.theme === 'السفر' &&
+      rowD2.grammar.item === 'buchen + Akkusativ · ist bestätigt · fährt um … ab · sind umgestiegen (sein) · dauert + Dauer' &&
+      rowD2.grammar.method === 'explicit' && lessonD2.schritte.length === 36 && lessonD2.wortschatz.length === 40 &&
+      lessonD2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD2[i]) &&
+      lessonD2.schritte[0].zeigt.de === 'Am Ende beschreibst du eine komplexe Reise in fünf Sätzen: Buchung, Bestätigung, Abfahrt, Umstieg und Fahrtdauer' &&
+      lessonD2.schritte.find(s => s.id === 's20').zeigt.de === targetsD2[4]);
+
+  const expectedWordsD2 = [
+    'die Reise', 'die Rundreise', 'die Unterkunft', 'die Jugendherberge', 'das Hotel',
+    'das Zimmer', 'die Buchung', 'buchen', 'der Flug', 'die Fahrt', 'der Ausflug',
+    'die Sehenswürdigkeit', 'der Reiseführer', 'die Führung', 'das Gepäck', 'der Koffer',
+    'der Rucksack', 'der Pass', 'das Visum', 'die Grenze', 'der Zoll', 'die Verspätung',
+    'der Anschluss', 'umsteigen', 'einsteigen', 'aussteigen', 'abfahren', 'ankommen',
+    'die Ankunft', 'die Abfahrt', 'der Aufenthalt', 'die Verpflegung', 'die Reisekasse',
+    'die Währung', 'wechseln', 'die Sehenswürdigkeit besichtigen', 'besuchen',
+    'die Aussicht', 'das Erlebnis', 'die Erinnerung'
+  ];
+  const errorsD2 = lessonD2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l2 reviews all 40 entries and three bounded mnemonics without fifteen manufactured appendages or the contraction pseudo-error, keeping agreement, accusative, participle and case as genuine error axes',
+    Object.keys(byWordD2).join(' | ') === expectedWordsD2.join(' | ') &&
+      lessonD2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD2['die Sehenswürdigkeit'].err === 'Die Sehenswürdigkeiten ist berühmt.' &&
+      byWordD2['der Ausflug'].err === 'Der Ausflug lohnt euch.' &&
+      byWordD2['die Währung'].err === 'Man muss der Währung wechseln.' &&
+      byWordD2['die Aussicht'].err === 'Die Aussicht von den Berg ist schön.' &&
+      byWordD2['die Aussicht'].why.includes('von dem') &&
+      byWordD2['das Zimmer'].blank === 'gebucht' && byWordD2['das Gepäck'].blank === 'angekommen' &&
+      !['Die Rundreise beginnt in Tunis es.', 'Die Unterkunft war einfach gemacht.',
+        'Die Jugendherberge kostet wenig es.', 'Der Ausflug lohnt sich es.',
+        'Die Sehenswürdigkeiten sind berühmt gemacht.', 'Der Koffer ist zu schwer gemacht.',
+        'Mein Rucksack ist leicht gemacht.', 'Das Visum ist drei Monate gültig gemacht.',
+        'Der Anschluss ist weg gemacht.', 'Der Aufenthalt war zu kurz gemacht.',
+        'Die Reisekasse ist leer gemacht.', 'Man muss die Währung wechseln es.',
+        'Die Aussicht von dem Berg ist schön.', 'Das Erlebnis war unvergesslich gemacht.',
+        'Die Erinnerungen bleiben es.']
+        .some(x => errorsD2.includes(x)) &&
+      tricksD2.length === 3 && tricksD2[0].wie.includes('um sieben ab') &&
+      tricksD2[1].wie.includes('sind in Frankfurt umgestiegen') &&
+      tricksD2[2].wie.includes('Die Buchung ist bestätigt'));
+
+  const wordClozeAD2 = lessonD2.schritte.find(s => s.id === 's09');
+  const wordClozeBD2 = lessonD2.schritte.find(s => s.id === 's13');
+  const wordClozeCD2 = lessonD2.schritte.find(s => s.id === 's17');
+  const imitateD2 = lessonD2.schritte.find(s => s.id === 's19');
+  const drillD2 = lessonD2.schritte.find(s => s.id === 's23');
+  const orderD2 = lessonD2.schritte.find(s => s.id === 's24');
+  const writingD2 = lessonD2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD2 = lessonD2.schritte.find(s => s.phase === 'Produktion');
+  const summaryD2 = lessonD2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD2 = lessonD2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l2 aligns five strict learning clozes, sound subject-first order fields and a 25-word five-target production',
+    wordClozeAD2.frage.zeigt === 'Das Zimmer ist schon ____.' && wordClozeAD2.frage.antworten.join(' ') === 'gebucht' &&
+      wordClozeAD2.frage.nearMiss.buchen && !win.DW.renderers.judgeCloze(wordClozeAD2.frage, 'buchen').ok &&
+      wordClozeBD2.frage.zeigt === 'Die ____ betrug zwei Stunden.' && wordClozeBD2.frage.antworten.join(' ') === 'Verspätung' &&
+      wordClozeBD2.frage.nearMiss.Verspätungen && !win.DW.renderers.judgeCloze(wordClozeBD2.frage, 'Verspätungen').ok &&
+      wordClozeCD2.frage.zeigt === 'Die ____ vom Berg ist schön.' && wordClozeCD2.frage.antworten.join(' ') === 'Aussicht' &&
+      wordClozeCD2.frage.nearMiss.Aussichten && !win.DW.renderers.judgeCloze(wordClozeCD2.frage, 'Aussichten').ok &&
+      imitateD2.zeigt.de === 'Ich ____ den Flug online.' && imitateD2.frage.antworten.join(' ') === 'buche' &&
+      imitateD2.frage.nearMiss.buchen && !win.DW.renderers.judgeCloze(imitateD2.frage, 'buchen').ok &&
+      drillD2.frage.zeigt === 'Mein Gepäck ist nicht ____.' && drillD2.frage.antworten.join(' ') === 'angekommen' &&
+      drillD2.frage.nearMiss.ankommen && !win.DW.renderers.judgeCloze(drillD2.frage, 'ankommen').ok &&
+      lessonD2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD2.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD2.frage.correct.join(' ') === targetsD2[0] && orderD2.frage.finite === 'buche' && orderD2.frage.verbFirst === false &&
+      orderD2.frage.fields.vorfeld.join(' ') === 'Ich' && orderD2.frage.fields.lsk.join(' ') === 'buche' &&
+      orderD2.frage.fields.mittelfeld.join(' ') === 'den Flug online.' &&
+      win.DW.order.score(orderD2.frage, orderD2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD2.frage, ['Ich', 'den', 'Flug', 'buche', 'online.']).credit < 1 &&
+      writingD2.frage.points.join(' | ') === targetsD2.join(' | ') && writingD2.frage.minWords === 25 &&
+      targetsD2.join(' ').split(/\s+/).length === 25 &&
+      targetsD2.every(x => [writingD2.frage.promptDe, summaryD2.zeigt.de, homeworkD2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD2.every(x => norm(speakingD2.erklaerung).includes(norm(x))));
+
+  const checksD2 = lessonD2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD2 = checksD2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD2 = checksD2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l2 makes 80 percent four of five, independently checking sein-change, angekommen cloze, detached departure order, separable passport expiry and the bare dauert duration',
+    checksD2.length === 5 && checksD2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD2.every(s => /^cap\.b1-u4-l2\.s\d+$/.test(s.frage.prereq || '')) && checksD2.every(s => !s.hinweise) &&
+      checksD2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l2.s07 | cap.b1-u4-l2.s23 | cap.b1-u4-l2.s24 | cap.b1-u4-l2.s12 | cap.b1-u4-l2.s20' &&
+      new Set(checksD2.map(s => s.frage.prereq)).size === 5 &&
+      checksD2[0].frage.optionen.some(o => o.text === targetsD2[3]) &&
+      checksD2[0].frage.optionen.some(o => o.text === 'Wir haben in Frankfurt umgestiegen.') &&
+      Object.values(checksD2[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckD2.frage.zeigt === 'Mein Gepäck ist nicht ____.' &&
+      clozeCheckD2.frage.antworten.join(' ') === 'angekommen' && clozeCheckD2.frage.nearMiss.ankommen &&
+      !win.DW.renderers.judgeCloze(clozeCheckD2.frage, 'ankommen').ok &&
+      orderCheckD2.frage.correct.join(' ') === targetsD2[2] && orderCheckD2.frage.finite === 'fährt' &&
+      orderCheckD2.frage.fields.vorfeld.join(' ') === 'Der Zug' && orderCheckD2.frage.fields.lsk.join(' ') === 'fährt' &&
+      orderCheckD2.frage.fields.mittelfeld.join(' ') === 'um sieben ab.' &&
+      win.DW.order.score(orderCheckD2.frage, orderCheckD2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD2.frage, ['Der', 'Zug', 'um', 'sieben', 'fährt', 'ab.']).credit < 1 &&
+      checksD2[3].frage.optionen.some(o => o.text === 'Der Pass läuft nächstes Jahr ab.') &&
+      checksD2[3].frage.optionen.some(o => o.text === 'Der Pass läuft nächstes Jahr.') &&
+      Object.values(checksD2[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checksD2[4].frage.optionen.some(o => o.text === targetsD2[4]) &&
+      checksD2[4].frage.optionen.some(o => o.text === 'Die Fahrt dauert für vier Stunden.') &&
+      Object.values(checksD2[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

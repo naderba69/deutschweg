@@ -126,7 +126,7 @@
     ['التأمين: العقد والقسط والتبليغ عن الضرر', 'Versicherung: Vertrag, Beitrag und Schadensmeldung', 'المال والتأمين', 'Krankenversicherung ist Pflicht · den Schaden decken/melden ohne Präposition · haften für + Akkusativ · Vertrag läuft bis + Jahr', 'explicit'],
     ['الاستهلاك: مقارنة الأسعار والشراء الذكي', 'Konsum: Preise vergleichen und klug kaufen', 'الشراء', 'Preise sind gestiegen (Perfekt mit sein) · größer als + Nominativ · zehn Prozent Rabatt ohne von · mit Karte zahlen · achten auf + Akkusativ', 'explicit'],
     ['التطوع: الالتزام والمشاركة والمساعدة', 'Ehrenamt: sich engagieren, teilnehmen und helfen', 'المجتمع', 'sich engagieren für · teilnehmen an + Dativ · helfen + Dativ · sammeln für · seit + Dativ', 'explicit'],
-    ['رحلة معقدة', 'Reiseplanung', 'السفر', 'خطة ببدائل', 'explicit'],
+    ['تخطيط الرحلة: الحجز والتبديل والوصول', 'Reiseplanung: buchen, umsteigen und ankommen', 'السفر', 'buchen + Akkusativ · ist bestätigt · fährt um … ab · sind umgestiegen (sein) · dauert + Dauer', 'explicit'],
     ['تعليل الرأي', 'Meinung begründen', 'الحجاج', 'لأن ومثال', 'explicit'],
     ['التلخيص', 'Zusammenfassung', 'القراءة', 'تلخيص فقرة', 'explicit'],
     ['الحوار', 'Diskussion', 'النقاش', 'موافقة جزئية', 'explicit'],
