@@ -146,7 +146,7 @@
        and a B1 lesson holds 40 words, so the promotion needs its own six-lesson unit. */
     ['الضمائر الظرفية: darauf وdaran وworüber', 'Pronominaladverbien: darauf, daran und worüber', 'الإشارة إلى شيء', 'warte darauf · worüber sprecht ihr · denke oft daran · helfe ihm · darauf warte ich', 'explicit'],
     ['اسم الفاعل والمفعول كصفة: spannend وgespannt', 'Partizip als Adjektiv: spannend und gespannt', 'الوصف', 'der Film ist spannend · das Kind ist gespannt · ein spannendes Buch · die beruhigte Mutter · ist beruhigend', 'explicit'],
-    ['الروابط المزدوجة', 'Zweiteilige Konnektoren', 'الربط', 'entweder oder وje desto', 'explicit'],
+    ['الروابط المزدوجة: entweder … oder وje … desto وsondern', 'Zweiteilige Konnektoren: entweder oder, je desto, sondern auch', 'الربط', 'entweder du rufst an oder · je mehr desto besser · nicht sondern · sowohl als auch · nicht nur sondern auch', 'explicit'],
     ['المجهول مع أفعال المساعدة', 'Passiv mit Modalverben', 'الحدث', 'muss werden', 'explicit'],
     ['الأسلوب الاسمي', 'Nominalstil', 'الكتابة الرسمية', 'beim Ausfüllen des Formulars', 'explicit'],
     ['الاشتقاق', 'Wortbildung', 'المفردات', 'in وung وheit', 'explicit'],

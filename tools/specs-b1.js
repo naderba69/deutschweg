@@ -1913,25 +1913,50 @@ module.exports = [
       hwHintDe: 'Das Partizip I bildest du mit -end und es beschreibt den Handelnden: Der Film ist spannend. Das Partizip II beschreibt den Betroffenen: Das Kind ist gespannt. Vor dem Nomen steht eine Endung, nach sein keine. Merke dir das Paar spannend und gespannt immer zusammen in einem Satz.'
     }),
 
-  U('b1-u6-l3', 'B1', 'الروابط المزدوجة', 'Zweiteilige Konnektoren', 'wortstellung',
-    'Am Ende verbindest du zwei Teile mit entweder oder und je desto',
-    'في النهاية تربط شطرين بـentweder … oder وje … desto.',
+  U('b1-u6-l3', 'B1', 'الروابط المزدوجة: entweder … oder وje … desto وsondern', 'Zweiteilige Konnektoren: entweder oder, je desto, sondern auch', 'wortstellung',
+    'Am Ende verbindest du Sätze mit entweder oder, je desto und sondern — in fünf Sätzen',
+    'في النهاية تربط الجمل بـentweder … oder وje … desto وsondern في خمس جمل.',
     [
-      ['Entweder du rufst an oder du schreibst.', 'الشطران معًا', 'entweder … oder يعملان زوجًا', 'Entweder du rufst an.', 'الشطر الثاني لازم'],
-      ['Je mehr du übst, desto besser sprichst du.', 'je في الفرعية وdesto في الرئيسية', 'je + Komparativ, desto + Komparativ', 'Je mehr du übst, besser sprichst du.', 'desto لازم'],
-      ['Er ist nicht Lehrer, sondern Arzt.', 'sondern تصحّح بعد النفي', 'nicht … sondern', 'Er ist nicht Lehrer, aber Arzt.', 'التصحيح sondern'],
-      ['Sie spricht sowohl Deutsch als auch Arabisch.', 'sowohl … als auch للجمع', 'sowohl … als auch', 'Sie spricht sowohl Deutsch und Arabisch.', 'als auch لا und']
+      ['Entweder du rufst an oder du schreibst.', 'تعرض بديلين بشطرين كاملين', 'entweder لا يقف وحده: الشطر الثاني بـoder جزء من القاعدة لا زخرفة', 'Entweder du rufst an.', 'الشطر الثاني: oder'],
+      ['Je mehr du übst, desto besser sprichst du.', 'تربط تناسبًا متدرّجًا', 'بعد je الفعل آخرًا في الشطر الفرعي، وبعد desto تأتي المقارنة ثم الفعل ثم الفاعل', 'Je mehr du übst, besser sprichst du.', 'desto قبل المقارنة'],
+      ['Er ist nicht Lehrer, sondern Arzt.', 'تصحّح بعد نفي', 'بعد nicht يكون التصحيح بـsondern لا aber: aber تضيف ولا تلغي المنفي', 'Er ist nicht Lehrer, aber Arzt.', 'للتصحيح sondern'],
+      ['Sie spricht sowohl Deutsch als auch Arabisch.', 'تجمع شيئين بزوج ثابت', 'شطر sowohl الثاني هو als auch لا und: الزوج وحدة واحدة', 'Sie spricht sowohl Deutsch und Arabisch.', 'als auch لا und']
     ],
     [
-      ['Entweder du rufst an oder du schreibst.', 'إما أن تهاتف أو تكتب', 'Entweder du rufst an.', 'الشطر الثاني: oder.', 'oder'],
-      ['Je mehr du übst, desto besser sprichst du.', 'كلّما تدرّبت أكثر تحدّثت أفضل', 'Je mehr du übst, besser sprichst du.', 'desto مع الأفعل.', 'desto'],
-      ['Er ist nicht Lehrer, sondern Arzt.', 'هو ليس مدرّسًا بل طبيبًا', 'Er ist nicht Lehrer, aber Arzt.', 'بعد النفي sondern.', 'sondern'],
-      ['Sie spricht sowohl Deutsch als auch Arabisch.', 'تتحدث الألمانية والعربية معًا', 'Sie spricht sowohl Deutsch und Arabisch.', 'als auch لا und.', 'als auch']
+      ['Entweder du rufst an oder du schreibst.', 'إما أن تهاتف أو تكتب', 'Entweder du rufst an.', 'البديلان بشطرين كاملين: oder.', 'oder'],
+      ['Je mehr du übst, desto besser sprichst du.', 'كلما تدربت أكثر تحدثت أفضل', 'Je mehr du übst, besser sprichst du.', 'الشطر الرئيسي يبدأ بـdesto.', 'desto'],
+      ['Er ist nicht Lehrer, sondern Arzt.', 'ليس مدرسًا بل طبيبًا', 'Er ist nicht Lehrer, aber Arzt.', 'بعد النفي التصحيح sondern.', 'sondern'],
+      ['Sie spricht sowohl Deutsch als auch Arabisch.', 'تتحدث الألمانية والعربية معًا', 'Sie spricht sowohl Deutsch und Arabisch.', 'زوج sowohl هو als auch.', 'Arabisch']
     ],
     'Entweder du rufst an oder du schreibst. Je mehr du übst, desto besser sprichst du.',
     'Nicht nur du lernst, sondern auch ich lerne.',
-    'Schreibe drei Sätze mit entweder oder.',
-    'غدًا اكتب ثلاث جمل بـentweder … oder.'),
+    'Wiederhole morgen die fünf Sätze: Entweder du rufst an oder du schreibst. Je mehr du übst, desto besser sprichst du. Er ist nicht Lehrer, sondern Arzt. Sie spricht sowohl Deutsch als auch Arabisch. Nicht nur du lernst, sondern auch ich lerne.',
+    'غدًا أعد جمل الروابط المزدوجة الخمس ولاحظ أن كل رابط يحتاج شطره الثاني.',
+    {
+      factFamilies: ['wortstellung', 'wortstellung', 'lexik-kollokation', 'wortstellung'],
+      imitateNearMiss: 'und',
+      transformHint: 'في جملة الختام الزوج الأخير: Nicht nur du lernst, sondern auch ich lerne — شطر sondern auch يتمّ الزوج الذي بدأ بـnicht nur.',
+      orderSentence: 'Sie spricht sowohl Deutsch als auch Arabisch.',
+      checkOrderSentence: 'Er ist nicht Lehrer, sondern Arzt.',
+      orderAr: 'رتّب جملة الجمع: Sie أولًا ثم spricht قبل زوج sowohl … als auch.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Sie هو الموضع الأول وحده.', 'الزوج sowohl … als auch يحتضن الاسمين بعد الفعل.'],
+      writing: {
+        zeigt: 'Zweiteilige Konnektoren in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: بديلين بـentweder … oder، وتناسبًا بـje … desto، وتصحيحًا بعد نفي بـsondern، وجمعًا بـsowohl … als auch، وخاتمة بـnicht nur … sondern auch.',
+        hinweise: ['كل رابط مزدوج عقد من شطرين؛ لا تترك الشطر الثاني.', 'بعد النفي يُصحَّح بـsondern لا بـaber.'],
+        prompt: 'اكتب جمل الروابط المزدوجة الخمس المستهدفة من الذاكرة مع الشطرين في كل جملة.',
+        promptDe: 'Entweder du rufst an oder du schreibst. · Je mehr du übst, desto besser sprichst du. · Er ist nicht Lehrer, sondern Arzt. · Sie spricht sowohl Deutsch als auch Arabisch. · Nicht nur du lernst, sondern auch ich lerne.',
+        points: ['Entweder du rufst an oder du schreibst.', 'Je mehr du übst, desto besser sprichst du.', 'Er ist nicht Lehrer, sondern Arzt.', 'Sie spricht sowohl Deutsch als auch Arabisch.', 'Nicht nur du lernst, sondern auch ich lerne.'],
+        minWords: 36,
+        frage: 'اكتب جمل الروابط المزدوجة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Entweder du rufst an oder du schreibst. Je mehr du übst, desto besser sprichst du. Er ist nicht Lehrer, sondern Arzt. Sie spricht sowohl Deutsch als auch Arabisch. Nicht nur du lernst, sondern auch ich lerne.',
+      summaryDe: 'Entweder du rufst an oder du schreibst. Je mehr du übst, desto besser sprichst du. Er ist nicht Lehrer, sondern Arzt. Sie spricht sowohl Deutsch als auch Arabisch. Nicht nur du lernst, sondern auch ich lerne.',
+      summaryAr: 'الرابط المزدوج عقد من شطرين: بديل أو تناسب أو تصحيح بعد نفي أو جمع — ولا يقف شطر وحده أبدًا.',
+      summaryRecap: 'كل شطر أول ينتظر شطره',
+      hwHintDe: 'Ein zweiteiliger Konnektor ist ein Vertrag aus zwei Teilen: Entweder verlangt ein Oder, je verlangt ein desto und sowohl ein als auch. Wer den zweiten Teil vergisst, lässt den Satz unfertig in der Luft hängen.'
+    }),
 
   U('b1-u6-l4', 'B1', 'المجهول مع أفعال المساعدة', 'Passiv mit Modalverben', 'konjugation',
     'Am Ende sagst du muss repariert werden statt muss reparieren',

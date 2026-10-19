@@ -15056,6 +15056,131 @@ console.log('\n— P3.2 lexical layer —\n');
       checksF2[4].frage.optionen.some(o => o.text === targetsF2[4]) &&
       checksF2[4].frage.optionen.some(o => o.text === 'Die Musik ist beruhigende.') &&
       Object.values(checksF2[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+
+  const lessonF3 = win.DW_LESSONS['b1-u6-l3'];
+  const rowF3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonF3.id);
+  const byWordF3 = Object.fromEntries(lessonF3.wortschatz.map(it => [it.de, it]));
+  const tricksF3 = lessonF3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsF3 = [
+    'Entweder du rufst an oder du schreibst.',
+    'Je mehr du übst, desto besser sprichst du.',
+    'Er ist nicht Lehrer, sondern Arzt.',
+    'Sie spricht sowohl Deutsch als auch Arabisch.',
+    'Nicht nur du lernst, sondern auch ich lerne.'
+  ];
+  t('Corpus lesson b1-u6-l3 precisely scopes five two-part-connector moves completing an either-or alternative, a je-desto proportion, a sondern correction after negation, a sowohl-als-auch pair and a nicht-nur-sondern-auch closure',
+    lessonF3.title.de === 'Zweiteilige Konnektoren: entweder oder, je desto, sondern auch' &&
+      lessonF3.title.ar === 'الروابط المزدوجة: entweder … oder وje … desto وsondern' &&
+      rowF3.title.de === lessonF3.title.de && rowF3.title.ar === lessonF3.title.ar &&
+      rowF3.theme === 'الربط' &&
+      rowF3.grammar.item === 'entweder du rufst an oder · je mehr desto besser · nicht sondern · sowohl als auch · nicht nur sondern auch' &&
+      rowF3.grammar.method === 'explicit' && lessonF3.schritte.length === 36 && lessonF3.wortschatz.length === 40 &&
+      lessonF3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonF3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsF3[i]) &&
+      lessonF3.schritte[0].zeigt.de === 'Am Ende verbindest du Sätze mit entweder oder, je desto und sondern — in fünf Sätzen' &&
+      lessonF3.schritte.find(s => s.id === 's20').zeigt.de === targetsF3[4]);
+
+  const expectedWordsF3 = [
+    'sondern', 'sodass', 'sogenannt', 'mehrere', 'bereits', 'etwa',
+    'je', 'jedes Mal', 'absolut', 'korrekt', 'einzig', 'gering',
+    'knapp', 'selten', 'häufig', 'üblich', 'ungewöhnlich', 'unterschiedlich',
+    'zufällig', 'weltweit', 'teilweise', 'öfter', 'nochmal', 'ähnlich',
+    'interessant', 'verwandt', 'endgültig', 'weiter', 'voraus', 'los',
+    'per', 'diese', 'dieser', 'dieses', 'dieselbe', 'der Abschnitt',
+    'der Ausdruck', 'die Angabe', 'die Anzahl', 'die Anleitung'
+  ];
+  const errorsF3 = lessonF3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u6-l3 reviews all 40 entries and three bounded mnemonics without twenty-six manufactured appendages and without branding the valid so-dass spelling or von-plus-dative as errors',
+    Object.keys(byWordF3).join(' | ') === expectedWordsF3.join(' | ') &&
+      lessonF3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonF3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordF3['sodass'].err === 'Er spricht leise, sodass ich höre nichts.' &&
+      byWordF3['die Anzahl'].err === 'Die Anzahl der Gäste steigen.' &&
+      byWordF3['sogenannt'].err === 'Der sogenannten Experte kam zu spät.' &&
+      byWordF3['öfter'].err === 'Du musst öfter übt.' &&
+      byWordF3['sondern'].err === 'Er ist nicht Lehrer, aber Arzt.' &&
+      byWordF3['aber'] === undefined &&
+      !['Er spricht leise, so dass ich nichts höre es.', 'Der sogenannte Experte kam zu spät es.',
+        'Mehrere Gäste fehlen noch es.', 'Der Zug ist bereits weg gemacht.',
+        'Das ist absolut richtig gemacht.', 'Ihre Antwort ist korrekt gemacht.',
+        'Der Schaden ist gering gemacht.', 'Die Zeit ist knapp gemacht.',
+        'Solche Fälle sind selten gemacht.', 'Solche Fehler sind häufig gemacht.',
+        'Das ist hier üblich gemacht.', 'Der Name ist ungewöhnlich gemacht.',
+        'Die Preise sind unterschiedlich gemacht.', 'Die Firma arbeitet weltweit gemacht.',
+        'Der Text ist teilweise schwer gemacht.', 'Du musst öfter üben du.',
+        'Die zwei Wörter sind ähnlich gemacht.', 'Der Bericht ist interessant gemacht.',
+        'Wir sind verwandt gemacht.', 'Bitte lies weiter du.',
+        'Diese Regel gilt immer es.', 'Dieser Text ist kurz gemacht.',
+        'Der Abschnitt ist kurz gemacht.', 'Der Ausdruck ist höflich gemacht.',
+        'Die Anzahl von den Gästen steigt.', 'Die Anleitung liegt bei es.']
+        .some(x => errorsF3.includes(x)) &&
+      tricksF3.length === 3 && tricksF3[0].wie.includes('Entweder du rufst an oder du schreibst') &&
+      tricksF3[1].wie.includes('Je mehr du übst') &&
+      tricksF3[2].wie.includes('sondern Arzt'));
+
+  const wordClozeAF3 = lessonF3.schritte.find(s => s.id === 's09');
+  const wordClozeBF3 = lessonF3.schritte.find(s => s.id === 's13');
+  const wordClozeCF3 = lessonF3.schritte.find(s => s.id === 's17');
+  const imitateF3 = lessonF3.schritte.find(s => s.id === 's19');
+  const drillF3 = lessonF3.schritte.find(s => s.id === 's23');
+  const orderF3 = lessonF3.schritte.find(s => s.id === 's24');
+  const writingF3 = lessonF3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingF3 = lessonF3.schritte.find(s => s.phase === 'Produktion');
+  const summaryF3 = lessonF3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkF3 = lessonF3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u6-l3 aligns five strict learning clozes, sound spricht order fields and a 36-word five-target production',
+    wordClozeAF3.frage.zeigt === 'Es dauert ____ zwanzig Minuten.' && wordClozeAF3.frage.antworten.join(' ') === 'etwa' &&
+      wordClozeAF3.frage.nearMiss.etwas && !win.DW.renderers.judgeCloze(wordClozeAF3.frage, 'etwas').ok &&
+      wordClozeBF3.frage.zeigt === 'Du musst ____ üben.' && wordClozeBF3.frage.antworten.join(' ') === 'öfter' &&
+      wordClozeBF3.frage.nearMiss.oft && !win.DW.renderers.judgeCloze(wordClozeBF3.frage, 'oft').ok &&
+      wordClozeCF3.frage.zeigt === 'Die ____ fehlt im Formular.' && wordClozeCF3.frage.antworten.join(' ') === 'Angabe' &&
+      wordClozeCF3.frage.nearMiss.Angaben && !win.DW.renderers.judgeCloze(wordClozeCF3.frage, 'Angaben').ok &&
+      imitateF3.zeigt.de === 'Entweder du rufst an ____ du schreibst.' && imitateF3.frage.antworten.join(' ') === 'oder' &&
+      imitateF3.frage.nearMiss.und && !win.DW.renderers.judgeCloze(imitateF3.frage, 'und').ok &&
+      drillF3.frage.zeigt === 'Er ist nicht Lehrer, ____ Arzt.' && drillF3.frage.antworten.join(' ') === 'sondern' &&
+      drillF3.frage.nearMiss.aber && !win.DW.renderers.judgeCloze(drillF3.frage, 'aber').ok &&
+      lessonF3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderF3.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderF3.frage.correct.join(' ') === targetsF3[3] && orderF3.frage.finite === 'spricht' && orderF3.frage.verbFirst === false &&
+      orderF3.frage.fields.vorfeld.join(' ') === 'Sie' && orderF3.frage.fields.lsk.join(' ') === 'spricht' &&
+      orderF3.frage.fields.mittelfeld.join(' ') === 'sowohl Deutsch als auch Arabisch.' &&
+      win.DW.order.score(orderF3.frage, orderF3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderF3.frage, ['Sie', 'sowohl', 'spricht', 'Deutsch', 'als', 'auch', 'Arabisch.']).credit < 1 &&
+      writingF3.frage.points.join(' | ') === targetsF3.join(' | ') && writingF3.frage.minWords === 36 &&
+      targetsF3.join(' ').split(/\s+/).length === 36 &&
+      targetsF3.every(x => [writingF3.frage.promptDe, summaryF3.zeigt.de, homeworkF3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsF3.every(x => norm(speakingF3.erklaerung).includes(norm(x))) &&
+      (homeworkF3.hinweise || []).join(' ').includes('Vertrag aus zwei Teilen') &&
+      (homeworkF3.hinweise || []).join(' ').includes('in der Luft hängen'));
+
+  const checksF3 = lessonF3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckF3 = checksF3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckF3 = checksF3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u6-l3 makes 80 percent four of five, independently checking the sowohl pair, the sondern correction and its order, V2 after jedes Mal and the nicht-nur closure',
+    checksF3.length === 5 && checksF3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksF3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksF3.every(s => /^cap\.b1-u6-l3\.s\d+$/.test(s.frage.prereq || '')) && checksF3.every(s => !s.hinweise) &&
+      checksF3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u6-l3.s07 | cap.b1-u6-l3.s23 | cap.b1-u6-l3.s24 | cap.b1-u6-l3.s09 | cap.b1-u6-l3.s20' &&
+      new Set(checksF3.map(s => s.frage.prereq)).size === 5 &&
+      checksF3[0].frage.optionen.some(o => o.text === targetsF3[3]) &&
+      checksF3[0].frage.optionen.some(o => o.text === 'Sie spricht sowohl Deutsch und Arabisch.') &&
+      Object.values(checksF3[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckF3.frage.zeigt === 'Er ist nicht Lehrer, ____ Arzt.' &&
+      clozeCheckF3.frage.antworten.join(' ') === 'sondern' && clozeCheckF3.frage.nearMiss.aber &&
+      !win.DW.renderers.judgeCloze(clozeCheckF3.frage, 'aber').ok &&
+      orderCheckF3.frage.correct.join(' ') === targetsF3[2] && orderCheckF3.frage.finite === 'ist' &&
+      orderCheckF3.frage.fields.vorfeld.join(' ') === 'Er' && orderCheckF3.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckF3.frage.fields.mittelfeld.join(' ') === 'nicht Lehrer, sondern Arzt.' &&
+      win.DW.order.score(orderCheckF3.frage, orderCheckF3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckF3.frage, ['Er', 'nicht', 'ist', 'Lehrer,', 'sondern', 'Arzt.']).credit < 1 &&
+      checksF3[3].frage.optionen.some(o => o.text === 'Jedes Mal kommt er zu spät.') &&
+      checksF3[3].frage.optionen.some(o => o.text === 'Jedes Mal er kommt zu spät.') &&
+      Object.values(checksF3[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checksF3[4].frage.optionen.some(o => o.text === targetsF3[4]) &&
+      checksF3[4].frage.optionen.some(o => o.text === 'Nicht nur du lernst, aber auch ich lerne.') &&
+      Object.values(checksF3[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
