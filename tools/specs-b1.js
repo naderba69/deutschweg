@@ -1502,25 +1502,50 @@ module.exports = [
       hwHintDe: 'Ein „Fakt“ verkauft sich schnell: Der Autor berichtet seine Wertung nie als Fakt — prüfe immer, ob ein Beleg folgt.'
     }),
 
-  U('b1-u5-l2', 'B1', 'شرط مهذب', 'Höfliche Bedingung', 'register',
-    'Am Ende verbindest du wenn mit würde',
-    'في النهاية تربط wenn بـ würde.',
+  U('b1-u5-l2', 'B1', 'الشرط المهذب: الطلب والسؤال والشكر', 'Höfliche Bedingung: Bitte, Frage und Dank', 'register',
+    'Am Ende bittest du höflich, fragst erlaubt, nennst eine Bedingung und dankst in fünf Sätzen',
+    'في النهاية تطلب بأدب وتستأذن في السؤال وتسمّي شرطًا وتشكر في خمس جمل.',
     [
-      ['wenn plus würde', 'الشرط المهذب', 'will أقسى', 'wenn Sie wollen, machen Sie das sofort hart', 'المهذب würde'],
-      ['würde am Ende des Hauptsatzes', 'المصدر آخرًا', 'لا بعد würde إن طال المفعول بلا ترتيب', 'ich würde machen das', 'المصدر آخرًا'],
-      ['Könnten Sie', 'السؤال المهذب', 'Kannst Sie خطأ مقام', 'Kannst Sie das tun', 'الرسمي könnten'],
-      ['kein Befehl', 'الشرط ليس أمرًا', 'الأمر يكسر المقام', 'Machen Sie das sofort als Bitte', 'الطلب شرط مهذب']
+      ['Ich hätte eine Bitte.', 'تفتتح طلبك بأدب', 'الطلب المهذب بـhätte: Ich hätte eine Bitte، وأداة النكرة مؤنثة eine لا صورة مذكّرة ein', 'Ich hätte ein Bitte.', 'مؤنث: eine Bitte'],
+      ['Könnten Sie das wiederholen?', 'تسأل بأدب أن يُعاد', 'السؤال المهذب بـkönnten وSie: Könnten Sie، ولا صورة أنتَ Kannst مع Sie', 'Kannst Sie das wiederholen?', 'الرسمي: Könnten Sie'],
+      ['Dürfte ich kurz etwas fragen?', 'تستأذن قبل السؤال', 'بعد dürfte مصدر بلا zu: dürfte ich … fragen، والمصدر يغلق الجملة عاريًا', 'Dürfte ich kurz etwas zu fragen?', 'بلا zu: dürfte … fragen'],
+      ['Falls es Ihnen passt, komme ich morgen.', 'تربط اقتراحك بشرط', 'في جملة falls الفعل أخيرًا (passt)، وفي الرئيسية ينقلب الترتيب: komme ich لا ich komme', 'Falls es Ihnen passt, ich komme morgen.', 'قلب بعد الشرط: komme ich']
     ],
     [
-      ['Wenn Sie Zeit hätten, würden Sie bleiben.', 'لو كان عندكم وقت لبقيتم', 'Wenn Sie wollen, machen Sie das sofort', 'المهذب würde', 'würden'],
-      ['Ich würde das später machen.', 'سأفعل هذا لاحقًا بأدب', 'Ich würde machen das später', 'المصدر آخرًا', 'machen'],
-      ['Könnten Sie das prüfen?', 'هل تستطيعون فحص هذا؟', 'Kannst Sie das prüfen?', 'الرسمي könnten', 'Könnten'],
-      ['Das ist eine Bitte, kein Befehl.', 'هذا طلب لا أمر', 'Machen Sie das sofort', 'الأمر ليس الطلب', 'Bitte']
+      ['Ich hätte eine Bitte.', 'عندي طلب', 'Ich hätte ein Bitte.', 'افتتاح مهذب: hätte eine Bitte', 'Bitte'],
+      ['Könnten Sie das wiederholen?', 'هل تستطيعون إعادته؟', 'Kannst Sie das wiederholen?', 'طلب إعادة مهذب: Könnten Sie', 'Könnten'],
+      ['Dürfte ich kurz etwas fragen?', 'هل لي أن أسأل شيئًا سريعًا؟', 'Dürfte ich kurz etwas zu fragen?', 'استئذان بلا zu: dürfte … fragen', 'Dürfte'],
+      ['Falls es Ihnen passt, komme ich morgen.', 'إن ناسبكم آتي غدًا', 'Falls es Ihnen passt, ich komme morgen.', 'شرط بـfalls وقلب: komme ich', 'Falls']
     ],
-    'Wenn Sie Zeit hätten, würden Sie bleiben.',
-    'Könnten Sie das prüfen?',
-    'Bilde morgen wenn und würde.',
-    'غدًا كوّن wenn وwürde.'),
+    'Ich hätte eine Bitte.',
+    'Ich wäre Ihnen sehr dankbar.',
+    'Wiederhole morgen die fünf Sätze: Ich hätte eine Bitte. Könnten Sie das wiederholen? Dürfte ich kurz etwas fragen? Falls es Ihnen passt, komme ich morgen. Ich wäre Ihnen sehr dankbar.',
+    'غدًا أعد جمل الشرط المهذب الخمس ولاحظ hätte وkönnten وdürfte بلا zu والقلب بعد falls والداتيف Ihnen.',
+    {
+      factFamilies: ['genus', 'konjugation', 'konjugation', 'wortstellung'],
+      imitateNearMiss: 'Bitten',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Ich wäre Ihnen sehr dankbar — الشكر المهذب يضع الشخص بالداتيف Ihnen لا بضمير رفع.',
+      orderSentence: 'Ich wäre Ihnen sehr dankbar.',
+      checkOrderSentence: 'Ich hätte eine Bitte.',
+      orderAr: 'رتّب جملة الشكر: Ich أولًا ثم الفعل wäre في الموضع الثاني قبل Ihnen بالداتيف.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفعل المصرّف وحيد في الموضع الثاني بعد Ich.', 'ضمير الشخص يلي الفعل بالداتيف: wäre Ihnen.'],
+      writing: {
+        zeigt: 'Höflich bitten in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تدير طلبًا مهذبًا: افتتاحًا بـhätte، وسؤالًا بـkönnten وSie، واستئذانًا بـdürfte ومصدر بلا zu، وشرطًا بـfalls مع قلب الرئيسية، وشكرًا بـwäre وداتيف Ihnen.',
+        hinweise: ['المهذب لا يأمر: hätte وkönnten وdürfte بدل الأمر.', 'بعد falls الفعل أخيرًا في الشرط وأولًا في الرئيسية: komme ich.'],
+        prompt: 'اكتب جمل الشرط المهذب الخمس المستهدفة من الذاكرة مع صيغ الأدب والقلب بعد falls.',
+        promptDe: 'Ich hätte eine Bitte. · Könnten Sie das wiederholen? · Dürfte ich kurz etwas fragen? · Falls es Ihnen passt, komme ich morgen. · Ich wäre Ihnen sehr dankbar.',
+        points: ['Ich hätte eine Bitte.', 'Könnten Sie das wiederholen?', 'Dürfte ich kurz etwas fragen?', 'Falls es Ihnen passt, komme ich morgen.', 'Ich wäre Ihnen sehr dankbar.'],
+        minWords: 25,
+        frage: 'اكتب جمل الشرط المهذب الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich hätte eine Bitte. Könnten Sie das wiederholen? Dürfte ich kurz etwas fragen? Falls es Ihnen passt, komme ich morgen. Ich wäre Ihnen sehr dankbar.',
+      summaryDe: 'Ich hätte eine Bitte. Könnten Sie das wiederholen? Dürfte ich kurz etwas fragen? Falls es Ihnen passt, komme ich morgen. Ich wäre Ihnen sehr dankbar.',
+      summaryAr: 'طلب مهذب في خمس جمل: افتتاح بـhätte، وسؤال مهذب بـkönnten، واستئذان بـdürfte بلا zu، وشرط بـfalls مع القلب، وشكر بالداتيف Ihnen.',
+      summaryRecap: 'طلب مهذب بشرط أولًا',
+      hwHintDe: 'Der Infinitiv steht am Ende des Hauptsatzes, und eine Bitte klingt nie wie ein Befehl: „Dürfte ich …?“ öffnet Türen, die ein Befehl schließt.'
+    }),
 
   U('b1-u5-l3', 'B1', 'مقارنة أنظمة', 'Vergleich', 'pruefstrategie',
     'Am Ende vergleichst du mit einer Grenze',

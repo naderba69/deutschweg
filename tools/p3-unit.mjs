@@ -13938,6 +13938,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE1[4].frage.optionen.some(o => o.text === targetsE1[4]) &&
       checksE1[4].frage.optionen.some(o => o.text === 'Ohne ein Beleg bleibt es Meinung.') &&
       Object.values(checksE1[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonE2 = win.DW_LESSONS['b1-u5-l2'];
+  const rowE2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE2.id);
+  const byWordE2 = Object.fromEntries(lessonE2.wortschatz.map(it => [it.de, it]));
+  const tricksE2 = lessonE2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE2 = [
+    'Ich hätte eine Bitte.',
+    'Könnten Sie das wiederholen?',
+    'Dürfte ich kurz etwas fragen?',
+    'Falls es Ihnen passt, komme ich morgen.',
+    'Ich wäre Ihnen sehr dankbar.'
+  ];
+  t('Corpus lesson b1-u5-l2 precisely scopes five polite-condition moves opening with hätte, asking with könnten-Sie, seeking leave with bare-infinitive dürfte, conditioning with inverted falls and thanking with wäre-dative',
+    lessonE2.title.de === 'Höfliche Bedingung: Bitte, Frage und Dank' &&
+      lessonE2.title.ar === 'الشرط المهذب: الطلب والسؤال والشكر' &&
+      rowE2.title.de === lessonE2.title.de && rowE2.title.ar === lessonE2.title.ar &&
+      rowE2.theme === 'الأدب' &&
+      rowE2.grammar.item === 'ich hätte eine Bitte · könnten Sie · dürfte ich ohne zu · falls mit Inversion · wäre Ihnen dankbar' &&
+      rowE2.grammar.method === 'explicit' && lessonE2.schritte.length === 36 && lessonE2.wortschatz.length === 40 &&
+      lessonE2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE2[i]) &&
+      lessonE2.schritte[0].zeigt.de === 'Am Ende bittest du höflich, fragst erlaubt, nennst eine Bedingung und dankst in fünf Sätzen' &&
+      lessonE2.schritte.find(s => s.id === 's20').zeigt.de === targetsE2[4]);
+
+  const expectedWordsE2 = [
+    'würden', 'könnten', 'dürfte', 'hätte', 'wäre', 'falls',
+    'sofern', 'unter der Bedingung', 'die Bedingung', 'die Bitte', 'bitten', 'die Anfrage',
+    'der Vorschlag', 'vorschlagen', 'der Wunsch', 'die Möglichkeit', 'eventuell',
+    'gegebenenfalls', 'notfalls', 'auf keinen Fall', 'die Rücksprache', 'sich erkundigen',
+    'nachfragen', 'sich wenden an', 'der Ansprechpartner', 'die Auskunft',
+    'die Zustimmung', 'zustimmen', 'die Absage', 'die Zusage', 'die Frist',
+    'die Verlängerung', 'der Aufschub', 'die Alternative', 'der Kompromiss',
+    'entgegenkommen', 'berücksichtigen', 'dankbar', 'die Zusage geben', 'verbindlich'
+  ];
+  const errorsE2 = lessonE2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l2 reviews all 40 entries and three bounded mnemonics without twenty-two manufactured appendages and with honest hatte-versus-hätte and valid-indicative explanations',
+    Object.keys(byWordE2).join(' | ') === expectedWordsE2.join(' | ') &&
+      lessonE2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE2['hätte'].err === 'Ich hatte eine Bitte.' &&
+      byWordE2['hätte'].why.includes('ماضٍ منقضٍ') &&
+      byWordE2['könnten'].err === 'Kannst Sie das wiederholen?' &&
+      byWordE2['dürfte'].err === 'Dürfte ich kurz etwas zu fragen?' &&
+      byWordE2['dankbar'].err === 'Ich wäre Sie sehr dankbar.' &&
+      byWordE2['der Gerichtsvollzieher'] === undefined &&
+      byWordE2['die Anfrage'].err === 'Die Anfrage wurde weiterleiten.' &&
+      byWordE2['zustimmen'].ex === 'Wenn Sie dem zustimmen würden, wäre ich dankbar.' &&
+      !['Können Sie das wiederholen gewesen?', 'Darf ich kurz etwas fragen gewesen?',
+        'Ich habe eine Bitte gewesen.', 'Es ist nett gewesen, wenn Sie mir schreiben.',
+        'Unter der Bedingung, dass Sie zustimmen es.', 'Die Bedingungen sind klar gemacht.',
+        'Mein Vorschlag ist ein Kompromiss gewesen.', 'Ich würde vorschlagen, dass wir warten es.',
+        'Ist eine Verlängerung eine Möglichkeit gewesen?', 'Nach Rücksprache mit der Chef …',
+        'Ich frage morgen nach es.', 'Mein Ansprechpartner ist Herr Klein es.',
+        'Die Zustimmung fehlt noch es.', 'Wenn Sie das zustimmen würden, …',
+        'Eine Absage ist enttäuschend gewesen.', 'Ein kurzer Aufschub ist hilfreich gewesen.',
+        'Gibt es eine Alternative gehabt?', 'Ist ein Kompromiss denkbar gewesen?',
+        'Wir können Ihnen entgegenkommen du.', 'Wir werden Ihren Wunsch berücksichtigen für.',
+        'Ich bin Ihnen sehr dankbar gewesen.', 'Könnten Sie mir eine Zusage geben du?']
+        .some(x => errorsE2.includes(x)) &&
+      tricksE2.length === 3 && tricksE2[0].wie.includes('Könnten Sie das wiederholen?') &&
+      tricksE2[1].wie.includes('machen wir weiter') &&
+      tricksE2[2].wie.includes('Da müsste ich erst fragen'));
+
+  const wordClozeAE2 = lessonE2.schritte.find(s => s.id === 's09');
+  const wordClozeBE2 = lessonE2.schritte.find(s => s.id === 's13');
+  const wordClozeCE2 = lessonE2.schritte.find(s => s.id === 's17');
+  const imitateE2 = lessonE2.schritte.find(s => s.id === 's19');
+  const drillE2 = lessonE2.schritte.find(s => s.id === 's23');
+  const orderE2 = lessonE2.schritte.find(s => s.id === 's24');
+  const writingE2 = lessonE2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE2 = lessonE2.schritte.find(s => s.phase === 'Produktion');
+  const summaryE2 = lessonE2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE2 = lessonE2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l2 aligns five strict learning clozes, sound wäre order fields and a 25-word five-target production',
+    wordClozeAE2.frage.zeigt === '____ es Ihnen passt, komme ich morgen.' && wordClozeAE2.frage.antworten.join(' ') === 'Falls' &&
+      wordClozeAE2.frage.nearMiss.Fall && !win.DW.renderers.judgeCloze(wordClozeAE2.frage, 'Fall').ok &&
+      wordClozeBE2.frage.zeigt === 'Ich ____ mich nach dem Termin.' && wordClozeBE2.frage.antworten.join(' ') === 'erkundige' &&
+      wordClozeBE2.frage.nearMiss.erkundigen && !win.DW.renderers.judgeCloze(wordClozeBE2.frage, 'erkundigen').ok &&
+      wordClozeCE2.frage.zeigt === 'Ich wäre Ihnen sehr ____.' && wordClozeCE2.frage.antworten.join(' ') === 'dankbar' &&
+      wordClozeCE2.frage.nearMiss.dankbare && !win.DW.renderers.judgeCloze(wordClozeCE2.frage, 'dankbare').ok &&
+      imitateE2.zeigt.de === 'Ich hätte eine ____.' && imitateE2.frage.antworten.join(' ') === 'Bitte' &&
+      imitateE2.frage.nearMiss.Bitten && !win.DW.renderers.judgeCloze(imitateE2.frage, 'Bitten').ok &&
+      drillE2.frage.zeigt === 'Ich frage morgen ____.' && drillE2.frage.antworten.join(' ') === 'nach' &&
+      drillE2.frage.nearMiss.nachfragen && !win.DW.renderers.judgeCloze(drillE2.frage, 'nachfragen').ok &&
+      lessonE2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE2.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE2.frage.correct.join(' ') === targetsE2[4] && orderE2.frage.finite === 'wäre' && orderE2.frage.verbFirst === false &&
+      orderE2.frage.fields.vorfeld.join(' ') === 'Ich' && orderE2.frage.fields.lsk.join(' ') === 'wäre' &&
+      orderE2.frage.fields.mittelfeld.join(' ') === 'Ihnen sehr dankbar.' &&
+      win.DW.order.score(orderE2.frage, orderE2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE2.frage, ['Ich', 'Ihnen', 'wäre', 'dankbar.', 'sehr']).credit < 1 &&
+      writingE2.frage.points.join(' | ') === targetsE2.join(' | ') && writingE2.frage.minWords === 25 &&
+      targetsE2.join(' ').split(/\s+/).length === 25 &&
+      targetsE2.every(x => [writingE2.frage.promptDe, summaryE2.zeigt.de, homeworkE2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE2.every(x => norm(speakingE2.erklaerung).includes(norm(x))) &&
+      (homeworkE2.hinweise || []).join(' ').includes('am Ende des Hauptsatzes') &&
+      (homeworkE2.hinweise || []).join(' ').includes('nie wie ein Befehl'));
+
+  const checksE2 = lessonE2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE2 = checksE2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE2 = checksE2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l2 makes 80 percent four of five, independently checking falls inversion, nachfragen particle and hätte order, bitten-um and dative-gratitude closure',
+    checksE2.length === 5 && checksE2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE2.every(s => /^cap\.b1-u5-l2\.s\d+$/.test(s.frage.prereq || '')) && checksE2.every(s => !s.hinweise) &&
+      checksE2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l2.s07 | cap.b1-u5-l2.s23 | cap.b1-u5-l2.s24 | cap.b1-u5-l2.s10 | cap.b1-u5-l2.s20' &&
+      new Set(checksE2.map(s => s.frage.prereq)).size === 5 &&
+      checksE2[0].frage.optionen.some(o => o.text === targetsE2[3]) &&
+      checksE2[0].frage.optionen.some(o => o.text === 'Falls es Ihnen passt, ich komme morgen.') &&
+      Object.values(checksE2[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckE2.frage.zeigt === 'Ich frage morgen ____.' &&
+      clozeCheckE2.frage.antworten.join(' ') === 'nach' && clozeCheckE2.frage.nearMiss.nachfragen &&
+      !win.DW.renderers.judgeCloze(clozeCheckE2.frage, 'nachfragen').ok &&
+      orderCheckE2.frage.correct.join(' ') === targetsE2[0] && orderCheckE2.frage.finite === 'hätte' &&
+      orderCheckE2.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheckE2.frage.fields.lsk.join(' ') === 'hätte' &&
+      orderCheckE2.frage.fields.mittelfeld.join(' ') === 'eine Bitte.' &&
+      win.DW.order.score(orderCheckE2.frage, orderCheckE2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE2.frage, ['Ich', 'eine', 'hätte', 'Bitte.']).credit < 1 &&
+      checksE2[3].frage.optionen.some(o => o.text === 'Ich bitte Sie um Geduld.') &&
+      checksE2[3].frage.optionen.some(o => o.text === 'Ich bitte Sie für Geduld.') &&
+      Object.values(checksE2[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksE2[4].frage.optionen.some(o => o.text === targetsE2[4]) &&
+      checksE2[4].frage.optionen.some(o => o.text === 'Ich wäre Sie sehr dankbar.') &&
+      Object.values(checksE2[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

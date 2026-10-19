@@ -134,7 +134,7 @@
     ['العرض: الهيكلة والإلقاء والردّ على الأسئلة', 'Präsentation: gliedern, vortragen, Fragen beantworten', 'التحدّث', 'dauert zehn Minuten · am Schluss fasse ich zusammen · sprich deutlich · alle Fragen beantworten · danke für Ihre Aufmerksamkeit', 'explicit'],
     ['مقابلة العمل: التقديم والقوة والخبرة', 'Das Vorstellungsgespräch: vorstellen, Stärke und Erfahrung', 'السماع', 'Ich stelle mich kurz vor · Meine Stärke ist · fünf Jahre Erfahrung · Verantwortung übernehmen · bedanke mich', 'explicit'],
     ['نص الرأي: الواقعة والتقييم والشاهد', 'Kommentar: Tatsache, Wertung und Beleg', 'القراءة', 'das ist eine Tatsache · eine Wertung · der Ton bleibt sachlich · ein Beispiel macht es greifbar · ohne Beleg', 'explicit'],
-    ['شرط مهذب', 'Höfliche Bedingung', 'الأدب', 'wenn + würde', 'explicit'],
+    ['الشرط المهذب: الطلب والسؤال والشكر', 'Höfliche Bedingung: Bitte, Frage und Dank', 'الأدب', 'ich hätte eine Bitte · könnten Sie · dürfte ich ohne zu · falls mit Inversion · wäre Ihnen dankbar', 'explicit'],
     ['مقارنة أنظمة', 'Vergleich', 'المجتمع', 'مقارنة بلدين بحد', 'explicit'],
     ['مشكلة عمل', 'Arbeitsproblem', 'العمل', 'اقتراح حل', 'explicit'],
     ['صحة عامة', 'Gesundheitssystem', 'الصحة', 'موعد وتأمين بجملة', 'explicit'],
