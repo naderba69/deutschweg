@@ -14312,6 +14312,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksE4[4].frage.optionen.some(o => o.text === targetsE4[4]) &&
       checksE4[4].frage.optionen.some(o => o.text === 'Die Vereinbarung gilt von morgen.') &&
       Object.values(checksE4[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
+  const lessonE5 = win.DW_LESSONS['b1-u5-l5'];
+  const rowE5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonE5.id);
+  const byWordE5 = Object.fromEntries(lessonE5.wortschatz.map(it => [it.de, it]));
+  const tricksE5 = lessonE5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsE5 = [
+    'Ich brauche einen Termin.',
+    'Die Praxis öffnet um acht.',
+    'Ich brauche eine Überweisung zum Facharzt.',
+    'Ohne Rezept gibt es das nicht.',
+    'Die Versicherung ist Pflicht.'
+  ];
+  t('Corpus lesson b1-u5-l5 precisely scopes five health-system moves requesting an accusative appointment, timing a practice opening with um, contracting a referral to zum, conditioning dispensing on an accusative after ohne and closing with a feminine duty',
+    lessonE5.title.de === 'Gesundheitssystem: Termin, Überweisung und Rezept' &&
+      lessonE5.title.ar === 'النظام الصحي: الموعد والإحالة والوصفة' &&
+      rowE5.title.de === lessonE5.title.de && rowE5.title.ar === lessonE5.title.ar &&
+      rowE5.theme === 'الصحة' &&
+      rowE5.grammar.item === 'ich brauche einen Termin · die Praxis öffnet um acht · Überweisung zum Facharzt · ohne Rezept · die Versicherung ist Pflicht' &&
+      rowE5.grammar.method === 'explicit' && lessonE5.schritte.length === 36 && lessonE5.wortschatz.length === 40 &&
+      lessonE5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonE5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsE5[i]) &&
+      lessonE5.schritte[0].zeigt.de === 'Am Ende gehst du den Weg des Patienten vom Termin bis zur Versicherung in fünf Sätzen' &&
+      lessonE5.schritte.find(s => s.id === 's20').zeigt.de === targetsE5[4]);
+
+  const expectedWordsE5 = [
+    'die Gesundheit', 'die Krankenkasse', 'die Versicherung', 'der Arzt', 'die Ärztin', 'die Praxis',
+    'der Termin', 'die Überweisung', 'der Facharzt', 'die Behandlung', 'behandeln',
+    'die Untersuchung', 'das Medikament', 'die Tablette', 'das Rezept', 'die Apotheke',
+    'die Krankheit', 'die Erkältung', 'der Husten', 'das Fieber', 'der Schmerz',
+    'die Wunde', 'der Unfall', 'der Notarzt', 'die Notaufnahme', 'das Krankenhaus',
+    'der Aufenthalt', 'die Operation', 'der Eingriff', 'die Vorsorge', 'die Impfung',
+    'impfen', 'die Bewegung', 'die Ernährung', 'der Stress', 'die Ursache',
+    'die Diagnose', 'die Wartezeit', 'die Beschwerde', 'die Genesung'
+  ];
+  const errorsE5 = lessonE5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u5-l5 reviews all 40 entries and three bounded mnemonics without seventeen manufactured appendages and with a completed die-Ärztin lemma and honest ohne-article, referral-für, perfect-tense and comparative explanations',
+    Object.keys(byWordE5).join(' | ') === expectedWordsE5.join(' | ') &&
+      lessonE5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonE5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordE5['Ärztin'] === undefined &&
+      byWordE5['die Ärztin'].ex === 'Die Ärztin hat mich beruhigt.' &&
+      byWordE5['das Rezept'].err === 'Ohne einem Rezept gibt es das nicht.' &&
+      byWordE5['das Rezept'].why.includes('الأداة جائزة') &&
+      byWordE5['die Überweisung'].err === 'Ich brauche eine Überweisung zu den Facharzt.' &&
+      byWordE5['die Operation'].err === 'Die Operation verlief gute.' &&
+      byWordE5['die Hüftprothese'] === undefined &&
+      byWordE5['die Behandlung'].err === 'Die Behandlung dauert für drei Wochen.' &&
+      !['Gesundheit ist das Wichtigste es.', 'Die Krankenkasse zahlt meistens es.',
+        'Die Versicherung ist Pflicht gemacht.', 'Die Untersuchung ergab nichts es.',
+        'Das Medikament hilft schnell es.', 'Die Krankheit ist ansteckend gemacht.',
+        'Der Husten wird nicht besser es.', 'Die Schmerzen sind stark gemacht.',
+        'Die Wunde muss sauber bleiben gemacht.', 'Der Eingriff war nötig gemacht.',
+        'Bewegung hält gesund es.', 'Stress macht krank es.',
+        'Die Ursache ist unklar gemacht.', 'Die Diagnose kam schnell es.',
+        'Die Wartezeit ist zu lang gemacht.', 'Die Beschwerden halten an es.',
+        'Gute Genesung du!']
+        .some(x => errorsE5.includes(x)) &&
+      tricksE5.length === 3 && tricksE5[0].wie.includes('Dann hole ich das Rezept') &&
+      tricksE5[1].wie.includes('Die Impfung wird empfohlen') &&
+      tricksE5[2].wie.includes('Die Beschwerden halten an'));
+
+  const wordClozeAE5 = lessonE5.schritte.find(s => s.id === 's09');
+  const wordClozeBE5 = lessonE5.schritte.find(s => s.id === 's13');
+  const wordClozeCE5 = lessonE5.schritte.find(s => s.id === 's17');
+  const imitateE5 = lessonE5.schritte.find(s => s.id === 's19');
+  const drillE5 = lessonE5.schritte.find(s => s.id === 's23');
+  const orderE5 = lessonE5.schritte.find(s => s.id === 's24');
+  const writingE5 = lessonE5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingE5 = lessonE5.schritte.find(s => s.phase === 'Produktion');
+  const summaryE5 = lessonE5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkE5 = lessonE5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u5-l5 aligns five strict learning clozes, sound es-gibt order fields and a 25-word five-target production',
+    wordClozeAE5.frage.zeigt === 'Die ____ öffnet um acht.' && wordClozeAE5.frage.antworten.join(' ') === 'Praxis' &&
+      wordClozeAE5.frage.nearMiss.Praxen && !win.DW.renderers.judgeCloze(wordClozeAE5.frage, 'Praxen').ok &&
+      wordClozeBE5.frage.zeigt === 'Die ____ muss sauber bleiben.' && wordClozeBE5.frage.antworten.join(' ') === 'Wunde' &&
+      wordClozeBE5.frage.nearMiss.Wunden && !win.DW.renderers.judgeCloze(wordClozeBE5.frage, 'Wunden').ok &&
+      wordClozeCE5.frage.zeigt === 'Die ____ ist zu lang.' && wordClozeCE5.frage.antworten.join(' ') === 'Wartezeit' &&
+      wordClozeCE5.frage.nearMiss.Wartezeiten && !win.DW.renderers.judgeCloze(wordClozeCE5.frage, 'Wartezeiten').ok &&
+      imitateE5.zeigt.de === 'Ich brauche einen ____.' && imitateE5.frage.antworten.join(' ') === 'Termin' &&
+      imitateE5.frage.nearMiss.Termine && !win.DW.renderers.judgeCloze(imitateE5.frage, 'Termine').ok &&
+      drillE5.frage.zeigt === 'Der ____ kam in zehn Minuten.' && drillE5.frage.antworten.join(' ') === 'Notarzt' &&
+      drillE5.frage.nearMiss.Notärzte && !win.DW.renderers.judgeCloze(drillE5.frage, 'Notärzte').ok &&
+      lessonE5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderE5.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderE5.frage.correct.join(' ') === targetsE5[3] && orderE5.frage.finite === 'gibt' && orderE5.frage.verbFirst === false &&
+      orderE5.frage.fields.vorfeld.join(' ') === 'Ohne Rezept' && orderE5.frage.fields.lsk.join(' ') === 'gibt' &&
+      orderE5.frage.fields.mittelfeld.join(' ') === 'es das nicht.' &&
+      win.DW.order.score(orderE5.frage, orderE5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderE5.frage, ['Ohne', 'es', 'gibt', 'Rezept', 'das', 'nicht.']).credit < 1 &&
+      writingE5.frage.points.join(' | ') === targetsE5.join(' | ') && writingE5.frage.minWords === 25 &&
+      targetsE5.join(' ').split(/\s+/).length === 25 &&
+      targetsE5.every(x => [writingE5.frage.promptDe, summaryE5.zeigt.de, homeworkE5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsE5.every(x => norm(speakingE5.erklaerung).includes(norm(x))) &&
+      (homeworkE5.hinweise || []).join(' ').includes('„Clinic“ und „Date“ sind Englisch') &&
+      (homeworkE5.hinweise || []).join(' ').includes('ein Termin ist kein Date'));
+
+  const checksE5 = lessonE5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckE5 = checksE5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckE5 = checksE5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u5-l5 makes 80 percent four of five, independently checking accusative-after-ohne, singular emergency doctor and insurance order, local-dative admissions and feminine-ung closure',
+    checksE5.length === 5 && checksE5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksE5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksE5.every(s => /^cap\.b1-u5-l5\.s\d+$/.test(s.frage.prereq || '')) && checksE5.every(s => !s.hinweise) &&
+      checksE5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u5-l5.s07 | cap.b1-u5-l5.s23 | cap.b1-u5-l5.s24 | cap.b1-u5-l5.s14 | cap.b1-u5-l5.s20' &&
+      new Set(checksE5.map(s => s.frage.prereq)).size === 5 &&
+      checksE5[0].frage.optionen.some(o => o.text === targetsE5[3]) &&
+      checksE5[0].frage.optionen.some(o => o.text === 'Ohne einem Rezept gibt es das nicht.') &&
+      Object.values(checksE5[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckE5.frage.zeigt === 'Der ____ kam in zehn Minuten.' &&
+      clozeCheckE5.frage.antworten.join(' ') === 'Notarzt' && clozeCheckE5.frage.nearMiss.Notärzte &&
+      !win.DW.renderers.judgeCloze(clozeCheckE5.frage, 'Notärzte').ok &&
+      orderCheckE5.frage.correct.join(' ') === targetsE5[4] && orderCheckE5.frage.finite === 'ist' &&
+      orderCheckE5.frage.fields.vorfeld.join(' ') === 'Die Versicherung' && orderCheckE5.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckE5.frage.fields.mittelfeld.join(' ') === 'Pflicht.' &&
+      win.DW.order.score(orderCheckE5.frage, orderCheckE5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckE5.frage, ['Die', 'Pflicht.', 'ist', 'Versicherung']).credit < 1 &&
+      checksE5[3].frage.optionen.some(o => o.text === 'In der Notaufnahme warteten viele.') &&
+      checksE5[3].frage.optionen.some(o => o.text === 'In die Notaufnahme warteten viele.') &&
+      Object.values(checksE5[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksE5[4].frage.optionen.some(o => o.text === targetsE5[4]) &&
+      checksE5[4].frage.optionen.some(o => o.text === 'Der Versicherung ist Pflicht.') &&
+      Object.values(checksE5[4].frage.misconceptionFamilies).join(' ') === 'genus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

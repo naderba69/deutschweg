@@ -137,7 +137,7 @@
     ['الشرط المهذب: الطلب والسؤال والشكر', 'Höfliche Bedingung: Bitte, Frage und Dank', 'الأدب', 'ich hätte eine Bitte · könnten Sie · dürfte ich ohne zu · falls mit Inversion · wäre Ihnen dankbar', 'explicit'],
     ['المقارنة: المقابلة والفرق والحد', 'Vergleich: Gegensatz, Unterschied und Grenze', 'المجتمع', 'im Gegensatz zu + Inversion · nicht alles ist gleich · während mit Inversion · große Unterschiede · die Grenze ist', 'explicit'],
     ['مشكلة عمل: العبء والحوار والحل الوسط', 'Arbeitsproblem: Belastung, Gespräch und Kompromiss', 'العمل', 'die Belastung ist zu hoch · ansprechen mit an · so lösen wir · einen Kompromiss · gilt ab morgen', 'explicit'],
-    ['صحة عامة', 'Gesundheitssystem', 'الصحة', 'موعد وتأمين بجملة', 'explicit'],
+    ['النظام الصحي: الموعد والإحالة والوصفة', 'Gesundheitssystem: Termin, Überweisung und Rezept', 'الصحة', 'ich brauche einen Termin · die Praxis öffnet um acht · Überweisung zum Facharzt · ohne Rezept · die Versicherung ist Pflicht', 'explicit'],
     ['مراجعة B1', 'Wiederholung B1', 'المراجعة', 'جمع الوصلات', 'explicit'],
     ['شكل امتحان B1', 'Prüfungsform B1', 'شكل الامتحان', 'شكل Goethe B1 لا محاكاة', 'explicit'],
     ['جسر إلى B2', 'Übergang', 'الحدود', 'ما لا يكفي لـ B2', 'explicit'],

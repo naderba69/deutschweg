@@ -1637,25 +1637,50 @@ module.exports = [
       hwHintDe: '„I suggest“ ist Englisch: Auf Deutsch schlagen wir etwas vor — „Ich schlage vor, dass wir warten“ trägt weiter als jeder Vorwurf.'
     }),
 
-  U('b1-u5-l5', 'B1', 'صحة عامة', 'Gesundheitssystem', 'lexik-kollokation',
-    'Am Ende sagst du Termin und Versicherung in einem Zusammenhang',
-    'في النهاية تقول الموعد والتأمين في سياق واحد.',
+  U('b1-u5-l5', 'B1', 'النظام الصحي: الموعد والإحالة والوصفة', 'Gesundheitssystem: Termin, Überweisung und Rezept', 'lexik-kollokation',
+    'Am Ende gehst du den Weg des Patienten vom Termin bis zur Versicherung in fünf Sätzen',
+    'في النهاية تسلك طريق المريض من الموعد إلى التأمين في خمس جمل.',
     [
-      ['der Termin', 'الموعد أولًا', 'لا date ككلمة وحيدة', 'der Date', 'Date إنجليزية'],
-      ['die Versicherung', 'التأمين يُذكر مع الموعد', 'لا insurance', 'die Insurance zahlt', 'Insurance إنجليزية'],
-      ['die Praxis', 'العيادة Praxis', 'لا clinic ككلمة وحيدة', 'die Clinic', 'Clinic إنجليزية'],
-      ['ich warte auf eine Antwort', 'الانتظار auf', 'warten für خطأ', 'ich warte für eine Antwort', 'الحرف auf']
+      ['Ich brauche einen Termin.', 'تطلب موعدًا', 'المفعول مذكر منصوب: einen Termin لا ein بعد brauchen', 'Ich brauche ein Termin.', 'نصب مذكر: einen Termin'],
+      ['Die Praxis öffnet um acht.', 'تذكر ساعة فتح العيادة', 'الساعة النقطية بـum: um acht لا in acht', 'Die Praxis öffnet in acht.', 'الساعة: um acht'],
+      ['Ich brauche eine Überweisung zum Facharzt.', 'تطلب إحالة إلى المختص', 'الإحالة اتجاهها zu + داتيف مذكر مدموج: zum Facharzt لا zu den', 'Ich brauche eine Überweisung zu den Facharzt.', 'مدموج: zum Facharzt'],
+      ['Ohne Rezept gibt es das nicht.', 'تشترط الوصفة', 'بعد ohne نصب لا داتيف: ohne (ein) Rezept، والأداة جائزة والعصمة في الحالة', 'Ohne einem Rezept gibt es das nicht.', 'نصب بعد ohne: ein Rezept']
     ],
     [
-      ['Ich habe einen Termin.', 'عندي موعد', 'Ich habe einen Date', 'الموعد Termin', 'Termin'],
-      ['Die Versicherung übernimmt das.', 'التأمين يتحمل هذا', 'Die Insurance übernimmt das', 'التأمين Versicherung', 'Versicherung'],
-      ['Die Praxis ist geschlossen.', 'العيادة مغلقة', 'Die Clinic ist geschlossen', 'العيادة Praxis', 'Praxis'],
-      ['Ich warte auf eine Antwort.', 'أنتظر جوابًا', 'Ich warte für eine Antwort', 'الانتظار auf', 'auf']
+      ['Ich brauche einen Termin.', 'أحتاج موعدًا', 'Ich brauche ein Termin.', 'طلب بنصب مذكر: einen Termin', 'Termin'],
+      ['Die Praxis öffnet um acht.', 'العيادة تفتح عند الثامنة', 'Die Praxis öffnet in acht.', 'ساعة بـum: um acht', 'Praxis'],
+      ['Ich brauche eine Überweisung zum Facharzt.', 'أحتاج إحالة إلى المختص', 'Ich brauche eine Überweisung zu den Facharzt.', 'اتجاه مدموج: zum Facharzt', 'Überweisung'],
+      ['Ohne Rezept gibt es das nicht.', 'بلا وصفة لا يُصرف', 'Ohne einem Rezept gibt es das nicht.', 'اشتراط بنصب: ohne Rezept', 'Rezept']
     ],
-    'Ich habe einen Termin. Die Versicherung übernimmt das.',
-    'Ich warte auf eine Antwort.',
-    'Sage morgen Termin und Versicherung.',
-    'غدًا قل الموعد والتأمين.'),
+    'Ich brauche einen Termin.',
+    'Die Versicherung ist Pflicht.',
+    'Wiederhole morgen die fünf Sätze: Ich brauche einen Termin. Die Praxis öffnet um acht. Ich brauche eine Überweisung zum Facharzt. Ohne Rezept gibt es das nicht. Die Versicherung ist Pflicht.',
+    'غدًا أعد جمل النظام الصحي الخمس ولاحظ النصب والساعة بـum والدمج zum والنصب بعد ohne ومؤنث التأمين.',
+    {
+      factFamilies: ['kasus', 'präposition', 'kasus', 'kasus'],
+      imitateNearMiss: 'Termine',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Die Versicherung ist Pflicht — التأمين مؤنث (كل -ung مؤنثة) ولا يُقال der.',
+      orderSentence: 'Ohne Rezept gibt es das nicht.',
+      checkOrderSentence: 'Die Versicherung ist Pflicht.',
+      orderAr: 'رتّب جملة الاشتراط: Ohne Rezept أولًا ثم gibt في الموضع الثاني قبل es.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['العبارة المتقدّمة Ohne Rezept في الأول والفعل gibt وحيد في الثاني.', 'صيغة الإتاحة es gibt ثابتة بعد الفعل: gibt es.'],
+      writing: {
+        zeigt: 'Patientenweg in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تسلك طريق المريض: موعدًا بنصب مذكر، وساعة فتح بـum، وإحالة بـzum مدمجة، واشتراط وصفة بنصب بعد ohne، وتأمينًا مؤنثًا واجبًا.',
+        hinweise: ['النصب بعد brauchen وohne لا بعد zu المدمجة.', 'كل اسم بـ-ung مؤنث: die Versicherung.'],
+        prompt: 'اكتب جمل النظام الصحي الخمس المستهدفة من الذاكرة مع النصب والدمج وساعة الفتح.',
+        promptDe: 'Ich brauche einen Termin. · Die Praxis öffnet um acht. · Ich brauche eine Überweisung zum Facharzt. · Ohne Rezept gibt es das nicht. · Die Versicherung ist Pflicht.',
+        points: ['Ich brauche einen Termin.', 'Die Praxis öffnet um acht.', 'Ich brauche eine Überweisung zum Facharzt.', 'Ohne Rezept gibt es das nicht.', 'Die Versicherung ist Pflicht.'],
+        minWords: 25,
+        frage: 'اكتب جمل النظام الصحي الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich brauche einen Termin. Die Praxis öffnet um acht. Ich brauche eine Überweisung zum Facharzt. Ohne Rezept gibt es das nicht. Die Versicherung ist Pflicht.',
+      summaryDe: 'Ich brauche einen Termin. Die Praxis öffnet um acht. Ich brauche eine Überweisung zum Facharzt. Ohne Rezept gibt es das nicht. Die Versicherung ist Pflicht.',
+      summaryAr: 'طريق المريض في خمس جمل: موعد بنصب، وفتح بـum acht، وإحالة zum، ووصفة شرط بنصب، وتأمين مؤنث واجب.',
+      summaryRecap: 'طريق المريض أولًا',
+      hwHintDe: '„Clinic“ und „Date“ sind Englisch: Die Praxis öffnet um acht, und ein Termin ist kein Date — sage: „Ich brauche einen Termin.“'
+    }),
 
   U('b1-u5-l6', 'B1', 'مراجعة B1', 'Wiederholung B1', 'pruefstrategie',
     'Am Ende reparierst du Passiv, obwohl und Relativsatz',
