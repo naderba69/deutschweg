@@ -145,7 +145,7 @@
        meets in the material and no word list names (tools/goethe-b1-candidates.txt),
        and a B1 lesson holds 40 words, so the promotion needs its own six-lesson unit. */
     ['الضمائر الظرفية: darauf وdaran وworüber', 'Pronominaladverbien: darauf, daran und worüber', 'الإشارة إلى شيء', 'warte darauf · worüber sprecht ihr · denke oft daran · helfe ihm · darauf warte ich', 'explicit'],
-    ['اسم الفاعل والمفعول كصفة', 'Partizip als Adjektiv', 'الوصف', 'Partizip I und II كصفة', 'explicit'],
+    ['اسم الفاعل والمفعول كصفة: spannend وgespannt', 'Partizip als Adjektiv: spannend und gespannt', 'الوصف', 'der Film ist spannend · das Kind ist gespannt · ein spannendes Buch · die beruhigte Mutter · ist beruhigend', 'explicit'],
     ['الروابط المزدوجة', 'Zweiteilige Konnektoren', 'الربط', 'entweder oder وje desto', 'explicit'],
     ['المجهول مع أفعال المساعدة', 'Passiv mit Modalverben', 'الحدث', 'muss werden', 'explicit'],
     ['الأسلوب الاسمي', 'Nominalstil', 'الكتابة الرسمية', 'beim Ausfüllen des Formulars', 'explicit'],

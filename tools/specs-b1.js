@@ -1868,25 +1868,50 @@ module.exports = [
       hwHintDe: 'Das Pronominaladverb ersetzt Präposition und Sache in einem Wort: Ich warte darauf, nicht auf das. Bei Personen bleibt das Personalpronomen: Ich warte auf ihn. Frage mit worüber und antworte mit darüber.'
     }),
 
-  U('b1-u6-l2', 'B1', 'اسم الفاعل والمفعول كصفة', 'Partizip als Adjektiv', 'deklination',
-    'Am Ende beschreibst du mit spannend und gespannt richtig',
-    'في النهاية تصف بـspannend وgespannt وصفًا سليمًا.',
+  U('b1-u6-l2', 'B1', 'اسم الفاعل والمفعول كصفة: spannend وgespannt', 'Partizip als Adjektiv: spannend und gespannt', 'deklination',
+    'Am Ende unterscheidest du spannend und gespannt und setzt die Endungen richtig — in fünf Sätzen',
+    'في النهاية تميّز بين spannend وgespannt وتضع النهايات صحيحة في خمس جمل.',
     [
-      ['Der Film ist spannend.', 'اسم الفاعل يصف من يفعل', 'Partizip I = aktiv und gleichzeitig', 'Der Film ist gespannt.', 'الفاعل spannend'],
-      ['Das Kind ist gespannt.', 'اسم المفعول يصف من يقع عليه', 'Partizip II = passiv und vorher', 'Das Kind ist spannend.', 'المفعول gespannt'],
-      ['ein spannendes Buch', 'كصفة تأخذ نهاية الصفة', 'Adjektivendung nach ein: -es', 'ein spannend Buch', 'نهاية الصفة'],
-      ['die beruhigte Mutter', 'اسم المفعول كصفة للنقل', 'Partizip II als Adjektiv', 'die beruhigen Mutter', 'beruhigt + e']
+      ['Der Film ist spannend.', 'تصف من يُحدث الأثر', 'اسم الفاعل Partizip I (الفعل + d) يصف من يفعل الآن: الفيلم يُثير فهو spannend', 'Der Film ist gespannt.', 'المُحدِث spannend'],
+      ['Das Kind ist gespannt.', 'تصف من يقع عليه الأثر', 'اسم المفعول Partizip II يصف من تلقّى الأثر: الطفل متلهّف منتظر فهو gespannt', 'Das Kind ist spannend.', 'المتلقّي gespannt'],
+      ['Ich lese ein spannendes Buch.', 'تضع اسم الفاعل قبل الاسم بنهاية صفة', 'قبل الاسم المحايد بعد ein يأخذ اسم الفاعل نهاية الصفة: ein spannendes Buch', 'Ich lese ein spannend Buch.', 'قبل الاسم: spannendes'],
+      ['Die beruhigte Mutter lächelt.', 'تضع اسم المفعول قبل الاسم بنهاية صفة', 'اسم المفعول قبل الاسم يتصرّف كصفة كاملة: die beruhigte Mutter لا beruhigt وحدها', 'Die beruhigt Mutter lächelt.', 'قبل الاسم: beruhigte']
     ],
     [
-      ['Der Film ist spannend.', 'الفيلم مشوّق', 'Der Film ist gespannt.', 'الفاعل spannend.', 'spannend'],
-      ['Das Kind ist gespannt.', 'الطفل متلهّف', 'Das Kind ist spannend.', 'المفعول gespannt.', 'gespannt'],
-      ['ein spannendes Buch', 'كتاب مشوّق', 'ein spannend Buch', 'نهاية الصفة -es.', 'spannendes'],
-      ['Die Musik ist beruhigend.', 'الموسيقى مهدّئة', 'Die Musik ist beruhigen.', 'كصفة: beruhigend.', 'beruhigend']
+      ['Der Film ist spannend.', 'الفيلم مشوّق', 'Der Film ist gespannt.', 'المُحدِث للأثر: spannend.', 'spannend'],
+      ['Das Kind ist gespannt.', 'الطفل متلهّف', 'Das Kind ist spannend.', 'المتلقّي للأثر: gespannt.', 'gespannt'],
+      ['Ich lese ein spannendes Buch.', 'أقرأ كتابًا مشوّقًا', 'Ich lese ein spannend Buch.', 'قبل الاسم نهاية -es: spannendes.', 'spannendes'],
+      ['Die beruhigte Mutter lächelt.', 'الأم المهدّأة تبتسم', 'Die beruhigt Mutter lächelt.', 'قبل الاسم نهاية صفة: beruhigte.', 'beruhigte']
     ],
     'Der Film ist spannend. Das Kind ist gespannt.',
     'Die Musik ist beruhigend.',
-    'Beschreibe zwei Dinge mit -end und zwei mit -t.',
-    'غدًا صف شيئين بـ-end وشيئين بـ-t.'),
+    'Wiederhole morgen die fünf Sätze: Der Film ist spannend. Das Kind ist gespannt. Ich lese ein spannendes Buch. Die beruhigte Mutter lächelt. Die Musik ist beruhigend.',
+    'غدًا أعد جمل اسمَي الفاعل والمفعول الخمس ولاحظ من يفعل ومن يتلقّى والنهاية قبل الاسم وغيابها في الخبر.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'deklination', 'deklination'],
+      imitateNearMiss: 'gespannt',
+      transformHint: 'في جملة الختام القاعدة الأخيرة: Die Musik ist beruhigend — اسم الفاعل في الخبر بلا نهاية، فالنهاية لا تأتي إلا قبل الاسم.',
+      orderSentence: 'Ich lese ein spannendes Buch.',
+      checkOrderSentence: 'Der Film ist spannend.',
+      orderAr: 'رتّب جملة القراءة: Ich أولًا ثم lese في الموضع الثاني قبل المفعول.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich هو الموضع الأول وحده.', 'المفعول ein spannendes Buch يأتي كتلة واحدة بعد الفعل.'],
+      writing: {
+        zeigt: 'Partizipien als Adjektive in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: مُحدِث أثر بـspannend، ومتلقٍّ بـgespannt، واسم فاعل قبل اسم بنهاية -es، واسم مفعول قبل اسم بنهاية صفة، وخاتمة باسم فاعل خبري بلا نهاية.',
+        hinweise: ['اسأل دائمًا: من يُحدث الأثر؟ spannend. ومن يتلقّاه؟ gespannt.', 'النهاية قبل الاسم فقط؛ في الخبر تبقى الصفة بلا نهاية.'],
+        prompt: 'اكتب جمل اسمَي الفاعل والمفعول الخمس المستهدفة من الذاكرة مع التمييز والنهايات.',
+        promptDe: 'Der Film ist spannend. · Das Kind ist gespannt. · Ich lese ein spannendes Buch. · Die beruhigte Mutter lächelt. · Die Musik ist beruhigend.',
+        points: ['Der Film ist spannend.', 'Das Kind ist gespannt.', 'Ich lese ein spannendes Buch.', 'Die beruhigte Mutter lächelt.', 'Die Musik ist beruhigend.'],
+        minWords: 21,
+        frage: 'اكتب جمل اسمَي الفاعل والمفعول الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Der Film ist spannend. Das Kind ist gespannt. Ich lese ein spannendes Buch. Die beruhigte Mutter lächelt. Die Musik ist beruhigend.',
+      summaryDe: 'Der Film ist spannend. Das Kind ist gespannt. Ich lese ein spannendes Buch. Die beruhigte Mutter lächelt. Die Musik ist beruhigend.',
+      summaryAr: 'اسم الفاعل للمُحدِث واسم المفعول للمتلقّي، والنهاية قبل الاسم فقط وبلا نهاية في الخبر.',
+      summaryRecap: 'spannend يفعل وgespannt يتلقّى',
+      hwHintDe: 'Das Partizip I bildest du mit -end und es beschreibt den Handelnden: Der Film ist spannend. Das Partizip II beschreibt den Betroffenen: Das Kind ist gespannt. Vor dem Nomen steht eine Endung, nach sein keine. Merke dir das Paar spannend und gespannt immer zusammen in einem Satz.'
+    }),
 
   U('b1-u6-l3', 'B1', 'الروابط المزدوجة', 'Zweiteilige Konnektoren', 'wortstellung',
     'Am Ende verbindest du zwei Teile mit entweder oder und je desto',

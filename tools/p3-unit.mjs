@@ -14930,6 +14930,132 @@ console.log('\n— P3.2 lexical layer —\n');
       checksF1[4].frage.optionen.some(o => o.text === targetsF1[4]) &&
       checksF1[4].frage.optionen.some(o => o.text === 'Darauf ich warte schon lange.') &&
       Object.values(checksF1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lessonF2 = win.DW_LESSONS['b1-u6-l2'];
+  const rowF2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonF2.id);
+  const byWordF2 = Object.fromEntries(lessonF2.wortschatz.map(it => [it.de, it]));
+  const tricksF2 = lessonF2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsF2 = [
+    'Der Film ist spannend.',
+    'Das Kind ist gespannt.',
+    'Ich lese ein spannendes Buch.',
+    'Die beruhigte Mutter lächelt.',
+    'Die Musik ist beruhigend.'
+  ];
+  t('Corpus lesson b1-u6-l2 precisely scopes five participle-as-adjective moves marking the causer with spannend, the affected with gespannt, an attributive Partizip I ending, an attributive Partizip II ending and a bare predicative closing form',
+    lessonF2.title.de === 'Partizip als Adjektiv: spannend und gespannt' &&
+      lessonF2.title.ar === 'اسم الفاعل والمفعول كصفة: spannend وgespannt' &&
+      rowF2.title.de === lessonF2.title.de && rowF2.title.ar === lessonF2.title.ar &&
+      rowF2.theme === 'الوصف' &&
+      rowF2.grammar.item === 'der Film ist spannend · das Kind ist gespannt · ein spannendes Buch · die beruhigte Mutter · ist beruhigend' &&
+      rowF2.grammar.method === 'explicit' && lessonF2.schritte.length === 36 && lessonF2.wortschatz.length === 40 &&
+      lessonF2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonF2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsF2[i]) &&
+      lessonF2.schritte[0].zeigt.de === 'Am Ende unterscheidest du spannend und gespannt und setzt die Endungen richtig — in fünf Sätzen' &&
+      lessonF2.schritte.find(s => s.id === 's20').zeigt.de === targetsF2[4]);
+
+  const expectedWordsF2 = [
+    'begeistert', 'ärgerlich', 'angenehm', 'anstrengend', 'aufmerksam', 'beruhigen',
+    'neugierig', 'überraschen', 'kritisch', 'fair', 'realistisch', 'erwachsen',
+    'gemeinsam', 'ständig', 'wunderschön', 'die Kälte', 'der Nerv', 'reagieren',
+    'wirken', 'wohl', 'sichtbar', 'klagen', 'verraten', 'warnen',
+    'lohnen', 'leisten', 'behalten', 'erfahren', 'erhalten', 'getrennt',
+    'extra', 'gratis', 'flexibel', 'atmen', 'die Freude', 'die Eile',
+    'der Atem', 'die Aufforderung', 'die Auswahl', 'das Abenteuer'
+  ];
+  const errorsF2 = lessonF2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u6-l2 reviews all 40 entries and three bounded mnemonics without twenty-four manufactured or inverted foils and with ankommen and einatmen no longer branded as errors',
+    Object.keys(byWordF2).join(' | ') === expectedWordsF2.join(' | ') &&
+      lessonF2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonF2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordF2['atmen'].ex === 'Bitte atmen Sie ruhig ein.' &&
+      byWordF2['atmen'].err === 'Bitte atmen Sie ruhig einatmen.' &&
+      byWordF2['extra'].err === 'Ich kommen extra früher.' &&
+      byWordF2['extra'].why.includes('komme … an') &&
+      byWordF2['der Nerv'].err === 'Der Nerv liegt an den Zahn.' &&
+      byWordF2['lohnen'].err === 'Der Umweg lohnt ihn.' &&
+      byWordF2['getrennt'].err === 'Die Betten sind getrennte.' &&
+      byWordF2['das Daten'] === undefined &&
+      !['Die Stimme ist angenehm gemacht.', 'Das Kind ist neugierig gemacht.',
+        'Er liest kritisch gemacht.', 'Die Bewertung war fair gemacht.',
+        'Der Plan ist realistisch gemacht.', 'Die Kinder sind schon erwachsen gemacht.',
+        'Wir lernen gemeinsam zusammen.', 'Er kommt ständig spät.',
+        'Der Garten ist wunderschön gemacht.', 'Der Nerv liegt auf dem Zahn.',
+        'Der Film wirkt ruhig es.', 'Er fühlt sich wohl gut.',
+        'Der Unterschied ist sichtbar gemacht.', 'Der Umweg lohnt sich für.',
+        'Die Betten sind getrennt gemacht.', 'Ich komme extra früher an.',
+        'Der Eintritt ist gratis gemacht.', 'Die Arbeitszeit ist flexibel gemacht.',
+        'Bitte atmen Sie ruhig ein.', 'Die Freude war groß gemacht.',
+        'Der Atem geht ruhig es.', 'Die Aufforderung steht in dem Brief auf.',
+        'Die Auswahl ist groß gemacht.', 'Das Abenteuer war anstrengend gemacht.']
+        .some(x => errorsF2.includes(x)) &&
+      tricksF2.length === 3 && tricksF2[0].wie.includes('Das Buch ist spannend') &&
+      tricksF2[1].wie.includes('Das gespannte Kind wartet') &&
+      tricksF2[2].wie.includes('Das Kind ist gespannt'));
+
+  const wordClozeAF2 = lessonF2.schritte.find(s => s.id === 's09');
+  const wordClozeBF2 = lessonF2.schritte.find(s => s.id === 's13');
+  const wordClozeCF2 = lessonF2.schritte.find(s => s.id === 's17');
+  const imitateF2 = lessonF2.schritte.find(s => s.id === 's19');
+  const drillF2 = lessonF2.schritte.find(s => s.id === 's23');
+  const orderF2 = lessonF2.schritte.find(s => s.id === 's24');
+  const writingF2 = lessonF2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingF2 = lessonF2.schritte.find(s => s.phase === 'Produktion');
+  const summaryF2 = lessonF2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkF2 = lessonF2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u6-l2 aligns five strict learning clozes, sound lese order fields and a 21-word five-target production',
+    wordClozeAF2.frage.zeigt === 'Die Musik ____ mich.' && wordClozeAF2.frage.antworten.join(' ') === 'beruhigt' &&
+      wordClozeAF2.frage.nearMiss.beruhigend && !win.DW.renderers.judgeCloze(wordClozeAF2.frage, 'beruhigend').ok &&
+      wordClozeBF2.frage.zeigt === 'Die Kundin ____ über den Lärm.' && wordClozeBF2.frage.antworten.join(' ') === 'klagt' &&
+      wordClozeBF2.frage.nearMiss.klagen && !win.DW.renderers.judgeCloze(wordClozeBF2.frage, 'klagen').ok &&
+      wordClozeCF2.frage.zeigt === 'Die ____ steht im Brief.' && wordClozeCF2.frage.antworten.join(' ') === 'Aufforderung' &&
+      wordClozeCF2.frage.nearMiss.Aufforderungen && !win.DW.renderers.judgeCloze(wordClozeCF2.frage, 'Aufforderungen').ok &&
+      imitateF2.zeigt.de === 'Der Film ist ____.' && imitateF2.frage.antworten.join(' ') === 'spannend' &&
+      imitateF2.frage.nearMiss.gespannt && !win.DW.renderers.judgeCloze(imitateF2.frage, 'gespannt').ok &&
+      drillF2.frage.zeigt === 'Die Zuschauer waren ____.' && drillF2.frage.antworten.join(' ') === 'begeistert' &&
+      drillF2.frage.nearMiss.begeistern && !win.DW.renderers.judgeCloze(drillF2.frage, 'begeistern').ok &&
+      lessonF2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderF2.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderF2.frage.correct.join(' ') === targetsF2[2] && orderF2.frage.finite === 'lese' && orderF2.frage.verbFirst === false &&
+      orderF2.frage.fields.vorfeld.join(' ') === 'Ich' && orderF2.frage.fields.lsk.join(' ') === 'lese' &&
+      orderF2.frage.fields.mittelfeld.join(' ') === 'ein spannendes Buch.' &&
+      win.DW.order.score(orderF2.frage, orderF2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderF2.frage, ['Ich', 'ein', 'lese', 'spannendes', 'Buch.']).credit < 1 &&
+      writingF2.frage.points.join(' | ') === targetsF2.join(' | ') && writingF2.frage.minWords === 21 &&
+      targetsF2.join(' ').split(/\s+/).length === 21 &&
+      targetsF2.every(x => [writingF2.frage.promptDe, summaryF2.zeigt.de, homeworkF2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsF2.every(x => norm(speakingF2.erklaerung).includes(norm(x))) &&
+      (homeworkF2.hinweise || []).join(' ').includes('mit -end') &&
+      (homeworkF2.hinweise || []).join(' ').includes('nach sein keine'));
+
+  const checksF2 = lessonF2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckF2 = checksF2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckF2 = checksF2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u6-l2 makes 80 percent four of five, independently checking the attributive Partizip II, predicative begeistert and spannend order, Partizip I against its infinitive and the bare predicative closure',
+    checksF2.length === 5 && checksF2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksF2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksF2.every(s => /^cap\.b1-u6-l2\.s\d+$/.test(s.frage.prereq || '')) && checksF2.every(s => !s.hinweise) &&
+      checksF2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u6-l2.s07 | cap.b1-u6-l2.s23 | cap.b1-u6-l2.s24 | cap.b1-u6-l2.s08 | cap.b1-u6-l2.s20' &&
+      new Set(checksF2.map(s => s.frage.prereq)).size === 5 &&
+      checksF2[0].frage.optionen.some(o => o.text === targetsF2[3]) &&
+      checksF2[0].frage.optionen.some(o => o.text === 'Die beruhigt Mutter lächelt.') &&
+      Object.values(checksF2[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheckF2.frage.zeigt === 'Die Zuschauer waren ____.' &&
+      clozeCheckF2.frage.antworten.join(' ') === 'begeistert' && clozeCheckF2.frage.nearMiss.begeistern &&
+      !win.DW.renderers.judgeCloze(clozeCheckF2.frage, 'begeistern').ok &&
+      orderCheckF2.frage.correct.join(' ') === targetsF2[0] && orderCheckF2.frage.finite === 'ist' &&
+      orderCheckF2.frage.fields.vorfeld.join(' ') === 'Der Film' && orderCheckF2.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckF2.frage.fields.mittelfeld.join(' ') === 'spannend.' &&
+      win.DW.order.score(orderCheckF2.frage, orderCheckF2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckF2.frage, ['Der', 'ist', 'Film', 'spannend.']).credit < 1 &&
+      checksF2[3].frage.optionen.some(o => o.text === 'Der Tag war anstrengend.') &&
+      checksF2[3].frage.optionen.some(o => o.text === 'Der Tag war anstrengen.') &&
+      Object.values(checksF2[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksF2[4].frage.optionen.some(o => o.text === targetsF2[4]) &&
+      checksF2[4].frage.optionen.some(o => o.text === 'Die Musik ist beruhigende.') &&
+      Object.values(checksF2[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
