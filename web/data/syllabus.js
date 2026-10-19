@@ -127,7 +127,7 @@
     ['الاستهلاك: مقارنة الأسعار والشراء الذكي', 'Konsum: Preise vergleichen und klug kaufen', 'الشراء', 'Preise sind gestiegen (Perfekt mit sein) · größer als + Nominativ · zehn Prozent Rabatt ohne von · mit Karte zahlen · achten auf + Akkusativ', 'explicit'],
     ['التطوع: الالتزام والمشاركة والمساعدة', 'Ehrenamt: sich engagieren, teilnehmen und helfen', 'المجتمع', 'sich engagieren für · teilnehmen an + Dativ · helfen + Dativ · sammeln für · seit + Dativ', 'explicit'],
     ['تخطيط الرحلة: الحجز والتبديل والوصول', 'Reiseplanung: buchen, umsteigen und ankommen', 'السفر', 'buchen + Akkusativ · ist bestätigt · fährt um … ab · sind umgestiegen (sein) · dauert + Dauer', 'explicit'],
-    ['تعليل الرأي', 'Meinung begründen', 'الحجاج', 'لأن ومثال', 'explicit'],
+    ['تعليل الرأي: الموقف والموازنة والاعتراض', 'Meinung begründen: Position, Abwägung und Widerspruch', 'الحجاج', 'Meiner Meinung nach · müssen … abwägen · einerseits/andererseits + Inversion · widersprechen + Dativ', 'explicit'],
     ['التلخيص', 'Zusammenfassung', 'القراءة', 'تلخيص فقرة', 'explicit'],
     ['الحوار', 'Diskussion', 'النقاش', 'موافقة جزئية', 'explicit'],
     ['الرسالة الرسمية', 'Formeller Brief', 'الكتابة', 'افتتاح رسمي', 'explicit'],

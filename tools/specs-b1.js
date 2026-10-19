@@ -1187,25 +1187,50 @@ module.exports = [
       hwHintDe: 'Nicht mit „if“ die Bedingung beginnen (das heißt falls), der Zug „cancelt“ nicht und kann auch nicht „canceln“ — das heißt ausfallen; und aus „we need“ wird nicht „wir need“, sondern wir brauchen eine Alternative.'
     }),
 
-  U('b1-u4-l3', 'B1', 'تعليل الرأي', 'Meinung begründen', 'pruefstrategie',
-    'Am Ende stützt du eine Meinung mit einem Beispiel',
-    'في النهاية تسند رأيًا بمثال.',
+  U('b1-u4-l3', 'B1', 'تعليل الرأي: الموقف والموازنة والاعتراض', 'Meinung begründen: Position, Abwägung und Widerspruch', 'pruefstrategie',
+    'Am Ende begründest du eine Meinung in fünf Sätzen: Position, Abwägung, zwei Seiten und Widerspruch',
+    'في النهاية تعلّل رأيًا في خمس جمل: موقف بصيغة ثابتة، وموازنة كاملة اللفظ، وجهتا كفة تقلبان الجملة، واعتراض بالداتيف.',
     [
-      ['Meinung dann Beispiel', 'الرأي بلا مثال ضعيف', 'المثال بلا رأي ضائع', 'nur ein Beispiel ohne Meinung', 'الرأي أولًا'],
-      ['zum Beispiel', 'المثال zum Beispiel', 'لا for example خليط', 'for example in Tunesien', 'for example إنجليزية'],
-      ['das überzeugt mich nicht', 'الرفض يعلّل', 'لا I disagree فقط', 'ich disagree', 'disagree إنجليزية'],
-      ['zwei Gründe', 'سببان يكفيان', 'خمسة أسباب تضيّع الوقت', 'fünf Gründe ohne Ende', 'سببان حد الدرس']
+      ['Meiner Meinung nach ist das falsch.', 'تعلن موقفك بصيغة ثابتة', 'عبارة الموقف ثابتة بالمضاف المحذوف خفيفًا: Meiner Meinung nach (صيغة ملكية)، ولا تبدأ بحرف جر', 'In meiner Meinung ist das falsch.', 'الموقف بصيغة ثابتة: Meiner Meinung nach'],
+      ['Wir müssen die Vor- und Nachteile abwägen.', 'تفتح باب الموازنة قبل الحكم', 'abwägen فعل منفصل لكنه مع müssen يعود كلمة واحدة في المصدر بنهاية الجملة: müssen … abwägen', 'Wir müssen die Vor- und Nachteile wägen.', 'المصدر المنفصل مع ناقص موحّد: abwägen'],
+      ['Einerseits ist es teuer.', 'تضع نصف الحجة الأول', 'الرابط المتقدّم يحتل الموضع الأول والفعل يتمسّك بالثاني قبل الفاعل: Einerseits ist es', 'Einerseits es ist teuer.', 'بعد الرابط المتقدم الفعل قبل الفاعل: ist es'],
+      ['Andererseits spart es Zeit.', 'تضع النصف المقابل', 'القاعدة نفسها في الكفّة الأخرى: Andererseits spart es — الفاعل بعد الفعل', 'Andererseits es spart Zeit.', 'في النصف الآخر أيضًا: spart es']
     ],
     [
-      ['Ich finde das riskant.', 'أجد هذا خطرًا', 'Ich disagree nur so', 'الرأي finde', 'finde'],
-      ['Zum Beispiel in Tunesien.', 'على سبيل المثال في تونس', 'For example in Tunesien', 'المثال Zum Beispiel', 'Beispiel'],
-      ['Das überzeugt mich nicht.', 'هذا لا يقنعني', 'Ich disagree', 'الرفض جملة ألمانية', 'überzeugt'],
-      ['Erstens die Kosten.', 'أولًا الكلفة', 'Fünf Gründe ohne Ende', 'سببان يكفيان', 'Erstens']
+      ['Meiner Meinung nach ist das falsch.', 'في رأيي هذا خاطئ', 'In meiner Meinung ist das falsch.', 'الموقف بصيغة الملكية الثابتة: Meiner Meinung nach', 'Meinung'],
+      ['Wir müssen die Vor- und Nachteile abwägen.', 'علينا أن نوازن المحاسن والمساوئ', 'Wir müssen die Vor- und Nachteile wägen.', 'المصدر المنفصل كاملًا بعد الناقص: abwägen', 'abwägen'],
+      ['Einerseits ist es teuer.', 'من جهةٍ هو غالٍ', 'Einerseits es ist teuer.', 'الجهة الأولى تقلب الجملة: ist es', 'Einerseits'],
+      ['Andererseits spart es Zeit.', 'ومن الجهة الأخرى يوفّر الوقت', 'Andererseits es spart Zeit.', 'الجهة الأخرى تبقي القلب: spart es', 'Andererseits']
     ],
-    'Ich finde das riskant. Zum Beispiel die Kosten.',
-    'Das überzeugt mich nicht.',
-    'Begründe morgen eine Meinung mit einem Beispiel.',
-    'غدًا علّل رأيًا بمثال.'),
+    'Meiner Meinung nach ist das falsch.',
+    'Ich muss dir widersprechen.',
+    'Wiederhole morgen die fünf Sätze: Meiner Meinung nach ist das falsch. Wir müssen die Vor- und Nachteile abwägen. Einerseits ist es teuer. Andererseits spart es Zeit. Ich muss dir widersprechen.',
+    'غدًا أعد جمل الحجاج الخمس ولاحظ صيغة الموقف الثابتة وقلب الجملتين وداتيف الاعتراض.',
+    {
+      factFamilies: ['register', 'wortstellung', 'wortstellung', 'wortstellung'],
+      imitateNearMiss: 'Meinungen',
+      transformHint: 'في جملة الختام اعتراض مهذّب حازم: Ich muss dir widersprechen — الاعتراض يتلقاه الشخص بداتيف dir لا بالنصب.',
+      orderSentence: 'Meiner Meinung nach ist das falsch.',
+      checkOrderSentence: 'Andererseits spart es Zeit.',
+      orderAr: 'رتّب جملة الموقف: عبارة الموقف كاملة أولًا ثم الفعل ist في الموضع الثاني.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل المصرّف ثابت في الجملة الرئيسية.', 'عبارة الموقف Meiner Meinung nach تبقى كتلة واحدة في المقدمة.'],
+      writing: {
+        zeigt: 'Eine Meinung in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل حجاج: موقف بصيغة ثابتة، ودعوة لموازنة بمصدر منفصل كامل، ووجهتان برابطين متقدمين يقلبان الجملة، واعتراضًا ختاميًا بداتيف.',
+        hinweise: ['الرأي قبل الحجج، والحجج كفّتان لا قائمة.', 'احذر "in meiner Meinung": صيغة الموقف بالألمانية Meiner Meinung nach.'],
+        prompt: 'اكتب جمل الحجاج الخمس المستهدفة من الذاكرة مع قلب مواضع النصفين وداتيف الاعتراض.',
+        promptDe: 'Meiner Meinung nach ist das falsch. · Wir müssen die Vor- und Nachteile abwägen. · Einerseits ist es teuer. · Andererseits spart es Zeit. · Ich muss dir widersprechen.',
+        points: ['Meiner Meinung nach ist das falsch.', 'Wir müssen die Vor- und Nachteile abwägen.', 'Einerseits ist es teuer.', 'Andererseits spart es Zeit.', 'Ich muss dir widersprechen.'],
+        minWords: 25,
+        frage: 'اكتب جمل الحجاج الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Meiner Meinung nach ist das falsch. Wir müssen die Vor- und Nachteile abwägen. Einerseits ist es teuer. Andererseits spart es Zeit. Ich muss dir widersprechen.',
+      summaryDe: 'Meiner Meinung nach ist das falsch. Wir müssen die Vor- und Nachteile abwägen. Einerseits ist es teuer. Andererseits spart es Zeit. Ich muss dir widersprechen.',
+      summaryAr: 'الحجاج في خمس جمل: موقف بصيغة الملكية الثابتة، ودعوة إلى الموازنة بمصدر منفصل كامل، ووجهتان بلفظي einerseits/andererseits المتقدمين مع قلب الفعل قبل الفاعل، واعتراض بداتيف الشخص.',
+      summaryRecap: 'رأي موثّق بخمس خطوات',
+      hwHintDe: 'Nicht „for example“ und nicht „I disagree“ wörtlich ins Deutsche tragen: „For example, this is wrong“ heißt „Das überzeugt mich nicht, weil …“ — mit Beispiel und Grund auf Deutsch.'
+    }),
 
   U('b1-u4-l4', 'B1', 'التلخيص', 'Zusammenfassung', 'pruefstrategie',
     'Am Ende fasst du einen Absatz in zwei Sätzen zusammen',

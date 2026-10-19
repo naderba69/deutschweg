@@ -141,18 +141,18 @@ module.exports = {
   'b1-u4-l3': {
     items: [
       ['die Meinung', 'die Meinungen', 'الرأي', 'Meiner Meinung nach ist das falsch.', 'In meiner Meinung ist das falsch.', 'الصيغة الثابتة: meiner Meinung nach.', 'register', 'Meinung'],
-      ['die Begründung', 'die Begründungen', 'التعليل', 'Ohne Begründung wirkt das schwach.', 'Ohne eine Begründung wirkt das schwach.', 'بعد ohne بلا أداة.', 'kasus', 'Begründung'],
+      ['die Begründung', 'die Begründungen', 'التعليل', 'Ohne Begründung wirkt das schwach.', 'Ohne der Begründung wirkt das schwach.', 'ohne + نصب: Ohne Begründung — بلا أداة عندما يعم المعنى.', 'kasus', 'Begründung'],
       ['begründen', 'begründet · begründete · hat begründet', 'يعلّل', 'Wie begründest du das?', 'Wie begründest du für das?', 'بلا حرف جر.', 'kasus', 'begründest'],
-      ['das Argument', 'die Argumente', 'الحجة', 'Das Argument überzeugt mich.', 'Das Argument überzeugt mich es.', 'لا ضمير زائد.', 'wortstellung', 'Argument'],
-      ['argumentieren', 'argumentiert · argumentierte · hat argumentiert', 'يحتجّ', 'Sie argumentiert ruhig und sachlich.', 'Sie argumentiert ruhig und sachlich es.', 'لا ضمير زائد.', 'wortstellung', 'argumentiert'],
+      ['das Argument', 'die Argumente', 'الحجة', 'Das Argument überzeugt mich.', 'Das Argument überzeugen mich.', 'فاعل مفرد وفعل مفرد: überzeugt.', 'konjugation', 'Argument'],
+      ['argumentieren', 'argumentiert · argumentierte · hat argumentiert', 'يحتجّ', 'Sie argumentiert ruhig und sachlich.', 'Sie argumentieren ruhig und sachlich.', 'فاعل مفرد (sie) وفعل مفرد: argumentiert.', 'konjugation', 'argumentiert'],
       ['der Grund', 'die Gründe', 'السبب', 'Es gibt mehrere Gründe dafür.', 'Es gibt mehrere Grund dafür.', 'الجمع: Gründe.', 'plural', 'Gründe'],
       ['der Beweis', 'die Beweise', 'الدليل', 'Wo ist der Beweis?', 'Wo ist die Beweis?', 'مذكر: der.', 'genus', 'Beweis'],
-      ['beweisen', 'beweist · bewies · hat bewiesen', 'يبرهن', 'Das lässt sich leicht beweisen.', 'Das lässt sich leicht beweisen es.', 'لا ضمير زائد.', 'wortstellung', 'beweisen'],
-      ['das Beispiel', 'die Beispiele', 'المثال', 'Ein Beispiel macht es klar.', 'Ein Beispiel macht es klar es.', 'لا ضمير زائد.', 'wortstellung', 'Beispiel'],
+      ['beweisen', 'beweist · bewies · hat bewiesen', 'يبرهن', 'Das lässt sich leicht beweisen.', 'Das lässt sich leicht beweist.', 'بعد lässt sich يأتي المصدر: beweisen لا صيغة مصرفة.', 'konjugation', 'beweisen'],
+      ['das Beispiel', 'die Beispiele', 'المثال', 'Ein Beispiel macht es klar.', 'Ein Beispiel machen es klar.', 'فاعل مفرد وفعل مفرد: macht.', 'konjugation', 'Beispiel'],
       ['der Beleg', 'die Belege', 'الإثبات', 'Für diese Zahl fehlt der Beleg.', 'Für diese Zahl fehlt die Beleg.', 'مذكر: der.', 'genus', 'Beleg'],
       ['der Standpunkt', 'die Standpunkte', 'الموقف', 'Ich verstehe deinen Standpunkt.', 'Ich verstehe dein Standpunkt.', 'مذكر نصب: deinen.', 'kasus', 'Standpunkt'],
       ['die Ansicht', 'die Ansichten', 'الرؤية', 'Meiner Ansicht nach stimmt das.', 'In meiner Ansicht stimmt das.', 'meiner Ansicht nach.', 'register', 'Ansicht'],
-      ['die Position', 'die Positionen', 'الموقف', 'Seine Position ist klar.', 'Seine Position ist klar gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Position'],
+      ['die Position', 'die Positionen', 'الموقف', 'Seine Position ist klar.', 'Seine Position sind klar.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Position'],
       ['einerseits', '—', 'من جهة', 'Einerseits ist es teuer.', 'Einerseits es ist teuer.', 'الفعل ثانٍ.', 'wortstellung', 'einerseits'],
       ['andererseits', '—', 'من جهة أخرى', 'Andererseits spart es Zeit.', 'Andererseits es spart Zeit.', 'الفعل ثانٍ.', 'wortstellung', 'andererseits'],
       ['zwar', '—', 'نعم ولكن', 'Zwar ist es weit, aber schön.', 'Zwar es ist weit, aber schön.', 'الفعل ثانٍ بعد zwar.', 'wortstellung', 'Zwar'],
@@ -160,32 +160,49 @@ module.exports = {
       ['dennoch', '—', 'ومع ذلك', 'Es war teuer, dennoch hat es sich gelohnt.', 'Es war teuer, dennoch es hat sich gelohnt.', 'الفعل ثانٍ.', 'wortstellung', 'dennoch'],
       ['folglich', '—', 'وبالتالي', 'Die Kosten steigen, folglich sparen wir.', 'Die Kosten steigen, folglich wir sparen.', 'الفعل ثانٍ.', 'wortstellung', 'folglich'],
       ['daher', '—', 'من هنا', 'Es fehlt Geld, daher wird gekürzt.', 'Es fehlt Geld, daher wird kürzen.', 'المجهول: gekürzt.', 'konjugation', 'daher'],
-      ['im Gegenteil', '—', 'على العكس', 'Im Gegenteil, es ist billiger.', 'Im Gegenteil, es ist billiger es.', 'لا ضمير زائد.', 'wortstellung', 'Gegenteil'],
-      ['im Vergleich zu', '—', 'بالمقارنة مع', 'Im Vergleich zu letztem Jahr ist es besser.', 'Im Vergleich mit letztem Jahr ist es besser.', 'zu لا mit.', 'präposition', 'Vergleich'],
+      ['im Gegenteil', '—', 'على العكس', 'Im Gegenteil, es ist billiger.', 'Im Gegenteil, es sind billiger.', 'مع es مفرد وفعل مفرد: ist.', 'konjugation', 'Gegenteil'],
+      ['im Vergleich zu', '—', 'بالمقارنة مع', 'Im Vergleich zu letztem Jahr ist es besser.', 'Im Vergleich zu letztes Jahr ist es besser.', 'im Vergleich zu + داتيف: letztem Jahr — وتجوز mit بدلًا من zu أيضًا.', 'präposition', 'Vergleich'],
       ['zum einen', '—', 'من ناحية', 'Zum einen ist es schnell, zum anderen günstig.', 'Zum einen es ist schnell, zum anderen günstig.', 'الفعل ثانٍ.', 'wortstellung', 'einen'],
       ['zum anderen', '—', 'ومن ناحية أخرى', 'Zum anderen spart es Geld.', 'Zum anderen es spart Geld.', 'الفعل ثانٍ.', 'wortstellung', 'anderen'],
       ['obwohl', '—', 'رغم أنّ', 'Obwohl es teuer ist, kaufe ich es.', 'Obwohl es ist teuer, kaufe ich es.', 'الفعل في النهاية.', 'wortstellung', 'obwohl'],
       ['trotzdem', '—', 'رغم ذلك', 'Es ist teuer, trotzdem kaufe ich es.', 'Es ist teuer, trotzdem ich kaufe es.', 'الفعل ثانٍ.', 'wortstellung', 'trotzdem'],
       ['deshalb', '—', 'لذلك', 'Ich mag es, deshalb kaufe ich es.', 'Ich mag es, deshalb ich kaufe es.', 'الفعل ثانٍ.', 'wortstellung', 'deshalb'],
-      ['die Schlussfolgerung', 'die Schlussfolgerungen', 'الاستنتاج', 'Deine Schlussfolgerung ist falsch.', 'Deine Schlussfolgerung ist falsch gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Schlussfolgerung'],
-      ['das Fazit', 'die Fazits', 'الخلاصة', 'Das Fazit lautet: Qualität siegt.', 'Das Fazit lautet: Qualität siegt es.', 'لا ضمير زائد.', 'wortstellung', 'Fazit'],
-      ['die Zusammenfassung', 'die Zusammenfassungen', 'التلخيص', 'Die Zusammenfassung ist kurz.', 'Die Zusammenfassung ist kurz gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Zusammenfassung'],
-      ['die Behauptung', 'die Behauptungen', 'الادّعاء', 'Diese Behauptung stimmt nicht.', 'Diese Behauptung stimmt nicht es.', 'لا ضمير زائد.', 'wortstellung', 'Behauptung'],
+      ['die Schlussfolgerung', 'die Schlussfolgerungen', 'الاستنتاج', 'Deine Schlussfolgerung ist falsch.', 'Deine Schlussfolgerung sind falsch.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Schlussfolgerung'],
+      ['das Fazit', 'die Fazits', 'الخلاصة', 'Das Fazit lautet: Qualität siegt.', 'Das Fazit lautet: Qualität siegen.', 'فاعل مفرد وفعل مفرد: siegt.', 'konjugation', 'Fazit'],
+      ['die Zusammenfassung', 'die Zusammenfassungen', 'التلخيص', 'Die Zusammenfassung ist kurz.', 'Die Zusammenfassung sind kurz.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Zusammenfassung'],
+      ['die Behauptung', 'die Behauptungen', 'الادّعاء', 'Diese Behauptung stimmt nicht.', 'Diese Behauptung stimmen nicht.', 'فاعل مفرد وفعل مفرد: stimmt.', 'konjugation', 'Behauptung'],
       ['behaupten', 'behauptet · behauptete · hat behauptet', 'يدّعي', 'Er behauptet, dass alles in Ordnung ist.', 'Er behauptet, dass alles ist in Ordnung.', 'الفعل في النهاية.', 'wortstellung', 'behauptet'],
       ['widersprechen', 'widerspricht · widersprach · hat widersprochen', 'يعترض', 'Ich muss dir widersprechen.', 'Ich muss dich widersprechen.', 'داتيف: dir.', 'kasus', 'widersprechen'],
       ['zustimmen', 'stimmt zu · stimmte zu · hat zugestimmt', 'يوافق', 'Da stimme ich dir zu.', 'Da stimme ich dich zu.', 'داتيف: dir.', 'kasus', 'stimme'],
       ['zustimmen können', 'kann zu · konnte zu · hat zugestimmt', 'يمكن الموافقة', 'Dem kann ich zustimmen.', 'Das kann ich zustimmen.', 'داتيف: dem.', 'kasus', 'zustimmen'],
-      ['die Ablehnung', 'die Ablehnungen', 'الرفض', 'Die Ablehnung kam per Brief.', 'Die Ablehnung kam mit Brief.', 'per Brief.', 'präposition', 'Ablehnung'],
+      ['die Ablehnung', 'die Ablehnungen', 'الرفض', 'Die Ablehnung kam per Brief.', 'Die Ablehnung kam mit Brief.', 'وسيلة التسليم الثابتة: per Brief؛ وبأداة تجوز mit einem Brief.', 'präposition', 'Ablehnung'],
       ['ablehnen', 'lehnt ab · lehnte ab · hat abgelehnt', 'يرفض', 'Sie lehnt den Vorschlag ab.', 'Sie lehnt den Vorschlag.', 'المنفصل: ab.', 'wortstellung', 'ab'],
       ['befürworten', 'befürwortet · befürwortete · hat befürwortet', 'يؤيّد', 'Die Mehrheit befürwortet den Plan.', 'Die Mehrheit befürwortet für den Plan.', 'بلا حرف جر.', 'kasus', 'befürwortet'],
       ['abwägen', 'wägt ab · wog ab · hat abgewogen', 'يوازن', 'Wir müssen die Vor- und Nachteile abwägen.', 'Wir müssen die Vor- und Nachteile wägen.', 'المنفصل: ab.', 'wortstellung', 'abwägen'],
-      ['die Konsequenz', 'die Konsequenzen', 'التبعة', 'Diese Konsequenz ist ernst.', 'Diese Konsequenz ist ernst gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Konsequenz']
+      ['die Konsequenz', 'die Konsequenzen', 'التبعة', 'Diese Konsequenz ist ernst.', 'Diese Konsequenz sind ernst.', 'فاعل مفرد وفعل مفرد: ist.', 'konjugation', 'Konsequenz']
     ],
     tricks: [
       { trick: 'الرأي ثم السبب ثم الشاهد: Ich bin der Meinung, weil … / Zum Beispiel …', wie: 'Ich bin der Meinung, dass das falsch ist. Der Grund dafür ist einfach. Zum Beispiel …', warum: 'المقال الألماني يُبنى على هذا التدرّج، والعربية تبدأ بالحكم ثم تسرد بلا ربط صريح.', anchor: 'die Begründung' },
       { trick: 'ربط المتناقضات: zwar … aber · einerseits … andererseits · einerseits … dennoch', wie: 'Zwar ist es teuer, aber es lohnt sich. · Einerseits …, andererseits …', warum: 'الكتابة B1 تُقيَّم على الربط المزدوج، والعربية تكتفي بـ«لكن».', anchor: 'zwar' },
       { trick: 'الاعتراض والموافقة بداتيف: Ich stimme dir zu · Ich widerspreche dir', wie: 'Da stimme ich dir zu. · Ich muss dir leider widersprechen.', warum: 'الفعلان يطلبان داتيف، والعربية تصل الفعل بالشخص بلا حالة.', anchor: 'zustimmen' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Grund': 'Grund',
+      'im Vergleich zu': 'Vergleiche',
+      'befürworten': 'befürworten'
+    },
+    clozeItemIndex: 7,
+    clozeNearMiss: 'beweist',
+    checkItemIndex: 33,
+    extraCheck: {
+      right: 'Ich muss dir widersprechen.',
+      bad: 'Ich muss dich widersprechen.',
+      why: 'widersprechen مع الداتيف: dir لا dich.',
+      family: 'kasus',
+      prereq: 'cap.b1-u4-l3.s20',
+      frage: 'أي جملة يصح فيها اقتران الاعتراض؟'
+    }
   }
 
 };

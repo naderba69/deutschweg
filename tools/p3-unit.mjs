@@ -13084,6 +13084,124 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD2[4].frage.optionen.some(o => o.text === 'Die Fahrt dauert für vier Stunden.') &&
       Object.values(checksD2[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 
+
+  const lessonD3 = win.DW_LESSONS['b1-u4-l3'];
+  const rowD3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD3.id);
+  const byWordD3 = Object.fromEntries(lessonD3.wortschatz.map(it => [it.de, it]));
+  const tricksD3 = lessonD3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD3 = [
+    'Meiner Meinung nach ist das falsch.',
+    'Wir müssen die Vor- und Nachteile abwägen.',
+    'Einerseits ist es teuer.',
+    'Andererseits spart es Zeit.',
+    'Ich muss dir widersprechen.'
+  ];
+  t('Corpus lesson b1-u4-l3 precisely scopes one argued opinion with fixed position phrase, full separated infinitive, double inversion and dative objection across five targets',
+    lessonD3.title.de === 'Meinung begründen: Position, Abwägung und Widerspruch' &&
+      lessonD3.title.ar === 'تعليل الرأي: الموقف والموازنة والاعتراض' &&
+      rowD3.title.de === lessonD3.title.de && rowD3.title.ar === lessonD3.title.ar &&
+      rowD3.theme === 'الحجاج' &&
+      rowD3.grammar.item === 'Meiner Meinung nach · müssen … abwägen · einerseits/andererseits + Inversion · widersprechen + Dativ' &&
+      rowD3.grammar.method === 'explicit' && lessonD3.schritte.length === 36 && lessonD3.wortschatz.length === 40 &&
+      lessonD3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD3[i]) &&
+      lessonD3.schritte[0].zeigt.de === 'Am Ende begründest du eine Meinung in fünf Sätzen: Position, Abwägung, zwei Seiten und Widerspruch' &&
+      lessonD3.schritte.find(s => s.id === 's20').zeigt.de === targetsD3[4]);
+
+  const expectedWordsD3 = [
+    'die Meinung', 'die Begründung', 'begründen', 'das Argument', 'argumentieren',
+    'der Grund', 'der Beweis', 'beweisen', 'das Beispiel', 'der Beleg', 'der Standpunkt',
+    'die Ansicht', 'die Position', 'einerseits', 'andererseits', 'zwar', 'allerdings',
+    'dennoch', 'folglich', 'daher', 'im Gegenteil', 'im Vergleich zu', 'zum einen',
+    'zum anderen', 'obwohl', 'trotzdem', 'deshalb', 'die Schlussfolgerung', 'das Fazit',
+    'die Zusammenfassung', 'die Behauptung', 'behaupten', 'widersprechen', 'zustimmen',
+    'zustimmen können', 'die Ablehnung', 'ablehnen', 'befürworten', 'abwägen', 'die Konsequenz'
+  ];
+  const errorsD3 = lessonD3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l3 reviews all 40 entries and three bounded mnemonics without fourteen manufactured appendages or both article and comparison pseudo-errors, keeping agreement, case and word order as genuine error axes',
+    Object.keys(byWordD3).join(' | ') === expectedWordsD3.join(' | ') &&
+      lessonD3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD3['die Begründung'].err === 'Ohne der Begründung wirkt das schwach.' &&
+      byWordD3['im Vergleich zu'].err === 'Im Vergleich zu letztes Jahr ist es besser.' &&
+      byWordD3['im Vergleich zu'].why.includes('mit') &&
+      byWordD3['die Ablehnung'].why.includes('mit einem Brief') &&
+      byWordD3['beweisen'].err === 'Das lässt sich leicht beweist.' &&
+      byWordD3['das Argument'].err === 'Das Argument überzeugen mich.' &&
+      !['Ohne eine Begründung wirkt das schwach.', 'Das Argument überzeugt mich es.',
+        'Sie argumentiert ruhig und sachlich es.', 'Das lässt sich leicht beweisen es.',
+        'Ein Beispiel macht es klar es.', 'Seine Position ist klar gemacht.',
+        'Im Gegenteil, es ist billiger es.', 'Im Vergleich mit letztem Jahr ist es besser.',
+        'Deine Schlussfolgerung ist falsch gemacht.', 'Das Fazit lautet: Qualität siegt es.',
+        'Die Zusammenfassung ist kurz gemacht.', 'Diese Behauptung stimmt nicht es.',
+        'Diese Konsequenz ist ernst gemacht.']
+        .some(x => errorsD3.includes(x)) &&
+      tricksD3.length === 3 && tricksD3[0].wie.includes('Ich bin der Meinung') &&
+      tricksD3[1].wie.includes('Zwar ist es teuer, aber es lohnt sich') &&
+      tricksD3[2].wie.includes('Ich muss dir leider widersprechen'));
+
+  const wordClozeAD3 = lessonD3.schritte.find(s => s.id === 's09');
+  const wordClozeBD3 = lessonD3.schritte.find(s => s.id === 's13');
+  const wordClozeCD3 = lessonD3.schritte.find(s => s.id === 's17');
+  const imitateD3 = lessonD3.schritte.find(s => s.id === 's19');
+  const drillD3 = lessonD3.schritte.find(s => s.id === 's23');
+  const orderD3 = lessonD3.schritte.find(s => s.id === 's24');
+  const writingD3 = lessonD3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD3 = lessonD3.schritte.find(s => s.phase === 'Produktion');
+  const summaryD3 = lessonD3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD3 = lessonD3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l3 aligns five strict learning clozes, sound fronted-phrase order fields and a 25-word five-target production',
+    wordClozeAD3.frage.zeigt === 'Es gibt mehrere ____ dafür.' && wordClozeAD3.frage.antworten.join(' ') === 'Gründe' &&
+      wordClozeAD3.frage.nearMiss.Grund && !win.DW.renderers.judgeCloze(wordClozeAD3.frage, 'Grund').ok &&
+      wordClozeBD3.frage.zeigt === 'Im ____ zu letztem Jahr ist es besser.' && wordClozeBD3.frage.antworten.join(' ') === 'Vergleich' &&
+      wordClozeBD3.frage.nearMiss.Vergleiche && !win.DW.renderers.judgeCloze(wordClozeBD3.frage, 'Vergleiche').ok &&
+      wordClozeCD3.frage.zeigt === 'Die Mehrheit ____ den Plan.' && wordClozeCD3.frage.antworten.join(' ') === 'befürwortet' &&
+      wordClozeCD3.frage.nearMiss['befürworten'] && !win.DW.renderers.judgeCloze(wordClozeCD3.frage, 'befürworten').ok &&
+      imitateD3.zeigt.de === 'Meiner ____ nach ist das falsch.' && imitateD3.frage.antworten.join(' ') === 'Meinung' &&
+      imitateD3.frage.nearMiss.Meinungen && !win.DW.renderers.judgeCloze(imitateD3.frage, 'Meinungen').ok &&
+      drillD3.frage.zeigt === 'Das lässt sich leicht ____.' && drillD3.frage.antworten.join(' ') === 'beweisen' &&
+      drillD3.frage.nearMiss.beweist && !win.DW.renderers.judgeCloze(drillD3.frage, 'beweist').ok &&
+      lessonD3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD3.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD3.frage.correct.join(' ') === targetsD3[0] && orderD3.frage.finite === 'ist' && orderD3.frage.verbFirst === false &&
+      orderD3.frage.fields.vorfeld.join(' ') === 'Meiner Meinung nach' && orderD3.frage.fields.lsk.join(' ') === 'ist' &&
+      orderD3.frage.fields.mittelfeld.join(' ') === 'das falsch.' &&
+      win.DW.order.score(orderD3.frage, orderD3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD3.frage, ['Meiner', 'Meinung', 'das', 'nach', 'falsch.', 'ist']).credit < 1 &&
+      writingD3.frage.points.join(' | ') === targetsD3.join(' | ') && writingD3.frage.minWords === 25 &&
+      targetsD3.join(' ').split(/\s+/).length === 25 &&
+      targetsD3.every(x => [writingD3.frage.promptDe, summaryD3.zeigt.de, homeworkD3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD3.every(x => norm(speakingD3.erklaerung).includes(norm(x))));
+
+  const checksD3 = lessonD3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD3 = checksD3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD3 = checksD3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l3 makes 80 percent four of five, independently checking andererseits inversion, beweisen cloze, fronted order, dative agreement-verb and dative objection',
+    checksD3.length === 5 && checksD3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD3.every(s => /^cap\.b1-u4-l3\.s\d+$/.test(s.frage.prereq || '')) && checksD3.every(s => !s.hinweise) &&
+      checksD3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l3.s07 | cap.b1-u4-l3.s23 | cap.b1-u4-l3.s24 | cap.b1-u4-l3.s16 | cap.b1-u4-l3.s20' &&
+      new Set(checksD3.map(s => s.frage.prereq)).size === 5 &&
+      checksD3[0].frage.optionen.some(o => o.text === targetsD3[3]) &&
+      checksD3[0].frage.optionen.some(o => o.text === 'Andererseits es spart Zeit.') &&
+      Object.values(checksD3[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckD3.frage.zeigt === 'Das lässt sich leicht ____.' &&
+      clozeCheckD3.frage.antworten.join(' ') === 'beweisen' && clozeCheckD3.frage.nearMiss.beweist &&
+      !win.DW.renderers.judgeCloze(clozeCheckD3.frage, 'beweist').ok &&
+      orderCheckD3.frage.correct.join(' ') === targetsD3[3] && orderCheckD3.frage.finite === 'spart' &&
+      orderCheckD3.frage.fields.vorfeld.join(' ') === 'Andererseits' && orderCheckD3.frage.fields.lsk.join(' ') === 'spart' &&
+      orderCheckD3.frage.fields.mittelfeld.join(' ') === 'es Zeit.' &&
+      win.DW.order.score(orderCheckD3.frage, orderCheckD3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD3.frage, ['Andererseits', 'es', 'spart', 'Zeit.']).credit < 1 &&
+      checksD3[3].frage.optionen.some(o => o.text === 'Da stimme ich dir zu.') &&
+      checksD3[3].frage.optionen.some(o => o.text === 'Da stimme ich dich zu.') &&
+      Object.values(checksD3[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksD3[4].frage.optionen.some(o => o.text === targetsD3[4]) &&
+      checksD3[4].frage.optionen.some(o => o.text === 'Ich muss dich widersprechen.') &&
+      Object.values(checksD3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
