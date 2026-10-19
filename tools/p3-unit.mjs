@@ -12610,6 +12610,125 @@ console.log('\n— P3.2 lexical layer —\n');
       checksB6[4].frage.optionen.some(o => o.text === 'Die Mietpreise steigt jedes Jahr stark.') &&
       Object.values(checksB6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 
+
+  const lessonB7 = win.DW_LESSONS['b1-u3-l7'];
+  const rowB7 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonB7.id);
+  const byWordB7 = Object.fromEntries(lessonB7.wortschatz.map(it => [it.de, it]));
+  const tricksB7 = lessonB7.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsB7 = [
+    'Die Krankenversicherung ist in Deutschland Pflicht.',
+    'Die Versicherung deckt den Schaden.',
+    'Ich melde den Schaden sofort.',
+    'Der Fahrer haftet für den Schaden.',
+    'Der Vertrag läuft bis 2027.'
+  ];
+  t('Corpus lesson b1-u3-l7 precisely scopes one insurance case with singular compound Pflicht, preposition-free covering and reporting, governed haften für and a bis year across five targets',
+    lessonB7.title.de === 'Versicherung: Vertrag, Beitrag und Schadensmeldung' &&
+      lessonB7.title.ar === 'التأمين: العقد والقسط والتبليغ عن الضرر' &&
+      rowB7.title.de === lessonB7.title.de && rowB7.title.ar === lessonB7.title.ar &&
+      rowB7.theme === 'المال والتأمين' &&
+      rowB7.grammar.item === 'Krankenversicherung ist Pflicht · den Schaden decken/melden ohne Präposition · haften für + Akkusativ · Vertrag läuft bis + Jahr' &&
+      rowB7.grammar.method === 'explicit' && lessonB7.schritte.length === 36 && lessonB7.wortschatz.length === 40 &&
+      lessonB7.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonB7.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsB7[i]) &&
+      lessonB7.schritte[0].zeigt.de === 'Am Ende schilderst du einen Schadensfall in fünf Sätzen: Pflichtversicherung, Deckung, Meldung, Haftung und Laufzeit' &&
+      lessonB7.schritte.find(s => s.id === 's20').zeigt.de === targetsB7[4]);
+
+  const expectedWordsB7 = [
+    'die Versicherung', 'versichern', 'die Krankenversicherung', 'die Haftpflicht', 'die Hausratversicherung',
+    'die Lebensversicherung', 'der Beitrag', 'die Prämie', 'der Vertrag', 'die Police', 'der Antrag',
+    'beantragen', 'die Leistung', 'der Schaden', 'der Schadensfall', 'melden', 'die Meldung', 'die Frist',
+    'die Deckung', 'decken', 'der Anspruch', 'die Erstattung', 'der Unfall', 'die Haftung', 'haften',
+    'die Schuld', 'der Zeuge', 'die Polizei', 'der Bericht', 'die Kündigung', 'kündigen', 'die Laufzeit',
+    'der Abschluss', 'die Beratung', 'beraten', 'der Makler', 'die Provision', 'das Risiko',
+    'die Sicherheit', 'die Vorsorge'
+  ];
+  const errorsB7 = lessonB7.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u3-l7 reviews all 40 entries and three bounded mnemonics without fifteen manufactured or grammatical pseudo-errors, keeping agreement, case, strong-verb and duration form as genuine error axes',
+    Object.keys(byWordB7).join(' | ') === expectedWordsB7.join(' | ') &&
+      lessonB7.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonB7.wortschatz.every(it => it.ex !== it.err) &&
+      byWordB7['die Versicherung'].err === 'Die Versicherung zahlt dem Schaden.' &&
+      byWordB7['die Krankenversicherung'].err === 'Die Krankenversicherung sind Pflicht.' &&
+      byWordB7['die Lebensversicherung'].err === 'Die Lebensversicherung läuft zwanzig Jahren.' &&
+      byWordB7['der Schaden'].err === 'Den Schaden ist groß.' &&
+      byWordB7['beraten'].err === 'Der Makler beratet uns gut.' &&
+      byWordB7['der Bericht'].err === 'Das Bericht ist wichtig für die Versicherung.' &&
+      !['Die Versicherung zahlt für den Schaden.', 'Die Krankenversicherung ist Pflicht gemacht.',
+        'Die Hausratversicherung kostet wenig es.', 'Die Lebensversicherung läuft für zwanzig Jahre.',
+        'Die Prämie ist niedrig gemacht.', 'Der Antrag muss schriftlich gemacht sein.',
+        'Der Schaden ist groß gemacht.', 'Ich melde den Schaden sofort es.',
+        'Die Deckung reicht nicht es.', 'Der Bericht ist wichtig für die Versicherung es.',
+        'Die Kündigung muss schriftlich kommen es.', 'Der Abschluss war schnell gemacht.',
+        'Die Beratung ist kostenlos gemacht.', 'Der Makler berät uns gut es.',
+        'Die Provision ist hoch gemacht.']
+        .some(x => errorsB7.includes(x)) &&
+      tricksB7.length === 3 && tricksB7[0].wie.includes('Der Beitrag steigt') &&
+      tricksB7[1].wie.includes('innerhalb einer Woche') &&
+      tricksB7[2].wie.includes('Der Fahrer haftet für den Schaden.'));
+
+  const wordClozeAB7 = lessonB7.schritte.find(s => s.id === 's09');
+  const wordClozeBB7 = lessonB7.schritte.find(s => s.id === 's13');
+  const wordClozeCB7 = lessonB7.schritte.find(s => s.id === 's17');
+  const imitateB7 = lessonB7.schritte.find(s => s.id === 's19');
+  const drillB7 = lessonB7.schritte.find(s => s.id === 's23');
+  const orderB7 = lessonB7.schritte.find(s => s.id === 's24');
+  const writingB7 = lessonB7.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingB7 = lessonB7.schritte.find(s => s.phase === 'Produktion');
+  const summaryB7 = lessonB7.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkB7 = lessonB7.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u3-l7 aligns five strict learning clozes, sound subject-first order fields and a 27-word five-target production',
+    wordClozeAB7.frage.zeigt === 'Die ____ läuft zwanzig Jahre.' && wordClozeAB7.frage.antworten.join(' ') === 'Lebensversicherung' &&
+      wordClozeAB7.frage.nearMiss.Lebensversicherungen && !win.DW.renderers.judgeCloze(wordClozeAB7.frage, 'Lebensversicherungen').ok &&
+      wordClozeBB7.frage.zeigt === 'Die ____ kam nach zwei Wochen.' && wordClozeBB7.frage.antworten.join(' ') === 'Erstattung' &&
+      wordClozeBB7.frage.nearMiss.Erstattungen && !win.DW.renderers.judgeCloze(wordClozeBB7.frage, 'Erstattungen').ok &&
+      wordClozeCB7.frage.zeigt === 'Das ____ wird unterschätzt.' && wordClozeCB7.frage.antworten.join(' ') === 'Risiko' &&
+      wordClozeCB7.frage.nearMiss.Risiken && !win.DW.renderers.judgeCloze(wordClozeCB7.frage, 'Risiken').ok &&
+      imitateB7.zeigt.de === 'Die Krankenversicherung ____ in Deutschland Pflicht.' && imitateB7.frage.antworten.join(' ') === 'ist' &&
+      imitateB7.frage.nearMiss.sind && !win.DW.renderers.judgeCloze(imitateB7.frage, 'sind').ok &&
+      drillB7.frage.zeigt === 'Die Leistung wird ____.' && drillB7.frage.antworten.join(' ') === 'geprüft' &&
+      drillB7.frage.nearMiss['prüfen'] && !win.DW.renderers.judgeCloze(drillB7.frage, 'prüfen').ok &&
+      lessonB7.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderB7.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderB7.frage.correct.join(' ') === targetsB7[3] && orderB7.frage.finite === 'haftet' && orderB7.frage.verbFirst === false &&
+      orderB7.frage.fields.vorfeld.join(' ') === 'Der Fahrer' && orderB7.frage.fields.lsk.join(' ') === 'haftet' &&
+      orderB7.frage.fields.mittelfeld.join(' ') === 'für den Schaden.' &&
+      win.DW.order.score(orderB7.frage, orderB7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderB7.frage, ['Der', 'Fahrer', 'für', 'den', 'Schaden.', 'haftet']).credit < 1 &&
+      writingB7.frage.points.join(' | ') === targetsB7.join(' | ') && writingB7.frage.minWords === 27 &&
+      targetsB7.join(' ').split(/\s+/).length === 27 &&
+      targetsB7.every(x => [writingB7.frage.promptDe, summaryB7.zeigt.de, homeworkB7.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsB7.every(x => norm(speakingB7.erklaerung).includes(norm(x))));
+
+  const checksB7 = lessonB7.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckB7 = checksB7.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckB7 = checksB7.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u3-l7 makes 80 percent four of five, independently checking governed haften für, geprüft cloze, subject-first order, separable aufnehmen and the bis-year contract',
+    checksB7.length === 5 && checksB7[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksB7[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksB7.every(s => /^cap\.b1-u3-l7\.s\d+$/.test(s.frage.prereq || '')) && checksB7.every(s => !s.hinweise) &&
+      checksB7.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u3-l7.s07 | cap.b1-u3-l7.s23 | cap.b1-u3-l7.s24 | cap.b1-u3-l7.s14 | cap.b1-u3-l7.s20' &&
+      new Set(checksB7.map(s => s.frage.prereq)).size === 5 &&
+      checksB7[0].frage.optionen.some(o => o.text === targetsB7[3]) &&
+      checksB7[0].frage.optionen.some(o => o.text === 'Der Fahrer haftet den Schaden.') &&
+      Object.values(checksB7[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckB7.frage.zeigt === 'Die Leistung wird ____.' &&
+      clozeCheckB7.frage.antworten.join(' ') === 'geprüft' && clozeCheckB7.frage.nearMiss['prüfen'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckB7.frage, 'prüfen').ok &&
+      orderCheckB7.frage.correct.join(' ') === 'Die Versicherung deckt den Schaden.' && orderCheckB7.frage.finite === 'deckt' &&
+      orderCheckB7.frage.fields.vorfeld.join(' ') === 'Die Versicherung' && orderCheckB7.frage.fields.lsk.join(' ') === 'deckt' &&
+      orderCheckB7.frage.fields.mittelfeld.join(' ') === 'den Schaden.' &&
+      win.DW.order.score(orderCheckB7.frage, orderCheckB7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckB7.frage, ['Die', 'Versicherung', 'den', 'Schaden.', 'deckt']).credit < 1 &&
+      checksB7[3].frage.optionen.some(o => o.text === 'Die Polizei nahm den Bericht auf.') &&
+      checksB7[3].frage.optionen.some(o => o.text === 'Die Polizei nahm den Bericht.') &&
+      Object.values(checksB7[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checksB7[4].frage.optionen.some(o => o.text === targetsB7[4]) &&
+      checksB7[4].frage.optionen.some(o => o.text === 'Der Vertrag läuft zu 2027.') &&
+      Object.values(checksB7[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

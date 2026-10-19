@@ -123,7 +123,7 @@
     ['الإعلام: التقرير بالحرف ونسب الرأي وفحص المصدر', 'Medien: berichten über, meinen und Quellen prüfen', 'الأخبار والتحليل', 'berichten über + Akkusativ · im Radio (Inversion) · der Autor meint, dass … (Verbende) · man muss Quellen prüfen · sich verbreiten (Präteritum)', 'explicit'],
     ['التكوين والدراسة: مقارنة مسارين', 'Ausbildung und Studium: zwei Wege vergleichen', 'مسارات التعليم', 'dauern + Zeitangabe ohne Präposition · beginnen im Monat · einerseits / andererseits + Verbzweit · bestehen mit haben', 'explicit'],
     ['المدينة: الموقع والنقل والحسنات والمساوئ', 'Stadt: Lage, Verkehr, Vorteil und Nachteil', 'الحي والسكن', 'liegen am Stadtrand · alle zehn Minuten ohne Präposition · der Vorteil ist die ruhige Lage · der Nachteil ist die teure Miete · Mietpreise steigen', 'explicit'],
-    ['التأمين', 'Versicherung', 'البيروقراطية', 'Anmeldung بخط عريض', 'explicit'],
+    ['التأمين: العقد والقسط والتبليغ عن الضرر', 'Versicherung: Vertrag, Beitrag und Schadensmeldung', 'المال والتأمين', 'Krankenversicherung ist Pflicht · den Schaden decken/melden ohne Präposition · haften für + Akkusativ · Vertrag läuft bis + Jahr', 'explicit'],
     ['الاستهلاك', 'Konsum', 'الشراء', 'قرار شراء معلّل', 'explicit'],
     ['التطوع', 'Ehrenamt', 'المجتمع', 'وصف تجربة', 'explicit'],
     ['رحلة معقدة', 'Reiseplanung', 'السفر', 'خطة ببدائل', 'explicit'],

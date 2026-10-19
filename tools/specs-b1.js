@@ -1007,25 +1007,50 @@ module.exports = [
       hwHintDe: 'Sprich echt: nicht „the Advantage" oder „Disadvantage", nicht „die Location" und nicht „der Noise" — deutsch heißen die vier Dinge Vorteil, Nachteil, Lage und Lärm. Der Vorteil ist die Lage.'
     }),
 
-  U('b1-u3-l7', 'B1', 'التأمين', 'Versicherung', 'lexik-kollokation',
-    'Am Ende sagst du Anmeldung und Versicherung in einem Satz',
-    'في النهاية تقول التسجيل والتأمين في جملة.',
+  U('b1-u3-l7', 'B1', 'التأمين: العقد والقسط والتبليغ عن الضرر', 'Versicherung: Vertrag, Beitrag und Schadensmeldung', 'lexik-kollokation',
+    'Am Ende schilderst du einen Schadensfall in fünf Sätzen: Pflichtversicherung, Deckung, Meldung, Haftung und Laufzeit',
+    'في النهاية تسرد حالة ضرر في خمس جمل: التزام التأمين الصحي، والتغطية، والتبليغ، والمسؤولية، ومدة العقد.',
     [
-      ['die Anmeldung', 'التسجيل Anmeldung', 'لا registration خليط', 'die Registration', 'Registration إنجليزية'],
-      ['die Versicherung', 'التأمين Versicherung', 'لا insurance ككلمة وحيدة', 'die Insurance', 'Insurance إنجليزية'],
-      ['das Formular', 'الاستمارة Formular', 'لا form ككلمة وحيدة', 'das Form', 'Form إنجليزية'],
-      ['unvollständig', 'الناقص unvollständig', 'لا not complete خليط', 'das Formular ist not complete', 'not إنجليزية']
+      ['Die Krankenversicherung ist in Deutschland Pflicht.', 'تذكر نظام التأمين الإلزامي', 'الاسم المركّب طويل لكنه مفرد مؤنث: die Krankenversicherung ist، لا sind', 'Die Krankenversicherung sind in Deutschland Pflicht.', 'الاسم المركّب مفرد: ist لا sind'],
+      ['Die Versicherung deckt den Schaden.', 'تحكي من يدفع الضرر عنك', 'decken متعدٍّ بمفعول مباشر بلا حرف جر: deckt den Schaden', 'Die Versicherung deckt für den Schaden.', 'decken خالٍ من الحرف: den Schaden'],
+      ['Ich melde den Schaden sofort.', 'تبلّغ عن حادث في وقته', 'melden يأخذ الضرر مفعولًا في النصب: Ich melde den Schaden', 'Ich melde dem Schaden sofort.', 'مفعول melden بالنصب: den Schaden لا dem'],
+      ['Der Fahrer haftet für den Schaden.', 'تسمّي المسؤول قانونًا عن الضرر', 'haften يطلب حرفًا ثابتًا: haftet für + نصب = مسؤول عن', 'Der Fahrer haftet den Schaden.', 'haften بلا حرف ناقص: haftet für den Schaden']
     ],
     [
-      ['Ich habe mich angemeldet.', 'سجّلت نفسي', 'Ich habe die Registration gemacht', 'التسجيل angemeldet', 'angemeldet'],
-      ['Die Versicherung übernimmt das.', 'التأمين يتحمل هذا', 'Die Insurance übernimmt das', 'التأمين Versicherung', 'Versicherung'],
-      ['Das Formular ist unvollständig.', 'الاستمارة ناقصة', 'Das Formular ist not complete', 'الناقص unvollständig', 'unvollständig'],
-      ['Bitte füllen Sie das aus.', 'املأوا هذا من فضلكم', 'Bitte fillen Sie das', 'التعبئة ausfüllen', 'aus']
+      ['Die Krankenversicherung ist in Deutschland Pflicht.', 'التأمين الصحي إلزامي في ألمانيا', 'Die Krankenversicherung sind in Deutschland Pflicht.', 'التأمين الصحي مفرد: ist', 'ist'],
+      ['Die Versicherung deckt den Schaden.', 'التأمين يغطّي الضرر', 'Die Versicherung deckt für den Schaden.', 'التغطية بلا حرف: deckt den Schaden', 'deckt'],
+      ['Ich melde den Schaden sofort.', 'أبلّغ عن الضرر فورًا', 'Ich melde dem Schaden sofort.', 'التبليغ بالنصب: den Schaden', 'melde'],
+      ['Der Fahrer haftet für den Schaden.', 'السائق مسؤول عن الضرر', 'Der Fahrer haftet den Schaden.', 'المسؤولية القانونية: haftet für', 'haftet']
     ],
-    'Ich habe mich angemeldet. Die Versicherung übernimmt das.',
-    'Das Formular ist unvollständig.',
-    'Sage morgen Anmeldung und Formular.',
-    'غدًا قل التسجيل والاستمارة.'),
+    'Die Krankenversicherung ist in Deutschland Pflicht.',
+    'Der Vertrag läuft bis 2027.',
+    'Wiederhole morgen die fünf Sätze: Die Krankenversicherung ist in Deutschland Pflicht. Die Versicherung deckt den Schaden. Ich melde den Schaden sofort. Der Fahrer haftet für den Schaden. Der Vertrag läuft bis 2027.',
+    'غدًا أعد جمل التأمين الخمس ولاحظ بلا حرف عند decken/melden وبحرف عند haften وانتهاء المدة بـbis.',
+    {
+      factFamilies: ['konjugation', 'kasus', 'kasus', 'präposition'],
+      imitateNearMiss: 'sind',
+      transformHint: 'في جملة الختام سريان العقد حتى سنة: Der Vertrag läuft bis 2027 — نهاية الزمن مع السنة بحرف bis لا zu.',
+      orderSentence: 'Der Fahrer haftet für den Schaden.',
+      checkOrderSentence: 'Die Versicherung deckt den Schaden.',
+      orderAr: 'رتّب جملة المسؤولية: الفاعل أولًا ثم الفعل haftet في الموضع الثاني قبل عبارة المسؤولية.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الثاني للفعل المصرّف ثابت في الجملة الرئيسية.', 'عبارة للضرر تأتي كاملة بعد الفعل: für den Schaden.'],
+      writing: {
+        zeigt: 'Versicherung und Schadensfall in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل في قصة واحدة: إلزامية التأمين الصحي بفعل مفرد، ومن يغطّي الضرر بلا حرف، وتبليغك عنه فورًا بالنصب، والمسؤول قانونًا بحرف für، وسريان العقد حتى سنة بـbis.',
+        hinweise: ['الحادث واحد لكن كل جملة تقيس تركيبًا مختلفًا.', 'غطِّ وأبلغ بلا حرف زائد، واكتب حرفَي haften وbis حيث يلزمان.'],
+        prompt: 'اكتب جمل التأمين الخمس المستهدفة من الذاكرة مع حرفي für وbis في موضعيهما.',
+        promptDe: 'Die Krankenversicherung ist in Deutschland Pflicht. · Die Versicherung deckt den Schaden. · Ich melde den Schaden sofort. · Der Fahrer haftet für den Schaden. · Der Vertrag läuft bis 2027.',
+        points: ['Die Krankenversicherung ist in Deutschland Pflicht.', 'Die Versicherung deckt den Schaden.', 'Ich melde den Schaden sofort.', 'Der Fahrer haftet für den Schaden.', 'Der Vertrag läuft bis 2027.'],
+        minWords: 27,
+        frage: 'اكتب جمل التأمين الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Krankenversicherung ist in Deutschland Pflicht. Die Versicherung deckt den Schaden. Ich melde den Schaden sofort. Der Fahrer haftet für den Schaden. Der Vertrag läuft bis 2027.',
+      summaryDe: 'Die Krankenversicherung ist in Deutschland Pflicht. Die Versicherung deckt den Schaden. Ich melde den Schaden sofort. Der Fahrer haftet für den Schaden. Der Vertrag läuft bis 2027.',
+      summaryAr: 'التأمين في خمس جمل: التأمين الصحي إلزامي بفعل مفرد، ثم تغطية الضرر بلا حرف، وتبليغ عنه فورًا بالنصب، ومسؤولية قانونية بـhaften für، وعقد سارٍ حتى سنة بـbis.',
+      summaryRecap: 'حادث واحد بخمس خطوات',
+      hwHintDe: 'Nicht „die Registration“, nicht „die Insurance“ und nicht „das Formular ist not complete“ wörtlich ins Deutsche tragen: die Anmeldung heißt Anmeldung, die Versicherung bleibt Versicherung, und was im Formular fehlt, heißt unvollständig.'
+    }),
 
   U('b1-u3-l8', 'B1', 'الاستهلاك', 'Konsum', 'lexik-kollokation',
     'Am Ende begründest du eine Kaufentscheidung',
