@@ -1322,25 +1322,50 @@ module.exports = [
       hwHintDe: 'Nicht „we find the middle“ und nicht „du liegst falsch“ als Waffe: sachlich heißt es „Wir finden einen Kompromiss“, und statt „du liegst immer falsch“ sagt man „Da stimme ich dir nicht zu“ — Widerspruch ohne Beleidigung.'
     }),
 
-  U('b1-u4-l6', 'B1', 'الرسالة الرسمية', 'Formeller Brief', 'register',
-    'Am Ende schreibst du Anrede, Anliegen und Gruß',
-    'في النهاية تكتب تحية وطلبًا وختامًا.',
+  U('b1-u4-l6', 'B1', 'الرسالة الرسمية: الموضوع والنداء والطلب والختام', 'Formeller Brief: Betreff, Anrede, Anliegen, Gruß', 'register',
+    'Am Ende steht dein Brief in fünf Sätzen: Betreff, Bitte, Frist, Anhang und Dank',
+    'في النهاية تقف رسالتك في خمس جمل: موضوع فوق النص، وطلب مهذّب، وموعد أخير، ومرفقات، وشكر بداتيف الشخص.',
     [
-      ['Sehr geehrte Frau', 'التحية الرسمية', 'Liebe Frau ans Amt falsch', 'Liebe Frau Amt', 'المقام Sehr geehrte'],
-      ['das Anliegen in einem Satz', 'الطلب واضح', 'المقدمة الطويلة تضيّع', 'drei Absätze vor dem Anliegen', 'الطلب مبكرًا'],
-      ['ich bitte Sie', 'الطلب bitte', 'لا I want you', 'ich want Sie', 'want إنجليزية'],
-      ['Mit freundlichen Grüßen', 'الختام الرسمي', 'Tschüss ans Amt falsch', 'Tschüss, das Amt', 'الختام الرسمي']
+      ['Der Betreff steht über dem Text.', 'تعرف أين يقف موضوع الرسالة', 'الوقوف في المكان يثبّت الداتيف: steht über dem Text، والحرف فوقية خالصة لا داخلي', 'Der Betreff steht in dem Text.', 'موضع الموضوع بفوقية ثابتة: über dem لا داخل in'],
+      ['Ich bitte Sie um einen Termin.', 'تطلب موعدًا بصيغة مهذّبة', 'الطلب يبنى بحرف ومفعول مذكر كامل: bitte Sie um einen Termin، لا الصورة العارية ein', 'Ich bitte Sie um ein Termin.', 'المذكر بنصب كامل: einen Termin'],
+      ['Die Frist endet am Freitag.', 'تقرأ آخر موعد بيومه', 'بيوم الأسبوع تلتحم الأداة في الحرف: am Freitag، والفاعل مفرد بفعل مفرد endet', 'Die Frist enden am Freitag.', 'فاعل مفرد وفعل مفرد: endet'],
+      ['Im Anhang finden Sie die Kopie.', 'تدل القارئ على المرفقات', 'الملحق مقدّمًا يقلب Sie: finden Sie، والدمج im يحل محل الحرف والأداة', 'Im Anhang Sie finden die Kopie.', 'القلب بعد تقديم الملحق: finden Sie لا Sie finden']
     ],
     [
-      ['Sehr geehrte Frau Berg,', 'السيدة بيرغ المحترمة', 'Liebe Frau Berg vom Amt,', 'الرسمي Sehr geehrte', 'geehrte'],
-      ['Ich bitte Sie um einen neuen Termin.', 'أطلب منكم موعدًا جديدًا', 'Ich want Sie um einen Termin', 'الطلب bitte', 'bitte'],
-      ['Das Anliegen steht im ersten Satz.', 'الطلب في الجملة الأولى', 'Drei Absätze vor dem Anliegen', 'الطلب مبكرًا', 'Anliegen'],
-      ['Mit freundlichen Grüßen', 'مع التحية', 'Tschüss, das Amt', 'الختام الرسمي', 'Grüßen']
+      ['Der Betreff steht über dem Text.', 'الموضوع فوق النص', 'Der Betreff steht in dem Text.', 'الموضوع بفوقية ثابتة: über dem', 'Betreff'],
+      ['Ich bitte Sie um einen Termin.', 'أرجو منكم موعدًا', 'Ich bitte Sie um ein Termin.', 'الطلب بحرف um: um einen Termin', 'Termin'],
+      ['Die Frist endet am Freitag.', 'المهلة تنتهي الجمعة', 'Die Frist enden am Freitag.', 'اليوم بـam ملتحمة: am Freitag', 'Freitag'],
+      ['Im Anhang finden Sie die Kopie.', 'في الملحق تجدون النسخة', 'Im Anhang Sie finden die Kopie.', 'الملحق بالدمج: Im Anhang', 'Anhang']
     ],
-    'Sehr geehrte Frau Berg, ich bitte Sie um einen neuen Termin.',
-    'Ich bitte Sie um einen neuen Termin.',
-    'Schreibe morgen Anrede, Bitte und Gruß.',
-    'غدًا اكتب تحية وطلبًا وختامًا.'),
+    'Der Betreff steht über dem Text.',
+    'Ich danke Ihnen für Ihre Hilfe.',
+    'Wiederhole morgen die fünf Sätze: Der Betreff steht über dem Text. Ich bitte Sie um einen Termin. Die Frist endet am Freitag. Im Anhang finden Sie die Kopie. Ich danke Ihnen für Ihre Hilfe.',
+    'غدًا أعد جمل الرسالة الرسمية الخمس ولاحظ الفوقية والطلب بـum ودمجَي اليوم والملحق.',
+    {
+      factFamilies: ['präposition', 'genus', 'konjugation', 'wortstellung'],
+      imitateNearMiss: 'Betreffe',
+      transformHint: 'في جملة الختام الفائدة الأخيرة: Ich danke Ihnen für Ihre Hilfe — الشكر بداتيف الشخص قبل عائدته.',
+      orderSentence: 'Im Anhang finden Sie die Kopie.',
+      checkOrderSentence: 'Der Betreff steht über dem Text.',
+      orderAr: 'رتّب جملة الملحق: Im Anhang أولًا ثم الفعل finden في الموضع الثاني قبل فاعله Sie.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['تقديم الملحق يقلب فاعله: finden Sie.', 'المفعول يختم الوسط: die Kopie.'],
+      writing: {
+        zeigt: 'Ein Brief in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل تبني رسالة رسمية: موضوع يقف بفوقية، وطلب مهذّب بـum ومفعول مذكر، ومهلة تنتهي بيوم وليس بتاريخ، ودلالة على ملحق مقدّم، وشكر بداتيف الشخص.',
+        hinweise: ['الرسالة تبدأ بموضوع فوق النص لا بعبارة اعتيادية.', 'الشكر والطلب بداتيف/حرف: bitte Sie um وdanke Ihnen.'],
+        prompt: 'اكتب جمل الرسالة الرسمية الخمس المستهدفة من الذاكرة مع الفوقية والطلب بـum والشكر بالداتيف.',
+        promptDe: 'Der Betreff steht über dem Text. · Ich bitte Sie um einen Termin. · Die Frist endet am Freitag. · Im Anhang finden Sie die Kopie. · Ich danke Ihnen für Ihre Hilfe.',
+        points: ['Der Betreff steht über dem Text.', 'Ich bitte Sie um einen Termin.', 'Die Frist endet am Freitag.', 'Im Anhang finden Sie die Kopie.', 'Ich danke Ihnen für Ihre Hilfe.'],
+        minWords: 29,
+        frage: 'اكتب جمل الرسالة الرسمية الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Der Betreff steht über dem Text. Ich bitte Sie um einen Termin. Die Frist endet am Freitag. Im Anhang finden Sie die Kopie. Ich danke Ihnen für Ihre Hilfe.',
+      summaryDe: 'Der Betreff steht über dem Text. Ich bitte Sie um einen Termin. Die Frist endet am Freitag. Im Anhang finden Sie die Kopie. Ich danke Ihnen für Ihre Hilfe.',
+      summaryAr: 'الرسالة الرسمية في خمس جمل: موضوع بفوقية ثابتة، وطلب مهذّب بـum ونصب مذكر، ومهلة بيوم أسبوعي، وملحق مقدّم بفعل ثانٍ، وشكر بداتيف الشخص.',
+      summaryRecap: 'رسالة في خمس خطوات',
+      hwHintDe: 'Nicht „I want you to reply“ wörtlich in den Brief tragen: statt want heißt es höflich „Ich bitte Sie um eine kurze Rückmeldung“ — want ist Alltagssprache, bitten um ist Briefform.'
+    }),
 
   U('b1-u4-l7', 'B1', 'عرض', 'Präsentation', 'pruefstrategie',
     'Am Ende gliederst du drei Minuten',

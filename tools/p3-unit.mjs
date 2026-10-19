@@ -13451,6 +13451,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksD5[4].frage.optionen.some(o => o.text === targetsD5[4]) &&
       checksD5[4].frage.optionen.some(o => o.text === 'Bleiben wir bitte sachliche.') &&
       Object.values(checksD5[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+  const lessonD6 = win.DW_LESSONS['b1-u4-l6'];
+  const rowD6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonD6.id);
+  const byWordD6 = Object.fromEntries(lessonD6.wortschatz.map(it => [it.de, it]));
+  const tricksD6 = lessonD6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsD6 = [
+    'Der Betreff steht über dem Text.',
+    'Ich bitte Sie um einen Termin.',
+    'Die Frist endet am Freitag.',
+    'Im Anhang finden Sie die Kopie.',
+    'Ich danke Ihnen für Ihre Hilfe.'
+  ];
+  t('Corpus lesson b1-u4-l6 precisely scopes five formal-letter moves with dative über position, um masculine request, weekday am, inverted attachment pointer and dative thanks',
+    lessonD6.title.de === 'Formeller Brief: Betreff, Anrede, Anliegen, Gruß' &&
+      lessonD6.title.ar === 'الرسالة الرسمية: الموضوع والنداء والطلب والختام' &&
+      rowD6.title.de === lessonD6.title.de && rowD6.title.ar === lessonD6.title.ar &&
+      rowD6.theme === 'الكتابة' &&
+      rowD6.grammar.item === 'der Betreff steht über dem Text · Ich bitte Sie um · am Freitag · im Anhang finden Sie · danke Ihnen' &&
+      rowD6.grammar.method === 'explicit' && lessonD6.schritte.length === 36 && lessonD6.wortschatz.length === 40 &&
+      lessonD6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonD6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsD6[i]) &&
+      lessonD6.schritte[0].zeigt.de === 'Am Ende steht dein Brief in fünf Sätzen: Betreff, Bitte, Frist, Anhang und Dank' &&
+      lessonD6.schritte.find(s => s.id === 's20').zeigt.de === targetsD6[4]);
+
+  const expectedWordsD6 = [
+    'die Anrede', 'der Betreff', 'die Anlage', 'der Anhang', 'die Unterschrift', 'unterschreiben',
+    'der Antrag', 'beantragen', 'der Widerspruch', 'die Frist', 'die Verlängerung', 'verlängern',
+    'kündigen', 'die Kündigung', 'die Bestätigung', 'bestätigen', 'die Absage', 'absagen',
+    'die Zusage', 'zusagen', 'die Anfrage', 'die Auskunft', 'der Sachbearbeiter', 'die Behörde',
+    'das Amt', 'der Termin', 'vereinbaren', 'verschieben', 'die Rückmeldung', 'die Erstattung',
+    'der Antragsteller', 'die Unterlagen', 'die Kopie', 'das Original', 'die Vollmacht',
+    'die Verpflichtung', 'die Zahlungsfrist', 'der Widerspruch einlegen', 'der Bescheid',
+    'mit freundlichen Grüßen'
+  ];
+  const errorsD6 = lessonD6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u4-l6 reviews all 40 entries and three bounded mnemonics without sixteen manufactured appendages or the ohne-article and gelten-für pseudo-errors and repairs the Original headword gender',
+    Object.keys(byWordD6).join(' | ') === expectedWordsD6.join(' | ') &&
+      lessonD6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonD6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordD6['das Original'] !== undefined && byWordD6['die Original'] === undefined &&
+      byWordD6['die Vollmacht'].err === 'Ohne der Vollmacht geht nichts.' &&
+      byWordD6['die Vollmacht'].why.includes('ohne die/eine Vollmacht') &&
+      byWordD6['die Verpflichtung'].err === 'Diese Verpflichtung gelten ein Jahr.' &&
+      byWordD6['die Verpflichtung'].why.includes('gilt für ein Jahr') &&
+      byWordD6['die Zahlungsfrist'].err === 'Die Zahlungsfrist beträgt für vierzehn Tage.' &&
+      byWordD6['unterschreiben'].err === 'Unterschreibt Sie bitte unten.' &&
+      !['Die Anrede muss korrekt gemacht sein.', 'Die Unterschrift fehlt noch es.',
+        'Unterschreiben Sie bitte unten du.', 'Der Antrag ist vollständig gemacht.',
+        'Der Widerspruch muss schriftlich erfolgen es.', 'Die Verlängerung ist nicht möglich gemacht.',
+        'Kann ich den Vertrag verlängern es?', 'Die Kündigung muss schriftlich gemacht sein.',
+        'Bitte bestätigen Sie den Termin du.', 'Die Absage kam zu spät es.',
+        'Die Zusage freut mich sehr es.', 'Die Anfrage ist berechtigt gemacht.',
+        'Die Auskunft erhalten Sie telefonisch es.', 'Wir müssen den Termin verschieben es.',
+        'Der Antragsteller muss unterschreiben es.', 'Die Unterlagen sind vollständig gemacht.',
+        'Ohne eine Vollmacht geht nichts.', 'Diese Verpflichtung gilt für ein Jahr.']
+        .some(x => errorsD6.includes(x) && !lessonD6.wortschatz.some(it => it.ex === x || it.de === 'die Verpflichtung' && x === 'Diese Verpflichtung gilt für ein Jahr.' && false)) &&
+      tricksD6.length === 3 && tricksD6[0].wie.includes('Sehr geehrte Damen und Herren') &&
+      tricksD6[1].wie.includes('Ich lege Widerspruch ein') &&
+      tricksD6[2].wie.includes('Die Frist endet am 15. Mai'));
+
+  const wordClozeAD6 = lessonD6.schritte.find(s => s.id === 's09');
+  const wordClozeBD6 = lessonD6.schritte.find(s => s.id === 's13');
+  const wordClozeCD6 = lessonD6.schritte.find(s => s.id === 's17');
+  const imitateD6 = lessonD6.schritte.find(s => s.id === 's19');
+  const drillD6 = lessonD6.schritte.find(s => s.id === 's23');
+  const orderD6 = lessonD6.schritte.find(s => s.id === 's24');
+  const writingD6 = lessonD6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingD6 = lessonD6.schritte.find(s => s.phase === 'Produktion');
+  const summaryD6 = lessonD6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkD6 = lessonD6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u4-l6 aligns five strict learning clozes, sound fronted-attachment order fields and a 29-word five-target production',
+    wordClozeAD6.frage.zeigt === '____ Sie bitte unten.' && wordClozeAD6.frage.antworten.join(' ') === 'Unterschreiben' &&
+      wordClozeAD6.frage.nearMiss.Unterschreibt && !win.DW.renderers.judgeCloze(wordClozeAD6.frage, 'Unterschreibt').ok &&
+      wordClozeBD6.frage.zeigt === 'Eine ____ erhalten Sie telefonisch.' && wordClozeBD6.frage.antworten.join(' ') === 'Auskunft' &&
+      wordClozeBD6.frage.nearMiss['Auskünfte'] && !win.DW.renderers.judgeCloze(wordClozeBD6.frage, 'Auskünfte').ok &&
+      wordClozeCD6.frage.zeigt === 'Ich lege Widerspruch gegen den Bescheid ____.' && wordClozeCD6.frage.antworten.join(' ') === 'ein' &&
+      wordClozeCD6.frage.nearMiss.einlegen && !win.DW.renderers.judgeCloze(wordClozeCD6.frage, 'einlegen').ok &&
+      imitateD6.zeigt.de === 'Der ____ steht über dem Text.' && imitateD6.frage.antworten.join(' ') === 'Betreff' &&
+      imitateD6.frage.nearMiss.Betreffe && !win.DW.renderers.judgeCloze(imitateD6.frage, 'Betreffe').ok &&
+      drillD6.frage.zeigt === 'Wir müssen den Termin ____.' && drillD6.frage.antworten.join(' ') === 'verschieben' &&
+      drillD6.frage.nearMiss.verschoben && !win.DW.renderers.judgeCloze(drillD6.frage, 'verschoben').ok &&
+      lessonD6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderD6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderD6.frage.correct.join(' ') === targetsD6[3] && orderD6.frage.finite === 'finden' && orderD6.frage.verbFirst === false &&
+      orderD6.frage.fields.vorfeld.join(' ') === 'Im Anhang' && orderD6.frage.fields.lsk.join(' ') === 'finden' &&
+      orderD6.frage.fields.mittelfeld.join(' ') === 'Sie die Kopie.' &&
+      win.DW.order.score(orderD6.frage, orderD6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderD6.frage, ['Im', 'Sie', 'finden', 'Kopie.', 'die', 'Anhang']).credit < 1 &&
+      writingD6.frage.points.join(' | ') === targetsD6.join(' | ') && writingD6.frage.minWords === 29 &&
+      targetsD6.join(' ').split(/\s+/).length === 29 &&
+      targetsD6.every(x => [writingD6.frage.promptDe, summaryD6.zeigt.de, homeworkD6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsD6.every(x => norm(speakingD6.erklaerung).includes(norm(x))) &&
+      (homeworkD6.hinweise || []).join(' ').includes('I want you to reply') &&
+      (homeworkD6.hinweise || []).join(' ').includes('want ist Alltagssprache'));
+
+  const checksD6 = lessonD6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckD6 = checksD6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckD6 = checksD6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u4-l6 makes 80 percent four of five, independently checking inverted attachment, infinitive after müssen and order, bare amount after beträgt and dative thanks',
+    checksD6.length === 5 && checksD6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksD6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksD6.every(s => /^cap\.b1-u4-l6\.s\d+$/.test(s.frage.prereq || '')) && checksD6.every(s => !s.hinweise) &&
+      checksD6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u4-l6.s07 | cap.b1-u4-l6.s23 | cap.b1-u4-l6.s24 | cap.b1-u4-l6.s17 | cap.b1-u4-l6.s20' &&
+      new Set(checksD6.map(s => s.frage.prereq)).size === 5 &&
+      checksD6[0].frage.optionen.some(o => o.text === targetsD6[3]) &&
+      checksD6[0].frage.optionen.some(o => o.text === 'Im Anhang Sie finden die Kopie.') &&
+      Object.values(checksD6[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckD6.frage.zeigt === 'Wir müssen den Termin ____.' &&
+      clozeCheckD6.frage.antworten.join(' ') === 'verschieben' && clozeCheckD6.frage.nearMiss.verschoben &&
+      !win.DW.renderers.judgeCloze(clozeCheckD6.frage, 'verschoben').ok &&
+      orderCheckD6.frage.correct.join(' ') === targetsD6[0] && orderCheckD6.frage.finite === 'steht' &&
+      orderCheckD6.frage.fields.vorfeld.join(' ') === 'Der Betreff' && orderCheckD6.frage.fields.lsk.join(' ') === 'steht' &&
+      orderCheckD6.frage.fields.mittelfeld.join(' ') === 'über dem Text.' &&
+      win.DW.order.score(orderCheckD6.frage, orderCheckD6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckD6.frage, ['Der', 'über', 'steht', 'Text.', 'dem', 'Betreff']).credit < 1 &&
+      checksD6[3].frage.optionen.some(o => o.text === 'Die Zahlungsfrist beträgt vierzehn Tage.') &&
+      checksD6[3].frage.optionen.some(o => o.text === 'Die Zahlungsfrist beträgt für vierzehn Tage.') &&
+      Object.values(checksD6[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksD6[4].frage.optionen.some(o => o.text === targetsD6[4]) &&
+      checksD6[4].frage.optionen.some(o => o.text === 'Ich danke Sie für Ihre Hilfe.') &&
+      Object.values(checksD6[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

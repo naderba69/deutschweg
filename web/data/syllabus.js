@@ -130,7 +130,7 @@
     ['تعليل الرأي: الموقف والموازنة والاعتراض', 'Meinung begründen: Position, Abwägung und Widerspruch', 'الحجاج', 'Meiner Meinung nach · müssen … abwägen · einerseits/andererseits + Inversion · widersprechen + Dativ', 'explicit'],
     ['التلخيص: الجوهري بكلماتك الخاصة', 'Zusammenfassung: das Wesentliche in eigenen Worten', 'القراءة', 'die Einleitung nennt das Thema · jeder Absatz eine Hauptidee · am Anfang · die Quelle angeben · der Schluss fasst zusammen', 'explicit'],
     ['الحوار: الموافقة والاعتراض والاتفاق', 'Diskussion: zustimmen, widersprechen, sich einigen', 'النقاش', 'zustimmen + Dativ und zu · einen anderen Vorschlag · Lassen Sie mich ausreden · sich geeinigt · sachlich bleiben', 'explicit'],
-    ['الرسالة الرسمية', 'Formeller Brief', 'الكتابة', 'افتتاح رسمي', 'explicit'],
+    ['الرسالة الرسمية: الموضوع والنداء والطلب والختام', 'Formeller Brief: Betreff, Anrede, Anliegen, Gruß', 'الكتابة', 'der Betreff steht über dem Text · Ich bitte Sie um · am Freitag · im Anhang finden Sie · danke Ihnen', 'explicit'],
     ['عرض', 'Präsentation', 'التحدّث', 'هيكل ثلاث دقائق', 'explicit'],
     ['الاستماع لمقابلة', 'Interview', 'السماع', 'التقاط موقف', 'explicit'],
     ['نص رأي', 'Kommentar', 'القراءة', 'تمييز الواقعة من الرأي', 'explicit'],
