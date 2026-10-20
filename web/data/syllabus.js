@@ -189,7 +189,7 @@
 
   const B2 = [
     ['تحليل نص: الوصف والتأويل', 'Textanalyse: beschreiben und deuten', 'تحليل', 'text-analysis'],
-    ['ورشة كتابة: موقف', 'Erörterung', 'حجاج', 'writing'],
+    ['ورشة كتابة: الأطروحة والدليل', 'Erörterung: These und Beleg', 'حجاج', 'writing'],
     ['نقاش', 'Diskussion', 'نقاش', 'discussion'],
     ['سماع محاضرة', 'Vortrag', 'سماع', 'listening'],
     ['تقنية الامتحان: قراءة', 'Lesetechnik', 'امتحان', 'exam-technique'],

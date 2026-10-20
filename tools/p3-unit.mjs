@@ -18561,6 +18561,136 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW1[4].frage.optionen.some(o => o.text === targetsW1[4]) &&
       checksW1[4].frage.optionen.some(o => o.text === 'Die Einleitung nennt die Gattung und die Epoche es.') &&
       Object.values(checksW1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lessonW2 = win.DW_LESSONS['b2-w02'];
+  const rowW2 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w02');
+  const byWordW2 = Object.fromEntries(lessonW2.wortschatz.map(it => [it.de, it]));
+  const tricksW2 = lessonW2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsW2 = [
+    'Die These ist die Kernaussage der Einleitung.',
+    'Ohne Beleg bleibt die Behauptung leer.',
+    'Man muss die Vor- und Nachteile abwägen.',
+    'Dieser Autor widerspricht der Mehrheit.',
+    'Die Argumentation muss schlüssig sein.'
+  ];
+  t('Corpus workshop b2-w02 precisely scopes five essay moves taking a genitive thesis, a claim emptied without evidence, the full separable abwägen, dative widersprechen and the bare predicative schlüssig',
+    lessonW2.title.de === 'Erörterung: These und Beleg' &&
+      lessonW2.title.ar === 'ورشة كتابة: الأطروحة والدليل' &&
+      lessonW2.level === 'B2' && lessonW2.kind === 'workshop' &&
+      rowW2.title.de === lessonW2.title.de && rowW2.title.ar === lessonW2.title.ar &&
+      rowW2.theme === 'حجاج' &&
+      rowW2.grammar.item === 'ورشة كتابة: الأطروحة والدليل' &&
+      rowW2.grammar.method === 'explicit' &&
+      rowW2.words.receptive === 90 && rowW2.words.productive === 60 &&
+      lessonW2.schritte.length === 36 && lessonW2.wortschatz.length === 40 &&
+      lessonW2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW2[i]) &&
+      lessonW2.schritte[0].zeigt.de === 'Am Ende schreibst du eine Erörterung mit These, Beleg und Abwägung — in fünf Sätzen' &&
+      lessonW2.schritte.find(s => s.id === 's20').zeigt.de === targetsW2[4]);
+
+  const expectedWordsW2 = [
+    'erörtern', 'die Erörterung', 'die Gliederung', 'die These', 'das Argument', 'das Beispiel',
+    'der Beleg', 'die Behauptung', 'die Begründung', 'begründen', 'der Grund', 'der Vorteil',
+    'der Nachteil', 'der Aspekt', 'betrachten', 'abwägen', 'die Abwägung', 'das Urteil',
+    'die Schlussfolgerung', 'zusammenfassen', 'die Einleitung', 'der Hauptteil', 'der Schluss', 'der Übergang',
+    'die Stellungnahme', 'das Fazit', 'die Meinung', 'die Gegenposition', 'widersprechen', 'zustimmen',
+    'überzeugen', 'überzeugend', 'nachvollziehbar', 'der Widerspruch', 'schlüssig', 'die Reihenfolge',
+    'das Fazit ziehen', 'die Wortwahl', 'der Adressat', 'die Redemittel'
+  ];
+  const errorsW2 = lessonW2.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w02 reviews all 40 entries and three bounded mnemonics converting nine grammatical foils, fixing the Beleg why-text, and restoring two clipped foils as full minimal pairs',
+    Object.keys(byWordW2).join(' | ') === expectedWordsW2.join(' | ') &&
+      lessonW2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW2['die Gliederung'].err === 'Die Gliederung gibt der Text Aufbau und klaren Satzbau.' &&
+      byWordW2['die These'].err === 'Die These ist die Kernaussage die Einleitung.' &&
+      byWordW2['das Argument'].err === 'Einen Argument ohne Statistik bleibt schwach.' &&
+      byWordW2['die Abwägung'].err === 'Der Zweck die Abwägung ist ein klares Urteil.' &&
+      byWordW2['die Schlussfolgerung'].err === 'Die Schlussfolgerung die Schlüssigkeit der Argumente prüft.' &&
+      byWordW2['die Reihenfolge'].err === 'Die Reihenfolge der Argumenten zeigt die Priorität.' &&
+      byWordW2['überzeugend'].err === 'Eine Wertung ist erst mit Beleg überzeugende.' &&
+      byWordW2['nachvollziehbar'].err === 'Der Gedanke ist gut nachvollziehbaren.' &&
+      byWordW2['schlüssig'].err === 'Die Argumentation muss schlüssige sein.' &&
+      ['Die Gliederung steht in dem ersten Satz.', 'Ein Argument ohne ein Beispiel wirkt schwach.',
+        'Die Abwägung führt zu einem klaren Urteil.', 'Die Schlussfolgerung fasst die Argumente.',
+        'Die Reihenfolge von den Argumenten ist wichtig.', 'Deine Argumentation ist überzeugend gemacht.',
+        'Der Gedanke ist gut nachvollziehbar gemacht.', 'Die Argumentation muss schlüssig gemacht sein.']
+        .every(x => !errorsW2.includes(x)) &&
+      byWordW2['der Beleg'].err === 'Ohne ein Beleg bleibt die Behauptung leer.' &&
+      byWordW2['der Beleg'].why.includes('einen Beleg') &&
+      ['In Hauptteil stehen Pro-Argumente und Contra-Argumente.',
+        'Am Ende ich ziehe ein Fazit, die Korrektur kommt danach.']
+        .every(x => errorsW2.includes(x)) &&
+      ['Dieser Autor widerspricht die Mehrheit.', 'Man muss die Vor- und Nachteile wägen.',
+        'Der größte Nachteil ist die Isolation gemacht.']
+        .every(x => errorsW2.includes(x)) &&
+      tricksW2.length === 3 &&
+      tricksW2[0].wie.includes('In der Einleitung steht die These, im Hauptteil folgen die Argumente, im Schluss ziehe ich das Fazit.') &&
+      tricksW2[1].wie.includes('Behauptung, Begründung, Beispiel, Beleg: vier Sätze, ein Argument.') &&
+      tricksW2[2].wie.includes('Zwar ist der Einwand berechtigt, jedoch überzeugt er mich nicht.'));
+
+  const wordClozeAW2 = lessonW2.schritte.find(s => s.id === 's09');
+  const wordClozeBW2 = lessonW2.schritte.find(s => s.id === 's13');
+  const wordClozeCW2 = lessonW2.schritte.find(s => s.id === 's17');
+  const imitateW2 = lessonW2.schritte.find(s => s.id === 's19');
+  const drillW2 = lessonW2.schritte.find(s => s.id === 's23');
+  const orderW2 = lessonW2.schritte.find(s => s.id === 's24');
+  const writingW2 = lessonW2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW2 = lessonW2.schritte.find(s => s.phase === 'Produktion');
+  const summaryW2 = lessonW2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW2 = lessonW2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus workshop b2-w02 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 30-word five-target production',
+    wordClozeAW2.frage.zeigt === 'Das ____ trägt die Beweisführung, ersetzt sie aber nicht.' && wordClozeAW2.frage.antworten.join(' ') === 'Beispiel' &&
+      wordClozeAW2.frage.nearMiss.Beispiele && !win.DW.renderers.judgeCloze(wordClozeAW2.frage, 'Beispiele').ok &&
+      wordClozeBW2.frage.zeigt === 'Im ____ stehen Pro-Argumente und Contra-Argumente.' && wordClozeBW2.frage.antworten.join(' ') === 'Hauptteil' &&
+      wordClozeBW2.frage.nearMiss.Hauptteils && !win.DW.renderers.judgeCloze(wordClozeBW2.frage, 'Hauptteils').ok &&
+      wordClozeCW2.frage.zeigt === 'Eine sachliche ____ nimmt die Kritik ernst.' && wordClozeCW2.frage.antworten.join(' ') === 'Wortwahl' &&
+      wordClozeCW2.frage.nearMiss.Wortwahlen && !win.DW.renderers.judgeCloze(wordClozeCW2.frage, 'Wortwahlen').ok &&
+      (imitateW2.frage.zeigt === 'Die These ist die ____ der Einleitung.' || imitateW2.zeigt.de === 'Die These ist die ____ der Einleitung.') && imitateW2.frage.antworten.join(' ') === 'Kernaussage' &&
+      imitateW2.frage.nearMiss['Kernaussagen'] && !win.DW.renderers.judgeCloze(imitateW2.frage, 'Kernaussagen').ok &&
+      drillW2.frage.zeigt === 'Ohne ____ bleibt die Behauptung leer.' && drillW2.frage.antworten.join(' ') === 'Beleg' &&
+      drillW2.frage.nearMiss.Belegs && !win.DW.renderers.judgeCloze(drillW2.frage, 'Belegs').ok &&
+      lessonW2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW2.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW2.frage.correct.join(' ') === targetsW2[2] && orderW2.frage.finite === 'muss' && orderW2.frage.verbFirst === false &&
+      orderW2.frage.fields.vorfeld.join(' ') === 'Man' && orderW2.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW2.frage.fields.mittelfeld.join(' ') === 'die Vor- und Nachteile abwägen.' &&
+      win.DW.order.score(orderW2.frage, orderW2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW2.frage, ['Man', 'die', 'Vor-', 'und', 'Nachteile', 'muss', 'abwägen.']).credit < 1 &&
+      writingW2.frage.points.join(' | ') === targetsW2.join(' | ') && writingW2.frage.minWords === 30 &&
+      targetsW2.join(' ').split(/\s+/).length === 30 &&
+      targetsW2.every(x => [writingW2.frage.promptDe, summaryW2.zeigt.de, homeworkW2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW2.every(x => norm(speakingW2.erklaerung).includes(norm(x))) &&
+      homeworkW2.zeigt.de.includes('Differenzierung schlägt Pauschalisierung'));
+
+  const checksW2 = lessonW2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW2 = checksW2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW2 = checksW2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w02 makes 80 percent four of five, independently checking widerspricht, the Beleg cloze and ist order, the Abwägung genitive and bare schlüssig',
+    checksW2.length === 5 && checksW2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW2.every(s => /^cap\.b2-w02\.s\d+$/.test(s.frage.prereq || '')) && checksW2.every(s => !s.hinweise) &&
+      checksW2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w02.s07 | cap.b2-w02.s23 | cap.b2-w02.s24 | cap.b2-w02.s12 | cap.b2-w02.s20' &&
+      new Set(checksW2.map(s => s.frage.prereq)).size === 5 &&
+      checksW2[0].frage.optionen.some(o => o.text === targetsW2[3]) &&
+      checksW2[0].frage.optionen.some(o => o.text === 'Dieser Autor widerspricht die Mehrheit.') &&
+      Object.values(checksW2[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckW2.frage.zeigt === 'Ohne ____ bleibt die Behauptung leer.' &&
+      clozeCheckW2.frage.antworten.join(' ') === 'Beleg' && clozeCheckW2.frage.nearMiss.Belegs &&
+      !win.DW.renderers.judgeCloze(clozeCheckW2.frage, 'Belegs').ok &&
+      orderCheckW2.frage.correct.join(' ') === targetsW2[0] && orderCheckW2.frage.finite === 'ist' &&
+      orderCheckW2.frage.fields.vorfeld.join(' ') === 'Die These' && orderCheckW2.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW2.frage.fields.mittelfeld.join(' ') === 'die Kernaussage der Einleitung.' &&
+      win.DW.order.score(orderCheckW2.frage, orderCheckW2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW2.frage, ['Die', 'These', 'die', 'Kernaussage', 'ist', 'der', 'Einleitung.']).credit < 1 &&
+      checksW2[3].frage.optionen.some(o => o.text === 'Der Zweck der Abwägung ist ein klares Urteil.') &&
+      checksW2[3].frage.optionen.some(o => o.text === 'Der Zweck die Abwägung ist ein klares Urteil.') &&
+      Object.values(checksW2[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksW2[4].frage.optionen.some(o => o.text === targetsW2[4]) &&
+      checksW2[4].frage.optionen.some(o => o.text === 'Die Argumentation muss schlüssige sein.') &&
+      Object.values(checksW2[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

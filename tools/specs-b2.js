@@ -50,25 +50,49 @@ module.exports = [
       hwHintDe: 'Zuerst beschreibe ich den Abschnitt, dann deute ich die Stelle. Die Quelle nennt keine Ursache, also erfinde ich keine Ursache. Am Ende trennst du Beschreibung und Deutung. Die Stelle steht im zweiten Absatz. Der ganze Text ist kein Beleg für eine Deutung. Analysiere morgen einen Absatz in zwei Sätzen.'
     }),
 
-  U('b2-w02', 'ورشة كتابة: موقف', 'Erörterung',
-    'Am Ende schreibst du These, Argument und Beispiel',
-    'في النهاية تكتب دعوى وحجة ومثالًا.',
+  U('b2-w02', 'ورشة كتابة: الأطروحة والدليل', 'Erörterung: These und Beleg',
+    'Am Ende schreibst du eine Erörterung mit These, Beleg und Abwägung — in fünf Sätzen',
+    'في النهاية تكتب مقالًا حجاجيًا بأطروحة ودليل وموازنة في خمس جمل.',
     [
-      ['die These', 'الدعوى جملة واحدة', 'مقدمة بلا دعوى فراغ', 'der Text beginnt ohne These', 'الدعوى لازمة'],
-      ['ein Argument', 'حجة واحدة قوية', 'خمس حجج ضعيفة تخسر', 'fünf Argumente ohne Beispiel', 'حجة ثم مثال'],
-      ['das Beispiel dient', 'المثال يخدم الدعوى', 'المثال البديل ليس حجة', 'ein Beispiel ersetzt die Begründung', 'المثال لا يغني'],
-      ['der Schluss nimmt Stellung', 'الخاتمة موقف', 'التلخيص وحده لا يكفي', 'der Schluss wiederholt nur', 'الخاتمة تتّخذ موقفًا']
+      ['Die These ist die Kernaussage der Einleitung.', 'يفتتح المقال بأطروحة واحدة واضحة', 'الاسم الثاني في الإضافة Genitiv مؤنث: der Einleitung لا die Einleitung', 'Die These ist die Kernaussage die Einleitung.', 'الإضافة: der Einleitung'],
+      ['Ohne Beleg bleibt die Behauptung leer.', 'يفرّق بين الادّعاء والدليل', 'الادّعاء بلا دليل يبقى فارغًا، وohne مع النصب: einen Beleg عند وجود أداة', 'Ohne ein Beleg bleibt die Behauptung leer.', 'المذكر نصب: einen'],
+      ['Man muss die Vor- und Nachteile abwägen.', 'يوازن بين الوجهين قبل الحكم', 'الفعل abwägen منفصل في أصله، وبعد muss يبقى مصدرًا كاملًا في الختام', 'Man muss die Vor- und Nachteile wägen.', 'المصدر الكامل: abwägen'],
+      ['Dieser Autor widerspricht der Mehrheit.', 'يعرض الرأي المخالف بدقة', 'widersprechen يأخذ Dativ: der Mehrheit لا die Mehrheit', 'Dieser Autor widerspricht die Mehrheit.', 'الداتيف: der Mehrheit']
     ],
     [
-      ['Eine Erörterung braucht Kontext, These und Beleg.', 'المقال يحتاج سياقًا ودعوى ودليلًا', 'Die Erörterung beginnt ohne Kontext', 'السياق أولًا', 'Kontext'],
-      ['Differenzierung schlägt Pauschalisierung.', 'التفريق أدقّ من التعميم الجائر', 'Die Erörterung bleibt bei Pauschalisierung', 'التفريق أدق', 'Differenzierung'],
-      ['Der Belegtext nennt Quelle, Studie und Zitat genau.', 'نص الدليل يسمّي المصدر والدراسة والاقتباس بدقة', 'Der Belegtext nennt keine Quelle', 'المصدر مطلوب', 'Belegtext'],
-      ['Zwar nennt der Einwand eine Bedingung, doch die Widerlegung trägt.', 'الاعتراض يذكر شرطًا، لكن التفنيد يصمد', 'Der Einwand bleibt ohne Widerlegung', 'التفنيد لازم', 'Einwand']
+      ['Die These ist die Kernaussage der Einleitung.', 'الأطروحة هي فكرة المقدمة الأساسية', 'Die These ist die Kernaussage die Einleitung.', 'الإضافة Genitiv: der Einleitung.', 'Kernaussage'],
+      ['Ohne Beleg bleibt die Behauptung leer.', 'بلا دليل يبقى الادّعاء فارغًا', 'Ohne ein Beleg bleibt die Behauptung leer.', 'المذكر في النصب بعد ohne: einen.', 'Beleg'],
+      ['Man muss die Vor- und Nachteile abwägen.', 'يجب أن يوازن المرء بين المزايا والعيوب', 'Man muss die Vor- und Nachteile wägen.', 'الفعل المنفصل يبقى كاملًا بعد muss.', 'abwägen'],
+      ['Dieser Autor widerspricht der Mehrheit.', 'هذا المؤلف يعارض الأكثرية', 'Dieser Autor widerspricht die Mehrheit.', 'widersprechen مع الداتيف.', 'widerspricht']
     ],
-    'Die These ist die Kernaussage. Die Entkräftung des Einwands gelingt mit einer Statistik. Die Verknüpfung durch Bindewort und Satzverbindung hält den Text zusammen. Objektivität und Subjektivität trennt man an der Wertung. Die Überarbeitung prüft die Fußnote und das Literaturverzeichnis.',
-    'Die Argumentation bleibt sachlich, die Wertung bleibt sichtbar.',
-    'Schreibe morgen eine Erörterung mit Einleitung und Hauptteil.',
-    'غدًا اكتب مقالًا حجاجيًا بمقدمة ومتن.'),
+    'Die These ist die Kernaussage der Einleitung. Ohne Beleg bleibt die Behauptung leer.',
+    'Die Argumentation muss schlüssig sein.',
+    'Wiederhole morgen die fünf Sätze: Die These ist die Kernaussage der Einleitung. Ohne Beleg bleibt die Behauptung leer. Man muss die Vor- und Nachteile abwägen. Dieser Autor widerspricht der Mehrheit. Die Argumentation muss schlüssig sein. Die Entkräftung des Einwands gelingt mit einer Statistik. Die Verknüpfung durch Bindewort und Satzverbindung hält den Text zusammen. Objektivität und Subjektivität trennt man an der Wertung. Die Überarbeitung prüft die Fußnote und das Literaturverzeichnis. Der Belegtext nennt Quelle, Studie und Zitat genau. Differenzierung schlägt Pauschalisierung. Zwar nennt der Einwand eine Bedingung, doch die Widerlegung trägt. Die Argumentation bleibt sachlich, die Wertung bleibt sichtbar. Eine Erörterung braucht Kontext, These und Beleg. Schreibe morgen eine Erörterung mit Einleitung und Hauptteil.',
+    'غدًا أعد جمل المقال الحجاجي الخمس ولاحظ الدليل والموازنة.',
+    {
+      factFamilies: ['kasus', 'kasus', 'wortstellung', 'kasus'],
+      imitateNearMiss: 'Kernaussagen',
+      transformHint: 'في جملة الختام حكم على البنية كلها: Die Argumentation muss schlüssig sein — الصفة بعد sein بلا نهاية.',
+      orderSentence: 'Man muss die Vor- und Nachteile abwägen.',
+      checkOrderSentence: 'Die These ist die Kernaussage der Einleitung.',
+      orderAr: 'رتّب جملة الموازنة: الفاعل Man أولًا والفعل muss ثانيًا والمصدر abwägen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Man في الموضع الأول.', 'المصدر الكامل abwägen. يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Erörterung in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: أطروحة في المقدمة بإضافة Genitiv، وادّعاء فارغ بلا دليل، وموازنة بين المزايا والعيوب، ومعارضة بالداتيف، وحكم ختامي بصفة بلا نهاية.',
+        hinweise: ['كل ادّعاء يحتاج دليلًا، لا رأيًا ثانيًا.', 'وازن الوجهين قبل أن تحكم.'],
+        prompt: 'اكتب جمل المقال الحجاجي الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die These ist die Kernaussage der Einleitung. · Ohne Beleg bleibt die Behauptung leer. · Man muss die Vor- und Nachteile abwägen. · Dieser Autor widerspricht der Mehrheit. · Die Argumentation muss schlüssig sein.',
+        points: ['Die These ist die Kernaussage der Einleitung.', 'Ohne Beleg bleibt die Behauptung leer.', 'Man muss die Vor- und Nachteile abwägen.', 'Dieser Autor widerspricht der Mehrheit.', 'Die Argumentation muss schlüssig sein.'],
+        minWords: 30,
+        frage: 'اكتب جمل المقال الحجاجي الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die These ist die Kernaussage der Einleitung. Ohne Beleg bleibt die Behauptung leer. Man muss die Vor- und Nachteile abwägen. Dieser Autor widerspricht der Mehrheit. Die Argumentation muss schlüssig sein.',
+      summaryDe: 'Die These ist die Kernaussage der Einleitung. Ohne Beleg bleibt die Behauptung leer. Man muss die Vor- und Nachteile abwägen. Dieser Autor widerspricht der Mehrheit. Die Argumentation muss schlüssig sein.',
+      summaryAr: 'المقال الحجاجي يُروى بأطروحة معلنة ودليل لكل ادّعاء وموازنة قبل الحكم.',
+      summaryRecap: 'أطروحة ودليل وموازنة',
+    }),
 
   U('b2-w03', 'نقاش', 'Diskussion',
     'Am Ende räumst du einen Punkt ein und bleibst bei deiner Sache',
