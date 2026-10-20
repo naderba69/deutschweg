@@ -16734,6 +16734,123 @@ console.log('\n— P3.2 lexical layer —\n');
       checksH4[4].frage.optionen.some(o => o.text === targetsH4[4]) &&
       checksH4[4].frage.optionen.some(o => o.text === 'Ich gebe Sie meine Visitenkarte.') &&
       Object.values(checksH4[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonH5 = win.DW_LESSONS['b1-u8-l5'];
+  const rowH5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonH5.id);
+  const byWordH5 = Object.fromEntries(lessonH5.wortschatz.map(it => [it.de, it]));
+  const tricksH5 = lessonH5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsH5 = [
+    'Die Kriminalpolizei übernimmt den Fall.',
+    'Wir schaffen einen Rechner an.',
+    'Das Büro befindet sich im ersten Stock.',
+    'Die Klassenarbeit wird am Montag geschrieben.',
+    'Die Rechnung ist nächste Woche fällig.'
+  ];
+  t('Corpus lesson b1-u8-l5 precisely scopes five administration-and-school moves taking a singular Kriminalpolizei die übernimmt, a separated schaffen an, a reflexive befindet sich, a singular wird-geschrieben passive and a due fällige Rechnung',
+    lessonH5.title.de === 'Verwaltung und Schule: anschaffen und Klassenarbeit' &&
+      lessonH5.title.ar === 'الإدارة والتعليم: anschaffen وKlassenarbeit' &&
+      rowH5.title.de === lessonH5.title.de && rowH5.title.ar === lessonH5.title.ar &&
+      rowH5.theme === 'التعليم' &&
+      rowH5.grammar.item === 'Kriminalpolizei übernimmt · schaffen … an · befindet sich · Klassenarbeit wird · Rechnung fällig' &&
+      rowH5.grammar.method === 'explicit' && lessonH5.schritte.length === 36 && lessonH5.wortschatz.length === 40 &&
+      lessonH5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonH5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsH5[i]) &&
+      lessonH5.schritte[0].zeigt.de === 'Am Ende sprichst du über Amt, Büro und Schule — in fünf Sätzen' &&
+      lessonH5.schritte.find(s => s.id === 's20').zeigt.de === targetsH5[4]);
+
+  const expectedWordsH5 = [
+    'die Änderung', 'die Aushilfe', 'beruflich', 'berufstätig', 'die Einführung', 'einschließlich',
+    'das Einschreiben', 'die Einzelheit', 'die Entlassung', 'erforderlich', 'andrerseits', 'der Angehörige',
+    'anschaffen', 'anwesend', 'der Import', 'fällig', 'genehmigen', 'aufnehmen',
+    'die Kriminalpolizei', 'die Lehrstelle', 'die Leiterin', 'die Nachhilfe', 'der Nachwuchs', 'die Versammlung',
+    'vertreten', 'ausreichen', 'die Vertretung', 'der Bedarf', 'die Professorin', 'die Schularbeit',
+    'der Stempel', 'die Stufe', 'die Teilnahme', 'die Teilnehmerin', 'die Unternehmerin', 'untersagt',
+    'unterstreichen', 'befinden', 'die Zeichnung', 'die Klassenarbeit'
+  ];
+  const errorsH5 = lessonH5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u8-l5 reviews all 40 entries and three bounded mnemonics without fourteen manufactured appendages and re-anchors the zu-infinitive trick on the lesson own separable verbs instead of an untaught Zivilstand',
+    Object.keys(byWordH5).join(' | ') === expectedWordsH5.join(' | ') &&
+      lessonH5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonH5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordH5['die Kriminalpolizei'].err === 'Die Kriminalpolizei übernehmen den Fall.' &&
+      byWordH5['anschaffen'].err === 'Wir anschaffen einen Rechner.' &&
+      byWordH5['fällig'].err === 'Die Rechnung ist nächste Woche fällige.' &&
+      byWordH5['einschließlich'].err === 'Der Preis sind einschließlich Frühstück.' &&
+      byWordH5['unterstreichen'].err === 'Bitte unterstreichen Sie den Fehlern.' &&
+      !['Beruflich geht es ihm gut auf.', 'Beide Eltern sind berufstätig gemacht.',
+        'Die Einführung in das Thema dauert zehn Minuten.', 'Der Preis ist einschließlich von Frühstück.',
+        'Nach der Entlassung sucht er sofort auf.', 'Für den Antrag sind Papiere erforderlich gemacht.',
+        'Andrerseits hat die Stelle Vorteile auf.', 'Heute sind alle anwesend gemacht.',
+        'Die Rechnung ist nächste Woche fällig gemacht.', 'Er hat eine Lehrstelle gefunden auf.',
+        'In Mathe braucht sie Nachhilfe auf.', 'Wer vertritt sie während der Ferien auf?',
+        'Rauchen ist hier untersagt gemacht.', 'Bitte unterstreichen Sie auf die Fehler.']
+        .some(x => errorsH5.includes(x)) &&
+      tricksH5.length === 3 && !tricksH5[0].wie.includes('Zivilstand') && tricksH5[0].wie.includes('aufzunehmen') &&
+      tricksH5[1].wie.includes('Wir schaffen einen Rechner an.') &&
+      tricksH5[2].wie.includes('Die Kriminalpolizei übernimmt den Fall.'));
+
+  const wordClozeAH5 = lessonH5.schritte.find(s => s.id === 's09');
+  const wordClozeBH5 = lessonH5.schritte.find(s => s.id === 's13');
+  const wordClozeCH5 = lessonH5.schritte.find(s => s.id === 's17');
+  const imitateH5 = lessonH5.schritte.find(s => s.id === 's19');
+  const drillH5 = lessonH5.schritte.find(s => s.id === 's23');
+  const orderH5 = lessonH5.schritte.find(s => s.id === 's24');
+  const writingH5 = lessonH5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingH5 = lessonH5.schritte.find(s => s.phase === 'Produktion');
+  const summaryH5 = lessonH5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkH5 = lessonH5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u8-l5 aligns five strict learning clozes, sound übernimmt order fields and a 29-word five-target production',
+    wordClozeAH5.frage.zeigt === 'Der Preis ist ____ Frühstück.' && wordClozeAH5.frage.antworten.join(' ') === 'einschließlich' &&
+      wordClozeAH5.frage.nearMiss['einschließliche'] && !win.DW.renderers.judgeCloze(wordClozeAH5.frage, 'einschließliche').ok &&
+      wordClozeBH5.frage.zeigt === 'In Mathe braucht sie ____.' && wordClozeBH5.frage.antworten.join(' ') === 'Nachhilfe' &&
+      wordClozeBH5.frage.nearMiss.Nachhilfen && !win.DW.renderers.judgeCloze(wordClozeBH5.frage, 'Nachhilfen').ok &&
+      wordClozeCH5.frage.zeigt === 'Das Büro ____ im ersten Stock.' && wordClozeCH5.frage.antworten.join(' ') === 'befindet sich' &&
+      wordClozeCH5.frage.nearMiss.befindet && !win.DW.renderers.judgeCloze(wordClozeCH5.frage, 'befindet').ok &&
+      imitateH5.zeigt.de === 'Die Kriminalpolizei ____ den Fall.' && imitateH5.frage.antworten.join(' ') === 'übernimmt' &&
+      imitateH5.frage.nearMiss['übernehmen'] && !win.DW.renderers.judgeCloze(imitateH5.frage, 'übernehmen').ok &&
+      drillH5.frage.zeigt === 'Wir ____ einen Rechner an.' && drillH5.frage.antworten.join(' ') === 'schaffen' &&
+      drillH5.frage.nearMiss.anschaffen && !win.DW.renderers.judgeCloze(drillH5.frage, 'anschaffen').ok &&
+      lessonH5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderH5.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderH5.frage.correct.join(' ') === targetsH5[0] && orderH5.frage.finite === 'übernimmt' && orderH5.frage.verbFirst === false &&
+      orderH5.frage.fields.vorfeld.join(' ') === 'Die Kriminalpolizei' && orderH5.frage.fields.lsk.join(' ') === 'übernimmt' &&
+      orderH5.frage.fields.mittelfeld.join(' ') === 'den Fall.' &&
+      win.DW.order.score(orderH5.frage, orderH5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderH5.frage, ['Die', 'Kriminalpolizei', 'den', 'Fall.', 'übernimmt']).credit < 1 &&
+      writingH5.frage.points.join(' | ') === targetsH5.join(' | ') && writingH5.frage.minWords === 29 &&
+      targetsH5.join(' ').split(/\s+/).length === 29 &&
+      targetsH5.every(x => [writingH5.frage.promptDe, summaryH5.zeigt.de, homeworkH5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsH5.every(x => norm(speakingH5.erklaerung).includes(norm(x))) &&
+      (homeworkH5.hinweise || []).join(' ').includes('Ein trennbares Verb braucht auch zu in der Mitte'));
+
+  const checksH5 = lessonH5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckH5 = checksH5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckH5 = checksH5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u8-l5 makes 80 percent four of five, independently checking the wird-passive agreement, the schaffen cloze and befindet order, singular übernimmt and endingless fällig',
+    checksH5.length === 5 && checksH5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksH5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksH5.every(s => /^cap\.b1-u8-l5\.s\d+$/.test(s.frage.prereq || '')) && checksH5.every(s => !s.hinweise) &&
+      checksH5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u8-l5.s07 | cap.b1-u8-l5.s23 | cap.b1-u8-l5.s24 | cap.b1-u8-l5.s12 | cap.b1-u8-l5.s20' &&
+      new Set(checksH5.map(s => s.frage.prereq)).size === 5 &&
+      checksH5[0].frage.optionen.some(o => o.text === targetsH5[3]) &&
+      checksH5[0].frage.optionen.some(o => o.text === 'Die Klassenarbeit werden am Montag geschrieben.') &&
+      Object.values(checksH5[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckH5.frage.zeigt === 'Wir ____ einen Rechner an.' &&
+      clozeCheckH5.frage.antworten.join(' ') === 'schaffen' && clozeCheckH5.frage.nearMiss.anschaffen &&
+      !win.DW.renderers.judgeCloze(clozeCheckH5.frage, 'anschaffen').ok &&
+      orderCheckH5.frage.correct.join(' ') === targetsH5[2] && orderCheckH5.frage.finite === 'befindet' &&
+      orderCheckH5.frage.fields.vorfeld.join(' ') === 'Das Büro' && orderCheckH5.frage.fields.lsk.join(' ') === 'befindet' &&
+      orderCheckH5.frage.fields.mittelfeld.join(' ') === 'sich im ersten Stock.' &&
+      win.DW.order.score(orderCheckH5.frage, orderCheckH5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckH5.frage, ['Das', 'Büro', 'sich', 'befindet', 'im', 'ersten', 'Stock.']).credit < 1 &&
+      checksH5[3].frage.optionen.some(o => o.text === targetsH5[0]) &&
+      checksH5[3].frage.optionen.some(o => o.text === 'Die Kriminalpolizei übernehmen den Fall.') &&
+      Object.values(checksH5[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksH5[4].frage.optionen.some(o => o.text === targetsH5[4]) &&
+      checksH5[4].frage.optionen.some(o => o.text === 'Die Rechnung ist nächste Woche fällige.') &&
+      Object.values(checksH5[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

@@ -2552,25 +2552,50 @@ module.exports = [
       hwHintDe: 'Berufe und Geräte stehen im Singular: Die Anwältin prüft den Vertrag, und der Kopierer steht neben der Tür. Trennbare Verben trennen sich: Ich schreibe die Nummer gleich auf. Konzentriere dich auf die Arbeit und gib deine Karte mit dem Dativ: Ich gebe Ihnen meine Visitenkarte. Eine gute Anwältin und ein klarer Vertrag machen die Arbeit im Büro leichter.'
     }),
 
-  U('b1-u8-l5', 'B1', 'الإدارة والتعليم', 'Verwaltung und Schule', 'wortstellung',
-    'Am Ende füllst du einen Antrag aus und sprichst über die Ausbildung',
-    'في النهاية تملأ طلبًا وتتحدث عن التعليم.',
+  U('b1-u8-l5', 'B1', 'الإدارة والتعليم: anschaffen وKlassenarbeit', 'Verwaltung und Schule: anschaffen und Klassenarbeit', 'wortstellung',
+    'Am Ende sprichst du über Amt, Büro und Schule — in fünf Sätzen',
+    'في النهاية تتحدث عن الدائرة والمكتب والمدرسة في خمس جمل.',
     [
-      ['Der Zivilstand ist im Formular anzugeben.', 'المصدر مع zu في الوسط', 'an-zu-geben', 'Der Zivilstand ist im Formular angeben.', 'anzugeben'],
-      ['Wir schaffen einen Rechner an.', 'anschaffen منفصل', 'Trennbares Verb: schaffen … an', 'Wir anschaffen einen Rechner.', 'schaffen … an'],
-      ['Das Heim nimmt neue Gäste auf.', 'aufnehmen منفصل', 'nimmt … auf', 'Das Heim aufnimmt neue Gäste.', 'nimmt … auf'],
-      ['Die Teilnahme am Kurs ist freiwillig.', 'الاشتراك مفرد', 'die Teilnahme: Singular + ist', 'Die Teilnahme am Kurs sind freiwillig.', 'ist']
+      ['Die Kriminalpolizei übernimmt den Fall.', 'تتحدث عن الشرطة تتولى قضية', 'die Kriminalpolizei اسم مؤنث مفرد ففعلها übernimmt بصيغة المفرد لا übernehmen', 'Die Kriminalpolizei übernehmen den Fall.', 'المفرد: übernimmt'],
+      ['Wir schaffen einen Rechner an.', 'تقتني حاسوبًا للعمل', 'anschaffen فعل منفصل: schaffen في الموضع الثاني وan أخيرًا لا ملتصقًا', 'Wir anschaffen einen Rechner.', 'schaffen … an'],
+      ['Das Büro befindet sich im ersten Stock.', 'تحدّد موضع المكتب في الطابق الأول', 'sich befinden فعل انعكاسي: الضمير sich واجب وحذفه خطأ', 'Das Büro befindet im ersten Stock.', 'befindet sich'],
+      ['Die Klassenarbeit wird am Montag geschrieben.', 'تقول إن فرض الصف يُكتب يوم الاثنين', 'المبني للمجهول مع المفرد: wird … geschrieben لا werden', 'Die Klassenarbeit werden am Montag geschrieben.', 'المفرد: wird']
     ],
     [
-      ['Die Kriminalpolizei übernimmt den Fall.', 'الشرطة الجنائية تتولى القضية', 'Die Kriminalpolizei übernehmen den Fall.', 'الفعل مفرد.', 'übernimmt'],
-      ['Nach der Entlassung sucht er sofort.', 'بعد التسريح يبحث فورًا', 'Nach der Entlassung sucht er sofort auf.', 'بلا auf.', 'sucht'],
-      ['Die Rechnung ist nächste Woche fällig.', 'الفاتورة مستحقة الأسبوع القادم', 'Die Rechnung ist nächste Woche fällig gemacht.', 'الصفة تكفي.', 'fällig'],
-      ['Bitte unterstreichen Sie die Fehler.', 'ضع خطًّا تحت الأخطاء', 'Bitte unterstreichen Sie auf die Fehler.', 'بلا auf.', 'unterstreichen']
+      ['Die Kriminalpolizei übernimmt den Fall.', 'الشرطة الجنائية تتولى القضية', 'Die Kriminalpolizei übernehmen den Fall.', 'فعلها مفرد: übernimmt لا übernehmen.', 'übernimmt'],
+      ['Wir schaffen einen Rechner an.', 'نقتني حاسوبًا', 'Wir anschaffen einen Rechner.', 'anschaffen ينفصل: schaffen … an.', 'schaffen'],
+      ['Das Büro befindet sich im ersten Stock.', 'المكتب في الطابق الأول', 'Das Büro befindet im ersten Stock.', 'الضمير الانعكاسي sich واجب.', 'sich'],
+      ['Die Klassenarbeit wird am Montag geschrieben.', 'الفرض الصفّي يُكتب الاثنين', 'Die Klassenarbeit werden am Montag geschrieben.', 'المجهول مفرد: wird.', 'wird']
     ],
-    'Der Zivilstand ist im Formular anzugeben. Wir schaffen einen Rechner an.',
+    'Die Kriminalpolizei übernimmt den Fall. Die Klassenarbeit wird am Montag geschrieben.',
     'Die Rechnung ist nächste Woche fällig.',
-    'Fülle morgen einen einfachen Antrag aus und lies ihn laut vor.',
-    'غدًا املأ طلبًا بسيطًا واقرأه بصوت عالٍ.'),
+    'Wiederhole morgen die fünf Sätze: Die Kriminalpolizei übernimmt den Fall. Wir schaffen einen Rechner an. Das Büro befindet sich im ersten Stock. Die Klassenarbeit wird am Montag geschrieben. Die Rechnung ist nächste Woche fällig.',
+    'غدًا أعد جمل الإدارة والتعليم الخمس ولاحظ المفرد والفصل والانعكاس.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'lexik-kollokation', 'konjugation'],
+      imitateNearMiss: 'übernehmen',
+      transformHint: 'في جملة الختام فاتورة مستحقة: Die Rechnung ist nächste Woche fällig — الصفة خبرًا بلا نهاية صرف.',
+      orderSentence: 'Die Kriminalpolizei übernimmt den Fall.',
+      checkOrderSentence: 'Das Büro befindet sich im ersten Stock.',
+      orderAr: 'رتّب جملة الشرطة: الفعل übernimmt في الموضع الثاني والمفعول den Fall. أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Kriminalpolizei هو الموضع الأول وحده.', 'المفعول den Fall. يأتي بعد الفعل.'],
+      writing: {
+        zeigt: 'Verwaltung und Schule in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: سلطة مفردة بـübernimmt، واقتناء منفصل بـschaffen … an، ومكتب انعكاسي بـbefindet sich، وفرض صف مبني للمجهول بـwird geschrieben، وفاتورة مستحقة بـfällig.',
+        hinweise: ['أسماء السلطة المؤنثة مفردة الأفعال.', 'الفعل المنفصل ينفصل والانعكاسي يحتفظ بضميره.'],
+        prompt: 'اكتب جمل الإدارة والتعليم الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Kriminalpolizei übernimmt den Fall. · Wir schaffen einen Rechner an. · Das Büro befindet sich im ersten Stock. · Die Klassenarbeit wird am Montag geschrieben. · Die Rechnung ist nächste Woche fällig.',
+        points: ['Die Kriminalpolizei übernimmt den Fall.', 'Wir schaffen einen Rechner an.', 'Das Büro befindet sich im ersten Stock.', 'Die Klassenarbeit wird am Montag geschrieben.', 'Die Rechnung ist nächste Woche fällig.'],
+        minWords: 29,
+        frage: 'اكتب جمل الإدارة والتعليم الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Kriminalpolizei übernimmt den Fall. Wir schaffen einen Rechner an. Das Büro befindet sich im ersten Stock. Die Klassenarbeit wird am Montag geschrieben. Die Rechnung ist nächste Woche fällig.',
+      summaryDe: 'Die Kriminalpolizei übernimmt den Fall. Wir schaffen einen Rechner an. Das Büro befindet sich im ersten Stock. Die Klassenarbeit wird am Montag geschrieben. Die Rechnung ist nächste Woche fällig.',
+      summaryAr: 'الإدارة والتعليم يحتاجان سلطات مفردة الأفعال وفعلًا ينفصل وانعكاسًا بضميره ومجهولًا مفردًا.',
+      summaryRecap: 'مفرد وفصل وانعكاس ومجهول',
+      hwHintDe: 'Trennbare Verben bleiben getrennt: Wir schaffen einen Rechner an, und das Heim nimmt neue Gäste auf. Ein trennbares Verb braucht auch zu in der Mitte: Gäste aufzunehmen ist wichtig. Für einen einfachen Antrag sind nur wenige Papiere erforderlich. Die Teilnahme am Kurs ist freiwillig, und die Rechnung ist nächste Woche fällig.'
+    }),
 
   U('b1-u8-l6', 'B1', 'الطبيعة والرياضة', 'Natur und Sport', 'wortstellung',
     'Am Ende berichtest du über Wetter, Ausflug und Sport',
