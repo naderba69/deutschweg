@@ -17770,6 +17770,116 @@ console.log('\n— P3.2 lexical layer —\n');
       checksJ1[4].frage.optionen.some(o => o.text === targetsJ1[4]) &&
       checksJ1[4].frage.optionen.some(o => o.text === 'Alle Menschen sind gleichberechtigt gemacht.') &&
       Object.values(checksJ1[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
+
+  const lessonJ2 = win.DW_LESSONS['b1-u10-l2'];
+  const rowJ2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonJ2.id);
+  const byWordJ2 = Object.fromEntries(lessonJ2.wortschatz.map(it => [it.de, it]));
+  const tricksJ2 = lessonJ2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsJ2 = [
+    'Man soll den Besuch vorher ankündigen.',
+    'Die Malerin stellt im Herbst aus.',
+    'Jeder Schritt ist klein.',
+    'Man will den Grund herausfinden.',
+    'Die Linie drei fährt zum Bahnhof.'
+  ];
+  t('Corpus lesson b1-u10-l2 precisely scopes five office-and-school moves taking final ankündigen after soll, singular Malerin die stellt, singular Schritt ist, final herausfinden and singular Linie fährt',
+    lessonJ2.title.de === 'Verwaltung und Schule: ankündigen und Malerin' &&
+      lessonJ2.title.ar === 'الإدارة والمدرسة: ankündigen وMalerin' &&
+      rowJ2.title.de === lessonJ2.title.de && rowJ2.title.ar === lessonJ2.title.ar &&
+      rowJ2.theme === 'الإدارة' &&
+      rowJ2.grammar.item === 'Besuch ankündigen · Malerin stellt aus · Schritt ist · Grund herausfinden · Linie fährt' &&
+      rowJ2.grammar.method === 'explicit' && lessonJ2.schritte.length === 36 && lessonJ2.wortschatz.length === 36 &&
+      lessonJ2.schritte.filter(s => s.phase === 'Übungen').length === 6 &&
+      lessonJ2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsJ2[i]) &&
+      lessonJ2.schritte[0].zeigt.de === 'Am Ende füllst du ein Formular aus und erzählst von Schule und Kunst — in fünf Sätzen' &&
+      lessonJ2.schritte.find(s => s.id === 's19').zeigt.de === targetsJ2[4]);
+
+  const expectedWordsJ2 = [
+    'die Absenderin', 'die Abwartin', 'abwesend', 'ankündigen', 'anschließen', 'anstellen',
+    'aufführen', 'der Auftritt', 'auftreten', 'aufgeben', 'auflösen', 'aussuchen',
+    'auswählen', 'befreit', 'befriedigend', 'beschränken', 'begrenzt', 'festhalten',
+    'feststehen', 'feststellen', 'fortsetzen', 'die Fortsetzung', 'das Forum', 'die Gratulation',
+    'die Neuigkeit', 'die Malerin', 'die Schriftstellerin', 'die Vertreterin', 'die Wissenschaftlerin', 'die Heldin',
+    'der Schritt', 'die Linie', 'die Zuschauerin', 'vorlesen', 'der Gegenstand', 'herausfinden'
+  ];
+  const errorsJ2 = lessonJ2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u10-l2 reviews all 36 entries and three bounded mnemonics keeping every genuine agreement, Konjunktiv-II and trailing foil as a real error and repairs the anstellen gloss to the taught employ sense',
+    Object.keys(byWordJ2).join(' | ') === expectedWordsJ2.join(' | ') &&
+      lessonJ2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonJ2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordJ2['ankündigen'].err === 'Man soll den Besuch vorher ankündigen auf.' &&
+      byWordJ2['die Malerin'].err === 'Die Malerin stellen im Herbst aus.' &&
+      byWordJ2['der Schritt'].err === 'Jeder Schritt sind klein.' &&
+      byWordJ2['herausfinden'].err === 'Man will den Grund herausfinden auf.' &&
+      byWordJ2['die Linie'].err === 'Die Linie drei fahren zum Bahnhof.' &&
+      byWordJ2['anstellen'].ar === 'يوظّف' &&
+      ['Wer aufgeben würde, verlieren das Geld.', 'Es soll feststehen auf, dass die Lieferung falsch war.',
+        'Zwei Personen sind heute abwesend gemacht.', 'Die Heldin des Films heißen Anna.',
+        'Jeder Gegenstand kommen in eine Schachtel.']
+        .every(x => errorsJ2.includes(x)) &&
+      tricksJ2.length === 3 && tricksJ2[0].wie.includes('Man will den Grund herausfinden.') &&
+      tricksJ2[1].wie.includes('Die Malerin stellt im Herbst aus.') &&
+      tricksJ2[2].wie.includes('Jeder Schritt ist klein.'));
+
+  const wordClozeAJ2 = lessonJ2.schritte.find(s => s.id === 's09');
+  const wordClozeBJ2 = lessonJ2.schritte.find(s => s.id === 's13');
+  const imitateJ2 = lessonJ2.schritte.find(s => s.id === 's18');
+  const drillJ2 = lessonJ2.schritte.find(s => s.id === 's22');
+  const orderJ2 = lessonJ2.schritte.find(s => s.id === 's23');
+  const writingJ2 = lessonJ2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingJ2 = lessonJ2.schritte.find(s => s.phase === 'Produktion');
+  const summaryJ2 = lessonJ2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkJ2 = lessonJ2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u10-l2 aligns four strict learning clozes of the 36-word layout, sound will order fields and a 27-word five-target production',
+    wordClozeAJ2.frage.zeigt === 'Der Chef will mehr Leute ____.' && wordClozeAJ2.frage.antworten.join(' ') === 'anstellen' &&
+      wordClozeAJ2.frage.nearMiss.stellen && !win.DW.renderers.judgeCloze(wordClozeAJ2.frage, 'stellen').ok &&
+      wordClozeBJ2.frage.zeigt === 'Die ____ kommt im Herbst.' && wordClozeBJ2.frage.antworten.join(' ') === 'Fortsetzung' &&
+      wordClozeBJ2.frage.nearMiss.Fortsetzungen && !win.DW.renderers.judgeCloze(wordClozeBJ2.frage, 'Fortsetzungen').ok &&
+      (imitateJ2.frage.zeigt === 'Man soll den Besuch vorher ____.' || imitateJ2.zeigt.de === 'Man soll den Besuch vorher ____.') && imitateJ2.frage.antworten.join(' ') === 'ankündigen' &&
+      imitateJ2.frage.nearMiss['kündigen'] && !win.DW.renderers.judgeCloze(imitateJ2.frage, 'kündigen').ok &&
+      drillJ2.frage.zeigt === 'Sie muss die Aufgabe ____.' && drillJ2.frage.antworten.join(' ') === 'auflösen' &&
+      drillJ2.frage.nearMiss['lösen'] && !win.DW.renderers.judgeCloze(drillJ2.frage, 'lösen').ok &&
+      lessonJ2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderJ2.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderJ2.frage.correct.join(' ') === targetsJ2[3] && orderJ2.frage.finite === 'will' && orderJ2.frage.verbFirst === false &&
+      orderJ2.frage.fields.vorfeld.join(' ') === 'Man' && orderJ2.frage.fields.lsk.join(' ') === 'will' &&
+      orderJ2.frage.fields.mittelfeld.join(' ') === 'den Grund herausfinden.' &&
+      win.DW.order.score(orderJ2.frage, orderJ2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderJ2.frage, ['Man', 'herausfinden.', 'will', 'den', 'Grund']).credit < 1 &&
+      writingJ2.frage.points.join(' | ') === targetsJ2.join(' | ') && writingJ2.frage.minWords === 27 &&
+      targetsJ2.join(' ').split(/\s+/).length === 27 &&
+      targetsJ2.every(x => [writingJ2.frage.promptDe, summaryJ2.zeigt.de, homeworkJ2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsJ2.every(x => norm(speakingJ2.erklaerung).includes(norm(x))) &&
+      (homeworkJ2.hinweise || []).join(' ').includes('Der Behördengang dauert nicht lange'));
+
+  const checksJ2 = lessonJ2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckJ2 = checksJ2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckJ2 = checksJ2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u10-l2 makes 80 percent four of five, independently checking final herausfinden, the auflösen cloze and ist order, singular Heldin heißt and singular Linie fährt',
+    checksJ2.length === 5 && checksJ2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksJ2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksJ2.every(s => /^cap\.b1-u10-l2\.s\d+$/.test(s.frage.prereq || '')) && checksJ2.every(s => !s.hinweise) &&
+      checksJ2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u10-l2.s07 | cap.b1-u10-l2.s22 | cap.b1-u10-l2.s23 | cap.b1-u10-l2.s15 | cap.b1-u10-l2.s19' &&
+      new Set(checksJ2.map(s => s.frage.prereq)).size === 5 &&
+      checksJ2[0].frage.optionen.some(o => o.text === targetsJ2[3]) &&
+      checksJ2[0].frage.optionen.some(o => o.text === 'Man will den Grund herausfinden auf.') &&
+      Object.values(checksJ2[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckJ2.frage.zeigt === 'Sie muss die Aufgabe ____.' &&
+      clozeCheckJ2.frage.antworten.join(' ') === 'auflösen' && clozeCheckJ2.frage.nearMiss['lösen'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckJ2.frage, 'lösen').ok &&
+      orderCheckJ2.frage.correct.join(' ') === targetsJ2[2] && orderCheckJ2.frage.finite === 'ist' &&
+      orderCheckJ2.frage.fields.vorfeld.join(' ') === 'Jeder Schritt' && orderCheckJ2.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckJ2.frage.fields.mittelfeld.join(' ') === 'klein.' &&
+      win.DW.order.score(orderCheckJ2.frage, orderCheckJ2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckJ2.frage, ['Jeder', 'Schritt', 'klein.', 'ist']).credit < 1 &&
+      checksJ2[3].frage.optionen.some(o => o.text === 'Die Heldin des Films heißt Anna.') &&
+      checksJ2[3].frage.optionen.some(o => o.text === 'Die Heldin des Films heißen Anna.') &&
+      Object.values(checksJ2[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksJ2[4].frage.optionen.some(o => o.text === targetsJ2[4]) &&
+      checksJ2[4].frage.optionen.some(o => o.text === 'Die Linie drei fahren zum Bahnhof.') &&
+      Object.values(checksJ2[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

@@ -179,7 +179,7 @@
        not divide by the forty-word ceiling and a 13-word lesson would fall under the
        B1 floor of twenty; each row declares its own count (r[5], r[6]). */
     ['الأمن والقانون: Einbruch وGericht', 'Sicherheit und Recht: Einbruch und Gericht', 'القانون', 'Einbruch war · Geld stehlen · scheiden lassen · Täter stand · gleichberechtigt', 'explicit', 37, 15],
-    ['الإدارة والمدرسة', 'Verwaltung und Schule', 'الإدارة', 'ankündigen und herausfinden', 'explicit', 36, 15],
+    ['الإدارة والمدرسة: ankündigen وMalerin', 'Verwaltung und Schule: ankündigen und Malerin', 'الإدارة', 'Besuch ankündigen · Malerin stellt aus · Schritt ist · Grund herausfinden · Linie fährt', 'explicit', 36, 15],
     ['البيئة والطبيعة', 'Umwelt und Natur', 'البيئة', 'Das Abgas schadet und stammen aus', 'explicit', 36, 15],
     ['الأفعال والظروف', 'Verben und Umstände', 'الزمن', 'Zunächst lesen wir und zweifeln an', 'explicit', 36, 15],
     ['الأشياء والصفات', 'Dinge und Eigenschaften', 'الوصف', 'derselbe und Fluss entlang', 'explicit', 36, 15],

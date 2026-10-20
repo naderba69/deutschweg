@@ -77,7 +77,7 @@ module.exports = {
       ['abwesend', '—', 'غائب', 'Zwei Personen sind heute abwesend.', 'Zwei Personen sind heute abwesend gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'abwesend'],
       ['ankündigen', '—', 'يُعلن عن', 'Man soll den Besuch vorher ankündigen.', 'Man soll den Besuch vorher ankündigen auf.', 'ankündigen بلا حرف جر.', 'lexik-kollokation', 'ankündigen'],
       ['anschließen', '—', 'يوصّل/ينضم', 'Alle wollen sich der Gruppe anschließen.', 'Alle wollen sich der Gruppe anschließen auf.', 'anschließen + داتيف بلا حرف جر.', 'lexik-kollokation', 'anschließen'],
-      ['anstellen', '—', 'يوظّف/يخطئ بحق', 'Der Chef will mehr Leute anstellen.', 'Der Chef will mehr Leute anstellen auf.', 'anstellen بلا حرف جر.', 'lexik-kollokation', 'anstellen'],
+      ['anstellen', '—', 'يوظّف', 'Der Chef will mehr Leute anstellen.', 'Der Chef will mehr Leute anstellen auf.', 'anstellen بلا حرف جر.', 'lexik-kollokation', 'anstellen'],
       ['aufführen', '—', 'يقدّم مسرحية', 'Die Klasse will ein Stück aufführen.', 'Die Klasse will ein Stück aufführen auf.', 'aufführen بلا حرف جر.', 'lexik-kollokation', 'aufführen'],
       ['der Auftritt', 'die Auftritte', 'العرض/الظهور', 'Der Auftritt beginnt um acht.', 'Der Auftritt beginnen um acht.', 'الفعل مفرد: beginnt.', 'konjugation', 'Auftritt'],
       ['auftreten', '—', 'يظهر على المسرح', 'Eine Gruppe will zuerst auftreten.', 'Eine Gruppe will zuerst auftreten auf.', 'auftreten بلا حرف جر.', 'lexik-kollokation', 'auftreten'],
@@ -113,7 +113,25 @@ module.exports = {
       { trick: 'أفعال ثابتة البادئة بلا حرف جر: ankündigen · auflösen · auswählen · herausfinden', wie: 'Man soll den Besuch vorher ankündigen. · Man will den Grund herausfinden.', warum: 'بادئة الفعل في الألمانية لا تعني حرف جر؛ فإضافة auf خطأ يقع فيه من يترجم حرفيًا.', anchor: 'den Grund herausfinden' },
       { trick: 'المؤنث المهني بفعل مفرد: die Malerin · die Heldin · die Schriftstellerin', wie: 'Die Malerin stellt im Herbst aus. · Die Heldin des Films heißt Anna.', warum: 'الاسم المؤنث مفرد دائمًا في الفعل وإن كان المعنى جمعًا في العربية.', anchor: 'Die Malerin stellt' },
       { trick: 'der Schritt · die Linie · der Gegenstand — أسماء لأشياء ملموسة بجنس غير متوقع', wie: 'Jeder Schritt ist klein. · Die Linie drei fährt zum Bahnhof.', warum: 'الجنس هنا لا يُستنتج من المعنى، فيُحفظ مع جمله.', anchor: 'Jeder Schritt ist klein' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'anstellen': 'stellen',
+      'die Fortsetzung': 'Fortsetzungen',
+      'herausfinden': 'finden',
+      'der Gegenstand': 'Gegenstände'
+    },
+    clozeItemIndex: 10,
+    clozeNearMiss: 'lösen',
+    checkItemIndex: 29,
+    extraCheck: {
+      right: 'Die Linie drei fährt zum Bahnhof.',
+      bad: 'Die Linie drei fahren zum Bahnhof.',
+      why: 'die Linie اسم مفرد: fährt لا fahren.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u10-l2.s19',
+      frage: 'أي جملة تجعل الخط مفرد الفعل؟'
+    }
   }
 
 };

@@ -2957,25 +2957,50 @@ module.exports = [
       hwHintDe: 'Der Einbrecher kam über den Balkon, und die Täterin hat alles zugegeben. Das Gefängnis liegt am Rand der Stadt, und das Konsulat ist am Montag zu. Die Migration verändert das Dorf, und die Migrantin arbeitet in der Küche. Alle Nachbarn vermissen sie, und man kann sich hier leicht irren. Sein Einfall war wirklich gut, und viele wollen das Dorf verlassen.'
     }),
 
-  U('b1-u10-l2', 'B1', 'الإدارة والمدرسة', 'Verwaltung und Schule', 'wortstellung',
-    'Am Ende füllst du ein Formular aus und erzählst von Schule und Kunst',
-    'في النهاية تملأ استمارة وتحكي عن المدرسة والفن.',
+  U('b1-u10-l2', 'B1', 'الإدارة والمدرسة: ankündigen وMalerin', 'Verwaltung und Schule: ankündigen und Malerin', 'wortstellung',
+    'Am Ende füllst du ein Formular aus und erzählst von Schule und Kunst — in fünf Sätzen',
+    'في النهاية تملأ استمارة وتحكي عن المدرسة والفن في خمس جمل.',
     [
-      ['Man soll den Besuch vorher ankündigen.', 'ankündigen بلا حرف جر', 'kein auf nach ankündigen', 'Man soll den Besuch vorher ankündigen auf.', 'ankündigen'],
-      ['Die Malerin stellt im Herbst aus.', 'المهنة المؤنثة بفعل مفرد', 'die Malerin: Singular + stellt', 'Die Malerin stellen im Herbst aus.', 'stellt'],
-      ['Jeder Schritt ist klein.', 'der Schritt مفرد', 'der Schritt: Singular + ist', 'Jeder Schritt sind klein.', 'ist'],
-      ['Man will den Grund herausfinden.', 'herausfinden بلا حرف جر', 'kein auf nach herausfinden', 'Man will den Grund herausfinden auf.', 'herausfinden']
+      ['Man soll den Besuch vorher ankündigen.', 'تعلن عن زيارة مقدّمًا', 'ankündigen مصدر أخير بعد soll والمفعول den Besuch قبله', 'Man soll den Besuch vorher ankündigen auf.', 'المصدر أخيرًا'],
+      ['Die Malerin stellt im Herbst aus.', 'تعلن معرض رسّامة', 'die Malerin مهنة مؤنثة مفردة ففعلها stellt لا stellen', 'Die Malerin stellen im Herbst aus.', 'المفردة: stellt'],
+      ['Jeder Schritt ist klein.', 'تصف خطوات صغيرة', 'der Schritt اسم مفرد فعله ist لا sind', 'Jeder Schritt sind klein.', 'المفرد: ist'],
+      ['Man will den Grund herausfinden.', 'يبحث عن السبب', 'herausfinden مصدر أخير بعد will والمفعول den Grund قبله', 'Man will den Grund herausfinden auf.', 'المصدر أخيرًا']
     ],
     [
-      ['Die Absenderin steht oben auf dem Brief.', 'المرسلة أعلى الرسالة', 'Die Absenderin stehen oben auf dem Brief.', 'الفعل مفرد.', 'steht'],
-      ['Die Gratulation kommt von der Architektin.', 'التهنئة من المهندسة', 'Die Gratulation kommen von der Architektin.', 'الفعل مفرد.', 'kommt'],
-      ['Die Linie drei fährt zum Bahnhof.', 'الخط ثلاثة إلى المحطة', 'Die Linie drei fahren zum Bahnhof.', 'الفعل مفرد.', 'fährt'],
-      ['Zwei Personen sind heute abwesend.', 'شخصان غائبان اليوم', 'Zwei Personen sind heute abwesend gemacht.', 'الصفة تكفي.', 'abwesend']
+      ['Man soll den Besuch vorher ankündigen.', 'يُعلن عن الزيارة مسبقًا', 'Man soll den Besuch vorher ankündigen auf.', 'المصدر كامل أخيرًا بلا حرف جرّ.', 'ankündigen'],
+      ['Die Malerin stellt im Herbst aus.', 'الرسّامة تعرض في الخريف', 'Die Malerin stellen im Herbst aus.', 'فعلها مفرد: stellt.', 'stellt'],
+      ['Jeder Schritt ist klein.', 'كل خطوة صغيرة', 'Jeder Schritt sind klein.', 'الفعل مفرد: ist.', 'ist'],
+      ['Man will den Grund herausfinden.', 'يريد اكتشاف السبب', 'Man will den Grund herausfinden auf.', 'المفعول قبل المصدر الأخير.', 'herausfinden']
     ],
-    'Man soll den Besuch vorher ankündigen. Die Absenderin steht oben auf dem Brief.',
-    'Jeder Schritt ist klein.',
-    'Schreibe morgen drei Sätze über einen Behördengang.',
-    'غدًا اكتب ثلاث جمل عن زيارة دائرة رسمية.'),
+    'Man soll den Besuch vorher ankündigen. Die Malerin stellt im Herbst aus.',
+    'Die Linie drei fährt zum Bahnhof.',
+    'Wiederhole morgen die fünf Sätze: Man soll den Besuch vorher ankündigen. Die Malerin stellt im Herbst aus. Jeder Schritt ist klein. Man will den Grund herausfinden. Die Linie drei fährt zum Bahnhof.',
+    'غدًا أعد جمل الإدارة والمدرسة الخمس ولاحظ المهن المفردة والمصدر الأخير.',
+    {
+      factFamilies: ['wortstellung', 'konjugation', 'konjugation', 'wortstellung'],
+      imitateNearMiss: 'kündigen',
+      transformHint: 'في جملة الختام نقل: Die Linie drei fährt zum Bahnhof — الخط اسم مفرد فعله fährt.',
+      orderSentence: 'Man will den Grund herausfinden.',
+      checkOrderSentence: 'Jeder Schritt ist klein.',
+      orderAr: 'رتّب جملة السبب: الفعل will في الموضع الثاني والمصدر herausfinden أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول Man وحده.', 'المفعول den Grund قبل المصدر herausfinden.'],
+      writing: {
+        zeigt: 'Verwaltung und Schule in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: إعلان بمصدر أخير ankündigen، ورسّامة مفردة بـstellt، وخطوة بمفرد ist، واكتشاف بمصدر أخير herausfinden، وخط بمفرد fährt.',
+        hinweise: ['المهن المؤنثة المفردة تأخذ فعلًا مفردًا.', 'المصدر أخيرًا بلا حرف جرّ زائد.'],
+        prompt: 'اكتب جمل الإدارة والمدرسة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Man soll den Besuch vorher ankündigen. · Die Malerin stellt im Herbst aus. · Jeder Schritt ist klein. · Man will den Grund herausfinden. · Die Linie drei fährt zum Bahnhof.',
+        points: ['Man soll den Besuch vorher ankündigen.', 'Die Malerin stellt im Herbst aus.', 'Jeder Schritt ist klein.', 'Man will den Grund herausfinden.', 'Die Linie drei fährt zum Bahnhof.'],
+        minWords: 27,
+        frage: 'اكتب جمل الإدارة والمدرسة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Man soll den Besuch vorher ankündigen. Die Malerin stellt im Herbst aus. Jeder Schritt ist klein. Man will den Grund herausfinden. Die Linie drei fährt zum Bahnhof.',
+      summaryDe: 'Man soll den Besuch vorher ankündigen. Die Malerin stellt im Herbst aus. Jeder Schritt ist klein. Man will den Grund herausfinden. Die Linie drei fährt zum Bahnhof.',
+      summaryAr: 'الإدارة والمدرسة تُرويان بمصادر أخيرة ومهن مؤنثة مفردة الأفعال.',
+      summaryRecap: 'مصدر أخير ومهنة مفردة',
+      hwHintDe: 'Die Absenderin steht oben auf dem Brief, und zwei Personen sind heute abwesend. Die Gratulation kommt von der Architektin, und die Neuigkeit steht im Forum. Die Schriftstellerin liest am Freitag, und eine Wissenschaftlerin forscht dazu. Die Fortsetzung kommt im Herbst, und das Ergebnis ist befriedigend. Jeder Gegenstand kommt in eine Schachtel. Der Behördengang dauert nicht lange.'
+    }),
 
   U('b1-u10-l3', 'B1', 'البيئة والطبيعة', 'Umwelt und Natur', 'lexik-kollokation',
     'Am Ende sprichst du über Müll, Tiere und Formen',
