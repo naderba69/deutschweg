@@ -47,10 +47,27 @@ module.exports = {
       ['irren', '—', 'يخطئ', 'Man kann sich hier leicht irren.', 'Man kann sich hier leicht irren auf.', 'انعكاسي: sich irren.', 'lexik-kollokation', 'irren']
     ],
     tricks: [
-      { trick: 'أفعال القانون مع مفعولها المباشر: stehlen · verstecken · verurteilen · bestrafen', wie: 'Jemand wollte das Geld stehlen. · Das Gericht muss ihn noch verurteilen.', warum: 'العربية تُدخل حرف جر («يسرق من»)، والألمانية تريد المفعول مباشرة بلا حرف.', anchor: 'wollte das Geld stehlen' },
+      { trick: 'أفعال القانون مع مفعولها المباشر: stehlen · verstecken · verurteilen · bestrafen', wie: 'Jemand wollte das Geld stehlen. · Das Gericht muss ihn noch verurteilen.', warum: 'يميل الطالب إلى حرف جر قبل المفعول، والألمانية تريده مباشرة بلا حرف: das Geld stehlen.', anchor: 'wollte das Geld stehlen' },
       { trick: 'الانعكاسي في الجمل القانونية: sich scheiden lassen · sich irren', wie: 'Die Frau will sich scheiden lassen. · Man kann sich hier leicht irren.', warum: 'التركيبان ثابتان بالضمير العائد، وحذفه يخلّ بالمصدر المركّب.', anchor: 'will sich scheiden lassen' },
-      { trick: 'المصدر مع zu في نهاية الجملة: zu bestrafen · anzukündigen', wie: 'Die Familie tut klug, sie nicht zu bestrafen.', warum: 'الفعل المساعد führt، والمصدر المؤول بـ zu يقف في الآخر — والعربية لا تعرف هذا الترتيب.', anchor: 'nicht zu bestrafen' }
-    ]
+      { trick: 'المصدر مع zu في نهاية الجملة: zu bestrafen', wie: 'Die Familie tut klug, sie nicht zu bestrafen.', warum: 'المصدر المؤوَّل بـzu يقف في آخر فرعه، وترتيب كهذا لا تعرفه العربية.', anchor: 'nicht zu bestrafen' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Verbrecherin': 'Verbrecherinnen',
+      'der Migrant': 'Migranten',
+      'einfallen': 'fallen'
+    },
+    clozeItemIndex: 8,
+    clozeNearMiss: 'stiehlt',
+    checkItemIndex: 11,
+    extraCheck: {
+      right: 'Alle Menschen sind gleichberechtigt.',
+      bad: 'Alle Menschen sind gleichberechtigt gemacht.',
+      why: 'الصفة خبرًا تكفي: gemacht زائدة.',
+      family: 'lexik-kollokation',
+      prereq: 'cap.b1-u10-l1.s20',
+      frage: 'أي جملة تجعل المساواة في الحقوق بلا فعل زائد؟'
+    }
   },
 
   'b1-u10-l2': {

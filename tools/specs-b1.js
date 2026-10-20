@@ -2912,25 +2912,50 @@ module.exports = [
       hwHintDe: 'Die Suppe ist zu salzig, aber die Vorspeise war eine Suppe. Die Zahnpasta ist schon alle, und das Vitamin steckt im Obst. Die Frisur sitzt noch nicht, und der Coiffeur arbeitet seit zwanzig Jahren. Die Schlagsahne steht im Kühlschrank, und der Schlagrahm gehört auf den Kuchen. Über den Tod spricht man selten, und man spürt den Wind am Abend. Ein Körperteil ist zum Beispiel die Brust.'
     }),
 
-  U('b1-u10-l1', 'B1', 'الأمن والقانون', 'Sicherheit und Recht', 'konjugation',
-    'Am Ende berichtest du über einen Vorfall und ein Gericht',
-    'في النهاية تحكي عن حادث ومحكمة.',
+  U('b1-u10-l1', 'B1', 'الأمن والقانون: Einbruch وGericht', 'Sicherheit und Recht: Einbruch und Gericht', 'konjugation',
+    'Am Ende berichtest du über einen Vorfall und ein Gericht — in fünf Sätzen',
+    'في النهاية تحكي عن حادث ومحكمة في خمس جمل.',
     [
-      ['Der Einbruch war im Winter.', 'الاسم مفرد بفعل مفرد', 'der Einbruch: Singular + war', 'Der Einbruch waren im Winter.', 'war'],
-      ['Jemand wollte das Geld stehlen.', 'stehlen بلا حرف جر', 'kein von nach stehlen', 'Jemand wollte das Geld stehlen von.', 'stehlen'],
-      ['Die Frau will sich scheiden lassen.', 'تركيب ثابت بانعكاسي', 'sich scheiden lassen', 'Die Frau will sich scheiden gelassen.', 'scheiden lassen'],
-      ['Die Familie tut klug, sie nicht zu bestrafen.', 'المصدر مع zu في الآخر', 'zu bestrafen', 'Die Familie tut klug, sie nicht bestrafen.', 'zu bestrafen']
+      ['Der Einbruch war im Winter.', 'تضع حادثة السطو في زمنها', 'der Einbruch اسم مفرد فعله war لا waren', 'Der Einbruch waren im Winter.', 'المفرد: war'],
+      ['Jemand wollte das Geld stehlen.', 'تحكي عن سرقة مرادة', 'stehlen بمفعول مباشر يسبق المصدر: das Geld stehlen بلا حرف', 'Jemand wollte das Geld stehlen auf.', 'المصدر أخيرًا'],
+      ['Die Frau will sich scheiden lassen.', 'تعلن طلاقًا مرادًا', 'sich scheiden lassen تركيب ثابت: مصدر lassen بعد will لا صفة ge-', 'Die Frau will sich scheiden gelassen.', 'scheiden lassen'],
+      ['Der Täter stand vor dem Gericht.', 'يضع الجاني أمام المحكمة', 'der Täter اسم مفرد فعله stand لا standen', 'Der Täter standen vor dem Gericht.', 'المفرد: stand']
     ],
     [
-      ['Der Täter stand vor dem Gericht.', 'الجاني أمام المحكمة', 'Der Täter standen vor dem Gericht.', 'الفعل مفرد.', 'stand'],
-      ['Alle Nachbarn vermissen sie.', 'كل الجيران يفتقدونها', 'Alle Nachbarn vermissen auf sie.', 'بلا auf.', 'vermissen'],
-      ['Alle Menschen sind gleichberechtigt.', 'الناس متساوون في الحقوق', 'Alle Menschen sind gleichberechtigt gemacht.', 'الصفة تكفي.', 'gleichberechtigt'],
-      ['Man kann sich hier leicht irren.', 'يسهل الخطأ هنا', 'Man kann sich hier leicht irren auf.', 'بلا auf.', 'irren']
+      ['Der Einbruch war im Winter.', 'السطو وقع شتاءً', 'Der Einbruch waren im Winter.', 'الفعل مفرد: war.', 'war'],
+      ['Jemand wollte das Geld stehlen.', 'أحدهم أراد سرقة المال', 'Jemand wollte das Geld stehlen auf.', 'المفعول قبل المصدر الأخير.', 'stehlen'],
+      ['Die Frau will sich scheiden lassen.', 'المرأة تريد أن تتطلّق', 'Die Frau will sich scheiden gelassen.', 'lassen مصدر بعد will.', 'lassen'],
+      ['Der Täter stand vor dem Gericht.', 'الجاني وقف أمام المحكمة', 'Der Täter standen vor dem Gericht.', 'الفعل مفرد: stand.', 'stand']
     ],
     'Der Einbruch war im Winter. Jemand wollte das Geld stehlen.',
     'Alle Menschen sind gleichberechtigt.',
-    'Berichte morgen in fünf Sätzen über einen Vorfall in deiner Straße.',
-    'غدًا احكِ في خمس جمل عن حادث في شارعك.'),
+    'Wiederhole morgen die fünf Sätze: Der Einbruch war im Winter. Jemand wollte das Geld stehlen. Die Frau will sich scheiden lassen. Der Täter stand vor dem Gericht. Alle Menschen sind gleichberechtigt.',
+    'غدًا أعد جمل الأمن والقانون الخمس ولاحظ الأفعال المفردة والتركيب الثابت.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'wortstellung', 'konjugation'],
+      imitateNearMiss: 'waren',
+      transformHint: 'في جملة الختام مبدأ قانوني: Alle Menschen sind gleichberechtigt — كل الناس متساوون في الحقوق.',
+      orderSentence: 'Die Frau will sich scheiden lassen.',
+      checkOrderSentence: 'Alle Menschen sind gleichberechtigt.',
+      orderAr: 'رتّب جملة الطلاق: الفعل will في الموضع الثاني والمصدر المزدوج scheiden lassen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Frau هو الموضع الأول وحده.', 'التركيب scheiden lassen يبقى كاملًا في الآخر.'],
+      writing: {
+        zeigt: 'Sicherheit und Recht in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: سطو بمفرد war، وسرقة بمفعول قبل مصدر أخير stehlen، وطلاق بتركيب sich scheiden lassen، وجاني بمفرد stand، ومساواة gleichberechtigt بلا زائدة.',
+        hinweise: ['أسماء الجريمة المفردة تأخذ فعلًا مفردًا.', 'بعد wollen مصدر لا تصريف ثانٍ.'],
+        prompt: 'اكتب جمل الأمن والقانون الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Der Einbruch war im Winter. · Jemand wollte das Geld stehlen. · Die Frau will sich scheiden lassen. · Der Täter stand vor dem Gericht. · Alle Menschen sind gleichberechtigt.',
+        points: ['Der Einbruch war im Winter.', 'Jemand wollte das Geld stehlen.', 'Die Frau will sich scheiden lassen.', 'Der Täter stand vor dem Gericht.', 'Alle Menschen sind gleichberechtigt.'],
+        minWords: 26,
+        frage: 'اكتب جمل الأمن والقانون الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Der Einbruch war im Winter. Jemand wollte das Geld stehlen. Die Frau will sich scheiden lassen. Der Täter stand vor dem Gericht. Alle Menschen sind gleichberechtigt.',
+      summaryDe: 'Der Einbruch war im Winter. Jemand wollte das Geld stehlen. Die Frau will sich scheiden lassen. Der Täter stand vor dem Gericht. Alle Menschen sind gleichberechtigt.',
+      summaryAr: 'الأمن والقانون يُرويان بأفعال مفردة عند أسماء الجريمة وتركيب طلاق ثابت ومفعول مباشر.',
+      summaryRecap: 'فعل مفرد وتركيب ثابت',
+      hwHintDe: 'Der Einbrecher kam über den Balkon, und die Täterin hat alles zugegeben. Das Gefängnis liegt am Rand der Stadt, und das Konsulat ist am Montag zu. Die Migration verändert das Dorf, und die Migrantin arbeitet in der Küche. Alle Nachbarn vermissen sie, und man kann sich hier leicht irren. Sein Einfall war wirklich gut, und viele wollen das Dorf verlassen.'
+    }),
 
   U('b1-u10-l2', 'B1', 'الإدارة والمدرسة', 'Verwaltung und Schule', 'wortstellung',
     'Am Ende füllst du ein Formular aus und erzählst von Schule und Kunst',

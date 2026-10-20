@@ -17656,6 +17656,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checksI6[4].frage.optionen.some(o => o.text === targetsI6[4]) &&
       checksI6[4].frage.optionen.some(o => o.text === 'Als Nachspeise gibt es Eis für Obst.') &&
       Object.values(checksI6[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
+  const lessonJ1 = win.DW_LESSONS['b1-u10-l1'];
+  const rowJ1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonJ1.id);
+  const byWordJ1 = Object.fromEntries(lessonJ1.wortschatz.map(it => [it.de, it]));
+  const tricksJ1 = lessonJ1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsJ1 = [
+    'Der Einbruch war im Winter.',
+    'Jemand wollte das Geld stehlen.',
+    'Die Frau will sich scheiden lassen.',
+    'Der Täter stand vor dem Gericht.',
+    'Alle Menschen sind gleichberechtigt.'
+  ];
+  t('Corpus lesson b1-u10-l1 precisely scopes five safety-and-law moves taking singular Einbruch war, object before final stehlen, fixed sich scheiden lassen, singular Täter stand and gleichberechtigt',
+    lessonJ1.title.de === 'Sicherheit und Recht: Einbruch und Gericht' &&
+      lessonJ1.title.ar === 'الأمن والقانون: Einbruch وGericht' &&
+      rowJ1.title.de === lessonJ1.title.de && rowJ1.title.ar === lessonJ1.title.ar &&
+      rowJ1.theme === 'القانون' &&
+      rowJ1.grammar.item === 'Einbruch war · Geld stehlen · scheiden lassen · Täter stand · gleichberechtigt' &&
+      rowJ1.grammar.method === 'explicit' && lessonJ1.schritte.length === 36 && lessonJ1.wortschatz.length === 37 &&
+      lessonJ1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonJ1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsJ1[i]) &&
+      lessonJ1.schritte[0].zeigt.de === 'Am Ende berichtest du über einen Vorfall und ein Gericht — in fünf Sätzen' &&
+      lessonJ1.schritte.find(s => s.id === 's20').zeigt.de === targetsJ1[4]);
+
+  const expectedWordsJ1 = [
+    'der Einbruch', 'der Einbrecher', 'die Einbrecherin', 'einbrechen', 'der Verbrecher', 'die Verbrecherin',
+    'der Täter', 'die Täterin', 'stehlen', 'verurteilen', 'bestrafen', 'das Gefängnis',
+    'verstecken', 'die Uniform', 'scheiden', 'die Scheidung', 'die Trennung', 'die Vermittlung',
+    'das Konsulat', 'das Asyl', 'die Migration', 'der Migrant', 'die Migrantin', 'integrieren',
+    'gleichberechtigt', 'öffentlich', 'illegal', 'unterlassen', 'ausschließen', 'der Zugang',
+    'zugänglich', 'verlassen', 'vermissen', 'der Typ', 'der Einfall', 'einfallen',
+    'irren'
+  ];
+  const errorsJ1 = lessonJ1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u10-l1 reviews all 37 entries and three bounded mnemonics keeping every genuine agreement, lassen-infinitive, direct-object and trailing foil as a real error',
+    Object.keys(byWordJ1).join(' | ') === expectedWordsJ1.join(' | ') &&
+      lessonJ1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonJ1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordJ1['der Einbruch'].err === 'Der Einbruch waren im Winter.' &&
+      byWordJ1['stehlen'].err === 'Jemand wollte das Geld stehlen auf.' &&
+      byWordJ1['scheiden'].err === 'Die Frau will sich scheiden gelassen.' &&
+      byWordJ1['der Täter'].err === 'Der Täter standen vor dem Gericht.' &&
+      byWordJ1['gleichberechtigt'].err === 'Alle Menschen sind gleichberechtigt gemacht.' &&
+      byWordJ1['das Gefängnis'].err === 'Das Gefängnis liegen am Rand der Stadt.' &&
+      ['Alle Nachbarn vermissen auf sie.', 'Die Familie tut klug, sie nicht bestrafen.',
+        'Man kann sich hier leicht irren auf.', 'Mir will nichts einfallen auf.',
+        'Der Verkauf war illegal gemacht.']
+        .every(x => errorsJ1.includes(x)) &&
+      tricksJ1.length === 3 && tricksJ1[0].wie.includes('Jemand wollte das Geld stehlen.') &&
+      tricksJ1[1].wie.includes('Die Frau will sich scheiden lassen.') &&
+      tricksJ1[2].wie.includes('Die Familie tut klug, sie nicht zu bestrafen.'));
+
+  const wordClozeAJ1 = lessonJ1.schritte.find(s => s.id === 's09');
+  const wordClozeBJ1 = lessonJ1.schritte.find(s => s.id === 's13');
+  const wordClozeCJ1 = lessonJ1.schritte.find(s => s.id === 's17');
+  const imitateJ1 = lessonJ1.schritte.find(s => s.id === 's19');
+  const drillJ1 = lessonJ1.schritte.find(s => s.id === 's23');
+  const orderJ1 = lessonJ1.schritte.find(s => s.id === 's24');
+  const writingJ1 = lessonJ1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingJ1 = lessonJ1.schritte.find(s => s.phase === 'Produktion');
+  const summaryJ1 = lessonJ1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkJ1 = lessonJ1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u10-l1 aligns five strict learning clozes, sound will order fields and a 26-word five-target production',
+    wordClozeAJ1.frage.zeigt === 'Die ____ ist noch nicht gefasst.' && wordClozeAJ1.frage.antworten.join(' ') === 'Verbrecherin' &&
+      wordClozeAJ1.frage.nearMiss.Verbrecherinnen && !win.DW.renderers.judgeCloze(wordClozeAJ1.frage, 'Verbrecherinnen').ok &&
+      wordClozeBJ1.frage.zeigt === 'Der ____ lernt seit einem Jahr Deutsch.' && wordClozeBJ1.frage.antworten.join(' ') === 'Migrant' &&
+      wordClozeBJ1.frage.nearMiss.Migranten && !win.DW.renderers.judgeCloze(wordClozeBJ1.frage, 'Migranten').ok &&
+      wordClozeCJ1.frage.zeigt === 'Mir will nichts ____.' && wordClozeCJ1.frage.antworten.join(' ') === 'einfallen' &&
+      wordClozeCJ1.frage.nearMiss.fallen && !win.DW.renderers.judgeCloze(wordClozeCJ1.frage, 'fallen').ok &&
+      imitateJ1.zeigt.de === 'Der Einbruch ____ im Winter.' && imitateJ1.frage.antworten.join(' ') === 'war' &&
+      imitateJ1.frage.nearMiss['waren'] && !win.DW.renderers.judgeCloze(imitateJ1.frage, 'waren').ok &&
+      drillJ1.frage.zeigt === 'Jemand wollte das Geld ____.' && drillJ1.frage.antworten.join(' ') === 'stehlen' &&
+      drillJ1.frage.nearMiss.stiehlt && !win.DW.renderers.judgeCloze(drillJ1.frage, 'stiehlt').ok &&
+      lessonJ1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderJ1.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderJ1.frage.correct.join(' ') === targetsJ1[2] && orderJ1.frage.finite === 'will' && orderJ1.frage.verbFirst === false &&
+      orderJ1.frage.fields.vorfeld.join(' ') === 'Die Frau' && orderJ1.frage.fields.lsk.join(' ') === 'will' &&
+      orderJ1.frage.fields.mittelfeld.join(' ') === 'sich scheiden lassen.' &&
+      win.DW.order.score(orderJ1.frage, orderJ1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderJ1.frage, ['Die', 'Frau', 'sich', 'will', 'scheiden', 'lassen.']).credit < 1 &&
+      writingJ1.frage.points.join(' | ') === targetsJ1.join(' | ') && writingJ1.frage.minWords === 26 &&
+      targetsJ1.join(' ').split(/\s+/).length === 26 &&
+      targetsJ1.every(x => [writingJ1.frage.promptDe, summaryJ1.zeigt.de, homeworkJ1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsJ1.every(x => norm(speakingJ1.erklaerung).includes(norm(x))) &&
+      (homeworkJ1.hinweise || []).join(' ').includes('die Täterin hat alles zugegeben'));
+
+  const checksJ1 = lessonJ1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckJ1 = checksJ1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckJ1 = checksJ1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u10-l1 makes 80 percent four of five, independently checking singular Täter stand, the stehlen cloze and sind order, singular Gefängnis liegt and gleichberechtigt',
+    checksJ1.length === 5 && checksJ1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksJ1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksJ1.every(s => /^cap\.b1-u10-l1\.s\d+$/.test(s.frage.prereq || '')) && checksJ1.every(s => !s.hinweise) &&
+      checksJ1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u10-l1.s07 | cap.b1-u10-l1.s23 | cap.b1-u10-l1.s24 | cap.b1-u10-l1.s10 | cap.b1-u10-l1.s20' &&
+      new Set(checksJ1.map(s => s.frage.prereq)).size === 5 &&
+      checksJ1[0].frage.optionen.some(o => o.text === targetsJ1[3]) &&
+      checksJ1[0].frage.optionen.some(o => o.text === 'Der Täter standen vor dem Gericht.') &&
+      Object.values(checksJ1[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckJ1.frage.zeigt === 'Jemand wollte das Geld ____.' &&
+      clozeCheckJ1.frage.antworten.join(' ') === 'stehlen' && clozeCheckJ1.frage.nearMiss.stiehlt &&
+      !win.DW.renderers.judgeCloze(clozeCheckJ1.frage, 'stiehlt').ok &&
+      orderCheckJ1.frage.correct.join(' ') === targetsJ1[4] && orderCheckJ1.frage.finite === 'sind' &&
+      orderCheckJ1.frage.fields.vorfeld.join(' ') === 'Alle Menschen' && orderCheckJ1.frage.fields.lsk.join(' ') === 'sind' &&
+      orderCheckJ1.frage.fields.mittelfeld.join(' ') === 'gleichberechtigt.' &&
+      win.DW.order.score(orderCheckJ1.frage, orderCheckJ1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckJ1.frage, ['Alle', 'Menschen', 'gleichberechtigt.', 'sind']).credit < 1 &&
+      checksJ1[3].frage.optionen.some(o => o.text === 'Das Gefängnis liegt am Rand der Stadt.') &&
+      checksJ1[3].frage.optionen.some(o => o.text === 'Das Gefängnis liegen am Rand der Stadt.') &&
+      Object.values(checksJ1[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksJ1[4].frage.optionen.some(o => o.text === targetsJ1[4]) &&
+      checksJ1[4].frage.optionen.some(o => o.text === 'Alle Menschen sind gleichberechtigt gemacht.') &&
+      Object.values(checksJ1[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
