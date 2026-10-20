@@ -2417,25 +2417,50 @@ module.exports = [
       hwHintDe: 'Namen für Zimmer und Möbel sind hier Singular: Die Couch steht im Wohnzimmer, der Spiegel hängt im Bad, und das Ehepaar wohnt über uns. Sage den Ort mit Wo und Dativ: Die Wohnung liegt in der dritten Etage. Beim Umzug hilft der Abwart, und die Mülltonne steht hinter dem Haus. Schreibe morgen fünf Sätze über deine Wohnung und dein Quartier.'
     }),
 
-  U('b1-u8-l2', 'B1', 'المطبخ والسوق', 'Küche und Markt', 'lexik-kollokation',
-    'Am Ende kaufst du auf dem Markt ein und kochst ein Menü',
-    'في النهاية تتسوّق في السوق وتطبخ وجبة.',
+  U('b1-u8-l2', 'B1', 'المطبخ والسوق: Paradeiser وRahm', 'Küche und Markt: Paradeiser und Rahm', 'konjugation',
+    'Am Ende kaufst du auf dem Markt ein und kochst ein Menü — in fünf Sätzen',
+    'في النهاية تتسوّق في السوق وتطبخ وجبة في خمس جمل.',
     [
-      ['In Österreich heißt die Tomate Paradeiser.', 'الكلمة النمساوية معروفة', 'Paradeiser = Tomate', 'In Österreich heißt die Tomate Paradeiser auf.', 'Paradeiser'],
-      ['Der Rahm ist süß.', 'غير المعدود مفرد', 'der Rahm: Singular + ist', 'Der Rahm sind süß.', 'ist'],
-      ['Das Menü besteht aus drei Teilen.', 'المفرد بفعل مفرد', 'das Menü: Singular + besteht', 'Das Menü bestehen aus drei Teilen.', 'besteht'],
-      ['Ich streiche Margarine aufs Brot.', 'على الخبز aufs', 'auf + das = aufs', 'Ich streiche Margarine in das Brot.', 'aufs']
+      ['In Österreich heißt die Tomate Paradeiser.', 'تسمّي البندورة بالنمساوية', 'في النمسا البندورة محليًّا Paradeiser — وفاعل heißen رفع: die Tomate', 'In Österreich heißt der Tomate Paradeiser.', 'رفع: die Tomate'],
+      ['Der Rahm ist süß.', 'تصف قشدة حلوة', 'der Rahm اسم غير معدود مفرد فيأخذ فعلًا مفردًا: ist لا sind', 'Der Rahm sind süß.', 'المفرد: ist'],
+      ['Das Menü besteht aus drei Teilen.', 'تقول ممّ تتألف الوجبة', 'das Menü مفرد مع besteht، والتكوين يُقال بـaus: besteht aus drei Teilen', 'Das Menü bestehen aus drei Teilen.', 'المفرد: besteht'],
+      ['Ich streiche Margarine aufs Brot.', 'تقول إنك تدهن السمن على الخبز', 'auf + das تندمج aufs للسطح: aufs Brot، لا in das لأن الدهن على السطح', 'Ich streiche Margarine in das Brot.', 'دمج السطح: aufs']
     ],
     [
-      ['Der Erdapfel aus dem Garten schmeckt besser.', 'البطاطس النمساوية', 'Der Erdapfel aus dem Garten schmecken besser.', 'الفعل مفرد.', 'schmeckt'],
-      ['Im Kaffeehaus sitzen wir lange.', 'في المقهى نجلس طويلًا', 'Im Kaffeehaus wir sitzen lange.', 'الفعل ثانٍ.', 'sitzen'],
-      ['Der Knödel sättigt mehr als Brot.', 'كرة العجين تشبع', 'Der Knödel sättigen mehr als Brot.', 'الفعل مفرد.', 'sättigt'],
-      ['Die Marille ist jetzt reif.', 'المشمش الآن ناضج', 'Die Marille sind jetzt reif.', 'الفعل مفرد.', 'ist']
+      ['In Österreich heißt die Tomate Paradeiser.', 'في النمسا تسمّى البندورة Paradeiser', 'In Österreich heißt der Tomate Paradeiser.', 'فاعل heißen رفع: die.', 'Paradeiser'],
+      ['Der Rahm ist süß.', 'القشدة حلوة', 'Der Rahm sind süß.', 'الفعل مفرد: ist.', 'ist'],
+      ['Das Menü besteht aus drei Teilen.', 'الوجبة تتألف من ثلاثة أجزاء', 'Das Menü bestehen aus drei Teilen.', 'الفعل مفرد: besteht.', 'besteht'],
+      ['Ich streiche Margarine aufs Brot.', 'أدهن السمن على الخبز', 'Ich streiche Margarine in das Brot.', 'على الخبز: aufs.', 'aufs']
     ],
-    'Der Erdapfel aus dem Garten schmeckt besser. Der Rahm ist süß.',
-    'Das Menü besteht aus drei Teilen.',
-    'Schreibe morgen eine Einkaufsliste mit fünf Wörtern aus der Stunde.',
-    'غدًا اكتب قائمة تسوّق بخمس كلمات من الدرس.'),
+    'Der Rahm ist süß. Das Menü besteht aus drei Teilen.',
+    'Im Kaffeehaus sitzen wir lange.',
+    'Wiederhole morgen die fünf Sätze: In Österreich heißt die Tomate Paradeiser. Der Rahm ist süß. Das Menü besteht aus drei Teilen. Ich streiche Margarine aufs Brot. Im Kaffeehaus sitzen wir lange.',
+    'غدًا أعد جمل المطبخ والسوق الخمس ولاحظ المفرد غير المعدود والدمج والقلب.',
+    {
+      factFamilies: ['kasus', 'konjugation', 'konjugation', 'präposition'],
+      imitateNearMiss: 'Paradeisern',
+      transformHint: 'في جملة الختام مقهى نمساوي: Im Kaffeehaus sitzen wir lange — بعد عبارة المكان الفعل ثانيًا والضمير wir بعده.',
+      orderSentence: 'Im Kaffeehaus sitzen wir lange.',
+      checkOrderSentence: 'Das Menü besteht aus drei Teilen.',
+      orderAr: 'رتّب جملة المقهى: عبارة المكان أولًا والفعل sitzen في الموضع الثاني.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['عبارة المكان Im Kaffeehaus هي الموضع الأول وحده.', 'الضمير wir وlange. يغلقان الجملة بعد الفعل.'],
+      writing: {
+        zeigt: 'Küche und Markt in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: بندورة نمساوية بـheißt، وقشدة غير معدودة مفردة بـist، ووجبة بـbesteht aus، ودهن على الخبز بـaufs، وجلسة مقهى بقلب بعد المكان.',
+        hinweise: ['الأطعمة غير المعدودة أسماء مفردة.', 'auf + das تندمج aufs، وبعد عبارة مقدَّمة الفعل ثانٍ.'],
+        prompt: 'اكتب جمل المطبخ والسوق الخمس المستهدفة من الذاكرة.',
+        promptDe: 'In Österreich heißt die Tomate Paradeiser. · Der Rahm ist süß. · Das Menü besteht aus drei Teilen. · Ich streiche Margarine aufs Brot. · Im Kaffeehaus sitzen wir lange.',
+        points: ['In Österreich heißt die Tomate Paradeiser.', 'Der Rahm ist süß.', 'Das Menü besteht aus drei Teilen.', 'Ich streiche Margarine aufs Brot.', 'Im Kaffeehaus sitzen wir lange.'],
+        minWords: 26,
+        frage: 'اكتب جمل المطبخ والسوق الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: In Österreich heißt die Tomate Paradeiser. Der Rahm ist süß. Das Menü besteht aus drei Teilen. Ich streiche Margarine aufs Brot. Im Kaffeehaus sitzen wir lange.',
+      summaryDe: 'In Österreich heißt die Tomate Paradeiser. Der Rahm ist süß. Das Menü besteht aus drei Teilen. Ich streiche Margarine aufs Brot. Im Kaffeehaus sitzen wir lange.',
+      summaryAr: 'المطبخ والسوق يحتاجان أطعمة غير معدودة بفعل مفرد، ودمجًا aufs للسطح، وقلبًا بعد عبارة المكان.',
+      summaryRecap: 'غير معدود ودمج وقلب',
+      hwHintDe: 'Schreibe eine kleine Einkaufsliste für den Markt und sage jeden Preis laut. Massennomen bleiben Singular: Der Rahm ist süß, und das Mehl bleibt im Sack. In Österreich heißt die Tomate Paradeiser, und die Kartoffel heißt Erdapfel. So lernst du die Wörter deiner Region sofort mit. Im Kaffeehaus sitzen wir lange, und am Nachmittag gibt es eine Jause mit Konfitüre. Bestelle eine Limonade und ein Stück Kuchen, und frage höflich nach dem Preis. Zum Frühstück trinke ich Kakao.'
+    }),
 
   U('b1-u8-l3', 'B1', 'الجسد والنفس', 'Körper und Seele', 'lexik-kollokation',
     'Am Ende sprichst du über Gesundheit und Gefühle',

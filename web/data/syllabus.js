@@ -161,7 +161,7 @@
     /* Unit 8 — amendment B1-L4: the third material round grew the promotion pool to
        471 entries, so unit 8 carries the next 240 (six lessons of forty). */
     ['البيت والانتقال: Couch وEtage', 'Haus und Umzug: Couch und Etage', 'السكن', 'Couch steht · in der Etage · Abwart hilft · ist möbliert · Ehepaar wohnt', 'explicit'],
-    ['المطبخ والسوق', 'Küche und Markt', 'الطعام', 'Paradeiser und Der Rahm ist', 'explicit'],
+    ['المطبخ والسوق: Paradeiser وRahm', 'Küche und Markt: Paradeiser und Rahm', 'الطعام', 'heißt Paradeiser · Rahm ist süß · Menü besteht · aufs Brot · im Kaffeehaus sitzen', 'explicit'],
     ['الجسد والنفس', 'Körper und Seele', 'الصحة', 'wütend auf und entspanne ich mich', 'explicit'],
     ['العمل والمكتب', 'Arbeit und Büro', 'المهنة', 'schreibe … auf und konzentrieren auf', 'explicit'],
     ['الإدارة والتعليم', 'Verwaltung und Schule', 'التعليم', 'anzugeben und schaffen … an', 'explicit'],

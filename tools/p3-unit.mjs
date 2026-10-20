@@ -16376,6 +16376,123 @@ console.log('\n— P3.2 lexical layer —\n');
       checksH1[4].frage.optionen.some(o => o.text === targetsH1[4]) &&
       checksH1[4].frage.optionen.some(o => o.text === 'Das Ehepaar wohnen über uns.') &&
       Object.values(checksH1[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonH2 = win.DW_LESSONS['b1-u8-l2'];
+  const rowH2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonH2.id);
+  const byWordH2 = Object.fromEntries(lessonH2.wortschatz.map(it => [it.de, it]));
+  const tricksH2 = lessonH2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsH2 = [
+    'In Österreich heißt die Tomate Paradeiser.',
+    'Der Rahm ist süß.',
+    'Das Menü besteht aus drei Teilen.',
+    'Ich streiche Margarine aufs Brot.',
+    'Im Kaffeehaus sitzen wir lange.'
+  ];
+  t('Corpus lesson b1-u8-l2 precisely scopes five kitchen-and-market moves taking an Austrian tomato named with heißt, a mass-noun Rahm with ist, a Menü that besteht aus, Margarine spread aufs Brot and inversion in the Kaffeehaus',
+    lessonH2.title.de === 'Küche und Markt: Paradeiser und Rahm' &&
+      lessonH2.title.ar === 'المطبخ والسوق: Paradeiser وRahm' &&
+      rowH2.title.de === lessonH2.title.de && rowH2.title.ar === lessonH2.title.ar &&
+      rowH2.theme === 'الطعام' &&
+      rowH2.grammar.item === 'heißt Paradeiser · Rahm ist süß · Menü besteht · aufs Brot · im Kaffeehaus sitzen' &&
+      rowH2.grammar.method === 'explicit' && lessonH2.schritte.length === 36 && lessonH2.wortschatz.length === 40 &&
+      lessonH2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonH2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsH2[i]) &&
+      lessonH2.schritte[0].zeigt.de === 'Am Ende kaufst du auf dem Markt ein und kochst ein Menü — in fünf Sätzen' &&
+      lessonH2.schritte.find(s => s.id === 's20').zeigt.de === targetsH2[4]);
+
+  const expectedWordsH2 = [
+    'die Aprikose', 'der Backofen', 'das Backrohr', 'das Brötli', 'das Büfett', 'das Dessert',
+    'der Erdapfel', 'der Essig', 'der Fleischhauer', 'die Frucht', 'das Gebäck', 'der Geschmack',
+    'das Gewürz', 'die Glace', 'das Hackfleisch', 'das Henderl', 'das Hühnchen', 'hungrig',
+    'der Imbiss', 'die Jause', 'das Kaffeehaus', 'der Kakao', 'der Kloß', 'die Kneipe',
+    'der Knödel', 'die Konfitüre', 'die Limonade', 'die Mahlzeit', 'die Margarine', 'die Marille',
+    'das Mehl', 'das Menü', 'der Metzger', 'die Möhre', 'das Obers', 'der Paradeiser',
+    'die Pflaume', 'das Poulet', 'der Rahm', 'die Sahne'
+  ];
+  const errorsH2 = lessonH2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u8-l2 reviews all 40 entries and three bounded mnemonics without fourteen manufactured appendages and without branding aufheizen or von-plus-dative genitive as errors, repairing the inverted regional gloss of Hackfleisch',
+    Object.keys(byWordH2).join(' | ') === expectedWordsH2.join(' | ') &&
+      lessonH2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonH2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordH2['der Backofen'].err === 'Zuhause vorheize ich den Backofen.' &&
+      byWordH2['das Gewürz'].err === 'Ich füge ein Gewürz dazu.' &&
+      byWordH2['das Henderl'].err === 'Ich nehme ein Henderl auf die Suppe.' &&
+      byWordH2['der Paradeiser'].err === 'In Österreich heißt der Tomate Paradeiser.' &&
+      byWordH2['das Hackfleisch'].ar === 'اللحم المفروم' &&
+      !['Zuhause heize ich den Backofen auf.', 'Als Dessert gibt es Eis für Obst.',
+        'Für die Soße brauche ich auf Essig und Öl.', 'Zu allem passt eine Frucht von der Saison.',
+        'Zum Frühstück gibt es auf Gebäck.', 'Als Nachtisch gibt es eine Glace auf.',
+        'Der Metzger empfiehlt auf ein Hühnchen.', 'Im Imbiss an der Ecke zahle ich mit Karte auf.',
+        'Am Nachmittag gibt es eine Jause auf.', 'Zum Frühstück trinke ich Kakao auf.',
+        'Zum Frühstück gibt es auf Konfitüre.', 'Für den Teig brauche ich auf Mehl.',
+        'In Österreich heißt die Tomate Paradeiser auf.', 'Ich kaufe Poulet auf das Menü.']
+        .some(x => errorsH2.includes(x)) &&
+      tricksH2.length === 3 && tricksH2[0].wie.includes('In Österreich heißt die Tomate Paradeiser.') &&
+      tricksH2[1].wie.includes('Am Nachmittag gibt es eine Jause.') &&
+      tricksH2[2].wie.includes('Der Rahm ist süß.'));
+
+  const wordClozeAH2 = lessonH2.schritte.find(s => s.id === 's09');
+  const wordClozeBH2 = lessonH2.schritte.find(s => s.id === 's13');
+  const wordClozeCH2 = lessonH2.schritte.find(s => s.id === 's17');
+  const imitateH2 = lessonH2.schritte.find(s => s.id === 's19');
+  const drillH2 = lessonH2.schritte.find(s => s.id === 's23');
+  const orderH2 = lessonH2.schritte.find(s => s.id === 's24');
+  const writingH2 = lessonH2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingH2 = lessonH2.schritte.find(s => s.phase === 'Produktion');
+  const summaryH2 = lessonH2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkH2 = lessonH2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u8-l2 aligns five strict learning clozes, sound sitzen order fields and a 26-word five-target production',
+    wordClozeAH2.frage.zeigt === 'Als ____ gibt es Eis mit Obst.' && wordClozeAH2.frage.antworten.join(' ') === 'Dessert' &&
+      wordClozeAH2.frage.nearMiss.Desserts && !win.DW.renderers.judgeCloze(wordClozeAH2.frage, 'Desserts').ok &&
+      wordClozeBH2.frage.zeigt === 'Zum Frühstück trinke ich ____.' && wordClozeBH2.frage.antworten.join(' ') === 'Kakao' &&
+      wordClozeBH2.frage.nearMiss.Kakaos && !win.DW.renderers.judgeCloze(wordClozeBH2.frage, 'Kakaos').ok &&
+      wordClozeCH2.frage.zeigt === 'Ich kaufe ____ für das Menü.' && wordClozeCH2.frage.antworten.join(' ') === 'Poulet' &&
+      wordClozeCH2.frage.nearMiss.Poulets && !win.DW.renderers.judgeCloze(wordClozeCH2.frage, 'Poulets').ok &&
+      imitateH2.zeigt.de === 'In Österreich heißt die Tomate ____.' && imitateH2.frage.antworten.join(' ') === 'Paradeiser' &&
+      imitateH2.frage.nearMiss.Paradeisern && !win.DW.renderers.judgeCloze(imitateH2.frage, 'Paradeisern').ok &&
+      drillH2.frage.zeigt === 'Der ____ ist süß.' && drillH2.frage.antworten.join(' ') === 'Rahm' &&
+      drillH2.frage.nearMiss.Rahms && !win.DW.renderers.judgeCloze(drillH2.frage, 'Rahms').ok &&
+      lessonH2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderH2.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderH2.frage.correct.join(' ') === targetsH2[4] && orderH2.frage.finite === 'sitzen' && orderH2.frage.verbFirst === false &&
+      orderH2.frage.fields.vorfeld.join(' ') === 'Im Kaffeehaus' && orderH2.frage.fields.lsk.join(' ') === 'sitzen' &&
+      orderH2.frage.fields.mittelfeld.join(' ') === 'wir lange.' &&
+      win.DW.order.score(orderH2.frage, orderH2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderH2.frage, ['Im', 'Kaffeehaus', 'wir', 'sitzen', 'lange.']).credit < 1 &&
+      writingH2.frage.points.join(' | ') === targetsH2.join(' | ') && writingH2.frage.minWords === 26 &&
+      targetsH2.join(' ').split(/\s+/).length === 26 &&
+      targetsH2.every(x => [writingH2.frage.promptDe, summaryH2.zeigt.de, homeworkH2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsH2.every(x => norm(speakingH2.erklaerung).includes(norm(x))) &&
+      (homeworkH2.hinweise || []).join(' ').includes('Schreibe eine kleine Einkaufsliste'));
+
+  const checksH2 = lessonH2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckH2 = checksH2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckH2 = checksH2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u8-l2 makes 80 percent four of five, independently checking the contracted aufs Brot, the Rahm cloze and besteht order, directional auf den Markt and Kaffeehaus inversion',
+    checksH2.length === 5 && checksH2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksH2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksH2.every(s => /^cap\.b1-u8-l2\.s\d+$/.test(s.frage.prereq || '')) && checksH2.every(s => !s.hinweise) &&
+      checksH2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u8-l2.s07 | cap.b1-u8-l2.s23 | cap.b1-u8-l2.s24 | cap.b1-u8-l2.s12 | cap.b1-u8-l2.s20' &&
+      new Set(checksH2.map(s => s.frage.prereq)).size === 5 &&
+      checksH2[0].frage.optionen.some(o => o.text === targetsH2[3]) &&
+      checksH2[0].frage.optionen.some(o => o.text === 'Ich streiche Margarine in das Brot.') &&
+      Object.values(checksH2[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckH2.frage.zeigt === 'Der ____ ist süß.' &&
+      clozeCheckH2.frage.antworten.join(' ') === 'Rahm' && clozeCheckH2.frage.nearMiss.Rahms &&
+      !win.DW.renderers.judgeCloze(clozeCheckH2.frage, 'Rahms').ok &&
+      orderCheckH2.frage.correct.join(' ') === targetsH2[2] && orderCheckH2.frage.finite === 'besteht' &&
+      orderCheckH2.frage.fields.vorfeld.join(' ') === 'Das Menü' && orderCheckH2.frage.fields.lsk.join(' ') === 'besteht' &&
+      orderCheckH2.frage.fields.mittelfeld.join(' ') === 'aus drei Teilen.' &&
+      win.DW.order.score(orderCheckH2.frage, orderCheckH2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckH2.frage, ['Das', 'besteht', 'Menü', 'aus', 'drei', 'Teilen.']).credit < 1 &&
+      checksH2[3].frage.optionen.some(o => o.text === 'Am Samstag gehe ich hungrig auf den Markt.') &&
+      checksH2[3].frage.optionen.some(o => o.text === 'Am Samstag gehe ich hungrig auf dem Markt.') &&
+      Object.values(checksH2[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksH2[4].frage.optionen.some(o => o.text === targetsH2[4]) &&
+      checksH2[4].frage.optionen.some(o => o.text === 'Im Kaffeehaus wir sitzen lange.') &&
+      Object.values(checksH2[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
