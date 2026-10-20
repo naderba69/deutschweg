@@ -18100,6 +18100,117 @@ console.log('\n— P3.2 lexical layer —\n');
       checksJ4[4].frage.optionen.some(o => o.text === targetsJ4[4]) &&
       checksJ4[4].frage.optionen.some(o => o.text === 'Solche Fehler können oft vorkommen auf.') &&
       Object.values(checksJ4[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
+
+  const lessonJ5 = win.DW_LESSONS['b1-u10-l5'];
+  const rowJ5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonJ5.id);
+  const byWordJ5 = Object.fromEntries(lessonJ5.wortschatz.map(it => [it.de, it]));
+  const tricksJ5 = lessonJ5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsJ5 = [
+    'Der Treffpunkt bleibt derselbe.',
+    'Wir gehen den Fluss entlang.',
+    'Für den Umtausch eignet sich nur die Rechnung.',
+    'Die Wohnung ist komplett möbliert.',
+    'Für das Faschierte brauche ich nur eine Zutat.'
+  ];
+  t('Corpus lesson b1-u10-l5 precisely scopes five things-and-properties moves taking predicative derselbe undeclined, postposed entlang, full reflexive eignet sich, single participle komplett möbliert and feminine eine Zutat',
+    lessonJ5.title.de === 'Dinge und Eigenschaften: derselbe und entlang' &&
+      lessonJ5.title.ar === 'الأشياء والصفات: derselbe وentlang' &&
+      rowJ5.title.de === lessonJ5.title.de && rowJ5.title.ar === lessonJ5.title.ar &&
+      rowJ5.theme === 'الوصف' &&
+      rowJ5.grammar.item === 'Treffpunkt bleibt derselbe · Fluss entlang · eignet sich · komplett möbliert · eine Zutat' &&
+      rowJ5.grammar.method === 'explicit' && lessonJ5.schritte.length === 36 && lessonJ5.wortschatz.length === 36 &&
+      lessonJ5.schritte.filter(s => s.phase === 'Übungen').length === 6 &&
+      lessonJ5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsJ5[i]) &&
+      lessonJ5.schritte[0].zeigt.de === 'Am Ende beschreibst du Gegenstände, Formen und Materialien — in fünf Sätzen' &&
+      lessonJ5.schritte.find(s => s.id === 's19').zeigt.de === targetsJ5[4]);
+
+  const expectedWordsJ5 = [
+    'abmachen', 'abhangen', 'aufwärts', 'auseinander', 'drehen', 'durcheinander',
+    'einfügen', 'einheitlich', 'entfernen', 'entdecken', 'entlang', 'begleiten',
+    'brechen', 'dahin', 'dasselbe', 'derselbe', 'diesmal', 'durstig',
+    'eben', 'ebenso', 'eignen', 'eindeutig', 'extrem', 'farbig',
+    'färbig', 'faulenzen', 'gucken', 'zubereiten', 'die Zutat', 'konsumieren',
+    'maximal', 'komplett', 'körperlich', 'kreativ', 'künstlich', 'das Material'
+  ];
+  const errorsJ5 = lessonJ5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u10-l5 reviews all 36 entries and three bounded mnemonics converting the ambiguous Material foil to an unambiguous one and keeping every other genuine foil as a real error',
+    Object.keys(byWordJ5).join(' | ') === expectedWordsJ5.join(' | ') &&
+      lessonJ5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonJ5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordJ5['derselbe'].err === 'Der Treffpunkt bleibt derselber.' &&
+      byWordJ5['entlang'].err === 'Wir gehen den Fluss entlang auf.' &&
+      byWordJ5['eignen'].err === 'Für den Umtausch eignet nur die Rechnung.' &&
+      byWordJ5['komplett'].err === 'Die Wohnung ist komplett möbliert gemacht.' &&
+      byWordJ5['die Zutat'].err === 'Für das Faschierte brauche ich nur einen Zutat.' &&
+      byWordJ5['das Material'].err === 'Aus dem Material wählst sie eine Seite.' &&
+      !errorsJ5.includes('Aus dem Material wählen sie eine Seite.') &&
+      ['Es ist immer das gleiche dasselbe Problem.', 'Die Werbung will uns mehr konsumieren gelassen.',
+        'Zwei Teller bricht beim Tragen.', 'In Österreich sagt man färbig auf.',
+        'Die Kinder wollen gucken auf.']
+        .every(x => errorsJ5.includes(x)) &&
+      tricksJ5.length === 3 && tricksJ5[0].wie.includes('Der Treffpunkt bleibt derselbe.') &&
+      tricksJ5[1].wie.includes('Für den Umtausch eignet sich nur die Rechnung.') &&
+      tricksJ5[2].wie.includes('Wir gehen den Fluss entlang.'));
+
+  const wordClozeAJ5 = lessonJ5.schritte.find(s => s.id === 's09');
+  const wordClozeBJ5 = lessonJ5.schritte.find(s => s.id === 's13');
+  const imitateJ5 = lessonJ5.schritte.find(s => s.id === 's18');
+  const drillJ5 = lessonJ5.schritte.find(s => s.id === 's22');
+  const orderJ5 = lessonJ5.schritte.find(s => s.id === 's23');
+  const writingJ5 = lessonJ5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingJ5 = lessonJ5.schritte.find(s => s.phase === 'Produktion');
+  const summaryJ5 = lessonJ5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkJ5 = lessonJ5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u10-l5 aligns four strict learning clozes of the 36-word layout, sound eignet order fields and a 30-word five-target production',
+    wordClozeAJ5.frage.zeigt === 'Die Papiere liegen ____.' && wordClozeAJ5.frage.antworten.join(' ') === 'durcheinander' &&
+      wordClozeAJ5.frage.nearMiss.einander && !win.DW.renderers.judgeCloze(wordClozeAJ5.frage, 'einander').ok &&
+      wordClozeBJ5.frage.zeigt === '____ ist nur die Regel.' && wordClozeBJ5.frage.antworten.join(' ') === 'Eindeutig' &&
+      wordClozeBJ5.frage.nearMiss.eindeutigen && !win.DW.renderers.judgeCloze(wordClozeBJ5.frage, 'eindeutigen').ok &&
+      (imitateJ5.frage.zeigt === 'Der Treffpunkt bleibt ____.' || imitateJ5.zeigt.de === 'Der Treffpunkt bleibt ____.') && imitateJ5.frage.antworten.join(' ') === 'derselbe' &&
+      imitateJ5.frage.nearMiss['derselber'] && !win.DW.renderers.judgeCloze(imitateJ5.frage, 'derselber').ok &&
+      drillJ5.frage.zeigt === 'Wir gehen den ____.' && drillJ5.frage.antworten.join(' ') === 'Fluss entlang' &&
+      drillJ5.frage.nearMiss.entlang && !win.DW.renderers.judgeCloze(drillJ5.frage, 'entlang').ok &&
+      lessonJ5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderJ5.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderJ5.frage.correct.join(' ') === targetsJ5[2] && orderJ5.frage.finite === 'eignet' && orderJ5.frage.verbFirst === false &&
+      orderJ5.frage.fields.vorfeld.join(' ') === 'Für den Umtausch' && orderJ5.frage.fields.lsk.join(' ') === 'eignet' &&
+      orderJ5.frage.fields.mittelfeld.join(' ') === 'sich nur die Rechnung.' &&
+      win.DW.order.score(orderJ5.frage, orderJ5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderJ5.frage, ['Für', 'den', 'Umtausch', 'sich', 'eignet', 'nur', 'die', 'Rechnung.']).credit < 1 &&
+      writingJ5.frage.points.join(' | ') === targetsJ5.join(' | ') && writingJ5.frage.minWords === 30 &&
+      targetsJ5.join(' ').split(/\s+/).length === 30 &&
+      targetsJ5.every(x => [writingJ5.frage.promptDe, summaryJ5.zeigt.de, homeworkJ5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsJ5.every(x => norm(speakingJ5.erklaerung).includes(norm(x))) &&
+      (homeworkJ5.hinweise || []).join(' ').includes('heißt dieses Wort nach sein ein Prädikatsnomen'));
+
+  const checksJ5 = lessonJ5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckJ5 = checksJ5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckJ5 = checksJ5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u10-l5 makes 80 percent four of five, independently checking komplett möbliert, the entlang cloze and gehen order, plural Teller brechen and eine Zutat',
+    checksJ5.length === 5 && checksJ5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksJ5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksJ5.every(s => /^cap\.b1-u10-l5\.s\d+$/.test(s.frage.prereq || '')) && checksJ5.every(s => !s.hinweise) &&
+      checksJ5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u10-l5.s07 | cap.b1-u10-l5.s22 | cap.b1-u10-l5.s23 | cap.b1-u10-l5.s11 | cap.b1-u10-l5.s19' &&
+      new Set(checksJ5.map(s => s.frage.prereq)).size === 5 &&
+      checksJ5[0].frage.optionen.some(o => o.text === targetsJ5[3]) &&
+      checksJ5[0].frage.optionen.some(o => o.text === 'Die Wohnung ist komplett möbliert gemacht.') &&
+      Object.values(checksJ5[0].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation' &&
+      clozeCheckJ5.frage.zeigt === 'Wir gehen den ____.' &&
+      clozeCheckJ5.frage.antworten.join(' ') === 'Fluss entlang' && clozeCheckJ5.frage.nearMiss.entlang &&
+      !win.DW.renderers.judgeCloze(clozeCheckJ5.frage, 'entlang').ok &&
+      orderCheckJ5.frage.correct.join(' ') === targetsJ5[1] && orderCheckJ5.frage.finite === 'gehen' &&
+      orderCheckJ5.frage.fields.vorfeld.join(' ') === 'Wir' && orderCheckJ5.frage.fields.lsk.join(' ') === 'gehen' &&
+      orderCheckJ5.frage.fields.mittelfeld.join(' ') === 'den Fluss entlang.' &&
+      win.DW.order.score(orderCheckJ5.frage, orderCheckJ5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckJ5.frage, ['Wir', 'entlang.', 'gehen', 'den', 'Fluss']).credit < 1 &&
+      checksJ5[3].frage.optionen.some(o => o.text === 'Zwei Teller brechen beim Tragen.') &&
+      checksJ5[3].frage.optionen.some(o => o.text === 'Zwei Teller bricht beim Tragen.') &&
+      Object.values(checksJ5[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksJ5[4].frage.optionen.some(o => o.text === targetsJ5[4]) &&
+      checksJ5[4].frage.optionen.some(o => o.text === 'Für das Faschierte brauche ich nur einen Zutat.') &&
+      Object.values(checksJ5[4].frage.misconceptionFamilies).join(' ') === 'genus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

@@ -3092,25 +3092,50 @@ module.exports = [
       hwHintDe: 'Der Kuchen soll gelingen, und am Sonntag will ich die Ruhe genießen. Vorhin hat es noch geregnet, und mittlerweile ist das Haus ruhig. Inzwischen wissen es alle, und spätestens am Freitag kommt die Antwort. Zusätzlich zahle ich hundert Franken, und selbstverständlich helfe ich dir. Niemand hat jemals dort gewohnt.'
     }),
 
-  U('b1-u10-l5', 'B1', 'الأشياء والصفات', 'Dinge und Eigenschaften', 'deklination',
-    'Am Ende beschreibst du Gegenstände, Formen und Materialien',
-    'في النهاية تصف أشياء وأشكالًا وموادّ.',
+  U('b1-u10-l5', 'B1', 'الأشياء والصفات: derselbe وentlang', 'Dinge und Eigenschaften: derselbe und entlang', 'deklination',
+    'Am Ende beschreibst du Gegenstände, Formen und Materialien — in fünf Sätzen',
+    'في النهاية تصف أشياء وأشكالًا وموادّ في خمس جمل.',
     [
-      ['Der Treffpunkt bleibt derselbe.', 'derselbe في الخبر بلا تصريف', 'derselbe als Prädikatsnomen', 'Der Treffpunkt bleibt derselber.', 'derselbe'],
-      ['Wir gehen den Fluss entlang.', 'entlang بعد الاسم', 'entlang steht nach dem Nomen', 'Wir gehen entlang den Fluss.', 'Fluss entlang'],
-      ['Für den Umtausch eignet sich nur die Rechnung.', 'انعكاسي كامل', 'sich eignen für', 'Für den Umtausch eignet nur die Rechnung.', 'eignet sich'],
-      ['Die Wohnung ist komplett möbliert.', 'الصفة مع الفعل التام', 'komplett + Partizip', 'Die Wohnung ist komplett möbliert gemacht.', 'komplett möbliert']
+      ['Der Treffpunkt bleibt derselbe.', 'يبقي مكان اللقاء نفسه', 'derselbe في الخبر لا تُصرَّف: bleibt derselbe لا derselber', 'Der Treffpunkt bleibt derselber.', 'derselbe بلا تصريف'],
+      ['Wir gehen den Fluss entlang.', 'يسير على طول النهر', 'entlang تتبع الاسم: den Fluss entlang لا تسبقه', 'Wir gehen den Fluss entlang auf.', 'entlang بعد الاسم'],
+      ['Für den Umtausch eignet sich nur die Rechnung.', 'يقصر الصلاحية على الفاتورة', 'sich eignen انعكاسي كامل: eignet sich', 'Für den Umtausch eignet nur die Rechnung.', 'eignet sich'],
+      ['Die Wohnung ist komplett möbliert.', 'يصف شقة مؤثثة بالكامل', 'الصفة مع الفعل التام تكفي بلا gemacht ثانية', 'Die Wohnung ist komplett möbliert gemacht.', 'komplett möbliert']
     ],
     [
-      ['In die Liste darf man einen Namen einfügen.', 'يجوز إدراج اسم', 'In die Liste darf man einen Namen einfügen auf.', 'بلا auf.', 'einfügen'],
-      ['Die Schüssel steht im Regal.', 'السلطانية على الرف', 'Die Schüssel stehen im Regal.', 'الفعل مفرد.', 'steht'],
-      ['Die Etiketten sind farbig.', 'اللصاقات ملوّنة', 'Die Etiketten sind farbig gemacht.', 'الصفة تكفي.', 'farbig'],
-      ['Der Stoff ist künstlich.', 'القماش اصطناعي', 'Der Stoff ist künstlich gemacht.', 'الصفة تكفي.', 'künstlich']
+      ['Der Treffpunkt bleibt derselbe.', 'مكان اللقاء يبقى نفسه', 'Der Treffpunkt bleibt derselber.', 'derselbe لا تُصرَّف خبرًا.', 'derselbe'],
+      ['Wir gehen den Fluss entlang.', 'نمشي على طول النهر', 'Wir gehen den Fluss entlang auf.', 'entlang بعد الاسم بلا زائد.', 'entlang'],
+      ['Für den Umtausch eignet sich nur die Rechnung.', 'للتبديل تصلح الفاتورة فقط', 'Für den Umtausch eignet nur die Rechnung.', 'انعكاسي: sich جزء من الفعل.', 'sich'],
+      ['Die Wohnung ist komplett möbliert.', 'الشقة مؤثثة تمامًا', 'Die Wohnung ist komplett möbliert gemacht.', 'تصريف واحد يكفي.', 'möbliert']
     ],
     'Der Treffpunkt bleibt derselbe. Wir gehen den Fluss entlang.',
-    'Die Wohnung ist komplett möbliert.',
-    'Beschreibe morgen einen Gegenstand in deinem Zimmer mit Form und Farbe.',
-    'غدًا صف شيئًا في غرفتك بشكله ولونه.'),
+    'Für das Faschierte brauche ich nur eine Zutat.',
+    'Wiederhole morgen die fünf Sätze: Der Treffpunkt bleibt derselbe. Wir gehen den Fluss entlang. Für den Umtausch eignet sich nur die Rechnung. Die Wohnung ist komplett möbliert. Für das Faschierte brauche ich nur eine Zutat.',
+    'غدًا أعد جمل الأشياء والصفات الخمس ولاحظ الضمائر والحروف بعد الاسم.',
+    {
+      factFamilies: ['deklination', 'wortstellung', 'lexik-kollokation', 'lexik-kollokation'],
+      imitateNearMiss: 'derselber',
+      transformHint: 'في جملة الختام مكوّن مؤنث: eine Zutat — الأداة eine لا einen، واللحم Faschierte نمساويًّا.',
+      orderSentence: 'Für den Umtausch eignet sich nur die Rechnung.',
+      checkOrderSentence: 'Wir gehen den Fluss entlang.',
+      orderAr: 'رتّب جملة التبديل: العبارة Für den Umtausch أولًا والفعل eignet ثانيًا والفاعل آخرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول Für den Umtausch كتلة واحدة.', 'الضمير sich بعد الفعل والفاعل die Rechnung. أخيرًا.'],
+      writing: {
+        zeigt: 'Dinge und Eigenschaften in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: مكان لقاء بـderselbe بلا تصريف، وسير den Fluss entlang، وصلاحية بانعكاسي eignet sich، وشقة komplett möbliert، ومكوّن مؤنث eine Zutat.',
+        hinweise: ['derselbe في الخبر بلا تصريف.', 'entlang تأتي بعد الاسم لا قبله.'],
+        prompt: 'اكتب جمل الأشياء والصفات الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Der Treffpunkt bleibt derselbe. · Wir gehen den Fluss entlang. · Für den Umtausch eignet sich nur die Rechnung. · Die Wohnung ist komplett möbliert. · Für das Faschierte brauche ich nur eine Zutat.',
+        points: ['Der Treffpunkt bleibt derselbe.', 'Wir gehen den Fluss entlang.', 'Für den Umtausch eignet sich nur die Rechnung.', 'Die Wohnung ist komplett möbliert.', 'Für das Faschierte brauche ich nur eine Zutat.'],
+        minWords: 30,
+        frage: 'اكتب جمل الأشياء والصفات الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Der Treffpunkt bleibt derselbe. Wir gehen den Fluss entlang. Für den Umtausch eignet sich nur die Rechnung. Die Wohnung ist komplett möbliert. Für das Faschierte brauche ich nur eine Zutat.',
+      summaryDe: 'Der Treffpunkt bleibt derselbe. Wir gehen den Fluss entlang. Für den Umtausch eignet sich nur die Rechnung. Die Wohnung ist komplett möbliert. Für das Faschierte brauche ich nur eine Zutat.',
+      summaryAr: 'الأشياء والصفات تُروى بضمير هوية بلا تصريف وحرف بعد الاسم وانعكاسي كامل.',
+      summaryRecap: 'هوية وحرف لاحق',
+      hwHintDe: 'Der Wind dreht am Abend, und diese Tür kann nicht zugehen. Die Papiere liegen durcheinander, und zwei Teller brechen beim Tragen. Die Regeln sind einheitlich, und der Stoff ist künstlich. Die Arbeit ist körperlich schwer, und die Lösung ist kreativ. Maximal zehn Leute dürfen mit. In der Grammatik heißt dieses Wort nach sein ein Prädikatsnomen.'
+    }),
 
   U('b1-u10-l6', 'B1', 'الناس والمدينة', 'Menschen und Stadt', 'konjugation',
     'Am Ende stellst du Nachbarn vor und sprichst über das Alter',

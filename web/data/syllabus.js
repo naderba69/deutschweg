@@ -182,7 +182,7 @@
     ['الإدارة والمدرسة: ankündigen وMalerin', 'Verwaltung und Schule: ankündigen und Malerin', 'الإدارة', 'Besuch ankündigen · Malerin stellt aus · Schritt ist · Grund herausfinden · Linie fährt', 'explicit', 36, 15],
     ['البيئة والطبيعة: Abgas وBild', 'Umwelt und Natur: Abgas und Bild', 'البيئة', 'Abgas schadet · stammen aus · Hund will fressen · Bild hängt schief · städtische Schule', 'explicit', 36, 15],
     ['الأفعال والظروف: zunächst وzweifeln', 'Verben und Umstände: zunächst und zweifeln', 'الزمن', 'Zunächst lesen wir · an zweifeln · Regel gilt · über nachdenken · Fehler vorkommen', 'explicit', 36, 15],
-    ['الأشياء والصفات', 'Dinge und Eigenschaften', 'الوصف', 'derselbe und Fluss entlang', 'explicit', 36, 15],
+    ['الأشياء والصفات: derselbe وentlang', 'Dinge und Eigenschaften: derselbe und entlang', 'الوصف', 'Treffpunkt bleibt derselbe · Fluss entlang · eignet sich · komplett möbliert · eine Zutat', 'explicit', 36, 15],
     ['الناس والمدينة', 'Menschen und Stadt', 'المجتمع', 'Im Feber beginnt und miteinander', 'explicit', 36, 15],
     ['الربط والتعميم', 'Verbindung und Allgemeines', 'الربط', 'Die gesamte Verwaltung und indem', 'explicit', 36, 15]
   ];

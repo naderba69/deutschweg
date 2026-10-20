@@ -39,13 +39,29 @@ module.exports = {
       ['körperlich', '—', 'جسدي', 'Die Arbeit ist körperlich schwer.', 'Die Arbeit ist körperlich schwer gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'körperlich'],
       ['kreativ', '—', 'خلاق', 'Die Lösung ist kreativ.', 'Die Lösung ist kreativ gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'kreativ'],
       ['künstlich', '—', 'اصطناعي', 'Der Stoff ist künstlich.', 'Der Stoff ist künstlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'künstlich'],
-      ['das Material', 'die Materialien', 'المادة/الخامة', 'Aus dem Material wählt sie eine Seite.', 'Aus dem Material wählen sie eine Seite.', 'الفعل مفرد: wählt.', 'konjugation', 'Material']
+      ['das Material', 'die Materialien', 'المادة/الخامة', 'Aus dem Material wählt sie eine Seite.', 'Aus dem Material wählst sie eine Seite.', 'الفعل مفرد: wählt.', 'konjugation', 'Material']
     ],
     tricks: [
       { trick: 'derselbe / dasselbe للشيء المحدد نفسه · der gleiche للنظير', wie: 'Der Treffpunkt bleibt derselbe. · Es ist immer dasselbe Problem.', warum: 'العربية تقول «نفس» للحالتين، والألمانية تفرق بين الذات والنظير.', anchor: 'Der Treffpunkt bleibt derselbe' },
-      { trick: 'انعكاسي بلا مفعول ظاهر: eignet sich · dreht sich', wie: 'Für den Umtausch eignet sich nur die Rechnung.', warum: 'الفعل في العربية لازم معنويًا، والألمانية تحتاج الضمير العائد ليكتمل.', anchor: 'eignet sich nur die Rechnung' },
+      { trick: 'انعكاسي بلا مفعول ظاهر: eignet sich', wie: 'Für den Umtausch eignet sich nur die Rechnung.', warum: 'الفعل في العربية لازم معنويًا، والألمانية تحتاج الضمير العائد ليكتمل.', anchor: 'eignet sich nur die Rechnung' },
       { trick: 'entlang بعد الاسم — عكس باقي حروف المكان', wie: 'Wir gehen den Fluss entlang.', warum: 'حروف المكان في الألمانية تسبق الاسم، وentlang وحدها تتبعه.', anchor: 'den Fluss entlang' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'durcheinander': 'einander',
+      'eindeutig': 'eindeutigen'
+    },
+    clozeItemIndex: 10,
+    clozeNearMiss: 'entlang',
+    checkItemIndex: 12,
+    extraCheck: {
+      right: 'Für das Faschierte brauche ich nur eine Zutat.',
+      bad: 'Für das Faschierte brauche ich nur einen Zutat.',
+      why: 'Zutat مؤنثة: eine Zutat لا einen.',
+      family: 'genus',
+      prereq: 'cap.b1-u10-l5.s19',
+      frage: 'أي جملة تعطي المكوّن أداته المؤنثة الصحيحة؟'
+    }
   },
 
   'b1-u10-l6': {
