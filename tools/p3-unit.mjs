@@ -18211,6 +18211,119 @@ console.log('\n— P3.2 lexical layer —\n');
       checksJ5[4].frage.optionen.some(o => o.text === targetsJ5[4]) &&
       checksJ5[4].frage.optionen.some(o => o.text === 'Für das Faschierte brauche ich nur einen Zutat.') &&
       Object.values(checksJ5[4].frage.misconceptionFamilies).join(' ') === 'genus');
+
+  const lessonJ6 = win.DW_LESSONS['b1-u10-l6'];
+  const rowJ6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonJ6.id);
+  const byWordJ6 = Object.fromEntries(lessonJ6.wortschatz.map(it => [it.de, it]));
+  const tricksJ6 = lessonJ6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsJ6 = [
+    'Im Feber beginnt der Fasching.',
+    'Nichtraucher sitzen hier getrennt.',
+    'Die Kinder spielen miteinander.',
+    'Der mittlere Teil bleibt leer.',
+    'Die Seniorin wohnt seit einem Jahr hier.'
+  ];
+  t('Corpus lesson b1-u10-l6 precisely scopes five people-and-city moves taking regional Im Feber, bare plural Nichtraucher sitzen, reciprocal miteinander, declined mittlere and singular Seniorin wohnt',
+    lessonJ6.title.de === 'Menschen und Stadt: Feber und miteinander' &&
+      lessonJ6.title.ar === 'الناس والمدينة: Feber وmiteinander' &&
+      rowJ6.title.de === lessonJ6.title.de && rowJ6.title.ar === lessonJ6.title.ar &&
+      rowJ6.theme === 'المجتمع' &&
+      rowJ6.grammar.item === 'Im Feber beginnt · Nichtraucher sitzen · spielen miteinander · mittlere Teil bleibt · Seniorin wohnt' &&
+      rowJ6.grammar.method === 'explicit' && lessonJ6.schritte.length === 36 && lessonJ6.wortschatz.length === 36 &&
+      lessonJ6.schritte.filter(s => s.phase === 'Übungen').length === 6 &&
+      lessonJ6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsJ6[i]) &&
+      lessonJ6.schritte[0].zeigt.de === 'Am Ende stellst du Menschen vor, nennst ein Fest regional und beschreibst Gruppen — in fünf Sätzen' &&
+      lessonJ6.schritte.find(s => s.id === 's19').zeigt.de === targetsJ6[4]);
+
+  const expectedWordsJ6 = [
+    'die Bewohnerin', 'die Einwohnerin', 'der Bub', 'das Altenheim', 'der Fasching', 'die Fasnacht',
+    'der Feber', 'die Wirtin', 'der Neffe', 'die Geburt', 'der Pensionist', 'die Pensionistin',
+    'der Senior', 'die Seniorin', 'der Nichtraucher', 'die Nichtraucherin', 'die Raucherin', 'der Gott',
+    'menschlich', 'persönlich', 'die Siegerin', 'der Gegner', 'miteinander', 'voneinander',
+    'mittler', 'vorder', 'wertlos', 'wertvoll', 'weltenweit', 'zahlreich',
+    'populär', 'positiv', 'negativ', 'relativ', 'ideal', 'individuell'
+  ];
+  const errorsJ6 = lessonJ6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u10-l6 reviews all 36 entries and three bounded mnemonics converting the ambiguous diskutiert-sie foil to an unambiguous one and keeping every other genuine foil as a real error',
+    Object.keys(byWordJ6).join(' | ') === expectedWordsJ6.join(' | ') &&
+      lessonJ6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonJ6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordJ6['der Gott'].err === 'Über Gott diskutierst sie lange.' &&
+      !errorsJ6.includes('Über Gott diskutiert sie lange.') &&
+      byWordJ6['der Fasching'].err === 'Im Feber beginnen der Fasching.' &&
+      byWordJ6['der Nichtraucher'].err === 'Nichtraucher sitzt hier getrennt.' &&
+      byWordJ6['miteinander'].err === 'Die Kinder spielen miteinander auf.' &&
+      byWordJ6['die Seniorin'].err === 'Die Seniorin wohnen seit einem Jahr hier.' &&
+      ['Eine Bewohnerin erzählen von den Neuen.', 'Die Fragen sind zahlreich gemacht.',
+        'In der Schweiz heißen diese Zeit Fasnacht.', 'Der Gegner warten schon.',
+        'Geld allein ist wertlos gemacht.']
+        .every(x => errorsJ6.includes(x)) &&
+      tricksJ6.length === 3 && tricksJ6[0].wie.includes('Im Feber beginnt der Fasching.') &&
+      tricksJ6[0].warum.includes('بدل Karneval وFebruar') &&
+      tricksJ6[1].trick.includes('فاعلًا') &&
+      tricksJ6[1].wie.includes('Nichtraucher sitzen hier getrennt.') &&
+      tricksJ6[2].wie.includes('Die Kinder spielen miteinander.') &&
+      !tricksJ6.map(x => x.warum).join(' ').includes('بعدًا'));
+
+  const wordClozeAJ6 = lessonJ6.schritte.find(s => s.id === 's09');
+  const wordClozeBJ6 = lessonJ6.schritte.find(s => s.id === 's13');
+  const imitateJ6 = lessonJ6.schritte.find(s => s.id === 's18');
+  const drillJ6 = lessonJ6.schritte.find(s => s.id === 's22');
+  const orderJ6 = lessonJ6.schritte.find(s => s.id === 's23');
+  const writingJ6 = lessonJ6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingJ6 = lessonJ6.schritte.find(s => s.phase === 'Produktion');
+  const summaryJ6 = lessonJ6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkJ6 = lessonJ6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u10-l6 aligns four strict learning clozes of the 36-word layout, sound beginnt order fields and a 25-word five-target production',
+    wordClozeAJ6.frage.zeigt === 'In der Schweiz heißt diese Zeit ____.' && wordClozeAJ6.frage.antworten.join(' ') === 'Fasnacht' &&
+      wordClozeAJ6.frage.nearMiss.Fasching && !win.DW.renderers.judgeCloze(wordClozeAJ6.frage, 'Fasching').ok &&
+      wordClozeBJ6.frage.zeigt === 'Der ____ wartet schon.' && wordClozeBJ6.frage.antworten.join(' ') === 'Gegner' &&
+      wordClozeBJ6.frage.nearMiss.Gegnerin && !win.DW.renderers.judgeCloze(wordClozeBJ6.frage, 'Gegnerin').ok &&
+      (imitateJ6.frage.zeigt === 'Im Feber ____ der Fasching.' || imitateJ6.zeigt.de === 'Im Feber ____ der Fasching.') && imitateJ6.frage.antworten.join(' ') === 'beginnt' &&
+      imitateJ6.frage.nearMiss['beginnen'] && !win.DW.renderers.judgeCloze(imitateJ6.frage, 'beginnen').ok &&
+      drillJ6.frage.zeigt === '____ sitzen hier getrennt.' && drillJ6.frage.antworten.join(' ') === 'Nichtraucher' &&
+      drillJ6.frage.nearMiss.Nichtraucherin && !win.DW.renderers.judgeCloze(drillJ6.frage, 'Nichtraucherin').ok &&
+      lessonJ6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderJ6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderJ6.frage.correct.join(' ') === targetsJ6[0] && orderJ6.frage.finite === 'beginnt' && orderJ6.frage.verbFirst === false &&
+      orderJ6.frage.fields.vorfeld.join(' ') === 'Im Feber' && orderJ6.frage.fields.lsk.join(' ') === 'beginnt' &&
+      orderJ6.frage.fields.mittelfeld.join(' ') === 'der Fasching.' &&
+      win.DW.order.score(orderJ6.frage, orderJ6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderJ6.frage, ['Im', 'Feber', 'der', 'Fasching.', 'beginnt']).credit < 1 &&
+      writingJ6.frage.points.join(' | ') === targetsJ6.join(' | ') && writingJ6.frage.minWords === 25 &&
+      targetsJ6.join(' ').split(/\s+/).length === 25 &&
+      targetsJ6.every(x => [writingJ6.frage.promptDe, summaryJ6.zeigt.de, homeworkJ6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsJ6.every(x => norm(speakingJ6.erklaerung).includes(norm(x))) &&
+      (homeworkJ6.hinweise || []).join(' ').includes('Eine Bewohnerin erzählt von den Neuen'));
+
+  const checksJ6 = lessonJ6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckJ6 = checksJ6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckJ6 = checksJ6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u10-l6 makes 80 percent four of five, independently checking mittlere, the Nichtraucher cloze and spielen order, diskutieren-sie and Seniorin wohnt',
+    checksJ6.length === 5 && checksJ6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksJ6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksJ6.every(s => /^cap\.b1-u10-l6\.s\d+$/.test(s.frage.prereq || '')) && checksJ6.every(s => !s.hinweise) &&
+      checksJ6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u10-l6.s07 | cap.b1-u10-l6.s22 | cap.b1-u10-l6.s23 | cap.b1-u10-l6.s12 | cap.b1-u10-l6.s19' &&
+      new Set(checksJ6.map(s => s.frage.prereq)).size === 5 &&
+      checksJ6[0].frage.optionen.some(o => o.text === targetsJ6[3]) &&
+      checksJ6[0].frage.optionen.some(o => o.text === 'Der mittlerer Teil bleibt leer.') &&
+      Object.values(checksJ6[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheckJ6.frage.zeigt === '____ sitzen hier getrennt.' &&
+      clozeCheckJ6.frage.antworten.join(' ') === 'Nichtraucher' && clozeCheckJ6.frage.nearMiss.Nichtraucherin &&
+      !win.DW.renderers.judgeCloze(clozeCheckJ6.frage, 'Nichtraucherin').ok &&
+      orderCheckJ6.frage.correct.join(' ') === targetsJ6[2] && orderCheckJ6.frage.finite === 'spielen' &&
+      orderCheckJ6.frage.fields.vorfeld.join(' ') === 'Die Kinder' && orderCheckJ6.frage.fields.lsk.join(' ') === 'spielen' &&
+      orderCheckJ6.frage.fields.mittelfeld.join(' ') === 'miteinander.' &&
+      win.DW.order.score(orderCheckJ6.frage, orderCheckJ6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckJ6.frage, ['Die', 'Kinder', 'miteinander.', 'spielen']).credit < 1 &&
+      checksJ6[3].frage.optionen.some(o => o.text === 'Über Gott diskutieren sie lange.') &&
+      checksJ6[3].frage.optionen.some(o => o.text === 'Über Gott diskutierst sie lange.') &&
+      Object.values(checksJ6[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksJ6[4].frage.optionen.some(o => o.text === targetsJ6[4]) &&
+      checksJ6[4].frage.optionen.some(o => o.text === 'Die Seniorin wohnen seit einem Jahr hier.') &&
+      Object.values(checksJ6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

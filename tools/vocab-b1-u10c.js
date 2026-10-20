@@ -83,7 +83,7 @@ module.exports = {
       ['der Nichtraucher', 'die Nichtraucher', 'غير المدخّن', 'Nichtraucher sitzen hier getrennt.', 'Nichtraucher sitzt hier getrennt.', 'الجمع: sitzen.', 'konjugation', 'Nichtraucher'],
       ['die Nichtraucherin', 'die Nichtraucherinnen', 'غير المدخّنة', 'Die Nichtraucherin sitzt am Fenster.', 'Die Nichtraucherin sitzen am Fenster.', 'الفعل مفرد: sitzt.', 'konjugation', 'Nichtraucherin'],
       ['die Raucherin', 'die Raucherinnen', 'المدخّنة', 'Die Raucherin raucht draußen.', 'Die Raucherin rauchen draußen.', 'الفعل مفرد: raucht.', 'konjugation', 'Raucherin'],
-      ['der Gott', 'die Götter', 'الإله', 'Über Gott diskutieren sie lange.', 'Über Gott diskutiert sie lange.', 'الفاعل جمع: diskutieren.', 'konjugation', 'Gott'],
+      ['der Gott', 'die Götter', 'الإله', 'Über Gott diskutieren sie lange.', 'Über Gott diskutierst sie lange.', 'الفاعل جمع: diskutieren.', 'konjugation', 'Gott'],
       ['menschlich', '—', 'إنساني', 'Jeder Fehler ist menschlich.', 'Jeder Fehler ist menschlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'menschlich'],
       ['persönlich', '—', 'شخصي', 'Ich komme persönlich vorbei.', 'Ich komme persönlich vorbei auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'persönlich'],
       ['die Siegerin', 'die Siegerinnen', 'الفائزة', 'Die Siegerin bekommt einen Preis.', 'Die Siegerin bekommen einen Preis.', 'الفعل مفرد: bekommt.', 'konjugation', 'Siegerin'],
@@ -104,10 +104,26 @@ module.exports = {
       ['individuell', '—', 'فردي', 'Jede Lösung ist individuell.', 'Jede Lösung ist individuell gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'individuell']
     ],
     tricks: [
-      { trick: 'الكرنفال وشهر فبراير بصيغته النمساوية والسويسرية: der Fasching · die Fasnacht · der Feber', wie: 'Im Feber beginnt der Fasching. · In der Schweiz heißt diese Zeit Fasnacht.', warum: 'الامتحان يستعمل الصيغة المحلية بدل Februar، وهي ليست خطأً بل تنويعًا إقليميًا.', anchor: 'Im Feber beginnt der Fasching' },
-      { trick: 'الجمع بلا أداة في الخبر: Nichtraucher sitzen hier getrennt.', wie: 'Nichtraucher sitzen hier getrennt. · Die Kinder spielen miteinander.', warum: 'في العربية تُستعمل أداة تعريف دائمًا، والألمانية تجيز الجمع بلا أداة.', anchor: 'Nichtraucher sitzen hier getrennt' },
-      { trick: 'أزواج الضمائر: miteinander · voneinander', wie: 'Die Kinder spielen miteinander. · Sie lernen voneinander.', warum: 'الضمير المدمج يحمل معنى «مع/من بعضهم» ولا يحتاج حرف جر بعدًا.', anchor: 'Sie lernen voneinander' }
-    ]
+      { trick: 'الكرنفال وشهر فبراير بصيغته النمساوية والسويسرية: der Fasching · die Fasnacht · der Feber', wie: 'Im Feber beginnt der Fasching. · In der Schweiz heißt diese Zeit Fasnacht.', warum: 'النصوص تستعمل الصيغ المحلية بدل Karneval وFebruar، وهي ليست خطأً بل تنويعًا إقليميًا.', anchor: 'Im Feber beginnt der Fasching' },
+      { trick: 'الجمع بلا أداة فاعلًا: Nichtraucher sitzen hier getrennt.', wie: 'Nichtraucher sitzen hier getrennt. · Die Kinder spielen miteinander.', warum: 'في العربية تُستعمل أداة تعريف دائمًا، والألمانية تجيز الجمع بلا أداة.', anchor: 'Nichtraucher sitzen hier getrennt' },
+      { trick: 'أزواج الضمائر: miteinander · voneinander', wie: 'Die Kinder spielen miteinander. · Sie lernen voneinander.', warum: 'الضمير المدمج يحمل معنى «مع/من بعضهم» ولا يحتاج حرف جر بعده.', anchor: 'Sie lernen voneinander' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Fasnacht': 'Fasching',
+      'der Gegner': 'Gegnerin'
+    },
+    clozeItemIndex: 14,
+    clozeNearMiss: 'Nichtraucherin',
+    checkItemIndex: 17,
+    extraCheck: {
+      right: 'Die Seniorin wohnt seit einem Jahr hier.',
+      bad: 'Die Seniorin wohnen seit einem Jahr hier.',
+      why: 'Seniorin اسم مفرد: wohnt لا wohnen.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u10-l6.s19',
+      frage: 'أي جملة تعطي المسنّة المفردة فعلها المفرد الصحيح؟'
+    }
   }
 
 };

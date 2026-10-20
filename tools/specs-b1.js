@@ -3137,25 +3137,50 @@ module.exports = [
       hwHintDe: 'Der Wind dreht am Abend, und diese Tür kann nicht zugehen. Die Papiere liegen durcheinander, und zwei Teller brechen beim Tragen. Die Regeln sind einheitlich, und der Stoff ist künstlich. Die Arbeit ist körperlich schwer, und die Lösung ist kreativ. Maximal zehn Leute dürfen mit. In der Grammatik heißt dieses Wort nach sein ein Prädikatsnomen.'
     }),
 
-  U('b1-u10-l6', 'B1', 'الناس والمدينة', 'Menschen und Stadt', 'konjugation',
-    'Am Ende stellst du Nachbarn vor und sprichst über das Alter',
-    'في النهاية تقدّم الجيران وتتحدث عن الكبر.',
+  U('b1-u10-l6', 'B1', 'الناس والمدينة: Feber وmiteinander', 'Menschen und Stadt: Feber und miteinander', 'konjugation',
+    'Am Ende stellst du Menschen vor, nennst ein Fest regional und beschreibst Gruppen — in fünf Sätzen',
+    'في النهاية تقدّم أشخاصًا وتسمّي عيدًا بصيغته المحلية وتصف جماعات في خمس جمل.',
     [
-      ['Im Feber beginnt der Fasching.', 'الصيغة النمساوية للشهر', 'der Feber = der Februar', 'Im Feber beginnen der Fasching.', 'beginnt'],
-      ['Nichtraucher sitzen hier getrennt.', 'الجمع بلا أداة', 'Plural ohne Artikel', 'Nichtraucher sitzt hier getrennt.', 'sitzen'],
-      ['Die Kinder spielen miteinander.', 'الضمير المدمج', 'miteinander = mit einander', 'Die Kinder spielen miteinander auf.', 'miteinander'],
-      ['Der mittlere Teil bleibt leer.', 'الصفة تُصرَّف', 'mittlere mit Endung', 'Der mittlerer Teil bleibt leer.', 'mittlere']
+      ['Im Feber beginnt der Fasching.', 'يسمّي الشهر والكرنفال بالنمساوية', 'der Feber هو Februar نمساويًا، والفاعل der Fasching مفرد فالفعل beginnt لا beginnen', 'Im Feber beginnen der Fasching.', 'المفرد: beginnt'],
+      ['Nichtraucher sitzen hier getrennt.', 'يصف غير المدخّنين جمعًا بلا أداة', 'الجمع بلا أداة Nichtraucher فاعل جمع فالفعل sitzen لا sitzt', 'Nichtraucher sitzt hier getrennt.', 'الجمع: sitzen'],
+      ['Die Kinder spielen miteinander.', 'يقول إن الأطفال يلعبون مع بعضهم', 'miteinander ضمير مدمج كامل المعنى فلا حرف جر بعده', 'Die Kinder spielen miteinander auf.', 'miteinander وحدها'],
+      ['Der mittlere Teil bleibt leer.', 'يصف الجزء الأوسط بصفة مصرّفة', 'الصفة قبل الاسم بعد der تأخذ النهاية e: mittlere لا mittlerer', 'Der mittlerer Teil bleibt leer.', 'النهاية: mittlere']
     ],
     [
-      ['Eine Bewohnerin erzählt von den Neuen.', 'ساكنة تحكي', 'Eine Bewohnerin erzählen von den Neuen.', 'الفعل مفرد.', 'erzählt'],
-      ['Die Wirtin bringt die Suppe.', 'صاحبة المطعم تحضر الشوربة', 'Die Wirtin bringen die Suppe.', 'الفعل مفرد.', 'bringt'],
-      ['Zeit ist wertvoll.', 'الوقت ثمين', 'Zeit ist wertvoll gemacht.', 'الصفة تكفي.', 'wertvoll'],
-      ['Die Fragen sind zahlreich.', 'الأسئلة كثيرة العدد', 'Die Fragen sind zahlreich gemacht.', 'الصفة تكفي.', 'zahlreich']
+      ['Im Feber beginnt der Fasching.', 'في فبراير يبدأ الكرنفال', 'Im Feber beginnen der Fasching.', 'الفعل مفرد: beginnt.', 'beginnt'],
+      ['Nichtraucher sitzen hier getrennt.', 'غير المدخّنين يجلسون هنا منفصلين', 'Nichtraucher sitzt hier getrennt.', 'الجمع: sitzen.', 'sitzen'],
+      ['Die Kinder spielen miteinander.', 'الأطفال يلعبون مع بعضهم', 'Die Kinder spielen miteinander auf.', 'لا حرف جر بعد miteinander.', 'miteinander'],
+      ['Der mittlere Teil bleibt leer.', 'الجزء الأوسط يبقى فارغًا', 'Der mittlerer Teil bleibt leer.', 'الصفة بعد der بنهاية e: mittlere.', 'mittlere']
     ],
-    'Im Feber beginnt der Fasching. Die Kinder spielen miteinander.',
-    'Nichtraucher sitzen hier getrennt.',
-    'Stelle morgen zwei Nachbarn mit je zwei Sätzen vor.',
-    'غدًا قدّم جارين بجملتين لكل واحد.'),
+    'Im Feber beginnt der Fasching. Nichtraucher sitzen hier getrennt.',
+    'Die Seniorin wohnt seit einem Jahr hier.',
+    'Wiederhole morgen die fünf Sätze: Im Feber beginnt der Fasching. Nichtraucher sitzen hier getrennt. Die Kinder spielen miteinander. Der mittlere Teil bleibt leer. Die Seniorin wohnt seit einem Jahr hier.',
+    'غدًا أعد جمل الناس والمدينة الخمس ولاحظ الصيغ المحلية والفعل مع المفرد والجمع.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'lexik-kollokation', 'deklination'],
+      imitateNearMiss: 'beginnen',
+      transformHint: 'في جملة الختام مسنّة واحدة: Die Seniorin wohnt — الفعل مفرد، وseit مع الداتيف: seit einem Jahr.',
+      orderSentence: 'Im Feber beginnt der Fasching.',
+      checkOrderSentence: 'Die Kinder spielen miteinander.',
+      orderAr: 'رتّب جملة الكرنفال: العبارة Im Feber أولًا والفعل beginnt ثانيًا والفاعل بعده.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول Im Feber كتلة واحدة.', 'الفاعل der Fasching. بعد الفعل beginnt.'],
+      writing: {
+        zeigt: 'Menschen und Stadt in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: شهر نمساوي Im Feber مع مفرد beginnt، وجمع بلا أداة Nichtraucher sitzen، ولعب miteinander، وجزء أوسط mittlere، ومسنّة تسكن منذ سنة wohnt seit einem Jahr.',
+        hinweise: ['Feber وFasching صيغتان محليتان لا خطآن.', 'المفرد يأخذ t والجمع يأخذ en في نهاية الفعل.'],
+        prompt: 'اكتب جمل الناس والمدينة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Im Feber beginnt der Fasching. · Nichtraucher sitzen hier getrennt. · Die Kinder spielen miteinander. · Der mittlere Teil bleibt leer. · Die Seniorin wohnt seit einem Jahr hier.',
+        points: ['Im Feber beginnt der Fasching.', 'Nichtraucher sitzen hier getrennt.', 'Die Kinder spielen miteinander.', 'Der mittlere Teil bleibt leer.', 'Die Seniorin wohnt seit einem Jahr hier.'],
+        minWords: 25,
+        frage: 'اكتب جمل الناس والمدينة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Im Feber beginnt der Fasching. Nichtraucher sitzen hier getrennt. Die Kinder spielen miteinander. Der mittlere Teil bleibt leer. Die Seniorin wohnt seit einem Jahr hier.',
+      summaryDe: 'Im Feber beginnt der Fasching. Nichtraucher sitzen hier getrennt. Die Kinder spielen miteinander. Der mittlere Teil bleibt leer. Die Seniorin wohnt seit einem Jahr hier.',
+      summaryAr: 'الناس والمدينة يُقدَّمون بصيغ محلية واتفاق مفرد وجمع وضمير مدمج.',
+      summaryRecap: 'صيغ محلية واتفاق',
+      hwHintDe: 'Eine Bewohnerin erzählt von den Neuen, und die Wirtin bringt die Suppe. Ein Bub spielt vor dem Haus, und mein Neffe hilft am Samstag. Die Siegerin bekommt einen Preis, und der Gegner wartet schon. Zeit ist wertvoll, und jede Lösung ist individuell.'
+    }),
 
   U('b1-u10-l7', 'B1', 'الربط والتعميم', 'Verbindung und Allgemeines', 'wortstellung',
     'Am Ende verbindest du Sätze und ordnest Aussagen allgemein',
