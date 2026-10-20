@@ -1,29 +1,54 @@
-function U(id, ar, de, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr) {
-  return {
+function U(id, ar, de, goalDe, goalAr, facts, lex, model, say, hwDe, hwAr, options) {
+  return Object.assign({
     id, level: 'B2', ar, de, fam: 'pruefstrategie', goalDe, goalAr, facts, lex, model, say, hwDe, hwAr,
     kind: 'workshop'
-  };
+  }, options || {});
 }
 module.exports = [
-  U('b2-w01', 'تحليل نص', 'Textanalyse',
-    'Am Ende trennst du Beschreibung und Deutung',
-    'في النهاية تفصل الوصف عن التأويل.',
+  U('b2-w01', 'تحليل نص: الوصف والتأويل', 'Textanalyse: beschreiben und deuten',
+    'Am Ende analysierst du einen Text mit Beschreibung, Deutung und Beleg — in fünf Sätzen',
+    'في النهاية تحلّل نصًّا بوصف وتأويل ودليل في خمس جمل.',
     [
-      ['zuerst beschreiben', 'الوصف قبل الحكم', 'الحكم أولًا يخسر النص', 'ich deute zuerst', 'الترتيب خطأ'],
-      ['dann deuten', 'التأويل بعد الشاهد', 'بلا شاهد يبقى رأيًا', 'die Deutung ohne Stelle', 'الشاهد ناقص'],
-      ['die Stelle nennen', 'الموضع يُذكر', 'النص كله ليس شاهدًا', 'der ganze Text ist der Beleg', 'الشاهد محدد'],
-      ['keine Ursache erfinden', 'السبب لا يُخترع', 'النص قد لا يقوله', 'der Text meint sicher die Ursache', 'السبب غير مذكور']
+      ['Die Analyse des Romans beginnt mit dem Aufbau.', 'يفتتح التحليل بإضافة وذكر البنية', 'الاسم الثاني في الإضافة Genitiv: des Romans لا dem Roman', 'Die Analyse dem Roman beginnt mit dem Aufbau.', 'الإضافة: des Romans'],
+      ['Die Beschreibung bleibt neutral und wertet nicht.', 'يصف بلا تقييم', 'النفي nicht جزء من المعنى: الوصف المحايد لا يقيّم', 'Die Beschreibung bleibt neutral und wertet.', 'nicht لازمة'],
+      ['Die Deutung stützt sich auf eine Textstelle.', 'يسند التأويل إلى موضع نصي واحد', 'auf مع النصب والمؤنث eine: موضع محدد لا النص كله', 'Die Deutung stützt sich auf ein Textstelle.', 'eine Textstelle'],
+      ['Diese Stelle belegt die Behauptung.', 'يقدّم الموضع دليلًا على دعوى', 'belegen يأخذ مفعولًا مباشرًا بلا حرف جر', 'Diese Stelle belegt für die Behauptung.', 'belegt بلا حرف']
     ],
     [
-      ['Zuerst beschreibe ich den Abschnitt.', 'أولًا أصف المقطع', 'Zuerst deute ich den Abschnitt', 'الوصف أولًا', 'beschreibe'],
-      ['Dann deute ich die Stelle.', 'ثم أؤول الموضع', 'Dann erfinde ich die Ursache', 'التأويل بعد الشاهد', 'deute'],
-      ['Die Stelle steht im zweiten Absatz.', 'الموضع في الفقرة الثانية', 'Der ganze Text ist der Beleg', 'الشاهد محدد', 'Stelle'],
-      ['Die Quelle nennt keine Ursache.', 'المصدر لا يذكر سببًا', 'Der Text meint sicher die Ursache', 'لا سبب بلا نص', 'Ursache']
+      ['Die Analyse des Romans beginnt mit dem Aufbau.', 'تحليل الرواية يبدأ ببنيتها', 'Die Analyse dem Roman beginnt mit dem Aufbau.', 'الإضافة Genitiv: des Romans.', 'beginnt'],
+      ['Die Beschreibung bleibt neutral und wertet nicht.', 'الوصف يبقى محايدًا ولا يقيّم', 'Die Beschreibung bleibt neutral und wertet.', 'النفي لا يُحذف: nicht.', 'nicht'],
+      ['Die Deutung stützt sich auf eine Textstelle.', 'التأويل يستند إلى موضع نصي', 'Die Deutung stützt sich auf ein Textstelle.', 'المؤنث في النصب: eine.', 'Textstelle'],
+      ['Diese Stelle belegt die Behauptung.', 'هذا الموضع يثبت الدعوى', 'Diese Stelle belegt für die Behauptung.', 'belegen بلا حرف جر.', 'belegt']
     ],
-    'Zuerst beschreibe ich. Dann deute ich die Stelle.',
-    'Die Quelle nennt keine Ursache.',
-    'Analysiere morgen einen Absatz in zwei Sätzen.',
-    'غدًا حلّل فقرة في جملتين.'),
+    'Die Analyse des Romans beginnt mit dem Aufbau. Die Beschreibung bleibt neutral und wertet nicht.',
+    'Die Einleitung nennt die Gattung und die Epoche.',
+    'Wiederhole morgen die fünf Sätze: Die Analyse des Romans beginnt mit dem Aufbau. Die Beschreibung bleibt neutral und wertet nicht. Die Deutung stützt sich auf eine Textstelle. Diese Stelle belegt die Behauptung. Die Einleitung nennt die Gattung und die Epoche.',
+    'غدًا أعد جمل تحليل النص الخمس ولاحظ الإضافة والدليل النصي.',
+    {
+      factFamilies: ['kasus', 'wortstellung', 'genus', 'kasus'],
+      imitateNearMiss: 'beginnen',
+      transformHint: 'في جملة الختام مقدمة تسمّي نوع النص وعصره: Die Einleitung nennt die Gattung und die Epoche — بلا ضمير زائد في الآخر.',
+      orderSentence: 'Die Analyse des Romans beginnt mit dem Aufbau.',
+      checkOrderSentence: 'Die Deutung stützt sich auf eine Textstelle.',
+      orderAr: 'رتّب جملة التحليل: الفاعل Die Analyse des Romans كتلة واحدة أولًا والفعل beginnt بعده.',
+      orderPromptAr: 'رتّب الجملة واضعًا كتلة الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل الممتد حتى Romans يبقى معًا في المقدمة.', 'الجار والمجرور mit dem Aufbau. في الختام.'],
+      writing: {
+        zeigt: 'Textanalyse in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: تحليل يبدأ ببنية النص بإضافة Genitiv، ووصف محايد بلا تقييم، وتأويل يستند إلى موضع نصي، وموضع يثبت دعوى، ومقدمة تسمّي النوع والعصر.',
+        hinweise: ['الإضافة بعد اسم التحليل: des Romans.', 'كل تأويل يحتاج موضعًا نصيًا مذكورًا.'],
+        prompt: 'اكتب جمل تحليل النص الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Analyse des Romans beginnt mit dem Aufbau. · Die Beschreibung bleibt neutral und wertet nicht. · Die Deutung stützt sich auf eine Textstelle. · Diese Stelle belegt die Behauptung. · Die Einleitung nennt die Gattung und die Epoche.',
+        points: ['Die Analyse des Romans beginnt mit dem Aufbau.', 'Die Beschreibung bleibt neutral und wertet nicht.', 'Die Deutung stützt sich auf eine Textstelle.', 'Diese Stelle belegt die Behauptung.', 'Die Einleitung nennt die Gattung und die Epoche.'],
+        minWords: 35,
+        frage: 'اكتب جمل تحليل النص الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Analyse des Romans beginnt mit dem Aufbau. Die Beschreibung bleibt neutral und wertet nicht. Die Deutung stützt sich auf eine Textstelle. Diese Stelle belegt die Behauptung. Die Einleitung nennt die Gattung und die Epoche.',
+      summaryDe: 'Die Analyse des Romans beginnt mit dem Aufbau. Die Beschreibung bleibt neutral und wertet nicht. Die Deutung stützt sich auf eine Textstelle. Diese Stelle belegt die Behauptung. Die Einleitung nennt die Gattung und die Epoche.',
+      summaryAr: 'تحليل النص يُروى بإضافة دقيقة ووصف محايد وتأويل مسنود إلى موضع.',
+      summaryRecap: 'وصف ثم تأويل بدليل',
+      hwHintDe: 'Zuerst beschreibe ich den Abschnitt, dann deute ich die Stelle. Die Quelle nennt keine Ursache, also erfinde ich keine Ursache. Am Ende trennst du Beschreibung und Deutung. Die Stelle steht im zweiten Absatz. Der ganze Text ist kein Beleg für eine Deutung. Analysiere morgen einen Absatz in zwei Sätzen.'
+    }),
 
   U('b2-w02', 'ورشة كتابة: موقف', 'Erörterung',
     'Am Ende schreibst du These, Argument und Beispiel',

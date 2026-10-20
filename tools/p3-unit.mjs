@@ -18436,6 +18436,131 @@ console.log('\n— P3.2 lexical layer —\n');
       checksJ7[4].frage.optionen.some(o => o.text === targetsJ7[4]) &&
       checksJ7[4].frage.optionen.some(o => o.text === 'Nirgendwo ist es so ruhig auf.') &&
       Object.values(checksJ7[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
+
+  const lessonW1 = win.DW_LESSONS['b2-w01'];
+  const rowW1 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w01');
+  const byWordW1 = Object.fromEntries(lessonW1.wortschatz.map(it => [it.de, it]));
+  const tricksW1 = lessonW1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsW1 = [
+    'Die Analyse des Romans beginnt mit dem Aufbau.',
+    'Die Beschreibung bleibt neutral und wertet nicht.',
+    'Die Deutung stützt sich auf eine Textstelle.',
+    'Diese Stelle belegt die Behauptung.',
+    'Die Einleitung nennt die Gattung und die Epoche.'
+  ];
+  t('Corpus workshop b2-w01 precisely scopes five text-analysis moves taking the genitive des Romans, description without verdict, interpretation on one quoted Stelle, direct belegen and a clean opening line',
+    lessonW1.title.de === 'Textanalyse: beschreiben und deuten' &&
+      lessonW1.title.ar === 'تحليل نص: الوصف والتأويل' &&
+      lessonW1.level === 'B2' && lessonW1.kind === 'workshop' &&
+      rowW1.title.de === lessonW1.title.de && rowW1.title.ar === lessonW1.title.ar &&
+      rowW1.theme === 'تحليل' &&
+      rowW1.grammar.item === 'تحليل نص: الوصف والتأويل' &&
+      rowW1.grammar.method === 'explicit' &&
+      rowW1.words.receptive === 90 && rowW1.words.productive === 60 &&
+      lessonW1.schritte.length === 36 && lessonW1.wortschatz.length === 40 &&
+      lessonW1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW1[i]) &&
+      lessonW1.schritte[0].zeigt.de === 'Am Ende analysierst du einen Text mit Beschreibung, Deutung und Beleg — in fünf Sätzen' &&
+      lessonW1.schritte.find(s => s.id === 's20').zeigt.de === targetsW1[4]);
+
+  const expectedWordsW1 = [
+    'analysieren', 'die Analyse', 'die Deutung', 'deuten', 'die Beschreibung', 'beschreiben',
+    'der Beleg', 'belegen', 'das Zitat', 'zitieren', 'die Stelle', 'der Abschnitt',
+    'der Absatz', 'die Zeile', 'der Zusammenhang', 'die Aussage', 'die Wertung', 'werten',
+    'die Tatsache', 'die Schlussfolgerung', 'schließen', 'die Struktur', 'die Einleitung', 'der Hauptteil',
+    'der Schluss', 'die Wirkung', 'die Absicht', 'der Adressat', 'die Perspektive', 'der Erzähler',
+    'die Figur', 'das Motiv', 'die Metapher', 'die Ironie', 'der Widerspruch', 'der Beweis',
+    'die Begründung', 'die These', 'die Wortwahl', 'der Stil'
+  ];
+  const errorsW1 = lessonW1.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w01 reviews all 40 entries and three bounded mnemonics converting four grammatical foils, restoring five clipped foils as full minimal pairs, and repairing the Motiv gloss',
+    Object.keys(byWordW1).join(' | ') === expectedWordsW1.join(' | ') &&
+      lessonW1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW1['die Analyse'].err === 'Die Analyse dem Roman beginnt mit dem Aufbau.' &&
+      byWordW1['die Aussage'].err === 'Die Aussage von die Erzählung bleibt zweideutig.' &&
+      byWordW1['die Wertung'].err === 'Die Wertung des Erzähler ist kaum versteckt.' &&
+      byWordW1['der Stil'].err === 'Der Stil wirkt ruhig, fast ohne der Emotion.' &&
+      ['Die Analyse von dem Roman beginnt mit dem Aufbau.', 'Die Aussage von der Erzählung bleibt zweideutig.',
+        'Die Wertung von dem Erzähler ist kaum versteckt.', 'Der Stil wirkt ruhig, fast ohne die Emotion.']
+        .every(x => !errorsW1.includes(x)) &&
+      ['In Hauptteil steht die Argumentation der Erörterung.',
+        'Der Schluss enthält ein kurzes Fazit und eine Kernaussage es.',
+        'Die Wirkung entsteht von dem Gefühl, nicht aus der Erfahrung.',
+        'Die Metapher ist der häufigste Sprachfigur und trägt die Symbolik.',
+        'Die Ironie entlarvt für die Verallgemeinerung, der Gegensatz bleibt unausgesprochen.']
+        .every(x => errorsW1.includes(x)) &&
+      byWordW1['das Motiv'].ar === 'الموتيف/الفكرة المتكرّرة' &&
+      ['Die Deutung stützt sich auf ein Textstelle.', 'Das Zitat stammt von dem Dialog.',
+        'Der Erzähler bleibt distanziert gemacht.']
+        .every(x => errorsW1.includes(x)) &&
+      tricksW1.length === 3 &&
+      tricksW1[0].wie.includes('Zuerst beschreibe ich den Abschnitt, dann deute ich die Stelle.') &&
+      tricksW1[1].wie.includes('Die Deutung stützt sich auf eine Textstelle, nicht auf den ganzen Text.') &&
+      tricksW1[2].wie.includes('Die Quelle nennt keine Ursache, also schreibe ich keine.'));
+
+  const wordClozeAW1 = lessonW1.schritte.find(s => s.id === 's09');
+  const wordClozeBW1 = lessonW1.schritte.find(s => s.id === 's13');
+  const wordClozeCW1 = lessonW1.schritte.find(s => s.id === 's17');
+  const imitateW1 = lessonW1.schritte.find(s => s.id === 's19');
+  const drillW1 = lessonW1.schritte.find(s => s.id === 's23');
+  const orderW1 = lessonW1.schritte.find(s => s.id === 's24');
+  const writingW1 = lessonW1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW1 = lessonW1.schritte.find(s => s.phase === 'Produktion');
+  const summaryW1 = lessonW1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW1 = lessonW1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus workshop b2-w01 aligns five strict learning clozes of the 40-word layout, sound beginnt order fields and a 35-word five-target production',
+    wordClozeAW1.frage.zeigt === '____ zuerst den Kontext und dann die Wirkung.' && wordClozeAW1.frage.antworten.join(' ') === 'Beschreibe' &&
+      wordClozeAW1.frage.nearMiss.Beschreibt && !win.DW.renderers.judgeCloze(wordClozeAW1.frage, 'Beschreibt').ok &&
+      wordClozeBW1.frage.zeigt === 'Die ____ folgt einer klaren Rhetorik.' && wordClozeBW1.frage.antworten.join(' ') === 'Struktur' &&
+      wordClozeBW1.frage.nearMiss.Strukturen && !win.DW.renderers.judgeCloze(wordClozeBW1.frage, 'Strukturen').ok &&
+      wordClozeCW1.frage.zeigt === 'Die ____ stützt sich auf eine Statistik.' && wordClozeCW1.frage.antworten.join(' ') === 'These' &&
+      wordClozeCW1.frage.nearMiss.Thesen && !win.DW.renderers.judgeCloze(wordClozeCW1.frage, 'Thesen').ok &&
+      (imitateW1.frage.zeigt === 'Die Analyse des Romans ____ mit dem Aufbau.' || imitateW1.zeigt.de === 'Die Analyse des Romans ____ mit dem Aufbau.') && imitateW1.frage.antworten.join(' ') === 'beginnt' &&
+      imitateW1.frage.nearMiss['beginnen'] && !win.DW.renderers.judgeCloze(imitateW1.frage, 'beginnen').ok &&
+      drillW1.frage.zeigt === 'Die ____ stützt sich auf eine Textstelle.' && drillW1.frage.antworten.join(' ') === 'Deutung' &&
+      drillW1.frage.nearMiss.Deutungen && !win.DW.renderers.judgeCloze(drillW1.frage, 'Deutungen').ok &&
+      lessonW1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW1.frage.frage === 'رتّب الجملة واضعًا كتلة الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW1.frage.correct.join(' ') === targetsW1[0] && orderW1.frage.finite === 'beginnt' && orderW1.frage.verbFirst === false &&
+      orderW1.frage.fields.vorfeld.join(' ') === 'Die Analyse des Romans' && orderW1.frage.fields.lsk.join(' ') === 'beginnt' &&
+      orderW1.frage.fields.mittelfeld.join(' ') === 'mit dem Aufbau.' &&
+      win.DW.order.score(orderW1.frage, orderW1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW1.frage, ['Die', 'Analyse', 'des', 'Romans', 'mit', 'dem', 'Aufbau.', 'beginnt']).credit < 1 &&
+      writingW1.frage.points.join(' | ') === targetsW1.join(' | ') && writingW1.frage.minWords === 35 &&
+      targetsW1.join(' ').split(/\s+/).length === 35 &&
+      targetsW1.every(x => [writingW1.frage.promptDe, summaryW1.zeigt.de, homeworkW1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW1.every(x => norm(speakingW1.erklaerung).includes(norm(x))) &&
+      (homeworkW1.hinweise || []).join(' ').includes('Die Quelle nennt keine Ursache'));
+
+  const checksW1 = lessonW1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW1 = checksW1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW1 = checksW1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w01 makes 80 percent four of five, independently checking belegt, the Deutung cloze and stützt order, the Aussage genitive and the clean Einleitung',
+    checksW1.length === 5 && checksW1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW1.every(s => /^cap\.b2-w01\.s\d+$/.test(s.frage.prereq || '')) && checksW1.every(s => !s.hinweise) &&
+      checksW1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w01.s07 | cap.b2-w01.s23 | cap.b2-w01.s24 | cap.b2-w01.s11 | cap.b2-w01.s20' &&
+      new Set(checksW1.map(s => s.frage.prereq)).size === 5 &&
+      checksW1[0].frage.optionen.some(o => o.text === targetsW1[3]) &&
+      checksW1[0].frage.optionen.some(o => o.text === 'Diese Stelle belegt für die Behauptung.') &&
+      Object.values(checksW1[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckW1.frage.zeigt === 'Die ____ stützt sich auf eine Textstelle.' &&
+      clozeCheckW1.frage.antworten.join(' ') === 'Deutung' && clozeCheckW1.frage.nearMiss.Deutungen &&
+      !win.DW.renderers.judgeCloze(clozeCheckW1.frage, 'Deutungen').ok &&
+      orderCheckW1.frage.correct.join(' ') === targetsW1[2] && orderCheckW1.frage.finite === 'stützt' &&
+      orderCheckW1.frage.fields.vorfeld.join(' ') === 'Die Deutung' && orderCheckW1.frage.fields.lsk.join(' ') === 'stützt' &&
+      orderCheckW1.frage.fields.mittelfeld.join(' ') === 'sich auf eine Textstelle.' &&
+      win.DW.order.score(orderCheckW1.frage, orderCheckW1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW1.frage, ['Die', 'Deutung', 'sich', 'stützt', 'auf', 'eine', 'Textstelle.']).credit < 1 &&
+      checksW1[3].frage.optionen.some(o => o.text === 'Die Aussage der Erzählung bleibt zweideutig.') &&
+      checksW1[3].frage.optionen.some(o => o.text === 'Die Aussage von die Erzählung bleibt zweideutig.') &&
+      Object.values(checksW1[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksW1[4].frage.optionen.some(o => o.text === targetsW1[4]) &&
+      checksW1[4].frage.optionen.some(o => o.text === 'Die Einleitung nennt die Gattung und die Epoche es.') &&
+      Object.values(checksW1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

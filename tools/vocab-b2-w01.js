@@ -16,7 +16,7 @@ module.exports = {
   'b2-w01': {
     items: [
       ['analysieren', 'analysiert · analysierte · hat analysiert', 'يحلّل', 'Ich analysiere das Gedicht und markiere jedes Schlüsselwort.', 'Ich analysiere über das Gedicht.', 'بلا حرف جر.', 'kasus', 'analysiere'],
-      ['die Analyse', 'die Analysen', 'التحليل', 'Die Analyse des Romans beginnt mit dem Aufbau.', 'Die Analyse von dem Roman beginnt mit dem Aufbau.', 'Genitiv أفضل: des Romans.', 'kasus', 'Analyse'],
+      ['die Analyse', 'die Analysen', 'التحليل', 'Die Analyse des Romans beginnt mit dem Aufbau.', 'Die Analyse dem Roman beginnt mit dem Aufbau.', 'الإضافة Genitiv: des Romans لا dem.', 'kasus', 'Analyse'],
       ['die Deutung', 'die Deutungen', 'التأويل', 'Die Deutung stützt sich auf eine Textstelle.', 'Die Deutung stützt sich auf ein Textstelle.', 'مؤنث نصب: eine.', 'genus', 'Deutung'],
       ['deuten', 'deutet · deutete · hat gedeutet', 'يؤوّل', 'Ich deute die Szene anders als mein Nachbar.', 'Ich deute die Szene anders wie mein Nachbar.', 'المقارنة: als لا wie.', 'kasus', 'deute'],
       ['die Beschreibung', 'die Beschreibungen', 'الوصف', 'Die Beschreibung bleibt neutral und wertet nicht.', 'Die Beschreibung bleibt neutral und wertet.', 'النفي: nicht.', 'wortstellung', 'Beschreibung'],
@@ -30,31 +30,31 @@ module.exports = {
       ['der Absatz', 'die Absätze', 'الفقرة', 'Der Absatz bildet einen Sinnabschnitt.', 'Der Absatz bildet ein Sinnabschnitt.', 'مذكر نصب: einen.', 'genus', 'Absatz'],
       ['die Zeile', 'die Zeilen', 'السطر', 'Diese Zeile trägt einen bitteren Unterton.', 'Diese Zeile trägt ein bitteren Unterton.', 'مذكر نصب: einen.', 'kasus', 'Zeile'],
       ['der Zusammenhang', 'die Zusammenhänge', 'الترابط', 'Der Zusammenhang zwischen den Ebenen bleibt offen.', 'Der Zusammenhang zwischen die Ebenen bleibt offen.', 'zwischen + داتيف: den.', 'kasus', 'Zusammenhang'],
-      ['die Aussage', 'die Aussagen', 'المضمون', 'Die Aussage der Erzählung bleibt zweideutig.', 'Die Aussage von der Erzählung bleibt zweideutig.', 'Genitiv أفضل.', 'kasus', 'Aussage'],
-      ['die Wertung', 'die Wertungen', 'التقييم', 'Die Wertung des Erzählers ist kaum versteckt.', 'Die Wertung von dem Erzähler ist kaum versteckt.', 'Genitiv أفضل.', 'kasus', 'Wertung'],
+      ['die Aussage', 'die Aussagen', 'المضمون', 'Die Aussage der Erzählung bleibt zweideutig.', 'Die Aussage von die Erzählung bleibt zweideutig.', 'بعد von يأتي Dativ (von der)، والمعتمدة هنا Genitiv.', 'kasus', 'Aussage'],
+      ['die Wertung', 'die Wertungen', 'التقييم', 'Die Wertung des Erzählers ist kaum versteckt.', 'Die Wertung des Erzähler ist kaum versteckt.', 'Genitiv المذكر بـs: des Erzählers.', 'kasus', 'Wertung'],
       ['werten', 'wertet · wertete · hat gewertet', 'يقيّم', 'Ich werte diese Gegenüberstellung als Kritik.', 'Ich werte diese Gegenüberstellung für Kritik.', 'als لا für.', 'präposition', 'werte'],
       ['die Tatsache', 'die Tatsachen', 'الواقعة', 'Diese Tatsache stützt die Beweisführung.', 'Diese Tatsache stützt für die Beweisführung.', 'بلا حرف جر.', 'kasus', 'Tatsache'],
       ['die Schlussfolgerung', 'die Schlussfolgerungen', 'الاستنتاج', 'Die Schlussfolgerung kommt vor dem Wendepunkt.', 'Die Schlussfolgerung kommt vor der Wendepunkt.', 'مذكر داتيف: dem.', 'kasus', 'Schlussfolgerung'],
       ['schließen', 'schließt · schloss · hat geschlossen', 'يستنتج', 'Aus dem Höhepunkt schließe ich nichts.', 'Aus dem Höhepunkt schließe ich nichts es.', 'لا ضمير زائد.', 'wortstellung', 'schließe'],
       ['die Struktur', 'die Strukturen', 'البنية', 'Die Struktur folgt einer klaren Rhetorik.', 'Die Struktur folgt ein klaren Rhetorik.', 'داتيف: einer.', 'kasus', 'Struktur'],
       ['die Einleitung', 'die Einleitungen', 'المقدمة', 'Die Einleitung nennt die Gattung und die Epoche.', 'Die Einleitung nennt die Gattung und die Epoche es.', 'لا ضمير زائد.', 'wortstellung', 'Einleitung'],
-      ['der Hauptteil', 'die Hauptteile', 'المتن', 'Im Hauptteil steht die Argumentation der Erörterung.', 'In Hauptteil steht die Argumentation.', 'im.', 'präposition', 'Hauptteil'],
-      ['der Schluss', 'die Schlüsse', 'الخاتمة', 'Der Schluss enthält ein kurzes Fazit und eine Kernaussage.', 'Der Schluss enthält ein kurzes Fazit es.', 'لا ضمير زائد.', 'wortstellung', 'Schluss'],
-      ['die Wirkung', 'die Wirkungen', 'الأثر', 'Die Wirkung entsteht aus dem Gefühl, nicht aus der Erfahrung.', 'Die Wirkung entsteht von dem Gefühl.', 'aus لا von.', 'präposition', 'Wirkung'],
+      ['der Hauptteil', 'die Hauptteile', 'المتن', 'Im Hauptteil steht die Argumentation der Erörterung.', 'In Hauptteil steht die Argumentation der Erörterung.', 'im.', 'präposition', 'Hauptteil'],
+      ['der Schluss', 'die Schlüsse', 'الخاتمة', 'Der Schluss enthält ein kurzes Fazit und eine Kernaussage.', 'Der Schluss enthält ein kurzes Fazit und eine Kernaussage es.', 'لا ضمير زائد.', 'wortstellung', 'Schluss'],
+      ['die Wirkung', 'die Wirkungen', 'الأثر', 'Die Wirkung entsteht aus dem Gefühl, nicht aus der Erfahrung.', 'Die Wirkung entsteht von dem Gefühl, nicht aus der Erfahrung.', 'aus لا von.', 'präposition', 'Wirkung'],
       ['die Absicht', 'die Absichten', 'القصد', 'Die Absicht des Textes ist ein Appell an die Vernunft.', 'Die Absicht des Textes ist ein Appell für die Vernunft.', 'an لا für.', 'präposition', 'Absicht'],
       ['der Adressat', 'die Adressaten', 'المتلقّي', 'Der Adressat ist eine klare Zielgruppe.', 'Der Adressat ist ein klare Zielgruppe.', 'مؤنث: eine.', 'genus', 'Adressat'],
       ['die Perspektive', 'die Perspektiven', 'المنظور', 'Die Perspektive wechselt in jedem Kapitel.', 'Die Perspektive wechselt in jede Kapitel.', 'في: in + داتيف.', 'kasus', 'Perspektive'],
       ['der Erzähler', 'die Erzähler', 'الراوي', 'Der Erzähler bleibt distanziert.', 'Der Erzähler bleibt distanziert gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Erzähler'],
       ['die Figur', 'die Figuren', 'الشخصية', 'Die Figur verkörpert ein Leitmotiv.', 'Die Figur verkörpert ein Leitmotiv es.', 'لا ضمير زائد.', 'wortstellung', 'Figur'],
-      ['das Motiv', 'die Motive', 'الدافع الفني', 'Das Motiv kehrt als Wiederholung wieder.', 'Das Motiv kehrt als Wiederholung.', 'المنفصل: wieder.', 'wortstellung', 'wieder'],
-      ['die Metapher', 'die Metaphern', 'الاستعارة', 'Die Metapher ist die häufigste Sprachfigur und trägt die Symbolik.', 'Die Metapher ist der häufigste Sprachfigur.', 'مؤنث: die.', 'genus', 'Metapher'],
-      ['die Ironie', 'die Ironien', 'السخرية', 'Die Ironie entlarvt die Verallgemeinerung, der Gegensatz bleibt unausgesprochen.', 'Die Ironie entlarvt für die Verallgemeinerung.', 'بلا حرف جر.', 'kasus', 'Ironie'],
+      ['das Motiv', 'die Motive', 'الموتيف/الفكرة المتكرّرة', 'Das Motiv kehrt als Wiederholung wieder.', 'Das Motiv kehrt als Wiederholung.', 'المنفصل: wieder.', 'wortstellung', 'wieder'],
+      ['die Metapher', 'die Metaphern', 'الاستعارة', 'Die Metapher ist die häufigste Sprachfigur und trägt die Symbolik.', 'Die Metapher ist der häufigste Sprachfigur und trägt die Symbolik.', 'مؤنث: die.', 'genus', 'Metapher'],
+      ['die Ironie', 'die Ironien', 'السخرية', 'Die Ironie entlarvt die Verallgemeinerung, der Gegensatz bleibt unausgesprochen.', 'Die Ironie entlarvt für die Verallgemeinerung, der Gegensatz bleibt unausgesprochen.', 'بلا حرف جر.', 'kasus', 'Ironie'],
       ['der Widerspruch', 'die Widersprüche', 'التناقض', 'Der Widerspruch schwächt die Schlüssigkeit.', 'Der Widerspruch schwächt für die Schlüssigkeit.', 'بلا حرف جر.', 'kasus', 'Widerspruch'],
       ['der Beweis', 'die Beweise', 'البرهان', 'Als Beweis dient ein Beispiel aus dem Alltag.', 'Als Beweis dient ein Beispiel von dem Alltag.', 'aus لا von.', 'präposition', 'Beweis'],
       ['die Begründung', 'die Begründungen', 'التعليل', 'Die Begründung wahrt die Nachvollziehbarkeit.', 'Die Begründung wahrt für die Nachvollziehbarkeit.', 'بلا حرف جر.', 'kasus', 'Begründung'],
       ['die These', 'die Thesen', 'الأطروحة', 'Die These stützt sich auf eine Statistik.', 'Die These stützt sich auf ein Statistik.', 'مؤنث: eine.', 'genus', 'These'],
       ['die Wortwahl', 'die Wortwahlen', 'اختيار الكلمات', 'Die Wortwahl verrät eine Erzählhaltung.', 'Die Wortwahl verrät ein Erzählhaltung.', 'مؤنث: eine.', 'genus', 'Wortwahl'],
-      ['der Stil', 'die Stile', 'الأسلوب', 'Der Stil wirkt ruhig, fast ohne Emotion.', 'Der Stil wirkt ruhig, fast ohne die Emotion.', 'بعد ohne بلا أداة.', 'kasus', 'Stil']
+      ['der Stil', 'die Stile', 'الأسلوب', 'Der Stil wirkt ruhig, fast ohne Emotion.', 'Der Stil wirkt ruhig, fast ohne der Emotion.', 'ohne تحتاج النصب: ohne Emotion بلا أداة.', 'kasus', 'Stil']
     ],
     material: [
       'das Schlüsselwort', 'die Überleitung', 'die Anspielung', 'der Unterton',
@@ -72,10 +72,27 @@ module.exports = {
       'die Zielgruppe', 'das Kapitel', 'die Textanalyse'
     ],
     tricks: [
-      { trick: 'وصف أولًا ثم تأويل: zuerst beschreiben, dann deuten', wie: 'Zuerst beschreibe ich den Abschnitt, dann deute ich die Stelle.', warum: 'الحكم قبل الوصف يُفقد النص، والعربية تبدأ بالانطباع ثم تبحث عن الشاهد.', anchor: 'beschreiben' },
-      { trick: 'كل تأويل يحتاج موضعًا: die Deutung stützt sich auf eine Textstelle', wie: 'Die Deutung stützt sich auf eine Textstelle, nicht auf den ganzen Text.', warum: 'الشاهد المحدَّد هو ما يميّز التحليل عن الرأي، والموضع يُذكر بسطر أو فقرة.', anchor: 'die Deutung' },
-      { trick: 'لا تخترع سببًا لم يقله النص: die Quelle nennt keine Ursache', wie: 'Die Quelle nennt keine Ursache, also schreibe ich keine.', warum: 'إضافة نية لم يذكرها النص تُعدّ خطأً في B2، والنص الصامت جزء من القراءة.', anchor: 'die Quelle' }
-    ]
+      { trick: 'وصف أولًا ثم تأويل: zuerst beschreiben, dann deuten', wie: 'Zuerst beschreibe ich den Abschnitt, dann deute ich die Stelle.', warum: 'الحكم قبل الوصف يُفقد النص، والعربية تبدأ بالانطباع ثم تبحث عن الشاهد.', anchor: 'Zuerst beschreibe ich den Abschnitt' },
+      { trick: 'كل تأويل يحتاج موضعًا: die Deutung stützt sich auf eine Textstelle', wie: 'Die Deutung stützt sich auf eine Textstelle, nicht auf den ganzen Text.', warum: 'الشاهد المحدَّد هو ما يميّز التحليل عن الرأي، والموضع يُذكر بسطر أو فقرة.', anchor: 'Die Deutung stützt sich auf eine Textstelle' },
+      { trick: 'لا تخترع سببًا لم يقله النص: die Quelle nennt keine Ursache', wie: 'Die Quelle nennt keine Ursache, also schreibe ich keine.', warum: 'إضافة نية لم يذكرها النص تُعدّ خطأً في B2، والنص الصامت جزء من القراءة.', anchor: 'Die Quelle nennt keine Ursache' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'beschreiben': 'Beschreibt',
+      'die Struktur': 'Strukturen',
+      'die These': 'Thesen'
+    },
+    clozeItemIndex: 2,
+    clozeNearMiss: 'Deutungen',
+    checkItemIndex: 15,
+    extraCheck: {
+      right: 'Die Einleitung nennt die Gattung und die Epoche.',
+      bad: 'Die Einleitung nennt die Gattung und die Epoche es.',
+      why: 'الجملة تامة بالمفعولين: لا ضمير زائد في الختام.',
+      family: 'wortstellung',
+      prereq: 'cap.b2-w01.s20',
+      frage: 'أي جملة تسمّي نوع النص وعصره بلا ضمير زائد؟'
+    }
   }
 
 };

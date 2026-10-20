@@ -188,7 +188,7 @@
   ];
 
   const B2 = [
-    ['تحليل نص', 'Textanalyse', 'تحليل', 'text-analysis'],
+    ['تحليل نص: الوصف والتأويل', 'Textanalyse: beschreiben und deuten', 'تحليل', 'text-analysis'],
     ['ورشة كتابة: موقف', 'Erörterung', 'حجاج', 'writing'],
     ['نقاش', 'Diskussion', 'نقاش', 'discussion'],
     ['سماع محاضرة', 'Vortrag', 'سماع', 'listening'],
