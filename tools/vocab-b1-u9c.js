@@ -114,9 +114,26 @@ module.exports = {
     ],
     tricks: [
       { trick: 'القشدة بأسماء محلية: der Rahm · das Obers · der Schlagrahm · die Schlagsahne', wie: 'Der Schlagrahm gehört auf den Kuchen. · Das Schlagobers ist süß.', warum: 'أربع كلمات لشيء واحد بحسب البلد، والامتحان يذكر صيغة غير التي تعلّمها الطالب.', anchor: 'Das Schlagobers ist süß' },
-      { trick: 'الفطر والخبز: der Pilz · das Schwammerl · die Semmel · das Brötli', wie: 'In Österreich heißt der Pilz Schwammerl. · Semmel heißt das Brötchen in Bayern.', warum: 'الكلمات المحلية تُذكر في نصوص الامتحان بلا ترجمة، فتُحفظ في جملة لا في قائمة.', anchor: 'heißt der Pilz Schwammerl' },
+      { trick: 'الفطر والخبز: der Pilz · das Schwammerl · die Semmel', wie: 'In Österreich heißt der Pilz Schwammerl. · Semmel heißt das Brötchen in Bayern.', warum: 'الكلمات المحلية تُذكر في نصوص الامتحان بلا ترجمة، فتُحفظ في جملة لا في قائمة.', anchor: 'heißt der Pilz Schwammerl' },
       { trick: 'انعكاسي العناية: sich rasieren · sich schminken', wie: 'Er will sich rasieren. · Sie will sich schminken.', warum: 'الفعل يحتاج الضمير العائد، وحذفه يجعل الجملة ناقصة.', anchor: 'will sich rasieren' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'das Znüni': 'Zvieri',
+      'die Lippe': 'Lippen',
+      'schütteln': 'schüttelt'
+    },
+    clozeItemIndex: 36,
+    clozeNearMiss: 'spüren',
+    checkItemIndex: 29,
+    extraCheck: {
+      right: 'Als Nachspeise gibt es Eis mit Obst.',
+      bad: 'Als Nachspeise gibt es Eis für Obst.',
+      why: 'مع الفاكهة: mit Obst لا für.',
+      family: 'präposition',
+      prereq: 'cap.b1-u9-l6.s20',
+      frage: 'أي جملة تقدّم الآيس مع الفاكهة بالحرف الصحيح؟'
+    }
   }
 
 };

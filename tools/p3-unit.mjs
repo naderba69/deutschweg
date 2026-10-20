@@ -17542,6 +17542,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checksI5[4].frage.optionen.some(o => o.text === targetsI5[4]) &&
       checksI5[4].frage.optionen.some(o => o.text === 'Vor der Fahrt muss ich noch tanken auf.') &&
       Object.values(checksI5[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
+
+  const lessonI6 = win.DW_LESSONS['b1-u9-l6'];
+  const rowI6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonI6.id);
+  const byWordI6 = Object.fromEntries(lessonI6.wortschatz.map(it => [it.de, it]));
+  const tricksI6 = lessonI6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsI6 = [
+    'In Österreich heißt der Pilz Schwammerl.',
+    'Das Schlagobers ist süß.',
+    'Er will sich rasieren.',
+    'Jemand klopft an die Tür.',
+    'Als Nachspeise gibt es Eis mit Obst.'
+  ];
+  t('Corpus lesson b1-u9-l6 precisely scopes five food-and-care moves taking Austrian Pilz Schwammerl with heißt second, singular Schlagobers ist, reflexive sich rasieren, fixed klopfen an and Eis mit Obst',
+    lessonI6.title.de === 'Essen und Pflege: Schwammerl und Schlagobers' &&
+      lessonI6.title.ar === 'الطعام والعناية: Schwammerl وSchlagobers' &&
+      rowI6.title.de === lessonI6.title.de && rowI6.title.ar === lessonI6.title.ar &&
+      rowI6.theme === 'الطعام' &&
+      rowI6.grammar.item === 'Pilz heißt Schwammerl · Schlagobers ist · sich rasieren · klopft an · Eis mit Obst' &&
+      rowI6.grammar.method === 'explicit' && lessonI6.schritte.length === 36 && lessonI6.wortschatz.length === 40 &&
+      lessonI6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonI6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsI6[i]) &&
+      lessonI6.schritte[0].zeigt.de === 'Am Ende beschreibst du ein Gericht und sprichst über den Körper — in fünf Sätzen' &&
+      lessonI6.schritte.find(s => s.id === 's20').zeigt.de === targetsI6[4]);
+
+  const expectedWordsI6 = [
+    'hageln', 'das Gift', 'giftig', 'der Pilz', 'das Schwammerl', 'das Znüni',
+    'das Zvieri', 'die Semmel', 'der Schlagrahm', 'das Schlagobers', 'die Schlagsahne', 'die Nachspeise',
+    'die Vorspeise', 'salzig', 'roh', 'satt', 'vegetarisch', 'mischen',
+    'mild', 'die Zahnpasta', 'die Brust', 'die Lippe', 'die Frisur', 'rasieren',
+    'schminken', 'der Coiffeur', 'die Coiffeuse', 'die Drogerie', 'die Droge', 'das Vitamin',
+    'kräftig', 'äußerlich', 'stürzen', 'tauchen', 'der Tod', 'stinken',
+    'spüren', 'schütteln', 'klopfen', 'hübsch'
+  ];
+  const errorsI6 = lessonI6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u9-l6 reviews all 40 entries and three bounded mnemonics keeping every genuine agreement, government and trailing foil as a real error, Austrian and Swiss regional forms included',
+    Object.keys(byWordI6).join(' | ') === expectedWordsI6.join(' | ') &&
+      lessonI6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonI6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordI6['das Schwammerl'].err === 'In Österreich heißt der Pilz Schwammerl auf.' &&
+      byWordI6['das Schlagobers'].err === 'Das Schlagobers sind süß.' &&
+      byWordI6['rasieren'].err === 'Er will sich rasieren auf.' &&
+      byWordI6['klopfen'].err === 'Jemand klopft auf die Tür.' &&
+      byWordI6['die Nachspeise'].err === 'Als Nachspeise gibt es Eis für Obst.' &&
+      byWordI6['das Vitamin'].err === 'Das Vitamin stecken im Obst.' &&
+      ['Über den Tod sprechen man selten.', 'Man spürt auf den Wind am Abend.',
+        'Die Beere ist giftig gemacht.', 'Der Coiffeur arbeiten seit zwanzig Jahren.',
+        'Die Brust tun nach dem Husten weh.']
+        .every(x => errorsI6.includes(x)) &&
+      tricksI6.length === 3 && tricksI6[0].wie.includes('Das Schlagobers ist süß.') &&
+      tricksI6[1].wie.includes('In Österreich heißt der Pilz Schwammerl.') &&
+      tricksI6[2].wie.includes('Er will sich rasieren.'));
+
+  const wordClozeAI6 = lessonI6.schritte.find(s => s.id === 's09');
+  const wordClozeBI6 = lessonI6.schritte.find(s => s.id === 's13');
+  const wordClozeCI6 = lessonI6.schritte.find(s => s.id === 's17');
+  const imitateI6 = lessonI6.schritte.find(s => s.id === 's19');
+  const drillI6 = lessonI6.schritte.find(s => s.id === 's23');
+  const orderI6 = lessonI6.schritte.find(s => s.id === 's24');
+  const writingI6 = lessonI6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingI6 = lessonI6.schritte.find(s => s.phase === 'Produktion');
+  const summaryI6 = lessonI6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkI6 = lessonI6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u9-l6 aligns five strict learning clozes, sound heißt order fields and a 26-word five-target production',
+    wordClozeAI6.frage.zeigt === 'In Zürich heißt der Vormittagsimbiss ____.' && wordClozeAI6.frage.antworten.join(' ') === 'Znüni' &&
+      wordClozeAI6.frage.nearMiss.Zvieri && !win.DW.renderers.judgeCloze(wordClozeAI6.frage, 'Zvieri').ok &&
+      wordClozeBI6.frage.zeigt === 'Die ____ ist trocken.' && wordClozeBI6.frage.antworten.join(' ') === 'Lippe' &&
+      wordClozeBI6.frage.nearMiss.Lippen && !win.DW.renderers.judgeCloze(wordClozeBI6.frage, 'Lippen').ok &&
+      wordClozeCI6.frage.zeigt === 'Die Bäume ____ sich im Wind.' && wordClozeCI6.frage.antworten.join(' ') === 'schütteln' &&
+      wordClozeCI6.frage.nearMiss['schüttelt'] && !win.DW.renderers.judgeCloze(wordClozeCI6.frage, 'schüttelt').ok &&
+      imitateI6.zeigt.de === 'In Österreich ____ der Pilz Schwammerl.' && imitateI6.frage.antworten.join(' ') === 'heißt' &&
+      imitateI6.frage.nearMiss['heißen'] && !win.DW.renderers.judgeCloze(imitateI6.frage, 'heißen').ok &&
+      drillI6.frage.zeigt === 'Man ____ den Wind am Abend.' && drillI6.frage.antworten.join(' ') === 'spürt' &&
+      drillI6.frage.nearMiss['spüren'] && !win.DW.renderers.judgeCloze(drillI6.frage, 'spüren').ok &&
+      lessonI6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderI6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderI6.frage.correct.join(' ') === targetsI6[0] && orderI6.frage.finite === 'heißt' && orderI6.frage.verbFirst === false &&
+      orderI6.frage.fields.vorfeld.join(' ') === 'In Österreich' && orderI6.frage.fields.lsk.join(' ') === 'heißt' &&
+      orderI6.frage.fields.mittelfeld.join(' ') === 'der Pilz Schwammerl.' &&
+      win.DW.order.score(orderI6.frage, orderI6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderI6.frage, ['In', 'Österreich', 'der', 'Pilz', 'heißt', 'Schwammerl.']).credit < 1 &&
+      writingI6.frage.points.join(' | ') === targetsI6.join(' | ') && writingI6.frage.minWords === 26 &&
+      targetsI6.join(' ').split(/\s+/).length === 26 &&
+      targetsI6.every(x => [writingI6.frage.promptDe, summaryI6.zeigt.de, homeworkI6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsI6.every(x => norm(speakingI6.erklaerung).includes(norm(x))) &&
+      (homeworkI6.hinweise || []).join(' ').includes('Ein Körperteil ist zum Beispiel die Brust'));
+
+  const checksI6 = lessonI6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckI6 = checksI6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckI6 = checksI6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u9-l6 makes 80 percent four of five, independently checking klopfen an, the spürt cloze and will order, singular Vitamin steckt and Eis mit Obst',
+    checksI6.length === 5 && checksI6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksI6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksI6.every(s => /^cap\.b1-u9-l6\.s\d+$/.test(s.frage.prereq || '')) && checksI6.every(s => !s.hinweise) &&
+      checksI6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u9-l6.s07 | cap.b1-u9-l6.s23 | cap.b1-u9-l6.s24 | cap.b1-u9-l6.s15 | cap.b1-u9-l6.s20' &&
+      new Set(checksI6.map(s => s.frage.prereq)).size === 5 &&
+      checksI6[0].frage.optionen.some(o => o.text === targetsI6[3]) &&
+      checksI6[0].frage.optionen.some(o => o.text === 'Jemand klopft auf die Tür.') &&
+      Object.values(checksI6[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckI6.frage.zeigt === 'Man ____ den Wind am Abend.' &&
+      clozeCheckI6.frage.antworten.join(' ') === 'spürt' && clozeCheckI6.frage.nearMiss['spüren'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckI6.frage, 'spüren').ok &&
+      orderCheckI6.frage.correct.join(' ') === targetsI6[2] && orderCheckI6.frage.finite === 'will' &&
+      orderCheckI6.frage.fields.vorfeld.join(' ') === 'Er' && orderCheckI6.frage.fields.lsk.join(' ') === 'will' &&
+      orderCheckI6.frage.fields.mittelfeld.join(' ') === 'sich rasieren.' &&
+      win.DW.order.score(orderCheckI6.frage, orderCheckI6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckI6.frage, ['Er', 'sich', 'will', 'rasieren.']).credit < 1 &&
+      checksI6[3].frage.optionen.some(o => o.text === 'Das Vitamin steckt im Obst.') &&
+      checksI6[3].frage.optionen.some(o => o.text === 'Das Vitamin stecken im Obst.') &&
+      Object.values(checksI6[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksI6[4].frage.optionen.some(o => o.text === targetsI6[4]) &&
+      checksI6[4].frage.optionen.some(o => o.text === 'Als Nachspeise gibt es Eis für Obst.') &&
+      Object.values(checksI6[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

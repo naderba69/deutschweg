@@ -2867,25 +2867,50 @@ module.exports = [
       hwHintDe: 'Ein Passagier fragt am Schalter, und die Stewardess zeigt den Weg. Die Kabine ist klein und warm, und die Klimaanlage ist zu kalt. Die Fußgängerin wartet am Rand, und die Radfahrerin fährt auf der Straße. Das Verkehrszeichen ist neu, und der Strafzettel kam per Post. Im Sommer wollen wir am See zelten, und die Bäche fließen zum Fluss. Es gab keinen Zwischenfall unterwegs.'
     }),
 
-  U('b1-u9-l6', 'B1', 'الطعام والصحة', 'Essen und Gesundheit', 'lexik-kollokation',
-    'Am Ende beschreibst du ein Gericht und sprichst über den Körper',
-    'في النهاية تصف طبقًا وتتحدث عن الجسد.',
+  U('b1-u9-l6', 'B1', 'الطعام والعناية: Schwammerl وSchlagobers', 'Essen und Pflege: Schwammerl und Schlagobers', 'lexik-kollokation',
+    'Am Ende beschreibst du ein Gericht und sprichst über den Körper — in fünf Sätzen',
+    'في النهاية تصف طبقًا وتتحدث عن الجسد في خمس جمل.',
     [
-      ['In Österreich heißt der Pilz Schwammerl.', 'الصيغة النمساوية', 'Schwammerl = Pilz', 'In Österreich heißt der Pilz Schwammerl auf.', 'Schwammerl'],
-      ['Das Schlagobers ist süß.', 'العنصر مفرد', 'das Schlagobers: Singular + ist', 'Das Schlagobers sind süß.', 'ist'],
-      ['Der Schlagrahm gehört auf den Kuchen.', 'الرهايم على الكيك', 'Der Schlagrahm gehören auf den Kuchen.', 'الفعل مفرد.', 'gehört'],
-      ['Er will sich rasieren.', 'انعكاسي العناية', 'sich rasieren', 'Er will sich rasieren auf.', 'rasieren']
+      ['In Österreich heißt der Pilz Schwammerl.', 'تسمّي الفطر نمساويًّا', 'بعد كتلة المكان الفعل ثانٍ: heißt، والفطر Schwammerl نمساويًّا', 'In Österreich heißt der Pilz Schwammerl auf.', 'heißt وبلا زائد'],
+      ['Das Schlagobers ist süß.', 'تصف قشدة حلوة نمساويًّا', 'das Schlagobers اسم مفرد ففعله ist لا sind', 'Das Schlagobers sind süß.', 'المفرد: ist'],
+      ['Er will sich rasieren.', 'تقول إنه سيحلق', 'sich rasieren انعكاسي: sich بين will والمصدر الأخير', 'Er will sich rasieren auf.', 'الانعكاسي: sich'],
+      ['Jemand klopft an die Tür.', 'تسمع قرعًا على الباب', 'klopfen مع an والنصب: an die Tür لا auf', 'Jemand klopft auf die Tür.', 'an لا auf']
     ],
     [
-      ['Man spürt den Wind am Abend.', 'نشعر بالريح', 'Man spürt auf den Wind am Abend.', 'بلا auf.', 'spürt'],
-      ['Die Brust tut nach dem Husten weh.', 'الصدر يؤلم بعد الكحة', 'Die Brust tun nach dem Husten weh.', 'الفعل مفرد.', 'tut'],
-      ['Die Zahnpasta ist schon alle.', 'معجون الأسنان انتهى', 'Die Zahnpasta sind schon alle.', 'الفعل مفرد.', 'ist'],
-      ['Über den Tod spricht man selten.', 'نادرًا ما نتحدث عن الموت', 'Über den Tod sprechen man selten.', 'الفاعل man مفرد.', 'spricht']
+      ['In Österreich heißt der Pilz Schwammerl.', 'الفطر في النمسا Schwammerl', 'In Österreich heißt der Pilz Schwammerl auf.', 'الفعل مفرد وثانٍ: heißt.', 'heißt'],
+      ['Das Schlagobers ist süß.', 'القشدة حلوة', 'Das Schlagobers sind süß.', 'الفعل مفرد: ist.', 'ist'],
+      ['Er will sich rasieren.', 'يريد أن يحلق', 'Er will sich rasieren auf.', 'انعكاسي كامل بلا حرف جرّ.', 'rasieren'],
+      ['Jemand klopft an die Tür.', 'أحدهم يقرع الباب', 'Jemand klopft auf die Tür.', 'klopfen مع an.', 'klopft']
     ],
-    'Das Schlagobers ist süß. Man spürt den Wind am Abend.',
-    'Über den Tod spricht man selten.',
-    'Beschreibe morgen ein Gericht und einen Körperteil in je zwei Sätzen.',
-    'غدًا صف طبقًا وعضوًا من الجسد في جملتين لكل منهما.'),
+    'In Österreich heißt der Pilz Schwammerl. Das Schlagobers ist süß.',
+    'Als Nachspeise gibt es Eis mit Obst.',
+    'Wiederhole morgen die fünf Sätze: In Österreich heißt der Pilz Schwammerl. Das Schlagobers ist süß. Er will sich rasieren. Jemand klopft an die Tür. Als Nachspeise gibt es Eis mit Obst.',
+    'غدًا أعد جمل الطعام والعناية الخمس ولاحظ الأسماء المحلية والانعكاسي.',
+    {
+      factFamilies: ['wortstellung', 'konjugation', 'lexik-kollokation', 'präposition'],
+      imitateNearMiss: 'heißen',
+      transformHint: 'في جملة الختام تحلية: Als Nachspeise gibt es Eis mit Obst — مع الفاكهة تكون mit لا für.',
+      orderSentence: 'In Österreich heißt der Pilz Schwammerl.',
+      checkOrderSentence: 'Er will sich rasieren.',
+      orderAr: 'رتّب جملة الفطر النمساوية: الفعل heißt في الموضع الثاني بعد كتلة المكان.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول In Österreich كتلة واحدة.', 'الفاعل der Pilz بعد الفعل وSchwammerl. أخيرًا.'],
+      writing: {
+        zeigt: 'Essen und Pflege in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: فطر نمساوي Schwammerl بـheißt، وقشدة مفردة Schlagobers ist، وحلاقة بانعكاسي sich rasieren، وقرع بـklopfen an، وتحلية Eis mit Obst.',
+        hinweise: ['الأسماء المحلية تأتي بأجناسها الخاصة.', 'klopfen مع an ولا حرف غيره.'],
+        prompt: 'اكتب جمل الطعام والعناية الخمس المستهدفة من الذاكرة.',
+        promptDe: 'In Österreich heißt der Pilz Schwammerl. · Das Schlagobers ist süß. · Er will sich rasieren. · Jemand klopft an die Tür. · Als Nachspeise gibt es Eis mit Obst.',
+        points: ['In Österreich heißt der Pilz Schwammerl.', 'Das Schlagobers ist süß.', 'Er will sich rasieren.', 'Jemand klopft an die Tür.', 'Als Nachspeise gibt es Eis mit Obst.'],
+        minWords: 26,
+        frage: 'اكتب جمل الطعام والعناية الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: In Österreich heißt der Pilz Schwammerl. Das Schlagobers ist süß. Er will sich rasieren. Jemand klopft an die Tür. Als Nachspeise gibt es Eis mit Obst.',
+      summaryDe: 'In Österreich heißt der Pilz Schwammerl. Das Schlagobers ist süß. Er will sich rasieren. Jemand klopft an die Tür. Als Nachspeise gibt es Eis mit Obst.',
+      summaryAr: 'الطعام والعناية يُرويان بأسماء محلية وانعكاسي كامل وحروف ثابتة عند القرع والتحلية.',
+      summaryRecap: 'أسماء محلية وانعكاسي',
+      hwHintDe: 'Die Suppe ist zu salzig, aber die Vorspeise war eine Suppe. Die Zahnpasta ist schon alle, und das Vitamin steckt im Obst. Die Frisur sitzt noch nicht, und der Coiffeur arbeitet seit zwanzig Jahren. Die Schlagsahne steht im Kühlschrank, und der Schlagrahm gehört auf den Kuchen. Über den Tod spricht man selten, und man spürt den Wind am Abend. Ein Körperteil ist zum Beispiel die Brust.'
+    }),
 
   U('b1-u10-l1', 'B1', 'الأمن والقانون', 'Sicherheit und Recht', 'konjugation',
     'Am Ende berichtest du über einen Vorfall und ein Gericht',

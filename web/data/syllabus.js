@@ -173,7 +173,7 @@
     ['التعليم والأماكن: Alphabet وDenkmal', 'Bildung und Orte: Alphabet und Denkmal', 'التعليم', 'Alphabet hat · Wort nachschlagen · Denkmal steht · Mensa öffnet · Spur führt', 'explicit'],
     ['السلوك والمشاعر: amüsieren وweder', 'Verhalten und Gefühl: amüsieren und weder', 'المشاعر', 'uns amüsieren · weder noch wissen · je desto · gespannt auf · entweder oder', 'explicit'],
     ['المرور والسفر: Velo وVorfahrt', 'Verkehr und Reise: Velo und Vorfahrt', 'المرور', 'uns anschnallen · Fahrrad heißt Velo · Täter verhaften · Vorfahrt gilt · noch tanken', 'explicit'],
-    ['الطعام والصحة', 'Essen und Gesundheit', 'الطعام', 'Das Schlagobers ist und spürt', 'explicit'],
+    ['الطعام والعناية: Schwammerl وSchlagobers', 'Essen und Pflege: Schwammerl und Schlagobers', 'الطعام', 'Pilz heißt Schwammerl · Schlagobers ist · sich rasieren · klopft an · Eis mit Obst', 'explicit'],
     /* Unit 10 — amendment B1-L6: the last 253 pool entries are named, which closes the
        B1 match at 100% in both measures. Seven lessons (37 + 6 x 36) because 253 does
        not divide by the forty-word ceiling and a 13-word lesson would fall under the
