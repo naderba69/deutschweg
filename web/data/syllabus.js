@@ -157,7 +157,7 @@
     ['البيت والحرفة: gesperrt وim Keller', 'Haus und Handwerk: gesperrt und im Keller', 'السكن', 'muss geschnitten werden · ist gesperrt · hinter dem Regal · in ein Tal · im Keller', 'explicit'],
     ['الصحة والمشاعر: erkältet وHeimweh', 'Gesundheit und Gefühle: erkältet und Heimweh', 'الصحة', 'habe mich erkältet · misst die Temperatur · hilft schnell · Heimweh nach · Laune ist gut', 'explicit'],
     ['المال والتقنية: EC-Karte وNetzwerk', 'Geld und Technik: EC-Karte und Netzwerk', 'المال', 'Karte ist gesperrt · hole Geld ab · Netzwerk ist langsam · vor dem Herunterfahren · Festplatte ist voll', 'explicit'],
-    ['الثقافة واللغة', 'Kultur und Sprache', 'الثقافة', 'Das Orchester spielt und festlegen', 'explicit'],
+    ['الثقافة واللغة: Orchester وTermine', 'Kultur und Sprache: Orchester und Termine', 'الثقافة', 'Orchester spielt · legen fest · erfüllt · stellt aus · Kursleiterin kommt', 'explicit'],
     /* Unit 8 — amendment B1-L4: the third material round grew the promotion pool to
        471 entries, so unit 8 carries the next 240 (six lessons of forty). */
     ['البيت والانتقال', 'Haus und Umzug', 'السكن', 'Die Couch steht und in der Etage', 'explicit'],

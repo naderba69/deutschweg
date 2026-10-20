@@ -2326,25 +2326,51 @@ module.exports = [
       hwHintDe: 'Substantivierung macht den Infinitiv zum Nomen: das Herunterfahren. Vor dem Herunterfahren speichere ich alles, und am Bancomat hole ich Geld ab.'
     }),
 
-  U('b1-u7-l6', 'B1', 'الثقافة واللغة', 'Kultur und Sprache', 'wortstellung',
-    'Am Ende berichtest du über ein Fest und einen Sprachkurs',
-    'في النهاية تحكي عن حفل ودورة لغة.',
+  U('b1-u7-l6', 'B1', 'الثقافة واللغة: Orchester وTermine', 'Kultur und Sprache: Orchester und Termine', 'wortstellung',
+    'Am Ende sprichst du über ein Fest, ein Orchester und deinen Sprachkurs — in fünf Sätzen',
+    'في النهاية تتحدث عن حفل وأوركسترا ودورة لغتك في خمس جمل.',
     [
-      ['Das Orchester spielt im Hof.', 'الأوركسترا مفرد بفعل مفرد', 'das Orchester: Singular + spielt', 'Das Orchester spielen im Hof.', 'spielt'],
-      ['Wir legen die Termine fest.', 'festlegen منفصل', 'Trennbares Verb: legen … fest', 'Wir festlegen die Termine.', 'legen … fest'],
-      ['Sie erfüllt jede Bedingung.', 'erfüllen بلا حرف جر', 'kein auf nach erfüllen', 'Sie erfüllt auf jede Bedingung.', 'بلا auf'],
-      ['Die Künstlerin stellt im Herbst aus.', 'ausstellen منفصل', 'Trennbares Verb: stellt … aus', 'Die Künstlerin ausstellt im Herbst.', 'stellt … aus']
+      ['Das Orchester spielt im Hof.', 'تصف عزف الأوركسترا في الساحة', 'das Orchester اسم محايد مفرد — الفرقة واحدة ففعلها مفرد: spielt لا spielen', 'Das Orchester spielen im Hof.', 'المفرد: spielt'],
+      ['Wir legen die Termine fest.', 'تقول إنكم تحدّدون المواعيد', 'festlegen فعل منفصل: legen في الموضع الثاني وقسيمته fest في الآخر', 'Wir festlegen die Termine.', 'legen … fest منفصلة'],
+      ['Sie erfüllt jede Bedingung.', 'تقول إنها تستوفي كل شرط', 'erfüllen يأخذ مفعولًا مباشرًا منصوبًا بلا حرف: jede Bedingung', 'Sie erfüllt jeder Bedingung.', 'نصب مباشر: jede'],
+      ['Die Künstlerin stellt im Herbst aus.', 'تقول إن الفنانة تعرض في الخريف', 'ausstellen فعل منفصل: stellt في الثاني وaus في الآخر', 'Die Künstlerin ausstellt im Herbst.', 'stellt … aus منفصلة']
     ],
     [
-      ['Das Orchester spielt im Hof.', 'الأوركسترا تعزف في الساحة', 'Das Orchester spielen im Hof.', 'الفعل مفرد.', 'spielt'],
+      ['Das Orchester spielt im Hof.', 'الأوركسترا تعزف في الساحة', 'Das Orchester spielen im Hof.', 'الفعل مفرد: spielt.', 'spielt'],
       ['Wir legen die Termine fest.', 'نحدّد المواعيد', 'Wir festlegen die Termine.', 'fest في الآخر.', 'fest'],
-      ['Sie erfüllt jede Bedingung.', 'تستوفي كل شرط', 'Sie erfüllt auf jede Bedingung.', 'بلا auf.', 'erfüllt'],
-      ['Die Kursleiterin kommt aus Wien.', 'منشّطة الدورة من فيينا', 'Die Kursleiterin kommen aus Wien.', 'الفعل مفرد.', 'kommt']
+      ['Sie erfüllt jede Bedingung.', 'تستوفي كل شرط', 'Sie erfüllt jeder Bedingung.', 'مفعول مباشر: jede.', 'erfüllt'],
+      ['Die Künstlerin stellt im Herbst aus.', 'الفنانة تعرض في الخريف', 'Die Künstlerin ausstellt im Herbst.', 'ausstellen منفصل: stellt … aus.', 'aus']
     ],
     'Das Orchester spielt im Hof. Die Künstlerin stellt im Herbst aus.',
-    'Wir legen die Termine fest.',
-    'Berichte morgen über ein Fest in deiner Stadt.',
-    'غدًا احكِ عن حفل في مدينتك.'),
+    'Die Kursleiterin kommt aus Wien.',
+    'Wiederhole morgen die fünf Sätze: Das Orchester spielt im Hof. Wir legen die Termine fest. Sie erfüllt jede Bedingung. Die Künstlerin stellt im Herbst aus. Die Kursleiterin kommt aus Wien.',
+    'غدًا أعد جمل الثقافة واللغة الخمس ولاحظ المفرد والفعلَين المنفصلَين والمفعول المباشر.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'kasus', 'wortstellung'],
+      imitateNearMiss: 'spielen',
+      transformHint: 'في جملة الختام منشّطة من فيينا: Die Kursleiterin kommt aus Wien — اسم مهنة مؤنث مفرد مع kommt وأصل بـaus.',
+      orderSentence: 'Wir legen die Termine fest.',
+      checkOrderSentence: 'Das Orchester spielt im Hof.',
+      orderRightBracket: ['fest.'],
+      orderAr: 'رتّب جملة المواعيد: الفعل legen ثانيًا وقسيمته fest. أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Wir هو الموضع الأول وحده.', 'قسيمة fest. تغلق القوس في آخر الجملة.'],
+      writing: {
+        zeigt: 'Kultur und Sprache in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: أوركسترا مفردة بـspielt، وتحديد مواعيد بـlegen … fest، واستيفاء شرط بمفعول مباشر، ومعرض بـstellt … aus، ومنشّطة دورة من فيينا بـkommt.',
+        hinweise: ['الأسماء المفردة تأخذ فعلًا مفردًا.', 'الفعل المنفصل: الفعل ثانيًا والقسيمة أخيرًا.'],
+        prompt: 'اكتب جمل الثقافة واللغة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Das Orchester spielt im Hof. · Wir legen die Termine fest. · Sie erfüllt jede Bedingung. · Die Künstlerin stellt im Herbst aus. · Die Kursleiterin kommt aus Wien.',
+        points: ['Das Orchester spielt im Hof.', 'Wir legen die Termine fest.', 'Sie erfüllt jede Bedingung.', 'Die Künstlerin stellt im Herbst aus.', 'Die Kursleiterin kommt aus Wien.'],
+        minWords: 25,
+        frage: 'اكتب جمل الثقافة واللغة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Das Orchester spielt im Hof. Wir legen die Termine fest. Sie erfüllt jede Bedingung. Die Künstlerin stellt im Herbst aus. Die Kursleiterin kommt aus Wien.',
+      summaryDe: 'Das Orchester spielt im Hof. Wir legen die Termine fest. Sie erfüllt jede Bedingung. Die Künstlerin stellt im Herbst aus. Die Kursleiterin kommt aus Wien.',
+      summaryAr: 'الثقافة واللغة تحتاجان فعلًا مفردًا للأسماء المفردة، وفعلَين منفصلَين بقسيمة ختامية، ومفعولًا مباشرًا بلا حرف.',
+      summaryRecap: 'مفرد وفصلان ومفعول',
+      hwHintDe: 'Trennbare Verben schließen den Satz: Wir legen die Termine fest. Die Künstlerin stellt im Herbst aus. Erfüllen nimmt ein direktes Objekt: Sie erfüllt jede Bedingung. Übe auch die anderen Sätze laut: Das Orchester spielt im Hof, die Schauspielerin steht auf der Bühne, und in der Galerie hängt ein Bild. Eine Frau spielt Flöte, und die Sportlerin war besonders schnell. So bleiben die neuen Wörter lebendig, weil du sie in ganzen Sätzen hörst, sprichst und mehrmals wiederholst. Schreibe morgen noch drei eigene Sätze über ein Fest in deiner Stadt und über deinen Sprachkurs.'
+    }),
 
   U('b1-u8-l1', 'B1', 'البيت والانتقال', 'Haus und Umzug', 'lexik-kollokation',
     'Am Ende beschreibst du eine Wohnung und einen Umzug',

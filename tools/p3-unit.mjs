@@ -16138,6 +16138,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksG5[4].frage.optionen.some(o => o.text === targetsG5[4]) &&
       checksG5[4].frage.optionen.some(o => o.text === 'Die Festplatte sind fast voll.') &&
       Object.values(checksG5[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonG6 = win.DW_LESSONS['b1-u7-l6'];
+  const rowG6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonG6.id);
+  const byWordG6 = Object.fromEntries(lessonG6.wortschatz.map(it => [it.de, it]));
+  const tricksG6 = lessonG6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsG6 = [
+    'Das Orchester spielt im Hof.',
+    'Wir legen die Termine fest.',
+    'Sie erfüllt jede Bedingung.',
+    'Die Künstlerin stellt im Herbst aus.',
+    'Die Kursleiterin kommt aus Wien.'
+  ];
+  t('Corpus lesson b1-u7-l6 precisely scopes five culture-and-language moves taking a neuter orchestra with spielt, separable Termine festlegen, a direct object after erfüllen, separable ausstellen and a feminine course leader with kommt',
+    lessonG6.title.de === 'Kultur und Sprache: Orchester und Termine' &&
+      lessonG6.title.ar === 'الثقافة واللغة: Orchester وTermine' &&
+      rowG6.title.de === lessonG6.title.de && rowG6.title.ar === lessonG6.title.ar &&
+      rowG6.theme === 'الثقافة' &&
+      rowG6.grammar.item === 'Orchester spielt · legen fest · erfüllt · stellt aus · Kursleiterin kommt' &&
+      rowG6.grammar.method === 'explicit' && lessonG6.schritte.length === 36 && lessonG6.wortschatz.length === 40 &&
+      lessonG6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonG6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsG6[i]) &&
+      lessonG6.schritte[0].zeigt.de === 'Am Ende sprichst du über ein Fest, ein Orchester und deinen Sprachkurs — in fünf Sätzen' &&
+      lessonG6.schritte.find(s => s.id === 's20').zeigt.de === targetsG6[4]);
+
+  const expectedWordsG6 = [
+    'die Bühne', 'ausstellen', 'das Gedicht', 'die Flöte', 'die Galerie', 'musikalisch',
+    'das Orchester', 'die Tradition', 'traditionell', 'interkulturell', 'der Saal', 'die Fremdsprache',
+    'die Zweitsprache', 'der Intensivkurs', 'der Kursleiter', 'die Kursleiterin', 'der Kreis', 'sozial',
+    'politisch', 'national', 'regional', 'rechtlich', 'die Region', 'der Bereich',
+    'die Umweltverschmutzung', 'die Rolle', 'der Trainer', 'die Sportlerin', 'unentschieden', 'umsonst',
+    'verwechseln', 'überlegen', 'erfüllen', 'ergänzen', 'erstellen', 'eröffnen',
+    'festlegen', 'verschreiben', 'statistisch', 'theoretisch'
+  ];
+  const errorsG6 = lessonG6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u7-l6 reviews all 40 entries and three bounded mnemonics without twenty-four manufactured appendages and without branding the standard mit-form of verwechseln as an error',
+    Object.keys(byWordG6).join(' | ') === expectedWordsG6.join(' | ') &&
+      lessonG6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonG6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordG6['die Bühne'].err === 'Die Schauspielerin steht auf die Bühne.' &&
+      byWordG6['ausstellen'].err === 'Die Künstlerin ausstellt im Herbst.' &&
+      byWordG6['festlegen'].err === 'Wir festlegen die Termine.' &&
+      byWordG6['erfüllen'].err === 'Sie erfüllt jeder Bedingung.' &&
+      byWordG6['musikalisch'].err === 'Beide sind sehr musikalische.' &&
+      !['Eine Frau spielt auf Flöte.', 'Beide sind sehr musikalisch gemacht.',
+        'Das Fest ist traditionell gemacht.', 'Das Fest ist interkulturell gemacht.',
+        'Sie spricht zwei Fremdsprachen auf.', 'Deutsch ist ihre Zweitsprache gemacht.',
+        'Sie zeichnet auf einen Kreis ins Heft.', 'Die Regeln sind sozial gewachsen gemacht.',
+        'Sie ist politisch aktiv gemacht.', 'Die Frage ist national gemacht.',
+        'Das Angebot ist regional gemacht.', 'Die Regeln sind rechtlich klar gemacht.',
+        'In diesem Bereich arbeiten viele auf.', 'Diese Rolle spielt die Sprache auf.',
+        'Das Ergebnis blieb unentschieden gemacht.', 'Der Alarm läutete umsonst auf.',
+        'Ich verwechsle Prüfung mit Beruf.', 'Ich überlege noch auf, ob ich den Kurs mache.',
+        'Sie erfüllt auf jede Bedingung.', 'Bitte ergänzen Sie auf die Unterlagen.',
+        'Ich erstelle auf eine Kopie.', 'Die Firma eröffnet auf eine Filiale.',
+        'Das Spiel war statistisch ausgeglichen gemacht.', 'Das Wissen bleibt nicht theoretisch gemacht.']
+        .some(x => errorsG6.includes(x)) &&
+      tricksG6.length === 3 && tricksG6[0].wie.includes('Das Orchester spielt.') &&
+      tricksG6[1].wie.includes('Sie erfüllt jede Bedingung.') &&
+      tricksG6[2].wie.includes('Wir legen die Termine fest.'));
+
+  const wordClozeAG6 = lessonG6.schritte.find(s => s.id === 's09');
+  const wordClozeBG6 = lessonG6.schritte.find(s => s.id === 's13');
+  const wordClozeCG6 = lessonG6.schritte.find(s => s.id === 's17');
+  const imitateG6 = lessonG6.schritte.find(s => s.id === 's19');
+  const drillG6 = lessonG6.schritte.find(s => s.id === 's23');
+  const orderG6 = lessonG6.schritte.find(s => s.id === 's24');
+  const writingG6 = lessonG6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingG6 = lessonG6.schritte.find(s => s.phase === 'Produktion');
+  const summaryG6 = lessonG6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkG6 = lessonG6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u7-l6 aligns five strict learning clozes, sound legen order fields with a final fest bracket and a 25-word five-target production',
+    wordClozeAG6.frage.zeigt === 'Beide sind sehr ____.' && wordClozeAG6.frage.antworten.join(' ') === 'musikalisch' &&
+      wordClozeAG6.frage.nearMiss.musikalische && !win.DW.renderers.judgeCloze(wordClozeAG6.frage, 'musikalische').ok &&
+      wordClozeBG6.frage.zeigt === 'Die Regeln sind ____ klar.' && wordClozeBG6.frage.antworten.join(' ') === 'rechtlich' &&
+      wordClozeBG6.frage.nearMiss.rechtliche && !win.DW.renderers.judgeCloze(wordClozeBG6.frage, 'rechtliche').ok &&
+      wordClozeCG6.frage.zeigt === 'Die Ärztin ____ ein Mittel.' && wordClozeCG6.frage.antworten.join(' ') === 'verschreibt' &&
+      wordClozeCG6.frage.nearMiss.verschreiben && !win.DW.renderers.judgeCloze(wordClozeCG6.frage, 'verschreiben').ok &&
+      imitateG6.zeigt.de === 'Das Orchester ____ im Hof.' && imitateG6.frage.antworten.join(' ') === 'spielt' &&
+      imitateG6.frage.nearMiss.spielen && !win.DW.renderers.judgeCloze(imitateG6.frage, 'spielen').ok &&
+      drillG6.frage.zeigt === 'Wir ____ die Termine fest.' && drillG6.frage.antworten.join(' ') === 'legen' &&
+      drillG6.frage.nearMiss.festlegen && !win.DW.renderers.judgeCloze(drillG6.frage, 'festlegen').ok &&
+      lessonG6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderG6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderG6.frage.correct.join(' ') === targetsG6[1] && orderG6.frage.finite === 'legen' && orderG6.frage.verbFirst === false &&
+      orderG6.frage.fields.vorfeld.join(' ') === 'Wir' && orderG6.frage.fields.lsk.join(' ') === 'legen' &&
+      orderG6.frage.fields.mittelfeld.join(' ') === 'die Termine' && orderG6.frage.fields.rsk.join(' ') === 'fest.' &&
+      win.DW.order.score(orderG6.frage, orderG6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderG6.frage, ['Wir', 'legen', 'fest.', 'die', 'Termine']).credit < 1 &&
+      writingG6.frage.points.join(' | ') === targetsG6.join(' | ') && writingG6.frage.minWords === 25 &&
+      targetsG6.join(' ').split(/\s+/).length === 25 &&
+      targetsG6.every(x => [writingG6.frage.promptDe, summaryG6.zeigt.de, homeworkG6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsG6.every(x => norm(speakingG6.erklaerung).includes(norm(x))) &&
+      (homeworkG6.hinweise || []).join(' ').includes('So bleiben die neuen Wörter lebendig'));
+
+  const checksG6 = lessonG6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckG6 = checksG6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckG6 = checksG6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u7-l6 makes 80 percent four of five, independently checking separable ausstellen, the legen cloze and spielt order, static auf der Bühne and singular Kursleiterin kommt',
+    checksG6.length === 5 && checksG6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksG6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksG6.every(s => /^cap\.b1-u7-l6\.s\d+$/.test(s.frage.prereq || '')) && checksG6.every(s => !s.hinweise) &&
+      checksG6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u7-l6.s07 | cap.b1-u7-l6.s23 | cap.b1-u7-l6.s24 | cap.b1-u7-l6.s08 | cap.b1-u7-l6.s20' &&
+      new Set(checksG6.map(s => s.frage.prereq)).size === 5 &&
+      checksG6[0].frage.optionen.some(o => o.text === targetsG6[3]) &&
+      checksG6[0].frage.optionen.some(o => o.text === 'Die Künstlerin ausstellt im Herbst.') &&
+      Object.values(checksG6[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckG6.frage.zeigt === 'Wir ____ die Termine fest.' &&
+      clozeCheckG6.frage.antworten.join(' ') === 'legen' && clozeCheckG6.frage.nearMiss.festlegen &&
+      !win.DW.renderers.judgeCloze(clozeCheckG6.frage, 'festlegen').ok &&
+      orderCheckG6.frage.correct.join(' ') === targetsG6[0] && orderCheckG6.frage.finite === 'spielt' &&
+      orderCheckG6.frage.fields.vorfeld.join(' ') === 'Das Orchester' && orderCheckG6.frage.fields.lsk.join(' ') === 'spielt' &&
+      orderCheckG6.frage.fields.mittelfeld.join(' ') === 'im Hof.' &&
+      win.DW.order.score(orderCheckG6.frage, orderCheckG6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckG6.frage, ['Das', 'spielt', 'Orchester', 'im', 'Hof.']).credit < 1 &&
+      checksG6[3].frage.optionen.some(o => o.text === 'Die Schauspielerin steht auf der Bühne.') &&
+      checksG6[3].frage.optionen.some(o => o.text === 'Die Schauspielerin steht auf die Bühne.') &&
+      Object.values(checksG6[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksG6[4].frage.optionen.some(o => o.text === targetsG6[4]) &&
+      checksG6[4].frage.optionen.some(o => o.text === 'Die Kursleiterin kommen aus Wien.') &&
+      Object.values(checksG6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
