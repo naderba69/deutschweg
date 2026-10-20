@@ -2507,25 +2507,50 @@ module.exports = [
       hwHintDe: 'Gefühle haben feste Präpositionen: Ich war wütend auf mich selbst, und jeder ist irgendwann abhängig von Hilfe. Reflexive Verben behalten ihr Pronomen: Abends entspanne ich mich im Salon. Nach einem langen Tag war ich erschöpft, aber ein paar Tage im Wald helfen. Sage danke für dein Verständnis, wenn dir jemand hilft.'
     }),
 
-  U('b1-u8-l4', 'B1', 'العمل والمكتب', 'Arbeit und Büro', 'lexik-kollokation',
-    'Am Ende beschreibst du deine Arbeit und dein Büro',
-    'في النهاية تصف عملك ومكتبك.',
+  U('b1-u8-l4', 'B1', 'العمل والمكتب: Kopierer وVisitenkarte', 'Arbeit und Büro: Kopierer und Visitenkarte', 'lexik-kollokation',
+    'Am Ende sprichst du über Berufe, Geräte und Büroarbeit — in fünf Sätzen',
+    'في النهاية تتحدث عن المهن والأجهزة وعمل المكتب في خمس جمل.',
     [
-      ['Die Anwältin prüft den Vertrag.', 'المهن بفعل مفرد', 'die Anwältin: Singular + prüft', 'Die Anwältin prüfen den Vertrag.', 'prüft'],
-      ['Ich schreibe die Nummer gleich auf.', 'aufschreiben منفصل', 'Trennbares Verb: schreibe … auf', 'Ich aufschreibe die Nummer gleich.', 'schreibe … auf'],
-      ['Wir garantieren die Lieferung.', 'garantieren بلا حرف جر', 'kein für nach garantieren', 'Wir garantieren für die Lieferung.', 'garantieren'],
-      ['Ich muss mich auf die Arbeit konzentrieren.', 'التركّز على شيء', 'sich konzentrieren auf + Akkusativ', 'Ich muss mich auf die Arbeit konzentrieren an.', 'auf die Arbeit']
+      ['Die Anwältin prüft den Vertrag.', 'تتحدث عن محامية تفحص العقد', 'die Anwältin اسم مفرد ففعلها prüft بصيغة المفرد لا prüfen', 'Die Anwältin prüfen den Vertrag.', 'المفرد: prüft'],
+      ['Ich schreibe die Nummer gleich auf.', 'تدوّن رقمًا فورًا', 'aufschreiben فعل منفصل: schreibe في الموضع الثاني وauf أخيرًا لا ملتصقًا', 'Ich aufschreibe die Nummer gleich.', 'schreibe … auf'],
+      ['Der Kopierer steht neben der Tür.', 'تحدّد مكان آلة النسخ', 'der Kopierer اسم مفرد ففعله steht لا stehen، ومكان الجهاز neben der Tür', 'Der Kopierer stehen neben der Tür.', 'المفرد: steht'],
+      ['Ich muss mich auf die Arbeit konzentrieren.', 'تقول إن عليك التركّز على العمل', 'sich konzentrieren يثبت مع auf والنصب: auf die Arbeit لا für die Arbeit', 'Ich muss mich für die Arbeit konzentrieren.', 'auf لا für']
     ],
     [
-      ['Der Kopierer steht neben der Tür.', 'آلة النسخ بجانب الباب', 'Der Kopierer stehen neben der Tür.', 'الفعل مفرد.', 'steht'],
-      ['Bitte kopieren Sie alle Seiten.', 'انسخ كل الصفحات', 'Bitte kopieren Sie auf alle Seiten.', 'بلا auf.', 'kopieren'],
-      ['Die Industrie sucht Fachkräfte.', 'الصناعة تبحث عن خبراء', 'Die Industrie suchen Fachkräfte.', 'الفعل مفرد.', 'sucht'],
-      ['Ich lösche die alten Dateien.', 'أمحو الملفات القديمة', 'Ich lösche auf die alten Dateien.', 'بلا auf.', 'lösche']
+      ['Die Anwältin prüft den Vertrag.', 'المحامية تفحص العقد', 'Die Anwältin prüfen den Vertrag.', 'فعلها مفرد: prüft لا prüfen.', 'prüft'],
+      ['Ich schreibe die Nummer gleich auf.', 'أدوّن الرقم فورًا', 'Ich aufschreibe die Nummer gleich.', 'aufschreiben ينفصل: schreibe … auf.', 'schreibe'],
+      ['Der Kopierer steht neben der Tür.', 'آلة النسخ بجانب الباب', 'Der Kopierer stehen neben der Tür.', 'الفعل مفرد: steht.', 'steht'],
+      ['Ich muss mich auf die Arbeit konzentrieren.', 'عليّ أن أتركّز على العمل', 'Ich muss mich für die Arbeit konzentrieren.', 'sich konzentrieren مع auf.', 'auf']
     ],
     'Die Anwältin prüft den Vertrag. Ich muss mich auf die Arbeit konzentrieren.',
-    'Bitte kopieren Sie alle Seiten.',
-    'Schreibe morgen fünf Sätze über deinen Arbeitsplatz.',
-    'غدًا اكتب خمس جمل عن مكان عملك.'),
+    'Ich gebe Ihnen meine Visitenkarte.',
+    'Wiederhole morgen die fünf Sätze: Die Anwältin prüft den Vertrag. Ich schreibe die Nummer gleich auf. Der Kopierer steht neben der Tür. Ich muss mich auf die Arbeit konzentrieren. Ich gebe Ihnen meine Visitenkarte.',
+    'غدًا أعد جمل العمل والمكتب الخمس ولاحظ مفرد المهن وفصل الفعل وحرف التركّز.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'konjugation', 'präposition'],
+      imitateNearMiss: 'prüfen',
+      transformHint: 'في جملة الختام تعطي البطاقة: Ich gebe Ihnen meine Visitenkarte — الشخص بعد geben بالداتيف Ihnen والبطاقة بالنصب.',
+      orderSentence: 'Die Anwältin prüft den Vertrag.',
+      checkOrderSentence: 'Der Kopierer steht neben der Tür.',
+      orderAr: 'رتّب جملة المحامية: الفعل prüft في الموضع الثاني والمفعول den Vertrag. أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Anwältin هو الموضع الأول وحده.', 'المفعول den Vertrag. يأتي بعد الفعل.'],
+      writing: {
+        zeigt: 'Arbeit und Büro in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: مهنة مفردة بـprüft، وتدوين منفصل بـschreibe … auf، وجهاز مفرد بـsteht، وتركّز ثابت بـauf، وبطاقة تُعطى بـIhnen.',
+        hinweise: ['المهن وأجهزة المكتب مفردة الأفعال: prüft وsteht.', 'الفعل المنفصل ينفصل في الجملة الرئيسة.'],
+        prompt: 'اكتب جمل العمل والمكتب الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Anwältin prüft den Vertrag. · Ich schreibe die Nummer gleich auf. · Der Kopierer steht neben der Tür. · Ich muss mich auf die Arbeit konzentrieren. · Ich gebe Ihnen meine Visitenkarte.',
+        points: ['Die Anwältin prüft den Vertrag.', 'Ich schreibe die Nummer gleich auf.', 'Der Kopierer steht neben der Tür.', 'Ich muss mich auf die Arbeit konzentrieren.', 'Ich gebe Ihnen meine Visitenkarte.'],
+        minWords: 29,
+        frage: 'اكتب جمل العمل والمكتب الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Anwältin prüft den Vertrag. Ich schreibe die Nummer gleich auf. Der Kopierer steht neben der Tür. Ich muss mich auf die Arbeit konzentrieren. Ich gebe Ihnen meine Visitenkarte.',
+      summaryDe: 'Die Anwältin prüft den Vertrag. Ich schreibe die Nummer gleich auf. Der Kopierer steht neben der Tür. Ich muss mich auf die Arbeit konzentrieren. Ich gebe Ihnen meine Visitenkarte.',
+      summaryAr: 'العمل يحتاج مهنًا وأجهزة مفردة الأفعال، وفعلًا ينفصل في موضعه، وحرف تركّز ثابتًا، وعطاءً بالداتيف.',
+      summaryRecap: 'مفرد وفصل وحرف ثابت',
+      hwHintDe: 'Berufe und Geräte stehen im Singular: Die Anwältin prüft den Vertrag, und der Kopierer steht neben der Tür. Trennbare Verben trennen sich: Ich schreibe die Nummer gleich auf. Konzentriere dich auf die Arbeit und gib deine Karte mit dem Dativ: Ich gebe Ihnen meine Visitenkarte. Eine gute Anwältin und ein klarer Vertrag machen die Arbeit im Büro leichter.'
+    }),
 
   U('b1-u8-l5', 'B1', 'الإدارة والتعليم', 'Verwaltung und Schule', 'wortstellung',
     'Am Ende füllst du einen Antrag aus und sprichst über die Ausbildung',

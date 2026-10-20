@@ -163,7 +163,7 @@
     ['البيت والانتقال: Couch وEtage', 'Haus und Umzug: Couch und Etage', 'السكن', 'Couch steht · in der Etage · Abwart hilft · ist möbliert · Ehepaar wohnt', 'explicit'],
     ['المطبخ والسوق: Paradeiser وRahm', 'Küche und Markt: Paradeiser und Rahm', 'الطعام', 'heißt Paradeiser · Rahm ist süß · Menü besteht · aufs Brot · im Kaffeehaus sitzen', 'explicit'],
     ['الجسد والنفس: wütend وentspannt', 'Körper und Seele: wütend und entspannt', 'الصحة', 'wütend auf · entspanne mich · abhängig von · Unglück war · Danke für dein', 'explicit'],
-    ['العمل والمكتب', 'Arbeit und Büro', 'المهنة', 'schreibe … auf und konzentrieren auf', 'explicit'],
+    ['العمل والمكتب: Kopierer وVisitenkarte', 'Arbeit und Büro: Kopierer und Visitenkarte', 'المهنة', 'Anwältin prüft · schreibe … auf · Kopierer steht · konzentrieren auf · gebe Ihnen', 'explicit'],
     ['الإدارة والتعليم', 'Verwaltung und Schule', 'التعليم', 'anzugeben und schaffen … an', 'explicit'],
     ['الطبيعة والرياضة', 'Natur und Sport', 'الترفيه', 'begegne ich dem und Es donnert', 'explicit'],
     /* Unit 9 — amendment B1-L5: the fourth material round carried every entry the corpus

@@ -71,52 +71,69 @@ module.exports = {
 
   'b1-u8-l4': {
     items: [
-      ['die Annonce', 'die Annoncen', 'الإعلان (سويسرا)', 'In der Annonce steht eine Rufnummer.', 'In der Annonce steht eine Rufnummer auf.', 'لا حرف جر زائد.', 'präposition', 'Annonce'],
+      ['die Annonce', 'die Annoncen', 'الإعلان (سويسرا)', 'In der Annonce steht eine Rufnummer.', 'In dem Annonce steht eine Rufnummer.', 'die Annonce مؤنّثة: للثبات in der لا in dem.', 'kasus', 'Annonce'],
       ['die Anwältin', 'die Anwältinnen', 'المحامية', 'Die Anwältin prüft den Vertrag.', 'Die Anwältin prüfen den Vertrag.', 'الفعل مفرد: prüft.', 'konjugation', 'Anwältin'],
       ['aufschreiben', '—', 'يدوّن', 'Ich schreibe die Nummer gleich auf.', 'Ich aufschreibe die Nummer gleich.', 'الفعل المنفصل: schreibe … auf.', 'wortstellung', 'schreibe'],
-      ['beobachten', '—', 'يراقب', 'Der Chef beobachtet alles genau.', 'Der Chef beobachtet auf alles genau.', 'beobachten بلا حرف جر.', 'präposition', 'beobachtet'],
-      ['berechnen', '—', 'يحسب/يحتسب', 'Sie berechnen dafür nichts.', 'Sie berechnen dafür nichts auf.', 'لا حرف جر زائد.', 'präposition', 'berechnen'],
+      ['beobachten', '—', 'يراقب', 'Der Chef beobachtet alles genau.', 'Der Chef beobachtet dem Kollegen genau.', 'beobachten بمفعول نصب: den Kollegen لا dem Kollegen.', 'kasus', 'beobachtet'],
+      ['berechnen', '—', 'يحسب/يحتسب', 'Sie berechnen dafür nichts.', 'Sie berechnet dafür nichts.', 'مع Sie يأتي الفعل بصيغة الجمع: berechnen لا berechnet.', 'konjugation', 'berechnen'],
       ['die Beschäftigung', 'die Beschäftigungen', 'العمل/الانشغال', 'Seine Beschäftigung macht ihm Freude.', 'Seine Beschäftigung machen ihm Freude.', 'الفعل مفرد: macht.', 'konjugation', 'Beschäftigung'],
-      ['die Empfehlung', 'die Empfehlungen', 'التوصية', 'Die Empfehlung der Kollegin half.', 'Die Empfehlung von der Kollegin half.', 'الإضافة: der Kollegin.', 'kasus', 'Empfehlung'],
+      ['die Empfehlung', 'die Empfehlungen', 'التوصية', 'Die Empfehlung der Kollegin half.', 'Die Empfehlung von die Kollegin half.', 'von يحتاج الداتيف: von der Kollegin لا von die.', 'kasus', 'Empfehlung'],
       ['der Faktor', 'die Faktoren', 'العامل', 'Zeit ist der wichtigste Faktor.', 'Zeit sind der wichtigste Faktor.', 'الفاعل مفرد: ist.', 'konjugation', 'Faktor'],
-      ['die Fachfrau', 'die Fachfrauen', 'الخبيرة', 'Nur eine Fachfrau darf das prüfen.', 'Nur eine Fachfrau darf das prüfen auf.', 'لا حرف جر زائد.', 'präposition', 'Fachfrau'],
+      ['die Fachfrau', 'die Fachfrauen', 'الخبيرة', 'Nur eine Fachfrau darf das prüfen.', 'Nur eine Fachfrau das prüfen darf.', 'الفعل darf في الموضع الثاني قبل المفعول: darf das prüfen.', 'wortstellung', 'Fachfrau'],
       ['Fachleute', '—', 'أهل الاختصاص (جمع)', 'Die Fachleute streiten noch.', 'Die Fachleute streitet noch.', 'الجمع: streiten.', 'konjugation', 'Fachleute'],
-      ['finanziell', '—', 'مالي', 'Die Lage ist finanziell schwierig.', 'Die Lage ist finanziell schwierig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'finanziell'],
+      ['finanziell', '—', 'مالي', 'Die Lage ist finanziell schwierig.', 'Die Lage ist finanzielle schwierig.', 'finanziell هنا ظرف بلا نهاية صرف: لا finanzielle.', 'deklination', 'finanziell'],
       ['finanzieren', '—', 'يموّل', 'Die Bank finanziert den Umbau.', 'Die Bank finanzieren den Umbau.', 'الفعل مفرد: finanziert.', 'konjugation', 'finanziert'],
-      ['garantieren', '—', 'يضمن', 'Wir garantieren die Lieferung bis Freitag.', 'Wir garantieren für die Lieferung bis Freitag.', 'garantieren بلا حرف جر.', 'präposition', 'garantieren'],
+      ['garantieren', '—', 'يضمن', 'Wir garantieren die Lieferung bis Freitag.', 'Wir garantieren der Lieferung bis Freitag.', 'garantieren بنصب مباشر: die Lieferung لا der Lieferung.', 'kasus', 'garantieren'],
       ['die Industrie', 'die Industrien', 'الصناعة', 'Die Industrie sucht Fachkräfte.', 'Die Industrie suchen Fachkräfte.', 'الفعل مفرد: sucht.', 'konjugation', 'Industrie'],
       ['der Ingenieur', 'die Ingenieure', 'المهندس', 'Der Ingenieur zeichnet den Plan.', 'Der Ingenieur zeichnen den Plan.', 'الفعل مفرد: zeichnet.', 'konjugation', 'Ingenieur'],
       ['das Institut', 'die Institute', 'المعهد', 'Das Institut hat einen neuen Kurs.', 'Das Institut haben einen neuen Kurs.', 'الفعل مفرد: hat.', 'konjugation', 'Institut'],
       ['die Integration', 'die Integrationen', 'الاندماج', 'Integration braucht Zeit und Sprache.', 'Integration brauchen Zeit und Sprache.', 'الفاعل مفرد: braucht.', 'konjugation', 'Integration'],
-      ['die Kommunikation', '—', 'التواصل', 'Ohne Kommunikation geht kein Projekt.', 'Ohne Kommunikation geht kein Projekt auf.', 'لا حرف جر زائد.', 'präposition', 'Kommunikation'],
-      ['konzentrieren', '—', 'يركّز', 'Ich muss mich auf die Arbeit konzentrieren.', 'Ich muss mich auf die Arbeit konzentrieren an.', 'konzentrieren + auf.', 'präposition', 'konzentrieren'],
-      ['kopieren', '—', 'ينسخ', 'Bitte kopieren Sie alle Seiten.', 'Bitte kopieren Sie auf alle Seiten.', 'kopieren بلا حرف جر.', 'präposition', 'kopieren'],
+      ['die Kommunikation', '—', 'التواصل', 'Ohne Kommunikation geht kein Projekt.', 'Ohne Kommunikation kein Projekt geht.', 'بعد عبارة مقدّمة يأتي الفعل ثانيًا: geht kein Projekt.', 'wortstellung', 'Kommunikation'],
+      ['konzentrieren', '—', 'يركّز', 'Ich muss mich auf die Arbeit konzentrieren.', 'Ich muss mich für die Arbeit konzentrieren.', 'sich konzentrieren auf + نصب: على العمل بـauf لا für.', 'präposition', 'konzentrieren'],
+      ['kopieren', '—', 'ينسخ', 'Bitte kopieren Sie alle Seiten.', 'Bitte kopieren Sie allen Seiten.', 'kopieren بمفعول نصب: alle Seiten لا allen Seiten.', 'kasus', 'kopieren'],
       ['der Kopierer', 'die Kopierer', 'آلة النسخ', 'Der Kopierer steht neben der Tür.', 'Der Kopierer stehen neben der Tür.', 'الفعل مفرد: steht.', 'konjugation', 'Kopierer'],
-      ['der Kuli', 'die Kulis', 'القلم الجاف', 'Mit welchem Kuli schreibst du?', 'Mit welchem Kuli schreibst du auf?', 'لا حرف جر زائد.', 'präposition', 'Kuli'],
+      ['der Kuli', 'die Kulis', 'القلم الجاف', 'Mit welchem Kuli schreibst du?', 'Mit welcher Kuli schreibst du?', 'der Kuli مذكّر ومع mit يُسأل بـmit welchem.', 'kasus', 'Kuli'],
       ['das Laufwerk', 'die Laufwerke', 'مشغّل الأقراص', 'Das Laufwerk im Rechner ist voll.', 'Das Laufwerk im Rechner sind voll.', 'الفعل مفرد: ist.', 'konjugation', 'Laufwerk'],
-      ['löschen', '—', 'يمحو', 'Ich lösche die alten Dateien.', 'Ich lösche auf die alten Dateien.', 'löschen بلا حرف جر.', 'präposition', 'lösche'],
+      ['löschen', '—', 'يمحو', 'Ich lösche die alten Dateien.', 'Ich lösche die alte Dateien.', 'مع جمعٍ معرّف: die alten Dateien لا die alte Dateien.', 'deklination', 'lösche'],
       ['das Magazin', 'die Magazine', 'المجلة', 'Das Magazin erscheint monatlich.', 'Das Magazin erscheinen monatlich.', 'الفعل مفرد: erscheint.', 'konjugation', 'Magazin'],
       ['das Medium', 'die Medien', 'الوسيط الإعلامي', 'Das Medium erreicht viele Leute.', 'Das Medium erreichen viele Leute.', 'الفعل مفرد: erreicht.', 'konjugation', 'Medium'],
       ['die Methode', 'die Methoden', 'الطريقة', 'Die Methode ist neu, aber bewährt.', 'Die Methode sind neu, aber bewährt.', 'الفعل مفرد: ist.', 'konjugation', 'Methode'],
       ['das Modell', 'die Modelle', 'الطراز/الموديل', 'Das Modell von letztem Jahr kostet weniger.', 'Das Modell von letztem Jahr kosten weniger.', 'الفعل مفرد: kostet.', 'konjugation', 'Modell'],
-      ['die Organisation', 'die Organisationen', 'التنظيم', 'Die Organisation der Sitzung dauerte lange.', 'Die Organisation von der Sitzung dauerte lange.', 'الإضافة: der Sitzung.', 'kasus', 'Organisation'],
+      ['die Organisation', 'die Organisationen', 'التنظيم', 'Die Organisation der Sitzung dauerte lange.', 'Die Organisation von die Sitzung dauerte lange.', 'von مع الداتيف: von der Sitzung لا von die.', 'kasus', 'Organisation'],
       ['der Prozess', 'die Prozesse', 'المحاكمة/العملية', 'Der Prozess beginnt im Herbst.', 'Der Prozess beginnen im Herbst.', 'الفعل مفرد: beginnt.', 'konjugation', 'Prozess'],
-      ['realisieren', '—', 'ينفّذ/يدرك', 'Wir realisieren das Projekt im Team.', 'Wir realisieren auf das Projekt im Team.', 'realisieren بلا حرف جر.', 'präposition', 'realisieren'],
+      ['realisieren', '—', 'ينفّذ/يدرك', 'Wir realisieren das Projekt im Team.', 'Wir realisieren dem Projekt im Team.', 'realisieren بنصب مباشر: das Projekt لا dem Projekt.', 'kasus', 'realisieren'],
       ['die Reporterin', 'die Reporterinnen', 'المراسلة', 'Die Reporterin fragt den Meister.', 'Die Reporterin fragen den Meister.', 'الفعل مفرد: fragt.', 'konjugation', 'Reporterin'],
-      ['die Richterin', 'die Richterinnen', 'القاضية', 'Die Richterin liest das Urteil vor.', 'Die Richterin liest das Urteil vor auf.', 'لا حرف جر زائد.', 'präposition', 'Richterin'],
+      ['die Richterin', 'die Richterinnen', 'القاضية', 'Die Richterin liest das Urteil vor.', 'Die Richterin vorliest das Urteil.', 'vorlesen ينفصل في الجملة الرئيسة: liest … vor.', 'wortstellung', 'Richterin'],
       ['die Rufnummer', 'die Rufnummern', 'رقم الهاتف', 'Die Rufnummer steht oben im Inserat.', 'Die Rufnummer stehen oben im Inserat.', 'الفعل مفرد: steht.', 'konjugation', 'Rufnummer'],
       ['der Schriftsteller', 'die Schriftsteller', 'الكاتب', 'Der Schriftsteller lebt von seinen Büchern.', 'Der Schriftsteller leben von seinen Büchern.', 'الفعل مفرد: lebt.', 'konjugation', 'Schriftsteller'],
-      ['stilistisch', '—', 'أسلوبي', 'Der Text ist stilistisch gut.', 'Der Text ist stilistisch gut gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'stilistisch'],
+      ['stilistisch', '—', 'أسلوبي', 'Der Text ist stilistisch gut.', 'Der Text ist stilistische gut.', 'stilistisch ظرف بلا نهاية: لا stilistische خبرًا.', 'deklination', 'stilistisch'],
       ['das Symbol', 'die Symbole', 'الرمز', 'Das Symbol auf dem Deckel erklärt viel.', 'Das Symbol auf dem Deckel erklären viel.', 'الفعل مفرد: erklärt.', 'konjugation', 'Symbol'],
       ['die Übersetzerin', 'die Übersetzerinnen', 'المترجمة', 'Die Übersetzerin arbeitet ohne Pause.', 'Die Übersetzerin arbeiten ohne Pause.', 'الفعل مفرد: arbeitet.', 'konjugation', 'Übersetzerin'],
       ['der Verlag', 'die Verlage', 'دار النشر', 'Der Verlag druckt das Buch neu.', 'Der Verlag drucken das Buch neu.', 'الفعل مفرد: druckt.', 'konjugation', 'Verlag'],
-      ['die Visitenkarte', 'die Visitenkarten', 'بطاقة الزيارة', 'Ich gebe Ihnen meine Visitenkarte.', 'Ich gebe Ihnen meine Visitenkarte auf.', 'لا حرف جر زائد.', 'präposition', 'Visitenkarte']
+      ['die Visitenkarte', 'die Visitenkarten', 'بطاقة الزيارة', 'Ich gebe Ihnen meine Visitenkarte.', 'Ich gebe Sie meine Visitenkarte.', 'الشخص بعد geben بالداتيف: Ihnen لا Sie.', 'kasus', 'Visitenkarte']
     ],
     tricks: [
       { trick: 'المهن والأدوار في العمل: der Ingenieur · die Anwältin · die Übersetzerin · der Schriftsteller', wie: 'Die Anwältin prüft den Vertrag. · Der Ingenieur zeichnet den Plan.', warum: 'كل هذه الأسماء مفردة بفعل مفرد وإن دلّت على صاحب مهنة عامة.', anchor: 'Die Anwältin prüft' },
-      { trick: 'أفعال المكتب بلا حرف جر: kopieren · löschen · garantieren · realisieren', wie: 'Bitte kopieren Sie alle Seiten. · Wir realisieren das Projekt im Team.', warum: 'العربية تقول «ينسخ من» فتُضاف «من»، والألمانية تطلب المفعول مباشرة.', anchor: 'kopieren Sie alle Seiten' },
+      { trick: 'أفعال المكتب بمفعول نصب مباشر: kopieren · löschen · garantieren · realisieren', wie: 'Bitte kopieren Sie alle Seiten. · Wir realisieren das Projekt im Team.', warum: 'العربية تميل إلى «من» أو «لـ»، وهذه الأفعال هنا تطلب مفعولًا بنصب مباشر.', anchor: 'kopieren Sie alle Seiten' },
       { trick: 'التركّز يكون على شيء: sich konzentrieren auf', wie: 'Ich muss mich auf die Arbeit konzentrieren.', warum: 'مع الفعل الانعكاسي يأتي الحرف قبل الضمير العائد في موضعه.', anchor: 'auf die Arbeit konzentrieren' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Beschäftigung': 'Beschäftigungen',
+      'der Kuli': 'Kulis',
+      'die Übersetzerin': 'Übersetzerinnen'
+    },
+    clozeItemIndex: 2,
+    clozeNearMiss: 'aufschreiben',
+    checkItemIndex: 1,
+    extraCheck: {
+      right: 'Ich gebe Ihnen meine Visitenkarte.',
+      bad: 'Ich gebe Sie meine Visitenkarte.',
+      why: 'الشخص بعد geben بالداتيف: Ihnen لا Sie.',
+      family: 'kasus',
+      prereq: 'cap.b1-u8-l4.s20',
+      frage: 'أي عبارة تعطي البطاقة للشخص بالداتيف؟'
+    }
   }
 
 };

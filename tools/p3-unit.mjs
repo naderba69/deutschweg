@@ -16615,6 +16615,125 @@ console.log('\n— P3.2 lexical layer —\n');
       checksH3[4].frage.optionen.some(o => o.text === targetsH3[4]) &&
       checksH3[4].frage.optionen.some(o => o.text === 'Danke für deinem Verständnis.') &&
       Object.values(checksH3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonH4 = win.DW_LESSONS['b1-u8-l4'];
+  const rowH4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonH4.id);
+  const byWordH4 = Object.fromEntries(lessonH4.wortschatz.map(it => [it.de, it]));
+  const tricksH4 = lessonH4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsH4 = [
+    'Die Anwältin prüft den Vertrag.',
+    'Ich schreibe die Nummer gleich auf.',
+    'Der Kopierer steht neben der Tür.',
+    'Ich muss mich auf die Arbeit konzentrieren.',
+    'Ich gebe Ihnen meine Visitenkarte.'
+  ];
+  t('Corpus lesson b1-u8-l4 precisely scopes five work-and-office moves taking a singular lawyer who prüft, a separated schreibe auf, a singular Kopierer who steht, fixed konzentrieren auf and a dative person in gebe Ihnen',
+    lessonH4.title.de === 'Arbeit und Büro: Kopierer und Visitenkarte' &&
+      lessonH4.title.ar === 'العمل والمكتب: Kopierer وVisitenkarte' &&
+      rowH4.title.de === lessonH4.title.de && rowH4.title.ar === lessonH4.title.ar &&
+      rowH4.theme === 'المهنة' &&
+      rowH4.grammar.item === 'Anwältin prüft · schreibe … auf · Kopierer steht · konzentrieren auf · gebe Ihnen' &&
+      rowH4.grammar.method === 'explicit' && lessonH4.schritte.length === 36 && lessonH4.wortschatz.length === 40 &&
+      lessonH4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonH4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsH4[i]) &&
+      lessonH4.schritte[0].zeigt.de === 'Am Ende sprichst du über Berufe, Geräte und Büroarbeit — in fünf Sätzen' &&
+      lessonH4.schritte.find(s => s.id === 's20').zeigt.de === targetsH4[4]);
+
+  const expectedWordsH4 = [
+    'die Annonce', 'die Anwältin', 'aufschreiben', 'beobachten', 'berechnen', 'die Beschäftigung',
+    'die Empfehlung', 'der Faktor', 'die Fachfrau', 'Fachleute', 'finanziell', 'finanzieren',
+    'garantieren', 'die Industrie', 'der Ingenieur', 'das Institut', 'die Integration', 'die Kommunikation',
+    'konzentrieren', 'kopieren', 'der Kopierer', 'der Kuli', 'das Laufwerk', 'löschen',
+    'das Magazin', 'das Medium', 'die Methode', 'das Modell', 'die Organisation', 'der Prozess',
+    'realisieren', 'die Reporterin', 'die Richterin', 'die Rufnummer', 'der Schriftsteller', 'stilistisch',
+    'das Symbol', 'die Übersetzerin', 'der Verlag', 'die Visitenkarte'
+  ];
+  const errorsH4 = lessonH4.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u8-l4 reviews all 40 entries and three bounded mnemonics without seventeen manufactured appendages and never brands the grammatical von-plus-dative nor the für-guarantee as errors',
+    Object.keys(byWordH4).join(' | ') === expectedWordsH4.join(' | ') &&
+      lessonH4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonH4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordH4['die Anwältin'].err === 'Die Anwältin prüfen den Vertrag.' &&
+      byWordH4['aufschreiben'].err === 'Ich aufschreibe die Nummer gleich.' &&
+      byWordH4['garantieren'].err === 'Wir garantieren der Lieferung bis Freitag.' &&
+      byWordH4['die Empfehlung'].err === 'Die Empfehlung von die Kollegin half.' &&
+      byWordH4['die Visitenkarte'].err === 'Ich gebe Sie meine Visitenkarte.' &&
+      !['In der Annonce steht eine Rufnummer auf.', 'Der Chef beobachtet auf alles genau.',
+        'Sie berechnen dafür nichts auf.', 'Die Empfehlung von der Kollegin half.',
+        'Nur eine Fachfrau darf das prüfen auf.', 'Die Lage ist finanziell schwierig gemacht.',
+        'Wir garantieren für die Lieferung bis Freitag.', 'Ohne Kommunikation geht kein Projekt auf.',
+        'Ich muss mich auf die Arbeit konzentrieren an.', 'Bitte kopieren Sie auf alle Seiten.',
+        'Mit welchem Kuli schreibst du auf?', 'Ich lösche auf die alten Dateien.',
+        'Die Organisation von der Sitzung dauerte lange.', 'Wir realisieren auf das Projekt im Team.',
+        'Die Richterin liest das Urteil vor auf.', 'Der Text ist stilistisch gut gemacht.',
+        'Ich gebe Ihnen meine Visitenkarte auf.']
+        .some(x => errorsH4.includes(x)) &&
+      tricksH4.length === 3 && tricksH4[0].wie.includes('Die Anwältin prüft den Vertrag.') &&
+      tricksH4[1].wie.includes('Bitte kopieren Sie alle Seiten.') &&
+      tricksH4[2].wie.includes('Ich muss mich auf die Arbeit konzentrieren.'));
+
+  const wordClozeAH4 = lessonH4.schritte.find(s => s.id === 's09');
+  const wordClozeBH4 = lessonH4.schritte.find(s => s.id === 's13');
+  const wordClozeCH4 = lessonH4.schritte.find(s => s.id === 's17');
+  const imitateH4 = lessonH4.schritte.find(s => s.id === 's19');
+  const drillH4 = lessonH4.schritte.find(s => s.id === 's23');
+  const orderH4 = lessonH4.schritte.find(s => s.id === 's24');
+  const writingH4 = lessonH4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingH4 = lessonH4.schritte.find(s => s.phase === 'Produktion');
+  const summaryH4 = lessonH4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkH4 = lessonH4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u8-l4 aligns five strict learning clozes, sound prüft order fields and a 29-word five-target production',
+    wordClozeAH4.frage.zeigt === 'Seine ____ macht ihm Freude.' && wordClozeAH4.frage.antworten.join(' ') === 'Beschäftigung' &&
+      wordClozeAH4.frage.nearMiss['Beschäftigungen'] && !win.DW.renderers.judgeCloze(wordClozeAH4.frage, 'Beschäftigungen').ok &&
+      wordClozeBH4.frage.zeigt === 'Mit welchem ____ schreibst du?' && wordClozeBH4.frage.antworten.join(' ') === 'Kuli' &&
+      wordClozeBH4.frage.nearMiss.Kulis && !win.DW.renderers.judgeCloze(wordClozeBH4.frage, 'Kulis').ok &&
+      wordClozeCH4.frage.zeigt === 'Die ____ arbeitet ohne Pause.' && wordClozeCH4.frage.antworten.join(' ') === 'Übersetzerin' &&
+      wordClozeCH4.frage.nearMiss['Übersetzerinnen'] && !win.DW.renderers.judgeCloze(wordClozeCH4.frage, 'Übersetzerinnen').ok &&
+      imitateH4.zeigt.de === 'Die Anwältin ____ den Vertrag.' && imitateH4.frage.antworten.join(' ') === 'prüft' &&
+      imitateH4.frage.nearMiss['prüfen'] && !win.DW.renderers.judgeCloze(imitateH4.frage, 'prüfen').ok &&
+      drillH4.frage.zeigt === 'Ich ____ die Nummer gleich auf.' && drillH4.frage.antworten.join(' ') === 'schreibe' &&
+      drillH4.frage.nearMiss.aufschreiben && !win.DW.renderers.judgeCloze(drillH4.frage, 'aufschreiben').ok &&
+      lessonH4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderH4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderH4.frage.correct.join(' ') === targetsH4[0] && orderH4.frage.finite === 'prüft' && orderH4.frage.verbFirst === false &&
+      orderH4.frage.fields.vorfeld.join(' ') === 'Die Anwältin' && orderH4.frage.fields.lsk.join(' ') === 'prüft' &&
+      orderH4.frage.fields.mittelfeld.join(' ') === 'den Vertrag.' &&
+      win.DW.order.score(orderH4.frage, orderH4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderH4.frage, ['Die', 'Anwältin', 'den', 'Vertrag.', 'prüft']).credit < 1 &&
+      writingH4.frage.points.join(' | ') === targetsH4.join(' | ') && writingH4.frage.minWords === 29 &&
+      targetsH4.join(' ').split(/\s+/).length === 29 &&
+      targetsH4.every(x => [writingH4.frage.promptDe, summaryH4.zeigt.de, homeworkH4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsH4.every(x => norm(speakingH4.erklaerung).includes(norm(x))) &&
+      (homeworkH4.hinweise || []).join(' ').includes('Trennbare Verben trennen sich'));
+
+  const checksH4 = lessonH4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckH4 = checksH4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckH4 = checksH4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u8-l4 makes 80 percent four of five, independently checking fixed konzentrieren auf, the schreibe cloze and steht order, singular prüft and dative gebe Ihnen',
+    checksH4.length === 5 && checksH4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksH4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksH4.every(s => /^cap\.b1-u8-l4\.s\d+$/.test(s.frage.prereq || '')) && checksH4.every(s => !s.hinweise) &&
+      checksH4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u8-l4.s07 | cap.b1-u8-l4.s23 | cap.b1-u8-l4.s24 | cap.b1-u8-l4.s08 | cap.b1-u8-l4.s20' &&
+      new Set(checksH4.map(s => s.frage.prereq)).size === 5 &&
+      checksH4[0].frage.optionen.some(o => o.text === targetsH4[3]) &&
+      checksH4[0].frage.optionen.some(o => o.text === 'Ich muss mich für die Arbeit konzentrieren.') &&
+      Object.values(checksH4[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckH4.frage.zeigt === 'Ich ____ die Nummer gleich auf.' &&
+      clozeCheckH4.frage.antworten.join(' ') === 'schreibe' && clozeCheckH4.frage.nearMiss.aufschreiben &&
+      !win.DW.renderers.judgeCloze(clozeCheckH4.frage, 'aufschreiben').ok &&
+      orderCheckH4.frage.correct.join(' ') === targetsH4[2] && orderCheckH4.frage.finite === 'steht' &&
+      orderCheckH4.frage.fields.vorfeld.join(' ') === 'Der Kopierer' && orderCheckH4.frage.fields.lsk.join(' ') === 'steht' &&
+      orderCheckH4.frage.fields.mittelfeld.join(' ') === 'neben der Tür.' &&
+      win.DW.order.score(orderCheckH4.frage, orderCheckH4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckH4.frage, ['Der', 'Kopierer', 'neben', 'der', 'Tür.', 'steht']).credit < 1 &&
+      checksH4[3].frage.optionen.some(o => o.text === targetsH4[0]) &&
+      checksH4[3].frage.optionen.some(o => o.text === 'Die Anwältin prüfen den Vertrag.') &&
+      Object.values(checksH4[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksH4[4].frage.optionen.some(o => o.text === targetsH4[4]) &&
+      checksH4[4].frage.optionen.some(o => o.text === 'Ich gebe Sie meine Visitenkarte.') &&
+      Object.values(checksH4[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
