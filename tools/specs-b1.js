@@ -2822,25 +2822,50 @@ module.exports = [
       hwHintDe: 'Alle sagen, wir seien verrückt, aber die Nachbarn sind sehr tolerant. Der Hund bleibt ihm treu, und die Lösung war gerecht. Eine Träne kam bei der Rede, und ein Kuss sagt mehr als Wörter. Die Kinder wollen nicht schreien, und der Test bleibt bis Freitag geheim. Sie kommen ebenfalls mit, und beide reden gleichzeitig.'
     }),
 
-  U('b1-u9-l5', 'B1', 'المرور والسفر', 'Verkehr und Reise', 'lexik-kollokation',
-    'Am Ende berichtest du über eine Fahrt und einen Vorfall',
-    'في النهاية تحكي عن رحلة وحادث.',
+  U('b1-u9-l5', 'B1', 'المرور والسفر: Velo وVorfahrt', 'Verkehr und Reise: Velo und Vorfahrt', 'lexik-kollokation',
+    'Am Ende berichtest du über eine Fahrt und einen Vorfall — in fünf Sätzen',
+    'في النهاية تحكي عن رحلة وحادث في خمس جمل.',
     [
-      ['Wir müssen uns anschnallen, bevor der Flug startet.', 'انعكاسي مع müssen', 'sich anschnallen', 'Wir müssen uns anschnallen auf, bevor der Flug startet.', 'anschnallen'],
-      ['In der Schweiz heißt das Fahrrad Velo.', 'الصيغة السويسرية', 'Velo = Fahrrad', 'In der Schweiz heißt das Fahrrad Velo auf.', 'Velo'],
-      ['Die Polizei will den Täter verhaften.', 'المصدر في الآخر', 'verhaften nach will', 'Die Polizei will den Täter verhaften auf.', 'verhaften'],
-      ['Das Verkehrszeichen ist neu.', 'المفرد بفعل مفرد', 'das Verkehrszeichen: Singular + ist', 'Das Verkehrszeichen sind neu.', 'ist']
+      ['Wir müssen uns anschnallen, bevor der Flug startet.', 'تربط الحزام قبل الإقلاع', 'sich anschnallen انعكاسي وكامل بعد müssen، وbevor بفعل أخير', 'Wir müssen uns anschnallen auf, bevor der Flug startet.', 'الانعكاسي الكامل'],
+      ['In der Schweiz heißt das Fahrrad Velo.', 'تسمّي الدراجة سويسريًّا', 'بعد كتلة المكان الفعل ثانٍ: heißt، والدراجة في سويسرا Velo', 'In der Schweiz heißt das Fahrrad Velo auf.', 'Velo وبلا زائد'],
+      ['Die Polizei will den Täter verhaften.', 'تعلن اعتقالًا وشيكًا', 'مع will المصدر verhaften أخيرًا والمفعول den Täter قبله', 'Die Polizei will den Täter verhaften auf.', 'المصدر أخيرًا'],
+      ['Die Vorfahrt gilt hier.', 'تقرّر أولوية المرور هنا', 'die Vorfahrt اسم مفرد ففعله gilt لا gelten', 'Die Vorfahrt gelten hier.', 'المفرد: gilt']
     ],
     [
-      ['Die Vorfahrt gilt hier.', 'الأولوية هنا', 'Die Vorfahrt gelten hier.', 'الفعل مفرد.', 'gilt'],
-      ['Die Flucht dauerte zwei Tage.', 'الهروب استمر يومين', 'Die Flucht dauerten zwei Tage.', 'الفعل مفرد.', 'dauerte'],
-      ['Der Strafzettel kam per Post.', 'المخالفة وصلت بالبريد', 'Der Strafzettel kamen per Post.', 'الفعل مفرد.', 'kam'],
-      ['Die Bäche fließen zum Fluss.', 'الجداول تتدفق', 'Die Bäche fließen zum Fluss auf.', 'بلا auf.', 'fließen']
+      ['Wir müssen uns anschnallen, bevor der Flug startet.', 'نربط الحزام قبل إقلاع الرحلة', 'Wir müssen uns anschnallen auf, bevor der Flug startet.', 'المصدر كامل أخيرًا بلا حرف جرّ.', 'anschnallen'],
+      ['In der Schweiz heißt das Fahrrad Velo.', 'في سويسرا الدراجة اسمها Velo', 'In der Schweiz heißt das Fahrrad Velo auf.', 'الفعل ثانٍ وبلا زائد في الختام.', 'heißt'],
+      ['Die Polizei will den Täter verhaften.', 'الشرطة تريد اعتقال الجاني', 'Die Polizei will den Täter verhaften auf.', 'المفعول قبل المصدر الأخير.', 'verhaften'],
+      ['Die Vorfahrt gilt hier.', 'أولوية المرور سارية هنا', 'Die Vorfahrt gelten hier.', 'الفعل مفرد: gilt.', 'gilt']
     ],
-    'Wir müssen uns anschnallen. Die Vorfahrt gilt hier.',
-    'In der Schweiz heißt das Fahrrad Velo.',
-    'Berichte morgen über eine Fahrt mit einem Zwischenfall.',
-    'غدًا احكِ عن رحلة وقع فيها أمر طارئ.'),
+    'Wir müssen uns anschnallen, bevor der Flug startet. Die Vorfahrt gilt hier.',
+    'Vor der Fahrt muss ich noch tanken.',
+    'Wiederhole morgen die fünf Sätze: Wir müssen uns anschnallen, bevor der Flug startet. In der Schweiz heißt das Fahrrad Velo. Die Polizei will den Täter verhaften. Die Vorfahrt gilt hier. Vor der Fahrt muss ich noch tanken.',
+    'غدًا أعد جمل المرور والسفر الخمس ولاحظ الانعكاسي والمصدر الأخير.',
+    {
+      factFamilies: ['lexik-kollokation', 'wortstellung', 'wortstellung', 'konjugation'],
+      imitateNearMiss: 'schnallen',
+      transformHint: 'في جملة الختام تقديم: Vor der Fahrt muss ich noch tanken — الفعل muss ثانٍ والمصدر أخيرًا.',
+      orderSentence: 'In der Schweiz heißt das Fahrrad Velo.',
+      checkOrderSentence: 'Die Polizei will den Täter verhaften.',
+      orderAr: 'رتّب جملة الدراجة السويسرية: الفعل heißt في الموضع الثاني بعد كتلة المكان.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول In der Schweiz كتلة واحدة.', 'الفاعل das Fahrrad بعد الفعل وVelo. أخيرًا.'],
+      writing: {
+        zeigt: 'Verkehr und Reise in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: حزام بانعكاسي uns anschnallen قبل bevor، ودراجة سويسرية Velo بـheißt، واعتقال بمصدر أخير verhaften، وأولوية مفردة gilt، وتزوّد tanken بعد muss.',
+        hinweise: ['الانعكاسي يبقى كاملًا بعد الأفعال المساعدة.', 'المصدر أخيرًا بلا حرف جرّ زائد.'],
+        prompt: 'اكتب جمل المرور والسفر الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Wir müssen uns anschnallen, bevor der Flug startet. · In der Schweiz heißt das Fahrrad Velo. · Die Polizei will den Täter verhaften. · Die Vorfahrt gilt hier. · Vor der Fahrt muss ich noch tanken.',
+        points: ['Wir müssen uns anschnallen, bevor der Flug startet.', 'In der Schweiz heißt das Fahrrad Velo.', 'Die Polizei will den Täter verhaften.', 'Die Vorfahrt gilt hier.', 'Vor der Fahrt muss ich noch tanken.'],
+        minWords: 32,
+        frage: 'اكتب جمل المرور والسفر الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Wir müssen uns anschnallen, bevor der Flug startet. In der Schweiz heißt das Fahrrad Velo. Die Polizei will den Täter verhaften. Die Vorfahrt gilt hier. Vor der Fahrt muss ich noch tanken.',
+      summaryDe: 'Wir müssen uns anschnallen, bevor der Flug startet. In der Schweiz heißt das Fahrrad Velo. Die Polizei will den Täter verhaften. Die Vorfahrt gilt hier. Vor der Fahrt muss ich noch tanken.',
+      summaryAr: 'المرور والسفر يُرويان بانعكاسي كامل ومصدر أخير وصيغة سويسرية للدراجة.',
+      summaryRecap: 'انعكاسي ومصدر أخير',
+      hwHintDe: 'Ein Passagier fragt am Schalter, und die Stewardess zeigt den Weg. Die Kabine ist klein und warm, und die Klimaanlage ist zu kalt. Die Fußgängerin wartet am Rand, und die Radfahrerin fährt auf der Straße. Das Verkehrszeichen ist neu, und der Strafzettel kam per Post. Im Sommer wollen wir am See zelten, und die Bäche fließen zum Fluss. Es gab keinen Zwischenfall unterwegs.'
+    }),
 
   U('b1-u9-l6', 'B1', 'الطعام والصحة', 'Essen und Gesundheit', 'lexik-kollokation',
     'Am Ende beschreibst du ein Gericht und sprichst über den Körper',

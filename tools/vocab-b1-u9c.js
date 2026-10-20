@@ -48,8 +48,25 @@ module.exports = {
     tricks: [
       { trick: 'الصيغ السويسرية والنمساوية في المرور: das Velo · das Trottoir · der Gehsteig', wie: 'In der Schweiz heißt das Fahrrad Velo. · Das Trottoir ist hier schmal.', warum: 'الامتحان يذكر الصيغة المحلية بدل الفصحى، والطالب يظنها كلمة أخرى.', anchor: 'heißt das Fahrrad Velo' },
       { trick: 'الانعكاسي مع müssen: sich anschnallen — ومصدر منفصل بلا فصل بعده', wie: 'Wir müssen uns anschnallen, bevor der Flug startet.', warum: 'بعد müssen يبقى المصدر في الآخر بلا بادئة منفصلة في الأول.', anchor: 'müssen uns anschnallen' },
-      { trick: 'أفعال الحركة اللازمة: rennen · klettern · schieben · fließen بلا مفعول', wie: 'Die Kleinen rennen über den Platz. · Die Bäche fließen zum Fluss.', warum: 'العربية تقول «يركض في» فتدخل حرفًا، والألمانية تستعمل حرف اتجاه لا مفعولًا.', anchor: 'Die Bäche fließen zum Fluss' }
-    ]
+      { trick: 'أفعال حركة بحرف اتجاه لا بمفعول زائد: rennen · klettern · fließen', wie: 'Die Kleinen rennen über den Platz. · Die Bäche fließen zum Fluss.', warum: 'العربية تقول «يركض في» فتدخل حرفًا، والألمانية تستعمل حرف اتجاه لا مفعولًا.', anchor: 'Die Bäche fließen zum Fluss' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Passagier': 'Passagiere',
+      'schieben': 'schiebt',
+      'die Fußgängerin': 'Fußgängerinnen'
+    },
+    clozeItemIndex: 30,
+    clozeNearMiss: 'haften',
+    checkItemIndex: 26,
+    extraCheck: {
+      right: 'Vor der Fahrt muss ich noch tanken.',
+      bad: 'Vor der Fahrt muss ich noch tanken auf.',
+      why: 'المصدر بعد muss أخيرًا بلا حرف جر زائد.',
+      family: 'lexik-kollokation',
+      prereq: 'cap.b1-u9-l5.s20',
+      frage: 'أي جملة تنهي التزوّد بالوقود بلا حرف زائد؟'
+    }
   },
 
   'b1-u9-l6': {

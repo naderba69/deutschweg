@@ -172,7 +172,7 @@
     ['المهن والعمل: Trainerin وStreik', 'Berufe und Betrieb: Trainerin und Streik', 'المهنة', 'Trainerin erklärt · zehn Leute einstellen · über abstimmen · Streik beginnt · Personalie liegt', 'explicit'],
     ['التعليم والأماكن: Alphabet وDenkmal', 'Bildung und Orte: Alphabet und Denkmal', 'التعليم', 'Alphabet hat · Wort nachschlagen · Denkmal steht · Mensa öffnet · Spur führt', 'explicit'],
     ['السلوك والمشاعر: amüsieren وweder', 'Verhalten und Gefühl: amüsieren und weder', 'المشاعر', 'uns amüsieren · weder noch wissen · je desto · gespannt auf · entweder oder', 'explicit'],
-    ['المرور والسفر', 'Verkehr und Reise', 'المرور', 'anschnallen und verhaften', 'explicit'],
+    ['المرور والسفر: Velo وVorfahrt', 'Verkehr und Reise: Velo und Vorfahrt', 'المرور', 'uns anschnallen · Fahrrad heißt Velo · Täter verhaften · Vorfahrt gilt · noch tanken', 'explicit'],
     ['الطعام والصحة', 'Essen und Gesundheit', 'الطعام', 'Das Schlagobers ist und spürt', 'explicit'],
     /* Unit 10 — amendment B1-L6: the last 253 pool entries are named, which closes the
        B1 match at 100% in both measures. Seven lessons (37 + 6 x 36) because 253 does

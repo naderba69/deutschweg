@@ -17428,6 +17428,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checksI4[4].frage.optionen.some(o => o.text === targetsI4[4]) &&
       checksI4[4].frage.optionen.some(o => o.text === 'Entweder wir gehen, oder bleiben wir.') &&
       Object.values(checksI4[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lessonI5 = win.DW_LESSONS['b1-u9-l5'];
+  const rowI5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonI5.id);
+  const byWordI5 = Object.fromEntries(lessonI5.wortschatz.map(it => [it.de, it]));
+  const tricksI5 = lessonI5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsI5 = [
+    'Wir müssen uns anschnallen, bevor der Flug startet.',
+    'In der Schweiz heißt das Fahrrad Velo.',
+    'Die Polizei will den Täter verhaften.',
+    'Die Vorfahrt gilt hier.',
+    'Vor der Fahrt muss ich noch tanken.'
+  ];
+  t('Corpus lesson b1-u9-l5 precisely scopes five traffic-and-travel moves taking full uns anschnallen before bevor, Swiss Fahrrad Velo with heißt second, final verhaften, singular Vorfahrt gilt and tanken after muss',
+    lessonI5.title.de === 'Verkehr und Reise: Velo und Vorfahrt' &&
+      lessonI5.title.ar === 'المرور والسفر: Velo وVorfahrt' &&
+      rowI5.title.de === lessonI5.title.de && rowI5.title.ar === lessonI5.title.ar &&
+      rowI5.theme === 'المرور' &&
+      rowI5.grammar.item === 'uns anschnallen · Fahrrad heißt Velo · Täter verhaften · Vorfahrt gilt · noch tanken' &&
+      rowI5.grammar.method === 'explicit' && lessonI5.schritte.length === 36 && lessonI5.wortschatz.length === 40 &&
+      lessonI5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonI5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsI5[i]) &&
+      lessonI5.schritte[0].zeigt.de === 'Am Ende berichtest du über eine Fahrt und einen Vorfall — in fünf Sätzen' &&
+      lessonI5.schritte.find(s => s.id === 's20').zeigt.de === targetsI5[4]);
+
+  const expectedWordsI5 = [
+    'anschnallen', 'die Distanz', 'elegant', 'elektrisch', 'parallel', 'der Passagier',
+    'die Passagierin', 'der Steward', 'die Stewardess', 'die Kabine', 'die Klimaanlage', 'ungefähr',
+    'voraussichtlich', 'zukünftig', 'hinterher', 'hierher', 'rauf', 'abwärts',
+    'umdrehen', 'rennen', 'klettern', 'schieben', 'schießen', 'runterwerfen',
+    'zelten', 'tanken', 'das Verkehrszeichen', 'die Vorfahrt', 'der Strafzettel', 'überfahren',
+    'verhaften', 'festnehmen', 'die Flucht', 'fliehen', 'fließen', 'das Trottoir',
+    'der Gehsteig', 'die Fußgängerin', 'die Radfahrerin', 'das Velo'
+  ];
+  const errorsI5 = lessonI5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u9-l5 reviews all 40 entries and three bounded mnemonics keeping every genuine agreement, trailing-preposition and predicative foil as a real error, Swiss Velo and Trottoir included',
+    Object.keys(byWordI5).join(' | ') === expectedWordsI5.join(' | ') &&
+      lessonI5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonI5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordI5['anschnallen'].err === 'Wir müssen uns anschnallen auf, bevor der Flug startet.' &&
+      byWordI5['das Velo'].err === 'In der Schweiz heißt das Fahrrad Velo auf.' &&
+      byWordI5['verhaften'].err === 'Die Polizei will den Täter verhaften auf.' &&
+      byWordI5['die Vorfahrt'].err === 'Die Vorfahrt gelten hier.' &&
+      byWordI5['tanken'].err === 'Vor der Fahrt muss ich noch tanken auf.' &&
+      byWordI5['das Verkehrszeichen'].err === 'Das Verkehrszeichen sind neu.' &&
+      ['Die Kleinen rennen über den Platz auf.', 'Ein Kind will auf den Baum klettern auf.',
+        'Der Motor ist elektrisch gemacht.', 'Das Trottoir sind hier schmal.',
+        'Die Radfahrerin fahren auf der Straße.']
+        .every(x => errorsI5.includes(x)) &&
+      tricksI5.length === 3 && tricksI5[0].wie.includes('In der Schweiz heißt das Fahrrad Velo.') &&
+      tricksI5[1].wie.includes('Wir müssen uns anschnallen, bevor der Flug startet.') &&
+      tricksI5[2].wie.includes('Die Bäche fließen zum Fluss.'));
+
+  const wordClozeAI5 = lessonI5.schritte.find(s => s.id === 's09');
+  const wordClozeBI5 = lessonI5.schritte.find(s => s.id === 's13');
+  const wordClozeCI5 = lessonI5.schritte.find(s => s.id === 's17');
+  const imitateI5 = lessonI5.schritte.find(s => s.id === 's19');
+  const drillI5 = lessonI5.schritte.find(s => s.id === 's23');
+  const orderI5 = lessonI5.schritte.find(s => s.id === 's24');
+  const writingI5 = lessonI5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingI5 = lessonI5.schritte.find(s => s.phase === 'Produktion');
+  const summaryI5 = lessonI5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkI5 = lessonI5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u9-l5 aligns five strict learning clozes, sound heißt order fields and a 32-word five-target production',
+    wordClozeAI5.frage.zeigt === 'Ein ____ fragt am Schalter.' && wordClozeAI5.frage.antworten.join(' ') === 'Passagier' &&
+      wordClozeAI5.frage.nearMiss.Passagiere && !win.DW.renderers.judgeCloze(wordClozeAI5.frage, 'Passagiere').ok &&
+      wordClozeBI5.frage.zeigt === 'Zwei Männer ____ den Karren.' && wordClozeBI5.frage.antworten.join(' ') === 'schieben' &&
+      wordClozeBI5.frage.nearMiss.schiebt && !win.DW.renderers.judgeCloze(wordClozeBI5.frage, 'schiebt').ok &&
+      wordClozeCI5.frage.zeigt === 'Die ____ wartet am Rand.' && wordClozeCI5.frage.antworten.join(' ') === 'Fußgängerin' &&
+      wordClozeCI5.frage.nearMiss['Fußgängerinnen'] && !win.DW.renderers.judgeCloze(wordClozeCI5.frage, 'Fußgängerinnen').ok &&
+      imitateI5.zeigt.de === 'Wir müssen uns ____, bevor der Flug startet.' && imitateI5.frage.antworten.join(' ') === 'anschnallen' &&
+      imitateI5.frage.nearMiss['schnallen'] && !win.DW.renderers.judgeCloze(imitateI5.frage, 'schnallen').ok &&
+      drillI5.frage.zeigt === 'Die Polizei will den Täter ____.' && drillI5.frage.antworten.join(' ') === 'verhaften' &&
+      drillI5.frage.nearMiss.haften && !win.DW.renderers.judgeCloze(drillI5.frage, 'haften').ok &&
+      lessonI5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderI5.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderI5.frage.correct.join(' ') === targetsI5[1] && orderI5.frage.finite === 'heißt' && orderI5.frage.verbFirst === false &&
+      orderI5.frage.fields.vorfeld.join(' ') === 'In der Schweiz' && orderI5.frage.fields.lsk.join(' ') === 'heißt' &&
+      orderI5.frage.fields.mittelfeld.join(' ') === 'das Fahrrad Velo.' &&
+      win.DW.order.score(orderI5.frage, orderI5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderI5.frage, ['In', 'der', 'Schweiz', 'das', 'Fahrrad', 'heißt', 'Velo.']).credit < 1 &&
+      writingI5.frage.points.join(' | ') === targetsI5.join(' | ') && writingI5.frage.minWords === 32 &&
+      targetsI5.join(' ').split(/\s+/).length === 32 &&
+      targetsI5.every(x => [writingI5.frage.promptDe, summaryI5.zeigt.de, homeworkI5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsI5.every(x => norm(speakingI5.erklaerung).includes(norm(x))) &&
+      (homeworkI5.hinweise || []).join(' ').includes('Es gab keinen Zwischenfall unterwegs'));
+
+  const checksI5 = lessonI5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckI5 = checksI5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckI5 = checksI5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u9-l5 makes 80 percent four of five, independently checking singular Vorfahrt gilt, the verhaften cloze and will order, singular Verkehrszeichen ist and tanken without a trailing preposition',
+    checksI5.length === 5 && checksI5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksI5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksI5.every(s => /^cap\.b1-u9-l5\.s\d+$/.test(s.frage.prereq || '')) && checksI5.every(s => !s.hinweise) &&
+      checksI5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u9-l5.s07 | cap.b1-u9-l5.s23 | cap.b1-u9-l5.s24 | cap.b1-u9-l5.s14 | cap.b1-u9-l5.s20' &&
+      new Set(checksI5.map(s => s.frage.prereq)).size === 5 &&
+      checksI5[0].frage.optionen.some(o => o.text === targetsI5[3]) &&
+      checksI5[0].frage.optionen.some(o => o.text === 'Die Vorfahrt gelten hier.') &&
+      Object.values(checksI5[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckI5.frage.zeigt === 'Die Polizei will den Täter ____.' &&
+      clozeCheckI5.frage.antworten.join(' ') === 'verhaften' && clozeCheckI5.frage.nearMiss.haften &&
+      !win.DW.renderers.judgeCloze(clozeCheckI5.frage, 'haften').ok &&
+      orderCheckI5.frage.correct.join(' ') === targetsI5[2] && orderCheckI5.frage.finite === 'will' &&
+      orderCheckI5.frage.fields.vorfeld.join(' ') === 'Die Polizei' && orderCheckI5.frage.fields.lsk.join(' ') === 'will' &&
+      orderCheckI5.frage.fields.mittelfeld.join(' ') === 'den Täter verhaften.' &&
+      win.DW.order.score(orderCheckI5.frage, orderCheckI5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckI5.frage, ['Die', 'Polizei', 'verhaften.', 'will', 'den', 'Täter']).credit < 1 &&
+      checksI5[3].frage.optionen.some(o => o.text === 'Das Verkehrszeichen ist neu.') &&
+      checksI5[3].frage.optionen.some(o => o.text === 'Das Verkehrszeichen sind neu.') &&
+      Object.values(checksI5[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksI5[4].frage.optionen.some(o => o.text === targetsI5[4]) &&
+      checksI5[4].frage.optionen.some(o => o.text === 'Vor der Fahrt muss ich noch tanken auf.') &&
+      Object.values(checksI5[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
