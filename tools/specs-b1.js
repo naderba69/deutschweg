@@ -2687,25 +2687,50 @@ module.exports = [
       hwHintDe: 'Die Fernbedienung liegt neben dem Sofa, und der Eimer steht unter der Spüle. Nach dem Essen muss jemand abwaschen — im Alltag sagt man mancherorts auch aufwaschen. Das Metall wird hier recycelt: Metall und Kunststoff kommen nicht in den Abfalleimer. Der Service in diesem Haus war ausgezeichnet. Die Schachtel mit der Bedienungsanleitung steht im Regal, und die Bancomatkarte liegt neben dem Kuvert auf dem Tisch im Flur neben der Tür.'
     }),
 
-  U('b1-u9-l2', 'B1', 'المهن والعمل', 'Berufe und Betrieb', 'konjugation',
-    'Am Ende stellst du Kolleginnen und Kollegen vor',
-    'في النهاية تقدّم زميلات وزملاء العمل.',
+  U('b1-u9-l2', 'B1', 'المهن والعمل: Trainerin وStreik', 'Berufe und Betrieb: Trainerin und Streik', 'konjugation',
+    'Am Ende sprichst du über Berufe, Firmen und Abstimmungen — in fünf Sätzen',
+    'في النهاية تتحدث عن المهن والشركات والتصويت في خمس جمل.',
     [
-      ['Die Arbeiterin aus der Werkstatt hilft uns.', 'المهنة المؤنثة بفعل مفرد', 'die Arbeiterin: Singular + hilft', 'Die Arbeiterin aus der Werkstatt helfen uns.', 'hilft'],
-      ['Die Firma will zehn Leute einstellen.', 'المصدر في الآخر', 'einstellen nach will', 'Die Firma will zehn Leute einstellen auf.', 'einstellen'],
-      ['Die Personalie liegt beim Betriebsrat.', 'اصطلاح إداري', 'die Personalie: Singular + liegt', 'Die Personalie liegen beim Betriebsrat.', 'liegt'],
-      ['Sie wollen morgen über den Plan abstimmen.', 'abstimmen + über', 'abstimmen über + Akkusativ', 'Sie wollen morgen über den Plan abstimmen auf.', 'über den Plan']
+      ['Die Trainerin erklärt die Übung.', 'تتحدث عن مدربة تشرح التمرين', 'die Trainerin مهنة مؤنثة مفردة ففعلها erklärt لا erklären', 'Die Trainerin erklären die Übung.', 'المفرد: erklärt'],
+      ['Die Firma will zehn Leute einstellen.', 'تقول إن الشركة تريد توظيف عشرة', 'مع will يبقى المصدر einstellen أخيرًا والمفعول zehn Leute قبله', 'Die Firma will einstellen zehn Leute.', 'zehn Leute قبل المصدر'],
+      ['Sie wollen morgen über den Plan abstimmen.', 'تقول إنهم سيصوتون على الخطة غدًا', 'abstimmen يثبت مع über والنصب: über den Plan لا für', 'Sie wollen morgen für den Plan abstimmen.', 'über لا für'],
+      ['Der Streik beginnt am Montag.', 'تعلن بدء الإضراب يوم الاثنين', 'der Streik اسم مفرد ففعله beginnt لا beginnen', 'Der Streik beginnen am Montag.', 'المفرد: beginnt']
     ],
     [
-      ['Der Fachmann von der Technik kommt gleich.', 'الخبير يأتي حالًا', 'Der Fachmann von der Technik kommen gleich.', 'الفعل مفرد.', 'kommt'],
-      ['Der Streik beginnt am Montag.', 'الإضراب يبدأ الإثنين', 'Der Streik beginnen am Montag.', 'الفعل مفرد.', 'beginnt'],
-      ['Am folgenden Montag beginnt die Schulung.', 'الإثنين التالي', 'Am folgend Montag beginnt die Schulung.', 'الصفة تُصرَّف.', 'folgenden'],
-      ['Die Konkurrenz schläft nicht.', 'المنافسة لا تنام', 'Die Konkurrenz schlafen nicht.', 'الفعل مفرد.', 'schläft']
+      ['Die Trainerin erklärt die Übung.', 'المدربة تشرح التمرين', 'Die Trainerin erklären die Übung.', 'فعلها مفرد: erklärt لا erklären.', 'erklärt'],
+      ['Die Firma will zehn Leute einstellen.', 'الشركة تريد توظيف عشرة', 'Die Firma will einstellen zehn Leute.', 'المفعول قبل المصدر الأخير.', 'einstellen'],
+      ['Sie wollen morgen über den Plan abstimmen.', 'سيصوتون غدًا على الخطة', 'Sie wollen morgen für den Plan abstimmen.', 'abstimmen مع über.', 'über'],
+      ['Der Streik beginnt am Montag.', 'الإضراب يبدأ يوم الاثنين', 'Der Streik beginnen am Montag.', 'الفعل مفرد: beginnt.', 'beginnt']
     ],
-    'Die Arbeiterin aus der Werkstatt hilft uns. Der Streik beginnt am Montag.',
-    'Die Firma will zehn Leute einstellen.',
-    'Stelle morgen zwei Kolleginnen mit je einem Satz vor.',
-    'غدًا قدّم زميلتين بجملة لكل واحدة.'),
+    'Die Trainerin erklärt die Übung. Der Streik beginnt am Montag.',
+    'Die Personalie liegt beim Betriebsrat.',
+    'Wiederhole morgen die fünf Sätze: Die Trainerin erklärt die Übung. Die Firma will zehn Leute einstellen. Sie wollen morgen über den Plan abstimmen. Der Streik beginnt am Montag. Die Personalie liegt beim Betriebsrat.',
+    'غدًا أعد جمل المهن والعمل الخمس ولاحظ المهن المفردة ومصدر الآخر وحرف التصويت.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'präposition', 'konjugation'],
+      imitateNearMiss: 'erklären',
+      transformHint: 'في جملة الختام اصطلاح إداري: Die Personalie liegt beim Betriebsrat — بيانات الموظف عند ممثّل العمال.',
+      orderSentence: 'Die Trainerin erklärt die Übung.',
+      checkOrderSentence: 'Sie wollen morgen über den Plan abstimmen.',
+      orderAr: 'رتّب جملة المدربة: الفعل erklärt في الموضع الثاني والمفعول die Übung. أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Trainerin هو الموضع الأول وحده.', 'المفعول die Übung. يأتي بعد الفعل.'],
+      writing: {
+        zeigt: 'Berufe und Betrieb in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: مدربة مفردة بـerklärt، وتوظيف بمفعول قبل المصدر einstellen، وتصويت بـüber، وإضراب مفرد beginnt، وبيانات موظف عند Betriebsrat بـliegt.',
+        hinweise: ['المهن المؤنثة المنتهية بـ-in تأخذ فعلًا مفردًا.', 'abstimmen مع über ولا حرف جر غيره.'],
+        prompt: 'اكتب جمل المهن والعمل الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Trainerin erklärt die Übung. · Die Firma will zehn Leute einstellen. · Sie wollen morgen über den Plan abstimmen. · Der Streik beginnt am Montag. · Die Personalie liegt beim Betriebsrat.',
+        points: ['Die Trainerin erklärt die Übung.', 'Die Firma will zehn Leute einstellen.', 'Sie wollen morgen über den Plan abstimmen.', 'Der Streik beginnt am Montag.', 'Die Personalie liegt beim Betriebsrat.'],
+        minWords: 28,
+        frage: 'اكتب جمل المهن والعمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Trainerin erklärt die Übung. Die Firma will zehn Leute einstellen. Sie wollen morgen über den Plan abstimmen. Der Streik beginnt am Montag. Die Personalie liegt beim Betriebsrat.',
+      summaryDe: 'Die Trainerin erklärt die Übung. Die Firma will zehn Leute einstellen. Sie wollen morgen über den Plan abstimmen. Der Streik beginnt am Montag. Die Personalie liegt beim Betriebsrat.',
+      summaryAr: 'المهن والعمل يُرويان بأسماء مهن مفردة الأفعال ومصدر أخير عند التوظيف وحرف ثابت عند التصويت.',
+      summaryRecap: 'مهنة مفردة ومصدر وحرف ثابت',
+      hwHintDe: 'Weibliche Berufe stehen im Singular: Die Trainerin erklärt die Übung, und die Arbeiterin hilft uns. Vor dem Infinitiv steht das Objekt: Sie will ihn als Leiter einsetzen. Die Personalie liegt beim Betriebsrat, und der Streik beginnt am Montag. Die Kandidatin aus Zürich kommt am frühen Morgen ins Büro und spricht mit der Direktorin über den neuen Plan für die Werkstatt. Die Kolleginnen stimmen heute danach über den Vorschlag ab und schreiben die Ergebnisse gemeinsam auf. Danach beginnt die Schulung für die neuen Mitarbeiterinnen, und die Leiterin erklärt ihre Aufgaben Schritt für Schritt bis zum Mittag weiter.'
+    }),
 
   U('b1-u9-l3', 'B1', 'التعليم والدلائل', 'Bildung und Nachschlagen', 'konjugation',
     'Am Ende sprichst du über Lernen, Museen und Reisen',

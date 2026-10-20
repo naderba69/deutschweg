@@ -169,7 +169,7 @@
     /* Unit 9 — amendment B1-L5: the fourth material round carried every entry the corpus
        lacked, so the pool (494) can be named; unit 9 carries 240 of it. */
     ['البيت والأجهزة: Fernbedienung وKraftwerk', 'Haus und Geräte: Fernbedienung und Kraftwerk', 'السكن', 'Fernbedienung liegt · Metall wird recycelt · Kraftwerk liefert · Service ausgezeichnet · Franken einzahlen', 'explicit'],
-    ['المهن والعمل', 'Berufe und Betrieb', 'المهنة', 'Die Arbeiterin hilft und einstellen', 'explicit'],
+    ['المهن والعمل: Trainerin وStreik', 'Berufe und Betrieb: Trainerin und Streik', 'المهنة', 'Trainerin erklärt · zehn Leute einstellen · über abstimmen · Streik beginnt · Personalie liegt', 'explicit'],
     ['التعليم والدلائل', 'Bildung und Nachschlagen', 'التعليم', 'Das Denkmal steht und nachschlagen', 'explicit'],
     ['السلوك والمشاعر', 'Verhalten und Gefühl', 'المشاعر', 'uns amüsieren und weder … noch', 'explicit'],
     ['المرور والسفر', 'Verkehr und Reise', 'المرور', 'anschnallen und verhaften', 'explicit'],

@@ -17084,6 +17084,122 @@ console.log('\n— P3.2 lexical layer —\n');
       checksI1[4].frage.optionen.some(o => o.text === targetsI1[4]) &&
       checksI1[4].frage.optionen.some(o => o.text === 'Ich will einzahlen dreihundert Franken.') &&
       Object.values(checksI1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lessonI2 = win.DW_LESSONS['b1-u9-l2'];
+  const rowI2 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonI2.id);
+  const byWordI2 = Object.fromEntries(lessonI2.wortschatz.map(it => [it.de, it]));
+  const tricksI2 = lessonI2.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsI2 = [
+    'Die Trainerin erklärt die Übung.',
+    'Die Firma will zehn Leute einstellen.',
+    'Sie wollen morgen über den Plan abstimmen.',
+    'Der Streik beginnt am Montag.',
+    'Die Personalie liegt beim Betriebsrat.'
+  ];
+  t('Corpus lesson b1-u9-l2 precisely scopes five profession-and-workplace moves taking a singular Trainerin die erklärt, an object before the final einstellen, fixed abstimmen über, a singular Streik der beginnt and a singular Personalie',
+    lessonI2.title.de === 'Berufe und Betrieb: Trainerin und Streik' &&
+      lessonI2.title.ar === 'المهن والعمل: Trainerin وStreik' &&
+      rowI2.title.de === lessonI2.title.de && rowI2.title.ar === lessonI2.title.ar &&
+      rowI2.theme === 'المهنة' &&
+      rowI2.grammar.item === 'Trainerin erklärt · zehn Leute einstellen · über abstimmen · Streik beginnt · Personalie liegt' &&
+      rowI2.grammar.method === 'explicit' && lessonI2.schritte.length === 36 && lessonI2.wortschatz.length === 40 &&
+      lessonI2.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonI2.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsI2[i]) &&
+      lessonI2.schritte[0].zeigt.de === 'Am Ende sprichst du über Berufe, Firmen und Abstimmungen — in fünf Sätzen' &&
+      lessonI2.schritte.find(s => s.id === 's20').zeigt.de === targetsI2[4]);
+
+  const expectedWordsI2 = [
+    'die Arbeiterin', 'die Architektin', 'die Betriebsrätin', 'die Direktorin', 'die Mitarbeiterin', 'die Politikerin',
+    'der Profi', 'der Profisportler', 'die Profisportlerin', 'die Trainerin', 'die Hörerin', 'die Leserin',
+    'die Lernerin', 'die Zuhörerin', 'die Käuferin', 'die Händlerin', 'der Händler', 'der Käufer',
+    'der Sozialarbeiter', 'die Sozialarbeiterin', 'der Spezialist', 'die Spezialistin', 'der Serviceangestellte', 'der Fachmann',
+    'die Personalie', 'einstellen', 'eintreten', 'einnehmen', 'einsetzen', 'einführen',
+    'entlassen', 'der Export', 'auffordern', 'abstimmen', 'festsetzen', 'folgend',
+    'die Eröffnung', 'die Konkurrenz', 'der Streik', 'streiken'
+  ];
+  const errorsI2 = lessonI2.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u9-l2 reviews all 40 entries and three bounded mnemonics without nine manufactured appendages and repairs the listener glosses from enjoyer to audience',
+    Object.keys(byWordI2).join(' | ') === expectedWordsI2.join(' | ') &&
+      lessonI2.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonI2.wortschatz.every(it => it.ex !== it.err) &&
+      byWordI2['die Trainerin'].err === 'Die Trainerin erklären die Übung.' &&
+      byWordI2['die Personalie'].err === 'Die Personalie liegen beim Betriebsrat.' &&
+      byWordI2['die Hörerin'].ar === 'المستمعة (راديو)' &&
+      byWordI2['die Zuhörerin'].ar === 'المستمعة' &&
+      byWordI2['einstellen'].err === 'Die Firma will einstellen zehn Leute.' &&
+      byWordI2['abstimmen'].err === 'Sie wollen morgen für den Plan abstimmen.' &&
+      !['Die Firma will zehn Leute einstellen auf.', 'Wer eintreten will, unterschreibt zuerst auf.',
+        'Er muss jeden Morgen eine Tablette einnehmen an.', 'Sie will ihn als Leiter einsetzen auf.',
+        'Der Chef will neue Maschinen einführen an.', 'Die Firma muss zwei Leute entlassen auf.',
+        'Sie wollen morgen über den Plan abstimmen auf.', 'Der Betrieb will den Termin festsetzen auf.',
+        'Die Fahrer wollen morgen streiken auf.']
+        .some(x => errorsI2.includes(x)) &&
+      tricksI2.length === 3 && tricksI2[0].wie.includes('Die Trainerin erklärt die Übung.') &&
+      tricksI2[1].wie.includes('Die Firma will zehn Leute einstellen.') &&
+      tricksI2[2].wie.includes('Die Personalie liegt beim Betriebsrat.'));
+
+  const wordClozeAI2 = lessonI2.schritte.find(s => s.id === 's09');
+  const wordClozeBI2 = lessonI2.schritte.find(s => s.id === 's13');
+  const wordClozeCI2 = lessonI2.schritte.find(s => s.id === 's17');
+  const imitateI2 = lessonI2.schritte.find(s => s.id === 's19');
+  const drillI2 = lessonI2.schritte.find(s => s.id === 's23');
+  const orderI2 = lessonI2.schritte.find(s => s.id === 's24');
+  const writingI2 = lessonI2.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingI2 = lessonI2.schritte.find(s => s.phase === 'Produktion');
+  const summaryI2 = lessonI2.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkI2 = lessonI2.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u9-l2 aligns five strict learning clozes, sound erklärt order fields and a 28-word five-target production',
+    wordClozeAI2.frage.zeigt === 'Die ____ verspricht mehr Stellen.' && wordClozeAI2.frage.antworten.join(' ') === 'Politikerin' &&
+      wordClozeAI2.frage.nearMiss.Politikerinnen && !win.DW.renderers.judgeCloze(wordClozeAI2.frage, 'Politikerinnen').ok &&
+      wordClozeBI2.frage.zeigt === 'Die ____ misst die Zeit.' && wordClozeBI2.frage.antworten.join(' ') === 'Spezialistin' &&
+      wordClozeBI2.frage.nearMiss.Spezialistinnen && !win.DW.renderers.judgeCloze(wordClozeBI2.frage, 'Spezialistinnen').ok &&
+      wordClozeCI2.frage.zeigt === 'Die ____ schläft nicht.' && wordClozeCI2.frage.antworten.join(' ') === 'Konkurrenz' &&
+      wordClozeCI2.frage.nearMiss.Konkurrenzen && !win.DW.renderers.judgeCloze(wordClozeCI2.frage, 'Konkurrenzen').ok &&
+      imitateI2.zeigt.de === 'Die Trainerin ____ die Übung.' && imitateI2.frage.antworten.join(' ') === 'erklärt' &&
+      imitateI2.frage.nearMiss['erklären'] && !win.DW.renderers.judgeCloze(imitateI2.frage, 'erklären').ok &&
+      drillI2.frage.zeigt === 'Die Firma will zehn Leute ____.' && drillI2.frage.antworten.join(' ') === 'einstellen' &&
+      drillI2.frage.nearMiss.stellen && !win.DW.renderers.judgeCloze(drillI2.frage, 'stellen').ok &&
+      lessonI2.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderI2.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderI2.frage.correct.join(' ') === targetsI2[0] && orderI2.frage.finite === 'erklärt' && orderI2.frage.verbFirst === false &&
+      orderI2.frage.fields.vorfeld.join(' ') === 'Die Trainerin' && orderI2.frage.fields.lsk.join(' ') === 'erklärt' &&
+      orderI2.frage.fields.mittelfeld.join(' ') === 'die Übung.' &&
+      win.DW.order.score(orderI2.frage, orderI2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderI2.frage, ['Die', 'Trainerin', 'die', 'Übung.', 'erklärt']).credit < 1 &&
+      writingI2.frage.points.join(' | ') === targetsI2.join(' | ') && writingI2.frage.minWords === 28 &&
+      targetsI2.join(' ').split(/\s+/).length === 28 &&
+      targetsI2.every(x => [writingI2.frage.promptDe, summaryI2.zeigt.de, homeworkI2.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsI2.every(x => norm(speakingI2.erklaerung).includes(norm(x))) &&
+      (homeworkI2.hinweise || []).join(' ').includes('Vor dem Infinitiv steht das Objekt'));
+
+  const checksI2 = lessonI2.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckI2 = checksI2.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckI2 = checksI2.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u9-l2 makes 80 percent four of five, independently checking singular Streik beginnt, the einstellen cloze and wollen order, singular Trainerin erklärt and singular Personalie liegt',
+    checksI2.length === 5 && checksI2[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksI2[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksI2.every(s => /^cap\.b1-u9-l2\.s\d+$/.test(s.frage.prereq || '')) && checksI2.every(s => !s.hinweise) &&
+      checksI2.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u9-l2.s07 | cap.b1-u9-l2.s23 | cap.b1-u9-l2.s24 | cap.b1-u9-l2.s10 | cap.b1-u9-l2.s20' &&
+      new Set(checksI2.map(s => s.frage.prereq)).size === 5 &&
+      checksI2[0].frage.optionen.some(o => o.text === targetsI2[3]) &&
+      checksI2[0].frage.optionen.some(o => o.text === 'Der Streik beginnen am Montag.') &&
+      Object.values(checksI2[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckI2.frage.zeigt === 'Die Firma will zehn Leute ____.' &&
+      clozeCheckI2.frage.antworten.join(' ') === 'einstellen' && clozeCheckI2.frage.nearMiss.stellen &&
+      !win.DW.renderers.judgeCloze(clozeCheckI2.frage, 'stellen').ok &&
+      orderCheckI2.frage.correct.join(' ') === targetsI2[2] && orderCheckI2.frage.finite === 'wollen' &&
+      orderCheckI2.frage.fields.vorfeld.join(' ') === 'Sie' && orderCheckI2.frage.fields.lsk.join(' ') === 'wollen' &&
+      orderCheckI2.frage.fields.mittelfeld.join(' ') === 'morgen über den Plan abstimmen.' &&
+      win.DW.order.score(orderCheckI2.frage, orderCheckI2.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckI2.frage, ['Sie', 'morgen', 'wollen', 'über', 'den', 'Plan', 'abstimmen.']).credit < 1 &&
+      checksI2[3].frage.optionen.some(o => o.text === targetsI2[0]) &&
+      checksI2[3].frage.optionen.some(o => o.text === 'Die Trainerin erklären die Übung.') &&
+      Object.values(checksI2[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksI2[4].frage.optionen.some(o => o.text === targetsI2[4]) &&
+      checksI2[4].frage.optionen.some(o => o.text === 'Die Personalie liegen beim Betriebsrat.') &&
+      Object.values(checksI2[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

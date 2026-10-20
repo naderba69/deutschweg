@@ -83,10 +83,10 @@ module.exports = {
       ['der Profisportler', 'die Profisportler', 'الرياضي المحترف', 'Der Profisportler verdient gut.', 'Der Profisportler verdienen gut.', 'الفعل مفرد: verdient.', 'konjugation', 'Profisportler'],
       ['die Profisportlerin', 'die Profisportlerinnen', 'الرياضية المحترفة', 'Die Profisportlerin lebt von Turnieren.', 'Die Profisportlerin leben von Turnieren.', 'الفعل مفرد: lebt.', 'konjugation', 'Profisportlerin'],
       ['die Trainerin', 'die Trainerinnen', 'المدربة', 'Die Trainerin erklärt die Übung.', 'Die Trainerin erklären die Übung.', 'الفعل مفرد: erklärt.', 'konjugation', 'Trainerin'],
-      ['die Hörerin', 'die Hörerinnen', 'المستمتعة (راديو)', 'Eine Hörerin rief in der Sendung an.', 'Eine Hörerin riefen in der Sendung an.', 'الفعل مفرد: rief.', 'konjugation', 'Hörerin'],
+      ['die Hörerin', 'die Hörerinnen', 'المستمعة (راديو)', 'Eine Hörerin rief in der Sendung an.', 'Eine Hörerin riefen in der Sendung an.', 'الفعل مفرد: rief.', 'konjugation', 'Hörerin'],
       ['die Leserin', 'die Leserinnen', 'القارئة', 'Eine Leserin schrieb einen langen Brief.', 'Eine Leserin schrieben einen langen Brief.', 'الفعل مفرد: schrieb.', 'konjugation', 'Leserin'],
       ['die Lernerin', 'die Lernerinnen', 'المتعلمة', 'Die Lernerin wiederholt jeden Abend.', 'Die Lernerin wiederholen jeden Abend.', 'الفعل مفرد: wiederholt.', 'konjugation', 'Lernerin'],
-      ['die Zuhörerin', 'die Zuhörerinnen', 'المستمتعة', 'Die Zuhörerin nickte bei jedem Wort.', 'Die Zuhörerin nickten bei jedem Wort.', 'الفعل مفرد: nickte.', 'konjugation', 'Zuhörerin'],
+      ['die Zuhörerin', 'die Zuhörerinnen', 'المستمعة', 'Die Zuhörerin nickte bei jedem Wort.', 'Die Zuhörerin nickten bei jedem Wort.', 'الفعل مفرد: nickte.', 'konjugation', 'Zuhörerin'],
       ['die Käuferin', 'die Käuferinnen', 'المشترية', 'Die Käuferin prüft jede Seite.', 'Die Käuferin prüfen jede Seite.', 'الفعل مفرد: prüft.', 'konjugation', 'Käuferin'],
       ['die Händlerin', 'die Händlerinnen', 'التاجرة', 'Die Händlerin verkauft Gemüse am Markt.', 'Die Händlerin verkaufen Gemüse am Markt.', 'الفعل مفرد: verkauft.', 'konjugation', 'Händlerin'],
       ['der Händler', 'die Händler', 'التاجر', 'Der Händler legt jeden Preis fest.', 'Der Händler legen jeden Preis fest.', 'الفعل مفرد: legt.', 'konjugation', 'Händler'],
@@ -98,27 +98,44 @@ module.exports = {
       ['der Serviceangestellte', 'die Serviceangestellten', 'عامل الخدمة', 'Der Serviceangestellte trägt die Teller.', 'Der Serviceangestellte tragen die Teller.', 'الفعل مفرد: trägt.', 'konjugation', 'Serviceangestellte'],
       ['der Fachmann', 'die Fachleute', 'الخبير', 'Der Fachmann von der Technik kommt gleich.', 'Der Fachmann von der Technik kommen gleich.', 'الفعل مفرد: kommt.', 'konjugation', 'Fachmann'],
       ['die Personalie', 'die Personalien', 'بيانات الموظف', 'Die Personalie liegt beim Betriebsrat.', 'Die Personalie liegen beim Betriebsrat.', 'الفعل مفرد: liegt.', 'konjugation', 'Personalie'],
-      ['einstellen', '—', 'يوظّف', 'Die Firma will zehn Leute einstellen.', 'Die Firma will zehn Leute einstellen auf.', 'einstellen بلا حرف جر.', 'lexik-kollokation', 'einstellen'],
-      ['eintreten', '—', 'يدخل/ينضم', 'Wer eintreten will, unterschreibt zuerst.', 'Wer eintreten will, unterschreibt zuerst auf.', 'eintreten بلا حرف جر.', 'lexik-kollokation', 'eintreten'],
-      ['einnehmen', '—', 'يتناول (دواءً)', 'Er muss jeden Morgen eine Tablette einnehmen.', 'Er muss jeden Morgen eine Tablette einnehmen an.', 'einnehmen بلا حرف جر.', 'lexik-kollokation', 'einnehmen'],
-      ['einsetzen', '—', 'يعيّن/يوظّف في منصب', 'Sie will ihn als Leiter einsetzen.', 'Sie will ihn als Leiter einsetzen auf.', 'einsetzen بلا حرف جر.', 'lexik-kollokation', 'einsetzen'],
-      ['einführen', '—', 'يقدّم/يستحدث', 'Der Chef will neue Maschinen einführen.', 'Der Chef will neue Maschinen einführen an.', 'einführen بلا حرف جر.', 'lexik-kollokation', 'einführen'],
-      ['entlassen', '—', 'يسرّح', 'Die Firma muss zwei Leute entlassen.', 'Die Firma muss zwei Leute entlassen auf.', 'entlassen بلا حرف جر.', 'lexik-kollokation', 'entlassen'],
+      ['einstellen', '—', 'يوظّف', 'Die Firma will zehn Leute einstellen.', 'Die Firma will einstellen zehn Leute.', 'المفعول قبل المصدر الأخير: zehn Leute einstellen.', 'wortstellung', 'einstellen'],
+      ['eintreten', '—', 'يدخل/ينضم', 'Wer eintreten will, unterschreibt zuerst.', 'Wer eintreten will, er unterschreibt zuerst.', 'بعد الجملة الفرعية يأتي الفعل أولًا بلا تكرار الفاعل: unterschreibt.', 'wortstellung', 'eintreten'],
+      ['einnehmen', '—', 'يتناول (دواءً)', 'Er muss jeden Morgen eine Tablette einnehmen.', 'Er muss jeden Morgen einnehmen eine Tablette.', 'المفعول قبل المصدر الأخير: eine Tablette einnehmen.', 'wortstellung', 'einnehmen'],
+      ['einsetzen', '—', 'يعيّن/يوظّف في منصب', 'Sie will ihn als Leiter einsetzen.', 'Sie will ihm als Leiter einsetzen.', 'einsetzen بمفعول نصب: ihn لا ihm.', 'kasus', 'einsetzen'],
+      ['einführen', '—', 'يقدّم/يستحدث', 'Der Chef will neue Maschinen einführen.', 'Der Chef wollen neue Maschinen einführen.', 'الفاعل مفرد: Der Chef will لا wollen.', 'konjugation', 'einführen'],
+      ['entlassen', '—', 'يسرّح', 'Die Firma muss zwei Leute entlassen.', 'Die Firma müssen zwei Leute entlassen.', 'الفاعل مفرد: Die Firma muss لا müssen.', 'konjugation', 'entlassen'],
       ['der Export', 'die Exporte', 'التصدير', 'Der Export wächst seit dem Frühling.', 'Der Export wachsen seit dem Frühling.', 'الفعل مفرد: wächst.', 'konjugation', 'Export'],
       ['auffordern', '—', 'يدعو/يطالب', 'Die Leiterin will alle auffordern, leise zu sein.', 'Die Leiterin will alle auffordern still.', 'auffordern + zu.', 'präposition', 'auffordern'],
-      ['abstimmen', '—', 'يُصوّت', 'Sie wollen morgen über den Plan abstimmen.', 'Sie wollen morgen über den Plan abstimmen auf.', 'abstimmen + über.', 'präposition', 'abstimmen'],
-      ['festsetzen', '—', 'يحدد', 'Der Betrieb will den Termin festsetzen.', 'Der Betrieb will den Termin festsetzen auf.', 'festsetzen بلا حرف جر.', 'lexik-kollokation', 'festsetzen'],
+      ['abstimmen', '—', 'يُصوّت', 'Sie wollen morgen über den Plan abstimmen.', 'Sie wollen morgen für den Plan abstimmen.', 'abstimmen يثبت مع über: über den Plan لا für.', 'präposition', 'abstimmen'],
+      ['festsetzen', '—', 'يحدد', 'Der Betrieb will den Termin festsetzen.', 'Der Betrieb will dem Termin festsetzen.', 'festsetzen بمفعول نصب: den Termin لا dem Termin.', 'kasus', 'festsetzen'],
       ['folgend', '—', 'التالي', 'Am folgenden Montag beginnt die Schulung.', 'Am folgend Montag beginnt die Schulung.', 'الصفة تُصرَف: folgenden.', 'deklination', 'folgenden'],
       ['die Eröffnung', 'die Eröffnungen', 'الافتتاح', 'Die Eröffnung der Halle war im Mai.', 'Die Eröffnung der Halle waren im Mai.', 'الفعل مفرد: war.', 'konjugation', 'Eröffnung'],
       ['die Konkurrenz', '—', 'المنافسة', 'Die Konkurrenz schläft nicht.', 'Die Konkurrenz schlafen nicht.', 'الفعل مفرد: schläft.', 'konjugation', 'Konkurrenz'],
       ['der Streik', 'die Streiks', 'الإضراب', 'Der Streik beginnt am Montag.', 'Der Streik beginnen am Montag.', 'الفعل مفرد: beginnt.', 'konjugation', 'Streik'],
-      ['streiken', '—', 'يضرب عن العمل', 'Die Fahrer wollen morgen streiken.', 'Die Fahrer wollen morgen streiken auf.', 'streiken بلا حرف جر.', 'lexik-kollokation', 'streiken']
+      ['streiken', '—', 'يضرب عن العمل', 'Die Fahrer wollen morgen streiken.', 'Die Fahrer will morgen streiken.', 'الجمع: Die Fahrer wollen لا will.', 'konjugation', 'streiken']
     ],
     tricks: [
       { trick: 'المهن المؤنثة تنتهي بـ in بفعل مفرد: die Arbeiterin · die Käuferin · die Trainerin', wie: 'Die Arbeiterin aus der Werkstatt hilft uns. · Die Trainerin erklärt die Übung.', warum: 'الطالب يرى «عمال» فيجمع الفعل، والألمانية تريد الفعل مع الاسم الظاهر.', anchor: 'Die Trainerin erklärt' },
       { trick: 'أفعال الإدارة في آخر الجملة: einstellen · entlassen · einsetzen · festsetzen', wie: 'Die Firma will zehn Leute einstellen. · Sie will ihn als Leiter einsetzen.', warum: 'مع الفعل المساعد يبقى المصدر في الآخر بلا فصل — والفصل يقع فقط في الزمن البسيط.', anchor: 'will zehn Leute einstellen' },
       { trick: 'مصطلحات العمل الرسمية: die Personalie · der Betriebsrat · die Konkurrenz · der Streik', wie: 'Die Personalie liegt beim Betriebsrat. · Der Streik beginnt am Montag.', warum: 'هذه كلمات تُسمع في الأخبار ولا تُترجم حرفيًا، فتُحفظ مع سياقها.', anchor: 'Die Personalie liegt' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Politikerin': 'Politikerinnen',
+      'die Spezialistin': 'Spezialistinnen',
+      'die Konkurrenz': 'Konkurrenzen'
+    },
+    clozeItemIndex: 25,
+    clozeNearMiss: 'stellen',
+    checkItemIndex: 9,
+    extraCheck: {
+      right: 'Die Personalie liegt beim Betriebsrat.',
+      bad: 'Die Personalie liegen beim Betriebsrat.',
+      why: 'die Personalie اسم مفرد: liegt لا liegen.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u9-l2.s20',
+      frage: 'أي جملة تجعل بيانات الموظف مفردة الفعل؟'
+    }
   }
 
 };
