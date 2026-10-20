@@ -2372,25 +2372,50 @@ module.exports = [
       hwHintDe: 'Trennbare Verben schließen den Satz: Wir legen die Termine fest. Die Künstlerin stellt im Herbst aus. Erfüllen nimmt ein direktes Objekt: Sie erfüllt jede Bedingung. Übe auch die anderen Sätze laut: Das Orchester spielt im Hof, die Schauspielerin steht auf der Bühne, und in der Galerie hängt ein Bild. Eine Frau spielt Flöte, und die Sportlerin war besonders schnell. So bleiben die neuen Wörter lebendig, weil du sie in ganzen Sätzen hörst, sprichst und mehrmals wiederholst. Schreibe morgen noch drei eigene Sätze über ein Fest in deiner Stadt und über deinen Sprachkurs.'
     }),
 
-  U('b1-u8-l1', 'B1', 'البيت والانتقال', 'Haus und Umzug', 'lexik-kollokation',
-    'Am Ende beschreibst du eine Wohnung und einen Umzug',
-    'في النهاية تصف شقة وانتقالًا.',
+  U('b1-u8-l1', 'B1', 'البيت والانتقال: Couch وEtage', 'Haus und Umzug: Couch und Etage', 'konjugation',
+    'Am Ende beschreibst du eine Wohnung, ihr Quartier und einen Umzug — in fünf Sätzen',
+    'في النهاية تصف شقة وحيّها وانتقالًا في خمس جمل.',
     [
-      ['Die Couch steht im Wohnzimmer.', 'الأثاث مفرد بفعل مفرد', 'die Couch: Singular + steht', 'Die Couch stehen im Wohnzimmer.', 'steht'],
-      ['Die Wohnung liegt in der dritten Etage.', 'الطابق بـ in + داتيف', 'in der Etage, nicht auf', 'Die Wohnung liegt auf der dritten Etage.', 'in der'],
-      ['Der Abwart hilft beim Umzug.', 'الصيغة السويسرية معروفة', 'der Abwart = Hausmeister', 'Der Abwart helfen beim Umzug.', 'hilft'],
-      ['Die Wohnung ist möbliert.', 'الصفة تكفي بلا gemacht', 'möbliert ohne Zusatz', 'Die Wohnung ist möbliert gemacht.', 'möbliert']
+      ['Die Couch steht im Wohnzimmer.', 'تصف مكان الأريكة', 'die Couch اسم مؤنث مفرد فيأخذ فعلًا مفردًا: steht لا stehen', 'Die Couch stehen im Wohnzimmer.', 'المفرد: steht'],
+      ['Die Wohnung liegt in der dritten Etage.', 'تقول في أي طابق تقع الشقة', 'الطابق موضع ثابت يسأل Wo فيأخذ in مع الداتيف: in der dritten Etage', 'Die Wohnung liegt in die dritte Etage.', 'داتيف الموضع: in der'],
+      ['Der Abwart hilft beim Umzug.', 'تقول إن قائم البناية يساعد عند الانتقال', 'der Abwart هو الاسم السويسري لـHausmeister، واسم مفرد بفعل مفرد: hilft', 'Der Abwart helfen beim Umzug.', 'المفرد: hilft'],
+      ['Die Wohnung ist möbliert.', 'تقول إن الشقة مفروشة', 'الصفة الخبرية بعد ist بلا نهاية: möbliert', 'Die Wohnung ist möblierte.', 'بلا نهاية: möbliert']
     ],
     [
-      ['Die Fläche ist klein, aber hell.', 'المساحة صغيرة لكن مضيئة', 'Die Fläche sind klein, aber hell.', 'الفعل مفرد.', 'ist'],
-      ['Die Mülltonne steht hinter dem Haus.', 'الحاوية خلف البيت', 'Die Mülltonne stehen hinter dem Haus.', 'الفعل مفرد.', 'steht'],
-      ['Der Wohnsitz steht im Vertrag.', 'محل الإقامة في العقد', 'Der Wohnsitz stehen im Vertrag.', 'الفعل مفرد.', 'steht'],
-      ['Das Ehepaar wohnt über uns.', 'الزوجان يسكنان فوقنا', 'Das Ehepaar wohnen über uns.', 'das Ehepaar مفرد.', 'wohnt']
+      ['Die Couch steht im Wohnzimmer.', 'الأريكة في غرفة الجلوس', 'Die Couch stehen im Wohnzimmer.', 'الفعل مفرد: steht.', 'steht'],
+      ['Die Wohnung liegt in der dritten Etage.', 'الشقة في الطابق الثالث', 'Die Wohnung liegt in die dritte Etage.', 'موضع ثابت بالداتيف: in der.', 'liegt'],
+      ['Der Abwart hilft beim Umzug.', 'القائم على البناية يساعد عند الانتقال', 'Der Abwart helfen beim Umzug.', 'الفعل مفرد: hilft.', 'hilft'],
+      ['Die Wohnung ist möbliert.', 'الشقة مفروشة', 'Die Wohnung ist möblierte.', 'الصفة خبرًا بلا نهاية: möbliert.', 'möbliert']
     ],
     'Die Couch steht im Wohnzimmer. Die Wohnung liegt in der dritten Etage.',
-    'Die Wohnung ist möbliert.',
-    'Beschreibe morgen deine Wohnung in fünf Sätzen.',
-    'غدًا صف شقتك في خمس جمل.'),
+    'Das Ehepaar wohnt über uns.',
+    'Wiederhole morgen die fünf Sätze: Die Couch steht im Wohnzimmer. Die Wohnung liegt in der dritten Etage. Der Abwart hilft beim Umzug. Die Wohnung ist möbliert. Das Ehepaar wohnt über uns.',
+    'غدًا أعد جمل البيت والانتقال الخمس ولاحظ المفرد وداتيف الموضع.',
+    {
+      factFamilies: ['konjugation', 'kasus', 'konjugation', 'deklination'],
+      imitateNearMiss: 'stehen',
+      transformHint: 'في جملة الختام زوجان يسكنان فوقكم: Das Ehepaar wohnt über uns — اسم جامع مفرد اللفظ مع wohnt.',
+      orderSentence: 'Die Couch steht im Wohnzimmer.',
+      checkOrderSentence: 'Die Wohnung liegt in der dritten Etage.',
+      orderAr: 'رتّب جملة الأريكة: الفعل المصرف steht في الموضع الثاني وعبارة المكان بعده.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Couch هو الموضع الأول وحده.', 'عبارة المكان im Wohnzimmer. تغلق الجملة بعد الفعل.'],
+      writing: {
+        zeigt: 'Haus und Umzug in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: أريكة بـsteht في غرفة الجلوس، وشقة في الطابق الثالث بـin der، وقائم بناية سويسري بـhilft عند الانتقال، وشقة مفروشة بصفة بلا نهاية، وزوجان فوقكم بـwohnt.',
+        hinweise: ['الأسماء المفردة — ولو جامعة المعنى — تأخذ فعلًا مفردًا.', 'الموضع الثابت (Wo؟) يطلب الداتيف.'],
+        prompt: 'اكتب جمل البيت والانتقال الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Couch steht im Wohnzimmer. · Die Wohnung liegt in der dritten Etage. · Der Abwart hilft beim Umzug. · Die Wohnung ist möbliert. · Das Ehepaar wohnt über uns.',
+        points: ['Die Couch steht im Wohnzimmer.', 'Die Wohnung liegt in der dritten Etage.', 'Der Abwart hilft beim Umzug.', 'Die Wohnung ist möbliert.', 'Das Ehepaar wohnt über uns.'],
+        minWords: 26,
+        frage: 'اكتب جمل البيت والانتقال الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Couch steht im Wohnzimmer. Die Wohnung liegt in der dritten Etage. Der Abwart hilft beim Umzug. Die Wohnung ist möbliert. Das Ehepaar wohnt über uns.',
+      summaryDe: 'Die Couch steht im Wohnzimmer. Die Wohnung liegt in der dritten Etage. Der Abwart hilft beim Umzug. Die Wohnung ist möbliert. Das Ehepaar wohnt über uns.',
+      summaryAr: 'البيت يحتاج أثاثًا مفرد اللفظ بفعل مفرد، وموضعًا ثابتًا بالداتيف في الطابق، وصفة خبرية بلا نهاية.',
+      summaryRecap: 'أثاث مفرد وموضع داتيف',
+      hwHintDe: 'Namen für Zimmer und Möbel sind hier Singular: Die Couch steht im Wohnzimmer, der Spiegel hängt im Bad, und das Ehepaar wohnt über uns. Sage den Ort mit Wo und Dativ: Die Wohnung liegt in der dritten Etage. Beim Umzug hilft der Abwart, und die Mülltonne steht hinter dem Haus. Schreibe morgen fünf Sätze über deine Wohnung und dein Quartier.'
+    }),
 
   U('b1-u8-l2', 'B1', 'المطبخ والسوق', 'Küche und Markt', 'lexik-kollokation',
     'Am Ende kaufst du auf dem Markt ein und kochst ein Menü',

@@ -7,31 +7,31 @@ module.exports = {
 
   'b1-u8-l1': {
     items: [
-      ['die Aufnahme', 'die Aufnahmen', 'الاستقبال/التسجيل', 'Die Aufnahme im Heim kostet Geld.', 'Die Aufnahme im Heim kostet für Geld.', 'kosten بلا حرف جر.', 'präposition', 'Aufnahme'],
+      ['die Aufnahme', 'die Aufnahmen', 'الاستقبال/التسجيل', 'Die Aufnahme im Heim kostet Geld.', 'Die Aufnahme im Heim kosten Geld.', 'الفعل مفرد: kostet.', 'konjugation', 'Aufnahme'],
       ['das Altersheim', 'die Altersheime', 'دار المسنّين', 'Sie lebt seit einem Jahr im Altersheim.', 'Sie lebt seit einem Jahr in das Altersheim.', 'في: in + داتيف (im).', 'kasus', 'Altersheim'],
       ['die Betreuung', 'die Betreuungen', 'الرعاية', 'Die Betreuung ist gut organisiert.', 'Die Betreuung sind gut organisiert.', 'الفعل مفرد: ist.', 'konjugation', 'Betreuung'],
       ['die Betreuerin', 'die Betreuerinnen', 'الراعية/المشرفة', 'Die Betreuerin kommt jeden Morgen.', 'Die Betreuerin kommen jeden Morgen.', 'الفعل مفرد: kommt.', 'konjugation', 'Betreuerin'],
       ['der Bewohner', 'die Bewohner', 'الساكن', 'Der Bewohner aus dem ersten Stock grüßt.', 'Der Bewohner aus dem ersten Stock grüßen.', 'الفعل مفرد: grüßt.', 'konjugation', 'Bewohner'],
-      ['die Bürgerin', 'die Bürgerinnen', 'المواطنة', 'Jede Bürgerin hat gleiche Rechte.', 'Jede Bürgerin hat gleiche Rechte auf.', 'لا حرف جر زائد.', 'präposition', 'Bürgerin'],
+      ['die Bürgerin', 'die Bürgerinnen', 'المواطنة', 'Jede Bürgerin hat gleiche Rechte.', 'Jeder Bürgerin hat gleiche Rechte.', 'فاعل مؤنث مفرد: Jede لا Jeder.', 'kasus', 'Bürgerin'],
       ['die Couch', 'die Couches', 'الأريكة', 'Die Couch steht im Wohnzimmer.', 'Die Couch stehen im Wohnzimmer.', 'الفعل مفرد: steht.', 'konjugation', 'Couch'],
-      ['dekorieren', '—', 'يزيّن', 'Wir dekorieren den Saal mit Blumen.', 'Wir dekorieren auf den Saal mit Blumen.', 'dekorieren بلا حرف جر.', 'präposition', 'dekorieren'],
+      ['dekorieren', '—', 'يزيّن', 'Wir dekorieren den Saal mit Blumen.', 'Wir dekorieren dem Saal mit Blumen.', 'مفعول مباشر مذكّر: den Saal لا dem.', 'kasus', 'dekorieren'],
       ['die Einrichtung', 'die Einrichtungen', 'التجهيز/الأثاث', 'Die Einrichtung ist noch nicht fertig.', 'Die Einrichtung sind noch nicht fertig.', 'الفعل مفرد: ist.', 'konjugation', 'Einrichtung'],
-      ['die Etage', 'die Etagen', 'الطابق', 'Die Wohnung liegt in der dritten Etage.', 'Die Wohnung liegt auf der dritten Etage.', 'in der Etage لا auf.', 'präposition', 'Etage'],
+      ['die Etage', 'die Etagen', 'الطابق', 'Die Wohnung liegt in der dritten Etage.', 'Die Wohnung liegt in die dritte Etage.', 'موضع ثابت (Wo؟): in der dritten لا in die.', 'kasus', 'Etage'],
       ['die Fläche', 'die Flächen', 'المساحة', 'Die Fläche ist klein, aber hell.', 'Die Fläche sind klein, aber hell.', 'الفعل مفرد: ist.', 'konjugation', 'Fläche'],
       ['der Fauteuil', 'die Fauteuils', 'الكرسي المريح (سويسرا)', 'Der Fauteuil steht neben der Couch.', 'Der Fauteuil stehen neben der Couch.', 'الفعل مفرد: steht.', 'konjugation', 'Fauteuil'],
       ['die Garderobe', 'die Garderoben', 'الخزانة/المعاطف', 'Die Garderobe im Flur ist zu klein.', 'Die Garderobe im Flur sind zu klein.', 'الفعل مفرد: ist.', 'konjugation', 'Garderobe'],
       ['das Ehepaar', 'die Ehepaare', 'الزوجان', 'Das Ehepaar wohnt über uns.', 'Das Ehepaar wohnen über uns.', 'das Ehepaar مفرد.', 'konjugation', 'Ehepaar'],
-      ['die Erhöhung', 'die Erhöhungen', 'الزيادة', 'Die Erhöhung der Miete war geplant.', 'Die Erhöhung von der Miete war geplant.', 'الإضافة: der Miete.', 'kasus', 'Erhöhung'],
+      ['die Erhöhung', 'die Erhöhungen', 'الزيادة', 'Die Erhöhung der Miete war geplant.', 'Die Erhöhung von die Miete war geplant.', 'von مع الداتيف: von der لا von die.', 'kasus', 'Erhöhung'],
       ['die Entfernung', 'die Entfernungen', 'المسافة', 'Die Entfernung zum Zentrum ist kurz.', 'Die Entfernung zum Zentrum sind kurz.', 'الفعل مفرد: ist.', 'konjugation', 'Entfernung'],
       ['die Vermietung', 'die Vermietungen', 'التأجير', 'Die Vermietung läuft über eine Agentur.', 'Die Vermietung laufen über eine Agentur.', 'الفعل مفرد: läuft.', 'konjugation', 'Vermietung'],
       ['der Wohnsitz', 'die Wohnsitze', 'محل الإقامة', 'Der Wohnsitz steht im Vertrag.', 'Der Wohnsitz stehen im Vertrag.', 'الفعل مفرد: steht.', 'konjugation', 'Wohnsitz'],
       ['der Zivilstand', 'die Zivilstände', 'الحالة المدنية (سويسرا)', 'Der Zivilstand ist im Formular anzugeben.', 'Der Zivilstand ist im Formular angeben.', 'المجهول مع zu: anzugeben.', 'konjugation', 'Zivilstand'],
       ['die Mieterin', 'die Mieterinnen', 'المستأجرة', 'Die Mieterin zahlt pünktlich.', 'Die Mieterin zahlen pünktlich.', 'الفعل مفرد: zahlt.', 'konjugation', 'Mieterin'],
-      ['möbliert', '—', 'مفروش', 'Die Wohnung ist möbliert.', 'Die Wohnung ist möbliert gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'möbliert'],
+      ['möbliert', '—', 'مفروش', 'Die Wohnung ist möbliert.', 'Die Wohnung ist möblierte.', 'الصفة خبرًا بلا نهاية: möbliert لا möblierte.', 'deklination', 'möbliert'],
       ['der Hausmeister', 'die Hausmeister', 'مدير البناية', 'Der Hausmeister repariert den Aufzug.', 'Der Hausmeister reparieren den Aufzug.', 'الفعل مفرد: repariert.', 'konjugation', 'Hausmeister'],
       ['die Hausmeisterin', 'die Hausmeisterinnen', 'مديرة البناية', 'Die Hausmeisterin zeigt uns den Keller.', 'Die Hausmeisterin zeigen uns den Keller.', 'الفعل مفرد: zeigt.', 'konjugation', 'Hausmeisterin'],
       ['der Abwart', 'die Abwarte', 'القائم على البناية (سويسرا)', 'Der Abwart hilft beim Umzug.', 'Der Abwart helfen beim Umzug.', 'الفعل مفرد: hilft.', 'konjugation', 'Abwart'],
-      ['ordentlich', '—', 'مرتّب', 'Die Küche ist ordentlich.', 'Die Küche ist ordentlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'ordentlich'],
+      ['ordentlich', '—', 'مرتّب', 'Die Küche ist ordentlich.', 'Die Küche ist ordentliche.', 'الصفة خبرًا بلا نهاية: ordentlich لا ordentliche.', 'deklination', 'ordentlich'],
       ['das Quartier', 'die Quartiere', 'الحيّ (سويسرا)', 'Unser Quartier ist ruhig.', 'Unser Quartier sind ruhig.', 'الفعل مفرد: ist.', 'konjugation', 'Quartier'],
       ['der Vorort', 'die Vororte', 'الضواحي', 'Der Vorort hat eine gute Verbindung.', 'Der Vorort haben eine gute Verbindung.', 'الفعل مفرد: hat.', 'konjugation', 'Vorort'],
       ['die Zone', 'die Zonen', 'المنطقة', 'Die Zone um die Schule ist ruhig.', 'Die Zone um die Schule sind ruhig.', 'الفعل مفرد: ist.', 'konjugation', 'Zone'],
@@ -40,19 +40,36 @@ module.exports = {
       ['der Sack', 'die Säcke', 'الكيس', 'Den Rest trage ich in einem Sack weg.', 'Den Rest trage ich in ein Sack weg.', 'داتيف: einem Sack.', 'kasus', 'Sack'],
       ['die Mülltonne', 'die Mülltonnen', 'حاوية النفايات', 'Die Mülltonne steht hinter dem Haus.', 'Die Mülltonne stehen hinter dem Haus.', 'الفعل مفرد: steht.', 'konjugation', 'Mülltonne'],
       ['der Dreck', '—', 'الوسخ', 'Der Dreck bleibt in der Ecke.', 'Der Dreck bleiben in der Ecke.', 'الفعل مفرد: bleibt.', 'konjugation', 'Dreck'],
-      ['die Dose', 'die Dosen', 'العلبة المعدنية', 'Aus der Dose nehme ich Teller.', 'Aus der Dose nehme ich Teller auf.', 'لا حرف جر زائد.', 'präposition', 'Dose'],
+      ['die Dose', 'die Dosen', 'العلبة المعدنية', 'Aus der Dose nehme ich Teller.', 'Aus die Dose nehme ich Teller.', 'aus مع الداتيف: aus der لا aus die.', 'kasus', 'Dose'],
       ['die Büchse', 'die Büchsen', 'العلبة', 'Zwei Büchsen stehen im Regal.', 'Zwei Büchsen steht im Regal.', 'الجمع: stehen.', 'konjugation', 'Büchsen'],
-      ['das Waschmittel', 'die Waschmittel', 'منظّف الغسيل', 'Beim Putzen brauche ich Waschmittel.', 'Beim Putzen brauche ich auf Waschmittel.', 'brauchen بلا حرف جر.', 'präposition', 'Waschmittel'],
+      ['das Waschmittel', 'die Waschmittel', 'منظّف الغسيل', 'Beim Putzen brauche ich Waschmittel.', 'Beim Putzen ich brauche Waschmittel.', 'بعد عبارة الجار الفعل ثانيًا: brauche ich.', 'wortstellung', 'Waschmittel'],
       ['die Zahncreme', 'die Zahncremes', 'معجون الأسنان', 'Die Zahncreme ist im Kasten.', 'Die Zahncreme sind im Kasten.', 'الفعل مفرد: ist.', 'konjugation', 'Zahncreme'],
-      ['die Nadel', 'die Nadeln', 'الإبرة', 'Für den Vorhang brauche ich eine Nadel.', 'Für den Vorhang brauche ich auf eine Nadel.', 'brauchen بلا حرف جر.', 'präposition', 'Nadel'],
+      ['die Nadel', 'die Nadeln', 'الإبرة', 'Für den Vorhang brauche ich eine Nadel.', 'Für dem Vorhang brauche ich eine Nadel.', 'für مع النصب: für den لا für dem.', 'kasus', 'Nadel'],
       ['das Kissen', 'die Kissen', 'الوسادة', 'Das Kissen liegt auf dem Stuhl.', 'Das Kissen liegt auf den Stuhl.', 'الموضع: auf dem Stuhl.', 'kasus', 'Kissen'],
-      ['eckig', '—', 'ذو زوايا', 'Die Kommode ist eckig.', 'Die Kommode ist eckig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'eckig']
+      ['eckig', '—', 'ذو زوايا', 'Die Kommode ist eckig.', 'Die Kommode ist eckige.', 'الصفة خبرًا بلا نهاية: eckig لا eckige.', 'deklination', 'eckig']
     ],
     tricks: [
       { trick: 'أثاث البيت مفرد بفعل مفرد: die Couch steht · die Vase steht · der Spiegel hängt', wie: 'Die Couch steht im Wohnzimmer. · Der Spiegel hängt im Bad.', warum: 'العربية تقول «الكنب موضوع» والفعل يوافق المعنى، والألمانية توافق الاسم مفردًا.', anchor: 'Die Couch steht' },
       { trick: 'المباني والأحياء بأسماء مؤنثة: die Etage · die Fläche · die Zone · die Garderobe', wie: 'Die Wohnung liegt in der dritten Etage. · Die Zone ist ruhig.', warum: 'جنس الاسم لا يُشتق من المعنى، فيُحفظ مع جمله لا في قائمة.', anchor: 'in der dritten Etage' },
       { trick: 'أسماء سويسرية في السكن: der Abwart · das Quartier · der Fauteuil', wie: 'Der Abwart hilft beim Umzug. · Unser Quartier ist ruhig.', warum: 'الامتحان يذكر الصيغة السويسرية أحيانًا، والطالب يظنها خطأ ألمانيًا فيتجنبها.', anchor: 'der Abwart' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Bürgerin': 'Bürgerinnen',
+      'der Hausmeister': 'Hausmeisters',
+      'die Nadel': 'Nadeln'
+    },
+    clozeItemIndex: 6,
+    clozeNearMiss: 'Couches',
+    checkItemIndex: 28,
+    extraCheck: {
+      right: 'Das Ehepaar wohnt über uns.',
+      bad: 'Das Ehepaar wohnen über uns.',
+      why: 'das Ehepaar اسم مفرد: wohnt لا wohnen.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u8-l1.s20',
+      frage: 'أي جملة يطابق فعلُها الزوجَين باسمٍ مفرد؟'
+    }
   },
 
   'b1-u8-l2': {

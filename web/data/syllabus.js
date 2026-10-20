@@ -160,7 +160,7 @@
     ['الثقافة واللغة: Orchester وTermine', 'Kultur und Sprache: Orchester und Termine', 'الثقافة', 'Orchester spielt · legen fest · erfüllt · stellt aus · Kursleiterin kommt', 'explicit'],
     /* Unit 8 — amendment B1-L4: the third material round grew the promotion pool to
        471 entries, so unit 8 carries the next 240 (six lessons of forty). */
-    ['البيت والانتقال', 'Haus und Umzug', 'السكن', 'Die Couch steht und in der Etage', 'explicit'],
+    ['البيت والانتقال: Couch وEtage', 'Haus und Umzug: Couch und Etage', 'السكن', 'Couch steht · in der Etage · Abwart hilft · ist möbliert · Ehepaar wohnt', 'explicit'],
     ['المطبخ والسوق', 'Küche und Markt', 'الطعام', 'Paradeiser und Der Rahm ist', 'explicit'],
     ['الجسد والنفس', 'Körper und Seele', 'الصحة', 'wütend auf und entspanne ich mich', 'explicit'],
     ['العمل والمكتب', 'Arbeit und Büro', 'المهنة', 'schreibe … auf und konzentrieren auf', 'explicit'],

@@ -16260,6 +16260,122 @@ console.log('\n— P3.2 lexical layer —\n');
       checksG6[4].frage.optionen.some(o => o.text === targetsG6[4]) &&
       checksG6[4].frage.optionen.some(o => o.text === 'Die Kursleiterin kommen aus Wien.') &&
       Object.values(checksG6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonH1 = win.DW_LESSONS['b1-u8-l1'];
+  const rowH1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonH1.id);
+  const byWordH1 = Object.fromEntries(lessonH1.wortschatz.map(it => [it.de, it]));
+  const tricksH1 = lessonH1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsH1 = [
+    'Die Couch steht im Wohnzimmer.',
+    'Die Wohnung liegt in der dritten Etage.',
+    'Der Abwart hilft beim Umzug.',
+    'Die Wohnung ist möbliert.',
+    'Das Ehepaar wohnt über uns.'
+  ];
+  t('Corpus lesson b1-u8-l1 precisely scopes five house-and-moving moves taking a feminine couch with steht, a static floor with in der Etage, the Swiss Abwart with hilft, a bare predicative möbliert and the collective Ehepaar with wohnt',
+    lessonH1.title.de === 'Haus und Umzug: Couch und Etage' &&
+      lessonH1.title.ar === 'البيت والانتقال: Couch وEtage' &&
+      rowH1.title.de === lessonH1.title.de && rowH1.title.ar === lessonH1.title.ar &&
+      rowH1.theme === 'السكن' &&
+      rowH1.grammar.item === 'Couch steht · in der Etage · Abwart hilft · ist möbliert · Ehepaar wohnt' &&
+      rowH1.grammar.method === 'explicit' && lessonH1.schritte.length === 36 && lessonH1.wortschatz.length === 40 &&
+      lessonH1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonH1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsH1[i]) &&
+      lessonH1.schritte[0].zeigt.de === 'Am Ende beschreibst du eine Wohnung, ihr Quartier und einen Umzug — in fünf Sätzen' &&
+      lessonH1.schritte.find(s => s.id === 's20').zeigt.de === targetsH1[4]);
+
+  const expectedWordsH1 = [
+    'die Aufnahme', 'das Altersheim', 'die Betreuung', 'die Betreuerin', 'der Bewohner', 'die Bürgerin',
+    'die Couch', 'dekorieren', 'die Einrichtung', 'die Etage', 'die Fläche', 'der Fauteuil',
+    'die Garderobe', 'das Ehepaar', 'die Erhöhung', 'die Entfernung', 'die Vermietung', 'der Wohnsitz',
+    'der Zivilstand', 'die Mieterin', 'möbliert', 'der Hausmeister', 'die Hausmeisterin', 'der Abwart',
+    'ordentlich', 'das Quartier', 'der Vorort', 'die Zone', 'die Vase', 'der Spiegel',
+    'der Sack', 'die Mülltonne', 'der Dreck', 'die Dose', 'die Büchse', 'das Waschmittel',
+    'die Zahncreme', 'die Nadel', 'das Kissen', 'eckig'
+  ];
+  const errorsH1 = lessonH1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u8-l1 reviews all 40 entries and three bounded mnemonics without eleven manufactured appendages and without branding von-plus-dative genitive or auf der Etage as errors',
+    Object.keys(byWordH1).join(' | ') === expectedWordsH1.join(' | ') &&
+      lessonH1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonH1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordH1['die Etage'].err === 'Die Wohnung liegt in die dritte Etage.' &&
+      byWordH1['die Erhöhung'].err === 'Die Erhöhung von die Miete war geplant.' &&
+      byWordH1['die Vase'].err === 'Ich setze die Vase auf dem Tisch.' &&
+      byWordH1['das Altersheim'].err === 'Sie lebt seit einem Jahr in das Altersheim.' &&
+      byWordH1['der Zivilstand'].err === 'Der Zivilstand ist im Formular angeben.' &&
+      !['Die Aufnahme im Heim kostet für Geld.', 'Jede Bürgerin hat gleiche Rechte auf.',
+        'Wir dekorieren auf den Saal mit Blumen.', 'Die Wohnung liegt auf der dritten Etage.',
+        'Die Erhöhung von der Miete war geplant.', 'Die Wohnung ist möbliert gemacht.',
+        'Die Küche ist ordentlich gemacht.', 'Aus der Dose nehme ich Teller auf.',
+        'Beim Putzen brauche ich auf Waschmittel.', 'Für den Vorhang brauche ich auf eine Nadel.',
+        'Die Kommode ist eckig gemacht.']
+        .some(x => errorsH1.includes(x)) &&
+      tricksH1.length === 3 && tricksH1[0].wie.includes('Die Couch steht im Wohnzimmer.') &&
+      tricksH1[1].wie.includes('Die Wohnung liegt in der dritten Etage.') &&
+      tricksH1[2].wie.includes('Der Abwart hilft beim Umzug.'));
+
+  const wordClozeAH1 = lessonH1.schritte.find(s => s.id === 's09');
+  const wordClozeBH1 = lessonH1.schritte.find(s => s.id === 's13');
+  const wordClozeCH1 = lessonH1.schritte.find(s => s.id === 's17');
+  const imitateH1 = lessonH1.schritte.find(s => s.id === 's19');
+  const drillH1 = lessonH1.schritte.find(s => s.id === 's23');
+  const orderH1 = lessonH1.schritte.find(s => s.id === 's24');
+  const writingH1 = lessonH1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingH1 = lessonH1.schritte.find(s => s.phase === 'Produktion');
+  const summaryH1 = lessonH1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkH1 = lessonH1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u8-l1 aligns five strict learning clozes, sound steht order fields and a 26-word five-target production',
+    wordClozeAH1.frage.zeigt === 'Jede ____ hat gleiche Rechte.' && wordClozeAH1.frage.antworten.join(' ') === 'Bürgerin' &&
+      wordClozeAH1.frage.nearMiss['Bürgerinnen'] && !win.DW.renderers.judgeCloze(wordClozeAH1.frage, 'Bürgerinnen').ok &&
+      wordClozeBH1.frage.zeigt === 'Der ____ repariert den Aufzug.' && wordClozeBH1.frage.antworten.join(' ') === 'Hausmeister' &&
+      wordClozeBH1.frage.nearMiss.Hausmeisters && !win.DW.renderers.judgeCloze(wordClozeBH1.frage, 'Hausmeisters').ok &&
+      wordClozeCH1.frage.zeigt === 'Für den Vorhang brauche ich eine ____.' && wordClozeCH1.frage.antworten.join(' ') === 'Nadel' &&
+      wordClozeCH1.frage.nearMiss.Nadeln && !win.DW.renderers.judgeCloze(wordClozeCH1.frage, 'Nadeln').ok &&
+      imitateH1.zeigt.de === 'Die Couch ____ im Wohnzimmer.' && imitateH1.frage.antworten.join(' ') === 'steht' &&
+      imitateH1.frage.nearMiss.stehen && !win.DW.renderers.judgeCloze(imitateH1.frage, 'stehen').ok &&
+      drillH1.frage.zeigt === 'Die ____ steht im Wohnzimmer.' && drillH1.frage.antworten.join(' ') === 'Couch' &&
+      drillH1.frage.nearMiss.Couches && !win.DW.renderers.judgeCloze(drillH1.frage, 'Couches').ok &&
+      lessonH1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderH1.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderH1.frage.correct.join(' ') === targetsH1[0] && orderH1.frage.finite === 'steht' && orderH1.frage.verbFirst === false &&
+      orderH1.frage.fields.vorfeld.join(' ') === 'Die Couch' && orderH1.frage.fields.lsk.join(' ') === 'steht' &&
+      orderH1.frage.fields.mittelfeld.join(' ') === 'im Wohnzimmer.' &&
+      win.DW.order.score(orderH1.frage, orderH1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderH1.frage, ['Die', 'steht', 'Couch', 'im', 'Wohnzimmer.']).credit < 1 &&
+      writingH1.frage.points.join(' | ') === targetsH1.join(' | ') && writingH1.frage.minWords === 26 &&
+      targetsH1.join(' ').split(/\s+/).length === 26 &&
+      targetsH1.every(x => [writingH1.frage.promptDe, summaryH1.zeigt.de, homeworkH1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsH1.every(x => norm(speakingH1.erklaerung).includes(norm(x))) &&
+      (homeworkH1.hinweise || []).join(' ').includes('Sage den Ort mit Wo und Dativ'));
+
+  const checksH1 = lessonH1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckH1 = checksH1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckH1 = checksH1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u8-l1 makes 80 percent four of five, independently checking the bare predicative möbliert, the Couch cloze and liegt order, directional auf den Tisch and singular Ehepaar wohnt',
+    checksH1.length === 5 && checksH1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksH1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksH1.every(s => /^cap\.b1-u8-l1\.s\d+$/.test(s.frage.prereq || '')) && checksH1.every(s => !s.hinweise) &&
+      checksH1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u8-l1.s07 | cap.b1-u8-l1.s23 | cap.b1-u8-l1.s24 | cap.b1-u8-l1.s15 | cap.b1-u8-l1.s20' &&
+      new Set(checksH1.map(s => s.frage.prereq)).size === 5 &&
+      checksH1[0].frage.optionen.some(o => o.text === targetsH1[3]) &&
+      checksH1[0].frage.optionen.some(o => o.text === 'Die Wohnung ist möblierte.') &&
+      Object.values(checksH1[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheckH1.frage.zeigt === 'Die ____ steht im Wohnzimmer.' &&
+      clozeCheckH1.frage.antworten.join(' ') === 'Couch' && clozeCheckH1.frage.nearMiss.Couches &&
+      !win.DW.renderers.judgeCloze(clozeCheckH1.frage, 'Couches').ok &&
+      orderCheckH1.frage.correct.join(' ') === targetsH1[1] && orderCheckH1.frage.finite === 'liegt' &&
+      orderCheckH1.frage.fields.vorfeld.join(' ') === 'Die Wohnung' && orderCheckH1.frage.fields.lsk.join(' ') === 'liegt' &&
+      orderCheckH1.frage.fields.mittelfeld.join(' ') === 'in der dritten Etage.' &&
+      win.DW.order.score(orderCheckH1.frage, orderCheckH1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckH1.frage, ['Die', 'liegt', 'Wohnung', 'in', 'der', 'dritten', 'Etage.']).credit < 1 &&
+      checksH1[3].frage.optionen.some(o => o.text === 'Ich setze die Vase auf den Tisch.') &&
+      checksH1[3].frage.optionen.some(o => o.text === 'Ich setze die Vase auf dem Tisch.') &&
+      Object.values(checksH1[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksH1[4].frage.optionen.some(o => o.text === targetsH1[4]) &&
+      checksH1[4].frage.optionen.some(o => o.text === 'Das Ehepaar wohnen über uns.') &&
+      Object.values(checksH1[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
