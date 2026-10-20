@@ -16493,6 +16493,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksH2[4].frage.optionen.some(o => o.text === targetsH2[4]) &&
       checksH2[4].frage.optionen.some(o => o.text === 'Im Kaffeehaus wir sitzen lange.') &&
       Object.values(checksH2[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lessonH3 = win.DW_LESSONS['b1-u8-l3'];
+  const rowH3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonH3.id);
+  const byWordH3 = Object.fromEntries(lessonH3.wortschatz.map(it => [it.de, it]));
+  const tricksH3 = lessonH3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsH3 = [
+    'Ich war wütend auf mich selbst.',
+    'Abends entspanne ich mich im Salon.',
+    'Jeder ist irgendwann abhängig von Hilfe.',
+    'Das Unglück war im Fernsehen.',
+    'Danke für dein Verständnis.'
+  ];
+  t('Corpus lesson b1-u8-l3 precisely scopes five body-and-soul moves taking fixed wütend auf, a reflexive sich entspannen, fixed abhängig von, a singular Unglück with war and a polite Danke für dein',
+    lessonH3.title.de === 'Körper und Seele: wütend und entspannt' &&
+      lessonH3.title.ar === 'الجسد والنفس: wütend وentspannt' &&
+      rowH3.title.de === lessonH3.title.de && rowH3.title.ar === lessonH3.title.ar &&
+      rowH3.theme === 'الصحة' &&
+      rowH3.grammar.item === 'wütend auf · entspanne mich · abhängig von · Unglück war · Danke für dein' &&
+      rowH3.grammar.method === 'explicit' && lessonH3.schritte.length === 36 && lessonH3.wortschatz.length === 40 &&
+      lessonH3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonH3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsH3[i]) &&
+      lessonH3.schritte[0].zeigt.de === 'Am Ende sprichst du über Gesundheit, Gefühle und Hilfe — in fünf Sätzen' &&
+      lessonH3.schritte.find(s => s.id === 's20').zeigt.de === targetsH3[4]);
+
+  const expectedWordsH3 = [
+    'abhängig', 'ängstlich', 'blass', 'blind', 'entspannen', 'die Erholung',
+    'ernähren', 'erschöpft', 'die Infektion', 'die Medizin', 'der Notruf', 'operieren',
+    'das Opfer', 'optimistisch', 'die Pension', 'pensionieren', 'die Therapie', 'tödlich',
+    'der Tropfen', 'das Virus', 'süchtig', 'das Suchtmittel', 'verpflegen', 'die Gewalt',
+    'wütend', 'fröhlich', 'frech', 'peinlich', 'lächeln', 'fürchten',
+    'enttäuschen', 'die Verzeihung', 'das Verständnis', 'das Vergnügen', 'vergnügt', 'das Unglück',
+    'umarmen', 'der Sinn', 'die Unterhaltung', 'der Ratschlag'
+  ];
+  const errorsH3 = lessonH3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u8-l3 reviews all 40 entries and three bounded mnemonics without nineteen manufactured appendages and repairs the dessert-at-the-doctor example to a Spritze one can fear',
+    Object.keys(byWordH3).join(' | ') === expectedWordsH3.join(' | ') &&
+      lessonH3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonH3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordH3['wütend'].err === 'Ich war wütend für mich selbst.' &&
+      byWordH3['die Infektion'].err === 'Die Infektion ist schnell erkannt geworden.' &&
+      byWordH3['fürchten'].ex === 'Viele fürchten sich vor der Spritze beim Doktor.' &&
+      byWordH3['fürchten'].err === 'Viele fürchten sich auf der Spritze beim Doktor.' &&
+      byWordH3['operieren'].err === 'Der Arzt wird morgen operiert.' &&
+      byWordH3['das Verständnis'].err === 'Danke für deinem Verständnis.' &&
+      !lessonH3.wortschatz.some(it => it.ex === 'Viele fürchten sich vor der Nachspeise beim Doktor.') &&
+      !['Das Kind wirkt ängstlich gemacht.', 'Nach der Nacht bist du ganz blass gemacht.',
+        'Nach dem Umzug war ich erschöpft gemacht.', 'Sie bleibt trotzdem optimistisch gemacht.',
+        'Der Unfall war tödlich gemacht.', 'Die Kinder sind fröhlich gemacht wie immer.',
+        'Die Antwort war frech gemacht, aber richtig.', 'So ein Fehler ist mir peinlich gemacht.',
+        'Die Gäste sind vergnügt gemacht.', 'Der Arzt wird morgen operieren auf.',
+        'Mit sechzig geht er in die Pension hinein.', 'Die Firma wird ihn bald pensionieren auf.',
+        'Nehmen Sie dreimal täglich auf einen Tropfen.', 'Gegen Gewalt hilft nur eine Anzeige auf.',
+        'Über die Verzeihung kann ich nur lächeln an.', 'Ich will den Trainer nicht enttäuschen auf.',
+        'Verzeihung, ist hier noch frei auf?', 'Danke für dein Verständnis auf.',
+        'Diese Regel hat keinen Sinn auf.']
+        .some(x => errorsH3.includes(x)) &&
+      tricksH3.length === 3 && tricksH3[0].wie.includes('Ich war wütend auf mich selbst.') &&
+      tricksH3[1].wie.includes('Abends entspanne ich mich im Salon.') &&
+      tricksH3[2].wie.includes('Das Unglück war im Fernsehen.'));
+
+  const wordClozeAH3 = lessonH3.schritte.find(s => s.id === 's09');
+  const wordClozeBH3 = lessonH3.schritte.find(s => s.id === 's13');
+  const wordClozeCH3 = lessonH3.schritte.find(s => s.id === 's17');
+  const imitateH3 = lessonH3.schritte.find(s => s.id === 's19');
+  const drillH3 = lessonH3.schritte.find(s => s.id === 's23');
+  const orderH3 = lessonH3.schritte.find(s => s.id === 's24');
+  const writingH3 = lessonH3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingH3 = lessonH3.schritte.find(s => s.phase === 'Produktion');
+  const summaryH3 = lessonH3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkH3 = lessonH3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u8-l3 aligns five strict learning clozes, sound entspanne order fields and a 27-word five-target production',
+    wordClozeAH3.frage.zeigt === 'Drei Tage Wald sind reine ____.' && wordClozeAH3.frage.antworten.join(' ') === 'Erholung' &&
+      wordClozeAH3.frage.nearMiss.Erholungs && !win.DW.renderers.judgeCloze(wordClozeAH3.frage, 'Erholungs').ok &&
+      wordClozeBH3.frage.zeigt === 'Das ____ steht im Gesetz.' && wordClozeBH3.frage.antworten.join(' ') === 'Suchtmittel' &&
+      wordClozeBH3.frage.nearMiss.Suchtmittels && !win.DW.renderers.judgeCloze(wordClozeBH3.frage, 'Suchtmittels').ok &&
+      wordClozeCH3.frage.zeigt === 'Diese Regel hat keinen ____.' && wordClozeCH3.frage.antworten.join(' ') === 'Sinn' &&
+      wordClozeCH3.frage.nearMiss.Sinnes && !win.DW.renderers.judgeCloze(wordClozeCH3.frage, 'Sinnes').ok &&
+      imitateH3.zeigt.de === 'Ich war wütend ____ mich selbst.' && imitateH3.frage.antworten.join(' ') === 'auf' &&
+      imitateH3.frage.nearMiss['für'] && !win.DW.renderers.judgeCloze(imitateH3.frage, 'für').ok &&
+      drillH3.frage.zeigt === 'Abends ____ ich mich im Salon.' && drillH3.frage.antworten.join(' ') === 'entspanne' &&
+      drillH3.frage.nearMiss.entspannen && !win.DW.renderers.judgeCloze(drillH3.frage, 'entspannen').ok &&
+      lessonH3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderH3.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderH3.frage.correct.join(' ') === targetsH3[1] && orderH3.frage.finite === 'entspanne' && orderH3.frage.verbFirst === false &&
+      orderH3.frage.fields.vorfeld.join(' ') === 'Abends' && orderH3.frage.fields.lsk.join(' ') === 'entspanne' &&
+      orderH3.frage.fields.mittelfeld.join(' ') === 'ich mich im Salon.' &&
+      win.DW.order.score(orderH3.frage, orderH3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderH3.frage, ['Abends', 'ich', 'entspanne', 'mich', 'im', 'Salon.']).credit < 1 &&
+      writingH3.frage.points.join(' | ') === targetsH3.join(' | ') && writingH3.frage.minWords === 27 &&
+      targetsH3.join(' ').split(/\s+/).length === 27 &&
+      targetsH3.every(x => [writingH3.frage.promptDe, summaryH3.zeigt.de, homeworkH3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsH3.every(x => norm(speakingH3.erklaerung).includes(norm(x))) &&
+      (homeworkH3.hinweise || []).join(' ').includes('Gefühle haben feste Präpositionen'));
+
+  const checksH3 = lessonH3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckH3 = checksH3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckH3 = checksH3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u8-l3 makes 80 percent four of five, independently checking singular Unglück war, the entspanne cloze and ist order, fixed wütend auf and accusative Danke für dein',
+    checksH3.length === 5 && checksH3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksH3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksH3.every(s => /^cap\.b1-u8-l3\.s\d+$/.test(s.frage.prereq || '')) && checksH3.every(s => !s.hinweise) &&
+      checksH3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u8-l3.s07 | cap.b1-u8-l3.s23 | cap.b1-u8-l3.s24 | cap.b1-u8-l3.s14 | cap.b1-u8-l3.s20' &&
+      new Set(checksH3.map(s => s.frage.prereq)).size === 5 &&
+      checksH3[0].frage.optionen.some(o => o.text === targetsH3[3]) &&
+      checksH3[0].frage.optionen.some(o => o.text === 'Das Unglück waren im Fernsehen.') &&
+      Object.values(checksH3[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckH3.frage.zeigt === 'Abends ____ ich mich im Salon.' &&
+      clozeCheckH3.frage.antworten.join(' ') === 'entspanne' && clozeCheckH3.frage.nearMiss.entspannen &&
+      !win.DW.renderers.judgeCloze(clozeCheckH3.frage, 'entspannen').ok &&
+      orderCheckH3.frage.correct.join(' ') === targetsH3[2] && orderCheckH3.frage.finite === 'ist' &&
+      orderCheckH3.frage.fields.vorfeld.join(' ') === 'Jeder' && orderCheckH3.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckH3.frage.fields.mittelfeld.join(' ') === 'irgendwann abhängig von Hilfe.' &&
+      win.DW.order.score(orderCheckH3.frage, orderCheckH3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckH3.frage, ['Jeder', 'abhängig', 'ist', 'irgendwann', 'von', 'Hilfe.']).credit < 1 &&
+      checksH3[3].frage.optionen.some(o => o.text === targetsH3[0]) &&
+      checksH3[3].frage.optionen.some(o => o.text === 'Ich war wütend für mich selbst.') &&
+      Object.values(checksH3[3].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      checksH3[4].frage.optionen.some(o => o.text === targetsH3[4]) &&
+      checksH3[4].frage.optionen.some(o => o.text === 'Danke für deinem Verständnis.') &&
+      Object.values(checksH3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

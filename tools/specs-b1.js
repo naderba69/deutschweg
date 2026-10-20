@@ -2462,25 +2462,50 @@ module.exports = [
       hwHintDe: 'Schreibe eine kleine Einkaufsliste für den Markt und sage jeden Preis laut. Massennomen bleiben Singular: Der Rahm ist süß, und das Mehl bleibt im Sack. In Österreich heißt die Tomate Paradeiser, und die Kartoffel heißt Erdapfel. So lernst du die Wörter deiner Region sofort mit. Im Kaffeehaus sitzen wir lange, und am Nachmittag gibt es eine Jause mit Konfitüre. Bestelle eine Limonade und ein Stück Kuchen, und frage höflich nach dem Preis. Zum Frühstück trinke ich Kakao.'
     }),
 
-  U('b1-u8-l3', 'B1', 'الجسد والنفس', 'Körper und Seele', 'lexik-kollokation',
-    'Am Ende sprichst du über Gesundheit und Gefühle',
-    'في النهاية تتحدث عن الصحة والمشاعر.',
+  U('b1-u8-l3', 'B1', 'الجسد والنفس: wütend وentspannt', 'Körper und Seele: wütend und entspannt', 'präposition',
+    'Am Ende sprichst du über Gesundheit, Gefühle und Hilfe — in fünf Sätzen',
+    'في النهاية تتحدث عن الصحة والمشاعر والمساعدة في خمس جمل.',
     [
-      ['Ich war wütend auf mich selbst.', 'المشاعر بحرف ثابت', 'wütend auf + Person', 'Ich war wütend für mich selbst.', 'wütend auf'],
-      ['Abends entspanne ich mich im Salon.', 'الفعل الانعكاسي بضميره', 'sich entspannen', 'Abends entspanne ich im Salon.', 'mich'],
-      ['Jeder ist abhängig von Hilfe.', 'abhängig مع von', 'abhängig von + Dativ', 'Jeder ist abhängig auf Hilfe.', 'von'],
-      ['Das Unglück war im Fernsehen.', 'الحدث مفرد بفعل مفرد', 'das Unglück: Singular + war', 'Das Unglück waren im Fernsehen.', 'war']
+      ['Ich war wütend auf mich selbst.', 'تعبّر عن غضبك على نفسك', 'wütend على الأشخاص يثبت مع auf والنصب: wütend auf mich selbst', 'Ich war wütend für mich selbst.', 'wütend auf'],
+      ['Abends entspanne ich mich im Salon.', 'تقول إنك تسترخي مساءً', 'sich entspannen فعل انعكاسي: الضمير mich بعد الفعل المقلوب وحذفه خطأ', 'Abends entspanne ich im Salon.', 'الضمير مفقود: mich'],
+      ['Jeder ist irgendwann abhängig von Hilfe.', 'تقول إن الكل يعتمد على المساعدة يومًا ما', 'abhängig يثبت مع von والداتيف: abhängig von Hilfe', 'Jeder ist irgendwann abhängig auf Hilfe.', 'abhängig von'],
+      ['Das Unglück war im Fernsehen.', 'تقول إن الحادث ظهر في التلفاز', 'das Unglück اسم محايد مفرد فيأخذ war لا waren', 'Das Unglück waren im Fernsehen.', 'المفرد: war']
     ],
     [
-      ['Die Therapie dauert drei Monate.', 'العلاج يستمر ثلاثة أشهر', 'Die Therapie dauern drei Monate.', 'الفعل مفرد.', 'dauert'],
-      ['Der Notruf kommt sofort.', 'نداء الطوارئ فورًا', 'Der Notruf kommen sofort.', 'الفعل مفرد.', 'kommt'],
-      ['Danke für dein Verständnis.', 'شكرًا لتفهمك', 'Danke für dein Verständnis auf.', 'بلا auf.', 'für'],
-      ['Das Kind wirkt ängstlich.', 'الطفل يبدو خائفًا', 'Das Kind wirkt ängstlich gemacht.', 'الصفة تكفي.', 'ängstlich']
+      ['Ich war wütend auf mich selbst.', 'كنت غاضبًا على نفسي', 'Ich war wütend für mich selbst.', 'wütend على شخص: auf.', 'auf'],
+      ['Abends entspanne ich mich im Salon.', 'مساءً أسترخي في الصالون', 'Abends entspanne ich im Salon.', 'الضمير الانعكاسي mich واجب.', 'entspanne'],
+      ['Jeder ist irgendwann abhängig von Hilfe.', 'كل إنسان معتمد على المساعدة يومًا ما', 'Jeder ist irgendwann abhängig auf Hilfe.', 'abhängig مع von.', 'von'],
+      ['Das Unglück war im Fernsehen.', 'الحادث كان في التلفاز', 'Das Unglück waren im Fernsehen.', 'الفعل مفرد: war.', 'war']
     ],
-    'Ich war wütend auf mich selbst. Die Therapie dauert drei Monate.',
+    'Ich war wütend auf mich selbst. Das Unglück war im Fernsehen.',
     'Danke für dein Verständnis.',
-    'Schreibe morgen drei Sätze über einen Tag, an dem du erschöpft warst.',
-    'غدًا اكتب ثلاث جمل عن يوم كنت فيه منهكًا.'),
+    'Wiederhole morgen die fünf Sätze: Ich war wütend auf mich selbst. Abends entspanne ich mich im Salon. Jeder ist irgendwann abhängig von Hilfe. Das Unglück war im Fernsehen. Danke für dein Verständnis.',
+    'غدًا أعد جمل الجسد والنفس الخمس ولاحظ الحرف الثابت والانعكاس والمفرد.',
+    {
+      factFamilies: ['präposition', 'lexik-kollokation', 'präposition', 'konjugation'],
+      imitateNearMiss: 'für',
+      transformHint: 'في جملة الختام شكر مهذّب: Danke für dein Verständnis — بعد für النصب في ضمير الملك dein.',
+      orderSentence: 'Abends entspanne ich mich im Salon.',
+      checkOrderSentence: 'Jeder ist irgendwann abhängig von Hilfe.',
+      orderAr: 'رتّب جملة الاسترخاء: الظرف Abends أولًا والفعل entspanne في الموضع الثاني.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الظرف Abends هو الموضع الأول وحده.', 'الضميران ich وmich وعبارة im Salon. بعد الفعل.'],
+      writing: {
+        zeigt: 'Körper und Seele in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: غضب على النفس بـauf، واسترخاء انعكاسي بـmich، واعتماد على مساعدة بـvon، وحادث مفرد بـwar، وشكر بـfür والنصب.',
+        hinweise: ['المشاعر بأحرف ثابتة: auf وvon وvor.', 'الأفعال الانعكاسية لا تحذف ضميرها.'],
+        prompt: 'اكتب جمل الجسد والنفس الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Ich war wütend auf mich selbst. · Abends entspanne ich mich im Salon. · Jeder ist irgendwann abhängig von Hilfe. · Das Unglück war im Fernsehen. · Danke für dein Verständnis.',
+        points: ['Ich war wütend auf mich selbst.', 'Abends entspanne ich mich im Salon.', 'Jeder ist irgendwann abhängig von Hilfe.', 'Das Unglück war im Fernsehen.', 'Danke für dein Verständnis.'],
+        minWords: 27,
+        frage: 'اكتب جمل الجسد والنفس الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich war wütend auf mich selbst. Abends entspanne ich mich im Salon. Jeder ist irgendwann abhängig von Hilfe. Das Unglück war im Fernsehen. Danke für dein Verständnis.',
+      summaryDe: 'Ich war wütend auf mich selbst. Abends entspanne ich mich im Salon. Jeder ist irgendwann abhängig von Hilfe. Das Unglück war im Fernsehen. Danke für dein Verständnis.',
+      summaryAr: 'الجسد والنفس يحتاجان مشاعر بأحرف ثابتة، وأفعالًا انعكاسية بضميرها، وأسماء مفردة بفعل مفرد.',
+      summaryRecap: 'حرف ثابت وانعكاس ومفرد',
+      hwHintDe: 'Gefühle haben feste Präpositionen: Ich war wütend auf mich selbst, und jeder ist irgendwann abhängig von Hilfe. Reflexive Verben behalten ihr Pronomen: Abends entspanne ich mich im Salon. Nach einem langen Tag war ich erschöpft, aber ein paar Tage im Wald helfen. Sage danke für dein Verständnis, wenn dir jemand hilft.'
+    }),
 
   U('b1-u8-l4', 'B1', 'العمل والمكتب', 'Arbeit und Büro', 'lexik-kollokation',
     'Am Ende beschreibst du deine Arbeit und dein Büro',
