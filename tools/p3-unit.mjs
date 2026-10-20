@@ -16019,6 +16019,125 @@ console.log('\n— P3.2 lexical layer —\n');
       checksG4[4].frage.optionen.some(o => o.text === targetsG4[4]) &&
       checksG4[4].frage.optionen.some(o => o.text === 'Ihre Laune sind heute gut.') &&
       Object.values(checksG4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonG5 = win.DW_LESSONS['b1-u7-l5'];
+  const rowG5 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonG5.id);
+  const byWordG5 = Object.fromEntries(lessonG5.wortschatz.map(it => [it.de, it]));
+  const tricksG5 = lessonG5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsG5 = [
+    'Meine EC-Karte ist gesperrt.',
+    'Am Bancomat hole ich Geld ab.',
+    'Das Netzwerk ist heute langsam.',
+    'Vor dem Herunterfahren speichere ich alles.',
+    'Die Festplatte ist fast voll.'
+  ];
+  t('Corpus lesson b1-u7-l5 precisely scopes five money-and-tech moves taking a feminine card with ist, separable Geld abholen, a neuter network with ist, a nominalized infinitive with inversion and a hard disk with ist',
+    lessonG5.title.de === 'Geld und Technik: EC-Karte und Netzwerk' &&
+      lessonG5.title.ar === 'المال والتقنية: EC-Karte وNetzwerk' &&
+      rowG5.title.de === lessonG5.title.de && rowG5.title.ar === lessonG5.title.ar &&
+      rowG5.theme === 'المال' &&
+      rowG5.grammar.item === 'Karte ist gesperrt · hole Geld ab · Netzwerk ist langsam · vor dem Herunterfahren · Festplatte ist voll' &&
+      rowG5.grammar.method === 'explicit' && lessonG5.schritte.length === 36 && lessonG5.wortschatz.length === 40 &&
+      lessonG5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonG5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsG5[i]) &&
+      lessonG5.schritte[0].zeigt.de === 'Am Ende sprichst du über Karten, Konten und Gerätefehler — in fünf Sätzen' &&
+      lessonG5.schritte.find(s => s.id === 's20').zeigt.de === targetsG5[4]);
+
+  const expectedWordsG5 = [
+    'der Bancomat', 'der Bankomat', 'die Bankomatkarte', 'die Bankleitzahl', 'die Chipkarte', 'die EC-Karte',
+    'das Girokonto', 'die Münze', 'die Einnahme', 'die Einzahlung', 'die Botschaft', 'die Brieftasche',
+    'die Briefträgerin', 'der Briefumschlag', 'die Buchhandlung', 'das Netz', 'das Netzwerk', 'die Festplatte',
+    'der Monitor', 'der Lautsprecher', 'die Mobilbox', 'herunterfahren', 'hochladen', 'twittern',
+    'das Inserat', 'die Recherche', 'die Reportage', 'die Reklame', 'die Fotografie', 'virtuell',
+    'elektronisch', 'mobil', 'die Kassette', 'der Katalog', 'die Gebrauchsanweisung', 'die Mappe',
+    'der Knopf', 'das Feuerzeug', 'der Wohnort', 'die Verbindung'
+  ];
+  const errorsG5 = lessonG5.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u7-l5 reviews all 40 entries and three bounded mnemonics without fifteen manufactured appendages and without branding transitive klicken or Austrian auf-vergessen as errors',
+    Object.keys(byWordG5).join(' | ') === expectedWordsG5.join(' | ') &&
+      lessonG5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonG5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordG5['der Bancomat'].ex === 'Am Bancomat hole ich Geld ab.' &&
+      byWordG5['der Bancomat'].err === 'Am Bancomat abhole ich Geld.' &&
+      byWordG5['die Münze'].err === 'Ich zahle mit Münze.' &&
+      byWordG5['die Kassette'].err === 'Ich lege die Quittung in einer Kassette.' &&
+      byWordG5['mobil'].err === 'Das System ist mobile.' &&
+      byWordG5['die Mappe'].err === 'Ich hänge die Mappe an der Wand.' &&
+      !['Der Bankomat ist außer Betrieb es.', 'In der Buchhandlung kaufe ich ein Wörterbuch auf.',
+        'Manche twittern auf während der Sitzung.', 'Sie schreibt auf ein Inserat.',
+        'Sie macht auf eine Recherche.', 'Die Fotografie für den Bericht macht ein Kollege auf.',
+        'Das Treffen war virtuell gemacht.', 'Wir arbeiten elektronisch gemacht.',
+        'Das System ist mobil gemacht.', 'Ich lege die Quittung in eine Kassette auf.',
+        'Im Katalog steht der Preis auf.', 'Lies die Gebrauchsanweisung genau du!',
+        'Klicke den grünen Knopf.', 'Ich habe auf das Feuerzeug vergessen.']
+        .some(x => errorsG5.includes(x)) &&
+      tricksG5.length === 3 && tricksG5[0].trick === 'أسماء الأجهزة والبطاقات هنا مفردة وتأخذ فعلًا مفردًا' &&
+      tricksG5[0].wie.includes('Das Netzwerk ist langsam.') &&
+      tricksG5[1].wie.includes('Meine EC-Karte ist gesperrt.') &&
+      tricksG5[2].wie.includes('Das Hochladen dauert lange.'));
+
+  const wordClozeAG5 = lessonG5.schritte.find(s => s.id === 's09');
+  const wordClozeBG5 = lessonG5.schritte.find(s => s.id === 's13');
+  const wordClozeCG5 = lessonG5.schritte.find(s => s.id === 's17');
+  const imitateG5 = lessonG5.schritte.find(s => s.id === 's19');
+  const drillG5 = lessonG5.schritte.find(s => s.id === 's23');
+  const orderG5 = lessonG5.schritte.find(s => s.id === 's24');
+  const writingG5 = lessonG5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingG5 = lessonG5.schritte.find(s => s.phase === 'Produktion');
+  const summaryG5 = lessonG5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkG5 = lessonG5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u7-l5 aligns five strict learning clozes, sound speichere order fields and a 26-word five-target production',
+    wordClozeAG5.frage.zeigt === 'Meine ____ ist gesperrt.' && wordClozeAG5.frage.antworten.join(' ') === 'EC-Karte' &&
+      wordClozeAG5.frage.nearMiss['EC-Karten'] && !win.DW.renderers.judgeCloze(wordClozeAG5.frage, 'EC-Karten').ok &&
+      wordClozeBG5.frage.zeigt === 'Vor dem ____ speichere ich alles.' && wordClozeBG5.frage.antworten.join(' ') === 'Herunterfahren' &&
+      wordClozeBG5.frage.nearMiss.Herunterfahrens && !win.DW.renderers.judgeCloze(wordClozeBG5.frage, 'Herunterfahrens').ok &&
+      wordClozeCG5.frage.zeigt === 'Ich habe das ____ vergessen.' && wordClozeCG5.frage.antworten.join(' ') === 'Feuerzeug' &&
+      wordClozeCG5.frage.nearMiss.Feuerzeuge && !win.DW.renderers.judgeCloze(wordClozeCG5.frage, 'Feuerzeuge').ok &&
+      imitateG5.zeigt.de === 'Meine EC-Karte ____ gesperrt.' && imitateG5.frage.antworten.join(' ') === 'ist' &&
+      imitateG5.frage.nearMiss.sind && !win.DW.renderers.judgeCloze(imitateG5.frage, 'sind').ok &&
+      drillG5.frage.zeigt === 'Meine ____ ist gesperrt.' && drillG5.frage.antworten.join(' ') === 'EC-Karte' &&
+      drillG5.frage.nearMiss['EC-Karten'] && !win.DW.renderers.judgeCloze(drillG5.frage, 'EC-Karten').ok &&
+      lessonG5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderG5.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderG5.frage.correct.join(' ') === targetsG5[3] && orderG5.frage.finite === 'speichere' && orderG5.frage.verbFirst === false &&
+      orderG5.frage.fields.vorfeld.join(' ') === 'Vor dem Herunterfahren' && orderG5.frage.fields.lsk.join(' ') === 'speichere' &&
+      orderG5.frage.fields.mittelfeld.join(' ') === 'ich alles.' &&
+      win.DW.order.score(orderG5.frage, orderG5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderG5.frage, ['Vor', 'dem', 'Herunterfahren', 'ich', 'speichere', 'alles.']).credit < 1 &&
+      writingG5.frage.points.join(' | ') === targetsG5.join(' | ') && writingG5.frage.minWords === 26 &&
+      targetsG5.join(' ').split(/\s+/).length === 26 &&
+      targetsG5.every(x => [writingG5.frage.promptDe, summaryG5.zeigt.de, homeworkG5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsG5.every(x => norm(speakingG5.erklaerung).includes(norm(x))) &&
+      (homeworkG5.hinweise || []).join(' ').includes('Substantivierung macht den Infinitiv'));
+
+  const checksG5 = lessonG5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckG5 = checksG5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckG5 = checksG5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u7-l5 makes 80 percent four of five, independently checking the inversion after a nominalized infinitive, the EC-Karte cloze and ist order, separable Geld abholen and singular Festplatte ist',
+    checksG5.length === 5 && checksG5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksG5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksG5.every(s => /^cap\.b1-u7-l5\.s\d+$/.test(s.frage.prereq || '')) && checksG5.every(s => !s.hinweise) &&
+      checksG5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u7-l5.s07 | cap.b1-u7-l5.s23 | cap.b1-u7-l5.s24 | cap.b1-u7-l5.s08 | cap.b1-u7-l5.s20' &&
+      new Set(checksG5.map(s => s.frage.prereq)).size === 5 &&
+      checksG5[0].frage.optionen.some(o => o.text === targetsG5[3]) &&
+      checksG5[0].frage.optionen.some(o => o.text === 'Vor dem Herunterfahren ich speichere alles.') &&
+      Object.values(checksG5[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckG5.frage.zeigt === 'Meine ____ ist gesperrt.' &&
+      clozeCheckG5.frage.antworten.join(' ') === 'EC-Karte' && clozeCheckG5.frage.nearMiss['EC-Karten'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckG5.frage, 'EC-Karten').ok &&
+      orderCheckG5.frage.correct.join(' ') === targetsG5[2] && orderCheckG5.frage.finite === 'ist' &&
+      orderCheckG5.frage.fields.vorfeld.join(' ') === 'Das Netzwerk' && orderCheckG5.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckG5.frage.fields.mittelfeld.join(' ') === 'heute langsam.' &&
+      win.DW.order.score(orderCheckG5.frage, orderCheckG5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckG5.frage, ['Das', 'ist', 'Netzwerk', 'heute', 'langsam.']).credit < 1 &&
+      checksG5[3].frage.optionen.some(o => o.text === targetsG5[1]) &&
+      checksG5[3].frage.optionen.some(o => o.text === 'Am Bancomat abhole ich Geld.') &&
+      Object.values(checksG5[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checksG5[4].frage.optionen.some(o => o.text === targetsG5[4]) &&
+      checksG5[4].frage.optionen.some(o => o.text === 'Die Festplatte sind fast voll.') &&
+      Object.values(checksG5[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

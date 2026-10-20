@@ -6,8 +6,8 @@ module.exports = {
 
   'b1-u7-l5': {
     items: [
-      ['der Bancomat', 'die Bancomaten', 'صراف آلي (سويسرا)', 'Am Bancomat hole ich Geld.', 'Am Bancomat hole ich Geld ab.', 'abholen منفصل: hole … ab.', 'wortstellung', 'Bancomat'],
-      ['der Bankomat', 'die Bankomaten', 'صراف آلي (النمسا)', 'Der Bankomat ist außer Betrieb.', 'Der Bankomat ist außer Betrieb es.', 'لا ضمير زائد.', 'wortstellung', 'Bankomat'],
+      ['der Bancomat', 'die Bancomaten', 'صراف آلي (سويسرا)', 'Am Bancomat hole ich Geld ab.', 'Am Bancomat abhole ich Geld.', 'abholen منفصل: hole … ab في الآخر.', 'wortstellung', 'Bancomat'],
+      ['der Bankomat', 'die Bankomaten', 'صراف آلي (النمسا)', 'Der Bankomat ist außer Betrieb.', 'Der Bankomat sind außer Betrieb.', 'الفعل مفرد: ist.', 'konjugation', 'Bankomat'],
       ['die Bankomatkarte', 'die Bankomatkarten', 'بطاقة الصراف (النمسا)', 'Die Bankomatkarte steckt im Gerät.', 'Die Bankomatkarte stecken im Gerät.', 'الفعل مفرد: steckt.', 'konjugation', 'Bankomatkarte'],
       ['die Bankleitzahl', 'die Bankleitzahlen', 'رمز البنك', 'Die Bankleitzahl steht auf dem Formular.', 'Die Bankleitzahl stehen auf dem Formular.', 'الفعل مفرد: steht.', 'konjugation', 'Bankleitzahl'],
       ['die Chipkarte', 'die Chipkarten', 'البطاقة الذكية', 'Die Chipkarte funktioniert überall.', 'Die Chipkarte funktionieren überall.', 'الفعل مفرد: funktioniert.', 'konjugation', 'Chipkarte'],
@@ -20,7 +20,7 @@ module.exports = {
       ['die Brieftasche', 'die Brieftaschen', 'المحفظة', 'Meine Brieftasche ist in der Tasche.', 'Meine Brieftasche sind in der Tasche.', 'الفعل مفرد: ist.', 'konjugation', 'Brieftasche'],
       ['die Briefträgerin', 'die Briefträgerinnen', 'ساعية البريد', 'Die Briefträgerin bringt ein Paket.', 'Die Briefträgerin bringen ein Paket.', 'الفعل مفرد: bringt.', 'konjugation', 'Briefträgerin'],
       ['der Briefumschlag', 'die Briefumschläge', 'المظروف', 'Der Briefumschlag ist schon offen.', 'Der Briefumschlag sind schon offen.', 'الفعل مفرد: ist.', 'konjugation', 'Briefumschlag'],
-      ['die Buchhandlung', 'die Buchhandlungen', 'مكتبة البيع', 'In der Buchhandlung kaufe ich ein Wörterbuch.', 'In der Buchhandlung kaufe ich ein Wörterbuch auf.', 'لا حرف جر زائد.', 'präposition', 'Buchhandlung'],
+      ['die Buchhandlung', 'die Buchhandlungen', 'مكتبة البيع', 'In der Buchhandlung kaufe ich ein Wörterbuch.', 'In die Buchhandlung kaufe ich ein Wörterbuch.', 'موضع ثابت (Wo؟): in der لا in die.', 'kasus', 'Buchhandlung'],
       ['das Netz', 'die Netze', 'الشبكة', 'Das Netz ist langsam.', 'Das Netz sind langsam.', 'الفعل مفرد: ist.', 'konjugation', 'Netz'],
       ['das Netzwerk', 'die Netzwerke', 'شبكة الاتصال', 'Das Netzwerk ist heute langsam.', 'Das Netzwerk sind heute langsam.', 'الفعل مفرد: ist.', 'konjugation', 'Netzwerk'],
       ['die Festplatte', 'die Festplatten', 'القرص الصلب', 'Die Festplatte ist fast voll.', 'Die Festplatte sind fast voll.', 'الفعل مفرد: ist.', 'konjugation', 'Festplatte'],
@@ -29,29 +29,46 @@ module.exports = {
       ['die Mobilbox', 'die Mobilboxen', 'صندوق الرسائل', 'Auf der Mobilbox sind drei Nachrichten.', 'Auf der Mobilbox ist drei Nachrichten.', 'الجمع: sind.', 'konjugation', 'Mobilbox'],
       ['herunterfahren', '—', 'يُطفئ الجهاز', 'Vor dem Herunterfahren speichere ich alles.', 'Vor dem Herunterfahren ich speichere alles.', 'الفعل ثانٍ بعد الجار.', 'wortstellung', 'Herunterfahren'],
       ['hochladen', '—', 'يرفع الملفات', 'Das Hochladen dauert lange.', 'Das Hochladen dauern lange.', 'الفعل مفرد: dauert.', 'konjugation', 'Hochladen'],
-      ['twittern', '—', 'يغرّد', 'Manche twittern während der Sitzung.', 'Manche twittern auf während der Sitzung.', 'لا حرف جر زائد.', 'präposition', 'twittern'],
-      ['das Inserat', 'die Inserate', 'الإعلان (سويسرا)', 'Sie schreibt ein Inserat.', 'Sie schreibt auf ein Inserat.', 'schreiben بلا حرف جر.', 'präposition', 'Inserat'],
-      ['die Recherche', 'die Recherchen', 'البحث/التحقيق', 'Sie macht eine Recherche.', 'Sie macht auf eine Recherche.', 'machen بلا حرف جر.', 'präposition', 'Recherche'],
+      ['twittern', '—', 'يغرّد', 'Manche twittern während der Sitzung.', 'Manche twittern während die Sitzung.', 'während مع حالة الإضافة: während der Sitzung.', 'kasus', 'twittern'],
+      ['das Inserat', 'die Inserate', 'الإعلان (سويسرا)', 'Sie schreibt ein Inserat.', 'Sie schreibt eine Inserat.', 'das Inserat محايد: ein Inserat.', 'kasus', 'Inserat'],
+      ['die Recherche', 'die Recherchen', 'البحث/التحقيق', 'Sie macht eine Recherche.', 'Sie macht eine Recherchen.', 'بعد eine الاسم مفرد: Recherche لا Recherchen.', 'plural', 'Recherche'],
       ['die Reportage', 'die Reportagen', 'التقرير المصوّر', 'Die Reportage ist fertig.', 'Die Reportage sind fertig.', 'الفعل مفرد: ist.', 'konjugation', 'Reportage'],
       ['die Reklame', 'die Reklamen', 'الدعاية', 'Die Reklame ist laut und bunt.', 'Die Reklame sind laut und bunt.', 'الفعل مفرد: ist.', 'konjugation', 'Reklame'],
-      ['die Fotografie', 'die Fotografien', 'الصورة الفوتوغرافية', 'Die Fotografie für den Bericht macht ein Kollege.', 'Die Fotografie für den Bericht macht ein Kollege auf.', 'لا حرف جر زائد.', 'präposition', 'Fotografie'],
-      ['virtuell', '—', 'افتراضي', 'Das Treffen war virtuell.', 'Das Treffen war virtuell gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'virtuell'],
-      ['elektronisch', '—', 'إلكتروني', 'Wir arbeiten elektronisch.', 'Wir arbeiten elektronisch gemacht.', 'الحال تكفي.', 'lexik-kollokation', 'elektronisch'],
-      ['mobil', '—', 'متنقّل', 'Das System ist mobil.', 'Das System ist mobil gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'mobil'],
-      ['die Kassette', 'die Kassetten', 'العلبة/الشريط', 'Ich lege die Quittung in eine Kassette.', 'Ich lege die Quittung in eine Kassette auf.', 'لا حرف جر زائد.', 'präposition', 'Kassette'],
-      ['der Katalog', 'die Kataloge', 'الكتالوج', 'Im Katalog steht der Preis.', 'Im Katalog steht der Preis auf.', 'لا حرف جر زائد.', 'präposition', 'Katalog'],
-      ['die Gebrauchsanweisung', 'die Gebrauchsanweisungen', 'دليل الاستخدام', 'Lies die Gebrauchsanweisung genau!', 'Lies die Gebrauchsanweisung genau du!', 'التعليمة بلا ضمير.', 'wortstellung', 'Gebrauchsanweisung'],
+      ['die Fotografie', 'die Fotografien', 'الصورة الفوتوغرافية', 'Die Fotografie für den Bericht macht ein Kollege.', 'Die Fotografie für der Bericht macht ein Kollege.', 'für مع النصب: für den Bericht.', 'kasus', 'Fotografie'],
+      ['virtuell', '—', 'افتراضي', 'Das Treffen war virtuell.', 'Das Treffen war virtuelle.', 'الصفة خبرًا بلا نهاية: virtuell لا virtuelle.', 'deklination', 'virtuell'],
+      ['elektronisch', '—', 'إلكتروني', 'Wir arbeiten elektronisch.', 'Wir arbeiten elektronische.', 'الحال بلا نهاية: elektronisch لا elektronische.', 'deklination', 'elektronisch'],
+      ['mobil', '—', 'متنقّل', 'Das System ist mobil.', 'Das System ist mobile.', 'الصفة خبرًا بلا نهاية: mobil لا mobile.', 'deklination', 'mobil'],
+      ['die Kassette', 'die Kassetten', 'العلبة/الشريط', 'Ich lege die Quittung in eine Kassette.', 'Ich lege die Quittung in einer Kassette.', 'legen جهة (Wohin؟): in eine لا in einer.', 'kasus', 'Kassette'],
+      ['der Katalog', 'die Kataloge', 'الكتالوج', 'Im Katalog steht der Preis.', 'In den Katalog steht der Preis.', 'موضع ثابت (Wo؟): im Katalog لا in den.', 'kasus', 'Katalog'],
+      ['die Gebrauchsanweisung', 'die Gebrauchsanweisungen', 'دليل الاستخدام', 'Lies die Gebrauchsanweisung genau!', 'Lese die Gebrauchsanweisung genau!', 'أمر lesen متغيّر الصوت: Lies! لا Lese.', 'konjugation', 'Gebrauchsanweisung'],
       ['die Mappe', 'die Mappen', 'الملف/الحافظة', 'Ich hänge die Mappe an die Wand.', 'Ich hänge die Mappe an der Wand.', 'الجهة: an die Wand.', 'kasus', 'Mappe'],
-      ['der Knopf', 'die Knöpfe', 'الزرّ', 'Klicke auf den grünen Knopf.', 'Klicke den grünen Knopf.', 'klicken auf.', 'präposition', 'Knopf'],
-      ['das Feuerzeug', 'die Feuerzeuge', 'الولّاعة', 'Ich habe das Feuerzeug vergessen.', 'Ich habe auf das Feuerzeug vergessen.', 'vergessen بلا حرف جر.', 'präposition', 'Feuerzeug'],
+      ['der Knopf', 'die Knöpfe', 'الزرّ', 'Klicke auf den grünen Knopf.', 'Klicke auf den grüne Knopf.', 'الصفة بعد den بنهاية -en: grünen.', 'deklination', 'Knopf'],
+      ['das Feuerzeug', 'die Feuerzeuge', 'الولّاعة', 'Ich habe das Feuerzeug vergessen.', 'Ich habe die Feuerzeug vergessen.', 'das Feuerzeug محايد: das لا die.', 'kasus', 'Feuerzeug'],
       ['der Wohnort', 'die Wohnorte', 'محل الإقامة', 'Der Wohnort steht im Antrag.', 'Der Wohnort stehen im Antrag.', 'الفعل مفرد: steht.', 'konjugation', 'Wohnort'],
       ['die Verbindung', 'die Verbindungen', 'الاتصال/الربط', 'Die Verbindung zum Zentrum ist gut.', 'Die Verbindung zum Zentrum sind gut.', 'الفعل مفرد: ist.', 'konjugation', 'Verbindung']
     ],
     tricks: [
-      { trick: 'كل كلمة تقنية هنا مؤنثة أو محايدة وتأخذ فعلًا مفردًا', wie: 'Die Festplatte ist voll. · Das Netzwerk ist langsam.', warum: 'في العربية تُجمع الأجهزة فتُقرأ جمعًا، وفي الألمانية يبقى الاسم مفردًا فيساء تصريف فعله.', anchor: 'Das Netzwerk ist langsam' },
+      { trick: 'أسماء الأجهزة والبطاقات هنا مفردة وتأخذ فعلًا مفردًا', wie: 'Die Festplatte ist voll. · Das Netzwerk ist langsam.', warum: 'في العربية تُجمع الأجهزة فتُقرأ جمعًا، وفي الألمانية يبقى الاسم مفردًا فيساء تصريف فعله.', anchor: 'Das Netzwerk ist langsam' },
       { trick: 'البنك الأوروبي: EC-Karte · Girokonto · Chipkarte · Bankomat', wie: 'Meine EC-Karte ist gesperrt. · Am Bankomat hole ich Geld.', warum: 'المصطلح يختلف بين ألمانيا والنمسا وسويسرا، والحفظ بصيغتين يمنع الحيرة في الامتحان.', anchor: 'die EC-Karte' },
       { trick: 'الأجهزة بأفعال منفصلة: herunterfahren · hochladen — والاسم منها كبير', wie: 'Vor dem Herunterfahren speichere ich alles. · Das Hochladen dauert lange.', warum: 'المصدر المستعمل اسمًا يُكتب كبيرًا ويأخذ das، ونسخ الفعل كما هو يخلق جملة بلا فاعل.', anchor: 'das Hochladen' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die EC-Karte': 'EC-Karten',
+      'herunterfahren': 'Herunterfahrens',
+      'das Feuerzeug': 'Feuerzeuge'
+    },
+    clozeItemIndex: 5,
+    clozeNearMiss: 'EC-Karten',
+    checkItemIndex: 0,
+    extraCheck: {
+      right: 'Die Festplatte ist fast voll.',
+      bad: 'Die Festplatte sind fast voll.',
+      why: 'die Festplatte اسم مفرد: ist لا sind.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u7-l5.s20',
+      frage: 'أي جملة يطابق فعلُها القرصَ المفرد؟'
+    }
   },
 
   'b1-u7-l6': {

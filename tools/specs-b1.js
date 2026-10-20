@@ -2281,25 +2281,50 @@ module.exports = [
       hwHintDe: 'Sich erkälten steht im Perfekt mit haben und Partizip: Ich habe mich erkältet. Die Pflegerin misst die Temperatur direkt, und Heimweh steht immer mit nach. Sage ehrlich, wie du dich fühlst, wenn dich jemand fragt.'
     }),
 
-  U('b1-u7-l5', 'B1', 'المال والأجهزة والبريد', 'Geld, Geräte und Post', 'lexik-kollokation',
-    'Am Ende erklärst du einen Bank- oder Gerätefehler am Telefon',
-    'في النهاية تشرح خللًا في البنك أو في جهاز عبر الهاتف.',
+  U('b1-u7-l5', 'B1', 'المال والتقنية: EC-Karte وNetzwerk', 'Geld und Technik: EC-Karte und Netzwerk', 'konjugation',
+    'Am Ende sprichst du über Karten, Konten und Gerätefehler — in fünf Sätzen',
+    'في النهاية تتحدث عن البطاقات والحسابات وأعطال الأجهزة في خمس جمل.',
     [
-      ['Meine EC-Karte ist gesperrt.', 'البطاقة مفرد بفعل مفرد', 'die Karte: Singular + ist', 'Meine EC-Karte sind gesperrt.', 'ist'],
-      ['Am Bankomat hole ich Geld ab.', 'abholen منفصل', 'Trennbares Verb: hole … ab', 'Am Bankomat abhole ich Geld.', 'hole … ab'],
-      ['Das Netzwerk ist langsam.', 'المحايد مفرد', 'das Netzwerk: Singular + ist', 'Das Netzwerk sind langsam.', 'ist'],
-      ['Vor dem Herunterfahren speichere ich.', 'المصدر اسمًا في الآخر', 'Substantivierung: das Herunterfahren', 'Vor dem herunterfahren speichere ich.', 'Herunterfahren كبيرة']
+      ['Meine EC-Karte ist gesperrt.', 'تقول إن بطاقتك موقوفة', 'die EC-Karte اسم مؤنث مفرد فيأخذ فعلًا مفردًا: ist لا sind', 'Meine EC-Karte sind gesperrt.', 'المفرد: ist'],
+      ['Am Bancomat hole ich Geld ab.', 'تقول إنك تسحب المال من الصراف', 'abholen فعل منفصل: الفعل المصرف hole في الثاني وقسيمته ab في الآخر', 'Am Bancomat abhole ich Geld.', 'hole … ab منفصلة'],
+      ['Das Netzwerk ist heute langsam.', 'تصف شبكة بطيئة اليوم', 'das Netzwerk اسم محايد مفرد فيأخذ ist — لا يُجمع كما في العربية', 'Das Netzwerk sind heute langsam.', 'المفرد: ist'],
+      ['Vor dem Herunterfahren speichere ich alles.', 'تقول إنك تحفظ كل شيء قبل الإطفاء', 'المصدر اسمًا يُكتب كبيرًا: dem Herunterfahren، وبعد عبارة الجار يأتي الفعل ثانيًا: speichere ich', 'Vor dem Herunterfahren ich speichere alles.', 'قلب بعد الجار: speichere ich']
     ],
     [
-      ['Meine EC-Karte ist gesperrt.', 'بطاقتي موقوفة', 'Meine EC-Karte sind gesperrt.', 'الفعل مفرد.', 'ist'],
-      ['Am Bankomat hole ich Geld ab.', 'أسحب المال من الصراف', 'Am Bankomat abhole ich Geld.', 'ab في الآخر.', 'ab'],
-      ['Das Netzwerk ist langsam.', 'الشبكة بطيئة', 'Das Netzwerk sind langsam.', 'الفعل مفرد.', 'ist'],
-      ['Die Festplatte ist fast voll.', 'القرص ممتلئ تقريبًا', 'Die Festplatte sind fast voll.', 'الفعل مفرد.', 'ist']
+      ['Meine EC-Karte ist gesperrt.', 'بطاقتي موقوفة', 'Meine EC-Karte sind gesperrt.', 'الفعل مفرد: ist.', 'ist'],
+      ['Am Bancomat hole ich Geld ab.', 'أسحب المال من الصراف الآلي', 'Am Bancomat abhole ich Geld.', 'abholen منفصل: hole … ab.', 'ab'],
+      ['Das Netzwerk ist heute langsam.', 'الشبكة بطيئة اليوم', 'Das Netzwerk sind heute langsam.', 'الفعل مفرد: ist.', 'ist'],
+      ['Vor dem Herunterfahren speichere ich alles.', 'أحفظ كل شيء قبل الإطفاء', 'Vor dem Herunterfahren ich speichere alles.', 'بعد الجار الفعل ثانيًا: speichere ich.', 'speichere']
     ],
-    'Meine EC-Karte ist gesperrt. Das Netzwerk ist langsam.',
-    'Die Festplatte ist voll.',
-    'Schreibe morgen drei Sätze über ein Gerät, das nicht funktioniert.',
-    'غدًا اكتب ثلاث جمل عن جهاز لا يعمل.'),
+    'Meine EC-Karte ist gesperrt. Das Netzwerk ist heute langsam.',
+    'Die Festplatte ist fast voll.',
+    'Wiederhole morgen die fünf Sätze: Meine EC-Karte ist gesperrt. Am Bancomat hole ich Geld ab. Das Netzwerk ist heute langsam. Vor dem Herunterfahren speichere ich alles. Die Festplatte ist fast voll.',
+    'غدًا أعد جمل المال والتقنية الخمس ولاحظ المفرد والفصل والمصدر الاسمي.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'konjugation', 'wortstellung'],
+      imitateNearMiss: 'sind',
+      transformHint: 'في جملة الختام قرص ممتلئ تقريبًا: Die Festplatte ist fast voll — اسم مؤنث مفرد مع ist وصفة خبرية بلا نهاية.',
+      orderSentence: 'Vor dem Herunterfahren speichere ich alles.',
+      checkOrderSentence: 'Das Netzwerk ist heute langsam.',
+      orderAr: 'رتّب جملة الإطفاء: عبارة الجار أولًا والفعل speichere في الموضع الثاني.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['عبارة الجار Vor dem Herunterfahren هي الموضع الأول وحده.', 'الضمير ich وalles. يغلقان الجملة بعد الفعل.'],
+      writing: {
+        zeigt: 'Geld und Technik in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: بطاقة موقوفة بـist، وسحب مال بـhole … ab، وشبكة بطيئة بمحايد مفرد، وحفظ قبل الإطفاء بمصدرٍ اسمًا وقلب، وقرص ممتلئ بـist.',
+        hinweise: ['الأسماء المفردة تأخذ فعلًا مفردًا: ist.', 'abholen منفصل والمصدر الاسمي يُكتب كبيرًا.'],
+        prompt: 'اكتب جمل المال والتقنية الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Meine EC-Karte ist gesperrt. · Am Bancomat hole ich Geld ab. · Das Netzwerk ist heute langsam. · Vor dem Herunterfahren speichere ich alles. · Die Festplatte ist fast voll.',
+        points: ['Meine EC-Karte ist gesperrt.', 'Am Bancomat hole ich Geld ab.', 'Das Netzwerk ist heute langsam.', 'Vor dem Herunterfahren speichere ich alles.', 'Die Festplatte ist fast voll.'],
+        minWords: 26,
+        frage: 'اكتب جمل المال والتقنية الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Meine EC-Karte ist gesperrt. Am Bancomat hole ich Geld ab. Das Netzwerk ist heute langsam. Vor dem Herunterfahren speichere ich alles. Die Festplatte ist fast voll.',
+      summaryDe: 'Meine EC-Karte ist gesperrt. Am Bancomat hole ich Geld ab. Das Netzwerk ist heute langsam. Vor dem Herunterfahren speichere ich alles. Die Festplatte ist fast voll.',
+      summaryAr: 'المال والتقنية يحتاجان فعلًا مفردًا للأسماء المفردة، وفعلًا منفصلًا عند الصراف، ومصدرًا اسمًا كبيرًا قبل الإطفاء.',
+      summaryRecap: 'مفرد وفصلٌ ومصدرٌ اسمي',
+      hwHintDe: 'Substantivierung macht den Infinitiv zum Nomen: das Herunterfahren. Vor dem Herunterfahren speichere ich alles, und am Bancomat hole ich Geld ab.'
+    }),
 
   U('b1-u7-l6', 'B1', 'الثقافة واللغة', 'Kultur und Sprache', 'wortstellung',
     'Am Ende berichtest du über ein Fest und einen Sprachkurs',
