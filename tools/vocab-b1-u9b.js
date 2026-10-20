@@ -114,9 +114,26 @@ module.exports = {
     ],
     tricks: [
       { trick: 'الضمير الانعكاسي جزء من الفعل: sich amüsieren · sich weigern · sich entschließen', wie: 'Im Kaffeehaus wollen wir uns amüsieren. · Sie will sich nicht weigern.', warum: 'العربية تعبّر بها أفعالًا لازمة، فيحذف الطالب sich فيصير الفعل ناقصًا.', anchor: 'wollen wir uns amüsieren' },
-      { trick: 'الحروف المزدوجة: weder … noch · entweder … oder · je … desto', wie: 'Weder der Vermieter noch die Nachbarn wissen es. · Je mehr ich übe, desto besser.', warum: 'هذه أزواج لا تُفصل، وترتيب الجملة بعدها ثابت (الفعل ثانٍ).', anchor: 'Weder der Vermieter noch' },
+      { trick: 'أزواج الربط التي لا تُفصَل: weder … noch · entweder … oder · je … desto', wie: 'Weder der Vermieter noch die Nachbarn wissen es. · Je mehr ich übe, desto besser.', warum: 'هذه أزواج لا تُفصل، وترتيب الجملة بعدها ثابت (الفعل ثانٍ).', anchor: 'Weder der Vermieter noch' },
       { trick: 'الصفة خبرًا لا تُصرَّف ولا تزاد عليها gemacht: gerecht · tolerant · verrückt', wie: 'Die Nachbarn sind sehr tolerant. · Alle sagen, wir seien verrückt.', warum: 'العربية تقول «متسامحون»، فيضيف الطالب نهاية أو فعلًا زائدًا، والألمانية تكفي بالصفة.', anchor: 'sind sehr tolerant' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'überreden': 'reden',
+      'treu': 'treuen',
+      'desto': 'deshalb'
+    },
+    clozeItemIndex: 18,
+    clozeNearMiss: 'gespannten',
+    checkItemIndex: 28,
+    extraCheck: {
+      right: 'Entweder wir gehen, oder wir bleiben.',
+      bad: 'Entweder wir gehen, oder bleiben wir.',
+      why: 'بعد oder الفعل في الموضع الثاني بلا قلب.',
+      family: 'wortstellung',
+      prereq: 'cap.b1-u9-l4.s20',
+      frage: 'أي جملة تجعل الفعل بعد oder في موضعه الصحيح؟'
+    }
   }
 
 };

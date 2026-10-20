@@ -2777,25 +2777,50 @@ module.exports = [
       hwHintDe: 'Das Lexikon steht im Regal, und die Literatur dieser Zeit ist schwer. Die Serie läuft am Sonntagabend, und die Oper war ausverkauft. Der Hafen bleibt im Winter offen, und das Ufer ist hier flach. Die Burg über dem Dorf ist alt, und die Terrasse ist im Sommer voll. Der Kanal verbindet zwei Städte, und die Ausfahrt kommt gleich. Die neue Lernmethode hilft beim Lernen, und die Wanderung dauert vier Stunden.'
     }),
 
-  U('b1-u9-l4', 'B1', 'السلوك والمشاعر', 'Verhalten und Gefühl', 'wortstellung',
-    'Am Ende beschreibst du Verhalten und redest über Gefühle',
-    'في النهاية تصف السلوك وتتحدث عن المشاعر.',
+  U('b1-u9-l4', 'B1', 'السلوك والمشاعر: amüsieren وweder', 'Verhalten und Gefühl: amüsieren und weder', 'wortstellung',
+    'Am Ende beschreibst du Verhalten und redest über Gefühle — in fünf Sätzen',
+    'في النهاية تصف السلوك وتتحدث عن المشاعر في خمس جمل.',
     [
-      ['Im Kaffeehaus wollen wir uns amüsieren.', 'انعكاسي كامل', 'sich amüsieren, nicht amüsieren', 'Im Kaffeehaus wollen wir amüsieren.', 'uns amüsieren'],
-      ['Weder der Vermieter noch die Nachbarn wissen es.', 'weder … noch مع جمع', 'weder noch + Plural', 'Weder der Vermieter noch die Nachbarn weiß es.', 'wissen'],
-      ['Je mehr ich übe, desto besser.', 'تركيب je … desto', 'desto + Komparativ', 'Je mehr ich übe, desto besser auf.', 'desto besser'],
-      ['Sie bleibt entschlossen und ruhig.', 'الصفة خبرًا', 'entschlossen ohne Zusatz', 'Sie bleibt entschlossen gemacht und ruhig.', 'entschlossen']
+      ['Im Kaffeehaus wollen wir uns amüsieren.', 'تتسلى في مقهى بانعكاس كامل', 'sich amüsieren انعكاسي: uns لا تُحذف بعد wollen', 'Im Kaffeehaus wollen wir amüsieren.', 'الانعكاسي: uns'],
+      ['Weder der Vermieter noch die Nachbarn wissen es.', 'تنفي المعرفة عن الطرفين معًا', 'weder … noch مع جار جمع: wissen لا weiß', 'Weder der Vermieter noch die Nachbarn weiß es.', 'الجمع: wissen'],
+      ['Je mehr ich übe, desto besser.', 'تربط ازدياد التدريب بالتحسّن', 'je … desto: الفرع الأول بفعل أخير وبلا حرف زائد في الختام', 'Je mehr ich übe, desto besser auf.', 'desto وبلا زائد'],
+      ['Ich bin gespannt auf das Ergebnis.', 'تقول إنك متشوّق للنتيجة', 'gespannt مع auf والنصب: auf das Ergebnis لا für', 'Ich bin gespannt für das Ergebnis.', 'auf لا für']
     ],
     [
-      ['Ich bin gespannt auf das Ergebnis.', 'متشوّق للنتيجة', 'Ich bin gespannt für das Ergebnis.', 'gespannt auf.', 'auf'],
-      ['Der Test bleibt bis Freitag geheim.', 'الاختبار سري', 'Der Test bleibt bis Freitag geheim gemacht.', 'الصفة تكفي.', 'geheim'],
-      ['Entweder wir gehen, oder wir bleiben.', 'إما نذهب أو نبقى', 'Entweder wir gehen, oder bleiben wir.', 'الفعل ثانٍ بعد oder.', 'oder wir bleiben'],
-      ['Sie will sich nicht weigern.', 'لا تريد أن ترفض', 'Sie will sich nicht weigern auf.', 'بلا auf.', 'weigern']
+      ['Im Kaffeehaus wollen wir uns amüsieren.', 'نتسلّى في المقهى', 'Im Kaffeehaus wollen wir amüsieren.', 'انعكاسي: uns جزء من الفعل.', 'uns'],
+      ['Weder der Vermieter noch die Nachbarn wissen es.', 'لا المالك ولا الجيران يعرفون', 'Weder der Vermieter noch die Nachbarn weiß es.', 'الفعل جمع مع الجار الأقرب: wissen.', 'wissen'],
+      ['Je mehr ich übe, desto besser.', 'كلما تدربتُ تحسّنتُ', 'Je mehr ich übe, desto besser auf.', 'لا حرف جرّ زائد في الختام.', 'desto'],
+      ['Ich bin gespannt auf das Ergebnis.', 'أنا متشوّق للنتيجة', 'Ich bin gespannt für das Ergebnis.', 'gespannt مع auf.', 'auf']
     ],
     'Im Kaffeehaus wollen wir uns amüsieren. Je mehr ich übe, desto besser.',
-    'Ich bin gespannt auf das Ergebnis.',
-    'Schreibe morgen drei Sätze über ein Verhalten, das dich überrascht hat.',
-    'غدًا اكتب ثلاث جمل عن سلوك أدهشك.'),
+    'Entweder wir gehen, oder wir bleiben.',
+    'Wiederhole morgen die fünf Sätze: Im Kaffeehaus wollen wir uns amüsieren. Weder der Vermieter noch die Nachbarn wissen es. Je mehr ich übe, desto besser. Ich bin gespannt auf das Ergebnis. Entweder wir gehen, oder wir bleiben.',
+    'غدًا أعد جمل السلوك والمشاعر الخمس ولاحظ الضمير الانعكاسي وأزواج الربط.',
+    {
+      factFamilies: ['lexik-kollokation', 'konjugation', 'lexik-kollokation', 'präposition'],
+      imitateNearMiss: 'sich',
+      transformHint: 'في جملة الختام زوج ربط: Entweder wir gehen, oder wir bleiben — بعد oder الفعل ثانٍ بلا قلب.',
+      orderSentence: 'Im Kaffeehaus wollen wir uns amüsieren.',
+      checkOrderSentence: 'Weder der Vermieter noch die Nachbarn wissen es.',
+      orderAr: 'رتّب جملة المقهى: الفعل wollen في الموضع الثاني، والفاعل wir بعده، والضمير uns قبل المصدر الأخير.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول Im Kaffeehaus كتلة واحدة.', 'الضمير الانعكاسي uns قبل المصدر amüsieren.'],
+      writing: {
+        zeigt: 'Verhalten und Gefühl in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: تسلية بانعكاسي uns amüsieren، ونفي بزوج weder … noch مع wissen، وازدياد بـje … desto، وشغف بـgespannt auf، واختيار بـentweder … oder.',
+        hinweise: ['الضمير الانعكاسي جزء من فعله.', 'بعد oder الفعل ثانٍ بلا قلب.'],
+        prompt: 'اكتب جمل السلوك والمشاعر الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Im Kaffeehaus wollen wir uns amüsieren. · Weder der Vermieter noch die Nachbarn wissen es. · Je mehr ich übe, desto besser. · Ich bin gespannt auf das Ergebnis. · Entweder wir gehen, oder wir bleiben.',
+        points: ['Im Kaffeehaus wollen wir uns amüsieren.', 'Weder der Vermieter noch die Nachbarn wissen es.', 'Je mehr ich übe, desto besser.', 'Ich bin gespannt auf das Ergebnis.', 'Entweder wir gehen, oder wir bleiben.'],
+        minWords: 32,
+        frage: 'اكتب جمل السلوك والمشاعر الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Im Kaffeehaus wollen wir uns amüsieren. Weder der Vermieter noch die Nachbarn wissen es. Je mehr ich übe, desto besser. Ich bin gespannt auf das Ergebnis. Entweder wir gehen, oder wir bleiben.',
+      summaryDe: 'Im Kaffeehaus wollen wir uns amüsieren. Weder der Vermieter noch die Nachbarn wissen es. Je mehr ich übe, desto besser. Ich bin gespannt auf das Ergebnis. Entweder wir gehen, oder wir bleiben.',
+      summaryAr: 'السلوك والمشاعر يُرويان بضمير انعكاسي كامل وأزواج ربط لا تُفصَل وحرف ثابت عند الشغف.',
+      summaryRecap: 'ضمير كامل وأزواج ربط',
+      hwHintDe: 'Alle sagen, wir seien verrückt, aber die Nachbarn sind sehr tolerant. Der Hund bleibt ihm treu, und die Lösung war gerecht. Eine Träne kam bei der Rede, und ein Kuss sagt mehr als Wörter. Die Kinder wollen nicht schreien, und der Test bleibt bis Freitag geheim. Sie kommen ebenfalls mit, und beide reden gleichzeitig.'
+    }),
 
   U('b1-u9-l5', 'B1', 'المرور والسفر', 'Verkehr und Reise', 'lexik-kollokation',
     'Am Ende berichtest du über eine Fahrt und einen Vorfall',

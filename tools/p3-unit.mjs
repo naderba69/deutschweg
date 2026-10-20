@@ -17314,6 +17314,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checksI3[4].frage.optionen.some(o => o.text === targetsI3[4]) &&
       checksI3[4].frage.optionen.some(o => o.text === 'Die Spur führen zum Fluss.') &&
       Object.values(checksI3[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonI4 = win.DW_LESSONS['b1-u9-l4'];
+  const rowI4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonI4.id);
+  const byWordI4 = Object.fromEntries(lessonI4.wortschatz.map(it => [it.de, it]));
+  const tricksI4 = lessonI4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsI4 = [
+    'Im Kaffeehaus wollen wir uns amüsieren.',
+    'Weder der Vermieter noch die Nachbarn wissen es.',
+    'Je mehr ich übe, desto besser.',
+    'Ich bin gespannt auf das Ergebnis.',
+    'Entweder wir gehen, oder wir bleiben.'
+  ];
+  t('Corpus lesson b1-u9-l4 precisely scopes five behaviour-and-feeling moves taking full reflexive uns amüsieren, weder noch with plural wissen, je desto, fixed gespannt auf and entweder oder',
+    lessonI4.title.de === 'Verhalten und Gefühl: amüsieren und weder' &&
+      lessonI4.title.ar === 'السلوك والمشاعر: amüsieren وweder' &&
+      rowI4.title.de === lessonI4.title.de && rowI4.title.ar === lessonI4.title.ar &&
+      rowI4.theme === 'المشاعر' &&
+      rowI4.grammar.item === 'uns amüsieren · weder noch wissen · je desto · gespannt auf · entweder oder' &&
+      rowI4.grammar.method === 'explicit' && lessonI4.schritte.length === 36 && lessonI4.wortschatz.length === 40 &&
+      lessonI4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonI4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsI4[i]) &&
+      lessonI4.schritte[0].zeigt.de === 'Am Ende beschreibst du Verhalten und redest über Gefühle — in fünf Sätzen' &&
+      lessonI4.schritte.find(s => s.id === 's20').zeigt.de === targetsI4[4]);
+
+  const expectedWordsI4 = [
+    'amüsieren', 'aufhalten', 'entschließen', 'entschlossen', 'verrückt', 'überreden',
+    'die Überzeugung', 'das Verhalten', 'verhalten', 'verzeihen', 'die Träne', 'schreien',
+    'der Kuss', 'küssen', 'weigern', 'betrunken', 'verdächtig', 'wahnsinnig',
+    'gespannt', 'gerecht', 'schuldig', 'treu', 'tolerant', 'wild',
+    'heimlich', 'geheim', 'merkwürdig', 'einsam', 'ewig', 'bloß',
+    'dauernd', 'genauso', 'gleichfalls', 'gleichzeitig', 'ebenfalls', 'umgekehrt',
+    'umso', 'desto', 'weder', 'entweder'
+  ];
+  const errorsI4 = lessonI4.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u9-l4 reviews all 40 entries and three bounded mnemonics keeping every genuine reflexive, conjunction-pair, government and declension foil as a real error',
+    Object.keys(byWordI4).join(' | ') === expectedWordsI4.join(' | ') &&
+      lessonI4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonI4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordI4['amüsieren'].err === 'Im Kaffeehaus wollen wir amüsieren.' &&
+      byWordI4['weder'].err === 'Weder der Vermieter noch die Nachbarn weiß es.' &&
+      byWordI4['gespannt'].err === 'Ich bin gespannt für das Ergebnis.' &&
+      byWordI4['ewig'].err === 'Das dauert eine ewig Zeit.' &&
+      byWordI4['entweder'].err === 'Entweder wir gehen, oder bleiben wir.' &&
+      byWordI4['entschlossen'].err === 'Sie bleibt entschlossen gemacht und ruhig.' &&
+      ['Die Arbeit kann uns lange aufhalten auf.', 'Sie will sich nicht weigern auf.',
+        'Alle sagen, wir seien verrückt gemacht.', 'Je mehr ich übe, desto besser auf.',
+        'Das Gericht hält ihn schuldig gemacht.']
+        .every(x => errorsI4.includes(x)) &&
+      tricksI4.length === 3 && tricksI4[0].wie.includes('Im Kaffeehaus wollen wir uns amüsieren.') &&
+      tricksI4[1].wie.includes('Weder der Vermieter noch die Nachbarn wissen es.') &&
+      tricksI4[2].wie.includes('Die Nachbarn sind sehr tolerant.'));
+
+  const wordClozeAI4 = lessonI4.schritte.find(s => s.id === 's09');
+  const wordClozeBI4 = lessonI4.schritte.find(s => s.id === 's13');
+  const wordClozeCI4 = lessonI4.schritte.find(s => s.id === 's17');
+  const imitateI4 = lessonI4.schritte.find(s => s.id === 's19');
+  const drillI4 = lessonI4.schritte.find(s => s.id === 's23');
+  const orderI4 = lessonI4.schritte.find(s => s.id === 's24');
+  const writingI4 = lessonI4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingI4 = lessonI4.schritte.find(s => s.phase === 'Produktion');
+  const summaryI4 = lessonI4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkI4 = lessonI4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u9-l4 aligns five strict learning clozes, sound wollen order fields and a 32-word five-target production',
+    wordClozeAI4.frage.zeigt === 'Er will uns zum Mitkommen ____.' && wordClozeAI4.frage.antworten.join(' ') === 'überreden' &&
+      wordClozeAI4.frage.nearMiss.reden && !win.DW.renderers.judgeCloze(wordClozeAI4.frage, 'reden').ok &&
+      wordClozeBI4.frage.zeigt === 'Der Hund bleibt ihm ____.' && wordClozeBI4.frage.antworten.join(' ') === 'treu' &&
+      wordClozeBI4.frage.nearMiss.treuen && !win.DW.renderers.judgeCloze(wordClozeBI4.frage, 'treuen').ok &&
+      wordClozeCI4.frage.zeigt === 'Je mehr ich übe, ____.' && wordClozeCI4.frage.antworten.join(' ') === 'desto besser' &&
+      wordClozeCI4.frage.nearMiss.deshalb && !win.DW.renderers.judgeCloze(wordClozeCI4.frage, 'deshalb').ok &&
+      imitateI4.zeigt.de === 'Im Kaffeehaus wollen wir ____ amüsieren.' && imitateI4.frage.antworten.join(' ') === 'uns' &&
+      imitateI4.frage.nearMiss['sich'] && !win.DW.renderers.judgeCloze(imitateI4.frage, 'sich').ok &&
+      drillI4.frage.zeigt === 'Ich bin ____ das Ergebnis.' && drillI4.frage.antworten.join(' ') === 'gespannt auf' &&
+      drillI4.frage.nearMiss.gespannten && !win.DW.renderers.judgeCloze(drillI4.frage, 'gespannten').ok &&
+      lessonI4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderI4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderI4.frage.correct.join(' ') === targetsI4[0] && orderI4.frage.finite === 'wollen' && orderI4.frage.verbFirst === false &&
+      orderI4.frage.fields.vorfeld.join(' ') === 'Im Kaffeehaus' && orderI4.frage.fields.lsk.join(' ') === 'wollen' &&
+      orderI4.frage.fields.mittelfeld.join(' ') === 'wir uns amüsieren.' &&
+      win.DW.order.score(orderI4.frage, orderI4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderI4.frage, ['Im', 'Kaffeehaus', 'wir', 'wollen', 'uns', 'amüsieren.']).credit < 1 &&
+      writingI4.frage.points.join(' | ') === targetsI4.join(' | ') && writingI4.frage.minWords === 32 &&
+      targetsI4.join(' ').split(/\s+/).length === 32 &&
+      targetsI4.every(x => [writingI4.frage.promptDe, summaryI4.zeigt.de, homeworkI4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsI4.every(x => norm(speakingI4.erklaerung).includes(norm(x))) &&
+      (homeworkI4.hinweise || []).join(' ').includes('die Nachbarn sind sehr tolerant'));
+
+  const checksI4 = lessonI4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckI4 = checksI4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckI4 = checksI4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u9-l4 makes 80 percent four of five, independently checking gespannt auf, the gespannt cloze and wissen order, attributive ewige and entweder oder order',
+    checksI4.length === 5 && checksI4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksI4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksI4.every(s => /^cap\.b1-u9-l4\.s\d+$/.test(s.frage.prereq || '')) && checksI4.every(s => !s.hinweise) &&
+      checksI4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u9-l4.s07 | cap.b1-u9-l4.s23 | cap.b1-u9-l4.s24 | cap.b1-u9-l4.s15 | cap.b1-u9-l4.s20' &&
+      new Set(checksI4.map(s => s.frage.prereq)).size === 5 &&
+      checksI4[0].frage.optionen.some(o => o.text === targetsI4[3]) &&
+      checksI4[0].frage.optionen.some(o => o.text === 'Ich bin gespannt für das Ergebnis.') &&
+      Object.values(checksI4[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckI4.frage.zeigt === 'Ich bin ____ das Ergebnis.' &&
+      clozeCheckI4.frage.antworten.join(' ') === 'gespannt auf' && clozeCheckI4.frage.nearMiss.gespannten &&
+      !win.DW.renderers.judgeCloze(clozeCheckI4.frage, 'gespannten').ok &&
+      orderCheckI4.frage.correct.join(' ') === targetsI4[1] && orderCheckI4.frage.finite === 'wissen' &&
+      orderCheckI4.frage.fields.vorfeld.join(' ') === 'Weder der Vermieter noch die Nachbarn' && orderCheckI4.frage.fields.lsk.join(' ') === 'wissen' &&
+      orderCheckI4.frage.fields.mittelfeld.join(' ') === 'es.' &&
+      win.DW.order.score(orderCheckI4.frage, orderCheckI4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckI4.frage, ['Weder', 'der', 'Vermieter', 'wissen', 'noch', 'die', 'Nachbarn', 'es.']).credit < 1 &&
+      checksI4[3].frage.optionen.some(o => o.text === 'Das dauert eine ewige Zeit.') &&
+      checksI4[3].frage.optionen.some(o => o.text === 'Das dauert eine ewig Zeit.') &&
+      Object.values(checksI4[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checksI4[4].frage.optionen.some(o => o.text === targetsI4[4]) &&
+      checksI4[4].frage.optionen.some(o => o.text === 'Entweder wir gehen, oder bleiben wir.') &&
+      Object.values(checksI4[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
