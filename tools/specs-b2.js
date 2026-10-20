@@ -138,25 +138,49 @@ module.exports = [
       summaryRecap: 'إقرار وموافقة وموضوعية',
     }),
 
-  U('b2-w04', 'سماع محاضرة', 'Vortrag',
-    'Am Ende fängst du Gliederung und eine Grenze',
-    'في النهاية تلتقط الهيكل وحدًا.',
+  U('b2-w04', 'سماع محاضرة: الإنصات والتدوين', 'Vortrag: zuhören und mitschreiben',
+    'Am Ende hörst du einen Vortrag mit Aufgabe, Stichwörtern und Grenze — in fünf Sätzen',
+    'في النهاية تسمع محاضرة بمهمة واضحة وكلمات مدوّنة وحدٍّ لما لم يُقل في خمس جمل.',
     [
-      ['die Gliederung', 'الهيكل قبل التفاصيل', 'كلمة واحدة لا تكفي', 'ein Wort ist der Vortrag', 'الهيكل أولًا'],
-      ['vor dem Hören', 'السؤال قبل الصوت', 'البلا سؤال يضيع', 'ich höre ohne Aufgabe', 'السؤال أولًا'],
-      ['eine Grenze', 'ما لم يُقل يُعلَّم', 'لا تكمّل من عندك', 'ich ergänze die fehlende Ursache', 'النقص يُعلَّم لا يُملأ'],
-      ['nach dem Hören', 'المراجعة على السؤال', 'الإحساس ليس جوابًا', 'ich antworte nach Gefühl', 'السؤال لا الإحساس']
+      ['Ich muss die Aufgabe vor dem Hören lesen.', 'يقرأ المطلوب قبل أن يبدأ الصوت', 'vor مع الداتيف هنا: vor dem Hören لا vor das Hören، والمصدر lesen يغلق الجملة بعد muss', 'Ich muss die Aufgabe vor das Hören lesen.', 'vor dem Hören'],
+      ['Ich schreibe mit, ohne jedem Wort zu folgen.', 'يدوّن الهيكل ولا يطارد كل كلمة', 'mitschreiben فعل منفصل: schreibe في الموضع الثاني والبادئة mit في الختام', 'Ich mitschreibe, ohne jedem Wort zu folgen.', 'schreibe ... mit'],
+      ['Was fehlt, ergänze ich nicht.', 'يعلّم النقص ولا يخترعه', 'الجملة المقدمة تحجز الموضع الأول، فيأتي الفعل ergänze قبل الفاعل ich', 'Was fehlt, ich ergänze nicht.', 'ergänze ich'],
+      ['Dem Vortrag kann ich gut folgen.', 'يتابع المحاضرة بلا تعب', 'folgen يأخذ Dativ: Dem Vortrag لا Den Vortrag، والفعل kann في الموضع الثاني', 'Den Vortrag kann ich gut folgen.', 'الداتيف: Dem']
     ],
     [
-      ['Ich notiere die Gliederung.', 'أدوّن الهيكل', 'Ein Wort ist der Vortrag', 'الهيكل أولًا', 'Gliederung'],
-      ['Ich lese die Aufgabe vor dem Hören.', 'أقرأ المطلوب قبل السماع', 'Ich höre ohne Aufgabe', 'السؤال أولًا', 'vor'],
-      ['Was fehlt, ergänze ich nicht.', 'ما نقص لا أكمّله من عندي', 'Ich ergänze die fehlende Ursache', 'النقص يُعلَّم', 'fehlt'],
-      ['Nach dem Hören prüfe ich die Frage.', 'بعد السماع أفحص السؤال', 'Ich antworte nach Gefühl', 'السؤال لا الإحساس', 'Frage']
+      ['Ich muss die Aufgabe vor dem Hören lesen.', 'يجب أن أقرأ المطلوب قبل السماع', 'Ich muss die Aufgabe vor das Hören lesen.', 'vor مع الداتيف: vor dem Hören.', 'Aufgabe'],
+      ['Ich schreibe mit, ohne jedem Wort zu folgen.', 'أكتب مع المحاضرة دون ملاحقة كل كلمة', 'Ich mitschreibe, ohne jedem Wort zu folgen.', 'mitschreiben منفصل: schreibe ... mit.', 'mit'],
+      ['Was fehlt, ergänze ich nicht.', 'ما ينقص لا أكمّله من عندي', 'Was fehlt, ich ergänze nicht.', 'بعد الجملة المقدمة: ergänze ich.', 'ergänze'],
+      ['Dem Vortrag kann ich gut folgen.', 'أستطيع متابعة المحاضرة جيدًا', 'Den Vortrag kann ich gut folgen.', 'folgen مع الداتيف: Dem Vortrag.', 'folgen']
     ],
-    'Ich notiere die Gliederung. Was fehlt, ergänze ich nicht.',
+    'Ich muss die Aufgabe vor dem Hören lesen. Ich schreibe mit, ohne jedem Wort zu folgen.',
     'Nach dem Hören prüfe ich die Frage.',
-    'Höre morgen einen kurzen Vortrag und notiere drei Punkte.',
-    'غدًا استمع إلى حديث قصير ودوّن ثلاث نقاط.'),
+    'Wiederhole morgen die fünf Sätze: Ich muss die Aufgabe vor dem Hören lesen. Ich schreibe mit, ohne jedem Wort zu folgen. Was fehlt, ergänze ich nicht. Dem Vortrag kann ich gut folgen. Nach dem Hören prüfe ich die Frage.',
+    'غدًا أعد جمل المحاضرة الخمس ولاحظ الداتيف بعد folgen والفعل المنفصل mitschreiben.',
+    {
+      factFamilies: ['kasus', 'wortstellung', 'wortstellung', 'kasus'],
+      imitateNearMiss: 'Aufgaben',
+      transformHint: 'في جملة الختام راجع على السؤال لا على الإحساس: Nach dem Hören prüfe ich die Frage — بعد الظرف الفعل قبل الفاعل.',
+      orderSentence: 'Ich muss die Aufgabe vor dem Hören lesen.',
+      checkOrderSentence: 'Dem Vortrag kann ich gut folgen.',
+      orderAr: 'رتّب جملة البداية: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر lesen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر lesen يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Vortrag in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: مهمة تُقرأ قبل السماع بالداتيف بعد vor، وتدوين بفعل منفصل، ونقص لا يُخترع، ومتابعة بالداتيف بعد folgen، ومراجعة بعد السماع بانعكاس صحيح.',
+        hinweise: ['folgen مع الداتيف دائمًا: Dem Vortrag folgst du.', 'ما لم تسمعه لا تكتبه: Was fehlt, ergänze ich nicht.'],
+        prompt: 'اكتب جمل المحاضرة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Ich muss die Aufgabe vor dem Hören lesen. · Ich schreibe mit, ohne jedem Wort zu folgen. · Was fehlt, ergänze ich nicht. · Dem Vortrag kann ich gut folgen. · Nach dem Hören prüfe ich die Frage.',
+        points: ['Ich muss die Aufgabe vor dem Hören lesen.', 'Ich schreibe mit, ohne jedem Wort zu folgen.', 'Was fehlt, ergänze ich nicht.', 'Dem Vortrag kann ich gut folgen.', 'Nach dem Hören prüfe ich die Frage.'],
+        minWords: 34,
+        frage: 'اكتب جمل المحاضرة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich muss die Aufgabe vor dem Hören lesen. Ich schreibe mit, ohne jedem Wort zu folgen. Was fehlt, ergänze ich nicht. Dem Vortrag kann ich gut folgen. Nach dem Hören prüfe ich die Frage.',
+      summaryDe: 'Ich muss die Aufgabe vor dem Hören lesen. Ich schreibe mit, ohne jedem Wort zu folgen. Was fehlt, ergänze ich nicht. Dem Vortrag kann ich gut folgen. Nach dem Hören prüfe ich die Frage.',
+      summaryAr: 'المحاضرة تُسمع بمهمة قبل الصوت وتدوين للهيكل وحدٍّ صريح لما لم يُقل.',
+      summaryRecap: 'مهمة وتدوين وحدّ',
+    }),
 
   U('b2-w05', 'تقنية الامتحان: قراءة', 'Lesetechnik',
     'Am Ende liest du die Aufgabe vor dem Text',

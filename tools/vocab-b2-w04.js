@@ -9,23 +9,23 @@ module.exports = {
     items: [
       ['der Vortrag', 'die Vorträge', 'المحاضرة', 'Der Vortrag im Hörsaal hat ein klares Gerüst, viele Zuhörer und eine ruhige Struktur.', 'Der Vortrag dauert für zwanzig Minuten.', 'dauern + نصب بلا حرف جر.', 'kasus', 'Vortrag'],
       ['der Referent', 'die Referenten', 'المحاضر', 'Der Referent beginnt die Vorlesung mit einer Einführung und einem Überblick.', 'Der Referent beginnt mit ein Überblick.', 'mit + داتيف: einem.', 'deklination', 'Referent'],
-      ['der Überblick', 'die Überblicke', 'النظرة الشاملة', 'Ein Überblick am Anfang ist die Ankündigung des Ganzen.', 'Ein Überblick am Anfang hilft für das Notieren.', 'helfen bei + داتيف.', 'präposition', 'Überblick'],
+      ['der Überblick', 'die Überblicke', 'النظرة الشاملة', 'Ein Überblick am Anfang ist die Ankündigung des Ganzen.', 'Ein Überblick am Anfang ist die Ankündigung dem Ganzen.', 'الإضافة Genitiv: des Ganzen لا dem Ganzen.', 'präposition', 'Überblick'],
       ['die Notiz', 'die Notizen', 'الملاحظة', 'Eine gute Notiz hat drei Stichwörter und passt aufs Handout.', 'Ein gute Notiz hat drei Stichwörter und eine Randnotiz.', 'النعت: gute.', 'deklination', 'Notiz'],
       ['notieren', 'notiert · notierte · hat notiert', 'يدوّن', 'Ich notiere nur die Stichwörter und kein Beispiel.', 'Ich notiere über die Stichwörter.', 'notieren + نصب مباشر.', 'kasus', 'notiere'],
       ['das Stichwort', 'die Stichwörter', 'الكلمة المدوّنة', 'Ein Stichwort an der Tafel reicht.', 'Ein Stichwort reicht, kein ganze Satz.', 'kein ganzer Satz.', 'deklination', 'Stichwort'],
       ['mitschreiben', 'schreibt mit · schrieb mit · hat mitgeschrieben', 'يكتب مع المحاضرة', 'Ich schreibe mit, ohne jedem Wort zu folgen.', 'Ich mitschreibe, ohne jedem Wort zu folgen.', 'الفعل مع mit منفصل.', 'wortstellung', 'schreibe'],
       ['zuhören', 'hört zu · hörte zu · hat zugehört', 'ينصت', 'Ich höre zuerst zu und schreibe dann; die Sendung läuft weiter.', 'Ich zuhöre zuerst und schreibe dann.', 'الفعل مع zu منفصل.', 'wortstellung', 'höre'],
       ['folgen', 'folgt · folgte · ist gefolgt', 'يتابع', 'Dem Vortrag kann ich folgen, weil jeder Schlüsselbegriff wiederkehrt.', 'Den Vortrag kann ich gut folgen.', 'folgen + داتيف.', 'kasus', 'folgen'],
-      ['das Thema', 'die Themen', 'الموضوع', 'Das Thema steht oben auf dem Zettel, das Detail unten.', 'Das Thema steht oben in dem Zettel.', 'auf dem Zettel.', 'präposition', 'Thema'],
+      ['das Thema', 'die Themen', 'الموضوع', 'Das Thema steht oben auf dem Zettel, das Detail unten.', 'Das Thema steht oben auf den Zettel, das Detail unten.', 'المكان ثابت على الورقة: auf + داتيف — auf dem Zettel.', 'präposition', 'Thema'],
       ['der Punkt', 'die Punkte', 'النقطة', 'Drei Punkte und ein Fachbegriff genügen für den Anfang.', 'Drei Punkte genügen für der Anfang.', 'für + نصب: den Anfang.', 'kasus', 'Punkte'],
       ['das Signalwort', 'die Signalwörter', 'الكلمة الدالة', 'Signalwörter wie zuerst und dann sind Zeitangaben, die Abschnitt für Abschnitt durch den Vortrag führen.', 'Signalwörter wie zuerst und dann führen durch der Vortrag.', 'durch + نصب.', 'kasus', 'Signalwörter'],
-      ['der Ablauf', 'die Abläufe', 'سير الأمور', 'Der Ablauf, der Aufbau und die Reihenfolge der Gliederungspunkte bleiben gleich.', 'Der Ablauf von dem Vortrag bleibt gleich.', 'Genitiv أدقّ.', 'kasus', 'Ablauf'],
+      ['der Ablauf', 'die Abläufe', 'سير الأمور', 'Der Ablauf, der Aufbau und die Reihenfolge der Gliederungspunkte bleiben gleich.', 'Der Ablauf des Vortrag bleibt gleich.', 'إضافة المذكر Genitiv تنتهي بـs: des Vortrags.', 'kasus', 'Ablauf'],
       ['der Kern', 'die Kerne', 'الجوهر', 'Der Kern steht im Mittelteil.', 'Der Kern der Aussage steht im letzte Drittel.', 'النعت: letzten.', 'deklination', 'Kern'],
       ['die Grenze', 'die Grenzen', 'الحد', 'Was der Redner nicht sagt, bleibt eine Grenze.', 'Was nicht gesagt wird, bleibt ein Grenze.', 'مؤنث: eine.', 'genus', 'Grenze'],
       ['fehlen', 'fehlt · fehlte · hat gefehlt', 'ينقص', 'Wenn Zahlen fehlen, fülle ich sie nicht.', 'Wenn Zahlen fehlen, ich fülle sie nicht.', 'الفعل ثانٍ بعد الشرط.', 'wortstellung', 'fehlen'],
       ['ergänzen', 'ergänzt · ergänzte · hat ergänzt', 'يكمل', 'Ich ergänze nichts, was ich nicht gehört habe, auch keinen Zusammenhang.', 'Ich ergänze nichts, was ich nicht gehört bin.', 'habe gehört.', 'konjugation', 'ergänze'],
-      ['behaupten', 'behauptet · behauptete · hat behauptet', 'يدّعي', 'Der Referent behauptet, die Zahl sei gestiegen; die Wirkung bleibt offen.', 'Der Referent behauptet, dass die Zahl sei gestiegen.', 'في غير المباشر: sei.', 'wortstellung', 'behauptet'],
-      ['die Angabe', 'die Angaben', 'البيان', 'Eine Angabe ohne Beleg ist wertlos.', 'Eine Angabe ohne ein Beleg ist wertlos.', 'بعد ohne بلا أداة.', 'kasus', 'Angabe'],
+      ['behaupten', 'behauptet · behauptete · hat behauptet', 'يدّعي', 'Der Referent behauptet, die Zahl sei gestiegen; die Wirkung bleibt offen.', 'Der Referent behauptet, dass die Zahl sei gestiegen.', 'بعد dass المساعد في الختام: gestiegen sei.', 'wortstellung', 'behauptet'],
+      ['die Angabe', 'die Angaben', 'البيان', 'Eine Angabe ohne Beleg ist wertlos.', 'Eine Angabe ohne ein Beleg ist wertlos.', 'المذكر نصب بعد ohne: einen Beleg.', 'kasus', 'Angabe'],
       ['die Zahl', 'die Zahlen', 'الرقم', 'Die Zahl klingt rund; eine Tendenz ist sie nicht.', 'Die Zahl klingen rund, sie ist geschätzt.', 'المفرد: klingt.', 'konjugation', 'Zahl'],
       ['schätzen', 'schätzt · schätzte · hat geschätzt', 'يقدّر', 'Der Referent schätzt die Kosten; eine Prognose wagt er nicht.', 'Der Referent schätzt auf die Kosten grob.', 'schätzen + نصب.', 'kasus', 'schätzt'],
       ['das Schaubild', 'die Schaubilder', 'الرسم البياني', 'Das Schaubild auf der Folie ist eine Grafik mit zwei Kurven.', 'Die Schaubild auf der Folie zeigt zwei Kurven.', 'محايد: das.', 'genus', 'Schaubild'],
@@ -34,7 +34,7 @@ module.exports = {
       ['sinken', 'sinkt · sank · ist gesunken', 'ينخفض', 'Die Nachfrage sinkt im dritten Quartal; der Rückgang ist deutlich.', 'Die Nachfrage sinkt in drittem Quartal.', 'im dritten Quartal.', 'deklination', 'sinkt'],
       ['die Ursache', 'die Ursachen', 'السبب', 'Eine Ursache für die Entwicklung nennt der Schlussteil nicht.', 'Eine Ursache nennt der Schlussteil nicht; ich ergänze sie aus Gedächtnis.', 'aus dem Gedächtnis.', 'präposition', 'Ursache'],
       ['die Folge', 'die Folgen', 'النتيجة', 'Welche Folge hat der Anstieg?', 'Welche Folge hat den Anstieg?', 'الأداة المطلوبة: hat der Anstieg (فاعل).', 'kasus', 'Folge'],
-      ['der Vergleich', 'die Vergleiche', 'المقارنة', 'Der Vergleich mit den Vorjahren braucht einen Vergleichswert und eine Quelle.', 'Der Vergleich zu den Vorjahren hinkt.', 'Vergleich mit + داتيف.', 'präposition', 'Vergleich'],
+      ['der Vergleich', 'die Vergleiche', 'المقارنة', 'Der Vergleich mit den Vorjahren braucht einen Vergleichswert und eine Quelle.', 'Der Vergleich mit die Vorjahre hinkt.', 'mit + داتيف دائمًا: mit den Vorjahren.', 'präposition', 'Vergleich'],
       ['betonen', 'betont · betonte · hat betont', 'يشدّد', 'Der Referent betont den ersten Punkt.', 'Der Referent betont auf den ersten Punkt.', 'betonen + نصب.', 'kasus', 'betont'],
       ['hervorheben', 'hebt hervor · hob hervor · hat hervorgehoben', 'يبرز', 'Sie hebt zwei Zahlen hervor und gibt eine Übersicht.', 'Sie hervorhebt zwei Zahlen.', 'الفعل مع hervor منفصل.', 'wortstellung', 'hebt'],
       ['die Kernfrage', 'die Kernfragen', 'السؤال الجوهري', 'Die Kernaussage steckt in der Kernfrage.', 'Die Kernfrage steht in Anfang.', 'am Anfang.', 'präposition', 'Kernfrage'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Gliederungspunkte', 'die Nachbereitung'
     ],
     tricks: [
-      { trick: 'قبل الصوت: اكتب السؤال — لا تسمع بلا مهمة', wie: 'Ich lese die Aufgabe vor dem Hören und notiere zwei Suchwörter.', warum: 'بلا سؤال يستوي كل كلام المحاضرة؛ الأذن تلتقط ما تنتظره.', anchor: 'vor dem Hören' },
-      { trick: 'الهيكل أولًا: Einführung — Mittelteil — Schlussteil', wie: 'Der Referent gibt zuerst einen Überblick, dann folgen die Zahlen.', warum: 'من يمسك الهيكل يستطيع تفويت تفصيل بلا خسارة، ومن يطارد التفاصيل يفقد الكل.', anchor: 'der Überblick' },
-      { trick: 'ما لم يُقل يُعلَّم بعلامة، لا يُملأ من الخيال', wie: 'Wenn eine Zahl fehlt, markiere ich sie mit einem Fragezeichen.', warum: 'الفراغ المملوء من الذاكرة يُحسب خطأً؛ العلامة تكشفه في المراجعة.', anchor: 'Was fehlt' }
-    ]
+      { trick: 'قبل الصوت: اكتب السؤال — لا تسمع بلا مهمة', wie: 'Ich lese die Aufgabe vor dem Hören und notiere zwei Suchwörter.', warum: 'بلا سؤال يستوي كل كلام المحاضرة؛ الأذن تلتقط ما تنتظره.', anchor: 'Ich lese die Aufgabe vor dem Hören' },
+      { trick: 'الهيكل أولًا: Einführung — Mittelteil — Schlussteil', wie: 'Der Referent gibt zuerst einen Überblick, dann folgen die Zahlen.', warum: 'من يمسك الهيكل يستطيع تفويت تفصيل بلا خسارة، ومن يطارد التفاصيل يفقد الكل.', anchor: 'Der Referent gibt zuerst einen Überblick' },
+      { trick: 'ما لم يُقل يُعلَّم بعلامة، لا يُملأ من الخيال', wie: 'Wenn eine Zahl fehlt, markiere ich sie mit einem Fragezeichen.', warum: 'الفراغ المملوء من الذاكرة يُحسب خطأً؛ العلامة تكشفه في المراجعة.', anchor: 'Wenn eine Zahl fehlt' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'das Stichwort': 'Stichwörter',
+      'das Schaubild': 'Schaubilder',
+      'wiederholen': 'wiederholt'
+    },
+    clozeItemIndex: 14,
+    clozeNearMiss: 'Grenzen',
+    checkItemIndex: 20,
+    extraCheck: {
+      right: 'Nach dem Hören prüfe ich die Frage.',
+      bad: 'Nach dem Hören ich prüfe die Frage.',
+      why: 'بعد العبارة المقدمة الفعل في الموضع الثاني: prüfe ich لا ich prüfe.',
+      family: 'wortstellung',
+      prereq: 'cap.b2-w04.s20',
+      frage: 'أي جملة تضع الفعل في الموضع الثاني بعد الظرف؟'
+    }
   }
 
 };

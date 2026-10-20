@@ -18818,6 +18818,127 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW3[4].frage.optionen.some(o => o.text === targetsW3[4]) &&
       checksW3[4].frage.optionen.some(o => o.text === 'Lassen Sie mir bitte ausreden.') &&
       Object.values(checksW3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonW4 = win.DW_LESSONS['b2-w04'];
+  const rowW4 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w04');
+  const byWordW4 = Object.fromEntries(lessonW4.wortschatz.map(it => [it.de, it]));
+  const tricksW4 = lessonW4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsW4 = [
+    'Ich muss die Aufgabe vor dem Hören lesen.',
+    'Ich schreibe mit, ohne jedem Wort zu folgen.',
+    'Was fehlt, ergänze ich nicht.',
+    'Dem Vortrag kann ich gut folgen.',
+    'Nach dem Hören prüfe ich die Frage.'
+  ];
+  t('Corpus workshop b2-w04 precisely scopes five lecture-listening moves taking dative vor dem Hören, separable mitschreiben, uninverted gaps, dative folgen and verb-second review',
+    lessonW4.title.de === 'Vortrag: zuhören und mitschreiben' &&
+      lessonW4.title.ar === 'سماع محاضرة: الإنصات والتدوين' &&
+      lessonW4.level === 'B2' && lessonW4.kind === 'workshop' &&
+      rowW4.title.de === lessonW4.title.de && rowW4.title.ar === lessonW4.title.ar &&
+      rowW4.theme === 'سماع' &&
+      rowW4.grammar.item === 'سماع محاضرة: الإنصات والتدوين' &&
+      rowW4.grammar.method === 'explicit' &&
+      rowW4.words.receptive === 90 && rowW4.words.productive === 60 &&
+      lessonW4.schritte.length === 36 && lessonW4.wortschatz.length === 40 &&
+      lessonW4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW4[i]) &&
+      lessonW4.schritte[0].zeigt.de === 'Am Ende hörst du einen Vortrag mit Aufgabe, Stichwörtern und Grenze — in fünf Sätzen' &&
+      lessonW4.schritte.find(s => s.id === 's20').zeigt.de === targetsW4[4]);
+
+  const expectedWordsW4 = [
+    'der Vortrag', 'der Referent', 'der Überblick', 'die Notiz', 'notieren', 'das Stichwort',
+    'mitschreiben', 'zuhören', 'folgen', 'das Thema', 'der Punkt', 'das Signalwort',
+    'der Ablauf', 'der Kern', 'die Grenze', 'fehlen', 'ergänzen', 'behaupten',
+    'die Angabe', 'die Zahl', 'schätzen', 'das Schaubild', 'die Kurve', 'steigen',
+    'sinken', 'die Ursache', 'die Folge', 'der Vergleich', 'betonen', 'hervorheben',
+    'die Kernfrage', 'die Antwort', 'prüfen', 'die Aufgabe', 'die Konzentration', 'die Müdigkeit',
+    'die Pause', 'wiederholen', 'der Zettel', 'die Mitschrift'
+  ];
+  const errorsW4 = lessonW4.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w04 reviews all 40 entries and three bounded mnemonics converting four foils that must not be branded errors and fixing two misleading explanations',
+    Object.keys(byWordW4).join(' | ') === expectedWordsW4.join(' | ') &&
+      lessonW4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW4['der Überblick'].err === 'Ein Überblick am Anfang ist die Ankündigung dem Ganzen.' &&
+      byWordW4['das Thema'].err === 'Das Thema steht oben auf den Zettel, das Detail unten.' &&
+      byWordW4['der Ablauf'].err === 'Der Ablauf des Vortrag bleibt gleich.' &&
+      byWordW4['der Vergleich'].err === 'Der Vergleich mit die Vorjahre hinkt.' &&
+      ['Ein Überblick am Anfang hilft für das Notieren.', 'Das Thema steht oben in dem Zettel.',
+        'Der Ablauf von dem Vortrag bleibt gleich.', 'Der Vergleich zu den Vorjahren hinkt.']
+        .every(x => !errorsW4.includes(x)) &&
+      byWordW4['die Angabe'].err === 'Eine Angabe ohne ein Beleg ist wertlos.' &&
+      byWordW4['die Angabe'].why.includes('einen Beleg') &&
+      byWordW4['behaupten'].why.includes('gestiegen sei') &&
+      ['Ich mitschreibe, ohne jedem Wort zu folgen.', 'Die Werte steigen langsamer wie erwartet.',
+        'Ich wiederhole mich die Stichwörter lautlos.']
+        .every(x => errorsW4.includes(x)) &&
+      tricksW4.length === 3 &&
+      tricksW4[0].wie.includes('Ich lese die Aufgabe vor dem Hören und notiere zwei Suchwörter.') &&
+      tricksW4[1].wie.includes('Der Referent gibt zuerst einen Überblick, dann folgen die Zahlen.') &&
+      tricksW4[2].wie.includes('Wenn eine Zahl fehlt, markiere ich sie mit einem Fragezeichen.'));
+
+  const wordClozeAW4 = lessonW4.schritte.find(s => s.id === 's09');
+  const wordClozeBW4 = lessonW4.schritte.find(s => s.id === 's13');
+  const wordClozeCW4 = lessonW4.schritte.find(s => s.id === 's17');
+  const imitateW4 = lessonW4.schritte.find(s => s.id === 's19');
+  const drillW4 = lessonW4.schritte.find(s => s.id === 's23');
+  const orderW4 = lessonW4.schritte.find(s => s.id === 's24');
+  const writingW4 = lessonW4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW4 = lessonW4.schritte.find(s => s.phase === 'Produktion');
+  const summaryW4 = lessonW4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW4 = lessonW4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus workshop b2-w04 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 34-word five-target production',
+    wordClozeAW4.frage.zeigt === 'Ein ____ an der Tafel reicht.' && wordClozeAW4.frage.antworten.join(' ') === 'Stichwort' &&
+      wordClozeAW4.frage.nearMiss['Stichwörter'] && !win.DW.renderers.judgeCloze(wordClozeAW4.frage, 'Stichwörter').ok &&
+      wordClozeBW4.frage.zeigt === 'Das ____ auf der Folie ist eine Grafik mit zwei Kurven.' && wordClozeBW4.frage.antworten.join(' ') === 'Schaubild' &&
+      wordClozeBW4.frage.nearMiss.Schaubilder && !win.DW.renderers.judgeCloze(wordClozeBW4.frage, 'Schaubilder').ok &&
+      wordClozeCW4.frage.zeigt === 'Ich ____ die Stichwörter; die Nachbereitung dauert zehn Minuten.' && wordClozeCW4.frage.antworten.join(' ') === 'wiederhole' &&
+      wordClozeCW4.frage.nearMiss.wiederholt && !win.DW.renderers.judgeCloze(wordClozeCW4.frage, 'wiederholt').ok &&
+      (imitateW4.frage.zeigt === 'Ich muss die ____ vor dem Hören lesen.' || imitateW4.zeigt.de === 'Ich muss die ____ vor dem Hören lesen.') && imitateW4.frage.antworten.join(' ') === 'Aufgabe' &&
+      imitateW4.frage.nearMiss['Aufgaben'] && !win.DW.renderers.judgeCloze(imitateW4.frage, 'Aufgaben').ok &&
+      drillW4.frage.zeigt === 'Was der Redner nicht sagt, bleibt eine ____.' && drillW4.frage.antworten.join(' ') === 'Grenze' &&
+      drillW4.frage.nearMiss.Grenzen && !win.DW.renderers.judgeCloze(drillW4.frage, 'Grenzen').ok &&
+      lessonW4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW4.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW4.frage.correct.join(' ') === targetsW4[0] && orderW4.frage.finite === 'muss' && orderW4.frage.verbFirst === false &&
+      orderW4.frage.fields.vorfeld.join(' ') === 'Ich' && orderW4.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW4.frage.fields.mittelfeld.join(' ') === 'die Aufgabe vor dem Hören lesen.' &&
+      win.DW.order.score(orderW4.frage, orderW4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW4.frage, ['Ich', 'die', 'Aufgabe', 'muss', 'vor', 'dem', 'Hören', 'lesen.']).credit < 1 &&
+      writingW4.frage.points.join(' | ') === targetsW4.join(' | ') && writingW4.frage.minWords === 34 &&
+      targetsW4.join(' ').split(/\s+/).length === 34 &&
+      targetsW4.every(x => [writingW4.frage.promptDe, summaryW4.zeigt.de, homeworkW4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW4.every(x => norm(speakingW4.erklaerung).includes(norm(x))) &&
+      homeworkW4.zeigt.de.includes('Wiederhole morgen die fünf Sätze:'));
+
+  const checksW4 = lessonW4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW4 = checksW4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW4 = checksW4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w04 makes 80 percent four of five, independently checking dative folgen, the Grenze cloze and kann order, direct-object schätzen and verb-second prüfe ich',
+    checksW4.length === 5 && checksW4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW4.every(s => /^cap\.b2-w04\.s\d+$/.test(s.frage.prereq || '')) && checksW4.every(s => !s.hinweise) &&
+      checksW4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w04.s07 | cap.b2-w04.s23 | cap.b2-w04.s24 | cap.b2-w04.s13 | cap.b2-w04.s20' &&
+      new Set(checksW4.map(s => s.frage.prereq)).size === 5 &&
+      checksW4[0].frage.optionen.some(o => o.text === targetsW4[3]) &&
+      checksW4[0].frage.optionen.some(o => o.text === 'Den Vortrag kann ich gut folgen.') &&
+      Object.values(checksW4[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckW4.frage.zeigt === 'Was der Redner nicht sagt, bleibt eine ____.' &&
+      clozeCheckW4.frage.antworten.join(' ') === 'Grenze' && clozeCheckW4.frage.nearMiss.Grenzen &&
+      !win.DW.renderers.judgeCloze(clozeCheckW4.frage, 'Grenzen').ok &&
+      orderCheckW4.frage.correct.join(' ') === targetsW4[3] && orderCheckW4.frage.finite === 'kann' &&
+      orderCheckW4.frage.fields.vorfeld.join(' ') === 'Dem Vortrag' && orderCheckW4.frage.fields.lsk.join(' ') === 'kann' &&
+      orderCheckW4.frage.fields.mittelfeld.join(' ') === 'ich gut folgen.' &&
+      win.DW.order.score(orderCheckW4.frage, orderCheckW4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW4.frage, ['Dem', 'Vortrag', 'ich', 'kann', 'gut', 'folgen.']).credit < 1 &&
+      checksW4[3].frage.optionen.some(o => o.text === 'Der Referent schätzt die Kosten; eine Prognose wagt er nicht.') &&
+      checksW4[3].frage.optionen.some(o => o.text === 'Der Referent schätzt auf die Kosten grob.') &&
+      Object.values(checksW4[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksW4[4].frage.optionen.some(o => o.text === targetsW4[4]) &&
+      checksW4[4].frage.optionen.some(o => o.text === 'Nach dem Hören ich prüfe die Frage.') &&
+      Object.values(checksW4[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

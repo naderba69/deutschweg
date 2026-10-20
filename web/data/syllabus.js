@@ -191,7 +191,7 @@
     ['تحليل نص: الوصف والتأويل', 'Textanalyse: beschreiben und deuten', 'تحليل', 'text-analysis'],
     ['ورشة كتابة: الأطروحة والدليل', 'Erörterung: These und Beleg', 'حجاج', 'writing'],
     ['نقاش: الإقرار والموافقة المشروطة', 'Diskussion: einräumen und bedingt zustimmen', 'نقاش', 'discussion'],
-    ['سماع محاضرة', 'Vortrag', 'سماع', 'listening'],
+    ['سماع محاضرة: الإنصات والتدوين', 'Vortrag: zuhören und mitschreiben', 'سماع', 'listening'],
     ['تقنية الامتحان: قراءة', 'Lesetechnik', 'امتحان', 'exam-technique'],
     ['ورشة كتابة: شكوى', 'Beschwerdebrief', 'شكوى رسمية', 'writing'],
     ['نقاش: عمل', 'Arbeit diskutieren', 'العمل', 'discussion'],
