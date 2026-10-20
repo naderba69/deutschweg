@@ -16964,6 +16964,126 @@ console.log('\n— P3.2 lexical layer —\n');
       checksH6[4].frage.optionen.some(o => o.text === targetsH6[4]) &&
       checksH6[4].frage.optionen.some(o => o.text === 'Im März blüht die Bäume.') &&
       Object.values(checksH6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonI1 = win.DW_LESSONS['b1-u9-l1'];
+  const rowI1 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonI1.id);
+  const byWordI1 = Object.fromEntries(lessonI1.wortschatz.map(it => [it.de, it]));
+  const tricksI1 = lessonI1.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsI1 = [
+    'Die Fernbedienung liegt neben dem Sofa.',
+    'Das Metall wird hier recycelt.',
+    'Das Kraftwerk liefert Strom für die Stadt.',
+    'Der Service war ausgezeichnet.',
+    'Ich will dreihundert Franken einzahlen.'
+  ];
+  t('Corpus lesson b1-u9-l1 precisely scopes five house-and-device moves taking a singular Fernbedienung die liegt, a singular wird-passive on metal, a Kraftwerk das liefert, an endingless predicative ausgezeichnet and a final-infinitive Einzahlung',
+    lessonI1.title.de === 'Haus und Geräte: Fernbedienung und Kraftwerk' &&
+      lessonI1.title.ar === 'البيت والأجهزة: Fernbedienung وKraftwerk' &&
+      rowI1.title.de === lessonI1.title.de && rowI1.title.ar === lessonI1.title.ar &&
+      rowI1.theme === 'السكن' &&
+      rowI1.grammar.item === 'Fernbedienung liegt · Metall wird recycelt · Kraftwerk liefert · Service ausgezeichnet · Franken einzahlen' &&
+      rowI1.grammar.method === 'explicit' && lessonI1.schritte.length === 36 && lessonI1.wortschatz.length === 40 &&
+      lessonI1.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonI1.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsI1[i]) &&
+      lessonI1.schritte[0].zeigt.de === 'Am Ende sprichst du über Geräte, Materialien und Geld — in fünf Sätzen' &&
+      lessonI1.schritte.find(s => s.id === 's20').zeigt.de === targetsI1[4]);
+
+  const expectedWordsI1 = [
+    'der Abfalleimer', 'abwaschen', 'das Abonnement', 'abonnieren', 'anhaben', 'aufheben',
+    'aufladen', 'die Bancomatkarte', 'die Bedienungsanleitung', 'die Broschüre', 'die Fernbedienung', 'das Fundbüro',
+    'das Kuvert', 'die Schachtel', 'die Scheibe', 'das Streichholz', 'der Strumpf', 'das Zündholz',
+    'der Zünder', 'der Geldautomat', 'einzahlen', 'der Zins', 'der Zuschlag', 'doppelt',
+    'minimal', 'sämtlich', 'insgesamt', 'inklusive', 'genügen', 'prima',
+    'ausgezeichnet', 'allerbest', 'allerschönst', 'das Leder', 'das Metall', 'der Kunststoff',
+    'der Stoff', 'der Schmuck', 'die Pfanne', 'das Kraftwerk'
+  ];
+  const errorsI1 = lessonI1.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u9-l1 reviews all 40 entries and three bounded mnemonics without seventeen manufactured appendages and never brands the colloquial aufwaschen, the valid behalten or the contestable inklusive von as errors',
+    Object.keys(byWordI1).join(' | ') === expectedWordsI1.join(' | ') &&
+      lessonI1.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonI1.wortschatz.every(it => it.ex !== it.err) &&
+      byWordI1['die Fernbedienung'].err === 'Die Fernbedienung liegen neben dem Sofa.' &&
+      byWordI1['das Metall'].err === 'Das Metall werden hier recycelt.' &&
+      byWordI1['abwaschen'].err === 'Nach dem Essen ich muss abwaschen.' &&
+      byWordI1['ausgezeichnet'].err === 'Der Service war ausgezeichnete.' &&
+      byWordI1['einzahlen'].err === 'Ich will einzahlen dreihundert Franken.' &&
+      !['Nach dem Essen muss ich aufwaschen.', 'Ich will die Zeitung abonnieren auf.',
+        'Was willst du heute anhaben auf?', 'Ich will den Zettel behalten auf.',
+        'Sie muss ihr Handy aufladen an.', 'Im Fundbüro habe ich meine Tasche gefunden auf.',
+        'In Österreich sagt man Zündholz auf.', 'Ich will dreihundert Franken einzahlen auf.',
+        'Der Preis ist doppelt so hoch gemacht.', 'Der Unterschied ist minimal gemacht.',
+        'Insgesamt zahle ich hundert Franken mehr auf.', 'Der Preis ist inklusive von Heizung.',
+        'Zweitausend Franken genügen nicht mehr auf.', 'Die Beratung war prima gemacht.',
+        'Der Service war ausgezeichnet gemacht.', 'Allerbest sagt der Großvater auf.',
+        'Allerschönst sagt der Kritiker auf.']
+        .some(x => errorsI1.includes(x)) &&
+      tricksI1.length === 3 && tricksI1[0].wie.includes('Das Metall wird hier recycelt.') &&
+      tricksI1[1].wie.includes('Die Fernbedienung liegt neben dem Sofa.') &&
+      tricksI1[2].wie.includes('Der Service war ausgezeichnet.') &&
+      tricksI1[2].warum.includes('war ausgezeichnet'));
+
+  const wordClozeAI1 = lessonI1.schritte.find(s => s.id === 's09');
+  const wordClozeBI1 = lessonI1.schritte.find(s => s.id === 's13');
+  const wordClozeCI1 = lessonI1.schritte.find(s => s.id === 's17');
+  const imitateI1 = lessonI1.schritte.find(s => s.id === 's19');
+  const drillI1 = lessonI1.schritte.find(s => s.id === 's23');
+  const orderI1 = lessonI1.schritte.find(s => s.id === 's24');
+  const writingI1 = lessonI1.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingI1 = lessonI1.schritte.find(s => s.phase === 'Produktion');
+  const summaryI1 = lessonI1.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkI1 = lessonI1.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u9-l1 aligns five strict learning clozes, sound liegt order fields and a 27-word five-target production',
+    wordClozeAI1.frage.zeigt === 'Ich will den Zettel ____.' && wordClozeAI1.frage.antworten.join(' ') === 'aufheben' &&
+      wordClozeAI1.frage.nearMiss.heben && !win.DW.renderers.judgeCloze(wordClozeAI1.frage, 'heben').ok &&
+      wordClozeBI1.frage.zeigt === 'Der ____ bleibt in diesem Jahr niedrig.' && wordClozeBI1.frage.antworten.join(' ') === 'Zins' &&
+      wordClozeBI1.frage.nearMiss.Zinses && !win.DW.renderers.judgeCloze(wordClozeBI1.frage, 'Zinses').ok &&
+      wordClozeCI1.frage.zeigt === 'Der ____ liegt im Safe.' && wordClozeCI1.frage.antworten.join(' ') === 'Schmuck' &&
+      wordClozeCI1.frage.nearMiss.Schmuckes && !win.DW.renderers.judgeCloze(wordClozeCI1.frage, 'Schmuckes').ok &&
+      imitateI1.zeigt.de === 'Die Fernbedienung ____ neben dem Sofa.' && imitateI1.frage.antworten.join(' ') === 'liegt' &&
+      imitateI1.frage.nearMiss['liegen'] && !win.DW.renderers.judgeCloze(imitateI1.frage, 'liegen').ok &&
+      drillI1.frage.zeigt === 'Die ____ liegt neben dem Sofa.' && drillI1.frage.antworten.join(' ') === 'Fernbedienung' &&
+      drillI1.frage.nearMiss.liegen && !win.DW.renderers.judgeCloze(drillI1.frage, 'liegen').ok &&
+      lessonI1.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderI1.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderI1.frage.correct.join(' ') === targetsI1[0] && orderI1.frage.finite === 'liegt' && orderI1.frage.verbFirst === false &&
+      orderI1.frage.fields.vorfeld.join(' ') === 'Die Fernbedienung' && orderI1.frage.fields.lsk.join(' ') === 'liegt' &&
+      orderI1.frage.fields.mittelfeld.join(' ') === 'neben dem Sofa.' &&
+      win.DW.order.score(orderI1.frage, orderI1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderI1.frage, ['Die', 'Fernbedienung', 'neben', 'dem', 'Sofa.', 'liegt']).credit < 1 &&
+      writingI1.frage.points.join(' | ') === targetsI1.join(' | ') && writingI1.frage.minWords === 27 &&
+      targetsI1.join(' ').split(/\s+/).length === 27 &&
+      targetsI1.every(x => [writingI1.frage.promptDe, summaryI1.zeigt.de, homeworkI1.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsI1.every(x => norm(speakingI1.erklaerung).includes(norm(x))) &&
+      (homeworkI1.hinweise || []).join(' ').includes('mancherorts auch aufwaschen'));
+
+  const checksI1 = lessonI1.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckI1 = checksI1.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckI1 = checksI1.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u9-l1 makes 80 percent four of five, independently checking endingless ausgezeichnet, the Fernbedienung cloze and liefert order, the wird-passive agreement and final-infinitive einzahlen',
+    checksI1.length === 5 && checksI1[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksI1[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksI1.every(s => /^cap\.b1-u9-l1\.s\d+$/.test(s.frage.prereq || '')) && checksI1.every(s => !s.hinweise) &&
+      checksI1.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u9-l1.s07 | cap.b1-u9-l1.s23 | cap.b1-u9-l1.s24 | cap.b1-u9-l1.s16 | cap.b1-u9-l1.s20' &&
+      new Set(checksI1.map(s => s.frage.prereq)).size === 5 &&
+      checksI1[0].frage.optionen.some(o => o.text === targetsI1[3]) &&
+      checksI1[0].frage.optionen.some(o => o.text === 'Der Service war ausgezeichnete.') &&
+      Object.values(checksI1[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheckI1.frage.zeigt === 'Die ____ liegt neben dem Sofa.' &&
+      clozeCheckI1.frage.antworten.join(' ') === 'Fernbedienung' && clozeCheckI1.frage.nearMiss.liegen &&
+      !win.DW.renderers.judgeCloze(clozeCheckI1.frage, 'liegen').ok &&
+      orderCheckI1.frage.correct.join(' ') === targetsI1[2] && orderCheckI1.frage.finite === 'liefert' &&
+      orderCheckI1.frage.fields.vorfeld.join(' ') === 'Das Kraftwerk' && orderCheckI1.frage.fields.lsk.join(' ') === 'liefert' &&
+      orderCheckI1.frage.fields.mittelfeld.join(' ') === 'Strom für die Stadt.' &&
+      win.DW.order.score(orderCheckI1.frage, orderCheckI1.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckI1.frage, ['Das', 'Kraftwerk', 'Strom', 'liefert', 'für', 'die', 'Stadt.']).credit < 1 &&
+      checksI1[3].frage.optionen.some(o => o.text === targetsI1[1]) &&
+      checksI1[3].frage.optionen.some(o => o.text === 'Das Metall werden hier recycelt.') &&
+      Object.values(checksI1[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksI1[4].frage.optionen.some(o => o.text === targetsI1[4]) &&
+      checksI1[4].frage.optionen.some(o => o.text === 'Ich will einzahlen dreihundert Franken.') &&
+      Object.values(checksI1[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

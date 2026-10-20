@@ -2642,25 +2642,50 @@ module.exports = [
       hwHintDe: 'Im Frühling blühen die Bäume, aber im Herbst ist die Nordsee rau und es donnert oft. Auf dem Weg begegne ich dem Trainer jeden Tag. Die Mannschaft kämpft um den Sieg, und das Stadion war voll. Nach dem Spiel grillieren wir im Garten und machen ein Picknick.'
     }),
 
-  U('b1-u9-l1', 'B1', 'البيت والأجهزة', 'Haus und Geräte', 'lexik-kollokation',
-    'Am Ende beschreibst du Geräte und Materialien im Haushalt',
-    'في النهاية تصف أجهزة وموادّ في البيت.',
+  U('b1-u9-l1', 'B1', 'البيت والأجهزة: Fernbedienung وKraftwerk', 'Haus und Geräte: Fernbedienung und Kraftwerk', 'lexik-kollokation',
+    'Am Ende sprichst du über Geräte, Materialien und Geld — in fünf Sätzen',
+    'في النهاية تتحدث عن الأجهزة والموادّ والمال في خمس جمل.',
     [
-      ['Der Abfalleimer steht unter der Spüle.', 'الأداة المنزلية مفردة', 'der Eimer: Singular + steht', 'Der Abfalleimer stehen unter der Spüle.', 'steht'],
-      ['Ich will die Zeitung abonnieren.', 'abonnieren بلا حرف جر', 'kein auf nach abonnieren', 'Ich will die Zeitung abonnieren auf.', 'abonnieren'],
-      ['Sämtliche Rechnungen sind bezahlt.', 'الجمع: sind', 'sämtlich im Plural', 'Sämtliche Rechnungen ist bezahlt.', 'sind'],
-      ['Der Schmuck liegt im Safe.', 'المواد غير المعدودة مفردة', 'der Schmuck: Singular + liegt', 'Der Schmuck liegen im Safe.', 'liegt']
+      ['Die Fernbedienung liegt neben dem Sofa.', 'تحدّد مكان جهاز التحكم', 'die Fernbedienung اسم مؤنث مفرد ففعلها liegt لا liegen، ومكانها neben dem Sofa بالداتيف', 'Die Fernbedienung liegen neben dem Sofa.', 'المفرد: liegt'],
+      ['Das Metall wird hier recycelt.', 'تقول إن المعدن يُعاد تدويره هنا', 'المبني للمجهول مع مفرد محايد: wird recycelt لا werden', 'Das Metall werden hier recycelt.', 'المفرد: wird'],
+      ['Das Kraftwerk liefert Strom für die Stadt.', 'تقول إن محطة الطاقة تزوّد المدينة بالكهرباء', 'das Kraftwerk اسم محايد مفرد ففعله liefert لا liefern', 'Das Kraftwerk liefern Strom für die Stadt.', 'المفرد: liefert'],
+      ['Der Service war ausgezeichnet.', 'تصف خدمة ممتازة', 'الصفة خبرًا بلا نهاية صرف: ausgezeichnet لا ausgezeichnete', 'Der Service war ausgezeichnete.', 'بلا نهاية: ausgezeichnet']
     ],
     [
-      ['Die Fernbedienung liegt neben dem Sofa.', 'جهاز التحكم بجانب الأريكة', 'Die Fernbedienung liegen neben dem Sofa.', 'الفعل مفرد.', 'liegt'],
-      ['Insgesamt zahle ich hundert Franken mehr.', 'إجمالًا أدفع أكثر', 'Insgesamt zahle ich hundert Franken mehr auf.', 'بلا auf.', 'Insgesamt'],
-      ['Der Service war ausgezeichnet.', 'الخدمة كانت ممتازة', 'Der Service war ausgezeichnet gemacht.', 'الصفة تكفي.', 'ausgezeichnet'],
-      ['Der Preis ist inklusive Heizung.', 'السعر شامل التدفئة', 'Der Preis ist inklusive von Heizung.', 'بلا von.', 'inklusive']
+      ['Die Fernbedienung liegt neben dem Sofa.', 'جهاز التحكم بجانب الأريكة', 'Die Fernbedienung liegen neben dem Sofa.', 'فعلها مفرد: liegt لا liegen.', 'liegt'],
+      ['Das Metall wird hier recycelt.', 'المعدن يُعاد تدويره هنا', 'Das Metall werden hier recycelt.', 'المجهول مفرد: wird recycelt.', 'wird'],
+      ['Das Kraftwerk liefert Strom für die Stadt.', 'محطة الطاقة تزوّد المدينة بالكهرباء', 'Das Kraftwerk liefern Strom für die Stadt.', 'الفعل مفرد: liefert.', 'liefert'],
+      ['Der Service war ausgezeichnet.', 'الخدمة كانت ممتازة', 'Der Service war ausgezeichnete.', 'الصفة خبرًا بلا نهاية.', 'ausgezeichnet']
     ],
-    'Der Abfalleimer steht unter der Spüle. Der Service war ausgezeichnet.',
-    'Der Schmuck liegt im Safe.',
-    'Beschreibe morgen drei Geräte in deiner Küche.',
-    'غدًا صف ثلاثة أجهزة في مطبخك.'),
+    'Die Fernbedienung liegt neben dem Sofa. Der Service war ausgezeichnet.',
+    'Ich will dreihundert Franken einzahlen.',
+    'Wiederhole morgen die fünf Sätze: Die Fernbedienung liegt neben dem Sofa. Das Metall wird hier recycelt. Das Kraftwerk liefert Strom für die Stadt. Der Service war ausgezeichnet. Ich will dreihundert Franken einzahlen.',
+    'غدًا أعد جمل البيت والأجهزة الخمس ولاحظ المفرد والمجهول وصفة بلا نهاية ومصدرًا أخيرًا.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'deklination'],
+      imitateNearMiss: 'liegen',
+      transformHint: 'في جملة الختام تودع مبلغًا: Ich will dreihundert Franken einzahlen — المبلغ المفعول قبل المصدر الأخير.',
+      orderSentence: 'Die Fernbedienung liegt neben dem Sofa.',
+      checkOrderSentence: 'Das Kraftwerk liefert Strom für die Stadt.',
+      orderAr: 'رتّب جملة جهاز التحكم: الفعل liegt في الموضع الثاني وعبارة neben dem Sofa. أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Fernbedienung هو الموضع الأول وحده.', 'عبارة المكان neben dem Sofa. تأتي بعد الفعل.'],
+      writing: {
+        zeigt: 'Haus und Geräte in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: جهاز تحكم مفرد بـliegt، ومجهول مفرد بـwird recycelt، ومحطة طاقة بـliefert، وخدمة بصفة بلا نهاية ausgezeichnet، وإيداع مبلغ قبل المصدر einzahlen.',
+        hinweise: ['الأجهزة والوثائق المؤنثة مفردة الأفعال.', 'الصفة خبرًا بلا نهاية صرف.'],
+        prompt: 'اكتب جمل البيت والأجهزة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Fernbedienung liegt neben dem Sofa. · Das Metall wird hier recycelt. · Das Kraftwerk liefert Strom für die Stadt. · Der Service war ausgezeichnet. · Ich will dreihundert Franken einzahlen.',
+        points: ['Die Fernbedienung liegt neben dem Sofa.', 'Das Metall wird hier recycelt.', 'Das Kraftwerk liefert Strom für die Stadt.', 'Der Service war ausgezeichnet.', 'Ich will dreihundert Franken einzahlen.'],
+        minWords: 27,
+        frage: 'اكتب جمل البيت والأجهزة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Fernbedienung liegt neben dem Sofa. Das Metall wird hier recycelt. Das Kraftwerk liefert Strom für die Stadt. Der Service war ausgezeichnet. Ich will dreihundert Franken einzahlen.',
+      summaryDe: 'Die Fernbedienung liegt neben dem Sofa. Das Metall wird hier recycelt. Das Kraftwerk liefert Strom für die Stadt. Der Service war ausgezeichnet. Ich will dreihundert Franken einzahlen.',
+      summaryAr: 'البيت والأجهزة يُوصفان بأسماء مفردة ومجهول صحيح وصفة خبرية بلا نهاية وإيداع مصدره أخير.',
+      summaryRecap: 'مفرد ومجهول وصفة عارية',
+      hwHintDe: 'Die Fernbedienung liegt neben dem Sofa, und der Eimer steht unter der Spüle. Nach dem Essen muss jemand abwaschen — im Alltag sagt man mancherorts auch aufwaschen. Das Metall wird hier recycelt: Metall und Kunststoff kommen nicht in den Abfalleimer. Der Service in diesem Haus war ausgezeichnet. Die Schachtel mit der Bedienungsanleitung steht im Regal, und die Bancomatkarte liegt neben dem Kuvert auf dem Tisch im Flur neben der Tür.'
+    }),
 
   U('b1-u9-l2', 'B1', 'المهن والعمل', 'Berufe und Betrieb', 'konjugation',
     'Am Ende stellst du Kolleginnen und Kollegen vor',

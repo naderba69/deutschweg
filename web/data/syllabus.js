@@ -168,7 +168,7 @@
     ['الطبيعة والرياضة: Donner وStadion', 'Natur und Sport: Donner und Stadion', 'الترفيه', 'Es donnert · begegnen mit dem · Mannschaft kämpft · Stadion war · blühen', 'explicit'],
     /* Unit 9 — amendment B1-L5: the fourth material round carried every entry the corpus
        lacked, so the pool (494) can be named; unit 9 carries 240 of it. */
-    ['البيت والأجهزة', 'Haus und Geräte', 'السكن', 'Der Abfalleimer steht und abonnieren', 'explicit'],
+    ['البيت والأجهزة: Fernbedienung وKraftwerk', 'Haus und Geräte: Fernbedienung und Kraftwerk', 'السكن', 'Fernbedienung liegt · Metall wird recycelt · Kraftwerk liefert · Service ausgezeichnet · Franken einzahlen', 'explicit'],
     ['المهن والعمل', 'Berufe und Betrieb', 'المهنة', 'Die Arbeiterin hilft und einstellen', 'explicit'],
     ['التعليم والدلائل', 'Bildung und Nachschlagen', 'التعليم', 'Das Denkmal steht und nachschlagen', 'explicit'],
     ['السلوك والمشاعر', 'Verhalten und Gefühl', 'المشاعر', 'uns amüsieren und weder … noch', 'explicit'],
