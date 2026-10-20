@@ -154,7 +154,7 @@
        entries and a unit holds 240 slots, so unit 7 carries the first 240. */
     ['في المؤسسة: ausbilden وbesprechen وsich beteiligen', 'Im Betrieb: ausbilden, besprechen und sich beteiligen', 'العمل', 'bildet … aus · besprechen den Plan · sich an der Planung beteiligen · vertritt uns · verantwortlich für', 'explicit'],
     ['في الطريق: an die Küste وam Ufer', 'Unterwegs: an die Küste und am Ufer', 'المرور', 'an die Küste · am Ufer · warten auf · winken dem Fahrer · am Perron', 'explicit'],
-    ['البيت والحرفة', 'Haus und Handwerk', 'السكن', 'im Keller und wurde beschädigt', 'explicit'],
+    ['البيت والحرفة: gesperrt وim Keller', 'Haus und Handwerk: gesperrt und im Keller', 'السكن', 'muss geschnitten werden · ist gesperrt · hinter dem Regal · in ein Tal · im Keller', 'explicit'],
     ['الصحة والمشاعر', 'Gesundheit und Gefühle', 'الصحة', 'tut weh und gegen Grippe', 'explicit'],
     ['المال والأجهزة والبريد', 'Geld, Geräte und Post', 'المال', 'EC-Karte und Netzwerk', 'explicit'],
     ['الثقافة واللغة', 'Kultur und Sprache', 'الثقافة', 'Das Orchester spielt und festlegen', 'explicit'],

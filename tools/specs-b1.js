@@ -2191,25 +2191,50 @@ module.exports = [
       hwHintDe: 'Richtung fragt Wohin und nimmt den Akkusativ: Wir fahren an die Küste. Ein Ort fragt Wo und nimmt den Dativ: Das Boot liegt am Ufer. Feste Verbindungen wie warten auf lernst du immer zusammen mit ihrem Verb, und der Person winkt man ohne Präposition im Dativ.'
     }),
 
-  U('b1-u7-l3', 'B1', 'البيت والحرفة', 'Haus und Handwerk', 'kasus',
-    'Am Ende beschreibst du eine Reparatur im Haus',
-    'في النهاية تصف إصلاحًا في البيت.',
+  U('b1-u7-l3', 'B1', 'البيت والحرفة: gesperrt وim Keller', 'Haus und Handwerk: gesperrt und im Keller', 'kasus',
+    'Am Ende beschreibst du Arbeiten und Orte im Haus mit Passiv und Dativ — in fünf Sätzen',
+    'في النهاية تصف أعمالًا وأماكن في البيت بالمبني للمجهول والداتيف في خمس جمل.',
     [
-      ['Der Kasten steht im Keller.', 'الموضع: in + Dativ', 'Ort mit Dativ statt auf', 'Der Kasten steht im Keller auf.', 'بلا auf'],
-      ['Die Einfahrt ist gesperrt.', 'المجهول يصف العمل', 'Zustandspassiv mit sein', 'Die Einfahrt ist sperren.', 'gesperrt'],
-      ['Wir heizen mit Gas.', 'heizen يحتاج mit للمادة', 'heizen mit + Dativ', 'Wir heizen auf Gas.', 'mit Gas'],
-      ['Die Mauer wurde beschädigt.', 'الماضي المجهول', 'Passiv Präteritum: wurde + Partizip', 'Die Mauer wurde beschädigen.', 'beschädigt']
+      ['Der Rasen muss geschnitten werden.', 'تذكر عملًا لا بدّ منه بلا فاعل', 'المجهول مع المساعد: muss في الموضع الثاني وقوس geschnitten werden في الآخر — اسم مفعول لا مصدر', 'Der Rasen muss schneiden werden.', 'اسم المفعول geschnitten'],
+      ['Die Einfahrt ist gesperrt.', 'تصف حالة مدخل مغلق', 'مجهول الحالة Zustandspassiv: sein المصرف مع اسم المفعول gesperrt يصف النتيجة', 'Die Einfahrt ist sperren.', 'gesperrt لا sperren'],
+      ['Die Steckdose ist hinter dem Regal.', 'تحدّد موضع المقبس خلف الرف', 'hinter للموضع الثابت تسأل Wo فتأخذ الداتيف: hinter dem Regal', 'Die Steckdose ist hinter das Regal.', 'hinter + داتيف: dem'],
+      ['Der Weg führt in ein kleines Tal.', 'تحدّد جهة طريق إلى وادٍ', 'الجهة تسأل Wohin فتأخذ in مع النصب: in ein kleines Tal', 'Der Weg führt in einem kleinen Tal hinein.', 'الجهة: in ein']
     ],
     [
-      ['Der Kasten steht im Keller.', 'الخزانة في القبو', 'Der Kasten steht im Keller auf.', 'بلا auf.', 'im Keller'],
-      ['Ich hänge die Mappe an die Wand.', 'أعلّق الملف على الحائط', 'Ich hänge die Mappe an der Wand.', 'الجهة an die Wand.', 'an die'],
-      ['Die Mauer wurde beschädigt.', 'السور تضرّر', 'Die Mauer wurde beschädigen.', 'المجهول beschädigt.', 'beschädigt'],
-      ['Wir reinigen die Fenster.', 'ننظّف النوافذ', 'Wir reinigen auf die Fenster.', 'بلا auf.', 'reinigen']
+      ['Der Rasen muss geschnitten werden.', 'العشب لا بدّ أن يُقَصّ', 'Der Rasen muss schneiden werden.', 'بعد المساعد اسم مفعول لا مصدر: geschnitten.', 'geschnitten'],
+      ['Die Einfahrt ist gesperrt.', 'المدخل مغلق', 'Die Einfahrt ist sperren.', 'حالة ثابتة باسم المفعول: gesperrt.', 'gesperrt'],
+      ['Die Steckdose ist hinter dem Regal.', 'المقبس خلف الرف', 'Die Steckdose ist hinter das Regal.', 'الموضع مع hinter بالداتيف: dem.', 'dem'],
+      ['Der Weg führt in ein kleines Tal.', 'الطريق يقود إلى وادٍ صغير', 'Der Weg führt in einem kleinen Tal hinein.', 'الجهة مع in بالنصب: ein kleines Tal.', 'ein kleines Tal']
     ],
-    'Der Kasten steht im Keller. Die Mauer wurde beschädigt.',
-    'Die Einfahrt ist gesperrt.',
-    'Beschreibe morgen eine Reparatur mit fünf Wörtern aus der Liste.',
-    'غدًا صف إصلاحًا بخمس كلمات من القائمة.'),
+    'Der Rasen muss geschnitten werden. Die Steckdose ist hinter dem Regal.',
+    'Der Kasten steht im Keller.',
+    'Wiederhole morgen die fünf Sätze: Der Rasen muss geschnitten werden. Die Einfahrt ist gesperrt. Die Steckdose ist hinter dem Regal. Der Weg führt in ein kleines Tal. Der Kasten steht im Keller.',
+    'غدًا أعد جمل البيت الخمس واسأل في كل واحدة: حالة أم حدث، وWo أم Wohin؟',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'kasus', 'kasus'],
+      imitateNearMiss: 'schneiden',
+      transformHint: 'في جملة الختام مكان ثابت في القبو: Der Kasten steht im Keller — الثبات مع in بالداتيف مدمجة im.',
+      orderSentence: 'Die Steckdose ist hinter dem Regal.',
+      checkOrderSentence: 'Der Weg führt in ein kleines Tal.',
+      orderAr: 'رتّب جملة المقبس: الفعل المصرف ist في الموضع الثاني وhinter dem Regal. بعده.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Steckdose هو الموضع الأول وحده.', 'عبارة الموضع hinter dem Regal. تغلق الجملة بعد الفعل.'],
+      writing: {
+        zeigt: 'Haus und Handwerk in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: عمل بمجهول المساعد، وحالة بمجهول الحالة، وموضع خلف شيء بالداتيف، وجهة بـin والنصب، ومكان ثابت في القبو.',
+        hinweise: ['بعد muss/ist اسم مفعول لا مصدر.', 'Wo يعني الداتيف، وWohin يعني النصب.'],
+        prompt: 'اكتب جمل البيت الخمس المستهدفة من الذاكرة مع اسم المفعول والحالة الصحيحة.',
+        promptDe: 'Der Rasen muss geschnitten werden. · Die Einfahrt ist gesperrt. · Die Steckdose ist hinter dem Regal. · Der Weg führt in ein kleines Tal. · Der Kasten steht im Keller.',
+        points: ['Der Rasen muss geschnitten werden.', 'Die Einfahrt ist gesperrt.', 'Die Steckdose ist hinter dem Regal.', 'Der Weg führt in ein kleines Tal.', 'Der Kasten steht im Keller.'],
+        minWords: 27,
+        frage: 'اكتب جمل البيت والحرفة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Der Rasen muss geschnitten werden. Die Einfahrt ist gesperrt. Die Steckdose ist hinter dem Regal. Der Weg führt in ein kleines Tal. Der Kasten steht im Keller.',
+      summaryDe: 'Der Rasen muss geschnitten werden. Die Einfahrt ist gesperrt. Die Steckdose ist hinter dem Regal. Der Weg führt in ein kleines Tal. Der Kasten steht im Keller.',
+      summaryAr: 'في البيت يقف المبني للمجهول بالأعمال: مساعدٌ مع اسم مفعول، وحالةٌ ثابتة، ثم مواضع بالداتيف وجهة بالنصب.',
+      summaryRecap: 'اسم مفعول وموضع داتيف',
+      hwHintDe: 'Das Zustandspassiv zeigt das Ergebnis: Die Einfahrt ist gesperrt. Muss etwas getan werden, steht das Partizip II vor werden: Der Rasen muss geschnitten werden. Orte im Haus fragst du mit Wo und nimmst den Dativ: hinter dem Regal und im Keller.'
+    }),
 
   U('b1-u7-l4', 'B1', 'الصحة والمشاعر', 'Gesundheit und Gefühle', 'konjugation',
     'Am Ende sagst du was dir weh tut und wie du dich fühlst',

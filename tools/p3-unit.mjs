@@ -15781,6 +15781,125 @@ console.log('\n— P3.2 lexical layer —\n');
       checksG2[4].frage.optionen.some(o => o.text === targetsG2[4]) &&
       checksG2[4].frage.optionen.some(o => o.text === 'Der Zug steht an den Perron zwei.') &&
       Object.values(checksG2[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonG3 = win.DW_LESSONS['b1-u7-l3'];
+  const rowG3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonG3.id);
+  const byWordG3 = Object.fromEntries(lessonG3.wortschatz.map(it => [it.de, it]));
+  const tricksG3 = lessonG3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsG3 = [
+    'Der Rasen muss geschnitten werden.',
+    'Die Einfahrt ist gesperrt.',
+    'Die Steckdose ist hinter dem Regal.',
+    'Der Weg führt in ein kleines Tal.',
+    'Der Kasten steht im Keller.'
+  ];
+  t('Corpus lesson b1-u7-l3 precisely scopes five house-and-craft moves taking a modal passive with participle, a state passive, static hinter plus dative, direction in plus accusative and a static im Keller',
+    lessonG3.title.de === 'Haus und Handwerk: gesperrt und im Keller' &&
+      lessonG3.title.ar === 'البيت والحرفة: gesperrt وim Keller' &&
+      rowG3.title.de === lessonG3.title.de && rowG3.title.ar === lessonG3.title.ar &&
+      rowG3.theme === 'السكن' &&
+      rowG3.grammar.item === 'muss geschnitten werden · ist gesperrt · hinter dem Regal · in ein Tal · im Keller' &&
+      rowG3.grammar.method === 'explicit' && lessonG3.schritte.length === 36 && lessonG3.wortschatz.length === 40 &&
+      lessonG3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonG3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsG3[i]) &&
+      lessonG3.schritte[0].zeigt.de === 'Am Ende beschreibst du Arbeiten und Orte im Haus mit Passiv und Dativ — in fünf Sätzen' &&
+      lessonG3.schritte.find(s => s.id === 's20').zeigt.de === targetsG3[4]);
+
+  const expectedWordsG3 = [
+    'der Hammer', 'das Werkzeug', 'die Zange', 'der Nagel', 'die Steckdose', 'die Badewanne',
+    'der Flur', 'das Treppenhaus', 'das Stiegenhaus', 'der Rasen', 'der Hügel', 'die Wiese',
+    'der Bauernhof', 'das Grundstück', 'der Briefkasten', 'die Einfahrt', 'die Mauer', 'reinigen',
+    'spülen', 'der Schmutz', 'der Fleck', 'einschalten', 'das Rohr', 'der Kasten',
+    'der Lift', 'die Müllabfuhr', 'die Umgebung', 'heizen', 'haltbar', 'glatt',
+    'flach', 'die Wärme', 'trocknen', 'der Stein', 'der Sand', 'das Gras',
+    'das Tal', 'die Erde', 'die Landwirtschaft', 'die Küste'
+  ];
+  const errorsG3 = lessonG3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u7-l3 reviews all 40 entries and three bounded mnemonics without eighteen manufactured appendages and without branding contested voll von or auf dem Stadtrand as the measured error',
+    Object.keys(byWordG3).join(' | ') === expectedWordsG3.join(' | ') &&
+      lessonG3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonG3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordG3['der Rasen'].err === 'Der Rasen muss schneiden werden.' &&
+      byWordG3['die Einfahrt'].err === 'Die Einfahrt ist sperren.' &&
+      byWordG3['die Badewanne'].err === 'Die Badewanne ist volle Wasser.' &&
+      byWordG3['der Kasten'].err === 'Der Kasten steht in den Keller.' &&
+      byWordG3['der Nagel'].err === 'Der Nagel ist krumme.' &&
+      !['Der Nagel ist krumm gemacht.', 'Die Badewanne ist voll von Wasser.',
+        'Im Flur liegt noch Staub es.', 'Hinter dem Haus liegt ein Hügel auf.',
+        'Die Wiese ist nach dem Regen nass gemacht.', 'Der Bauernhof liegt auf dem Stadtrand.',
+        'Das Grundstück ist noch unbebaut gemacht.', 'Am Briefkasten steht ihr Name auf.',
+        'Der Fleck geht nicht raus auf.', 'Das Rohr ist undicht gemacht.',
+        'Der Kasten steht in dem Keller auf.', 'Die Umgebung ist ruhig gemacht.',
+        'Das Papier ist länger haltbar gemacht.', 'Der Boden ist glatt gemacht.',
+        'Die Küste ist flach gemacht.', 'Auf einem Stein sitzt eine Frau auf.',
+        'Hinter den Dünen wächst Gras auf.', 'Die Küste ist im Herbst windig gemacht.']
+        .some(x => errorsG3.includes(x)) &&
+      tricksG3.length === 3 && tricksG3[0].wie.includes('Der Kasten steht im Keller.') &&
+      tricksG3[1].wie.includes('Wir heizen mit Gas.') &&
+      tricksG3[2].wie.includes('Die Einfahrt ist gesperrt.'));
+
+  const wordClozeAG3 = lessonG3.schritte.find(s => s.id === 's09');
+  const wordClozeBG3 = lessonG3.schritte.find(s => s.id === 's13');
+  const wordClozeCG3 = lessonG3.schritte.find(s => s.id === 's17');
+  const imitateG3 = lessonG3.schritte.find(s => s.id === 's19');
+  const drillG3 = lessonG3.schritte.find(s => s.id === 's23');
+  const orderG3 = lessonG3.schritte.find(s => s.id === 's24');
+  const writingG3 = lessonG3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingG3 = lessonG3.schritte.find(s => s.phase === 'Produktion');
+  const summaryG3 = lessonG3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkG3 = lessonG3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u7-l3 aligns five strict learning clozes, sound ist order fields and a 27-word five-target production',
+    wordClozeAG3.frage.zeigt === 'Die ____ ist voll Wasser.' && wordClozeAG3.frage.antworten.join(' ') === 'Badewanne' &&
+      wordClozeAG3.frage.nearMiss.Badewannen && !win.DW.renderers.judgeCloze(wordClozeAG3.frage, 'Badewannen').ok &&
+      wordClozeBG3.frage.zeigt === 'Beim ____ des Lichts sehen wir es.' && wordClozeBG3.frage.antworten.join(' ') === 'Einschalten' &&
+      wordClozeBG3.frage.nearMiss.Einschaltens && !win.DW.renderers.judgeCloze(wordClozeBG3.frage, 'Einschaltens').ok &&
+      wordClozeCG3.frage.zeigt === 'Die ____ ist hier dunkel und weich.' && wordClozeCG3.frage.antworten.join(' ') === 'Erde' &&
+      wordClozeCG3.frage.nearMiss.Erden && !win.DW.renderers.judgeCloze(wordClozeCG3.frage, 'Erden').ok &&
+      imitateG3.zeigt.de === 'Der Rasen muss ____ werden.' && imitateG3.frage.antworten.join(' ') === 'geschnitten' &&
+      imitateG3.frage.nearMiss.schneiden && !win.DW.renderers.judgeCloze(imitateG3.frage, 'schneiden').ok &&
+      drillG3.frage.zeigt === 'Der ____ muss geschnitten werden.' && drillG3.frage.antworten.join(' ') === 'Rasen' &&
+      drillG3.frage.nearMiss.Rasens && !win.DW.renderers.judgeCloze(drillG3.frage, 'Rasens').ok &&
+      lessonG3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderG3.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderG3.frage.correct.join(' ') === targetsG3[2] && orderG3.frage.finite === 'ist' && orderG3.frage.verbFirst === false &&
+      orderG3.frage.fields.vorfeld.join(' ') === 'Die Steckdose' && orderG3.frage.fields.lsk.join(' ') === 'ist' &&
+      orderG3.frage.fields.mittelfeld.join(' ') === 'hinter dem Regal.' &&
+      win.DW.order.score(orderG3.frage, orderG3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderG3.frage, ['Die', 'ist', 'Steckdose', 'hinter', 'dem', 'Regal.']).credit < 1 &&
+      writingG3.frage.points.join(' | ') === targetsG3.join(' | ') && writingG3.frage.minWords === 27 &&
+      targetsG3.join(' ').split(/\s+/).length === 27 &&
+      targetsG3.every(x => [writingG3.frage.promptDe, summaryG3.zeigt.de, homeworkG3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsG3.every(x => norm(speakingG3.erklaerung).includes(norm(x))) &&
+      (homeworkG3.hinweise || []).join(' ').includes('Das Zustandspassiv zeigt das Ergebnis'));
+
+  const checksG3 = lessonG3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckG3 = checksG3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckG3 = checksG3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u7-l3 makes 80 percent four of five, independently checking direction into the valley, the nominative Rasen and führt order, the state participle gesperrt and static im Keller',
+    checksG3.length === 5 && checksG3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksG3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksG3.every(s => /^cap\.b1-u7-l3\.s\d+$/.test(s.frage.prereq || '')) && checksG3.every(s => !s.hinweise) &&
+      checksG3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u7-l3.s07 | cap.b1-u7-l3.s23 | cap.b1-u7-l3.s24 | cap.b1-u7-l3.s11 | cap.b1-u7-l3.s20' &&
+      new Set(checksG3.map(s => s.frage.prereq)).size === 5 &&
+      checksG3[0].frage.optionen.some(o => o.text === targetsG3[3]) &&
+      checksG3[0].frage.optionen.some(o => o.text === 'Der Weg führt in einem kleinen Tal hinein.') &&
+      Object.values(checksG3[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckG3.frage.zeigt === 'Der ____ muss geschnitten werden.' &&
+      clozeCheckG3.frage.antworten.join(' ') === 'Rasen' && clozeCheckG3.frage.nearMiss.Rasens &&
+      !win.DW.renderers.judgeCloze(clozeCheckG3.frage, 'Rasens').ok &&
+      orderCheckG3.frage.correct.join(' ') === targetsG3[3] && orderCheckG3.frage.finite === 'führt' &&
+      orderCheckG3.frage.fields.vorfeld.join(' ') === 'Der Weg' && orderCheckG3.frage.fields.lsk.join(' ') === 'führt' &&
+      orderCheckG3.frage.fields.mittelfeld.join(' ') === 'in ein kleines Tal.' &&
+      win.DW.order.score(orderCheckG3.frage, orderCheckG3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckG3.frage, ['Der', 'führt', 'Weg', 'in', 'ein', 'kleines', 'Tal.']).credit < 1 &&
+      checksG3[3].frage.optionen.some(o => o.text === 'Die Einfahrt ist gesperrt.') &&
+      checksG3[3].frage.optionen.some(o => o.text === 'Die Einfahrt ist sperren.') &&
+      Object.values(checksG3[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksG3[4].frage.optionen.some(o => o.text === targetsG3[4]) &&
+      checksG3[4].frage.optionen.some(o => o.text === 'Der Kasten steht in den Keller.') &&
+      Object.values(checksG3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
