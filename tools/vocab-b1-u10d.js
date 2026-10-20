@@ -17,13 +17,13 @@ module.exports = {
       ['erziehen', '—', 'يربّي', 'Eltern wollen Kinder erziehen.', 'Eltern wollen Kinder erziehen auf.', 'erziehen بلا حرف جر.', 'lexik-kollokation', 'erziehen'],
       ['die Erziehung', '—', 'التربية', 'Die Erziehung ist Aufgabe aller.', 'Die Erziehung sind Aufgabe aller.', 'الفعل مفرد: ist.', 'konjugation', 'Erziehung'],
       ['gesamt', '—', 'كامل', 'Die gesamte Verwaltung arbeitet langsam.', 'Die gesamt Verwaltung arbeitet langsam.', 'الصفة تُصرَّف: gesamte.', 'deklination', 'gesamte'],
-      ['das Geschlecht', 'die Geschlechter', 'الجنس', 'Über das Geschlecht diskutieren sie lange.', 'Über das Geschlecht diskutiert sie lange.', 'الفاعل جمع: diskutieren.', 'konjugation', 'Geschlecht'],
+      ['das Geschlecht', 'die Geschlechter', 'الجنس', 'Über das Geschlecht diskutieren sie lange.', 'Über das Geschlecht diskutierst sie lange.', 'الفاعل جمع: diskutieren.', 'konjugation', 'Geschlecht'],
       ['gewöhnlich', '—', 'عادةً', 'Gewöhnlich kommt sie um acht.', 'Gewöhnlich kommt sie um acht auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Gewöhnlich'],
-      ['indem', '—', 'بينما/بأن', 'Man lernt, indem man übt.', 'Man lernt, indem man übt auf.', 'لا حرف جر زائد.', 'wortstellung', 'indem man übt'],
-      ['irgendein', '—', 'أيًّا كان', 'Irgendein Thema mag sie.', 'Irgendein Thema mögen sie.', 'الفعل مفرد: mag.', 'konjugation', 'Irgendein'],
+      ['indem', '—', 'بأن/عن طريق أن', 'Man lernt, indem man übt.', 'Man lernt, indem man übt auf.', 'لا حرف جر زائد.', 'wortstellung', 'indem man übt'],
+      ['irgendein', '—', 'أيًّا كان', 'Irgendein Thema mag sie.', 'Irgendein Thema magst sie.', 'الفعل مفرد: mag.', 'konjugation', 'Irgendein'],
       ['jedoch', '—', 'لكن', 'Die Antwort ist jedoch negativ.', 'Die Antwort ist jedoch negativ auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'jedoch'],
       ['meinetwegen', '—', 'بسببـي/لا مانع لديّ', 'Meinetwegen kann alles so bleiben.', 'Meinetwegen kann alles so bleiben auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Meinetwegen'],
-      ['nämlich', '—', 'إذ/فعليًا', 'Die Bank zahlt nur einen kleinen Zins, das ist nämlich normal.', 'Das ist nämlich normal auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'nämlich normal'],
+      ['nämlich', '—', 'إذ/فعليًا', 'Die Bank zahlt nur einen kleinen Zins, das ist nämlich normal.', 'Die Bank zahlt nur einen kleinen Zins, das ist nämlich normal auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'nämlich normal'],
       ['nebenbei', '—', 'بالمناسبة', 'Nebenbei bemerkt ist das Haus ruhig.', 'Nebenbei bemerkt ist das Haus ruhig auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Nebenbei bemerkt'],
       ['nirgendwo', '—', 'في لا مكان', 'Nirgendwo ist es so ruhig.', 'Nirgendwo ist es so ruhig auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Nirgendwo'],
       ['normalerweise', '—', 'عادةً', 'Normalerweise kommt er um sieben.', 'Normalerweise kommt er um sieben auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Normalerweise'],
@@ -33,7 +33,7 @@ module.exports = {
       ['solch', '—', 'مثل هذا', 'Solche Fehler können vorkommen.', 'Solch Fehler können vorkommen.', 'الصفة تُصرَّف: solche.', 'deklination', 'Solche'],
       ['soviel', '—', 'بقدر ما', 'Soviel ich weiß, ist der Typ merkwürdig.', 'Soviel ich weiß, ist der Typ merkwürdig auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Soviel'],
       ['sowieso', '—', 'على أي حال', 'Sowieso kommt sie mit.', 'Sowieso kommt sie mit auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Sowieso'],
-      ['sowohl', '—', 'سواء… أو', 'Er liest sowohl Zeitungen als auch Magazine.', 'Er liest sowohl Zeitungen als auch Magazine auf.', 'sowohl … als auch زوج ثابت.', 'lexik-kollokation', 'sowohl Zeitungen'],
+      ['sowohl', '—', 'كلٌّ من … و', 'Er liest sowohl Zeitungen als auch Magazine.', 'Er liest sowohl Zeitungen als auch Magazine auf.', 'sowohl … als auch زوج ثابت.', 'lexik-kollokation', 'sowohl Zeitungen'],
       ['sparsam', '—', 'اقتصادي/مقتصد', 'Sie lebt sparsam.', 'Sie lebt sparsam auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'sparsam'],
       ['speziell', '—', 'خاص/مخصوص', 'Diese Regel ist speziell für B1.', 'Diese Regel ist speziell für B1 gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'speziell'],
       ['ursprünglich', '—', 'أصلًا/في الأصل', 'Ursprünglich war das Haus klein.', 'Ursprünglich war das Haus klein auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Ursprünglich'],
@@ -45,9 +45,25 @@ module.exports = {
     ],
     tricks: [
       { trick: 'الصفات تُصرَّف أمام الاسم: gesamt → die gesamte Verwaltung · besonder → ein besonderer Abend', wie: 'Die gesamte Verwaltung arbeitet langsam. · Das ist ein besonderer Abend.', warum: 'خطأ شائع عند العرب ترك الصفة بلا نهاية، وهي واجبة أمام الاسم.', anchor: 'Die gesamte Verwaltung' },
-      { trick: 'أزواج الروابط: sowohl … als auch · weder … noch · indem', wie: 'Er liest sowohl Zeitungen als auch Magazine. · Man lernt, indem man übt.', warum: 'كل زوج مكوّن من شقين لا يُفصلان، وترتيب الجملة بعده ثابت.', anchor: 'sowohl Zeitungen als auch Magazine' },
+      { trick: 'روابط ثابتة: sowohl … als auch · weder … noch · indem', wie: 'Er liest sowohl Zeitungen als auch Magazine. · Man lernt, indem man übt.', warum: 'الزوجان لا يُفصل شقّاهما، وindem وحدها ترسل فعل جملتها إلى آخرها.', anchor: 'sowohl Zeitungen als auch Magazine' },
       { trick: 'الظروف التي لا تحتاج حرف جر ولا تصريف: sowieso · nirgendwo · bisher · schließlich', wie: 'Sowieso kommt sie mit. · Nirgendwo ist es so ruhig.', warum: 'العربية تضيف «في» و«إلى» فيصير الطالب يضيف حرفًا لا مكان له.', anchor: 'Nirgendwo ist es so ruhig' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'besonder': 'besonders',
+      'nun': 'Nur'
+    },
+    clozeItemIndex: 13,
+    clozeNearMiss: 'indem übt man',
+    checkItemIndex: 24,
+    extraCheck: {
+      right: 'Nirgendwo ist es so ruhig.',
+      bad: 'Nirgendwo ist es so ruhig auf.',
+      why: 'nirgendwo ظرف كامل: لا حرف جر زائد في الختام.',
+      family: 'lexik-kollokation',
+      prereq: 'cap.b1-u10-l7.s19',
+      frage: 'أي جملة تنفي المكان بقلب صحيح وبلا حرف زائد؟'
+    }
   }
 
 };

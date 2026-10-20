@@ -184,7 +184,7 @@
     ['الأفعال والظروف: zunächst وzweifeln', 'Verben und Umstände: zunächst und zweifeln', 'الزمن', 'Zunächst lesen wir · an zweifeln · Regel gilt · über nachdenken · Fehler vorkommen', 'explicit', 36, 15],
     ['الأشياء والصفات: derselbe وentlang', 'Dinge und Eigenschaften: derselbe und entlang', 'الوصف', 'Treffpunkt bleibt derselbe · Fluss entlang · eignet sich · komplett möbliert · eine Zutat', 'explicit', 36, 15],
     ['الناس والمدينة: Feber وmiteinander', 'Menschen und Stadt: Feber und miteinander', 'المجتمع', 'Im Feber beginnt · Nichtraucher sitzen · spielen miteinander · mittlere Teil bleibt · Seniorin wohnt', 'explicit', 36, 15],
-    ['الربط والتعميم', 'Verbindung und Allgemeines', 'الربط', 'Die gesamte Verwaltung und indem', 'explicit', 36, 15]
+    ['الربط والتعميم: gesamt وindem', 'Verbindung und Allgemeines: gesamt und indem', 'الربط', 'gesamte Verwaltung · sowohl als auch · indem man übt · diskutieren sie · Nirgendwo ist', 'explicit', 36, 15]
   ];
 
   const B2 = [

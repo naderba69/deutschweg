@@ -3182,23 +3182,48 @@ module.exports = [
       hwHintDe: 'Eine Bewohnerin erzählt von den Neuen, und die Wirtin bringt die Suppe. Ein Bub spielt vor dem Haus, und mein Neffe hilft am Samstag. Die Siegerin bekommt einen Preis, und der Gegner wartet schon. Zeit ist wertvoll, und jede Lösung ist individuell.'
     }),
 
-  U('b1-u10-l7', 'B1', 'الربط والتعميم', 'Verbindung und Allgemeines', 'wortstellung',
-    'Am Ende verbindest du Sätze und ordnest Aussagen allgemein',
-    'في النهاية تربط الجمل وتعمّم الأحكام.',
+  U('b1-u10-l7', 'B1', 'الربط والتعميم: gesamt وindem', 'Verbindung und Allgemeines: gesamt und indem', 'wortstellung',
+    'Am Ende verbindest du Aussagen mit sowohl und indem und verallgemeinerst sicher — in fünf Sätzen',
+    'في النهاية تربط الأقوال بـsowohl وindem وتعمّم بثقة في خمس جمل.',
     [
-      ['Die gesamte Verwaltung arbeitet langsam.', 'الصفة تُصرَّف أمام الاسم', 'gesamte mit Endung', 'Die gesamt Verwaltung arbeitet langsam.', 'gesamte'],
-      ['Er liest sowohl Zeitungen als auch Magazine.', 'زوج الرابط كامل', 'sowohl … als auch', 'Er liest sowohl Zeitungen als auch Magazine auf.', 'als auch'],
-      ['Man lernt, indem man übt.', 'indem ترسل الفعل للآخر', 'indem + Verb am Ende', 'Man lernt, indem man übt auf.', 'indem'],
-      ['Über das Geschlecht diskutieren sie lange.', 'الجمع بفعل جمع', 'Plural: diskutieren', 'Über das Geschlecht diskutiert sie lange.', 'diskutieren']
+      ['Die gesamte Verwaltung arbeitet langsam.', 'يعمّم على إدارة كاملة بصفة مصرّفة', 'الصفة قبل الاسم بعد die تأخذ النهاية e: gesamte لا gesamt', 'Die gesamt Verwaltung arbeitet langsam.', 'النهاية: gesamte'],
+      ['Er liest sowohl Zeitungen als auch Magazine.', 'يربط شيئين بزوج كامل', 'الزوج sowohl … als auch كامل الشقين وبلا حرف جر زائد بعده', 'Er liest sowohl Zeitungen als auch Magazine auf.', 'als auch أخيرًا'],
+      ['Man lernt, indem man übt.', 'يربط وسيلة التعلم بـindem', 'indem تفتح جملة تابعة فعلها أخيرًا: indem man übt', 'Man lernt, indem man übt auf.', 'übt أخيرًا'],
+      ['Über das Geschlecht diskutieren sie lange.', 'يفتح نقاشًا بعبارة مقدّمة وفعل جمع', 'الفاعل sie جمع فالفعل بعد العبارة المقدّمة diskutieren', 'Über das Geschlecht diskutierst sie lange.', 'الجمع: diskutieren']
     ],
     [
-      ['Sowieso kommt sie mit.', 'على أي حال تأتي معنا', 'Sowieso kommt sie mit auf.', 'بلا auf.', 'Sowieso'],
-      ['Nirgendwo ist es so ruhig.', 'لا مكان بهذا الهدوء', 'Nirgendwo ist es so ruhig auf.', 'بلا auf.', 'Nirgendwo'],
-      ['Der Saal war ziemlich voll.', 'القاعة كانت ممتلئة إلى حد كبير', 'Der Saal war ziemlich voll gemacht.', 'الصفة تكفي.', 'ziemlich voll'],
-      ['Diese Regel ist speziell für B1.', 'هذه القاعدة خاصة بـ B1', 'Diese Regel ist speziell für B1 gemacht.', 'الصفة تكفي.', 'speziell']
+      ['Die gesamte Verwaltung arbeitet langsam.', 'الإدارة كلها تعمل ببطء', 'Die gesamt Verwaltung arbeitet langsam.', 'الصفة قبل الاسم تُصرَّف: gesamte.', 'gesamte'],
+      ['Er liest sowohl Zeitungen als auch Magazine.', 'يقرأ الصحف والمجلات معًا', 'Er liest sowohl Zeitungen als auch Magazine auf.', 'الزوج كامل بلا زائد.', 'sowohl'],
+      ['Man lernt, indem man übt.', 'يتعلم المرء بأن يتدرب', 'Man lernt, indem man übt auf.', 'فعل جملة indem أخيرًا.', 'übt'],
+      ['Über das Geschlecht diskutieren sie lange.', 'يناقشون الجنس طويلًا', 'Über das Geschlecht diskutierst sie lange.', 'الفاعل جمع: diskutieren.', 'diskutieren']
     ],
-    'Die gesamte Verwaltung arbeitet langsam. Man lernt, indem man übt.',
+    'Die gesamte Verwaltung arbeitet langsam. Er liest sowohl Zeitungen als auch Magazine.',
     'Nirgendwo ist es so ruhig.',
-    'Verbinde morgen fünf Sätze mit sowohl … als auch und indem.',
-    'غدًا اربط خمس جمل بـ sowohl … als auch وindem.')
+    'Wiederhole morgen die fünf Sätze: Die gesamte Verwaltung arbeitet langsam. Er liest sowohl Zeitungen als auch Magazine. Man lernt, indem man übt. Über das Geschlecht diskutieren sie lange. Nirgendwo ist es so ruhig.',
+    'غدًا أعد جمل الربط والتعميم الخمس ولاحظ تصريف الصفة وأزواج الروابط.',
+    {
+      factFamilies: ['deklination', 'lexik-kollokation', 'wortstellung', 'konjugation'],
+      imitateNearMiss: 'gesamt',
+      transformHint: 'في جملة الختام نفي مكان مع قلب: Nirgendwo ist es so ruhig — الظرف أولًا والفعل ist ثانيًا.',
+      orderSentence: 'Über das Geschlecht diskutieren sie lange.',
+      checkOrderSentence: 'Er liest sowohl Zeitungen als auch Magazine.',
+      orderAr: 'رتّب جملة النقاش: العبارة Über das Geschlecht أولًا والفعل diskutieren ثانيًا والفاعل بعده.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول Über das Geschlecht كتلة واحدة.', 'الفاعل sie بعد الفعل diskutieren.'],
+      writing: {
+        zeigt: 'Verbindung und Allgemeines in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: تعميم بصفة مصرّفة gesamte، وربط بزوج sowohl … als auch، ووسيلة بـindem وفعل أخير، ونقاش بعبارة مقدّمة وفعل جمع، ونفي مكان Nirgendwo ist.',
+        hinweise: ['الصفة أمام الاسم لا تبقى بلا نهاية.', 'بعد indem يأتي الفعل في آخر جملتها.'],
+        prompt: 'اكتب جمل الربط والتعميم الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die gesamte Verwaltung arbeitet langsam. · Er liest sowohl Zeitungen als auch Magazine. · Man lernt, indem man übt. · Über das Geschlecht diskutieren sie lange. · Nirgendwo ist es so ruhig.',
+        points: ['Die gesamte Verwaltung arbeitet langsam.', 'Er liest sowohl Zeitungen als auch Magazine.', 'Man lernt, indem man übt.', 'Über das Geschlecht diskutieren sie lange.', 'Nirgendwo ist es so ruhig.'],
+        minWords: 28,
+        frage: 'اكتب جمل الربط والتعميم الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die gesamte Verwaltung arbeitet langsam. Er liest sowohl Zeitungen als auch Magazine. Man lernt, indem man übt. Über das Geschlecht diskutieren sie lange. Nirgendwo ist es so ruhig.',
+      summaryDe: 'Die gesamte Verwaltung arbeitet langsam. Er liest sowohl Zeitungen als auch Magazine. Man lernt, indem man übt. Über das Geschlecht diskutieren sie lange. Nirgendwo ist es so ruhig.',
+      summaryAr: 'الربط والتعميم يُرويان بصفات مصرّفة وأزواج روابط كاملة وفعل أخير بعد indem.',
+      summaryRecap: 'روابط كاملة وتصريف',
+      hwHintDe: 'Du verbindest Sätze und ordnest Aussagen allgemein. Verbinde morgen fünf Sätze mit sowohl als auch und indem. Eltern wollen Kinder erziehen, und die Erziehung ist Aufgabe aller. Eine Reklamation kann viel Geduld erfordern. Wir wollen den Abend zusammen verbringen. Der Saal war ziemlich voll, und diese Regel ist speziell für B1.'
+    })
 ];

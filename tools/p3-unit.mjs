@@ -18324,6 +18324,118 @@ console.log('\n— P3.2 lexical layer —\n');
       checksJ6[4].frage.optionen.some(o => o.text === targetsJ6[4]) &&
       checksJ6[4].frage.optionen.some(o => o.text === 'Die Seniorin wohnen seit einem Jahr hier.') &&
       Object.values(checksJ6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonJ7 = win.DW_LESSONS['b1-u10-l7'];
+  const rowJ7 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonJ7.id);
+  const byWordJ7 = Object.fromEntries(lessonJ7.wortschatz.map(it => [it.de, it]));
+  const tricksJ7 = lessonJ7.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsJ7 = [
+    'Die gesamte Verwaltung arbeitet langsam.',
+    'Er liest sowohl Zeitungen als auch Magazine.',
+    'Man lernt, indem man übt.',
+    'Über das Geschlecht diskutieren sie lange.',
+    'Nirgendwo ist es so ruhig.'
+  ];
+  t('Corpus lesson b1-u10-l7 precisely scopes five linking-and-generalising moves taking declined gesamte, the pair sowohl als auch, verb-final indem, fronted plural diskutieren and inverted Nirgendwo ist',
+    lessonJ7.title.de === 'Verbindung und Allgemeines: gesamt und indem' &&
+      lessonJ7.title.ar === 'الربط والتعميم: gesamt وindem' &&
+      rowJ7.title.de === lessonJ7.title.de && rowJ7.title.ar === lessonJ7.title.ar &&
+      rowJ7.theme === 'الربط' &&
+      rowJ7.grammar.item === 'gesamte Verwaltung · sowohl als auch · indem man übt · diskutieren sie · Nirgendwo ist' &&
+      rowJ7.grammar.method === 'explicit' && lessonJ7.schritte.length === 36 && lessonJ7.wortschatz.length === 36 &&
+      lessonJ7.schritte.filter(s => s.phase === 'Übungen').length === 6 &&
+      lessonJ7.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsJ7[i]) &&
+      lessonJ7.schritte[0].zeigt.de === 'Am Ende verbindest du Aussagen mit sowohl und indem und verallgemeinerst sicher — in fünf Sätzen' &&
+      lessonJ7.schritte.find(s => s.id === 's19').zeigt.de === targetsJ7[4]);
+
+  const expectedWordsJ7 = [
+    'allgemein', 'alltäglich', 'anderseits', 'auffallen', 'ausschließlich', 'besonder',
+    'bisher', 'erfordern', 'erziehen', 'die Erziehung', 'gesamt', 'das Geschlecht',
+    'gewöhnlich', 'indem', 'irgendein', 'jedoch', 'meinetwegen', 'nämlich',
+    'nebenbei', 'nirgendwo', 'normalerweise', 'nun', 'schließlich', 'sinnlos',
+    'solch', 'soviel', 'sowieso', 'sowohl', 'sparsam', 'speziell',
+    'ursprünglich', 'verbringen', 'völlig', 'worum', 'zentral', 'ziemlich'
+  ];
+  const errorsJ7 = lessonJ7.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u10-l7 reviews all 36 entries and three bounded mnemonics converting two ambiguous sie foils, narrowing two glosses and restoring the nämlich minimal pair while keeping every genuine foil',
+    Object.keys(byWordJ7).join(' | ') === expectedWordsJ7.join(' | ') &&
+      lessonJ7.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonJ7.wortschatz.every(it => it.ex !== it.err) &&
+      byWordJ7['das Geschlecht'].err === 'Über das Geschlecht diskutierst sie lange.' &&
+      byWordJ7['irgendein'].err === 'Irgendein Thema magst sie.' &&
+      !errorsJ7.includes('Über das Geschlecht diskutiert sie lange.') &&
+      !errorsJ7.includes('Irgendein Thema mögen sie.') &&
+      byWordJ7['indem'].ar === 'بأن/عن طريق أن' &&
+      byWordJ7['sowohl'].ar === 'كلٌّ من … و' &&
+      byWordJ7['nämlich'].err === 'Die Bank zahlt nur einen kleinen Zins, das ist nämlich normal auf.' &&
+      ['Die gesamt Verwaltung arbeitet langsam.', 'Das sind alltäglich Dinge.',
+        'Solch Fehler können vorkommen.', 'Er liest sowohl Zeitungen als auch Magazine auf.',
+        'Nun, weder der Vermieter noch die Nachbarn weiß es.']
+        .every(x => errorsJ7.includes(x)) &&
+      tricksJ7.length === 3 && tricksJ7[0].wie.includes('Die gesamte Verwaltung arbeitet langsam.') &&
+      tricksJ7[1].trick.includes('روابط ثابتة') &&
+      tricksJ7[1].wie.includes('Er liest sowohl Zeitungen als auch Magazine.') &&
+      tricksJ7[2].wie.includes('Nirgendwo ist es so ruhig.'));
+
+  const wordClozeAJ7 = lessonJ7.schritte.find(s => s.id === 's09');
+  const wordClozeBJ7 = lessonJ7.schritte.find(s => s.id === 's13');
+  const imitateJ7 = lessonJ7.schritte.find(s => s.id === 's18');
+  const drillJ7 = lessonJ7.schritte.find(s => s.id === 's22');
+  const orderJ7 = lessonJ7.schritte.find(s => s.id === 's23');
+  const writingJ7 = lessonJ7.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingJ7 = lessonJ7.schritte.find(s => s.phase === 'Produktion');
+  const summaryJ7 = lessonJ7.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkJ7 = lessonJ7.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u10-l7 aligns four strict learning clozes of the 36-word layout, sound diskutieren order fields and a 28-word five-target production',
+    wordClozeAJ7.frage.zeigt === 'Das ist ein ____ Abend.' && wordClozeAJ7.frage.antworten.join(' ') === 'besonderer' &&
+      wordClozeAJ7.frage.nearMiss.besonders && !win.DW.renderers.judgeCloze(wordClozeAJ7.frage, 'besonders').ok &&
+      wordClozeBJ7.frage.zeigt === '____, weder der Vermieter noch die Nachbarn wissen es.' && wordClozeBJ7.frage.antworten.join(' ') === 'Nun' &&
+      wordClozeBJ7.frage.nearMiss.Nur && !win.DW.renderers.judgeCloze(wordClozeBJ7.frage, 'Nur').ok &&
+      (imitateJ7.frage.zeigt === 'Die ____ Verwaltung arbeitet langsam.' || imitateJ7.zeigt.de === 'Die ____ Verwaltung arbeitet langsam.') && imitateJ7.frage.antworten.join(' ') === 'gesamte' &&
+      imitateJ7.frage.nearMiss['gesamt'] && !win.DW.renderers.judgeCloze(imitateJ7.frage, 'gesamt').ok &&
+      drillJ7.frage.zeigt === 'Man lernt, ____.' && drillJ7.frage.antworten.join(' ') === 'indem man übt' &&
+      drillJ7.frage.nearMiss['indem übt man'] && !win.DW.renderers.judgeCloze(drillJ7.frage, 'indem übt man').ok &&
+      lessonJ7.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderJ7.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderJ7.frage.correct.join(' ') === targetsJ7[3] && orderJ7.frage.finite === 'diskutieren' && orderJ7.frage.verbFirst === false &&
+      orderJ7.frage.fields.vorfeld.join(' ') === 'Über das Geschlecht' && orderJ7.frage.fields.lsk.join(' ') === 'diskutieren' &&
+      orderJ7.frage.fields.mittelfeld.join(' ') === 'sie lange.' &&
+      win.DW.order.score(orderJ7.frage, orderJ7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderJ7.frage, ['Über', 'das', 'Geschlecht', 'sie', 'diskutieren', 'lange.']).credit < 1 &&
+      writingJ7.frage.points.join(' | ') === targetsJ7.join(' | ') && writingJ7.frage.minWords === 28 &&
+      targetsJ7.join(' ').split(/\s+/).length === 28 &&
+      targetsJ7.every(x => [writingJ7.frage.promptDe, summaryJ7.zeigt.de, homeworkJ7.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsJ7.every(x => norm(speakingJ7.erklaerung).includes(norm(x))) &&
+      (homeworkJ7.hinweise || []).join(' ').includes('Du verbindest Sätze und ordnest Aussagen allgemein'));
+
+  const checksJ7 = lessonJ7.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckJ7 = checksJ7.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckJ7 = checksJ7.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u10-l7 makes 80 percent four of five, independently checking diskutieren, the indem cloze and liest order, solche and Nirgendwo',
+    checksJ7.length === 5 && checksJ7[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksJ7[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksJ7.every(s => /^cap\.b1-u10-l7\.s\d+$/.test(s.frage.prereq || '')) && checksJ7.every(s => !s.hinweise) &&
+      checksJ7.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u10-l7.s07 | cap.b1-u10-l7.s22 | cap.b1-u10-l7.s23 | cap.b1-u10-l7.s14 | cap.b1-u10-l7.s19' &&
+      new Set(checksJ7.map(s => s.frage.prereq)).size === 5 &&
+      checksJ7[0].frage.optionen.some(o => o.text === targetsJ7[3]) &&
+      checksJ7[0].frage.optionen.some(o => o.text === 'Über das Geschlecht diskutierst sie lange.') &&
+      Object.values(checksJ7[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckJ7.frage.zeigt === 'Man lernt, ____.' &&
+      clozeCheckJ7.frage.antworten.join(' ') === 'indem man übt' && clozeCheckJ7.frage.nearMiss['indem übt man'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckJ7.frage, 'indem übt man').ok &&
+      orderCheckJ7.frage.correct.join(' ') === targetsJ7[1] && orderCheckJ7.frage.finite === 'liest' &&
+      orderCheckJ7.frage.fields.vorfeld.join(' ') === 'Er' && orderCheckJ7.frage.fields.lsk.join(' ') === 'liest' &&
+      orderCheckJ7.frage.fields.mittelfeld.join(' ') === 'sowohl Zeitungen als auch Magazine.' &&
+      win.DW.order.score(orderCheckJ7.frage, orderCheckJ7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckJ7.frage, ['Er', 'sowohl', 'liest', 'Zeitungen', 'als', 'auch', 'Magazine.']).credit < 1 &&
+      checksJ7[3].frage.optionen.some(o => o.text === 'Solche Fehler können vorkommen.') &&
+      checksJ7[3].frage.optionen.some(o => o.text === 'Solch Fehler können vorkommen.') &&
+      Object.values(checksJ7[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checksJ7[4].frage.optionen.some(o => o.text === targetsJ7[4]) &&
+      checksJ7[4].frage.optionen.some(o => o.text === 'Nirgendwo ist es so ruhig auf.') &&
+      Object.values(checksJ7[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
