@@ -155,7 +155,7 @@
     ['في المؤسسة: ausbilden وbesprechen وsich beteiligen', 'Im Betrieb: ausbilden, besprechen und sich beteiligen', 'العمل', 'bildet … aus · besprechen den Plan · sich an der Planung beteiligen · vertritt uns · verantwortlich für', 'explicit'],
     ['في الطريق: an die Küste وam Ufer', 'Unterwegs: an die Küste und am Ufer', 'المرور', 'an die Küste · am Ufer · warten auf · winken dem Fahrer · am Perron', 'explicit'],
     ['البيت والحرفة: gesperrt وim Keller', 'Haus und Handwerk: gesperrt und im Keller', 'السكن', 'muss geschnitten werden · ist gesperrt · hinter dem Regal · in ein Tal · im Keller', 'explicit'],
-    ['الصحة والمشاعر', 'Gesundheit und Gefühle', 'الصحة', 'tut weh und gegen Grippe', 'explicit'],
+    ['الصحة والمشاعر: erkältet وHeimweh', 'Gesundheit und Gefühle: erkältet und Heimweh', 'الصحة', 'habe mich erkältet · misst die Temperatur · hilft schnell · Heimweh nach · Laune ist gut', 'explicit'],
     ['المال والأجهزة والبريد', 'Geld, Geräte und Post', 'المال', 'EC-Karte und Netzwerk', 'explicit'],
     ['الثقافة واللغة', 'Kultur und Sprache', 'الثقافة', 'Das Orchester spielt und festlegen', 'explicit'],
     /* Unit 8 — amendment B1-L4: the third material round grew the promotion pool to

@@ -2236,25 +2236,50 @@ module.exports = [
       hwHintDe: 'Das Zustandspassiv zeigt das Ergebnis: Die Einfahrt ist gesperrt. Muss etwas getan werden, steht das Partizip II vor werden: Der Rasen muss geschnitten werden. Orte im Haus fragst du mit Wo und nimmst den Dativ: hinter dem Regal und im Keller.'
     }),
 
-  U('b1-u7-l4', 'B1', 'الصحة والمشاعر', 'Gesundheit und Gefühle', 'konjugation',
-    'Am Ende sagst du was dir weh tut und wie du dich fühlst',
-    'في النهاية تقول ما يؤلمك وكيف تشعر.',
+  U('b1-u7-l4', 'B1', 'الصحة والمشاعر: erkältet وHeimweh', 'Gesundheit und Gefühle: erkältet und Heimweh', 'konjugation',
+    'Am Ende sprichst du über Krankheiten, Pflege und Gefühle — in fünf Sätzen',
+    'في النهاية تتحدث عن الأمراض والرعاية والمشاعر في خمس جمل.',
     [
-      ['Das Knie tut weh.', 'الألم بالفعل tun', 'wehtun: tut weh', 'Das Knie tut weh es.', 'tut weh'],
-      ['Gegen Grippe hilft eine Spritze.', 'ضد: gegen', 'gegen + Akkusativ', 'Für Grippe hilft eine Spritze.', 'gegen Grippe'],
-      ['Die Stimmung ist ruhig.', 'أسماء المشاعر مفردة بفعل مفرد', 'die Stimmung: Singular + ist', 'Die Stimmung sind ruhig.', 'ist'],
-      ['Die Knochen werden alt.', 'الجمع مع werden', 'Plural: werden', 'Die Knochen wird alt.', 'werden']
+      ['Ich habe mich erkältet.', 'تقول إنك أصبت بالبرد', 'sich erkälten في الماضي المركّب: habe مع الضمير الانعكاسي mich واسم المفعول erkältet في الآخر', 'Ich habe mich erkälten.', 'اسم المفعول erkältet'],
+      ['Die Pflegerin misst die Temperatur.', 'تصف قياس الممرضة للحرارة', 'messen يأخذ مقاسه مفعولًا مباشرًا: misst die Temperatur — بلا حرف قبله', 'Die Pflegerin misst auf die Temperatur.', 'messen بلا حرف'],
+      ['Das Schmerzmittel hilft schnell.', 'تقول إن المسكّن ينفع بسرعة', 'اسم مركّب محايد مفرد يأخذ فعلًا مفردًا: Das Schmerzmittel hilft', 'Das Schmerzmittel helfen schnell.', 'المفرد: hilft'],
+      ['Ich hatte Heimweh nach der Stadt.', 'تعبّر عن حنينك إلى المدينة', 'Heimweh يثبت مع nach: hatte Heimweh nach der Stadt', 'Ich hatte Heimweh zu der Stadt.', 'Heimweh nach']
     ],
     [
-      ['Das Knie tut weh.', 'الركبة تؤلم', 'Das Knie tut weh es.', 'tut weh.', 'tut'],
-      ['Gegen Grippe hilft eine Spritze.', 'ضد الإنفلونزا حقنة تنفع', 'Für Grippe hilft eine Spritze.', 'gegen لا für.', 'gegen'],
-      ['Die Laune ist heute gut.', 'المزاج جيد اليوم', 'Die Laune sind heute gut.', 'الفعل مفرد.', 'ist'],
-      ['Ich habe mich erkältet.', 'أصابني البرد', 'Ich habe mich erkältet gehabt.', 'الماضي: habe erkältet.', 'erkältet']
+      ['Ich habe mich erkältet.', 'أصابني البرد', 'Ich habe mich erkälten.', 'الماضي المركّب باسم المفعول: erkältet.', 'erkältet'],
+      ['Die Pflegerin misst die Temperatur.', 'الممرضة تقيس الحرارة', 'Die Pflegerin misst auf die Temperatur.', 'messen بمفعول مباشر، بلا auf.', 'misst'],
+      ['Das Schmerzmittel hilft schnell.', 'المسكّن ينفع بسرعة', 'Das Schmerzmittel helfen schnell.', 'فاعل مفرد محايد: hilft.', 'hilft'],
+      ['Ich hatte Heimweh nach der Stadt.', 'كان عندي حنين إلى المدينة', 'Ich hatte Heimweh zu der Stadt.', 'الحنين مع nach لا zu.', 'nach']
     ],
-    'Das Knie tut weh. Gegen Grippe hilft eine Spritze.',
-    'Ich friere am Morgen.',
-    'Beschreibe morgen drei Gefühle mit je einem Satz.',
-    'غدًا صف ثلاث مشاعر بجملة لكل واحدة.'),
+    'Ich habe mich erkältet. Das Schmerzmittel hilft schnell.',
+    'Ihre Laune ist heute gut.',
+    'Wiederhole morgen die fünf Sätze: Ich habe mich erkältet. Die Pflegerin misst die Temperatur. Das Schmerzmittel hilft schnell. Ich hatte Heimweh nach der Stadt. Ihre Laune ist heute gut.',
+    'غدًا أعد جمل الصحة والمشاعر الخمس ولاحظ اسم المفعول والمفرد وnach.',
+    {
+      factFamilies: ['konjugation', 'präposition', 'konjugation', 'präposition'],
+      imitateNearMiss: 'erkälten',
+      transformHint: 'في جملة الختام مزاج اليوم: Ihre Laune ist heute gut — اسم مؤنث مفرد مع ist وصفة خبرية بلا نهاية.',
+      orderSentence: 'Die Pflegerin misst die Temperatur.',
+      checkOrderSentence: 'Das Schmerzmittel hilft schnell.',
+      orderAr: 'رتّب جملة الممرضة: الفعل المصرف misst في الموضع الثاني والمفعول بعده.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Die Pflegerin هو الموضع الأول وحده.', 'المفعول die Temperatur. يغلق الجملة بعد الفعل.'],
+      writing: {
+        zeigt: 'Gesundheit und Gefühle in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: إصابة بالبرد في الماضي المركّب، وقياس حرارة بمفعول مباشر، ومسكّن بفعل مفرد، وحنين مع nach، ومزاج بـist وصفة بلا نهاية.',
+        hinweise: ['الماضي المركّب يغلق باسم المفعول erkältet.', 'الأسماء المؤنثة والمحايدة المفردة تأخذ فعلًا مفردًا.'],
+        prompt: 'اكتب جمل الصحة والمشاعر الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Ich habe mich erkältet. · Die Pflegerin misst die Temperatur. · Das Schmerzmittel hilft schnell. · Ich hatte Heimweh nach der Stadt. · Ihre Laune ist heute gut.',
+        points: ['Ich habe mich erkältet.', 'Die Pflegerin misst die Temperatur.', 'Das Schmerzmittel hilft schnell.', 'Ich hatte Heimweh nach der Stadt.', 'Ihre Laune ist heute gut.'],
+        minWords: 24,
+        frage: 'اكتب جمل الصحة والمشاعر الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich habe mich erkältet. Die Pflegerin misst die Temperatur. Das Schmerzmittel hilft schnell. Ich hatte Heimweh nach der Stadt. Ihre Laune ist heute gut.',
+      summaryDe: 'Ich habe mich erkältet. Die Pflegerin misst die Temperatur. Das Schmerzmittel hilft schnell. Ich hatte Heimweh nach der Stadt. Ihre Laune ist heute gut.',
+      summaryAr: 'الصحة والمشاعر تحتاج ماضيًا مركّبًا باسم مفعول، ومفعولًا مباشرًا بعد messen، وفعلًا مفردًا للأسماء المفردة، وnach مع الحنين.',
+      summaryRecap: 'اسم مفعول ومفرد وحنين',
+      hwHintDe: 'Sich erkälten steht im Perfekt mit haben und Partizip: Ich habe mich erkältet. Die Pflegerin misst die Temperatur direkt, und Heimweh steht immer mit nach. Sage ehrlich, wie du dich fühlst, wenn dich jemand fragt.'
+    }),
 
   U('b1-u7-l5', 'B1', 'المال والأجهزة والبريد', 'Geld, Geräte und Post', 'lexik-kollokation',
     'Am Ende erklärst du einen Bank- oder Gerätefehler am Telefon',

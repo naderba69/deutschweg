@@ -73,29 +73,29 @@ module.exports = {
 
   'b1-u7-l4': {
     items: [
-      ['bluten', '—', 'ينزف', 'Die Wunde blutet stark.', 'Die Wunde blutet stark auf.', 'bluten بلا حرف جر.', 'präposition', 'blutet'],
+      ['bluten', '—', 'ينزف', 'Die Wunde blutet stark.', 'Die Wunde bluten stark.', 'الفاعل die Wunde مفرد: blutet لا bluten.', 'konjugation', 'blutet'],
       ['erkälten', '—', 'يُصاب بالبرد', 'Ich habe mich erkältet.', 'Ich habe mich erkältet gehabt.', 'الماضي: habe erkältet.', 'konjugation', 'erkältet'],
-      ['frieren', '—', 'يشعر بالبرد', 'Ich friere am Morgen.', 'Ich friere am Morgen auf.', 'frieren بلا حرف جر.', 'präposition', 'friere'],
+      ['frieren', '—', 'يشعر بالبرد', 'Ich friere am Morgen.', 'Ich friere im Morgen.', 'أوقات اليوم مع an مدمجة: am Morgen لا im Morgen.', 'präposition', 'friere'],
       ['schwitzen', '—', 'يتعرّق', 'In der Nacht schwitze ich.', 'In der Nacht ich schwitze.', 'الفعل ثانٍ بعد الزمن.', 'wortstellung', 'schwitze'],
       ['die Klinik', 'die Kliniken', 'المستشفى', 'Die Klinik liegt nebenan.', 'Die Klinik liegen nebenan.', 'الفعل مفرد: liegt.', 'konjugation', 'Klinik'],
-      ['das Knie', 'die Knie', 'الركبة', 'Das Knie tut weh.', 'Das Knie tut weh es.', 'لا ضمير زائد.', 'wortstellung', 'Knie'],
+      ['das Knie', 'die Knie', 'الركبة', 'Das Knie tut weh.', 'Das Knie tun weh.', 'الفاعل das Knie مفرد: tut weh لا tun.', 'konjugation', 'Knie'],
       ['der Knochen', 'die Knochen', 'العظم', 'Die Knochen werden alt.', 'Die Knochen wird alt.', 'الجمع: werden.', 'konjugation', 'Knochen'],
       ['der Krankenwagen', 'die Krankenwagen', 'سيارة الإسعاف', 'Der Krankenwagen steht vor der Tür.', 'Der Krankenwagen steht vor die Tür.', 'vor + داتيف في الوضع: der.', 'kasus', 'Krankenwagen'],
-      ['der Muskel', 'die Muskeln', 'العضلة', 'Der Muskel im Rücken ist hart.', 'Der Muskel im Rücken ist hart gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Muskel'],
+      ['der Muskel', 'die Muskeln', 'العضلة', 'Der Muskel im Rücken ist hart.', 'Der Muskel im Rücken ist harte.', 'الصفة خبرًا بعد ist بلا نهاية: hart لا harte.', 'deklination', 'Muskel'],
       ['die Ordination', 'die Ordinationen', 'العيادة (النمسا)', 'In der Ordination wartet sie.', 'In der Ordination sie wartet.', 'الفعل ثانٍ بعد المكان.', 'wortstellung', 'Ordination'],
       ['die Patientin', 'die Patientinnen', 'المريضة', 'Die Patientin kommt mit ihrer Tochter.', 'Die Patientin kommt mit ihre Tochter.', 'mit + داتيف: ihrer.', 'kasus', 'Patientin'],
       ['die Pflegerin', 'die Pflegerinnen', 'الممرّضة', 'Die Pflegerin misst die Temperatur.', 'Die Pflegerin misst auf die Temperatur.', 'messen بلا حرف جر.', 'präposition', 'Pflegerin'],
-      ['die Pille', 'die Pillen', 'الحبة', 'Sie nimmt jeden Tag eine Pille.', 'Sie nimmt jeden Tag eine Pille auf.', 'لا حرف جر زائد.', 'präposition', 'Pille'],
+      ['die Pille', 'die Pillen', 'الحبة', 'Sie nimmt jeden Tag eine Pille.', 'Sie nimmt jeden Tag ein Pille.', 'Pille مؤنثة في النصب: eine Pille لا ein.', 'kasus', 'Pille'],
       ['das Schmerzmittel', 'die Schmerzmittel', 'المسكّن', 'Das Schmerzmittel hilft schnell.', 'Das Schmerzmittel helfen schnell.', 'الفعل مفرد: hilft.', 'konjugation', 'Schmerzmittel'],
-      ['der Schnupfen', 'die Schnupfen', 'الرشح', 'Zuerst ist es nur ein Schnupfen.', 'Zuerst ist es nur ein Schnupfen auf.', 'لا حرف جر زائد.', 'präposition', 'Schnupfen'],
+      ['der Schnupfen', 'die Schnupfen', 'الرشح', 'Zuerst ist es nur ein Schnupfen.', 'Zuerst sind es nur ein Schnupfen.', 'مع es يبقى الرابط مفردًا: ist لا sind.', 'konjugation', 'Schnupfen'],
       ['die Schulter', 'die Schultern', 'الكتف', 'Meine Schulter war fast taub.', 'Meine Schulter waren fast taub.', 'الفعل مفرد: war.', 'konjugation', 'Schulter'],
-      ['die Schwangerschaft', 'die Schwangerschaften', 'الحمل', 'Für eine Schwangerschaft gibt es Kontrollen.', 'Für eine Schwangerschaft gibt es Kontrollen auf.', 'لا حرف جر زائد.', 'präposition', 'Schwangerschaft'],
-      ['die Spritze', 'die Spritzen', 'الحقنة', 'Gegen Grippe gibt es eine Spritze.', 'Für Grippe gibt es eine Spritze.', 'ضد: gegen.', 'präposition', 'Spritze'],
-      ['taub', '—', 'مُخدَّر/أصمّ', 'Der Finger ist taub.', 'Der Finger ist taub gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'taub'],
+      ['die Schwangerschaft', 'die Schwangerschaften', 'الحمل', 'Für eine Schwangerschaft gibt es Kontrollen.', 'Für einer Schwangerschaft gibt es Kontrollen.', 'für مع النصب: für eine Schwangerschaft لا einer.', 'kasus', 'Schwangerschaft'],
+      ['die Spritze', 'die Spritzen', 'الحقنة', 'Gegen Grippe gibt es eine Spritze.', 'Gegen der Grippe gibt es eine Spritze.', 'gegen مع النصب لا الداتيف: gegen Grippe لا gegen der.', 'kasus', 'Spritze'],
+      ['taub', '—', 'مُخدَّر/أصمّ', 'Der Finger ist taub.', 'Der Finger ist taube.', 'الصفة خبرًا بعد ist بلا نهاية: taub لا taube.', 'deklination', 'taub'],
       ['das Taschentuch', 'die Taschentücher', 'المنديل', 'Ich brauche ein Taschentuch.', 'Ich brauche auf ein Taschentuch.', 'brauchen بلا حرف جر.', 'präposition', 'Taschentuch'],
       ['der Staub', '—', 'الغبار', 'Der Staub reizt die Nase.', 'Der Staub reizen die Nase.', 'الفعل مفرد: reizt.', 'konjugation', 'Staub'],
-      ['Staub saugen', '—', 'ينظّف بالمكنسة', 'Beim Staub saugen läuft meine Nase.', 'Beim Staub saugen läuft meine Nase auf.', 'لا حرف جر زائد.', 'präposition', 'Staub'],
-      ['der Schreck', '—', 'الفزع', 'Der Schreck war groß.', 'Der Schreck war groß gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Schreck'],
+      ['Staub saugen', '—', 'ينظّف بالمكنسة', 'Beim Staub saugen läuft meine Nase.', 'Beim Staub saugen läuft meiner Nase.', 'الأنف هنا فاعل بالرفع: meine Nase لا meiner.', 'kasus', 'Staub'],
+      ['der Schreck', '—', 'الفزع', 'Der Schreck war groß.', 'Der Schreck war große.', 'الصفة خبرًا بعد war بلا نهاية: groß لا große.', 'deklination', 'Schreck'],
       ['der Schrecken', 'die Schrecken', 'الرعب', 'Der Schrecken saß tief.', 'Der Schrecken sitzen tief.', 'الفعل مفرد: saß.', 'konjugation', 'Schrecken'],
       ['erschrecken', '—', 'يفزع', 'Der Klang hat mich erschreckt.', 'Der Klang hat mich erschrecken.', 'الماضي: erschreckt.', 'konjugation', 'erschreckt'],
       ['die Überraschung', 'die Überraschungen', 'المفاجأة', 'Die Überraschung war groß.', 'Die Überraschung waren groß.', 'الفعل مفرد: war.', 'konjugation', 'Überraschung'],
@@ -106,19 +106,36 @@ module.exports = {
       ['der Protest', 'die Proteste', 'الاحتجاج', 'Der Protest kam von wenigen.', 'Der Protest kam aus wenigen.', 'من: von.', 'präposition', 'Protest'],
       ['die Reaktion', 'die Reaktionen', 'ردّ الفعل', 'Ihre Reaktion war ruhig.', 'Ihre Reaktion waren ruhig.', 'الفعل مفرد: war.', 'konjugation', 'Reaktion'],
       ['die Freundschaft', 'die Freundschaften', 'الصداقة', 'Eine Freundschaft ist entstanden.', 'Eine Freundschaft ist entstehen.', 'الماضي: ist entstanden.', 'konjugation', 'Freundschaft'],
-      ['unheimlich', '—', 'مخيف/غريب', 'Manche finden es unheimlich.', 'Manche finden es unheimlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'unheimlich'],
-      ['seltsam', '—', 'غريب', 'Die Reaktion war seltsam.', 'Die Reaktion war seltsam gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'seltsam'],
-      ['unglaublich', '—', 'لا يُصدّق', 'Die Fans waren unglaublich geduldig.', 'Die Fans waren unglaublich geduldig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'unglaublich'],
-      ['vergeblich', '—', 'بلا جدوى', 'Ich halte die Angst für vergeblich.', 'Ich halte die Angst für vergeblich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'vergeblich'],
+      ['unheimlich', '—', 'مخيف/غريب', 'Manche finden es unheimlich.', 'Manche finden es unheimliche.', 'الصفة خبرًا بعد finden es بلا نهاية: unheimlich لا unheimliche.', 'deklination', 'unheimlich'],
+      ['seltsam', '—', 'غريب', 'Die Reaktion war seltsam.', 'Die Reaktion war seltsame.', 'الصفة خبرًا بعد war بلا نهاية: seltsam لا seltsame.', 'deklination', 'seltsam'],
+      ['unglaublich', '—', 'لا يُصدّق', 'Die Fans waren unglaublich geduldig.', 'Die Fans waren unglaublich geduldige.', 'الصفة خبرًا بعد waren بلا نهاية: geduldig لا geduldige.', 'deklination', 'unglaublich'],
+      ['vergeblich', '—', 'بلا جدوى', 'Ich halte die Angst für vergeblich.', 'Ich halte die Angst für vergebliche.', 'الصفة بعد halten für خبرية بلا نهاية: vergeblich لا vergebliche.', 'deklination', 'vergeblich'],
       ['ernsthaft', '—', 'بجديّة', 'Ich habe es ernsthaft bereut.', 'Ich habe es ernsthaft bereut gehabt.', 'الماضي: habe bereut.', 'konjugation', 'ernsthaft'],
-      ['mutig', '—', 'شجاع', 'Nur der Kredit war mutig.', 'Nur der Kredit war mutig gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'mutig'],
-      ['stumm', '—', 'صامت', 'Nach dem Schlusspfiff war es stumm.', 'Nach dem Schlusspfiff war es stumm gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'stumm']
+      ['mutig', '—', 'شجاع', 'Nur der Kredit war mutig.', 'Nur der Kredit war mutige.', 'الصفة خبرًا بعد war بلا نهاية: mutig لا mutige.', 'deklination', 'mutig'],
+      ['stumm', '—', 'صامت', 'Nach dem Schlusspfiff war es stumm.', 'Nach dem Schlusspfiff war es stumme.', 'الصفة خبرًا بعد war بلا نهاية: stumm لا stumme.', 'deklination', 'stumm']
     ],
     tricks: [
       { trick: 'المسكّن والجرعة: die Pille nehmen · die Spritze geben · gegen etwas helfen', wie: 'Sie nimmt eine Pille. · Gegen Grippe hilft eine Spritze.', warum: 'العربية تقول «دواء للبرد»، والألمانية تفرّق gegen (ضد) من für (من أجل).', anchor: 'gegen Grippe' },
       { trick: 'أسماء المشاعر مؤنثة غالبًا: die Laune · die Stimmung · die Überraschung · die Freundschaft', wie: 'Die Laune ist gut. · Die Stimmung ist ruhig.', warum: 'جنس الاسم لا يُشتق من المعنى، وحفظه مع صفته يجعل الكلمة مستعملة.', anchor: 'die Stimmung' },
       { trick: 'الفعل المفرد مع الأسماء الجامدة والجمع: das Personal · die Wärme · die Knochen', wie: 'Das Personal wechselt. · Die Wärme bleibt. · Die Knochen werden alt.', warum: 'das Personal مفرد في الألمانية وجمع في العربية، فينسى المتعلم تصريف الفعل.', anchor: 'Das Personal wechselt' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'das Knie': 'Knien',
+      'Staub saugen': 'Staubs',
+      'ernsthaft': 'ernsthafte'
+    },
+    clozeItemIndex: 1,
+    clozeNearMiss: 'erkälten',
+    checkItemIndex: 12,
+    extraCheck: {
+      right: 'Ihre Laune ist heute gut.',
+      bad: 'Ihre Laune sind heute gut.',
+      why: 'die Laune اسم مفرد: ist لا sind.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u7-l4.s20',
+      frage: 'أي جملة يطابق فعلُها المزاجَ المفرد؟'
+    }
   }
 
 };

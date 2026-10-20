@@ -15900,6 +15900,125 @@ console.log('\n— P3.2 lexical layer —\n');
       checksG3[4].frage.optionen.some(o => o.text === targetsG3[4]) &&
       checksG3[4].frage.optionen.some(o => o.text === 'Der Kasten steht in den Keller.') &&
       Object.values(checksG3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonG4 = win.DW_LESSONS['b1-u7-l4'];
+  const rowG4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonG4.id);
+  const byWordG4 = Object.fromEntries(lessonG4.wortschatz.map(it => [it.de, it]));
+  const tricksG4 = lessonG4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsG4 = [
+    'Ich habe mich erkältet.',
+    'Die Pflegerin misst die Temperatur.',
+    'Das Schmerzmittel hilft schnell.',
+    'Ich hatte Heimweh nach der Stadt.',
+    'Ihre Laune ist heute gut.'
+  ];
+  t('Corpus lesson b1-u7-l4 precisely scopes five health-and-feeling moves taking a reflexive participle perfect, a direct object after messen, singular agreement with a compound noun, fixed Heimweh nach and a feminine mood noun with ist',
+    lessonG4.title.de === 'Gesundheit und Gefühle: erkältet und Heimweh' &&
+      lessonG4.title.ar === 'الصحة والمشاعر: erkältet وHeimweh' &&
+      rowG4.title.de === lessonG4.title.de && rowG4.title.ar === lessonG4.title.ar &&
+      rowG4.theme === 'الصحة' &&
+      rowG4.grammar.item === 'habe mich erkältet · misst die Temperatur · hilft schnell · Heimweh nach · Laune ist gut' &&
+      rowG4.grammar.method === 'explicit' && lessonG4.schritte.length === 36 && lessonG4.wortschatz.length === 40 &&
+      lessonG4.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonG4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsG4[i]) &&
+      lessonG4.schritte[0].zeigt.de === 'Am Ende sprichst du über Krankheiten, Pflege und Gefühle — in fünf Sätzen' &&
+      lessonG4.schritte.find(s => s.id === 's20').zeigt.de === targetsG4[4]);
+
+  const expectedWordsG4 = [
+    'bluten', 'erkälten', 'frieren', 'schwitzen', 'die Klinik', 'das Knie',
+    'der Knochen', 'der Krankenwagen', 'der Muskel', 'die Ordination', 'die Patientin', 'die Pflegerin',
+    'die Pille', 'das Schmerzmittel', 'der Schnupfen', 'die Schulter', 'die Schwangerschaft', 'die Spritze',
+    'taub', 'das Taschentuch', 'der Staub', 'Staub saugen', 'der Schreck', 'der Schrecken',
+    'erschrecken', 'die Überraschung', 'die Laune', 'das Heimweh', 'die Stimmung', 'hassen',
+    'der Protest', 'die Reaktion', 'die Freundschaft', 'unheimlich', 'seltsam', 'unglaublich',
+    'vergeblich', 'ernsthaft', 'mutig', 'stumm'
+  ];
+  const errorsG4 = lessonG4.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u7-l4 reviews all 40 entries and three bounded mnemonics without seventeen manufactured appendages and without branding contested für-Grippe as the measured error',
+    Object.keys(byWordG4).join(' | ') === expectedWordsG4.join(' | ') &&
+      lessonG4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonG4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordG4['erkälten'].err === 'Ich habe mich erkältet gehabt.' &&
+      byWordG4['die Spritze'].err === 'Gegen der Grippe gibt es eine Spritze.' &&
+      byWordG4['die Pille'].err === 'Sie nimmt jeden Tag ein Pille.' &&
+      byWordG4['das Heimweh'].err === 'Ich hatte Heimweh zu der Stadt.' &&
+      byWordG4['stumm'].err === 'Nach dem Schlusspfiff war es stumme.' &&
+      !['Die Wunde blutet stark auf.', 'Ich friere am Morgen auf.',
+        'Das Knie tut weh es.', 'Der Muskel im Rücken ist hart gemacht.',
+        'Sie nimmt jeden Tag eine Pille auf.', 'Zuerst ist es nur ein Schnupfen auf.',
+        'Für eine Schwangerschaft gibt es Kontrollen auf.', 'Für Grippe gibt es eine Spritze.',
+        'Der Finger ist taub gemacht.', 'Beim Staub saugen läuft meine Nase auf.',
+        'Der Schreck war groß gemacht.', 'Manche finden es unheimlich gemacht.',
+        'Die Reaktion war seltsam gemacht.', 'Die Fans waren unglaublich geduldig gemacht.',
+        'Ich halte die Angst für vergeblich gemacht.', 'Nur der Kredit war mutig gemacht.',
+        'Nach dem Schlusspfiff war es stumm gemacht.']
+        .some(x => errorsG4.includes(x)) &&
+      tricksG4.length === 3 && tricksG4[0].wie.includes('Gegen Grippe hilft eine Spritze.') &&
+      tricksG4[1].wie.includes('Die Stimmung ist ruhig.') &&
+      tricksG4[2].wie.includes('Die Knochen werden alt.'));
+
+  const wordClozeAG4 = lessonG4.schritte.find(s => s.id === 's09');
+  const wordClozeBG4 = lessonG4.schritte.find(s => s.id === 's13');
+  const wordClozeCG4 = lessonG4.schritte.find(s => s.id === 's17');
+  const imitateG4 = lessonG4.schritte.find(s => s.id === 's19');
+  const drillG4 = lessonG4.schritte.find(s => s.id === 's23');
+  const orderG4 = lessonG4.schritte.find(s => s.id === 's24');
+  const writingG4 = lessonG4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingG4 = lessonG4.schritte.find(s => s.phase === 'Produktion');
+  const summaryG4 = lessonG4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkG4 = lessonG4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u7-l4 aligns five strict learning clozes, sound misst order fields and a 24-word five-target production',
+    wordClozeAG4.frage.zeigt === 'Das ____ tut weh.' && wordClozeAG4.frage.antworten.join(' ') === 'Knie' &&
+      wordClozeAG4.frage.nearMiss.Knien && !win.DW.renderers.judgeCloze(wordClozeAG4.frage, 'Knien').ok &&
+      wordClozeBG4.frage.zeigt === 'Beim ____ saugen läuft meine Nase.' && wordClozeBG4.frage.antworten.join(' ') === 'Staub' &&
+      wordClozeBG4.frage.nearMiss.Staubs && !win.DW.renderers.judgeCloze(wordClozeBG4.frage, 'Staubs').ok &&
+      wordClozeCG4.frage.zeigt === 'Ich habe es ____ bereut.' && wordClozeCG4.frage.antworten.join(' ') === 'ernsthaft' &&
+      wordClozeCG4.frage.nearMiss.ernsthafte && !win.DW.renderers.judgeCloze(wordClozeCG4.frage, 'ernsthafte').ok &&
+      imitateG4.zeigt.de === 'Ich habe mich ____.' && imitateG4.frage.antworten.join(' ') === 'erkältet' &&
+      imitateG4.frage.nearMiss.erkälten && !win.DW.renderers.judgeCloze(imitateG4.frage, 'erkälten').ok &&
+      drillG4.frage.zeigt === 'Ich habe mich ____.' && drillG4.frage.antworten.join(' ') === 'erkältet' &&
+      drillG4.frage.nearMiss.erkälten && !win.DW.renderers.judgeCloze(drillG4.frage, 'erkälten').ok &&
+      lessonG4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderG4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderG4.frage.correct.join(' ') === targetsG4[1] && orderG4.frage.finite === 'misst' && orderG4.frage.verbFirst === false &&
+      orderG4.frage.fields.vorfeld.join(' ') === 'Die Pflegerin' && orderG4.frage.fields.lsk.join(' ') === 'misst' &&
+      orderG4.frage.fields.mittelfeld.join(' ') === 'die Temperatur.' &&
+      win.DW.order.score(orderG4.frage, orderG4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderG4.frage, ['Die', 'misst', 'Pflegerin', 'die', 'Temperatur.']).credit < 1 &&
+      writingG4.frage.points.join(' | ') === targetsG4.join(' | ') && writingG4.frage.minWords === 24 &&
+      targetsG4.join(' ').split(/\s+/).length === 24 &&
+      targetsG4.every(x => [writingG4.frage.promptDe, summaryG4.zeigt.de, homeworkG4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsG4.every(x => norm(speakingG4.erklaerung).includes(norm(x))) &&
+      (homeworkG4.hinweise || []).join(' ').includes('wie du dich fühlst'));
+
+  const checksG4 = lessonG4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckG4 = checksG4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckG4 = checksG4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u7-l4 makes 80 percent four of five, independently checking fixed Heimweh nach, the participle erkältet and hilft order, feminine eine Pille and singular Laune ist',
+    checksG4.length === 5 && checksG4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksG4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksG4.every(s => /^cap\.b1-u7-l4\.s\d+$/.test(s.frage.prereq || '')) && checksG4.every(s => !s.hinweise) &&
+      checksG4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u7-l4.s07 | cap.b1-u7-l4.s23 | cap.b1-u7-l4.s24 | cap.b1-u7-l4.s11 | cap.b1-u7-l4.s20' &&
+      new Set(checksG4.map(s => s.frage.prereq)).size === 5 &&
+      checksG4[0].frage.optionen.some(o => o.text === targetsG4[3]) &&
+      checksG4[0].frage.optionen.some(o => o.text === 'Ich hatte Heimweh zu der Stadt.') &&
+      Object.values(checksG4[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckG4.frage.zeigt === 'Ich habe mich ____.' &&
+      clozeCheckG4.frage.antworten.join(' ') === 'erkältet' && clozeCheckG4.frage.nearMiss.erkälten &&
+      !win.DW.renderers.judgeCloze(clozeCheckG4.frage, 'erkälten').ok &&
+      orderCheckG4.frage.correct.join(' ') === targetsG4[2] && orderCheckG4.frage.finite === 'hilft' &&
+      orderCheckG4.frage.fields.vorfeld.join(' ') === 'Das Schmerzmittel' && orderCheckG4.frage.fields.lsk.join(' ') === 'hilft' &&
+      orderCheckG4.frage.fields.mittelfeld.join(' ') === 'schnell.' &&
+      win.DW.order.score(orderCheckG4.frage, orderCheckG4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckG4.frage, ['Das', 'hilft', 'Schmerzmittel', 'schnell.']).credit < 1 &&
+      checksG4[3].frage.optionen.some(o => o.text === 'Sie nimmt jeden Tag eine Pille.') &&
+      checksG4[3].frage.optionen.some(o => o.text === 'Sie nimmt jeden Tag ein Pille.') &&
+      Object.values(checksG4[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksG4[4].frage.optionen.some(o => o.text === targetsG4[4]) &&
+      checksG4[4].frage.optionen.some(o => o.text === 'Ihre Laune sind heute gut.') &&
+      Object.values(checksG4[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
