@@ -16851,6 +16851,119 @@ console.log('\n— P3.2 lexical layer —\n');
       checksH5[4].frage.optionen.some(o => o.text === targetsH5[4]) &&
       checksH5[4].frage.optionen.some(o => o.text === 'Die Rechnung ist nächste Woche fällige.') &&
       Object.values(checksH5[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+
+  const lessonH6 = win.DW_LESSONS['b1-u8-l6'];
+  const rowH6 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonH6.id);
+  const byWordH6 = Object.fromEntries(lessonH6.wortschatz.map(it => [it.de, it]));
+  const tricksH6 = lessonH6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsH6 = [
+    'Es donnert seit einer Stunde.',
+    'Auf dem Weg begegne ich dem Trainer.',
+    'Die Mannschaft kämpft um den Sieg.',
+    'Das Stadion war voll.',
+    'Im März blühen die Bäume.'
+  ];
+  t('Corpus lesson b1-u8-l6 precisely scopes five nature-and-sport moves taking weather es donnert, dative begegnen dem, singular Mannschaft kämpft, singular Stadion war and plural Bäume blühen',
+    lessonH6.title.de === 'Natur und Sport: Donner und Stadion' &&
+      lessonH6.title.ar === 'الطبيعة والرياضة: Donner وStadion' &&
+      rowH6.title.de === lessonH6.title.de && rowH6.title.ar === lessonH6.title.ar &&
+      rowH6.theme === 'الترفيه' &&
+      rowH6.grammar.item === 'Es donnert · begegnen mit dem · Mannschaft kämpft · Stadion war · blühen' &&
+      rowH6.grammar.method === 'explicit' && lessonH6.schritte.length === 36 && lessonH6.wortschatz.length === 40 &&
+      lessonH6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonH6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsH6[i]) &&
+      lessonH6.schritte[0].zeigt.de === 'Am Ende berichtest du über Wetter, Landschaft und Sport — in fünf Sätzen' &&
+      lessonH6.schritte.find(s => s.id === 's20').zeigt.de === targetsH6[4]);
+
+  const expectedWordsH6 = [
+    'begegnen', 'der Blitz', 'blitzen', 'blühen', 'der Donner', 'donnern',
+    'das Golf', 'grillieren', 'die Gymnastik', 'das Hallenbad', 'die Hitze', 'der Humor',
+    'die Hütte', 'der Kampf', 'kämpfen', 'die Katastrophe', 'das Kostüm', 'die Landung',
+    'der Mond', 'die Nordsee', 'der Ozean', 'die Ostsee', 'das Picknick', 'der Rekord',
+    'die Rückfahrt', 'die Rückkehr', 'die Rundfahrt', 'die Saison', 'der Salon', 'das Schaufenster',
+    'der Schatten', 'die Schlange', 'die Sportart', 'der Sportler', 'die Spielerin', 'das Spielzeug',
+    'das Stadion', 'der Treffpunkt', 'die Übernachtung', 'der Tierpark'
+  ];
+  const errorsH6 = lessonH6.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u8-l6 reviews all 40 entries and three bounded mnemonics without six manufactured appendages and never brands the grammatical Kampf für or the von-plus-dative shadow as errors',
+    Object.keys(byWordH6).join(' | ') === expectedWordsH6.join(' | ') &&
+      lessonH6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonH6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordH6['begegnen'].err === 'Auf dem Weg begegne ich den Trainer.' &&
+      byWordH6['blühen'].err === 'Im März blüht die Bäume.' &&
+      byWordH6['das Golf'].err === 'Golf er spielt nur im Sommer.' &&
+      byWordH6['der Kampf'].err === 'Der Kampf um die Platz war hart.' &&
+      byWordH6['der Schatten'].err === 'Der Schatten von die Hütte kühlt uns.' &&
+      !['Im März blühen die Bäume auf.', 'Golf spielt er nur im Sommer auf.',
+        'Der Kampf für den Platz war hart.', 'Zum Fasching trägt sie ein Kostüm auf.',
+        'Nach der Rückkehr rufe ich an auf.', 'Der Schatten von der Hütte kühlt uns.']
+        .some(x => errorsH6.includes(x)) &&
+      tricksH6.length === 3 && tricksH6[0].wie.includes('Auf dem Weg begegne ich dem Trainer.') &&
+      tricksH6[1].wie.includes('Es donnert seit einer Stunde.') &&
+      tricksH6[2].wie.includes('Golf spielt er nur im Sommer.'));
+
+  const wordClozeAH6 = lessonH6.schritte.find(s => s.id === 's09');
+  const wordClozeBH6 = lessonH6.schritte.find(s => s.id === 's13');
+  const wordClozeCH6 = lessonH6.schritte.find(s => s.id === 's17');
+  const imitateH6 = lessonH6.schritte.find(s => s.id === 's19');
+  const drillH6 = lessonH6.schritte.find(s => s.id === 's23');
+  const orderH6 = lessonH6.schritte.find(s => s.id === 's24');
+  const writingH6 = lessonH6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingH6 = lessonH6.schritte.find(s => s.phase === 'Produktion');
+  const summaryH6 = lessonH6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkH6 = lessonH6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u8-l6 aligns five strict learning clozes, sound blühen order fields and a 27-word five-target production',
+    wordClozeAH6.frage.zeigt === 'Es ____ seit einer Stunde.' && wordClozeAH6.frage.antworten.join(' ') === 'donnert' &&
+      wordClozeAH6.frage.nearMiss['donnern'] && !win.DW.renderers.judgeCloze(wordClozeAH6.frage, 'donnern').ok &&
+      wordClozeBH6.frage.zeigt === 'An der ____ ist es windig.' && wordClozeBH6.frage.antworten.join(' ') === 'Ostsee' &&
+      wordClozeBH6.frage.nearMiss.Ostsees && !win.DW.renderers.judgeCloze(wordClozeBH6.frage, 'Ostsees').ok &&
+      wordClozeCH6.frage.zeigt === 'Der ____ bleibt derselbe.' && wordClozeCH6.frage.antworten.join(' ') === 'Treffpunkt' &&
+      wordClozeCH6.frage.nearMiss.Treffpunkts && !win.DW.renderers.judgeCloze(wordClozeCH6.frage, 'Treffpunkts').ok &&
+      imitateH6.zeigt.de === 'Es ____ seit einer Stunde.' && imitateH6.frage.antworten.join(' ') === 'donnert' &&
+      imitateH6.frage.nearMiss['donnern'] && !win.DW.renderers.judgeCloze(imitateH6.frage, 'donnern').ok &&
+      drillH6.frage.zeigt === 'Die Mannschaft ____ um den Sieg.' && drillH6.frage.antworten.join(' ') === 'kämpft' &&
+      drillH6.frage.nearMiss['kämpfen'] && !win.DW.renderers.judgeCloze(drillH6.frage, 'kämpfen').ok &&
+      lessonH6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderH6.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderH6.frage.correct.join(' ') === targetsH6[4] && orderH6.frage.finite === 'blühen' && orderH6.frage.verbFirst === false &&
+      orderH6.frage.fields.vorfeld.join(' ') === 'Im März' && orderH6.frage.fields.lsk.join(' ') === 'blühen' &&
+      orderH6.frage.fields.mittelfeld.join(' ') === 'die Bäume.' &&
+      win.DW.order.score(orderH6.frage, orderH6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderH6.frage, ['Im', 'März', 'die', 'Bäume.', 'blühen']).credit < 1 &&
+      writingH6.frage.points.join(' | ') === targetsH6.join(' | ') && writingH6.frage.minWords === 27 &&
+      targetsH6.join(' ').split(/\s+/).length === 27 &&
+      targetsH6.every(x => [writingH6.frage.promptDe, summaryH6.zeigt.de, homeworkH6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsH6.every(x => norm(speakingH6.erklaerung).includes(norm(x))) &&
+      (homeworkH6.hinweise || []).join(' ').includes('Im Frühling blühen die Bäume'));
+
+  const checksH6 = lessonH6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckH6 = checksH6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckH6 = checksH6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u8-l6 makes 80 percent four of five, independently checking singular Stadion war, the kämpft cloze and donnert order, dative begegnen dem and plural blühen',
+    checksH6.length === 5 && checksH6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksH6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksH6.every(s => /^cap\.b1-u8-l6\.s\d+$/.test(s.frage.prereq || '')) && checksH6.every(s => !s.hinweise) &&
+      checksH6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u8-l6.s07 | cap.b1-u8-l6.s23 | cap.b1-u8-l6.s24 | cap.b1-u8-l6.s08 | cap.b1-u8-l6.s20' &&
+      new Set(checksH6.map(s => s.frage.prereq)).size === 5 &&
+      checksH6[0].frage.optionen.some(o => o.text === targetsH6[3]) &&
+      checksH6[0].frage.optionen.some(o => o.text === 'Das Stadion waren voll.') &&
+      Object.values(checksH6[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckH6.frage.zeigt === 'Die Mannschaft ____ um den Sieg.' &&
+      clozeCheckH6.frage.antworten.join(' ') === 'kämpft' && clozeCheckH6.frage.nearMiss['kämpfen'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckH6.frage, 'kämpfen').ok &&
+      orderCheckH6.frage.correct.join(' ') === targetsH6[0] && orderCheckH6.frage.finite === 'donnert' &&
+      orderCheckH6.frage.fields.vorfeld.join(' ') === 'Es' && orderCheckH6.frage.fields.lsk.join(' ') === 'donnert' &&
+      orderCheckH6.frage.fields.mittelfeld.join(' ') === 'seit einer Stunde.' &&
+      win.DW.order.score(orderCheckH6.frage, orderCheckH6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckH6.frage, ['Es', 'seit', 'einer', 'Stunde.', 'donnert']).credit < 1 &&
+      checksH6[3].frage.optionen.some(o => o.text === targetsH6[1]) &&
+      checksH6[3].frage.optionen.some(o => o.text === 'Auf dem Weg begegne ich den Trainer.') &&
+      Object.values(checksH6[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksH6[4].frage.optionen.some(o => o.text === targetsH6[4]) &&
+      checksH6[4].frage.optionen.some(o => o.text === 'Im März blüht die Bäume.') &&
+      Object.values(checksH6[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

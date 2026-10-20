@@ -165,7 +165,7 @@
     ['الجسد والنفس: wütend وentspannt', 'Körper und Seele: wütend und entspannt', 'الصحة', 'wütend auf · entspanne mich · abhängig von · Unglück war · Danke für dein', 'explicit'],
     ['العمل والمكتب: Kopierer وVisitenkarte', 'Arbeit und Büro: Kopierer und Visitenkarte', 'المهنة', 'Anwältin prüft · schreibe … auf · Kopierer steht · konzentrieren auf · gebe Ihnen', 'explicit'],
     ['الإدارة والتعليم: anschaffen وKlassenarbeit', 'Verwaltung und Schule: anschaffen und Klassenarbeit', 'التعليم', 'Kriminalpolizei übernimmt · schaffen … an · befindet sich · Klassenarbeit wird · Rechnung fällig', 'explicit'],
-    ['الطبيعة والرياضة', 'Natur und Sport', 'الترفيه', 'begegne ich dem und Es donnert', 'explicit'],
+    ['الطبيعة والرياضة: Donner وStadion', 'Natur und Sport: Donner und Stadion', 'الترفيه', 'Es donnert · begegnen mit dem · Mannschaft kämpft · Stadion war · blühen', 'explicit'],
     /* Unit 9 — amendment B1-L5: the fourth material round carried every entry the corpus
        lacked, so the pool (494) can be named; unit 9 carries 240 of it. */
     ['البيت والأجهزة', 'Haus und Geräte', 'السكن', 'Der Abfalleimer steht und abonnieren', 'explicit'],

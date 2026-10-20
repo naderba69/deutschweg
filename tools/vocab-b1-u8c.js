@@ -74,20 +74,20 @@ module.exports = {
       ['begegnen', '—', 'يصادف', 'Auf dem Weg begegne ich dem Trainer.', 'Auf dem Weg begegne ich den Trainer.', 'begegnen + داتيف: dem Trainer.', 'kasus', 'begegne ich dem'],
       ['der Blitz', 'die Blitze', 'البرق', 'Der Blitz kam vor dem Donner.', 'Der Blitz kamen vor dem Donner.', 'الفعل مفرد: kam.', 'konjugation', 'Blitz'],
       ['blitzen', '—', 'يومض', 'Am Himmel blitzt es schon.', 'Am Himmel blitzen es schon.', 'الضمير es مفرد: blitzt.', 'konjugation', 'blitzt es'],
-      ['blühen', '—', 'يزهر', 'Im März blühen die Bäume.', 'Im März blühen die Bäume auf.', 'blühen بلا حرف جر.', 'präposition', 'blühen'],
+      ['blühen', '—', 'يزهر', 'Im März blühen die Bäume.', 'Im März blüht die Bäume.', 'die Bäume جمع: blühen لا blüht.', 'konjugation', 'blühen'],
       ['der Donner', 'die Donner', 'الرعد', 'Der Donner war weit weg.', 'Der Donner waren weit weg.', 'الفعل مفرد: war.', 'konjugation', 'Donner'],
       ['donnern', '—', 'يدوّي', 'Es donnert seit einer Stunde.', 'Es donnern seit einer Stunde.', 'الضمير es: donnert.', 'konjugation', 'donnert'],
-      ['das Golf', '—', 'الغولف', 'Golf spielt er nur im Sommer.', 'Golf spielt er nur im Sommer auf.', 'لا حرف جر زائد.', 'präposition', 'Golf'],
+      ['das Golf', '—', 'الغولف', 'Golf spielt er nur im Sommer.', 'Golf er spielt nur im Sommer.', 'بعد جملة مقدّمة الفعل ثانيًا: spielt er لا er spielt.', 'wortstellung', 'Golf'],
       ['grillieren', '—', 'يشوي (سويسرا)', 'Am Abend grillieren wir im Garten.', 'Am Abend grillieren wir in den Garten.', 'في الحديقة: im Garten.', 'kasus', 'im Garten'],
       ['die Gymnastik', '—', 'التمارين البدنية', 'Gymnastik am Morgen hilft.', 'Gymnastik am Morgen helfen.', 'الفاعل مفرد: hilft.', 'konjugation', 'Gymnastik'],
       ['das Hallenbad', 'die Hallenbäder', 'المسبح المغطى', 'Das Hallenbad öffnet um sieben.', 'Das Hallenbad öffnen um sieben.', 'الفعل مفرد: öffnet.', 'konjugation', 'Hallenbad'],
       ['die Hitze', '—', 'الحرارة', 'Die Hitze macht uns müde.', 'Die Hitze machen uns müde.', 'الفعل مفرد: macht.', 'konjugation', 'Hitze'],
       ['der Humor', '—', 'الفكاهة', 'Sein Humor gefällt allen.', 'Sein Humor gefallen allen.', 'الفعل مفرد: gefällt.', 'konjugation', 'Humor'],
       ['die Hütte', 'die Hütten', 'الكوخ', 'Die Hütte liegt am See.', 'Die Hütte liegen am See.', 'الفعل مفرد: liegt.', 'konjugation', 'Hütte'],
-      ['der Kampf', 'die Kämpfe', 'الصراع', 'Der Kampf um den Platz war hart.', 'Der Kampf für den Platz war hart.', 'um + من أجل.', 'präposition', 'Kampf um'],
+      ['der Kampf', 'die Kämpfe', 'الصراع', 'Der Kampf um den Platz war hart.', 'Der Kampf um die Platz war hart.', 'بعد um النصب بمذكّر: um den Platz لا um die Platz.', 'kasus', 'Kampf um'],
       ['kämpfen', '—', 'يصارع', 'Die Mannschaft kämpft um den Sieg.', 'Die Mannschaft kämpfen um den Sieg.', 'الفعل مفرد: kämpft.', 'konjugation', 'kämpft'],
       ['die Katastrophe', 'die Katastrophen', 'الكارثة', 'Die Katastrophe traf das Tal.', 'Die Katastrophe trafen das Tal.', 'الفعل مفرد: traf.', 'konjugation', 'Katastrophe'],
-      ['das Kostüm', 'die Kostüme', 'الزيّ التنكري', 'Zum Fasching trägt sie ein Kostüm.', 'Zum Fasching trägt sie ein Kostüm auf.', 'لا حرف جر زائد.', 'präposition', 'Kostüm'],
+      ['das Kostüm', 'die Kostüme', 'الزيّ التنكري', 'Zum Fasching trägt sie ein Kostüm.', 'Zum Fasching trägt sie einen Kostüm.', 'das Kostüm محايد: ein Kostüm لا einen Kostüm.', 'kasus', 'Kostüm'],
       ['die Landung', 'die Landungen', 'الهبوط', 'Die Landung war ruhig.', 'Die Landung waren ruhig.', 'الفعل مفرد: war.', 'konjugation', 'Landung'],
       ['der Mond', 'die Monde', 'القمر', 'Der Mond ist heute klar.', 'Der Mond sind heute klar.', 'الفعل مفرد: ist.', 'konjugation', 'Mond'],
       ['die Nordsee', '—', 'بحر الشمال', 'Die Nordsee ist im Herbst rau.', 'Die Nordsee sind im Herbst rau.', 'الفعل مفرد: ist.', 'konjugation', 'Nordsee'],
@@ -96,12 +96,12 @@ module.exports = {
       ['das Picknick', 'die Picknicke', 'النزهة', 'Das Picknick war schön.', 'Das Picknick waren schön.', 'الفعل مفرد: war.', 'konjugation', 'Picknick'],
       ['der Rekord', 'die Rekorde', 'الرقم القياسي', 'Der Rekord fiel im letzten Versuch.', 'Der Rekord fielen im letzten Versuch.', 'الفعل مفرد: fiel.', 'konjugation', 'Rekord'],
       ['die Rückfahrt', 'die Rückfahrten', 'رحلة العودة', 'Die Rückfahrt dauert zwei Stunden.', 'Die Rückfahrt dauern zwei Stunden.', 'الفعل مفرد: dauert.', 'konjugation', 'Rückfahrt'],
-      ['die Rückkehr', 'die Rückkehren', 'العودة', 'Nach der Rückkehr rufe ich an.', 'Nach der Rückkehr rufe ich an auf.', 'لا حرف جر زائد.', 'präposition', 'Rückkehr'],
+      ['die Rückkehr', 'die Rückkehren', 'العودة', 'Nach der Rückkehr rufe ich an.', 'Nach der Rückkehr anrufe ich.', 'anrufen ينفصل: rufe … an لا anrufe.', 'wortstellung', 'Rückkehr'],
       ['die Rundfahrt', 'die Rundfahrten', 'الجولة', 'Die Rundfahrt durch die Stadt lohnt sich.', 'Die Rundfahrt durch die Stadt lohnen sich.', 'الفعل مفرد: lohnt.', 'konjugation', 'Rundfahrt'],
       ['die Saison', 'die Saisons', 'الموسم', 'Die Saison beginnt im Mai.', 'Die Saison beginnen im Mai.', 'الفعل مفرد: beginnt.', 'konjugation', 'Saison'],
       ['der Salon', 'die Salons', 'الصالون', 'Der Salon im Erdgeschoss ist offen.', 'Der Salon im Erdgeschoss sind offen.', 'الفعل مفرد: ist.', 'konjugation', 'Salon'],
       ['das Schaufenster', 'die Schaufenster', 'الواجهة الزجاجية', 'Im Schaufenster liegt das neue Modell.', 'Im Schaufenster liegen das neue Modell.', 'الفاعل مفرد: liegt.', 'konjugation', 'im Schaufenster liegt'],
-      ['der Schatten', 'die Schatten', 'الظل', 'Der Schatten der Hütte kühlt uns.', 'Der Schatten von der Hütte kühlt uns.', 'الإضافة: der Hütte.', 'kasus', 'Schatten der'],
+      ['der Schatten', 'die Schatten', 'الظل', 'Der Schatten der Hütte kühlt uns.', 'Der Schatten von die Hütte kühlt uns.', 'von مع الداتيف: von der Hütte لا von die.', 'kasus', 'Schatten der'],
       ['die Schlange', 'die Schlangen', 'الأفعى/الطابور', 'Vor der Kasse steht eine lange Schlange.', 'Vor der Kasse stehen eine lange Schlange.', 'الفاعل مفرد: steht.', 'konjugation', 'steht eine lange Schlange'],
       ['die Sportart', 'die Sportarten', 'نوع الرياضة', 'Diese Sportart ist nicht für jeden.', 'Diese Sportart sind nicht für jeden.', 'الفعل مفرد: ist.', 'konjugation', 'Sportart'],
       ['der Sportler', 'die Sportler', 'الرياضي', 'Der Sportler trainiert jeden Tag.', 'Der Sportler trainieren jeden Tag.', 'الفعل مفرد: trainiert.', 'konjugation', 'Sportler'],
@@ -116,7 +116,24 @@ module.exports = {
       { trick: 'begegnen يأخذ الداتيف: ich begegne dem Trainer', wie: 'Auf dem Weg begegne ich dem Trainer.', warum: 'الفعل يدل على لقاء ويأخذ مفعولًا غير مباشر، والطالب يضع الأكوزاتيف تلقائيًا.', anchor: 'begegne ich dem Trainer' },
       { trick: 'الطقس بضمير es: es blitzt · es donnert · es ist windig', wie: 'Am Himmel blitzt es schon. · Es donnert seit einer Stunde.', warum: 'الضمير es لا يُترجم، وحذفه يجعل الجملة بلا فاعل.', anchor: 'Es donnert' },
       { trick: 'الرياضة والمكان بجار ومجرور واحد: Golf spielen · im Stadion sein', wie: 'Golf spielt er nur im Sommer. · Das Stadion war voll.', warum: 'أسماء الألعاب تُستعمل بلا أداة («Golf spielen») وهذه عادة مختلفة عن العربية.', anchor: 'Golf spielt er' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'donnern': 'donnern',
+      'die Ostsee': 'Ostsees',
+      'der Treffpunkt': 'Treffpunkts'
+    },
+    clozeItemIndex: 14,
+    clozeNearMiss: 'kämpfen',
+    checkItemIndex: 0,
+    extraCheck: {
+      right: 'Im März blühen die Bäume.',
+      bad: 'Im März blüht die Bäume.',
+      why: 'die Bäume جمع: blühen لا blüht.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u8-l6.s20',
+      frage: 'أي جملة تُزهر فيها الأشجار بصيغة جمع صحيحة؟'
+    }
   }
 
 };

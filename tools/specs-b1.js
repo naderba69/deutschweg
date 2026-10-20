@@ -2597,25 +2597,50 @@ module.exports = [
       hwHintDe: 'Trennbare Verben bleiben getrennt: Wir schaffen einen Rechner an, und das Heim nimmt neue Gäste auf. Ein trennbares Verb braucht auch zu in der Mitte: Gäste aufzunehmen ist wichtig. Für einen einfachen Antrag sind nur wenige Papiere erforderlich. Die Teilnahme am Kurs ist freiwillig, und die Rechnung ist nächste Woche fällig.'
     }),
 
-  U('b1-u8-l6', 'B1', 'الطبيعة والرياضة', 'Natur und Sport', 'wortstellung',
-    'Am Ende berichtest du über Wetter, Ausflug und Sport',
-    'في النهاية تحكي عن الطقس والرحلة والرياضة.',
+  U('b1-u8-l6', 'B1', 'الطبيعة والرياضة: Donner وStadion', 'Natur und Sport: Donner und Stadion', 'wortstellung',
+    'Am Ende berichtest du über Wetter, Landschaft und Sport — in fünf Sätzen',
+    'في النهاية تحكي عن الطقس والطبيعة والرياضة في خمس جمل.',
     [
-      ['Auf dem Weg begegne ich dem Trainer.', 'begegnen + داتيف', 'begegnen + Dativ', 'Auf dem Weg begegne ich den Trainer.', 'dem Trainer'],
-      ['Es donnert seit einer Stunde.', 'الطقس بضمير es', 'es donnert, es gibt kein anderes Subjekt', 'Es donnern seit einer Stunde.', 'donnert'],
-      ['Das Stadion war voll.', 'الأمكنة مفردة', 'das Stadion: Singular + war', 'Das Stadion waren voll.', 'war'],
-      ['Golf spielt er nur im Sommer.', 'اللعبة بلا أداة', 'Golf spielen ohne Artikel', 'Er spielt das Golf nur im Sommer.', 'Golf']
+      ['Es donnert seit einer Stunde.', 'تصف الرعد قائمًا منذ ساعة', 'طقسٌ بضمير es لا غنى عنه وفعلٍ مفرد donnert لا donnern', 'Es donnern seit einer Stunde.', 'المفرد: donnert'],
+      ['Auf dem Weg begegne ich dem Trainer.', 'تلتقي بالمدرب في الطريق', 'begegnen يأخذ الداتيف: dem Trainer لا den Trainer', 'Auf dem Weg begegne ich den Trainer.', 'الداتيف: dem'],
+      ['Die Mannschaft kämpft um den Sieg.', 'تقول إن الفريق يناضل من أجل الفوز', 'die Mannschaft اسم مفرد ففعلها kämpft لا kämpfen', 'Die Mannschaft kämpfen um den Sieg.', 'المفرد: kämpft'],
+      ['Das Stadion war voll.', 'تصف ملعبًا ممتلئًا', 'das Stadion اسم محايد مفرد فيأخذ war لا waren', 'Das Stadion waren voll.', 'المفرد: war']
     ],
     [
-      ['Der Treffpunkt bleibt derselbe.', 'نقطة اللقاء نفسها', 'Der Treffpunkt bleiben derselbe.', 'الفعل مفرد.', 'bleibt'],
-      ['Die Übernachtung kostet extra.', 'المبيت بتكلفة إضافية', 'Die Übernachtung kosten extra.', 'الفعل مفرد.', 'kostet'],
-      ['Der Blitz kam vor dem Donner.', 'البرق سبق الرعد', 'Der Blitz kamen vor dem Donner.', 'الفعل مفرد.', 'kam'],
-      ['Der Rekord fiel im letzten Versuch.', 'الرقم القياسي سُجّل في المحاولة الأخيرة', 'Der Rekord fielen im letzten Versuch.', 'الفعل مفرد.', 'fiel']
+      ['Es donnert seit einer Stunde.', 'يرعد منذ ساعة', 'Es donnern seit einer Stunde.', 'مع es فعلٌ مفرد: donnert.', 'donnert'],
+      ['Auf dem Weg begegne ich dem Trainer.', 'ألتقي بالمدرب في الطريق', 'Auf dem Weg begegne ich den Trainer.', 'begegnen مع الداتيف: dem Trainer.', 'dem'],
+      ['Die Mannschaft kämpft um den Sieg.', 'الفريق يناضل من أجل الفوز', 'Die Mannschaft kämpfen um den Sieg.', 'الفعل مفرد: kämpft.', 'kämpft'],
+      ['Das Stadion war voll.', 'كان الملعب ممتلئًا', 'Das Stadion waren voll.', 'الفعل مفرد: war.', 'war']
     ],
-    'Auf dem Weg begegne ich dem Trainer. Es donnert seit einer Stunde.',
-    'Das Stadion war voll.',
-    'Berichte morgen über einen Ausflug bei schlechtem Wetter.',
-    'غدًا احكِ عن رحلة في طقس سيئ.'),
+    'Es donnert seit einer Stunde. Das Stadion war voll.',
+    'Im März blühen die Bäume.',
+    'Wiederhole morgen die fünf Sätze: Es donnert seit einer Stunde. Auf dem Weg begegne ich dem Trainer. Die Mannschaft kämpft um den Sieg. Das Stadion war voll. Im März blühen die Bäume.',
+    'غدًا أعد جمل الطبيعة والرياضة الخمس ولاحظ ضمير الطقس والداتيف والاتفاق.',
+    {
+      factFamilies: ['konjugation', 'kasus', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'donnern',
+      transformHint: 'في جملة الختام تُزهر الأشجار في مارس: Im März blühen die Bäume — die Bäume جمع ففعلها blühen.',
+      orderSentence: 'Im März blühen die Bäume.',
+      checkOrderSentence: 'Es donnert seit einer Stunde.',
+      orderAr: 'رتّب جملة الإزهار: الظرف Im März أولًا والفعل blühen في الموضع الثاني.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الظرف Im März هو الموضع الأول وحده.', 'الفاعل die Bäume. يأتي بعد الفعل.'],
+      writing: {
+        zeigt: 'Natur und Sport in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: رعد بضمير es مفرد، ولقاء بـbegegnen مع الداتيف dem، وفريق مفرد kämpft، وملعب war، وأشجار جمع blühen.',
+        hinweise: ['الطقس يُقال بـes: es donnert.', 'begegnen يأخذ الداتيف لا النصب.'],
+        prompt: 'اكتب جمل الطبيعة والرياضة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Es donnert seit einer Stunde. · Auf dem Weg begegne ich dem Trainer. · Die Mannschaft kämpft um den Sieg. · Das Stadion war voll. · Im März blühen die Bäume.',
+        points: ['Es donnert seit einer Stunde.', 'Auf dem Weg begegne ich dem Trainer.', 'Die Mannschaft kämpft um den Sieg.', 'Das Stadion war voll.', 'Im März blühen die Bäume.'],
+        minWords: 27,
+        frage: 'اكتب جمل الطبيعة والرياضة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Es donnert seit einer Stunde. Auf dem Weg begegne ich dem Trainer. Die Mannschaft kämpft um den Sieg. Das Stadion war voll. Im März blühen die Bäume.',
+      summaryDe: 'Es donnert seit einer Stunde. Auf dem Weg begegne ich dem Trainer. Die Mannschaft kämpft um den Sieg. Das Stadion war voll. Im März blühen die Bäume.',
+      summaryAr: 'الطبيعة والرياضة تُروى بضمير طقس وداتيف لقاء وأسماء مفردة وأفعال متفقة مع فاعليها.',
+      summaryRecap: 'ضمير طقس وداتيف واتفاق',
+      hwHintDe: 'Im Frühling blühen die Bäume, aber im Herbst ist die Nordsee rau und es donnert oft. Auf dem Weg begegne ich dem Trainer jeden Tag. Die Mannschaft kämpft um den Sieg, und das Stadion war voll. Nach dem Spiel grillieren wir im Garten und machen ein Picknick.'
+    }),
 
   U('b1-u9-l1', 'B1', 'البيت والأجهزة', 'Haus und Geräte', 'lexik-kollokation',
     'Am Ende beschreibst du Geräte und Materialien im Haushalt',
