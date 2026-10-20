@@ -18,7 +18,7 @@ module.exports = {
       ['beißen', '—', 'يعضّ', 'Kleine Tiere können beißen.', 'Kleine Tiere können beißen auf.', 'beißen بلا حرف جر.', 'lexik-kollokation', 'beißen'],
       ['stechen', '—', 'يلسع', 'Ein Insekt kann auch stechen.', 'Ein Insekt kann auch stechen auf.', 'stechen بلا حرف جر.', 'lexik-kollokation', 'stechen'],
       ['stammen', '—', 'ينحدر من', 'Die Bilder stammen aus dem Süden.', 'Die Bilder stammen von dem Süden.', 'stammen + aus.', 'präposition', 'stammen aus'],
-      ['treiben', '—', 'يدفع/يبلبل', 'Der Wind kann es extrem treiben.', 'Der Wind kann es extrem treiben auf.', 'treiben بلا حرف جر.', 'lexik-kollokation', 'treiben'],
+      ['treiben', '—', 'يدفع/يشتدّ', 'Der Wind kann es extrem treiben.', 'Der Wind kann es extrem treiben auf.', 'treiben بلا حرف جر.', 'lexik-kollokation', 'treiben'],
       ['verbrennen', '—', 'يحرق', 'Man soll den Müll nicht verbrennen.', 'Man soll den Müll nicht verbrennen auf.', 'verbrennen بلا حرف جر.', 'lexik-kollokation', 'verbrennen'],
       ['vergrößern', '—', 'يكبّر', 'Die Familie will den Garten vergrößern.', 'Die Familie will den Garten vergrößern auf.', 'vergrößern بلا حرف جر.', 'lexik-kollokation', 'vergrößern'],
       ['das Trinkgeld', 'die Trinkgelder', 'البقشيش', 'Das Trinkgeld ist im Preis nicht drin.', 'Das Trinkgeld sind im Preis nicht drin.', 'الفعل مفرد: ist.', 'konjugation', 'Trinkgeld'],
@@ -45,7 +45,24 @@ module.exports = {
       { trick: 'الحروف مع الأفعال الجديدة: stammen aus · entsorgen بلا حرف', wie: 'Die Bilder stammen aus dem Süden. · Alles, was wir nicht brauchen, entsorgen wir.', warum: 'العربية تقول «ينحدر من» فتُنقل حرفيًا إلى von، والألمانية تريد aus.', anchor: 'stammen aus dem Süden' },
       { trick: 'الحيوان يأكل fressen والبشر يأكلون essen', wie: 'Der Hund will fressen. · Die Katze will ich jeden Morgen füttern.', warum: 'استعمال essen مع الحيوان يُعدّ خطأ أسلوبيًا في الامتحان.', anchor: 'Der Hund will fressen' },
       { trick: 'صفات الاتجاه تُستعمل خبرًا بلا نهاية: quer · schief · senkrecht · waagerecht', wie: 'Das Bild hängt schief. · Die Linie ist waagerecht.', warum: 'العربية تقول «مائلًا» بحال منصوب، والألمانية تكتفي بالصفة بلا تصريف.', anchor: 'Das Bild hängt schief' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Karotte': 'Karotten',
+      'das Loch': 'Löcher',
+      'die Schüssel': 'Schüsseln'
+    },
+    clozeItemIndex: 15,
+    clozeNearMiss: 'brennen',
+    checkItemIndex: 26,
+    extraCheck: {
+      right: 'Die städtische Schule ist groß.',
+      bad: 'Die städtisch Schule ist groß.',
+      why: 'الصفة قبل الاسم تُصرَّف: städtische.',
+      family: 'deklination',
+      prereq: 'cap.b1-u10-l3.s19',
+      frage: 'أي جملة تصف مدرسة المدينة بصفة مصرّفة؟'
+    }
   },
 
   'b1-u10-l4': {

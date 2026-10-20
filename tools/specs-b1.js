@@ -3002,25 +3002,50 @@ module.exports = [
       hwHintDe: 'Die Absenderin steht oben auf dem Brief, und zwei Personen sind heute abwesend. Die Gratulation kommt von der Architektin, und die Neuigkeit steht im Forum. Die Schriftstellerin liest am Freitag, und eine Wissenschaftlerin forscht dazu. Die Fortsetzung kommt im Herbst, und das Ergebnis ist befriedigend. Jeder Gegenstand kommt in eine Schachtel. Der Behördengang dauert nicht lange.'
     }),
 
-  U('b1-u10-l3', 'B1', 'البيئة والطبيعة', 'Umwelt und Natur', 'lexik-kollokation',
-    'Am Ende sprichst du über Müll, Tiere und Formen',
-    'في النهاية تتحدث عن النفايات والحيوانات والأشكال.',
+  U('b1-u10-l3', 'B1', 'البيئة والطبيعة: Abgas وBild', 'Umwelt und Natur: Abgas und Bild', 'lexik-kollokation',
+    'Am Ende sprichst du über Müll, Tiere und Formen — in fünf Sätzen',
+    'في النهاية تتحدث عن النفايات والحيوانات والأشكال في خمس جمل.',
     [
-      ['Das Abgas von den Autos schadet allen.', 'المفرد بفعل مفرد', 'das Abgas: Singular + schadet', 'Das Abgas von den Autos schaden allen.', 'schadet'],
-      ['Die Bilder stammen aus dem Süden.', 'stammen مع aus', 'stammen + aus', 'Die Bilder stammen von dem Süden.', 'aus'],
-      ['Der Hund will fressen.', 'الحيوان يأكل fressen', 'fressen für Tiere', 'Der Hund will essen.', 'fressen'],
-      ['Das Bild hängt schief.', 'الصفة خبرًا بلا تصريف', 'schief ohne Endung', 'Das Bild hängt schief gemacht.', 'schief']
+      ['Das Abgas von den Autos schadet allen.', 'تحذّر من ضرر عادم السيارات', 'das Abgas اسم مفرد فعله schadet لا schaden ولو طالت الإضافة', 'Das Abgas von den Autos schaden allen.', 'المفرد: schadet'],
+      ['Die Bilder stammen aus dem Süden.', 'يذكر أصل الصور', 'stammen مع aus: aus dem Süden لا von', 'Die Bilder stammen von dem Süden.', 'aus لا von'],
+      ['Der Hund will fressen.', 'يصف جوع كلب', 'الحيوان يأكل fressen لا essen', 'Der Hund will fressen auf.', 'fressen للحيوان'],
+      ['Das Bild hängt schief.', 'يصف صورة مائلة', 'الصفة خبرًا بلا نهاية ولا زائدة: hängt schief', 'Das Bild hängt schief gemacht.', 'schief وحدها']
     ],
     [
-      ['Für das Faschierte brauche ich nur eine Zutat.', 'للحم المفروم مكوّن واحد', 'Für das Faschierte brauche ich nur einen Zutat.', 'Zutat مؤنثة.', 'eine Zutat'],
-      ['Unser Haustier ist eine alte Katze.', 'حيواننا المنزلي قطة', 'Unser Haustier sind eine alte Katze.', 'الفعل مفرد.', 'ist'],
-      ['Innen ist es warm und trocken.', 'في الداخل دافئ', 'Innen ist es warm und trocken auf.', 'بلا auf.', 'Innen'],
-      ['Die städtische Schule ist groß.', 'مدرسة المدينة كبيرة', 'Die städtisch Schule ist groß.', 'الصفة تُصرَّف.', 'städtische']
+      ['Das Abgas von den Autos schadet allen.', 'عادم السيارات يضر بالجميع', 'Das Abgas von den Autos schaden allen.', 'الفعل مفرد: schadet.', 'schadet'],
+      ['Die Bilder stammen aus dem Süden.', 'الصور من الجنوب', 'Die Bilder stammen von dem Süden.', 'stammen مع aus.', 'aus'],
+      ['Der Hund will fressen.', 'الكلب يريد أن يأكل', 'Der Hund will fressen auf.', 'المصدر أخيرًا بلا حرف جرّ.', 'fressen'],
+      ['Das Bild hängt schief.', 'الصورة معلّقة مائلة', 'Das Bild hängt schief gemacht.', 'الصفة خبرًا تكفي.', 'schief']
     ],
     'Das Abgas von den Autos schadet allen. Die Bilder stammen aus dem Süden.',
-    'Das Bild hängt schief.',
-    'Beschreibe morgen fünf Dinge in deiner Küche.',
-    'غدًا صف خمسة أشياء في مطبخك.'),
+    'Die städtische Schule ist groß.',
+    'Wiederhole morgen die fünf Sätze: Das Abgas von den Autos schadet allen. Die Bilder stammen aus dem Süden. Der Hund will fressen. Das Bild hängt schief. Die städtische Schule ist groß.',
+    'غدًا أعد جمل البيئة والطبيعة الخمس ولاحظ الأفعال المفردة والحرف الثابت.',
+    {
+      factFamilies: ['konjugation', 'präposition', 'lexik-kollokation', 'lexik-kollokation'],
+      imitateNearMiss: 'schaden',
+      transformHint: 'في جملة الختام صفة قبل الاسم: Die städtische Schule ist groß — الصفة تُصرَّف: städtische.',
+      orderSentence: 'Der Hund will fressen.',
+      checkOrderSentence: 'Das Bild hängt schief.',
+      orderAr: 'رتّب جملة الكلب: الفعل will في الموضع الثاني والمصدر fressen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول Der Hund وحده.', 'المصدر fressen. أخيرًا بعد will.'],
+      writing: {
+        zeigt: 'Umwelt und Natur in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: عادم بمفرد schadet، وأصل بـstammen aus، وكلب يأكل fressen، وصورة مائلة schief بلا زائدة، ومدرسة بصفة مصرّفة städtische.',
+        hinweise: ['stammen مع aus دائمًا.', 'الصفة خبرًا بلا نهاية، وقبل الاسم مصرّفة.'],
+        prompt: 'اكتب جمل البيئة والطبيعة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Das Abgas von den Autos schadet allen. · Die Bilder stammen aus dem Süden. · Der Hund will fressen. · Das Bild hängt schief. · Die städtische Schule ist groß.',
+        points: ['Das Abgas von den Autos schadet allen.', 'Die Bilder stammen aus dem Süden.', 'Der Hund will fressen.', 'Das Bild hängt schief.', 'Die städtische Schule ist groß.'],
+        minWords: 26,
+        frage: 'اكتب جمل البيئة والطبيعة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Das Abgas von den Autos schadet allen. Die Bilder stammen aus dem Süden. Der Hund will fressen. Das Bild hängt schief. Die städtische Schule ist groß.',
+      summaryDe: 'Das Abgas von den Autos schadet allen. Die Bilder stammen aus dem Süden. Der Hund will fressen. Das Bild hängt schief. Die städtische Schule ist groß.',
+      summaryAr: 'البيئة والطبيعة يُرويان بحرف ثابت للأصل وصفة خبرية عارية وصفة سابقة مصرّفة.',
+      summaryRecap: 'حرف ثابت وصفتان',
+      hwHintDe: 'Unser Haustier ist eine alte Katze, und das Trinkgeld ist im Preis nicht drin. Der Hut hängt an der Garderobe, und die Schüssel steht im Regal. Innen ist es warm und trocken, und der Korridor ist schmal und dunkel. Die Linie ist waagerecht, und der Bleistift ist spitz. Manche Dinge können schnell kaputtgehen.'
+    }),
 
   U('b1-u10-l4', 'B1', 'الأفعال والظروف', 'Verben und Umstände', 'wortstellung',
     'Am Ende ordnest du Ereignisse in der Zeit und begründest Entscheidungen',

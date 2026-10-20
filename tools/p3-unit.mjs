@@ -17880,6 +17880,116 @@ console.log('\n— P3.2 lexical layer —\n');
       checksJ2[4].frage.optionen.some(o => o.text === targetsJ2[4]) &&
       checksJ2[4].frage.optionen.some(o => o.text === 'Die Linie drei fahren zum Bahnhof.') &&
       Object.values(checksJ2[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonJ3 = win.DW_LESSONS['b1-u10-l3'];
+  const rowJ3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonJ3.id);
+  const byWordJ3 = Object.fromEntries(lessonJ3.wortschatz.map(it => [it.de, it]));
+  const tricksJ3 = lessonJ3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsJ3 = [
+    'Das Abgas von den Autos schadet allen.',
+    'Die Bilder stammen aus dem Süden.',
+    'Der Hund will fressen.',
+    'Das Bild hängt schief.',
+    'Die städtische Schule ist groß.'
+  ];
+  t('Corpus lesson b1-u10-l3 precisely scopes five environment-and-nature moves taking singular Abgas schadet, fixed stammen aus, animal fressen, bare predicative schief and declined städtische',
+    lessonJ3.title.de === 'Umwelt und Natur: Abgas und Bild' &&
+      lessonJ3.title.ar === 'البيئة والطبيعة: Abgas وBild' &&
+      rowJ3.title.de === lessonJ3.title.de && rowJ3.title.ar === lessonJ3.title.ar &&
+      rowJ3.theme === 'البيئة' &&
+      rowJ3.grammar.item === 'Abgas schadet · stammen aus · Hund will fressen · Bild hängt schief · städtische Schule' &&
+      rowJ3.grammar.method === 'explicit' && lessonJ3.schritte.length === 36 && lessonJ3.wortschatz.length === 36 &&
+      lessonJ3.schritte.filter(s => s.phase === 'Übungen').length === 6 &&
+      lessonJ3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsJ3[i]) &&
+      lessonJ3.schritte[0].zeigt.de === 'Am Ende sprichst du über Müll, Tiere und Formen — in fünf Sätzen' &&
+      lessonJ3.schritte.find(s => s.id === 's19').zeigt.de === targetsJ3[4]);
+
+  const expectedWordsJ3 = [
+    'das Abgas', 'entsorgen', 'biologisch', 'ökologisch', 'öko-', 'die Karotte',
+    'das Faschierte', 'das Nahrungsmittel', 'fressen', 'füttern', 'das Haustier', 'beißen',
+    'stechen', 'stammen', 'treiben', 'verbrennen', 'vergrößern', 'das Trinkgeld',
+    'der Hut', 'die Puppe', 'kaputtgehen', 'das Loch', 'die Schüssel', 'losfahren',
+    'der Korridor', 'innen', 'inner', 'quer', 'waagerecht', 'senkrecht',
+    'schief', 'spitz', 'locker', 'schlank', 'riesig', 'städtisch'
+  ];
+  const errorsJ3 = lessonJ3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u10-l3 reviews all 36 entries and three bounded mnemonics keeping every genuine agreement, government, doubled-participle and declension foil as a real error and repairs the treiben gloss',
+    Object.keys(byWordJ3).join(' | ') === expectedWordsJ3.join(' | ') &&
+      lessonJ3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonJ3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordJ3['das Abgas'].err === 'Das Abgas von den Autos schaden allen.' &&
+      byWordJ3['stammen'].err === 'Die Bilder stammen von dem Süden.' &&
+      byWordJ3['fressen'].err === 'Der Hund will fressen auf.' &&
+      byWordJ3['schief'].err === 'Das Bild hängt schief gemacht.' &&
+      byWordJ3['städtisch'].err === 'Die städtisch Schule ist groß.' &&
+      byWordJ3['treiben'].ar === 'يدفع/يشتدّ' &&
+      ['Das Haus ist ökologisch gebaut gemacht.', 'Jeden Mittwoch kaufe ich auf eine Karotte.',
+        'Für das Faschierte brauche ich auf nur eine Zutat.', 'Der innerer Hof ist ruhig.',
+        'Die blaue Schüssel haben ein Loch.']
+        .every(x => errorsJ3.includes(x)) &&
+      tricksJ3.length === 3 && tricksJ3[0].wie.includes('Die Bilder stammen aus dem Süden.') &&
+      tricksJ3[1].wie.includes('Der Hund will fressen.') &&
+      tricksJ3[2].wie.includes('Das Bild hängt schief.'));
+
+  const wordClozeAJ3 = lessonJ3.schritte.find(s => s.id === 's09');
+  const wordClozeBJ3 = lessonJ3.schritte.find(s => s.id === 's13');
+  const imitateJ3 = lessonJ3.schritte.find(s => s.id === 's18');
+  const drillJ3 = lessonJ3.schritte.find(s => s.id === 's22');
+  const orderJ3 = lessonJ3.schritte.find(s => s.id === 's23');
+  const writingJ3 = lessonJ3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingJ3 = lessonJ3.schritte.find(s => s.phase === 'Produktion');
+  const summaryJ3 = lessonJ3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkJ3 = lessonJ3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u10-l3 aligns four strict learning clozes of the 36-word layout, sound will order fields and a 26-word five-target production',
+    wordClozeAJ3.frage.zeigt === 'Jeden Mittwoch kaufe ich eine ____.' && wordClozeAJ3.frage.antworten.join(' ') === 'Karotte' &&
+      wordClozeAJ3.frage.nearMiss.Karotten && !win.DW.renderers.judgeCloze(wordClozeAJ3.frage, 'Karotten').ok &&
+      wordClozeBJ3.frage.zeigt === 'Die blaue Schüssel hat ein ____.' && wordClozeBJ3.frage.antworten.join(' ') === 'Loch' &&
+      wordClozeBJ3.frage.nearMiss['Löcher'] && !win.DW.renderers.judgeCloze(wordClozeBJ3.frage, 'Löcher').ok &&
+      (imitateJ3.frage.zeigt === 'Das Abgas von den Autos ____ allen.' || imitateJ3.zeigt.de === 'Das Abgas von den Autos ____ allen.') && imitateJ3.frage.antworten.join(' ') === 'schadet' &&
+      imitateJ3.frage.nearMiss['schaden'] && !win.DW.renderers.judgeCloze(imitateJ3.frage, 'schaden').ok &&
+      drillJ3.frage.zeigt === 'Man soll den Müll nicht ____.' && drillJ3.frage.antworten.join(' ') === 'verbrennen' &&
+      drillJ3.frage.nearMiss.brennen && !win.DW.renderers.judgeCloze(drillJ3.frage, 'brennen').ok &&
+      lessonJ3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderJ3.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderJ3.frage.correct.join(' ') === targetsJ3[2] && orderJ3.frage.finite === 'will' && orderJ3.frage.verbFirst === false &&
+      orderJ3.frage.fields.vorfeld.join(' ') === 'Der Hund' && orderJ3.frage.fields.lsk.join(' ') === 'will' &&
+      orderJ3.frage.fields.mittelfeld.join(' ') === 'fressen.' &&
+      win.DW.order.score(orderJ3.frage, orderJ3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderJ3.frage, ['Der', 'Hund', 'fressen.', 'will']).credit < 1 &&
+      writingJ3.frage.points.join(' | ') === targetsJ3.join(' | ') && writingJ3.frage.minWords === 26 &&
+      targetsJ3.join(' ').split(/\s+/).length === 26 &&
+      targetsJ3.every(x => [writingJ3.frage.promptDe, summaryJ3.zeigt.de, homeworkJ3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsJ3.every(x => norm(speakingJ3.erklaerung).includes(norm(x))) &&
+      (homeworkJ3.hinweise || []).join(' ').includes('das Trinkgeld ist im Preis nicht drin'));
+
+  const checksJ3 = lessonJ3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckJ3 = checksJ3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckJ3 = checksJ3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u10-l3 makes 80 percent four of five, independently checking bare schief, the verbrennen cloze and hängt order, attributive innere and städtische',
+    checksJ3.length === 5 && checksJ3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksJ3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksJ3.every(s => /^cap\.b1-u10-l3\.s\d+$/.test(s.frage.prereq || '')) && checksJ3.every(s => !s.hinweise) &&
+      checksJ3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u10-l3.s07 | cap.b1-u10-l3.s22 | cap.b1-u10-l3.s23 | cap.b1-u10-l3.s14 | cap.b1-u10-l3.s19' &&
+      new Set(checksJ3.map(s => s.frage.prereq)).size === 5 &&
+      checksJ3[0].frage.optionen.some(o => o.text === targetsJ3[3]) &&
+      checksJ3[0].frage.optionen.some(o => o.text === 'Das Bild hängt schief gemacht.') &&
+      Object.values(checksJ3[0].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation' &&
+      clozeCheckJ3.frage.zeigt === 'Man soll den Müll nicht ____.' &&
+      clozeCheckJ3.frage.antworten.join(' ') === 'verbrennen' && clozeCheckJ3.frage.nearMiss.brennen &&
+      !win.DW.renderers.judgeCloze(clozeCheckJ3.frage, 'brennen').ok &&
+      orderCheckJ3.frage.correct.join(' ') === targetsJ3[3] && orderCheckJ3.frage.finite === 'hängt' &&
+      orderCheckJ3.frage.fields.vorfeld.join(' ') === 'Das Bild' && orderCheckJ3.frage.fields.lsk.join(' ') === 'hängt' &&
+      orderCheckJ3.frage.fields.mittelfeld.join(' ') === 'schief.' &&
+      win.DW.order.score(orderCheckJ3.frage, orderCheckJ3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckJ3.frage, ['Das', 'Bild', 'schief.', 'hängt']).credit < 1 &&
+      checksJ3[3].frage.optionen.some(o => o.text === 'Der innere Hof ist ruhig.') &&
+      checksJ3[3].frage.optionen.some(o => o.text === 'Der innerer Hof ist ruhig.') &&
+      Object.values(checksJ3[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checksJ3[4].frage.optionen.some(o => o.text === targetsJ3[4]) &&
+      checksJ3[4].frage.optionen.some(o => o.text === 'Die städtisch Schule ist groß.') &&
+      Object.values(checksJ3[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
