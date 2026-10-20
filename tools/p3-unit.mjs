@@ -17990,6 +17990,116 @@ console.log('\n— P3.2 lexical layer —\n');
       checksJ3[4].frage.optionen.some(o => o.text === targetsJ3[4]) &&
       checksJ3[4].frage.optionen.some(o => o.text === 'Die städtisch Schule ist groß.') &&
       Object.values(checksJ3[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+
+  const lessonJ4 = win.DW_LESSONS['b1-u10-l4'];
+  const rowJ4 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonJ4.id);
+  const byWordJ4 = Object.fromEntries(lessonJ4.wortschatz.map(it => [it.de, it]));
+  const tricksJ4 = lessonJ4.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsJ4 = [
+    'Zunächst lesen wir den Text.',
+    'Ich will nicht an der Werbung zweifeln.',
+    'Die Regel gilt für alle.',
+    'Über den Tod will man nicht nachdenken.',
+    'Solche Fehler können oft vorkommen.'
+  ];
+  t('Corpus lesson b1-u10-l4 precisely scopes five verb-and-circumstance moves taking fronted Zunächst with the verb second, zweifeln an with the dative, singular Regel gilt, nachdenken über and final vorkommen',
+    lessonJ4.title.de === 'Verben und Umstände: zunächst und zweifeln' &&
+      lessonJ4.title.ar === 'الأفعال والظروف: zunächst وzweifeln' &&
+      rowJ4.title.de === lessonJ4.title.de && rowJ4.title.ar === lessonJ4.title.ar &&
+      rowJ4.theme === 'الزمن' &&
+      rowJ4.grammar.item === 'Zunächst lesen wir · an zweifeln · Regel gilt · über nachdenken · Fehler vorkommen' &&
+      rowJ4.grammar.method === 'explicit' && lessonJ4.schritte.length === 36 && lessonJ4.wortschatz.length === 36 &&
+      lessonJ4.schritte.filter(s => s.phase === 'Übungen').length === 6 &&
+      lessonJ4.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsJ4[i]) &&
+      lessonJ4.schritte[0].zeigt.de === 'Am Ende ordnest du Ereignisse in der Zeit und begründest Entscheidungen — in fünf Sätzen' &&
+      lessonJ4.schritte.find(s => s.id === 's19').zeigt.de === targetsJ4[4]);
+
+  const expectedWordsJ4 = [
+    'beleidigen', 'betrügen', 'gelingen', 'genießen', 'gelten', 'gar',
+    'geeignet', 'gebrauchen', 'verwenden', 'nützen', 'zweifeln', 'zwingen',
+    'versäumen', 'versprechen', 'umgehen', 'vorläufig', 'vorhin', 'vorkommen',
+    'zugehen', 'zurechtkommen', 'nachdenken', 'nachher', 'mittlerweile', 'inzwischen',
+    'irgendwann', 'jederzeit', 'jemals', 'jeweils', 'zumindest', 'zunächst',
+    'höchstens', 'spätestens', 'zusätzlich', 'übrig', 'übrigens', 'selbstverständlich'
+  ];
+  const errorsJ4 = lessonJ4.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u10-l4 reviews all 36 entries and three bounded mnemonics keeping every genuine government, agreement and trailing foil as a real error',
+    Object.keys(byWordJ4).join(' | ') === expectedWordsJ4.join(' | ') &&
+      lessonJ4.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonJ4.wortschatz.every(it => it.ex !== it.err) &&
+      byWordJ4['zunächst'].err === 'Zunächst lesen wir den Text auf.' &&
+      byWordJ4['zweifeln'].err === 'Ich will nicht auf die Werbung zweifeln.' &&
+      byWordJ4['gelten'].err === 'Die Regel gelten für alle.' &&
+      byWordJ4['nachdenken'].err === 'Über den Tod will man nicht nachdenken auf.' &&
+      byWordJ4['vorkommen'].err === 'Solche Fehler können oft vorkommen auf.' &&
+      byWordJ4['nützen'].err === 'Was nützen ein Rabatt, wenn die Ware fehlt?' &&
+      ['Der Regen zwingen uns nach Hause.',
+        'Das Fleisch ist noch nicht gar gemacht.', 'Mit dieser Firma muss man vorsichtig umgehen auf.',
+        'Es ist nichts mehr übrig gemacht.']
+        .every(x => errorsJ4.includes(x)) &&
+      tricksJ4.length === 3 && tricksJ4[0].wie.includes('Zunächst lesen wir den Text.') &&
+      tricksJ4[1].wie.includes('Ich will nicht an der Werbung zweifeln.') &&
+      tricksJ4[2].wie.includes('Das Fleisch ist noch nicht gar.'));
+
+  const wordClozeAJ4 = lessonJ4.schritte.find(s => s.id === 's09');
+  const wordClozeBJ4 = lessonJ4.schritte.find(s => s.id === 's13');
+  const imitateJ4 = lessonJ4.schritte.find(s => s.id === 's18');
+  const drillJ4 = lessonJ4.schritte.find(s => s.id === 's22');
+  const orderJ4 = lessonJ4.schritte.find(s => s.id === 's23');
+  const writingJ4 = lessonJ4.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingJ4 = lessonJ4.schritte.find(s => s.phase === 'Produktion');
+  const summaryJ4 = lessonJ4.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkJ4 = lessonJ4.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u10-l4 aligns four strict learning clozes of the 36-word layout, sound will order fields and a 29-word five-target production',
+    wordClozeAJ4.frage.zeigt === 'Das Fleisch ist noch nicht ____.' && wordClozeAJ4.frage.antworten.join(' ') === 'gar' &&
+      wordClozeAJ4.frage.nearMiss.garen && !win.DW.renderers.judgeCloze(wordClozeAJ4.frage, 'garen').ok &&
+      wordClozeBJ4.frage.zeigt === '____ gehen wir noch einkaufen.' && wordClozeBJ4.frage.antworten.join(' ') === 'Nachher' &&
+      wordClozeBJ4.frage.nearMiss.nachdem && !win.DW.renderers.judgeCloze(wordClozeBJ4.frage, 'nachdem').ok &&
+      (imitateJ4.frage.zeigt === 'Zunächst ____ wir den Text.' || imitateJ4.zeigt.de === 'Zunächst ____ wir den Text.') && imitateJ4.frage.antworten.join(' ') === 'lesen' &&
+      imitateJ4.frage.nearMiss['liest'] && !win.DW.renderers.judgeCloze(imitateJ4.frage, 'liest').ok &&
+      drillJ4.frage.zeigt === 'Ich will nicht an der Werbung ____.' && drillJ4.frage.antworten.join(' ') === 'zweifeln' &&
+      drillJ4.frage.nearMiss.zweifle && !win.DW.renderers.judgeCloze(drillJ4.frage, 'zweifle').ok &&
+      lessonJ4.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderJ4.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderJ4.frage.correct.join(' ') === targetsJ4[3] && orderJ4.frage.finite === 'will' && orderJ4.frage.verbFirst === false &&
+      orderJ4.frage.fields.vorfeld.join(' ') === 'Über den Tod' && orderJ4.frage.fields.lsk.join(' ') === 'will' &&
+      orderJ4.frage.fields.mittelfeld.join(' ') === 'man nicht nachdenken.' &&
+      win.DW.order.score(orderJ4.frage, orderJ4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderJ4.frage, ['Über', 'den', 'Tod', 'man', 'will', 'nicht', 'nachdenken.']).credit < 1 &&
+      writingJ4.frage.points.join(' | ') === targetsJ4.join(' | ') && writingJ4.frage.minWords === 29 &&
+      targetsJ4.join(' ').split(/\s+/).length === 29 &&
+      targetsJ4.every(x => [writingJ4.frage.promptDe, summaryJ4.zeigt.de, homeworkJ4.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsJ4.every(x => norm(speakingJ4.erklaerung).includes(norm(x))) &&
+      (homeworkJ4.hinweise || []).join(' ').includes('spätestens am Freitag kommt die Antwort'));
+
+  const checksJ4 = lessonJ4.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckJ4 = checksJ4.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckJ4 = checksJ4.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u10-l4 makes 80 percent four of five, independently checking final nachdenken, the zweifeln cloze and will order, singular Rabatt nützt and final vorkommen',
+    checksJ4.length === 5 && checksJ4[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksJ4[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksJ4.every(s => /^cap\.b1-u10-l4\.s\d+$/.test(s.frage.prereq || '')) && checksJ4.every(s => !s.hinweise) &&
+      checksJ4.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u10-l4.s07 | cap.b1-u10-l4.s22 | cap.b1-u10-l4.s23 | cap.b1-u10-l4.s10 | cap.b1-u10-l4.s19' &&
+      new Set(checksJ4.map(s => s.frage.prereq)).size === 5 &&
+      checksJ4[0].frage.optionen.some(o => o.text === targetsJ4[3]) &&
+      checksJ4[0].frage.optionen.some(o => o.text === 'Über den Tod will man nicht nachdenken auf.') &&
+      Object.values(checksJ4[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckJ4.frage.zeigt === 'Ich will nicht an der Werbung ____.' &&
+      clozeCheckJ4.frage.antworten.join(' ') === 'zweifeln' && clozeCheckJ4.frage.nearMiss.zweifle &&
+      !win.DW.renderers.judgeCloze(clozeCheckJ4.frage, 'zweifle').ok &&
+      orderCheckJ4.frage.correct.join(' ') === targetsJ4[1] && orderCheckJ4.frage.finite === 'will' &&
+      orderCheckJ4.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheckJ4.frage.fields.lsk.join(' ') === 'will' &&
+      orderCheckJ4.frage.fields.mittelfeld.join(' ') === 'nicht an der Werbung zweifeln.' &&
+      win.DW.order.score(orderCheckJ4.frage, orderCheckJ4.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckJ4.frage, ['Ich', 'nicht', 'will', 'an', 'der', 'Werbung', 'zweifeln.']).credit < 1 &&
+      checksJ4[3].frage.optionen.some(o => o.text === 'Was nützt ein Rabatt, wenn die Ware fehlt?') &&
+      checksJ4[3].frage.optionen.some(o => o.text === 'Was nützen ein Rabatt, wenn die Ware fehlt?') &&
+      Object.values(checksJ4[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksJ4[4].frage.optionen.some(o => o.text === targetsJ4[4]) &&
+      checksJ4[4].frage.optionen.some(o => o.text === 'Solche Fehler können oft vorkommen auf.') &&
+      Object.values(checksJ4[4].frage.misconceptionFamilies).join(' ') === 'lexik-kollokation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

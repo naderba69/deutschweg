@@ -105,10 +105,26 @@ module.exports = {
       ['selbstverständlich', '—', 'طبعًا', 'Selbstverständlich helfe ich dir.', 'Selbstverständlich helfe ich dir auf.', 'لا حرف جر زائد.', 'lexik-kollokation', 'Selbstverständlich']
     ],
     tricks: [
-      { trick: 'الظروف الزمنية في أول الجملة تأخذ مكانًا أولًا والفعل ثانيًا: Zunächst · Spätestens · Übrigens', wie: 'Zunächst lesen wir den Text. · Spätestens am Freitag kommt die Antwort.', warum: 'العربية تبدؤها بالفعل، والألمانية تضع الفعل في الموضع الثاني بعد الظرف.', anchor: 'Zunächst lesen wir den Text' },
+      { trick: 'الظروف الزمنية في أول الجملة تأخذ مكانًا أولًا والفعل ثانيًا: Zunächst · Spätestens · Übrigens', wie: 'Zunächst lesen wir den Text. · Spätestens am Freitag kommt die Antwort.', warum: 'العربية تبدأ بها الجملة بالفعل، والألمانية تضع الفعل في الموضع الثاني بعد الظرف.', anchor: 'Zunächst lesen wir den Text' },
       { trick: 'أفعال بأحرف ثابتة: zweifeln an · nachdenken über · umgehen mit', wie: 'Ich will nicht an der Werbung zweifeln. · Über den Tod will man nicht nachdenken.', warum: 'الحرف مكوّن من الفعل لا إضافة حرة، فيُحفظ معه لا مع الترجمة.', anchor: 'an der Werbung zweifeln' },
       { trick: 'الصفات في الخبر بلا زوائد: gar · übrig · geeignet', wie: 'Das Fleisch ist noch nicht gar. · Es ist nichts mehr übrig.', warum: 'العربية تقول «مستوٍ جيدًا»، فيضيف الطالب gemacht أو ظرفًا، والألمانية تكفي.', anchor: 'Das Fleisch ist noch nicht gar' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'gar': 'garen',
+      'nachher': 'nachdem'
+    },
+    clozeItemIndex: 10,
+    clozeNearMiss: 'zweifle',
+    checkItemIndex: 9,
+    extraCheck: {
+      right: 'Solche Fehler können oft vorkommen.',
+      bad: 'Solche Fehler können oft vorkommen auf.',
+      why: 'vorkommen مصدر أخير بلا حرف جر زائد.',
+      family: 'lexik-kollokation',
+      prereq: 'cap.b1-u10-l4.s19',
+      frage: 'أي جملة تنهي حدوث الأخطاء بلا حرف زائد؟'
+    }
   }
 
 };

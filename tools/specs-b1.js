@@ -3047,25 +3047,50 @@ module.exports = [
       hwHintDe: 'Unser Haustier ist eine alte Katze, und das Trinkgeld ist im Preis nicht drin. Der Hut hängt an der Garderobe, und die Schüssel steht im Regal. Innen ist es warm und trocken, und der Korridor ist schmal und dunkel. Die Linie ist waagerecht, und der Bleistift ist spitz. Manche Dinge können schnell kaputtgehen.'
     }),
 
-  U('b1-u10-l4', 'B1', 'الأفعال والظروف', 'Verben und Umstände', 'wortstellung',
-    'Am Ende ordnest du Ereignisse in der Zeit und begründest Entscheidungen',
-    'في النهاية ترتّب الأحداث زمنيًا وتبرّر القرارات.',
+  U('b1-u10-l4', 'B1', 'الأفعال والظروف: zunächst وzweifeln', 'Verben und Umstände: zunächst und zweifeln', 'wortstellung',
+    'Am Ende ordnest du Ereignisse in der Zeit und begründest Entscheidungen — in fünf Sätzen',
+    'في النهاية ترتّب الأحداث زمنيًا وتبرّر القرارات في خمس جمل.',
     [
-      ['Zunächst lesen wir den Text.', 'الظرف أولًا والفعل ثانيًا', 'Verb an zweiter Stelle', 'Zunächst wir lesen den Text.', 'lesen wir'],
-      ['Ich will nicht an der Werbung zweifeln.', 'zweifeln + an', 'zweifeln an + Akkusativ', 'Ich will nicht auf die Werbung zweifeln.', 'an der'],
-      ['Über den Tod will man nicht nachdenken.', 'nachdenken + über', 'nachdenken über + Akkusativ', 'Über den Tod will man nicht nachdenken auf.', 'nachdenken'],
-      ['Das Fleisch ist noch nicht gar.', 'الصفة خبرًا', 'gar ohne Zusatz', 'Das Fleisch ist noch nicht gar gemacht.', 'gar']
+      ['Zunächst lesen wir den Text.', 'يبدأ بتسلسل زمني', 'الظرف zunächst موضع أول والفعل lesen ثانٍ قبله wir', 'Zunächst lesen wir den Text auf.', 'الفعل ثانٍ'],
+      ['Ich will nicht an der Werbung zweifeln.', 'يرفض الشك في إعلان', 'zweifeln مع an والداتيف: an der Werbung لا auf', 'Ich will nicht auf die Werbung zweifeln.', 'an والداتيف'],
+      ['Die Regel gilt für alle.', 'يسري القاعدة على الجميع', 'die Regel اسم مفرد فعله gilt لا gelten', 'Die Regel gelten für alle.', 'المفرد: gilt'],
+      ['Über den Tod will man nicht nachdenken.', 'يتجنب التفكير في الموت', 'nachdenken مع über والنصب، والمصدر أخيرًا بعد will', 'Über den Tod will man nicht nachdenken auf.', 'über والمصدر أخيرًا']
     ],
     [
-      ['Die Regel gilt für alle.', 'القاعدة سارية على الجميع', 'Die Regel gelten für alle.', 'الفعل مفرد.', 'gilt'],
-      ['Solche Fehler können oft vorkommen.', 'أخطاء كهذه تقع', 'Solche Fehler können oft vorkommen auf.', 'بلا auf.', 'vorkommen'],
-      ['Zusätzlich zahle ich hundert Franken.', 'إضافة إلى ذلك أدفع', 'Zusätzlich zahle ich hundert Franken auf.', 'بلا auf.', 'Zusätzlich'],
-      ['Es ist nichts mehr übrig.', 'لم يبقَ شيء', 'Es ist nichts mehr übrig gemacht.', 'الصفة تكفي.', 'übrig']
+      ['Zunächst lesen wir den Text.', 'أولًا نقرأ النص', 'Zunächst lesen wir den Text auf.', 'الفعل ثانٍ وبلا زائد في الختام.', 'lesen'],
+      ['Ich will nicht an der Werbung zweifeln.', 'لا أريد الشك في الإعلان', 'Ich will nicht auf die Werbung zweifeln.', 'zweifeln مع an والداتيف.', 'zweifeln'],
+      ['Die Regel gilt für alle.', 'القاعدة سارية على الجميع', 'Die Regel gelten für alle.', 'الفعل مفرد: gilt.', 'gilt'],
+      ['Über den Tod will man nicht nachdenken.', 'لا يريد المرء التفكير في الموت', 'Über den Tod will man nicht nachdenken auf.', 'المصدر أخيرًا بلا حرف جرّ.', 'nachdenken']
     ],
     'Zunächst lesen wir den Text. Die Regel gilt für alle.',
     'Solche Fehler können oft vorkommen.',
-    'Erzähle morgen der Reihe nach, was du gestern gemacht hast.',
-    'غدًا احكِ بالترتيب ما فعلته أمس.'),
+    'Wiederhole morgen die fünf Sätze: Zunächst lesen wir den Text. Ich will nicht an der Werbung zweifeln. Die Regel gilt für alle. Über den Tod will man nicht nachdenken. Solche Fehler können oft vorkommen.',
+    'غدًا أعد جمل الأفعال والظروف الخمس ولاحظ الفعل الثاني والحروف الثابتة.',
+    {
+      factFamilies: ['wortstellung', 'präposition', 'konjugation', 'präposition'],
+      imitateNearMiss: 'liest',
+      transformHint: 'في جملة الختام حدوث معتاد: Solche Fehler können oft vorkommen — مصدر أخير بعد können.',
+      orderSentence: 'Über den Tod will man nicht nachdenken.',
+      checkOrderSentence: 'Ich will nicht an der Werbung zweifeln.',
+      orderAr: 'رتّب جملة التفكير: العبارة Über den Tod أولًا والفعل will ثانيًا والمصدر أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الموضع الأول Über den Tod كتلة واحدة.', 'المصدر nachdenken. أخيرًا بعد will.'],
+      writing: {
+        zeigt: 'Verben und Umstände in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: بدء بـZunächst مع فعل ثانٍ، وشك بـzweifeln an والداتيف، وقاعدة بمفرد gilt، وتفكير بـnachdenken über، وحدوث بـvorkommen بعد können.',
+        hinweise: ['الظرف الأول يجعل الفعل ثانيًا.', 'zweifeln مع an والداتيف لا النصب.'],
+        prompt: 'اكتب جمل الأفعال والظروف الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Zunächst lesen wir den Text. · Ich will nicht an der Werbung zweifeln. · Die Regel gilt für alle. · Über den Tod will man nicht nachdenken. · Solche Fehler können oft vorkommen.',
+        points: ['Zunächst lesen wir den Text.', 'Ich will nicht an der Werbung zweifeln.', 'Die Regel gilt für alle.', 'Über den Tod will man nicht nachdenken.', 'Solche Fehler können oft vorkommen.'],
+        minWords: 29,
+        frage: 'اكتب جمل الأفعال والظروف الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Zunächst lesen wir den Text. Ich will nicht an der Werbung zweifeln. Die Regel gilt für alle. Über den Tod will man nicht nachdenken. Solche Fehler können oft vorkommen.',
+      summaryDe: 'Zunächst lesen wir den Text. Ich will nicht an der Werbung zweifeln. Die Regel gilt für alle. Über den Tod will man nicht nachdenken. Solche Fehler können oft vorkommen.',
+      summaryAr: 'الأفعال والظروف يُرويان بفعل ثانٍ بعد الظروف وحروف ثابتة مع الأفعال.',
+      summaryRecap: 'فعل ثانٍ وحرف ثابت',
+      hwHintDe: 'Der Kuchen soll gelingen, und am Sonntag will ich die Ruhe genießen. Vorhin hat es noch geregnet, und mittlerweile ist das Haus ruhig. Inzwischen wissen es alle, und spätestens am Freitag kommt die Antwort. Zusätzlich zahle ich hundert Franken, und selbstverständlich helfe ich dir. Niemand hat jemals dort gewohnt.'
+    }),
 
   U('b1-u10-l5', 'B1', 'الأشياء والصفات', 'Dinge und Eigenschaften', 'deklination',
     'Am Ende beschreibst du Gegenstände, Formen und Materialien',
