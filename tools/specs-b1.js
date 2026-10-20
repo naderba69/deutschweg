@@ -2732,25 +2732,50 @@ module.exports = [
       hwHintDe: 'Weibliche Berufe stehen im Singular: Die Trainerin erklärt die Übung, und die Arbeiterin hilft uns. Vor dem Infinitiv steht das Objekt: Sie will ihn als Leiter einsetzen. Die Personalie liegt beim Betriebsrat, und der Streik beginnt am Montag. Die Kandidatin aus Zürich kommt am frühen Morgen ins Büro und spricht mit der Direktorin über den neuen Plan für die Werkstatt. Die Kolleginnen stimmen heute danach über den Vorschlag ab und schreiben die Ergebnisse gemeinsam auf. Danach beginnt die Schulung für die neuen Mitarbeiterinnen, und die Leiterin erklärt ihre Aufgaben Schritt für Schritt bis zum Mittag weiter.'
     }),
 
-  U('b1-u9-l3', 'B1', 'التعليم والدلائل', 'Bildung und Nachschlagen', 'konjugation',
-    'Am Ende sprichst du über Lernen, Museen und Reisen',
-    'في النهاية تتحدث عن التعلّم والمتاحف والرحلات.',
+  U('b1-u9-l3', 'B1', 'التعليم والأماكن: Alphabet وDenkmal', 'Bildung und Orte: Alphabet und Denkmal', 'konjugation',
+    'Am Ende sprichst du über Bildung, Orte und Sehenswürdigkeiten — in fünf Sätzen',
+    'في النهاية تتحدث عن التعليم والأماكن والمعالم في خمس جمل.',
     [
-      ['Das Alphabet hat sechsundzwanzig Buchstaben.', 'المفرد بفعل مفرد', 'das Alphabet: Singular + hat', 'Das Alphabet haben sechsundzwanzig Buchstaben.', 'hat'],
-      ['Sie muss jedes neue Wort nachschlagen.', 'المصدر في الآخر', 'nachschlagen nach muss', 'Sie muss jedes neue Wort nachschlagen auf.', 'nachschlagen'],
-      ['Das Denkmal steht auf dem Platz.', 'المفرد بفعل مفرد', 'das Denkmal: Singular + steht', 'Das Denkmal stehen auf dem Platz.', 'steht'],
-      ['Das Problem ist technisch.', 'الصفة خبرًا', 'technisch ohne Endung', 'Das Problem ist technisch gemacht.', 'technisch']
+      ['Das Alphabet hat sechsundzwanzig Buchstaben.', 'تعدّ حروف الأبجدية', 'das Alphabet اسم مفرد ففعله hat لا haben', 'Das Alphabet haben sechsundzwanzig Buchstaben.', 'المفرد: hat'],
+      ['Sie muss jedes neue Wort nachschlagen.', 'تقول إن عليها البحث عن كل كلمة جديدة', 'مع muss يبقى المصدر nachschlagen أخيرًا بلا حرف جرّ زائد', 'Sie muss jedes neue Wort nachschlagen auf.', 'المصدر أخيرًا'],
+      ['Das Denkmal steht auf dem Platz.', 'تضع النُّصُب على الساحة', 'das Denkmal اسم مفرد ففعله steht لا stehen', 'Das Denkmal stehen auf dem Platz.', 'المفرد: steht'],
+      ['Die Mensa öffnet um elf.', 'تعلن موعد فتح مطعم الجامعة', 'die Mensa اسم مفرد ففعله öffnet لا öffnen', 'Die Mensa öffnen um elf.', 'المفرد: öffnet']
     ],
     [
-      ['Die Mensa öffnet um elf.', 'مطعم الجامعة يفتح', 'Die Mensa öffnen um elf.', 'الفعل مفرد.', 'öffnet'],
-      ['Die Burg über dem Dorf ist alt.', 'القلعة قديمة', 'Die Burg über dem Dorf sind alt.', 'الفعل مفرد.', 'ist'],
-      ['Das Gasthaus serviert bis zehn.', 'الفندق الريفي يقدّم', 'Das Gasthaus servieren bis zehn.', 'الفعل مفرد.', 'serviert'],
-      ['Die Ausfahrt kommt gleich.', 'المخرج قادم', 'Die Ausfahrt kommen gleich.', 'الفعل مفرد.', 'kommt']
+      ['Das Alphabet hat sechsundzwanzig Buchstaben.', 'الأبجدية فيها ستة وعشرون حرفًا', 'Das Alphabet haben sechsundzwanzig Buchstaben.', 'فعلها مفرد: hat لا haben.', 'hat'],
+      ['Sie muss jedes neue Wort nachschlagen.', 'عليها البحث عن كل كلمة جديدة', 'Sie muss jedes neue Wort nachschlagen auf.', 'المصدر أخيرًا بلا حرف جرّ.', 'nachschlagen'],
+      ['Das Denkmal steht auf dem Platz.', 'النُّصُب يقف على الساحة', 'Das Denkmal stehen auf dem Platz.', 'الفعل مفرد: steht.', 'steht'],
+      ['Die Mensa öffnet um elf.', 'مطعم الجامعة يفتح في الحادية عشرة', 'Die Mensa öffnen um elf.', 'الفعل مفرد: öffnet.', 'öffnet']
     ],
     'Sie muss jedes neue Wort nachschlagen. Das Denkmal steht auf dem Platz.',
-    'Die Mensa öffnet um elf.',
-    'Schreibe morgen fünf Sätze über deine Lernmethode.',
-    'غدًا اكتب خمس جمل عن طريقة تعلّمك.'),
+    'Die Spur führt zum Fluss.',
+    'Wiederhole morgen die fünf Sätze: Das Alphabet hat sechsundzwanzig Buchstaben. Sie muss jedes neue Wort nachschlagen. Das Denkmal steht auf dem Platz. Die Mensa öffnet um elf. Die Spur führt zum Fluss.',
+    'غدًا أعد جمل التعليم والأماكن الخمس ولاحظ الأسماء المفردة والمصدر الأخير.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'haben',
+      transformHint: 'في جملة الختام اسم مفرد: Die Spur führt zum Fluss — الأثر يقود إلى النهر.',
+      orderSentence: 'Das Denkmal steht auf dem Platz.',
+      checkOrderSentence: 'Sie muss jedes neue Wort nachschlagen.',
+      orderAr: 'رتّب جملة النُّصُب: الفعل steht في الموضع الثاني والمكان auf dem Platz. أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Das Denkmal هو الموضع الأول وحده.', 'المكان auf dem Platz. يأتي بعد الفعل.'],
+      writing: {
+        zeigt: 'Bildung und Orte in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: أبجدية مفردة بـhat، وبحث عن كلمة بمصدر أخير nachschlagen، ونُصُب مفرد steht، ومطعم جامعة مفرد öffnet، وأثر مفرد führt.',
+        hinweise: ['الأسماء المفردة تأخذ فعلًا مفردًا.', 'المصدر أخيرًا بلا حرف جرّ زائد.'],
+        prompt: 'اكتب جمل التعليم والأماكن الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Das Alphabet hat sechsundzwanzig Buchstaben. · Sie muss jedes neue Wort nachschlagen. · Das Denkmal steht auf dem Platz. · Die Mensa öffnet um elf. · Die Spur führt zum Fluss.',
+        points: ['Das Alphabet hat sechsundzwanzig Buchstaben.', 'Sie muss jedes neue Wort nachschlagen.', 'Das Denkmal steht auf dem Platz.', 'Die Mensa öffnet um elf.', 'Die Spur führt zum Fluss.'],
+        minWords: 27,
+        frage: 'اكتب جمل التعليم والأماكن الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Das Alphabet hat sechsundzwanzig Buchstaben. Sie muss jedes neue Wort nachschlagen. Das Denkmal steht auf dem Platz. Die Mensa öffnet um elf. Die Spur führt zum Fluss.',
+      summaryDe: 'Das Alphabet hat sechsundzwanzig Buchstaben. Sie muss jedes neue Wort nachschlagen. Das Denkmal steht auf dem Platz. Die Mensa öffnet um elf. Die Spur führt zum Fluss.',
+      summaryAr: 'التعليم والأماكن يُرويان بأسماء مفردة الأفعال ومصدر أخير عند البحث في المعجم.',
+      summaryRecap: 'اسم مفرد ومصدر أخير',
+      hwHintDe: 'Das Lexikon steht im Regal, und die Literatur dieser Zeit ist schwer. Die Serie läuft am Sonntagabend, und die Oper war ausverkauft. Der Hafen bleibt im Winter offen, und das Ufer ist hier flach. Die Burg über dem Dorf ist alt, und die Terrasse ist im Sommer voll. Der Kanal verbindet zwei Städte, und die Ausfahrt kommt gleich. Die neue Lernmethode hilft beim Lernen, und die Wanderung dauert vier Stunden.'
+    }),
 
   U('b1-u9-l4', 'B1', 'السلوك والمشاعر', 'Verhalten und Gefühl', 'wortstellung',
     'Am Ende beschreibst du Verhalten und redest über Gefühle',

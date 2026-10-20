@@ -17200,6 +17200,120 @@ console.log('\n— P3.2 lexical layer —\n');
       checksI2[4].frage.optionen.some(o => o.text === targetsI2[4]) &&
       checksI2[4].frage.optionen.some(o => o.text === 'Die Personalie liegen beim Betriebsrat.') &&
       Object.values(checksI2[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonI3 = win.DW_LESSONS['b1-u9-l3'];
+  const rowI3 = win.DW_SYLLABUS.lessons.find(it => it.id === lessonI3.id);
+  const byWordI3 = Object.fromEntries(lessonI3.wortschatz.map(it => [it.de, it]));
+  const tricksI3 = lessonI3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsI3 = [
+    'Das Alphabet hat sechsundzwanzig Buchstaben.',
+    'Sie muss jedes neue Wort nachschlagen.',
+    'Das Denkmal steht auf dem Platz.',
+    'Die Mensa öffnet um elf.',
+    'Die Spur führt zum Fluss.'
+  ];
+  t('Corpus lesson b1-u9-l3 precisely scopes five education-and-places moves taking a singular Alphabet das hat, a final nachschlagen after muss, a singular Denkmal das steht, a singular Mensa die öffnet and a singular Spur',
+    lessonI3.title.de === 'Bildung und Orte: Alphabet und Denkmal' &&
+      lessonI3.title.ar === 'التعليم والأماكن: Alphabet وDenkmal' &&
+      rowI3.title.de === lessonI3.title.de && rowI3.title.ar === lessonI3.title.ar &&
+      rowI3.theme === 'التعليم' &&
+      rowI3.grammar.item === 'Alphabet hat · Wort nachschlagen · Denkmal steht · Mensa öffnet · Spur führt' &&
+      rowI3.grammar.method === 'explicit' && lessonI3.schritte.length === 36 && lessonI3.wortschatz.length === 40 &&
+      lessonI3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonI3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsI3[i]) &&
+      lessonI3.schritte[0].zeigt.de === 'Am Ende sprichst du über Bildung, Orte und Sehenswürdigkeiten — in fünf Sätzen' &&
+      lessonI3.schritte.find(s => s.id === 's20').zeigt.de === targetsI3[4]);
+
+  const expectedWordsI3 = [
+    'das Alphabet', 'abschreiben', 'bemerken', 'nachschlagen', 'die Herausforderung', 'intensiv',
+    'das Lexikon', 'die Literatur', 'die Mensa', 'das Studio', 'der Dialekt', 'die Intelligenz',
+    'das Märchen', 'historisch', 'technisch', 'die Serie', 'die Spur', 'die Wanderung',
+    'die Wettervorhersage', 'das Gebiet', 'das Gebirge', 'der Hafen', 'das Ufer', 'der Kanal',
+    'das Denkmal', 'die Burg', 'das Gasthaus', 'die Gaststätte', 'die Diskothek', 'das Ballett',
+    'die Oper', 'der Tourismus', 'die Metropole', 'die Mobilität', 'der Transport', 'transportieren',
+    'das Tempo', 'die Reservierung', 'die Terrasse', 'die Ausfahrt'
+  ];
+  const errorsI3 = lessonI3.wortschatz.map(it => it.err);
+  t('Corpus lesson b1-u9-l3 reviews all 40 entries and three bounded mnemonics keeping every genuine agreement, trailing-preposition and predicative foil as a real error',
+    Object.keys(byWordI3).join(' | ') === expectedWordsI3.join(' | ') &&
+      lessonI3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonI3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordI3['das Alphabet'].err === 'Das Alphabet haben sechsundzwanzig Buchstaben.' &&
+      byWordI3['nachschlagen'].err === 'Sie muss jedes neue Wort nachschlagen auf.' &&
+      byWordI3['das Denkmal'].err === 'Das Denkmal stehen auf dem Platz.' &&
+      byWordI3['die Mensa'].err === 'Die Mensa öffnen um elf.' &&
+      byWordI3['die Spur'].err === 'Die Spur führen zum Fluss.' &&
+      byWordI3['die Ausfahrt'].err === 'Die Ausfahrt kommen gleich.' &&
+      ['Man darf nicht vom Nachbarn abschreiben auf.', 'Das Problem ist technisch gemacht.',
+        'Der Roman ist historisch genau gemacht.', 'Die Oper waren ausverkauft.',
+        'Die Metropole ziehen junge Leute an.']
+        .every(x => errorsI3.includes(x)) &&
+      tricksI3.length === 3 && tricksI3[0].wie.includes('Das Denkmal steht auf dem Platz.') &&
+      tricksI3[1].wie.includes('Sie muss jedes neue Wort nachschlagen.') &&
+      tricksI3[2].wie.includes('Das Problem ist technisch.'));
+
+  const wordClozeAI3 = lessonI3.schritte.find(s => s.id === 's09');
+  const wordClozeBI3 = lessonI3.schritte.find(s => s.id === 's13');
+  const wordClozeCI3 = lessonI3.schritte.find(s => s.id === 's17');
+  const imitateI3 = lessonI3.schritte.find(s => s.id === 's19');
+  const drillI3 = lessonI3.schritte.find(s => s.id === 's23');
+  const orderI3 = lessonI3.schritte.find(s => s.id === 's24');
+  const writingI3 = lessonI3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingI3 = lessonI3.schritte.find(s => s.phase === 'Produktion');
+  const summaryI3 = lessonI3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkI3 = lessonI3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus lesson b1-u9-l3 aligns five strict learning clozes, sound steht order fields and a 27-word five-target production',
+    wordClozeAI3.frage.zeigt === 'Sie lernt ____, aber nicht jeden Tag.' && wordClozeAI3.frage.antworten.join(' ') === 'intensiv' &&
+      wordClozeAI3.frage.nearMiss.intensiven && !win.DW.renderers.judgeCloze(wordClozeAI3.frage, 'intensiven').ok &&
+      wordClozeBI3.frage.zeigt === 'Der ____ bleibt im Winter offen.' && wordClozeBI3.frage.antworten.join(' ') === 'Hafen' &&
+      wordClozeBI3.frage.nearMiss['Häfen'] && !win.DW.renderers.judgeCloze(wordClozeBI3.frage, 'Häfen').ok &&
+      wordClozeCI3.frage.zeigt === 'Die ____ gilt bis acht Uhr.' && wordClozeCI3.frage.antworten.join(' ') === 'Reservierung' &&
+      wordClozeCI3.frage.nearMiss.Reservierungen && !win.DW.renderers.judgeCloze(wordClozeCI3.frage, 'Reservierungen').ok &&
+      imitateI3.zeigt.de === 'Das Alphabet ____ sechsundzwanzig Buchstaben.' && imitateI3.frage.antworten.join(' ') === 'hat' &&
+      imitateI3.frage.nearMiss['haben'] && !win.DW.renderers.judgeCloze(imitateI3.frage, 'haben').ok &&
+      drillI3.frage.zeigt === 'Sie muss jedes neue Wort ____.' && drillI3.frage.antworten.join(' ') === 'nachschlagen' &&
+      drillI3.frage.nearMiss.schlagen && !win.DW.renderers.judgeCloze(drillI3.frage, 'schlagen').ok &&
+      lessonI3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderI3.frage.frage === 'رتّب الجملة واضعًا العبارة الأولى أولًا والفعل في الموضع الثاني.' &&
+      orderI3.frage.correct.join(' ') === targetsI3[2] && orderI3.frage.finite === 'steht' && orderI3.frage.verbFirst === false &&
+      orderI3.frage.fields.vorfeld.join(' ') === 'Das Denkmal' && orderI3.frage.fields.lsk.join(' ') === 'steht' &&
+      orderI3.frage.fields.mittelfeld.join(' ') === 'auf dem Platz.' &&
+      win.DW.order.score(orderI3.frage, orderI3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderI3.frage, ['Das', 'Denkmal', 'auf', 'dem', 'Platz.', 'steht']).credit < 1 &&
+      writingI3.frage.points.join(' | ') === targetsI3.join(' | ') && writingI3.frage.minWords === 27 &&
+      targetsI3.join(' ').split(/\s+/).length === 27 &&
+      targetsI3.every(x => [writingI3.frage.promptDe, summaryI3.zeigt.de, homeworkI3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsI3.every(x => norm(speakingI3.erklaerung).includes(norm(x))) &&
+      (homeworkI3.hinweise || []).join(' ').includes('Die neue Lernmethode hilft beim Lernen'));
+
+  const checksI3 = lessonI3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckI3 = checksI3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckI3 = checksI3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus lesson b1-u9-l3 makes 80 percent four of five, independently checking singular Mensa öffnet, the nachschlagen cloze and muss order, singular Ausfahrt kommt and singular Spur führt',
+    checksI3.length === 5 && checksI3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksI3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksI3.every(s => /^cap\.b1-u9-l3\.s\d+$/.test(s.frage.prereq || '')) && checksI3.every(s => !s.hinweise) &&
+      checksI3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b1-u9-l3.s07 | cap.b1-u9-l3.s23 | cap.b1-u9-l3.s24 | cap.b1-u9-l3.s17 | cap.b1-u9-l3.s20' &&
+      new Set(checksI3.map(s => s.frage.prereq)).size === 5 &&
+      checksI3[0].frage.optionen.some(o => o.text === targetsI3[3]) &&
+      checksI3[0].frage.optionen.some(o => o.text === 'Die Mensa öffnen um elf.') &&
+      Object.values(checksI3[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckI3.frage.zeigt === 'Sie muss jedes neue Wort ____.' &&
+      clozeCheckI3.frage.antworten.join(' ') === 'nachschlagen' && clozeCheckI3.frage.nearMiss.schlagen &&
+      !win.DW.renderers.judgeCloze(clozeCheckI3.frage, 'schlagen').ok &&
+      orderCheckI3.frage.correct.join(' ') === targetsI3[1] && orderCheckI3.frage.finite === 'muss' &&
+      orderCheckI3.frage.fields.vorfeld.join(' ') === 'Sie' && orderCheckI3.frage.fields.lsk.join(' ') === 'muss' &&
+      orderCheckI3.frage.fields.mittelfeld.join(' ') === 'jedes neue Wort nachschlagen.' &&
+      win.DW.order.score(orderCheckI3.frage, orderCheckI3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckI3.frage, ['Sie', 'nachschlagen.', 'muss', 'jedes', 'neue', 'Wort']).credit < 1 &&
+      checksI3[3].frage.optionen.some(o => o.text === 'Die Ausfahrt kommt gleich.') &&
+      checksI3[3].frage.optionen.some(o => o.text === 'Die Ausfahrt kommen gleich.') &&
+      Object.values(checksI3[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksI3[4].frage.optionen.some(o => o.text === targetsI3[4]) &&
+      checksI3[4].frage.optionen.some(o => o.text === 'Die Spur führen zum Fluss.') &&
+      Object.values(checksI3[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

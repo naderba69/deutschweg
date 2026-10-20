@@ -170,7 +170,7 @@
        lacked, so the pool (494) can be named; unit 9 carries 240 of it. */
     ['البيت والأجهزة: Fernbedienung وKraftwerk', 'Haus und Geräte: Fernbedienung und Kraftwerk', 'السكن', 'Fernbedienung liegt · Metall wird recycelt · Kraftwerk liefert · Service ausgezeichnet · Franken einzahlen', 'explicit'],
     ['المهن والعمل: Trainerin وStreik', 'Berufe und Betrieb: Trainerin und Streik', 'المهنة', 'Trainerin erklärt · zehn Leute einstellen · über abstimmen · Streik beginnt · Personalie liegt', 'explicit'],
-    ['التعليم والدلائل', 'Bildung und Nachschlagen', 'التعليم', 'Das Denkmal steht und nachschlagen', 'explicit'],
+    ['التعليم والأماكن: Alphabet وDenkmal', 'Bildung und Orte: Alphabet und Denkmal', 'التعليم', 'Alphabet hat · Wort nachschlagen · Denkmal steht · Mensa öffnet · Spur führt', 'explicit'],
     ['السلوك والمشاعر', 'Verhalten und Gefühl', 'المشاعر', 'uns amüsieren und weder … noch', 'explicit'],
     ['المرور والسفر', 'Verkehr und Reise', 'المرور', 'anschnallen und verhaften', 'explicit'],
     ['الطعام والصحة', 'Essen und Gesundheit', 'الطعام', 'Das Schlagobers ist und spürt', 'explicit'],

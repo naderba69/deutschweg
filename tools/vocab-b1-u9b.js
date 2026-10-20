@@ -46,10 +46,27 @@ module.exports = {
       ['die Ausfahrt', 'die Ausfahrten', 'المخرج من الطريق السريع', 'Die Ausfahrt kommt gleich.', 'Die Ausfahrt kommen gleich.', 'الفعل مفرد: kommt.', 'konjugation', 'Ausfahrt']
     ],
     tricks: [
-      { trick: 'أماكن الجمع في الألمانية: das Gasthaus · die Gaststätte · das Denkmal · die Mensa', wie: 'Das Gasthaus serviert bis zehn. · Das Denkmal steht auf dem Platz.', warum: 'الأسماء المكانية مختلفة الأجناس، ولا قاعدة واحدة تجمعها.', anchor: 'Das Denkmal steht' },
+      { trick: 'أجناس أسماء الأماكن بلا قاعدة واحدة: das Gasthaus · die Gaststätte · das Denkmal · die Mensa', wie: 'Das Gasthaus serviert bis zehn. · Das Denkmal steht auf dem Platz.', warum: 'الأسماء المكانية مختلفة الأجناس، ولا قاعدة واحدة تجمعها.', anchor: 'Das Denkmal steht' },
       { trick: 'المصدر في الآخر بعد الفعل المساعد: abschreiben · nachschlagen · transportieren', wie: 'Man darf nicht vom Nachbarn abschreiben. · Sie muss jedes neue Wort nachschlagen.', warum: 'الفعل المساعد يجذب المصدر إلى نهاية الجملة، ويبقى بلا فصل.', anchor: 'jedes neue Wort nachschlagen' },
-      { trick: 'صفات المعرفة في مكانها بلا تصريف: historisch · technisch · intensiv', wie: 'Das Problem ist technisch. · Sie lernt intensiv.', warum: 'خبر الصفة لا يُصرَّف في العربية، فينسى الطالب أن الألمانية تحذف هنا كل نهاية.', anchor: 'Das Problem ist technisch' }
-    ]
+      { trick: 'الصفة خبرًا بلا تصريف ولا نهاية: historisch · technisch · intensiv', wie: 'Das Problem ist technisch. · Sie lernt intensiv.', warum: 'الصفة الواقعة خبرًا في الألمانية لا تأخذ أي نهاية أبدًا، فتبقى كما هي: ist technisch.', anchor: 'Das Problem ist technisch' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'intensiv': 'intensiven',
+      'der Hafen': 'Häfen',
+      'die Reservierung': 'Reservierungen'
+    },
+    clozeItemIndex: 3,
+    clozeNearMiss: 'schlagen',
+    checkItemIndex: 39,
+    extraCheck: {
+      right: 'Die Spur führt zum Fluss.',
+      bad: 'Die Spur führen zum Fluss.',
+      why: 'die Spur اسم مفرد: führt لا führen.',
+      family: 'konjugation',
+      prereq: 'cap.b1-u9-l3.s20',
+      frage: 'أي جملة تجعل الأثر مفرد الفعل؟'
+    }
   },
 
   'b1-u9-l4': {
