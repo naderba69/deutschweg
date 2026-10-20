@@ -18691,6 +18691,133 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW2[4].frage.optionen.some(o => o.text === targetsW2[4]) &&
       checksW2[4].frage.optionen.some(o => o.text === 'Die Argumentation muss schlüssige sein.') &&
       Object.values(checksW2[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+
+  const lessonW3 = win.DW_LESSONS['b2-w03'];
+  const rowW3 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w03');
+  const byWordW3 = Object.fromEntries(lessonW3.wortschatz.map(it => [it.de, it]));
+  const tricksW3 = lessonW3.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsW3 = [
+    'Ich räume Ihren Punkt ein und bleibe sachlich.',
+    'Dem kann ich nur bedingt zustimmen.',
+    'In der Sache bleiben wir uneinig.',
+    'Die Moderation muss auf Redezeit und Gesprächsführung achten.',
+    'Lassen Sie mich bitte ausreden.'
+  ];
+  t('Corpus workshop b2-w03 precisely scopes five discussion moves taking separable einräumen, dative conditional zustimmen, the static Sachebene, moderation with achten auf and the accusative mich after lassen',
+    lessonW3.title.de === 'Diskussion: einräumen und bedingt zustimmen' &&
+      lessonW3.title.ar === 'نقاش: الإقرار والموافقة المشروطة' &&
+      lessonW3.level === 'B2' && lessonW3.kind === 'workshop' &&
+      rowW3.title.de === lessonW3.title.de && rowW3.title.ar === lessonW3.title.ar &&
+      rowW3.theme === 'نقاش' &&
+      rowW3.grammar.item === 'نقاش: الإقرار والموافقة المشروطة' &&
+      rowW3.grammar.method === 'explicit' &&
+      rowW3.words.receptive === 90 && rowW3.words.productive === 60 &&
+      lessonW3.schritte.length === 36 && lessonW3.wortschatz.length === 40 &&
+      lessonW3.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW3.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW3[i]) &&
+      lessonW3.schritte[0].zeigt.de === 'Am Ende räumst du einen Punkt ein, stimmst bedingt zu und bleibst sachlich — in fünf Sätzen' &&
+      lessonW3.schritte.find(s => s.id === 's20').zeigt.de === targetsW3[4]);
+
+  const expectedWordsW3 = [
+    'die Diskussion', 'der Standpunkt', 'die Position', 'das Streitgespräch', 'einräumen', 'bedingt zustimmen',
+    'die Zustimmung', 'die Ablehnung', 'entgegnen', 'erwidern', 'die Erwiderung', 'die Entgegnung',
+    'die Gegenfrage', 'die Unterbrechung', 'unterbrechen', 'ausreden lassen', 'die Redezeit', 'die Moderation',
+    'moderieren', 'der Moderator', 'die Wortmeldung', 'sich melden', 'der Redebeitrag', 'anknüpfen',
+    'aufgreifen', 'vertiefen', 'die Sachebene', 'die Beziehungsebene', 'sachlich', 'persönlich werden',
+    'der Vorwurf', 'die Unterstellung', 'die Polemik', 'der Dissens', 'die Schnittmenge', 'der Ausgleich',
+    'die Einigung', 'die Abstimmung', 'die Diskussionskultur', 'das Protokoll'
+  ];
+  const errorsW3 = lessonW3.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w03 reviews all 40 entries and three bounded mnemonics converting five grammatical foils and restoring three foils as full minimal pairs',
+    Object.keys(byWordW3).join(' | ') === expectedWordsW3.join(' | ') &&
+      lessonW3.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW3.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW3['die Position'].err === 'Die Position die Gegenseite verdient Respekt.' &&
+      byWordW3['die Ablehnung'].err === 'Die Ablehnung eines Antrag braucht eine Begründung.' &&
+      byWordW3['unterbrechen'].err === 'Lieber nachhaken als mitten in den Satz unterbrechen.' &&
+      byWordW3['die Redezeit'].err === 'Die Redezeit steht auf die Tagesordnung.' &&
+      byWordW3['die Schnittmenge'].err === 'Die Schnittmenge beides Seiten wächst mit Toleranz.' &&
+      ['Die Position von der Gegenseite verdient Respekt.', 'Die Ablehnung von einem Antrag braucht eine Begründung.',
+        'Lieber nachhaken als mitten in dem Satz unterbrechen.', 'Die Redezeit steht in der Tagesordnung.',
+        'Die Schnittmenge von beiden Seiten wächst mit Toleranz.']
+        .every(x => !errorsW3.includes(x)) &&
+      byWordW3['sachlich'].err === 'Bleiben wir sachliche, auch wenn Emotion mitspielt.' &&
+      byWordW3['persönlich werden'].err === 'Werde nicht persönlich; Sachlichkeit und Rückmeldung hilft.' &&
+      byWordW3['der Vorwurf'].err === 'Der Vorwurf trifft der Sache, nicht die Ausdrucksweise.' &&
+      ['Bleiben wir sachlich, auch wenn es scharfer wird.', 'Werde nicht persönlich; bleib an die Sache.',
+        'Der Vorwurf trifft nicht der Sache.']
+        .every(x => !errorsW3.includes(x)) &&
+      ['Sie entgegnet den Vorwurf ruhig.', 'Die Moderation achtet für Redezeit und Gesprächsführung.',
+        'Auf die Sachebene sind wir uns nah.']
+        .every(x => errorsW3.includes(x)) &&
+      tricksW3.length === 3 &&
+      tricksW3[0].wie.includes('Den Punkt gebe ich zu, doch in der Sache bleiben wir uneinig.') &&
+      tricksW3[1].wie.includes('Dem kann ich bedingt zustimmen, wenn die Zahlen stimmen.') &&
+      tricksW3[2].wie.includes('Auf der Sachebene sind wir uns nah, auf der Beziehungsebene hilft ein ruhiger Tonfall.'));
+
+  const wordClozeAW3 = lessonW3.schritte.find(s => s.id === 's09');
+  const wordClozeBW3 = lessonW3.schritte.find(s => s.id === 's13');
+  const wordClozeCW3 = lessonW3.schritte.find(s => s.id === 's17');
+  const imitateW3 = lessonW3.schritte.find(s => s.id === 's19');
+  const drillW3 = lessonW3.schritte.find(s => s.id === 's23');
+  const orderW3 = lessonW3.schritte.find(s => s.id === 's24');
+  const writingW3 = lessonW3.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW3 = lessonW3.schritte.find(s => s.phase === 'Produktion');
+  const summaryW3 = lessonW3.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW3 = lessonW3.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus workshop b2-w03 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 33-word five-target production',
+    wordClozeAW3.frage.zeigt === 'Ich ____ dem Vorschlag bedingt zu.' && wordClozeAW3.frage.antworten.join(' ') === 'stimme' &&
+      wordClozeAW3.frage.nearMiss.stimmt && !win.DW.renderers.judgeCloze(wordClozeAW3.frage, 'stimmt').ok &&
+      wordClozeBW3.frage.zeigt === 'Ich ____ mich mit einer Zwischenbemerkung in der Fragerunde.' && wordClozeBW3.frage.antworten.join(' ') === 'melde' &&
+      wordClozeBW3.frage.nearMiss.meldest && !win.DW.renderers.judgeCloze(wordClozeBW3.frage, 'meldest').ok &&
+      wordClozeCW3.frage.zeigt === 'Die ____ in der Sitzung zeigt die Mehrheit.' && wordClozeCW3.frage.antworten.join(' ') === 'Abstimmung' &&
+      wordClozeCW3.frage.nearMiss.Abstimmungen && !win.DW.renderers.judgeCloze(wordClozeCW3.frage, 'Abstimmungen').ok &&
+      (imitateW3.frage.zeigt === 'Ich räume Ihren ____ ein und bleibe sachlich.' || imitateW3.zeigt.de === 'Ich räume Ihren ____ ein und bleibe sachlich.') && imitateW3.frage.antworten.join(' ') === 'Punkt' &&
+      imitateW3.frage.nearMiss['Punktes'] && !win.DW.renderers.judgeCloze(imitateW3.frage, 'Punktes').ok &&
+      drillW3.frage.zeigt === 'Die ____ steht auf der Tagesordnung.' && drillW3.frage.antworten.join(' ') === 'Redezeit' &&
+      drillW3.frage.nearMiss.Redezeiten && !win.DW.renderers.judgeCloze(drillW3.frage, 'Redezeiten').ok &&
+      lessonW3.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW3.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW3.frage.correct.join(' ') === targetsW3[3] && orderW3.frage.finite === 'muss' && orderW3.frage.verbFirst === false &&
+      orderW3.frage.fields.vorfeld.join(' ') === 'Die Moderation' && orderW3.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW3.frage.fields.mittelfeld.join(' ') === 'auf Redezeit und Gesprächsführung achten.' &&
+      win.DW.order.score(orderW3.frage, orderW3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW3.frage, ['Die', 'Moderation', 'auf', 'Redezeit', 'muss', 'und', 'Gesprächsführung', 'achten.']).credit < 1 &&
+      writingW3.frage.points.join(' | ') === targetsW3.join(' | ') && writingW3.frage.minWords === 33 &&
+      targetsW3.join(' ').split(/\s+/).length === 33 &&
+      targetsW3.every(x => [writingW3.frage.promptDe, summaryW3.zeigt.de, homeworkW3.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW3.every(x => norm(speakingW3.erklaerung).includes(norm(x))) &&
+      homeworkW3.zeigt.de.includes('Ich unterbreche niemanden mitten im Satz.') &&
+      homeworkW3.zeigt.de.includes('heißt nicht «scharfer», sondern «schärfer»'));
+
+  const checksW3 = lessonW3.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW3 = checksW3.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW3 = checksW3.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w03 makes 80 percent four of five, independently checking achten auf, the Redezeit cloze and kann order, dative entgegnen and mich after lassen',
+    checksW3.length === 5 && checksW3[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW3[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW3.every(s => /^cap\.b2-w03\.s\d+$/.test(s.frage.prereq || '')) && checksW3.every(s => !s.hinweise) &&
+      checksW3.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w03.s07 | cap.b2-w03.s23 | cap.b2-w03.s24 | cap.b2-w03.s10 | cap.b2-w03.s20' &&
+      new Set(checksW3.map(s => s.frage.prereq)).size === 5 &&
+      checksW3[0].frage.optionen.some(o => o.text === targetsW3[3]) &&
+      checksW3[0].frage.optionen.some(o => o.text === 'Die Moderation muss für Redezeit und Gesprächsführung achten.') &&
+      Object.values(checksW3[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckW3.frage.zeigt === 'Die ____ steht auf der Tagesordnung.' &&
+      clozeCheckW3.frage.antworten.join(' ') === 'Redezeit' && clozeCheckW3.frage.nearMiss.Redezeiten &&
+      !win.DW.renderers.judgeCloze(clozeCheckW3.frage, 'Redezeiten').ok &&
+      orderCheckW3.frage.correct.join(' ') === targetsW3[1] && orderCheckW3.frage.finite === 'kann' &&
+      orderCheckW3.frage.fields.vorfeld.join(' ') === 'Dem' && orderCheckW3.frage.fields.lsk.join(' ') === 'kann' &&
+      orderCheckW3.frage.fields.mittelfeld.join(' ') === 'ich nur bedingt zustimmen.' &&
+      win.DW.order.score(orderCheckW3.frage, orderCheckW3.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW3.frage, ['Dem', 'ich', 'kann', 'nur', 'bedingt', 'zustimmen.']).credit < 1 &&
+      checksW3[3].frage.optionen.some(o => o.text === 'Sie entgegnet dem Vorwurf ruhig.') &&
+      checksW3[3].frage.optionen.some(o => o.text === 'Sie entgegnet den Vorwurf ruhig.') &&
+      Object.values(checksW3[3].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      checksW3[4].frage.optionen.some(o => o.text === targetsW3[4]) &&
+      checksW3[4].frage.optionen.some(o => o.text === 'Lassen Sie mir bitte ausreden.') &&
+      Object.values(checksW3[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
