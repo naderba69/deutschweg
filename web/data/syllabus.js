@@ -200,7 +200,7 @@
     ['التلخيص: أقصر وبترتيب النص وبلا تقييم', 'Zusammenfassung: kürzer, geordnet, ohne Wertung', 'تلخيص', 'writing'],
     ['الإعلام: الانتشار ليس حقيقة', 'Medien: Reichweite ist nicht Wahrheit', 'الإعلام', 'discussion'],
     ['سماع مقابلة: موقف وتقييد', 'Interview hören: Position und Einschränkung', 'مقابلة', 'listening'],
-    ['تقنية: كتابة موقوتة', 'Timed writing', 'امتحان', 'exam-technique'],
+    ['الكتابة على الوقت: خطة ونص ومراجعة', 'Schreiben auf Zeit: Plan, Text, Kontrolle', 'امتحان', 'exam-technique'],
     ['تحليل تعليق', 'Kommentaranalyse', 'رأي', 'text-analysis'],
     ['نقاش: بيئة', 'Umwelt diskutieren', 'البيئة', 'discussion'],
     ['سماع أخبار', 'Nachrichten', 'أخبار', 'listening'],

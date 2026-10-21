@@ -65,10 +65,27 @@ module.exports = {
       'der Konzeptpapierbogen', 'die Randzeile'
     ],
     tricks: [
-      { trick: 'الخطة قبل أول جملة: Gliederung vor dem Text', wie: 'Ich plane die Gliederung vor dem ersten Satz.', warum: 'من يكتب فورًا يعيد الكتابة مرتين؛ الخطة توفّر عشر دقائق.', anchor: 'vor dem ersten Satz' },
-      { trick: 'وزّع الزمن ثلاثة أثلاث: Entwurf — Reinschrift — Durchsicht', wie: 'Die Zeitplanung teilt siebzig Minuten in drei Blöcke.', warum: 'الكتابة كلها على قطعة واحدة تُفقد المراجعة، والمراجعة تُحسب درجات.', anchor: 'drei Blöcke' },
-      { trick: 'آخر خمس دقائق للقواعد لا للأفكار: Endungen, Verbzweit, Kommas', wie: 'Die Endkontrolle prüft die Kommasetzung und die Verbzweitstellung.', warum: 'الأفكار انتهت؛ ما يمكن إنقاذه في النهاية هو الصرف وموضع الفعل.', anchor: 'Endkontrolle' }
-    ]
+      { trick: 'الخطة قبل أول جملة: Gliederung vor dem Text', wie: 'Ich plane die Gliederung vor dem ersten Satz.', warum: 'من يكتب فورًا يعيد الكتابة مرتين؛ الخطة توفّر عشر دقائق.', anchor: 'Ich plane die Gliederung vor dem ersten Satz' },
+      { trick: 'وزّع الزمن ثلاثة أثلاث: Entwurf — Reinschrift — Durchsicht', wie: 'Die Zeitplanung teilt siebzig Minuten in drei Blöcke.', warum: 'الكتابة كلها على قطعة واحدة تُفقد المراجعة، والمراجعة تُحسب درجات.', anchor: 'Die Zeitplanung teilt siebzig Minuten in drei Blöcke' },
+      { trick: 'آخر خمس دقائق للقواعد لا للأفكار: Endungen, Verbzweit, Kommas', wie: 'Die Endkontrolle prüft die Kommasetzung und die Verbzweitstellung.', warum: 'الأفكار انتهت؛ ما يمكن إنقاذه في النهاية هو الصرف وموضع الفعل.', anchor: 'Die Endkontrolle prüft die Kommasetzung und die Verbzweitstellung' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Merkzettel': 'Merkzetteln',
+      'die Punktevergabe': 'Punktevergaben',
+      'die Nachbesserung': 'Nachbesserungen'
+    },
+    clozeItemIndex: 0,
+    clozeNearMiss: 'Zeitplanungen',
+    checkItemIndex: 27,
+    extraCheck: {
+      right: 'Ich muss die Zeit in Blöcke teilen.',
+      bad: 'Ich muss die Zeit an Blöcke teilen.',
+      why: 'التقسيم إلى يتم بـin: in Blöcke teilen.',
+      family: 'präposition',
+      prereq: 'cap.b2-w13.s20',
+      frage: 'أي جملة تقسم الوقت بحرف جرّ صحيح؟'
+    }
   }
 
 };

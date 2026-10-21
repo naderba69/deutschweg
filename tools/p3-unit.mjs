@@ -19966,6 +19966,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW12[4].frage.optionen.some(o => o.text === targetsW12[4]) &&
       checksW12[4].frage.optionen.some(o => o.text === 'Ich müssen Position und Grenze hören.') &&
       Object.values(checksW12[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonW13 = win.DW_LESSONS['b2-w13'];
+  const rowW13 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w13');
+  const byWordW13 = Object.fromEntries(lessonW13.wortschatz.map(it => [it.de, it]));
+  const trickStepsW13 = lessonW13.schritte.filter(s => s.merkhilfe);
+  const targetsW13 = [
+    'Ich plane die Gliederung vor dem Text.',
+    'Der Hauptteil trägt zwei Argumente.',
+    'Den Schluss habe ich im Kopf.',
+    'Nach dem Schreiben prüfe ich Verbzweit.',
+    'Ich muss die Zeit in Blöcke teilen.'
+  ];
+  t('Corpus workshop b2-w13 precisely scopes five timed-writing moves outlining before the text, carrying two arguments, keeping the ending ready, checking verb-second last and dividing the time into blocks',
+    lessonW13.title.de === 'Schreiben auf Zeit: Plan, Text, Kontrolle' &&
+      lessonW13.title.ar === 'الكتابة على الوقت: خطة ونص ومراجعة' &&
+      lessonW13.level === 'B2' && lessonW13.kind === 'workshop' &&
+      rowW13.title.de === lessonW13.title.de && rowW13.title.ar === lessonW13.title.ar &&
+      rowW13.theme === 'امتحان' &&
+      rowW13.grammar.item === 'الكتابة على الوقت: خطة ونص ومراجعة' &&
+      rowW13.grammar.method === 'explicit' &&
+      rowW13.words.receptive === 90 && rowW13.words.productive === 60 &&
+      lessonW13.schritte.length === 36 && lessonW13.wortschatz.length === 40 &&
+      lessonW13.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW13.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW13[i]) &&
+      lessonW13.schritte[0].zeigt.de === 'Am Ende planst du, schreibst du und prüfst du — in fünf Sätzen' &&
+      lessonW13.schritte.find(s => s.id === 's20').zeigt.de === targetsW13[4]);
+
+  const expectedWordsW13 = [
+    'die Zeitplanung', 'der Zeitplan', 'die Schreibzeit', 'der Schreibplan', 'das Konzept',
+    'der Merkzettel', 'der erste Satz', 'der Themensatz', 'der Kernabschnitt', 'die Schlusszeile',
+    'die Beweiskette', 'das Zeitpolster', 'der Prüfungsbogen', 'das Aufgabenheft', 'die Arbeitsschritte',
+    'der Entwurf', 'die Reinschrift', 'die Durchsicht', 'die Prüfung', 'der Korrektor', 'das Kriterium',
+    'die Punktevergabe', 'der Punktabzug', 'die Wortgrenze', 'das Manuskript', 'die Schrift',
+    'die Leserlichkeit', 'die Verbzweitstellung', 'die Satzstellung', 'der Schachtelsatz', 'die Klammer',
+    'die Kommasetzung', 'die Großschreibung', 'die Kleinschreibung', 'die Rechtschreibung',
+    'die Zeichensetzung', 'die Umstellung', 'die Nachbesserung', 'der Zeitmangel', 'die Schreibübung'
+  ];
+  const errorsW13 = lessonW13.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w13 reviews all 40 entries and three bounded mnemonics needing no vocabulary repair while every foil stays a genuine error',
+    Object.keys(byWordW13).join(' | ') === expectedWordsW13.join(' | ') &&
+      lessonW13.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW13.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW13['die Zeitplanung'].err === 'Die Zeitplanung beginnen vor dem ersten Satz.' &&
+      byWordW13['die Verbzweitstellung'].err === 'Die Verbzweitstellung brechen kein Kandidat vorsätzlich.' &&
+      byWordW13['die Prüfung'].err === 'Die Prüfung belohnen den Plan.' &&
+      ['Die Zeitplanung beginnen vor dem ersten Satz.', 'Der Zeitplan teilen siebzig Minuten in drei Blöcke.',
+        'Die Arbeitsschritte steht auf dem Konzeptpapier.']
+        .every(x => errorsW13.includes(x)) &&
+      byWordW13['die Verbzweitstellung'].ex === 'Die Verbzweitstellung bricht kein Kandidat vorsätzlich.' &&
+      trickStepsW13.length === 3 &&
+      trickStepsW13[0].zeigt.de === 'Ich plane die Gliederung vor dem ersten Satz' &&
+      trickStepsW13[0].merkhilfe.wie.includes('Ich plane die Gliederung vor dem ersten Satz.') &&
+      trickStepsW13[1].zeigt.de === 'Die Zeitplanung teilt siebzig Minuten in drei Blöcke' &&
+      trickStepsW13[1].merkhilfe.wie.includes('Die Zeitplanung teilt siebzig Minuten in drei Blöcke.') &&
+      trickStepsW13[2].zeigt.de === 'Die Endkontrolle prüft die Kommasetzung und die Verbzweitstellung' &&
+      trickStepsW13[2].merkhilfe.wie.includes('Die Endkontrolle prüft die Kommasetzung und die Verbzweitstellung.'));
+
+  const wordClozeAW13 = lessonW13.schritte.find(s => s.id === 's09');
+  const wordClozeBW13 = lessonW13.schritte.find(s => s.id === 's13');
+  const wordClozeCW13 = lessonW13.schritte.find(s => s.id === 's17');
+  const imitateW13 = lessonW13.schritte.find(s => s.id === 's19');
+  const drillW13 = lessonW13.schritte.find(s => s.id === 's23');
+  const orderW13 = lessonW13.schritte.find(s => s.id === 's24');
+  const writingW13 = lessonW13.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW13 = lessonW13.schritte.find(s => s.phase === 'Produktion');
+  const summaryW13 = lessonW13.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW13 = lessonW13.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW13 = lessonW13.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w13 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 31-word five-target production',
+    wordClozeAW13.frage.zeigt === 'Der ____ hängt über dem Schreibtisch.' && wordClozeAW13.frage.antworten.join(' ') === 'Merkzettel' &&
+      wordClozeAW13.frage.nearMiss.Merkzetteln && !win.DW.renderers.judgeCloze(wordClozeAW13.frage, 'Merkzetteln').ok &&
+      wordClozeBW13.frage.zeigt === 'Die ____ folgt dem Bewertungsbogen.' && wordClozeBW13.frage.antworten.join(' ') === 'Punktevergabe' &&
+      wordClozeBW13.frage.nearMiss.Punktevergaben && !win.DW.renderers.judgeCloze(wordClozeBW13.frage, 'Punktevergaben').ok &&
+      wordClozeCW13.frage.zeigt === 'Die ____ kostet drei Minuten.' && wordClozeCW13.frage.antworten.join(' ') === 'Nachbesserung' &&
+      wordClozeCW13.frage.nearMiss.Nachbesserungen && !win.DW.renderers.judgeCloze(wordClozeCW13.frage, 'Nachbesserungen').ok &&
+      (imitateW13.frage.zeigt === 'Ich ____ die Gliederung vor dem Text.' || imitateW13.zeigt.de === 'Ich ____ die Gliederung vor dem Text.') && imitateW13.frage.antworten.join(' ') === 'plane' &&
+      imitateW13.frage.nearMiss['planen'] && !win.DW.renderers.judgeCloze(imitateW13.frage, 'planen').ok &&
+      drillW13.frage.zeigt === 'Die ____ beginnt vor dem ersten Satz.' && drillW13.frage.antworten.join(' ') === 'Zeitplanung' &&
+      drillW13.frage.nearMiss.Zeitplanungen && !win.DW.renderers.judgeCloze(drillW13.frage, 'Zeitplanungen').ok &&
+      lessonW13.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW13.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW13.frage.correct.join(' ') === targetsW13[4] && orderW13.frage.finite === 'muss' && orderW13.frage.verbFirst === false &&
+      orderW13.frage.fields.vorfeld.join(' ') === 'Ich' && orderW13.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW13.frage.fields.mittelfeld.join(' ') === 'die Zeit in Blöcke teilen.' &&
+      win.DW.order.score(orderW13.frage, orderW13.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW13.frage, ['Ich', 'die', 'Zeit', 'muss', 'in', 'Blöcke', 'teilen.']).credit < 1 &&
+      writingW13.frage.points.join(' | ') === targetsW13.join(' | ') && writingW13.frage.minWords === 31 &&
+      targetsW13.join(' ').split(/\s+/).length === 31 &&
+      targetsW13.every(x => [writingW13.frage.promptDe, summaryW13.zeigt.de, homeworkW13.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW13.every(x => norm(speakingW13.erklaerung).includes(norm(x))) &&
+      modelW13.zeigt.de.includes('Die Prüfungszeit ist in drei Blöcke geteilt.') &&
+      modelW13.zeigt.de.includes('Wer das Konzeptpapier voll schreibt, hat die Reinschrift verloren.') &&
+      homeworkW13.zeigt.de.includes('Die Endkontrolle prüft Kommasetzung und Verbzweitstellung.') &&
+      homeworkW13.zeigt.de.includes('Darum endet der Text, bevor die Zeit endet.') &&
+      (homeworkW13.hinweise || []).join(' ').includes('Im Englischen heißt die Aufgabe timed writing.'));
+
+  const checksW13 = lessonW13.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW13 = checksW13.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW13 = checksW13.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w13 makes 80 percent four of five, independently checking verb-second, the Zeitplanung cloze and trägt order, singular bricht and teilen in',
+    checksW13.length === 5 && checksW13[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW13[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW13.every(s => /^cap\.b2-w13\.s\d+$/.test(s.frage.prereq || '')) && checksW13.every(s => !s.hinweise) &&
+      checksW13.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w13.s07 | cap.b2-w13.s23 | cap.b2-w13.s24 | cap.b2-w13.s14 | cap.b2-w13.s20' &&
+      new Set(checksW13.map(s => s.frage.prereq)).size === 5 &&
+      checksW13[0].frage.optionen.some(o => o.text === targetsW13[3]) &&
+      checksW13[0].frage.optionen.some(o => o.text === 'Nach dem Schreiben ich prüfe Verbzweit.') &&
+      Object.values(checksW13[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckW13.frage.zeigt === 'Die ____ beginnt vor dem ersten Satz.' &&
+      clozeCheckW13.frage.antworten.join(' ') === 'Zeitplanung' && clozeCheckW13.frage.nearMiss.Zeitplanungen &&
+      !win.DW.renderers.judgeCloze(clozeCheckW13.frage, 'Zeitplanungen').ok &&
+      orderCheckW13.frage.correct.join(' ') === targetsW13[1] && orderCheckW13.frage.finite === 'trägt' &&
+      orderCheckW13.frage.fields.vorfeld.join(' ') === 'Der Hauptteil' && orderCheckW13.frage.fields.lsk.join(' ') === 'trägt' &&
+      orderCheckW13.frage.fields.mittelfeld.join(' ') === 'zwei Argumente.' &&
+      win.DW.order.score(orderCheckW13.frage, orderCheckW13.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW13.frage, ['Der', 'Hauptteil', 'zwei', 'trägt', 'Argumente.']).credit < 1 &&
+      checksW13[3].frage.optionen.some(o => o.text === 'Die Verbzweitstellung bricht kein Kandidat vorsätzlich.') &&
+      checksW13[3].frage.optionen.some(o => o.text === 'Die Verbzweitstellung brechen kein Kandidat vorsätzlich.') &&
+      Object.values(checksW13[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW13[4].frage.optionen.some(o => o.text === targetsW13[4]) &&
+      checksW13[4].frage.optionen.some(o => o.text === 'Ich muss die Zeit an Blöcke teilen.') &&
+      Object.values(checksW13[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
