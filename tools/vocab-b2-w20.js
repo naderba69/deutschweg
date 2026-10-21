@@ -65,9 +65,26 @@ module.exports = {
     ],
     tricks: [
       { trick: 'الجانبان قبل الحكم: zuerst beide Seiten', wie: 'Zuerst beide Seiten, dann das Urteil.', warum: 'الحكم في السطر الأول يغلق القراءة ويُلغي الفحص.', anchor: 'Zuerst beide Seiten, dann das Urteil' },
-      { trick: 'سمِّ الأقوى: nicht beide Seiten sind gleich stark', wie: 'Nicht beide Seiten sind gleich stark.', warum: 'التساوي الكاذب ضعف، والقارئ يريد أن يعرف أيّ الحجتين تحمل.', anchor: 'gleich stark' },
+      { trick: 'سمِّ الأقوى: nicht beide Seiten sind gleich stark', wie: 'Nicht beide Seiten sind gleich stark.', warum: 'التساوي الكاذب ضعف، والقارئ يريد أن يعرف أيّ الحجتين تحمل.', anchor: 'Nicht beide Seiten sind gleich stark' },
       { trick: 'مثال لكل جانب، والحكم في الآخر', wie: 'Jede Seite braucht ein Beispiel.', warum: 'الشعار لا يقنع؛ والحكم في النهاية نتيجة لا مقدمة.', anchor: 'Jede Seite braucht ein Beispiel' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'das Für und Wider': 'Für und Widers',
+      'die Gegenprobe': 'Gegenproben',
+      'die Abstimmung': 'Abstimmungen'
+    },
+    clozeItemIndex: 3,
+    clozeNearMiss: 'Pro-Seiten',
+    checkItemIndex: 2,
+    extraCheck: {
+      right: 'Ich muss beide Seiten vor dem Urteil zeigen.',
+      bad: 'Ich musst beide Seiten vor dem Urteil zeigen.',
+      why: 'الفاعل ich مفرد: muss لا musst.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w20.s20',
+      frage: 'أي جملة تُلزم بعرض الجانبين قبل الحكم بفعل صحيح؟'
+    }
   }
 
 };

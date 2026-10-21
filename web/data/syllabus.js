@@ -207,7 +207,7 @@
     ['الرسالة الرسمية: مناسبة وطلب وأجل', 'Formeller Brief: Anlass, Bitte, Frist', 'مراسلة', 'writing'],
     ['تقنية التحدث: ثلاث دقائق وثلاثة أجزاء', 'Sprechtechnik: drei Minuten, drei Teile', 'امتحان', 'exam-technique'],
     ['التعليم: مساران بحدٍّ', 'Bildung: zwei Wege mit Grenze', 'التعليم', 'discussion'],
-    ['تحليل موقفين', 'Pro und Kontra', 'حجاج', 'text-analysis']
+    ['المؤيد والمعارض: جانبان قبل الحكم', 'Pro und Kontra: Seiten vor dem Urteil', 'حجاج', 'text-analysis']
   ];
 
   const lessons = [];

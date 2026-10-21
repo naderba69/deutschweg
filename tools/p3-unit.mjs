@@ -20831,6 +20831,128 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW19[4].frage.optionen.some(o => o.text === targetsW19[4]) &&
       checksW19[4].frage.optionen.some(o => o.text === 'Ich muss zwei Wege bis Grenze vergleichen.') &&
       Object.values(checksW19[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
+  const lessonW20 = win.DW_LESSONS['b2-w20'];
+  const rowW20 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w20');
+  const byWordW20 = Object.fromEntries(lessonW20.wortschatz.map(it => [it.de, it]));
+  const trickStepsW20 = lessonW20.schritte.filter(s => s.merkhilfe);
+  const targetsW20 = [
+    'Zuerst beide Seiten, dann das Urteil.',
+    'Nicht beide Seiten sind gleich stark.',
+    'Jede Seite braucht ein Beispiel.',
+    'Das Urteil steht am Schluss.',
+    'Ich muss beide Seiten vor dem Urteil zeigen.'
+  ];
+  t('Corpus workshop b2-w20 precisely scopes five pro-and-contra moves sides before the verdict, strength named, an example each, the verdict last and the method bound',
+    lessonW20.title.de === 'Pro und Kontra: Seiten vor dem Urteil' &&
+      lessonW20.title.ar === 'المؤيد والمعارض: جانبان قبل الحكم' &&
+      lessonW20.level === 'B2' && lessonW20.kind === 'workshop' &&
+      rowW20.title.de === lessonW20.title.de && rowW20.title.ar === lessonW20.title.ar &&
+      rowW20.theme === 'حجاج' &&
+      rowW20.grammar.item === 'المؤيد والمعارض: جانبان قبل الحكم' &&
+      rowW20.grammar.method === 'explicit' &&
+      rowW20.words.receptive === 90 && rowW20.words.productive === 60 &&
+      lessonW20.schritte.length === 36 && lessonW20.wortschatz.length === 40 &&
+      lessonW20.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW20.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW20[i]) &&
+      lessonW20.schritte[0].zeigt.de === 'Am Ende stellst du beide Seiten vor dem Urteil dar — in fünf Sätzen' &&
+      lessonW20.schritte.find(s => s.id === 's20').zeigt.de === targetsW20[4]);
+
+  const expectedWordsW20 = [
+    'der Standpunkt', 'die Position', 'die Streitfrage', 'die Pro-Seite', 'die Contra-Seite',
+    'das Für und Wider', 'das Pro', 'das Contra', 'die Gegenrede', 'die Gegenstimme',
+    'die Erwiderung', 'die Entgegnung', 'die Schwachstelle', 'die Stärke', 'die Schwäche',
+    'das Übergewicht', 'das Gleichgewicht', 'die Ausgewogenheit', 'die Einseitigkeit', 'die Verzerrung',
+    'die Auslassung', 'die Gegenprobe', 'der Prüfstein', 'die Bewertung', 'die Einschätzung',
+    'das Kriterium', 'der Maßstab', 'die Skepsis', 'der Zweifel', 'die Vorsicht',
+    'die Vereinfachung', 'die Überspitzung', 'die Schlagseite', 'die Darlegung', 'die Mehrheit',
+    'die Minderheit', 'der Konsens', 'die Abstimmung', 'der Kompromiss', 'die Entscheidungsgrundlage'
+  ];
+  const errorsW20 = lessonW20.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w20 reviews all 40 entries and three bounded mnemonics needing no vocabulary repair while every foil stays a genuine singular agreement error',
+    Object.keys(byWordW20).join(' | ') === expectedWordsW20.join(' | ') &&
+      lessonW20.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW20.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW20['die Schwäche'].err === 'Eine Schwäche der Gegenthese sind die fehlende Stichhaltigkeit.' &&
+      byWordW20['die Mehrheit'].err === 'Die Mehrheit sind kein Argument.' &&
+      ['Der Standpunkt sind eine Wertung.', 'Die Entscheidungsgrundlage stehen in den Zahlen.',
+        'Die Abstimmung beenden die Debatte.']
+        .every(x => errorsW20.includes(x)) &&
+      byWordW20['die Streitfrage'].ex === 'Die Streitfrage steht am Anfang, das Urteil am Schluss.' &&
+      trickStepsW20.length === 3 &&
+      trickStepsW20[0].zeigt.de === 'Zuerst beide Seiten, dann das Urteil' &&
+      trickStepsW20[0].merkhilfe.wie.includes('Zuerst beide Seiten, dann das Urteil.') &&
+      trickStepsW20[1].zeigt.de === 'Nicht beide Seiten sind gleich stark' &&
+      trickStepsW20[1].merkhilfe.wie.includes('Nicht beide Seiten sind gleich stark.') &&
+      trickStepsW20[2].zeigt.de === 'Jede Seite braucht ein Beispiel' &&
+      trickStepsW20[2].merkhilfe.wie.includes('Jede Seite braucht ein Beispiel.'));
+
+  const wordClozeAW20 = lessonW20.schritte.find(s => s.id === 's09');
+  const wordClozeBW20 = lessonW20.schritte.find(s => s.id === 's13');
+  const wordClozeCW20 = lessonW20.schritte.find(s => s.id === 's17');
+  const imitateW20 = lessonW20.schritte.find(s => s.id === 's19');
+  const drillW20 = lessonW20.schritte.find(s => s.id === 's23');
+  const orderW20 = lessonW20.schritte.find(s => s.id === 's24');
+  const writingW20 = lessonW20.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW20 = lessonW20.schritte.find(s => s.phase === 'Produktion');
+  const summaryW20 = lessonW20.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW20 = lessonW20.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW20 = lessonW20.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w20 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 30-word five-target production',
+    wordClozeAW20.frage.zeigt === 'Das ____ gehört auf zwei Spalten.' && wordClozeAW20.frage.antworten.join(' ') === 'Für und Wider' &&
+      wordClozeAW20.frage.nearMiss['Für und Widers'] && !win.DW.renderers.judgeCloze(wordClozeAW20.frage, 'Für und Widers').ok &&
+      wordClozeBW20.frage.zeigt === 'Die ____ prüft die Folgerichtigkeit.' && wordClozeBW20.frage.antworten.join(' ') === 'Gegenprobe' &&
+      wordClozeBW20.frage.nearMiss['Gegenproben'] && !win.DW.renderers.judgeCloze(wordClozeBW20.frage, 'Gegenproben').ok &&
+      wordClozeCW20.frage.zeigt === 'Die ____ beendet die Debatte, nicht die Frage.' && wordClozeCW20.frage.antworten.join(' ') === 'Abstimmung' &&
+      wordClozeCW20.frage.nearMiss['Abstimmungen'] && !win.DW.renderers.judgeCloze(wordClozeCW20.frage, 'Abstimmungen').ok &&
+      (imitateW20.frage.zeigt === 'Zuerst beide Seiten, dann das ____.' || imitateW20.zeigt.de === 'Zuerst beide Seiten, dann das ____.') && imitateW20.frage.antworten.join(' ') === 'Urteil' &&
+      imitateW20.frage.nearMiss['Urteile'] && !win.DW.renderers.judgeCloze(imitateW20.frage, 'Urteile').ok &&
+      drillW20.frage.zeigt === 'Die ____ braucht ein Beispiel, die Contra-Seite auch.' && drillW20.frage.antworten.join(' ') === 'Pro-Seite' &&
+      drillW20.frage.nearMiss['Pro-Seiten'] && !win.DW.renderers.judgeCloze(drillW20.frage, 'Pro-Seiten').ok &&
+      lessonW20.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW20.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW20.frage.correct.join(' ') === targetsW20[4] && orderW20.frage.finite === 'muss' && orderW20.frage.verbFirst === false &&
+      orderW20.frage.fields.vorfeld.join(' ') === 'Ich' && orderW20.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW20.frage.fields.mittelfeld.join(' ') === 'beide Seiten vor dem Urteil zeigen.' &&
+      win.DW.order.score(orderW20.frage, orderW20.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW20.frage, ['Ich', 'beide', 'muss', 'Seiten', 'vor', 'dem', 'Urteil', 'zeigen.']).credit < 1 &&
+      writingW20.frage.points.join(' | ') === targetsW20.join(' | ') && writingW20.frage.minWords === 30 &&
+      targetsW20.join(' ').split(/\s+/).length === 30 &&
+      targetsW20.every(x => [writingW20.frage.promptDe, summaryW20.zeigt.de, homeworkW20.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW20.every(x => norm(speakingW20.erklaerung).includes(norm(x))) &&
+      modelW20.zeigt.de.includes('Die Polemik, die Stimmungsmache, die Plattitüde und die Unterstellung stehen auf der Liste der Schwächen, nicht der Beweise.') &&
+      modelW20.zeigt.de.includes('Das Kriterium wird am Anfang genannt, nicht am Ende geändert.') &&
+      homeworkW20.zeigt.de.includes('Die Beurteilung steht am Schluss, nicht in der ersten Zeile.') &&
+      homeworkW20.zeigt.de.includes('Ein starker Text braucht diesen ruhigen Mut immer.'));
+
+  const checksW20 = lessonW20.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW20 = checksW20.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW20 = checksW20.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w20 makes 80 percent four of five, independently checking singular steht, the Pro-Seite cloze and Urteil order, Streitfrage and muss',
+    checksW20.length === 5 && checksW20[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW20[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW20.every(s => /^cap\.b2-w20\.s\d+$/.test(s.frage.prereq || '')) && checksW20.every(s => !s.hinweise) &&
+      checksW20.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w20.s07 | cap.b2-w20.s23 | cap.b2-w20.s24 | cap.b2-w20.s08 | cap.b2-w20.s20' &&
+      new Set(checksW20.map(s => s.frage.prereq)).size === 5 &&
+      checksW20[0].frage.optionen.some(o => o.text === targetsW20[3]) &&
+      checksW20[0].frage.optionen.some(o => o.text === 'Das Urteil stehen am Schluss.') &&
+      Object.values(checksW20[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW20.frage.zeigt === 'Die ____ braucht ein Beispiel, die Contra-Seite auch.' &&
+      clozeCheckW20.frage.antworten.join(' ') === 'Pro-Seite' && clozeCheckW20.frage.nearMiss['Pro-Seiten'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckW20.frage, 'Pro-Seiten').ok &&
+      orderCheckW20.frage.correct.join(' ') === targetsW20[3] && orderCheckW20.frage.finite === 'steht' &&
+      orderCheckW20.frage.fields.vorfeld.join(' ') === 'Das Urteil' && orderCheckW20.frage.fields.lsk.join(' ') === 'steht' &&
+      orderCheckW20.frage.fields.mittelfeld.join(' ') === 'am Schluss.' &&
+      win.DW.order.score(orderCheckW20.frage, orderCheckW20.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW20.frage, ['Das', 'Urteil', 'am', 'steht', 'Schluss.']).credit < 1 &&
+      checksW20[3].frage.optionen.some(o => o.text === 'Die Streitfrage steht am Anfang, das Urteil am Schluss.') &&
+      checksW20[3].frage.optionen.some(o => o.text === 'Die Streitfrage stehen am Anfang.') &&
+      Object.values(checksW20[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW20[4].frage.optionen.some(o => o.text === targetsW20[4]) &&
+      checksW20[4].frage.optionen.some(o => o.text === 'Ich musst beide Seiten vor dem Urteil zeigen.') &&
+      Object.values(checksW20[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

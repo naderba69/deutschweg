@@ -843,23 +843,47 @@ module.exports = [
       summaryRecap: 'مساران بحدٍّ',
     }),
 
-  U('b2-w20', 'تحليل موقفين', 'Pro und Kontra',
-    'Am Ende stellst du beide Seiten vor dem Urteil dar',
-    'في النهاية تعرض الجانبين قبل الحكم.',
+  U('b2-w20', 'المؤيد والمعارض: جانبان قبل الحكم', 'Pro und Kontra: Seiten vor dem Urteil',
+    'Am Ende stellst du beide Seiten vor dem Urteil dar — in fünf Sätzen',
+    'في النهاية تعرض الجانبين قبل الحكم في خمس جمل.',
     [
-      ['beide Seiten', 'الجانبان قبل الحكم', 'الحكم أولًا يعمي', 'ich urteile zuerst', 'الجانبان أولًا'],
-      ['das stärkere Argument', 'الحجة الأقوى تُسمّى', 'التساوي الكاذب ضعف', 'beide Seiten sind immer gleich', 'القوة تُسمّى'],
-      ['ein Beispiel je Seite', 'مثال لكل جانب', 'الشعار لا يكفي', 'Pro ist gut, Kontra ist schlecht', 'المثال يسند'],
-      ['das Urteil am Schluss', 'الحكم في الآخر', 'الحكم في الأول يُغلق القراءة', 'das Urteil steht in der ersten Zeile', 'الحكم أخيرًا']
+      ['Zuerst beide Seiten, dann das Urteil.', 'يؤخر الحكم حتى عرض الجانبين', 'Urteil محايد: das Urteil لا den', 'Zuerst beide Seiten, dann den Urteil.', 'المحايد: das Urteil'],
+      ['Nicht beide Seiten sind gleich stark.', 'يسمّي الجانب الأقوى', 'الجمع Seiten يحتاج sind لا ist', 'Nicht beide Seiten ist gleich stark.', 'الفعل للجمع: sind'],
+      ['Jede Seite braucht ein Beispiel.', 'يدعم كل جانب بمثال', 'الفاعل مفرد: braucht لا brauchen', 'Jede Seite brauchen ein Beispiel.', 'المفرد: braucht'],
+      ['Das Urteil steht am Schluss.', 'يضع الحكم في آخر كلمة', 'الفاعل مفرد: steht لا stehen', 'Das Urteil stehen am Schluss.', 'المفرد: steht']
     ],
     [
-      ['Zuerst beide Seiten.', 'أولًا الجانبان', 'Ich urteile zuerst', 'الجانبان قبل الحكم', 'Zuerst'],
-      ['Nicht beide Seiten sind gleich stark.', 'الجانبان ليسا بنفس القوة', 'Beide Seiten sind immer gleich', 'القوة تُسمّى', 'stark'],
-      ['Jede Seite braucht ein Beispiel.', 'كل جانب يحتاج مثالًا', 'Pro ist gut, Kontra ist schlecht', 'المثال يسند', 'Beispiel'],
-      ['Das Urteil steht am Schluss.', 'الحكم في الآخر', 'Das Urteil steht in der ersten Zeile', 'الحكم أخيرًا', 'Schluss']
+      ['Zuerst beide Seiten, dann das Urteil.', 'أولًا الجانبان ثم الحكم', 'Zuerst beide Seiten, dann den Urteil.', 'المحايد: das Urteil.', 'Urteil'],
+      ['Nicht beide Seiten sind gleich stark.', 'الجانبان ليسا بنفس القوة', 'Nicht beide Seiten ist gleich stark.', 'الفعل للجمع: sind.', 'stark'],
+      ['Jede Seite braucht ein Beispiel.', 'كل جانب يحتاج مثالًا', 'Jede Seite brauchen ein Beispiel.', 'الفاعل مفرد: braucht.', 'Beispiel'],
+      ['Das Urteil steht am Schluss.', 'الحكم في الآخر', 'Das Urteil stehen am Schluss.', 'الفاعل مفرد: steht.', 'Schluss']
     ],
-    'Zuerst beide Seiten, dann das Urteil. Die Gegenüberstellung von These und Gegenthese braucht die Gewichtung: nicht jede Priorität ist gleich. Der Gegensatz bleibt sichtbar, die Gegenprobe prüft die Folgerichtigkeit, die Stichhaltigkeit, die Haltbarkeit und die Tragfähigkeit. Die Parteilichkeit ist erlaubt, die Neutralität nicht Pflicht; die Distanz zur Sache bleibt, die Rhetorik und die Überredung ersetzen kein Gegenargument. Die Polemik, die Stimmungsmache, die Plattitüde und die Unterstellung stehen auf der Liste der Schwächen, nicht der Beweise. Die Tatsachenbehauptung und die Meinungsäußerung trennt der Prüfstein: die Beweislast, die Belegpflicht und die Kontrollfrage. Der Kurzschluss, die Fehlannahme und der Selbstwiderspruch sind Auslassungen; die Ambivalenz und die Dialektik sind keine. Zwischen den Seiten liegt die Spannung: der Interessenkonflikt, die Interessenlage, der Nutzen, der Schaden, die Nebenwirkung und die Nebenfolge. Die Ausgangslage, die Sachlage und die Faktenlage sind nicht dasselbe; die Randbedingung, die Voraussetzung und die Rahmenbedingung ändern die Antwort. Die Gegenfrage, die Rückfrage und die Zwischenfrage halten den Text offen, bis die Beurteilung und die Abwägung am Schluss stehen.',
-    'Nicht beide Seiten sind gleich stark.',
-    'Stelle morgen beide Seiten dar, dann urteile.',
-    'غدًا اعرض الجانبين ثم احكم.')
+    'Zuerst beide Seiten, dann das Urteil. Die Gegenüberstellung von These und Gegenthese braucht die Gewichtung: nicht jede Priorität ist gleich. Der Gegensatz bleibt sichtbar, die Gegenprobe prüft die Folgerichtigkeit, die Stichhaltigkeit, die Haltbarkeit und die Tragfähigkeit. Die Parteilichkeit ist erlaubt, die Neutralität nicht Pflicht; die Distanz zur Sache bleibt, die Rhetorik und die Überredung ersetzen kein Gegenargument. Die Polemik, die Stimmungsmache, die Plattitüde und die Unterstellung stehen auf der Liste der Schwächen, nicht der Beweise. Die Tatsachenbehauptung und die Meinungsäußerung trennt der Prüfstein: die Beweislast, die Belegpflicht und die Kontrollfrage. Der Kurzschluss, die Fehlannahme und der Selbstwiderspruch sind Auslassungen; die Ambivalenz und die Dialektik sind keine. Zwischen den Seiten liegt die Spannung: der Interessenkonflikt, die Interessenlage, der Nutzen, der Schaden, die Nebenwirkung und die Nebenfolge. Die Ausgangslage, die Sachlage und die Faktenlage sind nicht dasselbe; die Randbedingung, die Voraussetzung und die Rahmenbedingung ändern die Antwort. Die Gegenfrage, die Rückfrage und die Zwischenfrage halten den Text offen, bis die Beurteilung und die Abwägung am Schluss stehen. Ein Beispiel prüft die Tragfähigkeit besser als ein Adjektiv. Die Stichhaltigkeit steht unter der Kontrollfrage, nicht unter Applaus. Wer zuerst urteilt, liest die zweite Seite nicht mehr ernsthaft. Die Mehrheit ist eine Zahl, kein Beweis; die Minderheit kann das bessere Argument haben. Der Kompromiss am Ende bleibt eine Entscheidung, kein Mittelwert. Der Maßstab am Anfang macht das Urteil am Schluss zu einer Folge. Die Synthese ohne Gewichtung ist eine Taschenspielerei. Der Zweifel gehört auch ins eigene Lager. Die Skepsis prüft zuerst das Lieblingsargument. Ein Kurzschluss klingt schnell und hält kurz. Die Vorsicht fragt, was fehlt: eine Zahl, eine Quelle oder ein Datum. Das Kriterium wird am Anfang genannt, nicht am Ende geändert.',
+    'Ich muss beide Seiten vor dem Urteil zeigen.',
+    'Wiederhole morgen die fünf Sätze: Zuerst beide Seiten, dann das Urteil. Nicht beide Seiten sind gleich stark. Jede Seite braucht ein Beispiel. Das Urteil steht am Schluss. Ich muss beide Seiten vor dem Urteil zeigen. Die Gegenüberstellung braucht die Gewichtung: nicht jede Priorität ist gleich. Die Tatsachenbehauptung und die Meinungsäußerung trennt die Beweislast. Die Polemik gehört auf die Liste der Schwächen, nicht der Beweise. Die Ausgangslage, die Sachlage und die Faktenlage sind nicht dasselbe. Die Beurteilung steht am Schluss, nicht in der ersten Zeile. Übe Morgen an einer kurzen Frage: Lange Ferien, teure Stadtwohnung oder späte Bahnfahrt. Schreibe zuerst zwei Sätze pro Seite, je mit einem Beispiel. Dann markiere das stärkere Argument mit einem Stift. Erst danach kommt ein Schlusssatz mit deinem Urteil. Lies den Text einmal rückwärts: Der Schluss muss zum Anfang passen. Die Frage nach den Nachbarn ist schnell: Wer zahlt, wer gewinnt, und wo gilt das nicht? Sprich die fünf Sätze laut, bevor du sie schreibst. Wer die zweite Seite ehrlich hört, schreibt am Ende kühler. Das Urteil kostet keinen Applaus, aber eine Zeile mehr. Der Leser merkt die Auslassung schneller, als der Autor denkt. Und die ehrlichste Kontrollfrage bleibt: Wäre mir dieses Argument auch auf der anderen Seite gut genug gewesen? Ein starker Text braucht diesen ruhigen Mut immer.',
+    'غدًا أعد جمل الحجاج الخمس واعرض الجانبين قبل أن تحكم.',
+    {
+      factFamilies: ['kasus', 'konjugation', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'Urteile',
+      transformHint: 'في الجملة الختامية المنهج كله: Ich muss beide Seiten vor dem Urteil zeigen — المصدر zeigen يغلق الجملة بعد muss.',
+      orderSentence: 'Ich muss beide Seiten vor dem Urteil zeigen.',
+      checkOrderSentence: 'Das Urteil steht am Schluss.',
+      orderAr: 'رتّب جملة المنهج: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر zeigen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر zeigen يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Pro und Kontra in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: جانبان قبل أي حكم، وقوة غير متكافئة مسمّاة، ومثالًا لكل جانب، وحكمًا في النهاية، ومنهجًا ختاميًا بـmuss.',
+        hinweise: ['التساوي الكاذب ضعف.', 'الحكم نتيجة لا مقدمة.'],
+        prompt: 'اكتب جمل المؤيد والمعارض الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Zuerst beide Seiten, dann das Urteil. · Nicht beide Seiten sind gleich stark. · Jede Seite braucht ein Beispiel. · Das Urteil steht am Schluss. · Ich muss beide Seiten vor dem Urteil zeigen.',
+        points: ['Zuerst beide Seiten, dann das Urteil.', 'Nicht beide Seiten sind gleich stark.', 'Jede Seite braucht ein Beispiel.', 'Das Urteil steht am Schluss.', 'Ich muss beide Seiten vor dem Urteil zeigen.'],
+        minWords: 30,
+        frage: 'اكتب جمل الحجاج الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Zuerst beide Seiten, dann das Urteil. Nicht beide Seiten sind gleich stark. Jede Seite braucht ein Beispiel. Das Urteil steht am Schluss. Ich muss beide Seiten vor dem Urteil zeigen.',
+      summaryDe: 'Zuerst beide Seiten, dann das Urteil. Nicht beide Seiten sind gleich stark. Jede Seite braucht ein Beispiel. Das Urteil steht am Schluss. Ich muss beide Seiten vor dem Urteil zeigen.',
+      summaryAr: 'في الحجاج: جانبان بمثال، وقوة غير متساوية، وحكم في النهاية.',
+      summaryRecap: 'جانبان قبل الحكم',
+    })
 ];
