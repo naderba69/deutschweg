@@ -8277,9 +8277,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a4', 1).key === 'من يدفع؟' &&
       b2q('b2-a4', 1).options.includes(b2q('b2-a4', 1).key) &&
       b2Articles['b2-a4'].body.includes('Zur Entscheidung gehört außerdem die Frage: Wer zahlt?'));
-  t('Corpus B2 b2-a5 has 449 measured words and no unknown B2 tokens',
+  t('Corpus B2 b2-a5 has 494 measured words and no unknown B2 tokens',
     b2Articles['b2-a5'].title === 'الصحة والوقاية' &&
-      b2Articles['b2-a5'].body.trim().split(/\s+/).length === 449 &&
+      b2Articles['b2-a5'].body.trim().split(/\s+/).length === 494 &&
       known.coverage(b2Known, b2Articles['b2-a5'].body).unknown.length === 0);
   t('Corpus B2 b2-a5 connects individualized advice, insurance terms, a January checklist, an appointment case, and access limits coherently',
     b2Articles['b2-a5'].body.includes('bespreche ich mit meiner Ärztin') &&
