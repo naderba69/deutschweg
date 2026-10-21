@@ -64,10 +64,27 @@ module.exports = {
       'die Überzeugungskraft', 'die Präsenz'
     ],
     tricks: [
-      { trick: 'الحد ثلاث دقائق: drei Minuten, nicht zehn', wie: 'Ich habe drei Minuten, nicht zehn.', warum: 'المستمع يسمع الزيادة عجزًا في التنظيم لا إثراءً.', anchor: 'drei Minuten, nicht zehn' },
+      { trick: 'الحد ثلاث دقائق: drei Minuten, nicht zehn', wie: 'Ich habe drei Minuten, nicht zehn.', warum: 'المستمع يسمع الزيادة عجزًا في التنظيم لا إثراءً.', anchor: 'Ich habe drei Minuten, nicht zehn' },
       { trick: 'أعلن الهيكل في أول جملتين', wie: 'Ich nenne die Gliederung.', warum: 'بلا خريطة يسمع المستمع تفاصيل بلا مسار.', anchor: 'Ich nenne die Gliederung' },
-      { trick: 'إذا تلعثمت أعِد الصياغة ولا تصمُت', wie: 'Wenn ich stocke, formuliere ich neu.', warum: 'الصمت الطويل يكلف وقتًا أكثر من إعادة الجملة.', anchor: 'formuliere ich neu' }
-    ]
+      { trick: 'إذا تلعثمت أعِد الصياغة ولا تصمُت', wie: 'Wenn ich stocke, formuliere ich neu.', warum: 'الصمت الطويل يكلف وقتًا أكثر من إعادة الجملة.', anchor: 'Wenn ich stocke, formuliere ich neu' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Atmung': 'Atmungen',
+      'das Lampenfieber': 'Lampenfiebern',
+      'die Stegreifrede': 'Stegreifreden'
+    },
+    clozeItemIndex: 39,
+    clozeNearMiss: 'Fäden',
+    checkItemIndex: 0,
+    extraCheck: {
+      right: 'Ich muss in drei Teilen sprechen.',
+      bad: 'Ich musst in drei Teilen sprechen.',
+      why: 'الفاعل ich مفرد: muss لا musst.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w18.s20',
+      frage: 'أي جملة تُلزم بالتحدث في ثلاثة أجزاء بفعل صحيح؟'
+    }
   }
 
 };

@@ -20585,6 +20585,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW17[4].frage.optionen.some(o => o.text === targetsW17[4]) &&
       checksW17[4].frage.optionen.some(o => o.text === 'Ich musst Anlass, Bitte und Frist nennen.') &&
       Object.values(checksW17[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonW18 = win.DW_LESSONS['b2-w18'];
+  const rowW18 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w18');
+  const byWordW18 = Object.fromEntries(lessonW18.wortschatz.map(it => [it.de, it]));
+  const trickStepsW18 = lessonW18.schritte.filter(s => s.merkhilfe);
+  const targetsW18 = [
+    'Ich habe drei Minuten, nicht zehn.',
+    'Ich nenne die Gliederung.',
+    'Wenn ich stocke, formuliere ich neu.',
+    'Ich bitte um das Wort.',
+    'Ich muss in drei Teilen sprechen.'
+  ];
+  t('Corpus workshop b2-w18 precisely scopes five speaking-technique moves three-minute limit, structure announced, rewording instead of silence, asking for the floor and three parts bound',
+    lessonW18.title.de === 'Sprechtechnik: drei Minuten, drei Teile' &&
+      lessonW18.title.ar === 'تقنية التحدث: ثلاث دقائق وثلاثة أجزاء' &&
+      lessonW18.level === 'B2' && lessonW18.kind === 'workshop' &&
+      rowW18.title.de === lessonW18.title.de && rowW18.title.ar === lessonW18.title.ar &&
+      rowW18.theme === 'امتحان' &&
+      rowW18.grammar.item === 'تقنية التحدث: ثلاث دقائق وثلاثة أجزاء' &&
+      rowW18.grammar.method === 'explicit' &&
+      rowW18.words.receptive === 90 && rowW18.words.productive === 60 &&
+      lessonW18.schritte.length === 36 && lessonW18.wortschatz.length === 40 &&
+      lessonW18.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW18.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW18[i]) &&
+      lessonW18.schritte[0].zeigt.de === 'Am Ende sprichst du drei Minuten in drei Teilen — in fünf Sätzen' &&
+      lessonW18.schritte.find(s => s.id === 's20').zeigt.de === targetsW18[4]);
+
+  const expectedWordsW18 = [
+    'die Rede', 'der Redner', 'das Publikum', 'der Zuhörer', 'die Sprechtechnik',
+    'die Atmung', 'der Atemzug', 'die Stimme', 'die Betonung', 'die Pause',
+    'das Sprechtempo', 'die Lautstärke', 'die Artikulation', 'die Aussprache', 'die Silbe',
+    'die Satzmelodie', 'der Blickkontakt', 'die Körpersprache', 'die Haltung', 'die Gestik',
+    'die Mimik', 'das Lampenfieber', 'die Anspannung', 'der Stichwortzettel', 'die Karteikarte',
+    'der Einstieg', 'der Schlusssatz', 'das Zeitgefühl', 'die Stoppuhr', 'die Redezeit',
+    'die Zwischenfrage', 'die Überleitung', 'die Selbstsicherheit', 'die Deutlichkeit', 'die Verständlichkeit',
+    'der Versprecher', 'die Wiederholung', 'die Stegreifrede', 'die Improvisation', 'der Faden'
+  ];
+  const errorsW18 = lessonW18.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w18 reviews all 40 entries and three bounded mnemonics needing no vocabulary repair while every foil stays a genuine singular agreement error',
+    Object.keys(byWordW18).join(' | ') === expectedWordsW18.join(' | ') &&
+      lessonW18.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW18.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW18['der Faden'].err === 'Der rote Faden müssen hörbar sein.' &&
+      byWordW18['der Faden'].ex === 'Der rote Faden muss hörbar sein, nicht nur gedacht.' &&
+      byWordW18['die Stoppuhr'].err === 'Die Stoppuhr zeigen, was das Gefühl verschweigt.' &&
+      ['Die Rede dauern drei Minuten.', 'Das Lampenfieber verschwinden nicht.',
+        'Die Stegreifrede leben von der Gliederung.']
+        .every(x => errorsW18.includes(x)) &&
+      byWordW18['die Rede'].ex === 'Die Rede dauert drei Minuten, nicht zehn.' &&
+      trickStepsW18.length === 3 &&
+      trickStepsW18[0].zeigt.de === 'Ich habe drei Minuten, nicht zehn' &&
+      trickStepsW18[0].merkhilfe.wie.includes('Ich habe drei Minuten, nicht zehn.') &&
+      trickStepsW18[1].zeigt.de === 'Ich nenne die Gliederung' &&
+      trickStepsW18[1].merkhilfe.wie.includes('Ich nenne die Gliederung.') &&
+      trickStepsW18[2].zeigt.de === 'Wenn ich stocke, formuliere ich neu' &&
+      trickStepsW18[2].merkhilfe.wie.includes('Wenn ich stocke, formuliere ich neu.'));
+
+  const wordClozeAW18 = lessonW18.schritte.find(s => s.id === 's09');
+  const wordClozeBW18 = lessonW18.schritte.find(s => s.id === 's13');
+  const wordClozeCW18 = lessonW18.schritte.find(s => s.id === 's17');
+  const imitateW18 = lessonW18.schritte.find(s => s.id === 's19');
+  const drillW18 = lessonW18.schritte.find(s => s.id === 's23');
+  const orderW18 = lessonW18.schritte.find(s => s.id === 's24');
+  const writingW18 = lessonW18.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW18 = lessonW18.schritte.find(s => s.phase === 'Produktion');
+  const summaryW18 = lessonW18.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW18 = lessonW18.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW18 = lessonW18.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w18 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 27-word five-target production',
+    wordClozeAW18.frage.zeigt === 'Die ____ trägt den Satz bis zum Punkt.' && wordClozeAW18.frage.antworten.join(' ') === 'Atmung' &&
+      wordClozeAW18.frage.nearMiss['Atmungen'] && !win.DW.renderers.judgeCloze(wordClozeAW18.frage, 'Atmungen').ok &&
+      wordClozeBW18.frage.zeigt === 'Das ____ verschwindet nicht, es tritt zurück.' && wordClozeBW18.frage.antworten.join(' ') === 'Lampenfieber' &&
+      wordClozeBW18.frage.nearMiss['Lampenfiebern'] && !win.DW.renderers.judgeCloze(wordClozeBW18.frage, 'Lampenfiebern').ok &&
+      wordClozeCW18.frage.zeigt === 'Die ____ lebt von der Gliederung im Kopf.' && wordClozeCW18.frage.antworten.join(' ') === 'Stegreifrede' &&
+      wordClozeCW18.frage.nearMiss['Stegreifreden'] && !win.DW.renderers.judgeCloze(wordClozeCW18.frage, 'Stegreifreden').ok &&
+      (imitateW18.frage.zeigt === 'Ich habe ____ Minuten, nicht zehn.' || imitateW18.zeigt.de === 'Ich habe ____ Minuten, nicht zehn.') && imitateW18.frage.antworten.join(' ') === 'drei' &&
+      imitateW18.frage.nearMiss['dreie'] && !win.DW.renderers.judgeCloze(imitateW18.frage, 'dreie').ok &&
+      drillW18.frage.zeigt === 'Der rote ____ muss hörbar sein, nicht nur gedacht.' && drillW18.frage.antworten.join(' ') === 'Faden' &&
+      drillW18.frage.nearMiss['Fäden'] && !win.DW.renderers.judgeCloze(drillW18.frage, 'Fäden').ok &&
+      lessonW18.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW18.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW18.frage.correct.join(' ') === targetsW18[4] && orderW18.frage.finite === 'muss' && orderW18.frage.verbFirst === false &&
+      orderW18.frage.fields.vorfeld.join(' ') === 'Ich' && orderW18.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW18.frage.fields.mittelfeld.join(' ') === 'in drei Teilen sprechen.' &&
+      win.DW.order.score(orderW18.frage, orderW18.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW18.frage, ['Ich', 'in', 'muss', 'drei', 'Teilen', 'sprechen.']).credit < 1 &&
+      writingW18.frage.points.join(' | ') === targetsW18.join(' | ') && writingW18.frage.minWords === 27 &&
+      targetsW18.join(' ').split(/\s+/).length === 27 &&
+      targetsW18.every(x => [writingW18.frage.promptDe, summaryW18.zeigt.de, homeworkW18.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW18.every(x => norm(speakingW18.erklaerung).includes(norm(x))) &&
+      modelW18.zeigt.de.includes('Die Videoaufnahme oder die Aufzeichnung zeigt, was die Selbstwahrnehmung nicht merkt') &&
+      modelW18.zeigt.de.includes('Das Lampenfieber tritt nach dem ersten Satz zurück.') &&
+      homeworkW18.zeigt.de.includes('Ich schweige nicht, bis das Wort kommt: Ich formuliere neu.') &&
+      homeworkW18.zeigt.de.includes('Die Stoppuhr zeigt drei Minuten, nicht mehr.'));
+
+  const checksW18 = lessonW18.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW18 = checksW18.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW18 = checksW18.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w18 makes 80 percent four of five, independently checking government um, the Faden cloze and nenne order, dauert and muss',
+    checksW18.length === 5 && checksW18[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW18[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW18.every(s => /^cap\.b2-w18\.s\d+$/.test(s.frage.prereq || '')) && checksW18.every(s => !s.hinweise) &&
+      checksW18.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w18.s07 | cap.b2-w18.s23 | cap.b2-w18.s24 | cap.b2-w18.s08 | cap.b2-w18.s20' &&
+      new Set(checksW18.map(s => s.frage.prereq)).size === 5 &&
+      checksW18[0].frage.optionen.some(o => o.text === targetsW18[3]) &&
+      checksW18[0].frage.optionen.some(o => o.text === 'Ich bitte für das Wort.') &&
+      Object.values(checksW18[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckW18.frage.zeigt === 'Der rote ____ muss hörbar sein, nicht nur gedacht.' &&
+      clozeCheckW18.frage.antworten.join(' ') === 'Faden' && clozeCheckW18.frage.nearMiss['Fäden'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckW18.frage, 'Fäden').ok &&
+      orderCheckW18.frage.correct.join(' ') === targetsW18[1] && orderCheckW18.frage.finite === 'nenne' &&
+      orderCheckW18.frage.fields.vorfeld.join(' ') === 'Ich' && orderCheckW18.frage.fields.lsk.join(' ') === 'nenne' &&
+      orderCheckW18.frage.fields.mittelfeld.join(' ') === 'die Gliederung.' &&
+      win.DW.order.score(orderCheckW18.frage, orderCheckW18.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW18.frage, ['Ich', 'die', 'nenne', 'Gliederung.']).credit < 1 &&
+      checksW18[3].frage.optionen.some(o => o.text === 'Die Rede dauert drei Minuten, nicht zehn.') &&
+      checksW18[3].frage.optionen.some(o => o.text === 'Die Rede dauern drei Minuten.') &&
+      Object.values(checksW18[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW18[4].frage.optionen.some(o => o.text === targetsW18[4]) &&
+      checksW18[4].frage.optionen.some(o => o.text === 'Ich musst in drei Teilen sprechen.') &&
+      Object.values(checksW18[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
