@@ -8359,9 +8359,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a8', 1).key === 'خفض التدفئة في غرفة النوم درجة واحدة' &&
       b2q('b2-a8', 1).options.includes(b2q('b2-a8', 1).key) &&
       b2Articles['b2-a8'].body.includes('Im Schlafzimmer stellten wir die Heizung eine Stufe niedriger'));
-  t('Corpus B2 b2-a9 has 477 measured words and no unknown B2 tokens',
+  t('Corpus B2 b2-a9 has 526 measured words and no unknown B2 tokens',
     b2Articles['b2-a9'].title === 'العنوان' &&
-      b2Articles['b2-a9'].body.trim().split(/\s+/).length === 477 &&
+      b2Articles['b2-a9'].body.trim().split(/\s+/).length === 526 &&
       known.coverage(b2Known, b2Articles['b2-a9'].body).unknown.length === 0);
   t('Corpus B2 b2-a9 connects headline strength, correlation limits, the source chain, verification, a concrete case, and shared responsibility coherently',
     b2Articles['b2-a9'].body.includes('schwachen Zusammenhang') &&
