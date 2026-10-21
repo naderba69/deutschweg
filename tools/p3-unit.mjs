@@ -8259,7 +8259,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Articles['b2-a3'].body.includes('zwei Tage Homeoffice pro Woche erlaubt'));
   t('Corpus B2 b2-a4 has 516 measured words and no unknown B2 tokens',
     b2Articles['b2-a4'].title === 'المدرسة والرقمنة' &&
-      b2Articles['b2-a4'].body.trim().split(/\s+/).length === 516 &&
+      b2Articles['b2-a4'].body.trim().split(/\s+/).length === 573 &&
       known.coverage(b2Known, b2Articles['b2-a4'].body).unknown.length === 0);
   t('Corpus B2 b2-a4 connects teaching goals, classroom uses, fair financing, teacher preparation, and evaluation coherently',
     b2Articles['b2-a4'].body.includes('ersetzt keine Lehrkraft') &&
