@@ -14,7 +14,7 @@ module.exports = {
       ['der Beitrag', 'die Beiträge', 'المادة الإخبارية', 'Der Beitrag dauert drei Minuten und enthält zwei O-Töne.', 'Der Beitrag dauern drei Minuten.', 'المفرد: dauert.', 'konjugation', 'Beitrag'],
       ['die Quelle', 'die Quellen', 'المصدر', 'Die Quelle bleibt ungenannt, der Inhalt bleibt eine Vermutung.', 'Die Quelle bleiben ungenannt.', 'المفرد: bleibt.', 'konjugation', 'Quelle'],
       ['die Schlagzeile', 'die Schlagzeilen', 'العنوان الرئيسي', 'Die Schlagzeile ist kürzer als der Sachverhalt.', 'Die Schlagzeile sind kürzer als der Sachverhalt.', 'المفرد: ist.', 'konjugation', 'Schlagzeile'],
-      ['der Sender', 'die Sender', 'القناة', 'Der Sender wiederholt die Meldung jede Stunde; die Verbreitung steigt mit der Wiederholung.', 'Der Sender wiederholen die Meldung jede Stunde; die Verbreitung steigen mit der Wiederholung.', 'المفرد: wiederholt.', 'konjugation', 'Sender'],
+      ['der Sender', 'die Sender', 'القناة', 'Der Sender wiederholt die Meldung jede Stunde; die Verbreitung steigt mit der Wiederholung.', 'Der Sender wiederholen die Meldung jede Stunde; die Verbreitung steigt mit der Wiederholung.', 'المفرد: wiederholt.', 'konjugation', 'Sender'],
       ['die Aufnahme', 'die Aufnahmen', 'التسجيل', 'Die Aufnahme erlaubt ein zweites Hören, die Live-Sendung nicht.', 'Die Aufnahme erlauben ein zweites Hören.', 'المفرد: erlaubt.', 'konjugation', 'Aufnahme'],
       ['der Sprecher', 'die Sprecher', 'المتحدث', 'Der Sprecher liest den Text, der Korrespondent erklärt ihn.', 'Der Sprecher lesen den Text.', 'المفرد: liest.', 'konjugation', 'Sprecher'],
       ['die Stimme', 'die Stimmen', 'الصوت', 'Die Stimme klingt ruhig, die Aussage bleibt unbelegt.', 'Die Stimme klingen ruhig.', 'المفرد: klingt.', 'konjugation', 'Stimme'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Bildunterschrift', 'der Sachverhalt'
     ],
     tricks: [
-      { trick: 'افصل الخبر عن التعليق: Meldung oder Kommentar?', wie: 'Die Meldung nennt Ort und Zeit; der Kommentar nennt die Schuldigen.', warum: 'الصوت نفسه يقرأ الأمرين؛ السؤال يسأل عن أيهما.', anchor: 'Meldung oder Kommentar' },
-      { trick: 'افحص الرقم قبل أن تسمعه مرتين: Zahl prüfen', wie: 'Die große Zahl reicht nicht; der Faktencheck widerlegt sie in zwei Minuten.', warum: 'الرقم الكبير قد يكون عنوان جذب لا نتيجة.', anchor: 'Zahl prüfen' },
-      { trick: 'الثاني لا يخدم الراحة: zweites Hören heißt genauer hören', wie: 'Ich höre zur Frage, nicht zum Genuss.', warum: 'الاستماع الثاني أداة للتدقيق لا مساحة للاسترخاء.', anchor: 'nicht zum Genuss' }
-    ]
+      { trick: 'افصل الخبر عن التعليق: Meldung oder Kommentar?', wie: 'Die Meldung nennt Ort und Zeit; der Kommentar nennt die Schuldigen.', warum: 'الصوت نفسه يقرأ الأمرين؛ السؤال يسأل عن أيهما.', anchor: 'Die Meldung nennt Ort und Zeit; der Kommentar nennt die Schuldigen' },
+      { trick: 'افحص الرقم قبل أن تسمعه مرتين: Zahl prüfen', wie: 'Die große Zahl reicht nicht; der Faktencheck widerlegt sie in zwei Minuten.', warum: 'الرقم الكبير قد يكون عنوان جذب لا نتيجة.', anchor: 'Die große Zahl reicht nicht' },
+      { trick: 'الثاني لا يخدم الراحة: zweites Hören heißt genauer hören', wie: 'Ich höre zur Frage, nicht zum Genuss.', warum: 'الاستماع الثاني أداة للتدقيق لا مساحة للاسترخاء.', anchor: 'Ich höre zur Frage, nicht zum Genuss' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Quelle': 'Quellen',
+      'der Artikel': 'Artikeln',
+      'die Zeugenaussage': 'Zeugenaussagen'
+    },
+    clozeItemIndex: 34,
+    clozeNearMiss: 'Faktenchecks',
+    checkItemIndex: 1,
+    extraCheck: {
+      right: 'Ich muss Meldung vom Kommentar trennen.',
+      bad: 'Ich müssen Meldung vom Kommentar trennen.',
+      why: 'الفاعل ich مفرد: muss.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w16.s20',
+      frage: 'أي جملة تُلزم بالفصل بين الخبر والتعليق بفعل صحيح؟'
+    }
   }
 
 };

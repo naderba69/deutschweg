@@ -20338,6 +20338,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW15[4].frage.optionen.some(o => o.text === targetsW15[4]) &&
       checksW15[4].frage.optionen.some(o => o.text === 'Ich müssen Maßnahme und Wirkung trennen.') &&
       Object.values(checksW15[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonW16 = win.DW_LESSONS['b2-w16'];
+  const rowW16 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w16');
+  const byWordW16 = Object.fromEntries(lessonW16.wortschatz.map(it => [it.de, it]));
+  const trickStepsW16 = lessonW16.schritte.filter(s => s.merkhilfe);
+  const targetsW16 = [
+    'Die Meldung ist nicht der Kommentar.',
+    'Wer spricht, wird notiert.',
+    'Die große Zahl reicht nicht.',
+    'Ich höre zur Frage.',
+    'Ich muss Meldung vom Kommentar trennen.'
+  ];
+  t('Corpus workshop b2-w16 precisely scopes five news-hearing moves reporting no commentary, speakers noted, big numbers checked, listening to the question and report from opinion separated',
+    lessonW16.title.de === 'Nachrichten hören: Meldung oder Kommentar' &&
+      lessonW16.title.ar === 'سماع الأخبار: خبر أو تعليق' &&
+      lessonW16.level === 'B2' && lessonW16.kind === 'workshop' &&
+      rowW16.title.de === lessonW16.title.de && rowW16.title.ar === lessonW16.title.ar &&
+      rowW16.theme === 'أخبار' &&
+      rowW16.grammar.item === 'سماع الأخبار: خبر أو تعليق' &&
+      rowW16.grammar.method === 'explicit' &&
+      rowW16.words.receptive === 90 && rowW16.words.productive === 60 &&
+      lessonW16.schritte.length === 36 && lessonW16.wortschatz.length === 40 &&
+      lessonW16.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW16.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW16[i]) &&
+      lessonW16.schritte[0].zeigt.de === 'Am Ende trennst du Meldung und Kommentar — in fünf Sätzen' &&
+      lessonW16.schritte.find(s => s.id === 's20').zeigt.de === targetsW16[4]);
+
+  const expectedWordsW16 = [
+    'die Nachricht', 'die Meldung', 'der Bericht', 'die Sendung', 'der Beitrag',
+    'die Quelle', 'die Schlagzeile', 'der Sender', 'die Aufnahme', 'der Sprecher',
+    'die Stimme', 'das Gerücht', 'die Behauptung', 'die Tatsache', 'die Übertreibung',
+    'die Fälschung', 'die Lüge', 'die Werbung', 'die Anzeige', 'die Zeitung',
+    'die Zeitschrift', 'der Artikel', 'die Überschrift', 'die Ausgabe', 'die Korrespondentin',
+    'der Journalist', 'die Journalistin', 'die Redaktion', 'die Recherche', 'die Veröffentlichung',
+    'die Pressefreiheit', 'die Zensur', 'die Manipulation', 'die Desinformation', 'der Faktencheck',
+    'die Glaubwürdigkeit', 'die Überprüfung', 'die Zeugenaussage', 'der Augenzeuge', 'die Augenzeugin'
+  ];
+  const errorsW16 = lessonW16.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w16 reviews all 40 entries and three bounded mnemonics repairing the double-error Sender foil while every other foil stays a genuine singular agreement error',
+    Object.keys(byWordW16).join(' | ') === expectedWordsW16.join(' | ') &&
+      lessonW16.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW16.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW16['der Sender'].err === 'Der Sender wiederholen die Meldung jede Stunde; die Verbreitung steigt mit der Wiederholung.' &&
+      byWordW16['der Sender'].ex === 'Der Sender wiederholt die Meldung jede Stunde; die Verbreitung steigt mit der Wiederholung.' &&
+      byWordW16['die Behauptung'].err === 'Die Behauptung stehen im Konjunktiv.' &&
+      ['Die Nachricht kommen um acht.', 'Der Faktencheck widerlegen die Zahl.',
+        'Die Augenzeugin erinnern sich an das Kennzeichen.']
+        .every(x => errorsW16.includes(x)) &&
+      byWordW16['die Meldung'].ex === 'Die Meldung nennt Ort und Zeit, der Kommentar nennt die Schuldigen.' &&
+      trickStepsW16.length === 3 &&
+      trickStepsW16[0].zeigt.de === 'Die Meldung nennt Ort und Zeit; der Kommentar nennt die Schuldigen' &&
+      trickStepsW16[0].merkhilfe.wie.includes('Die Meldung nennt Ort und Zeit; der Kommentar nennt die Schuldigen.') &&
+      trickStepsW16[1].zeigt.de === 'Die große Zahl reicht nicht' &&
+      trickStepsW16[1].merkhilfe.wie.includes('Die große Zahl reicht nicht; der Faktencheck widerlegt sie in zwei Minuten.') &&
+      trickStepsW16[2].zeigt.de === 'Ich höre zur Frage, nicht zum Genuss' &&
+      trickStepsW16[2].merkhilfe.wie.includes('Ich höre zur Frage, nicht zum Genuss.'));
+
+  const wordClozeAW16 = lessonW16.schritte.find(s => s.id === 's09');
+  const wordClozeBW16 = lessonW16.schritte.find(s => s.id === 's13');
+  const wordClozeCW16 = lessonW16.schritte.find(s => s.id === 's17');
+  const imitateW16 = lessonW16.schritte.find(s => s.id === 's19');
+  const drillW16 = lessonW16.schritte.find(s => s.id === 's23');
+  const orderW16 = lessonW16.schritte.find(s => s.id === 's24');
+  const writingW16 = lessonW16.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW16 = lessonW16.schritte.find(s => s.phase === 'Produktion');
+  const summaryW16 = lessonW16.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW16 = lessonW16.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW16 = lessonW16.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w16 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 25-word five-target production',
+    wordClozeAW16.frage.zeigt === 'Die ____ bleibt ungenannt, der Inhalt bleibt eine Vermutung.' && wordClozeAW16.frage.antworten.join(' ') === 'Quelle' &&
+      wordClozeAW16.frage.nearMiss['Quellen'] && !win.DW.renderers.judgeCloze(wordClozeAW16.frage, 'Quellen').ok &&
+      wordClozeBW16.frage.zeigt === 'Der ____ nennt zwei Augenzeugen und eine Zahl.' && wordClozeBW16.frage.antworten.join(' ') === 'Artikel' &&
+      wordClozeBW16.frage.nearMiss['Artikeln'] && !win.DW.renderers.judgeCloze(wordClozeBW16.frage, 'Artikeln').ok &&
+      wordClozeCW16.frage.zeigt === 'Die ____ widerspricht der ersten Meldung.' && wordClozeCW16.frage.antworten.join(' ') === 'Zeugenaussage' &&
+      wordClozeCW16.frage.nearMiss['Zeugenaussagen'] && !win.DW.renderers.judgeCloze(wordClozeCW16.frage, 'Zeugenaussagen').ok &&
+      (imitateW16.frage.zeigt === 'Die ____ ist nicht der Kommentar.' || imitateW16.zeigt.de === 'Die ____ ist nicht der Kommentar.') && imitateW16.frage.antworten.join(' ') === 'Meldung' &&
+      imitateW16.frage.nearMiss['Meldungen'] && !win.DW.renderers.judgeCloze(imitateW16.frage, 'Meldungen').ok &&
+      drillW16.frage.zeigt === 'Der ____ widerlegt die Zahl in zwei Minuten.' && drillW16.frage.antworten.join(' ') === 'Faktencheck' &&
+      drillW16.frage.nearMiss.Faktenchecks && !win.DW.renderers.judgeCloze(drillW16.frage, 'Faktenchecks').ok &&
+      lessonW16.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW16.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW16.frage.correct.join(' ') === targetsW16[4] && orderW16.frage.finite === 'muss' && orderW16.frage.verbFirst === false &&
+      orderW16.frage.fields.vorfeld.join(' ') === 'Ich' && orderW16.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW16.frage.fields.mittelfeld.join(' ') === 'Meldung vom Kommentar trennen.' &&
+      win.DW.order.score(orderW16.frage, orderW16.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW16.frage, ['Ich', 'Meldung', 'muss', 'vom', 'Kommentar', 'trennen.']).credit < 1 &&
+      writingW16.frage.points.join(' | ') === targetsW16.join(' | ') && writingW16.frage.minWords === 25 &&
+      targetsW16.join(' ').split(/\s+/).length === 25 &&
+      targetsW16.every(x => [writingW16.frage.promptDe, summaryW16.zeigt.de, homeworkW16.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW16.every(x => norm(speakingW16.erklaerung).includes(norm(x))) &&
+      modelW16.zeigt.de.includes('Die Übertragung einer Podiumsdiskussion, einer Talkrunde oder eines Streitgesprächs dauert länger als die Debatte im Studio.') &&
+      modelW16.zeigt.de.includes('Der Leserbrief am Wochenende antwortet dem Kommentar, nicht der Meldung.') &&
+      homeworkW16.zeigt.de.includes('Der O-Ton ist kein Beweis.') &&
+      homeworkW16.zeigt.de.includes('Die Zahl ohne Quelle schreibe ich mit einem Fragezeichen.'));
+
+  const checksW16 = lessonW16.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW16 = checksW16.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW16 = checksW16.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w16 makes 80 percent four of five, independently checking singular höre, the Faktencheck cloze and ist order, nennt and muss',
+    checksW16.length === 5 && checksW16[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW16[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW16.every(s => /^cap\.b2-w16\.s\d+$/.test(s.frage.prereq || '')) && checksW16.every(s => !s.hinweise) &&
+      checksW16.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w16.s07 | cap.b2-w16.s23 | cap.b2-w16.s24 | cap.b2-w16.s08 | cap.b2-w16.s20' &&
+      new Set(checksW16.map(s => s.frage.prereq)).size === 5 &&
+      checksW16[0].frage.optionen.some(o => o.text === targetsW16[3]) &&
+      checksW16[0].frage.optionen.some(o => o.text === 'Ich hört zur Frage.') &&
+      Object.values(checksW16[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW16.frage.zeigt === 'Der ____ widerlegt die Zahl in zwei Minuten.' &&
+      clozeCheckW16.frage.antworten.join(' ') === 'Faktencheck' && clozeCheckW16.frage.nearMiss.Faktenchecks &&
+      !win.DW.renderers.judgeCloze(clozeCheckW16.frage, 'Faktenchecks').ok &&
+      orderCheckW16.frage.correct.join(' ') === targetsW16[0] && orderCheckW16.frage.finite === 'ist' &&
+      orderCheckW16.frage.fields.vorfeld.join(' ') === 'Die Meldung' && orderCheckW16.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW16.frage.fields.mittelfeld.join(' ') === 'nicht der Kommentar.' &&
+      win.DW.order.score(orderCheckW16.frage, orderCheckW16.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW16.frage, ['Die', 'ist', 'Meldung', 'nicht', 'der', 'Kommentar.']).credit < 1 &&
+      checksW16[3].frage.optionen.some(o => o.text === 'Die Meldung nennt Ort und Zeit, der Kommentar nennt die Schuldigen.') &&
+      checksW16[3].frage.optionen.some(o => o.text === 'Die Meldung nennen Ort und Zeit.') &&
+      Object.values(checksW16[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW16[4].frage.optionen.some(o => o.text === targetsW16[4]) &&
+      checksW16[4].frage.optionen.some(o => o.text === 'Ich müssen Meldung vom Kommentar trennen.') &&
+      Object.values(checksW16[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
