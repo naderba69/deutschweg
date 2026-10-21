@@ -270,25 +270,49 @@ module.exports = [
       summaryRecap: 'واقعة ونتيجة وطلب',
     }),
 
-  U('b2-w07', 'نقاش: عمل', 'Arbeit diskutieren',
-    'Am Ende nennst du Vorteil, Nachteil und Grenze',
-    'في النهاية تسمّي حسنة ومساوئ وحدًا.',
+  U('b2-w07', 'العمل: حسنة ومساوئ وحدّ', 'Arbeit: Vorteil, Nachteil und Grenze',
+    'Am Ende diskutierst du Arbeit mit Vorteil, Nachteil und Grenze — in fünf Sätzen',
+    'في النهاية تناقش العمل بحسنة ومساوئ وحدّ في خمس جمل.',
     [
-      ['einerseits', 'الحسنة تُسمّى', 'المدح وحده ليس نقاشًا', 'nur Vorteile', 'المساوئ لازمة'],
-      ['andererseits', 'المساوئ تُسمّى', 'الذم وحده ليس نقاشًا', 'nur Nachteile', 'الحسنة لازمة'],
-      ['die Grenze', 'أين لا يصلح الحل', 'الحل الكلي كسل', 'das gilt für alle Berufe', 'الحد لازم'],
-      ['ein Beispiel aus der Arbeit', 'مثال عمل واحد', 'الشعار لا يكفي', 'Arbeit ist wichtig ohne Beispiel', 'المثال يسند']
+      ['Einerseits spart das Zeit.', 'يفتتح بجهة الحسنة المعلنة', 'الفاعل das مفرد: spart لا sparen', 'Einerseits sparen das Zeit.', 'المفرد: spart'],
+      ['Andererseits kostet es Kontrolle.', 'يقابل بجهة المساوئ دون إلغاء الأولى', 'بعد andererseits الفعل ثانٍ قبل الفاعل: kostet es', 'Andererseits es kostet Kontrolle.', 'الفعل ثانٍ دائمًا'],
+      ['Die Grenze ist das Team vor Ort.', 'يسمّي الحدّ الذي يتوقف عنده الحل', 'الخبر بعد ist رفع: das Team لا dem', 'Die Grenze ist dem Team vor Ort.', 'الخبر رفع بعد ist'],
+      ['Ein Beispiel ist die Nachtschicht.', 'يسند الحكم بمثال من العمل نفسه', 'الفاعل Beispiel مفرد: ist لا sind', 'Ein Beispiel sind die Nachtschicht.', 'المفرد: ist']
     ],
     [
-      ['Einerseits spart das Zeit.', 'من جهة هذا يوفّر وقتًا', 'Nur Vorteile zählen', 'المساوئ لازمة أيضًا', 'Einerseits'],
-      ['Andererseits kostet es Kontrolle.', 'من جهة أخرى يكلف رقابة', 'Nur Nachteile zählen', 'الحسنة لازمة أيضًا', 'Andererseits'],
-      ['Die Grenze ist das Team vor Ort.', 'الحد هو الفريق في المكان', 'Das gilt für alle Berufe', 'الحد لازم', 'Grenze'],
-      ['Ein Beispiel ist die Nachtschicht.', 'مثال هو الوردية الليلية', 'Arbeit ist wichtig ohne Beispiel', 'المثال يسند', 'Beispiel']
+      ['Einerseits spart das Zeit.', 'من جهة يوفّر هذا وقتًا', 'Einerseits sparen das Zeit.', 'الفاعل das مفرد: spart.', 'Zeit'],
+      ['Andererseits kostet es Kontrolle.', 'من جهة أخرى يكلّف هذا رقابة', 'Andererseits es kostet Kontrolle.', 'بعد andererseits الفعل ثانٍ.', 'Kontrolle'],
+      ['Die Grenze ist das Team vor Ort.', 'الحدّ هو الفريق في المكان', 'Die Grenze ist dem Team vor Ort.', 'الخبر رفع: das Team.', 'Grenze'],
+      ['Ein Beispiel ist die Nachtschicht.', 'مثال هو الوردية الليلية', 'Ein Beispiel sind die Nachtschicht.', 'المفرد: ist.', 'Beispiel']
     ],
     'Im Betrieb ist die Arbeitszeit der Streitpunkt. Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst. Der Betriebsrat nennt eine Zahl: Die Produktivität sinkt nach acht Stunden. Die Belastung bleibt im Team der Abteilung ungleich. Der Tarifvertrag regelt die Pause, nicht die Erreichbarkeit. Wer im Homeoffice arbeitet, braucht klare Regeln. Die Abteilung testet ein Modell mit Vertrauensarbeitszeit. Die Kollegen melden Überforderung und Unterforderung zugleich. Die Weiterbildung fehlt, das Lob auch. Arbeitsplatzsicherheit und Flexibilität sind kein Widerspruch. In der Betriebsversammlung stehen die Überstundenregelung, die Zulage und die Schichtzulage. Der Arbeitgeber und der Arbeitnehmer streiten über die Gleichstellung. Die Arbeitsmittel stellt der Betrieb.',
-    'Die Grenze ist das Team vor Ort.',
-    'Nenne morgen Vorteil, Nachteil und Grenze.',
-    'غدًا سمِّ حسنة ومساوئ وحدًا.'),
+    'Ich muss beide Seiten nennen.',
+    'Wiederhole morgen die fünf Sätze: Einerseits spart das Zeit. Andererseits kostet es Kontrolle. Die Grenze ist das Team vor Ort. Ein Beispiel ist die Nachtschicht. Ich muss beide Seiten nennen. Die Abteilung testet ein Modell mit Vertrauensarbeitszeit. Die Kollegen melden Überforderung und Unterforderung zugleich. Die Weiterbildung fehlt, das Lob auch. Arbeitsplatzsicherheit und Flexibilität sind kein Widerspruch. Die Arbeitsmittel stellt der Betrieb. In der Betriebsversammlung stehen die Überstundenregelung, die Zulage und die Schichtzulage. Der Arbeitgeber und der Arbeitnehmer streiten über die Gleichstellung. Plane morgen eine kurze Debatte im Team: Sprich zuerst über die Gleitzeit, dann über den Schichtdienst und die Erreichbarkeit nach Feierabend. Nenne einen Vorteil, einen Nachteil und eine klare Grenze. Ein Beispiel aus der Nachtschicht macht die Debatte glaubhaft. Die Probezeit, die Kündigung und die Kündigungsfrist stehen nicht zur Debatte, aber das Gehalt und die Urlaubsregelung schon. Der Betriebsrat hört zu, und am Ende steht eine kurze Notiz. Die Vereinbarkeit von Familie und Beruf bleibt die offene Frage. Der Tarifvertrag regelt die Pause, die Betriebsvereinbarung die Gleitzeit.',
+    'غدًا أعد جمل مناقشة العمل الخمس ولاحظ ترتيب الحسنة والمساوئ والحدّ والمثال.',
+    {
+      factFamilies: ['konjugation', 'wortstellung', 'kasus', 'konjugation'],
+      imitateNearMiss: 'Zeiten',
+      transformHint: 'في الجملة الختامية الجانبان معًا: Ich muss beide Seiten nennen — المصدر nennen يغلق الجملة بعد muss.',
+      orderSentence: 'Ich muss beide Seiten nennen.',
+      checkOrderSentence: 'Ein Beispiel ist die Nachtschicht.',
+      orderAr: 'رتّب الجملة الختامية: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر nennen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر nennen يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Arbeitsdebatte in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: حسنة بـEinerseits بفعل مفرد، ومساوئ بـAndererseits بفعل ثانٍ، وحدًّا بخبر مرفوع، ومثالًا بفعل مفرد، والتزامًا بالجانبين معًا.',
+        hinweise: ['بعد Einerseits وAndererseits الفعل ثانٍ دائمًا.', 'الحدّ قبل الخلاصة: أين يتوقف الحل.'],
+        prompt: 'اكتب جمل مناقشة العمل الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Einerseits spart das Zeit. · Andererseits kostet es Kontrolle. · Die Grenze ist das Team vor Ort. · Ein Beispiel ist die Nachtschicht. · Ich muss beide Seiten nennen.',
+        points: ['Einerseits spart das Zeit.', 'Andererseits kostet es Kontrolle.', 'Die Grenze ist das Team vor Ort.', 'Ein Beispiel ist die Nachtschicht.', 'Ich muss beide Seiten nennen.'],
+        minWords: 25,
+        frage: 'اكتب جمل مناقشة العمل الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Einerseits spart das Zeit. Andererseits kostet es Kontrolle. Die Grenze ist das Team vor Ort. Ein Beispiel ist die Nachtschicht. Ich muss beide Seiten nennen.',
+      summaryDe: 'Einerseits spart das Zeit. Andererseits kostet es Kontrolle. Die Grenze ist das Team vor Ort. Ein Beispiel ist die Nachtschicht. Ich muss beide Seiten nennen.',
+      summaryAr: 'النقاش ميزان معلن: حسنة ومساوئ وحدّ ومثال، وجانبان معًا قبل الحكم.',
+      summaryRecap: 'حسنة ومساوئ وحدّ',
+    }),
 
   U('b2-w08', 'سماع لهجة', 'Dialekt',
     'Am Ende unterscheidest du und ahmst nicht nach',

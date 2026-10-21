@@ -7,12 +7,12 @@ module.exports = {
 
   'b2-w07': {
     items: [
-      ['einerseits', '—', 'من جهة', 'Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst.', 'Einerseits spart Gleitzeit Wege, andererseits stört den Schichtdienst.', 'الفعل ثانٍ بعد andererseits.', 'wortstellung', 'Einerseits'],
+      ['einerseits', '—', 'من جهة', 'Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst.', 'Einerseits spart Gleitzeit Wege, andererseits stört den Schichtdienst.', 'الجملة تحتاج فاعلًا: sie.', 'wortstellung', 'Einerseits'],
       ['andererseits', '—', 'من جهة أخرى', 'Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst.', 'Einerseits spart Gleitzeit Wege, andererseits sie stört den Schichtdienst.', 'الفعل ثانٍ بعد andererseits.', 'wortstellung', 'andererseits'],
       ['der Nutzen', '—', 'الفائدة', 'Der Nutzen steht vor dem Preis.', 'Der Nutzen stehen vor dem Preis.', 'المفرد: steht.', 'konjugation', 'Nutzen'],
       ['der Haken', 'die Haken', 'العيب الخفي', 'Jede Regelung hat einen Haken.', 'Jede Regelung hat ein Haken.', 'المفعول نصب: einen.', 'kasus', 'Haken'],
       ['die Einschränkung', 'die Einschränkungen', 'القيد', 'Eine Einschränkung zum Beruf bleibt: die Branche.', 'Eine Einschränkung zum Beruf bleiben: die Branche.', 'المفرد: bleibt.', 'konjugation', 'Einschränkung'],
-      ['das Homeoffice', '—', 'العمل من المنزل', 'Homeoffice passt nicht zu jeder Tätigkeit, das Büro auch nicht.', 'Homeoffice passt nicht für jede Tätigkeit.', 'passen zu + داتيف.', 'präposition', 'Homeoffice'],
+      ['das Homeoffice', '—', 'العمل من المنزل', 'Homeoffice passt nicht zu jeder Tätigkeit, das Büro auch nicht.', 'Homeoffice passt nicht zu jede Tätigkeit, das Büro auch nicht.', 'بعد zu يُجرّ الاسم: zu jeder Tätigkeit.', 'präposition', 'Homeoffice'],
       ['die Teilzeit', '—', 'الدوام الجزئي', 'Die Teilzeit ist im Team umstritten, der Lohn auch.', 'Die Teilzeit sind im Team umstritten.', 'المفرد: ist.', 'konjugation', 'Teilzeit'],
       ['die Vollzeit', '—', 'الدوام الكامل', 'Vollzeit ist der Normalfall, nicht die Regel.', 'Vollzeit ist der Normalfall, nicht das Regel.', 'مؤنث: die Regel.', 'genus', 'Vollzeit'],
       ['die Arbeitszeit', 'die Arbeitszeiten', 'وقت العمل', 'Die Arbeitszeit beginnt um acht Uhr.', 'Die Arbeitszeit beginnen um acht Uhr.', 'المفرد: beginnt.', 'konjugation', 'Arbeitszeit'],
@@ -22,7 +22,7 @@ module.exports = {
       ['die Nachtschicht', 'die Nachtschichten', 'الوردية الليلية', 'Die Nachtschicht ist ein Beispiel aus der Tätigkeit, der Arbeitsweg und das Pendeln auch.', 'Die Nachtschicht sind ein Beispiel aus der Tätigkeit.', 'المفرد: ist.', 'konjugation', 'Nachtschicht'],
       ['der Schichtdienst', '—', 'العمل بالورديات', 'Der Schichtdienst macht den Schlaf unregelmäßig.', 'Der Schichtdienst machen den Schlaf unregelmäßig.', 'المفرد: macht.', 'konjugation', 'Schichtdienst'],
       ['der Feierabend', '—', 'نهاية العمل', 'Der Feierabend beginnt selten pünktlich, der Stress endet selten mit ihm.', 'Der Feierabend beginnen selten pünktlich.', 'المفرد: beginnt.', 'konjugation', 'Feierabend'],
-      ['die Pünktlichkeit', '—', 'الالتزام بالوقت', 'Die Pünktlichkeit im Betrieb prüft die Zeiterfassung.', 'Die Pünktlichkeit sind im Betrieb keine Höflichkeit.', 'المفرد: ist.', 'konjugation', 'Pünktlichkeit'],
+      ['die Pünktlichkeit', '—', 'الالتزام بالوقت', 'Die Pünktlichkeit im Betrieb prüft die Zeiterfassung.', 'Die Pünktlichkeit im Betrieb prüfen die Zeiterfassung.', 'الفاعل die Zeiterfassung مفرد: prüft.', 'konjugation', 'Pünktlichkeit'],
       ['die Produktivität', '—', 'الإنتاجية', 'Die Produktivität sinkt nach acht Stunden.', 'Die Produktivität sinken nach acht Stunden.', 'المفرد: sinkt.', 'konjugation', 'Produktivität'],
       ['die Belastung', 'die Belastungen', 'العبء', 'Die Belastung ist nicht für alle gleich, Stress und Druck auch nicht.', 'Die Belastung sind nicht für alle gleich.', 'المفرد: ist.', 'konjugation', 'Belastung'],
       ['die Überlastung', '—', 'الإرهاق الزائد', 'Die Überlastung endet selten in einem Dankeschön.', 'Die Überlastung enden selten in einem Dankeschön.', 'المفرد: endet.', 'konjugation', 'Überlastung'],
@@ -38,8 +38,8 @@ module.exports = {
       ['der Vertrag', 'die Verträge', 'العقد', 'Der Vertrag regelt Arbeitszeit, Verantwortung und Erholung.', 'Der Vertrag regeln Arbeitszeit, Verantwortung und Erholung.', 'المفرد: regelt.', 'konjugation', 'Vertrag'],
       ['die Stelle', 'die Stellen', 'الوظيفة', 'Die Stelle ist ab Mai frei; der Mutterschutz ist geregelt.', 'Die Stelle sind ab Mai frei.', 'المفرد: ist.', 'konjugation', 'Stelle'],
       ['die Bewerbung', 'die Bewerbungen', 'الترشح', 'Die Bewerbung nennt zwei Beispiele aus der Arbeit; die Beförderung kommt später.', 'Die Bewerbung nennen zwei Beispiele aus der Arbeit.', 'المفرد: nennt.', 'konjugation', 'Bewerbung'],
-      ['das Vorstellungsgespräch', 'die Vorstellungsgespräche', 'مقابلة التوظيف', 'Im Vorstellungsgespräch fragt niemand nach Überstunden, aber nach dem Ausfall.', 'In dem Vorstellungsgespräch fragt niemand nach Überstunden.', 'im Vorstellungsgespräch.', 'präposition', 'Vorstellungsgespräch'],
-      ['die Arbeitsbedingung', 'die Arbeitsbedingungen', 'شرط العمل', 'Die Arbeitsbedingungen und das Betriebsklima sind umstritten.', 'Die Arbeitsbedingungen im Betrieb sind umstritten, gell?', '«gell» عامية.', 'register', 'Arbeitsbedingungen'],
+      ['das Vorstellungsgespräch', 'die Vorstellungsgespräche', 'مقابلة التوظيف', 'Im Vorstellungsgespräch fragt niemand nach Überstunden, aber nach dem Ausfall.', 'Im Vorstellungsgespräch fragen niemand nach Überstunden, aber nach dem Ausfall.', 'الفاعل niemand مفرد: fragt.', 'präposition', 'Vorstellungsgespräch'],
+      ['die Arbeitsbedingung', 'die Arbeitsbedingungen', 'شرط العمل', 'Die Arbeitsbedingungen und das Betriebsklima sind umstritten.', 'Die Arbeitsbedingungen und das Betriebsklima sind umstritten, gell?', '«gell» عامية.', 'register', 'Arbeitsbedingungen'],
       ['die Vereinbarkeit', '—', 'التوفيق', 'Die Vereinbarkeit von Familie und Beruf bleibt die Streitfrage; Elternzeit ist noch nicht geregelt.', 'Die Vereinbarkeit von Familie und Beruf bleiben die Streitfrage.', 'المفرد: bleibt.', 'konjugation', 'Vereinbarkeit'],
       ['die Kinderbetreuung', '—', 'رعاية الأطفال', 'Ohne Kinderbetreuung hilft die beste Gleitzeit nichts.', 'Ohne Kinderbetreuung hilft der beste Gleitzeit nichts.', 'مؤنث: die beste Gleitzeit.', 'deklination', 'Kinderbetreuung'],
       ['die Rente', 'die Renten', 'التقاعد', 'Die Rente mit sechzig ist längst kein Automatismus, die Ausbildung auch nicht.', 'Die Rente mit sechzig sind längst kein Automatismus.', 'المفرد: ist.', 'konjugation', 'Rente'],
@@ -64,10 +64,27 @@ module.exports = {
       'der Arbeitnehmer', 'die Personalabteilung'
     ],
     tricks: [
-      { trick: 'الميزان المعلن: einerseits … andererseits …', wie: 'Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst.', warum: 'الطرف الواحد يبدو دعاية؛ الإقرار بالوجهين يجعل خصمك يسمع الخلاصة.', anchor: 'andererseits' },
-      { trick: 'سمِّ الحد: die Grenze ist …', wie: 'Die Einschränkung bleibt: das Team vor Ort.', warum: '«ينفع للجميع» عبارة مكشوفة؛ الحد يشتري المصداقية.', anchor: 'Eine Einschränkung' },
-      { trick: 'مثال من العمل نفسه: ein Beispiel aus der Tätigkeit', wie: 'Ein Beispiel ist die Nachtschicht im Betrieb.', warum: 'الحجة المجردة تُنسى؛ الوردية الليلية تُصدَّق.', anchor: 'aus der Tätigkeit' }
-    ]
+      { trick: 'الميزان المعلن: einerseits … andererseits …', wie: 'Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst.', warum: 'الطرف الواحد يبدو دعاية؛ الإقرار بالوجهين يجعل خصمك يسمع الخلاصة.', anchor: 'andererseits stört sie den Schichtdienst' },
+      { trick: 'سمِّ الحد: die Grenze ist …', wie: 'Die Einschränkung bleibt: das Team vor Ort.', warum: '«ينفع للجميع» عبارة مكشوفة؛ الحد يشتري المصداقية.', anchor: 'Die Einschränkung bleibt: das Team vor Ort' },
+      { trick: 'مثال من العمل نفسه: ein Beispiel aus der Tätigkeit', wie: 'Ein Beispiel ist die Nachtschicht im Betrieb.', warum: 'الحجة المجردة تُنسى؛ الوردية الليلية تُصدَّق.', anchor: 'Ein Beispiel ist die Nachtschicht im Betrieb' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'das Homeoffice': 'Homeoffices',
+      'die Betriebsvereinbarung': 'Betriebsvereinbarungen',
+      'die Lohnerhöhung': 'Lohnerhöhungen'
+    },
+    clozeItemIndex: 2,
+    clozeNearMiss: 'Nutzens',
+    checkItemIndex: 34,
+    extraCheck: {
+      right: 'Ich muss beide Seiten nennen.',
+      bad: 'Ich muss beide Seite nennen.',
+      why: 'الجمع: beide Seiten لا Seite.',
+      family: 'deklination',
+      prereq: 'cap.b2-w07.s20',
+      frage: 'أي جملة تجمع الجانبين بصيغة الجمع الصحيحة؟'
+    }
   }
 
 };

@@ -194,7 +194,7 @@
     ['سماع محاضرة: الإنصات والتدوين', 'Vortrag: zuhören und mitschreiben', 'سماع', 'listening'],
     ['تقنية القراءة: المطلوب أولًا وتقسيم الوقت', 'Lesetechnik: Aufgabe zuerst, Zeit teilen', 'امتحان', 'exam-technique'],
     ['خطاب شكوى: واقعة ونتيجة وطلب', 'Beschwerdebrief: Tatsache, Folge und Bitte', 'شكوى رسمية', 'writing'],
-    ['نقاش: عمل', 'Arbeit diskutieren', 'العمل', 'discussion'],
+    ['العمل: حسنة ومساوئ وحدّ', 'Arbeit: Vorteil, Nachteil und Grenze', 'العمل', 'discussion'],
     ['سماع لهجة', 'Dialekt', 'تمييز لهجة', 'listening'],
     ['تحليل رسم', 'Grafik', 'تعليق على بيانات', 'text-analysis'],
     ['ورشة كتابة: تلخيص', 'Zusammenfassung', 'تلخيص', 'writing'],

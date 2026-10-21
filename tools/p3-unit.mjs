@@ -19201,6 +19201,136 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW6[4].frage.optionen.some(o => o.text === targetsW6[4]) &&
       checksW6[4].frage.optionen.some(o => o.text === 'Der Ton bleibt sachliche.') &&
       Object.values(checksW6[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+
+  const lessonW7 = win.DW_LESSONS['b2-w07'];
+  const rowW7 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w07');
+  const byWordW7 = Object.fromEntries(lessonW7.wortschatz.map(it => [it.de, it]));
+  const trickStepsW7 = lessonW7.schritte.filter(s => s.merkhilfe);
+  const targetsW7 = [
+    'Einerseits spart das Zeit.',
+    'Andererseits kostet es Kontrolle.',
+    'Die Grenze ist das Team vor Ort.',
+    'Ein Beispiel ist die Nachtschicht.',
+    'Ich muss beide Seiten nennen.'
+  ];
+  t('Corpus workshop b2-w07 precisely scopes five work-debate moves weighing one side, the other side, a named limit, a workplace example and both-sides closure',
+    lessonW7.title.de === 'Arbeit: Vorteil, Nachteil und Grenze' &&
+      lessonW7.title.ar === 'العمل: حسنة ومساوئ وحدّ' &&
+      lessonW7.level === 'B2' && lessonW7.kind === 'workshop' &&
+      rowW7.title.de === lessonW7.title.de && rowW7.title.ar === lessonW7.title.ar &&
+      rowW7.theme === 'العمل' &&
+      rowW7.grammar.item === 'العمل: حسنة ومساوئ وحدّ' &&
+      rowW7.grammar.method === 'explicit' &&
+      rowW7.words.receptive === 90 && rowW7.words.productive === 60 &&
+      lessonW7.schritte.length === 36 && lessonW7.wortschatz.length === 40 &&
+      lessonW7.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW7.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW7[i]) &&
+      lessonW7.schritte[0].zeigt.de === 'Am Ende diskutierst du Arbeit mit Vorteil, Nachteil und Grenze — in fünf Sätzen' &&
+      lessonW7.schritte.find(s => s.id === 's20').zeigt.de === targetsW7[4]);
+
+  const expectedWordsW7 = [
+    'einerseits', 'andererseits', 'der Nutzen', 'der Haken', 'die Einschränkung', 'das Homeoffice',
+    'die Teilzeit', 'die Vollzeit', 'die Arbeitszeit', 'die Gleitzeit', 'die Überstunde', 'die Erholung',
+    'die Nachtschicht', 'der Schichtdienst', 'der Feierabend', 'die Pünktlichkeit', 'die Produktivität',
+    'die Belastung', 'die Überlastung', 'die Erreichbarkeit', 'der Betrieb', 'die Betriebsvereinbarung',
+    'der Betriebsrat', 'die Gewerkschaft', 'der Tarifvertrag', 'die Probezeit', 'die Kündigung',
+    'die Kündigungsfrist', 'der Vertrag', 'die Stelle', 'die Bewerbung', 'das Vorstellungsgespräch',
+    'die Arbeitsbedingung', 'die Vereinbarkeit', 'die Kinderbetreuung', 'die Rente', 'das Gehalt',
+    'die Lohnerhöhung', 'die Urlaubsregelung', 'der Arbeitsschutz'
+  ];
+  const errorsW7 = lessonW7.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w07 reviews all 40 entries and three bounded mnemonics converting two false foils, mirroring two truncated foils and fixing one misleading explanation',
+    Object.keys(byWordW7).join(' | ') === expectedWordsW7.join(' | ') &&
+      lessonW7.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW7.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW7['das Homeoffice'].err === 'Homeoffice passt nicht zu jede Tätigkeit, das Büro auch nicht.' &&
+      byWordW7['das Vorstellungsgespräch'].err === 'Im Vorstellungsgespräch fragen niemand nach Überstunden, aber nach dem Ausfall.' &&
+      byWordW7['die Pünktlichkeit'].err === 'Die Pünktlichkeit im Betrieb prüfen die Zeiterfassung.' &&
+      byWordW7['die Arbeitsbedingung'].err === 'Die Arbeitsbedingungen und das Betriebsklima sind umstritten, gell?' &&
+      ['Homeoffice passt nicht für jede Tätigkeit.', 'Die Pünktlichkeit sind im Betrieb keine Höflichkeit.',
+        'In dem Vorstellungsgespräch fragt niemand nach Überstunden.', 'Die Arbeitsbedingungen im Betrieb sind umstritten, gell?']
+        .every(x => !errorsW7.includes(x)) &&
+      byWordW7['einerseits'].err === 'Einerseits spart Gleitzeit Wege, andererseits stört den Schichtdienst.' &&
+      byWordW7['einerseits'].why.includes('sie') &&
+      ['Der Nutzen stehen vor dem Preis.', 'Jede Regelung hat ein Haken.',
+        'Ohne Kinderbetreuung hilft der beste Gleitzeit nichts.']
+        .every(x => errorsW7.includes(x)) &&
+      byWordW7['die Vereinbarkeit'].ex === 'Die Vereinbarkeit von Familie und Beruf bleibt die Streitfrage; Elternzeit ist noch nicht geregelt.' &&
+      byWordW7['der Tarifvertrag'].ex === 'Der Tarifvertrag gilt für alle im Betrieb; die Einarbeitung regelt er nicht.' &&
+      trickStepsW7.length === 3 &&
+      trickStepsW7[0].zeigt.de === 'andererseits stört sie den Schichtdienst' &&
+      trickStepsW7[0].merkhilfe.wie.includes('Einerseits spart Gleitzeit Wege, andererseits stört sie den Schichtdienst.') &&
+      trickStepsW7[1].zeigt.de === 'Die Einschränkung bleibt: das Team vor Ort' &&
+      trickStepsW7[1].merkhilfe.wie.includes('Die Einschränkung bleibt: das Team vor Ort.') &&
+      trickStepsW7[2].zeigt.de === 'Ein Beispiel ist die Nachtschicht im Betrieb' &&
+      trickStepsW7[2].merkhilfe.wie.includes('Ein Beispiel ist die Nachtschicht im Betrieb.'));
+
+  const wordClozeAW7 = lessonW7.schritte.find(s => s.id === 's09');
+  const wordClozeBW7 = lessonW7.schritte.find(s => s.id === 's13');
+  const wordClozeCW7 = lessonW7.schritte.find(s => s.id === 's17');
+  const imitateW7 = lessonW7.schritte.find(s => s.id === 's19');
+  const drillW7 = lessonW7.schritte.find(s => s.id === 's23');
+  const orderW7 = lessonW7.schritte.find(s => s.id === 's24');
+  const writingW7 = lessonW7.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW7 = lessonW7.schritte.find(s => s.phase === 'Produktion');
+  const summaryW7 = lessonW7.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW7 = lessonW7.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW7 = lessonW7.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w07 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 25-word five-target production',
+    wordClozeAW7.frage.zeigt === '____ passt nicht zu jeder Tätigkeit, das Büro auch nicht.' && wordClozeAW7.frage.antworten.join(' ') === 'Homeoffice' &&
+      wordClozeAW7.frage.nearMiss.Homeoffices && !win.DW.renderers.judgeCloze(wordClozeAW7.frage, 'Homeoffices').ok &&
+      wordClozeBW7.frage.zeigt === 'Die ____ regelt die Gleitzeit; die Mitbestimmung steht im Gesetz.' && wordClozeBW7.frage.antworten.join(' ') === 'Betriebsvereinbarung' &&
+      wordClozeBW7.frage.nearMiss.Betriebsvereinbarungen && !win.DW.renderers.judgeCloze(wordClozeBW7.frage, 'Betriebsvereinbarungen').ok &&
+      wordClozeCW7.frage.zeigt === 'Die ____ fällt dieses Jahr aus, der Aufstieg auch.' && wordClozeCW7.frage.antworten.join(' ') === 'Lohnerhöhung' &&
+      wordClozeCW7.frage.nearMiss['Lohnerhöhungen'] && !win.DW.renderers.judgeCloze(wordClozeCW7.frage, 'Lohnerhöhungen').ok &&
+      (imitateW7.frage.zeigt === 'Einerseits spart das ____.' || imitateW7.zeigt.de === 'Einerseits spart das ____.') && imitateW7.frage.antworten.join(' ') === 'Zeit' &&
+      imitateW7.frage.nearMiss['Zeiten'] && !win.DW.renderers.judgeCloze(imitateW7.frage, 'Zeiten').ok &&
+      drillW7.frage.zeigt === 'Der ____ steht vor dem Preis.' && drillW7.frage.antworten.join(' ') === 'Nutzen' &&
+      drillW7.frage.nearMiss.Nutzens && !win.DW.renderers.judgeCloze(drillW7.frage, 'Nutzens').ok &&
+      lessonW7.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW7.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW7.frage.correct.join(' ') === targetsW7[4] && orderW7.frage.finite === 'muss' && orderW7.frage.verbFirst === false &&
+      orderW7.frage.fields.vorfeld.join(' ') === 'Ich' && orderW7.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW7.frage.fields.mittelfeld.join(' ') === 'beide Seiten nennen.' &&
+      win.DW.order.score(orderW7.frage, orderW7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW7.frage, ['Ich', 'beide', 'Seiten', 'muss', 'nennen.']).credit < 1 &&
+      writingW7.frage.points.join(' | ') === targetsW7.join(' | ') && writingW7.frage.minWords === 25 &&
+      targetsW7.join(' ').split(/\s+/).length === 25 &&
+      targetsW7.every(x => [writingW7.frage.promptDe, summaryW7.zeigt.de, homeworkW7.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW7.every(x => norm(speakingW7.erklaerung).includes(norm(x))) &&
+      modelW7.zeigt.de.includes('Im Betrieb ist die Arbeitszeit der Streitpunkt.') &&
+      modelW7.zeigt.de.includes('Die Belastung bleibt im Team der Abteilung ungleich.') &&
+      homeworkW7.zeigt.de.includes('Die Abteilung testet ein Modell mit Vertrauensarbeitszeit.') &&
+      homeworkW7.zeigt.de.includes('Plane morgen eine kurze Debatte im Team'));
+
+  const checksW7 = lessonW7.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW7 = checksW7.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW7 = checksW7.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w07 makes 80 percent four of five, independently checking the example, the Nutzen cloze and ist order, die beste Gleitzeit and plural Seiten',
+    checksW7.length === 5 && checksW7[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW7[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW7.every(s => /^cap\.b2-w07\.s\d+$/.test(s.frage.prereq || '')) && checksW7.every(s => !s.hinweise) &&
+      checksW7.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w07.s07 | cap.b2-w07.s23 | cap.b2-w07.s24 | cap.b2-w07.s16 | cap.b2-w07.s20' &&
+      new Set(checksW7.map(s => s.frage.prereq)).size === 5 &&
+      checksW7[0].frage.optionen.some(o => o.text === targetsW7[3]) &&
+      checksW7[0].frage.optionen.some(o => o.text === 'Ein Beispiel sind die Nachtschicht.') &&
+      Object.values(checksW7[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW7.frage.zeigt === 'Der ____ steht vor dem Preis.' &&
+      clozeCheckW7.frage.antworten.join(' ') === 'Nutzen' && clozeCheckW7.frage.nearMiss.Nutzens &&
+      !win.DW.renderers.judgeCloze(clozeCheckW7.frage, 'Nutzens').ok &&
+      orderCheckW7.frage.correct.join(' ') === targetsW7[3] && orderCheckW7.frage.finite === 'ist' &&
+      orderCheckW7.frage.fields.vorfeld.join(' ') === 'Ein Beispiel' && orderCheckW7.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW7.frage.fields.mittelfeld.join(' ') === 'die Nachtschicht.' &&
+      win.DW.order.score(orderCheckW7.frage, orderCheckW7.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW7.frage, ['Ein', 'Beispiel', 'die', 'ist', 'Nachtschicht.']).credit < 1 &&
+      checksW7[3].frage.optionen.some(o => o.text === 'Ohne Kinderbetreuung hilft die beste Gleitzeit nichts.') &&
+      checksW7[3].frage.optionen.some(o => o.text === 'Ohne Kinderbetreuung hilft der beste Gleitzeit nichts.') &&
+      Object.values(checksW7[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checksW7[4].frage.optionen.some(o => o.text === targetsW7[4]) &&
+      checksW7[4].frage.optionen.some(o => o.text === 'Ich muss beide Seite nennen.') &&
+      Object.values(checksW7[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
