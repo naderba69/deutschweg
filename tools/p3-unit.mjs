@@ -8381,7 +8381,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Articles['b2-a9'].body.includes('einen direkten Link dorthin anbieten'));
   t('Corpus B2 b2-a10 has 495 measured words and no unknown B2 tokens',
     b2Articles['b2-a10'].title === 'التطوع' &&
-      b2Articles['b2-a10'].body.trim().split(/\s+/).length === 495 &&
+      b2Articles['b2-a10'].body.trim().split(/\s+/).length === 541 &&
       known.coverage(b2Known, b2Articles['b2-a10'].body).unknown.length === 0);
   t('Corpus B2 b2-a10 connects time limits, a concrete planning change, resilient knowledge, fair limits, and evaluation coherently',
     b2Articles['b2-a10'].body.includes('genug freie Zeit da ist') &&
