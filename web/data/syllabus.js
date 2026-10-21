@@ -204,7 +204,7 @@
     ['التعليق: ادعاء بلا شاهد', 'Kommentar: Behauptung ohne Beleg', 'رأي', 'text-analysis'],
     ['البيئة: إجراء وأثر وحدّ', 'Umwelt: Maßnahme, Wirkung und Grenze', 'البيئة', 'discussion'],
     ['سماع الأخبار: خبر أو تعليق', 'Nachrichten hören: Meldung oder Kommentar', 'أخبار', 'listening'],
-    ['ورشة: رسالة رسمية', 'Formeller Brief B2', 'مراسلة', 'writing'],
+    ['الرسالة الرسمية: مناسبة وطلب وأجل', 'Formeller Brief: Anlass, Bitte, Frist', 'مراسلة', 'writing'],
     ['تقنية: تحدّث', 'Sprechtechnik', 'امتحان', 'exam-technique'],
     ['نقاش: تعليم', 'Bildung', 'التعليم', 'discussion'],
     ['تحليل موقفين', 'Pro und Kontra', 'حجاج', 'text-analysis']

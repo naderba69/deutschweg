@@ -64,10 +64,27 @@ module.exports = {
       'die Vollmacht', 'die Beglaubigung'
     ],
     tricks: [
-      { trick: 'المناسبة أولًا: Der Anlass steht im ersten Satz', wie: 'Der Antrag nennt Anlass, Bitte und Frist.', warum: 'ثلاث جمل مجاملة قبل المناسبة تضيّع الطلب.', anchor: 'Anlass, Bitte und Frist' },
-      { trick: 'اطلب شيئًا واحدًا: Die Bitte ist konkret', wie: 'Ich bitte um eine Antwort bis Freitag.', warum: 'العتاب ليس طلبًا؛ الموظف يعالج فعلًا لا شعورًا.', anchor: 'Ich bitte um eine Antwort' },
+      { trick: 'المناسبة أولًا: Der Anlass steht im ersten Satz', wie: 'Der Antrag nennt Anlass, Bitte und Frist.', warum: 'ثلاث جمل مجاملة قبل المناسبة تضيّع الطلب.', anchor: 'Der Antrag nennt Anlass, Bitte und Frist' },
+      { trick: 'اطلب شيئًا واحدًا: Die Bitte ist konkret', wie: 'Ich bitte um eine Antwort bis Freitag.', warum: 'العتاب ليس طلبًا؛ الموظف يعالج فعلًا لا شعورًا.', anchor: 'Ich bitte um eine Antwort bis Freitag' },
       { trick: 'اسمِّ الأجل: Die Frist steht am Ende', wie: 'Die Frist endet am Freitag, nicht irgendwann.', warum: 'بلا أجل يبقى الطلب مفتوحًا إلى ما لا نهاية.', anchor: 'Die Frist endet am Freitag' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Anrede': 'Anreden',
+      'der Sachbearbeiter': 'Sachbearbeitern',
+      'die Rückfrage': 'Rückfragen'
+    },
+    clozeItemIndex: 35,
+    clozeNearMiss: 'Fristen',
+    checkItemIndex: 10,
+    extraCheck: {
+      right: 'Ich muss Anlass, Bitte und Frist nennen.',
+      bad: 'Ich musst Anlass, Bitte und Frist nennen.',
+      why: 'الفاعل ich مفرد: muss لا musst.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w17.s20',
+      frage: 'أي جملة تُلزم بتسمية المناسبة والطلب والأجل بفعل صحيح؟'
+    }
   }
 
 };

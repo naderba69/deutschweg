@@ -20461,6 +20461,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW16[4].frage.optionen.some(o => o.text === targetsW16[4]) &&
       checksW16[4].frage.optionen.some(o => o.text === 'Ich müssen Meldung vom Kommentar trennen.') &&
       Object.values(checksW16[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonW17 = win.DW_LESSONS['b2-w17'];
+  const rowW17 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w17');
+  const byWordW17 = Object.fromEntries(lessonW17.wortschatz.map(it => [it.de, it]));
+  const trickStepsW17 = lessonW17.schritte.filter(s => s.merkhilfe);
+  const targetsW17 = [
+    'Der Anlass steht im ersten Satz.',
+    'Ich bitte um eine Antwort bis Freitag.',
+    'Die Frist ist Freitag.',
+    'Sie bleiben Sie.',
+    'Ich muss Anlass, Bitte und Frist nennen.'
+  ];
+  t('Corpus workshop b2-w17 precisely scopes five formal-letter moves occasion first, one concrete request, a named deadline, formality intact and the whole method bound with muss',
+    lessonW17.title.de === 'Formeller Brief: Anlass, Bitte, Frist' &&
+      lessonW17.title.ar === 'الرسالة الرسمية: مناسبة وطلب وأجل' &&
+      lessonW17.level === 'B2' && lessonW17.kind === 'workshop' &&
+      rowW17.title.de === lessonW17.title.de && rowW17.title.ar === lessonW17.title.ar &&
+      rowW17.theme === 'مراسلة' &&
+      rowW17.grammar.item === 'الرسالة الرسمية: مناسبة وطلب وأجل' &&
+      rowW17.grammar.method === 'explicit' &&
+      rowW17.words.receptive === 90 && rowW17.words.productive === 60 &&
+      lessonW17.schritte.length === 36 && lessonW17.wortschatz.length === 40 &&
+      lessonW17.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW17.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW17[i]) &&
+      lessonW17.schritte[0].zeigt.de === 'Am Ende schreibst du Anlass, Bitte und Frist — in fünf Sätzen' &&
+      lessonW17.schritte.find(s => s.id === 's20').zeigt.de === targetsW17[4]);
+
+  const expectedWordsW17 = [
+    'der Briefkopf', 'der Absender', 'der Empfänger', 'die Anschrift', 'der Betreff',
+    'die Anrede', 'die Grußformel', 'die Unterschrift', 'die Höflichkeit', 'die Formulierung',
+    'der Antrag', 'die Kündigung', 'die Beschwerde', 'der Widerspruch', 'die Rückmeldung',
+    'die Bestätigung', 'die Verlängerung', 'die Genehmigung', 'die Ablehnung', 'der Bescheid',
+    'die Behörde', 'der Sachbearbeiter', 'der Vorgang', 'die Zahlung', 'die Rechnung',
+    'die Mahnung', 'die Erstattung', 'die Gutschrift', 'der Vertrag', 'der Nachweis',
+    'die Anlage', 'das Einschreiben', 'die Kopie', 'der Anhang', 'die Quittung',
+    'die Frist', 'die Verzögerung', 'die Rückfrage', 'die Zusage', 'die Absage'
+  ];
+  const errorsW17 = lessonW17.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w17 reviews all 40 entries and three bounded mnemonics needing no vocabulary repair while every foil stays a genuine case or singular agreement error',
+    Object.keys(byWordW17).join(' | ') === expectedWordsW17.join(' | ') &&
+      lessonW17.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW17.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW17['der Briefkopf'].err === 'Im Briefkopf stehen Name und Anschrift der Absender.' &&
+      byWordW17['der Briefkopf'].fam === 'kasus' &&
+      byWordW17['die Zusage'].err === 'Die Zusage kamen erst nach der Nachfrage.' &&
+      byWordW17['die Frist'].err === 'Die Frist enden am Freitag.' &&
+      ['Der Antrag nennen Anlass, Bitte und Frist.', 'Die Rechnung tragen Datum und Nummer.',
+        'Die Absage kommen schriftlich.']
+        .every(x => errorsW17.includes(x)) &&
+      byWordW17['der Antrag'].ex === 'Der Antrag nennt Anlass, Bitte und Frist.' &&
+      trickStepsW17.length === 3 &&
+      trickStepsW17[0].zeigt.de === 'Der Antrag nennt Anlass, Bitte und Frist' &&
+      trickStepsW17[0].merkhilfe.wie.includes('Der Antrag nennt Anlass, Bitte und Frist.') &&
+      trickStepsW17[1].zeigt.de === 'Ich bitte um eine Antwort bis Freitag' &&
+      trickStepsW17[1].merkhilfe.wie.includes('Ich bitte um eine Antwort bis Freitag.') &&
+      trickStepsW17[2].zeigt.de === 'Die Frist endet am Freitag' &&
+      trickStepsW17[2].merkhilfe.wie.includes('Die Frist endet am Freitag, nicht irgendwann.'));
+
+  const wordClozeAW17 = lessonW17.schritte.find(s => s.id === 's09');
+  const wordClozeBW17 = lessonW17.schritte.find(s => s.id === 's13');
+  const wordClozeCW17 = lessonW17.schritte.find(s => s.id === 's17');
+  const imitateW17 = lessonW17.schritte.find(s => s.id === 's19');
+  const drillW17 = lessonW17.schritte.find(s => s.id === 's23');
+  const orderW17 = lessonW17.schritte.find(s => s.id === 's24');
+  const writingW17 = lessonW17.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW17 = lessonW17.schritte.find(s => s.phase === 'Produktion');
+  const summaryW17 = lessonW17.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW17 = lessonW17.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW17 = lessonW17.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w17 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 27-word five-target production',
+    wordClozeAW17.frage.zeigt === 'Die ____ lautet: Sehr geehrte Damen und Herren.' && wordClozeAW17.frage.antworten.join(' ') === 'Anrede' &&
+      wordClozeAW17.frage.nearMiss['Anreden'] && !win.DW.renderers.judgeCloze(wordClozeAW17.frage, 'Anreden').ok &&
+      wordClozeBW17.frage.zeigt === 'Der ____ entscheidet, die Unterschrift bestätigt.' && wordClozeBW17.frage.antworten.join(' ') === 'Sachbearbeiter' &&
+      wordClozeBW17.frage.nearMiss['Sachbearbeitern'] && !win.DW.renderers.judgeCloze(wordClozeBW17.frage, 'Sachbearbeitern').ok &&
+      wordClozeCW17.frage.zeigt === 'Eine ____ ist billiger als ein Fehler.' && wordClozeCW17.frage.antworten.join(' ') === 'Rückfrage' &&
+      wordClozeCW17.frage.nearMiss['Rückfragen'] && !win.DW.renderers.judgeCloze(wordClozeCW17.frage, 'Rückfragen').ok &&
+      (imitateW17.frage.zeigt === 'Der ____ steht im ersten Satz.' || imitateW17.zeigt.de === 'Der ____ steht im ersten Satz.') && imitateW17.frage.antworten.join(' ') === 'Anlass' &&
+      imitateW17.frage.nearMiss['Anlässe'] && !win.DW.renderers.judgeCloze(imitateW17.frage, 'Anlässe').ok &&
+      drillW17.frage.zeigt === 'Die ____ endet am Freitag, nicht irgendwann.' && drillW17.frage.antworten.join(' ') === 'Frist' &&
+      drillW17.frage.nearMiss.Fristen && !win.DW.renderers.judgeCloze(drillW17.frage, 'Fristen').ok &&
+      lessonW17.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW17.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW17.frage.correct.join(' ') === targetsW17[4] && orderW17.frage.finite === 'muss' && orderW17.frage.verbFirst === false &&
+      orderW17.frage.fields.vorfeld.join(' ') === 'Ich' && orderW17.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW17.frage.fields.mittelfeld.join(' ') === 'Anlass, Bitte und Frist nennen.' &&
+      win.DW.order.score(orderW17.frage, orderW17.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW17.frage, ['Ich', 'Anlass,', 'muss', 'Bitte', 'und', 'Frist', 'nennen.']).credit < 1 &&
+      writingW17.frage.points.join(' | ') === targetsW17.join(' | ') && writingW17.frage.minWords === 27 &&
+      targetsW17.join(' ').split(/\s+/).length === 27 &&
+      targetsW17.every(x => [writingW17.frage.promptDe, summaryW17.zeigt.de, homeworkW17.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW17.every(x => norm(speakingW17.erklaerung).includes(norm(x))) &&
+      modelW17.zeigt.de.includes('Gegen den Bescheid hilft das Rechtsmittel, gegen die Mahnung die Erinnerung an die Widerspruchsfrist.') &&
+      modelW17.zeigt.de.includes('Die Mahnstufe bestimmt, wie scharf die Erinnerung klingen darf.') &&
+      homeworkW17.zeigt.de.includes('Ich bin nicht enttäuscht, ich bitte um eine Auskunft.') &&
+      homeworkW17.zeigt.de.includes('ich schreibe wegen der Rechnung vom dritten Mai'));
+
+  const checksW17 = lessonW17.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW17 = checksW17.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW17 = checksW17.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w17 makes 80 percent four of five, independently checking the register, the Frist cloze and steht order, nennt and muss',
+    checksW17.length === 5 && checksW17[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW17[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW17.every(s => /^cap\.b2-w17\.s\d+$/.test(s.frage.prereq || '')) && checksW17.every(s => !s.hinweise) &&
+      checksW17.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w17.s07 | cap.b2-w17.s23 | cap.b2-w17.s24 | cap.b2-w17.s10 | cap.b2-w17.s20' &&
+      new Set(checksW17.map(s => s.frage.prereq)).size === 5 &&
+      checksW17[0].frage.optionen.some(o => o.text === targetsW17[3]) &&
+      checksW17[0].frage.optionen.some(o => o.text === 'Du musst das sofort tun.') &&
+      Object.values(checksW17[0].frage.misconceptionFamilies).join(' ') === 'register' &&
+      clozeCheckW17.frage.zeigt === 'Die ____ endet am Freitag, nicht irgendwann.' &&
+      clozeCheckW17.frage.antworten.join(' ') === 'Frist' && clozeCheckW17.frage.nearMiss.Fristen &&
+      !win.DW.renderers.judgeCloze(clozeCheckW17.frage, 'Fristen').ok &&
+      orderCheckW17.frage.correct.join(' ') === targetsW17[0] && orderCheckW17.frage.finite === 'steht' &&
+      orderCheckW17.frage.fields.vorfeld.join(' ') === 'Der Anlass' && orderCheckW17.frage.fields.lsk.join(' ') === 'steht' &&
+      orderCheckW17.frage.fields.mittelfeld.join(' ') === 'im ersten Satz.' &&
+      win.DW.order.score(orderCheckW17.frage, orderCheckW17.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW17.frage, ['Der', 'Anlass', 'im', 'steht', 'ersten', 'Satz.']).credit < 1 &&
+      checksW17[3].frage.optionen.some(o => o.text === 'Der Antrag nennt Anlass, Bitte und Frist.') &&
+      checksW17[3].frage.optionen.some(o => o.text === 'Der Antrag nennen Anlass, Bitte und Frist.') &&
+      Object.values(checksW17[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW17[4].frage.optionen.some(o => o.text === targetsW17[4]) &&
+      checksW17[4].frage.optionen.some(o => o.text === 'Ich musst Anlass, Bitte und Frist nennen.') &&
+      Object.values(checksW17[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
