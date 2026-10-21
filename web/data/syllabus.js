@@ -198,7 +198,7 @@
     ['سماع لهجة: فهم بلا تقليد', 'Dialekt hören: verstehen, nicht nachahmen', 'تمييز لهجة', 'listening'],
     ['الرسم البياني: وصف ثم تأويل', 'Grafik: erst beschreiben, dann deuten', 'تعليق على بيانات', 'text-analysis'],
     ['التلخيص: أقصر وبترتيب النص وبلا تقييم', 'Zusammenfassung: kürzer, geordnet, ohne Wertung', 'تلخيص', 'writing'],
-    ['نقاش: إعلام', 'Medien diskutieren', 'الإعلام', 'discussion'],
+    ['الإعلام: الانتشار ليس حقيقة', 'Medien: Reichweite ist nicht Wahrheit', 'الإعلام', 'discussion'],
     ['سماع مقابلة', 'Interview B2', 'مقابلة', 'listening'],
     ['تقنية: كتابة موقوتة', 'Timed writing', 'امتحان', 'exam-technique'],
     ['تحليل تعليق', 'Kommentaranalyse', 'رأي', 'text-analysis'],

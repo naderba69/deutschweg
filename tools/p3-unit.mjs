@@ -19717,6 +19717,130 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW10[4].frage.optionen.some(o => o.text === targetsW10[4]) &&
       checksW10[4].frage.optionen.some(o => o.text === 'Ich muss die Kern nennen.') &&
       Object.values(checksW10[4].frage.misconceptionFamilies).join(' ') === 'genus');
+
+  const lessonW11 = win.DW_LESSONS['b2-w11'];
+  const rowW11 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w11');
+  const byWordW11 = Object.fromEntries(lessonW11.wortschatz.map(it => [it.de, it]));
+  const trickStepsW11 = lessonW11.schritte.filter(s => s.merkhilfe);
+  const targetsW11 = [
+    'Viele Leser machen es nicht wahr.',
+    'Diese Plattform ist nicht die Quelle.',
+    'Die Überschrift reicht nicht.',
+    'Ein Gegenbeispiel gehört dazu.',
+    'Ich muss Reichweite von Wahrheit trennen.'
+  ];
+  t('Corpus workshop b2-w11 precisely scopes five media-debate moves de-proofing the crowd, separating channel from source, distrusting the headline, forcing the counterexample and splitting reach from truth',
+    lessonW11.title.de === 'Medien: Reichweite ist nicht Wahrheit' &&
+      lessonW11.title.ar === 'الإعلام: الانتشار ليس حقيقة' &&
+      lessonW11.level === 'B2' && lessonW11.kind === 'workshop' &&
+      rowW11.title.de === lessonW11.title.de && rowW11.title.ar === lessonW11.title.ar &&
+      rowW11.theme === 'الإعلام' &&
+      rowW11.grammar.item === 'الإعلام: الانتشار ليس حقيقة' &&
+      rowW11.grammar.method === 'explicit' &&
+      rowW11.words.receptive === 90 && rowW11.words.productive === 60 &&
+      lessonW11.schritte.length === 36 && lessonW11.wortschatz.length === 40 &&
+      lessonW11.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW11.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW11[i]) &&
+      lessonW11.schritte[0].zeigt.de === 'Am Ende trennst du Reichweite und Wahrheit — in fünf Sätzen' &&
+      lessonW11.schritte.find(s => s.id === 's20').zeigt.de === targetsW11[4]);
+
+  const expectedWordsW11 = [
+    'die Medien', 'das Medium', 'die Reichweite', 'die Wahrheit', 'die Nachricht', 'die Meldung',
+    'die Schlagzeile', 'der Artikel', 'der Bericht', 'die Reportage', 'die Pressemitteilung',
+    'die Quellenangabe', 'das Gerücht', 'die Falschmeldung', 'die Lüge', 'die Manipulation',
+    'die Haltung', 'die Einseitigkeit', 'die Ausgewogenheit', 'die Unabhängigkeit', 'die Redaktion',
+    'die Veröffentlichung', 'der Journalist', 'die Journalistin', 'die Pressefreiheit', 'die Zensur',
+    'die Privatsphäre', 'der Datenschutz', 'das Urheberrecht', 'die Werbung', 'die Anzeige',
+    'der Abonnent', 'die Auflage', 'die Quote', 'der Klick', 'der Algorithmus', 'der Filter',
+    'das Profil', 'die Sperre', 'die Nachrichtenagentur'
+  ];
+  const errorsW11 = lessonW11.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w11 reviews all 40 entries and three bounded mnemonics mirroring one word-swapped foil while every remaining foil stays a genuine error',
+    Object.keys(byWordW11).join(' | ') === expectedWordsW11.join(' | ') &&
+      lessonW11.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW11.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW11['das Medium'].err === 'Das Medium bestimmen die Form: Podcast, Video, Clip oder Livestream.' &&
+      ['Das Medium bestimmen die Form, nicht die Wahrheit.']
+        .every(x => !errorsW11.includes(x)) &&
+      ['Die Medien prüft, die Plattform verbreitet.', 'Der Klick sind kein Beweis.',
+        'Der Datenschutz gelten auch für Bilder.']
+        .every(x => errorsW11.includes(x)) &&
+      byWordW11['der Datenschutz'].ex === 'Der Datenschutz gilt auch für Bilder; die Seriosität zeigt sich darin.' &&
+      byWordW11['der Abonnent'].ex === 'Der Abonnent zahlt für Prüfung; der Newsletter ist gratis.' &&
+      trickStepsW11.length === 3 &&
+      trickStepsW11[0].zeigt.de === 'Die Reichweite wächst, die Wahrheit nicht mit' &&
+      trickStepsW11[0].merkhilfe.wie.includes('Die Reichweite wächst, die Wahrheit nicht mit.') &&
+      trickStepsW11[1].zeigt.de === 'Die Plattform verbreitet, die Redaktion prüft' &&
+      trickStepsW11[1].merkhilfe.wie.includes('Die Plattform verbreitet, die Redaktion prüft.') &&
+      trickStepsW11[2].zeigt.de === 'Ohne Gegendarstellung bleibt der Bericht einseitig' &&
+      trickStepsW11[2].merkhilfe.wie.includes('Ohne Gegendarstellung bleibt der Bericht einseitig.'));
+
+  const wordClozeAW11 = lessonW11.schritte.find(s => s.id === 's09');
+  const wordClozeBW11 = lessonW11.schritte.find(s => s.id === 's13');
+  const wordClozeCW11 = lessonW11.schritte.find(s => s.id === 's17');
+  const imitateW11 = lessonW11.schritte.find(s => s.id === 's19');
+  const drillW11 = lessonW11.schritte.find(s => s.id === 's23');
+  const orderW11 = lessonW11.schritte.find(s => s.id === 's24');
+  const writingW11 = lessonW11.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW11 = lessonW11.schritte.find(s => s.phase === 'Produktion');
+  const summaryW11 = lessonW11.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW11 = lessonW11.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW11 = lessonW11.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w11 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 26-word five-target production',
+    wordClozeAW11.frage.zeigt === 'Die ____ wurde binnen Minuten geteilt; die Richtigstellung liest keiner.' && wordClozeAW11.frage.antworten.join(' ') === 'Meldung' &&
+      wordClozeAW11.frage.nearMiss.Meldungen && !win.DW.renderers.judgeCloze(wordClozeAW11.frage, 'Meldungen').ok &&
+      wordClozeBW11.frage.zeigt === 'Die ____ folgt ohne Rücksprache; die Paywall kommt später.' && wordClozeBW11.frage.antworten.join(' ') === 'Veröffentlichung' &&
+      wordClozeBW11.frage.nearMiss['Veröffentlichungen'] && !win.DW.renderers.judgeCloze(wordClozeBW11.frage, 'Veröffentlichungen').ok &&
+      wordClozeCW11.frage.zeigt === 'Das ____ sammelt Daten ohne Pause; der Feed sammelt Klicks, das Magazin Leser.' && wordClozeCW11.frage.antworten.join(' ') === 'Profil' &&
+      wordClozeCW11.frage.nearMiss.Profile && !win.DW.renderers.judgeCloze(wordClozeCW11.frage, 'Profile').ok &&
+      (imitateW11.frage.zeigt === 'Viele Leser machen es nicht ____.' || imitateW11.zeigt.de === 'Viele Leser machen es nicht ____.') && imitateW11.frage.antworten.join(' ') === 'wahr' &&
+      imitateW11.frage.nearMiss.wahrer && !win.DW.renderers.judgeCloze(imitateW11.frage, 'wahrer').ok &&
+      drillW11.frage.zeigt === 'Die ____ sagt nichts über die Wahrheit, die Nutzerzahlen auch nicht.' && drillW11.frage.antworten.join(' ') === 'Reichweite' &&
+      drillW11.frage.nearMiss.Reichweiten && !win.DW.renderers.judgeCloze(drillW11.frage, 'Reichweiten').ok &&
+      lessonW11.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW11.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW11.frage.correct.join(' ') === targetsW11[4] && orderW11.frage.finite === 'muss' && orderW11.frage.verbFirst === false &&
+      orderW11.frage.fields.vorfeld.join(' ') === 'Ich' && orderW11.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW11.frage.fields.mittelfeld.join(' ') === 'Reichweite von Wahrheit trennen.' &&
+      win.DW.order.score(orderW11.frage, orderW11.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW11.frage, ['Ich', 'Reichweite', 'muss', 'von', 'Wahrheit', 'trennen.']).credit < 1 &&
+      writingW11.frage.points.join(' | ') === targetsW11.join(' | ') && writingW11.frage.minWords === 26 &&
+      targetsW11.join(' ').split(/\s+/).length === 26 &&
+      targetsW11.every(x => [writingW11.frage.promptDe, summaryW11.zeigt.de, homeworkW11.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW11.every(x => norm(speakingW11.erklaerung).includes(norm(x))) &&
+      modelW11.zeigt.de.includes('Die Plattform verbreitet schneller als jede Zeitung.') &&
+      modelW11.zeigt.de.includes('Ohne Quellenkritik bleibt jede Meldung ein Gerücht.') &&
+      homeworkW11.zeigt.de.includes('Die Schlagzeile ist ein Klickköder, der Faktencheck fehlt.') &&
+      homeworkW11.zeigt.de.includes('Ich ignoriere kein Gegenbeispiel; es gehört zur Debatte.'));
+
+  const checksW11 = lessonW11.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW11 = checksW11.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW11 = checksW11.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w11 makes 80 percent four of five, independently checking the counterexample, the Reichweite cloze and ist order, singular Klick and trennen von',
+    checksW11.length === 5 && checksW11[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW11[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW11.every(s => /^cap\.b2-w11\.s\d+$/.test(s.frage.prereq || '')) && checksW11.every(s => !s.hinweise) &&
+      checksW11.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w11.s07 | cap.b2-w11.s23 | cap.b2-w11.s24 | cap.b2-w11.s16 | cap.b2-w11.s20' &&
+      new Set(checksW11.map(s => s.frage.prereq)).size === 5 &&
+      checksW11[0].frage.optionen.some(o => o.text === targetsW11[3]) &&
+      checksW11[0].frage.optionen.some(o => o.text === 'Ein Gegenbeispiel gehören dazu.') &&
+      Object.values(checksW11[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW11.frage.zeigt === 'Die ____ sagt nichts über die Wahrheit, die Nutzerzahlen auch nicht.' &&
+      clozeCheckW11.frage.antworten.join(' ') === 'Reichweite' && clozeCheckW11.frage.nearMiss.Reichweiten &&
+      !win.DW.renderers.judgeCloze(clozeCheckW11.frage, 'Reichweiten').ok &&
+      orderCheckW11.frage.correct.join(' ') === targetsW11[1] && orderCheckW11.frage.finite === 'ist' &&
+      orderCheckW11.frage.fields.vorfeld.join(' ') === 'Diese Plattform' && orderCheckW11.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW11.frage.fields.mittelfeld.join(' ') === 'nicht die Quelle.' &&
+      win.DW.order.score(orderCheckW11.frage, orderCheckW11.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW11.frage, ['Diese', 'Plattform', 'nicht', 'ist', 'die', 'Quelle.']).credit < 1 &&
+      checksW11[3].frage.optionen.some(o => o.text === 'Der Klick ist kein Beweis; die Startseite zählt trotzdem.') &&
+      checksW11[3].frage.optionen.some(o => o.text === 'Der Klick sind kein Beweis.') &&
+      Object.values(checksW11[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW11[4].frage.optionen.some(o => o.text === targetsW11[4]) &&
+      checksW11[4].frage.optionen.some(o => o.text === 'Ich muss Reichweite mit Wahrheit trennen.') &&
+      Object.values(checksW11[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

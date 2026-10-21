@@ -8,7 +8,7 @@ module.exports = {
   'b2-w11': {
     items: [
       ['die Medien', '—', 'الإعلام', 'Die Medien prüfen, die Plattform verbreitet; der Ruf des Senders hängt davon ab.', 'Die Medien prüft, die Plattform verbreitet.', 'الجمع: prüfen.', 'konjugation', 'Medien'],
-      ['das Medium', 'die Medien', 'الوسيط', 'Das Medium bestimmt die Form: Podcast, Video, Clip oder Livestream.', 'Das Medium bestimmen die Form, nicht die Wahrheit.', 'محايد ومفرد: bestimmt.', 'konjugation', 'Medium'],
+      ['das Medium', 'die Medien', 'الوسيط', 'Das Medium bestimmt die Form: Podcast, Video, Clip oder Livestream.', 'Das Medium bestimmen die Form: Podcast, Video, Clip oder Livestream.', 'محايد ومفرد: bestimmt.', 'konjugation', 'Medium'],
       ['die Reichweite', 'die Reichweiten', 'مدى الانتشار', 'Die Reichweite sagt nichts über die Wahrheit, die Nutzerzahlen auch nicht.', 'Die Reichweite sagen nichts über die Wahrheit.', 'المفرد: sagt.', 'konjugation', 'Reichweite'],
       ['die Wahrheit', '—', 'الحقيقة', 'Die Wahrheit braucht eine Prüfung, keine Klicks; die Recherche kostet Zeit.', 'Die Wahrheit brauchen eine Prüfung.', 'المفرد: braucht.', 'konjugation', 'Wahrheit'],
       ['die Nachricht', 'die Nachrichten', 'الخبر', 'Die Nachricht kam aus zweiter Hand; die Nachrichtenagentur prüft sie.', 'Die Nachricht kamen aus zweiter Hand.', 'المفرد: kam.', 'konjugation', 'Nachricht'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Werbeeinnahmen', 'das Impressum'
     ],
     tricks: [
-      { trick: 'افصل المدى عن الصدق: Reichweite ist nicht Wahrheit', wie: 'Die Reichweite wächst, die Wahrheit nicht mit.', warum: 'الانتشار الواسع يوهم بالصواب؛ الفصل بينهما هو بند التقييم.', anchor: 'Reichweite' },
-      { trick: 'المنصة ليست المصدر: Die Plattform ist nicht die Quelle', wie: 'Die Plattform verbreitet, die Redaktion prüft.', warum: 'من ينقل عن منصة ينقل عن لا أحد؛ المصدر يُطلب بالاسم.', anchor: 'Die Plattform' },
-      { trick: 'اطلب المقابل: Ein Gegenbeispiel gehört dazu', wie: 'Ohne Gegendarstellung bleibt der Bericht einseitig.', warum: 'الخبر بلا طرف آخر نصف خبر؛ وهذا أول ما يُسأل عنه.', anchor: 'Gegendarstellung' }
-    ]
+      { trick: 'افصل المدى عن الصدق: Reichweite ist nicht Wahrheit', wie: 'Die Reichweite wächst, die Wahrheit nicht mit.', warum: 'الانتشار الواسع يوهم بالصواب؛ الفصل بينهما هو بند التقييم.', anchor: 'Die Reichweite wächst, die Wahrheit nicht mit' },
+      { trick: 'المنصة ليست المصدر: Die Plattform ist nicht die Quelle', wie: 'Die Plattform verbreitet, die Redaktion prüft.', warum: 'من ينقل عن منصة ينقل عن لا أحد؛ المصدر يُطلب بالاسم.', anchor: 'Die Plattform verbreitet, die Redaktion prüft' },
+      { trick: 'اطلب المقابل: Ein Gegenbeispiel gehört dazu', wie: 'Ohne Gegendarstellung bleibt der Bericht einseitig.', warum: 'الخبر بلا طرف آخر نصف خبر؛ وهذا أول ما يُسأل عنه.', anchor: 'Ohne Gegendarstellung bleibt der Bericht einseitig' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Meldung': 'Meldungen',
+      'die Veröffentlichung': 'Veröffentlichungen',
+      'das Profil': 'Profile'
+    },
+    clozeItemIndex: 2,
+    clozeNearMiss: 'Reichweiten',
+    checkItemIndex: 34,
+    extraCheck: {
+      right: 'Ich muss Reichweite von Wahrheit trennen.',
+      bad: 'Ich muss Reichweite mit Wahrheit trennen.',
+      why: 'trennen يفصل بـvon: Reichweite von Wahrheit trennen.',
+      family: 'präposition',
+      prereq: 'cap.b2-w11.s20',
+      frage: 'أي جملة تفصل الانتشار عن الحقيقة بحرف جرّ صحيح؟'
+    }
   }
 
 };

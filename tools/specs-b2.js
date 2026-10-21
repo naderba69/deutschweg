@@ -446,25 +446,49 @@ module.exports = [
       summaryRecap: 'أقصر وبترتيب النص',
     }),
 
-  U('b2-w11', 'نقاش: إعلام', 'Medien diskutieren',
-    'Am Ende trennst du Reichweite und Wahrheit',
-    'في النهاية تفصل الانتشار عن الصحة.',
+  U('b2-w11', 'الإعلام: الانتشار ليس حقيقة', 'Medien: Reichweite ist nicht Wahrheit',
+    'Am Ende trennst du Reichweite und Wahrheit — in fünf Sätzen',
+    'في النهاية تفصل بين الانتشار والحقيقة في خمس جمل.',
     [
-      ['Reichweite', 'الانتشار ليس صحة', 'الكثرة لا تُثبت', 'viele Leser machen es wahr', 'الكثرة ليست برهانًا'],
-      ['Quelle', 'المصدر يُسأل', 'المنصة ليست مصدرًا', 'das Netz ist die Quelle', 'المصدر محدد'],
-      ['Überschrift', 'العنوان قد يبالغ', 'لا تغنِ عن النص', 'die Überschrift reicht', 'العنوان وعد'],
-      ['ein Gegenbeispiel', 'مثال مضاد واحد', 'التجاهل ضعف', 'ich ignoriere das Gegenbeispiel', 'المضاد يُذكر']
+      ['Viele Leser machen es nicht wahr.', 'ينزع البرهنة عن الكثرة', 'الفاعل جمع Leser: machen لا macht', 'Viele Leser macht es nicht wahr.', 'الجمع: machen'],
+      ['Diese Plattform ist nicht die Quelle.', 'يفصل الناقل عن المصدر', 'الخبر بعد ist رفع: die Quelle لا der', 'Die Plattform ist nicht der Quelle.', 'الخبر رفع بعد ist'],
+      ['Die Überschrift reicht nicht.', 'ينقص العنوانَ الاكتفاءَ', 'الفاعل مفرد: reicht لا reichen', 'Die Überschrift reichen nicht.', 'المفرد: reicht'],
+      ['Ein Gegenbeispiel gehört dazu.', 'يفرض المثال المضاد على الحجة', 'الفاعل مفرد: gehört لا gehören', 'Ein Gegenbeispiel gehören dazu.', 'المفرد: gehört']
     ],
     [
-      ['Viele Leser machen es nicht wahr.', 'كثرة القراء لا تجعله صحيحًا', 'Viele Leser machen es wahr', 'الكثرة ليست برهانًا', 'wahr'],
-      ['Die Plattform ist nicht die Quelle.', 'المنصة ليست المصدر', 'Das Netz ist die Quelle', 'المصدر محدد', 'Quelle'],
-      ['Die Überschrift reicht nicht.', 'العنوان لا يكفي', 'Die Überschrift reicht', 'العنوان وعد', 'Überschrift'],
-      ['Ein Gegenbeispiel gehört dazu.', 'المثال المضاد جزء من النقاش', 'Ich ignoriere das Gegenbeispiel', 'المضاد يُذكر', 'Gegenbeispiel']
+      ['Viele Leser machen es nicht wahr.', 'كثرة القرّاء لا تجعله صحيحًا', 'Viele Leser macht es nicht wahr.', 'الفاعل جمع: machen.', 'wahr'],
+      ['Diese Plattform ist nicht die Quelle.', 'المنصة ليست المصدر', 'Die Plattform ist nicht der Quelle.', 'الخبر رفع: die Quelle.', 'Quelle'],
+      ['Die Überschrift reicht nicht.', 'العنوان لا يكفي', 'Die Überschrift reichen nicht.', 'الفاعل مفرد: reicht.', 'Überschrift'],
+      ['Ein Gegenbeispiel gehört dazu.', 'المثال المضاد جزء من النقاش', 'Ein Gegenbeispiel gehören dazu.', 'الفاعل مفرد: gehört.', 'Gegenbeispiel']
     ],
     'Die Plattform verbreitet schneller als jede Zeitung. Die Reichweite wächst, die Glaubwürdigkeit wächst nicht mit. Die Schlagzeile ist ein Klickköder, der Faktencheck fehlt. Ohne Quellenkritik bleibt jede Meldung ein Gerücht. Die Redaktion prüft vor der Veröffentlichung, das Netz nicht.',
-    'Die Plattform ist nicht die Quelle.',
-    'Trenne morgen Reichweite und Wahrheit.',
-    'غدًا افصل الانتشار عن الصحة.'),
+    'Ich muss Reichweite von Wahrheit trennen.',
+    'Wiederhole morgen die fünf Sätze: Viele Leser machen es nicht wahr. Diese Plattform ist nicht die Quelle. Die Überschrift reicht nicht. Ein Gegenbeispiel gehört dazu. Ich muss Reichweite von Wahrheit trennen. Die Schlagzeile ist ein Klickköder, der Faktencheck fehlt. Ohne Quellenkritik bleibt jede Meldung ein Gerücht. Die Glaubwürdigkeit wächst nicht mit den Klicks. Das Netz verbreitet schneller als jede Zeitung. Ich ignoriere kein Gegenbeispiel; es gehört zur Debatte.',
+    'غدًا أعد جمل نقاش الإعلام الخمس ولاحظ الفرق بين الانتشار والحقيقة.',
+    {
+      factFamilies: ['konjugation', 'kasus', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'wahrer',
+      transformHint: 'في الجملة الختامية الفصل نفسه هو الموضوع: Ich muss Reichweite von Wahrheit trennen — المصدر trennen يغلق الجملة بعد muss.',
+      orderSentence: 'Ich muss Reichweite von Wahrheit trennen.',
+      checkOrderSentence: 'Diese Plattform ist nicht die Quelle.',
+      orderAr: 'رتّب جملة الفصل: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر trennen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر trennen يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Mediendebatte in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: كثرة بفعل جمع، وناقلًا بخبر مرفوع، وعنوانًا بفعل مفرد، ومثالًا مضادًا بفعل مفرد، وفصلًا بين الانتشار والحقيقة بـvon.',
+        hinweise: ['الكثرة مقياس مسافة لا صواب.', 'المصدر يُطلب بالاسم لا بالمنصة.'],
+        prompt: 'اكتب جمل نقاش الإعلام الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Viele Leser machen es nicht wahr. · Diese Plattform ist nicht die Quelle. · Die Überschrift reicht nicht. · Ein Gegenbeispiel gehört dazu. · Ich muss Reichweite von Wahrheit trennen.',
+        points: ['Viele Leser machen es nicht wahr.', 'Diese Plattform ist nicht die Quelle.', 'Die Überschrift reicht nicht.', 'Ein Gegenbeispiel gehört dazu.', 'Ich muss Reichweite von Wahrheit trennen.'],
+        minWords: 26,
+        frage: 'اكتب جمل نقاش الإعلام الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Viele Leser machen es nicht wahr. Diese Plattform ist nicht die Quelle. Die Überschrift reicht nicht. Ein Gegenbeispiel gehört dazu. Ich muss Reichweite von Wahrheit trennen.',
+      summaryDe: 'Viele Leser machen es nicht wahr. Diese Plattform ist nicht die Quelle. Die Überschrift reicht nicht. Ein Gegenbeispiel gehört dazu. Ich muss Reichweite von Wahrheit trennen.',
+      summaryAr: 'الانتشار مقياس مسافة لا صحة: المصدر يُطلب بالاسم، والطرف الآخر يُسمع.',
+      summaryRecap: 'الانتشار ليس حقيقة',
+    }),
 
   U('b2-w12', 'سماع مقابلة', 'Interview B2',
     'Am Ende fängst du Position und Einschränkung',
