@@ -8218,9 +8218,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a1', 1).key === 'إلى رقابة' &&
       b2q('b2-a1', 1).options.includes(b2q('b2-a1', 1).key) &&
       b2Articles['b2-a1'].body.includes('Dann wird aus der versprochenen Freiheit leicht eine neue Form der Kontrolle'));
-  t('Corpus B2 b2-a2 has 399 measured words and no unknown B2 tokens',
+  t('Corpus B2 b2-a2 has 450 measured words and no unknown B2 tokens',
     b2Articles['b2-a2'].title === 'الإيجار' &&
-      b2Articles['b2-a2'].body.trim().split(/\s+/).length === 399 &&
+      b2Articles['b2-a2'].body.trim().split(/\s+/).length === 450 &&
       known.coverage(b2Known, b2Articles['b2-a2'].body).unknown.length === 0);
   t('Corpus B2 b2-a2 separates measured rent changes, scope, possible explanations, personal cases, and policy evidence coherently',
     b2Articles['b2-a2'].body.includes('Der Vergleich zeigt einen Anstieg') &&
