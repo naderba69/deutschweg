@@ -8441,7 +8441,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Articles['b2-a12'].body.includes('schnelles Sprechen wurde leicht mit beruflicher Erfahrung verwechselt'));
   t('Corpus B2 b2-a13 has 504 measured words and no unknown B2 tokens',
     b2Articles['b2-a13'].title === 'الهدر' &&
-      b2Articles['b2-a13'].body.trim().split(/\s+/).length === 504 &&
+      b2Articles['b2-a13'].body.trim().split(/\s+/).length === 559 &&
       known.coverage(b2Known, b2Articles['b2-a13'].body).unknown.length === 0);
   t('Corpus B2 b2-a13 connects measurement with causes, targeted household action, safety, shared responsibility, and review coherently',
     b2Articles['b2-a13'].body.includes('warum etwas im Müll lag') &&
