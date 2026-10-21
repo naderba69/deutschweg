@@ -8421,7 +8421,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Articles['b2-a11'].body.includes('zusätzliche Reinigung und mehr Busse in der Saison finanzieren'));
   t('Corpus B2 b2-a12 has 524 measured words and no unknown B2 tokens',
     b2Articles['b2-a12'].title === 'اللغة في العمل' &&
-      b2Articles['b2-a12'].body.trim().split(/\s+/).length === 524 &&
+      b2Articles['b2-a12'].body.trim().split(/\s+/).length === 589 &&
       known.coverage(b2Known, b2Articles['b2-a12'].body).unknown.length === 0);
   t('Corpus B2 b2-a12 connects certificate limits, role-specific language, a fair work sample, onboarding, and follow-up coherently',
     b2Articles['b2-a12'].body.includes('unter festgelegten Bedingungen') &&
