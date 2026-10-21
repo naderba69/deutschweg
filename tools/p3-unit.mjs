@@ -20213,6 +20213,131 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW14[4].frage.optionen.some(o => o.text === targetsW14[4]) &&
       checksW14[4].frage.optionen.some(o => o.text === 'Ich mussen Behauptung und Beleg trennen.') &&
       Object.values(checksW14[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonW15 = win.DW_LESSONS['b2-w15'];
+  const rowW15 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w15');
+  const byWordW15 = Object.fromEntries(lessonW15.wortschatz.map(it => [it.de, it]));
+  const trickStepsW15 = lessonW15.schritte.filter(s => s.merkhilfe);
+  const targetsW15 = [
+    'Die Maßnahme heißt Mülltrennung.',
+    'Die Absicht reicht nicht.',
+    'Die Kosten gehören zur Frage.',
+    'Die Maßnahme löst nicht alles.',
+    'Ich muss Maßnahme und Wirkung trennen.'
+  ];
+  t('Corpus workshop b2-w15 precisely scopes five environmental-discussion moves naming the measure, costing it, bounding it and separating effect from intent',
+    lessonW15.title.de === 'Umwelt: Maßnahme, Wirkung und Grenze' &&
+      lessonW15.title.ar === 'البيئة: إجراء وأثر وحدّ' &&
+      lessonW15.level === 'B2' && lessonW15.kind === 'workshop' &&
+      rowW15.title.de === lessonW15.title.de && rowW15.title.ar === lessonW15.title.ar &&
+      rowW15.theme === 'البيئة' &&
+      rowW15.grammar.item === 'البيئة: إجراء وأثر وحدّ' &&
+      rowW15.grammar.method === 'explicit' &&
+      rowW15.words.receptive === 90 && rowW15.words.productive === 60 &&
+      lessonW15.schritte.length === 36 && lessonW15.wortschatz.length === 40 &&
+      lessonW15.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW15.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW15[i]) &&
+      lessonW15.schritte[0].zeigt.de === 'Am Ende nennst du Maßnahme, Wirkung und Grenze — in fünf Sätzen' &&
+      lessonW15.schritte.find(s => s.id === 's20').zeigt.de === targetsW15[4]);
+
+  const expectedWordsW15 = [
+    'die Umwelt', 'der Umweltschutz', 'der Klimawandel', 'der Klimaschutz', 'die Erderwärmung',
+    'der Treibhauseffekt', 'das Treibhausgas', 'der Ausstoß', 'der Verbrauch', 'die Energie',
+    'die Energiewende', 'der Strommix', 'die Solaranlage', 'das Windrad', 'der Strom',
+    'der Ökostrom', 'die Kohle', 'das Kernkraftwerk', 'der Müll', 'die Mülltrennung', 'das Recycling',
+    'die Einwegverpackung', 'das Plastik', 'die Mehrwegflasche', 'der Abfall', 'die Deponie',
+    'die Verbrennung', 'der Feinstaub', 'die Luftverschmutzung', 'das Abwasser', 'die Dürre',
+    'die Überschwemmung', 'der Starkregen', 'die Artenvielfalt', 'das Artensterben', 'der Lebensraum',
+    'die Landwirtschaft', 'die Massentierhaltung', 'die Nachhaltigkeit', 'die Maßnahme'
+  ];
+  const errorsW15 = lessonW15.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w15 reviews all 40 entries and three bounded mnemonics repairing the verbless drought example while every other foil stays a genuine singular agreement error',
+    Object.keys(byWordW15).join(' | ') === expectedWordsW15.join(' | ') &&
+      lessonW15.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW15.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW15['die Dürre'].ex === 'Die Dürre kommt im Sommer, die Aufforstung im Herbst.' &&
+      byWordW15['die Dürre'].err === 'Die Dürre kommen im Sommer, die Aufforstung im Herbst.' &&
+      byWordW15['die Dürre'].fam === 'konjugation' &&
+      byWordW15['die Maßnahme'].err === 'Die Maßnahme wirken nur mit einer Wirkungsprüfung.' &&
+      byWordW15['der Treibhauseffekt'].err === 'Der Treibhauseffekt sind Physik.' &&
+      ['Die Umwelt kennen keine Grenzen.', 'Die Massentierhaltung kosten mehr, als sie bringt.',
+        'Das Recycling beginnen beim Verbraucher.']
+        .every(x => errorsW15.includes(x)) &&
+      byWordW15['die Maßnahme'].ex === 'Die Maßnahme wirkt nur mit einer Wirkungsprüfung.' &&
+      trickStepsW15.length === 3 &&
+      trickStepsW15[0].zeigt.de === 'Die Maßnahme ist die Mülltrennung; die Wirkung bleibt klein' &&
+      trickStepsW15[0].merkhilfe.wie.includes('Die Maßnahme ist die Mülltrennung; die Wirkung bleibt klein.') &&
+      trickStepsW15[1].zeigt.de === 'Die Kosten gehören zur Frage' &&
+      trickStepsW15[1].merkhilfe.wie.includes('Die Kosten gehören zur Frage, sonst ist jede Maßnahme gratis.') &&
+      trickStepsW15[2].zeigt.de === 'Die Maßnahme löst nicht alles' &&
+      trickStepsW15[2].merkhilfe.wie.includes('Die Maßnahme löst nicht alles; sie verschiebt das Problem.'));
+
+  const wordClozeAW15 = lessonW15.schritte.find(s => s.id === 's09');
+  const wordClozeBW15 = lessonW15.schritte.find(s => s.id === 's13');
+  const wordClozeCW15 = lessonW15.schritte.find(s => s.id === 's17');
+  const imitateW15 = lessonW15.schritte.find(s => s.id === 's19');
+  const drillW15 = lessonW15.schritte.find(s => s.id === 's23');
+  const orderW15 = lessonW15.schritte.find(s => s.id === 's24');
+  const writingW15 = lessonW15.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW15 = lessonW15.schritte.find(s => s.phase === 'Produktion');
+  const summaryW15 = lessonW15.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW15 = lessonW15.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW15 = lessonW15.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w15 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 24-word five-target production',
+    wordClozeAW15.frage.zeigt === 'Der ____ ist Physik, die Kompensation ist Handel.' && wordClozeAW15.frage.antworten.join(' ') === 'Treibhauseffekt' &&
+      wordClozeAW15.frage.nearMiss['Treibhauseffekte'] && !win.DW.renderers.judgeCloze(wordClozeAW15.frage, 'Treibhauseffekte').ok &&
+      wordClozeBW15.frage.zeigt === 'Die ____ ist ein Teil des Erbes, das wir hinterlassen.' && wordClozeBW15.frage.antworten.join(' ') === 'Einwegverpackung' &&
+      wordClozeBW15.frage.nearMiss['Einwegverpackungen'] && !win.DW.renderers.judgeCloze(wordClozeBW15.frage, 'Einwegverpackungen').ok &&
+      wordClozeCW15.frage.zeigt === 'Die ____ kostet mehr, als sie bringt.' && wordClozeCW15.frage.antworten.join(' ') === 'Massentierhaltung' &&
+      wordClozeCW15.frage.nearMiss['Massentierhaltungen'] && !win.DW.renderers.judgeCloze(wordClozeCW15.frage, 'Massentierhaltungen').ok &&
+      (imitateW15.frage.zeigt === 'Die Maßnahme ____ Mülltrennung.' || imitateW15.zeigt.de === 'Die Maßnahme ____ Mülltrennung.') && imitateW15.frage.antworten.join(' ') === 'heißt' &&
+      imitateW15.frage.nearMiss['heißen'] && !win.DW.renderers.judgeCloze(imitateW15.frage, 'heißen').ok &&
+      drillW15.frage.zeigt === 'Die ____ kennt keine Grenzen, die Steuer schon.' && drillW15.frage.antworten.join(' ') === 'Umwelt' &&
+      drillW15.frage.nearMiss.Umwelten && !win.DW.renderers.judgeCloze(drillW15.frage, 'Umwelten').ok &&
+      lessonW15.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW15.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW15.frage.correct.join(' ') === targetsW15[4] && orderW15.frage.finite === 'muss' && orderW15.frage.verbFirst === false &&
+      orderW15.frage.fields.vorfeld.join(' ') === 'Ich' && orderW15.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW15.frage.fields.mittelfeld.join(' ') === 'Maßnahme und Wirkung trennen.' &&
+      win.DW.order.score(orderW15.frage, orderW15.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW15.frage, ['Ich', 'Maßnahme', 'muss', 'und', 'Wirkung', 'trennen.']).credit < 1 &&
+      writingW15.frage.points.join(' | ') === targetsW15.join(' | ') && writingW15.frage.minWords === 24 &&
+      targetsW15.join(' ').split(/\s+/).length === 24 &&
+      targetsW15.every(x => [writingW15.frage.promptDe, summaryW15.zeigt.de, homeworkW15.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW15.every(x => norm(speakingW15.erklaerung).includes(norm(x))) &&
+      modelW15.zeigt.de.includes('Die Solarzelle und die Windkraft ersetzen die Kohle langsam.') &&
+      modelW15.zeigt.de.includes('Das Fahrrad, das Carsharing und die Mitfahrgelegenheit ersetzen keine Bahn.') &&
+      homeworkW15.zeigt.de.includes('Die Absicht zählt nur mit der Wirkung.') &&
+      homeworkW15.zeigt.de.includes('Die Kreislaufwirtschaft braucht Rohstoffe und Ressourcen.'));
+
+  const checksW15 = lessonW15.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW15 = checksW15.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW15 = checksW15.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w15 makes 80 percent four of five, independently checking singular löst, the Umwelt cloze and bleibt order, wirkt and muss',
+    checksW15.length === 5 && checksW15[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW15[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW15.every(s => /^cap\.b2-w15\.s\d+$/.test(s.frage.prereq || '')) && checksW15.every(s => !s.hinweise) &&
+      checksW15.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w15.s07 | cap.b2-w15.s23 | cap.b2-w15.s24 | cap.b2-w15.s17 | cap.b2-w15.s20' &&
+      new Set(checksW15.map(s => s.frage.prereq)).size === 5 &&
+      checksW15[0].frage.optionen.some(o => o.text === targetsW15[3]) &&
+      checksW15[0].frage.optionen.some(o => o.text === 'Die Maßnahme lösen nicht alles.') &&
+      Object.values(checksW15[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW15.frage.zeigt === 'Die ____ kennt keine Grenzen, die Steuer schon.' &&
+      clozeCheckW15.frage.antworten.join(' ') === 'Umwelt' && clozeCheckW15.frage.nearMiss.Umwelten &&
+      !win.DW.renderers.judgeCloze(clozeCheckW15.frage, 'Umwelten').ok &&
+      orderCheckW15.frage.correct.join(' ') === 'Die Wirkung bleibt klein.' && orderCheckW15.frage.finite === 'bleibt' &&
+      orderCheckW15.frage.fields.vorfeld.join(' ') === 'Die Wirkung' && orderCheckW15.frage.fields.lsk.join(' ') === 'bleibt' &&
+      orderCheckW15.frage.fields.mittelfeld.join(' ') === 'klein.' &&
+      win.DW.order.score(orderCheckW15.frage, orderCheckW15.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW15.frage, ['Die', 'bleibt', 'Wirkung', 'klein.']).credit < 1 &&
+      checksW15[3].frage.optionen.some(o => o.text === 'Die Maßnahme wirkt nur mit einer Wirkungsprüfung.') &&
+      checksW15[3].frage.optionen.some(o => o.text === 'Die Maßnahme wirken nur mit einer Wirkungsprüfung.') &&
+      Object.values(checksW15[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW15[4].frage.optionen.some(o => o.text === targetsW15[4]) &&
+      checksW15[4].frage.optionen.some(o => o.text === 'Ich müssen Maßnahme und Wirkung trennen.') &&
+      Object.values(checksW15[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

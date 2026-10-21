@@ -202,7 +202,7 @@
     ['سماع مقابلة: موقف وتقييد', 'Interview hören: Position und Einschränkung', 'مقابلة', 'listening'],
     ['الكتابة على الوقت: خطة ونص ومراجعة', 'Schreiben auf Zeit: Plan, Text, Kontrolle', 'امتحان', 'exam-technique'],
     ['التعليق: ادعاء بلا شاهد', 'Kommentar: Behauptung ohne Beleg', 'رأي', 'text-analysis'],
-    ['نقاش: بيئة', 'Umwelt diskutieren', 'البيئة', 'discussion'],
+    ['البيئة: إجراء وأثر وحدّ', 'Umwelt: Maßnahme, Wirkung und Grenze', 'البيئة', 'discussion'],
     ['سماع أخبار', 'Nachrichten', 'أخبار', 'listening'],
     ['ورشة: رسالة رسمية', 'Formeller Brief B2', 'مراسلة', 'writing'],
     ['تقنية: تحدّث', 'Sprechtechnik', 'امتحان', 'exam-technique'],

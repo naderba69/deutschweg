@@ -623,25 +623,49 @@ module.exports = [
       summaryRecap: 'ادعاء وشاهد',
     }),
 
-  U('b2-w15', 'نقاش: بيئة', 'Umwelt diskutieren',
-    'Am Ende trennst du Maßnahme und Wirkung',
-    'في النهاية تفصل الإجراء عن الأثر.',
+  U('b2-w15', 'البيئة: إجراء وأثر وحدّ', 'Umwelt: Maßnahme, Wirkung und Grenze',
+    'Am Ende nennst du Maßnahme, Wirkung und Grenze — in fünf Sätzen',
+    'في النهاية تسمّي الإجراء والأثر والحدّ في خمس جمل.',
     [
-      ['die Maßnahme', 'الإجراء يُسمّى', 'الشعار ليس إجراءً', 'wir müssen etwas tun', 'الإجراء محدد'],
-      ['die Wirkung', 'الأثر يُسأل', 'النية ليست أثرًا', 'die Absicht reicht', 'الأثر غير النية'],
-      ['wer zahlt', 'الكلفة تُسمّى', 'الحل بلا كلفة ناقص', 'das kostet nichts und gilt für alle', 'الكلفة جزء من الحجة'],
-      ['die Grenze', 'أين يفشل الإجراء', 'النجاح الكلي كسل', 'die Maßnahme löst alles', 'الحد لازم']
+      ['Die Maßnahme heißt Mülltrennung.', 'يسمّي الإجراء بالنوع لا شعارًا', 'الفاعل مفرد: heißt لا heißen', 'Die Maßnahme heißen Mülltrennung.', 'المفرد: heißt'],
+      ['Die Absicht reicht nicht.', 'يميز الأثر من النية', 'الفاعل مفرد: reicht لا reichen', 'Die Absicht reichen nicht.', 'المفرد: reicht'],
+      ['Die Kosten gehören zur Frage.', 'يدخل الكلفة في الحجة', 'zur Fra ge مؤنث مفرد لا Fragen', 'Die Kosten gehören zur Fragen.', 'المؤنث المفرد: Frage'],
+      ['Die Maßnahme löst nicht alles.', 'يعطي الإجراء حدًّا', 'الفاعل مفرد: löst لا lösen', 'Die Maßnahme lösen nicht alles.', 'المفرد: löst']
     ],
     [
-      ['Die Maßnahme ist die Mülltrennung.', 'الإجراء هو فرز النفايات', 'Wir müssen etwas tun', 'الإجراء محدد', 'Maßnahme'],
-      ['Die Absicht reicht nicht.', 'النية لا تكفي', 'Die Absicht reicht', 'الأثر غير النية', 'reicht'],
-      ['Die Kosten gehören zur Frage.', 'الكلفة جزء من السؤال', 'Das kostet nichts und gilt für alle', 'الكلفة تُسمّى', 'Kosten'],
-      ['Die Maßnahme löst nicht alles.', 'الإجراء لا يحل كل شيء', 'Die Maßnahme löst alles', 'الحد لازم', 'alles']
+      ['Die Maßnahme heißt Mülltrennung.', 'الإجراء هو فرز النفايات', 'Die Maßnahme heißen Mülltrennung.', 'الفاعل مفرد: heißt.', 'heißt'],
+      ['Die Absicht reicht nicht.', 'النية لا تكفي', 'Die Absicht reichen nicht.', 'الفاعل مفرد: reicht.', 'reicht'],
+      ['Die Kosten gehören zur Frage.', 'الكلفة جزء من السؤال', 'Die Kosten gehören zur Fragen.', 'المؤنث المفرد: Frage.', 'Kosten'],
+      ['Die Maßnahme löst nicht alles.', 'الإجراء لا يحل كل شيء', 'Die Maßnahme lösen nicht alles.', 'الفاعل مفرد: löst.', 'alles']
     ],
     'Die Maßnahme ist die Mülltrennung, die Wirkung bleibt klein. Die Absicht reicht nicht, die Kosten gehören zur Frage. Die Solarzelle und die Windkraft ersetzen die Kohle langsam. Das Tempolimit und der Nahverkehr sparen mehr als jede Kampagne. Die Kreislaufwirtschaft braucht Rohstoffe und Ressourcen. Das Fahrrad, das Carsharing und die Mitfahrgelegenheit ersetzen keine Bahn.',
-    'Die Kosten gehören zur Frage.',
-    'Nenne morgen Maßnahme, Wirkung und Grenze.',
-    'غدًا سمِّ إجراءً وأثرًا وحدًا.'),
+    'Ich muss Maßnahme und Wirkung trennen.',
+    'Wiederhole morgen die fünf Sätze: Die Maßnahme heißt Mülltrennung. Die Absicht reicht nicht. Die Kosten gehören zur Frage. Die Maßnahme löst nicht alles. Ich muss Maßnahme und Wirkung trennen. Die Solarzelle und die Windkraft ersetzen die Kohle langsam. Das Tempolimit und der Nahverkehr sparen mehr als jede Kampagne. Die Kreislaufwirtschaft braucht Rohstoffe und Ressourcen. Das Fahrrad, das Carsharing und die Mitfahrgelegenheit ersetzen keine Bahn. Die Absicht zählt nur mit der Wirkung.',
+    'غدًا أعد جمل البيئة الخمس وسمِّ الإجراء والأثر والكلفة والحدّ.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'deklination', 'konjugation'],
+      imitateNearMiss: 'heißen',
+      transformHint: 'في الجملة الختامية المنهج كله: Ich muss Maßnahme und Wirkung trennen — المصدر trennen يغلق الجملة بعد muss.',
+      orderSentence: 'Ich muss Maßnahme und Wirkung trennen.',
+      checkOrderSentence: 'Die Wirkung bleibt klein.',
+      orderAr: 'رتّب جملة المنهج: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر trennen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر trennen يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Umwelt diskutieren in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: إجراءً مسمّىً بالنوع، ونية لا تكفي، وكلفة محسوبة في السؤال، وإجراءً محدود النطاق، وفصلًا بين الإجراء والأثر.',
+        hinweise: ['الإجراء والأثر جملتان لا واحدة.', 'حجة بلا كلفة تبدو شعارًا.'],
+        prompt: 'اكتب جمل نقاش البيئة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Maßnahme heißt Mülltrennung. · Die Absicht reicht nicht. · Die Kosten gehören zur Frage. · Die Maßnahme löst nicht alles. · Ich muss Maßnahme und Wirkung trennen.',
+        points: ['Die Maßnahme heißt Mülltrennung.', 'Die Absicht reicht nicht.', 'Die Kosten gehören zur Frage.', 'Die Maßnahme löst nicht alles.', 'Ich muss Maßnahme und Wirkung trennen.'],
+        minWords: 24,
+        frage: 'اكتب جمل نقاش البيئة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Maßnahme heißt Mülltrennung. Die Absicht reicht nicht. Die Kosten gehören zur Frage. Die Maßnahme löst nicht alles. Ich muss Maßnahme und Wirkung trennen.',
+      summaryDe: 'Die Maßnahme heißt Mülltrennung. Die Absicht reicht nicht. Die Kosten gehören zur Frage. Die Maßnahme löst nicht alles. Ich muss Maßnahme und Wirkung trennen.',
+      summaryAr: 'في نقاش البيئة: إجراء مسمّى، وأثر محقَّق، وحدّ معلَن.',
+      summaryRecap: 'إجراء وأثر وكلفة',
+    }),
 
   U('b2-w16', 'سماع أخبار', 'Nachrichten',
     'Am Ende trennst du Meldung und Kommentar',

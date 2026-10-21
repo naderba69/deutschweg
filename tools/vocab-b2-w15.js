@@ -37,7 +37,7 @@ module.exports = {
       ['der Feinstaub', '—', 'الغبار الناعم', 'Der Feinstaub belastet die Lunge, die Luftverschmutzung die Stadt.', 'Der Feinstaub belasten die Lunge.', 'المفرد: belastet.', 'konjugation', 'Feinstaub'],
       ['die Luftverschmutzung', '—', 'تلوث الهواء', 'Die Luftverschmutzung kennt keine Stadtgrenze.', 'Die Luftverschmutzung kennen keine Stadtgrenze.', 'المفرد: kennt.', 'konjugation', 'Luftverschmutzung'],
       ['das Abwasser', '—', 'المياه العادمة', 'Das Abwasser wird gereinigt, die Renaturierung beginnt danach.', 'Das Abwasser werden gereinigt.', 'محايد ومفرد: wird.', 'konjugation', 'Abwasser'],
-      ['die Dürre', 'die Dürren', 'الجفاف', 'Die Dürre im Sommer und die Aufforstung im Herbst.', 'Die Dürre im Sommer und die Aufforstung im Herbst es.', 'بلا ضمير زائد.', 'wortstellung', 'Dürre'],
+      ['die Dürre', 'die Dürren', 'الجفاف', 'Die Dürre kommt im Sommer, die Aufforstung im Herbst.', 'Die Dürre kommen im Sommer, die Aufforstung im Herbst.', 'المفرد: kommt.', 'konjugation', 'Dürre'],
       ['die Überschwemmung', 'die Überschwemmungen', 'الفيضان', 'Die Überschwemmung kommt öfter, die Versicherung zahlt weniger.', 'Die Überschwemmung kommen öfter.', 'المفرد: kommt.', 'konjugation', 'Überschwemmung'],
       ['der Starkregen', '—', 'المطر الغزير', 'Der Starkregen trifft die Fußgängerzone zuerst.', 'Der Starkregen treffen die Fußgängerzone zuerst.', 'المفرد: trifft.', 'konjugation', 'Starkregen'],
       ['die Artenvielfalt', '—', 'التنوع البيولوجي', 'Die Artenvielfalt schrumpft mit jedem Acker.', 'Die Artenvielfalt schrumpfen mit jedem Acker.', 'المفرد: schrumpft.', 'konjugation', 'Artenvielfalt'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Generation', 'das Erbe'
     ],
     tricks: [
-      { trick: 'افصل الإجراء عن الأثر: Maßnahme und Wirkung sind zwei Sätze', wie: 'Die Maßnahme ist die Mülltrennung; die Wirkung bleibt klein.', warum: '«يجب أن نفعل شيئًا» ليس إجراءً؛ الامتحان يسأل عن الأثر.', anchor: 'die Wirkung' },
-      { trick: 'سمِّ الكلفة: Die Kosten gehören zur Frage', wie: 'Die Kosten gehören zur Frage, sonst ist jede Maßnahme gratis.', warum: 'حجة بلا كلفة تبدو شعارًا؛ والكلفة أول ما يعترض به المناقش.', anchor: 'Die Kosten' },
-      { trick: 'أعطِ حدًّا للإجراء: Die Maßnahme löst nicht alles', wie: 'Die Maßnahme löst nicht alles; sie verschiebt das Problem.', warum: 'الإقرار بالحد يمنع الردّ الجاهز: «وهل هذا يكفي؟»', anchor: 'löst nicht alles' }
-    ]
+      { trick: 'افصل الإجراء عن الأثر: Maßnahme und Wirkung sind zwei Sätze', wie: 'Die Maßnahme ist die Mülltrennung; die Wirkung bleibt klein.', warum: '«يجب أن نفعل شيئًا» ليس إجراءً؛ الامتحان يسأل عن الأثر.', anchor: 'Die Maßnahme ist die Mülltrennung; die Wirkung bleibt klein' },
+      { trick: 'سمِّ الكلفة: Die Kosten gehören zur Frage', wie: 'Die Kosten gehören zur Frage, sonst ist jede Maßnahme gratis.', warum: 'حجة بلا كلفة تبدو شعارًا؛ والكلفة أول ما يعترض به المناقش.', anchor: 'Die Kosten gehören zur Frage' },
+      { trick: 'أعطِ حدًّا للإجراء: Die Maßnahme löst nicht alles', wie: 'Die Maßnahme löst nicht alles; sie verschiebt das Problem.', warum: 'الإقرار بالحد يمنع الردّ الجاهز: «وهل هذا يكفي؟»', anchor: 'Die Maßnahme löst nicht alles' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Treibhauseffekt': 'Treibhauseffekte',
+      'die Einwegverpackung': 'Einwegverpackungen',
+      'die Massentierhaltung': 'Massentierhaltungen'
+    },
+    clozeItemIndex: 0,
+    clozeNearMiss: 'Umwelten',
+    checkItemIndex: 39,
+    extraCheck: {
+      right: 'Ich muss Maßnahme und Wirkung trennen.',
+      bad: 'Ich müssen Maßnahme und Wirkung trennen.',
+      why: 'الفاعل ich مفرد: muss.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w15.s20',
+      frage: 'أي جملة تُلزم بالفصل بين الإجراء والأثر بفعل صحيح؟'
+    }
   }
 
 };
