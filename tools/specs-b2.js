@@ -226,25 +226,49 @@ module.exports = [
       summaryRecap: 'مطلوب أولًا ووقت مقسوم',
     }),
 
-  U('b2-w06', 'ورشة كتابة: شكوى', 'Beschwerdebrief',
-    'Am Ende schreibst du Tatsache, Folge und Bitte',
-    'في النهاية تكتب واقعة ونتيجة وطلبًا.',
+  U('b2-w06', 'خطاب شكوى: واقعة ونتيجة وطلب', 'Beschwerdebrief: Tatsache, Folge und Bitte',
+    'Am Ende schreibst du eine Beschwerde mit Tatsache, Folge und Bitte — in fünf Sätzen',
+    'في النهاية تكتب شكوى رسمية بواقعة ونتيجة وطلب في خمس جمل.',
     [
-      ['die Tatsache', 'الواقعة قابلة للتحقق', 'الإهانة ليست واقعة', 'Sie sind unfähig', 'الإهانة تخسر المهمة'],
-      ['die Folge', 'النتيجة بعد الواقعة', 'الطلب بلا نتيجة ضعيف', 'ich bitte ohne Folge', 'النتيجة تسند الطلب'],
-      ['die Bitte', 'الطلب محدد', 'الغضب ليس طلبًا', 'ich will Rache', 'الطلب حل'],
-      ['der Ton', 'النبرة موضوعية', 'السخرية لا ترفع الدرجة', 'das ist lächerlich als einziger Satz', 'النبرة جزء من النص']
+      ['Die Lieferung kam zwei Tage zu spät.', 'يفتتح الخطاب بواقعة قابلة للتحقق', 'الواقعة بفعل مفرد وماضٍ واضح: kam مع die Lieferung المفردة', 'Die Lieferung kamen zwei Tage zu spät.', 'المفرد: kam'],
+      ['Die Bestellnummer steht oben im Betreff.', 'يضع الرقم المرجعي حيث يُرى فورًا', 'رقم الطلب مفرد: steht لا stehen', 'Die Bestellnummer stehen oben im Betreff.', 'المفرد: steht'],
+      ['Die Folge war ein verpasster Termin.', 'يربط الواقعة بنتيجة محددة', 'بعد war يبقى الخبر في حالة الرفع: ein verpasster Termin', 'Die Folge war einen verpassten Termin.', 'الرفع بعد sein'],
+      ['Ich muss um Ersatz oder eine Gutschrift bitten.', 'يطلب بديلًا محددًا بأدب وحزم', 'bitten يقترن بـum لا für، والمصدر bitten يغلق الجملة بعد muss', 'Ich muss für Ersatz oder eine Gutschrift bitten.', 'bitten um']
     ],
     [
-      ['Die Lieferung kam zwei Tage zu spät.', 'وصل التسليم متأخرًا يومين', 'Sie sind unfähig', 'الواقعة لا الإهانة', 'spät'],
-      ['Die Folge war ein verpasster Termin.', 'النتيجة موعد فائت', 'Ich bitte ohne Folge', 'النتيجة تسند الطلب', 'Folge'],
-      ['Ich bitte um eine neue Lieferung.', 'أطلب تسليمًا جديدًا', 'Ich will Rache', 'الطلب حل', 'bitte'],
-      ['Der Ton bleibt sachlich.', 'النبرة تبقى موضوعية', 'Das ist lächerlich', 'النبرة جزء من النص', 'sachlich']
+      ['Die Lieferung kam zwei Tage zu spät.', 'وصل التسليم متأخرًا يومين', 'Die Lieferung kamen zwei Tage zu spät.', 'الفاعل مفرد: kam.', 'Lieferung'],
+      ['Die Bestellnummer steht oben im Betreff.', 'رقم الطلب في الأعلى في سطر الموضوع', 'Die Bestellnummer stehen oben im Betreff.', 'المفرد: steht.', 'Betreff'],
+      ['Die Folge war ein verpasster Termin.', 'كانت النتيجة موعدًا فائتًا', 'Die Folge war einen verpassten Termin.', 'الخبر رفع: ein verpasster Termin.', 'Folge'],
+      ['Ich muss um Ersatz oder eine Gutschrift bitten.', 'يجب أن أطلب بديلًا أو إشعارًا دائنًا', 'Ich muss für Ersatz oder eine Gutschrift bitten.', 'bitten مع um.', 'Ersatz']
     ],
-    'Die Absenderadresse steht oben links, darunter die Empfängeradresse. In der Betreffzeile stehen Sendungsnummer und Datum. Die Falschlieferung kam an die Lieferadresse. Ich bitte um Umtausch oder Nachlieferung. Die Zahlungsfrist läuft, sonst folgt eine Mahnung.',
+    'Die Lieferung kam zwei Tage zu spät. Die Folge war ein verpasster Termin.',
     'Der Ton bleibt sachlich.',
-    'Schreibe morgen Tatsache und Bitte.',
-    'غدًا اكتب واقعة وطلبًا.'),
+    'Wiederhole morgen die fünf Sätze: Die Lieferung kam zwei Tage zu spät. Die Bestellnummer steht oben im Betreff. Die Folge war ein verpasster Termin. Ich muss um Ersatz oder eine Gutschrift bitten. Der Ton bleibt sachlich. Die Absenderadresse steht oben links, darunter die Empfängeradresse. In der Betreffzeile stehen Sendungsnummer und Datum. Die Falschlieferung kam an die Lieferadresse. Ich bitte um Umtausch oder Nachlieferung. Die Zahlungsfrist läuft, sonst folgt eine Mahnung. Ich will keine Rache, ich will eine Lösung. Ein einziger sachlicher Satz hilft mehr als das Wort «lächerlich».',
+    'غدًا أعد جمل خطاب الشكوى الخمس ولاحظ ترتيب الواقعة والنتيجة والطلب.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'kasus', 'präposition'],
+      imitateNearMiss: 'Lieferungen',
+      transformHint: 'في جملة الختام النبرة قبل كل شيء: Der Ton bleibt sachlich — الصفة بعد bleibt بلا نهاية.',
+      orderSentence: 'Ich muss um Ersatz oder eine Gutschrift bitten.',
+      checkOrderSentence: 'Die Bestellnummer steht oben im Betreff.',
+      orderAr: 'رتّب جملة الطلب: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر bitten أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر bitten يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Beschwerdebrief in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: واقعة بفعل مفرد وماضٍ، ورقم طلب في سطر الموضوع، ونتيجة بخبر مرفوع، وطلب بديل بـum، ونبرة موضوعية بصفة بلا نهاية.',
+        hinweise: ['bitten يقترن دائمًا بـum: um Ersatz bitten.', 'الواقعة قبل الحكم: رقم وموعد قبل أي رأي.'],
+        prompt: 'اكتب جمل خطاب الشكوى الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Lieferung kam zwei Tage zu spät. · Die Bestellnummer steht oben im Betreff. · Die Folge war ein verpasster Termin. · Ich muss um Ersatz oder eine Gutschrift bitten. · Der Ton bleibt sachlich.',
+        points: ['Die Lieferung kam zwei Tage zu spät.', 'Die Bestellnummer steht oben im Betreff.', 'Die Folge war ein verpasster Termin.', 'Ich muss um Ersatz oder eine Gutschrift bitten.', 'Der Ton bleibt sachlich.'],
+        minWords: 31,
+        frage: 'اكتب جمل خطاب الشكوى الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Lieferung kam zwei Tage zu spät. Die Bestellnummer steht oben im Betreff. Die Folge war ein verpasster Termin. Ich muss um Ersatz oder eine Gutschrift bitten. Der Ton bleibt sachlich.',
+      summaryDe: 'Die Lieferung kam zwei Tage zu spät. Die Bestellnummer steht oben im Betreff. Die Folge war ein verpasster Termin. Ich muss um Ersatz oder eine Gutschrift bitten. Der Ton bleibt sachlich.',
+      summaryAr: 'الشكوى وثيقة: واقعة برقم، ونتيجة واضحة، وطلب محدد، ونبرة هادئة.',
+      summaryRecap: 'واقعة ونتيجة وطلب',
+    }),
 
   U('b2-w07', 'نقاش: عمل', 'Arbeit diskutieren',
     'Am Ende nennst du Vorteil, Nachteil und Grenze',

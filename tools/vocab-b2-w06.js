@@ -11,7 +11,7 @@ module.exports = {
       ['der Beschwerdebrief', 'die Beschwerdebriefe', 'خطاب الشكوى', 'Jeder Beschwerdebrief ist ein Geschäftsbrief für die Beschwerdeabteilung.', 'Das Beschwerdebrief folgt demselben Aufbau.', 'مذكر: der.', 'genus', 'Beschwerdebrief'],
       ['die Reklamation', 'die Reklamationen', 'المطالبة', 'Die Reklamation betrifft eine Fehllieferung, nicht die Teillieferung.', 'Die Reklamation betrifft ein Teillieferung.', 'مؤنث نصب: eine.', 'deklination', 'Reklamation'],
       ['die Lieferung', 'die Lieferungen', 'التسليم', 'Die Lieferung kam zwei Tage zu spät; die Lieferfrist war vier Tage.', 'Die Lieferung kamen zwei Tage zu spät.', 'المفرد: kam.', 'konjugation', 'Lieferung'],
-      ['die Bestellung', 'die Bestellungen', 'الطلب', 'Die Bestellung vom dritten Mai fehlt bisher; der Empfänger wartet.', 'Die Bestellung von dem dritten Mai fehlt bisher.', 'التاريخ بالـ Genitiv.', 'kasus', 'Bestellung'],
+      ['die Bestellung', 'die Bestellungen', 'الطلب', 'Die Bestellung vom dritten Mai fehlt bisher; der Empfänger wartet.', 'Die Bestellung vom dritte Mai fehlt bisher; der Empfänger wartet.', 'الوصف بعد الأداة المنقبضة vom: dritten لا dritte.', 'kasus', 'Bestellung'],
       ['die Bestellnummer', 'die Bestellnummern', 'رقم الطلب', 'Die Bestellnummer steht im Betreff, die Sendungsnummer darunter.', 'Die Bestellnummer stehen in der Betreffzeile.', 'المفرد: steht.', 'konjugation', 'Bestellnummer'],
       ['die Rechnung', 'die Rechnungen', 'الفاتورة', 'Die Rechnung stimmt nicht mit der Auftragsbestätigung und der Vertragsnummer überein.', 'Die Rechnung stimmt nicht mit die Auftragsbestätigung überein.', 'mit + داتيف.', 'kasus', 'Rechnung'],
       ['der Betrag', 'die Beträge', 'المبلغ', 'Der Betrag wurde doppelt abgebucht.', 'Der Betrag wurden doppelt abgebucht.', 'المفرد: wurde.', 'konjugation', 'Betrag'],
@@ -21,14 +21,14 @@ module.exports = {
       ['die Verpackung', 'die Verpackungen', 'التغليف', 'Die Verpackung war beschädigt.', 'Die Verpackung waren beschädigt.', 'المفرد: war.', 'konjugation', 'Verpackung'],
       ['die Beschädigung', 'die Beschädigungen', 'التلف', 'Die Beschädigung ist auf dem Beweisfoto zu sehen und fällt unter die Gewährleistung.', 'Die Beschädigung ist auf das Beweisfoto zu sehen.', 'auf + داتيف.', 'kasus', 'Beschädigung'],
       ['die Frist', 'die Fristen', 'المهلة', 'Die Frist zur Antwort beträgt zwei Wochen.', 'Die Frist zur Antwort betragen zwei Wochen.', 'المفرد: beträgt.', 'konjugation', 'Frist'],
-      ['die Rücksendung', 'die Rücksendungen', 'الإعادة', 'Das Rücksendung kostet nichts, das Widerrufsrecht gilt vierzehn Tage.', 'Das Rücksendung kostet nichts.', 'مؤنث: die.', 'genus', 'Rücksendung'],
+      ['die Rücksendung', 'die Rücksendungen', 'الإعادة', 'Die Rücksendung kostet nichts, das Widerrufsrecht gilt vierzehn Tage.', 'Das Rücksendung kostet nichts, das Widerrufsrecht gilt vierzehn Tage.', 'مؤنث: die.', 'genus', 'Rücksendung'],
       ['das Rücksendeetikett', 'die Rücksendeetiketten', 'ملصق الإعادة', 'Das Rücksendeetikett liegt der Sendung bei.', 'Das Rücksendeetikett liegen der Sendung bei.', 'المفرد: liegt.', 'konjugation', 'Rücksendeetikett'],
       ['der Ersatz', '—', 'البديل', 'Ich bitte um Ersatz oder um eine Gutschrift.', 'Ich bitte für Ersatz oder um eine Gutschrift.', 'bitten um + نصب.', 'präposition', 'Ersatz'],
       ['die Erstattung', 'die Erstattungen', 'الاسترداد', 'Die Erstattung soll auf mein Konto, eine Entschädigung erwarte ich nicht.', 'Die Erstattung soll in mein Konto.', 'auf ein Konto.', 'präposition', 'Erstattung'],
       ['die Forderung', 'die Forderungen', 'المطالبة', 'Die Forderung ist berechtigt, auch nach Verzug bleibt der Ton ruhig.', 'Die Forderung sind berechtigt, der Ton bleibt ruhig.', 'المفرد: ist.', 'konjugation', 'Forderung'],
-      ['die Nachfrist', 'die Nachfristen', 'مهلة إضافية', 'Nach Ablauf der Nachfrist setze ich eine neue Antwortfrist.', 'Nach Ablauf von der Nachfrist behalte ich mir Schritte vor.', 'Genitiv: der Nachfrist.', 'kasus', 'Nachfrist'],
+      ['die Nachfrist', 'die Nachfristen', 'مهلة إضافية', 'Nach Ablauf der Nachfrist setze ich eine neue Antwortfrist.', 'Nach Ablauf die Nachfrist setze ich eine neue Antwortfrist.', 'الإضافة Genitiv: der Nachfrist لا die Nachfrist.', 'kasus', 'Nachfrist'],
       ['die Fristsetzung', '—', 'تحديد المهلة', 'Die Fristsetzung steht am Ende des Schreibens; Rücksprache ist möglich.', 'Die Fristsetzung stehen am Ende des Schreibens.', 'المفرد: steht.', 'konjugation', 'Fristsetzung'],
-      ['der Sachverhalt', 'die Sachverhalte', 'الوقائع', 'Das Sachverhalt steht im ersten Absatz der Mängelrüge.', 'Das Sachverhalt steht im ersten Absatz.', 'مذكر: der.', 'genus', 'Sachverhalt'],
+      ['der Sachverhalt', 'die Sachverhalte', 'الوقائع', 'Der Sachverhalt steht im ersten Absatz der Mängelrüge.', 'Das Sachverhalt steht im ersten Absatz der Mängelrüge.', 'مذكر: der.', 'genus', 'Sachverhalt'],
       ['die Tatsache', 'die Tatsachen', 'الواقعة', 'Eine Tatsache braucht kein Urteil.', 'Ein Tatsache braucht kein Urteil.', 'مؤنث: eine.', 'genus', 'Tatsache'],
       ['die Konsequenz', 'die Konsequenzen', 'النتيجة', 'Die Konsequenz war ein verpasster Termin.', 'Die Konsequenz waren ein verpasster Termin.', 'المفرد: war.', 'konjugation', 'Konsequenz'],
       ['die Bitte', 'die Bitten', 'الرجاء', 'Die Bitte steht in einem eigenen Satz und rettet die Geschäftsbeziehung.', 'Die Bitte steht in ein eigenen Satz.', 'in + داتيف: einem.', 'deklination', 'Bitte'],
@@ -36,16 +36,16 @@ module.exports = {
       ['der Ton', '—', 'النبرة', 'Der Ton bleibt sachlich, auch wenn es nervt.', 'Die Ton bleibt sachlich, auch wenn es nervt.', 'مذكر: der.', 'genus', 'Ton'],
       ['die Verbindlichkeit', 'die Verbindlichkeiten', 'اللياقة الملزمة', 'Verbindlichkeit ersetzt keine Frist.', 'Verbindlichkeit ersetzt keine Frist, gell?', '«gell» عامية لا تصلح لخطاب رسمي.', 'register', 'Verbindlichkeit'],
       ['die Anrede', 'die Anreden', 'صيغة المخاطبة', 'Die Anrede lautet: Sehr geehrte Sachbearbeiterin, sehr geehrter Sachbearbeiter.', 'Die Anrede lauten: Sehr geehrte Damen und Herren.', 'المفرد: lautet.', 'konjugation', 'Anrede'],
-      ['die Grußformel', 'die Grußformeln', 'التحية الختامية', 'Die Grußformel bleibt kurz; die Zusendung der Kopie folgt.', 'Die Grußformel bleibt kurz und freundlich gemacht.', 'الصفة تكفي.', 'lexik-kollokation', 'Grußformel'],
+      ['die Grußformel', 'die Grußformeln', 'التحية الختامية', 'Die Grußformel bleibt kurz; die Zusendung der Kopie folgt.', 'Die Grußformel bleibt kurze; die Zusendung der Kopie folgt.', 'الصفة بعد bleibt بلا نهاية: kurz لا kurze.', 'lexik-kollokation', 'Grußformel'],
       ['die Unterschrift', 'die Unterschriften', 'التوقيع', 'Die Unterschrift fehlt nie in einem formellen Schreiben.', 'Die Unterschrift fehlen nie in einem formellen Schreiben.', 'المفرد: fehlt.', 'konjugation', 'Unterschrift'],
       ['der Anhang', 'die Anhänge', 'المرفق', 'Der Anhang enthält das Beweisfoto und die Forderung auf Schadenersatz.', 'Der Anhang enthalten das Beweisfoto und die Quittung.', 'المفرد: enthält.', 'konjugation', 'Anhang'],
-      ['die Kopie', 'die Kopien', 'النسخة', 'Die Kopie von der Quittung und der Kassenbon liegen bei.', 'Die Kopie von der Rechnung liegt bei.', 'Genitiv أدقّ: der Rechnung.', 'kasus', 'Kopie'],
-      ['die Referenz', 'die Referenzen', 'المرجع', 'Ohne Referenz bearbeiten die Firma nichts; ohne Lösung gibt es keine Kundenzufriedenheit und keine Weiterempfehlung.', 'Ohne Referenz bearbeiten die Firma nichts.', 'المفرد: bearbeitet.', 'konjugation', 'Referenz'],
-      ['die Bearbeitung', 'die Bearbeitungen', 'المعالجة', 'Das Bearbeitung dauert zwei Wochen; ein Aktenzeichen fehlt.', 'Das Bearbeitung dauert zwei Wochen.', 'مؤنث: die.', 'genus', 'Bearbeitung'],
-      ['der Eingang', 'die Eingänge', 'ورود الخطاب', 'Der Eingang der Beschwerde wird bestätigt; die Bearbeitungszeit bleibt offen.', 'Der Eingang von der Beschwerde wird bestätigt.', 'Genitiv: der Beschwerde.', 'kasus', 'Eingang'],
-      ['die Auskunft', 'die Auskünfte', 'الإفادة', 'Eine Auskunft innerhalb von zwei Wochen ist üblich, auch auf dem Postweg; sonst folgt das Schlichtungsverfahren.', 'Eine Auskunft in zwei Wochen ist üblich.', 'innerhalb + Genitiv.', 'präposition', 'Auskunft'],
-      ['die Lösung', 'die Lösungen', 'الحل', 'Ich bitte um eine Lösung, nicht für eine Entschuldigung; die Weiterempfehlung steht auf dem Spiel.', 'Ich bitte um eine Lösung, nicht für eine Entschuldigung.', 'bitten um.', 'präposition', 'Lösung'],
-      ['die Entschuldigung', 'die Entschuldigungen', 'الاعتذار', 'Eine Entschuldigung ohne Lösung hilft nicht; die Zufriedenheit bleibt offen.', 'Eine Entschuldigung ohne ein Lösung hilft nicht.', 'بعد ohne بلا أداة.', 'kasus', 'Entschuldigung'],
+      ['die Kopie', 'die Kopien', 'النسخة', 'Die Kopie von der Quittung und der Kassenbon liegen bei.', 'Die Kopie von der Quittung und der Kassenbon liegt bei.', 'الفاعل معطوف (Kopie + Kassenbon): الفعل جمع liegen.', 'kasus', 'Kopie'],
+      ['die Referenz', 'die Referenzen', 'المرجع', 'Ohne Referenz bearbeitet die Firma nichts; ohne Lösung gibt es keine Kundenzufriedenheit und keine Weiterempfehlung.', 'Ohne Referenz bearbeiten die Firma nichts; ohne Lösung gibt es keine Kundenzufriedenheit und keine Weiterempfehlung.', 'المفرد: bearbeitet.', 'konjugation', 'Referenz'],
+      ['die Bearbeitung', 'die Bearbeitungen', 'المعالجة', 'Die Bearbeitung dauert zwei Wochen; ein Aktenzeichen fehlt.', 'Das Bearbeitung dauert zwei Wochen; ein Aktenzeichen fehlt.', 'مؤنث: die.', 'genus', 'Bearbeitung'],
+      ['der Eingang', 'die Eingänge', 'ورود الخطاب', 'Der Eingang der Beschwerde wird bestätigt; die Bearbeitungszeit bleibt offen.', 'Der Eingang die Beschwerde wird bestätigt; die Bearbeitungszeit bleibt offen.', 'الإضافة Genitiv: der Beschwerde لا die Beschwerde.', 'kasus', 'Eingang'],
+      ['die Auskunft', 'die Auskünfte', 'الإفادة', 'Eine Auskunft innerhalb von zwei Wochen ist üblich, auch auf dem Postweg; sonst folgt das Schlichtungsverfahren.', 'Eine Auskunft innerhalb zwei Wochen ist üblich, auch auf dem Postweg; sonst folgt das Schlichtungsverfahren.', 'بعد innerhalb: von أو إضافة — innerhalb von zwei Wochen.', 'präposition', 'Auskunft'],
+      ['die Lösung', 'die Lösungen', 'الحل', 'Ich bitte um eine Lösung, nicht um eine Entschuldigung; die Weiterempfehlung steht auf dem Spiel.', 'Ich bitte um eine Lösung, nicht für eine Entschuldigung; die Weiterempfehlung steht auf dem Spiel.', 'bitten um.', 'präposition', 'Lösung'],
+      ['die Entschuldigung', 'die Entschuldigungen', 'الاعتذار', 'Eine Entschuldigung ohne Lösung hilft nicht; die Zufriedenheit bleibt offen.', 'Eine Entschuldigung ohne ein Lösung hilft nicht.', 'المؤنث نصب بعد ohne: eine Lösung.', 'kasus', 'Entschuldigung'],
       ['der Vorgang', 'die Vorgänge', 'المعاملة', 'Der Vorgang schildere ich kurz, denn die Verbraucherzentrale liest mit.', 'Der Vorgang schildere ich kurz es.', 'لا ضمير زائد.', 'wortstellung', 'Vorgang']
     ],
     material: [
@@ -64,10 +64,27 @@ module.exports = {
       'die Lieferfrist', 'die Rücksprache'
     ],
     tricks: [
-      { trick: 'الشكوى وثيقة: Tatsache — Folge — Bitte، في هذا الترتيب', wie: 'Die Lieferung kam zu spät. Die Folge war ein verpasster Termin. Ich bitte um eine neue Lieferung.', warum: 'الغاضب يبدأ بالحكم، والموظف لا يعالج إلا واقعة لها رقم.', anchor: 'Die Folge war' },
-      { trick: 'لا تصف الشخص: صف المبلغ والموعد', wie: 'Der Betrag wurde doppelt abgebucht, nicht: Sie sind unfähig.', warum: 'الحكم على الشخص يُقفل المعالجة؛ الرقم يفتحها.', anchor: 'doppelt abgebucht' },
-      { trick: 'اطلب بديلًا محددًا: Ersatz، Gutschrift، Nachlieferung — وسمِّ المهلة', wie: 'Ich bitte um Ersatz bis zum 20. Mai und setze eine Nachfrist.', warum: 'طلب بلا موعد ولا بديل يبقى بلا نتيجة.', anchor: 'eine Nachfrist' }
-    ]
+      { trick: 'الشكوى وثيقة: Tatsache — Folge — Bitte، في هذا الترتيب', wie: 'Die Lieferung kam zu spät. Die Folge war ein verpasster Termin. Ich bitte um eine neue Lieferung.', warum: 'الغاضب يبدأ بالحكم، والموظف لا يعالج إلا واقعة لها رقم.', anchor: 'Die Folge war ein verpasster Termin' },
+      { trick: 'لا تصف الشخص: صف المبلغ والموعد', wie: 'Der Betrag wurde doppelt abgebucht, nicht: Sie sind unfähig.', warum: 'الحكم على الشخص يُقفل المعالجة؛ الرقم يفتحها.', anchor: 'Der Betrag wurde doppelt abgebucht' },
+      { trick: 'اطلب بديلًا محددًا: Ersatz، Gutschrift، Nachlieferung — وسمِّ المهلة', wie: 'Ich bitte um Ersatz bis zum 20. Mai und setze eine Nachfrist.', warum: 'طلب بلا موعد ولا بديل يبقى بلا نتيجة.', anchor: 'Ich bitte um Ersatz bis zum 20. Mai' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Bestellnummer': 'Bestellnummern',
+      'der Sachverhalt': 'Sachverhalts',
+      'die Lösung': 'Lösungen'
+    },
+    clozeItemIndex: 0,
+    clozeNearMiss: 'Beschwerden',
+    checkItemIndex: 30,
+    extraCheck: {
+      right: 'Der Ton bleibt sachlich.',
+      bad: 'Der Ton bleibt sachliche.',
+      why: 'الصفة بعد bleiben بلا نهاية: sachlich لا sachliche.',
+      family: 'deklination',
+      prereq: 'cap.b2-w06.s20',
+      frage: 'أي جملة تبقي الصفة بلا نهاية بعد bleiben؟'
+    }
   }
 
 };

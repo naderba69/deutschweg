@@ -19067,6 +19067,140 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW5[4].frage.optionen.some(o => o.text === targetsW5[4]) &&
       checksW5[4].frage.optionen.some(o => o.text === 'Ein Rückschluss ohne ein Beleg ist geraten.') &&
       Object.values(checksW5[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonW6 = win.DW_LESSONS['b2-w06'];
+  const rowW6 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w06');
+  const byWordW6 = Object.fromEntries(lessonW6.wortschatz.map(it => [it.de, it]));
+  const tricksW6 = lessonW6.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsW6 = [
+    'Die Lieferung kam zwei Tage zu spät.',
+    'Die Bestellnummer steht oben im Betreff.',
+    'Die Folge war ein verpasster Termin.',
+    'Ich muss um Ersatz oder eine Gutschrift bitten.',
+    'Der Ton bleibt sachlich.'
+  ];
+  t('Corpus workshop b2-w06 precisely scopes five complaint-letter moves taking a dated fact, a subject-line reference, a nominative consequence, bitten um and bare predicative sachlich',
+    lessonW6.title.de === 'Beschwerdebrief: Tatsache, Folge und Bitte' &&
+      lessonW6.title.ar === 'خطاب شكوى: واقعة ونتيجة وطلب' &&
+      lessonW6.level === 'B2' && lessonW6.kind === 'workshop' &&
+      rowW6.title.de === lessonW6.title.de && rowW6.title.ar === lessonW6.title.ar &&
+      rowW6.theme === 'شكوى رسمية' &&
+      rowW6.grammar.item === 'خطاب شكوى: واقعة ونتيجة وطلب' &&
+      rowW6.grammar.method === 'explicit' &&
+      rowW6.words.receptive === 90 && rowW6.words.productive === 60 &&
+      lessonW6.schritte.length === 36 && lessonW6.wortschatz.length === 40 &&
+      lessonW6.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW6.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW6[i]) &&
+      lessonW6.schritte[0].zeigt.de === 'Am Ende schreibst du eine Beschwerde mit Tatsache, Folge und Bitte — in fünf Sätzen' &&
+      lessonW6.schritte.find(s => s.id === 's20').zeigt.de === targetsW6[4]);
+
+  const expectedWordsW6 = [
+    'die Beschwerde', 'der Beschwerdebrief', 'die Reklamation', 'die Lieferung', 'die Bestellung', 'die Bestellnummer',
+    'die Rechnung', 'der Betrag', 'die Abbuchung', 'die Gutschrift', 'der Mangel', 'die Verpackung',
+    'die Beschädigung', 'die Frist', 'die Rücksendung', 'das Rücksendeetikett', 'der Ersatz', 'die Erstattung',
+    'die Forderung', 'die Nachfrist', 'die Fristsetzung', 'der Sachverhalt', 'die Tatsache', 'die Konsequenz',
+    'die Bitte', 'die Aufforderung', 'der Ton', 'die Verbindlichkeit', 'die Anrede', 'die Grußformel',
+    'die Unterschrift', 'der Anhang', 'die Kopie', 'die Referenz', 'die Bearbeitung', 'der Eingang',
+    'die Auskunft', 'die Lösung', 'die Entschuldigung', 'der Vorgang'
+  ];
+  const errorsW6 = lessonW6.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w06 reviews all 40 entries and three bounded mnemonics converting five false foils, repairing five examples that carried their foils error and fixing one false-rule explanation',
+    Object.keys(byWordW6).join(' | ') === expectedWordsW6.join(' | ') &&
+      lessonW6.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW6.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW6['die Bestellung'].err === 'Die Bestellung vom dritte Mai fehlt bisher; der Empfänger wartet.' &&
+      byWordW6['die Nachfrist'].err === 'Nach Ablauf die Nachfrist setze ich eine neue Antwortfrist.' &&
+      byWordW6['die Grußformel'].err === 'Die Grußformel bleibt kurze; die Zusendung der Kopie folgt.' &&
+      byWordW6['die Kopie'].err === 'Die Kopie von der Quittung und der Kassenbon liegt bei.' &&
+      byWordW6['der Eingang'].err === 'Der Eingang die Beschwerde wird bestätigt; die Bearbeitungszeit bleibt offen.' &&
+      byWordW6['die Auskunft'].err === 'Eine Auskunft innerhalb zwei Wochen ist üblich, auch auf dem Postweg; sonst folgt das Schlichtungsverfahren.' &&
+      ['Die Bestellung von dem dritten Mai fehlt bisher.', 'Nach Ablauf von der Nachfrist behalte ich mir Schritte vor.',
+        'Die Grußformel bleibt kurz und freundlich gemacht.', 'Die Kopie von der Rechnung liegt bei.',
+        'Der Eingang von der Beschwerde wird bestätigt.', 'Eine Auskunft in zwei Wochen ist üblich.']
+        .every(x => !errorsW6.includes(x)) &&
+      byWordW6['die Rücksendung'].ex === 'Die Rücksendung kostet nichts, das Widerrufsrecht gilt vierzehn Tage.' &&
+      byWordW6['die Rücksendung'].err === 'Das Rücksendung kostet nichts, das Widerrufsrecht gilt vierzehn Tage.' &&
+      byWordW6['der Sachverhalt'].ex === 'Der Sachverhalt steht im ersten Absatz der Mängelrüge.' &&
+      byWordW6['der Sachverhalt'].err === 'Das Sachverhalt steht im ersten Absatz der Mängelrüge.' &&
+      byWordW6['die Referenz'].ex === 'Ohne Referenz bearbeitet die Firma nichts; ohne Lösung gibt es keine Kundenzufriedenheit und keine Weiterempfehlung.' &&
+      byWordW6['die Referenz'].err === 'Ohne Referenz bearbeiten die Firma nichts; ohne Lösung gibt es keine Kundenzufriedenheit und keine Weiterempfehlung.' &&
+      byWordW6['die Bearbeitung'].ex === 'Die Bearbeitung dauert zwei Wochen; ein Aktenzeichen fehlt.' &&
+      byWordW6['die Bearbeitung'].err === 'Das Bearbeitung dauert zwei Wochen; ein Aktenzeichen fehlt.' &&
+      byWordW6['die Lösung'].ex === 'Ich bitte um eine Lösung, nicht um eine Entschuldigung; die Weiterempfehlung steht auf dem Spiel.' &&
+      byWordW6['die Lösung'].err === 'Ich bitte um eine Lösung, nicht für eine Entschuldigung; die Weiterempfehlung steht auf dem Spiel.' &&
+      byWordW6['die Entschuldigung'].err === 'Eine Entschuldigung ohne ein Lösung hilft nicht.' &&
+      byWordW6['die Entschuldigung'].why.includes('eine Lösung') &&
+      ['Die Lieferung kamen zwei Tage zu spät.', 'Die Unterschrift fehlen nie in einem formellen Schreiben.',
+        'Ich bitte für Ersatz oder um eine Gutschrift.']
+        .every(x => errorsW6.includes(x)) &&
+      tricksW6.length === 3 &&
+      tricksW6[0].wie.includes('Die Lieferung kam zu spät. Die Folge war ein verpasster Termin. Ich bitte um eine neue Lieferung.') &&
+      tricksW6[1].wie.includes('Der Betrag wurde doppelt abgebucht, nicht: Sie sind unfähig.') &&
+      tricksW6[2].wie.includes('Ich bitte um Ersatz bis zum 20. Mai und setze eine Nachfrist.'));
+
+  const wordClozeAW6 = lessonW6.schritte.find(s => s.id === 's09');
+  const wordClozeBW6 = lessonW6.schritte.find(s => s.id === 's13');
+  const wordClozeCW6 = lessonW6.schritte.find(s => s.id === 's17');
+  const imitateW6 = lessonW6.schritte.find(s => s.id === 's19');
+  const drillW6 = lessonW6.schritte.find(s => s.id === 's23');
+  const orderW6 = lessonW6.schritte.find(s => s.id === 's24');
+  const writingW6 = lessonW6.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW6 = lessonW6.schritte.find(s => s.phase === 'Produktion');
+  const summaryW6 = lessonW6.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW6 = lessonW6.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus workshop b2-w06 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 31-word five-target production',
+    wordClozeAW6.frage.zeigt === 'Die ____ steht im Betreff, die Sendungsnummer darunter.' && wordClozeAW6.frage.antworten.join(' ') === 'Bestellnummer' &&
+      wordClozeAW6.frage.nearMiss.Bestellnummern && !win.DW.renderers.judgeCloze(wordClozeAW6.frage, 'Bestellnummern').ok &&
+      wordClozeBW6.frage.zeigt === 'Der ____ steht im ersten Absatz der Mängelrüge.' && wordClozeBW6.frage.antworten.join(' ') === 'Sachverhalt' &&
+      wordClozeBW6.frage.nearMiss.Sachverhalts && !win.DW.renderers.judgeCloze(wordClozeBW6.frage, 'Sachverhalts').ok &&
+      wordClozeCW6.frage.zeigt === 'Ich bitte um eine ____, nicht um eine Entschuldigung; die Weiterempfehlung steht auf dem Spiel.' && wordClozeCW6.frage.antworten.join(' ') === 'Lösung' &&
+      wordClozeCW6.frage.nearMiss['Lösungen'] && !win.DW.renderers.judgeCloze(wordClozeCW6.frage, 'Lösungen').ok &&
+      (imitateW6.frage.zeigt === 'Die ____ kam zwei Tage zu spät.' || imitateW6.zeigt.de === 'Die ____ kam zwei Tage zu spät.') && imitateW6.frage.antworten.join(' ') === 'Lieferung' &&
+      imitateW6.frage.nearMiss['Lieferungen'] && !win.DW.renderers.judgeCloze(imitateW6.frage, 'Lieferungen').ok &&
+      drillW6.frage.zeigt === 'Die ____ beginnt mit der Kundennummer des Absenders.' && drillW6.frage.antworten.join(' ') === 'Beschwerde' &&
+      drillW6.frage.nearMiss.Beschwerden && !win.DW.renderers.judgeCloze(drillW6.frage, 'Beschwerden').ok &&
+      lessonW6.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW6.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW6.frage.correct.join(' ') === targetsW6[3] && orderW6.frage.finite === 'muss' && orderW6.frage.verbFirst === false &&
+      orderW6.frage.fields.vorfeld.join(' ') === 'Ich' && orderW6.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW6.frage.fields.mittelfeld.join(' ') === 'um Ersatz oder eine Gutschrift bitten.' &&
+      win.DW.order.score(orderW6.frage, orderW6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW6.frage, ['Ich', 'um', 'Ersatz', 'muss', 'oder', 'eine', 'Gutschrift', 'bitten.']).credit < 1 &&
+      writingW6.frage.points.join(' | ') === targetsW6.join(' | ') && writingW6.frage.minWords === 31 &&
+      targetsW6.join(' ').split(/\s+/).length === 31 &&
+      targetsW6.every(x => [writingW6.frage.promptDe, summaryW6.zeigt.de, homeworkW6.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW6.every(x => norm(speakingW6.erklaerung).includes(norm(x))) &&
+      homeworkW6.zeigt.de.includes('Die Absenderadresse steht oben links, darunter die Empfängeradresse.') &&
+      homeworkW6.zeigt.de.includes('Ich will keine Rache, ich will eine Lösung.'));
+
+  const checksW6 = lessonW6.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW6 = checksW6.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW6 = checksW6.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w06 makes 80 percent four of five, independently checking bitten um, the Beschwerde cloze and steht order, singular fehlt and bare sachlich',
+    checksW6.length === 5 && checksW6[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW6[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW6.every(s => /^cap\.b2-w06\.s\d+$/.test(s.frage.prereq || '')) && checksW6.every(s => !s.hinweise) &&
+      checksW6.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w06.s07 | cap.b2-w06.s23 | cap.b2-w06.s24 | cap.b2-w06.s15 | cap.b2-w06.s20' &&
+      new Set(checksW6.map(s => s.frage.prereq)).size === 5 &&
+      checksW6[0].frage.optionen.some(o => o.text === targetsW6[3]) &&
+      checksW6[0].frage.optionen.some(o => o.text === 'Ich muss für Ersatz oder eine Gutschrift bitten.') &&
+      Object.values(checksW6[0].frage.misconceptionFamilies).join(' ') === 'präposition' &&
+      clozeCheckW6.frage.zeigt === 'Die ____ beginnt mit der Kundennummer des Absenders.' &&
+      clozeCheckW6.frage.antworten.join(' ') === 'Beschwerde' && clozeCheckW6.frage.nearMiss.Beschwerden &&
+      !win.DW.renderers.judgeCloze(clozeCheckW6.frage, 'Beschwerden').ok &&
+      orderCheckW6.frage.correct.join(' ') === targetsW6[1] && orderCheckW6.frage.finite === 'steht' &&
+      orderCheckW6.frage.fields.vorfeld.join(' ') === 'Die Bestellnummer' && orderCheckW6.frage.fields.lsk.join(' ') === 'steht' &&
+      orderCheckW6.frage.fields.mittelfeld.join(' ') === 'oben im Betreff.' &&
+      win.DW.order.score(orderCheckW6.frage, orderCheckW6.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW6.frage, ['Die', 'Bestellnummer', 'oben', 'steht', 'im', 'Betreff.']).credit < 1 &&
+      checksW6[3].frage.optionen.some(o => o.text === 'Die Unterschrift fehlt nie in einem formellen Schreiben.') &&
+      checksW6[3].frage.optionen.some(o => o.text === 'Die Unterschrift fehlen nie in einem formellen Schreiben.') &&
+      Object.values(checksW6[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW6[4].frage.optionen.some(o => o.text === targetsW6[4]) &&
+      checksW6[4].frage.optionen.some(o => o.text === 'Der Ton bleibt sachliche.') &&
+      Object.values(checksW6[4].frage.misconceptionFamilies).join(' ') === 'deklination');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

@@ -193,7 +193,7 @@
     ['نقاش: الإقرار والموافقة المشروطة', 'Diskussion: einräumen und bedingt zustimmen', 'نقاش', 'discussion'],
     ['سماع محاضرة: الإنصات والتدوين', 'Vortrag: zuhören und mitschreiben', 'سماع', 'listening'],
     ['تقنية القراءة: المطلوب أولًا وتقسيم الوقت', 'Lesetechnik: Aufgabe zuerst, Zeit teilen', 'امتحان', 'exam-technique'],
-    ['ورشة كتابة: شكوى', 'Beschwerdebrief', 'شكوى رسمية', 'writing'],
+    ['خطاب شكوى: واقعة ونتيجة وطلب', 'Beschwerdebrief: Tatsache, Folge und Bitte', 'شكوى رسمية', 'writing'],
     ['نقاش: عمل', 'Arbeit diskutieren', 'العمل', 'discussion'],
     ['سماع لهجة', 'Dialekt', 'تمييز لهجة', 'listening'],
     ['تحليل رسم', 'Grafik', 'تعليق على بيانات', 'text-analysis'],
