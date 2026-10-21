@@ -7077,9 +7077,9 @@ console.log('\n— P3.2 lexical layer —\n');
   const b1Texts = Object.fromEntries(win.DW_LIBRARY.B1.texts.map(x => [x.id, x]));
   const b1q = (id, n) => b1Texts[id].questions[n];
   const b1Known = known.knownWords(win, { upto: 'B1' });
-  t('Corpus B1 b1-r1 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r1 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r1'].title === 'Arbeit und Zeit' &&
-      b1Texts['b1-r1'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r1'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r1'].body).unknown.length === 0);
   t('Corpus B1 b1-r1 compromise question matches four workdays and Friday learning',
     b1q('b1-r1', 0).prompt === 'ما الحل الذي يختاره؟' &&
@@ -7091,9 +7091,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r1', 1).key === 'المال' &&
       b1q('b1-r1', 1).options.includes(b1q('b1-r1', 1).key) &&
       b1Texts['b1-r1'].body.startsWith('Einerseits spart die kurze Woche Zeit, andererseits fehlt dann Geld'));
-  t('Corpus B1 b1-r2 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r2 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r2'].title === 'Stadt ohne Auto' &&
-      b1Texts['b1-r2'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r2'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r2'].body).unknown.length === 0);
   t('Corpus B1 b1-r2 advantage question matches the stated quiet',
     b1q('b1-r2', 0).prompt === 'ما ميزة المدينة بلا سيارة؟' &&
@@ -7105,9 +7105,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r2', 1).key === 'حيث لا حافلة' &&
       b1q('b1-r2', 1).options.includes(b1q('b1-r2', 1).key) &&
       b1Texts['b1-r2'].body.includes('Die Grenze ist der Ort, an dem kein Bus fährt'));
-  t('Corpus B1 b1-r3 has 233 measured words, no unknown B1 tokens, and idiomatic phrasing',
+  t('Corpus B1 b1-r3 has 234 measured words, no unknown B1 tokens, and idiomatic phrasing',
     b1Texts['b1-r3'].title === 'Spät lernen' &&
-      b1Texts['b1-r3'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r3'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r3'].body).unknown.length === 0 &&
       b1Texts['b1-r3'].body.includes('Ich habe es zwei Wochen lang immer wieder versucht'));
   t('Corpus B1 b1-r3 purpose question uses the explicit not-stated option',
@@ -7119,9 +7119,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r3', 1).key === 'يقرأ أو يستمع إلى تقرير قصير' &&
       b1q('b1-r3', 1).options.includes(b1q('b1-r3', 1).key) &&
       b1Texts['b1-r3'].body.includes('Am Abend lese ich nur, oder ich höre einen kurzen Bericht'));
-  t('Corpus B1 b1-r4 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r4 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r4'].title === 'Die Versicherung' &&
-      b1Texts['b1-r4'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r4'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r4'].body).unknown.length === 0);
   t('Corpus B1 b1-r4 amount question matches the stated initial shortfall',
     b1q('b1-r4', 0).prompt === 'كيف كان المبلغ في البداية مقارنةً بالفاتورة؟' &&
@@ -7133,9 +7133,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r4', 1).key === 'كتابيًا' &&
       b1q('b1-r4', 1).options.includes(b1q('b1-r4', 1).key) &&
       b1Texts['b1-r4'].body.includes('Ich habe die Anfrage schriftlich gestellt'));
-  t('Corpus B1 b1-r5 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r5 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r5'].title === 'Kaufen oder warten' &&
-      b1Texts['b1-r5'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r5'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r5'].body).unknown.length === 0);
   t('Corpus B1 b1-r5 purchase timing matches the stated one-week wait',
     b1q('b1-r5', 0).prompt === 'متى يشتري الراوي ما يحتاج إليه؟' &&
@@ -7147,9 +7147,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r5', 1).key === 'الأدوية والإيجار والكهرباء' &&
       b1q('b1-r5', 1).options.includes(b1q('b1-r5', 1).key) &&
       b1Texts['b1-r5'].body.includes('Medikamente, Miete und Strom kann man nicht verschieben'));
-  t('Corpus B1 b1-r6 has 233 measured words, no unknown B1 tokens, and consistent club size',
+  t('Corpus B1 b1-r6 has 234 measured words, no unknown B1 tokens, and consistent club size',
     b1Texts['b1-r6'].title === 'Der Verein' &&
-      b1Texts['b1-r6'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r6'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r6'].body).unknown.length === 0 &&
       b1Texts['b1-r6'].body.includes('in einem kleinen Verein') &&
       b1Texts['b1-r6'].body.includes('Im kleinen Verein spreche ich mehr Deutsch') &&
@@ -7164,9 +7164,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r6', 1).key === 'مرتين' &&
       b1q('b1-r6', 1).options.includes(b1q('b1-r6', 1).key) &&
       b1Texts['b1-r6'].body.startsWith('Seit einem Jahr bin ich in einem kleinen Verein und trainiere dort zweimal pro Woche'));
-  t('Corpus B1 b1-r7 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r7 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r7'].title === 'Zwei Züge' &&
-      b1Texts['b1-r7'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r7'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r7'].body).unknown.length === 0);
   t('Corpus B1 b1-r7 important-morning appointment question matches the first train',
     b1q('b1-r7', 0).prompt === 'أي قطار يختار الراوي إذا كان لديه موعد مهم صباحًا؟' &&
@@ -7178,9 +7178,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r7', 1).key === 'في المساء' &&
       b1q('b1-r7', 1).options.includes(b1q('b1-r7', 1).key) &&
       b1Texts['b1-r7'].body.includes('Seitdem schaue ich am Abend in die neue App und prüfe die Verbindung'));
-  t('Corpus B1 b1-r8 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r8 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r8'].title === 'Nachricht und Meinung' &&
-      b1Texts['b1-r8'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r8'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r8'].body).unknown.length === 0);
   t('Corpus B1 b1-r8 source question matches the speaker omission',
     b1q('b1-r8', 0).prompt === 'ما الذي لم يوضحه المتحدث؟' &&
@@ -7192,9 +7192,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r8', 1).key === 'من قاله، وما مصدره، وهل ينقصه رقم واضح' &&
       b1q('b1-r8', 1).options.includes(b1q('b1-r8', 1).key) &&
       b1Texts['b1-r8'].body.includes('Wer sagt es, woher weiß er es, und fehlt eine klare Zahl?'));
-  t('Corpus B1 b1-r9 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r9 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r9'].title === 'Die Beschwerde' &&
-      b1Texts['b1-r9'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r9'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r9'].body).unknown.length === 0);
   t('Corpus B1 b1-r9 consequence question names the missed appointment',
     b1q('b1-r9', 0).prompt === 'ما المشكلة التي سببتها الشحنة المتأخرة؟' &&
@@ -7205,9 +7205,9 @@ console.log('\n— P3.2 lexical layer —\n');
     b1Texts['b1-r9'].body.includes('Wer schreit, bekommt selten eine nette Antwort') &&
       b1Texts['b1-r9'].body.includes('Wer am Telefon laut wird, erreicht selten etwas') &&
       b1Texts['b1-r9'].body.includes('Ein kurzes Danke muss nicht sein, hilft aber beim nächsten Kontakt wirklich sehr'));
-  t('Corpus B1 b1-r10 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r10 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r10'].title === 'Zwei Wege' &&
-      b1Texts['b1-r10'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r10'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r10'].body).unknown.length === 0);
   t('Corpus B1 b1-r10 slow-course question matches the comparison',
     b1q('b1-r10', 0).prompt === 'أي الطريقين أبطأ؟' &&
@@ -7221,9 +7221,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r10', 1).options.includes(b1q('b1-r10', 1).key) &&
       b1Texts['b1-r10'].body.includes('die hole ich mir mit einer kurzen Aufnahme am Sonntag') &&
       b1Texts['b1-r10'].body.includes('Diese halbe Stunde ist nicht leicht, aber sie zeigt mir, was ich wirklich gelernt habe'));
-  t('Corpus B1 b1-r11 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r11 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r11'].title === 'شقة جديدة وساحتها' &&
-      b1Texts['b1-r11'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r11'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r11'].body).unknown.length === 0);
   t('Corpus B1 b1-r11 old-apartment question matches furnished',
     b1q('b1-r11', 0).prompt === 'كيف كانت الشقة القديمة؟' &&
@@ -7255,9 +7255,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b1q('b1-r12', 1).key === 'شهادات' &&
       b1q('b1-r12', 1).options.includes(b1q('b1-r12', 1).key) &&
       b1Texts['b1-r12'].body.includes('Mappe mit Zeugnissen'));
-  t('Corpus B1 b1-r13 has 233 measured words and no unknown B1 tokens',
+  t('Corpus B1 b1-r13 has 234 measured words and no unknown B1 tokens',
     b1Texts['b1-r13'].title === 'Beim Arzt und danach' &&
-      b1Texts['b1-r13'].body.trim().split(/\s+/).length === 233 &&
+      b1Texts['b1-r13'].body.trim().split(/\s+/).length === 234 &&
       known.coverage(b1Known, b1Texts['b1-r13'].body).unknown.length === 0);
   t('Corpus B1 b1-r13 uses natural phrasing for symptoms, prevention, and the daily routine',
     b1Texts['b1-r13'].body.includes('dann tun mein Knie und die Muskeln im ganzen Rücken sehr weh') &&
