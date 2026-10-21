@@ -10,9 +10,9 @@ module.exports = {
       ['die Zusammenfassung', 'die Zusammenfassungen', 'الملخّص', 'Die Zusammenfassung folgt der Textvorlage.', 'Die Zusammenfassung folgen der Textvorlage.', 'المفرد: folgt.', 'konjugation', 'Zusammenfassung'],
       ['das Wesentliche', '—', 'الجوهري', 'Das Wesentliche steht in zwei Sätzen.', 'Das Wesentliche stehen in zwei Sätzen.', 'محايد ومفرد: steht.', 'konjugation', 'Wesentliche'],
       ['die Kürzung', 'die Kürzungen', 'الاختصار', 'Die Kürzung darf den Sinn nicht verändern.', 'Die Kürzung dürfen den Sinn nicht verändern.', 'المفرد: darf.', 'konjugation', 'Kürzung'],
-      ['der Leitgedanke', 'die Leitgedanken', 'الفكرة الموجِّهة', 'Der Leitgedanke steht am Anfang; das Leitwort wiederholt sich.', 'Der Leitgedanke stehen am Anfang des Textes.', 'المفرد: steht.', 'konjugation', 'Leitgedanke'],
+      ['der Leitgedanke', 'die Leitgedanken', 'الفكرة الموجِّهة', 'Der Leitgedanke steht am Anfang; das Leitwort wiederholt sich.', 'Der Leitgedanke stehen am Anfang; das Leitwort wiederholt sich.', 'المفرد: steht.', 'konjugation', 'Leitgedanke'],
       ['die Meinungsäußerung', 'die Meinungsäußerungen', 'إبداء الرأي', 'Eine Meinungsäußerung gehört nicht in die Zusammenfassung.', 'Eine Meinungsäußerung gehören nicht in die Zusammenfassung.', 'المفرد: gehört.', 'konjugation', 'Meinungsäußerung'],
-      ['der Kommentar', 'die Kommentare', 'التعليق', 'Der Kommentar bewertet, die Unterüberschrift ordnet.', 'Der Kommentar bewerten, die Zusammenfassung nicht.', 'المفرد: bewertet.', 'konjugation', 'Kommentar'],
+      ['der Kommentar', 'die Kommentare', 'التعليق', 'Der Kommentar bewertet, die Unterüberschrift ordnet.', 'Der Kommentar bewerten, die Unterüberschrift ordnet.', 'المفرد: bewertet.', 'konjugation', 'Kommentar'],
       ['die Textfolge', 'die Textfolgen', 'تسلسل النص', 'Die Textfolge bleibt erhalten; der Gedankenstrich ersetzt kein Komma.', 'Die Textfolge bleiben erhalten.', 'المفرد: bleibt.', 'konjugation', 'Textfolge'],
       ['die wörtliche Rede', '—', 'الكلام الحرفي', 'Die wörtliche Rede steht in Anführungszeichen, jede Fundzeile in Klammern.', 'Die wörtliche Rede stehen in Anführungszeichen.', 'المفرد: steht.', 'konjugation', 'wörtliche'],
       ['die Paraphrase', 'die Paraphrasen', 'إعادة الصياغة', 'Die Paraphrase ersetzt das Zitat.', 'Die Paraphrase ersetzen das Zitat.', 'المفرد: ersetzt.', 'konjugation', 'Paraphrase'],
@@ -64,10 +64,27 @@ module.exports = {
       'das Leitwort', 'die Fundzeile'
     ],
     tricks: [
-      { trick: 'بلا رأي: keine Wertung, kein Kommentar', wie: 'Ich füge keine Wertung hinzu; der Kommentar bleibt draußen.', warum: 'الرأي في الملخّص يُحسب خطأ فهم؛ والنص المطلوب «ماذا قال» لا «ما رأيك».', anchor: 'keine Wertung' },
-      { trick: 'حافظ على ترتيب النص: dieselbe Reihenfolge', wie: 'Ich behalte die Reihenfolge des Ausgangstextes.', warum: 'إعادة الترتيب تغيّر المعنى وتُفقدك بند الترتيب في التصحيح.', anchor: 'Reihenfolge' },
-      { trick: 'أعِد الصياغة ولا تنقل: Paraphrase statt Zitat', wie: 'Die Paraphrase ersetzt das Zitat, nur die wörtliche Rede bleibt.', warum: 'النقل الحرفي المطوّل ليس تلخيصًا؛ إعادة الصياغة هي المهارة المقيسة.', anchor: 'Paraphrase' }
-    ]
+      { trick: 'بلا رأي: keine Wertung, kein Kommentar', wie: 'Ich füge keine Wertung hinzu; der Kommentar bleibt draußen.', warum: 'الرأي في الملخّص يُحسب خطأ فهم؛ والنص المطلوب «ماذا قال» لا «ما رأيك».', anchor: 'Ich füge keine Wertung hinzu' },
+      { trick: 'حافظ على ترتيب النص: dieselbe Reihenfolge', wie: 'Ich behalte die Reihenfolge des Ausgangstextes.', warum: 'إعادة الترتيب تغيّر المعنى وتُفقدك بند الترتيب في التصحيح.', anchor: 'Ich behalte die Reihenfolge des Ausgangstextes' },
+      { trick: 'أعِد الصياغة ولا تنقل: Paraphrase statt Zitat', wie: 'Die Paraphrase ersetzt das Zitat, nur die wörtliche Rede bleibt.', warum: 'النقل الحرفي المطوّل ليس تلخيصًا؛ إعادة الصياغة هي المهارة المقيسة.', anchor: 'Die Paraphrase ersetzt das Zitat' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'der Kommentar': 'Kommentaren',
+      'der Abschluss': 'Abschlüssen',
+      'der Merksatz': 'Merksätze'
+    },
+    clozeItemIndex: 0,
+    clozeNearMiss: 'Zusammenfassungen',
+    checkItemIndex: 35,
+    extraCheck: {
+      right: 'Ich muss den Kern nennen.',
+      bad: 'Ich muss die Kern nennen.',
+      why: 'المذكر نصب: den Kern.',
+      family: 'genus',
+      prereq: 'cap.b2-w10.s20',
+      frage: 'أي جملة تسمّي النواة بأداة صحيحة؟'
+    }
   }
 
 };

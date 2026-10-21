@@ -402,25 +402,49 @@ module.exports = [
       summaryRecap: 'وصف ثم تأويل',
     }),
 
-  U('b2-w10', 'ورشة كتابة: تلخيص', 'Zusammenfassung',
-    'Am Ende fasst du zusammen ohne neue Wertung',
-    'في النهاية تلخص بلا تقييم جديد.',
+  U('b2-w10', 'التلخيص: أقصر وبترتيب النص وبلا تقييم', 'Zusammenfassung: kürzer, geordnet, ohne Wertung',
+    'Am Ende fasst du den Text kürzer und ohne neue Wertung zusammen — in fünf Sätzen',
+    'في النهاية تلخّص النص أقصر من أصله وبترتيبه وبلا تقييم جديد في خمس جمل.',
     [
-      ['keine neue Wertung', 'التلخيص لا يحكم', 'الحكم مهمة أخرى', 'meiner Meinung nach im Summary', 'التقييم يخرج'],
-      ['die Struktur behalten', 'ترتيب النص يُحفظ', 'الخلط يضيّع', 'ich sortiere nach meinem Geschmack', 'ترتيب النص أولًا'],
-      ['kurz', 'أقصر من الأصل', 'النسخ ليس تلخيصًا', 'ich schreibe den Text ab', 'التلخيص أقصر'],
-      ['das heißt', 'المعنى يُعاد', 'نفس الجمل نسخ', 'dieselben Sätze', 'الإعادة بأدوات أخرى']
+      ['Ich füge keine Wertung hinzu.', 'يخرج الحكم من الملخّص', 'الفعل مع ich مفرد: füge لا fügen', 'Ich fügen keine Wertung hinzu.', 'المفرد: füge'],
+      ['Ich behalte die Reihenfolge.', 'يحفظ ترتيب النص كما هو', 'Reihenfolge مؤنثة: die لا den', 'Ich behalte den Reihenfolge.', 'المؤنثة: die Reihenfolge'],
+      ['Die Zusammenfassung ist kürzer.', 'يُلزم الملخّص بأن يقصر عن الأصل', 'الفاعل مفرد: ist لا sind', 'Die Zusammenfassung sind kürzer.', 'المفرد: ist'],
+      ['Das heißt, der Plan scheitert.', 'يعيد الصياغة بكلمات أخرى', 'الفاعل Plan مفرد: scheitert لا scheiterten', 'Das heißt, der Plan scheiterten.', 'المفرد: scheitert']
     ],
     [
-      ['Ich füge keine Wertung hinzu.', 'لا أضيف تقييمًا', 'Meiner Meinung nach ist das schlecht', 'التقييم يخرج من التلخيص', 'Wertung'],
-      ['Ich behalte die Reihenfolge.', 'أحفظ الترتيب', 'Ich sortiere nach meinem Geschmack', 'ترتيب النص أولًا', 'Reihenfolge'],
-      ['Die Zusammenfassung ist kürzer.', 'التلخيص أقصر', 'Ich schreibe den Text ab', 'النسخ ليس تلخيصًا', 'kürzer'],
-      ['Das heißt, der Plan scheitert.', 'هذا يعني أن الخطة تفشل', 'Dieselben Sätze noch einmal', 'الإعادة بأدوات أخرى', 'heißt']
+      ['Ich füge keine Wertung hinzu.', 'لا أضيف تقييمًا', 'Ich fügen keine Wertung hinzu.', 'الفعل مع ich مفرد: füge.', 'Wertung'],
+      ['Ich behalte die Reihenfolge.', 'أحفظ الترتيب', 'Ich behalte den Reihenfolge.', 'المؤنثة: die Reihenfolge.', 'Reihenfolge'],
+      ['Die Zusammenfassung ist kürzer.', 'الملخّص أقصر', 'Die Zusammenfassung sind kürzer.', 'الفاعل مفرد: ist.', 'kürzer'],
+      ['Das heißt, der Plan scheitert.', 'هذا يعني أن الخطة تفشل', 'Das heißt, der Plan scheiterten.', 'الفاعل مفرد: scheitert.', 'heißt']
     ],
     'Die Inhaltsangabe folgt der Textvorlage, nicht dem eigenen Geschmack. Die Kurzfassung behält die Reihenfolge des Ausgangstextes. Ich streiche jeden Zusatz und jede Wiederholung. Der Nebensatz wird zum Hauptsatz, die Konjunktion darf bleiben. Anführungszeichen stehen nur um ein wörtliches Zitat. Am Rand notiere ich Stichpunkte. Am Ende prüfe ich die Vollständigkeit. Die Zeilenzahl und die Seitenzahl stehen in der Vorgabe. Ein Doppelpunkt kündigt die Aufzählung an, ein Semikolon trennt sie. Das Register und das Wörterverzeichnis helfen bei der Ergänzung. Die Regeln dafür stehen im Glossar. Jede Silbe, jede Ziffer und jeder Buchstabe zählt.',
-    'Ich behalte die Reihenfolge.',
-    'Fasse morgen einen Absatz ohne Wertung zusammen.',
-    'غدًا لخّص فقرة بلا تقييم.'),
+    'Ich muss den Kern nennen.',
+    'Wiederhole morgen die fünf Sätze: Ich füge keine Wertung hinzu. Ich behalte die Reihenfolge. Die Zusammenfassung ist kürzer. Das heißt, der Plan scheitert. Ich muss den Kern nennen. Die Inhaltsangabe folgt der Textvorlage, nicht dem Geschmack. Der Nebensatz wird zum Hauptsatz. Ein Doppelpunkt kündigt die Aufzählung an, ein Semikolon trennt sie. Am Ende prüfe ich die Vollständigkeit: Jede Silbe, jede Ziffer und jeder Buchstabe zählt. Ich sortiere die Kernsätze nicht nach eigenem Geschmack um; die Reihenfolge bleibt die des Ausgangstextes, Absatz für Absatz. So bleibt der Summary kürzer als die Vorlage. Wer einen Satz weglässt, prüft am Ende, ob der Leitgedanke noch steht. Die Inhaltsangabe endet ohne Kommentar; eine kurze Zeile zur Vollständigkeit genügt dem Leser. Auch die Kernsätze bleiben im Indikativ, und kein neuer Gedanke kommt hinzu.',
+    'غدًا أعد جمل التلخيص الخمس ولاحظ أن الحكم يبقى خارجها.',
+    {
+      factFamilies: ['konjugation', 'genus', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'Wertungen',
+      transformHint: 'في جملة الختام الهدف نفسه: Ich muss den Kern nennen — المصدر nennen يغلق الجملة بعد muss.',
+      orderSentence: 'Ich muss den Kern nennen.',
+      checkOrderSentence: 'Die Zusammenfassung ist kürzer.',
+      orderAr: 'رتّب جملة الهدف: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر nennen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر nennen يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Zusammenfassung in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: حكمًا مستبعدًا بفعل مفرد، وترتيبًا محفوظًا بأداة مؤنثة صحيحة، وقصرًا بفعل مفرد، وإعادة صياغة بادئة بـDas heißt، ونواة مسمّاة بالمصدر الأخير.',
+        hinweise: ['الملخّص يقول ما قاله النص لا ما ظننته.', 'الترتيب الأصلي مقياس التصحيح.'],
+        prompt: 'اكتب جمل التلخيص الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Ich füge keine Wertung hinzu. · Ich behalte die Reihenfolge. · Die Zusammenfassung ist kürzer. · Das heißt, der Plan scheitert. · Ich muss den Kern nennen.',
+        points: ['Ich füge keine Wertung hinzu.', 'Ich behalte die Reihenfolge.', 'Die Zusammenfassung ist kürzer.', 'Das heißt, der Plan scheitert.', 'Ich muss den Kern nennen.'],
+        minWords: 23,
+        frage: 'اكتب جمل التلخيص الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich füge keine Wertung hinzu. Ich behalte die Reihenfolge. Die Zusammenfassung ist kürzer. Das heißt, der Plan scheitert. Ich muss den Kern nennen.',
+      summaryDe: 'Ich füge keine Wertung hinzu. Ich behalte die Reihenfolge. Die Zusammenfassung ist kürzer. Das heißt, der Plan scheitert. Ich muss den Kern nennen.',
+      summaryAr: 'التلخيص أمين: نواة النص بترتيبها وبكلمات جديدة، وبلا حكم.',
+      summaryRecap: 'أقصر وبترتيب النص',
+    }),
 
   U('b2-w11', 'نقاش: إعلام', 'Medien diskutieren',
     'Am Ende trennst du Reichweite und Wahrheit',

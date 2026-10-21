@@ -19592,6 +19592,131 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW9[4].frage.optionen.some(o => o.text === targetsW9[4]) &&
       checksW9[4].frage.optionen.some(o => o.text === 'Ohne Quelle nenne ich kein Ursache.') &&
       Object.values(checksW9[4].frage.misconceptionFamilies).join(' ') === 'kasus');
+
+  const lessonW10 = win.DW_LESSONS['b2-w10'];
+  const rowW10 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w10');
+  const byWordW10 = Object.fromEntries(lessonW10.wortschatz.map(it => [it.de, it]));
+  const trickStepsW10 = lessonW10.schritte.filter(s => s.merkhilfe);
+  const targetsW10 = [
+    'Ich füge keine Wertung hinzu.',
+    'Ich behalte die Reihenfolge.',
+    'Die Zusammenfassung ist kürzer.',
+    'Das heißt, der Plan scheitert.',
+    'Ich muss den Kern nennen.'
+  ];
+  t('Corpus workshop b2-w10 precisely scopes five summary moves excluding evaluation, keeping the text order, staying shorter, paraphrasing and naming the core',
+    lessonW10.title.de === 'Zusammenfassung: kürzer, geordnet, ohne Wertung' &&
+      lessonW10.title.ar === 'التلخيص: أقصر وبترتيب النص وبلا تقييم' &&
+      lessonW10.level === 'B2' && lessonW10.kind === 'workshop' &&
+      rowW10.title.de === lessonW10.title.de && rowW10.title.ar === lessonW10.title.ar &&
+      rowW10.theme === 'تلخيص' &&
+      rowW10.grammar.item === 'التلخيص: أقصر وبترتيب النص وبلا تقييم' &&
+      rowW10.grammar.method === 'explicit' &&
+      rowW10.words.receptive === 90 && rowW10.words.productive === 60 &&
+      lessonW10.schritte.length === 36 && lessonW10.wortschatz.length === 40 &&
+      lessonW10.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW10.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW10[i]) &&
+      lessonW10.schritte[0].zeigt.de === 'Am Ende fasst du den Text kürzer und ohne neue Wertung zusammen — in fünf Sätzen' &&
+      lessonW10.schritte.find(s => s.id === 's20').zeigt.de === targetsW10[4]);
+
+  const expectedWordsW10 = [
+    'die Zusammenfassung', 'das Wesentliche', 'die Kürzung', 'der Leitgedanke', 'die Meinungsäußerung',
+    'der Kommentar', 'die Textfolge', 'die wörtliche Rede', 'die Paraphrase', 'umformulieren',
+    'verkürzen', 'weglassen', 'auslassen', 'unterstreichen', 'der Teilabschnitt', 'die Textgrundlage',
+    'die Länge', 'die Vorgabe', 'die Wortzahl', 'die Zeilenbegrenzung', 'der Einstieg', 'der Abschluss',
+    'die Verdichtung', 'die Schwerpunktsetzung', 'die Neutralität', 'die Wiedergabe', 'die Präzision',
+    'die Kürze', 'der Inhalt', 'der Sinn', 'die Botschaft', 'die Zielsetzung', 'die Leserschaft',
+    'die Verständlichkeit', 'die Klarheit', 'die Ordnung', 'die Liste', 'der Merksatz', 'die Kurznotiz',
+    'das Fallbeispiel'
+  ];
+  const errorsW10 = lessonW10.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w10 reviews all 40 entries and three bounded mnemonics mirroring two word-swapped foils while every remaining foil stays a genuine error',
+    Object.keys(byWordW10).join(' | ') === expectedWordsW10.join(' | ') &&
+      lessonW10.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW10.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW10['der Leitgedanke'].err === 'Der Leitgedanke stehen am Anfang; das Leitwort wiederholt sich.' &&
+      byWordW10['der Kommentar'].err === 'Der Kommentar bewerten, die Unterüberschrift ordnet.' &&
+      ['Der Leitgedanke stehen am Anfang des Textes.', 'Der Kommentar bewerten, die Zusammenfassung nicht.']
+        .every(x => !errorsW10.includes(x)) &&
+      ['Die Zusammenfassung folgen der Textvorlage.', 'Ich umformuliere den Satz, ohne den Sinn zu ändern.',
+        'Die Ordnung der Absätze verraten den Aufbau.']
+        .every(x => errorsW10.includes(x)) &&
+      byWordW10['verkürzen'].ex === 'Ich verkürze den Absatz auf eine Zeile.' &&
+      byWordW10['verkürzen'].err === 'Ich verkürze den Absatz in eine Zeile.' &&
+      trickStepsW10.length === 3 &&
+      trickStepsW10[0].zeigt.de === 'Ich füge keine Wertung hinzu' &&
+      trickStepsW10[0].merkhilfe.wie.includes('Ich füge keine Wertung hinzu; der Kommentar bleibt draußen.') &&
+      trickStepsW10[1].zeigt.de === 'Ich behalte die Reihenfolge des Ausgangstextes' &&
+      trickStepsW10[1].merkhilfe.wie.includes('Ich behalte die Reihenfolge des Ausgangstextes.') &&
+      trickStepsW10[2].zeigt.de === 'Die Paraphrase ersetzt das Zitat' &&
+      trickStepsW10[2].merkhilfe.wie.includes('Die Paraphrase ersetzt das Zitat, nur die wörtliche Rede bleibt.'));
+
+  const wordClozeAW10 = lessonW10.schritte.find(s => s.id === 's09');
+  const wordClozeBW10 = lessonW10.schritte.find(s => s.id === 's13');
+  const wordClozeCW10 = lessonW10.schritte.find(s => s.id === 's17');
+  const imitateW10 = lessonW10.schritte.find(s => s.id === 's19');
+  const drillW10 = lessonW10.schritte.find(s => s.id === 's23');
+  const orderW10 = lessonW10.schritte.find(s => s.id === 's24');
+  const writingW10 = lessonW10.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW10 = lessonW10.schritte.find(s => s.phase === 'Produktion');
+  const summaryW10 = lessonW10.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW10 = lessonW10.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW10 = lessonW10.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w10 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 23-word five-target production',
+    wordClozeAW10.frage.zeigt === 'Der ____ bewertet, die Unterüberschrift ordnet.' && wordClozeAW10.frage.antworten.join(' ') === 'Kommentar' &&
+      wordClozeAW10.frage.nearMiss.Kommentaren && !win.DW.renderers.judgeCloze(wordClozeAW10.frage, 'Kommentaren').ok &&
+      wordClozeBW10.frage.zeigt === 'Der ____ fasst den Leitgedanken; Schriftgröße und Zeilenabstand bleiben wie vorgegeben.' && wordClozeBW10.frage.antworten.join(' ') === 'Abschluss' &&
+      wordClozeBW10.frage.nearMiss['Abschlüssen'] && !win.DW.renderers.judgeCloze(wordClozeBW10.frage, 'Abschlüssen').ok &&
+      wordClozeCW10.frage.zeigt === 'Ein ____ hilft beim Wiederfinden.' && wordClozeCW10.frage.antworten.join(' ') === 'Merksatz' &&
+      wordClozeCW10.frage.nearMiss['Merksätze'] && !win.DW.renderers.judgeCloze(wordClozeCW10.frage, 'Merksätze').ok &&
+      (imitateW10.frage.zeigt === 'Ich füge keine ____ hinzu.' || imitateW10.zeigt.de === 'Ich füge keine ____ hinzu.') && imitateW10.frage.antworten.join(' ') === 'Wertung' &&
+      imitateW10.frage.nearMiss['Wertungen'] && !win.DW.renderers.judgeCloze(imitateW10.frage, 'Wertungen').ok &&
+      drillW10.frage.zeigt === 'Die ____ folgt der Textvorlage.' && drillW10.frage.antworten.join(' ') === 'Zusammenfassung' &&
+      drillW10.frage.nearMiss.Zusammenfassungen && !win.DW.renderers.judgeCloze(drillW10.frage, 'Zusammenfassungen').ok &&
+      lessonW10.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW10.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW10.frage.correct.join(' ') === targetsW10[4] && orderW10.frage.finite === 'muss' && orderW10.frage.verbFirst === false &&
+      orderW10.frage.fields.vorfeld.join(' ') === 'Ich' && orderW10.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW10.frage.fields.mittelfeld.join(' ') === 'den Kern nennen.' &&
+      win.DW.order.score(orderW10.frage, orderW10.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW10.frage, ['Ich', 'den', 'Kern', 'muss', 'nennen.']).credit < 1 &&
+      writingW10.frage.points.join(' | ') === targetsW10.join(' | ') && writingW10.frage.minWords === 23 &&
+      targetsW10.join(' ').split(/\s+/).length === 23 &&
+      targetsW10.every(x => [writingW10.frage.promptDe, summaryW10.zeigt.de, homeworkW10.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW10.every(x => norm(speakingW10.erklaerung).includes(norm(x))) &&
+      modelW10.zeigt.de.includes('Die Inhaltsangabe folgt der Textvorlage, nicht dem eigenen Geschmack.') &&
+      modelW10.zeigt.de.includes('Jede Silbe, jede Ziffer und jeder Buchstabe zählt.') &&
+      homeworkW10.zeigt.de.includes('Die Inhaltsangabe folgt der Textvorlage, nicht dem Geschmack.') &&
+      homeworkW10.zeigt.de.includes('So bleibt der Summary kürzer als die Vorlage.'));
+
+  const checksW10 = lessonW10.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW10 = checksW10.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW10 = checksW10.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w10 makes 80 percent four of five, independently checking the careful paraphrase, the Zusammenfassung cloze and ist order, singular verrät and den Kern',
+    checksW10.length === 5 && checksW10[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW10[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW10.every(s => /^cap\.b2-w10\.s\d+$/.test(s.frage.prereq || '')) && checksW10.every(s => !s.hinweise) &&
+      checksW10.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w10.s07 | cap.b2-w10.s23 | cap.b2-w10.s24 | cap.b2-w10.s16 | cap.b2-w10.s20' &&
+      new Set(checksW10.map(s => s.frage.prereq)).size === 5 &&
+      checksW10[0].frage.optionen.some(o => o.text === targetsW10[3]) &&
+      checksW10[0].frage.optionen.some(o => o.text === 'Das heißt, der Plan scheiterten.') &&
+      Object.values(checksW10[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW10.frage.zeigt === 'Die ____ folgt der Textvorlage.' &&
+      clozeCheckW10.frage.antworten.join(' ') === 'Zusammenfassung' && clozeCheckW10.frage.nearMiss.Zusammenfassungen &&
+      !win.DW.renderers.judgeCloze(clozeCheckW10.frage, 'Zusammenfassungen').ok &&
+      orderCheckW10.frage.correct.join(' ') === targetsW10[2] && orderCheckW10.frage.finite === 'ist' &&
+      orderCheckW10.frage.fields.vorfeld.join(' ') === 'Die Zusammenfassung' && orderCheckW10.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW10.frage.fields.mittelfeld.join(' ') === 'kürzer.' &&
+      win.DW.order.score(orderCheckW10.frage, orderCheckW10.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW10.frage, ['Die', 'Zusammenfassung', 'kürzer.', 'ist']).credit < 1 &&
+      checksW10[3].frage.optionen.some(o => o.text === 'Die Ordnung der Absätze verrät den Aufbau; jedes Satzzeichen hilft.') &&
+      checksW10[3].frage.optionen.some(o => o.text === 'Die Ordnung der Absätze verraten den Aufbau.') &&
+      Object.values(checksW10[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW10[4].frage.optionen.some(o => o.text === targetsW10[4]) &&
+      checksW10[4].frage.optionen.some(o => o.text === 'Ich muss die Kern nennen.') &&
+      Object.values(checksW10[4].frage.misconceptionFamilies).join(' ') === 'genus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
