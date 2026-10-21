@@ -8339,9 +8339,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a7', 1).key === 'لأن الحافلة كانت تأتي كل عشر دقائق حتى المساء' &&
       b2q('b2-a7', 1).options.includes(b2q('b2-a7', 1).key) &&
       b2Articles['b2-a7'].body.includes('Der Bus kam am Tag alle zehn Minuten und fuhr auch am Abend'));
-  t('Corpus B2 b2-a8 has 464 measured words and no unknown B2 tokens',
+  t('Corpus B2 b2-a8 has 523 measured words and no unknown B2 tokens',
     b2Articles['b2-a8'].title === 'الطاقة' &&
-      b2Articles['b2-a8'].body.trim().split(/\s+/).length === 464 &&
+      b2Articles['b2-a8'].body.trim().split(/\s+/).length === 523 &&
       known.coverage(b2Known, b2Articles['b2-a8'].body).unknown.length === 0);
   t('Corpus B2 b2-a8 connects failed all-at-once change, measured habits, causal limits, structural responsibility, and ordered decisions coherently',
     b2Articles['b2-a8'].body.includes('dreißig Dinge gleichzeitig ändern') &&
