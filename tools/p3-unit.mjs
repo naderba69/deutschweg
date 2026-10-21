@@ -19464,6 +19464,134 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW8[4].frage.optionen.some(o => o.text === targetsW8[4]) &&
       checksW8[4].frage.optionen.some(o => o.text === 'Ein Dialekt sind kein Fehler.') &&
       Object.values(checksW8[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonW9 = win.DW_LESSONS['b2-w09'];
+  const rowW9 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w09');
+  const byWordW9 = Object.fromEntries(lessonW9.wortschatz.map(it => [it.de, it]));
+  const trickStepsW9 = lessonW9.schritte.filter(s => s.merkhilfe);
+  const targetsW9 = [
+    'Die Grafik zeigt einen Anstieg.',
+    'Auffällig ist der Unterschied.',
+    'Im Vergleich zum Vorjahr steigt der Anteil.',
+    'Danach deute ich vorsichtig.',
+    'Ohne Quelle nenne ich keine Ursache.'
+  ];
+  t('Corpus workshop b2-w09 precisely scopes five chart-commentary moves describing the movement, naming one striking difference, comparing with the prior year, interpreting late and refusing a cause without a source',
+    lessonW9.title.de === 'Grafik: erst beschreiben, dann deuten' &&
+      lessonW9.title.ar === 'الرسم البياني: وصف ثم تأويل' &&
+      lessonW9.level === 'B2' && lessonW9.kind === 'workshop' &&
+      rowW9.title.de === lessonW9.title.de && rowW9.title.ar === lessonW9.title.ar &&
+      rowW9.theme === 'تعليق على بيانات' &&
+      rowW9.grammar.item === 'الرسم البياني: وصف ثم تأويل' &&
+      rowW9.grammar.method === 'explicit' &&
+      rowW9.words.receptive === 90 && rowW9.words.productive === 60 &&
+      lessonW9.schritte.length === 36 && lessonW9.wortschatz.length === 40 &&
+      lessonW9.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW9.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW9[i]) &&
+      lessonW9.schritte[0].zeigt.de === 'Am Ende beschreibst du die Grafik, bevor du deutest — in fünf Sätzen' &&
+      lessonW9.schritte.find(s => s.id === 's20').zeigt.de === targetsW9[4]);
+
+  const expectedWordsW9 = [
+    'das Diagramm', 'die Säule', 'der Balken', 'das Balkendiagramm', 'das Säulendiagramm', 'die Tabelle',
+    'der Prozentwert', 'das Prozent', 'der Anteil', 'die Hälfte', 'das Viertel', 'die Steigerung',
+    'der Zuwachs', 'die Abnahme', 'das Wachstum', 'der Höchstwert', 'der Tiefstwert', 'der Durchschnitt',
+    'die Spanne', 'die Einheit', 'die Legende', 'die Beschriftung', 'die Herkunftsangabe', 'die Skala',
+    'der Nullpunkt', 'die Linie', 'der Verlauf', 'der Trend', 'die Darstellung', 'der Ausschlag',
+    'der Ausblick', 'die Bezugsgröße', 'die Verzerrung', 'die Rundung', 'die Fehlinterpretation',
+    'erläutern', 'nachweisen', 'vergleichen', 'abschätzen', 'feststellen'
+  ];
+  const errorsW9 = lessonW9.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w09 reviews all 40 entries and three bounded mnemonics converting two both-ways agreement foils and rebuilding two clunky examples as one-error mirrors',
+    Object.keys(byWordW9).join(' | ') === expectedWordsW9.join(' | ') &&
+      lessonW9.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW9.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW9['das Prozent'].err === 'Zwanzig Prozent die Befragten fehlen; die Erhebung war eine Umfrage.' &&
+      byWordW9['die Hälfte'].err === 'Die Hälfte die Befragten antwortet nicht; das Verhältnis kennt niemand.' &&
+      byWordW9['die Skala'].ex === 'Die Skala beginnt nicht bei null; der Monatswert wirkt größer.' &&
+      byWordW9['die Skala'].err === 'Die Skala beginnen nicht bei null; der Monatswert wirkt größer.' &&
+      byWordW9['der Nullpunkt'].ex === 'Der Nullpunkt fehlt, das verzerrt die Darstellung.' &&
+      byWordW9['der Nullpunkt'].err === 'Der Nullpunkt fehlen, das verzerrt die Darstellung.' &&
+      ['Zwanzig Prozent der Befragten fehlt.', 'Die Hälfte der Befragten antworten nicht.',
+        'Die Skala beginnen bei null.', 'Der Nullpunkt fehlen, das verzerrt.']
+        .every(x => !errorsW9.includes(x)) &&
+      ['Das Diagramm zeigen zwei Linien.', 'Die Fehlinterpretation verwechseln Ursache und Folge.',
+        'Die Tabelle nachweist den Rückgang.']
+        .every(x => errorsW9.includes(x)) &&
+      byWordW9['das Prozent'].ex === 'Zwanzig Prozent der Befragten fehlen; die Erhebung war eine Umfrage.' &&
+      trickStepsW9.length === 3 &&
+      trickStepsW9[0].zeigt.de === 'Die Grafik zeigt einen Anstieg, nicht die Ursache' &&
+      trickStepsW9[0].merkhilfe.wie.includes('Die Grafik zeigt einen Anstieg, nicht die Ursache.') &&
+      trickStepsW9[1].zeigt.de === 'Auffällig ist der Unterschied zwischen Juli und Dezember' &&
+      trickStepsW9[1].merkhilfe.wie.includes('Auffällig ist der Unterschied zwischen Juli und Dezember.') &&
+      trickStepsW9[2].zeigt.de === 'Im Vergleich zum Vorjahr steigt der Anteil um fünf Prozent' &&
+      trickStepsW9[2].merkhilfe.wie.includes('Im Vergleich zum Vorjahr steigt der Anteil um fünf Prozent.'));
+
+  const wordClozeAW9 = lessonW9.schritte.find(s => s.id === 's09');
+  const wordClozeBW9 = lessonW9.schritte.find(s => s.id === 's13');
+  const wordClozeCW9 = lessonW9.schritte.find(s => s.id === 's17');
+  const imitateW9 = lessonW9.schritte.find(s => s.id === 's19');
+  const drillW9 = lessonW9.schritte.find(s => s.id === 's23');
+  const orderW9 = lessonW9.schritte.find(s => s.id === 's24');
+  const writingW9 = lessonW9.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW9 = lessonW9.schritte.find(s => s.phase === 'Produktion');
+  const summaryW9 = lessonW9.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW9 = lessonW9.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW9 = lessonW9.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w09 aligns five strict learning clozes of the 40-word layout, sound steigt order fields and a 26-word five-target production',
+    wordClozeAW9.frage.zeigt === 'Die ____ nennt die genauen Messwerte und die rohen Daten.' && wordClozeAW9.frage.antworten.join(' ') === 'Tabelle' &&
+      wordClozeAW9.frage.nearMiss.Tabellen && !win.DW.renderers.judgeCloze(wordClozeAW9.frage, 'Tabellen').ok &&
+      wordClozeBW9.frage.zeigt === 'Die ____ ist zu klein gedruckt.' && wordClozeBW9.frage.antworten.join(' ') === 'Beschriftung' &&
+      wordClozeBW9.frage.nearMiss.Beschriftungen && !win.DW.renderers.judgeCloze(wordClozeBW9.frage, 'Beschriftungen').ok &&
+      wordClozeCW9.frage.zeigt === 'Ich ____ beide Jahre mit den Vorjahren.' && wordClozeCW9.frage.antworten.join(' ') === 'vergleiche' &&
+      wordClozeCW9.frage.nearMiss['vergleichen'] && !win.DW.renderers.judgeCloze(wordClozeCW9.frage, 'vergleichen').ok &&
+      (imitateW9.frage.zeigt === 'Die Grafik zeigt einen ____.' || imitateW9.zeigt.de === 'Die Grafik zeigt einen ____.') && imitateW9.frage.antworten.join(' ') === 'Anstieg' &&
+      imitateW9.frage.nearMiss['Anstiegs'] && !win.DW.renderers.judgeCloze(imitateW9.frage, 'Anstiegs').ok &&
+      drillW9.frage.zeigt === 'Ich ____ den Verlauf in zwei Sätzen.' && drillW9.frage.antworten.join(' ') === 'erläutere' &&
+      drillW9.frage.nearMiss['erläutern'] && !win.DW.renderers.judgeCloze(drillW9.frage, 'erläutern').ok &&
+      lessonW9.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW9.frage.frage === 'رتّب الجملة واضعًا عبارة المقارنة أولًا والفعل في الموضع الثاني.' &&
+      orderW9.frage.correct.join(' ') === targetsW9[2] && orderW9.frage.finite === 'steigt' && orderW9.frage.verbFirst === false &&
+      orderW9.frage.fields.vorfeld.join(' ') === 'Im Vergleich zum Vorjahr' && orderW9.frage.fields.lsk.join(' ') === 'steigt' &&
+      orderW9.frage.fields.mittelfeld.join(' ') === 'der Anteil.' &&
+      win.DW.order.score(orderW9.frage, orderW9.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW9.frage, ['Im', 'Vergleich', 'zum', 'Vorjahr', 'der', 'steigt', 'Anteil.']).credit < 1 &&
+      writingW9.frage.points.join(' | ') === targetsW9.join(' | ') && writingW9.frage.minWords === 26 &&
+      targetsW9.join(' ').split(/\s+/).length === 26 &&
+      targetsW9.every(x => [writingW9.frage.promptDe, summaryW9.zeigt.de, homeworkW9.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW9.every(x => norm(speakingW9.erklaerung).includes(norm(x))) &&
+      modelW9.zeigt.de.includes('Die Grafik zeigt den Zeitraum von zwei Jahren.') &&
+      modelW9.zeigt.de.includes('Die Vergleichsgruppe fehlt, die Hochrechnung bleibt eine Näherung.') &&
+      homeworkW9.zeigt.de.includes('Die x-Achse nennt die Monate, die y-Achse die Prozentangabe.') &&
+      homeworkW9.zeigt.de.includes('Der Juli ist auffälliger als jeder andere Monat'));
+
+  const checksW9 = lessonW9.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW9 = checksW9.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW9 = checksW9.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w09 makes 80 percent four of five, independently checking careful deute, the erläutere cloze and ist order, singular verwechselt and keine Ursache',
+    checksW9.length === 5 && checksW9[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW9[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW9.every(s => /^cap\.b2-w09\.s\d+$/.test(s.frage.prereq || '')) && checksW9.every(s => !s.hinweise) &&
+      checksW9.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w09.s07 | cap.b2-w09.s23 | cap.b2-w09.s24 | cap.b2-w09.s16 | cap.b2-w09.s20' &&
+      new Set(checksW9.map(s => s.frage.prereq)).size === 5 &&
+      checksW9[0].frage.optionen.some(o => o.text === targetsW9[3]) &&
+      checksW9[0].frage.optionen.some(o => o.text === 'Danach deuten ich vorsichtig.') &&
+      Object.values(checksW9[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW9.frage.zeigt === 'Ich ____ den Verlauf in zwei Sätzen.' &&
+      clozeCheckW9.frage.antworten.join(' ') === 'erläutere' && clozeCheckW9.frage.nearMiss['erläutern'] &&
+      !win.DW.renderers.judgeCloze(clozeCheckW9.frage, 'erläutern').ok &&
+      orderCheckW9.frage.correct.join(' ') === targetsW9[1] && orderCheckW9.frage.finite === 'ist' &&
+      orderCheckW9.frage.fields.vorfeld.join(' ') === 'Auffällig' && orderCheckW9.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW9.frage.fields.mittelfeld.join(' ') === 'der Unterschied.' &&
+      win.DW.order.score(orderCheckW9.frage, orderCheckW9.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW9.frage, ['Auffällig', 'der', 'ist', 'Unterschied.']).credit < 1 &&
+      checksW9[3].frage.optionen.some(o => o.text === 'Die Fehlinterpretation verwechselt Ursache und Folge.') &&
+      checksW9[3].frage.optionen.some(o => o.text === 'Die Fehlinterpretation verwechseln Ursache und Folge.') &&
+      Object.values(checksW9[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW9[4].frage.optionen.some(o => o.text === targetsW9[4]) &&
+      checksW9[4].frage.optionen.some(o => o.text === 'Ohne Quelle nenne ich kein Ursache.') &&
+      Object.values(checksW9[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

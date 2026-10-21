@@ -14,9 +14,9 @@ module.exports = {
       ['das Säulendiagramm', 'die Säulendiagramme', 'مخطط الأعمدة الرأسية', 'Das Säulendiagramm steht neben der Tabelle.', 'Das Säulendiagramm stehen neben der Tabelle.', 'المفرد: steht.', 'konjugation', 'Säulendiagramm'],
       ['die Tabelle', 'die Tabellen', 'الجدول', 'Die Tabelle nennt die genauen Messwerte und die rohen Daten.', 'Die Tabelle nennen die genauen Messwerte.', 'المفرد: nennt.', 'konjugation', 'Tabelle'],
       ['der Prozentwert', 'die Prozentwerte', 'القيمة المئوية', 'Der Prozentwert steigt auf vierzig; die Messung bleibt eine Größenordnung.', 'Der Prozentwert steigen auf vierzig.', 'المفرد: steigt.', 'konjugation', 'Prozentwert'],
-      ['das Prozent', 'die Prozente', 'في المئة', 'Zwanzig Prozent der Befragten fehlen; die Erhebung war eine Umfrage.', 'Zwanzig Prozent der Befragten fehlt.', 'الجمع: fehlen.', 'konjugation', 'Prozent'],
+      ['das Prozent', 'die Prozente', 'في المئة', 'Zwanzig Prozent der Befragten fehlen; die Erhebung war eine Umfrage.', 'Zwanzig Prozent die Befragten fehlen; die Erhebung war eine Umfrage.', 'الإضافة بعد النسبة: der Befragten.', 'konjugation', 'Prozent'],
       ['der Anteil', 'die Anteile', 'النسبة', 'Der Anteil der Frauen wächst; die Befragung dauerte vier Wochen.', 'Der Anteil der Frauen wachsen.', 'المفرد: wächst.', 'konjugation', 'Anteil'],
-      ['die Hälfte', 'die Hälften', 'النصف', 'Die Hälfte der Befragten antwortet nicht; das Verhältnis kennt niemand.', 'Die Hälfte der Befragten antworten nicht.', 'المفرد: antwortet.', 'konjugation', 'Hälfte'],
+      ['die Hälfte', 'die Hälften', 'النصف', 'Die Hälfte der Befragten antwortet nicht; das Verhältnis kennt niemand.', 'Die Hälfte die Befragten antwortet nicht; das Verhältnis kennt niemand.', 'الإضافة بعد الكسر: der Befragten.', 'konjugation', 'Hälfte'],
       ['das Viertel', 'die Viertel', 'الربع', 'Ein Viertel bleibt unentschieden.', 'Ein Viertel bleiben unentschieden.', 'محايد ومفرد: bleibt.', 'konjugation', 'Viertel'],
       ['die Steigerung', 'die Steigerungen', 'الزيادة', 'Die Steigerung fällt kleiner aus als erwartet; der Anteilswert auch.', 'Die Steigerung fallen kleiner aus als erwartet.', 'المفرد: fällt.', 'konjugation', 'Steigerung'],
       ['der Zuwachs', '—', 'النمو', 'Der Zuwachs beträgt fünf Prozent; die Zunahme fällt in den Sommer.', 'Der Zuwachs betragen fünf Prozent.', 'المفرد: beträgt.', 'konjugation', 'Zuwachs'],
@@ -30,8 +30,8 @@ module.exports = {
       ['die Legende', 'die Legenden', 'دليل الرموز', 'Die Legende erklärt die Farben.', 'Die Legende erklären die Farben.', 'المفرد: erklärt.', 'konjugation', 'Legende'],
       ['die Beschriftung', 'die Beschriftungen', 'التدبيج', 'Die Beschriftung ist zu klein gedruckt.', 'Die Beschriftung sind zu klein gedruckt.', 'المفرد: ist.', 'konjugation', 'Beschriftung'],
       ['die Herkunftsangabe', 'die Herkunftsangaben', 'بيان المصدر', 'Die Herkunftsangabe fehlt unter dem Diagramm; die Datenbasis bleibt unklar.', 'Die Herkunftsangabe fehlen unter dem Diagramm.', 'المفرد: fehlt.', 'konjugation', 'Herkunftsangabe'],
-      ['die Skala', 'die Skalen', 'السلّم', 'Die Skala bei null lässt den Monatswert kleiner wirken.', 'Die Skala beginnen bei null.', 'المفرد: beginnt.', 'konjugation', 'Skala'],
-      ['der Nullpunkt', 'die Nullpunkte', 'نقطة الصفر', 'Der Nullpunkt fehlt und die Darstellung verzerrt.', 'Der Nullpunkt fehlen, das verzerrt.', 'المفرد: fehlt.', 'konjugation', 'Nullpunkt'],
+      ['die Skala', 'die Skalen', 'السلّم', 'Die Skala beginnt nicht bei null; der Monatswert wirkt größer.', 'Die Skala beginnen nicht bei null; der Monatswert wirkt größer.', 'المفرد: beginnt.', 'konjugation', 'Skala'],
+      ['der Nullpunkt', 'die Nullpunkte', 'نقطة الصفر', 'Der Nullpunkt fehlt, das verzerrt die Darstellung.', 'Der Nullpunkt fehlen, das verzerrt die Darstellung.', 'المفرد: fehlt.', 'konjugation', 'Nullpunkt'],
       ['die Linie', 'die Linien', 'الخط', 'Die Linie bricht im Winter ein, wie in jeder Zeitreihe.', 'Die Linie brechen im Winter ein.', 'المفرد: bricht.', 'konjugation', 'Linie'],
       ['der Verlauf', 'die Verläufe', 'المسار', 'Der Verlauf steigt stetig; die Gerade trifft den Schnittpunkt im Juni.', 'Der Verlauf steigen stetig.', 'المفرد: steigt.', 'konjugation', 'Verlauf'],
       ['der Trend', 'die Trends', 'الاتجاه', 'Der Trend zeigt nach oben; der Jahresvergleich bestätigt ihn.', 'Der Trend zeigen nach oben.', 'المفرد: zeigt.', 'konjugation', 'Trend'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Vorjahreszahl', 'die Trendwende'
     ],
     tricks: [
-      { trick: 'صف قبل أن تؤول: Was zeigt die Grafik — und was nicht', wie: 'Die Grafik zeigt einen Anstieg, nicht die Ursache.', warum: 'الرسم لا يُثبت سببًا؛ من يؤوّل أولًا يخسر بند «لماذا».', anchor: 'Die Grafik zeigt' },
-      { trick: 'الرقم اللافت واحد: auffällig ist der Unterschied', wie: 'Auffällig ist der Unterschied zwischen Juli und Dezember.', warum: 'سرد كل الأرقام سردٌ بلا معنى؛ اللافت هو الجواب.', anchor: 'Auffällig ist' },
-      { trick: 'اذكر القيمة المرجعية: im Vergleich zu …', wie: 'Im Vergleich zum Vorjahr steigt der Anteil um fünf Prozent.', warum: 'بلا مرجع لا معنى للرقم؛ والمقارنة هي سؤال الامتحان.', anchor: 'Im Vergleich' }
-    ]
+      { trick: 'صف قبل أن تؤول: Was zeigt die Grafik — und was nicht', wie: 'Die Grafik zeigt einen Anstieg, nicht die Ursache.', warum: 'الرسم لا يُثبت سببًا؛ من يؤوّل أولًا يخسر بند «لماذا».', anchor: 'Die Grafik zeigt einen Anstieg, nicht die Ursache' },
+      { trick: 'الرقم اللافت واحد: auffällig ist der Unterschied', wie: 'Auffällig ist der Unterschied zwischen Juli und Dezember.', warum: 'سرد كل الأرقام سردٌ بلا معنى؛ اللافت هو الجواب.', anchor: 'Auffällig ist der Unterschied zwischen Juli und Dezember' },
+      { trick: 'اذكر القيمة المرجعية: im Vergleich zu …', wie: 'Im Vergleich zum Vorjahr steigt der Anteil um fünf Prozent.', warum: 'بلا مرجع لا معنى للرقم؛ والمقارنة هي سؤال الامتحان.', anchor: 'Im Vergleich zum Vorjahr steigt der Anteil um fünf Prozent' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Tabelle': 'Tabellen',
+      'die Beschriftung': 'Beschriftungen',
+      'vergleichen': 'vergleichen'
+    },
+    clozeItemIndex: 35,
+    clozeNearMiss: 'erläutern',
+    checkItemIndex: 34,
+    extraCheck: {
+      right: 'Ohne Quelle nenne ich keine Ursache.',
+      bad: 'Ohne Quelle nenne ich kein Ursache.',
+      why: 'المؤنث نصب: keine Ursache.',
+      family: 'kasus',
+      prereq: 'cap.b2-w09.s20',
+      frage: 'أي جملة ترفض السبب بلا مصدر بنصب صحيح؟'
+    }
   }
 
 };

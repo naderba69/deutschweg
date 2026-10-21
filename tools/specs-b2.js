@@ -358,25 +358,49 @@ module.exports = [
       summaryRecap: 'فهم بلا تقليد',
     }),
 
-  U('b2-w09', 'تحليل رسم', 'Grafik',
-    'Am Ende beschreibst du einen Unterschied bevor du deutest',
-    'في النهاية تصف فرقًا قبل التأويل.',
+  U('b2-w09', 'الرسم البياني: وصف ثم تأويل', 'Grafik: erst beschreiben, dann deuten',
+    'Am Ende beschreibst du die Grafik, bevor du deutest — in fünf Sätzen',
+    'في النهاية تصف الرسم قبل أن تؤول في خمس جمل.',
     [
-      ['die Grafik zeigt', 'الرسم يُظهر لا يُثبت السبب', 'السبب خطوة ثانية', 'die Grafik beweist warum', 'الرسم لا يُثبت السبب'],
-      ['auffälliger Unterschied', 'الفرق اللافت يُسمّى', 'كل رقم ليس لافتًا', 'ich nenne jede Zahl', 'اللافت واحد'],
-      ['im Vergleich', 'المقارنة إطار', 'الرقم العاري ضعيف', 'die Zahl steht allein', 'المقارنة لازمة'],
-      ['dann deuten', 'التأويل بعد الوصف', 'العكس يخسر النقاط', 'ich deute zuerst', 'الوصف أولًا']
+      ['Die Grafik zeigt einen Anstieg.', 'يصف الحركة الظاهرة دون سبب', 'الفاعل Grafik مفرد: zeigt لا zeigen', 'Die Grafik zeigen einen Anstieg.', 'المفرد: zeigt'],
+      ['Auffällig ist der Unterschied.', 'يسمّي الفرق اللافت وحده', 'Unterschied مذكر: der لا die', 'Auffällig ist die Unterschied.', 'المذكر: der Unterschied'],
+      ['Im Vergleich zum Vorjahr steigt der Anteil.', 'يربط الرقم بمرجع زمني', 'بعد عبارة المقارنة الفعل ثانٍ قبل الفاعل: steigt der Anteil', 'Im Vergleich zum Vorjahr der Anteil steigt.', 'الفعل ثانٍ دائمًا'],
+      ['Danach deute ich vorsichtig.', 'يؤول متأخرًا وبحذر معلن', 'الفعل مع ich مفرد: deute لا deuten', 'Danach deuten ich vorsichtig.', 'المفرد: deute']
     ],
     [
-      ['Die Grafik zeigt einen Anstieg.', 'الرسم يُظهر ارتفاعًا', 'Die Grafik beweist warum', 'الرسم لا يُثبت السبب', 'zeigt'],
-      ['Auffällig ist der Unterschied.', 'اللافت هو الفرق', 'Ich nenne jede Zahl', 'اللافت واحد', 'Auffällig'],
-      ['Im Vergleich zu Zweitausendzehn.', 'مقارنة بعام ألفين وعشرة', 'Die Zahl steht allein', 'المقارنة لازمة', 'Vergleich'],
-      ['Danach deute ich vorsichtig.', 'بعد ذلك أؤول بحذر', 'Ich deute zuerst', 'الوصف أولًا', 'Danach']
+      ['Die Grafik zeigt einen Anstieg.', 'الرسم يُظهر ارتفاعًا', 'Die Grafik zeigen einen Anstieg.', 'الفاعل مفرد: zeigt.', 'Anstieg'],
+      ['Auffällig ist der Unterschied.', 'اللافت هو الفرق', 'Auffällig ist die Unterschied.', 'المذكر: der Unterschied.', 'Unterschied'],
+      ['Im Vergleich zum Vorjahr steigt der Anteil.', 'مقارنة بالعام الماضي ترتفع النسبة', 'Im Vergleich zum Vorjahr der Anteil steigt.', 'بعد المقارنة الفعل ثانٍ.', 'Vergleich'],
+      ['Danach deute ich vorsichtig.', 'بعد ذلك أؤول بحذر', 'Danach deuten ich vorsichtig.', 'الفعل مع ich مفرد: deute.', 'vorsichtig']
     ],
     'Die Grafik zeigt den Zeitraum von zwei Jahren. Die x-Achse nennt die Monate, die y-Achse die Prozentangabe. Der Spitzenwert liegt im Juli, danach eine Schwankung. Die Trendlinie steigt, die Zahlenreihe bestätigt den Befund. Die Datenquelle fehlt, das schwächt jede Auswertung. Die Grafikunterschrift nennt die Quelle, die Achsenbeschriftung die Einheit. Ein Kreisdiagramm zeigt Anteile, ein Liniendiagramm den Verlauf. Der Farbverlauf der Farbskala ersetzt keine Wertachse. Die Einblendung erklärt den Stichtag. Die Vergleichsgruppe fehlt, die Hochrechnung bleibt eine Näherung.',
-    'Die Grafik zeigt einen Anstieg.',
-    'Beschreibe morgen eine Grafik in zwei Sätzen.',
-    'غدًا صف رسمًا في جملتين.'),
+    'Ohne Quelle nenne ich keine Ursache.',
+    'Wiederhole morgen die fünf Sätze: Die Grafik zeigt einen Anstieg. Auffällig ist der Unterschied. Im Vergleich zum Vorjahr steigt der Anteil. Danach deute ich vorsichtig. Ohne Quelle nenne ich keine Ursache. Die x-Achse nennt die Monate, die y-Achse die Prozentangabe. Der Spitzenwert liegt im Juli, danach kommt eine Schwankung. Die Trendlinie steigt, die Zahlenreihe bestätigt den Befund. Die Datenquelle fehlt, und die Vergleichsgruppe auch. Die Einblendung erklärt den Stichtag, die Grafikunterschrift die Einheit. Die Hochrechnung bleibt eine Näherung, die Auswertung eine Übung. Der Juli ist auffälliger als jeder andere Monat; der Vergleich mit Zweitausendzehn bleibt die Hausaufgabe.',
+    'غدًا أعد جمل تحليل الرسم الخمس ولاحظ أن التأويل يأتي بعد الوصف.',
+    {
+      factFamilies: ['konjugation', 'genus', 'wortstellung', 'konjugation'],
+      imitateNearMiss: 'Anstiegs',
+      transformHint: 'في جملة الحذر النتيجة أوضح: Ohne Quelle nenne ich keine Ursache — المؤنث نصب keine.',
+      orderSentence: 'Im Vergleich zum Vorjahr steigt der Anteil.',
+      checkOrderSentence: 'Auffällig ist der Unterschied.',
+      orderAr: 'رتّب جملة المقارنة: المرجع أولًا والفعل steigt ثانيًا قبل الفاعل der Anteil.',
+      orderPromptAr: 'رتّب الجملة واضعًا عبارة المقارنة أولًا والفعل في الموضع الثاني.',
+      orderHints: ['عبارة المقارنة Im Vergleich zum Vorjahr في الموضع الأول.', 'الفعل steigt ثانٍ، والفاعل der Anteil أخيرًا.'],
+      writing: {
+        zeigt: 'Grafikbeschreibung in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: حركة موصوفة بفعل مفرد، وفرقًا لافتًا بأداة مذكر صحيحة، ومقارنة بفعل ثانٍ، وتأويلًا حذرًا بفعل مفرد، ورفضًا للسبب بلا مصدر.',
+        hinweise: ['الرسم يُظهر ولا يُثبت سببًا.', 'الفرق اللافت واحد، وبمرجع معلن.'],
+        prompt: 'اكتب جمل تحليل الرسم الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Grafik zeigt einen Anstieg. · Auffällig ist der Unterschied. · Im Vergleich zum Vorjahr steigt der Anteil. · Danach deute ich vorsichtig. · Ohne Quelle nenne ich keine Ursache.',
+        points: ['Die Grafik zeigt einen Anstieg.', 'Auffällig ist der Unterschied.', 'Im Vergleich zum Vorjahr steigt der Anteil.', 'Danach deute ich vorsichtig.', 'Ohne Quelle nenne ich keine Ursache.'],
+        minWords: 26,
+        frage: 'اكتب جمل تحليل الرسم الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Grafik zeigt einen Anstieg. Auffällig ist der Unterschied. Im Vergleich zum Vorjahr steigt der Anteil. Danach deute ich vorsichtig. Ohne Quelle nenne ich keine Ursache.',
+      summaryDe: 'Die Grafik zeigt einen Anstieg. Auffällig ist der Unterschied. Im Vergleich zum Vorjahr steigt der Anteil. Danach deute ich vorsichtig. Ohne Quelle nenne ich keine Ursache.',
+      summaryAr: 'الوصف قبل التأويل: لافت واحد بمقارنة معلنة، ولا سبب بلا مصدر.',
+      summaryRecap: 'وصف ثم تأويل',
+    }),
 
   U('b2-w10', 'ورشة كتابة: تلخيص', 'Zusammenfassung',
     'Am Ende fasst du zusammen ohne neue Wertung',

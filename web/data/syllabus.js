@@ -196,7 +196,7 @@
     ['خطاب شكوى: واقعة ونتيجة وطلب', 'Beschwerdebrief: Tatsache, Folge und Bitte', 'شكوى رسمية', 'writing'],
     ['العمل: حسنة ومساوئ وحدّ', 'Arbeit: Vorteil, Nachteil und Grenze', 'العمل', 'discussion'],
     ['سماع لهجة: فهم بلا تقليد', 'Dialekt hören: verstehen, nicht nachahmen', 'تمييز لهجة', 'listening'],
-    ['تحليل رسم', 'Grafik', 'تعليق على بيانات', 'text-analysis'],
+    ['الرسم البياني: وصف ثم تأويل', 'Grafik: erst beschreiben, dann deuten', 'تعليق على بيانات', 'text-analysis'],
     ['ورشة كتابة: تلخيص', 'Zusammenfassung', 'تلخيص', 'writing'],
     ['نقاش: إعلام', 'Medien diskutieren', 'الإعلام', 'discussion'],
     ['سماع مقابلة', 'Interview B2', 'مقابلة', 'listening'],
