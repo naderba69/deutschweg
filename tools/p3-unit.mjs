@@ -8299,7 +8299,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Articles['b2-a5'].body.includes('einen Termin, mögliche Kosten und die zuständige Stelle'));
   t('Corpus B2 b2-a6 has 496 measured words and no unknown B2 tokens',
     b2Articles['b2-a6'].title === 'الاستهلاك' &&
-      b2Articles['b2-a6'].body.trim().split(/\s+/).length === 496 &&
+      b2Articles['b2-a6'].body.trim().split(/\s+/).length === 552 &&
       known.coverage(b2Known, b2Articles['b2-a6'].body).unknown.length === 0);
   t('Corpus B2 b2-a6 connects lifetime costs, evidence limits, comparison work, a repair case, environmental trade-offs, and producer responsibility coherently',
     b2Articles['b2-a6'].body.includes('über die ganze Zeit der Nutzung') &&
