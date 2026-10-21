@@ -8237,9 +8237,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a2', 1).key === 'لا' &&
       b2q('b2-a2', 1).options.includes(b2q('b2-a2', 1).key) &&
       b2Articles['b2-a2'].body.includes('der Bericht untersucht sie nicht'));
-  t('Corpus B2 b2-a3 has 479 measured words and no unknown B2 tokens',
+  t('Corpus B2 b2-a3 has 541 measured words and no unknown B2 tokens',
     b2Articles['b2-a3'].title === 'الهجرة اليومية' &&
-      b2Articles['b2-a3'].body.trim().split(/\s+/).length === 479 &&
+      b2Articles['b2-a3'].body.trim().split(/\s+/).length === 541 &&
       known.coverage(b2Known, b2Articles['b2-a3'].body).unknown.length === 0);
   t('Corpus B2 b2-a3 connects commuting costs, the brother case, transport, work organization, occupational limits, and evaluation coherently',
     b2Articles['b2-a3'].body.includes('eigentliche Preis jedoch aus Zeit') &&
