@@ -206,7 +206,7 @@
     ['سماع الأخبار: خبر أو تعليق', 'Nachrichten hören: Meldung oder Kommentar', 'أخبار', 'listening'],
     ['الرسالة الرسمية: مناسبة وطلب وأجل', 'Formeller Brief: Anlass, Bitte, Frist', 'مراسلة', 'writing'],
     ['تقنية التحدث: ثلاث دقائق وثلاثة أجزاء', 'Sprechtechnik: drei Minuten, drei Teile', 'امتحان', 'exam-technique'],
-    ['نقاش: تعليم', 'Bildung', 'التعليم', 'discussion'],
+    ['التعليم: مساران بحدٍّ', 'Bildung: zwei Wege mit Grenze', 'التعليم', 'discussion'],
     ['تحليل موقفين', 'Pro und Kontra', 'حجاج', 'text-analysis']
   ];
 

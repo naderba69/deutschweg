@@ -17,7 +17,7 @@ module.exports = {
       ['die Lehre', 'die Lehren', 'التعليم المهني', 'Die Lehre im Handwerk endet mit dem Gesellenbrief.', 'Die Lehre im Handwerk enden mit dem Gesellenbrief.', 'المفرد: endet.', 'konjugation', 'Lehre'],
       ['der Abschluss', 'die Abschlüsse', 'الشهادة', 'Der Abschluss öffnet die Laufbahn, nicht das Ranking.', 'Der Abschluss öffnen die Laufbahn.', 'المفرد: öffnet.', 'konjugation', 'Abschluss'],
       ['der Beruf', 'die Berufe', 'المهنة', 'Der Beruf braucht eine Qualifikation und ein Praktikum.', 'Der Beruf brauchen eine Qualifikation.', 'المفرد: braucht.', 'konjugation', 'Beruf'],
-      ['der Fachkräftemangel', '—', 'نقص الكفاءات', 'Dem Fachkräftemangel hilft die Zuwanderung, nicht die Quote.', 'Der Fachkräftemangel helfen die Zuwanderung.', 'المفرد في المفعول: hilft.', 'konjugation', 'Fachkräftemangel'],
+      ['der Fachkräftemangel', '—', 'نقص الكفاءات', 'Dem Fachkräftemangel hilft die Zuwanderung, nicht die Quote.', 'Dem Fachkräftemangel helfen die Zuwanderung.', 'المفرد: hilft die Zuwanderung.', 'konjugation', 'Fachkräftemangel'],
       ['die Qualifikation', 'die Qualifikationen', 'المؤهل', 'Die Qualifikation wird gemessen, die Begabung selten.', 'Die Qualifikation werden gemessen.', 'المفرد: wird.', 'konjugation', 'Qualifikation'],
       ['der Studienplatz', 'die Studienplätze', 'مقعد الدراسة', 'Der Studienplatz wird über die Zulassung vergeben.', 'Der Studienplatz werden über die Zulassung vergeben.', 'المفرد: wird.', 'konjugation', 'Studienplatz'],
       ['die Zulassung', 'die Zulassungen', 'القبول', 'Die Zulassung hängt vom Notendurchschnitt ab.', 'Die Zulassung hängen vom Notendurchschnitt ab.', 'المفرد: hängt.', 'konjugation', 'Zulassung'],
@@ -64,10 +64,27 @@ module.exports = {
       'das Ranking', 'die Schulzeit'
     ],
     tricks: [
-      { trick: 'مساران لا عشرة: Zwei Wege reichen', wie: 'Zwei Wege reichen, zehn Modelle ohne Satz nicht.', warum: 'الكثرة تُقرأ لائحة لا حكمًا؛ والمقارنة تحتاج حدًّا.', anchor: 'Zwei Wege reichen' },
+      { trick: 'مساران لا عشرة: Zwei Wege reichen', wie: 'Zwei Wege reichen, zehn Modelle ohne Satz nicht.', warum: 'الكثرة تُقرأ لائحة لا حكمًا؛ والمقارنة تحتاج حدًّا.', anchor: 'Zwei Wege reichen, zehn Modelle ohne Satz nicht' },
       { trick: 'سمِّ المستفيد وسمِّ الدافع: wer profitiert, wer zahlt', wie: 'Wer zahlt, gehört zur Frage: die Studiengebühr entscheidet über den Zugang.', warum: '«الجميع يستفيد» كلمة كسولة لا تخضع للفحص.', anchor: 'Wer zahlt, gehört zur Frage' },
       { trick: 'ارسم الحد: Das gilt nicht für jedes Land', wie: 'Das gilt nicht für jedes Land, und nicht für jede Schulform.', warum: 'التعميم بلا حد يخسر أول اعتراض.', anchor: 'Das gilt nicht für jedes Land' }
-    ]
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'das Studium': 'Studien',
+      'die Gebühr': 'Gebühren',
+      'der Zugang': 'Zugänge'
+    },
+    clozeItemIndex: 39,
+    clozeNearMiss: 'Bildungswege',
+    checkItemIndex: 2,
+    extraCheck: {
+      right: 'Ich muss zwei Wege mit Grenze vergleichen.',
+      bad: 'Ich muss zwei Wege bis Grenze vergleichen.',
+      why: 'حرف الجر الصحيح mit لا bis.',
+      family: 'präposition',
+      prereq: 'cap.b2-w19.s20',
+      frage: 'أي جملة تُلزم بمقارنة مسارين بحدٍّ وبحرف جرٍّ صحيح؟'
+    }
   }
 
 };

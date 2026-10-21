@@ -20708,6 +20708,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW18[4].frage.optionen.some(o => o.text === targetsW18[4]) &&
       checksW18[4].frage.optionen.some(o => o.text === 'Ich musst in drei Teilen sprechen.') &&
       Object.values(checksW18[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
+
+  const lessonW19 = win.DW_LESSONS['b2-w19'];
+  const rowW19 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w19');
+  const byWordW19 = Object.fromEntries(lessonW19.wortschatz.map(it => [it.de, it]));
+  const trickStepsW19 = lessonW19.schritte.filter(s => s.merkhilfe);
+  const targetsW19 = [
+    'Zwei Wege reichen.',
+    'Nicht alle profitieren gleich.',
+    'Wer zahlt, gehört zur Frage.',
+    'Das gilt nicht für jedes Land.',
+    'Ich muss zwei Wege mit Grenze vergleichen.'
+  ];
+  t('Corpus workshop b2-w19 precisely scopes five education-comparison moves two paths enough, benefit uneven, payer asked, model bounded and the comparison bound with muss',
+    lessonW19.title.de === 'Bildung: zwei Wege mit Grenze' &&
+      lessonW19.title.ar === 'التعليم: مساران بحدٍّ' &&
+      lessonW19.level === 'B2' && lessonW19.kind === 'workshop' &&
+      rowW19.title.de === lessonW19.title.de && rowW19.title.ar === lessonW19.title.ar &&
+      rowW19.theme === 'التعليم' &&
+      rowW19.grammar.item === 'التعليم: مساران بحدٍّ' &&
+      rowW19.grammar.method === 'explicit' &&
+      rowW19.words.receptive === 90 && rowW19.words.productive === 60 &&
+      lessonW19.schritte.length === 36 && lessonW19.wortschatz.length === 40 &&
+      lessonW19.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW19.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW19[i]) &&
+      lessonW19.schritte[0].zeigt.de === 'Am Ende vergleichst du zwei Wege mit einer Grenze — in fünf Sätzen' &&
+      lessonW19.schritte.find(s => s.id === 's20').zeigt.de === targetsW19[4]);
+
+  const expectedWordsW19 = [
+    'die Bildung', 'das Bildungssystem', 'die Schule', 'die Hochschule', 'die Universität',
+    'das Studium', 'die Ausbildung', 'die Lehre', 'der Abschluss', 'der Beruf',
+    'der Fachkräftemangel', 'die Qualifikation', 'der Studienplatz', 'die Zulassung', 'die Auswahl',
+    'die Note', 'das Zeugnis', 'die Prüfung', 'die Leistung', 'die Förderung',
+    'das Stipendium', 'die Gebühr', 'die Bildungspolitik', 'der Lehrplan', 'die Lehrkraft',
+    'der Lehrer', 'die Lehrerin', 'die Klasse', 'der Unterricht', 'das Fach',
+    'die Fachkraft', 'die Weiterbildung', 'die Fortbildung', 'die Umschulung', 'die Chancengleichheit',
+    'die Ungleichheit', 'die Herkunft', 'der Zugang', 'die Ausstattung', 'der Bildungsweg'
+  ];
+  const errorsW19 = lessonW19.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w19 reviews all 40 entries and three bounded mnemonics repairing the double-error Fachkräftemangel foil while every other foil stays a genuine agreement error',
+    Object.keys(byWordW19).join(' | ') === expectedWordsW19.join(' | ') &&
+      lessonW19.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW19.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW19['der Fachkräftemangel'].ex === 'Dem Fachkräftemangel hilft die Zuwanderung, nicht die Quote.' &&
+      byWordW19['der Fachkräftemangel'].err === 'Dem Fachkräftemangel helfen die Zuwanderung.' &&
+      byWordW19['der Bildungsweg'].err === 'Der Bildungsweg sind kein Rennen.' &&
+      ['Die Bildung entscheiden über den Werdegang.', 'Die Zulassung hängen vom Notendurchschnitt ab.',
+        'Die Herkunft entscheiden öfter als die Leistung.']
+        .every(x => errorsW19.includes(x)) &&
+      byWordW19['die Schule'].ex === 'Die Schule beginnt mit der Grundschule und endet mit dem Zeugnis.' &&
+      trickStepsW19.length === 3 &&
+      trickStepsW19[0].zeigt.de === 'Zwei Wege reichen, zehn Modelle ohne Satz nicht' &&
+      trickStepsW19[0].merkhilfe.wie.includes('Zwei Wege reichen, zehn Modelle ohne Satz nicht.') &&
+      trickStepsW19[1].zeigt.de === 'Wer zahlt, gehört zur Frage' &&
+      trickStepsW19[1].merkhilfe.wie.includes('Wer zahlt, gehört zur Frage: die Studiengebühr entscheidet über den Zugang.') &&
+      trickStepsW19[2].zeigt.de === 'Das gilt nicht für jedes Land' &&
+      trickStepsW19[2].merkhilfe.wie.includes('Das gilt nicht für jedes Land, und nicht für jede Schulform.'));
+
+  const wordClozeAW19 = lessonW19.schritte.find(s => s.id === 's09');
+  const wordClozeBW19 = lessonW19.schritte.find(s => s.id === 's13');
+  const wordClozeCW19 = lessonW19.schritte.find(s => s.id === 's17');
+  const imitateW19 = lessonW19.schritte.find(s => s.id === 's19');
+  const drillW19 = lessonW19.schritte.find(s => s.id === 's23');
+  const orderW19 = lessonW19.schritte.find(s => s.id === 's24');
+  const writingW19 = lessonW19.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW19 = lessonW19.schritte.find(s => s.phase === 'Produktion');
+  const summaryW19 = lessonW19.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW19 = lessonW19.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW19 = lessonW19.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w19 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 25-word five-target production',
+    wordClozeAW19.frage.zeigt === 'Das ____ endet mit dem Abschluss, nicht mit dem Studienplatz.' && wordClozeAW19.frage.antworten.join(' ') === 'Studium' &&
+      wordClozeAW19.frage.nearMiss['Studien'] && !win.DW.renderers.judgeCloze(wordClozeAW19.frage, 'Studien').ok &&
+      wordClozeBW19.frage.zeigt === 'Die ____ entscheidet über den Zugang wie die Wohnung.' && wordClozeBW19.frage.antworten.join(' ') === 'Gebühr' &&
+      wordClozeBW19.frage.nearMiss['Gebühren'] && !win.DW.renderers.judgeCloze(wordClozeBW19.frage, 'Gebühren').ok &&
+      wordClozeCW19.frage.zeigt === 'Der ____ hängt an der Gebühr und an der Sprache.' && wordClozeCW19.frage.antworten.join(' ') === 'Zugang' &&
+      wordClozeCW19.frage.nearMiss['Zugänge'] && !win.DW.renderers.judgeCloze(wordClozeCW19.frage, 'Zugänge').ok &&
+      (imitateW19.frage.zeigt === '____ Wege reichen.' || imitateW19.zeigt.de === '____ Wege reichen.') && imitateW19.frage.antworten.join(' ') === 'Zwei' &&
+      imitateW19.frage.nearMiss['Zehn'] && !win.DW.renderers.judgeCloze(imitateW19.frage, 'Zehn').ok &&
+      drillW19.frage.zeigt === 'Der ____ ist kein Rennen, sondern eine Reihe von Entscheidungen.' && drillW19.frage.antworten.join(' ') === 'Bildungsweg' &&
+      drillW19.frage.nearMiss.Bildungswege && !win.DW.renderers.judgeCloze(drillW19.frage, 'Bildungswege').ok &&
+      lessonW19.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW19.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW19.frage.correct.join(' ') === targetsW19[4] && orderW19.frage.finite === 'muss' && orderW19.frage.verbFirst === false &&
+      orderW19.frage.fields.vorfeld.join(' ') === 'Ich' && orderW19.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW19.frage.fields.mittelfeld.join(' ') === 'zwei Wege mit Grenze vergleichen.' &&
+      win.DW.order.score(orderW19.frage, orderW19.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW19.frage, ['Ich', 'zwei', 'muss', 'Wege', 'mit', 'Grenze', 'vergleichen.']).credit < 1 &&
+      writingW19.frage.points.join(' | ') === targetsW19.join(' | ') && writingW19.frage.minWords === 25 &&
+      targetsW19.join(' ').split(/\s+/).length === 25 &&
+      targetsW19.every(x => [writingW19.frage.promptDe, summaryW19.zeigt.de, homeworkW19.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW19.every(x => norm(speakingW19.erklaerung).includes(norm(x))) &&
+      modelW19.zeigt.de.includes('Wer zahlt, gehört zur Frage: die Studiengebühr entscheidet über den Zugang wie die Wohnung.') &&
+      modelW19.zeigt.de.includes('Die Leistungsmessung zählt Noten zuerst; die Herkunft bleibt unsichtbar.') &&
+      homeworkW19.zeigt.de.includes('Vergleiche morgen Ausbildung und Studium.') &&
+      homeworkW19.zeigt.de.includes('Und sage die Grenze laut, bevor jemand sie gegen dich findet.'));
+
+  const checksW19 = lessonW19.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW19 = checksW19.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW19 = checksW19.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w19 makes 80 percent four of five, independently checking jedes Land, the Bildungsweg cloze and gilt order, beginnt and mit',
+    checksW19.length === 5 && checksW19[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW19[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW19.every(s => /^cap\.b2-w19\.s\d+$/.test(s.frage.prereq || '')) && checksW19.every(s => !s.hinweise) &&
+      checksW19.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w19.s07 | cap.b2-w19.s23 | cap.b2-w19.s24 | cap.b2-w19.s08 | cap.b2-w19.s20' &&
+      new Set(checksW19.map(s => s.frage.prereq)).size === 5 &&
+      checksW19[0].frage.optionen.some(o => o.text === targetsW19[3]) &&
+      checksW19[0].frage.optionen.some(o => o.text === 'Das gilt nicht für jeden Land.') &&
+      Object.values(checksW19[0].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      clozeCheckW19.frage.zeigt === 'Der ____ ist kein Rennen, sondern eine Reihe von Entscheidungen.' &&
+      clozeCheckW19.frage.antworten.join(' ') === 'Bildungsweg' && clozeCheckW19.frage.nearMiss.Bildungswege &&
+      !win.DW.renderers.judgeCloze(clozeCheckW19.frage, 'Bildungswege').ok &&
+      orderCheckW19.frage.correct.join(' ') === targetsW19[3] && orderCheckW19.frage.finite === 'gilt' &&
+      orderCheckW19.frage.fields.vorfeld.join(' ') === 'Das' && orderCheckW19.frage.fields.lsk.join(' ') === 'gilt' &&
+      orderCheckW19.frage.fields.mittelfeld.join(' ') === 'nicht für jedes Land.' &&
+      win.DW.order.score(orderCheckW19.frage, orderCheckW19.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW19.frage, ['Das', 'nicht', 'gilt', 'für', 'jedes', 'Land.']).credit < 1 &&
+      checksW19[3].frage.optionen.some(o => o.text === 'Die Schule beginnt mit der Grundschule und endet mit dem Zeugnis.') &&
+      checksW19[3].frage.optionen.some(o => o.text === 'Die Schule beginnen mit der Grundschule.') &&
+      Object.values(checksW19[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW19[4].frage.optionen.some(o => o.text === targetsW19[4]) &&
+      checksW19[4].frage.optionen.some(o => o.text === 'Ich muss zwei Wege bis Grenze vergleichen.') &&
+      Object.values(checksW19[4].frage.misconceptionFamilies).join(' ') === 'präposition');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');
