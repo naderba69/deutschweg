@@ -8199,9 +8199,9 @@ console.log('\n— P3.2 lexical layer —\n');
   const b2Articles = Object.fromEntries(win.DW_LIBRARY.B2.articles.map(x => [x.id, x]));
   const b2q = (id, n) => b2Articles[id].questions[n];
   const b2Known = known.knownWords(win, { upto: 'B2' });
-  t('Corpus B2 b2-a1 has 486 measured words and no unknown B2 tokens',
+  t('Corpus B2 b2-a1 has 536 measured words and no unknown B2 tokens',
     b2Articles['b2-a1'].title === 'العمل عن بعد' &&
-      b2Articles['b2-a1'].body.trim().split(/\s+/).length === 486 &&
+      b2Articles['b2-a1'].body.trim().split(/\s+/).length === 536 &&
       known.coverage(b2Known, b2Articles['b2-a1'].body).unknown.length === 0);
   t('Corpus B2 b2-a1 develops remote-work benefits, risks, a team rule, measured results, exceptions, and limits coherently',
     b2Articles['b2-a1'].body.includes('mehr Freiheit') &&
