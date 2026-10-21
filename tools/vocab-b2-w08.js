@@ -8,22 +8,22 @@ module.exports = {
   'b2-w08': {
     items: [
       ['der Dialekt', 'die Dialekte', 'اللهجة', 'Der Dialekt klingt in Österreich anders, ist aber Deutsch.', 'Der Dialekt klingen anders, ist aber Deutsch.', 'المفرد: klingt.', 'konjugation', 'Dialekt'],
-      ['die Mundart', 'die Mundarten', 'اللهجة المحلية', 'Die Mundart pflegt man im Dorf.', 'Die Mundart pflegen man im Dorf.', '«gell» عامية.', 'register', 'Mundart'],
-      ['der Akzent', 'die Akzente', 'اللكنة', 'Der Akzent verrät den Österreicher sofort.', 'Der Akzent verraten die Herkunft.', 'المفرد: verrät.', 'konjugation', 'Akzent'],
+      ['die Mundart', 'die Mundarten', 'اللهجة المحلية', 'Die Mundart pflegt man im Dorf.', 'Die Mundart pflegen man im Dorf.', 'الفاعل man مفرد: pflegt.', 'register', 'Mundart'],
+      ['der Akzent', 'die Akzente', 'اللكنة', 'Der Akzent verrät den Österreicher sofort.', 'Der Akzent verraten den Österreicher sofort.', 'المفرد: verrät.', 'konjugation', 'Akzent'],
       ['die Aussprache', '—', 'النطق', 'Die Aussprache ändert sich von Region zu Region.', 'Die Aussprache ändern sich von Region zu Region.', 'المفرد: ändert.', 'konjugation', 'Aussprache'],
-      ['die Herkunft', '—', 'الأصل', 'Die Herkunft hört man, nicht die Note.', 'Die Herkunft hören man, nicht die Schuld.', 'المفرد: hört.', 'konjugation', 'Herkunft'],
+      ['die Herkunft', '—', 'الأصل', 'Die Herkunft hört man, nicht die Note.', 'Die Herkunft hören man, nicht die Note.', 'المفرد: hört.', 'konjugation', 'Herkunft'],
       ['die Region', 'die Regionen', 'المنطقة', 'In jeder Region klingt der Gruß anders, mit eigenem Stolz.', 'In jeder Region klingen der Gruß anders.', 'المفرد: klingt.', 'konjugation', 'Region'],
       ['der Gruß', 'die Grüße', 'التحية', 'Der Gruß verrät die Region.', 'Der Gruß verraten die Region.', 'المفرد: verrät.', 'konjugation', 'Gruß'],
       ['die Begrüßung', 'die Begrüßungen', 'التحية (فعل)', 'Die Begrüßung fällt in Wien herzlicher aus.', 'Die Begrüßung fallen in Wien herzlicher aus.', 'المفرد: fällt.', 'konjugation', 'Begrüßung'],
       ['der Abschied', 'die Abschiede', 'الوداع', 'Der Abschied klingt im Süden weicher.', 'Der Abschied klingen im Süden weicher.', 'المفرد: klingt.', 'konjugation', 'Abschied'],
-      ['das Wort', 'die Wörter', 'الكلمة', 'Das Wort kennt man nur dort; ein Lehnwort kennt jeder.', 'Das Wort kennen man nur in der Region.', 'المفرد: kennt.', 'konjugation', 'Wort'],
-      ['die Wendung', 'die Wendungen', 'التعبير', 'Diese Wendung verstehen der Zugezogene und die Einheimische sofort.', 'Diese Wendung verstehen man in Wien sofort.', 'المفرد: versteht.', 'konjugation', 'Wendung'],
-      ['der Ausdruck', 'die Ausdrücke', 'الصيغة', 'Der Ausdruck klingt freundlich; den lernt man im Sprachkurs.', 'Der Ausdruck klingen freundlich, nicht grob.', 'المفرد: klingt.', 'konjugation', 'Ausdruck'],
+      ['das Wort', 'die Wörter', 'الكلمة', 'Das Wort kennt man nur dort; ein Lehnwort kennt jeder.', 'Das Wort kennen man nur dort; ein Lehnwort kennt jeder.', 'المفرد: kennt.', 'konjugation', 'Wort'],
+      ['die Wendung', 'die Wendungen', 'التعبير', 'Diese Wendung verstehen der Zugezogene und die Einheimische sofort.', 'Diese Wendung versteht der Zugezogene und die Einheimische sofort.', 'الفاعل معطوف جمع: verstehen.', 'konjugation', 'Wendung'],
+      ['der Ausdruck', 'die Ausdrücke', 'الصيغة', 'Der Ausdruck klingt freundlich; den lernt man im Sprachkurs.', 'Der Ausdruck klingen freundlich; den lernt man im Sprachkurs.', 'المفرد: klingt.', 'konjugation', 'Ausdruck'],
       ['die Bedeutung', 'die Bedeutungen', 'المعنى', 'Die Bedeutung der Redewendung ändert sich mit dem Ort, nicht mit der Heimat.', 'Die Bedeutung ändern sich mit dem Ort.', 'المفرد: ändert.', 'konjugation', 'Bedeutung'],
       ['das Hochdeutsch', '—', 'الألمانية الفصحى', 'Hochdeutsch versteht jeder im Land, auch ohne Sprachschule.', 'Hochdeutsch verstehen jeder im Land.', 'المفرد: versteht.', 'konjugation', 'Hochdeutsch'],
       ['die Standardsprache', '—', 'اللغة المعيارية', 'Die Standardsprache gilt in der Prüfung.', 'Die Standardsprache gelten in der Prüfung.', 'المفرد: gilt.', 'konjugation', 'Standardsprache'],
       ['die Umgangssprache', '—', 'لغة الحديث اليومي', 'Die Umgangssprache des Österreichers erlaubt mehr als der Prüfer.', 'Die Umgangssprache erlauben mehr als der Prüfer.', 'المفرد: erlaubt.', 'konjugation', 'Umgangssprache'],
-      ['die Schriftsprache', '—', 'اللغة الكتابية', 'Die Schriftsprache kennt keinen Regiolekt.', 'Die Schriftsprache kennen keine Dialektfärbung.', 'المفرد: kennt.', 'konjugation', 'Schriftsprache'],
+      ['die Schriftsprache', '—', 'اللغة الكتابية', 'Die Schriftsprache kennt keinen Regiolekt.', 'Die Schriftsprache kennen keinen Regiolekt.', 'المفرد: kennt.', 'konjugation', 'Schriftsprache'],
       ['verstehen', 'versteht · verstand · hat verstanden', 'يفهم', 'Ich verstehe den Dialekt, ohne ihn zu sprechen.', 'Ich verstehe den Dialekt, ohne ihn sprechen.', 'ohne + zu.', 'wortstellung', 'verstehe'],
       ['nachahmen', 'ahmt nach · ahmte nach · hat nachgeahmt', 'يقلّد', 'Ich ahme den Dialekt nicht nach.', 'Ich nachahme den Dialekt nicht.', 'الفعل مع nach منفصل.', 'wortstellung', 'ahme'],
       ['nachsprechen', 'spricht nach · sprach nach · hat nachgesprochen', 'يردّد', 'Ich spreche die Wendung nach, aber ohne Färbung.', 'Ich nachspreche die Wendung, aber ohne Färbung.', 'الفعل مع nach منفصل.', 'wortstellung', 'spreche'],
@@ -35,7 +35,7 @@ module.exports = {
       ['die Norm', 'die Normen', 'القاعدة', 'Die Norm steht im Wörterbuch; die Anpassung ist freiwillig.', 'Die Norm stehen im Wörterbuch.', 'المفرد: steht.', 'konjugation', 'Norm'],
       ['das Wörterbuch', 'die Wörterbücher', 'القاموس', 'Das Wörterbuch hilft bei der Übersetzung.', 'Das Wörterbuch helfen bei der Übersetzung.', 'المفرد: hilft.', 'konjugation', 'Wörterbuch'],
       ['die Grammatik', '—', 'القواعد', 'Die Grammatik bleibt gleich, die Vielfalt nicht.', 'Die Grammatik bleiben gleich.', 'المفرد: bleibt.', 'konjugation', 'Grammatik'],
-      ['der Klang', 'die Klänge', 'الرنين', 'Der Klang ändert sich, die Identität nicht.', 'Der Klang ändern sich, die Regel nicht.', 'المفرد: ändert.', 'konjugation', 'Klang'],
+      ['der Klang', 'die Klänge', 'الرنين', 'Der Klang ändert sich, die Identität nicht.', 'Der Klang ändern sich, die Identität nicht.', 'المفرد: ändert.', 'konjugation', 'Klang'],
       ['die Betonung', 'die Betonungen', 'النبر', 'Die Betonung sitzt im Schwäbischen anders; Sprachvielfalt ist kein Mangel.', 'Die Betonung sitzen im Schwäbischen anders.', 'المفرد: sitzt.', 'konjugation', 'Betonung'],
       ['der Vokal', 'die Vokale', 'الحرف الصوتي', 'Der Vokal wird im Alemannischen lang gesprochen.', 'Der Vokal werden lang gesprochen.', 'المفرد: wird.', 'konjugation', 'Vokal'],
       ['der Konsonant', 'die Konsonanten', 'الحرف الساكن', 'Der Konsonant verschwindet im Sächsischen am Wortende; das Bewertungskriterium bleibt der Inhalt.', 'Der Konsonant verschwinden am Wortende.', 'المفرد: verschwindet.', 'konjugation', 'Konsonant'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Umschreibung', 'die Erklärung'
     ],
     tricks: [
-      { trick: 'افهم ولا تقلّد: verstehen, nicht nachahmen', wie: 'Ich verstehe den Inhalt, aber ich ahme den Klang nicht nach.', warum: 'التقليد في الامتحان يبدو سخرية أو خطأ؛ الفهم هو المقصود.', anchor: 'ahme den Klang nicht nach' },
-      { trick: 'افصل اللهجة عن الخطأ: Dialekt ist kein Fehler', wie: 'Ein Dialekt ist kein Fehler; die Grammatik bleibt gleich.', warum: 'من يظن اللهجة خطأً يصحّح ما ليس خطأً فيخسر الوقت.', anchor: 'kein Fehler' },
-      { trick: 'في الامتحان: المعيار لا اللهجة', wie: 'In der Prüfung bleibe ich beim Standard.', warum: 'الألمانية المعيارية هي المقيسة، والفهم يُختبر لا الأداء اللهجي.', anchor: 'beim Standard' }
-    ]
+      { trick: 'افهم ولا تقلّد: verstehen, nicht nachahmen', wie: 'Ich verstehe den Inhalt, aber ich ahme den Klang nicht nach.', warum: 'التقليد في الامتحان يبدو سخرية أو خطأ؛ الفهم هو المقصود.', anchor: 'ich ahme den Klang nicht nach' },
+      { trick: 'افصل اللهجة عن الخطأ: Dialekt ist kein Fehler', wie: 'Ein Dialekt ist kein Fehler; die Grammatik bleibt gleich.', warum: 'من يظن اللهجة خطأً يصحّح ما ليس خطأً فيخسر الوقت.', anchor: 'Ein Dialekt ist kein Fehler' },
+      { trick: 'في الامتحان: المعيار لا اللهجة', wie: 'In der Prüfung bleibe ich beim Standard.', warum: 'الألمانية المعيارية هي المقيسة، والفهم يُختبر لا الأداء اللهجي.', anchor: 'In der Prüfung bleibe ich beim Standard' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Region': 'Regionen',
+      'verfälschen': 'verfälschen',
+      'das Tempo': 'Tempos'
+    },
+    clozeItemIndex: 18,
+    clozeNearMiss: 'ahmen',
+    checkItemIndex: 17,
+    extraCheck: {
+      right: 'Ein Dialekt ist kein Fehler.',
+      bad: 'Ein Dialekt sind kein Fehler.',
+      why: 'الفاعل ein Dialekt مفرد: ist.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w08.s20',
+      frage: 'أي جملة تفصل اللهجة عن الخطأ بفعل مفرد صحيح؟'
+    }
   }
 
 };

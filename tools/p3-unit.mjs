@@ -19331,6 +19331,139 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW7[4].frage.optionen.some(o => o.text === targetsW7[4]) &&
       checksW7[4].frage.optionen.some(o => o.text === 'Ich muss beide Seite nennen.') &&
       Object.values(checksW7[4].frage.misconceptionFamilies).join(' ') === 'deklination');
+
+  const lessonW8 = win.DW_LESSONS['b2-w08'];
+  const rowW8 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w08');
+  const byWordW8 = Object.fromEntries(lessonW8.wortschatz.map(it => [it.de, it]));
+  const trickStepsW8 = lessonW8.schritte.filter(s => s.merkhilfe);
+  const targetsW8 = [
+    'Ich verstehe, aber ahme nichts nach.',
+    'Das klingt österreichisch.',
+    'In der Schweiz sagt man oft Grüezi.',
+    'In der Prüfung bleibe ich beim Standard.',
+    'Ein Dialekt ist kein Fehler.'
+  ];
+  t('Corpus workshop b2-w08 precisely scopes five dialect-listening moves understanding without imitating, naming the variety, mapping the greeting, staying standard and separating dialect from error',
+    lessonW8.title.de === 'Dialekt hören: verstehen, nicht nachahmen' &&
+      lessonW8.title.ar === 'سماع لهجة: فهم بلا تقليد' &&
+      lessonW8.level === 'B2' && lessonW8.kind === 'workshop' &&
+      rowW8.title.de === lessonW8.title.de && rowW8.title.ar === lessonW8.title.ar &&
+      rowW8.theme === 'تمييز لهجة' &&
+      rowW8.grammar.item === 'سماع لهجة: فهم بلا تقليد' &&
+      rowW8.grammar.method === 'explicit' &&
+      rowW8.words.receptive === 90 && rowW8.words.productive === 60 &&
+      lessonW8.schritte.length === 36 && lessonW8.wortschatz.length === 40 &&
+      lessonW8.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW8.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW8[i]) &&
+      lessonW8.schritte[0].zeigt.de === 'Am Ende hörst du Dialekt und bleibst beim Standard — in fünf Sätzen' &&
+      lessonW8.schritte.find(s => s.id === 's20').zeigt.de === targetsW8[4]);
+
+  const expectedWordsW8 = [
+    'der Dialekt', 'die Mundart', 'der Akzent', 'die Aussprache', 'die Herkunft', 'die Region',
+    'der Gruß', 'die Begrüßung', 'der Abschied', 'das Wort', 'die Wendung', 'der Ausdruck',
+    'die Bedeutung', 'das Hochdeutsch', 'die Standardsprache', 'die Umgangssprache', 'die Schriftsprache',
+    'verstehen', 'nachahmen', 'nachsprechen', 'übertreiben', 'verfälschen', 'verwechseln',
+    'der Fehler', 'die Abweichung', 'die Norm', 'das Wörterbuch', 'die Grammatik', 'der Klang',
+    'die Betonung', 'der Vokal', 'der Konsonant', 'der Rhythmus', 'die Melodie', 'die Freundlichkeit',
+    'die Verwirrung', 'die Geschwindigkeit', 'das Tempo', 'der Untertitel', 'der Muttersprachler'
+  ];
+  const errorsW8 = lessonW8.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w08 reviews all 40 entries and three bounded mnemonics mirroring seven word-swapped foils and fixing one phantom-register explanation',
+    Object.keys(byWordW8).join(' | ') === expectedWordsW8.join(' | ') &&
+      lessonW8.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW8.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW8['der Akzent'].err === 'Der Akzent verraten den Österreicher sofort.' &&
+      byWordW8['die Herkunft'].err === 'Die Herkunft hören man, nicht die Note.' &&
+      byWordW8['das Wort'].err === 'Das Wort kennen man nur dort; ein Lehnwort kennt jeder.' &&
+      byWordW8['die Wendung'].err === 'Diese Wendung versteht der Zugezogene und die Einheimische sofort.' &&
+      byWordW8['der Ausdruck'].err === 'Der Ausdruck klingen freundlich; den lernt man im Sprachkurs.' &&
+      byWordW8['die Schriftsprache'].err === 'Die Schriftsprache kennen keinen Regiolekt.' &&
+      byWordW8['der Klang'].err === 'Der Klang ändern sich, die Identität nicht.' &&
+      ['Der Akzent verraten die Herkunft.', 'Die Herkunft hören man, nicht die Schuld.',
+        'Das Wort kennen man nur in der Region.', 'Diese Wendung verstehen man in Wien sofort.',
+        'Der Ausdruck klingen freundlich, nicht grob.', 'Die Schriftsprache kennen keine Dialektfärbung.',
+        'Der Klang ändern sich, die Regel nicht.']
+        .every(x => !errorsW8.includes(x)) &&
+      byWordW8['die Mundart'].err === 'Die Mundart pflegen man im Dorf.' &&
+      byWordW8['die Mundart'].why.includes('man مفرد') &&
+      ['Der Dialekt klingen anders, ist aber Deutsch.', 'Ich verstehe den Dialekt, ohne ihn sprechen.',
+        'Ein Dialekt sind kein Fehler.']
+        .every(x => errorsW8.includes(x)) &&
+      byWordW8['die Abweichung'].ex === 'Die Abweichung von der Norm ist erlaubt; eine Erklärung liefert die Lautverschiebung.' &&
+      trickStepsW8.length === 3 &&
+      trickStepsW8[0].zeigt.de === 'ich ahme den Klang nicht nach' &&
+      trickStepsW8[0].merkhilfe.wie.includes('Ich verstehe den Inhalt, aber ich ahme den Klang nicht nach.') &&
+      trickStepsW8[1].zeigt.de === 'Ein Dialekt ist kein Fehler' &&
+      trickStepsW8[1].merkhilfe.wie.includes('Ein Dialekt ist kein Fehler; die Grammatik bleibt gleich.') &&
+      trickStepsW8[2].zeigt.de === 'In der Prüfung bleibe ich beim Standard' &&
+      trickStepsW8[2].merkhilfe.wie.includes('In der Prüfung bleibe ich beim Standard.'));
+
+  const wordClozeAW8 = lessonW8.schritte.find(s => s.id === 's09');
+  const wordClozeBW8 = lessonW8.schritte.find(s => s.id === 's13');
+  const wordClozeCW8 = lessonW8.schritte.find(s => s.id === 's17');
+  const imitateW8 = lessonW8.schritte.find(s => s.id === 's19');
+  const drillW8 = lessonW8.schritte.find(s => s.id === 's23');
+  const orderW8 = lessonW8.schritte.find(s => s.id === 's24');
+  const writingW8 = lessonW8.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW8 = lessonW8.schritte.find(s => s.phase === 'Produktion');
+  const summaryW8 = lessonW8.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW8 = lessonW8.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW8 = lessonW8.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w08 aligns five strict learning clozes of the 40-word layout, sound sagt order fields and a 28-word five-target production',
+    wordClozeAW8.frage.zeigt === 'In jeder ____ klingt der Gruß anders, mit eigenem Stolz.' && wordClozeAW8.frage.antworten.join(' ') === 'Region' &&
+      wordClozeAW8.frage.nearMiss.Regionen && !win.DW.renderers.judgeCloze(wordClozeAW8.frage, 'Regionen').ok &&
+      wordClozeBW8.frage.zeigt === 'Ein falscher Vokal ____ das Wort; die Umschreibung hilft beim Verstehen.' && wordClozeBW8.frage.antworten.join(' ') === 'verfälscht' &&
+      wordClozeBW8.frage.nearMiss['verfälschen'] && !win.DW.renderers.judgeCloze(wordClozeBW8.frage, 'verfälschen').ok &&
+      wordClozeCW8.frage.zeigt === 'Das ____ ist im Süden ruhiger.' && wordClozeCW8.frage.antworten.join(' ') === 'Tempo' &&
+      wordClozeCW8.frage.nearMiss.Tempos && !win.DW.renderers.judgeCloze(wordClozeCW8.frage, 'Tempos').ok &&
+      (imitateW8.frage.zeigt === 'Ich verstehe, aber ____ nichts nach.' || imitateW8.zeigt.de === 'Ich verstehe, aber ____ nichts nach.') && imitateW8.frage.antworten.join(' ') === 'ahme' &&
+      imitateW8.frage.nearMiss['ahmen'] && !win.DW.renderers.judgeCloze(imitateW8.frage, 'ahmen').ok &&
+      drillW8.frage.zeigt === 'Ich ____ den Dialekt nicht nach.' && drillW8.frage.antworten.join(' ') === 'ahme' &&
+      drillW8.frage.nearMiss.ahmen && !win.DW.renderers.judgeCloze(drillW8.frage, 'ahmen').ok &&
+      lessonW8.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW8.frage.frage === 'رتّب الجملة واضعًا عبارة المكان أولًا والفعل في الموضع الثاني.' &&
+      orderW8.frage.correct.join(' ') === targetsW8[2] && orderW8.frage.finite === 'sagt' && orderW8.frage.verbFirst === false &&
+      orderW8.frage.fields.vorfeld.join(' ') === 'In der Schweiz' && orderW8.frage.fields.lsk.join(' ') === 'sagt' &&
+      orderW8.frage.fields.mittelfeld.join(' ') === 'man oft Grüezi.' &&
+      win.DW.order.score(orderW8.frage, orderW8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW8.frage, ['In', 'der', 'Schweiz', 'man', 'sagt', 'oft', 'Grüezi.']).credit < 1 &&
+      writingW8.frage.points.join(' | ') === targetsW8.join(' | ') && writingW8.frage.minWords === 28 &&
+      targetsW8.join(' ').split(/\s+/).length === 28 &&
+      targetsW8.every(x => [writingW8.frage.promptDe, summaryW8.zeigt.de, homeworkW8.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW8.every(x => norm(speakingW8.erklaerung).includes(norm(x))) &&
+      modelW8.zeigt.de.includes('Das Hörbeispiel kommt aus Wien und klingt österreichisch.') &&
+      modelW8.zeigt.de.includes('Jeder Sprachraum hat eine Sprachgrenze zum Nachbarn.') &&
+      homeworkW8.zeigt.de.includes('Das Hörbeispiel kommt aus Zürich') &&
+      homeworkW8.zeigt.de.includes('Kein Klang ist falsches Deutsch'));
+
+  const checksW8 = lessonW8.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW8 = checksW8.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW8 = checksW8.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w08 makes 80 percent four of five, independently checking standard order, the ahme cloze and ist order, ohne zu and singular ist',
+    checksW8.length === 5 && checksW8[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW8[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW8.every(s => /^cap\.b2-w08\.s\d+$/.test(s.frage.prereq || '')) && checksW8.every(s => !s.hinweise) &&
+      checksW8.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w08.s07 | cap.b2-w08.s23 | cap.b2-w08.s24 | cap.b2-w08.s12 | cap.b2-w08.s20' &&
+      new Set(checksW8.map(s => s.frage.prereq)).size === 5 &&
+      checksW8[0].frage.optionen.some(o => o.text === targetsW8[3]) &&
+      checksW8[0].frage.optionen.some(o => o.text === 'In der Prüfung ich bleibe beim Standard.') &&
+      Object.values(checksW8[0].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      clozeCheckW8.frage.zeigt === 'Ich ____ den Dialekt nicht nach.' &&
+      clozeCheckW8.frage.antworten.join(' ') === 'ahme' && clozeCheckW8.frage.nearMiss.ahmen &&
+      !win.DW.renderers.judgeCloze(clozeCheckW8.frage, 'ahmen').ok &&
+      orderCheckW8.frage.correct.join(' ') === targetsW8[4] && orderCheckW8.frage.finite === 'ist' &&
+      orderCheckW8.frage.fields.vorfeld.join(' ') === 'Ein Dialekt' && orderCheckW8.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW8.frage.fields.mittelfeld.join(' ') === 'kein Fehler.' &&
+      win.DW.order.score(orderCheckW8.frage, orderCheckW8.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW8.frage, ['Ein', 'Dialekt', 'kein', 'ist', 'Fehler.']).credit < 1 &&
+      checksW8[3].frage.optionen.some(o => o.text === 'Ich verstehe den Dialekt, ohne ihn zu sprechen.') &&
+      checksW8[3].frage.optionen.some(o => o.text === 'Ich verstehe den Dialekt, ohne ihn sprechen.') &&
+      Object.values(checksW8[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checksW8[4].frage.optionen.some(o => o.text === targetsW8[4]) &&
+      checksW8[4].frage.optionen.some(o => o.text === 'Ein Dialekt sind kein Fehler.') &&
+      Object.values(checksW8[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

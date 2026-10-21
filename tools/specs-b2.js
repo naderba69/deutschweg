@@ -314,25 +314,49 @@ module.exports = [
       summaryRecap: 'حسنة ومساوئ وحدّ',
     }),
 
-  U('b2-w08', 'سماع لهجة', 'Dialekt',
-    'Am Ende unterscheidest du und ahmst nicht nach',
-    'في النهاية تميّز ولا تقلّد.',
+  U('b2-w08', 'سماع لهجة: فهم بلا تقليد', 'Dialekt hören: verstehen, nicht nachahmen',
+    'Am Ende hörst du Dialekt und bleibst beim Standard — in fünf Sätzen',
+    'في النهاية تسمع لهجة وتفهمها وتبقى على الألمانية المعيارية في خمس جمل.',
     [
-      ['verstehen nicht nachahmen', 'الفهم غير التقليد', 'التقليد في الامتحان مخاطرة', 'ich ahme den Dialekt nach', 'التمييز لا التقليد'],
-      ['österreichisch', 'النمساوي يُعلَّم كفرق', 'لا كخطأ', 'das ist falsches Deutsch', 'الفرق ليس خطأً دراسيًا'],
-      ['schweizerisch', 'السويسري يُعلَّم كفرق', 'لا كعجز', 'ich verstehe nichts und stoppe', 'فرق واحد يكفي للملاحظة'],
-      ['Standard in der Prüfung', 'الامتحان على المعيار', 'اللهجة للتمييز فقط', 'ich antworte im Dialekt', 'الجواب معياري']
+      ['Ich verstehe, aber ahme nichts nach.', 'يقرّر الفهم قبل الأداء', 'الفعل مع ich مفرد: ahme لا ahmen', 'Ich verstehe, aber ahmen nichts nach.', 'المفرد: ahme'],
+      ['Das klingt österreichisch.', 'يسمّي التنوّع بمجرد سماعه', 'الصفة الإخبارية صغيرة الحرف: österreichisch', 'Das klingt Österreichisch.', 'الصفة صغيرة الحرف'],
+      ['In der Schweiz sagt man oft Grüezi.', 'يثبّت مكان التحية في خريطة اللهجات', 'المكان الثابت جرّ: in der Schweiz', 'In die Schweiz sagt man oft Grüezi.', 'المكان جرّ: in der'],
+      ['In der Prüfung bleibe ich beim Standard.', 'يلتزم المعياري في موقف التقييم', 'بعد عبارة المكان الفعل ثانٍ قبل الفاعل: bleibe ich', 'In der Prüfung ich bleibe beim Standard.', 'الفعل ثانٍ دائمًا']
     ],
     [
-      ['Ich verstehe, ich ahme nicht nach.', 'أفهم ولا أقلّد', 'Ich ahme den Dialekt nach', 'التمييز لا التقليد', 'ahme'],
-      ['Das klingt österreichisch.', 'هذا يبدو نمساويًا', 'Das ist falsches Deutsch', 'الفرق ليس خطأً', 'österreichisch'],
-      ['In der Schweiz sagt man oft Grüezi.', 'في سويسرا يُقال غالبًا Grüezi', 'Ich verstehe nichts und stoppe', 'ملاحظة لا توقف', 'Schweiz'],
-      ['In der Prüfung bleibe ich beim Standard.', 'في الامتحان أبقى على المعيار', 'Ich antworte im Dialekt', 'الجواب معياري', 'Standard']
+      ['Ich verstehe, aber ahme nichts nach.', 'أفهم دون أن أقلّد شيئًا', 'Ich verstehe, aber ahmen nichts nach.', 'الفعل ahme مع ich مفرد.', 'ahme'],
+      ['Das klingt österreichisch.', 'هذا يبدو نمساويًّا', 'Das klingt Österreichisch.', 'الصفة بعد klingt صغيرة الحرف.', 'österreichisch'],
+      ['In der Schweiz sagt man oft Grüezi.', 'في سويسرا يُقال غالبًا Grüezi', 'In die Schweiz sagt man oft Grüezi.', 'المكان الثابت بالجرّ: in der.', 'Schweiz'],
+      ['In der Prüfung bleibe ich beim Standard.', 'في الامتحان أبقى على المعيار', 'In der Prüfung ich bleibe beim Standard.', 'الفعل bleibe ثانٍ قبل ich.', 'Standard']
     ],
     'Das Hörbeispiel kommt aus Wien und klingt österreichisch. Die Dialektfärbung ist stark, die Grammatik bleibt Hochdeutsch. In Zürich hört man Grüezi, in Bayern Servus, im Norden Moin. Jeder Sprachraum hat eine Sprachgrenze zum Nachbarn. Plattdeutsch und Bairisch liegen im Hörverstehen weit auseinander. Die Lautverschiebung erklärt manche Abweichung. Ich verstehe den Inhalt, aber ich ahme den Klang nicht nach. Der Wortschatz hilft, die Sprachmelodie nicht. Der Prüfer fragt nach dem Inhalt, nicht nach der Färbung. In der Prüfung bleibe ich beim Standard.',
-    'In der Prüfung bleibe ich beim Standard.',
-    'Markiere morgen einen Unterschied, ohne ihn nachzuahmen.',
-    'غدًا علّم فرقًا بلا تقليد.'),
+    'Ein Dialekt ist kein Fehler.',
+    'Wiederhole morgen die fünf Sätze: Ich verstehe, aber ahme nichts nach. Das klingt österreichisch. In der Schweiz sagt man oft Grüezi. In der Prüfung bleibe ich beim Standard. Ein Dialekt ist kein Fehler. Das Hörbeispiel kommt aus Zürich: Man hört Grüezi, in Bayern Servus und im Norden Moin. Der Schweizer und der Bayer klingen anders, aber beide sprechen Deutsch. Plattdeutsch und das Bairische liegen im Hörverstehen weit auseinander. Ich notiere die Sprachmelodie im Heft, ohne sie nachzuahmen. Du ahmst nichts nach, auch wenn ein Wort fremd klingt. Kein Klang ist falsches Deutsch, und ich stoppe beim ersten fremden Wort nicht.',
+    'غدًا أعد جمل سماع اللهجة الخمس ولاحظ الفرق دون تقليد.',
+    {
+      factFamilies: ['konjugation', 'orthographie', 'kasus', 'wortstellung'],
+      imitateNearMiss: 'ahmen',
+      transformHint: 'في جملة الفصل الحكم قبل المشاعر: Ein Dialekt ist kein Fehler — الفاعل مفرد فيأخذ ist.',
+      orderSentence: 'In der Schweiz sagt man oft Grüezi.',
+      checkOrderSentence: 'Ein Dialekt ist kein Fehler.',
+      orderAr: 'رتّب جملة التحية: عبارة المكان أولًا والفعل sagt ثانيًا قبل الفاعل man.',
+      orderPromptAr: 'رتّب الجملة واضعًا عبارة المكان أولًا والفعل في الموضع الثاني.',
+      orderHints: ['عبارة المكان In der Schweiz في الموضع الأول.', 'الفعل sagt ثانٍ، والفعال man بعده.'],
+      writing: {
+        zeigt: 'Dialekt hören in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: فهمًا بفعل مفرد، وتسمية للتنوّع بصفة صغيرة الحرف، وخريطة تحية بجرّ المكان، والتزامًا بالمعيار بفعل ثانٍ، وفصلًا بين اللهجة والخطأ.',
+        hinweise: ['بعد عبارة المكان الفعل ثانٍ قبل الفاعل.', 'اللهجة تُسمّى ولا تُقلّد في الامتحان.'],
+        prompt: 'اكتب جمل سماع اللهجة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Ich verstehe, aber ahme nichts nach. · Das klingt österreichisch. · In der Schweiz sagt man oft Grüezi. · In der Prüfung bleibe ich beim Standard. · Ein Dialekt ist kein Fehler.',
+        points: ['Ich verstehe, aber ahme nichts nach.', 'Das klingt österreichisch.', 'In der Schweiz sagt man oft Grüezi.', 'In der Prüfung bleibe ich beim Standard.', 'Ein Dialekt ist kein Fehler.'],
+        minWords: 28,
+        frage: 'اكتب جمل سماع اللهجة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Ich verstehe, aber ahme nichts nach. Das klingt österreichisch. In der Schweiz sagt man oft Grüezi. In der Prüfung bleibe ich beim Standard. Ein Dialekt ist kein Fehler.',
+      summaryDe: 'Ich verstehe, aber ahme nichts nach. Das klingt österreichisch. In der Schweiz sagt man oft Grüezi. In der Prüfung bleibe ich beim Standard. Ein Dialekt ist kein Fehler.',
+      summaryAr: 'اللهجة تُفهم وتُسمّى؛ والجواب في الامتحان يبقى معياريًّا.',
+      summaryRecap: 'فهم بلا تقليد',
+    }),
 
   U('b2-w09', 'تحليل رسم', 'Grafik',
     'Am Ende beschreibst du einen Unterschied bevor du deutest',

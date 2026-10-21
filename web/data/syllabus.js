@@ -195,7 +195,7 @@
     ['تقنية القراءة: المطلوب أولًا وتقسيم الوقت', 'Lesetechnik: Aufgabe zuerst, Zeit teilen', 'امتحان', 'exam-technique'],
     ['خطاب شكوى: واقعة ونتيجة وطلب', 'Beschwerdebrief: Tatsache, Folge und Bitte', 'شكوى رسمية', 'writing'],
     ['العمل: حسنة ومساوئ وحدّ', 'Arbeit: Vorteil, Nachteil und Grenze', 'العمل', 'discussion'],
-    ['سماع لهجة', 'Dialekt', 'تمييز لهجة', 'listening'],
+    ['سماع لهجة: فهم بلا تقليد', 'Dialekt hören: verstehen, nicht nachahmen', 'تمييز لهجة', 'listening'],
     ['تحليل رسم', 'Grafik', 'تعليق على بيانات', 'text-analysis'],
     ['ورشة كتابة: تلخيص', 'Zusammenfassung', 'تلخيص', 'writing'],
     ['نقاش: إعلام', 'Medien diskutieren', 'الإعلام', 'discussion'],
