@@ -20090,6 +20090,129 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW13[4].frage.optionen.some(o => o.text === targetsW13[4]) &&
       checksW13[4].frage.optionen.some(o => o.text === 'Ich muss die Zeit an Blöcke teilen.') &&
       Object.values(checksW13[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
+  const lessonW14 = win.DW_LESSONS['b2-w14'];
+  const rowW14 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w14');
+  const byWordW14 = Object.fromEntries(lessonW14.wortschatz.map(it => [it.de, it]));
+  const trickStepsW14 = lessonW14.schritte.filter(s => s.merkhilfe);
+  const targetsW14 = [
+    'Gedruckt heißt nicht wahr.',
+    'Nicht jedes Beispiel trägt.',
+    'Der Autor unterstellt, dass alle zustimmen.',
+    'Der Witz beweist es nicht.',
+    'Ich muss Behauptung und Beleg trennen.'
+  ];
+  t('Corpus workshop b2-w14 precisely scopes five commentary-analysis moves printing no proof, examples carrying, presumption named, wit no evidence and claim from evidence separated',
+    lessonW14.title.de === 'Kommentar: Behauptung ohne Beleg' &&
+      lessonW14.title.ar === 'التعليق: ادعاء بلا شاهد' &&
+      lessonW14.level === 'B2' && lessonW14.kind === 'workshop' &&
+      rowW14.title.de === lessonW14.title.de && rowW14.title.ar === lessonW14.title.ar &&
+      rowW14.theme === 'رأي' &&
+      rowW14.grammar.item === 'التعليق: ادعاء بلا شاهد' &&
+      rowW14.grammar.method === 'explicit' &&
+      rowW14.words.receptive === 90 && rowW14.words.productive === 60 &&
+      lessonW14.schritte.length === 36 && lessonW14.wortschatz.length === 40 &&
+      lessonW14.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW14.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW14[i]) &&
+      lessonW14.schritte[0].zeigt.de === 'Am Ende trennst du Behauptung und Beleg — in fünf Sätzen' &&
+      lessonW14.schritte.find(s => s.id === 's20').zeigt.de === targetsW14[4]);
+
+  const expectedWordsW14 = [
+    'die Kommentarspalte', 'der Meinungsartikel', 'die Grundthese', 'die Verdächtigung', 'die Zuspitzung',
+    'die Doppelbödigkeit', 'die Häme', 'der Angriff', 'die Beweislast', 'das Gegenbeispiel',
+    'die Datenlage', 'der Quellennachweis', 'die Zitatstelle', 'der Fehlschluss', 'die Verkürzung',
+    'der Selbstwiderspruch', 'die Logik', 'der Zirkelschluss', 'die Prämisse', 'die Folgerung', 'die Lücke',
+    'der Beweisgang', 'die Redefigur', 'die Analogie', 'der Seitenhieb', 'das Werturteil',
+    'die Unparteilichkeit', 'die Befangenheit', 'die Intention', 'die Ansprache', 'die Tonlage',
+    'der Aufruf', 'die Suggestivfrage', 'das Stilmittel', 'die Diktion', 'der Beiklang',
+    'die Nuance', 'die Klimax', 'die Repetition', 'die rhetorische Frage'
+  ];
+  const errorsW14 = lessonW14.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w14 reviews all 40 entries and three bounded mnemonics needing no vocabulary repair while every foil stays a genuine singular agreement error',
+    Object.keys(byWordW14).join(' | ') === expectedWordsW14.join(' | ') &&
+      lessonW14.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW14.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW14['die Doppelbödigkeit'].err === 'Die Doppelbödigkeit entstehen durch den Zwischenton.' &&
+      byWordW14['die Redefigur'].err === 'Die Redefigur ersetzen kein Argument.' &&
+      byWordW14['der Beweisgang'].err === 'Der Beweisgang bestehen aus drei Schritten.' &&
+      ['Die Kommentarspalte stehen auf der zweiten Seite.', 'Das Werturteil folgen ohne Begründung.',
+        'Die rhetorische Frage erwarten keine Antwort.']
+        .every(x => errorsW14.includes(x)) &&
+      byWordW14['die Redefigur'].ex === 'Die Redefigur ersetzt kein Argument, die Phrase auch nicht.' &&
+      trickStepsW14.length === 3 &&
+      trickStepsW14[0].zeigt.de === 'Die Grundthese steht in den ersten drei Sätzen' &&
+      trickStepsW14[0].merkhilfe.wie.includes('Die Grundthese steht in den ersten drei Sätzen, der Rest ist Stützung.') &&
+      trickStepsW14[1].zeigt.de === 'Das Werturteil folgt ohne Begründung' &&
+      trickStepsW14[1].merkhilfe.wie.includes('Das Werturteil folgt ohne Begründung; das ist die Lücke.') &&
+      trickStepsW14[2].zeigt.de === 'Die Zuspitzung ersetzt den Beweisgang nicht' &&
+      trickStepsW14[2].merkhilfe.wie.includes('Die Zuspitzung ersetzt den Beweisgang nicht.'));
+
+  const wordClozeAW14 = lessonW14.schritte.find(s => s.id === 's09');
+  const wordClozeBW14 = lessonW14.schritte.find(s => s.id === 's13');
+  const wordClozeCW14 = lessonW14.schritte.find(s => s.id === 's17');
+  const imitateW14 = lessonW14.schritte.find(s => s.id === 's19');
+  const drillW14 = lessonW14.schritte.find(s => s.id === 's23');
+  const orderW14 = lessonW14.schritte.find(s => s.id === 's24');
+  const writingW14 = lessonW14.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW14 = lessonW14.schritte.find(s => s.phase === 'Produktion');
+  const summaryW14 = lessonW14.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW14 = lessonW14.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW14 = lessonW14.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w14 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 25-word five-target production',
+    wordClozeAW14.frage.zeigt === 'Die ____ entsteht durch den Zwischenton und die Untertreibung.' && wordClozeAW14.frage.antworten.join(' ') === 'Doppelbödigkeit' &&
+      wordClozeAW14.frage.nearMiss['Doppelbödigkeiten'] && !win.DW.renderers.judgeCloze(wordClozeAW14.frage, 'Doppelbödigkeiten').ok &&
+      wordClozeBW14.frage.zeigt === 'Der ____ besteht aus drei Schritten; die Floskel macht keinen daraus.' && wordClozeBW14.frage.antworten.join(' ') === 'Beweisgang' &&
+      wordClozeBW14.frage.nearMiss['Beweisgänge'] && !win.DW.renderers.judgeCloze(wordClozeBW14.frage, 'Beweisgänge').ok &&
+      wordClozeCW14.frage.zeigt === 'Die ____ endet in einer Drohung.' && wordClozeCW14.frage.antworten.join(' ') === 'Klimax' &&
+      wordClozeCW14.frage.nearMiss.Klimaxe && !win.DW.renderers.judgeCloze(wordClozeCW14.frage, 'Klimaxe').ok &&
+      (imitateW14.frage.zeigt === 'Gedruckt heißt ____ wahr.' || imitateW14.zeigt.de === 'Gedruckt heißt ____ wahr.') && imitateW14.frage.antworten.join(' ') === 'nicht' &&
+      imitateW14.frage.nearMiss['nichts'] && !win.DW.renderers.judgeCloze(imitateW14.frage, 'nichts').ok &&
+      drillW14.frage.zeigt === 'Die ____ steht auf der zweiten Seite, neben dem Ereignis des Tages.' && drillW14.frage.antworten.join(' ') === 'Kommentarspalte' &&
+      drillW14.frage.nearMiss.Kommentarspalten && !win.DW.renderers.judgeCloze(drillW14.frage, 'Kommentarspalten').ok &&
+      lessonW14.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW14.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW14.frage.correct.join(' ') === targetsW14[4] && orderW14.frage.finite === 'muss' && orderW14.frage.verbFirst === false &&
+      orderW14.frage.fields.vorfeld.join(' ') === 'Ich' && orderW14.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW14.frage.fields.mittelfeld.join(' ') === 'Behauptung und Beleg trennen.' &&
+      win.DW.order.score(orderW14.frage, orderW14.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW14.frage, ['Ich', 'Behauptung', 'muss', 'und', 'Beleg', 'trennen.']).credit < 1 &&
+      writingW14.frage.points.join(' | ') === targetsW14.join(' | ') && writingW14.frage.minWords === 25 &&
+      targetsW14.join(' ').split(/\s+/).length === 25 &&
+      targetsW14.every(x => [writingW14.frage.promptDe, summaryW14.zeigt.de, homeworkW14.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW14.every(x => norm(speakingW14.erklaerung).includes(norm(x))) &&
+      modelW14.zeigt.de.includes('Nicht jedes Gegenbeispiel trägt die Beweislast.') &&
+      modelW14.zeigt.de.includes('Die Zwischenzeile trägt die Pointe, das Wortspiel den Spott.') &&
+      homeworkW14.zeigt.de.includes('Du markierst die Behauptung mit einem Stift.') &&
+      homeworkW14.zeigt.de.includes('Zur Kommentaranalyse gehört auch diese Einordnung.'));
+
+  const checksW14 = lessonW14.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW14 = checksW14.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW14 = checksW14.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w14 makes 80 percent four of five, independently checking singular beweist, the Kommentarspalte cloze and trägt order, ersetzt and muss',
+    checksW14.length === 5 && checksW14[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW14[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW14.every(s => /^cap\.b2-w14\.s\d+$/.test(s.frage.prereq || '')) && checksW14.every(s => !s.hinweise) &&
+      checksW14.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w14.s07 | cap.b2-w14.s23 | cap.b2-w14.s24 | cap.b2-w14.s13 | cap.b2-w14.s20' &&
+      new Set(checksW14.map(s => s.frage.prereq)).size === 5 &&
+      checksW14[0].frage.optionen.some(o => o.text === targetsW14[3]) &&
+      checksW14[0].frage.optionen.some(o => o.text === 'Der Witz beweisen es nicht.') &&
+      Object.values(checksW14[0].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      clozeCheckW14.frage.zeigt === 'Die ____ steht auf der zweiten Seite, neben dem Ereignis des Tages.' &&
+      clozeCheckW14.frage.antworten.join(' ') === 'Kommentarspalte' && clozeCheckW14.frage.nearMiss.Kommentarspalten &&
+      !win.DW.renderers.judgeCloze(clozeCheckW14.frage, 'Kommentarspalten').ok &&
+      orderCheckW14.frage.correct.join(' ') === targetsW14[1] && orderCheckW14.frage.finite === 'trägt.' &&
+      orderCheckW14.frage.fields.vorfeld.join(' ') === 'Nicht jedes Beispiel' && orderCheckW14.frage.fields.lsk.join(' ') === 'trägt.' &&
+      orderCheckW14.frage.fields.mittelfeld.join(' ') === '' &&
+      win.DW.order.score(orderCheckW14.frage, orderCheckW14.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW14.frage, ['Nicht', 'jedes', 'trägt.', 'Beispiel']).credit < 1 &&
+      checksW14[3].frage.optionen.some(o => o.text === 'Die Redefigur ersetzt kein Argument, die Phrase auch nicht.') &&
+      checksW14[3].frage.optionen.some(o => o.text === 'Die Redefigur ersetzen kein Argument.') &&
+      Object.values(checksW14[3].frage.misconceptionFamilies).join(' ') === 'konjugation' &&
+      checksW14[4].frage.optionen.some(o => o.text === targetsW14[4]) &&
+      checksW14[4].frage.optionen.some(o => o.text === 'Ich mussen Behauptung und Beleg trennen.') &&
+      Object.values(checksW14[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

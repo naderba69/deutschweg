@@ -579,25 +579,49 @@ module.exports = [
       summaryRecap: 'خطة ونص ومراجعة',
     }),
 
-  U('b2-w14', 'تحليل تعليق', 'Kommentaranalyse',
-    'Am Ende markierst du Behauptung und Beleg',
-    'في النهاية تعلّم الادعاء والشاهد.',
+  U('b2-w14', 'التعليق: ادعاء بلا شاهد', 'Kommentar: Behauptung ohne Beleg',
+    'Am Ende trennst du Behauptung und Beleg — in fünf Sätzen',
+    'في النهاية تفصل بين الادعاء والشاهد في التعليق في خمس جمل.',
     [
-      ['Behauptung', 'الادعاء يُعلَّم', 'لا يُصدَّق لأنه مكتوب', 'gedruckt heißt wahr', 'المكتوب ليس برهانًا'],
-      ['Beleg', 'الشاهد يُسأل', 'المثال قد لا يسند', 'jedes Beispiel trägt', 'الشاهد يُفحص'],
-      ['Unterstellung', 'الافتراض يُسمّى', 'لا يُمرَّر كخبر', 'der Autor weiß es sicher', 'الافتراض ليس خبرًا'],
-      ['Ton', 'النبرة قد تخفي ضعف الحجة', 'السخرية ليست دليلًا', 'der Witz beweist es', 'النبرة ليست برهانًا']
+      ['Gedruckt heißt nicht wahr.', 'يرفض برهان الطباعة', 'الصفة الإخبارية بلا نهاية: wahr', 'Gedruckt heißt nicht wahres.', 'الصفة بلا نهاية: wahr'],
+      ['Nicht jedes Beispiel trägt.', 'يفحص حمل الشاهد للمثال', 'الفاعل مفرد: trägt لا tragen', 'Nicht jedes Beispiel tragen.', 'المفرد: trägt'],
+      ['Der Autor unterstellt, dass alle zustimmen.', 'يسمّي افتراض الكاتب لا خبره', 'الفعل مع Autor مفرد: unterstellt', 'Der Autor unterstellen, dass alle zustimmen.', 'المفرد: unterstellt'],
+      ['Der Witz beweist es nicht.', 'يميز النبرة من البرهان', 'الفاعل مفرد: beweist لا beweisen', 'Der Witz beweisen es nicht.', 'المفرد: beweist']
     ],
     [
-      ['Gedruckt heißt nicht wahr.', 'المطبوع لا يعني الصحيح', 'Gedruckt heißt wahr', 'المكتوب ليس برهانًا', 'nicht'],
-      ['Nicht jedes Beispiel trägt.', 'ليس كل مثال يسند', 'Jedes Beispiel trägt', 'الشاهد يُفحص', 'trägt'],
-      ['Der Autor unterstellt, dass alle zustimmen.', 'يفترض الكاتب أن الجميع يوافق', 'Der Autor weiß es sicher', 'الافتراض ليس خبرًا', 'unterstellt'],
-      ['Der Witz beweist es nicht.', 'النكتة لا تُثبت', 'Der Witz beweist es', 'النبرة ليست برهانًا', 'beweist']
+      ['Gedruckt heißt nicht wahr.', 'المطبوع لا يعني الصحيح', 'Gedruckt heißt nicht wahres.', 'الصفة الإخبارية بلا نهاية.', 'nicht'],
+      ['Nicht jedes Beispiel trägt.', 'ليس كل مثال يسند', 'Nicht jedes Beispiel tragen.', 'الفاعل مفرد: trägt.', 'trägt'],
+      ['Der Autor unterstellt, dass alle zustimmen.', 'يفترض الكاتب أن الجميع يوافق', 'Der Autor unterstellen, dass alle zustimmen.', 'الفاعل مفرد: unterstellt.', 'unterstellt'],
+      ['Der Witz beweist es nicht.', 'النكتة لا تُثبت', 'Der Witz beweisen es nicht.', 'الفاعل مفرد: beweist.', 'beweist']
     ],
     'Gedruckt heißt nicht wahr. Der Meinungsartikel lebt von der Grundthese. Nicht jedes Gegenbeispiel trägt die Beweislast. Die Zuspitzung ersetzt den Beweisgang nicht. Die Häme verrät die Absicht des Verfassers. Die Kommentarform verrät die Rubrik und den Anlass. Der Hintergrund, die Vorgeschichte und die Einordnung fehlen oft. Die Auslegung bleibt eine Lesart, keine Wahrheit. Die Stoßrichtung zeigt der Blickwinkel, nicht die Sichtweise. Die Zwischenzeile trägt die Pointe, das Wortspiel den Spott.',
-    'Der Autor unterstellt, dass alle zustimmen.',
-    'Markiere morgen Behauptung und Beleg.',
-    'غدًا علّم ادعاءً وشاهدًا.'),
+    'Ich muss Behauptung und Beleg trennen.',
+    'Wiederhole morgen die fünf Sätze: Gedruckt heißt nicht wahr. Nicht jedes Beispiel trägt. Der Autor unterstellt, dass alle zustimmen. Der Witz beweist es nicht. Ich muss Behauptung und Beleg trennen. Die Kommentarform verrät die Rubrik und den Anlass. Der Hintergrund fehlt, die Vorgeschichte auch. Die Stoßrichtung zeigt der Blickwinkel. Das Wortspiel trägt den Spott, die Zwischenzeile die Pointe. Die Auslegung bleibt eine Lesart. Du markierst die Behauptung mit einem Stift. Zur Kommentaranalyse gehört auch diese Einordnung.',
+    'غدًا أعد جمل تحليل التعليق الخمس وعلّم كل ادعاء بلا شاهد.',
+    {
+      factFamilies: ['deklination', 'konjugation', 'konjugation', 'konjugation'],
+      imitateNearMiss: 'nichts',
+      transformHint: 'في الجملة الختامية المنهج كله: Ich muss Behauptung und Beleg trennen — المصدر trennen يغلق الجملة بعد muss.',
+      orderSentence: 'Ich muss Behauptung und Beleg trennen.',
+      checkOrderSentence: 'Nicht jedes Beispiel trägt.',
+      orderAr: 'رتّب جملة المنهج: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر trennen أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر trennen يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Kommentarlesen in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: ادعاءً بلا نهاية للصفة، ومثالًا يُفحص حمله، وافتراضًا مسلّمًا به بصيغة dass، ونبرة لا تثبت، وفصلًا بين الادعاء والشاهد.',
+        hinweise: ['ابحث عن الأطروحة في الجمل الثلاث الأولى.', 'الحدّة والسخرية ليستا دليلًا.'],
+        prompt: 'اكتب جمل تحليل التعليق الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Gedruckt heißt nicht wahr. · Nicht jedes Beispiel trägt. · Der Autor unterstellt, dass alle zustimmen. · Der Witz beweist es nicht. · Ich muss Behauptung und Beleg trennen.',
+        points: ['Gedruckt heißt nicht wahr.', 'Nicht jedes Beispiel trägt.', 'Der Autor unterstellt, dass alle zustimmen.', 'Der Witz beweist es nicht.', 'Ich muss Behauptung und Beleg trennen.'],
+        minWords: 25,
+        frage: 'اكتب جمل تحليل التعليق الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Gedruckt heißt nicht wahr. Nicht jedes Beispiel trägt. Der Autor unterstellt, dass alle zustimmen. Der Witz beweist es nicht. Ich muss Behauptung und Beleg trennen.',
+      summaryDe: 'Gedruckt heißt nicht wahr. Nicht jedes Beispiel trägt. Der Autor unterstellt, dass alle zustimmen. Der Witz beweist es nicht. Ich muss Behauptung und Beleg trennen.',
+      summaryAr: 'في التعليق: أطروحة تسري، وادعاء يُفحص، ولا إثبات بالحدّة.',
+      summaryRecap: 'ادعاء وشاهد',
+    }),
 
   U('b2-w15', 'نقاش: بيئة', 'Umwelt diskutieren',
     'Am Ende trennst du Maßnahme und Wirkung',

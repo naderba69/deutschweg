@@ -64,10 +64,27 @@ module.exports = {
       'die Nebenthese', 'der Gedankengang'
     ],
     tricks: [
-      { trick: 'اقرأ الأطروحة أولًا: Wo steht die Grundthese?', wie: 'Die Grundthese steht in den ersten drei Sätzen, der Rest ist Stützung.', warum: 'من يقرأ التعليق كله بلا أطروحة يقرأ أسلوبًا ولا يقرأ حجة.', anchor: 'Grundthese' },
-      { trick: 'افصل الادّعاء عن الدليل: Behauptung oder Beleg?', wie: 'Das Werturteil folgt ohne Begründung; das ist die Lücke.', warum: 'بند «الادعاء بلا دليل» هو أكثر ما يُسأل عنه في تحليل التعليق.', anchor: 'Werturteil' },
-      { trick: 'انتبه للبدائل: Zuspitzung statt Beweis', wie: 'Die Zuspitzung ersetzt den Beweisgang nicht.', warum: 'حين يغيب الدليل يكثر الأسلوب: الحدة والسخرية والإيحاء.', anchor: 'Zuspitzung' }
-    ]
+      { trick: 'اقرأ الأطروحة أولًا: Wo steht die Grundthese?', wie: 'Die Grundthese steht in den ersten drei Sätzen, der Rest ist Stützung.', warum: 'من يقرأ التعليق كله بلا أطروحة يقرأ أسلوبًا ولا يقرأ حجة.', anchor: 'Die Grundthese steht in den ersten drei Sätzen' },
+      { trick: 'افصل الادّعاء عن الدليل: Behauptung oder Beleg?', wie: 'Das Werturteil folgt ohne Begründung; das ist die Lücke.', warum: 'بند «الادعاء بلا دليل» هو أكثر ما يُسأل عنه في تحليل التعليق.', anchor: 'Das Werturteil folgt ohne Begründung' },
+      { trick: 'انتبه للبدائل: Zuspitzung statt Beweis', wie: 'Die Zuspitzung ersetzt den Beweisgang nicht.', warum: 'حين يغيب الدليل يكثر الأسلوب: الحدة والسخرية والإيحاء.', anchor: 'Die Zuspitzung ersetzt den Beweisgang nicht' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Doppelbödigkeit': 'Doppelbödigkeiten',
+      'der Beweisgang': 'Beweisgänge',
+      'die Klimax': 'Klimaxe'
+    },
+    clozeItemIndex: 0,
+    clozeNearMiss: 'Kommentarspalten',
+    checkItemIndex: 22,
+    extraCheck: {
+      right: 'Ich muss Behauptung und Beleg trennen.',
+      bad: 'Ich mussen Behauptung und Beleg trennen.',
+      why: 'الفاعل ich مفرد: muss.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w14.s20',
+      frage: 'أي جملة تُلزم بالفصل بين الادعاء والشاهد بفعل صحيح؟'
+    }
   }
 
 };
