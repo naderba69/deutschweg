@@ -199,7 +199,7 @@
     ['الرسم البياني: وصف ثم تأويل', 'Grafik: erst beschreiben, dann deuten', 'تعليق على بيانات', 'text-analysis'],
     ['التلخيص: أقصر وبترتيب النص وبلا تقييم', 'Zusammenfassung: kürzer, geordnet, ohne Wertung', 'تلخيص', 'writing'],
     ['الإعلام: الانتشار ليس حقيقة', 'Medien: Reichweite ist nicht Wahrheit', 'الإعلام', 'discussion'],
-    ['سماع مقابلة', 'Interview B2', 'مقابلة', 'listening'],
+    ['سماع مقابلة: موقف وتقييد', 'Interview hören: Position und Einschränkung', 'مقابلة', 'listening'],
     ['تقنية: كتابة موقوتة', 'Timed writing', 'امتحان', 'exam-technique'],
     ['تحليل تعليق', 'Kommentaranalyse', 'رأي', 'text-analysis'],
     ['نقاش: بيئة', 'Umwelt diskutieren', 'البيئة', 'discussion'],

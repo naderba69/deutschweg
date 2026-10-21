@@ -24,7 +24,7 @@ module.exports = {
       ['die Ausrede', 'die Ausreden', 'العذر', 'Die Ausrede klingt gut, doch der Themenwechsel verrät sie.', 'Die Ausrede klingen gut, doch der Themenwechsel verrät sie.', 'مؤنث مفرد: klingt.', 'konjugation', 'Ausrede'],
       ['ausweichen', 'weicht aus · wich aus · ist ausgewichen', 'يتهرّب', 'Er weicht der Frage aus, obwohl der Blickkontakt stimmt.', 'Er ausweicht der Frage.', 'الفعل مع aus منفصل.', 'wortstellung', 'weicht'],
       ['nachfragen', 'fragt nach · fragte nach · hat nachgefragt', 'يستوضح', 'Der Interviewer fragt nach, ohne zu bohren; die Stimme bleibt ruhig.', 'Der Interviewer nachfragt, ohne zu bohren.', 'الفعل مع nach منفصل.', 'wortstellung', 'fragt'],
-      ['bohren', 'bohrt · bohrte · hat gebohrt', 'يلحّ في السؤال', 'Er bohrt nach, bis die Zahl kommt; die Sprechgeschwindigkeit steigt.', 'Er bohrt nach, bis die Zahl kommt.', 'بلا ضمير زائد.', 'wortstellung', 'bohrt'],
+      ['bohren', 'bohrt · bohrte · hat gebohrt', 'يلحّ في السؤال', 'Er bohrt nach, bis die Zahl kommt; die Sprechgeschwindigkeit steigt.', 'Er bohrt nach, bis kommt die Zahl; die Sprechgeschwindigkeit steigt.', 'بعد bis الفعل في ختام الجملة الفرعية.', 'wortstellung', 'bohrt'],
       ['ins Wort fallen', 'fällt ins Wort · fiel ins Wort · ist ins Wort gefallen', 'يقاطع', 'Sie fällt ihm nicht ins Wort; die Gestik bleibt ruhig.', 'Sie ins Wort fällt ihm nicht.', 'الفعل ثانٍ ولا يُفصل.', 'wortstellung', 'fällt'],
       ['das Schweigen', '—', 'الصمت', 'Das Schweigen ist auch eine Antwort; der Zeitrahmen erlaubt es.', 'Das Schweigen sind auch eine Antwort.', 'محايد ومفرد: ist.', 'konjugation', 'Schweigen'],
       ['der Nachdruck', '—', 'التشديد', 'Der Nachdruck liegt auf dem zweiten Wort; das Mikrofon verstärkt ihn.', 'Der Nachdruck liegen auf dem zweiten Wort.', 'المفرد: liegt.', 'konjugation', 'Nachdruck'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Aufzeichnung', 'die Live-Schaltung'
     ],
     tricks: [
-      { trick: 'الموقف جملة واحدة: die Position ist ein Satz', wie: 'Die Position ist ein Satz, nicht der ganze Vortrag.', warum: 'من يسمع بلا هدف يحفظ ضجيجًا؛ الجملة الواحدة هي الجواب.', anchor: 'Position ist ein Satz' },
-      { trick: 'ابحث عن الحد: die Einschränkung gehört dazu', wie: 'Die Einschränkung gehört dazu: nur für dieses Projekt.', warum: 'الموقف بلا حدّ يبدو دعاية؛ والحدّ هو ما يسأل عنه المصحّح.', anchor: 'Einschränkung' },
-      { trick: 'جولتان لا جولة: zwei Durchgänge, nicht warten auf das dritte Mal', wie: 'Ich plane zwei Durchgänge: erst Inhalt, dann die Zahl.', warum: 'من ينتظر الفهم الكامل من أول مرة يفوّت التسجيل؛ المرور الثاني يجيب.', anchor: 'zwei Durchgänge' }
-    ]
+      { trick: 'الموقف جملة واحدة: die Position ist ein Satz', wie: 'Die Position ist ein Satz, nicht der ganze Vortrag.', warum: 'من يسمع بلا هدف يحفظ ضجيجًا؛ الجملة الواحدة هي الجواب.', anchor: 'Die Position ist ein Satz, nicht der ganze Vortrag' },
+      { trick: 'ابحث عن الحد: die Einschränkung gehört dazu', wie: 'Die Einschränkung gehört dazu: nur für dieses Projekt.', warum: 'الموقف بلا حدّ يبدو دعاية؛ والحدّ هو ما يسأل عنه المصحّح.', anchor: 'Die Einschränkung gehört dazu' },
+      { trick: 'جولتان لا جولة: zwei Durchgänge, nicht warten auf das dritte Mal', wie: 'Ich plane zwei Durchgänge: erst Inhalt, dann die Zahl.', warum: 'من ينتظر الفهم الكامل من أول مرة يفوّت التسجيل؛ المرور الثاني يجيب.', anchor: 'Ich plane zwei Durchgänge: erst Inhalt, dann die Zahl' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'die Zusatzfrage': 'Zusatzfragen',
+      'der Sarkasmus': 'Sarkasmen',
+      'der Irrtum': 'Irrtümer'
+    },
+    clozeItemIndex: 0,
+    clozeNearMiss: 'Interviews',
+    checkItemIndex: 15,
+    extraCheck: {
+      right: 'Ich muss Position und Grenze hören.',
+      bad: 'Ich müssen Position und Grenze hören.',
+      why: 'الفاعل ich مفرد: muss.',
+      family: 'konjugation',
+      prereq: 'cap.b2-w12.s20',
+      frage: 'أي جملة تُلزم بسماع الموقف والحدّ بفعل صحيح؟'
+    }
   }
 
 };

@@ -19841,6 +19841,131 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW11[4].frage.optionen.some(o => o.text === targetsW11[4]) &&
       checksW11[4].frage.optionen.some(o => o.text === 'Ich muss Reichweite mit Wahrheit trennen.') &&
       Object.values(checksW11[4].frage.misconceptionFamilies).join(' ') === 'präposition');
+
+  const lessonW12 = win.DW_LESSONS['b2-w12'];
+  const rowW12 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w12');
+  const byWordW12 = Object.fromEntries(lessonW12.wortschatz.map(it => [it.de, it]));
+  const trickStepsW12 = lessonW12.schritte.filter(s => s.merkhilfe);
+  const targetsW12 = [
+    'Die Position ist ein Satz.',
+    'Die Einschränkung gehört dazu.',
+    'Ich plane zwei Durchgänge.',
+    'Ich notiere zur Frage.',
+    'Ich muss Position und Grenze hören.'
+  ];
+  t('Corpus workshop b2-w12 precisely scopes five interview-listening moves compressing the position into one sentence, keeping its limit attached, planning two passes, noting for the question and hearing position with limit together',
+    lessonW12.title.de === 'Interview hören: Position und Einschränkung' &&
+      lessonW12.title.ar === 'سماع مقابلة: موقف وتقييد' &&
+      lessonW12.level === 'B2' && lessonW12.kind === 'workshop' &&
+      rowW12.title.de === lessonW12.title.de && rowW12.title.ar === lessonW12.title.ar &&
+      rowW12.theme === 'مقابلة' &&
+      rowW12.grammar.item === 'سماع مقابلة: موقف وتقييد' &&
+      rowW12.grammar.method === 'explicit' &&
+      rowW12.words.receptive === 90 && rowW12.words.productive === 60 &&
+      lessonW12.schritte.length === 36 && lessonW12.wortschatz.length === 40 &&
+      lessonW12.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW12.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW12[i]) &&
+      lessonW12.schritte[0].zeigt.de === 'Am Ende hörst du Position und Einschränkung heraus — in fünf Sätzen' &&
+      lessonW12.schritte.find(s => s.id === 's20').zeigt.de === targetsW12[4]);
+
+  const expectedWordsW12 = [
+    'das Interview', 'der Interviewer', 'die Interviewerin', 'der Interviewte', 'die Einstiegsfrage',
+    'die Zusatzfrage', 'die Darlegung', 'die Einstellung', 'der Vorbehalt', 'die Rechtfertigung',
+    'der Unterschied', 'die Abschwächung', 'die Übertreibung', 'die Andeutung', 'die Ausrede',
+    'ausweichen', 'nachfragen', 'bohren', 'ins Wort fallen', 'das Schweigen', 'der Nachdruck',
+    'der Sarkasmus', 'die Achtung', 'das Einverständnis', 'die Verweigerung', 'der Tadel',
+    'die Würdigung', 'die Schwäche', 'die Stärke', 'die Erfahrung', 'der Werdegang', 'die Qualifikation',
+    'die Station', 'die Zuständigkeit', 'das Projekt', 'der Erfolg', 'die Niederlage', 'der Irrtum',
+    'die Lehre', 'die Laufbahn'
+  ];
+  const errorsW12 = lessonW12.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w12 reviews all 40 entries and three bounded mnemonics converting the one foil that was fully correct German while every remaining foil stays genuine',
+    Object.keys(byWordW12).join(' | ') === expectedWordsW12.join(' | ') &&
+      lessonW12.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW12.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW12['bohren'].ex === 'Er bohrt nach, bis die Zahl kommt; die Sprechgeschwindigkeit steigt.' &&
+      byWordW12['bohren'].err === 'Er bohrt nach, bis kommt die Zahl; die Sprechgeschwindigkeit steigt.' &&
+      ['Er bohrt nach, bis die Zahl kommt.']
+        .every(x => !errorsW12.includes(x)) &&
+      ['Das Interview dauern zwölf Minuten.', 'Er ausweicht der Frage.',
+        'Das Schweigen sind auch eine Antwort.']
+        .every(x => errorsW12.includes(x)) &&
+      byWordW12['ausweichen'].ex === 'Er weicht der Frage aus, obwohl der Blickkontakt stimmt.' &&
+      trickStepsW12.length === 3 &&
+      trickStepsW12[0].zeigt.de === 'Die Position ist ein Satz, nicht der ganze Vortrag' &&
+      trickStepsW12[0].merkhilfe.wie.includes('Die Position ist ein Satz, nicht der ganze Vortrag.') &&
+      trickStepsW12[1].zeigt.de === 'Die Einschränkung gehört dazu' &&
+      trickStepsW12[1].merkhilfe.wie.includes('Die Einschränkung gehört dazu: nur für dieses Projekt.') &&
+      trickStepsW12[2].zeigt.de === 'Ich plane zwei Durchgänge: erst Inhalt, dann die Zahl' &&
+      trickStepsW12[2].merkhilfe.wie.includes('Ich plane zwei Durchgänge: erst Inhalt, dann die Zahl.'));
+
+  const wordClozeAW12 = lessonW12.schritte.find(s => s.id === 's09');
+  const wordClozeBW12 = lessonW12.schritte.find(s => s.id === 's13');
+  const wordClozeCW12 = lessonW12.schritte.find(s => s.id === 's17');
+  const imitateW12 = lessonW12.schritte.find(s => s.id === 's19');
+  const drillW12 = lessonW12.schritte.find(s => s.id === 's23');
+  const orderW12 = lessonW12.schritte.find(s => s.id === 's24');
+  const writingW12 = lessonW12.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW12 = lessonW12.schritte.find(s => s.phase === 'Produktion');
+  const summaryW12 = lessonW12.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW12 = lessonW12.schritte.find(s => s.phase === 'Hausaufgabe');
+  const modelW12 = lessonW12.schritte.find(s => s.id === 's18');
+  t('Corpus workshop b2-w12 aligns five strict learning clozes of the 40-word layout, sound muss order fields and a 23-word five-target production',
+    wordClozeAW12.frage.zeigt === 'Die ____ kommt aus dem Publikum; die Schlussfrage stellt der Gesprächsleiter.' && wordClozeAW12.frage.antworten.join(' ') === 'Zusatzfrage' &&
+      wordClozeAW12.frage.nearMiss.Zusatzfragen && !win.DW.renderers.judgeCloze(wordClozeAW12.frage, 'Zusatzfragen').ok &&
+      wordClozeBW12.frage.zeigt === 'Der ____ hilft im Interview nicht; die Kulisse schon gar nicht.' && wordClozeBW12.frage.antworten.join(' ') === 'Sarkasmus' &&
+      wordClozeBW12.frage.nearMiss.Sarkasmen && !win.DW.renderers.judgeCloze(wordClozeBW12.frage, 'Sarkasmen').ok &&
+      wordClozeCW12.frage.zeigt === 'Der ____ kostete ein halbes Jahr; die Live-Schaltung verziehen ihn nicht.' || (wordClozeCW12.frage.zeigt === 'Der ____ kostete ein halbes Jahr; die Live-Schaltung verzieh ihn nicht.' && wordClozeCW12.frage.antworten.join(' ') === 'Irrtum') &&
+      wordClozeCW12.frage.antworten.join(' ') === 'Irrtum' &&
+      wordClozeCW12.frage.nearMiss['Irrtümer'] && !win.DW.renderers.judgeCloze(wordClozeCW12.frage, 'Irrtümer').ok &&
+      (imitateW12.frage.zeigt === 'Die ____ ist ein Satz.' || imitateW12.zeigt.de === 'Die ____ ist ein Satz.') && imitateW12.frage.antworten.join(' ') === 'Position' &&
+      imitateW12.frage.nearMiss['Positionen'] && !win.DW.renderers.judgeCloze(imitateW12.frage, 'Positionen').ok &&
+      drillW12.frage.zeigt === 'Das ____ dauert zwölf Minuten; die Sendezeit ist knapp.' && drillW12.frage.antworten.join(' ') === 'Interview' &&
+      drillW12.frage.nearMiss.Interviews && !win.DW.renderers.judgeCloze(drillW12.frage, 'Interviews').ok &&
+      lessonW12.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW12.frage.frage === 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.' &&
+      orderW12.frage.correct.join(' ') === targetsW12[4] && orderW12.frage.finite === 'muss' && orderW12.frage.verbFirst === false &&
+      orderW12.frage.fields.vorfeld.join(' ') === 'Ich' && orderW12.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW12.frage.fields.mittelfeld.join(' ') === 'Position und Grenze hören.' &&
+      win.DW.order.score(orderW12.frage, orderW12.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW12.frage, ['Ich', 'Position', 'und', 'muss', 'Grenze', 'hören.']).credit < 1 &&
+      writingW12.frage.points.join(' | ') === targetsW12.join(' | ') && writingW12.frage.minWords === 23 &&
+      targetsW12.join(' ').split(/\s+/).length === 23 &&
+      targetsW12.every(x => [writingW12.frage.promptDe, summaryW12.zeigt.de, homeworkW12.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW12.every(x => norm(speakingW12.erklaerung).includes(norm(x))) &&
+      modelW12.zeigt.de.includes('Im Studio beginnt das Gespräch mit einer Vorstellung.') &&
+      modelW12.zeigt.de.includes('Am Ende bleibt die Einschätzung, nicht das Zeugnis.') &&
+      homeworkW12.zeigt.de.includes('Nach der Leitfrage folgt die Anschlussfrage.') &&
+      homeworkW12.zeigt.de.includes('Du fängst jede Position ein, auch wenn die Stimme leise wird.'));
+
+  const checksW12 = lessonW12.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW12 = checksW12.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW12 = checksW12.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w12 makes 80 percent four of five, independently checking contracted zur, the Interview cloze and ist order, separable ausweichen and singular muss',
+    checksW12.length === 5 && checksW12[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW12[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW12.every(s => /^cap\.b2-w12\.s\d+$/.test(s.frage.prereq || '')) && checksW12.every(s => !s.hinweise) &&
+      checksW12.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w12.s07 | cap.b2-w12.s23 | cap.b2-w12.s24 | cap.b2-w12.s11 | cap.b2-w12.s20' &&
+      new Set(checksW12.map(s => s.frage.prereq)).size === 5 &&
+      checksW12[0].frage.optionen.some(o => o.text === targetsW12[3]) &&
+      checksW12[0].frage.optionen.some(o => o.text === 'Ich notiere zu die Frage.') &&
+      Object.values(checksW12[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckW12.frage.zeigt === 'Das ____ dauert zwölf Minuten; die Sendezeit ist knapp.' &&
+      clozeCheckW12.frage.antworten.join(' ') === 'Interview' && clozeCheckW12.frage.nearMiss.Interviews &&
+      !win.DW.renderers.judgeCloze(clozeCheckW12.frage, 'Interviews').ok &&
+      orderCheckW12.frage.correct.join(' ') === targetsW12[0] && orderCheckW12.frage.finite === 'ist' &&
+      orderCheckW12.frage.fields.vorfeld.join(' ') === 'Die Position' && orderCheckW12.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW12.frage.fields.mittelfeld.join(' ') === 'ein Satz.' &&
+      win.DW.order.score(orderCheckW12.frage, orderCheckW12.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW12.frage, ['Die', 'Position', 'ein', 'ist', 'Satz.']).credit < 1 &&
+      checksW12[3].frage.optionen.some(o => o.text === 'Er weicht der Frage aus, obwohl der Blickkontakt stimmt.') &&
+      checksW12[3].frage.optionen.some(o => o.text === 'Er ausweicht der Frage.') &&
+      Object.values(checksW12[3].frage.misconceptionFamilies).join(' ') === 'wortstellung' &&
+      checksW12[4].frage.optionen.some(o => o.text === targetsW12[4]) &&
+      checksW12[4].frage.optionen.some(o => o.text === 'Ich müssen Position und Grenze hören.') &&
+      Object.values(checksW12[4].frage.misconceptionFamilies).join(' ') === 'konjugation');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

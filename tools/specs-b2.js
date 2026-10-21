@@ -490,25 +490,49 @@ module.exports = [
       summaryRecap: 'الانتشار ليس حقيقة',
     }),
 
-  U('b2-w12', 'سماع مقابلة', 'Interview B2',
-    'Am Ende fängst du Position und Einschränkung',
-    'في النهاية تلتقط موقفًا وتقييدًا.',
+  U('b2-w12', 'سماع مقابلة: موقف وتقييد', 'Interview hören: Position und Einschränkung',
+    'Am Ende hörst du Position und Einschränkung heraus — in fünf Sätzen',
+    'في النهاية تلتقط الموقف والتقييد في المقابلة في خمس جمل.',
     [
-      ['die Position', 'الموقف جملة', 'الكلمة المفتاح ليست موقفًا', 'ein Wort ist die Position', 'الموقف جملة'],
-      ['die Einschränkung', 'التقييد يُلتقط', 'المطلق قد يكون خطأ السمع', 'er sagt immer ohne Grenze', 'التقييد مهم'],
-      ['zwei Durchgänge', 'السماع مرتان حسب الجزء', 'لا تعتمد على ثالثة غير موجودة', 'ich warte auf das dritte Mal', 'لا تفترض الثالثة'],
-      ['Notiz nach der Frage', 'الملاحظة تخدم السؤال', 'النسخ يضيّع الموقف', 'ich schreibe jedes Wort', 'الملاحظة انتقائية']
+      ['Die Position ist ein Satz.', 'يلخّص موقف المتكلم في جملة', 'الفاعل مفرد: ist لا sind', 'Die Position sind ein Satz.', 'المفرد: ist'],
+      ['Die Einschränkung gehört dazu.', 'يضيف حدّ الموقف لا مطلقه', 'الفاعل مفرد: gehört لا gehören', 'Die Einschränkung gehören dazu.', 'المفرد: gehört'],
+      ['Ich plane zwei Durchgänge.', 'يخطّط السماع بلا افتراض ثالثة', 'الفعل مع ich مفرد: plane لا planen', 'Ich planen zwei Durchgänge.', 'المفرد: plane'],
+      ['Ich notiere zur Frage.', 'يدوّن بما يخدم السؤال فقط', 'بعد zu الجرّ المنقبض: zur Frage', 'Ich notiere zu die Frage.', 'الانقباض: zur']
     ],
     [
-      ['Die Position ist ein Satz.', 'الموقف جملة', 'Ein Wort ist die Position', 'الموقف جملة', 'Position'],
-      ['Die Einschränkung gehört dazu.', 'التقييد جزء من الجواب', 'Er sagt immer ohne Grenze', 'التقييد مهم', 'Einschränkung'],
-      ['Ich plane zwei Durchgänge.', 'أخطّط لجولتَين', 'Ich warte auf das dritte Mal', 'لا تفترض الثالثة', 'zwei'],
-      ['Ich notiere zur Frage.', 'أدوّن بما يخدم السؤال', 'Ich schreibe jedes Wort', 'الملاحظة انتقائية', 'notiere']
+      ['Die Position ist ein Satz.', 'الموقف جملة واحدة', 'Die Position sind ein Satz.', 'الفاعل مفرد: ist.', 'Position'],
+      ['Die Einschränkung gehört dazu.', 'التقييد جزء منه', 'Die Einschränkung gehören dazu.', 'الفاعل مفرد: gehört.', 'Einschränkung'],
+      ['Ich plane zwei Durchgänge.', 'أخطّط لجولتَين', 'Ich planen zwei Durchgänge.', 'الفعل مع ich مفرد: plane.', 'zwei'],
+      ['Ich notiere zur Frage.', 'أدوّن بما يخدم السؤال', 'Ich notiere zu die Frage.', 'بعد zu الجرّ: zur.', 'notiere']
     ],
     'Im Studio beginnt das Gespräch mit einer Vorstellung. Der Gesprächsleiter stellt die Leitfrage, danach folgt die Anschlussfrage. Ich höre zu und notiere nach dem O-Ton. Die Körpersprache verrät mehr als der Lebenslauf. Am Ende bleibt die Einschätzung, nicht das Zeugnis.',
-    'Ich plane zwei Durchgänge.',
-    'Höre morgen eine kurze Antwort und notiere Position und Grenze.',
-    'غدًا استمع إلى جواب قصير ودوّن الموقف والحد.'),
+    'Ich muss Position und Grenze hören.',
+    'Wiederhole morgen die fünf Sätze: Die Position ist ein Satz. Die Einschränkung gehört dazu. Ich plane zwei Durchgänge. Ich notiere zur Frage. Ich muss Position und Grenze hören. Im Studio beginnt das Gespräch mit einer Vorstellung. Nach der Leitfrage folgt die Anschlussfrage. Die Körpersprache verrät mehr als der Lebenslauf. Ich notiere nach dem O-Ton, nicht nach dem Gefühl. Am Ende bleibt die Einschätzung. Du fängst jede Position ein, auch wenn die Stimme leise wird.',
+    'غدًا أعد جمل سماع المقابلة الخمس ودوّن الموقف والحدّ معًا.',
+    {
+      factFamilies: ['konjugation', 'konjugation', 'konjugation', 'kasus'],
+      imitateNearMiss: 'Positionen',
+      transformHint: 'في الجملة الختامية المهمة كلها: Ich muss Position und Grenze hören — المصدر hören يغلق الجملة بعد muss.',
+      orderSentence: 'Ich muss Position und Grenze hören.',
+      checkOrderSentence: 'Die Position ist ein Satz.',
+      orderAr: 'رتّب جملة السماع: الفاعل Ich أولًا والفعل muss ثانيًا والمصدر hören أخيرًا.',
+      orderPromptAr: 'رتّب الجملة واضعًا الفاعل أولًا والفعل في الموضع الثاني.',
+      orderHints: ['الفاعل Ich في الموضع الأول.', 'المصدر hören يغلق الجملة بعد muss.'],
+      writing: {
+        zeigt: 'Interviewprotokoll in fünf Sätzen',
+        erklaerung: 'اكتب خمس جمل: موقفًا بفعل مفرد، وتقييدًا بفعل مفرد، وجولتين بفعل مفرد، وتدوينًا بحرف جرّ صحيح، والالتزام بسماع الموقف والحدّ معًا.',
+        hinweise: ['الموقف بلا تقييده نصف جواب.', 'خطّط لما هو موجود: مرورَين.'],
+        prompt: 'اكتب جمل سماع المقابلة الخمس المستهدفة من الذاكرة.',
+        promptDe: 'Die Position ist ein Satz. · Die Einschränkung gehört dazu. · Ich plane zwei Durchgänge. · Ich notiere zur Frage. · Ich muss Position und Grenze hören.',
+        points: ['Die Position ist ein Satz.', 'Die Einschränkung gehört dazu.', 'Ich plane zwei Durchgänge.', 'Ich notiere zur Frage.', 'Ich muss Position und Grenze hören.'],
+        minWords: 23,
+        frage: 'اكتب جمل سماع المقابلة الخمس كاملة.'
+      },
+      speakAr: 'سجّل ثلاثين ثانية وقل الجمل الخمس: Die Position ist ein Satz. Die Einschränkung gehört dazu. Ich plane zwei Durchgänge. Ich notiere zur Frage. Ich muss Position und Grenze hören.',
+      summaryDe: 'Die Position ist ein Satz. Die Einschränkung gehört dazu. Ich plane zwei Durchgänge. Ich notiere zur Frage. Ich muss Position und Grenze hören.',
+      summaryAr: 'الموقف جملة، والحدّ جزء منها؛ والسماع مرتان لا مرة.',
+      summaryRecap: 'موقف وتقييد',
+    }),
 
   U('b2-w13', 'تقنية: كتابة موقوتة', 'Timed writing',
     'Am Ende planst du Gliederung vor dem ersten Satz',
