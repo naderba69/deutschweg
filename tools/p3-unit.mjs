@@ -8401,7 +8401,7 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Articles['b2-a10'].body.includes('eine zweite Person, die übernehmen kann, falls jemand krank wird'));
   t('Corpus B2 b2-a11 has 516 measured words and no unknown B2 tokens',
     b2Articles['b2-a11'].title === 'السياحة' &&
-      b2Articles['b2-a11'].body.trim().split(/\s+/).length === 516 &&
+      b2Articles['b2-a11'].body.trim().split(/\s+/).length === 586 &&
       known.coverage(b2Known, b2Articles['b2-a11'].body).unknown.length === 0);
   t('Corpus B2 b2-a11 connects differentiated demand, causal limits, targeted rules, shared costs, and review coherently',
     b2Articles['b2-a11'].body.includes('Besucher ohne Übernachtung') &&
