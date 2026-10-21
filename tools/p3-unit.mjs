@@ -8318,9 +8318,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2q('b2-a6', 1).key === 'إذا تعطّل سريعًا واحتاج إلى إصلاح أو استبدال' &&
       b2q('b2-a6', 1).options.includes(b2q('b2-a6', 1).key) &&
       b2Articles['b2-a6'].body.includes('später teuer werden, wenn ein Produkt schnell kaputtgeht'));
-  t('Corpus B2 b2-a7 has 482 measured words and no unknown B2 tokens',
+  t('Corpus B2 b2-a7 has 529 measured words and no unknown B2 tokens',
     b2Articles['b2-a7'].title === 'النقل' &&
-      b2Articles['b2-a7'].body.trim().split(/\s+/).length === 482 &&
+      b2Articles['b2-a7'].body.trim().split(/\s+/).length === 529 &&
       known.coverage(b2Known, b2Articles['b2-a7'].body).unknown.length === 0);
   t('Corpus B2 b2-a7 connects service times, disruption alternatives, work organization, a frequent-bus case, fair policy, evaluation, and trust coherently',
     b2Articles['b2-a7'].body.includes('zu den Zeiten fahren') &&
