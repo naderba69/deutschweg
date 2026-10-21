@@ -18939,6 +18939,134 @@ console.log('\n— P3.2 lexical layer —\n');
       checksW4[4].frage.optionen.some(o => o.text === targetsW4[4]) &&
       checksW4[4].frage.optionen.some(o => o.text === 'Nach dem Hören ich prüfe die Frage.') &&
       Object.values(checksW4[4].frage.misconceptionFamilies).join(' ') === 'wortstellung');
+
+  const lessonW5 = win.DW_LESSONS['b2-w05'];
+  const rowW5 = win.DW_SYLLABUS.lessons.find(it => it.id === 'b2-w05');
+  const byWordW5 = Object.fromEntries(lessonW5.wortschatz.map(it => [it.de, it]));
+  const tricksW5 = lessonW5.schritte.filter(s => s.merkhilfe).map(s => s.merkhilfe);
+  const targetsW5 = [
+    'Zuerst muss ich die Aufgabe genau lesen.',
+    'Ich markiere höchstens fünf Wörter am Rand.',
+    'Die Aufgabenstellung ist kürzer als der Text.',
+    'Die Einteilung der Zeit rettet den letzten Absatz.',
+    'Ein Rückschluss ohne Beleg ist geraten.'
+  ];
+  t('Corpus workshop b2-w05 precisely scopes five exam-reading moves taking verb-second after zuerst, bare-object markieren, comparative als, genitive der Zeit and article-less ohne Beleg',
+    lessonW5.title.de === 'Lesetechnik: Aufgabe zuerst, Zeit teilen' &&
+      lessonW5.title.ar === 'تقنية القراءة: المطلوب أولًا وتقسيم الوقت' &&
+      lessonW5.level === 'B2' && lessonW5.kind === 'workshop' &&
+      rowW5.title.de === lessonW5.title.de && rowW5.title.ar === lessonW5.title.ar &&
+      rowW5.theme === 'امتحان' &&
+      rowW5.grammar.item === 'تقنية القراءة: المطلوب أولًا وتقسيم الوقت' &&
+      rowW5.grammar.method === 'explicit' &&
+      rowW5.words.receptive === 90 && rowW5.words.productive === 60 &&
+      lessonW5.schritte.length === 36 && lessonW5.wortschatz.length === 40 &&
+      lessonW5.schritte.filter(s => s.phase === 'Übungen').length === 5 &&
+      lessonW5.schritte.slice(3, 7).every((step, i) => step.zeigt.de === targetsW5[i]) &&
+      lessonW5.schritte[0].zeigt.de === 'Am Ende liest du die Aufgabe zuerst und teilst die Prüfungszeit — in fünf Sätzen' &&
+      lessonW5.schritte.find(s => s.id === 's20').zeigt.de === targetsW5[4]);
+
+  const expectedWordsW5 = [
+    'die Lesetechnik', 'die Aufgabenstellung', 'überfliegen', 'die Überschrift', 'das Suchwort', 'markieren',
+    'die Randbemerkung', 'der Textteil', 'die Fragestellung', 'die Belegstelle', 'der Zeitdruck', 'die Einteilung',
+    'die Stoppuhr', 'der Suchbegriff', 'das Detail', 'die Hauptaussage', 'der Rückschluss', 'die Wortbedeutung',
+    'der Wortlaut', 'die Erinnerung', 'die Auswahl', 'das Muster', 'die Abfolge', 'die Zeitvorgabe',
+    'das Aufgabenblatt', 'die Prüfungsangst', 'die Ruhe', 'die Flüchtigkeit', 'der Durchgang', 'die Probe',
+    'die Sicherheit', 'die Unsicherheit', 'das Fragezeichen', 'die Markierung', 'der Stift', 'das Zeitgefühl',
+    'die Kontrolle', 'die Schlüsselstelle', 'die Sorgfalt', 'die Lesegeschwindigkeit'
+  ];
+  const errorsW5 = lessonW5.wortschatz.map(it => it.err);
+  t('Corpus workshop b2-w05 reviews all 40 entries and three bounded mnemonics converting eight foils that must not be branded errors and sharpening two explanations',
+    Object.keys(byWordW5).join(' | ') === expectedWordsW5.join(' | ') &&
+      lessonW5.wortschatz.every(it => ['de', 'pl', 'ar', 'ex', 'err', 'why', 'fam'].every(k => it[k])) &&
+      lessonW5.wortschatz.every(it => it.ex !== it.err) &&
+      byWordW5['die Fragestellung'].err === 'Die Fragestellung entscheidet über der Lesestrategie.' &&
+      byWordW5['die Belegstelle'].err === 'Die Belegstelle steht in die zwölfte Zeile.' &&
+      byWordW5['die Einteilung'].err === 'Die Einteilung die Zeit und der Minutenplan retten den letzten Absatz.' &&
+      byWordW5['das Detail'].err === 'Details liest man erst bei die zweite Frage, wenn Restzeit bleibt.' &&
+      byWordW5['die Auswahl'].err === 'Die Auswahl unter vier Antwortmöglichkeiten sind die halbe Antwort.' &&
+      byWordW5['die Abfolge'].err === 'Die Abfolge die Teilaufgaben hilft beim Planen.' &&
+      byWordW5['die Zeitvorgabe'].err === 'Die Zeitvorgabe auf das Aufgabenblatt bestimmt das Vorgehen und das Aufgabenformat.' &&
+      byWordW5['die Probe'].err === 'Die Probe aufs Exempel: Antworte ohne Übungstext, wie in die Übungsaufgabe, später mit Musterlösung.' &&
+      ['Die Fragestellung entscheidet für die Lesart.', 'Die Belegstelle steht auf Zeile zwölf.',
+        'Die Einteilung von der Zeit rettet den letzten Absatz.', 'Details liest man erst in der zweiten Frage.',
+        'Die Auswahl von den Wörtern ist die halbe Antwort.', 'Die Abfolge von den Teilaufgaben hilft beim Planen.',
+        'Die Zeitvorgabe steht in dem Aufgabenblatt.', 'Die Probe auf das Exempel: Antworte ohne Text.']
+        .every(x => !errorsW5.includes(x)) &&
+      byWordW5['der Suchbegriff'].err === 'Ein Suchbegriff genügt für jedem Absatz.' &&
+      byWordW5['der Suchbegriff'].why.includes('jeden Absatz') &&
+      byWordW5['der Rückschluss'].err === 'Ein Rückschluss ohne ein Beleg ist geraten.' &&
+      byWordW5['der Rückschluss'].why.includes('einen Beleg') &&
+      ['Die Aufgabenstellung ist kürzer wie der Text.', 'Auf das Aufgabenblatt stehen drei Fragen.',
+        'Zu viel Markierungen verwirren.']
+        .every(x => errorsW5.includes(x)) &&
+      tricksW5.length === 3 &&
+      tricksW5[0].wie.includes('Die Aufgabenstellung ist kürzer als der Text; zuerst lese ich die Aufgabenstellung.') &&
+      tricksW5[1].wie.includes('Ich markiere höchstens fünf Wörter am Rand.') &&
+      tricksW5[2].wie.includes('Die Einteilung der Zeit rettet den letzten Absatz.'));
+
+  const wordClozeAW5 = lessonW5.schritte.find(s => s.id === 's09');
+  const wordClozeBW5 = lessonW5.schritte.find(s => s.id === 's13');
+  const wordClozeCW5 = lessonW5.schritte.find(s => s.id === 's17');
+  const imitateW5 = lessonW5.schritte.find(s => s.id === 's19');
+  const drillW5 = lessonW5.schritte.find(s => s.id === 's23');
+  const orderW5 = lessonW5.schritte.find(s => s.id === 's24');
+  const writingW5 = lessonW5.schritte.find(s => s.frage && s.frage.art === 'schreiben');
+  const speakingW5 = lessonW5.schritte.find(s => s.phase === 'Produktion');
+  const summaryW5 = lessonW5.schritte.find(s => s.phase === 'Zusammenfassung');
+  const homeworkW5 = lessonW5.schritte.find(s => s.phase === 'Hausaufgabe');
+  t('Corpus workshop b2-w05 aligns five strict learning clozes of the 40-word layout, sound adverb-first muss order fields and a 35-word five-target production',
+    wordClozeAW5.frage.zeigt === 'Ich ____ höchstens fünf Wörter; zu viele Anstreichungen verwirren.' && wordClozeAW5.frage.antworten.join(' ') === 'markiere' &&
+      wordClozeAW5.frage.nearMiss.markierst && !win.DW.renderers.judgeCloze(wordClozeAW5.frage, 'markierst').ok &&
+      wordClozeBW5.frage.zeigt === 'Aus dem ____ der Antworten wird mit der Übung Routine, doch die Ähnlichkeit täuscht.' && wordClozeBW5.frage.antworten.join(' ') === 'Muster' &&
+      wordClozeBW5.frage.nearMiss.Mustern && !win.DW.renderers.judgeCloze(wordClozeBW5.frage, 'Mustern').ok &&
+      wordClozeCW5.frage.zeigt === 'Die ____ trägt die Antwort; der Schlüsselbegriff steht daneben.' && wordClozeCW5.frage.antworten.join(' ') === 'Schlüsselstelle' &&
+      wordClozeCW5.frage.nearMiss['Schlüsselstellen'] && !win.DW.renderers.judgeCloze(wordClozeCW5.frage, 'Schlüsselstellen').ok &&
+      (imitateW5.frage.zeigt === 'Zuerst muss ich die ____ genau lesen.' || imitateW5.zeigt.de === 'Zuerst muss ich die ____ genau lesen.') && imitateW5.frage.antworten.join(' ') === 'Aufgabe' &&
+      imitateW5.frage.nearMiss['Aufgaben'] && !win.DW.renderers.judgeCloze(imitateW5.frage, 'Aufgaben').ok &&
+      drillW5.frage.zeigt === 'Die ____ ist kürzer als der Text; die Textlänge schreckt nur.' && drillW5.frage.antworten.join(' ') === 'Aufgabenstellung' &&
+      drillW5.frage.nearMiss.Aufgabenstellungen && !win.DW.renderers.judgeCloze(drillW5.frage, 'Aufgabenstellungen').ok &&
+      lessonW5.schritte.filter(s => s.frage && s.frage.art === 'cloze').every(s =>
+        s.frage.antworten.length === 1 && !s.frage.antworten.some(a => Object.keys(s.frage.nearMiss || {}).includes(a))) &&
+      orderW5.frage.frage === 'رتّب الجملة واضعًا الظرف أولًا والفعل في الموضع الثاني.' &&
+      orderW5.frage.correct.join(' ') === targetsW5[0] && orderW5.frage.finite === 'muss' && orderW5.frage.verbFirst === false &&
+      orderW5.frage.fields.vorfeld.join(' ') === 'Zuerst' && orderW5.frage.fields.lsk.join(' ') === 'muss' &&
+      orderW5.frage.fields.mittelfeld.join(' ') === 'ich die Aufgabe genau lesen.' &&
+      win.DW.order.score(orderW5.frage, orderW5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderW5.frage, ['Zuerst', 'ich', 'muss', 'die', 'Aufgabe', 'genau', 'lesen.']).credit < 1 &&
+      writingW5.frage.points.join(' | ') === targetsW5.join(' | ') && writingW5.frage.minWords === 35 &&
+      targetsW5.join(' ').split(/\s+/).length === 35 &&
+      targetsW5.every(x => [writingW5.frage.promptDe, summaryW5.zeigt.de, homeworkW5.zeigt.de].every(text => norm(text).includes(norm(x)))) &&
+      targetsW5.every(x => norm(speakingW5.erklaerung).includes(norm(x))) &&
+      homeworkW5.zeigt.de.includes('Ich übersetze nicht Wort für Wort aus dem Arabischen.'));
+
+  const checksW5 = lessonW5.schritte.filter(s => s.phase === 'Check');
+  const clozeCheckW5 = checksW5.find(s => s.frage && s.frage.art === 'cloze');
+  const orderCheckW5 = checksW5.find(s => s.frage && s.frage.art === 'wortstellung');
+  t('Corpus workshop b2-w05 makes 80 percent four of five, independently checking genitive der Zeit, the Aufgabenstellung cloze and ist order, countable viele and article-less ohne Beleg',
+    checksW5.length === 5 && checksW5[0].erklaerung.includes('أربع إجابات صحيحة من خمس (80٪)') &&
+      checksW5[4].erklaerung.includes('أربع إجابات صحيحة من خمس مساوية لـ80٪') &&
+      checksW5.every(s => /^cap\.b2-w05\.s\d+$/.test(s.frage.prereq || '')) && checksW5.every(s => !s.hinweise) &&
+      checksW5.map(s => s.frage.prereq).join(' | ') ===
+        'cap.b2-w05.s07 | cap.b2-w05.s23 | cap.b2-w05.s24 | cap.b2-w05.s16 | cap.b2-w05.s20' &&
+      new Set(checksW5.map(s => s.frage.prereq)).size === 5 &&
+      checksW5[0].frage.optionen.some(o => o.text === targetsW5[3]) &&
+      checksW5[0].frage.optionen.some(o => o.text === 'Die Einteilung die Zeit rettet den letzten Absatz.') &&
+      Object.values(checksW5[0].frage.misconceptionFamilies).join(' ') === 'kasus' &&
+      clozeCheckW5.frage.zeigt === 'Die ____ ist kürzer als der Text; die Textlänge schreckt nur.' &&
+      clozeCheckW5.frage.antworten.join(' ') === 'Aufgabenstellung' && clozeCheckW5.frage.nearMiss.Aufgabenstellungen &&
+      !win.DW.renderers.judgeCloze(clozeCheckW5.frage, 'Aufgabenstellungen').ok &&
+      orderCheckW5.frage.correct.join(' ') === targetsW5[2] && orderCheckW5.frage.finite === 'ist' &&
+      orderCheckW5.frage.fields.vorfeld.join(' ') === 'Die Aufgabenstellung' && orderCheckW5.frage.fields.lsk.join(' ') === 'ist' &&
+      orderCheckW5.frage.fields.mittelfeld.join(' ') === 'kürzer als der Text.' &&
+      win.DW.order.score(orderCheckW5.frage, orderCheckW5.frage.correct).credit === 1 &&
+      win.DW.order.score(orderCheckW5.frage, ['Die', 'Aufgabenstellung', 'kürzer', 'als', 'ist', 'der', 'Text.']).credit < 1 &&
+      checksW5[3].frage.optionen.some(o => o.text === 'Zu viele Markierungen verwirren.') &&
+      checksW5[3].frage.optionen.some(o => o.text === 'Zu viel Markierungen verwirren.') &&
+      Object.values(checksW5[3].frage.misconceptionFamilies).join(' ') === 'deklination' &&
+      checksW5[4].frage.optionen.some(o => o.text === targetsW5[4]) &&
+      checksW5[4].frage.optionen.some(o => o.text === 'Ein Rückschluss ohne ein Beleg ist geraten.') &&
+      Object.values(checksW5[4].frage.misconceptionFamilies).join(' ') === 'kasus');
 }
 
 console.log('\n' + pass + ' passed, ' + fail + ' failed\n');

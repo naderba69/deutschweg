@@ -15,28 +15,28 @@ module.exports = {
       ['markieren', 'markiert · markierte · hat markiert', 'يعلّم', 'Ich markiere höchstens fünf Wörter; zu viele Anstreichungen verwirren.', 'Ich markiere auf höchstens fünf Wörter am Rand.', 'markieren + نصب.', 'kasus', 'markiere'],
       ['die Randbemerkung', 'die Randbemerkungen', 'ملاحظة هامشية', 'Eine Randbemerkung in der Randspalte hilft wie ein Inhaltsverzeichnis.', 'Ein Randbemerkung hilft beim Wiederfinden.', 'مؤنث: eine.', 'genus', 'Randbemerkung'],
       ['der Textteil', 'die Textteile', 'قسم النص', 'Der zweite Textteil enthält die Schlüsselinformation.', 'Der zweite Textteil enthält der Antwort.', 'المفعول نصب: die Antwort.', 'kasus', 'Textteil'],
-      ['die Fragestellung', 'die Fragestellungen', 'صيغة السؤال', 'Die Fragestellung entscheidet über die Lesestrategie.', 'Die Fragestellung entscheidet für die Lesart.', 'entscheiden über + نصب.', 'präposition', 'Fragestellung'],
-      ['die Belegstelle', 'die Belegstellen', 'موضع الدليل', 'Die Belegstelle ist die Fundstelle; die Zeilenangabe hilft.', 'Die Belegstelle steht auf Zeile zwölf.', 'in der Zeile.', 'präposition', 'Belegstelle'],
+      ['die Fragestellung', 'die Fragestellungen', 'صيغة السؤال', 'Die Fragestellung entscheidet über die Lesestrategie.', 'Die Fragestellung entscheidet über der Lesestrategie.', 'entscheiden über + نصب: über die Lesestrategie.', 'präposition', 'Fragestellung'],
+      ['die Belegstelle', 'die Belegstellen', 'موضع الدليل', 'Die Belegstelle ist die Fundstelle; die Zeilenangabe hilft.', 'Die Belegstelle steht in die zwölfte Zeile.', 'المكان ثابت في السطر: in + داتيف — in der Zeile.', 'präposition', 'Belegstelle'],
       ['der Zeitdruck', '—', 'ضغط الوقت', 'Unter Zeitdruck hilft die Zeitkontrolle.', 'Unter der Zeitdruck liest man zu langsam.', 'unter + داتيف.', 'genus', 'Zeitdruck'],
-      ['die Einteilung', 'die Einteilungen', 'التقسيم', 'Die Einteilung der Zeit und der Minutenplan retten den letzten Absatz.', 'Die Einteilung von der Zeit rettet den letzten Absatz.', 'Genitiv أدقّ.', 'kasus', 'Einteilung'],
+      ['die Einteilung', 'die Einteilungen', 'التقسيم', 'Die Einteilung der Zeit und der Minutenplan retten den letzten Absatz.', 'Die Einteilung die Zeit und der Minutenplan retten den letzten Absatz.', 'الإضافة Genitiv مؤنث: der Zeit لا die Zeit.', 'kasus', 'Einteilung'],
       ['die Stoppuhr', 'die Stoppuhren', 'ساعة الإيقاف', 'Die Stoppuhr läuft; die Viertelstunde pro Text genügt.', 'Die Stoppuhr laufen, ich lese nicht schneller.', 'المفرد: läuft.', 'konjugation', 'Stoppuhr'],
-      ['der Suchbegriff', 'die Suchbegriffe', 'مصطلح البحث', 'Ein Suchbegriff pro Absatz; die Absatznummer notiere ich.', 'Ein Suchbegriff genügt für jedem Absatz.', 'pro Absatz.', 'kasus', 'Suchbegriff'],
-      ['das Detail', 'die Details', 'التفصيل', 'Details liest man erst bei der zweiten Frage, wenn Restzeit bleibt.', 'Details liest man erst in der zweiten Frage.', 'bei + داتيف.', 'präposition', 'Details'],
+      ['der Suchbegriff', 'die Suchbegriffe', 'مصطلح البحث', 'Ein Suchbegriff pro Absatz; die Absatznummer notiere ich.', 'Ein Suchbegriff genügt für jedem Absatz.', 'بعد für النصب: für jeden Absatz.', 'kasus', 'Suchbegriff'],
+      ['das Detail', 'die Details', 'التفصيل', 'Details liest man erst bei der zweiten Frage, wenn Restzeit bleibt.', 'Details liest man erst bei die zweite Frage, wenn Restzeit bleibt.', 'bei + داتيف دائمًا: bei der zweiten Frage.', 'präposition', 'Details'],
       ['die Hauptaussage', 'die Hauptaussagen', 'الفكرة الأساسية', 'Die Hauptaussage steht oft im Einleitungssatz, selten im Schlusssatz.', 'Die Hauptaussage stehen oft im Einleitungssatz.', 'المفرد: steht.', 'konjugation', 'Hauptaussage'],
-      ['der Rückschluss', 'die Rückschlüsse', 'الاستنتاج', 'Ein Rückschluss ohne Beleg ist geraten.', 'Ein Rückschluss ohne ein Beleg ist geraten.', 'بعد ohne بلا أداة.', 'kasus', 'Rückschluss'],
+      ['der Rückschluss', 'die Rückschlüsse', 'الاستنتاج', 'Ein Rückschluss ohne Beleg ist geraten.', 'Ein Rückschluss ohne ein Beleg ist geraten.', 'المذكر نصب بعد ohne: einen Beleg.', 'kasus', 'Rückschluss'],
       ['die Wortbedeutung', 'die Wortbedeutungen', 'معنى الكلمة', 'Die Wortbedeutung ergibt sich aus dem Satz; Doppeldeutigkeit klärt der Text.', 'Die Wortbedeutung ergibt sich von dem Satz.', 'aus + داتيف.', 'präposition', 'Wortbedeutung'],
       ['der Wortlaut', '—', 'نصّ العبارة', 'Der Wortlaut entscheidet, nicht die Erinnerung.', 'Der Wortlaut entscheiden, nicht die Erinnerung.', 'المفرد: entscheidet.', 'konjugation', 'Wortlaut'],
       ['die Erinnerung', 'die Erinnerungen', 'الذاكرة', 'Die Erinnerung trügt bei Zahlen; das ist die Falle und die Ablenkung.', 'Die Erinnerung trügen bei Zahlen.', 'المفرد: trügt.', 'konjugation', 'Erinnerung'],
-      ['die Auswahl', 'die Auswahlen', 'الاختيار', 'Die Auswahl unter vier Antwortmöglichkeiten ist die halbe Antwort.', 'Die Auswahl von den Wörtern ist die halbe Antwort.', 'Genitiv أدقّ.', 'kasus', 'Auswahl'],
+      ['die Auswahl', 'die Auswahlen', 'الاختيار', 'Die Auswahl unter vier Antwortmöglichkeiten ist die halbe Antwort.', 'Die Auswahl unter vier Antwortmöglichkeiten sind die halbe Antwort.', 'الفاعل مفرد (die Auswahl): ist لا sind.', 'kasus', 'Auswahl'],
       ['das Muster', 'die Muster', 'النمط', 'Aus dem Muster der Antworten wird mit der Übung Routine, doch die Ähnlichkeit täuscht.', 'Der Muster der Antworten wiederholt sich.', 'محايد: das.', 'genus', 'Muster'],
-      ['die Abfolge', 'die Abfolgen', 'التتابع', 'Die Abfolge der Teilaufgaben und die Schrittfolge helfen bei Zuordnungsaufgabe, Reihenfolgeaufgabe und Lückenaufgabe.', 'Die Abfolge von den Teilaufgaben hilft beim Planen.', 'Genitiv أدقّ.', 'kasus', 'Abfolge'],
-      ['die Zeitvorgabe', 'die Zeitvorgaben', 'الوقت المحدد', 'Die Zeitvorgabe auf dem Aufgabenblatt bestimmt das Vorgehen und das Aufgabenformat.', 'Die Zeitvorgabe steht in dem Aufgabenblatt.', 'auf dem Blatt.', 'präposition', 'Zeitvorgabe'],
+      ['die Abfolge', 'die Abfolgen', 'التتابع', 'Die Abfolge der Teilaufgaben und die Schrittfolge helfen bei Zuordnungsaufgabe, Reihenfolgeaufgabe und Lückenaufgabe.', 'Die Abfolge die Teilaufgaben hilft beim Planen.', 'الإضافة Genitiv جمع: der Teilaufgaben لا die Teilaufgaben.', 'kasus', 'Abfolge'],
+      ['die Zeitvorgabe', 'die Zeitvorgaben', 'الوقت المحدد', 'Die Zeitvorgabe auf dem Aufgabenblatt bestimmt das Vorgehen und das Aufgabenformat.', 'Die Zeitvorgabe auf das Aufgabenblatt bestimmt das Vorgehen und das Aufgabenformat.', 'المكان ثابت على الورقة: auf + داتيف — auf dem Aufgabenblatt.', 'präposition', 'Zeitvorgabe'],
       ['das Aufgabenblatt', 'die Aufgabenblätter', 'ورقة المهام', 'Auf dem Aufgabenblatt stehen drei Fragen, die Punkteverteilung, die Bewertung und ein Hinweis auf die Anlage.', 'Auf das Aufgabenblatt stehen drei Fragen.', 'auf + داتيف.', 'kasus', 'Aufgabenblatt'],
       ['die Prüfungsangst', '—', 'رهبة الامتحان', 'Prüfungsangst verengt den Blick; Selbstkontrolle hilft dagegen.', 'Die Prüfungsangst verengen den Blick.', 'المفرد: verengt.', 'konjugation', 'Prüfungsangst'],
       ['die Ruhe', '—', 'الهدوء', 'Ruhe beim Lesen spart Zeit.', 'Die Ruhe beim Lesen sparen Zeit.', 'المفرد: spart.', 'konjugation', 'Ruhe'],
       ['die Flüchtigkeit', '—', 'التسرّع', 'Flüchtigkeit kostet mehr als langsames Lesen; Genauigkeit zahlt sich aus.', 'Die Flüchtigkeit kosten mehr als langsames Lesen.', 'المفرد: kostet.', 'konjugation', 'Flüchtigkeit'],
       ['der Durchgang', 'die Durchgänge', 'الجولة', 'Der zweite Durchgang klärt den Rest und bringt Zeitgewinn.', 'Der zweite Durchgang klärt der Rest.', 'المفعول نصب: den Rest.', 'kasus', 'Durchgang'],
-      ['die Probe', 'die Proben', 'الاختبار', 'Die Probe aufs Exempel: Antworte ohne Übungstext, wie in der Übungsaufgabe, später mit Musterlösung.', 'Die Probe auf das Exempel: Antworte ohne Text.', 'aufs Exempel (ثابتة).', 'lexik-kollokation', 'Probe'],
+      ['die Probe', 'die Proben', 'الاختبار', 'Die Probe aufs Exempel: Antworte ohne Übungstext, wie in der Übungsaufgabe, später mit Musterlösung.', 'Die Probe aufs Exempel: Antworte ohne Übungstext, wie in die Übungsaufgabe, später mit Musterlösung.', 'المكان ثابت داخل التمرين: in + داتيف — in der Übungsaufgabe.', 'lexik-kollokation', 'Probe'],
       ['die Sicherheit', '—', 'الثقة', 'Sicherheit kommt mit der Übung und der zweiten Runde.', 'Die Sicherheit kommt mit die zweite Runde.', 'mit + داتيف.', 'kasus', 'Sicherheit'],
       ['die Unsicherheit', 'die Unsicherheiten', 'عدم الثقة', 'Unsicherheit markiere ich mit einem Fragezeichen.', 'Die Unsicherheit markiere ich mit ein Fragezeichen.', 'mit + داتيف: einem.', 'deklination', 'Unsicherheit'],
       ['das Fragezeichen', 'die Fragezeichen', 'علامة الاستفهام', 'Ein Fragezeichen im Text ist erlaubt, ein Ausrufezeichen nicht.', 'Ein Fragezeichen im Text sind erlaubt.', 'المفرد: ist.', 'konjugation', 'Fragezeichen'],
@@ -64,10 +64,27 @@ module.exports = {
       'die Anlage', 'die Quellenangabe'
     ],
     tricks: [
-      { trick: 'المطلوب قبل النص: اقرأ السؤال أولًا ثم ابحث', wie: 'Die Aufgabenstellung ist kürzer als der Text; zuerst lese ich die Aufgabenstellung.', warum: 'النص الطويل يستهلك الوقت في التفاصيل؛ السؤال يحدد أي تفصيل يلزم.', anchor: 'Aufgabenstellung' },
-      { trick: 'علّم قليلًا: fünf Wörter, keine Linien', wie: 'Ich markiere höchstens fünf Wörter am Rand.', warum: 'النص الملوّن كله لا يعلّم شيئًا؛ القليل هو الذي يُعاد قراءته.', anchor: 'markiere' },
-      { trick: 'قسّم الوقت: الزمن الكلي على عدد الأسئلة', wie: 'Die Einteilung der Zeit rettet den letzten Absatz.', warum: 'سؤال أخير بلا دقيقة = خسارة مضمونة؛ القسمة تمنعها.', anchor: 'Einteilung' }
-    ]
+      { trick: 'المطلوب قبل النص: اقرأ السؤال أولًا ثم ابحث', wie: 'Die Aufgabenstellung ist kürzer als der Text; zuerst lese ich die Aufgabenstellung.', warum: 'النص الطويل يستهلك الوقت في التفاصيل؛ السؤال يحدد أي تفصيل يلزم.', anchor: 'Die Aufgabenstellung ist kürzer als der Text' },
+      { trick: 'علّم قليلًا: fünf Wörter, keine Linien', wie: 'Ich markiere höchstens fünf Wörter am Rand.', warum: 'النص الملوّن كله لا يعلّم شيئًا؛ القليل هو الذي يُعاد قراءته.', anchor: 'Ich markiere höchstens fünf Wörter' },
+      { trick: 'قسّم الوقت: الزمن الكلي على عدد الأسئلة', wie: 'Die Einteilung der Zeit rettet den letzten Absatz.', warum: 'سؤال أخير بلا دقيقة = خسارة مضمونة؛ القسمة تمنعها.', anchor: 'Die Einteilung der Zeit rettet den letzten Absatz' }
+    ],
+    strictClozeAnswers: true,
+    wordClozeNearMisses: {
+      'markieren': 'markierst',
+      'das Muster': 'Mustern',
+      'die Schlüsselstelle': 'Schlüsselstellen'
+    },
+    clozeItemIndex: 1,
+    clozeNearMiss: 'Aufgabenstellungen',
+    checkItemIndex: 33,
+    extraCheck: {
+      right: 'Ein Rückschluss ohne Beleg ist geraten.',
+      bad: 'Ein Rückschluss ohne ein Beleg ist geraten.',
+      why: 'بلا أداة: ohne Beleg؛ وبالأداة النصب einen Beleg لا ein Beleg.',
+      family: 'kasus',
+      prereq: 'cap.b2-w05.s20',
+      frage: 'أي جملة تصوغ «بلا دليل» صياغة صحيحة؟'
+    }
   }
 
 };
