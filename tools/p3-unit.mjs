@@ -8611,9 +8611,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2Articles['b2-a20'].body.includes('Sechs Wochen lang schrieb ich zweimal pro Woche einen Text unter Zeitdruck'));
   const b2Chapters = Object.fromEntries(win.DW_LIBRARY.B2.novel.chapters.map(x => ['novelle-' + x.n, x]));
   const b2cq = (id, n) => b2Chapters[id].questions[n];
-  t('Corpus B2 novelle-1 has 797 measured words and no unknown B2 tokens',
+  t('Corpus B2 novelle-1 has 833 measured words and no unknown B2 tokens',
     b2Chapters['novelle-1'].title === 'الوصول' &&
-      b2Chapters['novelle-1'].body.trim().split(/\s+/).length === 797 &&
+      b2Chapters['novelle-1'].body.trim().split(/\s+/).length === 833 &&
       known.coverage(b2Known, b2Chapters['novelle-1'].body).unknown.length === 0);
   t('Corpus B2 novelle-1 connects the delayed arrival, promised but missing key, unanswered contact, Leila clue, safe overnight choice, written record, and next-morning return into novelle-2 coherently',
     b2Chapters['novelle-1'].body.includes('Der Zug hatte zwei Stunden Verspätung') &&
@@ -8632,9 +8632,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-1', 1).key === 'لأنها لم تدخل الشقة ولم يصل رد ولم ترد الانتظار خارجًا' &&
       b2cq('novelle-1', 1).options.includes(b2cq('novelle-1', 1).key) &&
       b2Chapters['novelle-1'].body.includes('weder vor der Tür schlafen noch allein bis zum Morgen durch die Straßen gehen'));
-  t('Corpus B2 novelle-2 has 778 measured words and no unknown B2 tokens',
+  t('Corpus B2 novelle-2 has 812 measured words and no unknown B2 tokens',
     b2Chapters['novelle-2'].title === 'الجارة' &&
-      b2Chapters['novelle-2'].body.trim().split(/\s+/).length === 778 &&
+      b2Chapters['novelle-2'].body.trim().split(/\s+/).length === 812 &&
       known.coverage(b2Known, b2Chapters['novelle-2'].body).unknown.length === 0);
   t('Corpus B2 novelle-2 connects Leila and the spare key, documented room defects, a temporary water repair, the four-word calendar clue, an honest letter, water storage, and course preparation into novelle-3 coherently',
     b2Chapters['novelle-2'].body.includes('Der Vermieter hatte ihr, bevor er aus der Stadt fuhr, einen zweiten Schlüssel gegeben') &&
@@ -8654,9 +8654,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-2', 1).key === 'بسبب إصلاح في الأنبوب' &&
       b2cq('novelle-2', 1).options.includes(b2cq('novelle-2', 1).key) &&
       b2Chapters['novelle-2'].body.includes('Für eine Reparatur am Rohr gab es an diesem Tag bis zum Abend kein Wasser'));
-  t('Corpus B2 novelle-3 has 891 measured words and no unknown B2 tokens',
+  t('Corpus B2 novelle-3 has 928 measured words and no unknown B2 tokens',
     b2Chapters['novelle-3'].title === 'العمل' &&
-      b2Chapters['novelle-3'].body.trim().split(/\s+/).length === 891 &&
+      b2Chapters['novelle-3'].body.trim().split(/\s+/).length === 928 &&
       known.coverage(b2Known, b2Chapters['novelle-3'].body).unknown.length === 0);
   t('Corpus B2 novelle-3 connects the first course day, a transparent application and contract, the four-evening plan, Leila hike, calendar boundary, and original-paper task into novelle-4 coherently',
     b2Chapters['novelle-3'].body.startsWith('Der Kurs begann um acht') &&
@@ -8677,9 +8677,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-3', 1).key === 'أن تنظر في التقويم قبل الإجابة' &&
       b2cq('novelle-3', 1).options.includes(b2cq('novelle-3', 1).key) &&
       b2Chapters['novelle-3'].body.includes('Deshalb ergänzte sie eine Regel: erst den Kalender ansehen, dann antworten'));
-  t('Corpus B2 novelle-4 has 807 measured words and no unknown B2 tokens',
+  t('Corpus B2 novelle-4 has 839 measured words and no unknown B2 tokens',
     b2Chapters['novelle-4'].title === 'الخطأ' &&
-      b2Chapters['novelle-4'].body.trim().split(/\s+/).length === 807 &&
+      b2Chapters['novelle-4'].body.trim().split(/\s+/).length === 839 &&
       known.coverage(b2Known, b2Chapters['novelle-4'].body).unknown.length === 0);
   t('Corpus B2 novelle-4 turns the delayed Sfax originals into a documented deadline response, confirmed Monday appointment, process diagnosis, new buffer rules, and verified second case',
     b2Chapters['novelle-4'].body.startsWith('Am Donnerstag kam die Lieferung zu spät') &&
@@ -8699,9 +8699,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-4', 1).key === 'الاثنين عند الثامنة والنصف' &&
       b2cq('novelle-4', 1).options.includes(b2cq('novelle-4', 1).key) &&
       b2Chapters['novelle-4'].body.includes('Montag, acht Uhr dreißig'));
-  t('Corpus B2 novelle-5 has 877 measured words, an explicit rear roof below no upper room, and no unknown B2 tokens',
+  t('Corpus B2 novelle-5 has 916 measured words, an explicit rear roof below no upper room, and no unknown B2 tokens',
     b2Chapters['novelle-5'].title === 'المطر' &&
-      b2Chapters['novelle-5'].body.trim().split(/\s+/).length === 877 &&
+      b2Chapters['novelle-5'].body.trim().split(/\s+/).length === 916 &&
       b2Chapters['novelle-5'].body.includes('Über dem Schlafzimmer lag nicht Leilas Wohnung, sondern nur das flache Dach zum Hof') &&
       known.coverage(b2Known, b2Chapters['novelle-5'].body).unknown.length === 0);
   t('Corpus B2 novelle-5 turns the three-day rain and roof leak into a safe documented plan, written permission, temporary cover, landlord-funded repair, rain check, and March-to-May continuity',
@@ -8724,9 +8724,9 @@ console.log('\n— P3.2 lexical layer —\n');
       b2cq('novelle-5', 1).key === 'المالك' &&
       b2cq('novelle-5', 1).options.includes(b2cq('novelle-5', 1).key) &&
       b2Chapters['novelle-5'].body.includes('dass er die gesamten Kosten übernahm'));
-  t('Corpus B2 novelle-6 has 906 measured words and no unknown B2 tokens',
+  t('Corpus B2 novelle-6 has 940 measured words and no unknown B2 tokens',
     b2Chapters['novelle-6'].title === 'القرار' &&
-      b2Chapters['novelle-6'].body.trim().split(/\s+/).length === 906 &&
+      b2Chapters['novelle-6'].body.trim().split(/\s+/).length === 940 &&
       known.coverage(b2Known, b2Chapters['novelle-6'].body).unknown.length === 0);
   t('Corpus B2 novelle-6 closes the calendar clue, exam, fixed-term work and housing decisions, inspected upper room, documented key handover, and precise letter home',
     b2Chapters['novelle-6'].body.includes('Für den, der bleibt') &&
